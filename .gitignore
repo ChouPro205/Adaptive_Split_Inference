@@ -1,0 +1,17 @@
+**/build/
+**/build-*/
+**/.cache/
+**/__pycache__/
+*.pyc
+*.log
+.vscode/
+.idea/
+device/artifacts/*.zip
+data/
+datasets/
+*.onnx
+*.xmodel
+*.pth
+*.pt
+.env
+*.key

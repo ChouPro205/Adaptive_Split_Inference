@@ -1,0 +1,23 @@
+/*
+ * The PCA10059 board DTS already creates board_cdc_acm_uart. Keep the
+ * application choice explicit so the demo can never fall back to UART0.
+ */
+
+/ {
+	chosen {
+		zephyr,console = &board_cdc_acm_uart;
+	};
+};
+
+&zephyr_udc0 {
+	status = "okay";
+};
+
+&board_cdc_acm_uart {
+	status = "okay";
+};
+
+/* The dongle demo has no physical UART console; only USB CDC ACM is used. */
+&uart0 {
+	status = "disabled";
+};
