@@ -1,0 +1,130 @@
+ADAPTIVE SPLIT INFERENCE - SV1 ENVIRONMENT REPORT
+=================================================
+
+Operator: Chau / SV1
+Checked at: 2026-09-10 18:17:15 +07:00 (Asia/Saigon)
+Windows: Microsoft Windows 11 Home Single Language, version 10.0.26200, build 26200
+
+NCS AND WORKSPACE
+-----------------
+Status: PASS
+SDK: nRF Connect SDK v3.4.0 LTS
+SDK path: D:\ncs\v3.4.0
+NCS Git tag: v3.4.0
+NCS commit: 99553055607b2e9885fbc80ccd11fa9da81c2df0
+West workspace: D:\ncs\v3.4.0
+west topdir: D:/ncs/v3.4.0
+ZEPHYR_BASE: D:\ncs\v3.4.0\zephyr
+Zephyr version: 4.4.0 (NCS build ncs-v3.4.0)
+Toolchain root: D:\ncs\toolchains\dcbdc366a1
+Zephyr SDK toolchain: 1.0.1
+
+TOOLS
+-----
+PASS west
+  Path: D:\ncs\toolchains\dcbdc366a1\opt\bin\Scripts\west.exe
+  Version: 1.5.0
+PASS cmake
+  Path: D:\ncs\toolchains\dcbdc366a1\opt\bin\cmake.exe
+  Version: 4.2.1
+PASS ninja
+  Path: D:\ncs\toolchains\dcbdc366a1\opt\bin\ninja.exe
+  Version: 1.13.2
+PASS arm-zephyr-eabi-gcc
+  Path: D:\ncs\toolchains\dcbdc366a1\opt\zephyr-sdk\gnu\arm-zephyr-eabi\bin\arm-zephyr-eabi-gcc.exe
+  Version: GNU 14.3.0 (Zephyr SDK 1.0.1)
+PASS python
+  Path: D:\ncs\toolchains\dcbdc366a1\opt\bin\python.exe
+  Version: 3.12.4
+PASS git
+  Path: D:\ncs\toolchains\dcbdc366a1\mingw64\bin\git.exe
+  Version: 2.52.0.windows.1
+
+PYTHON PACKAGES (TOOLCHAIN PYTHON)
+----------------------------------
+PASS pyserial 3.5
+PASS numpy 2.4.1
+PASS ppk2-api 0.9.2
+
+NRFUTIL
+-------
+Status: PASS
+Executable: D:\ncs\toolchains\dcbdc366a1\nrfutil\bin\nrfutil.exe
+Authenticode: Valid; signer Nordic Semiconductor ASA
+Active user-mode core version: 8.2.1 (350d1fd, 2026-08-11)
+User PATH entry: D:\ncs\toolchains\dcbdc366a1\nrfutil\bin
+nrfutil user data: C:\Users\admin\.nrfutil
+PASS nrf5sdk-tools 1.1.0
+Confirmed commands: pkg, dfu (also keys, settings, zigbee)
+
+BOARD TARGET
+------------
+Status: PASS
+west boards result: nrf52840dongle|nrf52840,nrf52840/bare
+Selected target: nrf52840dongle/nrf52840
+Forbidden target not used: nrf52840dongle/nrf52840/bare
+Board DTS used by build: D:\ncs\v3.4.0\zephyr\boards\nordic\nrf52840dongle\nrf52840dongle_nrf52840.dts
+
+PROJECT AND BUILD
+-----------------
+Project path: D:\HUST\esp
+Build status: PASS
+Final build command:
+  west build --no-sysbuild -p always -b nrf52840dongle/nrf52840 D:\HUST\esp -d D:\HUST\esp\build
+Reason for --no-sysbuild: the local West configuration defaults to Sysbuild; disabling it for this invocation places the required artifact at build\zephyr\zephyr.hex. No persistent West setting was changed.
+Configuration checks:
+  CONFIG_GPIO=y
+  CONFIG_LOG=n
+  CONFIG_SERIAL=n
+  CONFIG_CONSOLE=n
+  CONFIG_BT=n
+  CONFIG_CMSIS_NN=n
+Build memory summary (West/Ninja build output):
+  FLASH: 41,820 B / 1,020 KB (4.00%)
+  RAM:   12,536 B / 256 KB (4.78%)
+  IDT_LIST: 0 B / 32 KB (0.00%)
+
+ARTIFACTS
+---------
+PASS HEX
+  Path: D:\HUST\esp\build\zephyr\zephyr.hex
+  Size: 117,747 bytes
+  SHA-256: 9F5DCF06BD0005D2F23D4FAA414BABEEBDD3BEA3087A7840EE2870AB1805BF26
+PASS DFU ZIP
+  Path: D:\HUST\esp\artifacts\adaptive_split_base_v1.zip
+  Size: 42,349 bytes
+  SHA-256: 4999C118E53E8F6E6E104B936AC127C6903B0132E72DAC5A746FCCED7ADAB446
+  Package: application version 1, hardware version 52, sd-req 0x00
+  Package image payload size: 41,820 bytes
+
+FILES CREATED
+-------------
+D:\HUST\esp\CMakeLists.txt
+D:\HUST\esp\prj.conf
+D:\HUST\esp\README.md
+D:\HUST\esp\.gitignore
+D:\HUST\esp\src\main.c
+D:\HUST\esp\scripts\check_env.ps1
+D:\HUST\esp\reports\environment_check.txt
+D:\HUST\esp\build\ (generated build tree)
+D:\HUST\esp\artifacts\adaptive_split_base_v1.zip
+D:\HUST\esp\.git\ (local repository metadata)
+
+GIT LOCAL
+---------
+Status: PASS
+Repository: D:\HUST\esp
+Remote: none
+Commit created: no
+Global Git configuration changed: no
+
+WARNINGS / NOT COMPLETED BY DESIGN
+----------------------------------
+- The DFU ZIP is unsigned. nrf5sdk-tools reports that it is intended for a signature-less bootloader and is not suitable for production deployment without a signing policy.
+- The locked nrfutil home bundled inside the NCS toolchain was left unchanged. nrf5sdk-tools was installed safely in the normal user nrfutil home.
+- Existing directories under D:\HUST\esp were preserved and were not edited or deleted.
+- No ESP-IDF installation or tool was used for this project.
+- No erase, recover, flash, DFU transfer, or other dongle write operation was run.
+- Bootloader-entry instructions and firmware loading are intentionally deferred to the next task.
+
+FINAL RESULT: PASS - ENVIRONMENT READY; DONGLE NOT FLASHED.
