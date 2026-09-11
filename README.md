@@ -4,7 +4,7 @@ Adaptive Split Inference là dự án nghiên cứu hệ thống suy luận thí
 
 ## Cấu trúc và trách nhiệm
 
-- `device`: firmware nRF52840 Dongle PCA10059 của Châu/SV1.
+- `device`: firmware nRF52840 Dongle PCA10059 của SV1.
 - `edge`: KV260, Tail DNN, queue và server của SV2.
 - `ml`: mô hình, lượng tử hóa và protection của SV3.
 - `contracts`: hợp đồng giao diện I1-I4, packet format và test vector dùng chung.
