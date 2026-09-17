@@ -14,7 +14,11 @@ from week1_common import config_sha256, configured_path, load_config, require, r
 
 def compute(config: dict) -> tuple[np.ndarray, np.ndarray, int, int]:
     raw_dir = configured_path(config, "raw_dir")
-    records = canonical_records(raw_dir / "ptbxl_database.csv", raw_dir / "scp_statements.csv", config)
+    records = canonical_records(
+        configured_path(config, "database_csv"),
+        configured_path(config, "scp_statements_csv"),
+        config,
+    )
     fit_split = config["normalization"]["fit_split"]
     train = [record for record in records if record["split"] == fit_split]
     require(train, f"No PTB-XL records in normalization split {fit_split}")

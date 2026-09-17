@@ -7,7 +7,7 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from week1_common import ValidationError, read_csv_rows, require
+from week1_common import ValidationError, read_csv_rows, require, safe_dataset_relative_path
 
 
 def patient_id(value: str) -> str:
@@ -69,9 +69,9 @@ def canonical_records(database_path: Path, scp_path: Path, config: dict) -> list
         require(ecg_id not in seen_ecg, f"Duplicate ecg_id: {ecg_id}")
         seen_ecg.add(ecg_id)
         pid = patient_id(row["patient_id"])
-        relative_stem = row[filename_column].strip().replace("\\", "/")
-        require(relative_stem and not Path(relative_stem).is_absolute(),
-                f"Invalid waveform path for ecg_id {ecg_id}: {relative_stem!r}")
+        relative_stem = safe_dataset_relative_path(
+            row[filename_column], f"waveform path for ecg_id {ecg_id}"
+        )
         labels = parse_scp_codes(row[source_column], vocabulary)
         split = split_for_fold(fold, config["split"])
         patient_folds[pid].add(fold)

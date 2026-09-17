@@ -8,13 +8,14 @@ import json
 import re
 import shutil
 import urllib.request
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Iterable
 
 
 ML_ROOT = Path(__file__).resolve().parents[1]
 CONFIG_DIR = ML_ROOT / "configs"
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
+SAFE_DATASET_COMPONENT = re.compile(r"^[A-Za-z0-9._-]+$")
 
 
 class ValidationError(RuntimeError):
@@ -59,6 +60,40 @@ def configured_path(config: dict, key: str) -> Path:
         raise ValidationError(f"Config is missing paths.{key}") from exc
     require(isinstance(relative, str) and relative, f"Invalid paths.{key}")
     return ml_path(relative)
+
+
+def configured_relative_path(config: dict, key: str, root_key: str = "raw_dir") -> str:
+    """Return a configured path relative to another configured directory."""
+    root = configured_path(config, root_key)
+    target = configured_path(config, key)
+    require(root in target.parents, f"paths.{key} must be inside paths.{root_key}")
+    return target.relative_to(root).as_posix()
+
+
+def safe_dataset_relative_path(value: str, label: str = "dataset path") -> str:
+    """Validate an untrusted POSIX-style path from dataset metadata."""
+    require(isinstance(value, str), f"Invalid {label}: expected text")
+    normalized = value.strip().replace("\\", "/")
+    require(normalized, f"Invalid {label}: empty path")
+    require(not normalized.startswith(("/", "//")), f"Invalid {label}: absolute path {value!r}")
+    require(re.match(r"^[A-Za-z]:", normalized) is None,
+            f"Invalid {label}: drive-qualified path {value!r}")
+    components = normalized.split("/")
+    require(all(component not in ("", ".", "..") for component in components),
+            f"Invalid {label}: unsafe path component in {value!r}")
+    require(all(SAFE_DATASET_COMPONENT.fullmatch(component) is not None for component in components),
+            f"Invalid {label}: unsupported path component in {value!r}")
+    return PurePosixPath(*components).as_posix()
+
+
+def confined_dataset_path(root: Path, relative_path: str, label: str = "dataset path") -> Path:
+    """Resolve a validated dataset path and prove it remains below root."""
+    safe_relative = safe_dataset_relative_path(relative_path, label)
+    resolved_root = root.resolve()
+    destination = resolved_root.joinpath(*PurePosixPath(safe_relative).parts).resolve()
+    require(resolved_root in destination.parents,
+            f"Invalid {label}: destination escapes dataset root: {relative_path!r}")
+    return destination
 
 
 def sha256_file(path: Path, chunk_size: int = 1024 * 1024) -> str:

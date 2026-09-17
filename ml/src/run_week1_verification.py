@@ -14,12 +14,23 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from week1_common import ML_ROOT, config_sha256, load_config, load_json, require, run_cli, sha256_file
+from week1_common import (
+    ML_ROOT,
+    config_sha256,
+    configured_path,
+    load_config,
+    load_json,
+    require,
+    run_cli,
+    sha256_file,
+)
 
 
 REPO_ROOT = ML_ROOT.parent
 PROVENANCE_DIR = ML_ROOT / "provenance"
 OUTPUT = PROVENANCE_DIR / "week1_run_manifest.json"
+# Runner-level orchestration order. Scientific values, dataset paths, package
+# versions, and artifact paths are resolved from the authoritative configs.
 COMMANDS = [
     ["-B", "ml/src/check_env.py"],
     ["-B", "ml/src/download_mitdb.py"],
@@ -41,7 +52,6 @@ COMMANDS = [
     ["-B", "ml/src/verify_ptbxl.py"],
     ["-B", "ml/src/test_week1_negative.py"],
 ]
-PACKAGES = ["torch", "numpy", "pandas", "scipy", "matplotlib", "wfdb", "scikit-learn"]
 
 
 def git_output(*args: str) -> str:
@@ -51,6 +61,15 @@ def git_output(*args: str) -> str:
 
 def main() -> None:
     started = datetime.now(timezone.utc)
+    source_git = {
+        "commit_sha": git_output("rev-parse", "HEAD"),
+        "branch": git_output("branch", "--show-current"),
+        "dirty": git_output("status", "--porcelain") != "",
+    }
+    config_entries = {
+        name: load_config(name)
+        for name in ("environment.json", "mitdb_week1_config.json", "ptbxl_week1_config.json")
+    }
     command_results: list[dict[str, object]] = []
     dataset_tree_hashes: dict[str, str] = {}
     for arguments in COMMANDS:
@@ -78,11 +97,13 @@ def main() -> None:
             "duration_seconds": round(duration, 3),
             "output_sha256": hashlib.sha256(combined.encode("utf-8")).hexdigest(),
         })
+        if result.returncode != 0:
+            print("Fail-fast: dependent Week 1 commands were not executed.", file=sys.stderr)
+            break
 
     configs: dict[str, dict[str, str]] = {}
     datasets: dict[str, dict[str, str]] = {}
-    for name in ("environment.json", "mitdb_week1_config.json", "ptbxl_week1_config.json"):
-        path, config = load_config(name)
+    for name, (path, config) in config_entries.items():
         configs[name] = {"path": path.relative_to(REPO_ROOT).as_posix(), "sha256": config_sha256(path)}
         if "dataset" in config:
             slug = config["dataset"]["slug"]
@@ -93,15 +114,18 @@ def main() -> None:
                 "required_file_tree_sha256": dataset_tree_hashes.get(slug, "verification-command-failed"),
             }
 
+    _, environment_config = config_entries["environment.json"]
+    _, mitdb_config = config_entries["mitdb_week1_config.json"]
+    _, ptbxl_config = config_entries["ptbxl_week1_config.json"]
     artifact_paths = [
-        ML_ROOT / "manifests" / "mitdb_expected_records.txt",
-        ML_ROOT / "manifests" / "mitdb_patient_split.csv",
-        ML_ROOT / "manifests" / "ptbxl_patient_split.csv",
-        ML_ROOT / "configs" / "mitdb_normalization.json",
-        ML_ROOT / "configs" / "ptbxl_normalization.json",
+        configured_path(mitdb_config, "expected_records"),
+        configured_path(mitdb_config, "patient_manifest"),
+        configured_path(ptbxl_config, "patient_manifest"),
+        configured_path(mitdb_config, "normalization"),
+        configured_path(ptbxl_config, "normalization"),
     ]
     artifacts = {path.relative_to(REPO_ROOT).as_posix(): sha256_file(path) for path in artifact_paths}
-    processed_manifest_path = ML_ROOT / "data" / "processed" / "mitdb" / "processed_manifest.json"
+    processed_manifest_path = configured_path(mitdb_config, "processed_dir") / "processed_manifest.json"
     if processed_manifest_path.is_file():
         processed = load_json(processed_manifest_path)
         artifacts.update({f"ml/data/processed/mitdb/{name}": digest
@@ -113,16 +137,13 @@ def main() -> None:
         "schema_version": 1,
         "started_utc": started.isoformat(),
         "finished_utc": datetime.now(timezone.utc).isoformat(),
-        "git": {
-            "commit_sha": git_output("rev-parse", "HEAD"),
-            "branch": git_output("branch", "--show-current"),
-            "dirty": git_output("status", "--porcelain") != "",
-        },
+        "git": source_git | {"post_run_dirty": git_output("status", "--porcelain") != ""},
         "environment": {
             "python": platform.python_version(),
             "implementation": platform.python_implementation(),
             "os": platform.platform(),
-            "packages": {name: importlib.metadata.version(name) for name in PACKAGES},
+            "packages": {name: importlib.metadata.version(name)
+                         for name in environment_config["packages"]},
         },
         "configs": configs,
         "datasets": datasets,

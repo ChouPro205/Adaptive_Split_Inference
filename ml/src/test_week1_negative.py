@@ -11,12 +11,29 @@ import tempfile
 from pathlib import Path
 
 from mitdb_common import expected_records
-from week1_common import configured_path, load_config, require, run_cli
+from ptbxl_common import canonical_records
+from week1_common import (
+    confined_dataset_path,
+    configured_path,
+    configured_relative_path,
+    load_config,
+    require,
+    run_cli,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
 MIT_VERIFIER = Path(__file__).resolve().with_name("verify_mitdb_integrity.py")
 PTB_VERIFIER = Path(__file__).resolve().with_name("verify_ptbxl.py")
+PTB_DOWNLOADER = Path(__file__).resolve().with_name("download_ptbxl.py")
+
+
+def link_or_copy(source: Path, target: Path) -> None:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        os.link(source, target)
+    except OSError:
+        shutil.copy2(source, target)
 
 
 def make_mit_view(destination: Path, config: dict, omitted: set[str] | None = None,
@@ -37,10 +54,55 @@ def make_mit_view(destination: Path, config: dict, omitted: set[str] | None = No
             with target.open("ab") as handle:
                 handle.write(b"negative-test-corruption")
         else:
-            try:
-                os.link(source, target)
-            except OSError:
-                shutil.copy2(source, target)
+            link_or_copy(source, target)
+
+
+def make_ptb_view(destination: Path, config: dict) -> str:
+    raw = configured_path(config, "raw_dir")
+    destination.mkdir(parents=True, exist_ok=True)
+    relatives = [configured_relative_path(config, "physionet_checksums")]
+    relatives.extend(configured_relative_path(config, key)
+                     for key in config["integrity"]["required_metadata_path_keys"])
+    records = canonical_records(
+        configured_path(config, "database_csv"),
+        configured_path(config, "scp_statements_csv"),
+        config,
+    )
+    require(len(records) == int(config["integrity"]["expected_record_count"]),
+            "Cannot construct PTB-XL negative-test view from incomplete source data")
+    extensions = list(config["integrity"]["required_extensions"])
+    relatives.extend(f"{record['waveform_path']}.{extension}"
+                     for record in records for extension in extensions)
+    for relative in relatives:
+        source = confined_dataset_path(raw, relative, "PTB-XL negative-test source")
+        target = confined_dataset_path(destination, relative, "PTB-XL negative-test target")
+        require(source.is_file(), f"PTB-XL negative-test source file is missing: {source}")
+        link_or_copy(source, target)
+    return str(records[0]["waveform_path"])
+
+
+def restore_ptb_file(raw: Path, view: Path, relative: str) -> None:
+    target = confined_dataset_path(view, relative, "PTB-XL negative-test restore target")
+    if target.exists():
+        target.unlink()
+    source = confined_dataset_path(raw, relative, "PTB-XL negative-test restore source")
+    link_or_copy(source, target)
+
+
+def make_corrupt_ptb_metadata_view(destination: Path, config: dict) -> None:
+    raw = configured_path(config, "raw_dir")
+    destination.mkdir(parents=True, exist_ok=True)
+    keys = ["physionet_checksums", *config["integrity"]["required_metadata_path_keys"]]
+    for key in keys:
+        relative = configured_relative_path(config, key)
+        source = confined_dataset_path(raw, relative, "PTB-XL metadata negative-test source")
+        target = confined_dataset_path(destination, relative, "PTB-XL metadata negative-test target")
+        if key == "database_csv":
+            shutil.copy2(source, target)
+            with target.open("ab") as handle:
+                handle.write(b"negative-test-metadata-corruption")
+        else:
+            link_or_copy(source, target)
 
 
 def expect_failure(command: list[str], name: str) -> dict[str, object]:
@@ -57,6 +119,7 @@ def main() -> None:
     parser.add_argument("--optimization-modes", choices=("both", "normal"), default="both")
     args = parser.parse_args()
     _, mit_config = load_config("mitdb_week1_config.json")
+    _, ptb_config = load_config("ptbxl_week1_config.json")
     modes = [([], "python")]
     if args.optimization_modes == "both":
         modes.append((["-O"], "python-O"))
@@ -97,6 +160,46 @@ def main() -> None:
                  "--checksum-manifest", str(corrupt_dir / "SHA256SUMS.txt")],
                 f"mitdb_wrong_checksum_{label}",
             ))
+
+        corrupt_metadata = temp / "ptbxl_corrupt_cached_metadata"
+        make_corrupt_ptb_metadata_view(corrupt_metadata, ptb_config)
+        for flags, label in modes:
+            results.append(expect_failure(
+                [sys.executable, *flags, str(PTB_DOWNLOADER), "--raw-dir", str(corrupt_metadata)],
+                f"ptbxl_corrupt_cached_metadata_{label}",
+            ))
+
+        ptb_view = temp / "ptbxl_view"
+        first_stem = make_ptb_view(ptb_view, ptb_config)
+        ptb_raw = configured_path(ptb_config, "raw_dir")
+        ptb_cases = {
+            "missing_header": [f"{first_stem}.hea"],
+            "missing_data": [f"{first_stem}.dat"],
+            "missing_record": [f"{first_stem}.hea", f"{first_stem}.dat"],
+        }
+        for case_name, omitted in ptb_cases.items():
+            for relative in omitted:
+                confined_dataset_path(ptb_view, relative, "PTB-XL omitted test file").unlink()
+            for flags, label in modes:
+                results.append(expect_failure(
+                    [sys.executable, *flags, str(PTB_VERIFIER), "--raw-dir", str(ptb_view)],
+                    f"ptbxl_{case_name}_{label}",
+                ))
+            for relative in omitted:
+                restore_ptb_file(ptb_raw, ptb_view, relative)
+
+        corrupt_relative = f"{first_stem}.dat"
+        corrupt_target = confined_dataset_path(ptb_view, corrupt_relative, "PTB-XL corrupt test file")
+        corrupt_target.unlink()
+        shutil.copy2(confined_dataset_path(ptb_raw, corrupt_relative), corrupt_target)
+        with corrupt_target.open("ab") as handle:
+            handle.write(b"negative-test-corruption")
+        for flags, label in modes:
+            results.append(expect_failure(
+                [sys.executable, *flags, str(PTB_VERIFIER), "--raw-dir", str(ptb_view)],
+                f"ptbxl_wrong_checksum_{label}",
+            ))
+        restore_ptb_file(ptb_raw, ptb_view, corrupt_relative)
     print("WEEK 1 NEGATIVE TESTS")
     for result in results:
         print(f"PASS expected failure: {result['name']} (exit={result['exit_code']})")

@@ -10,8 +10,10 @@ import wfdb
 
 from ptbxl_common import canonical_records, summarize_records
 from week1_common import (
+    confined_dataset_path,
     config_sha256,
     configured_path,
+    configured_relative_path,
     load_config,
     load_json,
     parse_physionet_checksums,
@@ -29,11 +31,20 @@ def verify(config_path: Path, config: dict, raw_override: str | None = None,
            manifest_override: str | None = None) -> dict:
     raw_dir = Path(raw_override).resolve() if raw_override else configured_path(config, "raw_dir")
     require_raw_dir(raw_dir)
-    for filename in config["integrity"]["required_top_level_files"]:
-        path = raw_dir / filename
+    metadata_paths: dict[str, Path] = {}
+    metadata_relatives: list[str] = []
+    for key in config["integrity"]["required_metadata_path_keys"]:
+        relative = configured_relative_path(config, key)
+        path = confined_dataset_path(raw_dir, relative, f"configured PTB-XL path {key}")
         require(path.is_file() and path.stat().st_size > 0, f"Required PTB-XL file missing or empty: {path}")
+        metadata_paths[key] = path
+        metadata_relatives.append(relative)
+    checksum_relative = configured_relative_path(config, "physionet_checksums")
+    checksum_manifest = confined_dataset_path(raw_dir, checksum_relative, "PTB-XL checksum manifest")
+    require(checksum_manifest.is_file() and checksum_manifest.stat().st_size > 0,
+            f"Required PTB-XL checksum manifest missing or empty: {checksum_manifest}")
 
-    records = canonical_records(raw_dir / "ptbxl_database.csv", raw_dir / "scp_statements.csv", config)
+    records = canonical_records(metadata_paths["database_csv"], metadata_paths["scp_statements_csv"], config)
     expected_records = int(config["integrity"]["expected_record_count"])
     require(len(records) == expected_records,
             f"Expected {expected_records} PTB-XL records, found {len(records)}")
@@ -91,10 +102,21 @@ def verify(config_path: Path, config: dict, raw_override: str | None = None,
             f"PTB-XL data set mismatch: missing={len(expected_data - actual_data)}, "
             f"unexpected={len(actual_data - expected_data)}")
 
+    checksums = parse_physionet_checksums(
+        checksum_manifest,
+        config["integrity"]["physionet_checksum_manifest_sha256"],
+    )
+    file_count, tree_hash = verify_files_against_checksums(
+        raw_dir,
+        metadata_relatives + required_waveforms,
+        checksums,
+    )
+
     signal = config["signal"]
     lead_order = list(signal["lead_order"])
     for index, stem in enumerate(stems, start=1):
-        header = wfdb.rdheader(str(raw_dir / stem))
+        header_path = confined_dataset_path(raw_dir, stem, "PTB-XL waveform stem")
+        header = wfdb.rdheader(str(header_path))
         require(float(header.fs) == float(signal["sampling_rate_hz"]),
                 f"{stem}: expected {signal['sampling_rate_hz']} Hz, got {header.fs}")
         require(int(header.sig_len) == int(signal["sample_count"]),
@@ -105,19 +127,6 @@ def verify(config_path: Path, config: dict, raw_override: str | None = None,
                 f"{stem}: unexpected lead order {header.sig_name}")
         if index % 5000 == 0:
             print(f"Headers checked: {index}/{len(stems)}")
-
-    checksum_manifest = raw_dir / configured_path(config, "physionet_checksums").name
-    checksums = parse_physionet_checksums(
-        checksum_manifest,
-        config["integrity"]["physionet_checksum_manifest_sha256"],
-    )
-    required_top = [name for name in config["integrity"]["required_top_level_files"]
-                    if name != checksum_manifest.name]
-    file_count, tree_hash = verify_files_against_checksums(
-        raw_dir,
-        required_top + required_waveforms,
-        checksums,
-    )
     return {
         "records": len(records),
         "patients": len(patients),
