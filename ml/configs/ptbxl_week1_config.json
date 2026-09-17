@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "name": "PTB-XL",
+    "slug": "ptbxl",
+    "version": "1.0.3",
+    "source_url": "https://physionet.org/files/ptb-xl/1.0.3/",
+    "landing_page": "https://physionet.org/content/ptb-xl/1.0.3/",
+    "doi": "10.13026/kfzx-aw45",
+    "license": "Creative Commons Attribution 4.0 International Public License"
+  },
+  "paths": {
+    "raw_dir": "data/raw/ptbxl",
+    "patient_manifest": "manifests/ptbxl_patient_split.csv",
+    "normalization": "configs/ptbxl_normalization.json",
+    "physionet_checksums": "data/raw/ptbxl/SHA256SUMS.official.txt",
+    "database_csv": "data/raw/ptbxl/ptbxl_database.csv",
+    "scp_statements_csv": "data/raw/ptbxl/scp_statements.csv"
+  },
+  "integrity": {
+    "expected_record_count": 21799,
+    "expected_patient_count": 18869,
+    "required_top_level_files": ["ptbxl_database.csv", "scp_statements.csv", "LICENSE.txt", "SHA256SUMS.official.txt"],
+    "required_extensions": ["hea", "dat"],
+    "checksum_algorithm": "sha256",
+    "physionet_checksum_manifest_sha256": "b7224b92b341511ec3ceb13dc6652079b2c36a06504bcb49506f157f51dc695d"
+  },
+  "signal": {
+    "sampling_rate_hz": 100,
+    "duration_seconds": 10,
+    "sample_count": 1000,
+    "lead_count": 12,
+    "lead_order": ["I", "II", "III", "AVR", "AVL", "AVF", "V1", "V2", "V3", "V4", "V5", "V6"],
+    "filename_column": "filename_lr",
+    "layout_on_disk": "time_lead",
+    "model_input_contract": "N,C,L"
+  },
+  "labels": {
+    "source_column": "scp_codes",
+    "representation": "canonical_json_object_code_to_likelihood",
+    "multi_label": true,
+    "vocabulary_source": "scp_statements.csv"
+  },
+  "normalization": {
+    "method": "per_lead_global_z_score",
+    "fit_split": "train",
+    "input_unit": "mV",
+    "output_dtype": "float32"
+  },
+  "split": {
+    "unit": "patient",
+    "source_column": "strat_fold",
+    "policy": "official_recommended_folds",
+    "train_folds": [1, 2, 3, 4, 5, 6, 7, 8],
+    "val_folds": [9],
+    "test_folds": [10],
+    "patient_leakage_allowed": false
+  },
+  "expected_split": {
+    "train": {"records": 17418, "patients": 15023},
+    "val": {"records": 2183, "patients": 1942},
+    "test": {"records": 2198, "patients": 1904}
+  }
+}

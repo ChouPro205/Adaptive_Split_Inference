@@ -1,216 +1,103 @@
-# SV3 Week 1 — MIT-BIH Data Protocol
-
-## Scope
-
-This document records the finalized MIT-BIH preprocessing protocol used by SV3 in Week 1.
-
-The official Week 1 requirement is to prepare ECG data, perform beat segmentation and normalization, and split train/validation/test by patient without patient leakage.
-
-Implementation-specific decisions below are project decisions unless explicitly stated otherwise.
-
----
-
-## 1. Dataset
-
-- Dataset: MIT-BIH Arrhythmia Database
-- Sampling frequency: 360 Hz
-- Total raw records: 48
-
-### Lead selection
-
-Preferred input lead:
-
-- `MLII`
-
-Selection rule:
-
-- Select MLII by lead name.
-- Do not assume MLII is always channel 0.
-
-Special cases:
-
-- Record `114`: `['V5', 'MLII']`, therefore MLII index = 1.
-- Record `102`: no MLII → excluded from current MLII-only processed dataset.
-- Record `104`: no MLII → excluded from current MLII-only processed dataset.
-
-Final eligible records:
-
-- 46 records
-
----
-
-## 2. Beat segmentation
-
-Beat center:
-
-- Expert MIT-BIH annotation
-
-Window:
-
-- 360 samples
-- 180 samples before annotation
-- 180 samples after annotation
-
-Boundary policy:
-
-- Drop beat if the complete 360-sample window is unavailable.
-- No padding.
-
-Filtering:
-
-- No additional digital filter.
-
----
-
-## 3. AAMI class mapping
-
-### N — Normal
-
-Raw annotation symbols:
-
-- `N`
-- `L`
-- `R`
-- `e`
-- `j`
-
-Class index:
-
-- `0`
-
-### S — Supraventricular ectopic
-
-Raw annotation symbols:
-
-- `A`
-- `a`
-- `J`
-- `S`
-
-Class index:
-
-- `1`
-
-### V — Ventricular ectopic
-
-Raw annotation symbols:
-
-- `V`
-- `E`
-
-Class index:
-
-- `2`
-
-### F — Fusion
-
-Raw annotation symbols:
-
-- `F`
-
-Class index:
-
-- `3`
-
-### Q — Unknown / paced / unclassifiable group
-
-Raw annotation symbols:
-
-- `/`
-- `f`
-- `Q`
-
-Class index:
-
-- `4`
-
-Annotation symbols outside this mapping are not converted into ML heartbeat samples.
-
----
-
-## 4. Patient-wise split
-
-Split unit:
-
-- Patient
-
-Target ratio:
-
-- Train: 75%
-- Validation: 15%
-- Test: 10%
-
-Seed:
-
-- `30`
-
-Eligible patient count:
-
-- 45
-
-Final split:
-
-- Train: 34 patients / 35 records
-- Validation: 7 patients / 7 records
-- Test: 4 patients / 4 records
-
-Special patient identity:
-
-- Records `201` and `202` belong to the same patient and are assigned together.
-
-Patient leakage is forbidden between all three splits.
-
-The exact split is frozen in:
-
-- `manifests/mitdb_patient_split.csv`
-
----
-
-## 5. Normalization
-
-Method:
-
-- Global Z-score
-
-Statistics are fitted using:
-
-- TRAIN beats only
-
-Formula:
-
-`x_norm = (x - mean_train) / std_train`
-
-Frozen statistics:
-
-- mean = `-0.2912026352134608`
-- std = `0.45653058276514263`
-
-Validation and test use the same TRAIN statistics and do not fit their own statistics.
-
-Statistics are stored in:
-
-- `configs/mitdb_normalization.json`
-
----
-
-## 6. Processed representation
-
-Each ECG sample:
-
-- Shape: `(360,)`
-- X dtype: `float32`
-- y dtype: `int64`
-
-Class indices:
-
-- N = 0
-- S = 1
-- V = 2
-- F = 3
-- Q = 4
-
-Processed dataset location:
-
-- `data/processed/mitdb/`
-
-The processed dataset is not committed to Git.
+# SV3 Week 1 ECG data protocol
+
+## Requirement classification
+
+- [EXPLICIT] The project member guide assigns Week 1 to the PyTorch
+  environment, MIT-BIH and PTB-XL acquisition, preprocessing, beat
+  segmentation, normalization, and patient-wise train/validation/test splits.
+- [EXPLICIT] The acceptance review requires pinned versions, sources, licenses,
+  checksums, strict completeness, non-zero failure exits, no critical `assert`,
+  PTB-XL 12-lead/SCP handling, and run provenance.
+- [DERIVED] Separate configs are authoritative for each dataset because their
+  representations are materially different.
+- [ASSUMPTION] No written scope reduction excluding PTB-XL was found.
+
+Official project sources used for this classification are under
+`ml/docs/project_sources/requirements/` and
+`ml/docs/project_sources/review/`. Reference papers are not treated as project
+requirements.
+
+## MIT-BIH v1.0.0 — preserved protocol
+
+Source: `https://physionet.org/files/mitdb/1.0.0/`
+
+DOI: `10.13026/C2F305`
+
+License: Open Data Commons Attribution License v1.0
+
+The official 48-record list is frozen in
+`manifests/mitdb_expected_records.txt`. Every `.hea`, `.dat`, and `.atr` file is
+checked against the pinned official PhysioNet `SHA256SUMS.txt` before use.
+
+The existing verified methodology is unchanged:
+
+- sampling rate 360 Hz;
+- select `MLII` by lead name, never by assumed channel index;
+- record 114 uses channel 1; records 102 and 104 are excluded because MLII is
+  absent;
+- beat centre is the expert annotation;
+- 360-sample window: 180 before and 180 after;
+- incomplete boundary windows are dropped; no padding and no added filter;
+- AAMI mapping: `N,L,R,e,j -> N`; `A,a,J,S -> S`; `V,E -> V`; `F -> F`;
+  `/,f,Q -> Q`;
+- class indices `N=0, S=1, V=2, F=3, Q=4`;
+- patient-wise 75/15/10 split, seed 30; records 201 and 202 share one patient;
+- global scalar Z-score fitted only on train beats.
+
+Frozen train statistics remain:
+
+- mean `-0.2912026352134608`;
+- standard deviation `0.45653058276514263`.
+
+## PTB-XL v1.0.3 — Week 1 protocol
+
+Source: `https://physionet.org/files/ptb-xl/1.0.3/`
+
+DOI: `10.13026/kfzx-aw45`
+
+License: Creative Commons Attribution 4.0 International
+
+### Sampling and representation
+
+- [EXPLICIT] The review requires an explicit choice of 100 Hz or 500 Hz and all
+  12 leads.
+- [DERIVED] Week 1 uses the official 100 Hz waveforms (`filename_lr`). They
+  retain the complete 10-second morphology and all 12 leads while reducing raw
+  storage/I/O by 5× relative to 500 Hz. This is a data-preparation decision, not
+  a model/deployment decision.
+- Each record has shape `(1000, 12)` in WFDB time-major layout.
+- Lead order is verified exactly as
+  `I, II, III, AVR, AVL, AVF, V1, V2, V3, V4, V5, V6`.
+- No beat segmentation and no single-lead reduction are applied.
+
+### Labels and split
+
+- `scp_codes` is parsed as a non-empty multi-label dictionary of SCP code to
+  likelihood. Every code must exist in `scp_statements.csv`.
+- The committed manifest stores labels as canonical sorted JSON, preserving
+  likelihood values instead of collapsing them to one class.
+- [EXPLICIT] Patient leakage is forbidden and official recommended folds are
+  permitted when documented.
+- [DERIVED] Use official `strat_fold` 1–8 for train, 9 for validation, and 10
+  for test. PTB-XL v1.0.3 assigns all records from each patient to one fold;
+  the verifier independently enforces that property.
+
+### Normalization
+
+- [EXPLICIT] Week 1 includes normalization.
+- [DERIVED] Fit a global Z-score independently for each of the 12 leads using
+  train records only. This preserves the multi-lead structure and avoids
+  validation/test leakage.
+- The raw WFDB files remain the source of truth; only the small statistics JSON
+  is committed. Downstream loading applies `(x - mean[lead]) / std[lead]` and
+  casts to `float32`.
+
+## Integrity and config binding
+
+`configs/mitdb_week1_config.json` and `configs/ptbxl_week1_config.json` are the
+sources of truth. Verifiers bind generated artefacts to SHA-256 hashes of the
+active config, split manifest, normalization file, official checksum manifest,
+and processed outputs. Empty directories, missing records/files, changed
+checksums, leakage, invalid labels, shape/lead mismatches, and stale config
+bindings all terminate with a non-zero exit code under both normal Python and
+`python -O`.

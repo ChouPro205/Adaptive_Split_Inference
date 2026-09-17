@@ -1,5 +1,7 @@
 {
-  "dataset": "MIT-BIH",
+  "schema_version": 2,
+  "dataset": "MIT-BIH Arrhythmia Database",
+  "dataset_version": "1.0.0",
   "lead": "MLII",
   "window_size": 360,
   "fit_split": "train",
@@ -8,5 +10,8 @@
   "num_values": 29193840,
   "boundary_dropped": 45,
   "mean": -0.2912026352134608,
-  "std": 0.45653058276514263
+  "std": 0.45653058276514263,
+  "config_sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54",
+  "patient_manifest_sha256": "2f3b4e17f12b14c47ec857d587c3e521cf5801045460eb29d229410dd2289316",
+  "physionet_checksum_manifest_sha256": "b61158a96d5f2ca80edfb354a9a66a6324836c390a84e1966dcee2b907d6be43"
 }
