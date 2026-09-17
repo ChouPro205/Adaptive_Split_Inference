@@ -1,0 +1,12 @@
+{
+  "dataset": "MIT-BIH",
+  "lead": "MLII",
+  "window_size": 360,
+  "fit_split": "train",
+  "num_train_records": 35,
+  "num_train_beats": 81094,
+  "num_values": 29193840,
+  "boundary_dropped": 45,
+  "mean": -0.2912026352134608,
+  "std": 0.45653058276514263
+}

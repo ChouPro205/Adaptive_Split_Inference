@@ -1,0 +1,58 @@
+{
+  "dataset": "MIT-BIH Arrhythmia Database",
+
+  "lead": {
+    "preferred": "MLII",
+    "selection_rule": "select_by_name",
+    "excluded_records_missing_mlii": [
+      "102",
+      "104"
+    ]
+  },
+
+  "segmentation": {
+    "sampling_rate_hz": 360,
+    "window_size": 360,
+    "left_samples": 180,
+    "right_samples": 180,
+    "center": "expert_annotation",
+    "boundary_policy": "drop"
+  },
+
+  "filtering": {
+    "enabled": false
+  },
+
+  "classes": {
+    "N": 0,
+    "S": 1,
+    "V": 2,
+    "F": 3,
+    "Q": 4
+  },
+
+  "split": {
+    "unit": "patient",
+    "train_ratio": 0.75,
+    "val_ratio": 0.15,
+    "test_ratio": 0.10,
+    "seed": 30,
+    "patient_leakage_allowed": false
+  },
+
+  "normalization": {
+    "method": "z_score",
+    "fit_split": "train",
+    "mean": -0.2912026352134608,
+    "std": 0.45653058276514263
+  },
+
+  "processed_dataset": {
+    "train_samples": 81094,
+    "val_samples": 15388,
+    "test_samples": 8544,
+    "sample_length": 360,
+    "x_dtype": "float32",
+    "y_dtype": "int64"
+  }
+}
