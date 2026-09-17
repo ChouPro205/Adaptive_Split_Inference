@@ -1,9 +1,10 @@
 # SV3 Week 1 verification evidence
 
-Final orchestrated run: `2026-09-17T17:02:29Z` to
-`2026-09-17T17:07:44Z` (local date 2026-09-18). Machine-readable evidence is
-in `ml/provenance/week1_run_manifest.json`; overall exit status was `0` and all
-19 recorded commands returned `0`.
+Final orchestrated run: `2026-09-17T17:11:07Z` to
+`2026-09-17T17:16:39Z` (local date 2026-09-18). Machine-readable evidence is
+in `ml/provenance/week1_run_manifest.json`; it is bound to implementation
+commit `287f0cd1ff0bc2e69a03e7110a3b0a59a68fecb0`, overall exit status was `0`,
+and all 19 recorded commands returned `0`.
 
 ## Environment
 

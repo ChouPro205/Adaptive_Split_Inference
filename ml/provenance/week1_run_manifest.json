@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "started_utc": "2026-09-17T17:02:29.896256+00:00",
-  "finished_utc": "2026-09-17T17:07:44.582583+00:00",
+  "started_utc": "2026-09-17T17:11:07.985350+00:00",
+  "finished_utc": "2026-09-17T17:16:39.692060+00:00",
   "git": {
-    "commit_sha": "74e414ea94c115a962967d1d8ab59f10fe6b338d",
+    "commit_sha": "287f0cd1ff0bc2e69a03e7110a3b0a59a68fecb0",
     "branch": "fix/sv3-week1-review",
     "dirty": true
   },
@@ -53,116 +53,116 @@
     {
       "command": "python -B ml/src/check_env.py",
       "exit_status": 0,
-      "duration_seconds": 2.487,
+      "duration_seconds": 2.374,
       "output_sha256": "6502db8bf6a1213bd6eea880527178a70283cba7f89b29d2a7789a0e440dcbfb"
     },
     {
       "command": "python -B ml/src/download_mitdb.py",
       "exit_status": 0,
-      "duration_seconds": 0.113,
+      "duration_seconds": 0.107,
       "output_sha256": "135984396456c98765504f461b998b6ca006a98c56657fd9b799f2453ea6bc2b"
     },
     {
       "command": "python -B ml/src/verify_mitdb_integrity.py",
       "exit_status": 0,
-      "duration_seconds": 0.279,
+      "duration_seconds": 0.28,
       "output_sha256": "783d49dff02def09becdc2b10e750ce00e867b991adf30cefd530362a108eb8f"
     },
     {
       "command": "python -B ml/src/inspect_mitdb.py",
       "exit_status": 0,
-      "duration_seconds": 0.592,
+      "duration_seconds": 0.588,
       "output_sha256": "dc714e4ded52a6ad995797d42dc8f8ecc4a6e41a3eec7813ffa20d9ff2a5c36d"
     },
     {
       "command": "python -B ml/src/test_segmentation.py",
       "exit_status": 0,
-      "duration_seconds": 0.588,
+      "duration_seconds": 0.599,
       "output_sha256": "161ff9f01d8eb92609d6e29647a659be15d74f9be637d5f8058f0965e95b75f4"
     },
     {
       "command": "python -B ml/src/audit_mitdb_preprocessing.py",
       "exit_status": 0,
-      "duration_seconds": 1.786,
+      "duration_seconds": 1.923,
       "output_sha256": "05988bbf94d83aa7d7afab2845bbc93bf97082b5ffe9f92b6396e28c938b2b10"
     },
     {
       "command": "python -B ml/src/build_mitdb_manifest.py",
       "exit_status": 0,
-      "duration_seconds": 0.594,
+      "duration_seconds": 0.65,
       "output_sha256": "62b81855e9a3620a5c51ca1efe719fe33549bde682a58f2b33ef834951bb6d5d"
     },
     {
       "command": "python -B ml/src/compute_mitdb_normalization.py",
       "exit_status": 0,
-      "duration_seconds": 1.954,
+      "duration_seconds": 2.237,
       "output_sha256": "0bdbd2154f1ec93b4d611e7c82203c9267753598cbec3039ca40eea669bb9372"
     },
     {
       "command": "python -B ml/src/verify_mitdb_normalization.py",
       "exit_status": 0,
-      "duration_seconds": 2.404,
+      "duration_seconds": 2.475,
       "output_sha256": "07f727a5c3a50d8532e7c99170ffa3ede271f905f51fe89582cd7098672c4371"
     },
     {
       "command": "python -B ml/src/build_mitdb_processed.py",
       "exit_status": 0,
-      "duration_seconds": 3.056,
+      "duration_seconds": 2.893,
       "output_sha256": "18cd90efb5f4225576432cc4ff05b27777aff46c106e55c21333f8ec0483e88d"
     },
     {
       "command": "python -B ml/src/verify_mitdb_processed.py",
       "exit_status": 0,
-      "duration_seconds": 3.03,
+      "duration_seconds": 2.937,
       "output_sha256": "b9e04474575d1f0c450a8c6a03c17b8e417510de1fb4aebb47962a316c64f82f"
     },
     {
       "command": "python -O ml/src/verify_mitdb_integrity.py",
       "exit_status": 0,
-      "duration_seconds": 0.525,
+      "duration_seconds": 0.505,
       "output_sha256": "783d49dff02def09becdc2b10e750ce00e867b991adf30cefd530362a108eb8f"
     },
     {
       "command": "python -O ml/src/verify_mitdb_processed.py",
       "exit_status": 0,
-      "duration_seconds": 3.485,
+      "duration_seconds": 3.498,
       "output_sha256": "b9e04474575d1f0c450a8c6a03c17b8e417510de1fb4aebb47962a316c64f82f"
     },
     {
       "command": "python -B ml/src/download_ptbxl.py",
       "exit_status": 0,
-      "duration_seconds": 2.059,
+      "duration_seconds": 2.192,
       "output_sha256": "878717bdeec7043d5550fcbc9fc58f4195dedc4db79842ce7d14227c3c2bc0a8"
     },
     {
       "command": "python -B ml/src/build_ptbxl_manifest.py",
       "exit_status": 0,
-      "duration_seconds": 0.82,
+      "duration_seconds": 0.865,
       "output_sha256": "f7c018c0c4d9c535926d04c7278119e6c1a50606071aef367130e1e031738733"
     },
     {
       "command": "python -B ml/src/compute_ptbxl_normalization.py",
       "exit_status": 0,
-      "duration_seconds": 82.142,
+      "duration_seconds": 80.777,
       "output_sha256": "e6e1089f354417e49aff1e6f3653d7ea273ceca9018af62d4410e6c18640a536"
     },
     {
       "command": "python -B ml/src/verify_ptbxl_normalization.py",
       "exit_status": 0,
-      "duration_seconds": 80.922,
+      "duration_seconds": 81.899,
       "output_sha256": "5393b3906d7d8d5afb93cc2767a002e20315fbe0ccb6fcef34f1aff97ffe863d"
     },
     {
       "command": "python -B ml/src/verify_ptbxl.py",
       "exit_status": 0,
-      "duration_seconds": 122.635,
+      "duration_seconds": 139.797,
       "output_sha256": "ef4cb33c7b34fd96288ccbdebd34bfe9d49187e8e70eccd0c933caa918c25954"
     },
     {
       "command": "python -B ml/src/test_week1_negative.py",
       "exit_status": 0,
-      "duration_seconds": 5.206,
-      "output_sha256": "30345e67d3f595eb2b72010db1523ac16ddb2f00a5dbc182968038e6c121b31b"
+      "duration_seconds": 5.096,
+      "output_sha256": "43c54a33323f3f5d43a237f84d738e23ef9e6beeb6021cd2d4abb9632ea0030c"
     }
   ],
   "artifact_sha256": {
