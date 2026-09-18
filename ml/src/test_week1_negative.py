@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import os
 import shutil
 import subprocess
@@ -13,7 +14,9 @@ from pathlib import Path
 from mitdb_common import expected_records
 from ptbxl_common import canonical_records
 from week1_common import (
+    artifact_sha256,
     confined_dataset_path,
+    config_sha256,
     configured_path,
     configured_relative_path,
     load_config,
@@ -105,6 +108,47 @@ def make_corrupt_ptb_metadata_view(destination: Path, config: dict) -> None:
             link_or_copy(source, target)
 
 
+def make_duplicate_missing_ptb_manifest(destination: Path, config: dict) -> tuple[str, str]:
+    source = configured_path(config, "patient_manifest")
+    with source.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        require(reader.fieldnames is not None, "PTB-XL manifest has no header")
+        rows = list(reader)
+        fields = list(reader.fieldnames)
+    require(len(rows) >= 2, "PTB-XL manifest is too small for duplicate-ID mutation")
+    duplicated_id = rows[0]["ecg_id"]
+    missing_id = rows[-1]["ecg_id"]
+    rows[-1] = dict(rows[0])
+    with destination.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    return duplicated_id, missing_id
+
+
+def verify_line_ending_hash_stability(directory: Path) -> list[str]:
+    checks: list[str] = []
+    for config_name in ("environment.json", "mitdb_week1_config.json", "ptbxl_week1_config.json"):
+        source, _ = load_config(config_name)
+        converted = directory / f"crlf_{config_name}"
+        text = source.read_text(encoding="utf-8")
+        converted.write_bytes(text.replace("\r\n", "\n").replace("\r", "\n").replace("\n", "\r\n").encode("utf-8"))
+        require(config_sha256(source) == config_sha256(converted),
+                f"Config hash changes with line endings: {config_name}")
+        checks.append(f"config_eol_{config_name}")
+    _, ptb_config = load_config("ptbxl_week1_config.json")
+    manifest = configured_path(ptb_config, "patient_manifest")
+    converted_manifest = directory / "crlf_ptbxl_patient_split.csv"
+    text = manifest.read_text(encoding="utf-8")
+    converted_manifest.write_bytes(
+        text.replace("\r\n", "\n").replace("\r", "\n").replace("\n", "\r\n").encode("utf-8")
+    )
+    require(artifact_sha256(manifest) == artifact_sha256(converted_manifest),
+            "PTB-XL manifest artifact hash changes with line endings")
+    checks.append("artifact_eol_ptbxl_patient_manifest")
+    return checks
+
+
 def expect_failure(command: list[str], name: str) -> dict[str, object]:
     result = subprocess.run(command, cwd=ROOT.parent, text=True, capture_output=True, check=False)
     combined = result.stdout + result.stderr
@@ -126,6 +170,7 @@ def main() -> None:
     results: list[dict[str, object]] = []
     with tempfile.TemporaryDirectory(prefix="sv3_week1_negative_") as temporary:
         temp = Path(temporary)
+        hash_checks = verify_line_ending_hash_stability(temp)
         empty = temp / "empty"
         empty.mkdir()
         for flags, label in modes:
@@ -169,6 +214,14 @@ def main() -> None:
                 f"ptbxl_corrupt_cached_metadata_{label}",
             ))
 
+        corrupt_manifest = temp / "ptbxl_duplicate_missing_id.csv"
+        duplicated_id, missing_id = make_duplicate_missing_ptb_manifest(corrupt_manifest, ptb_config)
+        for flags, label in modes:
+            results.append(expect_failure(
+                [sys.executable, *flags, str(PTB_VERIFIER), "--manifest", str(corrupt_manifest)],
+                f"ptbxl_manifest_duplicate_{duplicated_id}_missing_{missing_id}_{label}",
+            ))
+
         ptb_view = temp / "ptbxl_view"
         first_stem = make_ptb_view(ptb_view, ptb_config)
         ptb_raw = configured_path(ptb_config, "raw_dir")
@@ -201,6 +254,8 @@ def main() -> None:
             ))
         restore_ptb_file(ptb_raw, ptb_view, corrupt_relative)
     print("WEEK 1 NEGATIVE TESTS")
+    for check in hash_checks:
+        print(f"PASS line-ending-stable hash: {check}")
     for result in results:
         print(f"PASS expected failure: {result['name']} (exit={result['exit_code']})")
         print(f"  {result['evidence']}")

@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 import argparse
-import csv
 from pathlib import Path
 
 import wfdb
 
-from ptbxl_common import canonical_records, summarize_records
+from ptbxl_common import canonical_records, summarize_records, validate_patient_manifest
 from week1_common import (
+    TEXT_HASH_POLICY,
+    artifact_sha256,
     confined_dataset_path,
     config_sha256,
     configured_path,
@@ -17,11 +18,9 @@ from week1_common import (
     load_config,
     load_json,
     parse_physionet_checksums,
-    read_csv_rows,
     require,
     require_raw_dir,
     run_cli,
-    sha256_file,
     verify_files_against_checksums,
     verify_no_patient_leakage,
 )
@@ -61,28 +60,15 @@ def verify(config_path: Path, config: dict, raw_override: str | None = None,
     verify_no_patient_leakage(split_patients)
 
     manifest_path = Path(manifest_override).resolve() if manifest_override else configured_path(config, "patient_manifest")
-    manifest_rows = read_csv_rows(manifest_path)
-    require(len(manifest_rows) == len(records),
-            f"PTB-XL manifest row count mismatch: {len(manifest_rows)} vs {len(records)}")
-    expected_by_id = {str(record["ecg_id"]): record for record in records}
-    require(len(expected_by_id) == len(records), "Duplicate ecg_id in canonical PTB-XL records")
-    for row in manifest_rows:
-        ecg_id = row.get("ecg_id", "")
-        require(ecg_id in expected_by_id, f"Unexpected ecg_id in PTB-XL manifest: {ecg_id}")
-        expected = expected_by_id[ecg_id]
-        for field in ("patient_id", "split", "waveform_path", "scp_codes"):
-            require(row.get(field) == str(expected[field]),
-                    f"PTB-XL manifest mismatch for ecg_id={ecg_id}, field={field}")
-        require(int(row["strat_fold"]) == int(expected["strat_fold"]),
-                f"PTB-XL fold mismatch for ecg_id={ecg_id}")
-        require(int(row["label_count"]) == int(expected["label_count"]),
-                f"PTB-XL label count mismatch for ecg_id={ecg_id}")
+    validate_patient_manifest(manifest_path, records)
 
     normalization = load_json(configured_path(config, "normalization"))
     require(normalization.get("config_sha256") == config_sha256(config_path),
             "PTB-XL normalization/config hash mismatch")
-    require(normalization.get("patient_manifest_sha256") == sha256_file(manifest_path),
+    require(normalization.get("patient_manifest_sha256") == artifact_sha256(manifest_path),
             "PTB-XL normalization/patient-manifest hash mismatch")
+    require(normalization.get("repository_text_hash_policy") == TEXT_HASH_POLICY,
+            "PTB-XL normalization repository-text hash policy mismatch")
 
     stems = [str(record["waveform_path"]) for record in records]
     required_waveforms = [f"{stem}.{extension}" for stem in stems

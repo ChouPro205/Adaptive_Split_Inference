@@ -8,8 +8,16 @@ import math
 import numpy as np
 import wfdb
 
-from ptbxl_common import canonical_records
-from week1_common import config_sha256, configured_path, load_config, require, run_cli, sha256_file
+from ptbxl_common import canonical_records, validate_patient_manifest
+from week1_common import (
+    TEXT_HASH_POLICY,
+    artifact_sha256,
+    config_sha256,
+    configured_path,
+    load_config,
+    require,
+    run_cli,
+)
 
 
 def compute(config: dict) -> tuple[np.ndarray, np.ndarray, int, int]:
@@ -19,6 +27,7 @@ def compute(config: dict) -> tuple[np.ndarray, np.ndarray, int, int]:
         configured_path(config, "scp_statements_csv"),
         config,
     )
+    validate_patient_manifest(configured_path(config, "patient_manifest"), records)
     fit_split = config["normalization"]["fit_split"]
     train = [record for record in records if record["split"] == fit_split]
     require(train, f"No PTB-XL records in normalization split {fit_split}")
@@ -63,8 +72,9 @@ def main() -> None:
         "mean_per_lead": means.tolist(),
         "std_per_lead": stds.tolist(),
         "config_sha256": config_sha256(config_path),
-        "patient_manifest_sha256": sha256_file(configured_path(config, "patient_manifest")),
+        "patient_manifest_sha256": artifact_sha256(configured_path(config, "patient_manifest")),
         "physionet_checksum_manifest_sha256": config["integrity"]["physionet_checksum_manifest_sha256"],
+        "repository_text_hash_policy": TEXT_HASH_POLICY,
     }
     with output.open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, indent=2)

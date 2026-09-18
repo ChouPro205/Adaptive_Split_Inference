@@ -8,6 +8,8 @@ import numpy as np
 
 from mitdb_common import iter_valid_beats, load_manifest, load_signal_and_annotations, validate_raw_files
 from week1_common import (
+    TEXT_HASH_POLICY,
+    artifact_sha256,
     config_sha256,
     configured_path,
     load_config,
@@ -15,7 +17,6 @@ from week1_common import (
     patient_sets,
     require,
     run_cli,
-    sha256_file,
     verify_no_patient_leakage,
 )
 
@@ -29,9 +30,11 @@ def main() -> None:
     norm_path = configured_path(config, "normalization")
     norm = load_json(norm_path)
     require(norm.get("config_sha256") == config_sha256(config_path), "Normalization config hash mismatch")
-    require(norm.get("patient_manifest_sha256") == sha256_file(configured_path(config, "patient_manifest")),
+    require(norm.get("patient_manifest_sha256") == artifact_sha256(configured_path(config, "patient_manifest")),
             "Normalization patient-manifest hash mismatch")
     require(norm.get("dataset_version") == config["dataset"]["version"], "Normalization dataset version mismatch")
+    require(norm.get("repository_text_hash_policy") == TEXT_HASH_POLICY,
+            "Normalization repository-text hash policy mismatch")
     mean = float(norm["mean"])
     std = float(norm["std"])
     require(math.isfinite(mean) and math.isfinite(std) and std > 0, "Invalid normalization statistics")

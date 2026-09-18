@@ -7,13 +7,15 @@ import pandas as pd
 
 from mitdb_common import iter_valid_beats, load_manifest, load_signal_and_annotations, validate_raw_files
 from week1_common import (
+    BINARY_HASH_POLICY,
+    TEXT_HASH_POLICY,
+    artifact_sha256,
     config_sha256,
     configured_path,
     load_config,
     load_json,
     require,
     run_cli,
-    sha256_file,
     verify_no_patient_leakage,
 )
 
@@ -33,12 +35,16 @@ def main() -> None:
     norm_path = configured_path(config, "normalization")
     norm = load_json(norm_path)
     require(provenance.get("config_sha256") == current_config_hash, "Processed/config hash mismatch")
-    require(provenance.get("patient_manifest_sha256") == sha256_file(patient_manifest_path),
+    require(provenance.get("patient_manifest_sha256") == artifact_sha256(patient_manifest_path),
             "Processed/patient-manifest hash mismatch")
-    require(provenance.get("normalization_sha256") == sha256_file(norm_path),
+    require(provenance.get("normalization_sha256") == artifact_sha256(norm_path),
             "Processed/normalization hash mismatch")
     require(provenance.get("dataset_version") == config["dataset"]["version"],
             "Processed dataset version mismatch")
+    require(provenance.get("repository_text_hash_policy") == TEXT_HASH_POLICY,
+            "Processed repository-text hash policy mismatch")
+    require(provenance.get("binary_hash_policy") == BINARY_HASH_POLICY,
+            "Processed binary hash policy mismatch")
     require(norm.get("config_sha256") == current_config_hash, "Normalization/config hash mismatch")
     mean = float(norm["mean"])
     std = float(norm["std"])
@@ -49,7 +55,7 @@ def main() -> None:
         for name in names:
             path = output_dir / name
             require(path.is_file(), f"Processed artifact missing: {path}")
-            require(provenance["artifacts"].get(name) == sha256_file(path),
+            require(provenance["artifacts"].get(name) == artifact_sha256(path),
                     f"Processed artifact hash mismatch: {name}")
         X = np.load(output_dir / names[0], allow_pickle=False)
         y = np.load(output_dir / names[1], allow_pickle=False)

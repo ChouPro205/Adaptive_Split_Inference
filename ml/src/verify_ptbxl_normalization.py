@@ -5,15 +5,16 @@ from __future__ import annotations
 import numpy as np
 import wfdb
 
-from ptbxl_common import canonical_records, summarize_records
+from ptbxl_common import canonical_records, summarize_records, validate_patient_manifest
 from week1_common import (
+    TEXT_HASH_POLICY,
+    artifact_sha256,
     config_sha256,
     configured_path,
     load_config,
     load_json,
     require,
     run_cli,
-    sha256_file,
 )
 
 
@@ -26,7 +27,7 @@ def main() -> None:
     manifest_path = configured_path(config, "patient_manifest")
     require(stored.get("config_sha256") == current_hash,
             "PTB-XL normalization/config hash mismatch")
-    require(stored.get("patient_manifest_sha256") == sha256_file(manifest_path),
+    require(stored.get("patient_manifest_sha256") == artifact_sha256(manifest_path),
             "PTB-XL normalization/patient-manifest hash mismatch")
     require(stored.get("dataset_version") == config["dataset"]["version"],
             "PTB-XL normalization dataset-version mismatch")
@@ -43,6 +44,8 @@ def main() -> None:
     require(stored.get("physionet_checksum_manifest_sha256") ==
             config["integrity"]["physionet_checksum_manifest_sha256"],
             "PTB-XL normalization checksum-manifest binding mismatch")
+    require(stored.get("repository_text_hash_policy") == TEXT_HASH_POLICY,
+            "PTB-XL normalization repository-text hash policy mismatch")
 
     leads = int(config["signal"]["lead_count"])
     sample_count = int(config["signal"]["sample_count"])
@@ -62,6 +65,7 @@ def main() -> None:
         configured_path(config, "scp_statements_csv"),
         config,
     )
+    validate_patient_manifest(manifest_path, records)
     require(len(records) == int(config["integrity"]["expected_record_count"]),
             "PTB-XL normalization verification found an incomplete database")
     require(summarize_records(records) == config["expected_split"],

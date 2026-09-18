@@ -16,6 +16,9 @@ ML_ROOT = Path(__file__).resolve().parents[1]
 CONFIG_DIR = ML_ROOT / "configs"
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 SAFE_DATASET_COMPONENT = re.compile(r"^[A-Za-z0-9._-]+$")
+NORMALIZED_TEXT_SUFFIXES = {".csv", ".json", ".md", ".txt"}
+TEXT_HASH_POLICY = "sha256_utf8_lf_normalized"
+BINARY_HASH_POLICY = "sha256_raw_bytes"
 
 
 class ValidationError(RuntimeError):
@@ -105,6 +108,24 @@ def sha256_file(path: Path, chunk_size: int = 1024 * 1024) -> str:
     return digest.hexdigest()
 
 
+def normalized_text_sha256(path: Path) -> str:
+    """Hash UTF-8 text after canonicalizing CRLF/CR to LF."""
+    require(path.is_file(), f"Cannot hash missing text file: {path}")
+    try:
+        content = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        raise ValidationError(f"Cannot read UTF-8 text artifact {path}: {exc}") from exc
+    normalized = content.replace("\r\n", "\n").replace("\r", "\n")
+    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+
+def artifact_sha256(path: Path) -> str:
+    """Hash repository artifacts reproducibly while preserving binary bytes."""
+    if path.suffix.lower() in NORMALIZED_TEXT_SUFFIXES:
+        return normalized_text_sha256(path)
+    return sha256_file(path)
+
+
 def download_file(url: str, destination: Path, overwrite: bool = False) -> str:
     """Download atomically; existing non-empty files are retained unless requested."""
     if destination.is_file() and destination.stat().st_size > 0 and not overwrite:
@@ -124,7 +145,7 @@ def download_file(url: str, destination: Path, overwrite: bool = False) -> str:
 
 
 def config_sha256(path: Path) -> str:
-    return sha256_file(path)
+    return normalized_text_sha256(path)
 
 
 def require_raw_dir(raw_dir: Path) -> None:

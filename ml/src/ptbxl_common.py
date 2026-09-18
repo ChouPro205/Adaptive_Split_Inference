@@ -10,6 +10,11 @@ from pathlib import Path
 from week1_common import ValidationError, read_csv_rows, require, safe_dataset_relative_path
 
 
+PTBXL_MANIFEST_FIELDS = (
+    "ecg_id", "patient_id", "strat_fold", "split", "waveform_path", "scp_codes", "label_count"
+)
+
+
 def patient_id(value: str) -> str:
     try:
         numeric = float(value)
@@ -98,3 +103,42 @@ def summarize_records(records: list[dict[str, object]]) -> dict[str, dict[str, i
         split: {"records": record_counts[split], "patients": len(patient_sets[split])}
         for split in ("train", "val", "test")
     }
+
+
+def validate_patient_manifest(path: Path, records: list[dict[str, object]]) -> list[dict[str, str]]:
+    """Require a one-to-one, exact manifest projection of canonical PTB-XL records."""
+    rows = read_csv_rows(path)
+    require(set(PTBXL_MANIFEST_FIELDS).issubset(rows[0]),
+            f"PTB-XL manifest is missing columns: {sorted(set(PTBXL_MANIFEST_FIELDS) - set(rows[0]))}")
+    require(len(rows) == len(records),
+            f"PTB-XL manifest row count mismatch: {len(rows)} vs {len(records)}")
+    expected_by_id = {str(record["ecg_id"]): record for record in records}
+    require(len(expected_by_id) == len(records), "Duplicate ecg_id in canonical PTB-XL records")
+
+    manifest_ids = [row.get("ecg_id", "") for row in rows]
+    require(all(manifest_ids), "PTB-XL manifest contains an empty ecg_id")
+    id_counts = Counter(manifest_ids)
+    duplicates = sorted(ecg_id for ecg_id, count in id_counts.items() if count != 1)
+    require(not duplicates, f"Duplicate ecg_id values in PTB-XL manifest: {duplicates[:10]}")
+    actual_ids = set(manifest_ids)
+    expected_ids = set(expected_by_id)
+    require(actual_ids == expected_ids,
+            f"PTB-XL manifest ecg_id set mismatch; missing={sorted(expected_ids - actual_ids)[:10]}, "
+            f"unexpected={sorted(actual_ids - expected_ids)[:10]}")
+
+    for row in rows:
+        ecg_id = row["ecg_id"]
+        expected = expected_by_id[ecg_id]
+        for field in ("patient_id", "split", "waveform_path", "scp_codes"):
+            require(row.get(field) == str(expected[field]),
+                    f"PTB-XL manifest mismatch for ecg_id={ecg_id}, field={field}")
+        try:
+            fold = int(row["strat_fold"])
+            label_count = int(row["label_count"])
+        except (KeyError, ValueError) as exc:
+            raise ValidationError(f"Invalid fold or label_count for PTB-XL ecg_id={ecg_id}") from exc
+        require(fold == int(expected["strat_fold"]),
+                f"PTB-XL fold mismatch for ecg_id={ecg_id}")
+        require(label_count == int(expected["label_count"]),
+                f"PTB-XL label count mismatch for ecg_id={ecg_id}")
+    return rows

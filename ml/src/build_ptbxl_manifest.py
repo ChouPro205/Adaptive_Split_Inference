@@ -6,11 +6,11 @@ import argparse
 import csv
 from pathlib import Path
 
-from ptbxl_common import canonical_records, summarize_records
+from ptbxl_common import PTBXL_MANIFEST_FIELDS, canonical_records, summarize_records
 from week1_common import config_sha256, configured_path, load_config, require, run_cli
 
 
-FIELDS = ["ecg_id", "patient_id", "strat_fold", "split", "waveform_path", "scp_codes", "label_count"]
+FIELDS = list(PTBXL_MANIFEST_FIELDS)
 
 
 def build(config_path: Path, config: dict, output_override: str | None = None) -> dict:

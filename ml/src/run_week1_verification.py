@@ -15,14 +15,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from week1_common import (
+    BINARY_HASH_POLICY,
     ML_ROOT,
+    TEXT_HASH_POLICY,
+    artifact_sha256,
     config_sha256,
     configured_path,
     load_config,
     load_json,
     require,
     run_cli,
-    sha256_file,
 )
 
 
@@ -124,13 +126,13 @@ def main() -> None:
         configured_path(mitdb_config, "normalization"),
         configured_path(ptbxl_config, "normalization"),
     ]
-    artifacts = {path.relative_to(REPO_ROOT).as_posix(): sha256_file(path) for path in artifact_paths}
+    artifacts = {path.relative_to(REPO_ROOT).as_posix(): artifact_sha256(path) for path in artifact_paths}
     processed_manifest_path = configured_path(mitdb_config, "processed_dir") / "processed_manifest.json"
     if processed_manifest_path.is_file():
         processed = load_json(processed_manifest_path)
         artifacts.update({f"ml/data/processed/mitdb/{name}": digest
                           for name, digest in processed.get("artifacts", {}).items()})
-        artifacts[processed_manifest_path.relative_to(REPO_ROOT).as_posix()] = sha256_file(processed_manifest_path)
+        artifacts[processed_manifest_path.relative_to(REPO_ROOT).as_posix()] = artifact_sha256(processed_manifest_path)
 
     exit_status = 0 if all(item["exit_status"] == 0 for item in command_results) else 1
     manifest = {
@@ -146,6 +148,10 @@ def main() -> None:
                          for name in environment_config["packages"]},
         },
         "configs": configs,
+        "hash_policy": {
+            "configs_and_text_artifacts": TEXT_HASH_POLICY,
+            "binary_and_dataset_files": BINARY_HASH_POLICY,
+        },
         "datasets": datasets,
         "commands": command_results,
         "artifact_sha256": artifacts,

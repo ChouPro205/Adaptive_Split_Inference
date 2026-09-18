@@ -9,6 +9,9 @@ import pandas as pd
 
 from mitdb_common import iter_valid_beats, load_manifest, load_signal_and_annotations, validate_raw_files
 from week1_common import (
+    BINARY_HASH_POLICY,
+    TEXT_HASH_POLICY,
+    artifact_sha256,
     config_sha256,
     configured_path,
     load_config,
@@ -16,7 +19,6 @@ from week1_common import (
     patient_sets,
     require,
     run_cli,
-    sha256_file,
     verify_no_patient_leakage,
 )
 
@@ -30,7 +32,7 @@ def main() -> None:
     norm_path = configured_path(config, "normalization")
     norm = load_json(norm_path)
     current_config_hash = config_sha256(config_path)
-    current_manifest_hash = sha256_file(manifest_path)
+    current_manifest_hash = artifact_sha256(manifest_path)
     require(norm.get("config_sha256") == current_config_hash, "Normalization config hash mismatch")
     require(norm.get("patient_manifest_sha256") == current_manifest_hash,
             "Normalization patient-manifest hash mismatch")
@@ -89,7 +91,7 @@ def main() -> None:
         np.save(paths[f"{split}_y.npy"], y)
         frame.to_csv(paths[f"{split}_metadata.csv"], index=False)
         for name, path in paths.items():
-            artifacts[name] = sha256_file(path)
+            artifacts[name] = artifact_sha256(path)
         summaries[split] = {
             "samples": len(X),
             "patients": int(frame["patient_id"].nunique()),
@@ -102,8 +104,10 @@ def main() -> None:
         "dataset_version": config["dataset"]["version"],
         "config_sha256": current_config_hash,
         "patient_manifest_sha256": current_manifest_hash,
-        "normalization_sha256": sha256_file(norm_path),
+        "normalization_sha256": artifact_sha256(norm_path),
         "physionet_checksum_manifest_sha256": config["integrity"]["physionet_checksum_manifest_sha256"],
+        "repository_text_hash_policy": TEXT_HASH_POLICY,
+        "binary_hash_policy": BINARY_HASH_POLICY,
         "splits": summaries,
         "artifacts": artifacts,
     }
