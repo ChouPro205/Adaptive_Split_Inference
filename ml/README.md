@@ -95,7 +95,10 @@ python -B ml/src/run_week1_verification.py
 
 The negative suite uses temporary directories/hard links and never modifies
 the real raw datasets. It covers empty, missing-record/file, cached-metadata
-corruption, and waveform checksum failures under normal Python and `python -O`:
+corruption, malformed PTB-XL manifests, and waveform checksum failures under
+normal Python and `python -O`. Manifest cases also require the specific
+validator failure reason, so an unrelated later hash failure cannot satisfy the
+test:
 
 ```powershell
 python -B ml/src/test_week1_negative.py

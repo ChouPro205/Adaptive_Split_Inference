@@ -1,9 +1,9 @@
 # SV3 Week 1 verification evidence
 
-Final orchestrated run: `2026-09-18T06:41:29Z` to
-`2026-09-18T06:50:34Z` (local date 2026-09-18). Machine-readable evidence is
+Final orchestrated run: `2026-09-18T07:30:05Z` to
+`2026-09-18T07:39:34Z` (local date 2026-09-18). Machine-readable evidence is
 in `ml/provenance/week1_run_manifest.json`; it is bound to clean implementation
-commit `de204900d547a0371979b911786a63c4e95ce090`, overall exit status was `0`,
+commit `d6fde9884968c7ab316976ddec3b171ecdcd1946`, overall exit status was `0`,
 and all 19 recorded commands returned `0`. The manifest captures source
 `dirty=false` before generated artefacts are written and separately records
 `post_run_dirty=true` for the expected regenerated normalization/provenance
@@ -98,7 +98,7 @@ PTB-XL config SHA-256:
 
 ## Negative tests
 
-All 26 expected-failure cases returned exit code `1`, printed an explicit
+All 34 expected-failure cases returned exit code `1`, printed an explicit
 error, and did not print `STATUS: PASS`:
 
 - empty MIT-BIH directory under Python and `python -O`;
@@ -107,8 +107,14 @@ error, and did not print `STATUS: PASS`:
   wrong SHA-256 under Python and `python -O`;
 - PTB-XL corrupt cached `ptbxl_database.csv`, missing `.hea`, missing `.dat`,
   missing record, and corrupt waveform SHA-256 under Python and `python -O`.
-- PTB-XL same-row-count manifest mutation with duplicated `ecg_id=1` and
-  missing `ecg_id=21837` under Python and `python -O`.
+- PTB-XL manifest mutations for header-only, one missing row, one extra row,
+  duplicated `ecg_id=1` with missing `ecg_id=21837`, and foreign
+  `ecg_id=999999999` with missing `ecg_id=21837`, each under Python and
+  `python -O`.
+
+Each manifest mutation must contain its specific validator error in the child
+process output. A later normalization/hash-binding failure is not accepted as
+evidence that the manifest completeness gate worked.
 
 Four additional positive mutation checks confirmed that config hashes and the
 PTB-XL manifest artefact hash are identical for LF and CRLF representations.
