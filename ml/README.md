@@ -56,6 +56,12 @@ because they are non-empty: PTB-XL metadata is checksummed before parsing and
 every selected waveform is checksummed during acquisition; the strict verifier
 then independently checks the complete required file set.
 
+The PTB-XL manifest verifier requires exactly one row for every canonical
+`ecg_id`; duplicate, missing, unexpected, or metadata-mismatched rows fail.
+Config and repository-text hashes normalize line endings to LF, while raw ECG
+and binary artefacts retain raw-byte SHA-256. This keeps config/provenance
+bindings stable across Windows and Linux checkouts.
+
 ```powershell
 python -B ml/src/download_mitdb.py
 python -B ml/src/verify_mitdb_integrity.py

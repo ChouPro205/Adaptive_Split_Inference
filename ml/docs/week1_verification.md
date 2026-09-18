@@ -1,9 +1,9 @@
 # SV3 Week 1 verification evidence
 
-Final orchestrated run: `2026-09-17T19:53:58Z` to
-`2026-09-17T20:01:07Z` (local date 2026-09-18). Machine-readable evidence is
+Final orchestrated run: `2026-09-18T06:41:29Z` to
+`2026-09-18T06:50:34Z` (local date 2026-09-18). Machine-readable evidence is
 in `ml/provenance/week1_run_manifest.json`; it is bound to clean implementation
-commit `f6abdea75faee0ca01e99d00a32f2375f4c6c6e7`, overall exit status was `0`,
+commit `de204900d547a0371979b911786a63c4e95ce090`, overall exit status was `0`,
 and all 19 recorded commands returned `0`. The manifest captures source
 `dirty=false` before generated artefacts are written and separately records
 `post_run_dirty=true` for the expected regenerated normalization/provenance
@@ -74,6 +74,9 @@ MIT-BIH config SHA-256:
   `scp_statements.csv`;
 - split: train 17,418 records / 15,023 patients; validation 2,183 / 1,942;
   test 2,198 / 1,904;
+- the patient manifest contains exactly the canonical 21,799 unique `ecg_id`
+  values; duplicate, missing, unexpected, or stale rows are rejected before
+  verification or normalization;
 - all patient intersections are empty;
 - required files checksummed: 43,601;
 - official checksum-manifest SHA-256:
@@ -95,7 +98,7 @@ PTB-XL config SHA-256:
 
 ## Negative tests
 
-All 24 expected-failure cases returned exit code `1`, printed an explicit
+All 26 expected-failure cases returned exit code `1`, printed an explicit
 error, and did not print `STATUS: PASS`:
 
 - empty MIT-BIH directory under Python and `python -O`;
@@ -104,6 +107,13 @@ error, and did not print `STATUS: PASS`:
   wrong SHA-256 under Python and `python -O`;
 - PTB-XL corrupt cached `ptbxl_database.csv`, missing `.hea`, missing `.dat`,
   missing record, and corrupt waveform SHA-256 under Python and `python -O`.
+- PTB-XL same-row-count manifest mutation with duplicated `ecg_id=1` and
+  missing `ecg_id=21837` under Python and `python -O`.
+
+Four additional positive mutation checks confirmed that config hashes and the
+PTB-XL manifest artefact hash are identical for LF and CRLF representations.
+Repository text uses `sha256_utf8_lf_normalized`; dataset and binary files keep
+raw-byte SHA-256. `.gitattributes` fixes tracked `ml/**` text to LF.
 
 Temporary hard links/copies were used; real raw data was not modified.
 

@@ -12,6 +12,7 @@
   "mean": -0.2912026352134608,
   "std": 0.45653058276514263,
   "config_sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54",
-  "patient_manifest_sha256": "2f3b4e17f12b14c47ec857d587c3e521cf5801045460eb29d229410dd2289316",
-  "physionet_checksum_manifest_sha256": "b61158a96d5f2ca80edfb354a9a66a6324836c390a84e1966dcee2b907d6be43"
+  "patient_manifest_sha256": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe",
+  "physionet_checksum_manifest_sha256": "b61158a96d5f2ca80edfb354a9a66a6324836c390a84e1966dcee2b907d6be43",
+  "repository_text_hash_policy": "sha256_utf8_lf_normalized"
 }

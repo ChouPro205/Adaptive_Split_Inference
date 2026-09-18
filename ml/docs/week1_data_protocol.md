@@ -102,6 +102,19 @@ checksums, leakage, invalid labels, shape/lead mismatches, and stale config
 bindings all terminate with a non-zero exit code under both normal Python and
 `python -O`.
 
+The PTB-XL patient manifest must be a one-to-one projection of the canonical
+metadata: its `ecg_id` values must be unique and equal the exact expected ID
+set, and every stored patient, fold, split, waveform path, label JSON, and label
+count must match the source metadata. The manifest is validated before both
+normalization production and verification.
+
+For cross-platform reproducibility, configs and repository text artefacts use
+UTF-8 SHA-256 after normalizing CRLF/CR to LF
+(`sha256_utf8_lf_normalized`). Dataset files and binary artefacts use raw-byte
+SHA-256 (`sha256_raw_bytes`). `.gitattributes` fixes tracked `ml/**` text to LF;
+the explicit normalized-text policy also makes bindings stable when a tool
+materializes CRLF locally.
+
 PTB-XL acquisition validates the pinned official checksum manifest first, then
 checksums `ptbxl_database.csv`, `scp_statements.csv`, and `LICENSE.txt` before
 metadata is parsed. Metadata-derived paths reject absolute, empty, dot, parent,
