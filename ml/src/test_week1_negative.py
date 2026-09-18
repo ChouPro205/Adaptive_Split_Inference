@@ -108,22 +108,52 @@ def make_corrupt_ptb_metadata_view(destination: Path, config: dict) -> None:
             link_or_copy(source, target)
 
 
-def make_duplicate_missing_ptb_manifest(destination: Path, config: dict) -> tuple[str, str]:
+def make_ptb_manifest_mutations(
+    directory: Path, config: dict,
+) -> list[tuple[str, Path, str]]:
     source = configured_path(config, "patient_manifest")
     with source.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
         require(reader.fieldnames is not None, "PTB-XL manifest has no header")
         rows = list(reader)
         fields = list(reader.fieldnames)
-    require(len(rows) >= 2, "PTB-XL manifest is too small for duplicate-ID mutation")
+    expected_count = int(config["integrity"]["expected_record_count"])
+    require(len(rows) == expected_count,
+            "PTB-XL source manifest is incomplete before negative-test mutation")
+    require(len(rows) >= 2, "PTB-XL manifest is too small for ID mutation")
+
+    def write(name: str, mutated_rows: list[dict[str, str]]) -> Path:
+        destination = directory / f"ptbxl_manifest_{name}.csv"
+        with destination.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
+            writer.writeheader()
+            writer.writerows(mutated_rows)
+        return destination
+
     duplicated_id = rows[0]["ecg_id"]
     missing_id = rows[-1]["ecg_id"]
-    rows[-1] = dict(rows[0])
-    with destination.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(rows)
-    return duplicated_id, missing_id
+    duplicate_missing_rows = [dict(row) for row in rows]
+    duplicate_missing_rows[-1] = dict(rows[0])
+
+    foreign_id = "999999999"
+    require(all(row["ecg_id"] != foreign_id for row in rows),
+            f"Chosen foreign PTB-XL ecg_id unexpectedly exists: {foreign_id}")
+    foreign_missing_rows = [dict(row) for row in rows]
+    foreign_missing_rows[-1]["ecg_id"] = foreign_id
+
+    return [
+        ("header_only", write("header_only", []), "CSV contains no data rows"),
+        ("missing_row", write("missing_row", rows[:-1]),
+         f"PTB-XL manifest row count mismatch: {expected_count - 1} vs {expected_count}"),
+        ("extra_row", write("extra_row", [*rows, dict(rows[-1])]),
+         f"PTB-XL manifest row count mismatch: {expected_count + 1} vs {expected_count}"),
+        (f"duplicate_{duplicated_id}_missing_{missing_id}",
+         write("duplicate_missing_id", duplicate_missing_rows),
+         "Duplicate ecg_id values in PTB-XL manifest"),
+        (f"foreign_{foreign_id}_missing_{missing_id}",
+         write("foreign_missing_id", foreign_missing_rows),
+         "PTB-XL manifest ecg_id set mismatch"),
+    ]
 
 
 def verify_line_ending_hash_stability(directory: Path) -> list[str]:
@@ -149,11 +179,16 @@ def verify_line_ending_hash_stability(directory: Path) -> list[str]:
     return checks
 
 
-def expect_failure(command: list[str], name: str) -> dict[str, object]:
+def expect_failure(command: list[str], name: str,
+                   expected_error: str | None = None) -> dict[str, object]:
     result = subprocess.run(command, cwd=ROOT.parent, text=True, capture_output=True, check=False)
     combined = result.stdout + result.stderr
     require(result.returncode != 0, f"Negative test unexpectedly returned zero: {name}")
     require("STATUS: PASS" not in combined, f"Negative test printed PASS: {name}")
+    if expected_error is not None:
+        require(expected_error in combined,
+                f"Negative test failed for the wrong reason: {name}; "
+                f"expected error containing {expected_error!r}")
     error_line = next((line for line in combined.splitlines() if "ERROR:" in line), "non-zero without ERROR line")
     return {"name": name, "exit_code": result.returncode, "evidence": error_line.strip()}
 
@@ -214,13 +249,15 @@ def main() -> None:
                 f"ptbxl_corrupt_cached_metadata_{label}",
             ))
 
-        corrupt_manifest = temp / "ptbxl_duplicate_missing_id.csv"
-        duplicated_id, missing_id = make_duplicate_missing_ptb_manifest(corrupt_manifest, ptb_config)
-        for flags, label in modes:
-            results.append(expect_failure(
-                [sys.executable, *flags, str(PTB_VERIFIER), "--manifest", str(corrupt_manifest)],
-                f"ptbxl_manifest_duplicate_{duplicated_id}_missing_{missing_id}_{label}",
-            ))
+        manifest_mutations = make_ptb_manifest_mutations(temp, ptb_config)
+        for mutation_name, corrupt_manifest, expected_error in manifest_mutations:
+            for flags, label in modes:
+                results.append(expect_failure(
+                    [sys.executable, *flags, str(PTB_VERIFIER),
+                     "--manifest", str(corrupt_manifest)],
+                    f"ptbxl_manifest_{mutation_name}_{label}",
+                    expected_error=expected_error,
+                ))
 
         ptb_view = temp / "ptbxl_view"
         first_stem = make_ptb_view(ptb_view, ptb_config)
