@@ -1,10 +1,13 @@
 # SV3 Week 1 verification evidence
 
-Final orchestrated run: `2026-09-17T17:11:07Z` to
-`2026-09-17T17:16:39Z` (local date 2026-09-18). Machine-readable evidence is
-in `ml/provenance/week1_run_manifest.json`; it is bound to implementation
-commit `287f0cd1ff0bc2e69a03e7110a3b0a59a68fecb0`, overall exit status was `0`,
-and all 19 recorded commands returned `0`.
+Final orchestrated run: `2026-09-17T19:53:58Z` to
+`2026-09-17T20:01:07Z` (local date 2026-09-18). Machine-readable evidence is
+in `ml/provenance/week1_run_manifest.json`; it is bound to clean implementation
+commit `f6abdea75faee0ca01e99d00a32f2375f4c6c6e7`, overall exit status was `0`,
+and all 19 recorded commands returned `0`. The manifest captures source
+`dirty=false` before generated artefacts are written and separately records
+`post_run_dirty=true` for the expected regenerated normalization/provenance
+files.
 
 ## Environment
 
@@ -78,25 +81,39 @@ MIT-BIH config SHA-256:
 - required-file tree SHA-256:
   `b4863f3c13d7ccdd31244944d8cd1e1ed3e98ff2877d7ca5b154cbf471170242`.
 
-Per-lead normalization was fitted and independently recomputed across 17,418
-train records / 17,418,000 time values per lead. Mean and standard deviation in
-the verified lead order are stored in `configs/ptbxl_normalization.json`; both
-runs matched at absolute tolerance `1e-12`.
+Per-lead normalization was fitted across 17,418 train records / 17,418,000 time
+values per lead. The independent verifier does not import the producer
+calculation: it streams the raw train records, applies the stored statistics,
+casts the normalized representation to `float32`, and checks every value is
+finite. The maximum absolute normalized train mean was approximately
+`1.235e-9`; the maximum absolute deviation of per-lead standard deviation from
+one was approximately `2.413e-9`. Both pass the documented absolute tolerance
+`1e-6`.
 
 PTB-XL config SHA-256:
-`92100295ea3c33984a8930f59a65ff56b428130a975788d91eb87c7860e6333c`.
+`d8a34e7b2a6c6f4bfcf435f6d0bbe4fcbaf978973846fb4506ee32c60b89d9c8`.
 
 ## Negative tests
 
-All 14 expected-failure cases returned exit code `1`, printed an explicit
+All 24 expected-failure cases returned exit code `1`, printed an explicit
 error, and did not print `STATUS: PASS`:
 
 - empty MIT-BIH directory under Python and `python -O`;
 - empty PTB-XL directory under Python and `python -O`;
 - MIT-BIH missing record, missing `.hea`, missing `.dat`, missing `.atr`, and
-  wrong SHA-256 under Python and `python -O`.
+  wrong SHA-256 under Python and `python -O`;
+- PTB-XL corrupt cached `ptbxl_database.csv`, missing `.hea`, missing `.dat`,
+  missing record, and corrupt waveform SHA-256 under Python and `python -O`.
 
 Temporary hard links/copies were used; real raw data was not modified.
+
+Supplemental post-run checks also passed:
+
+- strict PTB-XL verifier under `python -O`;
+- independent PTB-XL normalization verifier under `python -O`;
+- isolated fail-fast test: the first synthetic command returned `7`, only one
+  of two commands executed, overall runner status was `1`, and the dependent
+  sentinel artefact was not created.
 
 ## Scope confirmation
 

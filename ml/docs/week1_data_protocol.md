@@ -101,3 +101,10 @@ and processed outputs. Empty directories, missing records/files, changed
 checksums, leakage, invalid labels, shape/lead mismatches, and stale config
 bindings all terminate with a non-zero exit code under both normal Python and
 `python -O`.
+
+PTB-XL acquisition validates the pinned official checksum manifest first, then
+checksums `ptbxl_database.csv`, `scp_statements.csv`, and `LICENSE.txt` before
+metadata is parsed. Metadata-derived paths reject absolute, empty, dot, parent,
+drive-qualified, and unsupported components; resolved destinations must remain
+inside the configured raw directory. Cached waveforms are re-hashed rather
+than trusted based on existence or size.

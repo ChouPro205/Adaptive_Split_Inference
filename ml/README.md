@@ -51,8 +51,10 @@ paths for a new environment.
 MIT-BIH is pinned to PhysioNet v1.0.0. PTB-XL is pinned to PhysioNet v1.0.3,
 and Week 1 intentionally downloads/uses the official 100 Hz waveforms only.
 Both downloaders are resumable at the file level: existing non-empty files are
-retained unless `--overwrite` is given, then the strict verifier checks every
-required file against the pinned official PhysioNet checksum manifest.
+retained unless `--overwrite` is given. Retained files are never trusted merely
+because they are non-empty: PTB-XL metadata is checksummed before parsing and
+every selected waveform is checksummed during acquisition; the strict verifier
+then independently checks the complete required file set.
 
 ```powershell
 python -B ml/src/download_mitdb.py
@@ -86,7 +88,8 @@ python -B ml/src/run_week1_verification.py
 ```
 
 The negative suite uses temporary directories/hard links and never modifies
-the real raw datasets:
+the real raw datasets. It covers empty, missing-record/file, cached-metadata
+corruption, and waveform checksum failures under normal Python and `python -O`:
 
 ```powershell
 python -B ml/src/test_week1_negative.py
