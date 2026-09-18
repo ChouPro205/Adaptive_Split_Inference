@@ -1,315 +1,78 @@
-from pathlib import Path
+"""Audit all MIT-BIH annotations against the frozen Week 1 protocol."""
+
+from __future__ import annotations
+
 from collections import Counter
 
 import wfdb
 
-
-ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT / "data" / "raw" / "mitdb"
-
-WINDOW_SIZE = 360
-HALF_WINDOW = WINDOW_SIZE // 2
+from mitdb_common import segmentation_settings, validate_raw_files
+from week1_common import config_sha256, load_config, require, run_cli
 
 
-# --------------------------------------------------
-# AAMI mapping frozen in STEP 2
-# --------------------------------------------------
-
-AAMI_MAP = {
-    # N
-    "N": "N",
-    "L": "N",
-    "R": "N",
-    "e": "N",
-    "j": "N",
-
-    # S
-    "A": "S",
-    "a": "S",
-    "J": "S",
-    "S": "S",
-
-    # V
-    "V": "V",
-    "E": "V",
-
-    # F
-    "F": "F",
-
-    # Q
-    "/": "Q",
-    "f": "Q",
-    "Q": "Q",
-}
-
-CLASS_TO_INDEX = {
-    "N": 0,
-    "S": 1,
-    "V": 2,
-    "F": 3,
-    "Q": 4,
-}
-
-
-# --------------------------------------------------
-# Counters
-# --------------------------------------------------
-
-headers = sorted(DATA_DIR.glob("*.hea"))
-
-total_raw_annotations = 0
-total_valid_beats = 0
-total_boundary_dropped = 0
-
-raw_counts = Counter()
-aami_counts = Counter()
-ignored_counts = Counter()
-
-processed_records = []
-records_without_mlii = []
-records_mlii_not_ch0 = []
-
-per_record_results = []
-
-
-# --------------------------------------------------
-# Process every MIT-BIH record
-# --------------------------------------------------
-
-for header_path in headers:
-
-    record_id = header_path.stem
-    record_path = DATA_DIR / record_id
-
-    # Read header first so we can inspect lead layout
-    header = wfdb.rdheader(str(record_path))
-
-    if header.fs != 360:
-        raise RuntimeError(
-            f"Unexpected sampling rate in record {record_id}: "
-            f"{header.fs}"
-        )
-
-    # --------------------------------------------------
-    # Lead selection
-    # --------------------------------------------------
-
-    if "MLII" not in header.sig_name:
-
-        records_without_mlii.append(
-            (record_id, header.sig_name)
-        )
-
-        continue
-
-    lead_idx = header.sig_name.index("MLII")
-
-    if lead_idx != 0:
-        records_mlii_not_ch0.append(
-            (record_id, header.sig_name, lead_idx)
-        )
-
-    # Load only the selected MLII channel
-    record = wfdb.rdrecord(
-        str(record_path),
-        channels=[lead_idx]
-    )
-
-    signal = record.p_signal[:, 0]
-
-    ann = wfdb.rdann(
-        str(record_path),
-        "atr"
-    )
-
-    processed_records.append(record_id)
-
-    record_aami_counts = Counter()
-
-    record_raw_annotations = len(ann.sample)
-    record_ignored = 0
-    record_boundary_dropped = 0
-    record_valid_beats = 0
-
-    total_raw_annotations += record_raw_annotations
-
-    # --------------------------------------------------
-    # Annotation -> AAMI -> segmentation
-    # --------------------------------------------------
-
-    for r_peak, symbol in zip(
-        ann.sample,
-        ann.symbol
-    ):
-
-        raw_counts[symbol] += 1
-
-        # Ignore non-heartbeat / unsupported symbols
-        if symbol not in AAMI_MAP:
-
-            ignored_counts[symbol] += 1
-            record_ignored += 1
-
+def main() -> None:
+    config_path, config = load_config("mitdb_week1_config.json")
+    raw_dir, records = validate_raw_files(config)
+    lead, window, left, _, mapping, _ = segmentation_settings(config)
+    aami_counts: Counter[str] = Counter()
+    ignored_counts: Counter[str] = Counter()
+    raw_annotations = boundary_dropped = valid_beats = 0
+    processed: list[str] = []
+    without_lead: list[str] = []
+    nonzero: list[tuple[str, int]] = []
+    for record_id in records:
+        record_path = raw_dir / record_id
+        header = wfdb.rdheader(str(record_path))
+        require(float(header.fs) == float(config["segmentation"]["sampling_rate_hz"]),
+                f"Unexpected sampling rate for {record_id}: {header.fs}")
+        if lead not in header.sig_name:
+            without_lead.append(record_id)
             continue
-
-        aami_class = AAMI_MAP[symbol]
-
-        start = r_peak - HALF_WINDOW
-        end = start + WINDOW_SIZE
-
-        # Boundary rule frozen in STEP 2
-        if start < 0 or end > len(signal):
-
-            total_boundary_dropped += 1
-            record_boundary_dropped += 1
-
-            continue
-
-        beat = signal[start:end]
-
-        # Invariant: every accepted sample must be 360 samples
-        if len(beat) != WINDOW_SIZE:
-            raise RuntimeError(
-                f"Record {record_id}: "
-                f"invalid beat length {len(beat)}"
-            )
-
-        aami_counts[aami_class] += 1
-        record_aami_counts[aami_class] += 1
-
-        total_valid_beats += 1
-        record_valid_beats += 1
-
-    per_record_results.append(
-        {
-            "record_id": record_id,
-            "lead_index": lead_idx,
-            "raw_annotations": record_raw_annotations,
-            "ignored": record_ignored,
-            "boundary_dropped": record_boundary_dropped,
-            "valid_beats": record_valid_beats,
-            "N": record_aami_counts["N"],
-            "S": record_aami_counts["S"],
-            "V": record_aami_counts["V"],
-            "F": record_aami_counts["F"],
-            "Q": record_aami_counts["Q"],
-        }
-    )
-
-
-# --------------------------------------------------
-# Global consistency check
-# --------------------------------------------------
-
-total_aami_beats = sum(aami_counts.values())
-
-assert total_aami_beats == total_valid_beats
+        lead_index = header.sig_name.index(lead)
+        if lead_index != 0:
+            nonzero.append((record_id, lead_index))
+        signal = wfdb.rdrecord(str(record_path), channels=[lead_index]).p_signal[:, 0]
+        annotations = wfdb.rdann(str(record_path), "atr")
+        processed.append(record_id)
+        raw_annotations += len(annotations.sample)
+        for r_peak, symbol in zip(annotations.sample, annotations.symbol):
+            if symbol not in mapping:
+                ignored_counts[symbol] += 1
+                continue
+            start = int(r_peak) - left
+            end = start + window
+            if start < 0 or end > len(signal):
+                boundary_dropped += 1
+                continue
+            require(len(signal[start:end]) == window, f"{record_id}: invalid beat length")
+            aami_counts[mapping[symbol]] += 1
+            valid_beats += 1
+    require(processed and valid_beats > 0, "Audit processed no records or valid beats")
+    expected = config["expected_audit"]
+    actual = {
+        "processed_records": len(processed),
+        "raw_annotations": raw_annotations,
+        "ignored_annotations": sum(ignored_counts.values()),
+        "boundary_dropped": boundary_dropped,
+        "valid_beats": valid_beats,
+        "class_counts": {name: aami_counts[name] for name in config["classes"]},
+    }
+    require(actual == expected, f"MIT-BIH audit differs from frozen results: expected {expected}, got {actual}")
+    require(raw_annotations - sum(ignored_counts.values()) - boundary_dropped == valid_beats,
+            "MIT-BIH annotation accounting invariant failed")
+    require(sorted(without_lead) == sorted(config["lead"]["excluded_records_missing_mlii"]),
+            f"Unexpected records without {lead}: {without_lead}")
+    print("MIT-BIH PREPROCESSING AUDIT")
+    print(f"Records found / processed: {len(records)} / {len(processed)}")
+    print(f"Records without {lead}   : {without_lead}")
+    print(f"{lead} not channel 0      : {nonzero}")
+    print(f"Ignored annotations      : {dict(ignored_counts)}")
+    print(f"AAMI counts              : {actual['class_counts']}")
+    print(f"Raw / ignored / boundary : {raw_annotations} / {actual['ignored_annotations']} / {boundary_dropped}")
+    print(f"Final valid beats        : {valid_beats}")
+    print(f"Config SHA-256           : {config_sha256(config_path)}")
+    print("STATUS: PASS")
 
 
-# --------------------------------------------------
-# Report
-# --------------------------------------------------
-
-print("=" * 65)
-print("MIT-BIH PREPROCESSING AUDIT")
-print("=" * 65)
-
-print(f"\nTotal records found       : {len(headers)}")
-print(f"Records processed (MLII)  : {len(processed_records)}")
-print(f"Records without MLII      : {len(records_without_mlii)}")
-
-
-print("\nRECORDS WITHOUT MLII")
-print("--------------------")
-
-if records_without_mlii:
-    for record_id, leads in records_without_mlii:
-        print(f"{record_id}: {leads}")
-else:
-    print("None")
-
-
-print("\nMLII NOT AT CHANNEL 0")
-print("---------------------")
-
-if records_mlii_not_ch0:
-    for record_id, leads, index in records_mlii_not_ch0:
-        print(
-            f"{record_id}: {leads}, "
-            f"MLII index = {index}"
-        )
-else:
-    print("None")
-
-
-print("\nIGNORED ANNOTATION SYMBOLS")
-print("--------------------------")
-
-for symbol, count in ignored_counts.most_common():
-    print(f"{symbol!r}: {count}")
-
-
-print("\nGLOBAL AAMI CLASS COUNTS")
-print("------------------------")
-
-for cls in ["N", "S", "V", "F", "Q"]:
-    print(f"{cls}: {aami_counts[cls]}")
-
-
-print("\nGLOBAL SEGMENTATION SUMMARY")
-print("---------------------------")
-
-print(
-    "Raw annotations in processed records :",
-    total_raw_annotations
-)
-
-print(
-    "Ignored annotations                  :",
-    sum(ignored_counts.values())
-)
-
-print(
-    "Boundary-dropped AAMI beats          :",
-    total_boundary_dropped
-)
-
-print(
-    "Final valid beats                    :",
-    total_valid_beats
-)
-
-
-print("\nCONSISTENCY CHECK")
-print("-----------------")
-
-expected_valid = (
-    total_raw_annotations
-    - sum(ignored_counts.values())
-    - total_boundary_dropped
-)
-
-print("Expected final beats :", expected_valid)
-print("Actual final beats   :", total_valid_beats)
-
-if expected_valid == total_valid_beats:
-    print("STATUS               : PASS")
-else:
-    print("STATUS               : FAIL")
-
-
-print("\nPER-RECORD SUMMARY")
-print("------------------")
-
-for result in per_record_results:
-
-    print(
-        f"{result['record_id']}: "
-        f"lead_idx={result['lead_index']}, "
-        f"beats={result['valid_beats']}, "
-        f"N={result['N']}, "
-        f"S={result['S']}, "
-        f"V={result['V']}, "
-        f"F={result['F']}, "
-        f"Q={result['Q']}"
-    )
+if __name__ == "__main__":
+    run_cli(main)

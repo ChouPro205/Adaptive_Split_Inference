@@ -1,15 +1,33 @@
 {
-  "dataset": "MIT-BIH Arrhythmia Database",
-
+  "schema_version": 2,
+  "dataset": {
+    "name": "MIT-BIH Arrhythmia Database",
+    "slug": "mitdb",
+    "version": "1.0.0",
+    "source_url": "https://physionet.org/files/mitdb/1.0.0/",
+    "landing_page": "https://physionet.org/content/mitdb/1.0.0/",
+    "doi": "10.13026/C2F305",
+    "license": "Open Data Commons Attribution License v1.0"
+  },
+  "paths": {
+    "raw_dir": "data/raw/mitdb",
+    "processed_dir": "data/processed/mitdb",
+    "expected_records": "manifests/mitdb_expected_records.txt",
+    "patient_manifest": "manifests/mitdb_patient_split.csv",
+    "normalization": "configs/mitdb_normalization.json",
+    "physionet_checksums": "data/raw/mitdb/SHA256SUMS.txt"
+  },
+  "integrity": {
+    "expected_record_count": 48,
+    "required_extensions": ["hea", "dat", "atr"],
+    "checksum_algorithm": "sha256",
+    "physionet_checksum_manifest_sha256": "b61158a96d5f2ca80edfb354a9a66a6324836c390a84e1966dcee2b907d6be43"
+  },
   "lead": {
     "preferred": "MLII",
     "selection_rule": "select_by_name",
-    "excluded_records_missing_mlii": [
-      "102",
-      "104"
-    ]
+    "excluded_records_missing_mlii": ["102", "104"]
   },
-
   "segmentation": {
     "sampling_rate_hz": 360,
     "window_size": 360,
@@ -18,19 +36,14 @@
     "center": "expert_annotation",
     "boundary_policy": "drop"
   },
-
-  "filtering": {
-    "enabled": false
+  "filtering": {"enabled": false},
+  "aami_mapping": {
+    "N": "N", "L": "N", "R": "N", "e": "N", "j": "N",
+    "A": "S", "a": "S", "J": "S", "S": "S",
+    "V": "V", "E": "V", "F": "F", "/": "Q", "f": "Q", "Q": "Q"
   },
-
-  "classes": {
-    "N": 0,
-    "S": 1,
-    "V": 2,
-    "F": 3,
-    "Q": 4
-  },
-
+  "classes": {"N": 0, "S": 1, "V": 2, "F": 3, "Q": 4},
+  "patient_identity": {"shared_record_groups": [["201", "202"]]},
   "split": {
     "unit": "patient",
     "train_ratio": 0.75,
@@ -39,18 +52,24 @@
     "seed": 30,
     "patient_leakage_allowed": false
   },
-
   "normalization": {
     "method": "z_score",
     "fit_split": "train",
     "mean": -0.2912026352134608,
     "std": 0.45653058276514263
   },
-
+  "expected_audit": {
+    "processed_records": 46,
+    "raw_annotations": 108144,
+    "ignored_annotations": 3066,
+    "boundary_dropped": 52,
+    "valid_beats": 105026,
+    "class_counts": {"N": 90320, "S": 2781, "V": 7229, "F": 802, "Q": 3894}
+  },
   "processed_dataset": {
-    "train_samples": 81094,
-    "val_samples": 15388,
-    "test_samples": 8544,
+    "train": {"samples": 81094, "patients": 34, "records": 35},
+    "val": {"samples": 15388, "patients": 7, "records": 7},
+    "test": {"samples": 8544, "patients": 4, "records": 4},
     "sample_length": 360,
     "x_dtype": "float32",
     "y_dtype": "int64"
