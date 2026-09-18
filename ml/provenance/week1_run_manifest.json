@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-09-18T07:30:05.817564+00:00",
+  "finished_utc": "2026-09-18T07:39:34.193627+00:00",
+  "git": {
+    "commit_sha": "d6fde9884968c7ab316976ddec3b171ecdcd1946",
+    "branch": "fix/sv3-week1-review",
+    "dirty": false,
+    "post_run_dirty": false
+  },
+  "environment": {
+    "python": "3.11.9",
+    "implementation": "CPython",
+    "os": "Windows-10-10.0.26200-SP0",
+    "packages": {
+      "torch": "2.14.0+cu130",
+      "numpy": "2.4.6",
+      "pandas": "3.0.5",
+      "scipy": "1.17.1",
+      "matplotlib": "3.11.2",
+      "wfdb": "4.3.1",
+      "scikit-learn": "1.9.1"
+    }
+  },
+  "configs": {
+    "environment.json": {
+      "path": "ml/configs/environment.json",
+      "sha256": "a5e201eec25bea5eac9ebfc71792917bc6552fcf774b0faee514388d4e026a01"
+    },
+    "mitdb_week1_config.json": {
+      "path": "ml/configs/mitdb_week1_config.json",
+      "sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54"
+    },
+    "ptbxl_week1_config.json": {
+      "path": "ml/configs/ptbxl_week1_config.json",
+      "sha256": "d8a34e7b2a6c6f4bfcf435f6d0bbe4fcbaf978973846fb4506ee32c60b89d9c8"
+    }
+  },
+  "hash_policy": {
+    "configs_and_text_artifacts": "sha256_utf8_lf_normalized",
+    "binary_and_dataset_files": "sha256_raw_bytes"
+  },
+  "datasets": {
+    "mitdb": {
+      "version": "1.0.0",
+      "source_url": "https://physionet.org/files/mitdb/1.0.0/",
+      "checksum_manifest_sha256": "b61158a96d5f2ca80edfb354a9a66a6324836c390a84e1966dcee2b907d6be43",
+      "required_file_tree_sha256": "09d0f9c2cf19cbcfc8b704681ce388e62ec89832bfed59169e70ac9ea147e46f"
+    },
+    "ptbxl": {
+      "version": "1.0.3",
+      "source_url": "https://physionet.org/files/ptb-xl/1.0.3/",
+      "checksum_manifest_sha256": "b7224b92b341511ec3ceb13dc6652079b2c36a06504bcb49506f157f51dc695d",
+      "required_file_tree_sha256": "b4863f3c13d7ccdd31244944d8cd1e1ed3e98ff2877d7ca5b154cbf471170242"
+    }
+  },
+  "commands": [
+    {
+      "command": "python -B ml/src/check_env.py",
+      "exit_status": 0,
+      "duration_seconds": 2.319,
+      "output_sha256": "6502db8bf6a1213bd6eea880527178a70283cba7f89b29d2a7789a0e440dcbfb"
+    },
+    {
+      "command": "python -B ml/src/download_mitdb.py",
+      "exit_status": 0,
+      "duration_seconds": 0.107,
+      "output_sha256": "135984396456c98765504f461b998b6ca006a98c56657fd9b799f2453ea6bc2b"
+    },
+    {
+      "command": "python -B ml/src/verify_mitdb_integrity.py",
+      "exit_status": 0,
+      "duration_seconds": 0.268,
+      "output_sha256": "783d49dff02def09becdc2b10e750ce00e867b991adf30cefd530362a108eb8f"
+    },
+    {
+      "command": "python -B ml/src/inspect_mitdb.py",
+      "exit_status": 0,
+      "duration_seconds": 0.614,
+      "output_sha256": "dc714e4ded52a6ad995797d42dc8f8ecc4a6e41a3eec7813ffa20d9ff2a5c36d"
+    },
+    {
+      "command": "python -B ml/src/test_segmentation.py",
+      "exit_status": 0,
+      "duration_seconds": 0.563,
+      "output_sha256": "161ff9f01d8eb92609d6e29647a659be15d74f9be637d5f8058f0965e95b75f4"
+    },
+    {
+      "command": "python -B ml/src/audit_mitdb_preprocessing.py",
+      "exit_status": 0,
+      "duration_seconds": 1.698,
+      "output_sha256": "05988bbf94d83aa7d7afab2845bbc93bf97082b5ffe9f92b6396e28c938b2b10"
+    },
+    {
+      "command": "python -B ml/src/build_mitdb_manifest.py",
+      "exit_status": 0,
+      "duration_seconds": 0.591,
+      "output_sha256": "62b81855e9a3620a5c51ca1efe719fe33549bde682a58f2b33ef834951bb6d5d"
+    },
+    {
+      "command": "python -B ml/src/compute_mitdb_normalization.py",
+      "exit_status": 0,
+      "duration_seconds": 1.839,
+      "output_sha256": "0bdbd2154f1ec93b4d611e7c82203c9267753598cbec3039ca40eea669bb9372"
+    },
+    {
+      "command": "python -B ml/src/verify_mitdb_normalization.py",
+      "exit_status": 0,
+      "duration_seconds": 2.461,
+      "output_sha256": "07f727a5c3a50d8532e7c99170ffa3ede271f905f51fe89582cd7098672c4371"
+    },
+    {
+      "command": "python -B ml/src/build_mitdb_processed.py",
+      "exit_status": 0,
+      "duration_seconds": 3.074,
+      "output_sha256": "18cd90efb5f4225576432cc4ff05b27777aff46c106e55c21333f8ec0483e88d"
+    },
+    {
+      "command": "python -B ml/src/verify_mitdb_processed.py",
+      "exit_status": 0,
+      "duration_seconds": 3.461,
+      "output_sha256": "b9e04474575d1f0c450a8c6a03c17b8e417510de1fb4aebb47962a316c64f82f"
+    },
+    {
+      "command": "python -O ml/src/verify_mitdb_integrity.py",
+      "exit_status": 0,
+      "duration_seconds": 0.612,
+      "output_sha256": "783d49dff02def09becdc2b10e750ce00e867b991adf30cefd530362a108eb8f"
+    },
+    {
+      "command": "python -O ml/src/verify_mitdb_processed.py",
+      "exit_status": 0,
+      "duration_seconds": 3.899,
+      "output_sha256": "b9e04474575d1f0c450a8c6a03c17b8e417510de1fb4aebb47962a316c64f82f"
+    },
+    {
+      "command": "python -B ml/src/download_ptbxl.py",
+      "exit_status": 0,
+      "duration_seconds": 53.29,
+      "output_sha256": "b4ec7848639d125586da7d0f892461afca0abe42e49f5ce28e7a758a0cdf69ff"
+    },
+    {
+      "command": "python -B ml/src/build_ptbxl_manifest.py",
+      "exit_status": 0,
+      "duration_seconds": 1.138,
+      "output_sha256": "ef9551e5dd4356df3ca01d63c8a57560b677317f3eb934ea8fa100870ca8546f"
+    },
+    {
+      "command": "python -B ml/src/compute_ptbxl_normalization.py",
+      "exit_status": 0,
+      "duration_seconds": 107.322,
+      "output_sha256": "7f78a91c9cdcfce642095fde8c288e4a589b6f478c5745025f06eea32ce4e3f7"
+    },
+    {
+      "command": "python -B ml/src/verify_ptbxl_normalization.py",
+      "exit_status": 0,
+      "duration_seconds": 108.625,
+      "output_sha256": "89c0e32a65b2d04f2a1998665839650cff11a844cd5a77701e0aa5f03efd5126"
+    },
+    {
+      "command": "python -B ml/src/verify_ptbxl.py",
+      "exit_status": 0,
+      "duration_seconds": 171.18,
+      "output_sha256": "b1f4257543af0a2c2406bc1df0c8d3215e3143a35332cf9c9868b467edc80b9f"
+    },
+    {
+      "command": "python -B ml/src/test_week1_negative.py",
+      "exit_status": 0,
+      "duration_seconds": 105.208,
+      "output_sha256": "f4b45975ea1a210af27fc99a7fa476b90f4d5f4b0b5ad43949b6c3a514ba89dc"
+    }
+  ],
+  "artifact_sha256": {
+    "ml/manifests/mitdb_expected_records.txt": "fcdca7ead9fc93f612f7e025029241cb6429ba2fcd05327b661bdc6b26fbcb57",
+    "ml/manifests/mitdb_patient_split.csv": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe",
+    "ml/manifests/ptbxl_patient_split.csv": "c90fa0d79a65e86ff4c8ca42ef1adcb9f887e639fcea7868af16b3d5d045988c",
+    "ml/configs/mitdb_normalization.json": "37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c",
+    "ml/configs/ptbxl_normalization.json": "7268a3b5d47a2d8a450a74a5c2b368526567da5d4c94a26d4579328b36310e8d",
+    "ml/data/processed/mitdb/train_X.npy": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f",
+    "ml/data/processed/mitdb/train_y.npy": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752",
+    "ml/data/processed/mitdb/train_metadata.csv": "86c5c3a634fc5adfca09ec2f8378efb0d52f21205cfaf9470432f89ffdc0977a",
+    "ml/data/processed/mitdb/val_X.npy": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732",
+    "ml/data/processed/mitdb/val_y.npy": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43",
+    "ml/data/processed/mitdb/val_metadata.csv": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+    "ml/data/processed/mitdb/test_X.npy": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e",
+    "ml/data/processed/mitdb/test_y.npy": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6",
+    "ml/data/processed/mitdb/test_metadata.csv": "02a6a91c0e35710d0be13f10b2360e034918f546b3ba2c7df7a2fd484ecd1178",
+    "ml/data/processed/mitdb/processed_manifest.json": "f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c"
+  },
+  "exit_status": 0
+}

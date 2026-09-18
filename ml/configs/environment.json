@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "python": ">=3.11,<3.12",
+  "packages": {
+    "torch": "==2.14.0",
+    "numpy": "==2.4.6",
+    "pandas": "==3.0.5",
+    "scipy": "==1.17.1",
+    "matplotlib": "==3.11.2",
+    "wfdb": "==4.3.1",
+    "scikit-learn": "==1.9.1"
+  },
+  "gpu_profile": {
+    "torch_local_version": "cu130",
+    "cuda_runtime": "13.0",
+    "tested_gpu": "NVIDIA GeForce RTX 5060"
+  },
+  "tested_os": [
+    "Windows NT 10.0 build 26200 with PowerShell",
+    "Linux commands documented; verification pending team Linux runner"
+  ]
+}

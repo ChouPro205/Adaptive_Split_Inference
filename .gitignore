@@ -15,3 +15,4 @@ datasets/
 *.pt
 .env
 *.key
+ml/docs/project_sources/

@@ -1,223 +1,90 @@
-from pathlib import Path
-import csv
+"""Compute frozen global Z-score statistics from MIT-BIH train beats only."""
+
+from __future__ import annotations
+
 import json
+import math
 
 import numpy as np
-import wfdb
 
-
-ROOT = Path(__file__).resolve().parents[1]
-
-DATA_DIR = ROOT / "data" / "raw" / "mitdb"
-MANIFEST_FILE = ROOT / "manifests" / "mitdb_patient_split.csv"
-
-OUTPUT_DIR = ROOT / "configs"
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
-OUTPUT_FILE = OUTPUT_DIR / "mitdb_normalization.json"
-
-
-WINDOW_SIZE = 360
-HALF_WINDOW = WINDOW_SIZE // 2
-
-
-AAMI_MAP = {
-    "N": "N",
-    "L": "N",
-    "R": "N",
-    "e": "N",
-    "j": "N",
-
-    "A": "S",
-    "a": "S",
-    "J": "S",
-    "S": "S",
-
-    "V": "V",
-    "E": "V",
-
-    "F": "F",
-
-    "/": "Q",
-    "f": "Q",
-    "Q": "Q",
-}
-
-
-# --------------------------------------------------
-# Read manifest
-# --------------------------------------------------
-
-train_records = []
-
-with MANIFEST_FILE.open(
-    "r",
-    encoding="utf-8"
-) as f:
-
-    reader = csv.DictReader(f)
-
-    for row in reader:
-
-        if (
-            row["eligibility"] == "eligible"
-            and row["split"] == "train"
-        ):
-            train_records.append(row["record_id"])
-
-
-print("Train records:", len(train_records))
-print(train_records)
-
-
-# --------------------------------------------------
-# Streaming statistics
-#
-# We accumulate:
-#   sum(x)
-#   sum(x^2)
-#   number of values
-#
-# This avoids storing every training beat in RAM.
-# --------------------------------------------------
-
-total_sum = 0.0
-total_sum_sq = 0.0
-total_values = 0
-
-total_beats = 0
-boundary_dropped = 0
-
-
-for record_id in train_records:
-
-    record_path = DATA_DIR / record_id
-
-    header = wfdb.rdheader(str(record_path))
-
-    if "MLII" not in header.sig_name:
-        raise RuntimeError(
-            f"Train record {record_id} has no MLII"
-        )
-
-    lead_idx = header.sig_name.index("MLII")
-
-    record = wfdb.rdrecord(
-        str(record_path),
-        channels=[lead_idx]
-    )
-
-    signal = record.p_signal[:, 0]
-
-    ann = wfdb.rdann(
-        str(record_path),
-        "atr"
-    )
-
-    for r_peak, symbol in zip(
-        ann.sample,
-        ann.symbol
-    ):
-
-        # Only accepted AAMI heartbeat annotations
-        if symbol not in AAMI_MAP:
-            continue
-
-        start = r_peak - HALF_WINDOW
-        end = start + WINDOW_SIZE
-
-        if start < 0 or end > len(signal):
-            boundary_dropped += 1
-            continue
-
-        beat = signal[start:end].astype(
-            np.float64
-        )
-
-        if len(beat) != WINDOW_SIZE:
-            raise RuntimeError(
-                f"{record_id}: invalid beat length"
-            )
-
-        total_sum += beat.sum()
-        total_sum_sq += np.square(beat).sum()
-
-        total_values += beat.size
-        total_beats += 1
-
-
-# --------------------------------------------------
-# Compute population mean/std
-# --------------------------------------------------
-
-mean = total_sum / total_values
-
-variance = (
-    total_sum_sq / total_values
-    - mean ** 2
+from mitdb_common import iter_valid_beats, load_manifest, load_signal_and_annotations, validate_raw_files
+from week1_common import (
+    TEXT_HASH_POLICY,
+    artifact_sha256,
+    config_sha256,
+    configured_path,
+    load_config,
+    patient_sets,
+    require,
+    run_cli,
+    verify_no_patient_leakage,
 )
 
-std = np.sqrt(variance)
+
+def main() -> None:
+    config_path, config = load_config("mitdb_week1_config.json")
+    raw_dir, _ = validate_raw_files(config)
+    all_rows = load_manifest(config)
+    verify_no_patient_leakage(patient_sets(all_rows))
+    train_rows = [row for row in all_rows if row["eligibility"] == "eligible" and row["split"] == "train"]
+    require(train_rows, "MIT-BIH manifest contains no eligible train records")
+    total_sum = total_sum_sq = 0.0
+    total_values = total_beats = boundary_dropped = 0
+    mapping = config["aami_mapping"]
+    left = int(config["segmentation"]["left_samples"])
+    window = int(config["segmentation"]["window_size"])
+    for row in train_rows:
+        _, signal, annotations, _ = load_signal_and_annotations(raw_dir, row["record_id"], config)
+        accepted = 0
+        for beat, *_ in iter_valid_beats(signal, annotations, config):
+            beat64 = beat.astype(np.float64)
+            total_sum += float(beat64.sum())
+            total_sum_sq += float(np.square(beat64).sum())
+            total_values += beat64.size
+            total_beats += 1
+            accepted += 1
+        eligible_annotations = sum(symbol in mapping for symbol in annotations.symbol)
+        boundary_dropped += eligible_annotations - accepted
+    require(total_beats > 0 and total_values > 0, "No train beats available for normalization")
+    require(total_values == total_beats * window, "Normalization value-count invariant failed")
+    mean = total_sum / total_values
+    variance = total_sum_sq / total_values - mean ** 2
+    require(math.isfinite(variance) and variance > 0, f"Invalid normalization variance: {variance}")
+    std = math.sqrt(variance)
+    frozen = config["normalization"]
+    require(abs(mean - float(frozen["mean"])) < 1e-12, f"Computed mean changed: {mean}")
+    require(abs(std - float(frozen["std"])) < 1e-12, f"Computed std changed: {std}")
+    manifest_path = configured_path(config, "patient_manifest")
+    stats = {
+        "schema_version": 2,
+        "dataset": config["dataset"]["name"],
+        "dataset_version": config["dataset"]["version"],
+        "lead": config["lead"]["preferred"],
+        "window_size": window,
+        "fit_split": frozen["fit_split"],
+        "num_train_records": len(train_rows),
+        "num_train_beats": total_beats,
+        "num_values": total_values,
+        "boundary_dropped": boundary_dropped,
+        "mean": mean,
+        "std": std,
+        "config_sha256": config_sha256(config_path),
+        "patient_manifest_sha256": artifact_sha256(manifest_path),
+        "physionet_checksum_manifest_sha256": config["integrity"]["physionet_checksum_manifest_sha256"],
+        "repository_text_hash_policy": TEXT_HASH_POLICY,
+    }
+    output = configured_path(config, "normalization")
+    with output.open("w", encoding="utf-8") as handle:
+        json.dump(stats, handle, indent=2)
+        handle.write("\n")
+    print("MIT-BIH NORMALIZATION")
+    print(f"Train records / beats: {len(train_rows)} / {total_beats}")
+    print(f"Values / boundary    : {total_values} / {boundary_dropped}")
+    print(f"Mean / std           : {mean} / {std}")
+    print(f"Config SHA-256       : {stats['config_sha256']}")
+    print(f"Saved                : {output}")
+    print("STATUS: PASS")
 
 
-# --------------------------------------------------
-# Sanity checks
-# --------------------------------------------------
-
-assert total_values == total_beats * WINDOW_SIZE
-
-if std <= 0:
-    raise RuntimeError(
-        "Invalid normalization std"
-    )
-
-
-# --------------------------------------------------
-# Save
-# --------------------------------------------------
-
-stats = {
-    "dataset": "MIT-BIH",
-    "lead": "MLII",
-    "window_size": WINDOW_SIZE,
-    "fit_split": "train",
-    "num_train_records": len(train_records),
-    "num_train_beats": total_beats,
-    "num_values": total_values,
-    "boundary_dropped": boundary_dropped,
-    "mean": float(mean),
-    "std": float(std),
-}
-
-
-with OUTPUT_FILE.open(
-    "w",
-    encoding="utf-8"
-) as f:
-
-    json.dump(
-        stats,
-        f,
-        indent=2
-    )
-
-
-# --------------------------------------------------
-# Report
-# --------------------------------------------------
-
-print("\nNORMALIZATION STATISTICS")
-print("------------------------")
-
-print("Train records   :", len(train_records))
-print("Train beats     :", total_beats)
-print("Total values    :", total_values)
-print("Boundary dropped:", boundary_dropped)
-
-print("\nMean:", mean)
-print("Std :", std)
-
-print("\nSaved to:")
-print(OUTPUT_FILE)
-
-print("\nSTATUS: PASS")
+if __name__ == "__main__":
+    run_cli(main)

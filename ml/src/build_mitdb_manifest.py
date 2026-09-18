@@ -1,303 +1,88 @@
-from pathlib import Path
+"""Build the deterministic MIT-BIH patient-wise split manifest."""
+
+from __future__ import annotations
+
+import argparse
 import csv
 import random
+from pathlib import Path
 
 import wfdb
 
-
-ROOT = Path(__file__).resolve().parents[1]
-
-DATA_DIR = ROOT / "data" / "raw" / "mitdb"
-MANIFEST_DIR = ROOT / "manifests"
-
-MANIFEST_DIR.mkdir(parents=True, exist_ok=True)
-
-OUTPUT_FILE = MANIFEST_DIR / "mitdb_patient_split.csv"
+from mitdb_common import get_patient_id, validate_raw_files
+from week1_common import config_sha256, configured_path, load_config, require, run_cli, verify_no_patient_leakage
 
 
-SEED = 30
-
-TRAIN_RATIO = 0.75
-VAL_RATIO = 0.15
-TEST_RATIO = 0.10
+FIELDS = ["record_id", "patient_id", "has_mlii", "mlii_index", "eligibility", "exclusion_reason", "split"]
 
 
-# --------------------------------------------------
-# Patient identity rule
-# --------------------------------------------------
-#
-# MIT-BIH has 48 records from 47 subjects.
-# Records 201 and 202 belong to the same subject.
-#
-# All other records are treated as separate patients.
-# --------------------------------------------------
-
-def get_patient_id(record_id):
-
-    if record_id in {"201", "202"}:
-        return "P201_202"
-
-    return f"P{record_id}"
-
-
-# --------------------------------------------------
-# Inspect all records
-# --------------------------------------------------
-
-headers = sorted(DATA_DIR.glob("*.hea"))
-
-rows = []
-
-eligible_patient_to_records = {}
-
-
-for header_path in headers:
-
-    record_id = header_path.stem
-    record_path = DATA_DIR / record_id
-
-    header = wfdb.rdheader(str(record_path))
-
-    patient_id = get_patient_id(record_id)
-
-    has_mlii = "MLII" in header.sig_name
-
-    if has_mlii:
-
-        lead_index = header.sig_name.index("MLII")
-
-        eligibility = "eligible"
-        exclusion_reason = ""
-
-        eligible_patient_to_records.setdefault(
-            patient_id,
-            []
-        ).append(record_id)
-
-    else:
-
-        lead_index = ""
-
-        eligibility = "excluded"
-        exclusion_reason = "missing_mlii"
-
-    rows.append(
-        {
+def build(config_path: Path, config: dict, output_override: str | None = None) -> dict:
+    raw_dir, records = validate_raw_files(config)
+    lead = config["lead"]["preferred"]
+    rows: list[dict[str, object]] = []
+    patient_records: dict[str, list[str]] = {}
+    for record_id in records:
+        header = wfdb.rdheader(str(raw_dir / record_id))
+        patient = get_patient_id(record_id, config)
+        has_lead = lead in header.sig_name
+        if has_lead:
+            patient_records.setdefault(patient, []).append(record_id)
+        rows.append({
             "record_id": record_id,
-            "patient_id": patient_id,
-            "has_mlii": has_mlii,
-            "mlii_index": lead_index,
-            "eligibility": eligibility,
-            "exclusion_reason": exclusion_reason,
+            "patient_id": patient,
+            "has_mlii": has_lead,
+            "mlii_index": header.sig_name.index(lead) if has_lead else "",
+            "eligibility": "eligible" if has_lead else "excluded",
+            "exclusion_reason": "" if has_lead else "missing_mlii",
             "split": "",
-        }
-    )
+        })
+    patients = sorted(patient_records)
+    require(patients, "No eligible MIT-BIH patients found")
+    split_config = config["split"]
+    ratios = [float(split_config[f"{name}_ratio"]) for name in ("train", "val", "test")]
+    require(abs(sum(ratios) - 1.0) < 1e-12, f"Split ratios do not sum to 1: {ratios}")
+    random.Random(int(split_config["seed"])).shuffle(patients)
+    n_train = round(len(patients) * ratios[0])
+    n_val = round(len(patients) * ratios[1])
+    sets = {
+        "train": set(patients[:n_train]),
+        "val": set(patients[n_train:n_train + n_val]),
+        "test": set(patients[n_train + n_val:]),
+    }
+    verify_no_patient_leakage(sets)
+    require(sum(len(value) for value in sets.values()) == len(patients), "Patient split is incomplete")
+    for row in rows:
+        if row["eligibility"] != "eligible":
+            continue
+        matches = [split for split, values in sets.items() if row["patient_id"] in values]
+        require(len(matches) == 1, f"Patient {row['patient_id']} has {len(matches)} split assignments")
+        row["split"] = matches[0]
+    output = Path(output_override).resolve() if output_override else configured_path(config, "patient_manifest")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=FIELDS)
+        writer.writeheader()
+        writer.writerows(rows)
+    record_counts = {split: sum(row["split"] == split for row in rows) for split in sets}
+    return {"patients": {split: len(value) for split, value in sets.items()},
+            "records": record_counts, "output": output, "config_sha256": config_sha256(config_path)}
 
 
-# --------------------------------------------------
-# Patient-wise deterministic split
-# --------------------------------------------------
-
-patient_ids = sorted(
-    eligible_patient_to_records.keys()
-)
-
-print("Eligible patients:", len(patient_ids))
-
-
-rng = random.Random(SEED)
-
-rng.shuffle(patient_ids)
-
-
-num_patients = len(patient_ids)
-
-n_train = round(
-    num_patients * TRAIN_RATIO
-)
-
-n_val = round(
-    num_patients * VAL_RATIO
-)
-
-n_test = (
-    num_patients
-    - n_train
-    - n_val
-)
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default="mitdb_week1_config.json")
+    parser.add_argument("--output")
+    args = parser.parse_args()
+    config_path, config = load_config(args.config)
+    result = build(config_path, config, args.output)
+    print("MIT-BIH PATIENT MANIFEST")
+    for split in ("train", "val", "test"):
+        print(f"{split:5s}: {result['patients'][split]} patients / {result['records'][split]} records")
+    print(f"Config SHA-256: {result['config_sha256']}")
+    print(f"Saved         : {result['output']}")
+    print("Patient leakage: none")
+    print("STATUS: PASS")
 
 
-train_patients = set(
-    patient_ids[:n_train]
-)
-
-val_patients = set(
-    patient_ids[
-        n_train:
-        n_train + n_val
-    ]
-)
-
-test_patients = set(
-    patient_ids[
-        n_train + n_val:
-    ]
-)
-
-
-# --------------------------------------------------
-# Leakage checks
-# --------------------------------------------------
-
-assert train_patients.isdisjoint(
-    val_patients
-)
-
-assert train_patients.isdisjoint(
-    test_patients
-)
-
-assert val_patients.isdisjoint(
-    test_patients
-)
-
-assert (
-    len(train_patients)
-    + len(val_patients)
-    + len(test_patients)
-    == num_patients
-)
-
-
-# --------------------------------------------------
-# Assign split to each record
-# --------------------------------------------------
-
-for row in rows:
-
-    if row["eligibility"] != "eligible":
-        continue
-
-    patient_id = row["patient_id"]
-
-    if patient_id in train_patients:
-        row["split"] = "train"
-
-    elif patient_id in val_patients:
-        row["split"] = "val"
-
-    elif patient_id in test_patients:
-        row["split"] = "test"
-
-    else:
-        raise RuntimeError(
-            f"No split assigned to patient {patient_id}"
-        )
-
-
-# --------------------------------------------------
-# Write manifest
-# --------------------------------------------------
-
-fieldnames = [
-    "record_id",
-    "patient_id",
-    "has_mlii",
-    "mlii_index",
-    "eligibility",
-    "exclusion_reason",
-    "split",
-]
-
-
-with OUTPUT_FILE.open(
-    "w",
-    newline="",
-    encoding="utf-8"
-) as f:
-
-    writer = csv.DictWriter(
-        f,
-        fieldnames=fieldnames
-    )
-
-    writer.writeheader()
-    writer.writerows(rows)
-
-
-# --------------------------------------------------
-# Report
-# --------------------------------------------------
-
-print("\nPATIENT SPLIT")
-print("----------------")
-
-print(
-    "Train patients:",
-    len(train_patients)
-)
-
-print(
-    "Val patients  :",
-    len(val_patients)
-)
-
-print(
-    "Test patients :",
-    len(test_patients)
-)
-
-
-print("\nTRAIN")
-print(sorted(train_patients))
-
-print("\nVAL")
-print(sorted(val_patients))
-
-print("\nTEST")
-print(sorted(test_patients))
-
-
-print("\nSPECIAL RECORDS")
-print("----------------")
-
-for row in rows:
-
-    if row["record_id"] in {
-        "102",
-        "104",
-        "114",
-        "201",
-        "202",
-    }:
-
-        print(row)
-
-
-print("\nMANIFEST")
-print("----------------")
-
-print("Saved to:")
-print(OUTPUT_FILE)
-
-
-print("\nLEAKAGE CHECK")
-print("----------------")
-
-print(
-    "train ∩ val :",
-    train_patients & val_patients
-)
-
-print(
-    "train ∩ test:",
-    train_patients & test_patients
-)
-
-print(
-    "val ∩ test  :",
-    val_patients & test_patients
-)
-
-
-print("\nSTATUS: PASS")
+if __name__ == "__main__":
+    run_cli(main)
