@@ -1,0 +1,10 @@
+mainmenu "Adaptive Split Inference firmware"
+
+config APP_IDLE_MEASUREMENT
+	bool "Build the Week 2 idle-current measurement firmware"
+	default n
+	help
+	  Select the minimal firmware used to measure the PCA10059 idle
+	  baseline. The normal Active firmware remains the default.
+
+source "Kconfig.zephyr"
