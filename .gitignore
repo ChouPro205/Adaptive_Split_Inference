@@ -1,11 +1,20 @@
 **/build/
 **/build-*/
+device/build*/
 **/.cache/
 **/__pycache__/
+**/.pytest_cache/
+**/.venv/
+**/venv/
+**/env/
 *.pyc
 *.log
 .vscode/
 .idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
 device/artifacts/*.zip
 data/
 datasets/
@@ -16,3 +25,6 @@ datasets/
 .env
 *.key
 ml/docs/project_sources/
+results/**/raw/
+*.ppk
+*.ppk2
