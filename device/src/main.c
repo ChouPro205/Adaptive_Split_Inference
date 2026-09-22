@@ -1,7 +1,9 @@
 /*
- * Adaptive Split Inference - SV1 Week 1 demo
+ * Adaptive Split Inference - SV1 Week 1 demo plus Week 2 GPIO markers
  * Target: Nordic nRF52840 Dongle PCA10059 (nrf52840dongle/nrf52840)
  */
+
+#include "markers.h"
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -148,16 +150,25 @@ static void run_and_report_benchmark(void)
 	printk("RESULT: %s\r\n", last_result_passed ? "PASS" : "FAIL");
 }
 
-static void print_banner(bool led_operational, bool dwt_operational)
+static void print_banner(bool led_operational, bool dwt_operational,
+			 bool markers_operational)
 {
 	uint32_t cpu_freq_hz = SystemCoreClock;
 
 	printk("\r\n========================================\r\n");
-	printk("ADAPTIVE SPLIT INFERENCE - SV1 WEEK 1\r\n");
+	printk("ADAPTIVE SPLIT INFERENCE - SV1 WEEK 1 + WEEK 2 MARKERS\r\n");
 	printk("Board: nRF52840 Dongle PCA10059\r\n");
 	printk("CPU: %u MHz\r\n", cpu_freq_hz / 1000000U);
 	printk("USB CDC: READY\r\n");
 	printk("LED heartbeat: %s\r\n", led_operational ? "RUNNING" : "ERROR");
+	printk("GPIO marker self-test: %s\r\n",
+	       markers_operational ? "RUNNING" : "ERROR");
+	if (markers_operational) {
+		printk("GPIO marker self-test: %s ON\r\n",
+		       marker_name(markers_self_test_active()));
+	} else {
+		printk("ERROR: GPIO marker initialization failed\r\n");
+	}
 	if (!led_operational) {
 		printk("ERROR: led0 GPIO initialization or toggle failed\r\n");
 	}
@@ -196,6 +207,7 @@ static void update_heartbeat(bool *led_operational, int64_t *next_toggle_ms)
 int main(void)
 {
 	bool led_operational = gpio_is_ready_dt(&status_led);
+	bool markers_operational;
 	bool terminal_was_connected = false;
 	bool dwt_operational;
 	int64_t next_toggle_ms = k_uptime_get() + HEARTBEAT_TOGGLE_MS;
@@ -207,10 +219,15 @@ int main(void)
 	}
 
 	dwt_operational = dwt_cycle_counter_init();
+	markers_operational = markers_init() == 0;
+	if (markers_operational) {
+		markers_self_test_start();
+	}
 
 	if (!device_is_ready(console_device)) {
 		while (true) {
 			update_heartbeat(&led_operational, &next_toggle_ms);
+			markers_self_test_update(false);
 			k_msleep(CONSOLE_POLL_INTERVAL_MS);
 		}
 	}
@@ -222,11 +239,14 @@ int main(void)
 			dtr != 0U;
 
 		update_heartbeat(&led_operational, &next_toggle_ms);
+		markers_self_test_update(terminal_connected);
 
 		if (terminal_connected && !terminal_was_connected) {
 			k_msleep(DTR_SETTLE_TIME_MS);
 			update_heartbeat(&led_operational, &next_toggle_ms);
-			print_banner(led_operational, dwt_operational);
+			markers_self_test_update(terminal_connected);
+			print_banner(led_operational, dwt_operational,
+				     markers_operational);
 			if (dwt_operational) {
 				run_and_report_benchmark();
 			}

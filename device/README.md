@@ -48,3 +48,17 @@ Xem hướng dẫn ngắn, dùng trực tiếp ngày demo tại
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\check_env.ps1
 ```
+
+## Build Idle Week 2 cho PPK2
+
+Firmware Active ở trên vẫn là cấu hình mặc định từ `prj.conf`. Để build bản
+Idle không console và tạo gói USB DFU riêng, chạy từ Git root:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\build_week2_idle.ps1
+```
+
+Script dùng `overlay-idle.conf` làm `CONF_FILE` hoàn chỉnh, ghi build vào
+`device\build-idle` và tạo
+`device\artifacts\adaptive_split_week2_idle.zip`. Script không flash phần
+cứng. Để quay lại Active, chạy `build_week1_demo.ps1` như hướng dẫn ở trên.
