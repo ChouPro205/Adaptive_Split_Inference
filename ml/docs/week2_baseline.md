@@ -82,12 +82,87 @@ CPU floating-point kernels can change a borderline predicted class even when
 the same FP32 state dict loads successfully.
 
 The accepted candidate has 10 learned layers, 109,653 trainable parameters,
-and a mathematical FP32 footprint of 438,612 bytes (0.418293 MiB). Its prior
-Week 2 run exceeded 98% overall test accuracy but had zero test recall for
-S, F, and Q. This limitation must be retained in run evidence. Overall
+and a mathematical FP32 footprint of 438,612 bytes (0.418293 MiB). Overall
 accuracy does not establish clinically useful five-class generalization;
 very small test F/Q supports make those estimates uncertain. Do not tune this
 candidate against the observed test result.
+
+## Verified run from the implementation commit
+
+Scientific source commit:
+`8e98a0e4851abc979feb5fd5b97ece612b02cfaa`. The four scientific
+source/config files were tracked and unchanged relative to that commit at run
+time. The broader worktree was dirty because unrelated and evidence files were
+untracked; the run records this separately. CPython 3.11.9, PyTorch
+2.14.0+cu130, CUDA 13.0, and NVIDIA GeForce RTX 5060 were used.
+
+| Scientific file | SHA-256 used by the run |
+|---|---|
+| `ml/configs/mitdb_week2_baseline.json` | `273a563af79126c6ed6762c4bd01a186de055b6dea390688eefcf7522ae2e5e3` |
+| `ml/src/mitdb_baseline_model.py` | `520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14` |
+| `ml/src/mitdb_week2_data.py` | `363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907` |
+| `ml/src/train_mitdb_baseline.py` | `a0fa0becf2539be37db9105eccb60d8ded8c25fae04d36fdda04ce6f82446152` |
+
+The Week 1 processed manifest SHA-256 is
+`f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c`.
+All individual train/validation/test hashes are in the versioned Week 2 run
+manifest. No Week 1 processed artifact changed.
+
+Training ran 13 epochs and selected epoch 3 using validation accuracy alone.
+Selected-epoch train accuracy was 97.706%; validation accuracy was 84.488%,
+macro F1 0.304669 and weighted F1 0.808288; test accuracy was **98.221%**
+(8392/8544), macro F1 0.382595 and weighted F1 0.985740. The serialized
+state dict is 445,495 bytes, SHA-256
+`f9d5763da844ab5ccdfc36a0899e0763501431c423f51ef1ce4e06e14769453f`.
+The full checkpoint is 450,551 bytes, SHA-256
+`9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90`.
+Serialization metadata accounts for the size above the mathematical FP32
+footprint.
+
+Test confusion matrix, true classes by row and predictions by column, both
+ordered N, S, V, F, Q:
+
+```text
+N  8020  67   8  0  7
+S    13   0   0  0  0
+V    48   3 372  1  2
+F     0   0   1  0  0
+Q     2   0   0  0  0
+```
+
+Test recall is **zero for S, F, and Q**. Validation likewise has only 4/1493
+S, 0/11 F, and 0/5 Q correct. The test split has 8102/8544 N-class beats,
+so the overall 98.221% accuracy must not be read as robust five-class or
+clinical performance.
+
+### Verification evidence
+
+With `$py = '.\ml\.venv\Scripts\python.exe'`, each command below exited 0:
+
+| Command | Exit | Result |
+|---|---:|---|
+| `$py -B ml/src/check_env.py` | 0 | PASS |
+| `$py -B ml/src/verify_mitdb_integrity.py` | 0 | PASS |
+| `$py -B ml/src/inspect_mitdb.py` | 0 | PASS |
+| `$py -B ml/src/test_segmentation.py` | 0 | PASS |
+| `$py -B ml/src/audit_mitdb_preprocessing.py` | 0 | PASS |
+| `$py -B ml/src/verify_mitdb_normalization.py` | 0 | PASS |
+| `$py -B ml/src/verify_mitdb_processed.py` | 0 | PASS |
+| `$py -B ml/src/test_week1_negative.py` | 0 | PASS, 34/34 cases |
+| `$py -O ml/src/verify_mitdb_integrity.py` | 0 | PASS |
+| `$py -O ml/src/verify_mitdb_processed.py` | 0 | PASS |
+| `$py -B ml/src/verify_ptbxl_normalization.py` | 0 | PASS |
+| `$py -B ml/src/verify_ptbxl.py` | 0 | PASS |
+| `$py -B ml/src/test_week2_baseline.py` | 0 | PASS, 3 tests |
+| `$py -B ml/src/train_mitdb_baseline.py --config mitdb_week2_baseline.json` | 0 | PASS, epoch 3 selected |
+| `$py -B ml/src/verify_week2_baseline.py` | 0 | PASS, hashes, source, weights, metrics and confusion matrix |
+| `git diff --check` | 0 | PASS |
+
+An initial post-run verifier attempt failed because CPU inference changed one
+borderline N prediction relative to the recorded GPU run. The verifier was
+corrected to use the recorded device, included in the implementation commit,
+and the full read-only Week 1 → pre-test → training → post-verification sequence
+was rerun successfully from that commit. No model or training setting changed.
 
 ## I2/I3 interface status
 
