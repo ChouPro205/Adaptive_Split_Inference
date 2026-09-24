@@ -8,12 +8,12 @@
 |---|---|
 | [`contracts/README.md`](README.md) | `contracts/` lưu giao diện và test vector dùng chung. |
 | [I1 v1](i1_device_edge_packet_v1.md), mục 6–8, 11, 18–19 | I1 là giao thức Device–Edge ở trạng thái `REVIEW_CANDIDATE`. Model input không đồng nghĩa activation tại split; protocol golden vector mục 19 chỉ kiểm codec/CRC. I1 v1 bắt buộc `flags = 0`, `nonce_length = 0`, không có protected payload. |
-| [I2, bản đề xuất ở PR #7](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/525755ffb8ce2a9978c9f997e362d69991a8c9a1/contracts/I2_SV3_provisional_interface.md) | I2 **chưa được phê duyệt/triển khai**. Mục tiêu giao diện bảo vệ về sau là activation INT8, NCL, `N=1`, giữ nguyên số byte và phục hồi bit-exact; FP32 vẫn là tham chiếu so sánh mô hình Tuần 3. PR #7 chưa nằm trong `main`, nên dẫn chiếu này trỏ tới commit cụ thể và không nhập PR #7 vào PR tài liệu. |
+| [I2/1 đã chốt quy cách kỹ thuật](i2_protection_v1.md) | PR #7 đã vào `main`; bản đề xuất I2 trong đó được thay bằng đặc tả này. I2/1 là phép biến đổi đảo ngược trên activation INT8 NCL, `N=1`; **payload tensor** giữ nguyên số byte, descriptor/nonce thêm overhead. Chưa có tích hợp Device–Edge hoặc tính bảo mật mật mã. FP32 vẫn là tham chiếu so sánh mô hình Tuần 3. |
 | [Hợp đồng dữ liệu ML Tuần 1](../ml/docs/week1_data_contract.md), [quy trình dữ liệu](../ml/docs/week1_data_protocol.md) | Chỉ dữ liệu/tiền xử lý đã khóa: MIT-BIH hoặc PTB-XL, các manifest và thống kê chuẩn hóa có hash. Các tài liệu đó chưa khóa kiến trúc, tensor name, split hay lượng tử hóa. |
 
 Đây là phép thử **cục bộ FP32** của hai Conv, không định nghĩa `split_id`, `model_profile_id`, packet, nonce, key hay thuật toán bảo vệ. Không được đặt output hai Conv vào `PROTECTED_PAYLOAD` của I1 v1. Nếu sau này dùng output làm activation Device–Edge, SV1/SV2/SV3 phải chốt profile I1 và một revision giao thức được duyệt riêng; mục tiêu I2 INT8 không tự sửa I1 v1.
 
-[Ứng viên SV3 Tuần 2 trong PR #7](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/525755ffb8ce2a9978c9f997e362d69991a8c9a1/ml/docs/week2_baseline.md) là baseline MIT-BIH, **chưa khóa mô hình Tuần 3**. PR đó mô tả checkpoint tạo cục bộ, không giao checkpoint trong repository. Không lấy shape, weight, hash checkpoint hay kết quả đo Tuần 2 làm giá trị Tuần 3. Firmware hiện tại chưa có kernel hai Conv; [báo cáo SV1 Tuần 2](../docs/sv1_device_week2_report.md) không phải số đo firmware Tuần 3.
+[Ứng viên SV3 Tuần 2 đã merge trong PR #7](../ml/docs/week2_baseline.md) là baseline MIT-BIH, **chưa khóa mô hình Tuần 3**. Tài liệu đó mô tả checkpoint tạo cục bộ, không giao checkpoint trong repository. Không lấy shape, weight, hash checkpoint hay kết quả đo Tuần 2 làm giá trị Tuần 3. Firmware hiện tại chưa có kernel hai Conv; [báo cáo SV1 Tuần 2](../docs/sv1_device_week2_report.md) không phải số đo firmware Tuần 3.
 
 ## 2. Quy tắc gói và định danh đã chốt
 
