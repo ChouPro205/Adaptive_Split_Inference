@@ -1,4 +1,4 @@
-# Demo SV1 Tuần 1 trên PCA10059
+# Hướng dẫn USB DFU và chạy demo Active SV1 trên PCA10059
 
 ## 1. Vào USB DFU bootloader
 
@@ -18,18 +18,24 @@ Chạy trước và sau khi nhấn RESET; cổng mới xuất hiện là cổng 
 [System.IO.Ports.SerialPort]::GetPortNames() | Sort-Object
 ```
 
-## 3. Nạp firmware bằng đúng một lệnh
+## 3. Nạp firmware bằng script DFU
 
-Tại `D:\HUST\Adaptive_Split_Inference`, thay `COM7` bằng cổng bootloader
-vừa tìm:
+Từ thư mục gốc của repository, nhập cổng bootloader vừa tìm rồi chạy script:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\flash_week1_demo.ps1 -Port COM7
+$BootloaderPort = Read-Host 'Cổng COM của bootloader'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\flash_week1_demo.ps1 -Port $BootloaderPort
 ```
 
 Script chỉ gọi `nrfutil nrf5sdk-tools dfu usb-serial` với gói
 `device\artifacts\adaptive_split_week1_demo.zip`. Thành công khi lệnh kết
 thúc bằng `DFU succeeded (exit code 0)`.
+
+Nếu gói ZIP chưa tồn tại, tạo lại từ thư mục gốc trước khi nạp:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\build_week1_demo.ps1
+```
 
 ## 4. Tìm lại cổng COM của firmware
 
@@ -44,10 +50,12 @@ dụng số cổng cũ nếu chưa kiểm tra.
 
 ## 5. Mở Serial Monitor
 
-Thay `COM8` bằng cổng ứng dụng vừa tìm:
+Nhập cổng ứng dụng vừa tìm; không dùng lại cổng bootloader nếu Windows đã gán
+một số COM khác:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\monitor_week1_demo.ps1 -Port COM8
+$ApplicationPort = Read-Host 'Cổng COM của ứng dụng USB CDC'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\monitor_week1_demo.ps1 -Port $ApplicationPort
 ```
 
 Baud rate mặc định là 115200. Nhấn `Ctrl+]` để thoát. Khi DTR được bật,
@@ -56,11 +64,13 @@ firmware in banner và chạy benchmark; đóng rồi mở lại monitor sẽ ch
 Log dự kiến:
 
 ```text
-ADAPTIVE SPLIT INFERENCE - SV1 WEEK 1
+ADAPTIVE SPLIT INFERENCE - SV1 WEEK 1 + WEEK 2 MARKERS
 Board: nRF52840 Dongle PCA10059
 CPU: 64 MHz
 USB CDC: READY
 LED heartbeat: RUNNING
+GPIO marker self-test: RUNNING
+GPIO marker self-test: <HEAD|PROTECTION|TX|WAIT> ON
 DWT benchmark: START
 Warm-up runs: 20; measured runs: 20; iterations/run: 10000
 Run 01: ... cycles
@@ -81,10 +91,16 @@ RESULT: PASS
 
 - [ ] LED xanh heartbeat liên tục, một chu kỳ bật/tắt khoảng 1 giây.
 - [ ] Có banner đúng board PCA10059 và USB CDC READY.
+- [ ] Có trạng thái GPIO marker self-test; nếu đang quan sát D0–D3, các marker
+      HEAD, PROTECTION, TX và WAIT lần lượt chuyển mức.
 - [ ] Có đủ `Run 01` đến `Run 20` sau 20 warm-up.
 - [ ] Deviation nhỏ hơn 1.000% và log tự in `RESULT: PASS`.
-- [ ] Build report: Flash 47,736 B / 1,020 KB (4.57%).
-- [ ] Build report: RAM 18,168 B / 256 KB (6.93%).
+- [ ] Script build kết thúc bằng `RESULT: PASS (build + DFU package)`.
+
+Số liệu Week 1 lịch sử 47,736 B Flash và 18,168 B RAM được giữ trong
+[báo cáo SV1/Device Week 1](../docs/sv1_device_week1_report.md). Source Active
+hiện có thêm marker Week 2 nên kích thước build có thể khác; dùng báo cáo linker
+của lần build hiện tại làm kết quả kiểm tra.
 
 ## Nếu không thấy COM ứng dụng
 

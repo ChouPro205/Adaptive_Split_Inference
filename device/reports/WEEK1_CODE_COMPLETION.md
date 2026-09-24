@@ -16,7 +16,7 @@ Thời điểm kiểm tra: 2026-09-11 (Asia/Saigon)
 - `device/scripts/build_week1_demo.ps1`
 - `device/scripts/flash_week1_demo.ps1`
 - `device/scripts/monitor_week1_demo.ps1`
-- `device/DEMO_TOMORROW.md`
+- `device/week1_dfu_demo_guide.md`
 - `device/reports/WEEK1_CODE_COMPLETION.md`
 
 Đã đọc/kiểm tra nhưng không cần sửa: `device/CMakeLists.txt`, `.gitignore`,

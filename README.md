@@ -56,7 +56,7 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
 
 ## Tài liệu
 
-- [Báo cáo Week 1](docs/week1_report.md)
-- [Báo cáo Week 2](docs/week2_report.md)
+- [Báo cáo SV1/Device Week 1](docs/sv1_device_week1_report.md)
+- [Báo cáo SV1/Device Week 2](docs/sv1_device_week2_report.md)
 - [Kết quả đo Week 2](results/week2/README.md)
 - [Mục lục tài liệu](docs/README.md)
