@@ -4,7 +4,7 @@ This is one candidate 1D-CNN for the frozen Week 1 MIT-BIH processed data. It
 does not freeze the architecture for Week 3. No preprocessing, patient split,
 normalization, or test distribution was changed.
 
-## Reproduce
+## Verify the preserved historical run
 
 From the repository root in the Week 1 Python 3.11 environment, run these
 steps in order. The Week 1 commands are read-only; the Week 1 orchestrator is
@@ -19,15 +19,42 @@ $py = '.\ml\.venv\Scripts\python.exe'
 & $py -B ml/src/verify_ptbxl_normalization.py
 & $py -B ml/src/verify_ptbxl.py
 & $py -B ml/src/test_week2_baseline.py
-& $py -B ml/src/train_mitdb_baseline.py --config mitdb_week2_baseline.json
-& $py -B ml/src/verify_week2_baseline.py
+& $py -B ml/src/test_week2_provenance.py --verify-historical-artifacts
+& $py -B ml/src/verify_week2_baseline.py --historical
 ```
 
 The pre-training test requires only Week 1 data and the committed Week 2
 source/config. The post-run verifier requires generated artifacts. Training
-requires the four scientific source/config files recorded in run provenance to
+requires the six scientific source/config files in the current policy to
 be tracked and unchanged relative to HEAD. Unrelated untracked files do not
 block a run.
+
+PR #7 adds `ml/src/week1_common.py` and `ml/src/mitdb_common.py` to the four
+original paths. `SCIENTIFIC_SOURCE_FILES` in the training module is the single
+definition reused by both gates. Both reject dirty helpers before training,
+artifact loading or evaluation. The negative test commits a copy of current
+source in an isolated temporary Git repository, checks both clean gates, adds
+a harmless comment to each helper in turn, and requires exit 1 with the exact
+provenance error from both gates. It restores bytes in `finally`, checks Git
+diffs, and confirms the real helpers never changed. Its optional artifact check
+verifies a copy of the historical evidence from that clean candidate snapshot.
+
+The existing run from `8e98a0e4851abc979feb5fd5b97ece612b02cfaa` still has
+only four recorded source hashes, `scientific_sources_clean=true`, and
+**`worktree_dirty=true`**. These historical values are intentionally preserved,
+not retrospectively upgraded to six-file coverage. `--historical` is limited
+to that commit: it verifies the four original hashes against Git, checks the
+unchanged model/data/config and both helpers against the historical commit,
+and checks evaluation-function ASTs for unchanged computation. It separately
+enforces today's six-file clean-worktree gate. The changed training-file hash
+is not passed off as a historical match. Default verification requires all six
+recorded hashes for a future run.
+
+No new training run is needed for this review. The training entry point now
+refuses to overwrite an existing Week 2 manifest. Any future approved run must
+use a separate checkout/evidence location; the historical manifest and local
+artifacts must be retained. The training/verification command table below is
+evidence from the historical implementation, not an instruction to overwrite it.
 
 The run reads `ml/configs/mitdb_week2_baseline.json`, the authoritative
 `ml/configs/mitdb_week1_config.json`, its patient manifest and normalization
@@ -170,3 +197,11 @@ was rerun successfully from that commit. No model or training setting changed.
 cryptographic choices marked `BLOCKED_ON_GV_APPROVAL`.
 `contracts/I3_SV3_input.md` records SV3's consulted input and open schema
 decisions. Neither document implements P1 or fixes the final shared LUT.
+
+The I2 team-review target is INT8 activation bytes in NCL layout with N=1,
+length-preserving protection, byte-exact reversal, and model/split/profile,
+shape and size validation. The Week 2 model remains FP32. Algorithm, PRNG,
+key/nonce, derivation, wire metadata, protection errors and normative Python/C
+vectors remain provisional. Current I1 v1 still has `flags=0`, protected
+payload disabled and `nonce_length=0`; activation protection needs a separately
+approved I1 revision coordinated with its owners.

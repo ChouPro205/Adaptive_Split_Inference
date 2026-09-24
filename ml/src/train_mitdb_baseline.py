@@ -27,6 +27,8 @@ SCIENTIFIC_SOURCE_FILES = (
     "ml/src/mitdb_baseline_model.py",
     "ml/src/mitdb_week2_data.py",
     "ml/src/train_mitdb_baseline.py",
+    "ml/src/week1_common.py",
+    "ml/src/mitdb_common.py",
 )
 
 
@@ -42,18 +44,24 @@ def sha256(path) -> str:
     return digest.hexdigest()
 
 
-def scientific_source_provenance(config_path) -> dict:
-    """Bind a run to committed, unchanged executable source and config."""
+def require_clean_scientific_sources() -> None:
+    """Shared train/verify gate; unrelated dirty files do not affect it."""
     repo = ML_ROOT.parent
-    require(config_path.resolve() == (repo / SCIENTIFIC_SOURCE_FILES[0]).resolve(),
-            "Training must use the tracked Week 2 config")
     for relative in SCIENTIFIC_SOURCE_FILES:
         tracked = subprocess.run(["git", "ls-files", "--error-unmatch", "--", relative],
                                  cwd=repo, capture_output=True, check=False)
         require(tracked.returncode == 0, f"Scientific source is not tracked: {relative}")
-    clean = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", *SCIENTIFIC_SOURCE_FILES],
-                           cwd=repo, check=False)
-    require(clean.returncode == 0, "Scientific source/config differs from HEAD")
+        clean = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", relative],
+                               cwd=repo, check=False)
+        require(clean.returncode == 0, f"Scientific source/config differs from HEAD: {relative}")
+
+
+def scientific_source_provenance(config_path) -> dict:
+    """Bind a run to committed, unchanged executable source and config."""
+    repo = ML_ROOT.parent
+    require_clean_scientific_sources()
+    require(config_path.resolve() == (repo / SCIENTIFIC_SOURCE_FILES[0]).resolve(),
+            "Training must use the tracked Week 2 config")
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
     dirty = bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=repo, text=True).strip())
     return {"source_git_sha": commit,
@@ -159,6 +167,8 @@ def main() -> None:
     args = parser.parse_args()
     config_path, settings = load_config(args.config)
     source = scientific_source_provenance(config_path)
+    require(not (ML_ROOT / "provenance" / "week2_run_manifest.json").exists(),
+            "Refusing to overwrite existing Week 2 evidence; use a separate run checkout")
     week1, identifiers, arrays = load_week1_splits(settings["week1_config"])
     require(settings["seed"] == week1["split"]["seed"], "Week 2 seed differs from Week 1 project seed")
     require(settings["class_weighting"] == "none" and settings["augmentation"] == "none"

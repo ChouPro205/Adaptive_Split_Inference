@@ -14,12 +14,19 @@ from torch.utils.data import DataLoader, TensorDataset
 
 from mitdb_baseline_model import MitdbBaselineCNN, architecture_metadata
 from mitdb_week2_data import load_week1_splits
-from train_mitdb_baseline import SCIENTIFIC_SOURCE_FILES, evaluate, set_determinism, sha256
+from train_mitdb_baseline import (SCIENTIFIC_SOURCE_FILES, evaluate,
+                                  require_clean_scientific_sources, set_determinism, sha256)
 from week1_common import ML_ROOT, load_config, ml_path, require, run_cli
 
 
 ARTIFACT_NAMES = ("training_config.json", "architecture.json", "history.json",
                   "metrics.json", "best_state_dict.pt", "best_checkpoint.pt")
+HISTORICAL_SOURCE_COMMIT = "8e98a0e4851abc979feb5fd5b97ece612b02cfaa"
+
+
+def verification_provenance_gate() -> None:
+    """Check today's full source set before any artifact or dataset access."""
+    require_clean_scientific_sources()
 
 
 def same_metrics(actual: dict, recorded: dict, label: str) -> None:
@@ -31,7 +38,8 @@ def same_metrics(actual: dict, recorded: dict, label: str) -> None:
     require(actual["per_class"] == recorded["per_class"], f"{label}: per-class metrics changed")
 
 
-def verify() -> dict:
+def verify(historical: bool = False) -> dict:
+    verification_provenance_gate()
     repo = ML_ROOT.parent
     config_path, settings = load_config("mitdb_week2_baseline.json")
     output = ml_path(settings["output_dir"])
@@ -75,20 +83,43 @@ def verify() -> dict:
             run["scientific_sources_clean"] is True, "Scientific sources were not clean at run time")
     require(source["source_git_sha"] == run["source_git_sha"], "Source commit mismatch")
     require(source["source_files_sha256"] == run["source_files_sha256"], "Source hashes differ")
-    require(set(source["source_files_sha256"]) == set(SCIENTIFIC_SOURCE_FILES),
+    # The historical run really recorded four hashes, not six. Do not retrofit it.
+    recorded_files = SCIENTIFIC_SOURCE_FILES[:4] if historical else SCIENTIFIC_SOURCE_FILES
+    if historical:
+        require(source["source_git_sha"] == HISTORICAL_SOURCE_COMMIT,
+                "Historical mode is restricted to the recorded Week 2 implementation commit")
+        require(source["worktree_dirty"] is True and run["worktree_dirty"] is True,
+                "Historical worktree_dirty=true must be preserved")
+    require(set(source["source_files_sha256"]) == set(recorded_files),
             "Incomplete scientific source hashes")
     require(source["config_sha256"] == run["config_sha256"] == sha256(config_path),
             "Week 2 config hash mismatch")
     for relative, digest in source["source_files_sha256"].items():
-        require(sha256(repo / relative) == digest, f"Current scientific source changed: {relative}")
+        if not historical or relative != "ml/src/train_mitdb_baseline.py":
+            require(sha256(repo / relative) == digest, f"Current scientific source changed: {relative}")
         blob = subprocess.run(["git", "show", f"{source['source_git_sha']}:{relative}"],
                               cwd=repo, capture_output=True, check=False)
         require(blob.returncode == 0, f"Source commit lacks {relative}")
         require(hashlib.sha256(blob.stdout).hexdigest() == digest,
                 f"Source commit does not contain run source: {relative}")
-    clean = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", *SCIENTIFIC_SOURCE_FILES],
-                           cwd=repo, check=False)
-    require(clean.returncode == 0, "Scientific source has uncommitted changes")
+    if historical:
+        # These were NOT hashed by the old run. This is a present-day Git check,
+        # not a claim of historical six-file provenance coverage.
+        for relative in SCIENTIFIC_SOURCE_FILES[4:]:
+            blob = subprocess.run(["git", "show", f"{HISTORICAL_SOURCE_COMMIT}:{relative}"],
+                                  cwd=repo, capture_output=True, check=False)
+            require(blob.returncode == 0 and hashlib.sha256(blob.stdout).hexdigest() == sha256(repo / relative),
+                    f"Historical helper differs from current source: {relative}")
+        # The review patch may change training provenance, never evaluation math.
+        import ast
+        import inspect
+        old = subprocess.check_output(["git", "show", f"{HISTORICAL_SOURCE_COMMIT}:ml/src/train_mitdb_baseline.py"], cwd=repo)
+        old_functions = {node.name: node for node in ast.parse(old).body if isinstance(node, ast.FunctionDef)}
+        from train_mitdb_baseline import classification_metrics
+        for function in (evaluate, classification_metrics, set_determinism):
+            current = ast.parse(inspect.getsource(function)).body[0]
+            require(ast.dump(current, include_attributes=False) == ast.dump(old_functions[function.__name__], include_attributes=False),
+                    f"Historical evaluation function changed: {function.__name__}")
 
     week1, identifiers, arrays = load_week1_splits(settings["week1_config"])
     require(source["dataset_artifacts"] == run["dataset_artifacts"] == identifiers,
@@ -144,8 +175,10 @@ def verify() -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
-    result = verify()
+    parser.add_argument("--historical", action="store_true",
+                        help="Verify the preserved four-hash run from 8e98a0e; enforce today's six-file clean gate")
+    args = parser.parse_args()
+    result = verify(historical=args.historical)
     for key, value in result.items():
         print(f"{key}: {value}")
     print("STATUS: PASS")
