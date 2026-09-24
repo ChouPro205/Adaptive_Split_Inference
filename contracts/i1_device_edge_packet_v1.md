@@ -50,11 +50,11 @@ Những kết luận sau được dùng để thiết kế contract:
   tensor dữ liệu đầu vào trước model cho MIT-BIH và PTB-XL, nhưng chủ động hoãn
   ONNX opset, tensor name, split point, quantization scale/zero point và header
   deployment.
-- [`ml/README.md`](../ml/README.md),
-  [`ml/docs/week1_requirements_traceability.md`](../ml/docs/week1_requirements_traceability.md)
-  và [`ml/docs/week1_verification.md`](../ml/docs/week1_verification.md) xác
-  nhận phần ML hiện tại không train 1D-CNN, không export model deployment,
-  không có ONNX, split-model deployment hoặc quantization.
+- [`ml/docs/week2_baseline.md`](../ml/docs/week2_baseline.md) hiện mô tả một ứng
+  viên 1D-CNN MIT-BIH FP32 và lần train Tuần 2. Checkpoint ở thư mục local bị
+  ignore; kiến trúc chưa khóa cho Tuần 3. Các tài liệu Tuần 1 vẫn chỉ xác minh
+  dữ liệu trước model. Chưa có export deployment, split activation, ONNX hay
+  quantization cho I1.
 
 Không tìm thấy quyết định repository nào chốt transport I1, model/split ID,
 tensor trung gian, quantization, response inference, timeout/retry hoặc giới
@@ -432,7 +432,10 @@ là MAC, chữ ký hay authentication và không chống sửa đổi có chủ 
 
 ## 11. Nonce và bảo vệ dữ liệu
 
-Contract hiện tại chưa có AEAD/MAC hoặc thuật toán protection được chọn. Do đó:
+Contract **I1 v1** hiện tại chưa có AEAD/MAC hoặc thuật toán protection được
+chọn cho wire. [I2/1](i2_protection_v1.md) đã chốt phép biến đổi đảo ngược
+activation **ngoài I1 v1**, không cung cấp authentication/confidentiality và
+không kích hoạt flag/nonce của v1. Do đó:
 
 - Sender MUST đặt `flags = 0`, `nonce_length = 0` và không ghi byte nonce.
 - `nonce_offset` vẫn là `32 + metadata_length`; khi length bằng 0, payload bắt
@@ -625,14 +628,14 @@ class index nếu deployment profile chưa quy định phép biến đổi.
 
 | Hạng mục | Trạng thái | Bằng chứng |
 |---|---|---|
-| Kiến trúc 1D-CNN | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | [`ml/README.md`](../ml/README.md), [`week1_verification.md`](../ml/docs/week1_verification.md) |
-| Model đã train/checkpoint | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | [`ml/README.md`](../ml/README.md), [`week1_verification.md`](../ml/docs/week1_verification.md) |
-| Model artifact/ONNX/TFLite/CMSIS-NN | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | [`week1_data_contract.md`](../ml/docs/week1_data_contract.md), [`week1_requirements_traceability.md`](../ml/docs/week1_requirements_traceability.md) |
+| Kiến trúc 1D-CNN | Có **ứng viên Tuần 2**, chưa khóa cho split deployment | [`week2_baseline.md`](../ml/docs/week2_baseline.md) |
+| Model đã train/checkpoint | Có bằng chứng train Tuần 2; checkpoint local bị ignore, chưa bàn giao cho I1 | [`week2_baseline.md`](../ml/docs/week2_baseline.md), [`week2_run_manifest.json`](../ml/provenance/week2_run_manifest.json) |
+| Model artifact/ONNX/TFLite/CMSIS-NN cho deployment | `DEFERRED – chưa được triển khai` | [`week2_baseline.md`](../ml/docs/week2_baseline.md) |
 | Model deployment/version/profile | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | [`ml/README.md`](../ml/README.md), [`week1_verification.md`](../ml/docs/week1_verification.md) |
 | Split point và activation metadata | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | [`week1_data_contract.md`](../ml/docs/week1_data_contract.md) |
 | Quantization | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | [`week1_requirements_traceability.md`](../ml/docs/week1_requirements_traceability.md), [`week1_verification.md`](../ml/docs/week1_verification.md) |
 | Tail-model output/logits/probability | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | [`ml/README.md`](../ml/README.md), [`week1_verification.md`](../ml/docs/week1_verification.md) |
-| ML deployment golden activation | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | Không có model/split deployment; xem [`week1_verification.md`](../ml/docs/week1_verification.md) |
+| ML deployment golden activation | `DEFERRED – chưa được triển khai` | Chưa có split activation thật; xem [`week2_baseline.md`](../ml/docs/week2_baseline.md) |
 
 ### 18.2 Deployment profile cần điền trước khi `FROZEN`
 
@@ -864,14 +867,15 @@ trên `request_id` chưa đáng tin.
 | `max_payload_bytes`/`max_packet_bytes` | `BLOCKED BY ML PROFILE` | Châu + Trung | Không thể hard-limit buffer hoặc chứng minh vừa RAM Device/Edge. | Có `max_tensor_bytes`, sau đó benchmark/budget RAM và chốt hai constant. |
 | Timeout/retry/backoff | `OPEN` | Châu + Trung | Chưa có giá trị interoperable hoặc retry horizon để sizing cache. | Benchmark end-to-end trên binding đã chọn và chốt timeout, retry count, backoff. |
 | Duplicate-cache capacity/session scope | `OPEN` | Trung | Chưa chốt lifetime/capacity; retry có thể bị thực thi lại sau eviction. | Chốt logical-session identity, fingerprint, capacity và lifetime bao phủ retry horizon. |
-| Nonce/protection | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | Kỳ Anh + Châu + Trung | v1 chỉ có CRC, không có confidentiality/authentication. | Chốt threat model; nếu cần protection, định nghĩa AEAD/MAC, key/nonce/tag và protocol version tương ứng. |
+| Nonce/protection | `DEFERRED` cho wire v1 | Kỳ Anh + Châu + Trung | v1 chỉ có CRC; I2/1 là biến đổi offline, không có confidentiality/authentication. | Nếu cần bảo mật mật mã, định nghĩa AEAD/MAC, key/nonce/tag và version riêng; nếu chỉ cần I2/1, xem đề xuất I1 v2 và duyệt/kiểm thử trước triển khai. |
 | Device implementation sign-off | `OPEN` | Châu | Contract chưa thể `FROZEN` dù phần protocol đã được chấp thuận về thiết kế. | Châu hoàn tất checklist pack/unpack, limits và cross-device vector rồi ký bảng sign-off. |
 
 ## 23. Nguồn dữ liệu và tài liệu tham chiếu trong repository
 
 | Nguồn | Thông tin được dùng trong contract |
 |---|---|
-| [`ml/README.md`](../ml/README.md) | Phạm vi Week 1; xác nhận chưa train 1D-CNN, chưa export deployment model; môi trường và pipeline tổng quát. |
+| [`ml/README.md`](../ml/README.md) | Phạm vi Week 1; tại thời điểm tài liệu Tuần 1 chưa train 1D-CNN; môi trường và pipeline tổng quát. Xem thêm baseline Tuần 2 ở dòng dưới. |
+| [`ml/docs/week2_baseline.md`](../ml/docs/week2_baseline.md) | Ứng viên 1D-CNN FP32 đã train; checkpoint local bị ignore, chưa chốt split/deployment/quantization. |
 | [`ml/docs/week1_data_contract.md`](../ml/docs/week1_data_contract.md) | Input views, dtype/label, lead order, multi-label semantics; ONNX/tensor name/split/quantization được hoãn. |
 | [`ml/docs/week1_data_protocol.md`](../ml/docs/week1_data_protocol.md) | Sampling, segmentation, class mapping, normalization và split policy của MIT-BIH/PTB-XL. |
 | [`ml/docs/week1_requirements_traceability.md`](../ml/docs/week1_requirements_traceability.md) | Xác nhận integration chỉ là pre-model và không có 1D-CNN/ONNX/split deployment/quantization. |
@@ -886,6 +890,9 @@ trên `request_id` chưa đáng tin.
 | [`ml/src/verify_ptbxl_normalization.py`](../ml/src/verify_ptbxl_normalization.py) | Xác minh independent output `float32`, lead count/order và statistics. |
 | [`ml/provenance/week1_run_manifest.json`](../ml/provenance/week1_run_manifest.json) | Provenance của 19 lệnh Week 1 thành công và hashes nguồn/artifact. |
 
-Không có model/checkpoint metadata, ONNX, TFLite, CMSIS-NN, deployment
-manifest, Week 2/3 ML document hoặc quantization artifact trong tree ML hiện
-tại. Vì vậy contract không dẫn nguồn hay tạo giả các artefact này.
+Đã có tài liệu/bằng chứng ứng viên model Tuần 2; chưa có checkpoint bàn giao,
+ONNX, TFLite, CMSIS-NN, split activation, deployment manifest hoặc quantization
+artifact trong Git tree. [I2/1](i2_protection_v1.md) chốt phép biến đổi activation
+offline và [đề xuất I1 v2](i1_device_edge_packet_v2_proposal.md) dành riêng cho
+truyền transformed payload; cả hai **không đổi** bất kỳ byte/flag/nonce rule nào
+của I1 v1 và không làm I1 v1 thành `FROZEN`.
