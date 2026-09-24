@@ -16,6 +16,11 @@ agreed by the team. No `Pi(s,rho)` values, energy measurements, split-point
 profiles, or controller fields are available from this Week 2 baseline. SV3
 therefore supplies no fabricated LUT rows or final field names for them.
 
+The later [I2/1 technical specification](i2_protection_v1.md) fixes one
+reversible transform and does not define a numeric `rho` or provide privacy,
+energy, or latency measurements. I3 still needs a separate measured metric and
+approved schema; no I2 test vector is an I3 LUT row.
+
 Open for the shared schema owner and GV: complete field inventory, index
 representation for `(s, rho)`, metric semantics, required units, versioning,
 missing-value rules, and approval of the combined LUT. No `lut.json` is

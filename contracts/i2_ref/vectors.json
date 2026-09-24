@@ -1,0 +1,35 @@
+{
+  "contract": "I2/1",
+  "note": "Synthetic public keys and activations only; these are transform vectors, not ML activations or encryption claims.",
+  "valid": [
+    {
+      "id": "three_channels_extreme_int8",
+      "key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "nonce_hex": "010000000100000000000000",
+      "profile": {"model_profile_id": 270544960, "split_id": 7, "channels": 3, "length": 4, "key_id": 16909060, "max_payload_bytes": 32768},
+      "descriptor_hex": "0101020140302010070001000300000004000000040302010c000000",
+      "input_hex": "80ff00017f05fe64643210aa",
+      "output_hex": "eb6c6b6a86889b3dffad6ba5"
+    },
+    {
+      "id": "one_channel",
+      "key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "nonce_hex": "020000000100000000000000",
+      "profile": {"model_profile_id": 2, "split_id": 1, "channels": 1, "length": 5, "key_id": 2, "max_payload_bytes": 32768},
+      "descriptor_hex": "01010201020000000100010001000000050000000200000005000000",
+      "input_hex": "0080ff7f01",
+      "output_hex": "6beb0080d6"
+    }
+  ],
+  "invalid": [
+    {"id": "version_2", "base": "three_channels_extreme_int8", "change": "descriptor[0]=2", "expected": "UNSUPPORTED_VERSION"},
+    {"id": "algorithm_2", "base": "three_channels_extreme_int8", "change": "descriptor[1]=2", "expected": "UNSUPPORTED_ALGORITHM"},
+    {"id": "wrong_dtype", "base": "three_channels_extreme_int8", "change": "descriptor[2]=1", "expected": "INVALID_METADATA"},
+    {"id": "oversized_shape", "base": "three_channels_extreme_int8", "change": "descriptor C=256,L=129,payload_length=33024", "expected": "SIZE_LIMIT"},
+    {"id": "wrong_model", "base": "three_channels_extreme_int8", "change": "active_profile.model_profile_id+=1", "expected": "PROFILE_MISMATCH"},
+    {"id": "wrong_key_id", "base": "three_channels_extreme_int8", "change": "active_profile.key_id+=1", "expected": "KEY_SCOPE_MISMATCH"},
+    {"id": "short_payload", "base": "three_channels_extreme_int8", "change": "input=input[:-1]", "expected": "LENGTH_MISMATCH"},
+    {"id": "short_nonce", "base": "three_channels_extreme_int8", "change": "nonce=nonce[:-1]", "expected": "INVALID_NONCE"},
+    {"id": "small_output_buffer_c", "base": "three_channels_extreme_int8", "change": "output_capacity=input_length-1", "expected": "BUFFER_TOO_SMALL"}
+  ]
+}
