@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "week": 2,
+  "candidate": "mitdb_week2_cnn_v1",
+  "source_git_sha": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa",
+  "source_files_sha256": {
+    "ml/configs/mitdb_week2_baseline.json": "273a563af79126c6ed6762c4bd01a186de055b6dea390688eefcf7522ae2e5e3",
+    "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+    "ml/src/mitdb_week2_data.py": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907",
+    "ml/src/train_mitdb_baseline.py": "a0fa0becf2539be37db9105eccb60d8ded8c25fae04d36fdda04ce6f82446152"
+  },
+  "scientific_sources_clean": true,
+  "worktree_dirty": true,
+  "config_sha256": "273a563af79126c6ed6762c4bd01a186de055b6dea390688eefcf7522ae2e5e3",
+  "dataset_artifacts": {
+    "week1_config_sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54",
+    "patient_manifest_sha256": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe",
+    "normalization_sha256": "37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c",
+    "processed_manifest_sha256": "f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c",
+    "processed_artifacts": {
+      "train_X.npy": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f",
+      "train_y.npy": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752",
+      "train_metadata.csv": "86c5c3a634fc5adfca09ec2f8378efb0d52f21205cfaf9470432f89ffdc0977a",
+      "val_X.npy": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732",
+      "val_y.npy": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43",
+      "val_metadata.csv": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+      "test_X.npy": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e",
+      "test_y.npy": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6",
+      "test_metadata.csv": "02a6a91c0e35710d0be13f10b2360e034918f546b3ba2c7df7a2fd484ecd1178"
+    }
+  },
+  "best_epoch": 3,
+  "validation_accuracy": 0.8448791265921497,
+  "test_accuracy": 0.9822097378277154,
+  "artifacts": {
+    "ml/data/week2/mitdb_baseline/training_config.json": {
+      "sha256": "52cc1cb425ecdee5ec0996f8dcf3cad3a7cfc8cf1407427835e6a712875a525c",
+      "bytes": 661
+    },
+    "ml/data/week2/mitdb_baseline/architecture.json": {
+      "sha256": "f82aca937259873f9c3a9c2ba57ddb6f9c601bed9d12e5fbc5174575a3b7e44d",
+      "bytes": 2438
+    },
+    "ml/data/week2/mitdb_baseline/history.json": {
+      "sha256": "cde775d79ec6f381176cff192853f28b6e0bd260842fc230733244972f3ec3db",
+      "bytes": 22063
+    },
+    "ml/data/week2/mitdb_baseline/metrics.json": {
+      "sha256": "06101e61c9e423fc3e3fcbf843a4b32b3dd7616581b3cb63bea374afa5ba27a6",
+      "bytes": 8188
+    },
+    "ml/data/week2/mitdb_baseline/best_state_dict.pt": {
+      "sha256": "f9d5763da844ab5ccdfc36a0899e0763501431c423f51ef1ce4e06e14769453f",
+      "bytes": 445495
+    },
+    "ml/data/week2/mitdb_baseline/best_checkpoint.pt": {
+      "sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+      "bytes": 450551
+    }
+  }
+}

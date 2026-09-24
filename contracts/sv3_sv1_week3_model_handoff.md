@@ -1,138 +1,94 @@
-# Bàn giao mô hình và 20 mẫu kiểm thử SV3 → SV1, Tuần 3
+# Hợp đồng bàn giao mô hình Tuần 3: SV3 → SV1
 
-Trạng thái: **DRAFT – chờ SV3 cung cấp hiện vật và SV1/SV3 chốt các điểm mở**. Tài liệu này là yêu cầu bàn giao để chạy và xác minh hai lớp convolution đầu trên nRF52840 Dongle; các ô chưa có không phải kết quả đã nghiệm thu.
+**Quy cách gói bàn giao: SV1 chốt, phiên bản `w3-sv1-handoff-v1`. Hiện vật và kết quả nghiệm thu: CHƯA CÓ.** Tài liệu này quy định đầu vào để SV1 chạy hai lớp `Conv1d` đầu trên nRF52840 Dongle và so với PyTorch. Việc chốt **định dạng** ở đây không xác nhận kiến trúc, checkpoint, trọng số, 20 mẫu hoặc kết quả đo của SV3. Mọi ô cần giá trị thực dưới đây phải được SV3 điền trước khi nghiệm thu.
 
-## Quan hệ với các hợp đồng hiện có
+## 1. Phạm vi và nguồn ràng buộc
 
-| Tài liệu | Quy định được kế thừa | Phần tài liệu này bổ sung |
-|---|---|---|
-| [`contracts/README.md`](README.md) | `contracts/` quản lý giao diện và test vector dùng chung. | Một hồ sơ bàn giao riêng cho SV3 → SV1 trong Tuần 3. |
-| [`contracts/i1_device_edge_packet_v1.md`](i1_device_edge_packet_v1.md), mục 6–8, 11, 16–18 | I1 v1 là packet Device–Edge ở trạng thái `REVIEW_CANDIDATE`: số đa byte little-endian, `FLOAT32`/`INT8` là enum wire, payload tensor C-contiguous/row-major theo layout khai báo; input MIT-BIH/PTB-XL khác activation tại split. `model_profile_id`, `split_id`, activation profile, quantization và protection triển khai còn mở. | Bàn giao tensor và tham số để kiểm thử **cục bộ** hai Conv trên MCU; không gán `split_id`, không thay đổi wire I1, không dùng protocol golden vector ở mục 19 làm golden ML. Nếu sau này truyền output sang SV2, profile và packet phải được chốt theo I1. |
-| [`ml/docs/week1_data_contract.md`](../ml/docs/week1_data_contract.md), [`ml/docs/week1_data_protocol.md`](../ml/docs/week1_data_protocol.md) | Hợp đồng dữ liệu trước model: nguồn, sampling, segmentation, chuẩn hóa, nhãn và model input view của từng bộ dữ liệu. | Khóa đúng dataset/profile dùng cho 20 input, chỉ rõ trạng thái tiền xử lý của chúng, rồi gắn với checkpoint và golden output Tuần 3. |
-
-Chưa có hợp đồng riêng trong `contracts/` cho layout trọng số C/firmware, tên tensor mô hình, cơ chế protection hoặc quy tắc đặt tên hiện vật bàn giao. [`docs/README.md`](../docs/README.md) chỉ quy định tên **báo cáo** tiến độ, không quy định tên model artifact. Vì vậy các đường dẫn hiện vật bên dưới là **vị trí dự kiến**, chưa phải quy ước đã duyệt; SV3 và SV1 phải chốt trước khi xuất file dùng cho firmware.
-
-## Ranh giới thông tin đã xác nhận
-
-- [`ml/README.md`](../ml/README.md) và [`ml/docs/week1_verification.md`](../ml/docs/week1_verification.md) mới xác minh pipeline dữ liệu Tuần 1; repository hiện chưa có checkpoint, graph 1D-CNN, script export hoặc golden activation của hai Conv. **20 lần đo** trong [`device/src/main.c`](../device/src/main.c) là benchmark vòng lặp rỗng, không phải 20 mẫu ML.
-- [`device/CMakeLists.txt`](../device/CMakeLists.txt) hiện chọn `main.c` hoặc `main_idle.c` và `markers.c`; chưa có inference kernel. Target đã xác nhận là `nrf52840dongle/nrf52840` trong [`device/README.md`](../device/README.md). [`docs/sv1_device_week2_report.md`](../docs/sv1_device_week2_report.md) ghi số Flash/RAM của bản Active/Idle cũ; phải đo lại trên **firmware có hai Conv và bộ mẫu thực**.
-- Các shape input ở mục I1 16–17 là **model input**, không xác định shape của Conv hoặc split activation. `NCL`/row-major của I1 là quy tắc payload I1; không tự suy ra layout mảng C hoặc layout trọng số từ đó.
-
-## 1. Định danh phiên bản mô hình
-
-SV3 điền các giá trị thực và SHA-256 trước khi SV1 triển khai; cùng một mã bàn giao phải trỏ đến một bộ checkpoint, graph, preprocessing, 20 mẫu và golden không đổi.
-
-| Mục bắt buộc | Giá trị hiện tại / yêu cầu bàn giao |
+| Nguồn | Ràng buộc áp dụng cho bàn giao này |
 |---|---|
-| Dataset/profile được chọn cho Tuần 3 | `CẦN NHÓM CHỐT` – MIT-BIH v1.0.0 hay PTB-XL v1.0.3; không ghép hai input profile thành một tensor. |
-| `handoff_id`, `model_name`, `model_version`; liên hệ với `model_profile_id` I1 nếu áp dụng | `CHƯA CÓ – SV3 CẦN CUNG CẤP`; `model_profile_id` triển khai I1 còn `CẦN NHÓM CHỐT`. |
-| Checkpoint: đường dẫn tương đối từ Git root, loại checkpoint, SHA-256, trạng thái train/eval | `CHƯA CÓ – SV3 CẦN CUNG CẤP`. |
-| Commit nguồn **của mã định nghĩa/train model**, cấu hình train và dependency/PyTorch version | `CHƯA CÓ – SV3 CẦN CUNG CẤP`; commit xác minh dữ liệu Tuần 1 không tự động là commit của model. |
-| Script xuất input, tham số và golden; lệnh chạy, commit và SHA-256 | `CHƯA CÓ – SV3 CẦN CUNG CẤP`. |
-| Kiến trúc đã chốt: tên module/layer thật, graph thực thi, hai Conv đầu, mọi op nằm giữa/sau đến mốc so sánh cuối | `CHƯA CÓ – SV3 CẦN CUNG CẤP`; trạng thái duyệt kiến trúc `CẦN NHÓM CHỐT`. |
-| Trạng thái BatchNorm: đã fold vào Conv nào, công thức/hệ số fold, hay giữ riêng | `CHƯA CÓ – SV3 CẦN CUNG CẤP`; SV1 và SV3 xác nhận representation dùng chung. |
+| [`contracts/README.md`](README.md) | `contracts/` lưu giao diện và test vector dùng chung. |
+| [I1 v1](i1_device_edge_packet_v1.md), mục 6–8, 11, 18–19 | I1 là giao thức Device–Edge ở trạng thái `REVIEW_CANDIDATE`. Model input không đồng nghĩa activation tại split; protocol golden vector mục 19 chỉ kiểm codec/CRC. I1 v1 bắt buộc `flags = 0`, `nonce_length = 0`, không có protected payload. |
+| [I2, bản đề xuất ở PR #7](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/525755ffb8ce2a9978c9f997e362d69991a8c9a1/contracts/I2_SV3_provisional_interface.md) | I2 **chưa được phê duyệt/triển khai**. Mục tiêu giao diện bảo vệ về sau là activation INT8, NCL, `N=1`, giữ nguyên số byte và phục hồi bit-exact; FP32 vẫn là tham chiếu so sánh mô hình Tuần 3. PR #7 chưa nằm trong `main`, nên dẫn chiếu này trỏ tới commit cụ thể và không nhập PR #7 vào PR tài liệu. |
+| [Hợp đồng dữ liệu ML Tuần 1](../ml/docs/week1_data_contract.md), [quy trình dữ liệu](../ml/docs/week1_data_protocol.md) | Chỉ dữ liệu/tiền xử lý đã khóa: MIT-BIH hoặc PTB-XL, các manifest và thống kê chuẩn hóa có hash. Các tài liệu đó chưa khóa kiến trúc, tensor name, split hay lượng tử hóa. |
 
-## 2. Bộ 20 input cố định và tiền xử lý
+Đây là phép thử **cục bộ FP32** của hai Conv, không định nghĩa `split_id`, `model_profile_id`, packet, nonce, key hay thuật toán bảo vệ. Không được đặt output hai Conv vào `PROTECTED_PAYLOAD` của I1 v1. Nếu sau này dùng output làm activation Device–Edge, SV1/SV2/SV3 phải chốt profile I1 và một revision giao thức được duyệt riêng; mục tiêu I2 INT8 không tự sửa I1 v1.
 
-SV3 chọn **đúng 20 mẫu thật từ 20 định danh nguồn khác nhau**, gán `sample_id` duy nhất, ổn định trong một `handoff_id`, và công bố quy tắc chọn tái lập được: dataset/version, split, danh sách định danh nguồn, thứ tự lấy, seed nếu dùng ngẫu nhiên, tiêu chí loại trừ và lý do chọn. Nguồn/quy tắc/20 `sample_id` hiện là `CHƯA CÓ – SV3 CẦN CUNG CẤP`. Không thay mẫu sau khi tính golden mà vẫn giữ cùng `handoff_id`.
+[Ứng viên SV3 Tuần 2 trong PR #7](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/525755ffb8ce2a9978c9f997e362d69991a8c9a1/ml/docs/week2_baseline.md) là baseline MIT-BIH, **chưa khóa mô hình Tuần 3**. PR đó mô tả checkpoint tạo cục bộ, không giao checkpoint trong repository. Không lấy shape, weight, hash checkpoint hay kết quả đo Tuần 2 làm giá trị Tuần 3. Firmware hiện tại chưa có kernel hai Conv; [báo cáo SV1 Tuần 2](../docs/sv1_device_week2_report.md) không phải số đo firmware Tuần 3.
 
-| Profile nếu được chọn | Các bước/giá trị **đã chốt** cần kế thừa | View trước model |
+## 2. Quy tắc gói và định danh đã chốt
+
+SV3 bàn giao **một thư mục đủ hiện vật để SV1 kiểm tensor và chạy hai Conv** tại `ml/artifacts/week3/<handoff_id>/` (đường dẫn từ Git root; có thể chuyển nguyên thư mục ngoài Git). Việc tái xuất input từ dữ liệu gốc cần bộ dữ liệu theo hợp đồng Tuần 1, không giả định raw data nằm trong gói. `handoff_id` do SV3 cấp, duy nhất cho một revision, chỉ gồm chữ thường ASCII, số, `_`, `-`; không đổi nội dung dưới cùng ID. `README.md` trong gói ghi nơi nhận thực tế. Đường dẫn trong **danh mục file của gói** ở `manifest.json` là tương đối bên trong gói, dùng dấu `/`, không có `..` hay đường dẫn tuyệt đối. Tham chiếu upstream riêng là đường dẫn từ Git root kèm commit/hash. Không dùng file từ gói khác để lấp chỗ thiếu.
+
+SV3 ghi vào `manifest.json` UTF-8 JSON các trường bắt buộc sau; **schema/trường là quy cách đã chốt, giá trị đang chờ SV3**:
+
+| Nhóm | Trường bắt buộc / ý nghĩa |
+|---|---|
+| Định danh | `contract_version = "w3-sv1-handoff-v1"`, `handoff_id`, `model_name`, `model_version`, `dataset_profile` (`MIT-BIH/1.0.0` hoặc `PTB-XL/1.0.3`), `precision = "fp32"`. Chỉ một dataset profile trong một gói. |
+| Nguồn mô hình | `source_commit` của mã định nghĩa/train mô hình, đường dẫn và SHA-256 của `model/train_config.json`, framework/PyTorch và dependency versions, seed và trạng thái eval, tên/loại checkpoint cùng SHA-256. Commit dữ liệu Tuần 1 không tự là commit mô hình. |
+| Dữ liệu | Đường dẫn, SHA-256 và phương pháp hash của dataset config, normalization và manifest tương ứng; tên split/quy tắc chọn 20 mẫu; danh sách bước từ dữ liệu gốc tới `M0`, nêu phép biến đổi bổ sung hoặc xác nhận không có. |
+| Tensor | Tham chiếu `model/graph.json`, danh sách mọi file trong gói với `path`, `size_bytes`, `sha256`, `format`, `dtype`, `shape` khi là tensor; SHA-256 là 64 ký tự hex thường, `shape` là mảng số nguyên dương. `M_final` là ID mốc có thật trong graph. Manifest không tự hash chính nó. |
+
+File nhị phân và **từng file đã giao** được kiểm SHA-256 trên byte thực (`sha256_raw_bytes`); text trong gói lưu UTF-8 LF để hash ổn định. Hash upstream của dữ liệu Tuần 1 tiếp tục dùng đúng chính sách của [quy trình dữ liệu](../ml/docs/week1_data_protocol.md) (text UTF-8 chuẩn hóa LF, binary raw bytes). SV3 không thay hash upstream bằng hash của bản copy mà không giải thích. Bất kỳ checkpoint, graph, preprocessing, mẫu hoặc tham số nào đổi đều cần `handoff_id` mới, xuất lại toàn bộ input, weight và golden, rồi SV1 nghiệm thu lại.
+
+## 3. File SV3 phải giao
+
+Các tên sau là **quy cách SV1 đã chốt**, không phải khẳng định file đã tồn tại. `manifest.json` liệt kê và hash mọi file thực (trừ chính nó); file theo điều kiện phải có hoặc được ghi rõ là `absent`/`folded` trong graph, không được bỏ qua im lặng.
+
+| Đường dẫn trong gói | Nội dung bắt buộc |
+|---|---|
+| `README.md` | Lệnh tái tạo/kiểm tra, môi trường, cách lấy dữ liệu/checkpoint, bảng mốc, cách SV1 đọc output và đối chiếu `sample_id`; giải thích mọi ngoại lệ có duyệt. |
+| `manifest.json` | Metadata, danh mục file/hash và liên kết revision như mục 2. |
+| `model/checkpoint.pt` | Checkpoint PyTorch **thực đã chọn**, chỉ rõ full checkpoint hay `state_dict`, cách load an toàn, epoch/trạng thái eval và hash. Không dùng tên file này để suy ra có checkpoint. |
+| `model/train_config.json` | Bản chụp cấu hình train/export của đúng checkpoint, UTF-8 JSON; ghi rõ cấu hình nào chỉ có trong source commit nếu có. |
+| `model/graph.json` | Danh sách op/mốc theo thứ tự thực thi và bảng shape/layout/metadata chi tiết tại mục 4; tên module và checkpoint key thật. |
+| `samples.csv` | UTF-8 CSV header + đúng 20 dòng; định danh và thứ tự theo mục 5. |
+| `inputs.npy` | NumPy `.npy` version ghi trong manifest, mảng C-contiguous `<f4`, shape `(20,C,L)` theo profile đã chọn, là **M0 đã chuẩn hóa, đã cast** và sẵn sàng đưa vào Conv #1. |
+| `weights/conv1.weight.npy`, `weights/conv2.weight.npy` | Mỗi file là trọng số FP32 **hiệu dụng SV1 phải chạy**, C-contiguous `<f4`; shape, trục, checkpoint key và phép fold nếu có trong graph. |
+| `weights/conv1.bias.npy`, `weights/conv2.bias.npy` | Bắt buộc khi Conv hiệu dụng có bias; `<f4`, shape `(C_out,)`. Khi không có bias, graph ghi `absent`; không tạo bias giả. |
+| `weights/<op_id>.<parameter>.npy` | Mỗi tham số của BN/op khác **chưa fold** mà SV1 phải chạy; `<f4`, tên op/key/shape ghi trong graph. Không xuất tham số thừa làm SV1 đoán dùng file nào. |
+| `firmware/head_parameters.h` | C99 header tự đủ cho **mọi** tham số hiệu dụng của đoạn graph được chạy; quy tắc bit/layout ở mục 4. |
+| `golden/<milestone_id>.npy` | Một file cho từng mốc output thực từ `M1` đến `M_final`, gồm op ở giữa/nếu có; mảng C-contiguous `<f4`, trục đầu dài 20. Nếu `M_final` trùng mốc trước, graph dùng cùng ID/file, không cần bản sao. |
+| `scripts/export_week3.py`, `scripts/verify_week3.py` | Script UTF-8 và lệnh chạy trong README; export từ checkpoint + nguồn mẫu Tuần 1, verify lại hash, schema, 20 ID, giá trị hữu hạn, tham số C và golden tái tính bằng PyTorch eval trên `inputs.npy`. README ghi rõ chế độ nào cần raw data bên ngoài. |
+
+`.npy` là định dạng trao đổi trên PC, không được nạp cả header `.npy` vào firmware như tensor raw. Header C là representation duy nhất cho tham số firmware trong gói này. SV1 quyết định stream hay lưu từng input trên dongle sau khi tính Flash/RAM; `sample_id` và giá trị logic phải giữ nguyên.
+
+## 4. Metadata hai Conv, graph và định dạng tensor
+
+`model/graph.json` phải ghi một `ops` array theo đúng thứ tự inference, từ `M0` tới `M_final`: mỗi op có `op_id`, loại, tên module PyTorch, input/output milestone ID, checkpoint key liên quan, tham số, shape/dtype/layout của input và output. ID mốc, `op_id` và tên tham số dùng trong tên file/C chỉ gồm `[A-Za-z][A-Za-z0-9_]*`, không trùng nhau trong cùng loại ID; checkpoint key gốc vẫn được ghi nguyên dạng. Ghi cả BN, activation, pooling, reshape/transpose, residual và op khác **nếu thực sự có**; nếu không có thì ghi rõ trong README. Hai Conv đầu được đánh số **theo thứ tự chạy** là `conv1`, `conv2`, không theo tên module suy đoán. `M1` là output ngay sau Conv hiệu dụng #1; `M2` tương tự #2. Nếu BN đã fold vào Conv, `M1`/`M2` tương ứng output **sau Conv+BN** của PyTorch; nếu BN tách rời, mốc BN sau Conv có ID/file golden riêng. `M_final` là một mốc output duy nhất do SV3 chỉ định sau các op thuộc đoạn hai Conv và Kỳ Anh/SV1 xác nhận; không tự giả định `M_final = M2`.
+
+Với **mỗi Conv**, graph ghi `in_channels`, `out_channels`, `groups`, `kernel_size`, `stride`, `padding` (hai phía và mode), `dilation`, `bias` có/không, input/output length, tên checkpoint key gốc, shape weight gốc/hiệu dụng, thứ tự cộng bias và mọi op kề. Weight `Conv1d` hiệu dụng có trục `(C_out, C_in/groups, K)`; số cụ thể **CHƯA CÓ – SV3 CẦN CUNG CẤP**. Nếu có BN, ghi `eps`, running mean/variance, gamma/beta hoặc non-affine, eval mode, vị trí và trạng thái fold. Khi fold, script phải tạo weight/bias hiệu dụng từ checkpoint, graph nêu công thức và golden lấy ở vị trí PyTorch tương đương; nếu BN chưa fold, xuất đủ tham số và mốc BN riêng. Với activation/pooling/op khác, ghi đúng loại, thứ tự, tham số (gồm pooling stride/padding/dilation/ceil mode nếu áp dụng) và shape trước/sau. Không điền shape hay op giả từ kiến trúc ứng viên Tuần 2.
+
+| Tensor | Quy cách đã chốt | Giá trị SV3 phải điền trong graph/manifest |
 |---|---|---|
-| MIT-BIH | Theo [hợp đồng dữ liệu](../ml/docs/week1_data_contract.md), [protocol](../ml/docs/week1_data_protocol.md) và [config](../ml/configs/mitdb_week1_config.json): WFDB physical mV, 360 Hz, chọn lead `MLII` **theo tên**, cửa sổ 360 điểm quanh annotation (180 trước, 180 sau), bỏ cửa sổ thiếu ở biên, không pad/không thêm filter; Z-score scalar fit train với mean/std trong [`ml/configs/mitdb_normalization.json`](../ml/configs/mitdb_normalization.json), sau đó cast `float32`. Stored `X` là `(N,360)`. | `(N,1,360)`; một mẫu có `N=1`. |
-| PTB-XL | Theo [hợp đồng dữ liệu](../ml/docs/week1_data_contract.md), [protocol](../ml/docs/week1_data_protocol.md) và [config](../ml/configs/ptbxl_week1_config.json): record `filename_lr` 10 giây, 100 Hz, 1000 điểm/lead, đủ 12 lead theo thứ tự `I, II, III, AVR, AVL, AVF, V1, V2, V3, V4, V5, V6`; WFDB `(L=1000,C=12)` mV, không beat segmentation/giảm lead; Z-score riêng từng lead bằng thống kê train folds 1–8 trong [`ml/configs/ptbxl_normalization.json`](../ml/configs/ptbxl_normalization.json), cast `float32`, chuyển sang view model. | `(N,12,1000)`; một mẫu có `N=1`. |
+| `M0`, mọi activation/mốc | FP32 IEEE-754, `.npy` little-endian `<f4`, C-contiguous; activation `Conv1d` dùng trục NCL, offset phần tử `((n*C+c)*L+l)`. Golden có `N=20`; MCU xử lý `N=1` và so hàng `sample_index`. Nếu op đổi trục/rank, graph ghi công thức offset và phép đổi trước khi so. | Shape bằng số tại từng mốc, dtype, số phần tử/byte, tên tensor, vị trí hook và offset firmware. `M0` chọn MIT-BIH `(20,1,360)` hoặc PTB-XL `(20,12,1000)` theo profile đã chọn. |
+| `conv1/conv2` weight | `<f4`, C-contiguous theo `(out_channel, in_channel_per_group, kernel)`; offset `((oc*(C_in/groups)+ic_local)*K+k)`. Không transpose ngầm. | Shape bằng số, key gốc, hash, byte count, fold status và mapping từ checkpoint tới weight hiệu dụng. |
+| Bias/BN và tham số op khác | `<f4`, một file/mảng mỗi tensor, thứ tự phần tử và shape khai báo tường minh. Bias Conv theo `out_channel`. | Có/không, tên key, shape bằng số, hash, byte count và thứ tự áp dụng. |
+| `firmware/head_parameters.h` | `static const float` C99; mảng 1D theo đúng offset trên, dùng **hexadecimal float literal có hậu tố `f`** để giữ chính xác bit FP32; khai báo tên `sv3_conv1_weight`, `sv3_conv2_weight`, bias và op khác theo `op_id`, cùng hằng số shape/count. Export/verify phải round-trip từng phần tử về bit FP32 của `.npy`. | Tên mảng và kích thước thực, compiler/build đã dùng để xác minh, Flash/RAM phát sinh. |
 
-`samples.csv` dự kiến có 20 dòng theo thứ tự cố định, ít nhất có `sample_id`, dataset/version và split, cùng định danh nguồn **đúng theo metadata hiện có**: MIT-BIH dùng `patient_id`, `record_id`, `r_peak_sample`, `lead_name`, `lead_index` từ [`build_mitdb_processed.py`](../ml/src/build_mitdb_processed.py); PTB-XL dùng `ecg_id`, `patient_id`, `strat_fold`, `waveform_path` từ [`ptbxl_common.py`](../ml/src/ptbxl_common.py). SV3 ghi rõ cách nối với metadata gốc, config hash, normalization hash và manifest hash theo [hợp đồng dữ liệu](../ml/docs/week1_data_contract.md). Dòng thứ *i* của CSV ứng với phần tử thứ *i* ở trục batch của **mọi** file input/golden `.npy`; không nối dữ liệu bằng vị trí nếu thiếu hoặc trùng `sample_id`.
+Không suy layout trọng số/buffer C từ layout payload I1. Nếu firmware cần biểu diễn khác với bảng này, phải sửa phiên bản hợp đồng và xuất lại gói **trước** khi nghiệm thu; không có hai layout cùng được xem là chuẩn. Tuần 3 dùng FP32; `INT8` trong I1/I2 không đổi dtype hoặc ngưỡng so sánh này. Chuyển sang INT8 đòi hỏi chốt riêng scale, zero point, axis, rounding, clamp, bias/requantization, mốc và ngưỡng.
 
-SV3 phải xác nhận riêng: 20 input xuất ra đã đi đến bước nào (mV raw, đã cắt/đổi trục, đã Z-score, đã cast, hay đã lượng tử hóa), dtype thực, shape thực, channel order và thứ tự phần tử trong `.npy`. Trạng thái này hiện là `CHƯA CÓ – SV3 CẦN CUNG CẤP`. Liệt kê theo thứ tự mọi bước từ nguồn đến Conv #1, gồm phép biến đổi bổ sung sau profile Tuần 1 nếu có, với tham số/dtype của từng bước; nếu không có bước bổ sung thì xác nhận rõ. Mọi bước còn lại phải được nêu rõ cùng bên thực hiện; không chuẩn hóa lại input đã chuẩn hóa. Nếu chọn FP32 và xuất sau chuẩn hóa, input phải khớp `float32` và view của dataset đã chọn. Layout và ánh xạ chỉ số cho buffer C là `CẦN NHÓM CHỐT`; định nghĩa đó phải đi kèm script export/kiểm tra, không suy từ WFDB time-major hay payload I1.
+## 5. Đánh số và đối chiếu đúng 20 mẫu golden
 
-## 3. Graph và các mốc so sánh
+SV3 chọn **đúng 20 mẫu thật, 20 định danh nguồn khác nhau** thuộc cùng dataset profile, công bố split, quy tắc chọn có thể tái lập, seed nếu có, thứ tự và tiêu chí loại trừ. `samples.csv` có cột chung `sample_index,sample_id,dataset_profile,split,patient_id`; `sample_index` là số thập phân 0–19 liên tiếp theo thứ tự file, `sample_id` duy nhất và bất biến trong `handoff_id`. Với MIT-BIH bổ sung `record_id,r_peak_sample,lead_name,lead_index` từ [metadata processed](../ml/src/build_mitdb_processed.py); khóa nguồn là `(record_id,r_peak_sample,lead_name)`, `sample_id` có dạng `MIT-BIH:<record_id>:<r_peak_sample>:<lead_name>`. Với PTB-XL bổ sung `ecg_id,strat_fold,waveform_path` từ [metadata PTB-XL](../ml/src/ptbxl_common.py); khóa nguồn là `ecg_id`, `sample_id` có dạng `PTB-XL:<ecg_id>`. Các dấu `<...>` là trường thay bằng giá trị nguồn thực, không phải mẫu có sẵn. Cột không áp dụng để trống, không tự tạo định danh bệnh nhân/nhãn mới. SV3 chỉ ra hàng metadata/manifest gốc tương ứng và hash của chúng.
 
-SV3 cung cấp graph ở chế độ inference/eval theo **đúng thứ tự thực thi**, tên module PyTorch và tên mốc duy nhất. Điền mỗi op thật trên đường từ input đến đầu ra sau Conv #2, kể cả BatchNorm, activation, pooling, reshape/transpose, residual, bias add hoặc op khác nếu có; ghi rõ op nào **không có**. Không giả định hai Conv kề nhau hay mặc nhiên đặt ReLU/pooling. Mốc cuối là tensor thực sau tất cả phép toán mà nhóm xác định thuộc “hai lớp convolution đầu”, và phải được SV1/SV3 cùng xác nhận trước khi so sánh.
+`inputs.npy[i]` và `golden/<milestone_id>.npy[i]` **luôn** thuộc dòng `sample_index=i` của CSV. Mỗi golden có đúng 20 hàng, cùng thứ tự, shape tail/dtype được graph khai báo; không ghép bằng vị trí nếu CSV thiếu/trùng ID. Script verify kiểm đủ 20 khóa nguồn khác nhau, so input với pipeline dữ liệu đã chọn và chạy **chính những input được giao** qua checkpoint ở `eval()` để tạo lại mọi golden; dropout/BN phải ở chế độ inference. Mỗi mốc golden phải trỏ tới đúng hook/op trong graph. Giá trị mẫu, ID, shape Conv và golden thực: **CHƯA CÓ – SV3 CẦN CUNG CẤP**.
 
-| Mốc/nhóm mốc phải điền | Mô tả bắt buộc | Hiện trạng |
-|---|---|---|
-| `M0` – input của Conv #1 | Tên tensor, preprocessing đã hoàn tất, shape/dtype/layout. | Dataset/view có hai lựa chọn ở mục 2; lựa chọn thật `CẦN NHÓM CHỐT`. |
-| `M1` – sau Conv #1 | Tên Conv; output ngay sau phép tích chập và bias, hoặc output Conv+BN nếu firmware dùng tham số đã fold. Phân biệt rõ hai ý nghĩa này. | `CHƯA CÓ – SV3 CẦN CUNG CẤP`. |
-| Các mốc giữa Conv #1 và Conv #2 | Một mốc cho **từng** BN/activation/pooling/op thật, theo thứ tự; giữ mốc trước và sau op khi cần định vị lỗi. | `CHƯA CÓ – SV3 CẦN CUNG CẤP`. |
-| `M2` – sau Conv #2 | Tên Conv; cùng quy tắc trước/sau BN như `M1`. | `CHƯA CÓ – SV3 CẦN CUNG CẤP`. |
-| Các mốc sau Conv #2 và `M_final` | Mọi op được tính vào đầu ra hai lớp; đánh dấu một `M_final` duy nhất cho tiêu chí nghiệm thu. Nếu không có op sau Conv #2, `M_final = M2`. | `CHƯA CÓ – SV3 CẦN CUNG CẤP`; phạm vi cuối `CẦN NHÓM CHỐT`. |
+Đầu vào MIT-BIH kế thừa MLII theo tên, cửa sổ 360 điểm quanh R-peak, Z-score scalar train-only và view `(N,1,360)`; PTB-XL kế thừa đủ 12 lead đúng thứ tự, 1000 điểm/lead ở 100 Hz, Z-score từng lead train folds 1–8 và view `(N,12,1000)`. Các nguồn là [hợp đồng dữ liệu](../ml/docs/week1_data_contract.md) và [quy trình](../ml/docs/week1_data_protocol.md). Không chuẩn hóa lần hai `inputs.npy`. Nếu mô hình có bước bổ sung sau Tuần 1, SV3 khai báo chính xác bước, tham số và bên thực hiện trước `M0`; việc thay pipeline đã khóa cần được duyệt và cấp gói mới.
 
-Với **mỗi Conv**, SV3 ghi tên tham số/checkpoint key, weight và bias (hoặc xác nhận không có bias), kernel size, stride, padding (kể cả mode/asymmetric nếu có), dilation, groups, số channel vào/ra, phép cộng bias và thứ tự với các op kề. Với **mỗi BatchNorm**, ghi vị trí, `eps`, running mean/variance, affine gamma/beta hoặc xác nhận không affine, chế độ eval và trạng thái fold. Nếu fold, bàn giao cả tham số Conv hiệu dụng cho firmware và cách tạo chúng; golden ở mốc fold phải lấy sau Conv+BN tương ứng trong PyTorch. Với **mỗi activation/pooling**, ghi loại, tham số (pool kernel/stride/padding/dilation/ceil mode nếu áp dụng) và vị trí. Mọi op còn lại cần khai báo đầy đủ tham số, phép đổi shape và thứ tự. Giá trị cụ thể của toàn bộ graph/params: `CHƯA CÓ – SV3 CẦN CUNG CẤP`.
+## 6. Tiêu chí SV1 nghiệm thu
 
-### Bảng shape/layout bắt buộc trong bản bàn giao đã điền
+1. **Kiểm gói trước khi chạy:** đủ file theo graph, JSON/CSV/NPY đọc được; `contract_version`, ID, checkpoint/commit, dataset config/normalization/manifest, hash/size và mỗi shape/dtype/count khớp; 20 sample index, ID và khóa nguồn hợp lệ; mọi input/weight/golden hữu hạn. Sai hoặc thiếu bất kỳ mục bắt buộc nào: **FAIL, chưa chạy MCU**.
+2. **Kiểm tham số và tham chiếu:** `verify_week3.py` tái tạo input/golden từ checkpoint ở eval; từng bit FP32 trong C header khớp `.npy` hiệu dụng theo offset đã khai báo; graph có đủ mốc, kể cả BN/op giữa hai Conv; nguồn golden và firmware dùng cùng revision. Không khớp: **FAIL**.
+3. **Chạy và thu output:** SV1 chạy đủ 20 `sample_id` trên firmware hai Conv, thu output đầy đủ với `handoff_id`, `sample_index`, `sample_id`, `milestone_id`, shape/dtype/count; cách dump qua console/file phải tránh cắt hoặc làm tròn làm sai so sánh. USB CDC demo hiện tại không mặc nhiên là transport I1. Giải mã buffer MCU về đúng shape logic rồi so từng phần tử cùng mẫu/mốc; ghi `max(abs(MCU - PyTorch))` từng mẫu/mốc. Thiếu phần tử, NaN/Inf, sai ID/shape hoặc không thể thu đủ: **FAIL**.
+4. **Quyết định FP32:** tại `M_final`, **từng mẫu trong 20 mẫu** phải có `max(abs(MCU - PyTorch)) < 1e-3` (dấu `<` nghiêm ngặt); sai số mốc trung gian phải ghi để định vị lỗi. Chỉ công bố `20/20 PASS` khi cả 20 đạt cùng các gate trên. Không tự áp ngưỡng này cho INT8.
+5. **Biên bản:** ghi bảng 20 dòng theo `sample_index/sample_id`, sai số mỗi mốc, max toàn bộ ở `M_final`, phiên bản/commit firmware, toolchain, target `nrf52840dongle/nrf52840`, Flash/RAM image và peak buffer/workspace/stack nếu đo được, cách nạp 20 input, lý do mọi FAIL. SV1 kiểm image thực vừa Flash/RAM; số Active/Idle Tuần 2 không thay phép đo này. Hiện chưa có firmware hai Conv/golden/biên bản nên **chưa có PASS hoặc số đo Tuần 3**.
 
-Trong bảng dưới, SV3 điền **shape thực bằng số** theo PyTorch (kể cả batch) và SV1/SV3 cùng chốt shape, thứ tự trục, công thức ánh xạ chỉ số sang offset tuyến tính, dtype, số phần tử/số byte của buffer C. Chép thêm dòng cho **mỗi** op thực và mọi tham số của op đó; các dòng `M1.x`/`M2.x` chỉ là vị trí trống, không khẳng định graph có op đó. Đối chiếu tensor theo shape logic sau khi áp dụng đúng phép đổi layout đã ghi.
+## 7. Việc Kỳ Anh (SV3) cần xác nhận và bàn giao
 
-| Tensor/mốc | PyTorch shape; layout/thứ tự trục; dtype | C/firmware shape; layout/offset; dtype | Trạng thái |
-|---|---|---|---|
-| `M0` input, từng mẫu | MIT-BIH `(1,1,360)` hoặc PTB-XL `(1,12,1000)`; view `N,C,L`, `float32` nếu dùng profile đầu vào Tuần 1. | `CẦN NHÓM CHỐT` – buffer C và offset; nếu INT8 phải định nghĩa representation mới. | Chọn dataset và precision còn mở. |
-| Conv #1 weight | `CHƯA CÓ – SV3 CẦN CUNG CẤP` – shape PyTorch **thực** và thứ tự trục. | `CẦN NHÓM CHỐT` – shape, thứ tự trục, offset và packing. | Chưa có model. |
-| Conv #1 bias / tham số BN nếu có | `CHƯA CÓ – SV3 CẦN CUNG CẤP` – từng tensor và shape. | `CẦN NHÓM CHỐT`; nếu BN fold, ghi tensor hiệu dụng. | Chưa có model. |
-| `M1` Conv #1 output | `CHƯA CÓ – SV3 CẦN CUNG CẤP` – shape, layout, dtype và vị trí so với BN. | `CẦN NHÓM CHỐT`. | Chưa có model. |
-| `M1.x` – mỗi op giữa hai Conv, input/output và tham số nếu có | `CHƯA CÓ – SV3 CẦN CUNG CẤP`; thêm một dòng cho từng mốc thật. | `CẦN NHÓM CHỐT`. | Chưa có graph. |
-| Conv #2 weight | `CHƯA CÓ – SV3 CẦN CUNG CẤP` – shape PyTorch **thực** và thứ tự trục. | `CẦN NHÓM CHỐT` – shape, thứ tự trục, offset và packing. | Chưa có model. |
-| Conv #2 bias / tham số BN nếu có | `CHƯA CÓ – SV3 CẦN CUNG CẤP` – từng tensor và shape. | `CẦN NHÓM CHỐT`; nếu BN fold, ghi tensor hiệu dụng. | Chưa có model. |
-| `M2` Conv #2 output | `CHƯA CÓ – SV3 CẦN CUNG CẤP` – shape, layout, dtype và vị trí so với BN. | `CẦN NHÓM CHỐT`. | Chưa có model. |
-| `M2.x` – mỗi op sau Conv #2; `M_final` | `CHƯA CÓ – SV3 CẦN CUNG CẤP`; thêm từng mốc thật, chỉ rõ mốc cuối. | `CẦN NHÓM CHỐT`. | Chưa có graph. |
+- [ ] Chốt dataset profile và mô hình Tuần 3 thực dùng; cung cấp checkpoint, source commit, train config, môi trường, hash và bằng chứng `eval()`; xác nhận ứng viên Tuần 2 có/không được dùng.
+- [ ] Xác nhận graph thực, thứ tự/hook của hai Conv, mọi BN/activation/pooling/op, fold status và `M_final`; điền **shape số thực**, checkpoint key, tham số, byte count cho từng tensor.
+- [ ] Xác nhận 20 nguồn mẫu, split, quy tắc chọn, metadata/manifest/hash và `inputs.npy` FP32 sau đúng pipeline; ký nhận thứ tự `sample_index` 0–19.
+- [ ] Xuất đúng các file mục 3, golden từng mốc, C header, scripts và hash; tự chạy verify tái tạo và đối chiếu bit tham số.
+- [ ] Cùng SV1 xác nhận điểm thu output, khả năng RAM/Flash của graph thực và mốc `M_final` trước phép so MCU; mọi đề nghị INT8 hoặc Device–Edge là thay đổi hợp đồng/protocol riêng.
 
-## 4. Danh sách file SV3 phải bàn giao
-
-Các đường dẫn **dự kiến** dưới `ml/artifacts/week3/<handoff_id>/` là vị trí của gói bàn giao do SV3 tạo sau này, không phải file đang tồn tại. `handoff_id`, tên file cuối cùng và cách đặt artifact vào firmware: `CẦN NHÓM CHỐT`. SV3 ghi đường dẫn thực, SHA-256 raw-byte, format/version và kích thước từng file vào hướng dẫn bàn giao; file text cần ghi chính sách hash phù hợp [`ml/docs/week1_data_protocol.md`](../ml/docs/week1_data_protocol.md). Những `.npy` dành cho PC theo cách lưu mảng đang dùng ở [`ml/src/build_mitdb_processed.py`](../ml/src/build_mitdb_processed.py); firmware-ready representation chỉ được xuất sau khi chốt layout C. Dấu `<...>` trong bảng là chỗ điền, không phải tên giá trị thật.
-
-| Đường dẫn dự kiến | Format; dtype; shape cần công bố | Liên kết `sample_id` / mục đích |
-|---|---|---|
-| `ml/artifacts/week3/<handoff_id>/model/checkpoint.pt` | PyTorch checkpoint; dtype/shape từng tham số `CHƯA CÓ – SV3 CẦN CUNG CẤP`. | Gắn `model_version`, commit, hash; nguồn của mọi tham số/golden. |
-| `ml/artifacts/week3/<handoff_id>/samples.csv` | UTF-8 CSV; 20 dòng dữ liệu, `sample_id` duy nhất và metadata nguồn như mục 2; dtype scalar/shape không áp dụng. | Dòng thứ *i* ánh xạ cùng trục batch *i* của input và mọi golden. |
-| `ml/artifacts/week3/<handoff_id>/inputs.npy` | NumPy `.npy`; shape `(20,C,L)` theo dataset đã chốt, dtype `float32` **nếu** FP32 sau chuẩn hóa; trạng thái thực `CHƯA CÓ – SV3 CẦN CUNG CẤP`. | 20 input cố định theo thứ tự `samples.csv`; ghi layout/strides và độ sâu preprocessing. |
-| `ml/artifacts/week3/<handoff_id>/weights/conv1.weight.npy`, `conv2.weight.npy` | NumPy `.npy`; dtype, shape và thứ tự trục PyTorch thực `CHƯA CÓ – SV3 CẦN CUNG CẤP`. | Tham số dùng chung cho cả 20 mẫu; checkpoint key/hashes liên kết trong hướng dẫn. |
-| `ml/artifacts/week3/<handoff_id>/weights/<bias_or_bn_parameter>.npy` | Một file `.npy` cho mỗi bias/BN parameter cần thiết; nếu vắng/fold phải ghi rõ; dtype/shape `CHƯA CÓ – SV3 CẦN CUNG CẤP`. | Không theo `sample_id`; liên kết layer, checkpoint key và fold status. |
-| `ml/artifacts/week3/<handoff_id>/firmware/head_parameters.h` | Dự kiến C header chứa **đủ** Conv weights/bias hiệu dụng và tham số BN chưa fold; dtype, shape, layout mảng và bit/byte representation `CẦN NHÓM CHỐT`. | Dùng chung cho 20 mẫu; SV1 xác minh hash và ánh xạ từng phần tử với `.npy`. |
-| `ml/artifacts/week3/<handoff_id>/golden/<milestone_id>.npy` | Một NumPy `.npy` cho **mỗi mốc thực** từ `M1` đến `M_final`; dtype/shape `(20, ...)` theo bảng đã điền, hiện `CHƯA CÓ – SV3 CẦN CUNG CẤP`. | Dòng *i* ứng với `sample_id` dòng *i*; tên mốc phải khớp graph. Golden lưu/so sánh trên PC, không mặc định đưa 20 golden vào Flash. |
-| `ml/artifacts/week3/<handoff_id>/scripts/export_week3.py`, `verify_week3.py` | Python source UTF-8; dtype/shape không áp dụng. | Lệnh export tái lập từ checkpoint/20 nguồn; verify hash, số mẫu, dtype/shape, và tạo/đối chiếu golden. `CHƯA CÓ – SV3 CẦN CUNG CẤP`. |
-| `ml/artifacts/week3/<handoff_id>/README.md` | Markdown UTF-8; dtype/shape không áp dụng. | Hướng dẫn chạy ngắn, bảng mốc, mapping `sample_id`, phiên bản môi trường, danh sách hash, lệnh export và verify. `CHƯA CÓ – SV3 CẦN CUNG CẤP`. |
-
-Nếu định dạng firmware khác C header, đổi **một** đường dẫn trong bảng sau khi SV1/SV3 duyệt và ghi rõ cách đọc/kiểm chứng; không duy trì hai layout firmware ngầm cạnh tranh. Có thể stream từng input hoặc nạp bộ mẫu theo cách SV1 chọn sau khi đo Flash/RAM; metadata `sample_id` và phép so sánh phải giữ nguyên.
-
-## 5. Nghiệm thu hai Conv trên nRF52840
-
-1. SV1 kiểm SHA-256, đúng `handoff_id`, checkpoint/commit, dataset config + normalization + manifest hashes, đúng 20 `sample_id` duy nhất, shape/dtype/element count và mọi giá trị hữu hạn trước khi chạy. Thiếu file, thiếu mẫu hoặc mapping không khớp là **FAIL**.
-2. SV3 chạy script PyTorch ở chế độ eval trên đúng 20 input đã bàn giao và xuất golden theo **từng mốc thực**. SV1 chạy cùng 20 input trên firmware hai Conv, thu đầy đủ output MCU và `sample_id` của từng lần chạy. Định dạng/kênh thu log hoặc dump output MCU phải được SV1/SV3 chốt để không mất phần tử; USB CDC hiện tại chỉ là console demo, không phải transport I1 đã duyệt.
-3. Trên PC, chuyển layout MCU về shape logic PyTorch theo bảng ánh xạ đã chốt; so sánh từng phần tử của cùng `sample_id` và mốc. Kiểm cả shape, dtype, số phần tử; tính và ghi `max(abs(output_mcu - output_pytorch))` cho **mỗi** mẫu ở mỗi mốc, đặc biệt mốc trung gian để định vị lỗi. Không trừ theo buffer tuyến tính nếu chưa kiểm ánh xạ trục.
-4. Nếu nhóm chốt **FP32**, mỗi mẫu phải có `max(abs(output_mcu - output_pytorch)) < 1e-3` tại `M_final` (dấu `<` nghiêm ngặt). Bất kỳ NaN/Inf ở input/output, sai shape, thiếu phần tử, thiếu mẫu hoặc sai số cuối không đạt đều **FAIL**. Mốc trung gian phải ghi sai số; ngưỡng quyết định bắt buộc nêu ở đây áp dụng cho mốc cuối hai lớp.
-5. Biên bản kết quả ghi số đạt trên 20 (`20/20` chỉ khi thực đạt), sai số lớn nhất toàn bộ mẫu tại `M_final`, bảng sai số từng mẫu/mốc, phiên bản/commit firmware, toolchain, build profile, Flash/RAM dùng và peak RAM/buffer nếu đo được. Trạng thái hiện tại: golden `CHƯA CÓ – SV3 CẦN CUNG CẤP`; cách thu và báo cáo kết quả MCU/tài nguyên `CẦN NHÓM CHỐT`, phép đo chưa thực hiện, **chưa có PASS**.
-
-## Cần chốt trước khi triển khai
-
-- **FP32 hay INT8 cho Tuần 3:** yêu cầu Tuần 3 trong đề bài là sai số float tại hai Conv, trong khi lượng tử hóa INT8 được đặt ở Tuần 5. SV3, SV1 và thầy chốt bằng văn bản precision thực dùng cho Tuần 3 và phạm vi so sánh. Nếu chọn FP32, áp dụng tiêu chí mục 5; input dữ liệu Tuần 1 đã có `float32`. Nếu chọn INT8, phải chốt quantization của **input, weights, bias, activation**, scale/zero point/axis, rounding, clamp, requantize, BN fold, mốc so sánh (giá trị lượng tử hay dequantized), cách tính sai số và ngưỡng riêng; quy tắc I1 mục 8 chỉ áp dụng khi biểu diễn tensor trên wire I1. **Không áp ngưỡng FP32 `1e-3` cho INT8 khi chưa thống nhất.** Quyết định: `CẦN NHÓM CHỐT`.
-- **Khả thi bộ nhớ nRF52840:** SV3 cung cấp kích thước byte của mỗi tensor/weight, peak activation và yêu cầu workspace theo graph/precision thật; SV1 tính phần Flash cho mã + tham số + input lưu trên dongle (nếu chọn lưu), phần RAM cho input/activation/workspace/stack/console, rồi build/đo trên `nrf52840dongle/nrf52840`. Phải ghi Flash/RAM còn dư của image Tuần 3. Quyết định lưu cả 20 input hay stream từng mẫu: `CẦN NHÓM CHỐT`; **không** giả định 20 golden nằm trong Flash.
-- **Layout firmware và điểm cắt cuối:** SV3/SV1 chốt bảng trục, offset/packing của tham số, input/output và graph/mốc `M_final` trước khi viết kernel hoặc export C. Nếu output Tuần 3 sau này thành I1 activation, còn phải chốt `(model_profile_id, split_id)` và profile I1 với SV2; thử hai Conv cục bộ không tự cấp quyền gửi I1.
-
-## Điểm cần nhóm chốt
-
-| Điểm mở | Người cần chốt | Vì sao đang mở |
-|---|---|---|
-| Dataset/profile, checkpoint, graph và 20 nguồn mẫu | SV3, SV1 | Repository ML hiện chỉ có dữ liệu Tuần 1; không có model/golden Tuần 3. |
-| Precision, ngưỡng/đối chiếu INT8 nếu dùng, BatchNorm fold và mốc cuối | SV3, SV1, thầy | Tuần 3 yêu cầu sai số float; INT8 nằm ở lộ trình Tuần 5; graph thực chưa có. |
-| Layout C, file tham số firmware, cách thu output, budget Flash/RAM | SV3, SV1 | I1 không định nghĩa layout weight hay buffer C; firmware hiện chưa có inference. |
-| I1 deployment profile, transport và protection **nếu** triển khai trao đổi với Edge | SV3, SV1, SV2 | I1 mục 11, 18, 22 còn mở; `PROTECTED_PAYLOAD` hiện reserved và `flags` phải bằng 0. |
-
-Đối chiếu các hợp đồng hiện có với mã nguồn hiện tại **chưa phát hiện mâu thuẫn trực tiếp**. Việc I1 hỗ trợ enum `INT8` trên wire không phải quyết định dùng INT8 ở Tuần 3; việc I1 có protocol golden vector không phải bằng chứng có golden ML. Nếu về sau phát hiện hợp đồng cũ mâu thuẫn nhau hoặc trái mã nguồn, ghi cụ thể đường dẫn/mục, giá trị hai phía, ảnh hưởng và người cần duyệt tại đây; không tự sửa hợp đồng cũ hoặc chọn ngầm một bên.
-
-## Checklist bàn giao và thay đổi phiên bản
-
-**SV3 – xuất và bàn giao**
-
-- [ ] Chốt dataset/profile, precision, kiến trúc, `M_final` cùng SV1/thầy; điền toàn bộ bảng shape/layout và thứ tự op.
-- [ ] Ghi checkpoint path/hash, source commit, model version, export script, dependency và trạng thái BN fold.
-- [ ] Chọn và khóa đúng 20 mẫu thật; ghi `sample_id`, metadata nguồn, quy tắc chọn, config/normalization/manifest hash và trạng thái preprocessing.
-- [ ] Xuất đủ input, tham số PyTorch, firmware-ready weight/bias/BN theo layout đã duyệt, golden cho từng mốc, script export/verify, README và hash từng file.
-- [ ] Tự chạy verify: đúng 20 mẫu, không NaN/Inf, shape/dtype/count khớp, tái tạo golden từ checkpoint và mọi liên kết `sample_id` đúng.
-
-**SV1 – tiếp nhận và kiểm tra**
-
-- [ ] Kiểm tra toàn bộ file/hash, checkpoint/commit/profile, 20 `sample_id`, trạng thái preprocessing và bảng tensor; từ chối phần còn bỏ trống ảnh hưởng triển khai.
-- [ ] Đối chiếu từng phần tử tham số firmware với PyTorch theo ánh xạ đã chốt; tính budget và đo Flash/RAM của firmware hai Conv.
-- [ ] Chạy cùng 20 input, thu đủ output MCU theo `sample_id`/mốc, so sánh từng phần tử, ghi sai số trung gian và quyết định PASS/FAIL ở `M_final` theo precision đã chốt.
-- [ ] Lưu biên bản 20/20, sai số lớn nhất, firmware version/commit, Flash/RAM và các trường hợp FAIL.
-
-**Khi checkpoint, graph, preprocessing hoặc tập mẫu đổi:** SV3 tạo `handoff_id`/version mới, ghi lý do và diff nguồn, cập nhật bảng mốc/shape/hash, xác nhận lại 20 nguồn và `sample_id`, xuất lại **toàn bộ** 20 input, tham số firmware và golden cho mọi mốc từ cùng revision, chạy lại script kiểm tra; SV1 bỏ kết quả nghiệm thu cũ và chạy lại đủ 20 mẫu. Nếu chỉ checkpoint đổi, có thể giữ 20 định danh nguồn nhưng vẫn phải phát hành gói mới và tạo lại golden. Gói cũ giữ nguyên để truy xuất; không thay file âm thầm dưới cùng `handoff_id`.
+**Chưa nghiệm thu** cho đến khi các ô trên có giá trị, gói được kiểm và SV1 có biên bản 20 mẫu. Khi gói đổi, SV3 phát hành ID mới; không sửa âm thầm gói đã dùng làm bằng chứng.

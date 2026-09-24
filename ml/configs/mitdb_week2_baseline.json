@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "candidate_name": "mitdb_week2_cnn_v1",
+  "week1_config": "mitdb_week1_config.json",
+  "seed": 30,
+  "device": "auto",
+  "torch_threads": 4,
+  "batch_size": 256,
+  "epochs": 40,
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "scheduler": {"name": "ReduceLROnPlateau", "factor": 0.5, "patience": 4},
+  "loss": "CrossEntropyLoss",
+  "class_weighting": "none",
+  "augmentation": "none",
+  "sampler": "shuffle_train_only",
+  "selection_metric": "validation_accuracy",
+  "early_stopping_patience": 10,
+  "dropout": 0.2,
+  "output_dir": "data/week2/mitdb_baseline"
+}

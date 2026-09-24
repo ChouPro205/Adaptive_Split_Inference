@@ -111,3 +111,9 @@ versioned.
 
 See `docs/week1_data_protocol.md`, `docs/week1_data_contract.md`, and
 `docs/week1_verification.md` for the frozen Week 1 decisions and evidence.
+
+## Week 2 MIT-BIH candidate baseline
+
+The Week 2 1D-CNN training command, fixed-split data contract, artifacts, and
+observed per-class limitations are documented in `docs/week2_baseline.md`.
+This is a candidate baseline; architecture freezing remains outside Week 2.
