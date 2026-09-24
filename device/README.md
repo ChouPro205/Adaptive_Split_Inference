@@ -38,10 +38,10 @@ device\artifacts\adaptive_split_week1_demo.zip
 
 Gói `adaptive_split_base_v1.zip` cũ không bị ghi đè.
 
-## Nạp và theo dõi
+## Nạp qua USB DFU và theo dõi
 
-Xem hướng dẫn ngắn, dùng trực tiếp ngày demo tại
-[`DEMO_TOMORROW.md`](DEMO_TOMORROW.md).
+Xem [hướng dẫn vào USB DFU bootloader, xác định cổng COM, nạp firmware và chạy
+demo](week1_dfu_demo_guide.md).
 
 ## Kiểm tra môi trường
 
