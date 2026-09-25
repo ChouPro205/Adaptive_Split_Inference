@@ -201,8 +201,9 @@ The existing untracked reports are preserved, not included in this delivery:
 - `reports/SV3_ML_week1_report.md`: raw SHA-256 `d5bf9f2545aa2d861a92350f469f72c2352b3fe1ab78af39494d76f5e9579269`.
 - `reports/SV3_ML_week2_report.md`: raw SHA-256 `1695d6b9a2746f42a5a3a208b012571c74279c4f2eafecc19a3bf6a667afe8d7`.
 
-No new commit, push or PR: the requested Week 3 verification gate has not
-passed. `.gitignore` and `ml/README.md` keep model artifacts/checkpoints outside
+At the review stage there was no new commit, push or PR because the release
+gate was still open. The later release commit/push and PR permission blocker are
+recorded in [release evidence](week3_release.md). `.gitignore` and `ml/README.md` keep model artifacts/checkpoints outside
 Git; the handoff contract allows transferring the complete package outside Git.
 No force-add, force-push or direct push to `dev/device-sv1` was performed.
 

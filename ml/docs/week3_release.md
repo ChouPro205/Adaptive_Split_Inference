@@ -120,6 +120,32 @@ Rechecked origin and Edge/contracts: no approved ONNX opset/runtime/provider, de
 
 Remaining: SV1 package review, nRF52840 execution, all 20 MCU/PyTorch comparisons, actual firmware resource measurements, and SV2 interface/export verification. Entire Week 3 is not complete.
 
+## Git delivery and PR creation blocker
+
+Dedicated branch: `sv3/week3-fp32-handoff`; base: `dev/device-sv1`.
+Implementation/evidence commit: `4d65849` (`feat(ml): release verified Week 3
+FP32 handoff for SV1`). `git push -u origin sv3/week3-fp32-handoff` exited 0.
+No binary package or pre-existing Week 1/2 report was committed.
+
+The authenticated GitHub connector rejected PR creation with HTTP 403,
+`Resource not accessible by integration`. `gh` is not installed on this machine.
+No PR number or PR URL exists from this attempt. The remaining PR operation is
+an authorization/tool availability blocker, not a model verification failure.
+
+- [Open compare / create PR](https://github.com/ChouPro205/Adaptive_Split_Inference/compare/dev/device-sv1...sv3/week3-fp32-handoff?expand=1).
+- [Prepared PR body](week3_pr_body.md).
+- Title: `feat(ml): release verified Week 3 FP32 reference for SV1`.
+
+With an authenticated `gh` installation, the exact command is:
+
+```powershell
+gh pr create --repo ChouPro205/Adaptive_Split_Inference --base dev/device-sv1 --head sv3/week3-fp32-handoff --title "feat(ml): release verified Week 3 FP32 reference for SV1" --body-file ml/docs/week3_pr_body.md
+```
+
+This command is provided for the blocked PR operation; it has not been executed.
+The package remains available at the actual local paths above for out-of-band
+transfer; no remote artifact upload or SV1 receipt is asserted.
+
 ## Artifact inventory
 
 | Artifact | Path | Shape / file bytes | SHA-256 (raw) | Status |
