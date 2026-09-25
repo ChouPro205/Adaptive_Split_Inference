@@ -117,3 +117,18 @@ See `docs/week1_data_protocol.md`, `docs/week1_data_contract.md`, and
 The Week 2 1D-CNN training command, fixed-split data contract, artifacts, and
 observed per-class limitations are documented in `docs/week2_baseline.md`.
 This is a candidate baseline; architecture freezing remains outside Week 2.
+
+## Week 3 FP32 handoff to SV1
+
+The separately approved Week 3 reference uses that unchanged checkpoint with
+`M_final=P2` after `features.4 MaxPool1d`. See [release evidence](docs/week3_release.md)
+for the official immutable ID, manifest/archive hashes, commands and acceptance
+status. Release verification passed; SV1 package review and MCU validation are
+pending. ONNX remains blocked on the SV2 interface.
+
+Complete generated packages under `ml/artifacts/week3/` stay outside Git under
+the existing model-artifact policy. Transfer the whole folder (or its documented
+ZIP) as permitted by the handoff contract, and verify all files at the receiving
+side. Versioned source/config/docs and small manifest/evidence copies live in
+`ml/scripts/`, `ml/configs/`, `ml/docs/` and `ml/provenance/week3/`. A Git checkout
+alone does not deliver the checkpoint, inputs, parameters or golden tensors.

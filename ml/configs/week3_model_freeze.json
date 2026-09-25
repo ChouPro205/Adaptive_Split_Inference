@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "model_name": "mitdb_week2_cnn_v1",
+  "model_version": "mitdb_week2_cnn_v1",
+  "dataset_profile": "MIT-BIH/1.0.0",
+  "checkpoint_path": "ml/data/week2/mitdb_baseline/best_checkpoint.pt",
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa",
+  "model_source_sha256": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+  "selected_epoch": 3,
+  "model_freeze": {
+    "status": "confirmed_conditional_on_verifiers",
+    "authority": "SV3 user confirmation in this session, 2026-09-25",
+    "evidence": "Xác nhận freeze candidate này nếu verifier PASS"
+  },
+  "boundary": {
+    "status": "CONFIRMED",
+    "M_final": "P2",
+    "module_path": "features.4",
+    "operation": "MaxPool1d",
+    "shape_N1": [1, 16, 180],
+    "segment": ["Conv1", "ReLU1", "Conv2", "ReLU2", "MaxPool1d"],
+    "sv3_confirmation": {
+      "status": "CONFIRMED",
+      "M_final": "P2",
+      "authority": "SV3 user confirmation in this session, 2026-09-25",
+      "evidence": "CONFIRMED FROM SV3 SIDE. Freeze the Week 3 segment boundary as: M_final = P2, output after features.4 MaxPool1d, shape N=1 (1,16,180)."
+    },
+    "sv1_confirmation": {
+      "status": "CONFIRMED",
+      "M_final": "P2",
+      "authority": "Explicit SV1 approval relayed authoritatively by the user, 2026-09-25",
+      "evidence": "SV1 CONFIRMED: M_final = P2, là output sau features.4 (MaxPool1d), shape PyTorch với N=1 là (1, 16, 180). Mình chốt phạm vi port Week 3 là Conv1 → ReLU1 → Conv2 → ReLU2 → MaxPool1d, với P2 là tensor đầu ra để SV1 bàn giao cho phần tiếp theo."
+    },
+    "proposal": "P2",
+    "proposal_module": "features.4",
+    "proposal_operation": "MaxPool1d after Conv2 and ReLU",
+    "confirmation": "Both SV3 and SV1 explicitly confirmed P2; individual authority and evidence recorded above."
+  },
+  "sample_selection": {
+    "split": "val",
+    "rule": "sort_numeric_record_id_then_numeric_r_peak_sample_then_lead_name_take_first_20",
+    "count": 20,
+    "seed": null,
+    "exclusions": "No additional exclusions beyond frozen Week 1; reject duplicate source identities or invalid provenance",
+    "authority": "w3-sv1-handoff-v1 section 5 delegates selection to SV3"
+  },
+  "onnx_status": "BLOCKED_ON_SV2_INTERFACE"
+}

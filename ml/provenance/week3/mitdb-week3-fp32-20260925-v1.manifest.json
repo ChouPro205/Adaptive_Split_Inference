@@ -1,0 +1,463 @@
+{
+  "contract_version": "w3-sv1-handoff-v1",
+  "handoff_id": "mitdb-week3-fp32-20260925-v1",
+  "release_status": "SV3_RELEASE_PACKAGE",
+  "model_name": "mitdb_week2_cnn_v1",
+  "model_version": "mitdb_week2_cnn_v1",
+  "dataset_profile": "MIT-BIH/1.0.0",
+  "precision": "fp32",
+  "quantization": "not_applicable",
+  "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa",
+  "sv1_acceptance": {
+    "package_review": "PENDING",
+    "mcu_validation": "PENDING",
+    "mcu_20_of_20": "NOT_YET_TESTED"
+  },
+  "checkpoint": {
+    "path": "model/checkpoint.pt",
+    "sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+    "size_bytes": 450551,
+    "type": "full checkpoint dictionary; state_dict + epoch + validation + provenance + config + architecture",
+    "selected_epoch": 3,
+    "load": "torch.load(weights_only=True, map_location='cpu')"
+  },
+  "train_config": {
+    "path": "model/train_config.json",
+    "sha256": "1f988328ea46db8537bc46d35b9cb5a0a165f128d2326366495fe26eda23715f",
+    "origin": "checkpoint.training_config; UTF-8 LF snapshot; identical parsed settings"
+  },
+  "framework": "PyTorch",
+  "dependency_versions": {
+    "python": "3.11.9",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "wfdb": "4.3.1",
+    "scipy": "1.17.1"
+  },
+  "historical_runtime": {
+    "python_version": "3.11.9",
+    "torch_version": "2.14.0+cu130",
+    "cuda_version": "13.0",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 5060"
+  },
+  "seed": 30,
+  "eval": true,
+  "historical_verification": {
+    "source_git_sha": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa",
+    "best_epoch": 3,
+    "validation_accuracy": 0.8448791265921497,
+    "test_accuracy": 0.9822097378277154
+  },
+  "model_source_files": {
+    "ml/configs/mitdb_week2_baseline.json": {
+      "path": "model/source/ml/configs/mitdb_week2_baseline.json",
+      "sha256": "273a563af79126c6ed6762c4bd01a186de055b6dea390688eefcf7522ae2e5e3"
+    },
+    "ml/src/mitdb_baseline_model.py": {
+      "path": "model/source/ml/src/mitdb_baseline_model.py",
+      "sha256": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14"
+    },
+    "ml/src/mitdb_week2_data.py": {
+      "path": "model/source/ml/src/mitdb_week2_data.py",
+      "sha256": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907"
+    },
+    "ml/src/train_mitdb_baseline.py": {
+      "path": "model/source/ml/src/train_mitdb_baseline.py",
+      "sha256": "a0fa0becf2539be37db9105eccb60d8ded8c25fae04d36fdda04ce6f82446152"
+    },
+    "ml/src/week1_common.py": {
+      "path": "model/source/ml/src/week1_common.py",
+      "sha256": "34c3402987e1f8712c844830c6db7a9325ef7a616e9d3dbe5dbb739f2fbc2dba"
+    },
+    "ml/src/mitdb_common.py": {
+      "path": "model/source/ml/src/mitdb_common.py",
+      "sha256": "acd81b4aa9331d90cdb0abdaf16cb1935e9afbd6e34e654ac16dc5f51d236c1d"
+    }
+  },
+  "upstream": [
+    {
+      "path": "ml/configs/mitdb_week1_config.json",
+      "sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54",
+      "hash_policy": "sha256_utf8_lf_normalized",
+      "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa"
+    },
+    {
+      "path": "ml/manifests/mitdb_patient_split.csv",
+      "sha256": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe",
+      "hash_policy": "sha256_utf8_lf_normalized",
+      "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa"
+    },
+    {
+      "path": "ml/configs/mitdb_normalization.json",
+      "sha256": "37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c",
+      "hash_policy": "sha256_utf8_lf_normalized",
+      "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa"
+    },
+    {
+      "path": "ml/data/processed/mitdb/processed_manifest.json",
+      "sha256": "f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c",
+      "hash_policy": "sha256_utf8_lf_normalized",
+      "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa"
+    },
+    {
+      "path": "ml/data/processed/mitdb/val_metadata.csv",
+      "sha256": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+      "hash_policy": "sha256_utf8_lf_normalized",
+      "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa"
+    }
+  ],
+  "week1_dataset_artifacts": {
+    "week1_config_sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54",
+    "patient_manifest_sha256": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe",
+    "normalization_sha256": "37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c",
+    "processed_manifest_sha256": "f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c",
+    "processed_artifacts": {
+      "train_X.npy": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f",
+      "train_y.npy": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752",
+      "train_metadata.csv": "86c5c3a634fc5adfca09ec2f8378efb0d52f21205cfaf9470432f89ffdc0977a",
+      "val_X.npy": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732",
+      "val_y.npy": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43",
+      "val_metadata.csv": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+      "test_X.npy": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e",
+      "test_y.npy": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6",
+      "test_metadata.csv": "02a6a91c0e35710d0be13f10b2360e034918f546b3ba2c7df7a2fd484ecd1178"
+    }
+  },
+  "selection": {
+    "split": "val",
+    "rule": "sort_numeric_record_id_then_numeric_r_peak_sample_then_lead_name_take_first_20",
+    "count": 20,
+    "seed": null,
+    "exclusions": "No additional exclusions beyond frozen Week 1; reject duplicate source identities or invalid provenance",
+    "authority": "w3-sv1-handoff-v1 section 5 delegates selection to SV3"
+  },
+  "preprocessing": [
+    "WFDB physical MLII selected by name at 360 Hz",
+    "expert R-peak window [r-180:r+180); drop incomplete boundary windows; unchanged AAMI mapping",
+    "Week 1 train-only scalar Z-score, then float32; no refit",
+    "select existing val rows using frozen rule; view (20,1,360); no additional transform or second normalization"
+  ],
+  "graph": "model/graph.json",
+  "M_final": "P2",
+  "boundary_status": "CONFIRMED",
+  "memory": {
+    "parameter_total_bytes": 5568,
+    "per_conv_bytes": {
+      "conv1": 384,
+      "conv2": 5184
+    },
+    "largest_intermediate_bytes_N1": 23040,
+    "persistent_parameter_flash_bytes_logical": 5568,
+    "two_activation_buffers_bytes_N1": 46080,
+    "measurement_status": "logical sizes only; no MCU build, stack or workspace measurement"
+  },
+  "file_hash_policy": "sha256_raw_bytes",
+  "text_encoding": "UTF-8 LF without BOM",
+  "onnx_status": "BLOCKED_ON_SV2_INTERFACE",
+  "files": [
+    {
+      "path": "firmware/head_parameters.h",
+      "size_bytes": 34591,
+      "sha256": "168b1b6a1e7b79920800120e1e9a35845978debc25202678001aa6bd480f22d8",
+      "format": "h",
+      "dtype": null
+    },
+    {
+      "path": "firmware/host_c_verification.json",
+      "size_bytes": 209,
+      "sha256": "ec4d4b1daf7fdf3ee6238cf00d59d6eaa42872601503a8eeb283af146d3e47f5",
+      "format": "json",
+      "dtype": null
+    },
+    {
+      "path": "golden/M1.npy",
+      "size_bytes": 460928,
+      "sha256": "8cc780759bd335304d5423782c5c9f75ce2bd9300370c0b7fe0de633cccbbe83",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        20,
+        16,
+        360
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 115200,
+      "tensor_size_bytes": 460800
+    },
+    {
+      "path": "golden/M2.npy",
+      "size_bytes": 460928,
+      "sha256": "4b7b84482f2641d354754d8daf724a904f7519a3e55654b364230c04f8c58d04",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        20,
+        16,
+        360
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 115200,
+      "tensor_size_bytes": 460800
+    },
+    {
+      "path": "golden/P2.npy",
+      "size_bytes": 230528,
+      "sha256": "5b9607815738e1a3a7ccde941e23a01a9ad927326839f38895e1f289e7d72399",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        20,
+        16,
+        180
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 57600,
+      "tensor_size_bytes": 230400
+    },
+    {
+      "path": "golden/R1.npy",
+      "size_bytes": 460928,
+      "sha256": "01dc25a4e8eb9e4ad3bcf246dd3e8ed85e06dc0df7af8e78f13b75800f0dc9a6",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        20,
+        16,
+        360
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 115200,
+      "tensor_size_bytes": 460800
+    },
+    {
+      "path": "golden/R2.npy",
+      "size_bytes": 460928,
+      "sha256": "5656055b57c370f17d64b5464021e8ad834b5319e01e9eafe8be2a069e0ab6a5",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        20,
+        16,
+        360
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 115200,
+      "tensor_size_bytes": 460800
+    },
+    {
+      "path": "inputs.npy",
+      "size_bytes": 28928,
+      "sha256": "dac1d1e9df849bf4ffa30359384d129586f67ec0703157b692d1344685b78dcc",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        20,
+        1,
+        360
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 7200,
+      "tensor_size_bytes": 28800
+    },
+    {
+      "path": "model/checkpoint.pt",
+      "size_bytes": 450551,
+      "sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+      "format": "pt",
+      "dtype": null
+    },
+    {
+      "path": "model/freeze_decision.json",
+      "size_bytes": 2430,
+      "sha256": "d69f0bf0887a965c806984716f556fb444ef2db64c7b6f0d708156d8e1b3a004",
+      "format": "json",
+      "dtype": null
+    },
+    {
+      "path": "model/graph.json",
+      "size_bytes": 10732,
+      "sha256": "ba25cc2d9225ae8f87a656179c79cddb0d9a96413104a36990d46eea15dccc60",
+      "format": "json",
+      "dtype": null
+    },
+    {
+      "path": "model/source/ml/configs/mitdb_week2_baseline.json",
+      "size_bytes": 619,
+      "sha256": "273a563af79126c6ed6762c4bd01a186de055b6dea390688eefcf7522ae2e5e3",
+      "format": "json",
+      "dtype": null
+    },
+    {
+      "path": "model/source/ml/src/mitdb_baseline_model.py",
+      "size_bytes": 2912,
+      "sha256": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+      "format": "py",
+      "dtype": null
+    },
+    {
+      "path": "model/source/ml/src/mitdb_common.py",
+      "size_bytes": 4052,
+      "sha256": "acd81b4aa9331d90cdb0abdaf16cb1935e9afbd6e34e654ac16dc5f51d236c1d",
+      "format": "py",
+      "dtype": null
+    },
+    {
+      "path": "model/source/ml/src/mitdb_week2_data.py",
+      "size_bytes": 4619,
+      "sha256": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907",
+      "format": "py",
+      "dtype": null
+    },
+    {
+      "path": "model/source/ml/src/train_mitdb_baseline.py",
+      "size_bytes": 13748,
+      "sha256": "a0fa0becf2539be37db9105eccb60d8ded8c25fae04d36fdda04ce6f82446152",
+      "format": "py",
+      "dtype": null
+    },
+    {
+      "path": "model/source/ml/src/week1_common.py",
+      "size_bytes": 10331,
+      "sha256": "34c3402987e1f8712c844830c6db7a9325ef7a616e9d3dbe5dbb739f2fbc2dba",
+      "format": "py",
+      "dtype": null
+    },
+    {
+      "path": "model/train_config.json",
+      "size_bytes": 635,
+      "sha256": "1f988328ea46db8537bc46d35b9cb5a0a165f128d2326366495fe26eda23715f",
+      "format": "json",
+      "dtype": null
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 6251,
+      "sha256": "ee700987f3df3e57286bafbd1581feede9152616ccaa0bba161e6d22fee39964",
+      "format": "md",
+      "dtype": null
+    },
+    {
+      "path": "samples.csv",
+      "size_bytes": 2430,
+      "sha256": "4a6356312d5f62da6b2fdf9e609843d4dea3fc5c20767e201ea21a075e6f227c",
+      "format": "csv",
+      "dtype": null
+    },
+    {
+      "path": "scripts/export_week3.py",
+      "size_bytes": 13877,
+      "sha256": "db3ca6abde22df10a3f3b1f020fcd9135b34805cdfff6736ffe3699ba4c255e6",
+      "format": "py",
+      "dtype": null
+    },
+    {
+      "path": "scripts/test_week3.py",
+      "size_bytes": 7292,
+      "sha256": "fde7fcffbfd103b4194406eb015b93b5c3deca8fd0b237ddebe487defc9cd89d",
+      "format": "py",
+      "dtype": null
+    },
+    {
+      "path": "scripts/verify_week3.py",
+      "size_bytes": 8595,
+      "sha256": "383eaac60f03deae3ba10201d114319646a7751bb101f6d410651b06d637bba0",
+      "format": "py",
+      "dtype": null
+    },
+    {
+      "path": "scripts/week3_common.py",
+      "size_bytes": 20408,
+      "sha256": "2f9f29cbc7e4c67a7fb74151238cf82456d81ab97ff1e65d30fc5f98a534cb25",
+      "format": "py",
+      "dtype": null
+    },
+    {
+      "path": "weights/conv1.bias.npy",
+      "size_bytes": 192,
+      "sha256": "c636d074275bd3554444572472eebb0d4ae96c180be0002a08f34b569dcfefc4",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        16
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 16,
+      "tensor_size_bytes": 64
+    },
+    {
+      "path": "weights/conv1.weight.npy",
+      "size_bytes": 448,
+      "sha256": "a49e407cb77b07aafd28b0595dc523af2200f2e0f25e729442a2e3cda758bfca",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        16,
+        1,
+        5
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 80,
+      "tensor_size_bytes": 320
+    },
+    {
+      "path": "weights/conv2.bias.npy",
+      "size_bytes": 192,
+      "sha256": "67518978200e582715b5bc4505b70895ae0a059d8a7e0af9acffd3f72cd5cd47",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        16
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 16,
+      "tensor_size_bytes": 64
+    },
+    {
+      "path": "weights/conv2.weight.npy",
+      "size_bytes": 5248,
+      "sha256": "975561e10768b7c0adfb3d090ec587f44892429c0cee204da0f6905f034f5130",
+      "format": "npy",
+      "dtype": "<f4",
+      "shape": [
+        16,
+        16,
+        5
+      ],
+      "npy_version": [
+        1,
+        0
+      ],
+      "element_count": 1280,
+      "tensor_size_bytes": 5120
+    }
+  ]
+}

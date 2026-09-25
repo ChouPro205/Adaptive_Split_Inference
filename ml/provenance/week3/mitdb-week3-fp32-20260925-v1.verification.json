@@ -1,0 +1,40 @@
+{
+  "handoff_id": "mitdb-week3-fp32-20260925-v1",
+  "package_path": "ml/artifacts/week3/mitdb-week3-fp32-20260925-v1",
+  "manifest_sha256": "437a2a7db9f58d5d6896e8f50102c8b9b0a43b585d41c363420a1e9ca7309f2d",
+  "file_count": 29,
+  "total_file_bytes": 2717936,
+  "largest_file_bytes": 460928,
+  "archive_path": "ml/artifacts/week3/mitdb-week3-fp32-20260925-v1.zip",
+  "archive_sha256": "59a3d5ac9546c754ddeaca6fa3f207c08a8724148f55d8d3b58c32e8ba7b75c3",
+  "archive_bytes": 1601258,
+  "reproduction_id": "mitdb-week3-fp32-20260925-v1-repro",
+  "reproduced_identical_files": 27,
+  "reproduction_expected_differences": [
+    "README.md",
+    "manifest.json"
+  ],
+  "r2_payload_identical_files": [
+    "firmware/head_parameters.h",
+    "golden/M1.npy",
+    "golden/M2.npy",
+    "golden/P2.npy",
+    "golden/R1.npy",
+    "golden/R2.npy",
+    "inputs.npy",
+    "model/checkpoint.pt",
+    "model/train_config.json",
+    "samples.csv",
+    "weights/conv1.bias.npy",
+    "weights/conv1.weight.npy",
+    "weights/conv2.bias.npy",
+    "weights/conv2.weight.npy"
+  ],
+  "r2_unchanged": true,
+  "release_verifier": "PASS",
+  "negative_tests_passed": 14,
+  "sv1_package_review": "PENDING",
+  "sv1_mcu_validation": "PENDING",
+  "mcu_20_of_20": "NOT_YET_TESTED",
+  "onnx_status": "BLOCKED_ON_SV2_INTERFACE"
+}
