@@ -48,4 +48,3 @@ Use the pinned environment, historical Git commit, Week 1 raw/processed MIT-BIH 
 SV3 release package: **PASS**. SV1 package review: **PENDING**. SV1 MCU validation: **PENDING**. MCU 20/20: **NOT YET TESTED**. Logical estimates only: 5,568 B parameters (384 + 5,184), 23,040 B largest N=1 intermediate and 46,080 B double buffer; actual firmware Flash/RAM/workspace/stack remain SV1 measurements.
 
 ONNX remains **BLOCKED_ON_SV2_INTERFACE**: no approved opset/runtime/provider, delivery path, tensor names/dimensions, full/tail profile or verification tolerance/procedure. This is independent of the approved SV1 boundary. Entire Week 3 is not DONE.
-
