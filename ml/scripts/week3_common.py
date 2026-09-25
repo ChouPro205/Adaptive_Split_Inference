@@ -20,6 +20,8 @@ import tempfile
 import numpy as np
 import torch
 
+MODEL_NAME = "mitdb_week2_cnn_v1"
+MODEL_VERSION = "mitdb_week2_cnn_v1"
 CONTRACT = "w3-sv1-handoff-v1"
 SOURCE = "8e98a0e4851abc979feb5fd5b97ece612b02cfaa"
 CHECKPOINT = "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90"
@@ -110,7 +112,8 @@ def check_decision(decision, review):
     need(decision["schema_version"] == 1 and decision["checkpoint_sha256"] == CHECKPOINT
          and decision["source_commit"] == SOURCE and decision["model_source_sha256"] == MODEL_HASH
          and decision["selected_epoch"] == 3 and decision["dataset_profile"] == "MIT-BIH/1.0.0"
-         and decision["model_name"] == "mitdb_week2_cnn_v1", "Freeze identity mismatch")
+         and decision.get("model_name") == MODEL_NAME, "Freeze identity mismatch")
+    need(decision.get("model_version") == MODEL_VERSION, "Frozen model_version mismatch")
     need(decision["model_freeze"]["status"] == "confirmed_conditional_on_verifiers"
          and bool(decision["model_freeze"]["evidence"]), "Model freeze has not been confirmed")
     selection = decision["sample_selection"]
@@ -352,8 +355,9 @@ def inventory(package):
             with path.open("rb") as f:
                 version = np.lib.format.read_magic(f)
             a = np.load(path, allow_pickle=False)
-            need(a.dtype.str == "<f4" and a.flags.c_contiguous and np.isfinite(a).all(),
-                 f"Invalid NPY tensor: {relative}")
+            need(a.dtype.str == "<f4", f"Wrong tensor dtype: {relative}")
+            need(a.flags.c_contiguous, f"Tensor must be C-contiguous: {relative}")
+            need(np.isfinite(a).all(), f"Non-finite tensor: {relative}")
             item.update(dtype="<f4", shape=list(a.shape), npy_version=list(version),
                         element_count=a.size, tensor_size_bytes=a.nbytes)
         elif path.suffix != ".pt":

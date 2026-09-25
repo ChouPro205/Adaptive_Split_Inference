@@ -1,6 +1,10 @@
 # Hợp đồng bàn giao mô hình Tuần 3: SV3 → SV1
 
-**Quy cách gói bàn giao: SV1 chốt, phiên bản `w3-sv1-handoff-v1`. Gói SV3 đã phát hành và verify PASS; SV1 package review/MCU validation PENDING.** Tài liệu này quy định đầu vào để SV1 chạy hai lớp `Conv1d` đầu trên nRF52840 Dongle và so với PyTorch. Gói chính thức `mitdb-week3-fp32-20260925-v1` và toàn bộ bằng chứng nằm trong [biên bản release](../ml/docs/week3_release.md). Việc phát hành gói không phải kết quả nghiệm thu trên nRF52840; MCU 20/20 **NOT YET TESTED**.
+Current candidate: **v2**, after SV1 verifier review. Immutable v1 is externally
+`SUPERSEDED_PENDING_VERIFIER_HARDENING`; no scientific tensors were found incorrect.
+PR #11 remains OPEN and unmerged; package acceptance is PENDING.
+
+**Quy cách gói bàn giao: SV1 chốt, phiên bản `w3-sv1-handoff-v1`. Gói SV3 đã phát hành và verify PASS; SV1 package review/MCU validation PENDING.** Tài liệu này quy định đầu vào để SV1 chạy hai lớp `Conv1d` đầu trên nRF52840 Dongle và so với PyTorch. Gói chính thức `mitdb-week3-fp32-20260925-v2` và toàn bộ bằng chứng nằm trong [biên bản release](../ml/docs/week3_release.md). Việc phát hành gói không phải kết quả nghiệm thu trên nRF52840; MCU 20/20 **NOT YET TESTED**.
 
 ## 1. Phạm vi và nguồn ràng buộc
 
@@ -107,15 +111,15 @@ Xác nhận SV1 được người dùng cung cấp làm thẩm quyền trong phi
 
 Cả hai xác nhận riêng được lưu trong config. Đây là duyệt boundary, không phải
 SV1 package review hoặc MCU acceptance. Gói chính thức:
-`ml/artifacts/week3/mitdb-week3-fp32-20260925-v1/`, manifest raw SHA-256
-`437a2a7db9f58d5d6896e8f50102c8b9b0a43b585d41c363420a1e9ca7309f2d`.
+`ml/artifacts/week3/mitdb-week3-fp32-20260925-v2/`, manifest raw SHA-256
+`0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469`.
 Model name/version `mitdb_week2_cnn_v1`, precision FP32, quantization
-`not_applicable`; không có INT8 metadata. [Manifest versioned](../ml/provenance/week3/mitdb-week3-fp32-20260925-v1.manifest.json)
+`not_applicable`; không có INT8 metadata. [Manifest versioned](../ml/provenance/week3/mitdb-week3-fp32-20260925-v2.manifest.json)
 liệt kê mọi file trong gói ngoài Git.
 Đã có [gói review với 20 input/golden, C header và export/verify](../ml/docs/week3_review_evidence.md),
 kiểm kỹ thuật PASS; r2 vẫn giữ nguyên trạng thái lịch sử `PROPOSAL_ONLY`,
 không sửa hoặc relabel. Gói chính thức dùng ID mới nêu trên; exporter/verifier
-không có `--review` đã PASS, 14 negative tests PASS, reproduction PASS.
+không có `--review` đã PASS, 27 negative tests PASS, reproduction PASS.
 ONNX cho SV2: **BLOCKED_ON_SV2_INTERFACE**;
 các quyết định còn thiếu được liệt kê trong audit. Chưa có MCU acceptance.
 
@@ -131,3 +135,17 @@ Mục cuối vẫn chưa hoàn tất: boundary đã xác nhận nhưng khả nă
 firmware thực và phép so MCU chưa được đo. Các số 5568 B tham số, 23040 B tensor
 lớn nhất và 46080 B hai buffer chỉ là ước tính logic. SV1 package review PENDING;
 SV1 MCU validation PENDING; MCU 20/20 NOT YET TESTED.
+
+## Release verification hardening after SV1 review
+
+Release `verify()`/CLI requires `expected_manifest_sha256` /
+`--expected-manifest-sha256` from trusted versioned evidence or PR outside the
+received package. Authenticate raw manifest bytes before parsing; the manifest
+must not provide its own expected hash. Use the trusted checkout verifier first.
+Review without an anchor is unauthenticated technical checking only, never release.
+
+All four scripts are mandatory: `export_week3.py`, `verify_week3.py`,
+`week3_common.py`, `test_week3.py`. The frozen model name AND version must equal
+`mitdb_week2_cnn_v1`. Required files, original source blobs and graph-derived
+parameter/golden sets are checked together. See the release report for exact
+commands, the mandatory-file audit, all 27 rejection cases and external hashes.

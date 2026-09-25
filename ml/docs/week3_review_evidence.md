@@ -1,5 +1,9 @@
 # SV3 Week 3 review evidence — 2026-09-25
 
+Current disposition: v1 is `SUPERSEDED_PENDING_VERIFIER_HARDENING` after SV1 review;
+[v2 is the current candidate](week3_release.md), with unchanged scientific payload.
+PR #11 is OPEN, not merged. The review/audit statements below are historical.
+
 **REVIEW_CHECKS_PASS; NOT A RELEASE. Week 3 remains incomplete.**
 
 This page preserves **historical r2 review evidence**. A separate official ID
@@ -27,7 +31,7 @@ of robust five-class clinical performance.
 ## Review package
 
 - Review ID: `mitdb-epoch3-fp32-review-20260925-r2`.
-- Actual local folder: `C:/Users/Admin/Adaptive_Split_Inference/ml/data/week3_review/mitdb-epoch3-fp32-review-20260925-r2`.
+- Actual local folder: `ml/data/week3_review/mitdb-epoch3-fp32-review-20260925-r2`.
 - [Package README](../data/week3_review/mitdb-epoch3-fp32-review-20260925-r2/README.md).
 - Manifest raw SHA-256: `24300d18044640c83722073dd692cff540721cdf027d9fe31e29a87e7d480a88`.
 - Source commit: `8e98a0e4851abc979feb5fd5b97ece612b02cfaa`.

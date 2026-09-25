@@ -109,6 +109,7 @@ def export(repo, decision_path, handoff_id, output_parent=None, review=False, co
                                 for k, v in graph["milestones"].items())
     state = "REVIEW ONLY: M_final is a proposal, not confirmed by SV3/SV1." if review else (
         "Official SV3 release package. SV1 package review and MCU validation PENDING; MCU 20/20 NOT YET TESTED.")
+    recipient_path = "ml/" + ("data/week3_review/" if review else "artifacts/week3/") + handoff_id
     readme = f'''# {handoff_id}
 
 **{state}**
@@ -124,7 +125,7 @@ algorithms, MKLDNN disabled, `eval()` and inference mode.
 Quantization is `not_applicable`: no INT8 scale, zero point, axis, clamp or
 requantization parameters are part of this FP32 handoff.
 
-Actual local review/delivery location: `{package.as_posix()}`.
+Suggested recipient location, relative to repository root: `{recipient_path}`.
 Transfer the entire folder outside Git; raw data is not included. This ID is
 immutable: never edit files inside this folder. A changed decision, graph,
 checkpoint, input, golden or script requires a new ID and complete export.
@@ -173,6 +174,14 @@ verify reconstruct each selected sample from checksummed raw ECG and compare bit
 
 ## Exact commands (PowerShell, from repository root)
 
+Authenticate the manifest with a digest obtained from trusted repository evidence
+or PR, never from the received package. Run the verifier from your trusted checkout
+(`ml/scripts/verify_week3.py`) before executing any bundled script.
+Release requires `--expected-manifest-sha256` before JSON parsing. Review mode may
+omit it for unauthenticated technical checks only; it never grants release eligibility.
+Current checks also pin model name/version and require all four scripts. Historical
+r2 retains its original scripts/labels and is not relabelled to satisfy these checks.
+
 External requirements: preserved Week 1 raw MIT-BIH and processed arrays/metadata,
 the historical Git commit, Week 2 artifacts, pinned `ml/.venv`, and host GCC on PATH.
 The repo scientific sources must be tracked and clean. No download/rebuild/train
@@ -180,13 +189,14 @@ is performed. The original Week 2 CUDA environment is required for export's
 historical metric verification. Tensor verification itself uses CPU.
 
 ```powershell
-$pkg = '{package.as_posix()}'
-& ml/.venv/Scripts/python.exe -B "$pkg/scripts/verify_week3.py" --repo-root . --package $pkg{review_flag}
-& ml/.venv/Scripts/python.exe -B "$pkg/scripts/test_week3.py" --repo-root . --package $pkg
+$pkg = '{recipient_path}'
+$trustedManifestSha = '<copy the independently trusted digest from versioned release evidence or PR>'
+& ml/.venv/Scripts/python.exe -B ml/scripts/verify_week3.py --repo-root . --package $pkg --expected-manifest-sha256 $trustedManifestSha{review_flag}
+& ml/.venv/Scripts/python.exe -B ml/scripts/test_week3.py --repo-root . --package $pkg --expected-manifest-sha256 $trustedManifestSha
 & ml/.venv/Scripts/python.exe -B "$pkg/scripts/export_week3.py" --repo-root . --decision "$pkg/model/freeze_decision.json" --handoff-id {handoff_id}-repro{review_flag}
 ```
 
-The second command creates a fresh ID; it refuses overwrite. Input/parameter/golden
+The third command creates a fresh ID; it refuses overwrite. Input/parameter/golden
 bytes must reproduce; ID and location fields intentionally describe the new revision.
 {'Omitting --review must fail: no released handoff exists until M_final is confirmed.' if review else ''}
 
@@ -196,7 +206,7 @@ For sample 0 debugging on the PC:
 import csv
 from pathlib import Path
 import numpy as np
-p = Path(r"{package.as_posix()}")
+p = Path(r"{recipient_path}")
 with (p / "samples.csv").open(encoding="utf-8", newline="") as f:
     row = next(csv.DictReader(f))
 x0 = np.load(p / "inputs.npy", allow_pickle=False)[0]  # (1,360), already normalized
@@ -223,7 +233,8 @@ No Week 4 profiling, P1, INT8, privacy attack or controller is included.
     manifest["files"] = inventory(package)
     write_json(package / "manifest.json", manifest)
     from verify_week3 import verify
-    verify(package, repo, review=review, compiler=compiler)
+    verify(package, repo, review=review, compiler=compiler,
+           expected_manifest_sha256=sha(package / "manifest.json"))
     return package
 
 
@@ -237,6 +248,7 @@ def main():
     p.add_argument("--compiler", default="gcc")
     a = p.parse_args()
     package = export(a.repo_root, a.decision, a.handoff_id, a.output_parent, a.review, a.compiler)
+    print(f"MANIFEST_SHA256: {sha(package / 'manifest.json')}")
     print(f"{'REVIEW_CHECKS_PASS (NOT A RELEASE)' if a.review else 'HANDOFF_CHECKS_PASS'}: {package}")
 
 

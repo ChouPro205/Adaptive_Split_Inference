@@ -1,5 +1,9 @@
 # SV3 Week 3 pre-freeze audit — 2026-09-25
 
+Current disposition: v1 is `SUPERSEDED_PENDING_VERIFIER_HARDENING` after SV1 review;
+[v2 is the current candidate](week3_release.md), with unchanged scientific payload.
+PR #11 is OPEN, not merged. The review/audit statements below are historical.
+
 **Week 3 is NOT DONE. Model freeze confirmed by SV3 in-session, with verification
 conditions now satisfied. M_final=P2 is SV3/SV1 CONFIRMED; the official SV3
 package is released and verified. Device acceptance and ONNX remain pending.**

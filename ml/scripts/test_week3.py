@@ -13,25 +13,50 @@ import numpy as np
 
 from export_week3 import export
 from verify_week3 import verify
-from week3_common import FIELDS, check_decision, inventory, need, read_json, sha, text, write_json
+from week3_common import FIELDS, check_decision, need, read_json, sha, text, write_json
+
+
+def raw_test_inventory(package):
+    """Test-only metadata builder: deliberately permits invalid tensor semantics.
+
+    Semantic fixtures receive a new test-controlled trust anchor so they reach
+    inner gates. Root-of-trust fixtures keep the original external anchor.
+    Production verification never uses this helper or derives its own anchor.
+    """
+    entries = []
+    for path in sorted(package.rglob("*")):
+        if not path.is_file() or path == package / "manifest.json":
+            continue
+        item = {"path": path.relative_to(package).as_posix(),
+                "size_bytes": path.stat().st_size, "sha256": sha(path),
+                "format": path.suffix.lstrip("."), "dtype": None}
+        if path.suffix == ".npy":
+            with path.open("rb") as stream:
+                version = np.lib.format.read_magic(stream)
+            a = np.load(path, allow_pickle=False)
+            item.update(dtype=a.dtype.str, shape=list(a.shape), npy_version=list(version),
+                        element_count=a.size, tensor_size_bytes=a.nbytes)
+        entries.append(item)
+    return entries
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, required=True)
     parser.add_argument("--package", type=Path, required=True)
+    parser.add_argument("--expected-manifest-sha256", required=True)
     args = parser.parse_args()
     package, repo = args.package.resolve(), args.repo_root.resolve()
     before = {p.relative_to(package).as_posix(): sha(p) for p in package.rglob("*") if p.is_file()}
     package_status = read_json(package / "manifest.json")["release_status"]
     need(package_status in ("REVIEW_ONLY_M_FINAL_UNCONFIRMED", "SV3_RELEASE_PACKAGE"), "Unknown package status")
     review = package_status == "REVIEW_ONLY_M_FINAL_UNCONFIRMED"
-    verify(package, repo, review=review)
+    verify(package, repo, review=review, expected_manifest_sha256=args.expected_manifest_sha256)
     print("PASS: real package, raw-derived inputs, compiled C and all golden")
     cases = []
 
     def release_gate(p):
-        verify(p, repo, review=False)
+        verify(p, repo, review=False, expected_manifest_sha256=args.expected_manifest_sha256)
 
     def missing_sv1(p):
         decision = read_json(p / "model/freeze_decision.json")
@@ -75,7 +100,65 @@ def main():
         a = np.load(path); a.flat[0] = np.nan
         np.save(path, a, allow_pickle=False)
 
+    def mutate_manifest(p):
+        value = read_json(p / "manifest.json")
+        value["preprocessing"] = ["INCORRECT synthetic metadata"]
+        write_json(p / "manifest.json", value)
+
+    def mutate_version(p):
+        for name in ("manifest.json", "model/freeze_decision.json"):
+            value = read_json(p / name)
+            value["model_version"] = "unapproved-version"
+            write_json(p / name, value)
+
+    def identity(p, kind):
+        with (p / "samples.csv").open(encoding="utf-8", newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        if kind == "duplicate_id":
+            rows[1]["sample_id"] = rows[0]["sample_id"]
+        elif kind == "duplicate_source":
+            for key in ("record_id", "r_peak_sample", "lead_name"):
+                rows[1][key] = rows[0][key]
+        elif kind == "missing":
+            rows[0]["patient_id"] = ""
+        elif kind == "missing_column":
+            for row in rows:
+                del row["sample_id"]
+        else:
+            rows[0]["sample_id"] = "malformed"
+        out = io.StringIO(newline="")
+        writer = csv.DictWriter(out, fieldnames=list(rows[0]), lineterminator="\n")
+        writer.writeheader(); writer.writerows(rows)
+        text(p / "samples.csv", out.getvalue())
+
+    def shape(p, relative):
+        path = p / relative
+        np.save(path, np.load(path)[..., :-1], allow_pickle=False)
+
+    def without_anchor(p):
+        verify(p, repo, review=False)
+
+    def original_anchor(p):
+        verify(p, repo, review=review, expected_manifest_sha256=args.expected_manifest_sha256)
+
     cases.extend([
+        ("release requires external anchor", lambda p: None, False,
+         "Release requires independently trusted", without_anchor),
+        ("manifest metadata only", mutate_manifest, False, "Manifest SHA-256 mismatch", original_anchor),
+        ("manifest metadata plus rebuilt inventory", mutate_manifest, True,
+         "Manifest SHA-256 mismatch", original_anchor),
+        ("manifest authenticated before parsing", lambda p: text(p / "manifest.json", "{invalid"), False,
+         "Manifest SHA-256 mismatch", original_anchor),
+        ("model_version changed in both sources", mutate_version, True, "Frozen model_version mismatch", None),
+        ("required test script removed", lambda p: (p / "scripts/test_week3.py").unlink(), True,
+         "Missing required package files", None),
+        ("duplicate sample_id", lambda p: identity(p, "duplicate_id"), True, "Duplicate sample/source identity", None),
+        ("duplicate source key", lambda p: identity(p, "duplicate_source"), True, "Duplicate sample/source identity", None),
+        ("missing identity value", lambda p: identity(p, "missing"), True, "Missing sample identity/metadata", None),
+        ("missing identity column", lambda p: identity(p, "missing_column"), True, "CSV schema mismatch", None),
+        ("malformed identity", lambda p: identity(p, "malformed"), True, "Malformed sample identity", None),
+        ("wrong input shape", lambda p: shape(p, "inputs.npy"), True, "Wrong tensor shape: inputs.npy", None),
+        ("wrong golden shape", lambda p: shape(p, "golden/P2.npy"), True, "Wrong tensor shape: golden/P2.npy", None),
         (("release gate", lambda p: None, False, "Release gate:", release_gate) if review else
          ("release gate without SV1", missing_sv1, True, "Explicit SV1 confirmation", None)),
         ("missing real bias", missing_bias, True, "Missing required package files", None),
@@ -88,8 +171,8 @@ def main():
         ("sample order with recomputed file hash", sample_swap, True, "Samples differ", None),
         ("omitted intermediate op", changed_graph, True, "Graph differs", None),
         ("C header representation", changed_header, True, "Header contents", None),
-        ("wrong dtype", changed_dtype, False, "File hash/size mismatch", None),
-        ("nonfinite golden", nonfinite, False, "File hash/size mismatch", None),
+        ("wrong dtype with rebuilt inventory", changed_dtype, True, "Wrong tensor dtype: inputs.npy", None),
+        ("nonfinite golden with rebuilt inventory", nonfinite, True, "Non-finite tensor: golden/M2.npy", None),
     ])
     for label, mutate, rehash, message, action in cases:
         with tempfile.TemporaryDirectory(prefix="sv3_week3_negative_") as directory:
@@ -98,10 +181,11 @@ def main():
             mutate(copy)
             if rehash:
                 manifest = read_json(copy / "manifest.json")
-                manifest["files"] = inventory(copy)
+                manifest["files"] = raw_test_inventory(copy)
                 write_json(copy / "manifest.json", manifest)
             try:
-                (action or (lambda p: verify(p, repo, review=review)))(copy)
+                (action or (lambda p: verify(p, repo, review=review,
+                    expected_manifest_sha256=sha(p / "manifest.json"))))(copy)
             except ValueError as exc:
                 need(message in str(exc), f"Wrong failure for {label}: {exc}")
             else:

@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import json
 from pathlib import Path
 import re
 import subprocess
@@ -15,9 +16,21 @@ from week3_common import (CONTRACT, SOURCE, CHECKPOINT, FIELDS, check_decision,
     sha, source_and_data, trace, versions)
 
 
-def verify(package, repo, review=False, compiler="gcc"):
+def verify(package, repo, review=False, compiler="gcc", expected_manifest_sha256=None):
     package, repo = Path(package).resolve(), Path(repo).resolve()
-    manifest = read_json(package / "manifest.json")
+    # Authenticate the exact bytes before parsing. Never infer trust from the package.
+    need(review or expected_manifest_sha256 is not None,
+         "Release requires independently trusted expected_manifest_sha256")
+    raw_manifest = (package / "manifest.json").read_bytes()
+    if expected_manifest_sha256 is not None:
+        need(isinstance(expected_manifest_sha256, str)
+             and re.fullmatch(r"[0-9a-f]{64}", expected_manifest_sha256) is not None,
+             "Malformed expected manifest SHA-256")
+        need(hashlib.sha256(raw_manifest).hexdigest() == expected_manifest_sha256,
+             "Manifest SHA-256 mismatch")
+    def reject_constant(value):
+        raise ValueError(f"Non-finite JSON constant: {value}")
+    manifest = json.loads(raw_manifest.decode("utf-8"), parse_constant=reject_constant)
     need(manifest["contract_version"] == CONTRACT, "Contract version mismatch")
     need(re.fullmatch(r"[a-z0-9_-]+", manifest["handoff_id"]) is not None
          and package.name == manifest["handoff_id"], "Invalid handoff_id or directory identity")
@@ -48,7 +61,7 @@ def verify(package, repo, review=False, compiler="gcc"):
     required = {"README.md", "model/checkpoint.pt", "model/train_config.json", "model/graph.json",
                 "model/freeze_decision.json", "samples.csv", "inputs.npy", "firmware/head_parameters.h",
                 "firmware/host_c_verification.json", "scripts/export_week3.py", "scripts/verify_week3.py",
-                "scripts/week3_common.py", "weights/conv1.weight.npy", "weights/conv1.bias.npy",
+                "scripts/week3_common.py", "scripts/test_week3.py", "weights/conv1.weight.npy", "weights/conv1.bias.npy",
                 "weights/conv2.weight.npy", "weights/conv2.bias.npy"}
     need(required.issubset(paths), "Missing required package files")
     decision = read_json(package / "model/freeze_decision.json")
@@ -87,8 +100,16 @@ def verify(package, repo, review=False, compiler="gcc"):
     need(len({r["sample_id"] for r in samples}) == 20
          and len({(r["record_id"], r["r_peak_sample"], r["lead_name"]) for r in samples}) == 20,
          "Duplicate sample/source identity")
+    for row in samples:
+        need(all(isinstance(row.get(key), str) and row[key].strip() for key in FIELDS),
+             "Missing sample identity/metadata")
+        need(all(re.fullmatch(r"[0-9]+", row[key]) is not None
+                 for key in ("record_id", "r_peak_sample", "lead_index", "source_row_index"))
+             and row["sample_id"] == f"MIT-BIH:{row['record_id']}:{row['r_peak_sample']}:{row['lead_name']}",
+             "Malformed sample identity")
     need(samples == expected_samples, "Samples differ from deterministic Week 1 source mapping")
     inputs = np.load(package / "inputs.npy", allow_pickle=False)
+    need(inputs.shape == expected_inputs.shape, "Wrong tensor shape: inputs.npy")
     need(same_bits(inputs, expected_inputs), "Delivered inputs differ from raw-derived Week 1 samples")
     graph, parameters, golden = trace(model, inputs, boundary)
     graph["boundary_status"] = "PROPOSAL_ONLY" if review else "CONFIRMED"
@@ -101,12 +122,14 @@ def verify(package, repo, review=False, compiler="gcc"):
          "Missing/extra parameter or golden milestone")
     for path, actual in {**parameters, **{f"golden/{k}.npy": v for k, v in golden.items()}}.items():
         delivered = np.load(package / path, allow_pickle=False)
+        need(delivered.shape == actual.shape, f"Wrong tensor shape: {path}")
         need(same_bits(delivered, actual), f"FP32 recomputation bits differ: {path}")
     compiled = compiler_verify(package, graph, parameters, compiler)
     saved_compiler = read_json(package / "firmware/host_c_verification.json")
     need(saved_compiler["status"] == "PASS" and saved_compiler["fp32_elements"] == compiled["fp32_elements"],
          "Saved C verification evidence differs")
-    return {"handoff_id": manifest["handoff_id"], "release_eligible": not review,
+    return {"manifest_sha256": hashlib.sha256(raw_manifest).hexdigest(),
+            "manifest_authenticated": expected_manifest_sha256 is not None, "handoff_id": manifest["handoff_id"], "release_eligible": not review,
             "samples": len(samples), "milestones": list(graph["milestones"]),
             "checkpoint_sha256": CHECKPOINT, "source_commit": SOURCE,
             "memory": graph["memory"], "compiled_c": compiled}
@@ -116,10 +139,11 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--repo-root", type=Path, required=True)
     p.add_argument("--package", type=Path, required=True)
+    p.add_argument("--expected-manifest-sha256", help="Trusted digest from outside the package; required for release")
     p.add_argument("--review", action="store_true")
     p.add_argument("--compiler", default="gcc")
     a = p.parse_args()
-    result = verify(a.package, a.repo_root, a.review, a.compiler)
+    result = verify(a.package, a.repo_root, a.review, a.compiler, a.expected_manifest_sha256)
     import json
     print(json.dumps(result, indent=2))
     print("REVIEW_CHECKS_PASS (NOT A RELEASE)" if a.review else "HANDOFF_CHECKS_PASS")
