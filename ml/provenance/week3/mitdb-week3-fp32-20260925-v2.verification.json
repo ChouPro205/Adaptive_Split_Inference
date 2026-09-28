@@ -1,0 +1,88 @@
+{
+  "handoff_id": "mitdb-week3-fp32-20260925-v2",
+  "package_path": "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2",
+  "manifest_sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "file_count": 29,
+  "total_file_bytes": 2726226,
+  "archive_path": "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2.zip",
+  "archive_sha256": "d5511f8c5ebfb1e9eced4aea2f8e89a20dd142b79987a40f6a3347d33d7481eb",
+  "archive_bytes": 1602725,
+  "v1_status": "SUPERSEDED_PENDING_VERIFIER_HARDENING",
+  "v1_unchanged": true,
+  "r2_unchanged": true,
+  "scientific_payload_count": 14,
+  "v1_scientific_payload_identical_files": [
+    "firmware/head_parameters.h",
+    "golden/M1.npy",
+    "golden/M2.npy",
+    "golden/P2.npy",
+    "golden/R1.npy",
+    "golden/R2.npy",
+    "inputs.npy",
+    "model/checkpoint.pt",
+    "model/train_config.json",
+    "samples.csv",
+    "weights/conv1.bias.npy",
+    "weights/conv1.weight.npy",
+    "weights/conv2.bias.npy",
+    "weights/conv2.weight.npy"
+  ],
+  "v1_changed_files": [
+    {
+      "path": "README.md",
+      "v1_sha256": "ee700987f3df3e57286bafbd1581feede9152616ccaa0bba161e6d22fee39964",
+      "v2_sha256": "6375116459aa7feca61c4cdb8e71d76bb0c3708319d8548711634d40053c4de8"
+    },
+    {
+      "path": "manifest.json",
+      "v1_sha256": "437a2a7db9f58d5d6896e8f50102c8b9b0a43b585d41c363420a1e9ca7309f2d",
+      "v2_sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469"
+    },
+    {
+      "path": "scripts/export_week3.py",
+      "v1_sha256": "db3ca6abde22df10a3f3b1f020fcd9135b34805cdfff6736ffe3699ba4c255e6",
+      "v2_sha256": "02244b2eb160e6290a890df8e40c94e587e40b31c245c7b088b859c4f76fb678"
+    },
+    {
+      "path": "scripts/test_week3.py",
+      "v1_sha256": "fde7fcffbfd103b4194406eb015b93b5c3deca8fd0b237ddebe487defc9cd89d",
+      "v2_sha256": "b1ddc24e3855cdcb03d62632d5add7da30230d1f66b6c85a713b23c8e8aa09ae"
+    },
+    {
+      "path": "scripts/verify_week3.py",
+      "v1_sha256": "383eaac60f03deae3ba10201d114319646a7751bb101f6d410651b06d637bba0",
+      "v2_sha256": "b90bc36f5488d51fefa893a6c57ab2e928b50090f579b7d1e9510b5fa864eee8"
+    },
+    {
+      "path": "scripts/week3_common.py",
+      "v1_sha256": "2f9f29cbc7e4c67a7fb74151238cf82456d81ab97ff1e65d30fc5f98a534cb25",
+      "v2_sha256": "47dea8729d93bc4c66ddc421cff46b70fb66a17dc62b8fac420da5e89e8d93c6"
+    }
+  ],
+  "v1_added_files": [],
+  "v1_removed_files": [],
+  "v1_identical_file_count": 23,
+  "reproduction_id": "mitdb-week3-fp32-20260925-v2-repro",
+  "reproduction_manifest_sha256": "234ec090939875d8eedd5bfbf0eb94f2fb715bfc8ff43d2fb75ca976ad5decb1",
+  "reproduced_identical_files": 27,
+  "reproduction_expected_differences": [
+    "README.md",
+    "manifest.json"
+  ],
+  "release_verifier": "PASS",
+  "manifest_authenticated": true,
+  "negative_tests_passed": 27,
+  "compiled_c": {
+    "compiler": "gcc.EXE (Rev8, Built by MSYS2 project) 15.2.0",
+    "flags": "-std=c99 -Wall -Wextra -Werror -pedantic",
+    "fp32_elements": 1392,
+    "status": "PASS",
+    "target": "host; not nRF52840 firmware"
+  },
+  "sv1_package_review": "PENDING",
+  "sv1_mcu_validation": "PENDING",
+  "mcu_20_of_20": "NOT_YET_TESTED",
+  "onnx_status": "BLOCKED_ON_SV2_INTERFACE",
+  "overall_week3": "NOT_DONE"
+}

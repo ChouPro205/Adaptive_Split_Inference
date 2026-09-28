@@ -22,6 +22,8 @@ datasets/
 *.xmodel
 *.pth
 *.pt
+# Week 3 immutable model packages are transferred outside Git per ml/README.md.
+/ml/artifacts/week3/
 .env
 *.key
 ml/docs/project_sources/
