@@ -1,6 +1,7 @@
 # SV1 Week 3 FP32 build evidence (2026-09-28)
 
 - Branch: `dev/device-sv1`, after PR #11 merge commit `ff7f621706558083b4da5e583cb20268fb6d947e`.
+- Validated Week 3 firmware source commit: `33a5288e475646c80f14a9cfcd2e797db64c5e41`. The final image and capture hashes below identify the flashed build and measured output.
 - Package: `mitdb-week3-fp32-20260925-v2`; trusted manifest SHA-256 `0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469`.
 - Recipient acceptance: official checkout scripts with Python `-B` both exit 0; `HANDOFF_CHECKS_PASS`; 27/27 expected rejections; all 29 files and inventory unchanged.
 - Host sample 0: `MIT-BIH:105:197:MLII`; M1/R1 max absolute error `2.384185791015625e-7`, M2/R2 `9.5367431640625e-7`, P2 `4.76837158203125e-7`. See `week3_host_sample0.json`.
