@@ -1,0 +1,15 @@
+{
+  "handoff_id": "mitdb-week3-fp32-20260925-v2",
+  "manifest_sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+  "sample_index": 0,
+  "sample_id": "MIT-BIH:105:197:MLII",
+  "max_abs_error": {
+    "M1": 2.384185791015625e-07,
+    "R1": 2.384185791015625e-07,
+    "M2": 9.5367431640625e-07,
+    "R2": 9.5367431640625e-07,
+    "P2": 4.76837158203125e-07
+  },
+  "threshold": 0.001,
+  "status": "PASS"
+}

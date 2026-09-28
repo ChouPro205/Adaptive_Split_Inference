@@ -7,4 +7,11 @@ config APP_IDLE_MEASUREMENT
 	  Select the minimal firmware used to measure the PCA10059 idle
 	  baseline. The normal Active firmware remains the default.
 
+config APP_WEEK3_HEAD
+	bool "Build the Week 3 FP32 head validation firmware"
+	default n
+	help
+	  Run the v2 Conv1/ReLU1/Conv2/ReLU2/MaxPool1d head and expose
+	  full FP32 milestone tensors through USB CDC ACM.
+
 source "Kconfig.zephyr"
