@@ -33,8 +33,8 @@ The host script compiles the same C head used by Zephyr and checks sample 0 at M
    & ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture device/artifacts/week3_capture.txt
    ```
 
-The collector sends `TRACE 0` followed by `RUN 1` through `RUN 19`. The firmware sends every FP32 element as eight hexadecimal bit digits. The checker maps sample indices through the v2 `samples.csv`, checks full tensors and reports P2 max absolute error for each `sample_id`. It writes `device/reports/week3_mcu_validation.json` and prints `MCU_20_OF_20: PASS` only when all 20 P2 errors are strictly below `1e-3`. Sample 0 intermediate errors are also reported. Keep the capture and report as measurement evidence.
+The collector sends `TRACE 0` followed by `RUN 1` through `RUN 19` and reads continuously until each `DONE`. The firmware sends every FP32 element as eight hexadecimal bit digits, with a 5 ms pause after each 16-element line to keep USB CDC output draining. The checker maps sample indices through the v2 `samples.csv`, checks full tensors and ordered command completion, and reports P2 max absolute error for each `sample_id`. It writes `device/reports/week3_mcu_validation.json` and prints `MCU_20_OF_20: PASS` only when all 20 P2 errors are strictly below `1e-3`. Sample 0 intermediate errors and the measured main-thread stack high-water mark are also reported. Keep the capture and report as measurement evidence.
 
 ## Current status
 
-Host sample 0 and the Week 3 build/DFU package passed on 2026-09-28. No COM port was present on the build machine at that time; USB DFU and all MCU measurements remain pending.
+On 2026-09-28, the Week 3 build and USB DFU succeeded on a connected PCA10059. The complete 20-sample capture passed the checker (`MCU_20_OF_20: PASS`); the maximum P2 error was `7.15255737e-7`, and the measured main-thread stack peak was `544/4096 B`. See [the build and measurement report](reports/week3_build.md) for the actual ports, image hashes, diagnostics and each `sample_id` result. The final DFU ZIP SHA-256 is `1862C97AD223573C4492D0A3C0DE2D46B225F4C4573F1CE71C67AA4D65103F02`.

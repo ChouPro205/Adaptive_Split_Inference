@@ -46,6 +46,38 @@ def parse_capture(path: Path) -> dict[tuple[int, str], np.ndarray]:
     return tensors
 
 
+def parse_stack_usage(path: Path) -> list[dict[str, int]]:
+    """Check command framing and extract Zephyr main-thread high-water marks."""
+    measurements = []
+    active = None
+    stack = None
+    for line in path.read_text(encoding="ascii").splitlines():
+        begin = re.fullmatch(r"BEGIN (\d+) (TRACE|RUN)", line)
+        if begin:
+            sample = int(begin[1])
+            if active is not None or sample != len(measurements) or begin[2] != ("TRACE" if sample == 0 else "RUN"):
+                raise ValueError(f"Unexpected BEGIN: {line}")
+            active, stack = sample, None
+            continue
+        if line.startswith("STACK "):
+            match = re.fullmatch(r"STACK main_peak_bytes=(\d+) main_size_bytes=(\d+)", line)
+            if match is None or active is None or stack is not None:
+                raise ValueError(f"Invalid stack measurement: {line}")
+            peak, size = int(match[1]), int(match[2])
+            if size <= 0 or peak > size:
+                raise ValueError(f"Invalid stack bounds: {line}")
+            stack = {"sample_index": active, "main_peak_bytes": peak, "main_size_bytes": size}
+            continue
+        if line.startswith("DONE "):
+            if active is None or line != f"DONE {active}" or stack is None:
+                raise ValueError(f"Unexpected DONE or missing STACK: {line}")
+            measurements.append(stack)
+            active, stack = None, None
+    if active is not None or len(measurements) != 20:
+        raise ValueError(f"Incomplete command/stack sequence: {len(measurements)}/20")
+    return measurements
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", type=Path, default=Path("."))
@@ -59,6 +91,7 @@ def main() -> None:
     if len(samples) != 20 or [int(row["sample_index"]) for row in samples] != list(range(20)):
         raise ValueError("Invalid v2 sample index mapping")
     tensors = parse_capture(args.capture.resolve())
+    stack_usage = parse_stack_usage(args.capture.resolve())
     required = {(sample, "P2") for sample in range(20)} | {(0, name) for name in COUNTS}
     if set(tensors) != required:
         raise ValueError(f"Missing={sorted(required-set(tensors))}; extra={sorted(set(tensors)-required)}")
@@ -75,9 +108,12 @@ def main() -> None:
         intermediate[name] = float(np.max(np.abs(tensors[(0, name)].astype(np.float64) - golden.astype(np.float64))))
         print(f"sample 0 {name}: max_abs_error={intermediate[name]:.9g}")
     passed = all(row["pass"] for row in results)
+    max_stack_peak = max(row["main_peak_bytes"] for row in stack_usage)
+    print(f"MAIN_STACK_PEAK: {max_stack_peak}/{stack_usage[0]['main_size_bytes']} bytes")
     report = {"handoff_id": package.name, "manifest_sha256": TRUSTED_MANIFEST,
               "capture_sha256": sha256(args.capture.resolve()), "samples": results,
               "sample0_intermediate_max_abs_error": intermediate,
+              "main_stack": {"max_peak_bytes": max_stack_peak, "per_sample": stack_usage},
               "threshold_strict": 1e-3, "mcu_20_of_20": "PASS" if passed else "FAIL"}
     report_path = repo / "device/reports/week3_mcu_validation.json"
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")
