@@ -1,12 +1,14 @@
 # SV3 Week 3: v2 release candidate after SV1 review
 
-Current candidate: **mitdb-week3-fp32-20260925-v2**. PR [#11](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/11) is OPEN, not merged; base `dev/device-sv1`, head `sv3/week3-fp32-handoff`. SV1 package acceptance and MCU validation remain PENDING. Overall Week 3: **NOT DONE**.
+Accepted handoff: **mitdb-week3-fp32-20260925-v2**. PR [#11](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/11) merged into `dev/device-sv1` as `ff7f621706558083b4da5e583cb20268fb6d947e` after SV1 package acceptance. MCU validation remains PENDING. Overall Week 3: **NOT DONE**.
+
+SV1 acceptance on 2026-09-28 used the trusted checkout scripts and `ml/.venv/Scripts/python.exe -B` for both verification commands. `HANDOFF_CHECKS_PASS`, 27/27 expected rejections, and the unchanged 29-file inventory were observed. The earlier local verifier run omitted the documented `-B` and created a `.pyc` cache file; that run is not a defect of the documented release procedure. Device host/build evidence is in [Week 3 SV1 report](../../device/reports/week3_build.md).
 
 ## v1 status and preserved evidence
 
 `mitdb-week3-fp32-20260925-v1` was internally released, then superseded after SV1 found verifier assurance gaps. Its external disposition is **SUPERSEDED_PENDING_VERIFIER_HARDENING**. No scientific tensor inconsistency was found. The v1 directory, ZIP and versioned historical evidence remain unchanged; no embedded status was edited. Review r2 also remains byte-identical and is not relabelled.
 
-The earlier report incorrectly said 15 scientific payload files. Computing `len(r2_payload_identical_files)` from the [historical verification JSON](../provenance/week3/mitdb-week3-fp32-20260925-v1.verification.json) gives **14**. The earlier PR-creation 403 is historical: PR #11 now exists. Do not create another PR or merge it.
+The earlier report incorrectly said 15 scientific payload files. Computing `len(r2_payload_identical_files)` from the [historical verification JSON](../provenance/week3/mitdb-week3-fp32-20260925-v1.verification.json) gives **14**. The earlier PR-creation 403 is historical; PR #11 was merged after SV1 acceptance. Do not create another PR.
 
 ## Corrections and regression evidence
 
@@ -83,9 +85,9 @@ The hardened source suite also passed on immutable v1 before v2 export. Export i
 
 GCC 15.2.0 compiled the header with `-std=c99 -Wall -Wextra -Werror -pedantic`; all **1392 FP32 parameter bit patterns** matched. Reproduction `mitdb-week3-fp32-20260925-v2-repro`: **27 identical files**; only README and manifest differ for the new ID and dependent hashes. Reproduction manifest SHA-256: `234ec090939875d8eedd5bfbf0eb94f2fb715bfc8ff43d2fb75ca976ad5decb1`. Every ZIP member was checked against package bytes. Whitespace checks run before commit and on the staged changes.
 
-## SV1 runtime blocker and recipient commands
+## Historical SV1 runtime blocker and recipient commands
 
-SV1's machine currently lacks the pinned environment/torch/package/data. This blocks independent execution on that machine; it does not justify weakening verification. Receive the whole ZIP separately: repository policy excludes generated model binaries, and cloning PR #11 does not deliver them. No upload or SV1 receipt is claimed.
+At the original SV3 handoff, SV1's machine lacked the pinned environment/torch/package/data. SV1 later received the v2 package and Week 1 data and passed independent verification on 2026-09-28. Model binaries remain outside Git; cloning PR #11 alone does not deliver them.
 
 Required: Python **3.11.9**, torch **2.14.0+cu130**, numpy **2.4.6**, pandas **3.0.5**, scipy **1.17.1**, wfdb **4.3.1**, plus the pinned requirements and host GCC (validated with 15.2.0). Full verification uses CPU but still requires the recorded torch build; export reproduction additionally requires the historical CUDA runtime. Do not substitute CPU-build version metadata or bypass dependency checks.
 
@@ -112,12 +114,12 @@ Expand-Archive -LiteralPath "$pkg.zip" -DestinationPath ml/artifacts/week3
 & ml/.venv/Scripts/python.exe -B ml/scripts/test_week3.py --repo-root . --package $pkg --expected-manifest-sha256 $trustedManifestSha
 ```
 
-If the package is already extracted, skip `Expand-Archive`; never overwrite an immutable revision. These are recipient setup instructions, not a claim that SV1 has executed them. The independently trusted hashes above are copied literally, not calculated from the received manifest as the expected value.
+If the package is already extracted, skip `Expand-Archive`; never overwrite an immutable revision. SV1 executed the final two commands with `-B` on 2026-09-28. The independently trusted hashes above are copied literally, not calculated from the received manifest as the expected value.
 
 ## Pending device and SV2 work
 
-SV1 package acceptance: **PENDING**. MCU validation: **PENDING**. MCU 20/20: **NOT YET TESTED**. SV1 must record all 20 per-sample P2 errors strictly below `1e-3`, intermediate errors, firmware commit and actual Flash/RAM/workspace/stack. Logical estimates remain 5568 B parameters, 23040 B largest N=1 activation, 46080 B two buffers; these are not device measurements.
+SV1 package acceptance: **PASS**. MCU validation: **PENDING**. MCU 20/20: **NOT YET TESTED**. SV1 must record all 20 per-sample P2 errors strictly below `1e-3`, intermediate errors and a stack high-water mark. The SV1 build reported actual linker Flash/RAM in [Week 3 SV1 report](../../device/reports/week3_build.md). Logical estimates remain 5568 B parameters, 23040 B largest N=1 activation, 46080 B two buffers; these are not device measurements.
 
-SV2: **BLOCKED_ON_SV2_INTERFACE** (delivery path, runtime/opset, tensor names/dimensions, full/tail semantics, preprocessing ownership and verification procedure). Overall Week 3: **NOT DONE**. PR #11 must remain unmerged pending SV1 review.
+SV2: **BLOCKED_ON_SV2_INTERFACE** (delivery path, runtime/opset, tensor names/dimensions, full/tail semantics, preprocessing ownership and verification procedure). Overall Week 3: **NOT DONE**. PR #11 merged after SV1 package review; MCU work remains pending.
 
 PR description delivery: the GitHub connector returned HTTP 403 on update. The existing Git credentials successfully updated PR #11 through the GitHub API; a read-back confirmed the body exactly matches `ml/docs/week3_pr_body.md`, state OPEN and merged=false. No new PR or merge action was taken.

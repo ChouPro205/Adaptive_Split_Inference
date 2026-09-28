@@ -16,6 +16,8 @@ device/build*/
 .DS_Store
 Thumbs.db
 device/artifacts/*.zip
+device/artifacts/week3_capture*.txt
+device/generated/
 data/
 datasets/
 *.onnx
