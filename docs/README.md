@@ -7,6 +7,7 @@ và báo cáo của dự án.
 
 - [Báo cáo SV1/Device (Châu) – Week 1](sv1_device_week1_report.md)
 - [Báo cáo SV1/Device (Châu) – Week 2](sv1_device_week2_report.md)
+- [Báo cáo SV1/Device (Châu) – Week 3](sv1_device_week3_report.md)
 - [Kết quả và hình minh chứng Week 2](../results/week2/README.md)
 
 ## Quy ước đặt tên báo cáo

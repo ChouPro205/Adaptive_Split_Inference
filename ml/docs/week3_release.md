@@ -1,8 +1,8 @@
-# SV3 Week 3: v2 release candidate after SV1 review
+# SV3 Week 3: v2 release and SV1 verification
 
-Accepted handoff: **mitdb-week3-fp32-20260925-v2**. PR [#11](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/11) merged into `dev/device-sv1` as `ff7f621706558083b4da5e583cb20268fb6d947e` after SV1 package acceptance. MCU validation remains PENDING. Overall Week 3: **NOT DONE**.
+Accepted handoff: **mitdb-week3-fp32-20260925-v2**. PR [#11](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/11) merged into `dev/device-sv1` as `ff7f621706558083b4da5e583cb20268fb6d947e` after SV1 package acceptance. SV1's measured P2 comparison is **20/20 PASS** (`MCU_20_OF_20: PASS`) at the strict `< 1e-3` threshold. This does not close the SV2 interface work or the contract's unresolved 20-sample × 5-milestone reporting requirement.
 
-SV1 acceptance on 2026-09-28 used the trusted checkout scripts and `ml/.venv/Scripts/python.exe -B` for both verification commands. `HANDOFF_CHECKS_PASS`, 27/27 expected rejections, and the unchanged 29-file inventory were observed. The earlier local verifier run omitted the documented `-B` and created a `.pyc` cache file; that run is not a defect of the documented release procedure. Device host/build evidence is in [Week 3 SV1 report](../../device/reports/week3_build.md).
+SV1 acceptance on 2026-09-28 used the trusted checkout scripts and `ml/.venv/Scripts/python.exe -B` for both verification commands. `HANDOFF_CHECKS_PASS`, 27/27 expected rejections, and the unchanged 29-file inventory were observed. The earlier local verifier run omitted the documented `-B` and created a `.pyc` cache file; that run is not a defect of the documented release procedure. The [SV1 Week 3 report](../../docs/sv1_device_week3_report.md), [device build/measurement evidence](../../device/reports/week3_build.md) and [MCU result JSON](../../device/reports/week3_mcu_validation.json) record the later host and dongle checks (firmware `33a5288e475646c80f14a9cfcd2e797db64c5e41`, evidence `f1624f43fc68ef1472005b9edb2b5fc450cb1443`).
 
 ## v1 status and preserved evidence
 
@@ -27,7 +27,7 @@ Review mode may omit the external hash for **unauthenticated technical checks on
 
 Mandatory-file audit against contract section 3: explicit required set covers README, checkpoint/config/graph/freeze, CSV/input, four actual Conv parameter arrays, C header/evidence and all four scripts. Manifest is opened and externally authenticated first. Six source blobs are required by their frozen source-key set and matched against Git; five golden files and the complete tensor set are required by the traced graph. No BN or extra parameter file is needed for this graph.
 
-## Candidate identity and transport
+## Release identity and transport
 
 - Package: `ml/artifacts/week3/mitdb-week3-fp32-20260925-v2/` (29 files; 2726226 total bytes).
 - ZIP: `ml/artifacts/week3/mitdb-week3-fp32-20260925-v2.zip` (1602725 bytes).
@@ -116,10 +116,10 @@ Expand-Archive -LiteralPath "$pkg.zip" -DestinationPath ml/artifacts/week3
 
 If the package is already extracted, skip `Expand-Archive`; never overwrite an immutable revision. SV1 executed the final two commands with `-B` on 2026-09-28. The independently trusted hashes above are copied literally, not calculated from the received manifest as the expected value.
 
-## Pending device and SV2 work
+## SV1 device result and remaining work
 
-SV1 package acceptance: **PASS**. MCU validation: **PENDING**. MCU 20/20: **NOT YET TESTED**. SV1 must record all 20 per-sample P2 errors strictly below `1e-3`, intermediate errors and a stack high-water mark. The SV1 build reported actual linker Flash/RAM in [Week 3 SV1 report](../../device/reports/week3_build.md). Logical estimates remain 5568 B parameters, 23040 B largest N=1 activation, 46080 B two buffers; these are not device measurements.
+SV1 package acceptance: **PASS**. The final device capture and checker recorded all 20 per-sample P2 errors strictly below `1e-3`: **MCU P2 20/20 PASS**; maximum `7.15255737e-7`. Sample 0 also has M1/R1/M2/R2 errors; Zephyr main-thread stack high-water mark is `544/4096 B`. The final image uses `84072 B` linker Flash and `64248 B` linker RAM; two static FP32 activation buffers total `46080 B`. The [SV1 report](../../docs/sv1_device_week3_report.md) separates these measured/image figures from logical tensor sizes and from the unmeasured stacks of other threads and interrupts.
 
-SV2: **BLOCKED_ON_SV2_INTERFACE** (delivery path, runtime/opset, tensor names/dimensions, full/tail semantics, preprocessing ownership and verification procedure). Overall Week 3: **NOT DONE**. PR #11 merged after SV1 package review; MCU work remains pending.
+The final capture contains all five milestones for sample 0 and P2 for samples 1–19. The [handoff contract](../../contracts/sv3_sv1_week3_model_handoff.md) still asks for each milestone's error in the 20-row table; that broader 20 × 5 evidence needs clarification or additional measurement. SV2 remains **BLOCKED_ON_SV2_INTERFACE** (delivery path, runtime/opset, tensor names/dimensions, full/tail semantics, preprocessing ownership and verification procedure). Cross-team Week 3 completion is therefore not claimed. PR #11 is merged; the SV1 numerical P2 target has passed.
 
-PR description delivery: the GitHub connector returned HTTP 403 on update. The existing Git credentials successfully updated PR #11 through the GitHub API; a read-back confirmed the body exactly matches `ml/docs/week3_pr_body.md`, state OPEN and merged=false. No new PR or merge action was taken.
+Historical PR-description delivery note, before the merge: the GitHub connector returned HTTP 403 on update. The existing Git credentials successfully updated PR #11 through the GitHub API; a read-back at that time confirmed the body matched `ml/docs/week3_pr_body.md`, with state OPEN and merged=false. The later merge is recorded above; this note preserves the earlier event.
