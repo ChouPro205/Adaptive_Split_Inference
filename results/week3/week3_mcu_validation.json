@@ -1,0 +1,240 @@
+{
+  "handoff_id": "mitdb-week3-fp32-20260925-v2",
+  "manifest_sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+  "capture_sha256": "1e3825300731ac5804c605bb7c007457d8aeb5768e94dab9e16b6ca7503ee051",
+  "samples": [
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "p2_max_abs_error": 7.152557373046875e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "p2_max_abs_error": 7.152557373046875e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "p2_max_abs_error": 7.152557373046875e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "p2_max_abs_error": 5.960464477539062e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "p2_max_abs_error": 3.5762786865234375e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "p2_max_abs_error": 3.5762786865234375e-07,
+      "pass": true
+    }
+  ],
+  "sample0_intermediate_max_abs_error": {
+    "M1": 2.384185791015625e-07,
+    "R1": 2.384185791015625e-07,
+    "M2": 9.5367431640625e-07,
+    "R2": 9.5367431640625e-07
+  },
+  "main_stack": {
+    "max_peak_bytes": 544,
+    "per_sample": [
+      {
+        "sample_index": 0,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 1,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 2,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 3,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 4,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 5,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 6,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 7,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 8,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 9,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 10,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 11,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 12,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 13,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 14,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 15,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 16,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 17,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 18,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      },
+      {
+        "sample_index": 19,
+        "main_peak_bytes": 544,
+        "main_size_bytes": 4096
+      }
+    ]
+  },
+  "threshold_strict": 0.001,
+  "mcu_20_of_20": "PASS"
+}

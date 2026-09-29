@@ -48,6 +48,8 @@ Lần sửa nhận đầu tiên vẫn mất byte khi phát tensor lớn vì `pol
 
 [`check_week3_capture.py`](../device/scripts/check_week3_capture.py) xác thực lại inventory v2, giải mã bit thành FP32, kiểm hữu hạn, số phần tử/shape, đủ tập tensor, 20 cặp `BEGIN`/`DONE` theo thứ tự, 20 dòng stack và ánh xạ index/ID; sau đó so từng phần tử với golden cùng hàng. Capture cuối tại `device/artifacts/week3_capture.txt` dài **732.924 B**, SHA-256 **`1e3825300731ac5804c605bb7c007457d8aeb5768e94dab9e16b6ca7503ee051`**. Checker exit 0; [JSON kết quả](../device/reports/week3_mcu_validation.json) lưu hash capture và từng phép so.
 
+Bản lưu trong `results/week3/` gồm [capture đã xác minh](../results/week3/logs/week3_capture_verified.txt), [JSON so sánh](../results/week3/week3_mcu_validation.json) và [biên bản build/đo](../results/week3/week3_build.md). Cả ba bản lưu đều trùng byte với file gốc tương ứng trong `device/`; SHA-256 của capture bản lưu là **`1e3825300731ac5804c605bb7c007457d8aeb5768e94dab9e16b6ca7503ee051`**. Phiên thu COM7 ngày 29/09 chỉ lặp lại P2, không thuộc capture được checker xác nhận và không được dùng làm căn cứ cho kết luận 20/20 PASS.
+
 ## 8. Kết quả 20 mẫu trên MCU
 
 | `sample_index` | `sample_id` | P2 max absolute error | `< 1e-3` |
@@ -82,6 +84,8 @@ Max P2 toàn bộ là **`7.152557373046875e-7`**, thấp hơn ngưỡng nghiêm 
 - [Guide build/DFU/capture](../device/week3_fp32_guide.md), [JSON host mẫu 0](../device/reports/week3_host_sample0.json), [JSON MCU 20 mẫu](../device/reports/week3_mcu_validation.json), [firmware Week 3](../device/src/main_week3.c) và [kernel C](../device/src/week3_head.c) là các điểm đối chiếu trong Git.
 - `device/artifacts/adaptive_split_week3_fp32_v2.zip`, `device/artifacts/week3_capture.txt`, các log chẩn đoán, `device/build-week3/`, `device/generated/`, ZIP ML và dữ liệu MIT-BIH ở ngoài Git. Không `git add -f` chúng. Có thể kiểm file hiện có bằng `Get-FileHash -Algorithm SHA256 -LiteralPath <đường-dẫn>` rồi đối chiếu hash ở mục 3, 5 và 7. Đường dẫn ở đây tính từ repo root.
 
+Không chèn ảnh terminal của phiên COM7 lặp lại: ảnh chỉ ghi tiến độ thu, không thể hiện dongle hoặc phép so số học. Bảng sai số, JSON và capture đã xác minh là minh chứng cho kết quả P2; báo cáo này không cần ảnh bổ sung để kết luận mục tiêu số học Tuần 3.
+
 ## 10. Tái kiểm tra capture và chạy lại trên dongle
 
 Nếu chỉ cần kiểm lại **capture đã có**, không cần flash lại. Từ repo root, trong PowerShell sạch cho ML:
@@ -105,3 +109,7 @@ Thay `COMy` bằng cổng ứng dụng vừa xác định; sau đó chạy check
 Mục tiêu số học SV1 tại **P2 của đủ 20 mẫu đã PASS** trên PCA10059 với gói v2 và firmware FP32 nêu trên. Đây là kết quả đo tensor đầy đủ, không suy từ dòng `READY` hoặc thông báo DFU. Chưa có số liệu PPK2/năng lượng cho workload này. Phần SV2 vẫn `BLOCKED_ON_SV2_INTERFACE`; chưa có bằng chứng tích hợp Edge/ONNX hay thực thi bằng CMSIS-NN/X-CUBE-AI.
 
 Mục 6 của [hợp đồng bàn giao](../contracts/sv3_sv1_week3_model_handoff.md) còn yêu cầu bảng sai số **mỗi mốc cho từng mẫu**. Capture hiện có chỉ có năm mốc của mẫu 0 và P2 của 19 mẫu còn lại; vì vậy bảng **20 × 5** chưa được chứng minh. Cần SV1/thầy xác nhận phạm vi biên bản hoặc thu thêm `TRACE` cho 19 mẫu, rồi đối chiếu đủ M1/R1/M2/R2 theo từng `sample_id` nếu quy cách chi tiết vẫn áp dụng. Không dùng `MCU_20_OF_20: PASS` ở P2 để tuyên bố tự động PASS cho phần chưa đo hoặc cho toàn bộ dự án.
+
+## 12. Chuyển sang Tuần 4
+
+Kết quả P2 FP32 20/20 cùng Flash/RAM của image là mốc tham chiếu cho công việc tiếp theo. Theo [audit mô hình](../ml/docs/week3_audit.md), phần profiling các điểm cắt thuộc Tuần 4 và chưa được thực hiện trong phép đo này. Trước khi dùng P2 cho truyền Device–Edge, các bên cần chốt profile giao diện I1/SV2; trạng thái hiện tại vẫn `BLOCKED_ON_SV2_INTERFACE`. Đồng thời xử lý khoảng thiếu bảng 20 × 5 nêu trên theo yêu cầu hợp đồng, không chuyển kết quả P2 thành kết luận cho các mốc hoặc điểm cắt chưa đo.
