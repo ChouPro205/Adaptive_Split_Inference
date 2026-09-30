@@ -2,9 +2,9 @@
 
 ## 1. Mục tiêu và phạm vi SV1
 
-SV1 nhận gói mô hình MIT-BIH Tuần 3 v2 từ SV3, chạy đoạn `Conv1 → ReLU1 → Conv2 → ReLU2 → MaxPool1d` trên nRF52840 Dongle và so tensor với golden PyTorch. Mốc cuối đã chốt là P2, shape cho một mẫu `(1,16,180)`. Tiêu chí số học là **từng P2 của 20 mẫu** có `max(abs(MCU - PyTorch)) < 1e-3`, dấu `<` nghiêm ngặt. Hợp đồng còn yêu cầu ghi sai số mốc trung gian theo từng mẫu; phạm vi đã thu và phần còn thiếu được nêu ở mục 11.
+SV1 nhận gói mô hình MIT-BIH Tuần 3 v2 từ SV3, chạy đoạn `Conv1 → ReLU1 → Conv2 → ReLU2 → MaxPool1d` trên nRF52840 Dongle và so tensor với golden PyTorch. Mốc cuối đã chốt là P2, shape cho một mẫu `(1,16,180)`. Tiêu chí số học là **từng P2 của 20 mẫu** có `max(abs(MCU - PyTorch)) < 1e-3`, dấu `<` nghiêm ngặt. Phiên bổ sung ngày 30/09/2026 đã thu và kiểm đủ năm mốc của từng mẫu theo yêu cầu bảng 20 × 5 ở hợp đồng; kết quả nằm ở mục 8.
 
-SV3 sở hữu checkpoint, graph, input/golden, header tham số và provenance của gói bàn giao. SV1 kiểm gói, port đoạn graph sang firmware C, build/nạp dongle, thu và đối chiếu tensor. Giao diện Device–Edge, ONNX/full-tail runtime và phần việc SV2 là quyết định riêng, chưa được phép đo đầu FP32 này xác nhận. [Hợp đồng bàn giao](../contracts/sv3_sv1_week3_model_handoff.md) giữ nguyên các gate chi tiết; mục 11 nêu phần bằng chứng còn thiếu so với cách viết của hợp đồng.
+SV3 sở hữu checkpoint, graph, input/golden, header tham số và provenance của gói bàn giao. SV1 kiểm gói, port đoạn graph sang firmware C, build/nạp dongle, thu và đối chiếu tensor. Giao diện Device–Edge, ONNX/full-tail runtime và phần việc SV2 là quyết định riêng, chưa được phép đo đầu FP32 này xác nhận. [Hợp đồng bàn giao](../contracts/sv3_sv1_week3_model_handoff.md) giữ nguyên các gate chi tiết; mục 11 nêu phạm vi kết luận sau phiên bổ sung.
 
 ## 2. Phần cứng, công cụ và cấp nguồn
 
@@ -44,13 +44,17 @@ Lần sửa nhận đầu tiên vẫn mất byte khi phát tensor lớn vì `pol
 
 ## 7. Cách thu và kiểm bit tensor
 
-[`collect_week3.ps1`](../device/scripts/collect_week3.ps1) gửi `TRACE 0` rồi `RUN 1` đến `RUN 19`, đọc liên tục đến từng `DONE`, exit 0 và in `Captured sample 0` đến `Captured sample 19`. Mẫu 0 chứa đủ M1/R1/M2/R2/P2; các mẫu còn lại chứa P2. Firmware in **toàn bộ mỗi phần tử** bằng tám chữ số hex của bit FP32, không làm tròn sang số thập phân. P2 mỗi mẫu có 2.880 phần tử; mỗi tensor M1/R1/M2/R2 mẫu 0 có 5.760 phần tử.
+Trong **phiên lịch sử**, [`collect_week3.ps1`](../device/scripts/collect_week3.ps1) gửi `TRACE 0` rồi `RUN 1` đến `RUN 19`, đọc liên tục đến từng `DONE`, exit 0 và in `Captured sample 0` đến `Captured sample 19`. Mẫu 0 chứa đủ M1/R1/M2/R2/P2; các mẫu còn lại chứa P2. Firmware in **toàn bộ mỗi phần tử** bằng tám chữ số hex của bit FP32, không làm tròn sang số thập phân. P2 mỗi mẫu có 2.880 phần tử; mỗi tensor M1/R1/M2/R2 có 5.760 phần tử.
 
-[`check_week3_capture.py`](../device/scripts/check_week3_capture.py) xác thực lại inventory v2, giải mã bit thành FP32, kiểm hữu hạn, số phần tử/shape, đủ tập tensor, 20 cặp `BEGIN`/`DONE` theo thứ tự, 20 dòng stack và ánh xạ index/ID; sau đó so từng phần tử với golden cùng hàng. Capture cuối tại `device/artifacts/week3_capture.txt` dài **732.924 B**, SHA-256 **`1e3825300731ac5804c605bb7c007457d8aeb5768e94dab9e16b6ca7503ee051`**. Checker exit 0; [JSON kết quả](../device/reports/week3_mcu_validation.json) lưu hash capture và từng phép so.
+[`check_week3_capture.py`](../device/scripts/check_week3_capture.py) xác thực lại inventory v2, giải mã bit thành FP32, kiểm hữu hạn, số phần tử/shape, đủ tập tensor, 20 cặp `BEGIN`/`DONE` theo thứ tự, 20 dòng stack và ánh xạ index/ID; sau đó so từng phần tử với golden cùng hàng. Capture **lịch sử** tại `device/artifacts/week3_capture.txt` dài **732.924 B**, SHA-256 **`1e3825300731ac5804c605bb7c007457d8aeb5768e94dab9e16b6ca7503ee051`**. Checker exit 0; [JSON kết quả lịch sử](../device/reports/week3_mcu_validation.json) lưu hash capture và từng phép so P2.
 
 Bản lưu trong `results/week3/` gồm [capture đã xác minh](../results/week3/logs/week3_capture_verified.txt), [JSON so sánh](../results/week3/week3_mcu_validation.json) và [biên bản build/đo](../results/week3/week3_build.md). Cả ba bản lưu đều trùng byte với file gốc tương ứng trong `device/`; SHA-256 của capture bản lưu là **`1e3825300731ac5804c605bb7c007457d8aeb5768e94dab9e16b6ca7503ee051`**. Phiên thu COM7 ngày 29/09 chỉ lặp lại P2, không thuộc capture được checker xác nhận và không được dùng làm căn cứ cho kết luận 20/20 PASS.
 
+Trong **phiên bổ sung 20 × 5 ngày 30/09/2026**, collector chạy `-FullTrace`, xác nhận banner `READY WEEK3 mitdb-week3-fp32-20260925-v2 P2 1x16x180` trên COM7 rồi gửi `TRACE 0` đến `TRACE 19`, chỉ gửi mẫu tiếp theo sau đúng `DONE` của mẫu trước. [Capture mới](../results/week3/logs/week3_capture_20x5.txt) dài **4.702.276 B**, SHA-256 **`72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606`**. Checker chế độ `20x5` trên Python của `ml/.venv` đã kiểm 100/100 tensor theo thứ tự M1/R1/M2/R2/P2, 20 khung lệnh, 20 dòng stack, bit FP32, số phần tử/shape, tính hữu hạn và ánh xạ sang `samples.csv` đã xác thực. Kết quả lưu ở [CSV sai số](../results/week3/week3_milestone_errors_20x5.csv) và [JSON kiểm chứng](../results/week3/week3_mcu_validation_20x5.json); mọi phép trừ dùng float64 sau khi giải mã FP32. Không build hoặc nạp lại firmware cho phiên bổ sung này.
+
 ## 8. Kết quả 20 mẫu trên MCU
+
+Bảng P2 dưới đây thuộc **phiên lịch sử** `TRACE 0; RUN 1..19` và được giữ để đối chiếu với bản lưu cũ. Phiên đó chưa có bốn mốc trung gian của mẫu 1..19.
 
 | `sample_index` | `sample_id` | P2 max absolute error | `< 1e-3` |
 | ---: | --- | ---: | :---: |
@@ -75,41 +79,79 @@ Bản lưu trong `results/week3/` gồm [capture đã xác minh](../results/week
 | 18 | MIT-BIH:105:4901:MLII | 4.76837158e-7 | PASS |
 | 19 | MIT-BIH:105:5154:MLII | 3.57627869e-7 | PASS |
 
-Max P2 toàn bộ là **`7.152557373046875e-7`**, thấp hơn ngưỡng nghiêm ngặt `1e-3`; checker in **`MCU_20_OF_20: PASS`**. Mẫu 0 có M1 `2.384185791015625e-7`, R1 `2.384185791015625e-7`, M2 `9.5367431640625e-7`, R2 `9.5367431640625e-7`, P2 `4.76837158203125e-7`. Với `CONFIG_INIT_STACKS=y`, `k_thread_stack_space_get()` báo **main-thread peak 544/4096 B** trong capture cuối. Số này không bao gồm stack của thread khác hoặc interrupt, không phải linker RAM và không phải phép đo năng lượng.
+Max P2 toàn bộ của phiên lịch sử là **`7.152557373046875e-7`**, thấp hơn ngưỡng nghiêm ngặt `1e-3`; checker in **`MCU_20_OF_20: PASS`**. Mẫu 0 có M1 `2.384185791015625e-7`, R1 `2.384185791015625e-7`, M2 `9.5367431640625e-7`, R2 `9.5367431640625e-7`, P2 `4.76837158203125e-7`. Với `CONFIG_INIT_STACKS=y`, `k_thread_stack_space_get()` báo **main-thread peak 544/4096 B** trong capture lịch sử. Số này không bao gồm stack của thread khác hoặc interrupt, không phải linker RAM và không phải phép đo năng lượng.
+
+### Phiên bổ sung: sai số đủ 20 mẫu × 5 mốc
+
+Mỗi ô sai số trong bảng sau là `max(abs(MCU - PyTorch))` của đúng `sample_index` và mốc tương ứng, đơn vị **× 10⁻⁷**; bảng làm tròn để đọc, [CSV](../results/week3/week3_milestone_errors_20x5.csv) giữ giá trị float64 đầy đủ. P2 PASS khi sai số thực của **từng mẫu** `< 1e-3`.
+
+| Index | `sample_id` | M1 | R1 | M2 | R2 | P2 | P2 đạt |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: | :---: |
+| 0 | MIT-BIH:105:197:MLII | 2.38418579 | 2.38418579 | 9.53674316 | 9.53674316 | 4.76837158 | PASS |
+| 1 | MIT-BIH:105:459:MLII | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | PASS |
+| 2 | MIT-BIH:105:708:MLII | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | PASS |
+| 3 | MIT-BIH:105:965:MLII | 4.76837158 | 4.76837158 | 7.15255737 | 7.15255737 | 7.15255737 | PASS |
+| 4 | MIT-BIH:105:1222:MLII | 4.76837158 | 4.76837158 | 7.15255737 | 4.76837158 | 4.76837158 | PASS |
+| 5 | MIT-BIH:105:1479:MLII | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | PASS |
+| 6 | MIT-BIH:105:1741:MLII | 2.38418579 | 2.38418579 | 4.76837158 | 4.76837158 | 4.76837158 | PASS |
+| 7 | MIT-BIH:105:2015:MLII | 4.76837158 | 4.76837158 | 7.15255737 | 7.15255737 | 7.15255737 | PASS |
+| 8 | MIT-BIH:105:2287:MLII | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | PASS |
+| 9 | MIT-BIH:105:2550:MLII | 4.76837158 | 4.76837158 | 7.15255737 | 7.15255737 | 7.15255737 | PASS |
+| 10 | MIT-BIH:105:2803:MLII | 4.76837158 | 4.76837158 | 5.96046448 | 5.96046448 | 5.96046448 | PASS |
+| 11 | MIT-BIH:105:3052:MLII | 4.76837158 | 4.76837158 | 7.15255737 | 4.76837158 | 4.76837158 | PASS |
+| 12 | MIT-BIH:105:3303:MLII | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | 3.57627869 | PASS |
+| 13 | MIT-BIH:105:3563:MLII | 4.76837158 | 4.76837158 | 7.15255737 | 7.15255737 | 4.76837158 | PASS |
+| 14 | MIT-BIH:105:3835:MLII | 4.76837158 | 4.76837158 | 7.15255737 | 7.15255737 | 4.76837158 | PASS |
+| 15 | MIT-BIH:105:4102:MLII | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | PASS |
+| 16 | MIT-BIH:105:4371:MLII | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | PASS |
+| 17 | MIT-BIH:105:4635:MLII | 2.38418579 | 2.38418579 | 4.76837158 | 4.76837158 | 4.76837158 | PASS |
+| 18 | MIT-BIH:105:4901:MLII | 4.76837158 | 4.76837158 | 7.15255737 | 7.15255737 | 4.76837158 | PASS |
+| 19 | MIT-BIH:105:5154:MLII | 4.76837158 | 4.76837158 | 4.76837158 | 4.76837158 | 3.57627869 | PASS |
+| **Max** | **20 mẫu** | **4.76837158** | **4.76837158** | **9.53674316** | **9.53674316** | **7.15255737** | **20/20** |
+
+Giá trị max chính xác: M1/R1 `4.76837158203125e-7`, M2/R2 `9.5367431640625e-7`, P2 `7.152557373046875e-7`. Checker báo **100/100 tensor hợp lệ** và **P2 20/20 PASS**. Peak main stack của phiên bổ sung là `544/4096 B`. Đây là phép thu tensor mới trên dongle; Flash `84072 B` và linker RAM `64248 B` vẫn dẫn từ [biên bản build firmware trước đó](../results/week3/week3_build.md), không phải số đo build lại ngày 30/09.
 
 ## 9. Revision và hiện vật bằng chứng
 
 - PR #11 merge commit: `ff7f621706558083b4da5e583cb20268fb6d947e`.
 - Firmware đã kiểm trên thiết bị: `33a5288e475646c80f14a9cfcd2e797db64c5e41`; commit bổ sung hash firmware vào [biên bản kỹ thuật](../device/reports/week3_build.md): `f1624f43fc68ef1472005b9edb2b5fc450cb1443`.
 - [Guide build/DFU/capture](../device/week3_fp32_guide.md), [JSON host mẫu 0](../device/reports/week3_host_sample0.json), [JSON MCU 20 mẫu](../device/reports/week3_mcu_validation.json), [firmware Week 3](../device/src/main_week3.c) và [kernel C](../device/src/week3_head.c) là các điểm đối chiếu trong Git.
+- Phiên bổ sung 20 × 5: [capture USB CDC](../results/week3/logs/week3_capture_20x5.txt), [CSV sai số](../results/week3/week3_milestone_errors_20x5.csv) và [JSON xác minh](../results/week3/week3_mcu_validation_20x5.json). Capture SHA-256 `72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606`.
 - `device/artifacts/adaptive_split_week3_fp32_v2.zip`, `device/artifacts/week3_capture.txt`, các log chẩn đoán, `device/build-week3/`, `device/generated/`, ZIP ML và dữ liệu MIT-BIH ở ngoài Git. Không `git add -f` chúng. Có thể kiểm file hiện có bằng `Get-FileHash -Algorithm SHA256 -LiteralPath <đường-dẫn>` rồi đối chiếu hash ở mục 3, 5 và 7. Đường dẫn ở đây tính từ repo root.
 
-Không chèn ảnh terminal của phiên COM7 lặp lại: ảnh chỉ ghi tiến độ thu, không thể hiện dongle hoặc phép so số học. Bảng sai số, JSON và capture đã xác minh là minh chứng cho kết quả P2; báo cáo này không cần ảnh bổ sung để kết luận mục tiêu số học Tuần 3.
+Không chèn ảnh terminal của phiên COM7 lặp lại: ảnh chỉ ghi tiến độ thu, không thể hiện dongle hoặc phép so số học. Bảng sai số, JSON và capture đã xác minh là minh chứng cho kết quả tensor Tuần 3.
 
 ## 10. Tái kiểm tra capture và chạy lại trên dongle
 
 Nếu chỉ cần kiểm lại **capture đã có**, không cần flash lại. Từ repo root, trong PowerShell sạch cho ML:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath .\device\artifacts\week3_capture.txt
+Get-FileHash -Algorithm SHA256 -LiteralPath .\results\week3\logs\week3_capture_verified.txt
 Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
-& ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture device/artifacts/week3_capture.txt
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture results/week3/logs/week3_capture_verified.txt --mode legacy --report-output $env:TEMP/week3_legacy_recheck.json
 ```
 
-Checker cần gói v2 và các golden ở đúng vị trí local, và sẽ cập nhật `device/reports/week3_mcu_validation.json`. Để thu **một capture mới** trên dongle đã chạy đúng firmware Week 3, đóng terminal đang giữ CDC, phát hiện cổng ứng dụng hiện tại bằng `[System.IO.Ports.SerialPort]::GetPortNames() | Sort-Object`, rồi chạy:
+Checker cần gói v2 và các golden ở đúng vị trí local; `--report-output` nêu trên giữ nguyên JSON lịch sử. Để kiểm lại **phiên bổ sung 20 × 5**, dùng:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\collect_week3.ps1 -Port COMy
+Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture results/week3/logs/week3_capture_20x5.txt --mode 20x5 --report-output $env:TEMP/week3_20x5_recheck.json --csv-output $env:TEMP/week3_20x5_recheck.csv --port COM7
 ```
 
-Thay `COMy` bằng cổng ứng dụng vừa xác định; sau đó chạy checker ở trên. Nếu cần nạp lại image, [guide](../device/week3_fp32_guide.md) hướng dẫn đóng terminal, nhấn SW2, xác nhận LED đỏ fade, xác định **lại** cổng bootloader rồi dùng `flash_week3_head.ps1 -Port COMx`; phát hiện lại cổng ứng dụng sau DFU. Không cố định COM6/COM7 từ lần đo trước và không dùng `west flash`.
+Để thu **một capture 20 × 5 mới** trên dongle đã chạy đúng firmware Week 3, đóng terminal đang giữ CDC, phát hiện cổng ứng dụng hiện tại bằng `[System.IO.Ports.SerialPort]::GetPortNames() | Sort-Object`, rồi chạy:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\collect_week3.ps1 -Port COMy -FullTrace -Output .\device\artifacts\week3_capture_20x5_new.txt
+```
+
+Thay `COMy` bằng cổng ứng dụng vừa xác định; sau đó chạy checker chế độ `20x5` trên đường capture mới. Nếu cần nạp lại image, [guide](../device/week3_fp32_guide.md) hướng dẫn đóng terminal, nhấn SW2, xác nhận LED đỏ fade, xác định **lại** cổng bootloader rồi dùng `flash_week3_head.ps1 -Port COMx`; phát hiện lại cổng ứng dụng sau DFU. Không cố định COM6/COM7 từ lần đo trước và không dùng `west flash`.
 
 ## 11. Giới hạn và kết luận
 
-Mục tiêu số học SV1 tại **P2 của đủ 20 mẫu đã PASS** trên PCA10059 với gói v2 và firmware FP32 nêu trên. Đây là kết quả đo tensor đầy đủ, không suy từ dòng `READY` hoặc thông báo DFU. Chưa có số liệu PPK2/năng lượng cho workload này. Phần SV2 vẫn `BLOCKED_ON_SV2_INTERFACE`; chưa có bằng chứng tích hợp Edge/ONNX hay thực thi bằng CMSIS-NN/X-CUBE-AI.
+Mục tiêu số học SV1 tại **P2 của đủ 20 mẫu đã PASS** trên PCA10059 với gói v2 và firmware FP32 nêu trên. Phiên bổ sung đã kiểm đủ 20 × 5 tensor thật trên dongle, có sai số từng mẫu/mốc và chứng minh yêu cầu bảng ở mục 6 của hợp đồng. Kết luận này dựa trên capture đủ khung, bit FP32 và đối chiếu golden đúng mẫu, không suy từ dòng `READY` hoặc thông báo DFU. Chưa có số liệu PPK2/năng lượng cho workload này. Phần SV2 vẫn `BLOCKED_ON_SV2_INTERFACE`; chưa có bằng chứng tích hợp Edge/ONNX hay thực thi bằng CMSIS-NN/X-CUBE-AI.
 
-Mục 6 của [hợp đồng bàn giao](../contracts/sv3_sv1_week3_model_handoff.md) còn yêu cầu bảng sai số **mỗi mốc cho từng mẫu**. Capture hiện có chỉ có năm mốc của mẫu 0 và P2 của 19 mẫu còn lại; vì vậy bảng **20 × 5** chưa được chứng minh. Cần SV1/thầy xác nhận phạm vi biên bản hoặc thu thêm `TRACE` cho 19 mẫu, rồi đối chiếu đủ M1/R1/M2/R2 theo từng `sample_id` nếu quy cách chi tiết vẫn áp dụng. Không dùng `MCU_20_OF_20: PASS` ở P2 để tuyên bố tự động PASS cho phần chưa đo hoặc cho toàn bộ dự án.
+Trước phiên bổ sung, capture lịch sử chỉ có năm mốc của mẫu 0 và P2 của 19 mẫu còn lại, nên bảng **20 × 5** chưa được chứng minh. Khoảng thiếu đó nay **đã hoàn tất** bằng capture `TRACE 0..19`, CSV và JSON ở mục 7–8; hợp đồng bàn giao đã được cập nhật theo đúng lịch sử. Kết luận chỉ bao trùm đoạn đầu FP32 và tiêu chí P2 của 20 mẫu trên dongle được đo; không mở rộng thành kết luận cho toàn bộ pipeline Device–Edge hoặc các điểm cắt chưa đo.
 
 ## 12. Chuyển sang Tuần 4
 
-Kết quả P2 FP32 20/20 cùng Flash/RAM của image là mốc tham chiếu cho công việc tiếp theo. Theo [audit mô hình](../ml/docs/week3_audit.md), phần profiling các điểm cắt thuộc Tuần 4 và chưa được thực hiện trong phép đo này. Trước khi dùng P2 cho truyền Device–Edge, các bên cần chốt profile giao diện I1/SV2; trạng thái hiện tại vẫn `BLOCKED_ON_SV2_INTERFACE`. Đồng thời xử lý khoảng thiếu bảng 20 × 5 nêu trên theo yêu cầu hợp đồng, không chuyển kết quả P2 thành kết luận cho các mốc hoặc điểm cắt chưa đo.
+Kết quả P2 FP32 20/20, bảng sai số đủ 20 × 5 và Flash/RAM của image là mốc tham chiếu cho công việc tiếp theo. Theo [audit mô hình](../ml/docs/week3_audit.md), phần profiling các điểm cắt thuộc Tuần 4 và chưa được thực hiện trong phép đo này. Trước khi dùng P2 cho truyền Device–Edge, các bên cần chốt profile giao diện I1/SV2; trạng thái hiện tại vẫn `BLOCKED_ON_SV2_INTERFACE`.
