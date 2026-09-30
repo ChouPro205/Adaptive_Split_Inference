@@ -8,7 +8,7 @@ found incorrect. PR #11 merged into `dev/device-sv1` as
 Firmware đo trên dongle ở commit `33a5288e475646c80f14a9cfcd2e797db64c5e41`;
 biên bản kỹ thuật được bổ sung tại `f1624f43fc68ef1472005b9edb2b5fc450cb1443`.
 
-**Quy cách gói bàn giao: SV1 chốt, phiên bản `w3-sv1-handoff-v1`. Gói SV3 đã phát hành, verify và được SV1 nghiệm thu PASS; phép so P2 trên MCU đạt 20/20.** Tài liệu này quy định đầu vào để SV1 chạy hai lớp `Conv1d` đầu trên nRF52840 Dongle và so với PyTorch. Gói chính thức `mitdb-week3-fp32-20260925-v2` nằm trong [biên bản release](../ml/docs/week3_release.md); phép đo thiết bị và phạm vi tensor đã thu nằm trong [báo cáo SV1 Tuần 3](../docs/sv1_device_week3_report.md). Kết quả P2 20/20 không tự xác nhận yêu cầu bảng sai số 20 mẫu × 5 mốc ở mục 6.
+**Quy cách gói bàn giao: SV1 chốt, phiên bản `w3-sv1-handoff-v1`. Gói SV3 đã phát hành, verify và được SV1 nghiệm thu PASS; phép so P2 trên MCU đạt 20/20.** Tài liệu này quy định đầu vào để SV1 chạy hai lớp `Conv1d` đầu trên nRF52840 Dongle và so với PyTorch. Gói chính thức `mitdb-week3-fp32-20260925-v2` nằm trong [biên bản release](../ml/docs/week3_release.md); phép đo thiết bị và phạm vi tensor đã thu nằm trong [báo cáo SV1 Tuần 3](../docs/sv1_device_week3_report.md). Kết quả P2 của capture lịch sử không tự xác nhận bảng sai số 20 mẫu × 5 mốc ở mục 6; phiên bổ sung ngày 30/09/2026 đã kiểm đủ 100 tensor và hoàn tất bảng đó.
 
 ## 1. Phạm vi và nguồn ràng buộc
 
@@ -89,9 +89,9 @@ SV3 chọn **đúng 20 mẫu thật, 20 định danh nguồn khác nhau** thuộ
 2. **Kiểm tham số và tham chiếu:** `verify_week3.py` tái tạo input/golden từ checkpoint ở eval; từng bit FP32 trong C header khớp `.npy` hiệu dụng theo offset đã khai báo; graph có đủ mốc, kể cả BN/op giữa hai Conv; nguồn golden và firmware dùng cùng revision. Không khớp: **FAIL**.
 3. **Chạy và thu output:** SV1 chạy đủ 20 `sample_id` trên firmware hai Conv, thu output đầy đủ với `handoff_id`, `sample_index`, `sample_id`, `milestone_id`, shape/dtype/count; cách dump qua console/file phải tránh cắt hoặc làm tròn làm sai so sánh. USB CDC demo hiện tại không mặc nhiên là transport I1. Giải mã buffer MCU về đúng shape logic rồi so từng phần tử cùng mẫu/mốc; ghi `max(abs(MCU - PyTorch))` từng mẫu/mốc. Thiếu phần tử, NaN/Inf, sai ID/shape hoặc không thể thu đủ: **FAIL**.
 4. **Quyết định FP32:** tại `M_final`, **từng mẫu trong 20 mẫu** phải có `max(abs(MCU - PyTorch)) < 1e-3` (dấu `<` nghiêm ngặt); sai số mốc trung gian phải ghi để định vị lỗi. Chỉ công bố `20/20 PASS` khi cả 20 đạt cùng các gate trên. Không tự áp ngưỡng này cho INT8.
-5. **Biên bản:** ghi bảng 20 dòng theo `sample_index/sample_id`, sai số mỗi mốc, max toàn bộ ở `M_final`, phiên bản/commit firmware, toolchain, target `nrf52840dongle/nrf52840`, Flash/RAM image và peak buffer/workspace/stack nếu đo được, cách nạp 20 input, lý do mọi FAIL. SV1 kiểm image thực vừa Flash/RAM; số Active/Idle Tuần 2 không thay phép đo này. Gói v2 và firmware đã được đo: P2 của đủ 20 mẫu PASS; năm mốc M1/R1/M2/R2/P2 mới được thu ở mẫu 0. [Biên bản thiết bị](../device/reports/week3_build.md) và [JSON kết quả](../device/reports/week3_mcu_validation.json) ghi số đo thực.
+5. **Biên bản:** ghi bảng 20 dòng theo `sample_index/sample_id`, sai số mỗi mốc, max toàn bộ ở `M_final`, phiên bản/commit firmware, toolchain, target `nrf52840dongle/nrf52840`, Flash/RAM image và peak buffer/workspace/stack nếu đo được, cách nạp 20 input, lý do mọi FAIL. SV1 kiểm image thực vừa Flash/RAM; số Active/Idle Tuần 2 không thay phép đo này. Phiên đo lịch sử của gói v2 đã có P2 đủ 20 mẫu PASS, nhưng năm mốc M1/R1/M2/R2/P2 mới được thu ở mẫu 0. [Biên bản thiết bị](../device/reports/week3_build.md) và [JSON lịch sử](../device/reports/week3_mcu_validation.json) ghi phép đo đó; [báo cáo SV1](../docs/sv1_device_week3_report.md) ghi phiên bổ sung 20 × 5.
 
-**Khoảng chênh với quy cách:** các tiểu mục 3 và 5 của mục 6 vẫn yêu cầu sai số theo từng mốc cho từng mẫu trong bảng 20 dòng. Capture cuối chứa `TRACE 0` (năm mốc) và `RUN 1..19` (chỉ P2), nên chưa chứng minh bảng 20 × 5. Cần SV1 và thầy xác nhận cách hiểu quy cách hoặc thu thêm M1/R1/M2/R2 cho 19 mẫu; không sửa tiêu chí hồi tố để coi phần chưa đo là PASS.
+**Lịch sử khoảng chênh và trạng thái hiện tại:** trước phiên bổ sung, capture chỉ chứa `TRACE 0` (năm mốc) và `RUN 1..19` (chỉ P2), nên chưa chứng minh bảng 20 × 5 theo các tiểu mục 3 và 5. Ngày 30/09/2026, SV1 đã thu trên dongle `TRACE 0..19` và checker xác nhận **100/100 tensor**, đủ năm mốc của từng mẫu, P2 **20/20 PASS** với ngưỡng nghiêm ngặt `< 1e-3`. Bảng 20 dòng đã **hoàn tất**; xem [capture mới](../results/week3/logs/week3_capture_20x5.txt) (SHA-256 `72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606`), [CSV sai số](../results/week3/week3_milestone_errors_20x5.csv), [JSON xác minh](../results/week3/week3_mcu_validation_20x5.json) và [bảng trong báo cáo](../docs/sv1_device_week3_report.md). Tiêu chí hợp đồng không đổi; bằng chứng P2 lịch sử vẫn được giữ riêng.
 
 ## 7. Việc Kỳ Anh (SV3) cần xác nhận và bàn giao
 
@@ -136,14 +136,14 @@ các quyết định còn thiếu được liệt kê trong audit. Kết quả M
 - [x] Xuất đúng các file mục 3, golden từng mốc, C header, scripts và hash; tự chạy verify tái tạo và đối chiếu bit tham số. Gói release 29 file, GCC C99 1392 phần tử khớp bit, 5 golden milestone PASS.
 - [x] Cùng SV1 xác nhận điểm thu output, khả năng RAM/Flash của graph thực và mốc `M_final` trước phép so MCU. P2 `(1,16,180)` đã được đo, linker Flash/RAM có trong biên bản thiết bị; mọi đề nghị INT8 hoặc Device–Edge vẫn là thay đổi hợp đồng/protocol riêng.
 
-SV1 đã nghiệm thu gói v2 và có biên bản P2 của 20 mẫu. Phần bảng 20 × 5 theo mục 6 còn cần xác nhận hoặc đo bổ sung như ghi trên. Khi gói đổi, SV3 phát hành ID mới; không sửa âm thầm gói đã dùng làm bằng chứng.
+SV1 đã nghiệm thu gói v2, có biên bản P2 lịch sử của 20 mẫu và đã hoàn tất bảng 20 × 5 theo mục 6 bằng phiên đo bổ sung nêu trên. Khi gói đổi, SV3 phát hành ID mới; không sửa âm thầm gói đã dùng làm bằng chứng.
 
 Boundary đã xác nhận; firmware thực dùng Flash `84072 B`, linker RAM `64248 B`,
 hai buffer FP32 tĩnh `46080 B`, main stack peak `544/4096 B`. Các số `5568 B`
 tham số và `23040 B` tensor lớn nhất là kích thước logic, không phải phép đo
 năng lượng hoặc stack. SV1 package review **PASS**; checker in
 `MCU_20_OF_20: PASS` cho P2 với max absolute error toàn bộ `7.15255737e-7`
-(`< 1e-3`). Cam kết bảng 20 × 5 và phần SV2 vẫn cần xử lý riêng.
+(`< 1e-3`). Bảng 20 × 5 đã hoàn tất từ capture mới; phần SV2 vẫn cần xử lý riêng.
 
 ## Release verification hardening after SV1 review
 
