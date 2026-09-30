@@ -1,0 +1,675 @@
+{
+  "handoff_id": "mitdb-week3-sv2-fp32-20261001-v1",
+  "package_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+  "manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+  "archive_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1.zip",
+  "archive_sha256": "b7f5b8d0bcd5ec27755f3e44541c0d24a6d23bdd27e199660a7b653bc30a71c7",
+  "archive_bytes": 4507827,
+  "file_count": 41,
+  "total_file_bytes": 6239715,
+  "source_commit": "dd1d4562062202c6721a03a81a7f2cfa29867c00",
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "sv1_v2_unchanged": true,
+  "pytorch_head_tail_samples": 220,
+  "pytorch_worst_per_split": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0,
+    "6": 0.0,
+    "7": 0.0,
+    "8": 0.0,
+    "9": 0.0,
+    "10": 0.0
+  },
+  "onnx_comparisons": 200,
+  "onnx_passed": 200,
+  "per_split": [
+    {
+      "split_id": 0,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.6226043701171875e-06
+    },
+    {
+      "split_id": 1,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.384185791015625e-06
+    },
+    {
+      "split_id": 2,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.6226043701171875e-06
+    },
+    {
+      "split_id": 3,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.0265579223632812e-06
+    },
+    {
+      "split_id": 4,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.0265579223632812e-06
+    },
+    {
+      "split_id": 5,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.1457672119140625e-06
+    },
+    {
+      "split_id": 6,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 1.9073486328125e-06
+    },
+    {
+      "split_id": 7,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 1.9073486328125e-06
+    },
+    {
+      "split_id": 8,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 1.9073486328125e-06
+    },
+    {
+      "split_id": 9,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 9.5367431640625e-07
+    },
+    {
+      "split_id": 10,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": null
+    }
+  ],
+  "global_worst": {
+    "sample_index": 16,
+    "sample_id": "MIT-BIH:105:4371:MLII",
+    "split_id": 0,
+    "pytorch_tail_max_abs_error": 0.0,
+    "onnx_max_abs_error": 2.6226043701171875e-06,
+    "onnx_vs_pytorch_tail_max_abs_error": 2.6226043701171875e-06,
+    "status": "PASS"
+  },
+  "negative_tests_passed": 17,
+  "reproduction_id": "mitdb-week3-sv2-fp32-20261001-v1-repro",
+  "reproduction_manifest_sha256": "84067252c782e1c5f934aa0c26dfc85b68a3ee0f14af98e53d6f4d5a815029a3",
+  "reproduction_identical_files": 39,
+  "reproduction_changed_files": [
+    "README.md",
+    "manifest.json"
+  ],
+  "onnx_models": [
+    {
+      "split_id": 0,
+      "path": "models/tail_0.onnx",
+      "sha256": "ffa1cbe02e7b9af405177816cc7edfe9870f61287553ce748f09a1f8bed572cf",
+      "size_bytes": 441852,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          1,
+          360
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 1,
+      "path": "models/tail_1.onnx",
+      "sha256": "4940b21a5101a08b341cbd2b9c191dec0ea21d9c121f08a65062688e0764e9d3",
+      "size_bytes": 441209,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          16,
+          360
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 2,
+      "path": "models/tail_2.onnx",
+      "sha256": "981527fa3d7d37d6b2c4e14b09328221bdf2e1dabbbe0c03506847e64a296355",
+      "size_bytes": 435609,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          16,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 3,
+      "path": "models/tail_3.onnx",
+      "sha256": "2f27e2bfb1d7c72c0f98150e299392b6dbe985603be9f1820ded1f2945387874",
+      "size_bytes": 424980,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          32,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 4,
+      "path": "models/tail_4.onnx",
+      "sha256": "dd481202cfbfec74ee399df4d0f2693060124cfa26d46a75d33262a2c0bc0f7e",
+      "size_bytes": 403951,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          32,
+          90
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 5,
+      "path": "models/tail_5.onnx",
+      "sha256": "872a26240b566c2c7f66ecfb056987788155cd297e65520f24776f670ea6b501",
+      "size_bytes": 372783,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          48,
+          90
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 6,
+      "path": "models/tail_6.onnx",
+      "sha256": "80a4fff1033b0530936eb1b77f5f9e67469acbccf89755e446a24ad5870c686d",
+      "size_bytes": 326089,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          48,
+          45
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 7,
+      "path": "models/tail_7.onnx",
+      "sha256": "c5181d7fffbd0093e473d67ea042b0c599c0c2e38b1f3319ca3c462a9058a3b0",
+      "size_bytes": 264140,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          64,
+          45
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 8,
+      "path": "models/tail_8.onnx",
+      "sha256": "d108d29c3c79c467ca5830bf4ecda8980d30faddfcad9a6087b5ec2115c99725",
+      "size_bytes": 181557,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          64,
+          22
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 9,
+      "path": "models/tail_9.onnx",
+      "sha256": "d2de785a18a069ff483e2408beb4b95abde4284fba3276f69dc0c0f32c22fb2f",
+      "size_bytes": 907,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          32
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    }
+  ],
+  "golden_files": [
+    {
+      "path": "golden/reference_logits.npy",
+      "sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+      "size_bytes": 528,
+      "shape": [
+        20,
+        5
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s0.npy",
+      "sha256": "dac1d1e9df849bf4ffa30359384d129586f67ec0703157b692d1344685b78dcc",
+      "size_bytes": 28928,
+      "shape": [
+        20,
+        1,
+        360
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s1.npy",
+      "sha256": "01dc25a4e8eb9e4ad3bcf246dd3e8ed85e06dc0df7af8e78f13b75800f0dc9a6",
+      "size_bytes": 460928,
+      "shape": [
+        20,
+        16,
+        360
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s10.npy",
+      "sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+      "size_bytes": 528,
+      "shape": [
+        20,
+        5
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s2.npy",
+      "sha256": "5b9607815738e1a3a7ccde941e23a01a9ad927326839f38895e1f289e7d72399",
+      "size_bytes": 230528,
+      "shape": [
+        20,
+        16,
+        180
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s3.npy",
+      "sha256": "afe72a5e26572060420a93f19ae0ce4a3bc686a90ef1607d4108df7b2bbbd94d",
+      "size_bytes": 460928,
+      "shape": [
+        20,
+        32,
+        180
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s4.npy",
+      "sha256": "a45a5032e8682d2734642d2842659aac44fd0de208804f660faec7cc357cef16",
+      "size_bytes": 230528,
+      "shape": [
+        20,
+        32,
+        90
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s5.npy",
+      "sha256": "b713e53387e5e43ba9f8abf0cd0905b108208cf29082669dfd1be706857a706e",
+      "size_bytes": 345728,
+      "shape": [
+        20,
+        48,
+        90
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s6.npy",
+      "sha256": "a8b92d72c20fa4df5a3e651c87c0335bd7fecbc0657e7310bf6d4589700e8ba8",
+      "size_bytes": 172928,
+      "shape": [
+        20,
+        48,
+        45
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s7.npy",
+      "sha256": "f1a9300d387aed0abb5ad5d2ff5f08167f162f66e5017e252b9de92053926e60",
+      "size_bytes": 230528,
+      "shape": [
+        20,
+        64,
+        45
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s8.npy",
+      "sha256": "fda1e8ebc1828134b60daf75d5f60c50f4fa42ca3a9d9db83a66f3ffe0110829",
+      "size_bytes": 112768,
+      "shape": [
+        20,
+        64,
+        22
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s9.npy",
+      "sha256": "2f6bd177be2a2f8f5aed60b85d65755520f538bfdbeeda0fe77f99206ca056bb",
+      "size_bytes": 2688,
+      "shape": [
+        20,
+        32
+      ],
+      "dtype": "<f4"
+    }
+  ],
+  "sv1_updated_evidence": {
+    "commit": "bd64c3859e9ce8493e7115285cfbb3dc1f8f3859",
+    "report": "results/week3/week3_mcu_validation_20x5.json",
+    "capture": "results/week3/logs/week3_capture_20x5.txt",
+    "capture_sha256": "72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606",
+    "tensor_count": 100,
+    "full_trace_status": "RECHECKED_20x5_PASS",
+    "max_abs_error_by_milestone": {
+      "M1": 4.76837158203125e-07,
+      "R1": 4.76837158203125e-07,
+      "M2": 9.5367431640625e-07,
+      "R2": 9.5367431640625e-07,
+      "P2": 7.152557373046875e-07
+    },
+    "independent_package_checks": "PASS_RECORDED_BY_SV1",
+    "recheck_note": "Existing hardware capture rechecked; no new hardware run"
+  },
+  "sv2_acceptance": "PENDING_INDEPENDENT_VALIDATION",
+  "int8_dpu_criterion": "separate from FP32 <1e-3",
+  "overall_week3": "NOT_DONE"
+}
