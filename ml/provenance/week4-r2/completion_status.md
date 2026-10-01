@@ -12,3 +12,7 @@ post-commit gate evidence is recorded separately under `committed-checkout/`.
 Neither local checkout checks nor ZIP availability establishes SV1 receipt.
 SV1 destination/channel and SHA/verifier/log acknowledgement are still missing.
 No push, merge, flash, training, dataset downloads or scientific changes.
+
+Source commit: `1ef28806fa5533fa56afafe746ecb5008ae96c34`.
+Committed checkout verifier/test: **PASS**; see `committed-checkout/summary.json`.
+SV1 receipt: **PENDING**.
