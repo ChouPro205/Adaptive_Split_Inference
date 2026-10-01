@@ -4,14 +4,16 @@ Revision r2 sửa PR #17 ngày 2026-10-01. Bằng chứng và receipt mới nằ
 `ml/provenance/week4-r2/`. Output cũ `ml/results/week4/` và gói tuần 3 giữ
 nguyên để truy vết; verifier hiện tại nhận schema 2.
 
-**Ba gate riêng:** offline local, checkout chứa bản sửa đã commit, SV1 nhận
-bàn giao. Đọc kết quả thực từ `summary.json`, `receiver_checks.json` và
-`deliverables.json`; không suy SV1 đã nhận từ ZIP local. Snapshot nhận được
-kiểm trong clone mới với source sửa overlay, không dataset, checkpoint duplicate
-hoặc DOCX. Gate checkout bản sửa đã commit vẫn pending đến khi commit/rerun.
-Local commit được người dùng cho phép ở bước hoàn tất; không push/merge/flash.
-Xem `ml/provenance/week4-r2/completion_status.md` và evidence hậu commit.
-Chưa có địa chỉ đích/kênh truyền SV1 được cấu hình.
+**Ba gate riêng:** offline local **PASS**; checkout sạch của commit chứa bản
+sửa **PASS**; SV1 nhận bàn giao **PENDING**. Regression tuần 1–3 **18/18 PASS**.
+Commit sửa `1ef28806fa5533fa56afafe746ecb5008ae96c34`: verifier/test exit 0,
+không overlay source, không dataset/checkpoint duplicate/DOCX. HEAD evidence
+`416820f84dca5f26497233ef69b3b159153c47eb` cũng đã kiểm verifier/test PASS.
+Evidence hiện tại: `ml/provenance/week4-r2/completion.json`,
+`committed-checkout/summary.json` và `regressions-complete/summary.json`.
+Các `summary.json`, `receiver_checks.json`, `deliverables.json` cũ là snapshot
+lịch sử, không dùng trường pending cũ để phủ nhận gate hậu commit.
+Không push/merge/flash. Chưa có kênh nhận SV1 hoặc xác nhận SHA/log máy nhận.
 
 ## Gói cần chuyển
 
@@ -45,6 +47,41 @@ Trust anchors r2 đã tạo và kiểm local (phải lấy từ trusted checkout
 - ZIP size: 5.658.710 bytes.
 
 ## Nhận và kiểm tra
+
+### Nhận đúng mã nguồn trước khi chạy script
+
+ZIP r2 chứa dữ liệu/artifact, **không chứa checkout mã nguồn sửa tuần 4**.
+Thư mục bàn giao đi kèm `adaptive-split-inference-r2.bundle` (Git bundle tự
+chứa, không cần repo nền), `source_transfer_receipt.json` và `SHA256SUMS.txt`.
+Receipt bổ sung ghi commit checkout chính xác, bundle SHA/size và hashes của
+các file bàn giao. Authenticate receipt/checksum qua kênh tin cậy độc lập;
+receipt từ chính thư mục nhận chưa đủ để thiết lập trust.
+
+PowerShell tại thư mục bàn giao, sau khi đã authenticate receipt:
+
+```powershell
+$source = Get-Content -Raw source_transfer_receipt.json | ConvertFrom-Json
+$bundle = (Resolve-Path adaptive-split-inference-r2.bundle).Path
+if ((Get-FileHash $bundle -Algorithm SHA256).Hash.ToLower() -ne $source.bundle_sha256) {
+    throw 'Source bundle SHA-256 mismatch'
+}
+git clone $bundle sv1-r2-checkout
+if ($LASTEXITCODE -ne 0) { throw 'Bundle clone failed' }
+Set-Location sv1-r2-checkout
+git checkout --detach $source.source_commit_sha
+if ($LASTEXITCODE -ne 0) { throw 'Pinned checkout failed' }
+if ((git rev-parse HEAD) -ne $source.source_commit_sha) { throw 'Wrong source commit' }
+git bundle verify $bundle
+if ($LASTEXITCODE -ne 0) { throw 'Bundle verification failed' }
+```
+
+Không merge bundle vào nhánh firmware SV1. Dùng checkout mới cho nghiệm thu.
+Cài/tạo environment theo requirements của checkout, hoặc chỉ định Python
+environment đã pin từ bên ngoài. Copy ZIP nguyên bản vào
+`ml/artifacts/week4/`, giải nén staging mới rồi đặt hai thư mục như bảng trên.
+Các file nhỏ đã có trong checkout phải khớp ZIP/receipt trước khi bổ sung
+binaries; không ghi đè khác nội dung. Bundle không chứa weights/checkpoint;
+ZIP dữ liệu và bundle mã nguồn là hai thành phần bắt buộc.
 
 Dùng repo chứa code r2 và environment pin trong requirements. C99 compiler
 có thể khác GCC tác giả nhưng vẫn phải compile và kiểm đúng parameter bits.
