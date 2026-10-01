@@ -1,0 +1,18 @@
+{
+  "role": "Historical requirement references; not computational inputs",
+  "verification_policy": "Authenticate this versioned reference list; DOCX availability is not required for reproduction",
+  "references": [
+    {
+      "path": "ml/docs/project_sources/requirements/Huong1_Huong_dan_chi_tiet_tung_thanh_vien.docx",
+      "sha256": "75fcd76999af521a568b039c6983414217c59991d37b5591b85d211db927880d"
+    },
+    {
+      "path": "ml/docs/project_sources/requirements/Huong1_Bao_cao_trien_khai_3SV.docx",
+      "sha256": "60f83fa7c0779d11c888a8a104c5fa55be0c8c8b171f9d72e29cbba9efcc9a90"
+    },
+    {
+      "path": "ml/docs/project_sources/requirements/06_Huong1_Adaptive_Split_Inference_Lo_trinh.docx",
+      "sha256": "c1dd459531796e8140ec965b517ce66fa6ac381d161d203e36e692041993f829"
+    }
+  ]
+}

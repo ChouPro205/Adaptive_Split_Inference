@@ -1,5 +1,11 @@
 # SV3 ML — Week 4 Review
 
+> **Superseded by PR #17 fixes, revision r2 (2026-10-01).** PASS statements
+> and commands below describe historical generation, not clean-checkout or
+> receiver acceptance. See `sv3_sv1_week4_handoff_r2.md` and
+> `../provenance/week4-r2/` for current evidence. Old Week 4 anchors are not
+> accepted by the schema-2 verifier.
+
 **WEEK 4 STATUS: PASS — phần SV3 offline đã hoàn thành.** Review này được tạo
 sau implementation, verifier, tampering/reproduction tests và regression Week
 1–3 đều PASS. Không phải thông báo toàn nhóm đã hoàn thành hardware Week 4.

@@ -1,4 +1,4 @@
-"""Reason-specific tampering tests and byte-for-byte Week 4 reproduction."""
+"""Reason-specific tampering tests and scientific byte-for-byte reproduction."""
 from __future__ import annotations
 
 import argparse
@@ -11,7 +11,7 @@ import numpy as np
 from profile_week4 import export
 from verify_week4 import verify
 from week3_common import need, read_json, sha, text, write_json
-from week4_common import OUTPUT, analysis, inventory
+from week4_common import OUTPUT, analysis, compare_reproduction, inventory, source_sha
 
 
 def main():
@@ -54,6 +54,9 @@ def main():
         ("analysis", json_mutation("tensor_profile.json", lambda v: v["analysis"].update(NON_MONOTONIC=False)), True, "profile/boundary/analysis differs"),
         ("sample order", json_mutation("manifest.json", lambda v: v["sample_set"]["ordered_sample_ids"].reverse()), True, "identity/order differs"),
         ("checkpoint identity", json_mutation("manifest.json", lambda v: v.update(checkpoint_sha256="0"*64)), True, "provenance differs"),
+        ("source hash policy", json_mutation("manifest.json", lambda v: v.update(source_hash_policy="raw")), True, "provenance differs"),
+        ("compiler count", json_mutation("firmware/host_c_verification.json", lambda v: v.update(fp32_elements=1)), True, "Host C evidence invariant differs"),
+        ("compiler status", json_mutation("firmware/host_c_verification.json", lambda v: v.update(status="FAIL")), True, "Host C evidence invariant differs"),
         ("pool attributes", json_mutation("model_graph.json", lambda v: v["ops"][4]["attributes"].update(ceil_mode=True)), True, "graph/op attributes differ"),
         ("missing bias", lambda r: (r / "weights/classifier.4.bias.npy").unlink(), True, "No such file"),
         ("header precision", lambda r: text(r / "firmware/head_parameters.h", "/* replaced */\n"), True, "Header contents"),
@@ -83,14 +86,31 @@ def main():
         repro = base / "reproduction"
         reproduced_anchor = export(repo, repro, args.compiler)
         verify(repro, repo, reproduced_anchor, args.compiler)
-        after = {p.relative_to(repro).as_posix(): sha(p) for p in repro.rglob("*") if p.is_file()}
-        need(before == after, "Reproduction raw bytes differ")
-        print(f"PASS reproduction: {len(after)} files byte-identical; reused 220 golden cases bitwise")
+        compare_reproduction(source, repro)
+        print("PASS reproduction: scientific bytes identical; reused 220 golden cases bitwise")
+        m = read_json(repro / "manifest.json")
+        m.update(source_git_commit="1"*40, source_branch="test/other-branch")
+        report = read_json(repro / "firmware/host_c_verification.json")
+        report["compiler"] = "Alternate compiler provenance (test fixture)"
+        write_json(repro / "firmware/host_c_verification.json", report)
+        m["files"] = inventory(repro)
+        write_json(repro / "manifest.json", m)
+        verify(repro, repo, sha(repro / "manifest.json"), args.compiler)
+        compare_reproduction(source, repro)
+        print("PASS different Git/compiler provenance with unchanged scientific payload")
+        fixture = base / "source.txt"
+        fixture.write_bytes(b"alpha\nbeta\n")
+        digest = source_sha(fixture)
+        fixture.write_bytes(b"alpha\r\nbeta\r\n")
+        need(source_sha(fixture) == digest, "LF/CRLF source hashing differs")
+        fixture.write_bytes(b"alpha\r\nchanged\r\n")
+        need(source_sha(fixture) != digest, "Source content mutation accepted")
+        print("PASS LF/CRLF normalization and source-content rejection")
     for vals, expected in (([1, 2, 3], False), ([3, 2, 1], False), ([2, 2, 2], False), ([1, 3, 2], True)):
         result = analysis([{"s": i, "bytes_fp32": b} for i, b in enumerate(vals)])
         need(result["NON_MONOTONIC"] is expected, "Incorrect non-monotonic classification")
     need(before == {p.relative_to(source).as_posix(): sha(p) for p in source.rglob("*") if p.is_file()}, "Real Week 4 output changed")
-    print(f"WEEK4_TESTS_PASS: {len(cases)} expected rejections; 4 monotonic cases; exact reproduction; source unchanged")
+    print(f"WEEK4_TESTS_PASS: {len(cases)} expected rejections; 4 monotonic cases; scientific reproduction; source unchanged")
 
 
 if __name__ == "__main__":

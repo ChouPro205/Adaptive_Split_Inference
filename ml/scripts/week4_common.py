@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import io
 import math
 from pathlib import Path
@@ -16,7 +17,8 @@ from week3_sv2_common import (CONTRACT, INPUT_SHA, OPS, SAMPLES_SHA, authenticat
 
 W3_PATH = "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1"
 W3_SHA = "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
-OUTPUT = "ml/results/week4"
+OUTPUT = "ml/results/week4-r2"
+SOURCE_HASH_POLICY = "sha256-utf8-lf-v1"
 SCRIPTS = ("week4_common.py", "profile_week4.py", "verify_week4.py", "test_week4.py")
 FIELDS = ("s", "boundary_name", "head_last_op", "tail_first_op", "shape", "dtype",
           "layout", "numel_per_sample", "bytes_fp32", "kib_fp32",
@@ -33,13 +35,46 @@ def frozen(repo):
          "Confirmed split authority differs")
     need(sha(repo / "ml/src/mitdb_baseline_model.py") == MODEL_HASH,
          "Repository architecture changed")
-    need(sha(repo / "ml/data/week2/mitdb_baseline/best_checkpoint.pt") == CHECKPOINT,
-         "Repository frozen checkpoint changed")
+    need(sha(package / "model/checkpoint.pt") == CHECKPOINT,
+         "Packaged frozen checkpoint changed")
     need(sha(package / "golden/z_s0.npy") == INPUT_SHA, "Week 3 input differs")
     need(sha(package / "samples.csv") == SAMPLES_SHA, "Week 3 sample order differs")
     model = load_frozen(package)
     configure()
     return package, manifest, model, np.load(package / "golden/z_s0.npy", allow_pickle=False), samples(package)
+
+
+def source_sha(path):
+    """Hash UTF-8 source text, normalizing line endings only; binaries stay raw."""
+    value = Path(path).read_bytes().decode("utf-8")
+    return hashlib.sha256(value.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")).hexdigest()
+
+
+def check_compiled(report, count):
+    need(isinstance(report, dict) and set(report) == {"compiler", "flags", "fp32_elements", "status", "target"},
+         "Host C evidence schema differs")
+    need(isinstance(report["compiler"], str) and bool(report["compiler"].strip())
+         and report["flags"] == "-std=c99 -Wall -Wextra -Werror -pedantic"
+         and type(report["fp32_elements"]) is int and report["fp32_elements"] == count
+         and report["status"] == "PASS" and report["target"] == "host; not nRF52840 firmware",
+         "Host C evidence invariant differs")
+
+
+def compare_reproduction(original, reproduced):
+    """Compare scientific bytes strictly; allow only declared run metadata to vary."""
+    a, b = read_json(original / "manifest.json"), read_json(reproduced / "manifest.json")
+    excluded = {"manifest.json", "firmware/host_c_verification.json"}
+    hashes = lambda root: {p.relative_to(root).as_posix(): sha(p) for p in root.rglob("*")
+                           if p.is_file() and p.relative_to(root).as_posix() not in excluded}
+    need(hashes(original) == hashes(reproduced), "Reproduction scientific bytes differ")
+    for value in (a, b):
+        for field in ("source_git_commit", "source_branch", "generation_command"):
+            value.pop(field)
+        value["files"] = [r for r in value["files"] if r["path"] != "firmware/host_c_verification.json"]
+    need(a == b, "Reproduction scientific provenance differs")
+    for root in (original, reproduced):
+        graph = read_json(root / "model_graph.json")
+        check_compiled(read_json(root / "firmware/host_c_verification.json"), graph["parameter_count"])
 
 
 def analysis(rows):

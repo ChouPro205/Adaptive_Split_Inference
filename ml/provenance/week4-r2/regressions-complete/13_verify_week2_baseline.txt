@@ -1,0 +1,5 @@
+source_git_sha: 8e98a0e4851abc979feb5fd5b97ece612b02cfaa
+best_epoch: 3
+validation_accuracy: 0.8448791265921497
+test_accuracy: 0.9822097378277154
+STATUS: PASS

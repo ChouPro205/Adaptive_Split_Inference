@@ -1,5 +1,10 @@
 # SV3 → SV1 Week 4 handoff
 
+> **Historical revision, superseded by r2 (2026-10-01).** Use
+> `sv3_sv1_week4_handoff_r2.md` and `ml/provenance/week4-r2/deliverables.json`.
+> PASS statements below do not establish SV1 receipt or clean-checkout
+> acceptance. The old Week 4 anchor is incompatible with schema 2.
+
 **SV3 Week 4 offline: PASS.** Model revision `mitdb_week2_cnn_v1`, epoch 3;
 checkpoint SHA-256 `9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90`.
 Base Git commit `6e9af108b7b0c39d63bc1c8dbbfbf4fcbf89c67e`.

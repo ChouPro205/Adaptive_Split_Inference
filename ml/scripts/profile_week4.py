@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import platform
 import subprocess
 from pathlib import Path
 
@@ -10,10 +9,10 @@ import matplotlib
 import numpy as np
 import torch
 
-from week3_common import compiler_verify, header, need, sha, text, write_json
+from week3_common import compiler_verify, header, need, read_json, sha, text, write_json
 from week3_sv2_common import CONTRACT, INPUT_SHA, MODEL_VERSION, PREPROCESSING, SAMPLES_SHA, SOURCE, versions
-from week4_common import (CHECKPOINT, OUTPUT, SCRIPTS, W3_PATH, W3_SHA, csv_profile,
-                          figure, frozen, graph_parameters, inventory, profile)
+from week4_common import (CHECKPOINT, OUTPUT, SCRIPTS, SOURCE_HASH_POLICY, W3_PATH, W3_SHA, csv_profile,
+                          figure, frozen, graph_parameters, inventory, profile, source_sha)
 
 
 def export(repo, output, compiler="gcc"):
@@ -46,16 +45,14 @@ def export(repo, output, compiler="gcc"):
         "ml/configs/week3_sv2_interface_review.json", "ml/configs/week3_model_freeze.json",
         "ml/configs/mitdb_week1_config.json", "ml/configs/mitdb_normalization.json",
         "ml/manifests/mitdb_patient_split.csv", "contracts/sv3_sv2_week3_fp32.md",
-        "contracts/sv3_sv1_week3_model_handoff.md", "ml/src/mitdb_baseline_model.py"]
-    requirements = []
-    for name in ("Huong1_Huong_dan_chi_tiet_tung_thanh_vien.docx", "Huong1_Bao_cao_trien_khai_3SV.docx", "06_Huong1_Adaptive_Split_Inference_Lo_trinh.docx"):
-        p = repo / "ml/docs/project_sources/requirements" / name
-        need(p.is_file(), f"Project requirement source missing: {name}")
-        requirements.append({"path": p.relative_to(repo).as_posix(), "sha256": sha(p)})
-    manifest = {"schema_version": 1, "scope": "SV3_WEEK4_OFFLINE",
+        "contracts/sv3_sv1_week3_model_handoff.md", "ml/src/mitdb_baseline_model.py",
+        "ml/configs/week4_requirement_references.json"]
+    requirements = read_json(repo / "ml/configs/week4_requirement_references.json")
+    manifest = {"schema_version": 2, "scope": "SV3_WEEK4_OFFLINE",
+                "source_hash_policy": SOURCE_HASH_POLICY,
                 "source_git_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip(),
                 "source_branch": subprocess.check_output(["git", "branch", "--show-current"], cwd=repo, text=True).strip(),
-                "source_files": [{"path": n, "sha256": sha(repo / n)} for n in source_paths],
+                "source_files": [{"path": n, "sha256": source_sha(repo / n)} for n in source_paths],
                 "project_requirements": requirements, "model_revision": MODEL_VERSION,
                 "model_source_commit": SOURCE, "checkpoint_path": f"{W3_PATH}/model/checkpoint.pt",
                 "checkpoint_sha256": CHECKPOINT, "week3_manifest_path": f"{W3_PATH}/manifest.json",

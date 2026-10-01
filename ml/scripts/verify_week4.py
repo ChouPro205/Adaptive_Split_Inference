@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 
 import matplotlib
@@ -13,18 +14,19 @@ import torch
 from week3_common import (compiler_verify, need, read_json, safe_path, same_bits, sha)
 from week3_sv2_common import (CONTRACT, INPUT_SHA, MODEL_VERSION, PREPROCESSING,
                             SAMPLES_SHA, SOURCE, references, split_map, versions)
-from week4_common import (CHECKPOINT, OUTPUT, SCRIPTS, W3_PATH, W3_SHA, csv_profile,
-                          frozen, graph_parameters, inventory, profile)
+from week4_common import (CHECKPOINT, OUTPUT, SCRIPTS, SOURCE_HASH_POLICY, W3_PATH, W3_SHA, check_compiled, csv_profile,
+                          frozen, graph_parameters, inventory, profile, source_sha)
 
 
 def verify(root, repo, expected_manifest_sha256, compiler="gcc"):
     root, repo = Path(root).resolve(), Path(repo).resolve()
-    need(isinstance(expected_manifest_sha256, str) and len(expected_manifest_sha256) == 64,
+    need(isinstance(expected_manifest_sha256, str) and re.fullmatch(r"[0-9a-f]{64}", expected_manifest_sha256),
          "Independent Week 4 manifest anchor required")
     raw = (root / "manifest.json").read_bytes()
     need(hashlib.sha256(raw).hexdigest() == expected_manifest_sha256, "Week 4 manifest SHA-256 mismatch")
     manifest = read_json(root / "manifest.json")
-    need(manifest["schema_version"] == 1 and manifest["scope"] == "SV3_WEEK4_OFFLINE"
+    need(manifest["schema_version"] == 2 and manifest["source_hash_policy"] == SOURCE_HASH_POLICY
+         and manifest["scope"] == "SV3_WEEK4_OFFLINE"
          and manifest["model_revision"] == MODEL_VERSION and manifest["model_source_commit"] == SOURCE
          and manifest["checkpoint_sha256"] == CHECKPOINT
          and manifest["checkpoint_path"] == f"{W3_PATH}/model/checkpoint.pt"
@@ -36,6 +38,11 @@ def verify(root, repo, expected_manifest_sha256, compiler="gcc"):
     need(manifest["preprocessing"] == PREPROCESSING and manifest["class_order"] == ["N", "S", "V", "F", "Q"],
          "Preprocessing/class mapping differs")
     need(manifest["dependency_versions"] == {**versions(), "matplotlib": matplotlib.__version__}, "Week 4 runtime versions differ")
+    need(isinstance(manifest["source_git_commit"], str)
+         and re.fullmatch(r"[0-9a-f]{40}", manifest["source_git_commit"])
+         and isinstance(manifest["source_branch"], str)
+         and isinstance(manifest["generation_command"], str) and bool(manifest["generation_command"]),
+         "Generation provenance metadata differs")
     # Authenticate raw bytes first. Local inventory must have exactly the expected set.
     for row in manifest["files"]:
         p = safe_path(root, row["path"])
@@ -43,7 +50,9 @@ def verify(root, repo, expected_manifest_sha256, compiler="gcc"):
              f"Week 4 artifact hash/size mismatch: {row['path']}")
     need(manifest["files"] == inventory(root), "Week 4 inventory differs")
     for row in manifest["source_files"]:
-        need(sha(safe_path(repo, row["path"])) == row["sha256"], f"Source file changed: {row['path']}")
+        need(source_sha(safe_path(repo, row["path"])) == row["sha256"], f"Source file changed: {row['path']}")
+    need(manifest["project_requirements"] == read_json(repo / "ml/configs/week4_requirement_references.json"),
+         "Requirement references differ")
     need({f"ml/scripts/{n}" for n in SCRIPTS}.issubset({r["path"] for r in manifest["source_files"]}),
          "Week 4 source coverage differs")
     package, w3, model, inputs, identities = frozen(repo)
@@ -90,7 +99,8 @@ def verify(root, repo, expected_manifest_sha256, compiler="gcc"):
                 "tensor_size_vs_split.png", "firmware/head_parameters.h", "firmware/host_c_verification.json", *parameters}
     need({r["path"] for r in manifest["files"]} == required, "Week 4 required file set differs")
     compiled = compiler_verify(root, graph, parameters, compiler)
-    need(read_json(root / "firmware/host_c_verification.json") == compiled, "Host C evidence differs")
+    check_compiled(read_json(root / "firmware/host_c_verification.json"), graph["parameter_count"])
+    check_compiled(compiled, graph["parameter_count"])
     need(all(torch.equal(before[k], v) for k, v in model.state_dict().items()), "Frozen state changed during verification")
     need(all(p.grad is None for p in model.parameters()) and not model.training, "Unexpected gradients/training")
     return {"status": "WEEK4_CHECKS_PASS", "manifest_sha256": expected_manifest_sha256,
