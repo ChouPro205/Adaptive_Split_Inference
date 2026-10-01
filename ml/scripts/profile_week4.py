@@ -42,6 +42,10 @@ def export(repo, output, compiler="gcc"):
         external.append(item)
     source_paths = [f"ml/scripts/{name}" for name in SCRIPTS] + [
         "ml/scripts/week3_common.py", "ml/scripts/week3_sv2_common.py",
+        "ml/scripts/release_week4.py", "ml/scripts/verify_week3_sv2.py",
+        "ml/scripts/export_week3_sv2.py", "ml/scripts/test_week3_sv2.py",
+        "ml/scripts/test_week3_sv2_cache.py",
+        "ml/scripts/test_week4_release.py",
         "ml/configs/week3_sv2_interface_review.json", "ml/configs/week3_model_freeze.json",
         "ml/configs/mitdb_week1_config.json", "ml/configs/mitdb_normalization.json",
         "ml/manifests/mitdb_patient_split.csv", "contracts/sv3_sv2_week3_fp32.md",

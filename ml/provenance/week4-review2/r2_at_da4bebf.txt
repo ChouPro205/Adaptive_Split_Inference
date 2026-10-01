@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\ml\scripts\verify_week4.py", line 119, in <module>
+    print(json.dumps(verify(args.output_dir, args.repo_root, args.expected_manifest_sha256, args.compiler), indent=2))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\ml\scripts\verify_week4.py", line 53, in verify
+    need(source_sha(safe_path(repo, row["path"])) == row["sha256"], f"Source file changed: {row['path']}")
+  File "C:\Users\Admin\Adaptive_Split_Inference\ml\scripts\week3_common.py", line 40, in need
+    raise ValueError(message)
+ValueError: Source file changed: ml/scripts/week3_common.py

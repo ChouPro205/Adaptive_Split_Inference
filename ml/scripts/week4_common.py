@@ -17,7 +17,7 @@ from week3_sv2_common import (CONTRACT, INPUT_SHA, OPS, SAMPLES_SHA, authenticat
 
 W3_PATH = "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1"
 W3_SHA = "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
-OUTPUT = "ml/results/week4-r2"
+OUTPUT = "ml/results/week4-r3"
 SOURCE_HASH_POLICY = "sha256-utf8-lf-v1"
 SCRIPTS = ("week4_common.py", "profile_week4.py", "verify_week4.py", "test_week4.py")
 FIELDS = ("s", "boundary_name", "head_last_op", "tail_first_op", "shape", "dtype",

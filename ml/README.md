@@ -132,3 +132,12 @@ ZIP) as permitted by the handoff contract, and verify all files at the receiving
 side. Versioned source/config/docs and small manifest/evidence copies live in
 `ml/scripts/`, `ml/configs/`, `ml/docs/` and `ml/provenance/week3/`. A Git checkout
 alone does not deliver the checkpoint, inputs, parameters or golden tensors.
+
+## Week 4 review revision R3
+
+Current handoff instructions: [R3](docs/sv3_sv1_week4_handoff_r3.md).
+The [review audit](docs/week4_review2_audit.md) separates historical R2 PASS
+from the source-hash rejection at `da4bebf`. Release R3 uses committed source,
+new output/manifest/ZIP and a pinned checkout hydrated from the authenticated
+ZIP without source overlays. R2 and the Week 3 all-split package remain intact.
+SV1 receipt/device acceptance stays PENDING until receiver acknowledgement.
