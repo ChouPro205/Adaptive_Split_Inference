@@ -1,0 +1,876 @@
+{
+  "model_revision": "mitdb_week2_cnn_v1",
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "ops": [
+    {
+      "op_id": "features_0",
+      "module_path": "features.0",
+      "type": "Conv1d",
+      "input_shape_n1": [
+        1,
+        1,
+        360
+      ],
+      "output_shape_n1": [
+        1,
+        16,
+        360
+      ],
+      "parameters": [
+        {
+          "path": "weights/features.0.weight.npy",
+          "checkpoint_key": "features.0.weight",
+          "name": "weight",
+          "c_name": "sv3_features_0_weight",
+          "shape": [
+            16,
+            1,
+            5
+          ],
+          "dtype": "<f4",
+          "layout": "OIK",
+          "flatten_order": "C",
+          "element_count": 80,
+          "logical_tensor_bytes": 320
+        },
+        {
+          "path": "weights/features.0.bias.npy",
+          "checkpoint_key": "features.0.bias",
+          "name": "bias",
+          "c_name": "sv3_features_0_bias",
+          "shape": [
+            16
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 16,
+          "logical_tensor_bytes": 64
+        }
+      ],
+      "attributes": {
+        "in_channels": 1,
+        "out_channels": 16,
+        "kernel_size": 5,
+        "stride": 1,
+        "padding": 2,
+        "padding_mode": "zeros",
+        "dilation": 1,
+        "groups": 1,
+        "bias": true
+      }
+    },
+    {
+      "op_id": "features_1",
+      "module_path": "features.1",
+      "type": "ReLU",
+      "input_shape_n1": [
+        1,
+        16,
+        360
+      ],
+      "output_shape_n1": [
+        1,
+        16,
+        360
+      ],
+      "parameters": [],
+      "attributes": {
+        "inplace": false
+      }
+    },
+    {
+      "op_id": "features_2",
+      "module_path": "features.2",
+      "type": "Conv1d",
+      "input_shape_n1": [
+        1,
+        16,
+        360
+      ],
+      "output_shape_n1": [
+        1,
+        16,
+        360
+      ],
+      "parameters": [
+        {
+          "path": "weights/features.2.weight.npy",
+          "checkpoint_key": "features.2.weight",
+          "name": "weight",
+          "c_name": "sv3_features_2_weight",
+          "shape": [
+            16,
+            16,
+            5
+          ],
+          "dtype": "<f4",
+          "layout": "OIK",
+          "flatten_order": "C",
+          "element_count": 1280,
+          "logical_tensor_bytes": 5120
+        },
+        {
+          "path": "weights/features.2.bias.npy",
+          "checkpoint_key": "features.2.bias",
+          "name": "bias",
+          "c_name": "sv3_features_2_bias",
+          "shape": [
+            16
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 16,
+          "logical_tensor_bytes": 64
+        }
+      ],
+      "attributes": {
+        "in_channels": 16,
+        "out_channels": 16,
+        "kernel_size": 5,
+        "stride": 1,
+        "padding": 2,
+        "padding_mode": "zeros",
+        "dilation": 1,
+        "groups": 1,
+        "bias": true
+      }
+    },
+    {
+      "op_id": "features_3",
+      "module_path": "features.3",
+      "type": "ReLU",
+      "input_shape_n1": [
+        1,
+        16,
+        360
+      ],
+      "output_shape_n1": [
+        1,
+        16,
+        360
+      ],
+      "parameters": [],
+      "attributes": {
+        "inplace": false
+      }
+    },
+    {
+      "op_id": "features_4",
+      "module_path": "features.4",
+      "type": "MaxPool1d",
+      "input_shape_n1": [
+        1,
+        16,
+        360
+      ],
+      "output_shape_n1": [
+        1,
+        16,
+        180
+      ],
+      "parameters": [],
+      "attributes": {
+        "kernel_size": 2,
+        "stride": 2,
+        "padding": 0,
+        "dilation": 1,
+        "ceil_mode": false,
+        "return_indices": false
+      }
+    },
+    {
+      "op_id": "features_5",
+      "module_path": "features.5",
+      "type": "Conv1d",
+      "input_shape_n1": [
+        1,
+        16,
+        180
+      ],
+      "output_shape_n1": [
+        1,
+        32,
+        180
+      ],
+      "parameters": [
+        {
+          "path": "weights/features.5.weight.npy",
+          "checkpoint_key": "features.5.weight",
+          "name": "weight",
+          "c_name": "sv3_features_5_weight",
+          "shape": [
+            32,
+            16,
+            5
+          ],
+          "dtype": "<f4",
+          "layout": "OIK",
+          "flatten_order": "C",
+          "element_count": 2560,
+          "logical_tensor_bytes": 10240
+        },
+        {
+          "path": "weights/features.5.bias.npy",
+          "checkpoint_key": "features.5.bias",
+          "name": "bias",
+          "c_name": "sv3_features_5_bias",
+          "shape": [
+            32
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 32,
+          "logical_tensor_bytes": 128
+        }
+      ],
+      "attributes": {
+        "in_channels": 16,
+        "out_channels": 32,
+        "kernel_size": 5,
+        "stride": 1,
+        "padding": 2,
+        "padding_mode": "zeros",
+        "dilation": 1,
+        "groups": 1,
+        "bias": true
+      }
+    },
+    {
+      "op_id": "features_6",
+      "module_path": "features.6",
+      "type": "ReLU",
+      "input_shape_n1": [
+        1,
+        32,
+        180
+      ],
+      "output_shape_n1": [
+        1,
+        32,
+        180
+      ],
+      "parameters": [],
+      "attributes": {
+        "inplace": false
+      }
+    },
+    {
+      "op_id": "features_7",
+      "module_path": "features.7",
+      "type": "Conv1d",
+      "input_shape_n1": [
+        1,
+        32,
+        180
+      ],
+      "output_shape_n1": [
+        1,
+        32,
+        180
+      ],
+      "parameters": [
+        {
+          "path": "weights/features.7.weight.npy",
+          "checkpoint_key": "features.7.weight",
+          "name": "weight",
+          "c_name": "sv3_features_7_weight",
+          "shape": [
+            32,
+            32,
+            5
+          ],
+          "dtype": "<f4",
+          "layout": "OIK",
+          "flatten_order": "C",
+          "element_count": 5120,
+          "logical_tensor_bytes": 20480
+        },
+        {
+          "path": "weights/features.7.bias.npy",
+          "checkpoint_key": "features.7.bias",
+          "name": "bias",
+          "c_name": "sv3_features_7_bias",
+          "shape": [
+            32
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 32,
+          "logical_tensor_bytes": 128
+        }
+      ],
+      "attributes": {
+        "in_channels": 32,
+        "out_channels": 32,
+        "kernel_size": 5,
+        "stride": 1,
+        "padding": 2,
+        "padding_mode": "zeros",
+        "dilation": 1,
+        "groups": 1,
+        "bias": true
+      }
+    },
+    {
+      "op_id": "features_8",
+      "module_path": "features.8",
+      "type": "ReLU",
+      "input_shape_n1": [
+        1,
+        32,
+        180
+      ],
+      "output_shape_n1": [
+        1,
+        32,
+        180
+      ],
+      "parameters": [],
+      "attributes": {
+        "inplace": false
+      }
+    },
+    {
+      "op_id": "features_9",
+      "module_path": "features.9",
+      "type": "MaxPool1d",
+      "input_shape_n1": [
+        1,
+        32,
+        180
+      ],
+      "output_shape_n1": [
+        1,
+        32,
+        90
+      ],
+      "parameters": [],
+      "attributes": {
+        "kernel_size": 2,
+        "stride": 2,
+        "padding": 0,
+        "dilation": 1,
+        "ceil_mode": false,
+        "return_indices": false
+      }
+    },
+    {
+      "op_id": "features_10",
+      "module_path": "features.10",
+      "type": "Conv1d",
+      "input_shape_n1": [
+        1,
+        32,
+        90
+      ],
+      "output_shape_n1": [
+        1,
+        48,
+        90
+      ],
+      "parameters": [
+        {
+          "path": "weights/features.10.weight.npy",
+          "checkpoint_key": "features.10.weight",
+          "name": "weight",
+          "c_name": "sv3_features_10_weight",
+          "shape": [
+            48,
+            32,
+            5
+          ],
+          "dtype": "<f4",
+          "layout": "OIK",
+          "flatten_order": "C",
+          "element_count": 7680,
+          "logical_tensor_bytes": 30720
+        },
+        {
+          "path": "weights/features.10.bias.npy",
+          "checkpoint_key": "features.10.bias",
+          "name": "bias",
+          "c_name": "sv3_features_10_bias",
+          "shape": [
+            48
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 48,
+          "logical_tensor_bytes": 192
+        }
+      ],
+      "attributes": {
+        "in_channels": 32,
+        "out_channels": 48,
+        "kernel_size": 5,
+        "stride": 1,
+        "padding": 2,
+        "padding_mode": "zeros",
+        "dilation": 1,
+        "groups": 1,
+        "bias": true
+      }
+    },
+    {
+      "op_id": "features_11",
+      "module_path": "features.11",
+      "type": "ReLU",
+      "input_shape_n1": [
+        1,
+        48,
+        90
+      ],
+      "output_shape_n1": [
+        1,
+        48,
+        90
+      ],
+      "parameters": [],
+      "attributes": {
+        "inplace": false
+      }
+    },
+    {
+      "op_id": "features_12",
+      "module_path": "features.12",
+      "type": "Conv1d",
+      "input_shape_n1": [
+        1,
+        48,
+        90
+      ],
+      "output_shape_n1": [
+        1,
+        48,
+        90
+      ],
+      "parameters": [
+        {
+          "path": "weights/features.12.weight.npy",
+          "checkpoint_key": "features.12.weight",
+          "name": "weight",
+          "c_name": "sv3_features_12_weight",
+          "shape": [
+            48,
+            48,
+            5
+          ],
+          "dtype": "<f4",
+          "layout": "OIK",
+          "flatten_order": "C",
+          "element_count": 11520,
+          "logical_tensor_bytes": 46080
+        },
+        {
+          "path": "weights/features.12.bias.npy",
+          "checkpoint_key": "features.12.bias",
+          "name": "bias",
+          "c_name": "sv3_features_12_bias",
+          "shape": [
+            48
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 48,
+          "logical_tensor_bytes": 192
+        }
+      ],
+      "attributes": {
+        "in_channels": 48,
+        "out_channels": 48,
+        "kernel_size": 5,
+        "stride": 1,
+        "padding": 2,
+        "padding_mode": "zeros",
+        "dilation": 1,
+        "groups": 1,
+        "bias": true
+      }
+    },
+    {
+      "op_id": "features_13",
+      "module_path": "features.13",
+      "type": "ReLU",
+      "input_shape_n1": [
+        1,
+        48,
+        90
+      ],
+      "output_shape_n1": [
+        1,
+        48,
+        90
+      ],
+      "parameters": [],
+      "attributes": {
+        "inplace": false
+      }
+    },
+    {
+      "op_id": "features_14",
+      "module_path": "features.14",
+      "type": "MaxPool1d",
+      "input_shape_n1": [
+        1,
+        48,
+        90
+      ],
+      "output_shape_n1": [
+        1,
+        48,
+        45
+      ],
+      "parameters": [],
+      "attributes": {
+        "kernel_size": 2,
+        "stride": 2,
+        "padding": 0,
+        "dilation": 1,
+        "ceil_mode": false,
+        "return_indices": false
+      }
+    },
+    {
+      "op_id": "features_15",
+      "module_path": "features.15",
+      "type": "Conv1d",
+      "input_shape_n1": [
+        1,
+        48,
+        45
+      ],
+      "output_shape_n1": [
+        1,
+        64,
+        45
+      ],
+      "parameters": [
+        {
+          "path": "weights/features.15.weight.npy",
+          "checkpoint_key": "features.15.weight",
+          "name": "weight",
+          "c_name": "sv3_features_15_weight",
+          "shape": [
+            64,
+            48,
+            5
+          ],
+          "dtype": "<f4",
+          "layout": "OIK",
+          "flatten_order": "C",
+          "element_count": 15360,
+          "logical_tensor_bytes": 61440
+        },
+        {
+          "path": "weights/features.15.bias.npy",
+          "checkpoint_key": "features.15.bias",
+          "name": "bias",
+          "c_name": "sv3_features_15_bias",
+          "shape": [
+            64
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 64,
+          "logical_tensor_bytes": 256
+        }
+      ],
+      "attributes": {
+        "in_channels": 48,
+        "out_channels": 64,
+        "kernel_size": 5,
+        "stride": 1,
+        "padding": 2,
+        "padding_mode": "zeros",
+        "dilation": 1,
+        "groups": 1,
+        "bias": true
+      }
+    },
+    {
+      "op_id": "features_16",
+      "module_path": "features.16",
+      "type": "ReLU",
+      "input_shape_n1": [
+        1,
+        64,
+        45
+      ],
+      "output_shape_n1": [
+        1,
+        64,
+        45
+      ],
+      "parameters": [],
+      "attributes": {
+        "inplace": false
+      }
+    },
+    {
+      "op_id": "features_17",
+      "module_path": "features.17",
+      "type": "Conv1d",
+      "input_shape_n1": [
+        1,
+        64,
+        45
+      ],
+      "output_shape_n1": [
+        1,
+        64,
+        45
+      ],
+      "parameters": [
+        {
+          "path": "weights/features.17.weight.npy",
+          "checkpoint_key": "features.17.weight",
+          "name": "weight",
+          "c_name": "sv3_features_17_weight",
+          "shape": [
+            64,
+            64,
+            5
+          ],
+          "dtype": "<f4",
+          "layout": "OIK",
+          "flatten_order": "C",
+          "element_count": 20480,
+          "logical_tensor_bytes": 81920
+        },
+        {
+          "path": "weights/features.17.bias.npy",
+          "checkpoint_key": "features.17.bias",
+          "name": "bias",
+          "c_name": "sv3_features_17_bias",
+          "shape": [
+            64
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 64,
+          "logical_tensor_bytes": 256
+        }
+      ],
+      "attributes": {
+        "in_channels": 64,
+        "out_channels": 64,
+        "kernel_size": 5,
+        "stride": 1,
+        "padding": 2,
+        "padding_mode": "zeros",
+        "dilation": 1,
+        "groups": 1,
+        "bias": true
+      }
+    },
+    {
+      "op_id": "features_18",
+      "module_path": "features.18",
+      "type": "ReLU",
+      "input_shape_n1": [
+        1,
+        64,
+        45
+      ],
+      "output_shape_n1": [
+        1,
+        64,
+        45
+      ],
+      "parameters": [],
+      "attributes": {
+        "inplace": false
+      }
+    },
+    {
+      "op_id": "features_19",
+      "module_path": "features.19",
+      "type": "MaxPool1d",
+      "input_shape_n1": [
+        1,
+        64,
+        45
+      ],
+      "output_shape_n1": [
+        1,
+        64,
+        22
+      ],
+      "parameters": [],
+      "attributes": {
+        "kernel_size": 2,
+        "stride": 2,
+        "padding": 0,
+        "dilation": 1,
+        "ceil_mode": false,
+        "return_indices": false
+      }
+    },
+    {
+      "op_id": "classifier_0",
+      "module_path": "classifier.0",
+      "type": "Flatten",
+      "input_shape_n1": [
+        1,
+        64,
+        22
+      ],
+      "output_shape_n1": [
+        1,
+        1408
+      ],
+      "parameters": [],
+      "attributes": {
+        "start_dim": 1,
+        "end_dim": -1,
+        "order": "C; preserve batch"
+      }
+    },
+    {
+      "op_id": "classifier_1",
+      "module_path": "classifier.1",
+      "type": "Dropout",
+      "input_shape_n1": [
+        1,
+        1408
+      ],
+      "output_shape_n1": [
+        1,
+        1408
+      ],
+      "parameters": [],
+      "attributes": {
+        "p": 0.2,
+        "inplace": false,
+        "training": false,
+        "eval_behavior": "identity; no random sampling or scaling"
+      }
+    },
+    {
+      "op_id": "classifier_2",
+      "module_path": "classifier.2",
+      "type": "Linear",
+      "input_shape_n1": [
+        1,
+        1408
+      ],
+      "output_shape_n1": [
+        1,
+        32
+      ],
+      "parameters": [
+        {
+          "path": "weights/classifier.2.weight.npy",
+          "checkpoint_key": "classifier.2.weight",
+          "name": "weight",
+          "c_name": "sv3_classifier_2_weight",
+          "shape": [
+            32,
+            1408
+          ],
+          "dtype": "<f4",
+          "layout": "OI",
+          "flatten_order": "C",
+          "element_count": 45056,
+          "logical_tensor_bytes": 180224
+        },
+        {
+          "path": "weights/classifier.2.bias.npy",
+          "checkpoint_key": "classifier.2.bias",
+          "name": "bias",
+          "c_name": "sv3_classifier_2_bias",
+          "shape": [
+            32
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 32,
+          "logical_tensor_bytes": 128
+        }
+      ],
+      "attributes": {
+        "in_features": 1408,
+        "out_features": 32,
+        "bias": true
+      }
+    },
+    {
+      "op_id": "classifier_3",
+      "module_path": "classifier.3",
+      "type": "ReLU",
+      "input_shape_n1": [
+        1,
+        32
+      ],
+      "output_shape_n1": [
+        1,
+        32
+      ],
+      "parameters": [],
+      "attributes": {
+        "inplace": false
+      }
+    },
+    {
+      "op_id": "classifier_4",
+      "module_path": "classifier.4",
+      "type": "Linear",
+      "input_shape_n1": [
+        1,
+        32
+      ],
+      "output_shape_n1": [
+        1,
+        5
+      ],
+      "parameters": [
+        {
+          "path": "weights/classifier.4.weight.npy",
+          "checkpoint_key": "classifier.4.weight",
+          "name": "weight",
+          "c_name": "sv3_classifier_4_weight",
+          "shape": [
+            5,
+            32
+          ],
+          "dtype": "<f4",
+          "layout": "OI",
+          "flatten_order": "C",
+          "element_count": 160,
+          "logical_tensor_bytes": 640
+        },
+        {
+          "path": "weights/classifier.4.bias.npy",
+          "checkpoint_key": "classifier.4.bias",
+          "name": "bias",
+          "c_name": "sv3_classifier_4_bias",
+          "shape": [
+            5
+          ],
+          "dtype": "<f4",
+          "layout": "O",
+          "flatten_order": "C",
+          "element_count": 5,
+          "logical_tensor_bytes": 20
+        }
+      ],
+      "attributes": {
+        "in_features": 32,
+        "out_features": 5,
+        "bias": true
+      }
+    }
+  ],
+  "parameter_count": 109653,
+  "parameter_logical_bytes_fp32": 438612,
+  "semantics": "Exact checkpoint; no folding, transpose, quantization or firmware implementation"
+}

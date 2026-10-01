@@ -18,6 +18,6 @@
     "exit_status": 1,
     "expected_result": "reject changed source",
     "log_path": "ml/provenance/week4-review2/r2_at_da4bebf.txt",
-    "log_sha256": "09a98dee05a346fddd09b497df97166de9693c54e64104830865acf5643fb379"
+    "log_sha256": "813924a053874b152f9d74f145c4ed04f0a6af6d756aefba85ec11431ba29fd8"
   }
 ]
