@@ -1,0 +1,16 @@
+Normalized train waveforms checked: 2500/17418
+Normalized train waveforms checked: 5000/17418
+Normalized train waveforms checked: 7500/17418
+Normalized train waveforms checked: 10000/17418
+Normalized train waveforms checked: 12500/17418
+Normalized train waveforms checked: 15000/17418
+PTB-XL NORMALIZATION VERIFICATION
+Train records / values per lead: 17418 / 17418000
+Lead order                    : ['I', 'II', 'III', 'AVR', 'AVL', 'AVF', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6']
+Normalized dtype              : float32
+Normalized mean per lead      : [1.032395642954428e-10, -1.472275528125572e-10, 1.7487081143102932e-11, -8.624568096082839e-11, 7.851985545728631e-12, 3.4808261429713257e-11, -1.2348757401551036e-09, 1.1326336930230566e-10, 1.3533558532679474e-11, 1.6490316555504549e-10, -1.101238282630728e-10, -3.765652021218871e-11]
+Normalized std per lead       : [1.0000000001836973, 1.000000000108571, 1.0000000001449172, 0.9999999998192832, 0.9999999998923972, 0.9999999999061882, 0.9999999997622981, 1.0000000000656641, 0.9999999999900573, 0.9999999999608363, 1.0000000000776612, 1.0000000024124795]
+Mean/std absolute tolerances  : 1e-06 / 1e-06
+Config SHA-256                : d8a34e7b2a6c6f4bfcf435f6d0bbe4fcbaf978973846fb4506ee32c60b89d9c8
+Stored train-only statistics pass independent normalized-data verification
+STATUS: PASS

@@ -1,0 +1,10 @@
+MIT-BIH PREPROCESSING AUDIT
+Records found / processed: 48 / 46
+Records without MLII   : ['102', '104']
+MLII not channel 0      : [('114', 1)]
+Ignored annotations      : {'+': 1241, '~': 579, '|': 132, 'x': 193, '[': 6, '!': 472, ']': 6, '"': 437}
+AAMI counts              : {'N': 90320, 'S': 2781, 'V': 7229, 'F': 802, 'Q': 3894}
+Raw / ignored / boundary : 108144 / 3066 / 52
+Final valid beats        : 105026
+Config SHA-256           : f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54
+STATUS: PASS

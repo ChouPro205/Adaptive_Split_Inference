@@ -1,0 +1,76 @@
+WEEK 1 NEGATIVE TESTS
+PASS line-ending-stable hash: config_eol_environment.json
+PASS line-ending-stable hash: config_eol_mitdb_week1_config.json
+PASS line-ending-stable hash: config_eol_ptbxl_week1_config.json
+PASS line-ending-stable hash: artifact_eol_ptbxl_patient_manifest
+PASS expected failure: mitdb_empty_directory_python (exit=1)
+  ERROR: Raw dataset directory is empty: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\empty
+PASS expected failure: ptbxl_empty_directory_python (exit=1)
+  ERROR: Raw dataset directory is empty: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\empty
+PASS expected failure: mitdb_empty_directory_python-O (exit=1)
+  ERROR: Raw dataset directory is empty: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\empty
+PASS expected failure: ptbxl_empty_directory_python-O (exit=1)
+  ERROR: Raw dataset directory is empty: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\empty
+PASS expected failure: mitdb_missing_record_python (exit=1)
+  ERROR: MIT-BIH record list mismatch; missing=['100'], unexpected=[]
+PASS expected failure: mitdb_missing_record_python-O (exit=1)
+  ERROR: MIT-BIH record list mismatch; missing=['100'], unexpected=[]
+PASS expected failure: mitdb_missing_header_python (exit=1)
+  ERROR: MIT-BIH record list mismatch; missing=['100'], unexpected=[]
+PASS expected failure: mitdb_missing_header_python-O (exit=1)
+  ERROR: MIT-BIH record list mismatch; missing=['100'], unexpected=[]
+PASS expected failure: mitdb_missing_data_python (exit=1)
+  ERROR: Required dataset file is missing: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\missing_data\100.dat
+PASS expected failure: mitdb_missing_data_python-O (exit=1)
+  ERROR: Required dataset file is missing: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\missing_data\100.dat
+PASS expected failure: mitdb_missing_atr_python (exit=1)
+  ERROR: Required dataset file is missing: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\missing_atr\100.atr
+PASS expected failure: mitdb_missing_atr_python-O (exit=1)
+  ERROR: Required dataset file is missing: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\missing_atr\100.atr
+PASS expected failure: mitdb_wrong_checksum_python (exit=1)
+  ERROR: Checksum mismatch for 100.hea: expected 60ebc904c7bf3e04d142638d3fd5c903e8dc9f10f1ea3264e07926aa089ee75e, got c310ae5c39b5ec88d3de6d1a7028b1eb3e42e76f728dcda1ec473ccc4b76a212
+PASS expected failure: mitdb_wrong_checksum_python-O (exit=1)
+  ERROR: Checksum mismatch for 100.hea: expected 60ebc904c7bf3e04d142638d3fd5c903e8dc9f10f1ea3264e07926aa089ee75e, got c310ae5c39b5ec88d3de6d1a7028b1eb3e42e76f728dcda1ec473ccc4b76a212
+PASS expected failure: ptbxl_corrupt_cached_metadata_python (exit=1)
+  ERROR: Checksum mismatch for ptbxl_database.csv: expected 7600de9c1b27d181d850b3c6038a35d7c3ddb6bb33b702e3a20252a6859d216b, got f3a1e85e5c9e53e3ce1fba44c0994b84d72bc50a8c89e97df8ea81072a710afd
+PASS expected failure: ptbxl_corrupt_cached_metadata_python-O (exit=1)
+  ERROR: Checksum mismatch for ptbxl_database.csv: expected 7600de9c1b27d181d850b3c6038a35d7c3ddb6bb33b702e3a20252a6859d216b, got f3a1e85e5c9e53e3ce1fba44c0994b84d72bc50a8c89e97df8ea81072a710afd
+PASS expected failure: ptbxl_manifest_header_only_python (exit=1)
+  ERROR: CSV contains no data rows: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\ptbxl_manifest_header_only.csv
+PASS expected failure: ptbxl_manifest_header_only_python-O (exit=1)
+  ERROR: CSV contains no data rows: C:\Users\Admin\AppData\Local\Temp\sv3_week1_negative_asgqs9bl\ptbxl_manifest_header_only.csv
+PASS expected failure: ptbxl_manifest_missing_row_python (exit=1)
+  ERROR: PTB-XL manifest row count mismatch: 21798 vs 21799
+PASS expected failure: ptbxl_manifest_missing_row_python-O (exit=1)
+  ERROR: PTB-XL manifest row count mismatch: 21798 vs 21799
+PASS expected failure: ptbxl_manifest_extra_row_python (exit=1)
+  ERROR: PTB-XL manifest row count mismatch: 21800 vs 21799
+PASS expected failure: ptbxl_manifest_extra_row_python-O (exit=1)
+  ERROR: PTB-XL manifest row count mismatch: 21800 vs 21799
+PASS expected failure: ptbxl_manifest_duplicate_1_missing_21837_python (exit=1)
+  ERROR: Duplicate ecg_id values in PTB-XL manifest: ['1']
+PASS expected failure: ptbxl_manifest_duplicate_1_missing_21837_python-O (exit=1)
+  ERROR: Duplicate ecg_id values in PTB-XL manifest: ['1']
+PASS expected failure: ptbxl_manifest_foreign_999999999_missing_21837_python (exit=1)
+  ERROR: PTB-XL manifest ecg_id set mismatch; missing=['21837'], unexpected=['999999999']
+PASS expected failure: ptbxl_manifest_foreign_999999999_missing_21837_python-O (exit=1)
+  ERROR: PTB-XL manifest ecg_id set mismatch; missing=['21837'], unexpected=['999999999']
+PASS expected failure: ptbxl_missing_header_python (exit=1)
+  ERROR: PTB-XL header set mismatch: missing=1, unexpected=0
+PASS expected failure: ptbxl_missing_header_python-O (exit=1)
+  ERROR: PTB-XL header set mismatch: missing=1, unexpected=0
+PASS expected failure: ptbxl_missing_data_python (exit=1)
+  ERROR: PTB-XL data set mismatch: missing=1, unexpected=0
+PASS expected failure: ptbxl_missing_data_python-O (exit=1)
+  ERROR: PTB-XL data set mismatch: missing=1, unexpected=0
+PASS expected failure: ptbxl_missing_record_python (exit=1)
+  ERROR: PTB-XL header set mismatch: missing=1, unexpected=0
+PASS expected failure: ptbxl_missing_record_python-O (exit=1)
+  ERROR: PTB-XL header set mismatch: missing=1, unexpected=0
+PASS expected failure: ptbxl_wrong_checksum_python (exit=1)
+  ERROR: Checksum mismatch for records100/00000/00001_lr.dat: expected 308012fb657e1eea29a86902a8576e2e173594bd16f11ec1f45c7445cec97572, got cad9a4cc5fd793596fe6e2972820817efb4f726c0c13eb8107a77c62d15dfd49
+PASS expected failure: ptbxl_wrong_checksum_python-O (exit=1)
+  ERROR: Checksum mismatch for records100/00000/00001_lr.dat: expected 308012fb657e1eea29a86902a8576e2e173594bd16f11ec1f45c7445cec97572, got cad9a4cc5fd793596fe6e2972820817efb4f726c0c13eb8107a77c62d15dfd49
+Cases passed: 34/34
+Real raw datasets were not modified.
+STATUS: PASS

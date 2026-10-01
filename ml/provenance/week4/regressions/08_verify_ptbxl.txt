@@ -1,0 +1,19 @@
+Headers checked: 5000/21799
+Headers checked: 10000/21799
+Headers checked: 15000/21799
+Headers checked: 20000/21799
+PTB-XL VERIFICATION
+Version             : 1.0.3
+Sampling rate       : 100 Hz
+Signal shape        : (1000, 12)
+Lead order          : ['I', 'II', 'III', 'AVR', 'AVL', 'AVF', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6']
+Records / patients  : 21799 / 18869
+train                : 17418 records / 15023 patients
+val                  : 2183 records / 1942 patients
+test                 : 2198 records / 1904 patients
+SCP label assignments: 61007
+Files checksummed    : 43601
+File tree SHA-256    : b4863f3c13d7ccdd31244944d8cd1e1ed3e98ff2877d7ca5b154cbf471170242
+Config SHA-256       : d8a34e7b2a6c6f4bfcf435f6d0bbe4fcbaf978973846fb4506ee32c60b89d9c8
+Patient leakage      : none
+STATUS: PASS

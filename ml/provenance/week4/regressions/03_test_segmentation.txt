@@ -1,0 +1,5 @@
+Record / lead index: 100 / 0
+Beat shape         : (2271, 360)
+Beat dtype         : float32
+AAMI counts        : {'N': 2237, 'S': 33, 'V': 1}
+STATUS: PASS
