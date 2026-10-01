@@ -7,6 +7,7 @@ import importlib.metadata
 import json
 from pathlib import Path
 import platform
+import re
 
 import numpy as np
 import onnx
@@ -32,6 +33,8 @@ PREPROCESSING = "Exact frozen Week 1 preprocessing before head; no refit, second
 TARGET = {"runtime": "VART", "backend": "KV260 DPU", "acceptance": "PENDING_SV2_INDEPENDENT_VALIDATION",
           "responsibility": "SV2: Vitis AI compatibility, quantization, xmodel compile and VART/KV260 execution",
           "int8_criterion": "Separate project quantization/device criteria; FP32 <1e-3 does not apply automatically"}
+SCRIPTS = ("export_week3_sv2.py", "verify_week3_sv2.py", "test_week3_sv2.py", "week3_sv2_common.py", "week3_common.py")
+CACHE_SOURCES = {*(f"scripts/{name}" for name in SCRIPTS), "model/mitdb_baseline_model.py"}
 
 
 def split_map():
@@ -179,12 +182,26 @@ def numerics(package, model, full, identities):
 
 
 def inventory(package):
+    """Inventory delivered payload, excluding only its adjacent CPython caches.
+
+    Cache bytes are never trusted code: entry points suppress writes and the
+    frozen model loader compiles authenticated source directly. Other files,
+    including unrecognized contents of __pycache__, remain in the inventory.
+    """
     result = []
     for p in sorted(package.rglob("*")):
+        relative = p.relative_to(package).as_posix()
+        need(not p.is_symlink(), f"Package symlinks forbidden: {relative}")
         if not p.is_file() or p == package / "manifest.json":
             continue
-        relative = p.relative_to(package).as_posix()
-        need(not p.is_symlink(), "Package symlinks forbidden")
+        if p.parent.relative_to(package).as_posix() in ("scripts/__pycache__", "model/__pycache__"):
+            match = re.fullmatch(r"(.+)\.cpython-[0-9]{2,3}(?:\.opt-[12])?\.pyc", p.name)
+            if match:
+                source = p.parent.parent / (match[1] + ".py")
+                if source.relative_to(package).as_posix() in CACHE_SOURCES:
+                    need(not source.is_symlink(), f"Package symlinks forbidden: {source.relative_to(package).as_posix()}")
+                    if source.is_file():
+                        continue
         row = {"path":relative, "sha256":sha(p), "size_bytes":p.stat().st_size}
         if p.suffix == ".npy":
             a = np.load(p,allow_pickle=False)
@@ -193,7 +210,10 @@ def inventory(package):
             row.update(shape=list(a.shape),dtype=a.dtype.str)
         elif p.suffix not in (".pt", ".onnx"):
             b = p.read_bytes()
-            b.decode("utf-8")
+            try:
+                b.decode("utf-8")
+            except UnicodeDecodeError as exc:
+                raise ValueError(f"Invalid UTF-8 text or unexpected binary file: {relative}") from exc
             need(b"\r" not in b and not b.startswith(b"\xef\xbb\xbf"), f"Text must be UTF-8 LF: {relative}")
         result.append(row)
     return result

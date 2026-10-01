@@ -182,6 +182,27 @@ Expand-Archive -LiteralPath "$pkg.zip" -DestinationPath ml/artifacts/week3
 
 All prior installed dependencies were constrained to their existing versions during ONNX installation. New pinned packages: ONNX 1.23.1, ONNX Runtime 1.30.0, protobuf 7.36.2, ml_dtypes 0.6.0, flatbuffers 25.12.19. pip check PASS. No training environment package version was changed.
 
+### Verifier cache fix (immutable v1 remains unchanged)
+
+Use the updated verifier/test in a **trusted repository checkout**, not copied
+into v1. The commands above still use v1's independently published manifest
+hash. Updated SV2 entry points disable bytecode writes even without `-B`.
+Inventory exempts only CPython cache filenames corresponding to delivered
+sources directly under `scripts/__pycache__/` and `model/__pycache__/`;
+unrecognized files, orphan caches and symlinks are not exempt. The shared frozen
+model loader executes the source bytes it hash-authenticated, never a `.pyc`.
+
+Workaround for the original bundled v1 verifier: verify the ZIP hash, extract
+into a **new empty destination**, and use `python -B` starting with the first
+run. `-B` does **not** delete old cache and does **not** prevent reading existing
+bytecode. Do not repair/re-hash v1 in place or insert changed scripts into it.
+Shipping fixed scripts or a changed README requires a new revision ID and new
+manifest/ZIP hashes; this cache fix does not itself publish a revision.
+
+`.cpython-312.pyc` is evidence of CPython 3.12 cache generation; v1 pins Python
+**3.11.9**. This environment mismatch is independent of the inventory bug. Use
+all exact `dependency_versions` in the manifest; the version gate is unchanged.
+
 Commands run successfully (exit 0):
 
 ```powershell

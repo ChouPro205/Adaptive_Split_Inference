@@ -1,6 +1,9 @@
 """Reason-specific rejection tests on disposable copies of the SV2 package."""
 from __future__ import annotations
 
+import sys
+sys.dont_write_bytecode = True
+
 import argparse
 from pathlib import Path
 import shutil

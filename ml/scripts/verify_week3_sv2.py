@@ -1,6 +1,9 @@
 """Authenticate and independently recompute every Week 3 FP32 tail reference."""
 from __future__ import annotations
 
+import sys
+sys.dont_write_bytecode = True
+
 import argparse
 from pathlib import Path
 import re
@@ -10,9 +13,7 @@ import numpy as np
 from week3_common import check_decision, need, read_json, same_bits, sha
 from week3_sv2_common import (CHECKPOINT, CONTRACT, INPUT_SHA, MODEL_NAME, MODEL_VERSION, OPSET,
     P2_SHA, PREPROCESSING, SHAPES, SOURCE, SV1_MANIFEST, TARGET, TOLERANCE,
-    authenticate, load_frozen, numerics, references, samples, split_map, versions)
-
-SCRIPTS = ("export_week3_sv2.py", "verify_week3_sv2.py", "test_week3_sv2.py", "week3_sv2_common.py", "week3_common.py")
+    SCRIPTS, authenticate, load_frozen, numerics, references, samples, split_map, versions)
 
 
 def verify(package, expected_manifest_sha256):

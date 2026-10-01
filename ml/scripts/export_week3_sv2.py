@@ -1,6 +1,9 @@
 """Export a NEW immutable SV3 FP32 reference package for confirmed splits 0..10."""
 from __future__ import annotations
 
+import sys
+sys.dont_write_bytecode = True
+
 import argparse
 from pathlib import Path
 import re
@@ -135,6 +138,22 @@ requires no raw dataset: it pins z_s0 and samples bytes to the frozen SV1 v2
 hashes, authenticates its original manifest, reconstructs every head/tail from
 the checkpoint and checks every saved activation/logit/ONNX result. It does not
 refit data or weaken checks to accommodate missing dependencies.
+
+The updated trusted-checkout entry points disable bytecode writes themselves.
+Inventory ignores only CPython cache names adjacent to delivered Python sources
+in scripts/ and model/; unexpected files and symlinks are still rejected. The
+frozen model loader executes hash-authenticated source, never cached bytecode.
+
+For the original immutable SV2 v1, prefer the updated verifier in a trusted
+repository checkout, pointing --package at the UNCHANGED v1 directory and using
+its independently published manifest SHA-256. Do not copy patched scripts into
+v1 or rebuild its manifest. A workaround with original v1 scripts is to extract
+the authenticated ZIP into a NEW empty directory and run python -B from the
+first invocation, using the exact manifest-pinned environment. -B prevents new
+cache writes; it does NOT delete old caches or prevent Python reading them.
+A .cpython-312.pyc indicates Python 3.12, not the pinned Python 3.11.9; fixing
+inventory does not waive the dependency-version gate. Delivering changed
+scripts/README requires a NEW revision ID and new manifest/archive hashes.
 
 For PyTorch reconstruction add scripts/ to sys.path, then use
 week3_sv2_common.load_frozen(Path(package)) and wrappers(model,s), which return
