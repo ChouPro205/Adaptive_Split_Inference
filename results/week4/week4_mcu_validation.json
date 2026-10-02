@@ -1,0 +1,6450 @@
+{
+  "scope": "REAL_MCU_CAPTURE",
+  "status": "PASS",
+  "manifest_sha256": "80e4cea3b70bdafef1b6925b208d4951a87bba4ff8cf10dbb6a671e36439635c",
+  "capture": "D:\\HUST\\Adaptive_Split_Inference\\results\\week4\\logs\\week4_capture.txt",
+  "threshold_strict": 0.001,
+  "run_tensors": 220,
+  "capture_sha256": "c8fa2bd1a2ae69ea922db8a91dba084ac4fb177272c11c071a46817288cd9b71",
+  "mixed_tensors": 16,
+  "week3_mcu_capture_sha256": "72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606",
+  "mcu_validation": "PASS",
+  "mcu_timing": "PASS",
+  "rows": [
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 6.67572021484375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.5762786865234375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 6.67572021484375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 5.960464477539062e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.049041748046875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.039836883544922e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 5.960464477539062e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 8.106231689453125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 1.430511474609375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 8.58306884765625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.0265579223632812e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.33514404296875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.919005393981934e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.337860107421875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.430511474609375e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.9653310775756836e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.239776611328125e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.337860107421875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.049041748046875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 4.76837158203125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.33514404296875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 1.6689300537109375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 5.960464477539062e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.1444091796875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.725290298461914e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.049041748046875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 5.125999450683594e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.1444091796875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.2186508178710938e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 8.58306884765625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.4437904357910156e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 9.5367431640625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 8.344650268554688e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.049041748046875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 1.4901161193847656e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.337860107421875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 8.58306884765625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 1.2516975402832031e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.1444091796875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.1444091796875e-05,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 5.602836608886719e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.086162567138672e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 6.67572021484375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "primary",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.384185791015625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.384185791015625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 8,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 1,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.5762786865234375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 9,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 6.67572021484375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 4,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 7,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 6,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 3,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 5,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 2,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 10,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.384185791015625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 0,
+      "mode": "RUN",
+      "phase": "mixed",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 0,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "status": "PASS",
+      "identity_bitwise": true
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 1,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 2,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS",
+      "week3_mcu_p2_max_abs_error": 0.0,
+      "week3_mcu_p2_bitwise": true
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 3,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 4,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 5,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 6,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 7,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 8,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 9,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 6.67572021484375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 10,
+      "mode": "BENCH",
+      "phase": "timing",
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.5762786865234375e-06,
+      "status": "PASS"
+    }
+  ],
+  "timing": [
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 0,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        405,
+        382,
+        382,
+        382,
+        382,
+        405,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382,
+        382
+      ],
+      "min_cycles": 382,
+      "max_cycles": 405,
+      "mean_cycles": 382.46,
+      "mean_ms": 0.0059759374999999995
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 1,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523,
+        1214625,
+        1214523
+      ],
+      "min_cycles": 1214523,
+      "max_cycles": 1214625,
+      "mean_cycles": 1214574.0,
+      "mean_ms": 18.97771875
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 2,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330,
+        15005330
+      ],
+      "min_cycles": 15005330,
+      "max_cycles": 15005330,
+      "mean_cycles": 15005330.0,
+      "mean_ms": 234.45828125
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 3,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243,
+        28732243
+      ],
+      "min_cycles": 28732243,
+      "max_cycles": 28732243,
+      "mean_cycles": 28732243.0,
+      "mean_ms": 448.94129687500003
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 4,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295,
+        55909295
+      ],
+      "min_cycles": 55909295,
+      "max_cycles": 55909295,
+      "mean_cycles": 55909295.0,
+      "mean_ms": 873.582734375
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 5,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752,
+        76192752
+      ],
+      "min_cycles": 76192752,
+      "max_cycles": 76192752,
+      "mean_cycles": 76192752.0,
+      "mean_ms": 1190.51175
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 6,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625,
+        106529625
+      ],
+      "min_cycles": 106529625,
+      "max_cycles": 106529625,
+      "mean_cycles": 106529625.0,
+      "mean_ms": 1664.525390625
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 7,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154,
+        126596154
+      ],
+      "min_cycles": 126596154,
+      "max_cycles": 126596154,
+      "mean_cycles": 126596154.0,
+      "mean_ms": 1978.06490625
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 8,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934,
+        153318934
+      ],
+      "min_cycles": 153318934,
+      "max_cycles": 153318934,
+      "mean_cycles": 153318934.0,
+      "mean_ms": 2395.60834375
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 9,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773,
+        154176773
+      ],
+      "min_cycles": 154176773,
+      "max_cycles": 154176773,
+      "mean_cycles": 154176773.0,
+      "mean_ms": 2409.012078125
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 10,
+      "warmup": 20,
+      "cpu_hz": 64000000,
+      "cycles": [
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043,
+        154180043
+      ],
+      "min_cycles": 154180043,
+      "max_cycles": 154180043,
+      "mean_cycles": 154180043.0,
+      "mean_ms": 2409.063171875
+    }
+  ],
+  "stack_high_water": [
+    {
+      "sample": 0,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 4,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 6,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 8,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 9,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 10,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 13,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 15,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 16,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 17,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 7,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 3,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 12,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 1,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 18,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 2,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 14,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 5,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 11,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 19,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 0,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 1,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 2,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 3,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 4,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 5,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 6,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 7,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 8,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 9,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    },
+    {
+      "sample": 0,
+      "split": 10,
+      "peak_bytes": 616,
+      "size_bytes": 4096
+    }
+  ],
+  "primary_max_error_case": {
+    "sample_index": 6,
+    "sample_id": "MIT-BIH:105:1741:MLII",
+    "split": 9,
+    "mode": "RUN",
+    "phase": "primary",
+    "shape": [
+      1,
+      32
+    ],
+    "max_abs_error": 1.430511474609375e-05,
+    "status": "PASS"
+  },
+  "timing_statistics": {
+    "std": "sample standard deviation, ddof=1 (n-1)",
+    "p95": "NumPy percentile(method=linear), h=(n-1)*0.95",
+    "cycle_to_ms": "cycles / 64000000 * 1000",
+    "summary": [
+      {
+        "split": 0,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 0.0059759374999999995,
+        "std_ms": 5.056596508022912e-05,
+        "p95_ms": 0.00596875,
+        "min_ms": 0.00596875,
+        "max_ms": 0.0063281249999999995
+      },
+      {
+        "split": 1,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 18.97771875,
+        "std_ms": 0.0008008895090346847,
+        "p95_ms": 18.978515625,
+        "min_ms": 18.976921875,
+        "max_ms": 18.978515625
+      },
+      {
+        "split": 2,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 234.45828125,
+        "std_ms": 0.0,
+        "p95_ms": 234.45828125,
+        "min_ms": 234.45828125,
+        "max_ms": 234.45828125
+      },
+      {
+        "split": 3,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 448.94129687500003,
+        "std_ms": 0.0,
+        "p95_ms": 448.94129687500003,
+        "min_ms": 448.94129687500003,
+        "max_ms": 448.94129687500003
+      },
+      {
+        "split": 4,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 873.582734375,
+        "std_ms": 0.0,
+        "p95_ms": 873.582734375,
+        "min_ms": 873.582734375,
+        "max_ms": 873.582734375
+      },
+      {
+        "split": 5,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 1190.51175,
+        "std_ms": 0.0,
+        "p95_ms": 1190.51175,
+        "min_ms": 1190.51175,
+        "max_ms": 1190.51175
+      },
+      {
+        "split": 6,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 1664.525390625,
+        "std_ms": 0.0,
+        "p95_ms": 1664.525390625,
+        "min_ms": 1664.525390625,
+        "max_ms": 1664.525390625
+      },
+      {
+        "split": 7,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 1978.06490625,
+        "std_ms": 0.0,
+        "p95_ms": 1978.06490625,
+        "min_ms": 1978.06490625,
+        "max_ms": 1978.06490625
+      },
+      {
+        "split": 8,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 2395.60834375,
+        "std_ms": 0.0,
+        "p95_ms": 2395.60834375,
+        "min_ms": 2395.60834375,
+        "max_ms": 2395.60834375
+      },
+      {
+        "split": 9,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 2409.012078125,
+        "std_ms": 0.0,
+        "p95_ms": 2409.012078125,
+        "min_ms": 2409.012078125,
+        "max_ms": 2409.012078125
+      },
+      {
+        "split": 10,
+        "sample_index": 0,
+        "sample_id": "MIT-BIH:105:197:MLII",
+        "n": 100,
+        "warmup": 20,
+        "cpu_hz": 64000000,
+        "mean_ms": 2409.063171875,
+        "std_ms": 0.0,
+        "p95_ms": 2409.063171875,
+        "min_ms": 2409.063171875,
+        "max_ms": 2409.063171875
+      }
+    ],
+    "cumulative_mean_decreases": []
+  },
+  "provenance": {
+    "validated_at": "2026-10-02T16:25:33.162465+07:00",
+    "timezone": "Asia/Saigon",
+    "dfu_timestamp": "2026-10-02T15:31:04.2051223+07:00",
+    "dfu_port": "COM6",
+    "application_port": "COM7",
+    "dfu_command": "nrfutil nrf5sdk-tools dfu usb-serial --package D:\\HUST\\Adaptive_Split_Inference\\device\\artifacts\\adaptive_split_week4_r3_fp32.zip --port COM6",
+    "dfu_exit_code": 0,
+    "dfu_zip_sha256": "d13facbca1fd7d83b036361eeea3ef33bdff015d62a9476142cfcc6244faf171",
+    "application_sha256": "5e6169561f561ee533cc153c1807b7b129d4e1940df54039f0448c726bbd2cae",
+    "elf_sha256": "d9a1ef3197705b0aa1d21d64d0420dbea2195dc27c7d36b53ddf89dff107e97c",
+    "week4_manifest_sha256": "80e4cea3b70bdafef1b6925b208d4951a87bba4ff8cf10dbb6a671e36439635c",
+    "all_split_manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+    "graph_sha256": "0d0c78df93a81808256c7baa4d8d3a77230fcc5e733e48382dd4b518ccced9ec",
+    "parameters_header_sha256": "3f811758ca6fc6a8fdefa74ff50ccb48031c006e9a12b617604dad033657487b",
+    "input_npy_sha256": "dac1d1e9df849bf4ffa30359384d129586f67ec0703157b692d1344685b78dcc",
+    "samples_csv_sha256": "4a6356312d5f62da6b2fdf9e609843d4dea3fc5c20767e201ea21a075e6f227c",
+    "golden_sha256": {
+      "0": "dac1d1e9df849bf4ffa30359384d129586f67ec0703157b692d1344685b78dcc",
+      "1": "01dc25a4e8eb9e4ad3bcf246dd3e8ed85e06dc0df7af8e78f13b75800f0dc9a6",
+      "2": "5b9607815738e1a3a7ccde941e23a01a9ad927326839f38895e1f289e7d72399",
+      "3": "afe72a5e26572060420a93f19ae0ce4a3bc686a90ef1607d4108df7b2bbbd94d",
+      "4": "a45a5032e8682d2734642d2842659aac44fd0de208804f660faec7cc357cef16",
+      "5": "b713e53387e5e43ba9f8abf0cd0905b108208cf29082669dfd1be706857a706e",
+      "6": "a8b92d72c20fa4df5a3e651c87c0335bd7fecbc0657e7310bf6d4589700e8ba8",
+      "7": "f1a9300d387aed0abb5ad5d2ff5f08167f162f66e5017e252b9de92053926e60",
+      "8": "fda1e8ebc1828134b60daf75d5f60c50f4fa42ca3a9d9db83a66f3ffe0110829",
+      "9": "2f6bd177be2a2f8f5aed60b85d65755520f538bfdbeeda0fe77f99206ca056bb",
+      "10": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4"
+    },
+    "compiled_source_sha256": {
+      "device/CMakeLists.txt": "2316167327a6a0cb978cea8feca38e5f9b131558791e85170f521b8d3d4498da",
+      "device/Kconfig": "c835825f912f68af9f9501ce7dbe0a5ccf701940f907d7593507f252e931483d",
+      "device/overlay-week4.conf": "e570a55bad0dde8986fcce27bb085d4f5a1176ff864ecdef6408af325dc4fc44",
+      "device/src/main_week4.c": "d22134512696b7400398fc651d64c31df31f9e4a422db35d5d35817caa0f7d83",
+      "device/src/week4_head.c": "92e501bf8ab424e66d0e096d0f1e1950a890d7ce5c29f830fe1f40ca3d4885f5",
+      "device/src/week4_head.h": "0cf3cf70e3ee382c257df233d227e0a81b8fdb72c8d467fe77b9f52471fd0a0d",
+      "device/src/week4_protocol.c": "60e78b83cd8d683e5023692d2d646c1292bf2359a547ef1cbe980462587571b4",
+      "device/src/week4_protocol.h": "909437f303a0dbe832e75ae0bbd38debc262f23530ae663485789878d8ff069b"
+    },
+    "generated_header_sha256": {
+      "week4_graph.h": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+      "week4_inputs.h": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6"
+    },
+    "python": "3.11.9",
+    "numpy": "2.4.6",
+    "ncs": "3.4.0",
+    "zephyr": "4.4.0",
+    "arm_gcc": "14.3.0",
+    "board": "nrf52840dongle/nrf52840",
+    "cpu_hz": 64000000,
+    "source_base_commit": "86cc441fd429e173eeaadbede9b48243cbf97f99",
+    "tool_sha256": {
+      "collect_week4.ps1": "0578decd4adac5132cfed113430d6e018a5196aa9cc3d84dcc2d87546138a637",
+      "check_week4_capture.py": "47b888ab2b97301212e39154f802ad878daa222acf602dd7a05927dc2bbacc03",
+      "analyze_week4_mcu.py": "080da01b75801304321e481430cf377a0a06805f7df6f262f9e7d84ce1b704c0"
+    },
+    "note": "Firmware was built before the evidence commit; exact source and binary hashes identify the flashed image."
+  }
+}

@@ -9,6 +9,16 @@ target_sources(app PRIVATE
 
 if(CONFIG_APP_IDLE_MEASUREMENT)
   target_sources(app PRIVATE src/main_idle.c)
+elseif(CONFIG_APP_WEEK4_HEAD)
+  set(WEEK4_FIRMWARE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../ml/results/week4-r3/firmware")
+  if(NOT EXISTS "${WEEK4_FIRMWARE_DIR}/head_parameters.h" OR
+     NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/generated/week4_graph.h" OR
+     NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/generated/week4_inputs.h")
+    message(FATAL_ERROR "Week 4 R3 headers are missing; run build_week4_head.ps1")
+  endif()
+  target_sources(app PRIVATE src/main_week4.c src/week4_head.c src/week4_protocol.c)
+  target_include_directories(app PRIVATE src generated "${WEEK4_FIRMWARE_DIR}")
+  target_compile_options(app PRIVATE -ffp-contract=off)
 elseif(CONFIG_APP_WEEK3_HEAD)
   set(WEEK3_PACKAGE_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/../ml/artifacts/week3/mitdb-week3-fp32-20260925-v2/firmware/head_parameters.h")
   set(WEEK3_INPUT_HEADER "${CMAKE_CURRENT_SOURCE_DIR}/generated/week3_inputs.h")

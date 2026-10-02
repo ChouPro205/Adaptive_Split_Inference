@@ -20,6 +20,11 @@ nrf52840dongle/nrf52840
 
 Không dùng biến thể `/bare`, không dùng `west flash`, không erase/recover.
 
+Target FP32 tuần 4 R3 (11 split, build/DFU riêng, kiểm chứng host/MCU và timing):
+xem [hướng dẫn tuần 4](week4_fp32_guide.md) và
+[kết quả MCU chính thức](../results/week4/README.md). Firmware tuần 3 tiếp tục dùng
+[hướng dẫn tuần 3](week3_fp32_guide.md) và script hiện có.
+
 ## Build và tạo USB DFU ZIP
 
 Từ Git root:
