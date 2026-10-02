@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "dataset_available": false,
+  "duplicate_checkpoint_available": false,
+  "docx_available": false,
+  "crlf_production_verify": "PASS",
+  "source_corruption_rejected": true,
+  "different_branch_reproduction": "PASS",
+  "fixes_committed": false,
+  "checkout_kind": "Fresh local clone with reviewed source overlays; committed-fix gate pending"
+}

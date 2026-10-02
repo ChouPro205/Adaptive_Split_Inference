@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "receipt_files": 69,
+  "weights": 20,
+  "scientific_files_identical_to_original": 26,
+  "historical_regression_status": "INCOMPLETE_INTERRUPTED",
+  "historical_regression_commands": 0,
+  "capture_recheck_exit": 0,
+  "diff_check_exit": 0,
+  "syntax_and_json": "PASS",
+  "historical_files_unchanged": true,
+  "zip_sha256": "0ac95f9855484659ea1d8c988dd77d7a4635427169a7bdc8ed1884fef19f1140",
+  "committed_fix_checkout": "PENDING",
+  "sv1_receipt": "PENDING"
+}

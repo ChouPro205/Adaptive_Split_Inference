@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "source_commit_sha": "5429689b3440ec6bcb2fe5571387be3839a27ee2",
+  "branch": "sv3/week3-sv2-fp32-handoff",
+  "bundle_name": "adaptive-split-inference-r2.bundle",
+  "bundle_sha256": "018bf4aa8e4074310054660b6a60e1d82fbd31aef8ff99146b11a31be37d8b9c",
+  "bundle_size_bytes": 3653678,
+  "self_contained_bundle": true,
+  "clone_from_bundle": "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-bundle-receiver-5429689b3440",
+  "no_source_overlay": true,
+  "clean_before_and_after": true,
+  "zip_sha256": "0ac95f9855484659ea1d8c988dd77d7a4635427169a7bdc8ed1884fef19f1140",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-bundle-receiver-5429689b3440\\ml\\scripts\\verify_week4.py",
+        "--repo-root",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-bundle-receiver-5429689b3440",
+        "--output-dir",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-bundle-receiver-5429689b3440\\ml\\results\\week4-r2",
+        "--expected-manifest-sha256",
+        "940371931c3138da2c8757ee2d847ed1fe22e2504fd790e25509b7f54c00fa67",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "exit_status": 0,
+      "log_path": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\provenance\\week4-r2\\source-transfer\\verify_week4.txt",
+      "log_sha256": "338bb7ac00ee6b3b55cb4fde980c549985c0e3ec43e74fb057dbe8bc279bb293"
+    },
+    {
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-bundle-receiver-5429689b3440\\ml\\scripts\\test_week4.py",
+        "--repo-root",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-bundle-receiver-5429689b3440",
+        "--output-dir",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-bundle-receiver-5429689b3440\\ml\\results\\week4-r2",
+        "--expected-manifest-sha256",
+        "940371931c3138da2c8757ee2d847ed1fe22e2504fd790e25509b7f54c00fa67",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "exit_status": 0,
+      "log_path": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\provenance\\week4-r2\\source-transfer\\test_week4.txt",
+      "log_sha256": "ecbe30ce24d7161c54e02a16dccffe3c28d8eb4d417325e972574dbba4dc281b"
+    }
+  ],
+  "sv1_receipt": "PENDING_NO_CHANNEL_OR_ACK"
+}

@@ -92,13 +92,16 @@ def tensor_info(a):
 
 def load_model(checkpoint_path, source_path):
     need(sha(checkpoint_path) == CHECKPOINT, "Frozen checkpoint hash mismatch")
-    need(sha(source_path) == MODEL_HASH, "Frozen model source hash mismatch")
+    source = Path(source_path).read_bytes()
+    need(hashlib.sha256(source).hexdigest() == MODEL_HASH, "Frozen model source hash mismatch")
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
     need(checkpoint["epoch"] == 3 and checkpoint["provenance"]["source_git_sha"] == SOURCE,
          "Checkpoint epoch/source mismatch")
     spec = importlib.util.spec_from_file_location("week3_frozen_model", source_path)
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    # -B only suppresses cache writes. Execute the exact authenticated bytes,
+    # not SourceFileLoader's potentially unauthenticated existing .pyc.
+    exec(compile(source, str(source_path), "exec"), module.__dict__)
     model = module.MitdbBaselineCNN(checkpoint["training_config"]["dropout"])
     model.load_state_dict(checkpoint["state_dict"], strict=True)
     model.eval()

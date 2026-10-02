@@ -1,0 +1,4 @@
+The bundle contains this ref:
+5429689b3440ec6bcb2fe5571387be3839a27ee2 refs/heads/sv3/week3-sv2-fp32-handoff
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1

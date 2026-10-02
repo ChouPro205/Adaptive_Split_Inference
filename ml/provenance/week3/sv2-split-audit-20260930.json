@@ -1,0 +1,1420 @@
+{
+  "status": "AUDIT_ONLY_NOT_SV2_HANDOFF",
+  "valid_splits": null,
+  "split_registry_status": "BLOCKED_MISSING_EXISTING_SPLIT_MAPPING",
+  "frozen_package_verification": {
+    "manifest_sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+    "manifest_authenticated": true,
+    "handoff_id": "mitdb-week3-fp32-20260925-v2",
+    "release_eligible": true,
+    "samples": 20,
+    "milestones": [
+      "M0",
+      "M1",
+      "R1",
+      "M2",
+      "R2",
+      "P2"
+    ],
+    "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+    "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa",
+    "memory": {
+      "parameter_total_bytes": 5568,
+      "per_conv_bytes": {
+        "conv1": 384,
+        "conv2": 5184
+      },
+      "largest_intermediate_bytes_N1": 23040,
+      "persistent_parameter_flash_bytes_logical": 5568,
+      "two_activation_buffers_bytes_N1": 46080,
+      "measurement_status": "logical sizes only; no MCU build, stack or workspace measurement"
+    },
+    "compiled_c": {
+      "compiler": "gcc.exe (Rev8, Built by MSYS2 project) 15.2.0",
+      "flags": "-std=c99 -Wall -Wextra -Werror -pedantic",
+      "fp32_elements": 1392,
+      "status": "PASS",
+      "target": "host; not nRF52840 firmware"
+    }
+  },
+  "source_evidence_commit": "144413b3c827d5a7a0163e9eab880670fdf91d8b",
+  "actual_graph_endpoints_not_approved_splits": [
+    {
+      "source_op": "features.0",
+      "type": "Conv1d",
+      "input_shape_N1": [
+        1,
+        1,
+        360
+      ],
+      "output_shape_N1": [
+        1,
+        16,
+        360
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.1",
+      "type": "ReLU",
+      "input_shape_N1": [
+        1,
+        16,
+        360
+      ],
+      "output_shape_N1": [
+        1,
+        16,
+        360
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.2",
+      "type": "Conv1d",
+      "input_shape_N1": [
+        1,
+        16,
+        360
+      ],
+      "output_shape_N1": [
+        1,
+        16,
+        360
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.3",
+      "type": "ReLU",
+      "input_shape_N1": [
+        1,
+        16,
+        360
+      ],
+      "output_shape_N1": [
+        1,
+        16,
+        360
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.4",
+      "type": "MaxPool1d",
+      "input_shape_N1": [
+        1,
+        16,
+        360
+      ],
+      "output_shape_N1": [
+        1,
+        16,
+        180
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.5",
+      "type": "Conv1d",
+      "input_shape_N1": [
+        1,
+        16,
+        180
+      ],
+      "output_shape_N1": [
+        1,
+        32,
+        180
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.6",
+      "type": "ReLU",
+      "input_shape_N1": [
+        1,
+        32,
+        180
+      ],
+      "output_shape_N1": [
+        1,
+        32,
+        180
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.7",
+      "type": "Conv1d",
+      "input_shape_N1": [
+        1,
+        32,
+        180
+      ],
+      "output_shape_N1": [
+        1,
+        32,
+        180
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.8",
+      "type": "ReLU",
+      "input_shape_N1": [
+        1,
+        32,
+        180
+      ],
+      "output_shape_N1": [
+        1,
+        32,
+        180
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.9",
+      "type": "MaxPool1d",
+      "input_shape_N1": [
+        1,
+        32,
+        180
+      ],
+      "output_shape_N1": [
+        1,
+        32,
+        90
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.10",
+      "type": "Conv1d",
+      "input_shape_N1": [
+        1,
+        32,
+        90
+      ],
+      "output_shape_N1": [
+        1,
+        48,
+        90
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.11",
+      "type": "ReLU",
+      "input_shape_N1": [
+        1,
+        48,
+        90
+      ],
+      "output_shape_N1": [
+        1,
+        48,
+        90
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.12",
+      "type": "Conv1d",
+      "input_shape_N1": [
+        1,
+        48,
+        90
+      ],
+      "output_shape_N1": [
+        1,
+        48,
+        90
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.13",
+      "type": "ReLU",
+      "input_shape_N1": [
+        1,
+        48,
+        90
+      ],
+      "output_shape_N1": [
+        1,
+        48,
+        90
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.14",
+      "type": "MaxPool1d",
+      "input_shape_N1": [
+        1,
+        48,
+        90
+      ],
+      "output_shape_N1": [
+        1,
+        48,
+        45
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.15",
+      "type": "Conv1d",
+      "input_shape_N1": [
+        1,
+        48,
+        45
+      ],
+      "output_shape_N1": [
+        1,
+        64,
+        45
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.16",
+      "type": "ReLU",
+      "input_shape_N1": [
+        1,
+        64,
+        45
+      ],
+      "output_shape_N1": [
+        1,
+        64,
+        45
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.17",
+      "type": "Conv1d",
+      "input_shape_N1": [
+        1,
+        64,
+        45
+      ],
+      "output_shape_N1": [
+        1,
+        64,
+        45
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.18",
+      "type": "ReLU",
+      "input_shape_N1": [
+        1,
+        64,
+        45
+      ],
+      "output_shape_N1": [
+        1,
+        64,
+        45
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "features.19",
+      "type": "MaxPool1d",
+      "input_shape_N1": [
+        1,
+        64,
+        45
+      ],
+      "output_shape_N1": [
+        1,
+        64,
+        22
+      ],
+      "dtype": "torch.float32",
+      "layout": "NCL",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "classifier.0",
+      "type": "Flatten",
+      "input_shape_N1": [
+        1,
+        64,
+        22
+      ],
+      "output_shape_N1": [
+        1,
+        1408
+      ],
+      "dtype": "torch.float32",
+      "layout": "NC",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "classifier.1",
+      "type": "Dropout",
+      "input_shape_N1": [
+        1,
+        1408
+      ],
+      "output_shape_N1": [
+        1,
+        1408
+      ],
+      "dtype": "torch.float32",
+      "layout": "NC",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "classifier.2",
+      "type": "Linear",
+      "input_shape_N1": [
+        1,
+        1408
+      ],
+      "output_shape_N1": [
+        1,
+        32
+      ],
+      "dtype": "torch.float32",
+      "layout": "NC",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "classifier.3",
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "classifier.3",
+      "type": "ReLU",
+      "input_shape_N1": [
+        1,
+        32
+      ],
+      "output_shape_N1": [
+        1,
+        32
+      ],
+      "dtype": "torch.float32",
+      "layout": "NC",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [
+        "classifier.4"
+      ],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    },
+    {
+      "source_op": "classifier.4",
+      "type": "Linear",
+      "input_shape_N1": [
+        1,
+        32
+      ],
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "dtype": "torch.float32",
+      "layout": "NC",
+      "split_id": null,
+      "split_status": "NOT_ASSIGNED",
+      "remaining_operations": [],
+      "final_logits_shape_N1": [
+        1,
+        5
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "sample_index": "0",
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "197",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "0",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "1",
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "459",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "1",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "2",
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "708",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "2",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "3",
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "965",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "3",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "4",
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "1222",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "4",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "5",
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "1479",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "5",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "6",
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "1741",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "6",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "7",
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "2015",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "7",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "8",
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "2287",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "8",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "9",
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "2550",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "9",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "10",
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "2803",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "10",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "11",
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "3052",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "11",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "12",
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "3303",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "12",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "13",
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "3563",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "13",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "14",
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "3835",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "14",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "15",
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "4102",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "15",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "16",
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "4371",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "16",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "17",
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "4635",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "17",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "18",
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "4901",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "18",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "19",
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "5154",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "19",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    }
+  ],
+  "reference_logits_shape": [
+    20,
+    5
+  ],
+  "reference_logits_sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+  "p2_matches_frozen_golden_bitwise": true,
+  "sv1_v2_unchanged": true,
+  "sv1_evidence_hashes": {
+    "device/scripts/check_week3_capture.py": "7e7690b53d6141444e9dd8c22463e118e98f8af2f0043d91914f496365c0a05c",
+    "device/scripts/generate_week3_inputs.py": "cca5243c82d5f35b90c9fb76ef0163c7ce5eae705bd9803519e36864ca083cec",
+    "device/reports/week3_mcu_validation.json": "86d229dd2d0e211a91b13fa7d4b00933e483fd4ec1d54294bd54540a9cba1b34",
+    "device/reports/week3_build.md": "cd1f1adee548e05ce654b7a7a156d6b93095aeca0350b241ae3676eaff2c4cdd",
+    "results/week3/logs/week3_capture_verified.txt": "52b16fa2b222bcefb746e142bc7bc922678e7b4a223f64e2e2061902bd72dfe2"
+  },
+  "sv1_capture_hash_policy": "Git blob LF; LF-to-CRLF restoration matches original SV1 raw SHA-256",
+  "sv1_original_crlf_capture_sha256": "1e3825300731ac5804c605bb7c007457d8aeb5768e94dab9e16b6ca7503ee051",
+  "sv1_independent_package_checks": "RECORDED_PASS_IN_PINNED_BUILD_REPORT",
+  "sv1_mcu_p2_samples": [
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "p2_max_abs_error": 7.152557373046875e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "p2_max_abs_error": 7.152557373046875e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "p2_max_abs_error": 7.152557373046875e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "p2_max_abs_error": 5.960464477539062e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "p2_max_abs_error": 3.5762786865234375e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "p2_max_abs_error": 4.76837158203125e-07,
+      "pass": true
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "p2_max_abs_error": 3.5762786865234375e-07,
+      "pass": true
+    }
+  ],
+  "sv1_mcu_p2_worst_error": 7.152557373046875e-07,
+  "sv1_mcu_p2_status": "20_OF_20_PASS_RECHECKED_FROM_CAPTURE",
+  "sv1_sample0_intermediate_errors": {
+    "M1": 2.384185791015625e-07,
+    "R1": 2.384185791015625e-07,
+    "M2": 9.5367431640625e-07,
+    "R2": 9.5367431640625e-07
+  },
+  "sv1_main_stack_peak_bytes": 544,
+  "sv1_remaining_evidence_gap": "Intermediate M1/R1/M2/R2 for samples 1..19 not captured",
+  "pytorch_tail_status": "NOT_RUN_PENDING_SPLIT_MAPPING",
+  "onnx_status": "NOT_EXPORTED_PENDING_SPLIT_MAPPING",
+  "overall_week3": "NOT_DONE",
+  "project_requirement_docx_sha256": {
+    "ml/docs/project_sources/requirements/06_Huong1_Adaptive_Split_Inference_Lo_trinh.docx": "c1dd459531796e8140ec965b517ce66fa6ac381d161d203e36e692041993f829",
+    "ml/docs/project_sources/requirements/Huong1_Bao_cao_trien_khai_3SV.docx": "60f83fa7c0779d11c888a8a104c5fa55be0c8c8b171f9d72e29cbba9efcc9a90",
+    "ml/docs/project_sources/requirements/Huong1_Huong_dan_chi_tiet_tung_thanh_vien.docx": "75fcd76999af521a568b039c6983414217c59991d37b5591b85d211db927880d",
+    "ml/docs/project_sources/requirements/Huong1_Phan_cong_nhom_nghien_cuu.docx": "116a8762a5b37b1b7f7696ea1c4edca4e5a8e9c7694d81e74e9999d0a2ebbce4"
+  },
+  "project_semantics_finding": "Roadmap has abstract head layers 1..s / tail s+1..L and example range(L+1); assignment expects L+1 models in weeks 4-6. Frozen learned-layer count 10 does not assign intervening ReLU/Pool/Flatten/Dropout to split endpoints; no concrete registry found.",
+  "audited_refs": {
+    "HEAD": "7960c47ddc0165307ff245cb46c3327656a3ade6",
+    "origin/main": "144413b3c827d5a7a0163e9eab880670fdf91d8b",
+    "origin/dev/device-sv1": "fa5c9ddb6dd189264bfb5abce438a7c75098af8b",
+    "origin/dev/edge-sv2": "881f3c1ebfb41425f4ee65ccb3c6f97a03dcc301"
+  }
+}

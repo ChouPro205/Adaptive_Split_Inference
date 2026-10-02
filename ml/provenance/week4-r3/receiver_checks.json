@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "commit_sha": "c793c06385198accc964e0e60988d7e7a7e9b566",
+  "checkout_kind": "Pinned committed checkout; artifacts from authenticated release ZIP only",
+  "no_source_overlay": true,
+  "tracked_files_unchanged": true,
+  "scientific_reproduction": "PASS",
+  "dataset_available": false,
+  "duplicate_checkpoint_available": false,
+  "docx_available": false,
+  "sv1_delivery": "PENDING"
+}

@@ -1,0 +1,2472 @@
+{
+  "status": "FP32_REFERENCE_PASS_NOT_HARDWARE_ACCEPTANCE",
+  "tolerance_strict": 0.001,
+  "runtime": "ONNX Runtime CPUExecutionProvider",
+  "ort_optimization": "ORT_ENABLE_BASIC",
+  "torch_mode": "eval; CPU; N=1; one thread; deterministic; MKLDNN disabled",
+  "comparisons": 200,
+  "rows": [
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.430511474609375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.430511474609375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3709068298339844e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3709068298339844e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1622905731201172e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1622905731201172e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.450580596923828e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.450580596923828e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3113021850585938e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3113021850585938e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.430511474609375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.430511474609375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.6226043701171875e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.6226043701171875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 0,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.430511474609375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.430511474609375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.0728836059570312e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.0728836059570312e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3709068298339844e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3709068298339844e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1622905731201172e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1622905731201172e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3113021850585938e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3113021850585938e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.430511474609375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.430511474609375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.384185791015625e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.384185791015625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 1,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.4007091522216797e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.4007091522216797e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1622905731201172e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1622905731201172e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 5.960464477539062e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 5.960464477539062e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3113021850585938e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3113021850585938e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.430511474609375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.430511474609375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.6226043701171875e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.6226043701171875e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 2,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1473894119262695e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1473894119262695e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3113021850585938e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3113021850585938e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 5.960464477539062e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 5.960464477539062e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.0265579223632812e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.0265579223632812e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3709068298339844e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3709068298339844e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1622905731201172e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1622905731201172e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.5497207641601562e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.5497207641601562e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.430511474609375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.430511474609375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 3,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 8.046627044677734e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 8.046627044677734e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.430511474609375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.430511474609375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.0265579223632812e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.0265579223632812e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1324882507324219e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1324882507324219e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3113021850585938e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3113021850585938e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.6689300537109375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.6689300537109375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 5.960464477539062e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 5.960464477539062e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 4,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.0728836059570312e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.0728836059570312e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.0265579223632812e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.0265579223632812e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1622905731201172e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1622905731201172e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.1457672119140625e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.1457672119140625e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1324882507324219e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1324882507324219e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 5,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1622905731201172e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1622905731201172e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.4901161193847656e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.4901161193847656e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.6689300537109375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.6689300537109375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3113021850585938e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3113021850585938e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.6689300537109375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.6689300537109375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 6,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 5.364418029785156e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 5.364418029785156e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1622905731201172e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1622905731201172e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.4901161193847656e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.4901161193847656e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.6689300537109375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.6689300537109375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.3113021850585938e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.3113021850585938e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.6689300537109375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.6689300537109375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 7,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 5.364418029785156e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 5.364418029785156e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.748603820800781e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.748603820800781e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.0132789611816406e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.0132789611816406e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.0132789611816406e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.0132789611816406e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.9073486328125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.9073486328125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.043081283569336e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.043081283569336e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 5.364418029785156e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 5.364418029785156e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.1920928955078125e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.1920928955078125e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.0132789611816406e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.0132789611816406e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 1.6689300537109375e-06,
+      "onnx_vs_pytorch_tail_max_abs_error": 1.6689300537109375e-06,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 8.344650268554688e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 8.344650268554688e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 8.344650268554688e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 8.344650268554688e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 8,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 6.854534149169922e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 6.854534149169922e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.384185791015625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.384185791015625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 3.5762786865234375e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.980232238769531e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.980232238769531e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.384185791015625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 9.5367431640625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 9.5367431640625e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 7.152557373046875e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 7.152557373046875e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 4.76837158203125e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 9,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": 2.384185791015625e-07,
+      "onnx_vs_pytorch_tail_max_abs_error": 2.384185791015625e-07,
+      "status": "PASS"
+    }
+  ],
+  "s10_identity_rows": [
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split_id": 10,
+      "pytorch_tail_max_abs_error": 0.0,
+      "onnx_max_abs_error": null,
+      "status": "PASS_IDENTITY_NO_ONNX"
+    }
+  ],
+  "per_split": [
+    {
+      "split_id": 0,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.6226043701171875e-06
+    },
+    {
+      "split_id": 1,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.384185791015625e-06
+    },
+    {
+      "split_id": 2,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.6226043701171875e-06
+    },
+    {
+      "split_id": 3,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.0265579223632812e-06
+    },
+    {
+      "split_id": 4,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.0265579223632812e-06
+    },
+    {
+      "split_id": 5,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 2.1457672119140625e-06
+    },
+    {
+      "split_id": 6,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 1.9073486328125e-06
+    },
+    {
+      "split_id": 7,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 1.9073486328125e-06
+    },
+    {
+      "split_id": 8,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 1.9073486328125e-06
+    },
+    {
+      "split_id": 9,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": 9.5367431640625e-07
+    },
+    {
+      "split_id": 10,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": null
+    }
+  ],
+  "global_worst": {
+    "sample_index": 16,
+    "sample_id": "MIT-BIH:105:4371:MLII",
+    "split_id": 0,
+    "pytorch_tail_max_abs_error": 0.0,
+    "onnx_max_abs_error": 2.6226043701171875e-06,
+    "onnx_vs_pytorch_tail_max_abs_error": 2.6226043701171875e-06,
+    "status": "PASS"
+  },
+  "onnx_models": [
+    {
+      "split_id": 0,
+      "path": "models/tail_0.onnx",
+      "sha256": "ffa1cbe02e7b9af405177816cc7edfe9870f61287553ce748f09a1f8bed572cf",
+      "size_bytes": 441852,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          1,
+          360
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 1,
+      "path": "models/tail_1.onnx",
+      "sha256": "4940b21a5101a08b341cbd2b9c191dec0ea21d9c121f08a65062688e0764e9d3",
+      "size_bytes": 441209,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          16,
+          360
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 2,
+      "path": "models/tail_2.onnx",
+      "sha256": "981527fa3d7d37d6b2c4e14b09328221bdf2e1dabbbe0c03506847e64a296355",
+      "size_bytes": 435609,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          16,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 3,
+      "path": "models/tail_3.onnx",
+      "sha256": "2f27e2bfb1d7c72c0f98150e299392b6dbe985603be9f1820ded1f2945387874",
+      "size_bytes": 424980,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          32,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 4,
+      "path": "models/tail_4.onnx",
+      "sha256": "dd481202cfbfec74ee399df4d0f2693060124cfa26d46a75d33262a2c0bc0f7e",
+      "size_bytes": 403951,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          32,
+          90
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 5,
+      "path": "models/tail_5.onnx",
+      "sha256": "872a26240b566c2c7f66ecfb056987788155cd297e65520f24776f670ea6b501",
+      "size_bytes": 372783,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          48,
+          90
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 6,
+      "path": "models/tail_6.onnx",
+      "sha256": "80a4fff1033b0530936eb1b77f5f9e67469acbccf89755e446a24ad5870c686d",
+      "size_bytes": 326089,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          48,
+          45
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 7,
+      "path": "models/tail_7.onnx",
+      "sha256": "c5181d7fffbd0093e473d67ea042b0c599c0c2e38b1f3319ca3c462a9058a3b0",
+      "size_bytes": 264140,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          64,
+          45
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 8,
+      "path": "models/tail_8.onnx",
+      "sha256": "d108d29c3c79c467ca5830bf4ecda8980d30faddfcad9a6087b5ec2115c99725",
+      "size_bytes": 181557,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          64,
+          22
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 9,
+      "path": "models/tail_9.onnx",
+      "sha256": "d2de785a18a069ff483e2408beb4b95abde4284fba3276f69dc0c0f32c22fb2f",
+      "size_bytes": 907,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          32
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    }
+  ],
+  "direct_head_tail_worst": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0,
+    "6": 0.0,
+    "7": 0.0,
+    "8": 0.0,
+    "9": 0.0,
+    "10": 0.0
+  }
+}

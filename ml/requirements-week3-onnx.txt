@@ -1,0 +1,6 @@
+# Add to the pinned Week 3 Python 3.11.9 / requirements-gpu-cu130.txt environment.
+onnx==1.23.1
+onnxruntime==1.30.0
+protobuf==7.36.2
+ml_dtypes==0.6.0
+flatbuffers==25.12.19

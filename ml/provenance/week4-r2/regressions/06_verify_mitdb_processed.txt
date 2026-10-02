@@ -1,0 +1,8 @@
+train: X=(81094, 360) float32; y=(81094,) int64; patients=34; records=35; mean=-9.62104335729e-11; std=0.999999999635
+val  : X=(15388, 360) float32; y=(15388,) int64; patients=7; records=7; mean=-0.258710334717; std=1.10569366255
+test : X=(8544, 360) float32; y=(8544,) int64; patients=4; records=4; mean=-0.454469343434; std=1.04167528406
+Config SHA-256: f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54
+Raw annotation cross-check: all processed rows
+Patient leakage: none
+Artifact hashes: match processed_manifest.json
+STATUS: PASS

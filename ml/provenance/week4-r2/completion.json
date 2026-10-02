@@ -1,0 +1,70 @@
+{
+  "status": "LOCAL_GATES_PASS_SV1_PENDING",
+  "source_commit_sha": "1ef28806fa5533fa56afafe746ecb5008ae96c34",
+  "regression_status": "PASS",
+  "regression_commands": 18,
+  "committed_checkout": {
+    "status": "PASS",
+    "commit_sha": "1ef28806fa5533fa56afafe746ecb5008ae96c34",
+    "checkout_path": "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-clean-1ef28806fa55",
+    "commands": [
+      {
+        "name": "verify_week4",
+        "command": [
+          "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-clean-1ef28806fa55\\ml\\scripts\\verify_week4.py",
+          "--repo-root",
+          "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-clean-1ef28806fa55",
+          "--output-dir",
+          "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-clean-1ef28806fa55\\ml\\results\\week4-r2",
+          "--expected-manifest-sha256",
+          "940371931c3138da2c8757ee2d847ed1fe22e2504fd790e25509b7f54c00fa67",
+          "--compiler",
+          "C:/msys64/ucrt64/bin/gcc.exe"
+        ],
+        "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-clean-1ef28806fa55",
+        "commit_sha": "1ef28806fa5533fa56afafe746ecb5008ae96c34",
+        "exit_status": 0,
+        "log_path": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\provenance\\week4-r2\\committed-checkout\\verify_week4.txt",
+        "log_sha256": "338bb7ac00ee6b3b55cb4fde980c549985c0e3ec43e74fb057dbe8bc279bb293"
+      },
+      {
+        "name": "test_week4",
+        "command": [
+          "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-clean-1ef28806fa55\\ml\\scripts\\test_week4.py",
+          "--repo-root",
+          "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-clean-1ef28806fa55",
+          "--output-dir",
+          "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-clean-1ef28806fa55\\ml\\results\\week4-r2",
+          "--expected-manifest-sha256",
+          "940371931c3138da2c8757ee2d847ed1fe22e2504fd790e25509b7f54c00fa67",
+          "--compiler",
+          "C:/msys64/ucrt64/bin/gcc.exe"
+        ],
+        "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\adaptive-r2-clean-1ef28806fa55",
+        "commit_sha": "1ef28806fa5533fa56afafe746ecb5008ae96c34",
+        "exit_status": 0,
+        "log_path": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\provenance\\week4-r2\\committed-checkout\\test_week4.txt",
+        "log_sha256": "ecbe30ce24d7161c54e02a16dccffe3c28d8eb4d417325e972574dbba4dc281b"
+      }
+    ],
+    "clean_before_and_after": true,
+    "no_source_overlay": true,
+    "immutable_package_unchanged": true,
+    "archive_sha256": "0ac95f9855484659ea1d8c988dd77d7a4635427169a7bdc8ed1884fef19f1140",
+    "week4_manifest_sha256": "940371931c3138da2c8757ee2d847ed1fe22e2504fd790e25509b7f54c00fa67",
+    "duplicate_checkpoint_available": false,
+    "docx_available": false,
+    "sv1_delivery": "PENDING_NO_CHANNEL_OR_RECEIVER_ACK"
+  },
+  "sv1_delivery": "PENDING",
+  "missing": [
+    "SV1 destination/channel",
+    "Receiver ZIP SHA and verifier/log acknowledgement"
+  ],
+  "zip_unchanged": true,
+  "no_push_merge_flash": true
+}

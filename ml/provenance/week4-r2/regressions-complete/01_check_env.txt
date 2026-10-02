@@ -1,0 +1,17 @@
+WEEK 1 ENVIRONMENT
+Python           : 3.11.9 (>=3.11,<3.12)
+Executable       : C:\Users\Admin\Adaptive_Split_Inference\ml\.venv\Scripts\python.exe
+OS               : Windows-10-10.0.26200-SP0
+torch            : 2.14.0+cu130 (==2.14.0)
+numpy            : 2.4.6 (==2.4.6)
+pandas           : 3.0.5 (==3.0.5)
+scipy            : 1.17.1 (==1.17.1)
+matplotlib       : 3.11.2 (==3.11.2)
+wfdb             : 4.3.1 (==4.3.1)
+scikit-learn     : 1.9.1 (==1.9.1)
+CUDA available   : True
+CUDA runtime     : 13.0
+GPU              : NVIDIA GeForce RTX 5060
+Requested mode   : auto
+Config SHA-256   : a5e201eec25bea5eac9ebfc71792917bc6552fcf774b0faee514388d4e026a01
+STATUS: PASS

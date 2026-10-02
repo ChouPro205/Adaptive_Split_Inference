@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "exit_status": 0,
+  "command": "& ml/.venv/Scripts/python.exe -B ml/scripts/test_week4.py --repo-root . --output-dir ml/results/week4 --expected-manifest-sha256 d8ae119188eade380d86eca0f41fb4a27376c5c674a069192dbea284a945dea1 --compiler C:/msys64/ucrt64/bin/gcc.exe",
+  "log_path": "ml/provenance/week4/week4_tests.txt",
+  "log_sha256": "1393a34d691606af0e9f9f407862c92883256a7fc46231611033f1a5734dab36",
+  "manifest_sha256": "d8ae119188eade380d86eca0f41fb4a27376c5c674a069192dbea284a945dea1",
+  "reproduction": "28 files byte-identical; all 220 reused golden cases bitwise",
+  "negative_cases": 18,
+  "monotonic_cases": 4
+}
