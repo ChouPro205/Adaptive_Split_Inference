@@ -1,0 +1,29 @@
+PASS: real package, raw-derived inputs, compiled C and all golden
+PASS expected rejection: release requires external anchor
+PASS expected rejection: manifest metadata only
+PASS expected rejection: manifest metadata plus rebuilt inventory
+PASS expected rejection: manifest authenticated before parsing
+PASS expected rejection: model_version changed in both sources
+PASS expected rejection: required test script removed
+PASS expected rejection: duplicate sample_id
+PASS expected rejection: duplicate source key
+PASS expected rejection: missing identity value
+PASS expected rejection: missing identity column
+PASS expected rejection: malformed identity
+PASS expected rejection: wrong input shape
+PASS expected rejection: wrong golden shape
+PASS expected rejection: release gate without SV1
+PASS expected rejection: missing real bias
+PASS expected rejection: input value with recomputed file hash
+PASS expected rejection: golden value with recomputed file hash
+PASS expected rejection: weight value with recomputed file hash
+PASS expected rejection: sample order with recomputed file hash
+PASS expected rejection: omitted intermediate op
+PASS expected rejection: C header representation
+PASS expected rejection: wrong dtype with rebuilt inventory
+PASS expected rejection: nonfinite golden with rebuilt inventory
+PASS expected rejection: immutable revision overwrite
+PASS expected rejection: export without M_final confirmation
+PASS expected rejection: SV1 confirmation PENDING
+PASS expected rejection: Explicit SV1 confirmation
+PASS: 27 expected rejections; source package unchanged

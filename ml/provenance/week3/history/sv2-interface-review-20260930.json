@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "scope": "SV3_WEEK3_ONLY",
+  "authority": "SV2 decisions relayed by user on 2026-09-30",
+  "model_name": "mitdb_week2_cnn_v1",
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "delivery": "one tail per existing valid split; do not invent split semantics",
+  "split_registry_status": "BLOCKED_MISSING_EXISTING_SPLIT_MAPPING",
+  "valid_splits": null,
+  "input_tensor_name": "input_activation",
+  "input_semantics": "z_s from approved head endpoint; exact shape derived per split",
+  "batch_size": 1,
+  "dynamic_axes": false,
+  "precision": "fp32",
+  "output_tensor_name": "logits",
+  "tail_output_type": "logits",
+  "output_semantics": "pre-softmax AAMI class logits; argmax outside graph",
+  "output_shape": [
+    1,
+    5
+  ],
+  "output_dtype": "float32",
+  "class_order": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "opset": 13,
+  "opset_status": "PROVISIONAL_PENDING_GV_CONFIRMATION",
+  "runtime_target": "VART",
+  "backend_target": "KV260 DPU",
+  "target_acceptance": "PENDING_SV2_EXECUTION",
+  "comparison": "max_abs_error < tolerance for every sample and every valid split",
+  "tolerance": 0.001,
+  "preprocessing": "Exact frozen Week 1 preprocessing before head; no refit/re-normalization; none inside tail",
+  "verification_set": "exact 20 identities/inputs from immutable mitdb-week3-fp32-20260925-v2",
+  "sv1_v2_manifest_sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+  "handoff_status": "NOT_EXPORTED_PENDING_SPLIT_MAPPING",
+  "existing_abstract_semantics": "head 1..s, tail s+1..L; L+1 endpoints in project roadmap/assignment; concrete frozen-op mapping unresolved"
+}

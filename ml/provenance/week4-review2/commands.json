@@ -1,0 +1,23 @@
+[
+  {
+    "command": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/verify_week4.py",
+      "--repo-root",
+      ".",
+      "--output-dir",
+      "ml/results/week4-r2",
+      "--expected-manifest-sha256",
+      "940371931c3138da2c8757ee2d847ed1fe22e2504fd790e25509b7f54c00fa67",
+      "--compiler",
+      "C:/msys64/ucrt64/bin/gcc.exe"
+    ],
+    "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+    "commit_sha": "da4bebf06d015b4fce697eef08f97d1e92e086fd",
+    "exit_status": 1,
+    "expected_result": "reject changed source",
+    "log_path": "ml/provenance/week4-review2/r2_at_da4bebf.txt",
+    "log_sha256": "813924a053874b152f9d74f145c4ed04f0a6af6d756aefba85ec11431ba29fd8"
+  }
+]

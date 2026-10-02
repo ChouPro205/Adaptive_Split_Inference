@@ -1,0 +1,5 @@
+{
+  "status": "INCOMPLETE_INTERRUPTED",
+  "commands": [],
+  "reason": "Shell integration interrupted historical runner before summary; seven completed gates passed"
+}

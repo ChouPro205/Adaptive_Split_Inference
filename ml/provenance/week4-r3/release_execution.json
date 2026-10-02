@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+    "-B",
+    "ml/scripts/release_week4.py",
+    "--repo-root",
+    ".",
+    "--revision",
+    "r3",
+    "--compiler",
+    "C:/msys64/ucrt64/bin/gcc.exe"
+  ],
+  "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+  "commit_sha": "c793c06385198accc964e0e60988d7e7a7e9b566",
+  "exit_status": 0,
+  "log_path": "ml/provenance/week4-r3/release_process.txt",
+  "log_sha256": "c5570ca773415417addb20711f569e1cf6f15df681d3bd016d211b35793002fe"
+}

@@ -1,0 +1,1760 @@
+{
+  "contract_version": "sv3-sv2-week3-fp32-v1",
+  "handoff_id": "mitdb-week3-sv2-fp32-20261001-v1",
+  "status": "SV3_FP32_REFERENCE_HANDOFF_SV2_ACCEPTANCE_PENDING",
+  "model_name": "mitdb_week2_cnn_v1",
+  "model_version": "mitdb_week2_cnn_v1",
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa",
+  "dataset_profile": "MIT-BIH/1.0.0",
+  "selected_epoch": 3,
+  "splits": [
+    {
+      "split_id": 0,
+      "weighted_layers_in_head": [],
+      "head_endpoint": "normalized_model_input (identity head)",
+      "head_operations": [],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s0: output of authoritative head_0",
+      "shape_N1": [
+        1,
+        1,
+        360
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "tail_start": "features.0",
+      "tail_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "tail_type": "full_model",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_0.onnx",
+      "golden_path": "golden/z_s0.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 1,
+      "weighted_layers_in_head": [
+        1
+      ],
+      "head_endpoint": "features.1",
+      "head_operations": [
+        "features.0",
+        "features.1"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s1: output of authoritative head_1",
+      "shape_N1": [
+        1,
+        16,
+        360
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "tail_start": "features.2",
+      "tail_operations": [
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "tail_type": "remaining_frozen_ops",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_1.onnx",
+      "golden_path": "golden/z_s1.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 2,
+      "weighted_layers_in_head": [
+        1,
+        2
+      ],
+      "head_endpoint": "features.4",
+      "head_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s2: output of authoritative head_2",
+      "shape_N1": [
+        1,
+        16,
+        180
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "tail_start": "features.5",
+      "tail_operations": [
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "tail_type": "remaining_frozen_ops",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_2.onnx",
+      "golden_path": "golden/z_s2.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 3,
+      "weighted_layers_in_head": [
+        1,
+        2,
+        3
+      ],
+      "head_endpoint": "features.6",
+      "head_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s3: output of authoritative head_3",
+      "shape_N1": [
+        1,
+        32,
+        180
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "tail_start": "features.7",
+      "tail_operations": [
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "tail_type": "remaining_frozen_ops",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_3.onnx",
+      "golden_path": "golden/z_s3.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 4,
+      "weighted_layers_in_head": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "head_endpoint": "features.9",
+      "head_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s4: output of authoritative head_4",
+      "shape_N1": [
+        1,
+        32,
+        90
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "tail_start": "features.10",
+      "tail_operations": [
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "tail_type": "remaining_frozen_ops",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_4.onnx",
+      "golden_path": "golden/z_s4.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 5,
+      "weighted_layers_in_head": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "head_endpoint": "features.11",
+      "head_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s5: output of authoritative head_5",
+      "shape_N1": [
+        1,
+        48,
+        90
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "tail_start": "features.12",
+      "tail_operations": [
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "tail_type": "remaining_frozen_ops",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_5.onnx",
+      "golden_path": "golden/z_s5.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 6,
+      "weighted_layers_in_head": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "head_endpoint": "features.14",
+      "head_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s6: output of authoritative head_6",
+      "shape_N1": [
+        1,
+        48,
+        45
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "tail_start": "features.15",
+      "tail_operations": [
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "tail_type": "remaining_frozen_ops",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_6.onnx",
+      "golden_path": "golden/z_s6.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 7,
+      "weighted_layers_in_head": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "head_endpoint": "features.16",
+      "head_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s7: output of authoritative head_7",
+      "shape_N1": [
+        1,
+        64,
+        45
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "tail_start": "features.17",
+      "tail_operations": [
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "tail_type": "remaining_frozen_ops",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_7.onnx",
+      "golden_path": "golden/z_s7.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 8,
+      "weighted_layers_in_head": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "head_endpoint": "features.19",
+      "head_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s8: output of authoritative head_8",
+      "shape_N1": [
+        1,
+        64,
+        22
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "tail_start": "classifier.0",
+      "tail_operations": [
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "tail_type": "remaining_frozen_ops",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_8.onnx",
+      "golden_path": "golden/z_s8.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 9,
+      "weighted_layers_in_head": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "head_endpoint": "classifier.3",
+      "head_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "z_s9: output of authoritative head_9",
+      "shape_N1": [
+        1,
+        32
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NC",
+      "flatten_order": "C",
+      "tail_start": "classifier.4",
+      "tail_operations": [
+        "classifier.4"
+      ],
+      "tail_type": "remaining_frozen_ops",
+      "onnx_required": true,
+      "edge_compute_required": true,
+      "onnx_path": "models/tail_9.onnx",
+      "golden_path": "golden/z_s9.npy",
+      "input_tensor_name": "input_activation",
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    },
+    {
+      "split_id": 10,
+      "weighted_layers_in_head": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "head_endpoint": "classifier.4",
+      "head_operations": [
+        "features.0",
+        "features.1",
+        "features.2",
+        "features.3",
+        "features.4",
+        "features.5",
+        "features.6",
+        "features.7",
+        "features.8",
+        "features.9",
+        "features.10",
+        "features.11",
+        "features.12",
+        "features.13",
+        "features.14",
+        "features.15",
+        "features.16",
+        "features.17",
+        "features.18",
+        "features.19",
+        "classifier.0",
+        "classifier.1",
+        "classifier.2",
+        "classifier.3",
+        "classifier.4"
+      ],
+      "input_semantics": "normalized model input x",
+      "activation_semantics": "pre-softmax logits",
+      "shape_N1": [
+        1,
+        5
+      ],
+      "dtype": "float32",
+      "numpy_dtype": "<f4",
+      "layout": "NC",
+      "flatten_order": "C",
+      "tail_start": null,
+      "tail_operations": [],
+      "tail_type": "identity",
+      "onnx_required": false,
+      "edge_compute_required": false,
+      "onnx_path": null,
+      "golden_path": "golden/z_s10.npy",
+      "input_tensor_name": null,
+      "output_tensor_name": "logits",
+      "tail_output_type": "logits",
+      "output_shape_N1": [
+        1,
+        5
+      ],
+      "output_dtype": "float32"
+    }
+  ],
+  "opset": 13,
+  "opset_status": "CONFIRMED",
+  "precision": "fp32",
+  "batch_size": 1,
+  "dynamic_axes": null,
+  "preprocessing": "Exact frozen Week 1 preprocessing before head; no refit, second normalization or preprocessing inside tails",
+  "class_order": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "output_semantics": "pre-softmax AAMI logits; argmax outside graph",
+  "tolerance_strict": 0.001,
+  "downstream": {
+    "runtime": "VART",
+    "backend": "KV260 DPU",
+    "acceptance": "PENDING_SV2_INDEPENDENT_VALIDATION",
+    "responsibility": "SV2: Vitis AI compatibility, quantization, xmodel compile and VART/KV260 execution",
+    "int8_criterion": "Separate project quantization/device criteria; FP32 <1e-3 does not apply automatically"
+  },
+  "samples": [
+    {
+      "sample_index": "0",
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "197",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "0",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "1",
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "459",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "1",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "2",
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "708",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "2",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "3",
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "965",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "3",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "4",
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "1222",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "4",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "5",
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "1479",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "5",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "6",
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "1741",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "6",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "7",
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "2015",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "7",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "8",
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "2287",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "8",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "9",
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "2550",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "9",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "10",
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "2803",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "10",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "11",
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "3052",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "11",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "12",
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "3303",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "12",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "13",
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "3563",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "13",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "14",
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "3835",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "14",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "15",
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "4102",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "15",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "16",
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "4371",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "16",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "17",
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "4635",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "17",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "18",
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "4901",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "18",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    },
+    {
+      "sample_index": "19",
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "dataset_profile": "MIT-BIH/1.0.0",
+      "split": "val",
+      "patient_id": "P105",
+      "record_id": "105",
+      "r_peak_sample": "5154",
+      "lead_name": "MLII",
+      "lead_index": "0",
+      "source_metadata_path": "ml/data/processed/mitdb/val_metadata.csv",
+      "source_row_index": "19",
+      "original_symbol": "N",
+      "aami_class": "N",
+      "class_index": "0"
+    }
+  ],
+  "dependency_versions": {
+    "python": "3.11.9",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "onnx": "1.23.1",
+    "onnxruntime": "1.30.0",
+    "protobuf": "7.36.2",
+    "ml_dtypes": "0.6.0",
+    "flatbuffers": "25.12.19"
+  },
+  "onnx_models": [
+    {
+      "split_id": 0,
+      "path": "models/tail_0.onnx",
+      "sha256": "ffa1cbe02e7b9af405177816cc7edfe9870f61287553ce748f09a1f8bed572cf",
+      "size_bytes": 441852,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          1,
+          360
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 1,
+      "path": "models/tail_1.onnx",
+      "sha256": "4940b21a5101a08b341cbd2b9c191dec0ea21d9c121f08a65062688e0764e9d3",
+      "size_bytes": 441209,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          16,
+          360
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 2,
+      "path": "models/tail_2.onnx",
+      "sha256": "981527fa3d7d37d6b2c4e14b09328221bdf2e1dabbbe0c03506847e64a296355",
+      "size_bytes": 435609,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          16,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 3,
+      "path": "models/tail_3.onnx",
+      "sha256": "2f27e2bfb1d7c72c0f98150e299392b6dbe985603be9f1820ded1f2945387874",
+      "size_bytes": 424980,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          32,
+          180
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 4,
+      "path": "models/tail_4.onnx",
+      "sha256": "dd481202cfbfec74ee399df4d0f2693060124cfa26d46a75d33262a2c0bc0f7e",
+      "size_bytes": 403951,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          32,
+          90
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 5,
+      "path": "models/tail_5.onnx",
+      "sha256": "872a26240b566c2c7f66ecfb056987788155cd297e65520f24776f670ea6b501",
+      "size_bytes": 372783,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          48,
+          90
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 6,
+      "path": "models/tail_6.onnx",
+      "sha256": "80a4fff1033b0530936eb1b77f5f9e67469acbccf89755e446a24ad5870c686d",
+      "size_bytes": 326089,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          48,
+          45
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 7,
+      "path": "models/tail_7.onnx",
+      "sha256": "c5181d7fffbd0093e473d67ea042b0c599c0c2e38b1f3319ca3c462a9058a3b0",
+      "size_bytes": 264140,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          64,
+          45
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Conv",
+        "Relu",
+        "MaxPool",
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 8,
+      "path": "models/tail_8.onnx",
+      "sha256": "d108d29c3c79c467ca5830bf4ecda8980d30faddfcad9a6087b5ec2115c99725",
+      "size_bytes": 181557,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          64,
+          22
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Flatten",
+        "Gemm",
+        "Relu",
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    },
+    {
+      "split_id": 9,
+      "path": "models/tail_9.onnx",
+      "sha256": "d2de785a18a069ff483e2408beb4b95abde4284fba3276f69dc0c0f32c22fb2f",
+      "size_bytes": 907,
+      "opset": 13,
+      "input": {
+        "name": "input_activation",
+        "shape": [
+          1,
+          32
+        ],
+        "dtype": "float32"
+      },
+      "output": {
+        "name": "logits",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "float32"
+      },
+      "operators": [
+        "Gemm"
+      ],
+      "checker": "PASS",
+      "ir_version": 7
+    }
+  ],
+  "onnx_exporter": "torch.onnx.export(dynamo=False), native opset 13, embedded FP32 parameters",
+  "file_hash_policy": "SHA-256 raw bytes; external manifest hash required",
+  "files": [
+    {
+      "path": "evidence/numerical_verification.json",
+      "sha256": "66a5d78a86640ca24e6a230ad85bfb7638014f727f666e2538f1dfbaa8c02a12",
+      "size_bytes": 71238
+    },
+    {
+      "path": "evidence/source_provenance.json",
+      "sha256": "15e4f09a9f480d83e8474fdbd180d1a631863bd2dde570270ae49427f381fe0f",
+      "size_bytes": 2125
+    },
+    {
+      "path": "golden/reference_logits.npy",
+      "sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+      "size_bytes": 528,
+      "shape": [
+        20,
+        5
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s0.npy",
+      "sha256": "dac1d1e9df849bf4ffa30359384d129586f67ec0703157b692d1344685b78dcc",
+      "size_bytes": 28928,
+      "shape": [
+        20,
+        1,
+        360
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s1.npy",
+      "sha256": "01dc25a4e8eb9e4ad3bcf246dd3e8ed85e06dc0df7af8e78f13b75800f0dc9a6",
+      "size_bytes": 460928,
+      "shape": [
+        20,
+        16,
+        360
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s10.npy",
+      "sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+      "size_bytes": 528,
+      "shape": [
+        20,
+        5
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s2.npy",
+      "sha256": "5b9607815738e1a3a7ccde941e23a01a9ad927326839f38895e1f289e7d72399",
+      "size_bytes": 230528,
+      "shape": [
+        20,
+        16,
+        180
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s3.npy",
+      "sha256": "afe72a5e26572060420a93f19ae0ce4a3bc686a90ef1607d4108df7b2bbbd94d",
+      "size_bytes": 460928,
+      "shape": [
+        20,
+        32,
+        180
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s4.npy",
+      "sha256": "a45a5032e8682d2734642d2842659aac44fd0de208804f660faec7cc357cef16",
+      "size_bytes": 230528,
+      "shape": [
+        20,
+        32,
+        90
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s5.npy",
+      "sha256": "b713e53387e5e43ba9f8abf0cd0905b108208cf29082669dfd1be706857a706e",
+      "size_bytes": 345728,
+      "shape": [
+        20,
+        48,
+        90
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s6.npy",
+      "sha256": "a8b92d72c20fa4df5a3e651c87c0335bd7fecbc0657e7310bf6d4589700e8ba8",
+      "size_bytes": 172928,
+      "shape": [
+        20,
+        48,
+        45
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s7.npy",
+      "sha256": "f1a9300d387aed0abb5ad5d2ff5f08167f162f66e5017e252b9de92053926e60",
+      "size_bytes": 230528,
+      "shape": [
+        20,
+        64,
+        45
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s8.npy",
+      "sha256": "fda1e8ebc1828134b60daf75d5f60c50f4fa42ca3a9d9db83a66f3ffe0110829",
+      "size_bytes": 112768,
+      "shape": [
+        20,
+        64,
+        22
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "golden/z_s9.npy",
+      "sha256": "2f6bd177be2a2f8f5aed60b85d65755520f538bfdbeeda0fe77f99206ca056bb",
+      "size_bytes": 2688,
+      "shape": [
+        20,
+        32
+      ],
+      "dtype": "<f4"
+    },
+    {
+      "path": "model/checkpoint.pt",
+      "sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+      "size_bytes": 450551
+    },
+    {
+      "path": "model/freeze_decision.json",
+      "sha256": "d69f0bf0887a965c806984716f556fb444ef2db64c7b6f0d708156d8e1b3a004",
+      "size_bytes": 2430
+    },
+    {
+      "path": "model/mitdb_baseline_model.py",
+      "sha256": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+      "size_bytes": 2912
+    },
+    {
+      "path": "model/sv1_v2_manifest.json",
+      "sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+      "size_bytes": 14408
+    },
+    {
+      "path": "model/sv2_interface.json",
+      "sha256": "7e087b91cf6a68c79ebaae82e606626385106be2926567dbaa0b8bf590036ebe",
+      "size_bytes": 18899
+    },
+    {
+      "path": "model/train_config.json",
+      "sha256": "1f988328ea46db8537bc46d35b9cb5a0a165f128d2326366495fe26eda23715f",
+      "size_bytes": 635
+    },
+    {
+      "path": "models/tail_0.onnx",
+      "sha256": "ffa1cbe02e7b9af405177816cc7edfe9870f61287553ce748f09a1f8bed572cf",
+      "size_bytes": 441852
+    },
+    {
+      "path": "models/tail_1.onnx",
+      "sha256": "4940b21a5101a08b341cbd2b9c191dec0ea21d9c121f08a65062688e0764e9d3",
+      "size_bytes": 441209
+    },
+    {
+      "path": "models/tail_2.onnx",
+      "sha256": "981527fa3d7d37d6b2c4e14b09328221bdf2e1dabbbe0c03506847e64a296355",
+      "size_bytes": 435609
+    },
+    {
+      "path": "models/tail_3.onnx",
+      "sha256": "2f27e2bfb1d7c72c0f98150e299392b6dbe985603be9f1820ded1f2945387874",
+      "size_bytes": 424980
+    },
+    {
+      "path": "models/tail_4.onnx",
+      "sha256": "dd481202cfbfec74ee399df4d0f2693060124cfa26d46a75d33262a2c0bc0f7e",
+      "size_bytes": 403951
+    },
+    {
+      "path": "models/tail_5.onnx",
+      "sha256": "872a26240b566c2c7f66ecfb056987788155cd297e65520f24776f670ea6b501",
+      "size_bytes": 372783
+    },
+    {
+      "path": "models/tail_6.onnx",
+      "sha256": "80a4fff1033b0530936eb1b77f5f9e67469acbccf89755e446a24ad5870c686d",
+      "size_bytes": 326089
+    },
+    {
+      "path": "models/tail_7.onnx",
+      "sha256": "c5181d7fffbd0093e473d67ea042b0c599c0c2e38b1f3319ca3c462a9058a3b0",
+      "size_bytes": 264140
+    },
+    {
+      "path": "models/tail_8.onnx",
+      "sha256": "d108d29c3c79c467ca5830bf4ecda8980d30faddfcad9a6087b5ec2115c99725",
+      "size_bytes": 181557
+    },
+    {
+      "path": "models/tail_9.onnx",
+      "sha256": "d2de785a18a069ff483e2408beb4b95abde4284fba3276f69dc0c0f32c22fb2f",
+      "size_bytes": 907
+    },
+    {
+      "path": "README.md",
+      "sha256": "16049ac0cfbdab7012830d3bfc419f9e12af5d7018cd59b338d66e96f6c40f04",
+      "size_bytes": 4795
+    },
+    {
+      "path": "requirements/requirements-core.txt",
+      "sha256": "c44395a0ff23b2fc3a5a29d44547c46768a002b47ec9b489306650d1a245cea1",
+      "size_bytes": 108
+    },
+    {
+      "path": "requirements/requirements-gpu-cu130.txt",
+      "sha256": "14a29db30f8a99c3e9043ab6be948122e7b678bb8ea932f0bb9b7ce472178f33",
+      "size_bytes": 102
+    },
+    {
+      "path": "requirements/requirements-week3-onnx.txt",
+      "sha256": "763b06fb9c048faa4a6794a10abc6403b151966f5b50ce4c418d8893968703ee",
+      "size_bytes": 172
+    },
+    {
+      "path": "samples.csv",
+      "sha256": "4a6356312d5f62da6b2fdf9e609843d4dea3fc5c20767e201ea21a075e6f227c",
+      "size_bytes": 2430
+    },
+    {
+      "path": "scripts/export_week3_sv2.py",
+      "sha256": "aec06e3b03f28d052704f78d2425fae08e20084a49d052d3247e47ed89c97043",
+      "size_bytes": 10738
+    },
+    {
+      "path": "scripts/test_week3_sv2.py",
+      "sha256": "fdea8298e9287bec0034d34eecbbc17e1b2a0c2f875d3878d33eecbdae1631f8",
+      "size_bytes": 5982
+    },
+    {
+      "path": "scripts/verify_week3_sv2.py",
+      "sha256": "a5fe0e5b018d53e7fb52e0a7a8a3cb38c8599e337640eb83028f855a4057b480",
+      "size_bytes": 5598
+    },
+    {
+      "path": "scripts/week3_common.py",
+      "sha256": "47dea8729d93bc4c66ddc421cff46b70fb66a17dc62b8fac420da5e89e8d93c6",
+      "size_bytes": 20652
+    },
+    {
+      "path": "scripts/week3_sv2_common.py",
+      "sha256": "a86b5c465b33355caaa59997af9a96ba4a1f0bcc08772d96ae0a44fbb04b2595",
+      "size_bytes": 12109
+    }
+  ]
+}

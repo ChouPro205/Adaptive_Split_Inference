@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "model_revision": "mitdb_week2_cnn_v1",
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "split_convention_version": "sv3-sv2-week3-fp32-v1",
+  "canonical_registry_source": "ml/configs/week3_sv2_interface_review.json",
+  "L": 10,
+  "batch_size_for_payload": 1,
+  "splits": [
+    {
+      "s": 0,
+      "boundary_name": "normalized_model_input (identity head)",
+      "head_last_op": null,
+      "tail_first_op": "features.0",
+      "shape_n1": [
+        1,
+        1,
+        360
+      ],
+      "dtype": "float32",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "numel_per_sample": 360,
+      "bytes_fp32": 1440,
+      "kib_fp32": 1.40625,
+      "bytes_int8_estimated": 360,
+      "kib_int8_estimated": 0.3515625,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s0.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 1,
+      "boundary_name": "features.1",
+      "head_last_op": "features.1",
+      "tail_first_op": "features.2",
+      "shape_n1": [
+        1,
+        16,
+        360
+      ],
+      "dtype": "float32",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "numel_per_sample": 5760,
+      "bytes_fp32": 23040,
+      "kib_fp32": 22.5,
+      "bytes_int8_estimated": 5760,
+      "kib_int8_estimated": 5.625,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s1.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 2,
+      "boundary_name": "features.4",
+      "head_last_op": "features.4",
+      "tail_first_op": "features.5",
+      "shape_n1": [
+        1,
+        16,
+        180
+      ],
+      "dtype": "float32",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "numel_per_sample": 2880,
+      "bytes_fp32": 11520,
+      "kib_fp32": 11.25,
+      "bytes_int8_estimated": 2880,
+      "kib_int8_estimated": 2.8125,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s2.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 3,
+      "boundary_name": "features.6",
+      "head_last_op": "features.6",
+      "tail_first_op": "features.7",
+      "shape_n1": [
+        1,
+        32,
+        180
+      ],
+      "dtype": "float32",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "numel_per_sample": 5760,
+      "bytes_fp32": 23040,
+      "kib_fp32": 22.5,
+      "bytes_int8_estimated": 5760,
+      "kib_int8_estimated": 5.625,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s3.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 4,
+      "boundary_name": "features.9",
+      "head_last_op": "features.9",
+      "tail_first_op": "features.10",
+      "shape_n1": [
+        1,
+        32,
+        90
+      ],
+      "dtype": "float32",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "numel_per_sample": 2880,
+      "bytes_fp32": 11520,
+      "kib_fp32": 11.25,
+      "bytes_int8_estimated": 2880,
+      "kib_int8_estimated": 2.8125,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s4.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 5,
+      "boundary_name": "features.11",
+      "head_last_op": "features.11",
+      "tail_first_op": "features.12",
+      "shape_n1": [
+        1,
+        48,
+        90
+      ],
+      "dtype": "float32",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "numel_per_sample": 4320,
+      "bytes_fp32": 17280,
+      "kib_fp32": 16.875,
+      "bytes_int8_estimated": 4320,
+      "kib_int8_estimated": 4.21875,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s5.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 6,
+      "boundary_name": "features.14",
+      "head_last_op": "features.14",
+      "tail_first_op": "features.15",
+      "shape_n1": [
+        1,
+        48,
+        45
+      ],
+      "dtype": "float32",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "numel_per_sample": 2160,
+      "bytes_fp32": 8640,
+      "kib_fp32": 8.4375,
+      "bytes_int8_estimated": 2160,
+      "kib_int8_estimated": 2.109375,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s6.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 7,
+      "boundary_name": "features.16",
+      "head_last_op": "features.16",
+      "tail_first_op": "features.17",
+      "shape_n1": [
+        1,
+        64,
+        45
+      ],
+      "dtype": "float32",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "numel_per_sample": 2880,
+      "bytes_fp32": 11520,
+      "kib_fp32": 11.25,
+      "bytes_int8_estimated": 2880,
+      "kib_int8_estimated": 2.8125,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s7.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 8,
+      "boundary_name": "features.19",
+      "head_last_op": "features.19",
+      "tail_first_op": "classifier.0",
+      "shape_n1": [
+        1,
+        64,
+        22
+      ],
+      "dtype": "float32",
+      "layout": "NCL",
+      "flatten_order": "C",
+      "numel_per_sample": 1408,
+      "bytes_fp32": 5632,
+      "kib_fp32": 5.5,
+      "bytes_int8_estimated": 1408,
+      "kib_int8_estimated": 1.375,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s8.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 9,
+      "boundary_name": "classifier.3",
+      "head_last_op": "classifier.3",
+      "tail_first_op": "classifier.4",
+      "shape_n1": [
+        1,
+        32
+      ],
+      "dtype": "float32",
+      "layout": "NC",
+      "flatten_order": "C",
+      "numel_per_sample": 32,
+      "bytes_fp32": 128,
+      "kib_fp32": 0.125,
+      "bytes_int8_estimated": 32,
+      "kib_int8_estimated": 0.03125,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s9.npy",
+      "execution_samples": 20
+    },
+    {
+      "s": 10,
+      "boundary_name": "classifier.4",
+      "head_last_op": "classifier.4",
+      "tail_first_op": null,
+      "shape_n1": [
+        1,
+        5
+      ],
+      "dtype": "float32",
+      "layout": "NC",
+      "flatten_order": "C",
+      "numel_per_sample": 5,
+      "bytes_fp32": 20,
+      "kib_fp32": 0.01953125,
+      "bytes_int8_estimated": 5,
+      "kib_int8_estimated": 0.0048828125,
+      "golden_path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s10.npy",
+      "execution_samples": 20
+    }
+  ],
+  "analysis": {
+    "NON_MONOTONIC": true,
+    "transitions": [
+      {
+        "from_s": 0,
+        "to_s": 1,
+        "delta_bytes": 21600,
+        "direction": "increase",
+        "next_over_previous": 16.0,
+        "previous_over_next": 0.0625
+      },
+      {
+        "from_s": 1,
+        "to_s": 2,
+        "delta_bytes": -11520,
+        "direction": "decrease",
+        "next_over_previous": 0.5,
+        "previous_over_next": 2.0
+      },
+      {
+        "from_s": 2,
+        "to_s": 3,
+        "delta_bytes": 11520,
+        "direction": "increase",
+        "next_over_previous": 2.0,
+        "previous_over_next": 0.5
+      },
+      {
+        "from_s": 3,
+        "to_s": 4,
+        "delta_bytes": -11520,
+        "direction": "decrease",
+        "next_over_previous": 0.5,
+        "previous_over_next": 2.0
+      },
+      {
+        "from_s": 4,
+        "to_s": 5,
+        "delta_bytes": 5760,
+        "direction": "increase",
+        "next_over_previous": 1.5,
+        "previous_over_next": 0.6666666666666666
+      },
+      {
+        "from_s": 5,
+        "to_s": 6,
+        "delta_bytes": -8640,
+        "direction": "decrease",
+        "next_over_previous": 0.5,
+        "previous_over_next": 2.0
+      },
+      {
+        "from_s": 6,
+        "to_s": 7,
+        "delta_bytes": 2880,
+        "direction": "increase",
+        "next_over_previous": 1.3333333333333333,
+        "previous_over_next": 0.75
+      },
+      {
+        "from_s": 7,
+        "to_s": 8,
+        "delta_bytes": -5888,
+        "direction": "decrease",
+        "next_over_previous": 0.4888888888888889,
+        "previous_over_next": 2.0454545454545454
+      },
+      {
+        "from_s": 8,
+        "to_s": 9,
+        "delta_bytes": -5504,
+        "direction": "decrease",
+        "next_over_previous": 0.022727272727272728,
+        "previous_over_next": 44.0
+      },
+      {
+        "from_s": 9,
+        "to_s": 10,
+        "delta_bytes": -108,
+        "direction": "decrease",
+        "next_over_previous": 0.15625,
+        "previous_over_next": 6.4
+      }
+    ],
+    "increase_s": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "decrease_s": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        9,
+        10
+      ]
+    ],
+    "equal_s": [],
+    "max_bytes_fp32": 23040,
+    "max_s": [
+      1,
+      3
+    ],
+    "min_bytes_fp32": 20,
+    "min_s": [
+      10
+    ],
+    "max_over_min": 1152.0,
+    "requirement_warning": null
+  },
+  "payload_semantics": "Logical tensor only; excludes file headers, allocator/workspace/stack, packet/scale metadata and Flash parameters",
+  "int8_semantics": "Theoretical estimated size = numel * 1; no quantization performed",
+  "execution": "CPU eval; torch.no_grad; N=1; 20 frozen inputs; one thread; deterministic; MKLDNN disabled"
+}

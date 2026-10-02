@@ -1,0 +1,26 @@
+Clean snapshot train gate: exit=0 PASS
+Clean snapshot verify gate: exit=0 PASS
+MUTATION: ml/src/week1_common.py
+COMMAND: C:\Users\Admin\Adaptive_Split_Inference\ml\.venv\Scripts\python.exe -B ml/src/test_week2_provenance.py --gate train (cwd=isolated snapshot)
+EXIT=1 EXPECTED_REJECTION: ERROR: Scientific source/config differs from HEAD: ml/src/week1_common.py
+MUTATION: ml/src/week1_common.py
+COMMAND: C:\Users\Admin\Adaptive_Split_Inference\ml\.venv\Scripts\python.exe -B ml/src/test_week2_provenance.py --gate verify (cwd=isolated snapshot)
+EXIT=1 EXPECTED_REJECTION: ERROR: Scientific source/config differs from HEAD: ml/src/week1_common.py
+RESTORED: git diff --exit-code HEAD -- ml/src/week1_common.py: exit=0
+MUTATION: ml/src/mitdb_common.py
+COMMAND: C:\Users\Admin\Adaptive_Split_Inference\ml\.venv\Scripts\python.exe -B ml/src/test_week2_provenance.py --gate train (cwd=isolated snapshot)
+EXIT=1 EXPECTED_REJECTION: ERROR: Scientific source/config differs from HEAD: ml/src/mitdb_common.py
+MUTATION: ml/src/mitdb_common.py
+COMMAND: C:\Users\Admin\Adaptive_Split_Inference\ml\.venv\Scripts\python.exe -B ml/src/test_week2_provenance.py --gate verify (cwd=isolated snapshot)
+EXIT=1 EXPECTED_REJECTION: ERROR: Scientific source/config differs from HEAD: ml/src/mitdb_common.py
+RESTORED: git diff --exit-code HEAD -- ml/src/mitdb_common.py: exit=0
+COMMAND: C:\Users\Admin\Adaptive_Split_Inference\ml\.venv\Scripts\python.exe -B ml/src/verify_week2_baseline.py --historical (cwd=isolated snapshot)
+source_git_sha: 8e98a0e4851abc979feb5fd5b97ece612b02cfaa
+best_epoch: 3
+validation_accuracy: 0.8448791265921497
+test_accuracy: 0.9822097378277154
+STATUS: PASS
+HISTORICAL_ARTIFACT_EXIT=0
+REAL_HELPER_UNCHANGED: ml/src/week1_common.py; git diff exit=0
+REAL_HELPER_UNCHANGED: ml/src/mitdb_common.py; git diff exit=0
+STATUS: PASS (four intended rejections, two restored helpers)

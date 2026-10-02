@@ -11,3 +11,5 @@ Nơi quản lý hợp đồng giao diện I1-I4, packet format, schema, versioni
 | [Bàn giao SV3 → SV1 Tuần 3](sv3_sv1_week3_model_handoff.md) | Gói FP32 `mitdb-week3-fp32-20260925-v2` verify PASS, boundary P2 đã được SV3/SV1 xác nhận; package review/MCU validation của SV1 PENDING. |
 
 Mã tham chiếu Python/C và vector I2 nằm trong [`i2_ref/`](i2_ref/test_i2.py).
+
+[SV3 to SV2 Week 3 FP32](sv3_sv2_week3_fp32.md): confirmed s=0..10 mapping and opset 13; ten FP32 ONNX tails, SV2 hardware validation pending.

@@ -1,0 +1,21 @@
+PASS expected rejection: metadata without anchor
+PASS expected rejection: file raw mutation
+PASS expected rejection: split missing
+PASS expected rejection: split duplicate
+PASS expected rejection: boundary
+PASS expected rejection: N=20 payload
+PASS expected rejection: INT8 estimate
+PASS expected rejection: analysis
+PASS expected rejection: sample order
+PASS expected rejection: checkpoint identity
+PASS expected rejection: pool attributes
+PASS expected rejection: missing bias
+PASS expected rejection: header precision
+PASS expected rejection: figure missing
+PASS expected rejection: parameter dtype
+PASS expected rejection: parameter nan
+PASS expected rejection: parameter shape
+PASS expected rejection: parameter value
+PASS reproduction: 28 files byte-identical; reused 220 golden cases bitwise
+WEEK4_TESTS_PASS: 18 expected rejections; 4 monotonic cases; exact reproduction; source unchanged
+Could not save font_manager cache [Errno 13] Permission denied: 'C:\\Users\\Admin\\.matplotlib\\fontlist-v3.11.0.json.matplotlib-lock'
