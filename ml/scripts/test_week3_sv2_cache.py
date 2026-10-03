@@ -9,10 +9,11 @@ import sys
 sys.dont_write_bytecode = True
 
 import importlib.util
+import copy
 import json
 import marshal
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import shutil
 import struct
 import subprocess
@@ -21,6 +22,7 @@ import unittest
 from unittest.mock import patch
 
 import torch
+import numpy as np
 
 from week3_common import load_model, sha
 from week3_sv2_common import SCRIPTS, authenticate, inventory
@@ -221,6 +223,94 @@ class CacheRegression(unittest.TestCase):
             x = torch.zeros(1, 1, 360)
             self.assertTrue(torch.equal(clean(x), loaded(x)))
         self.assertFalse(any(m.training for m in loaded.modules()))
+
+
+class InventoryOrderRegression(unittest.TestCase):
+    """Real files, independently anchored disposable manifests; no release edits."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(prefix="week3_inventory_")
+        self.addCleanup(self.tmp.cleanup)
+        self.package = Path(self.tmp.name)
+        np.save(self.package / "Z.npy", np.array([[1, 2]], dtype="<f4"))
+        (self.package / "a.txt").write_bytes(b"fixture\n")
+        self.rows = sorted(inventory(self.package), key=lambda row: PureWindowsPath(row["path"]))
+
+    def anchor(self, rows):
+        # Only disposable test manifests get new anchors. Published v1 never does.
+        (self.package / "manifest.json").write_bytes(json.dumps({"files": rows}).encode())
+        return sha(self.package / "manifest.json")
+
+    def test_windows_manifest_posix_inventory_and_reversed_lists(self):
+        posix = sorted(self.rows, key=lambda row: PurePosixPath(row["path"]))
+        self.assertNotEqual(self.rows, posix)
+        # This is the old gate, proving the fixture detects that exact bug.
+        from week3_common import need
+        with self.assertRaisesRegex(ValueError, "Inventory differs"):
+            need(self.rows == posix, "Inventory differs")
+        for manifest_rows in (self.rows, self.rows[::-1]):
+            for actual in (posix, posix[::-1]):
+                with self.subTest(manifest=[r["path"] for r in manifest_rows],
+                                  actual=[r["path"] for r in actual]):
+                    expected = self.anchor(manifest_rows)
+                    with patch("week3_sv2_common.inventory", return_value=actual):
+                        self.assertEqual(authenticate(self.package, expected)["files"], manifest_rows)
+
+    def test_manifest_missing_extra_duplicate_and_all_metadata_rejected(self):
+        array_index = next(i for i, row in enumerate(self.rows) if row["path"] == "Z.npy")
+        cases = {"missing": self.rows[:-1], "duplicate": self.rows + [self.rows[0]],
+                 "extra": self.rows + [{**self.rows[0], "path": "absent.txt"}]}
+        for field, value in (("sha256", "0" * 64), ("size_bytes", 0),
+                             ("shape", [2, 1]), ("dtype", "<f8")):
+            rows = copy.deepcopy(self.rows)
+            rows[array_index][field] = value
+            cases[field] = rows
+        for label, rows in cases.items():
+            with self.subTest(case=label):
+                with self.assertRaises(ValueError):
+                    authenticate(self.package, self.anchor(rows))
+
+    def test_actual_missing_extra_file_and_duplicate_rows_rejected(self):
+        expected = self.anchor(self.rows)
+        target = self.package / "a.txt"
+        raw = target.read_bytes()
+        target.unlink()
+        with self.assertRaisesRegex(ValueError, "File hash/size mismatch"):
+            authenticate(self.package, expected)
+        target.write_bytes(raw)
+        (self.package / "extra.txt").write_bytes(b"extra\n")
+        with self.assertRaisesRegex(ValueError, "Inventory differs"):
+            authenticate(self.package, expected)
+        (self.package / "extra.txt").unlink()
+        with patch("week3_sv2_common.inventory", return_value=self.rows + [self.rows[0]]):
+            with self.assertRaisesRegex(ValueError, "Inventory differs"):
+                authenticate(self.package, expected)
+
+    def test_wrong_anchor_rejected_before_inventory(self):
+        self.anchor(self.rows)
+        with patch("week3_sv2_common.inventory") as probe:
+            with self.assertRaisesRegex(ValueError, "Manifest SHA-256 mismatch"):
+                authenticate(self.package, "0" * 64)
+            probe.assert_not_called()
+
+    @unittest.skipUnless(V1.is_dir(), "Local immutable v1 unavailable")
+    def test_real_v1_posix_and_reverse_full_verifier(self):
+        expected = "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+        before = {p.relative_to(V1).as_posix(): sha(p) for p in V1.rglob("*") if p.is_file()}
+        self.assertEqual(sha(V1 / "manifest.json"), expected)
+        manifest = json.loads((V1 / "manifest.json").read_bytes())
+        posix = sorted(inventory(V1), key=lambda row: PurePosixPath(row["path"]))
+        self.assertEqual(len(posix), 40)
+        self.assertNotEqual(manifest["files"], posix)
+        self.assertEqual(sorted(manifest["files"], key=lambda row: row["path"]),
+                         sorted(posix, key=lambda row: row["path"]))
+        for actual in (posix, posix[::-1]):
+            with patch("week3_sv2_common.inventory", return_value=actual):
+                report = verify(V1, expected)
+                self.assertEqual(report["status"], "SV2_FP32_REFERENCE_CHECKS_PASS")
+                self.assertEqual(report["comparisons"], 200)
+        self.assertEqual(before, {p.relative_to(V1).as_posix(): sha(p)
+                                  for p in V1.rglob("*") if p.is_file()})
 
 
 if __name__ == "__main__":

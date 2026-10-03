@@ -1,0 +1,13 @@
+{
+  "name": "after_fix",
+  "command": [
+    "ml/.venv/Scripts/python.exe",
+    "-B",
+    "ml/scripts/test_week3_sv2_cache.py"
+  ],
+  "commit_sha": "2506239d62f620a41b860f4487ca3ee58c349cd5",
+  "exit_status": 0,
+  "log_path": "ml/provenance/week4-inventory-fix/after_fix.txt",
+  "log_sha256": "f4a5ddc814b5f9fabe3b5b219375f59674c43d6fca4ed9d3cba351cff8387544",
+  "tree_state": "Working tree common.py fix and new regression tests; not a committed-checkout result"
+}
