@@ -1,0 +1,20 @@
+{
+  "name": "r3_expected_source_rejection",
+  "command": [
+    "ml/.venv/Scripts/python.exe",
+    "-B",
+    "ml/scripts/verify_week4.py",
+    "--repo-root",
+    ".",
+    "--output-dir",
+    "ml/results/week4-r3",
+    "--expected-manifest-sha256",
+    "80e4cea3b70bdafef1b6925b208d4951a87bba4ff8cf10dbb6a671e36439635c",
+    "--compiler",
+    "C:/msys64/ucrt64/bin/gcc.exe"
+  ],
+  "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+  "exit_status": 1,
+  "log_path": "ml/provenance/week4-inventory-fix/r3_expected_source_rejection.txt",
+  "log_sha256": "73e3f2c8ee7e472cdca66728bb5cba20b6d2a364f2e7235938d6a6342a335330"
+}

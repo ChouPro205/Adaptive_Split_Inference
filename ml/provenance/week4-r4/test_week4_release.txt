@@ -1,0 +1,11 @@
+test_authenticated_hydration_can_repeat_without_overwrite (__main__.ReleaseRegression.test_authenticated_hydration_can_repeat_without_overwrite) ... ok
+test_existing_checkout_mismatch_never_overwritten_or_partially_hydrated (__main__.ReleaseRegression.test_existing_checkout_mismatch_never_overwritten_or_partially_hydrated) ... ok
+test_existing_revision_rejected_before_any_mutation (__main__.ReleaseRegression.test_existing_revision_rejected_before_any_mutation) ... ok
+test_rehashed_member_and_extra_inventory_rejected (__main__.ReleaseRegression.test_rehashed_member_and_extra_inventory_rejected) ... ok
+test_unsafe_path_and_duplicate_receipt_rejected (__main__.ReleaseRegression.test_unsafe_path_and_duplicate_receipt_rejected) ... ok
+test_wrong_zip_hash_and_size_rejected_before_write (__main__.ReleaseRegression.test_wrong_zip_hash_and_size_rejected_before_write) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.042s
+
+OK

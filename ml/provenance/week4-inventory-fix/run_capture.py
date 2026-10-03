@@ -1,6 +1,6 @@
-﻿from pathlib import Path
+from pathlib import Path
 import json,subprocess,sys,hashlib,os
-root=Path(__file__).resolve().parents[2]
+root=Path(subprocess.check_output(['git','rev-parse','--show-toplevel'], text=True).strip())
 label=sys.argv[1]; command=sys.argv[2:]
 folder=root/'ml/provenance/week4-inventory-fix'
 r=subprocess.run(command,cwd=root,capture_output=True,text=True,encoding='utf-8',errors='replace')

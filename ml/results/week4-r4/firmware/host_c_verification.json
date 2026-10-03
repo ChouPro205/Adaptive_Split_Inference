@@ -1,0 +1,7 @@
+{
+  "compiler": "gcc.exe (Rev8, Built by MSYS2 project) 15.2.0",
+  "flags": "-std=c99 -Wall -Wextra -Werror -pedantic",
+  "fp32_elements": 109653,
+  "status": "PASS",
+  "target": "host; not nRF52840 firmware"
+}

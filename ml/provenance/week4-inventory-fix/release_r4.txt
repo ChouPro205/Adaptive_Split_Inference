@@ -1,0 +1,23 @@
+verify_week3_sv2: exit=0
+test_week3_sv2: exit=0
+test_week3_sv2_cache: exit=0
+test_week4_release: exit=0
+verify_week3: exit=0
+test_week3: exit=0
+profile_week4: exit=0
+verify_week4: exit=0
+test_week4: exit=0
+receiver_clone: exit=0
+receiver_checkout: exit=0
+receiver_verify_week4: exit=0
+receiver_test_week4: exit=0
+receiver_verify_week3_sv2: exit=0
+receiver_test_week3_sv2: exit=0
+receiver_test_week3_sv2_cache: exit=0
+receiver_reproduction: exit=0
+receiver_verify_reproduction: exit=0
+{
+  "status": "LOCAL_RELEASE_PASS_RECEIVER_ACCEPTANCE_PENDING",
+  "archive": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\artifacts\\week4\\mitdb-sv1-week4-fp32-20261001-r4.zip",
+  "manifest_sha256": "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a"
+}
