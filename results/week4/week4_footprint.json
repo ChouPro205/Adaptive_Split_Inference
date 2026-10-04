@@ -1,0 +1,215 @@
+{
+  "status": "PASS",
+  "scope": "STATIC_BUILD_AND_OBSERVED_MAIN_STACK",
+  "mcu_validation": "PASS",
+  "mcu_timing": "PASS",
+  "elf": "D:\\HUST\\Adaptive_Split_Inference\\device\\build-week4\\zephyr\\zephyr.elf",
+  "elf_sha256": "d9a1ef3197705b0aa1d21d64d0420dbea2195dc27c7d36b53ddf89dff107e97c",
+  "map": "D:\\HUST\\Adaptive_Split_Inference\\device\\build-week4\\zephyr\\zephyr.map",
+  "linker": "D:\\HUST\\Adaptive_Split_Inference\\device\\build-week4\\zephyr\\linker.cmd",
+  "regions": {
+    "FLASH": {
+      "used_bytes": 523424,
+      "limit_bytes": 913408,
+      "remaining_bytes": 389984
+    },
+    "RAM": {
+      "used_bytes": 65464,
+      "limit_bytes": 262144,
+      "remaining_bytes": 196680
+    }
+  },
+  "flash_origin": 4096,
+  "flash_end_exclusive": 917504,
+  "hex_first_address": 4096,
+  "hex_end_exclusive": 527520,
+  "hex_payload_bytes": 523424,
+  "weight_arrays": {
+    "sv3_classifier_4_bias": {
+      "address": 84104,
+      "bytes": 20,
+      "type": "r"
+    },
+    "sv3_features_0_bias": {
+      "address": 522332,
+      "bytes": 64,
+      "type": "r"
+    },
+    "sv3_features_2_bias": {
+      "address": 517148,
+      "bytes": 64,
+      "type": "r"
+    },
+    "sv3_classifier_2_bias": {
+      "address": 84764,
+      "bytes": 128,
+      "type": "r"
+    },
+    "sv3_features_5_bias": {
+      "address": 506780,
+      "bytes": 128,
+      "type": "r"
+    },
+    "sv3_features_7_bias": {
+      "address": 486172,
+      "bytes": 128,
+      "type": "r"
+    },
+    "sv3_features_10_bias": {
+      "address": 455260,
+      "bytes": 192,
+      "type": "r"
+    },
+    "sv3_features_12_bias": {
+      "address": 408988,
+      "bytes": 192,
+      "type": "r"
+    },
+    "sv3_features_15_bias": {
+      "address": 347292,
+      "bytes": 256,
+      "type": "r"
+    },
+    "sv3_features_17_bias": {
+      "address": 265116,
+      "bytes": 256,
+      "type": "r"
+    },
+    "sv3_features_0_weight": {
+      "address": 522396,
+      "bytes": 320,
+      "type": "r"
+    },
+    "sv3_classifier_4_weight": {
+      "address": 84124,
+      "bytes": 640,
+      "type": "r"
+    },
+    "sv3_features_2_weight": {
+      "address": 517212,
+      "bytes": 5120,
+      "type": "r"
+    },
+    "sv3_features_5_weight": {
+      "address": 506908,
+      "bytes": 10240,
+      "type": "r"
+    },
+    "sv3_features_7_weight": {
+      "address": 486300,
+      "bytes": 20480,
+      "type": "r"
+    },
+    "sv3_features_10_weight": {
+      "address": 455452,
+      "bytes": 30720,
+      "type": "r"
+    },
+    "sv3_features_12_weight": {
+      "address": 409180,
+      "bytes": 46080,
+      "type": "r"
+    },
+    "sv3_features_15_weight": {
+      "address": 347548,
+      "bytes": 61440,
+      "type": "r"
+    },
+    "sv3_features_17_weight": {
+      "address": 265372,
+      "bytes": 81920,
+      "type": "r"
+    },
+    "sv3_classifier_2_weight": {
+      "address": 84892,
+      "bytes": 180224,
+      "type": "r"
+    }
+  },
+  "buffer_symbols": {
+    "measured_cycles": {
+      "address": 536873800,
+      "bytes": 400,
+      "type": "b"
+    },
+    "activation_a": {
+      "address": 536897240,
+      "bytes": 23040,
+      "type": "b"
+    },
+    "activation_b": {
+      "address": 536874200,
+      "bytes": 23040,
+      "type": "b"
+    },
+    "week4_inputs": {
+      "address": 54360,
+      "bytes": 28800,
+      "type": "r"
+    }
+  },
+  "stack_symbols": {
+    "drv_stack_data": {
+      "address": 536872696,
+      "bytes": 200,
+      "type": "b"
+    },
+    "z_idle_stacks": {
+      "address": 536926592,
+      "bytes": 512,
+      "type": "b"
+    },
+    "drv_stack": {
+      "address": 536923776,
+      "bytes": 640,
+      "type": "b"
+    },
+    "sys_work_q_stack": {
+      "address": 536931328,
+      "bytes": 1152,
+      "type": "b"
+    },
+    "usbd_stack": {
+      "address": 536922624,
+      "bytes": 1152,
+      "type": "b"
+    },
+    "z_interrupt_stacks": {
+      "address": 536924416,
+      "bytes": 2176,
+      "type": "B"
+    },
+    "z_main_stack": {
+      "address": 536927104,
+      "bytes": 4224,
+      "type": "B"
+    }
+  },
+  "configured_stacks": {
+    "CONFIG_MAIN_STACK_SIZE": 4096,
+    "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE": 1024,
+    "CONFIG_IDLE_STACK_SIZE": 320,
+    "CONFIG_ISR_STACK_SIZE": 2048,
+    "CONFIG_MPSL_WORK_STACK_SIZE": 1024,
+    "CONFIG_WFA_QT_THREAD_STACK_SIZE": 5200,
+    "CONFIG_UDC_NRF_THREAD_STACK_SIZE": 512,
+    "CONFIG_USBD_THREAD_STACK_SIZE": 1024
+  },
+  "fpu": "y",
+  "heap_pool_bytes": 0,
+  "elf_section_sizes": "D:\\HUST\\Adaptive_Split_Inference\\device\\build-week4\\zephyr\\zephyr.elf  :\nsection                            size        addr\nrom_start                           256        4096\ntext                              48464        4352\n.ARM.exidx                            8       52816\ninitlevel                           136       52824\ndevice_area                         140       52960\nsw_isr_table                        384       53100\ngpio_driver_api_area                 36       53484\nclock_control_driver_api_area        28       53520\nuart_driver_api_area                 84       53548\ntbss                                  8       53632\nrodata                           472304       53632\n.ramfunc                              0   536870912\ndatas                              1123   536870912\ndevice_states                        13   536872035\nk_timer_area                         56   536872048\nk_mem_slab_area                      28   536872104\nk_heap_area                          20   536872132\nk_mutex_area                         80   536872152\nk_msgq_area                          40   536872232\nk_sem_area                           16   536872272\nk_event_area                         12   536872288\nk_condvar_area                        8   536872300\nnet_buf_pool_area                    36   536872308\nusbd_context_area                   124   536872344\nusbd_class_fs_area                   24   536872468\n.comment                             63           0\n.debug_aranges                     9032           0\n.debug_info                      599502           0\n.debug_abbrev                     86824           0\n.debug_line                      240059           0\n.debug_frame                      22244           0\n.debug_str                        69584           0\n.debug_loc                       256772           0\n.debug_ranges                     38112           0\n.ARM.attributes                      56           0\n.last_section                         4      527516\nbss                               50105   536872496\nnoinit                            13752   536922624\nTotal                           1909537\n\n\n",
+  "limitations": [
+    "Overall runtime RAM and USB/ISR/workqueue stack high-water were not measured.",
+    "No reset/fault/protocol/numerical errors observed in this capture; this is not a long-duration stress test."
+  ],
+  "runtime_observation": {
+    "main_stack": {
+      "max_peak_bytes": 616,
+      "configured_bytes": 4096,
+      "observations": 247
+    },
+    "fault_reset_buffer_errors_in_capture": 0,
+    "other_thread_stack_high_water": "NOT_MEASURED",
+    "overall_runtime_ram_peak": "NOT_MEASURED"
+  }
+}

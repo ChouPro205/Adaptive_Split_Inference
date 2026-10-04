@@ -14,4 +14,12 @@ config APP_WEEK3_HEAD
 	  Run the v2 Conv1/ReLU1/Conv2/ReLU2/MaxPool1d head and expose
 	  full FP32 milestone tensors through USB CDC ACM.
 
+config APP_WEEK4_HEAD
+	bool "Build the Week 4 R3 all-split FP32 validation firmware"
+	default n
+	depends on !APP_IDLE_MEASUREMENT && !APP_WEEK3_HEAD
+	help
+	  Run the authenticated R3 graph from normalized input at each call.
+	  Select sample and split 0..10 over USB CDC; benchmark with DWT.
+
 source "Kconfig.zephyr"
