@@ -1,0 +1,18 @@
+{
+  "name": "release_r4",
+  "command": [
+    "ml/.venv/Scripts/python.exe",
+    "-B",
+    "ml/scripts/release_week4.py",
+    "--repo-root",
+    ".",
+    "--revision",
+    "r4",
+    "--compiler",
+    "C:/msys64/ucrt64/bin/gcc.exe"
+  ],
+  "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+  "exit_status": 0,
+  "log_path": "ml/provenance/week4-inventory-fix/release_r4.txt",
+  "log_sha256": "32891b2eaf61e194b2b34e3acda1e7c4be044f794bcfb181ee185a952551f809"
+}

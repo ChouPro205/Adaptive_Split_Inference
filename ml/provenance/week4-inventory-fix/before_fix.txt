@@ -1,0 +1,22 @@
+test_real_v1_posix_and_reverse_full_verifier (__main__.InventoryOrderRegression.test_real_v1_posix_and_reverse_full_verifier) ... ERROR
+
+======================================================================
+ERROR: test_real_v1_posix_and_reverse_full_verifier (__main__.InventoryOrderRegression.test_real_v1_posix_and_reverse_full_verifier)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\ml\scripts\test_week3_sv2_cache.py", line 309, in test_real_v1_posix_and_reverse_full_verifier
+    report = verify(V1, expected)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\ml\scripts\verify_week3_sv2.py", line 21, in verify
+    manifest = authenticate(package, expected_manifest_sha256)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\ml\scripts\week3_sv2_common.py", line 234, in authenticate
+    need(manifest["files"] == inventory(package), "Inventory differs")
+  File "C:\Users\Admin\Adaptive_Split_Inference\ml\scripts\week3_common.py", line 40, in need
+    raise ValueError(message)
+ValueError: Inventory differs
+
+----------------------------------------------------------------------
+Ran 1 test in 0.109s
+
+FAILED (errors=1)

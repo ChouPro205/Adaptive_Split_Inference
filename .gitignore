@@ -33,6 +33,8 @@ datasets/
 /ml/results/week4-r2/firmware/head_parameters.h
 /ml/results/week4-r3/weights/
 /ml/results/week4-r3/firmware/head_parameters.h
+/ml/results/week4-r4/weights/
+/ml/results/week4-r4/firmware/head_parameters.h
 /ml/artifacts/week4/
 .env
 *.key

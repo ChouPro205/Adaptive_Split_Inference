@@ -1,0 +1,17 @@
+PASS expected rejection: missing external trust anchor
+PASS expected rejection: manifest metadata mutation
+PASS expected rejection: manifest plus rebuilt inventory
+PASS expected rejection: changed model_version
+PASS expected rejection: wrong split endpoint
+PASS expected rejection: missing verifier test
+PASS expected rejection: missing tail
+PASS expected rejection: forbidden tail10
+PASS expected rejection: sample identity corruption
+PASS expected rejection: wrong activation shape
+PASS expected rejection: wrong dtype with matching hashes
+PASS expected rejection: NaN with matching hashes
+PASS expected rejection: activation value corruption
+PASS expected rejection: wrong ONNX opset
+PASS expected rejection: wrong ONNX input name
+PASS expected rejection: changed ONNX weights
+PASS: 17 expected rejections; immutable source package unchanged

@@ -231,7 +231,10 @@ def authenticate(package, expected):
         path = safe_path(package,row["path"])
         need(path.is_file() and sha(path)==row["sha256"] and path.stat().st_size==row["size_bytes"],
              f"File hash/size mismatch: {row['path']}")
-    need(manifest["files"] == inventory(package), "Inventory differs")
+    actual = inventory(package)
+    # Compare complete rows, preserving duplicates, independently of OS Path order.
+    key = lambda row: row["path"]
+    need(sorted(manifest["files"], key=key) == sorted(actual, key=key), "Inventory differs")
     return manifest
 
 

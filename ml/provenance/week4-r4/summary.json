@@ -1,0 +1,334 @@
+{
+  "status": "PASS",
+  "revision": "r4",
+  "generation_commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+  "commands": [
+    {
+      "name": "verify_week3_sv2",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/verify_week3_sv2.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/verify_week3_sv2.txt",
+      "log_sha256": "eba022d2d0c719213bdd78c2a0210dc4b15fd0f6fe951a454583b197c729e439"
+    },
+    {
+      "name": "test_week3_sv2",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week3_sv2.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/test_week3_sv2.txt",
+      "log_sha256": "affec1dafd371f6c73500c92fff6da98fc07f5ae577b249f55433601f247ace5"
+    },
+    {
+      "name": "test_week3_sv2_cache",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week3_sv2_cache.py"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/test_week3_sv2_cache.txt",
+      "log_sha256": "0b66ca0f72a3ca4d72fb161d4be6ce1a7836a82e7f2e9fc4910ace2ddff135c1"
+    },
+    {
+      "name": "test_week4_release",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week4_release.py"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/test_week4_release.txt",
+      "log_sha256": "f7171320e393cd30eb70f10b9541502f52720811f7591b9d5ae309142684988e"
+    },
+    {
+      "name": "verify_week3",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/verify_week3.py",
+        "--repo-root",
+        ".",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2",
+        "--expected-manifest-sha256",
+        "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/verify_week3.txt",
+      "log_sha256": "7901ee40603c83de96b156028fb672deb8766f5d0b1084697d70f9bd5f805ccd"
+    },
+    {
+      "name": "test_week3",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week3.py",
+        "--repo-root",
+        ".",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2",
+        "--expected-manifest-sha256",
+        "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/test_week3.txt",
+      "log_sha256": "79947470d565c19539caa729636f67a62307c6f70d7fa3241acedf31658f091f"
+    },
+    {
+      "name": "profile_week4",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/profile_week4.py",
+        "--repo-root",
+        ".",
+        "--output-dir",
+        "ml/results/week4-r4",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/profile_week4.txt",
+      "log_sha256": "4b9f6052d67aa6953f95ea0119df27cfdc8386983a00f5f526e8d43314a10fa6"
+    },
+    {
+      "name": "verify_week4",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\scripts\\verify_week4.py",
+        "--repo-root",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference",
+        "--output-dir",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\results\\week4-r4",
+        "--expected-manifest-sha256",
+        "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/verify_week4.txt",
+      "log_sha256": "9680220c7eb20d961a1b8e43ef99cced2a787894335089597292673d2cd569a6"
+    },
+    {
+      "name": "test_week4",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\scripts\\test_week4.py",
+        "--repo-root",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference",
+        "--output-dir",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\results\\week4-r4",
+        "--expected-manifest-sha256",
+        "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/test_week4.txt",
+      "log_sha256": "cbe70efc3c1ebec38b57a1a551fa5c477f1f481d5f1c6f513be9f7d63bd42e81"
+    },
+    {
+      "name": "receiver_clone",
+      "command": [
+        "git",
+        "clone",
+        "--local",
+        "--no-hardlinks",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout"
+      ],
+      "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/receiver_clone.txt",
+      "log_sha256": "5c92e3e7da9a9d18745ddeccfad5273b6cec7dd089f45562addfdb781d9885f0"
+    },
+    {
+      "name": "receiver_checkout",
+      "command": [
+        "git",
+        "checkout",
+        "--detach",
+        "89109fd352d84a5fe0815d7e045e52538de7bad8"
+      ],
+      "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/receiver_checkout.txt",
+      "log_sha256": "f6b735c1e3a5ca546db3cd2c0aa9b183128bdd8402336d4117704db5346cefc4"
+    },
+    {
+      "name": "receiver_verify_week4",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\scripts\\verify_week4.py",
+        "--repo-root",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+        "--output-dir",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\results\\week4-r4",
+        "--expected-manifest-sha256",
+        "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/receiver_verify_week4.txt",
+      "log_sha256": "9680220c7eb20d961a1b8e43ef99cced2a787894335089597292673d2cd569a6"
+    },
+    {
+      "name": "receiver_test_week4",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\scripts\\test_week4.py",
+        "--repo-root",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+        "--output-dir",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\results\\week4-r4",
+        "--expected-manifest-sha256",
+        "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/receiver_test_week4.txt",
+      "log_sha256": "cbe70efc3c1ebec38b57a1a551fa5c477f1f481d5f1c6f513be9f7d63bd42e81"
+    },
+    {
+      "name": "receiver_verify_week3_sv2",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\scripts\\verify_week3_sv2.py",
+        "--package",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\artifacts\\week3\\mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+      ],
+      "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/receiver_verify_week3_sv2.txt",
+      "log_sha256": "eba022d2d0c719213bdd78c2a0210dc4b15fd0f6fe951a454583b197c729e439"
+    },
+    {
+      "name": "receiver_test_week3_sv2",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\scripts\\test_week3_sv2.py",
+        "--package",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\artifacts\\week3\\mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+      ],
+      "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/receiver_test_week3_sv2.txt",
+      "log_sha256": "affec1dafd371f6c73500c92fff6da98fc07f5ae577b249f55433601f247ace5"
+    },
+    {
+      "name": "receiver_test_week3_sv2_cache",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\scripts\\test_week3_sv2_cache.py"
+      ],
+      "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/receiver_test_week3_sv2_cache.txt",
+      "log_sha256": "7ffa61b142dbe236231b9aeee282785cb5f8f30e46f8987a48d448a1b1fad52f"
+    },
+    {
+      "name": "receiver_reproduction",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\scripts\\profile_week4.py",
+        "--repo-root",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+        "--output-dir",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\results\\week4-receiver-repro",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/receiver_reproduction.txt",
+      "log_sha256": "c9744f0f6ab3ef0e583e69cc106e65ba9ddec1046d0ec8df66b4efe2aee30079"
+    },
+    {
+      "name": "receiver_verify_reproduction",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\scripts\\verify_week4.py",
+        "--repo-root",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+        "--output-dir",
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout\\ml\\results\\week4-receiver-repro",
+        "--expected-manifest-sha256",
+        "43f901925415e02aa6640c2f836f2184e5dd9d7cb19ec07b9016cf95c92ce918",
+        "--compiler",
+        "C:/msys64/ucrt64/bin/gcc.exe"
+      ],
+      "cwd": "C:\\Users\\Admin\\AppData\\Local\\Temp\\week4_r4_checkout_r9h9rfs6\\checkout",
+      "commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+      "exit_status": 0,
+      "log_path": "ml/provenance/week4-r4/receiver_verify_reproduction.txt",
+      "log_sha256": "74c58a24c62793c900d734e6f264d52fe9cb930eb6712b0d8a3b94cb00dcd322"
+    }
+  ],
+  "manifest_sha256": "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a",
+  "historical_files_unchanged": true,
+  "no_source_overlay": true,
+  "limitations": [
+    "SV1 destination and receiver acknowledgement pending",
+    "Week 3 SV1 raw-data regression ran on generating committed checkout; receiver Week 4 needs no dataset"
+  ]
+}
