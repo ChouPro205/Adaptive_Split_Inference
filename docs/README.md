@@ -9,6 +9,11 @@ và báo cáo của dự án.
 - [Báo cáo SV1/Device (Châu) – Week 2](sv1_device_week2_report.md)
 - [Báo cáo SV1/Device (Châu) – Week 3](sv1_device_week3_report.md)
 - [Báo cáo SV1/Device (Châu) – Week 4](sv1_device_week4_report.md)
+- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 1](../ml/docs/reports/SV3_ML_week1_report.md)
+- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 2](../ml/docs/reports/SV3_ML_week2_report.md)
+- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 3](../ml/docs/reports/sv3_ml_week3_report.md)
+- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 4](../ml/docs/reports/sv3_ml_week4_report.md)
+- [Mục lục báo cáo SV3 và tài liệu bổ trợ](../ml/docs/reports/README.md)
 - [Kết quả và hình minh chứng Week 2](../results/week2/README.md)
 - [Kết quả MCU và timing Week 4](../results/week4/README.md)
 
