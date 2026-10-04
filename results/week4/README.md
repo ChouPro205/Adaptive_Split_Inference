@@ -1,5 +1,7 @@
 # SV1 tuần 4 — kiểm chứng MCU và timing R3
 
+[Báo cáo SV1/Châu tuần 4](../../docs/sv1_device_week4_report.md) trình bày mục tiêu, triển khai, kết quả và giới hạn nghiệm thu.
+
 **PASS trên nRF52840 Dongle PCA10059 thật, ngày 2026-10-02 (Asia/Saigon).**
 220/220 tensor PASS, chuỗi đổi sample/split 16/16 PASS, 1100/1100 lượt timing hợp lệ.
 Sai số lớn nhất `1.43051147e-05` tại sample 6 `MIT-BIH:105:1741:MLII`, s=9; tiêu chí strict `<1e-3`.
