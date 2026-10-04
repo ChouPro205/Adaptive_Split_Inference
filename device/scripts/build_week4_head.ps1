@@ -1,7 +1,9 @@
 param(
     [string]$NcsRoot = 'D:\ncs\v3.4.0',
     [string]$ToolchainRoot = 'D:\ncs\toolchains\dcbdc366a1',
-    [string]$ReportDir = 'D:\HUST\SV3_week4_R3\firmware-build',
+    [string]$ReportDir = 'D:\HUST\SV3_week4_R4\sv1-integration\new-build',
+    [string]$BuildDir,
+    [string]$Compiler = 'C:\msys64\ucrt64\bin\gcc.exe',
     [switch]$ReuseHostValidation,
     [switch]$PackageDfu
 )
@@ -10,41 +12,51 @@ param(
 $ErrorActionPreference = 'Continue'
 $RepoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $DeviceDir = Join-Path $RepoRoot 'device'
-$BuildDir = Join-Path $DeviceDir 'build-week4'
-$RegressionDir = Join-Path $DeviceDir 'build-week3-regression'
+if (-not $BuildDir) { $BuildDir = Join-Path $DeviceDir 'build-week4-r3-recheck' }
+$BuildDir = [System.IO.Path]::GetFullPath($BuildDir)
+$RegressionDir = $BuildDir + '-week3-regression'
 $MlPython = Join-Path $RepoRoot 'ml\.venv\Scripts\python.exe'
 $BoardTarget = 'nrf52840dongle/nrf52840'
 $OverlayPath = Join-Path $DeviceDir 'overlay-week4.conf'
-$DfuZipPath = Join-Path $DeviceDir 'artifacts\adaptive_split_week4_r3_fp32.zip'
+$DfuZipPath = Join-Path $DeviceDir 'artifacts\adaptive_split_week4_r3_recheck_fp32.zip'
 $HexPath = Join-Path $BuildDir 'zephyr\zephyr.hex'
 $ElfPath = Join-Path $BuildDir 'zephyr\zephyr.elf'
 
 foreach ($path in @($NcsRoot, $ToolchainRoot, $MlPython)) {
     if (-not (Test-Path -LiteralPath $path)) { throw "Required environment missing: $path" }
 }
+foreach ($target in @($BuildDir, $RegressionDir)) {
+    $devicePrefix = [System.IO.Path]::GetFullPath($DeviceDir).TrimEnd('\') + '\'
+    if (-not $target.StartsWith($devicePrefix, [System.StringComparison]::OrdinalIgnoreCase) -or
+        (Test-Path -LiteralPath $target)) {
+        throw "Choose a fresh build directory inside device; preserve accepted builds: $target"
+    }
+}
 New-Item -ItemType Directory -Force -Path $ReportDir | Out-Null
 Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
 if ($ReuseHostValidation) {
-    & $MlPython -B (Join-Path $PSScriptRoot 'generate_week4_inputs.py') --repo-root $RepoRoot
-    if ($LASTEXITCODE -ne 0) { throw 'R3 authentication failed' }
-    $reportPath = Join-Path $ReportDir 'week4_host_validation.json'
-    if (-not (Test-Path -LiteralPath $reportPath)) { throw 'Missing host verification report' }
-    $hostReport = Get-Content -Raw -LiteralPath $reportPath | ConvertFrom-Json
-    if ($hostReport.status -ne 'PASS' -or $hostReport.primary_tensors -ne 220 -or
-        $hostReport.week4_manifest_sha256 -ne '80e4cea3b70bdafef1b6925b208d4951a87bba4ff8cf10dbb6a671e36439635c') {
-        throw 'Host verification report is not accepted'
-    }
-    foreach ($entry in $hostReport.source_sha256.PSObject.Properties) {
-        $actual = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $RepoRoot $entry.Name)).Hash.ToLower()
-        if ($actual -ne $entry.Value) { throw "Host verification is stale: $($entry.Name)" }
-    }
-    Write-Output 'HOST_C: reuse PASS for identical source/generated SHA-256'
+    & $MlPython -B (Join-Path $PSScriptRoot 'verify_week4_host.py') --repo-root $RepoRoot --report-dir $ReportDir --reuse-report
+    if ($LASTEXITCODE -ne 0) { throw 'Host reuse/source authentication failed' }
 } else {
-    $hostOutput = & $MlPython -B (Join-Path $PSScriptRoot 'verify_week4_host.py') --repo-root $RepoRoot --report-dir $ReportDir 2>&1
+    $hostOutput = & $MlPython -B (Join-Path $PSScriptRoot 'verify_week4_host.py') --repo-root $RepoRoot --report-dir $ReportDir --compiler $Compiler 2>&1
     $hostExit = $LASTEXITCODE
     $hostOutput | Set-Content -Encoding UTF8 -LiteralPath (Join-Path $ReportDir 'host.log')
     $hostOutput | Write-Output
     if ($hostExit -ne 0) { throw "Host C validation failed: $hostExit" }
+}
+# Only install missing R3 tables; existing accepted headers must be identical.
+foreach ($name in @('week4_graph.h', 'week4_inputs.h')) {
+    $fresh = Join-Path (Join-Path $ReportDir 'generated') $name
+    $accepted = Join-Path (Join-Path $DeviceDir 'generated') $name
+    if (Test-Path -LiteralPath $accepted) {
+        if ((Get-FileHash -LiteralPath $fresh -Algorithm SHA256).Hash -ne
+            (Get-FileHash -LiteralPath $accepted -Algorithm SHA256).Hash) {
+            throw "Existing generated header differs; refusing overwrite: $accepted"
+        }
+    } else {
+        New-Item -ItemType Directory -Force -Path (Split-Path -Parent $accepted) | Out-Null
+        Copy-Item -LiteralPath $fresh -Destination $accepted
+    }
 }
 
 $toolchainPaths = @(
@@ -96,7 +108,7 @@ foreach ($path in @($HexPath, $ElfPath)) {
 
 # Return to ML Python's environment for artifact inspection, no ML gates.
 Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
-$auditOutput = & $MlPython -B (Join-Path $PSScriptRoot 'inspect_week4_memory.py') --repo-root $RepoRoot --report-dir $ReportDir --toolchain-root $ToolchainRoot 2>&1
+$auditOutput = & $MlPython -B (Join-Path $PSScriptRoot 'inspect_week4_memory.py') --repo-root $RepoRoot --build-dir $BuildDir --report-dir $ReportDir --toolchain-root $ToolchainRoot 2>&1
 $auditExit = $LASTEXITCODE
 $auditOutput | Set-Content -Encoding UTF8 -LiteralPath (Join-Path $ReportDir 'memory.log')
 $auditOutput | Write-Output

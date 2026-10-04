@@ -5,6 +5,70 @@ and the immutable all-split package `mitdb-week3-sv2-fp32-20261001-v1`.
 Its separate `CONFIG_APP_WEEK4_HEAD` selection and `main_week4.c` leave the
 Week 3 entry point and accepted Week 3 evidence intact.
 
+The official measurement remains **R3, 02/10/2026 (Asia/Saigon)**. Main now
+contains the R4 inventory fix from PR #18. `week4_handoff.py` authenticates
+all 21 current ML source bindings with the R4 anchor and all 21 historical
+R3 bindings from Git commit `c793c06385198accc964e0e60988d7e7a7e9b566`.
+It checks 27 R3/R4 payload files byte for byte (26 scientific files plus
+the host C report), every reused-file binding and immutable v1. It also
+requires identical scientific manifest fields. Headers, weights and the
+firmware banner continue to identify R3; this workflow does not create an
+R4 MCU measurement.
+
+Obtain both releases using the trusted receipt/bundle instructions for
+[R3](../ml/docs/sv3_sv1_week4_handoff_r3.md) and
+[R4](../ml/docs/sv3_sv1_week4_handoff_r4.md). Keep the historical source commit
+in local Git history; a shallow clone may need the authenticated R3 bundle.
+Hydrate each ZIP separately with the official `release_week4.hydrate()` API:
+
+```python
+import json, sys
+from pathlib import Path
+sys.path.insert(0, "ml/scripts")
+from release_week4 import hydrate
+for revision, folder in (("r3", "D:/HUST/SV3_week4_R3"),
+                         ("r4", "D:/HUST/SV3_week4_R4")):
+    delivery = Path(folder)  # receipts/ZIPs authenticated against trusted source first
+    receipt = json.loads((delivery / "deliverables.json").read_text(encoding="utf-8"))
+    hydrate(Path("."), delivery / f"mitdb-sv1-week4-fp32-20261001-{revision}.zip",
+            receipt["archive_sha256"], receipt["archive_size_bytes"], receipt["files"])
+```
+
+R3 and R4 stay in `ml/results/week4-r3` and `ml/results/week4-r4`.
+Hydration rejects different existing bytes before writing any member.
+Also obtain the authenticated Week 3 SV1 v2 package for P2 comparison
+using the [Week 3 guide](week3_fp32_guide.md). Ignored binaries are never
+added to Git.
+
+Offline recheck on the integrated checkout (reports outside the repo):
+
+```powershell
+Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
+$sv1CheckDir = 'D:\HUST\SV3_week4_R4\sv1-integration\manual-recheck'
+New-Item -ItemType Directory -Force -Path $sv1CheckDir | Out-Null
+$sv1R4Anchor = '3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a'
+& ml/.venv/Scripts/python.exe -B device/scripts/generate_week4_inputs.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor
+if ($LASTEXITCODE -ne 0) { throw 'Handoff authentication failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/verify_week4_host.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor --report-dir "$sv1CheckDir/host" --compiler C:/msys64/ucrt64/bin/gcc.exe
+if ($LASTEXITCODE -ne 0) { throw 'Host validation failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor --capture results/week4/logs/week4_capture.txt --report "$sv1CheckDir/capture.json" --bench-sample 0 --mixed-order
+if ($LASTEXITCODE -ne 0) { throw 'Capture recheck failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/test_week4_handoff.py
+if ($LASTEXITCODE -ne 0) { throw 'Compatibility regression failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/test_week4_capture.py --repo-root . --capture results/week4/logs/week4_capture.txt --work-dir "$sv1CheckDir/tamper"
+if ($LASTEXITCODE -ne 0) { throw 'Capture tamper regression failed' }
+```
+
+Only the child process environment loses NCS Python overrides. Keep the
+pinned venv/packages and system PATH. `--source-revision r3` is available
+for a checkout containing all original R3 source bindings; it rejects the
+current R4 checkout. An anchor for a different revision is always rejected.
+The checker retains the R3 banner/anchor and authenticates the original
+accepted report, compiled sources, generated headers and available old
+ELF/ZIP. Its new report records current R4 authentication separately from
+the 02/10 measurement provenance. Missing ignored historical binaries are
+reported as unavailable; they do not establish validation of a new image.
+
 From the repository root, build and optionally create a Nordic USB DFU ZIP:
 
 ```powershell
@@ -16,20 +80,27 @@ before comparison against all 20 x 11 golden tensors. It also checks reversed
 execution order, invalid arguments/commands, and bitwise P2 compatibility with
 the unmodified Week 3 C kernels. `-ReuseHostValidation` accepts an existing
 PASS report only when the recorded source/generated SHA-256 values still match.
+Both modes use the same Python authentication and reuse gate, including
+revision anchors, complete source bindings, reverse-order/P2 counts and
+strict tolerance. Old reports missing this authentication are rejected.
 Neither mode runs ML numerical gates, flash commands, or serial access.
 
 The script builds `nrf52840dongle/nrf52840` with existing NCS v3.4.0,
 `--no-sysbuild`, `prj.conf` and `overlay-week4.conf`. It also builds the original
 Week 3 target into a separate regression directory because CMake/Kconfig are
-shared. Build/generated files stay ignored; reports/logs default to
-`D:\HUST\SV3_week4_R3\firmware-build` (`-ReportDir` can override this).
+shared. Build/generated files stay ignored; reports/logs now default to
+`D:\HUST\SV3_week4_R4\sv1-integration\new-build` (`-ReportDir` can override this).
+The wrapper requires fresh build directories and never rebuilds into the
+accepted `device/build-week4`. Use `-BuildDir` to choose another fresh
+directory inside `device` and `-Compiler` for the verified host compiler.
 
 Outputs:
 
-- `device/build-week4/zephyr/zephyr.elf`, `.hex`, `.map`, `linker.cmd`.
-- `device/build-week3-regression/zephyr/zephyr.elf` (original Week 3 source).
-- `device/generated/week4_inputs.h` and `week4_graph.h` (regenerated from R3).
-- `device/artifacts/adaptive_split_week4_r3_fp32.zip` with `-PackageDfu`.
+- `device/build-week4-r3-recheck/zephyr/zephyr.elf`, `.hex`, `.map`, `linker.cmd`.
+- `device/build-week4-r3-recheck-week3-regression/zephyr/zephyr.elf` (original Week 3 source).
+- External `generated/week4_inputs.h` and `week4_graph.h`; the wrapper installs
+  missing R3 headers into `device/generated` and requires identical existing headers.
+- `device/artifacts/adaptive_split_week4_r3_recheck_fp32.zip` with `-PackageDfu`.
 - External `week4_host_validation.json`, `split_mapping.md`, `week4_memory.json`
   and build/ELF inspection logs.
 
@@ -39,11 +110,14 @@ Offline collector verification (text chunking only, no SerialPort or MCU data):
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\test_week4_collector.ps1
 ```
 
-`summarize_week4_preparation.py --repo-root . --report-dir <external folder>`
-checks saved build/host evidence and writes the external steps 1–3 report.
+The historical `summarize_week4_preparation.py` report belongs to the original
+R3 build. For integrated rechecks use the new host report, isolated-build
+memory report and capture report described above; keep the old receipt intact.
 
-Packaging refuses to overwrite an existing Week 4 ZIP. Omit `-PackageDfu` for
-subsequent builds, or retain/rename the older ZIP before creating another.
+Packaging refuses to overwrite an existing Week 4 ZIP. Keep the accepted
+`adaptive_split_week4_r3_fp32.zip` intact. Any new build/package is an
+unflashed R3 payload rebuild authenticated against current R4 ML source;
+MCU validation/timing for that new image remain PENDING.
 
 Weights are `static const` FP32 (438612 bytes). Two 5760-float static arrays
 alternate for Conv/Pool/Linear, with ReLU in place and Flatten/eval Dropout

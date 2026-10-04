@@ -1,51 +1,23 @@
-"""Authenticate R3 and generate input/graph tables; never modify ML artifacts."""
+"""Authenticate R3 payload with explicit R3/R4 source bindings; generate tables."""
 from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import json
 import math
 from pathlib import Path
 
 import numpy as np
 
-WEEK4_MANIFEST = "80e4cea3b70bdafef1b6925b208d4951a87bba4ff8cf10dbb6a671e36439635c"
-ALL_SPLIT_MANIFEST = "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
-PACKAGE = "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1"
-R3 = "ml/results/week4-r3"
+from week4_handoff import (ALL_SPLIT_MANIFEST, PACKAGE, R3, WEEK4_MANIFEST,
+                           authenticate_handoff, sha256)
 
 
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
-def authenticated_json(path: Path, expected: str) -> dict:
-    if sha256(path) != expected:
-        raise ValueError(f"Manifest anchor mismatch: {path}")
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def check_file(path: Path, entry: dict) -> None:
-    size = entry.get("file_size_bytes", entry.get("size_bytes"))
-    if (size is not None and path.stat().st_size != size) or sha256(path) != entry["sha256"]:
-        raise ValueError(f"Pinned file mismatch: {path}")
-
-
-def load_handoff(repo: Path) -> tuple[dict, dict, dict, np.ndarray, list[str]]:
+def load_handoff(repo: Path, source_revision: str = "r4",
+                 expected_source_anchor: str | None = None) -> tuple[dict, dict, dict, np.ndarray, list[str]]:
     r3 = repo / R3
     package = repo / PACKAGE
-    manifest = authenticated_json(r3 / "manifest.json", WEEK4_MANIFEST)
-    split_manifest = authenticated_json(package / "manifest.json", ALL_SPLIT_MANIFEST)
-    for entry in manifest["files"]:
-        check_file(r3 / entry["path"], entry)
-    for entry in split_manifest["files"]:
-        check_file(package / entry["path"], entry)
-    for entry in manifest["source_files"]:
-        # The accepted source policy normalizes UTF-8 CRLF to LF.
-        raw = (repo / entry["path"]).read_bytes().replace(b"\r\n", b"\n")
-        if hashlib.sha256(raw).hexdigest() != entry["sha256"]:
-            raise ValueError(f"Pinned ML source mismatch: {entry['path']}")
+    manifest, split_manifest, _ = authenticate_handoff(repo, source_revision, expected_source_anchor)
     graph = json.loads((r3 / "model_graph.json").read_text(encoding="utf-8"))
     inputs = np.load(package / "golden/z_s0.npy", allow_pickle=False)
     if inputs.shape != (20, 1, 360) or inputs.dtype.str != "<f4" or not np.isfinite(inputs).all():
@@ -76,10 +48,11 @@ def write_generated(path: Path, lines: list[str]) -> None:
         path.write_text(content, encoding="utf-8", newline="\n")
 
 
-def generate(repo: Path) -> tuple[dict, dict, dict, np.ndarray, list[str]]:
-    handoff = load_handoff(repo)
+def generate(repo: Path, source_revision: str = "r4", expected_source_anchor: str | None = None,
+             generated_dir: Path | None = None) -> tuple[dict, dict, dict, np.ndarray, list[str]]:
+    handoff = load_handoff(repo, source_revision, expected_source_anchor)
     _, splits, graph, inputs, ids = handoff
-    generated = repo / "device/generated"
+    generated = generated_dir if generated_dir is not None else repo / "device/generated"
     lines = ["/* Authenticated R3; exact normalized FP32 inputs, original order. */",
              "#ifndef WEEK4_INPUTS_H", "#define WEEK4_INPUTS_H",
              "#define WEEK4_SAMPLE_COUNT 20U",
@@ -129,11 +102,16 @@ def generate(repo: Path) -> tuple[dict, dict, dict, np.ndarray, list[str]]:
         lines.append(f"    {{ {len(shape)}, {{ {', '.join(map(str, padded))} }}, {math.prod(shape)} }},")
     lines.append("};")
     write_generated(generated / "week4_graph.h", lines)
-    print("R3_AUTHENTICATION: PASS; generated exact inputs and 25-op graph / 11 splits")
+    print(f"R3_PAYLOAD / {source_revision.upper()}_SOURCE: PASS; generated exact inputs and 25-op graph / 11 splits")
     return handoff
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path("."))
-    generate(parser.parse_args().repo_root.resolve())
+    parser.add_argument("--source-revision", choices=("r3", "r4"), default="r4")
+    parser.add_argument("--expected-source-anchor")
+    parser.add_argument("--generated-dir", type=Path)
+    args = parser.parse_args()
+    generate(args.repo_root.resolve(), args.source_revision, args.expected_source_anchor,
+             args.generated_dir.resolve() if args.generated_dir else None)

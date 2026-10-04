@@ -13,6 +13,7 @@ import numpy as np
 from generate_week4_inputs import PACKAGE, WEEK4_MANIFEST, load_handoff
 from generate_week3_inputs import check_inventory
 from check_week3_capture import read_capture as read_week3_capture
+from week4_handoff import accepted_r3_provenance, authenticate_handoff
 
 MIXED_SEQUENCE = [(19, 10), (0, 0), (7, 8), (3, 2), (19, 1), (0, 10),
                   (12, 0), (1, 9), (18, 4), (2, 7), (14, 6), (5, 3),
@@ -20,8 +21,11 @@ MIXED_SEQUENCE = [(19, 10), (0, 0), (7, 8), (3, 2), (19, 1), (0, 10),
 
 
 def check(repo: Path, capture: Path, report: Path, bench_sample: int | None = None,
-          mixed_order: bool = False) -> dict:
-    _, manifest, _, _, ids = load_handoff(repo)
+          mixed_order: bool = False, source_revision: str = "r4",
+          expected_source_anchor: str | None = None) -> dict:
+    _, manifest, _, _, ids = load_handoff(repo, source_revision, expected_source_anchor)
+    _, _, authentication = authenticate_handoff(repo, source_revision, expected_source_anchor)
+    provenance = accepted_r3_provenance(repo)
     old_package = repo / "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2"
     check_inventory(old_package)
     old_report = json.loads((repo / "results/week3/week3_mcu_validation_20x5.json").read_text(encoding="utf-8"))
@@ -143,6 +147,8 @@ def check(repo: Path, capture: Path, report: Path, bench_sample: int | None = No
     if any(line for line in lines[position:]):
         raise ValueError("Unexpected commands/trailing capture data")
     result = {"scope": "REAL_MCU_CAPTURE", "status": "PASS", "manifest_sha256": WEEK4_MANIFEST,
+              "handoff_authentication": authentication,
+              "accepted_r3_provenance": provenance,
               "capture": str(capture), "threshold_strict": 1e-3, "run_tensors": 220,
               "capture_sha256": hashlib.sha256(capture.read_bytes()).hexdigest(),
               "mixed_tensors": len(MIXED_SEQUENCE) if mixed_order else 0,
@@ -161,7 +167,9 @@ if __name__ == "__main__":
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--bench-sample", type=int)
     parser.add_argument("--mixed-order", action="store_true")
+    parser.add_argument("--source-revision", choices=("r3", "r4"), default="r4")
+    parser.add_argument("--expected-source-anchor")
     args = parser.parse_args()
     result = check(args.repo_root.resolve(), args.capture.resolve(), args.report.resolve(), args.bench_sample,
-                   args.mixed_order)
+                   args.mixed_order, args.source_revision, args.expected_source_anchor)
     print(f"MCU_220_OF_220: {result['status']}; timing={result['mcu_timing']}; report={args.report}")

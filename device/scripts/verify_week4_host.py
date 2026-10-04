@@ -15,6 +15,7 @@ import numpy as np
 
 from generate_week4_inputs import ALL_SPLIT_MANIFEST, PACKAGE, R3, WEEK4_MANIFEST, generate, sha256
 from generate_week3_inputs import check_inventory
+from week4_handoff import R4, authenticate_handoff
 
 
 class Shape(ctypes.Structure):
@@ -29,16 +30,54 @@ class Command(ctypes.Structure):
     _fields_ = [("type", ctypes.c_int), ("sample", ctypes.c_uint), ("split", ctypes.c_uint)]
 
 
+def host_source_hashes(repo: Path, source_revision: str) -> dict[str, str]:
+    sources = [
+        "device/src/week4_head.c", "device/src/week4_head.h",
+        "device/src/week4_protocol.c", "device/src/week4_protocol.h",
+        "device/src/week3_head.c", "device/src/week3_head.h",
+        "device/scripts/verify_week4_host.py", "device/scripts/generate_week4_inputs.py",
+        "device/scripts/generate_week3_inputs.py", "device/scripts/week4_handoff.py",
+        R3 + "/manifest.json", R3 + "/firmware/head_parameters.h",
+        "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2/firmware/head_parameters.h"]
+    source_manifest = repo / (R4 if source_revision == "r4" else R3) / "manifest.json"
+    sources.append(source_manifest.relative_to(repo).as_posix())
+    sources.extend(e["path"] for e in json.loads(source_manifest.read_text(encoding="utf-8"))["source_files"])
+    return {name: sha256(repo / name) for name in sources}
+
+
+def validate_reuse(report: dict, authentication: dict, source_hashes: dict, generated_hashes: dict) -> None:
+    expected = {"status": "PASS", "scope": "HOST_C_ONLY", "threshold_strict": 1e-3,
+                "primary_tensors": 220, "reverse_order_tensors": 220, "week3_p2_bitwise_samples": 20,
+                "week4_manifest_sha256": WEEK4_MANIFEST, "all_split_manifest_sha256": ALL_SPLIT_MANIFEST,
+                "handoff_authentication": authentication, "source_sha256": source_hashes,
+                "generated_sha256": generated_hashes, "skips": []}
+    for key, value in expected.items():
+        if report.get(key) != value:
+            raise ValueError(f"Host verification report is stale or unsupported: {key}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path("."))
-    parser.add_argument("--report-dir", type=Path, default=Path("D:/HUST/SV3_week4_R3/firmware-build"))
+    parser.add_argument("--report-dir", type=Path, default=Path("D:/HUST/SV3_week4_R4/sv1-integration/host"))
     parser.add_argument("--compiler", default="gcc")
+    parser.add_argument("--source-revision", choices=("r3", "r4"), default="r4")
+    parser.add_argument("--expected-source-anchor")
+    parser.add_argument("--reuse-report", action="store_true")
     args = parser.parse_args()
     repo = args.repo_root.resolve()
     report_dir = args.report_dir.resolve()
     report_dir.mkdir(parents=True, exist_ok=True)
-    manifest, splits, graph, inputs, ids = generate(repo)
+    generated = report_dir / "generated"
+    manifest, splits, graph, inputs, ids = generate(repo, args.source_revision, args.expected_source_anchor, generated)
+    _, _, authentication = authenticate_handoff(repo, args.source_revision, args.expected_source_anchor)
+    source_hashes = host_source_hashes(repo, args.source_revision)
+    generated_hashes = {str(generated / name): sha256(generated / name) for name in ("week4_graph.h", "week4_inputs.h")}
+    if args.reuse_report:
+        report = json.loads((report_dir / "week4_host_validation.json").read_text(encoding="utf-8"))
+        validate_reuse(report, authentication, source_hashes, generated_hashes)
+        print("HOST_C: reuse PASS for complete current source / historical R3 / generated bindings")
+        return
     compiler = shutil.which(args.compiler)
     if compiler is None:
         raise RuntimeError("Host compiler missing; cannot report host PASS")
@@ -60,7 +99,7 @@ def main() -> None:
         return dll
 
     head = compile_c("week4_head", ["device/src/week4_head.c", "device/src/week4_protocol.c"],
-                     [repo / "device/src", repo / "device/generated", repo / R3 / "firmware"])
+                     [repo / "device/src", generated, repo / R3 / "firmware"])
     head.week4_run_head.argtypes = [ctypes.c_uint, ctypes.POINTER(ctypes.c_float), ctypes.POINTER(Result)]
     head.week4_run_head.restype = ctypes.c_int
     head.week4_get_shape.argtypes = [ctypes.c_uint, ctypes.POINTER(Shape)]
@@ -165,17 +204,10 @@ def main() -> None:
                         "weights": [p["c_name"] for p in params],
                         "weight_bytes": sum(p["logical_tensor_bytes"] for p in params)})
     maxima = {str(s): max(r["max_abs_error"] for r in rows if r["split"] == s) for s in range(11)}
-    source_hashes = {s: sha256(repo / s) for s in [
-        "device/src/week4_head.c", "device/src/week4_head.h",
-        "device/src/week4_protocol.c", "device/src/week4_protocol.h",
-        "device/src/week3_head.c", "device/src/week3_head.h",
-        "device/scripts/verify_week4_host.py", "device/scripts/generate_week4_inputs.py",
-        "device/scripts/generate_week3_inputs.py",
-        "device/generated/week4_graph.h", "device/generated/week4_inputs.h",
-        R3 + "/firmware/head_parameters.h",
-        "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2/firmware/head_parameters.h"]}
     report = {"status": "PASS", "scope": "HOST_C_ONLY", "mcu_validation": "PENDING", "mcu_timing": "PENDING",
               "week4_manifest_sha256": WEEK4_MANIFEST, "all_split_manifest_sha256": ALL_SPLIT_MANIFEST,
+              "handoff_authentication": authentication,
+              "generated_sha256": generated_hashes,
               "compiler": compiler, "compiler_version": subprocess.check_output([compiler, "--version"], text=True).splitlines()[0],
               "python_version": sys.version, "compile_commands": commands, "threshold_strict": 1e-3,
               "primary_tensors": 220, "reverse_order_tensors": 220, "week3_p2_bitwise_samples": 20,

@@ -375,6 +375,74 @@ headers/công cụ, ELF và ZIP/application đều khớp. Kiểm số byte, s�
 stack và phép cộng used + remaining = limit cũng nhất quán.
 Không bổ sung bản sao dữ liệu, thư mục prepare/review hoặc hình mới vào results.
 
+### 10.1. Tái kiểm sau đồng bộ main/R4
+
+Ngày 04/10/2026, nhánh `dev/device-sv1` đồng bộ main sau
+[PR #18](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/18),
+commit main `23b2b7d3fa152fcc50296a93ff592b42e00af943`.
+Source ML hiện tại có fix inventory Windows/POSIX R4. **Phép đo chính thức
+vẫn là R3 ngày 02/10/2026**; banner, manifest, số liệu, source/image đã đo
+và JSON provenance lịch sử giữ nguyên.
+
+`device/scripts/week4_handoff.py` là cơ chế chung cho generator, host và
+checker. Loader xác thực manifest R4 bằng anchor
+`3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a`,
+kiểm toàn bộ **21 source bindings** trên checkout hiện tại. Đồng thời,
+manifest R3 giữ anchor cũ và **21 source bindings R3** được kiểm từ Git
+blobs ở commit export đã pin
+`c793c06385198accc964e0e60988d7e7a7e9b566`; không dùng HEAD thay commit
+lịch sử và không thực thi source lịch sử.
+
+**27/27 payload R3/R4 trùng bytes**, gồm 26 file khoa học và host C report.
+Mọi trường khoa học trong hai manifest và các reused-file bindings phải
+trùng; all-split v1 vẫn xác thực đủ inventory và anchor. Model/checkpoint,
+inputs, IDs/order, 11 goldens, 20 weights, header, graph, FP32 và tolerance
+không đổi. Generator tạo đúng headers R3 cũ; host sinh bản riêng ngoài
+repo. Report mới tách `handoff_authentication` của source R4 khỏi
+`accepted_r3_provenance` của phép đo, kiểm report chính thức bằng SHA,
+source đã biên dịch, generated headers và ELF/ZIP lịch sử khi có trên máy.
+
+Các gate sau đây được chạy mới trên checkout đã tích hợp bằng Python
+3.11.9/venv đã pin và GCC 13.2.0 MSYS2 UCRT64. Logs cũ không thay PASS:
+
+| Gate | Kết quả sau tích hợp |
+| --- | --- |
+| `verify_week4.py`, R4/anchor R4 | PASS: 11 splits, 220 golden bitwise, host C parameters |
+| `test_week4.py`, R4/anchor R4 | PASS: 21 tamper rejections, 4 monotonic cases, reproduction |
+| `verify_week3_sv2.py`, all-split v1 | PASS: 200 ONNX comparisons, strict `<1e-3` |
+| `test_week3_sv2.py`, all-split v1 | PASS: 17 expected rejections |
+| `test_week3_sv2_cache.py` | PASS: 15 tests; 1 SKIP symlink thật do WinError 1314; guard mô phỏng PASS |
+| `test_week4_release.py` | PASS: 6 tests hydrate/release |
+| `test_week4_handoff.py` | PASS: 11 tests; source hiện tại/lịch sử bị sửa, anchor/payload/revision/binding sai và stale reuse đều bị từ chối |
+| Generator, host C và host-reuse cập nhật | PASS: headers trùng byte; 220 forward + 220 reverse; P2 C tuần 3 bitwise 20/20 |
+| Checker capture đã lưu | PASS: 220 primary + 16 mixed + 11 BENCH, 1.100 cycles; P2 MCU tuần 3 bitwise 20/20 |
+| `test_week4_capture.py` | PASS: 20 tamper rejections, gồm đổi nhãn R3/R4 hoặc anchor banner |
+| Đối chiếu CSV/JSON với capture | PASS: 220 sai số, 1.100 cycles và thống kê mean/std/p95/min/max của 11 splits trùng chính xác |
+| Build riêng bằng NCS và audit bộ nhớ | PASS: Week 4 và hồi quy Week 3; wrapper không ghi đè build/headers/ZIP đã đo |
+
+Cách nhận đủ artifacts R3/R4/v1/v2, dùng API hydrate chính thức và tái kiểm
+capture trên source đã tích hợp nằm trong
+[guide firmware tuần 4](../device/week4_fp32_guide.md). Lệnh checker trong
+mục 10 mặc định xác thực source R4; `--source-revision r3` chỉ dành cho
+checkout chứa đủ source R3 đúng pin. Anchor khác revision bị từ chối.
+Host-reuse dùng cùng loader, yêu cầu đủ source/generated hashes và số ca
+forward/reverse/P2; report R3 cũ không tự được dùng lại như report tích hợp.
+
+Hồ sơ tích hợp ở `D:/HUST/SV3_week4_R4/sv1-integration`: snapshot SHA/size,
+versions, commands/exit codes, báo cáo host, capture recheck và đối chiếu
+khoa học. `results/week4` tiếp tục chỉ chứa bộ kết quả chính thức cùng README.
+Wrapper build mới yêu cầu output riêng, giữ `device/build-week4`, generated
+headers và ZIP đã nghiệm thu. **Không flash, mở COM hoặc đo lại dongle.**
+Build mới chưa flash có nghiệm thu MCU/timing riêng **PENDING**.
+Build Week 4 tái kiểm ở `device/build-week4-r3-recheck`, hồi quy Week 3 ở
+`device/build-week4-r3-recheck-week3-regression`; ELF mới khác hash ELF đã
+đo, được ghi riêng trong `new-build/week4_memory.json`. Footprint tĩnh của
+build Week 4 mới là Flash 523.424 B, RAM 65.464 B; không dùng report mới
+thay thế footprint hoặc high-water runtime chính thức của image ngày 02/10.
+Verifier đầy đủ trên Linux và ACK của Trung/SV2 vẫn **PENDING**; các gate
+Windows và mô phỏng POSIX không được ghi thành Linux PASS. Không gửi ACK
+hoặc sửa receipt lịch sử trong lượt tích hợp này.
+
 ## 11. Giới hạn chứng cứ và kết luận nghiệm thu
 
 - Timing chỉ dùng sample 0, 20 warm-up + 100 lượt/split, DWT 64 MHz và IRQ

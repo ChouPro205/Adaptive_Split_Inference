@@ -56,6 +56,10 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
 
 ## Tài liệu
 
+- [Báo cáo SV1/Device Week 4: 11 splits FP32](docs/sv1_device_week4_report.md)
+- [Bằng chứng MCU Week 4](results/week4/README.md) và
+  [hydrate/tái kiểm sau tích hợp R4](device/week4_fp32_guide.md): source ML
+  có fix R4, phép đo chính thức giữ provenance R3 ngày 02/10/2026.
 - [Báo cáo SV1/Device Week 1](docs/sv1_device_week1_report.md)
 - [Báo cáo SV1/Device Week 2](docs/sv1_device_week2_report.md)
 - [Kết quả đo Week 2](results/week2/README.md)

@@ -16,12 +16,13 @@ def number(value: str) -> int:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path("."))
-    parser.add_argument("--report-dir", type=Path, default=Path("D:/HUST/SV3_week4_R3/firmware-build"))
+    parser.add_argument("--build-dir", type=Path)
+    parser.add_argument("--report-dir", type=Path, default=Path("D:/HUST/SV3_week4_R4/sv1-integration/new-build"))
     parser.add_argument("--toolchain-root", type=Path, default=Path("D:/ncs/toolchains/dcbdc366a1"))
     args = parser.parse_args()
     repo = args.repo_root.resolve()
     output = args.report_dir.resolve()
-    zephyr = repo / "device/build-week4/zephyr"
+    zephyr = (args.build_dir.resolve() if args.build_dir else repo / "device/build-week4") / "zephyr"
     elf = zephyr / "zephyr.elf"
     tool_bin = args.toolchain_root / "opt/zephyr-sdk/gnu/arm-zephyr-eabi/bin"
     config = dict(re.findall(r'^(CONFIG_\w+)=(.*)$', (zephyr / ".config").read_text(), flags=re.M))

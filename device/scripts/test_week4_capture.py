@@ -22,6 +22,7 @@ def main() -> None:
     first_done = next(i for i, line in enumerate(lines) if line.startswith("DONE "))
     first_tensor = next(i for i, line in enumerate(lines) if line.startswith("TENSOR "))
     first_data = first_tensor + 1
+    ready = next(i for i, line in enumerate(lines) if line.startswith("READY "))
     end = next(i for i, line in enumerate(lines) if line.startswith("END "))
     # Preserve the complete valid capture for one-error mutations, so a test
     # cannot pass merely because the remaining 219 commands are absent.
@@ -33,6 +34,8 @@ def main() -> None:
         return changed
 
     fixtures = {
+        "wrong_release": replace(ready, first[ready].replace("WEEK4 R3", "WEEK4 R4")),
+        "wrong_manifest_anchor": replace(ready, first[ready].replace(first[ready].split()[3], "0" * 64)),
         "empty": [],
         "truncated_header": first[:first_tensor + 1],
         "missing_done": first[:first_done] + first[first_done + 1:],

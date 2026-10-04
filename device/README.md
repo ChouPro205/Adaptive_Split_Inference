@@ -25,6 +25,12 @@ xem [hướng dẫn tuần 4](week4_fp32_guide.md) và
 [kết quả MCU chính thức](../results/week4/README.md). Firmware tuần 3 tiếp tục dùng
 [hướng dẫn tuần 3](week3_fp32_guide.md) và script hiện có.
 
+Sau PR #18, source ML hiện tại có fix R4; loader SV1 xác thực anchor/source
+R4 và source R3 lịch sử đã pin, rồi đối chiếu payload trùng bytes. Phép đo
+chính thức vẫn là R3 ngày 02/10/2026. Cách hydrate đủ R3/R4/v1/v2, tái kiểm
+capture ngoại tuyến và build mới vào output riêng nằm trong guide tuần 4.
+ELF/ZIP đã đo và JSON/CSV/capture/hình chính thức được giữ nguyên.
+
 ## Build và tạo USB DFU ZIP
 
 Từ Git root:
