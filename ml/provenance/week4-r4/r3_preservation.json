@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "historical_files_checked": 389,
+  "historical_files_changed": [],
+  "r3_r4_scientific_files_byte_identical": [
+    "model_graph.json",
+    "tensor_profile.csv",
+    "tensor_profile.json",
+    "tensor_size_vs_split.pdf",
+    "tensor_size_vs_split.png",
+    "firmware/head_parameters.h",
+    "weights/classifier.2.bias.npy",
+    "weights/classifier.2.weight.npy",
+    "weights/classifier.4.bias.npy",
+    "weights/classifier.4.weight.npy",
+    "weights/features.0.bias.npy",
+    "weights/features.0.weight.npy",
+    "weights/features.10.bias.npy",
+    "weights/features.10.weight.npy",
+    "weights/features.12.bias.npy",
+    "weights/features.12.weight.npy",
+    "weights/features.15.bias.npy",
+    "weights/features.15.weight.npy",
+    "weights/features.17.bias.npy",
+    "weights/features.17.weight.npy",
+    "weights/features.2.bias.npy",
+    "weights/features.2.weight.npy",
+    "weights/features.5.bias.npy",
+    "weights/features.5.weight.npy",
+    "weights/features.7.bias.npy",
+    "weights/features.7.weight.npy"
+  ],
+  "r3_r4_all_changed_files": [
+    "manifest.json"
+  ],
+  "manifest_changed_fields": [
+    "source_git_commit",
+    "source_files"
+  ],
+  "source_files_changed": [
+    "ml/scripts/week3_sv2_common.py",
+    "ml/scripts/test_week3_sv2_cache.py"
+  ],
+  "host_c_verification_byte_identical": true,
+  "generation_commit_sha": "89109fd352d84a5fe0815d7e045e52538de7bad8"
+}

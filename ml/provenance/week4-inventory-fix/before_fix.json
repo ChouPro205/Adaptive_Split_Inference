@@ -1,0 +1,14 @@
+{
+  "name": "before_fix",
+  "command": [
+    "ml/.venv/Scripts/python.exe",
+    "-B",
+    "ml/scripts/test_week3_sv2_cache.py",
+    "InventoryOrderRegression.test_real_v1_posix_and_reverse_full_verifier"
+  ],
+  "commit_sha": "2506239d62f620a41b860f4487ca3ee58c349cd5",
+  "exit_status": 1,
+  "log_path": "ml/provenance/week4-inventory-fix/before_fix.txt",
+  "log_sha256": "f9f8e5dfc76051b5c2cbf1b929878291313d15583d4b619f1e2e43f33bc94f56",
+  "tree_state": "HEAD common.py unchanged; new regression tests in working tree"
+}

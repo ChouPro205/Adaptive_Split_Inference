@@ -1,0 +1,2 @@
+WEEK4_EXPORT_PASS: C:\Users\Admin\AppData\Local\Temp\week4_r4_checkout_r9h9rfs6\checkout\ml\results\week4-receiver-repro
+MANIFEST_SHA256: 43f901925415e02aa6640c2f836f2184e5dd9d7cb19ec07b9016cf95c92ce918

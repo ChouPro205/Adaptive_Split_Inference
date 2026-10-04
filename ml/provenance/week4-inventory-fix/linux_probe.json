@@ -1,0 +1,16 @@
+{
+  "name": "linux_probe",
+  "command": [
+    "wsl",
+    "-d",
+    "Ubuntu-24.04",
+    "--",
+    "python3",
+    "/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week4-r4/linux_probe.py"
+  ],
+  "commit_sha": "2506239d62f620a41b860f4487ca3ee58c349cd5",
+  "exit_status": 0,
+  "log_path": "ml/provenance/week4-inventory-fix/linux_probe.txt",
+  "log_sha256": "6d6c29df6d025fe31810b9a56728711a7de036e67766b097d8bf58f569e5f624",
+  "tree_state": "WSL stdlib path-order probe only; full Linux verifier pending"
+}

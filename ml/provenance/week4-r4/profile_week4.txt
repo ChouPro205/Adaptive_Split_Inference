@@ -1,0 +1,2 @@
+WEEK4_EXPORT_PASS: ml\results\week4-r4
+MANIFEST_SHA256: 3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a
