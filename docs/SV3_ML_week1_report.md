@@ -20,7 +20,7 @@ Tiêu chí gốc: **“Tập dữ liệu sẵn sàng; không có rò rỉ bệnh
 
 **IMPLEMENTATION DECISION.** MIT-BIH dùng beat MLII; PTB-XL giữ nguyên record 12 lead, không áp nguyên pipeline beat đơn lead. Nguồn phụ thuộc gồm PhysioNet, WFDB, môi trường Python/PyTorch và metadata bệnh nhân. Đầu ra cung cấp dữ liệu đã khóa cho SV3 làm baseline; không phải split activation gửi Device–Edge.
 
-Ngoài scope: train CNN, privacy attack, ONNX, quantization, khóa kiến trúc và firmware deployment. Nguồn dự án local cùng hash được kê ở mục 12; [traceability](../week1_requirements_traceability.md) và [protocol](../week1_data_protocol.md) là diễn giải versioned, không thay thế tài liệu yêu cầu gốc.
+Ngoài scope: train CNN, privacy attack, ONNX, quantization, khóa kiến trúc và firmware deployment. Nguồn dự án local cùng hash được kê ở mục 12; [traceability](../ml/docs/week1_requirements_traceability.md) và [protocol](../ml/docs/week1_data_protocol.md) là diễn giải versioned, không thay thế tài liệu yêu cầu gốc.
 
 ## 2. Starting state
 
@@ -30,7 +30,7 @@ Tại review 2026-09-17, PTB-XL chưa có downloader/config/manifest/verifier; i
 
 ## 3. Environment setup
 
-**OBSERVED RESULT:** [environment setup](../environment_setup.md), [verification](../week1_verification.md) và [run manifest](../../provenance/week1_run_manifest.json) ghi:
+**OBSERVED RESULT:** [environment setup](../ml/docs/environment_setup.md), [verification](../ml/docs/week1_verification.md) và [run manifest](../ml/provenance/week1_run_manifest.json) ghi:
 
 | Thành phần | Môi trường được ghi nhận |
 |---|---|
@@ -57,13 +57,13 @@ Nhánh CPU dùng `ml/requirements-cpu.txt` và `--mode cpu`. Review cũ ghi term
 
 ### 4.1 MIT-BIH
 
-[Config](../../configs/mitdb_week1_config.json) pin MIT-BIH Arrhythmia Database v1.0.0, nguồn `https://physionet.org/files/mitdb/1.0.0/`, DOI `10.13026/C2F305`, license Open Data Commons Attribution License v1.0. `download_mitdb.py` lấy checksum manifest và `.hea/.dat/.atr` của đúng 48 record trong `mitdb_expected_records.txt`. File non-empty có thể được giữ lại để tiếp tục tải; **verifier độc lập** mới quyết định integrity, không coi tồn tại file là đủ.
+[Config](../ml/configs/mitdb_week1_config.json) pin MIT-BIH Arrhythmia Database v1.0.0, nguồn `https://physionet.org/files/mitdb/1.0.0/`, DOI `10.13026/C2F305`, license Open Data Commons Attribution License v1.0. `download_mitdb.py` lấy checksum manifest và `.hea/.dat/.atr` của đúng 48 record trong `mitdb_expected_records.txt`. File non-empty có thể được giữ lại để tiếp tục tải; **verifier độc lập** mới quyết định integrity, không coi tồn tại file là đủ.
 
 Audit ghi 48/48 record và 144/144 file đúng checksum. Tất cả record có 360 Hz; bản audit `74e414e` ghi 650,000 sample/record. Chọn MLII theo tên: 46 record hợp lệ; 102 và 104 không có MLII nên loại khỏi preprocessing, vẫn kiểm integrity trong bộ 48 record; 114 dùng channel index 1.
 
 ### 4.2 PTB-XL
 
-[Config](../../configs/ptbxl_week1_config.json) pin v1.0.3, nguồn `https://physionet.org/files/ptb-xl/1.0.3/`, DOI `10.13026/kfzx-aw45`, license CC BY 4.0. Downloader lấy `SHA256SUMS.txt` về tên local `SHA256SUMS.official.txt`, `ptbxl_database.csv`, `scp_statements.csv`, `LICENSE.txt` và `.hea/.dat` qua `filename_lr`. Chỉ waveform chính thức 100 Hz được chọn, không tuyên bố đã tải bản 500 Hz.
+[Config](../ml/configs/ptbxl_week1_config.json) pin v1.0.3, nguồn `https://physionet.org/files/ptb-xl/1.0.3/`, DOI `10.13026/kfzx-aw45`, license CC BY 4.0. Downloader lấy `SHA256SUMS.txt` về tên local `SHA256SUMS.official.txt`, `ptbxl_database.csv`, `scp_statements.csv`, `LICENSE.txt` và `.hea/.dat` qua `filename_lr`. Chỉ waveform chính thức 100 Hz được chọn, không tuyên bố đã tải bản 500 Hz.
 
 **IMPLEMENTATION DECISION:** 10 giây × 100 Hz × 12 lead cho shape WFDB `(1000,12)`; giảm I/O so với 500 Hz mà giữ cấu trúc record 12 lead. Lead order là `I, II, III, AVR, AVL, AVF, V1, V2, V3, V4, V5, V6`. `scp_codes` giữ dictionary multi-label code → likelihood, canonical sorted JSON; mọi code phải thuộc `scp_statements.csv`. Không ép thành năm lớp AAMI.
 
@@ -131,7 +131,7 @@ Các đường dẫn sau tính từ repository root; nhóm file đều tồn t�
 
 ## 8. Verification and tests
 
-Nguồn máy đọc: [week1_run_manifest.json](../../provenance/week1_run_manifest.json), run từ `2026-09-18T07:30:05.817564+00:00` đến `2026-09-18T07:39:34.193627+00:00`, source `d6fde9884968c7ab316976ddec3b171ecdcd1946`, overall exit `0`. Bảng dưới là 19 lệnh **thực sự được manifest ghi lại**, không phải các lệnh vừa chạy để viết report.
+Nguồn máy đọc: [week1_run_manifest.json](../ml/provenance/week1_run_manifest.json), run từ `2026-09-18T07:30:05.817564+00:00` đến `2026-09-18T07:39:34.193627+00:00`, source `d6fde9884968c7ab316976ddec3b171ecdcd1946`, overall exit `0`. Bảng dưới là 19 lệnh **thực sự được manifest ghi lại**, không phải các lệnh vừa chạy để viết report.
 
 | Command | Purpose | Result |
 |---|---|---|
@@ -167,7 +167,7 @@ Negative suite ghi 34 child cases đều exit `1`, có lỗi tường minh, khô
 
 Năm mutation manifest phải báo đúng nguyên nhân, ví dụ `CSV contains no data rows`, `PTB-XL manifest row count mismatch`, `Duplicate ecg_id values in PTB-XL manifest`, `PTB-XL manifest ecg_id set mismatch`; lỗi hash ở bước sau không được tính là thành công của gate completeness. Test sử dụng thư mục tạm/hard link/copy, không sửa raw thật.
 
-[Verification](../week1_verification.md) còn ghi bốn positive mutation checks LF/CRLF PASS, PTB strict/normalization verifier dưới `python -O` PASS, và isolated fail-fast: child đầu exit `7`, chỉ chạy 1/2 command, runner exit `1`, không tạo sentinel. Các kiểm tra bổ sung này không nằm trong danh sách 19 command; exact invocation đầy đủ của fail-fast fixture: **NOT VERIFIED FROM REPOSITORY EVIDENCE**.
+[Verification](../ml/docs/week1_verification.md) còn ghi bốn positive mutation checks LF/CRLF PASS, PTB strict/normalization verifier dưới `python -O` PASS, và isolated fail-fast: child đầu exit `7`, chỉ chạy 1/2 command, runner exit `1`, không tạo sentinel. Các kiểm tra bổ sung này không nằm trong danh sách 19 command; exact invocation đầy đủ của fail-fast fixture: **NOT VERIFIED FROM REPOSITORY EVIDENCE**.
 
 ## 9. Key observed results
 
@@ -190,7 +190,7 @@ Năm mutation manifest phải báo đúng nguyên nhân, ví dụ `CSV contains 
 
 MIT train mean/std: `-0.2912026352134608` / `0.45653058276514263`; normalized train ≈ `-9.6210e-11` / `0.999999999635`. Bản `74e414e` còn ghi validation mean/std ≈ `-0.2587103347` / `1.1056936625`, test ≈ `-0.4544693434` / `1.0416752841`. Val/test không bắt buộc mean 0, std 1 vì dùng stats train.
 
-PTB normalized train: max absolute mean từng lead ≈ `1.235e-9`, max deviation std khỏi 1 ≈ `2.413e-9`, đều trong tolerance `1e-6`. Toàn bộ 12 mean/std gốc được bảo toàn trong [ptbxl_normalization.json](../../configs/ptbxl_normalization.json). Không suy các số này thành kết quả training PTB-XL.
+PTB normalized train: max absolute mean từng lead ≈ `1.235e-9`, max deviation std khỏi 1 ≈ `2.413e-9`, đều trong tolerance `1e-6`. Toàn bộ 12 mean/std gốc được bảo toàn trong [ptbxl_normalization.json](../ml/configs/ptbxl_normalization.json). Không suy các số này thành kết quả training PTB-XL.
 
 ## 10. Problems encountered and fixes
 

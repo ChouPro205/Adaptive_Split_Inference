@@ -1,11 +1,13 @@
 # Báo cáo SV3 ML tuần 1–4
 
+Bốn báo cáo tiến độ SV3 nằm tại [`docs/` ở thư mục gốc](../../../docs/README.md).
+
 | Tuần | Báo cáo | Nội dung |
 |---|---|---|
-| 1 | [SV3 ML Week 1 Report](SV3_ML_week1_report.md) | Môi trường, dữ liệu MIT-BIH/PTB-XL, preprocessing, patient split và verification |
-| 2 | [SV3 ML Week 2 Report](SV3_ML_week2_report.md) | Baseline CNN, training configuration, kết quả và provenance lịch sử |
-| 3 | [Báo cáo tiến độ SV3 tuần 3](sv3_ml_week3_report.md) | Freeze, 20 mẫu/golden, head/tail, ONNX, review và nghiệm thu SV1/SV2 |
-| 4 | [Báo cáo tiến độ SV3 tuần 4](sv3_ml_week4_report.md) | Profiling 11 splits, Figure 2, tham số/C99, R2→R3→R4 và trạng thái máy nhận/MCU |
+| 1 | [SV3 ML Week 1 Report](../../../docs/SV3_ML_week1_report.md) | Môi trường, dữ liệu MIT-BIH/PTB-XL, preprocessing, patient split và verification |
+| 2 | [SV3 ML Week 2 Report](../../../docs/SV3_ML_week2_report.md) | Baseline CNN, training configuration, kết quả và provenance lịch sử |
+| 3 | [Báo cáo tiến độ SV3 tuần 3](../../../docs/sv3_ml_week3_report.md) | Freeze, 20 mẫu/golden, head/tail, ONNX, review và nghiệm thu SV1/SV2 |
+| 4 | [Báo cáo tiến độ SV3 tuần 4](../../../docs/sv3_ml_week4_report.md) | Profiling 11 splits, Figure 2, tham số/C99, R2→R3→R4 và trạng thái máy nhận/MCU |
 
 Đây là bốn báo cáo tiến độ, không thay bằng audit/release notes. Báo cáo
 tuần 1–2 giữ nguyên tên và nội dung lịch sử; báo cáo tuần 3–4 lập ngày

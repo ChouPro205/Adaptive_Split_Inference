@@ -35,9 +35,9 @@ thời gian; phần thời gian thiết bị cần số đo của bên thực th
 | `Huong1_Bao_cao_trien_khai_3SV.docx` | 2.2, hàng tuần 4 | `60f83fa7c0779d11c888a8a104c5fa55be0c8c8b171f9d72e29cbba9efcc9a90` |
 | `06_Huong1_Adaptive_Split_Inference_Lo_trinh.docx` | Bài 4.1–4.2 | `c1dd459531796e8140ec965b517ce66fa6ac381d161d203e36e692041993f829` |
 
-Hash bản đọc khớp [reference list versioned](../../configs/week4_requirement_references.json).
+Hash bản đọc khớp [reference list versioned](../ml/configs/week4_requirement_references.json).
 DOCX local/ignored là nguồn tham khảo lịch sử, không phải input tính toán
-bắt buộc khi người nhận tái tạo R4. [Review tuần 4 ban đầu](../SV3_ML_week4_review.md)
+bắt buộc khi người nhận tái tạo R4. [Review tuần 4 ban đầu](../ml/docs/SV3_ML_week4_review.md)
 giữ diễn giải yêu cầu và kết quả trước R2; các PASS/commands ở đó không
 tự thay evidence clean checkout của R3/R4.
 
@@ -118,7 +118,7 @@ clone repo có profile/evidence nhỏ chưa đủ binaries để chạy verifier
 | 10 | `classifier.4` | `(1,5)` | NC | 5 | 20 | 5 |
 
 Nguồn số liệu: [profile JSON tại 3055bc4](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/3055bc403ea752f20699c454d67fdfafaada08b2/ml/results/week4-r4/tensor_profile.json)
-và [CSV](../../results/week4-r4/tensor_profile.csv). `numel=product(shape)`,
+và [CSV](../ml/results/week4-r4/tensor_profile.csv). `numel=product(shape)`,
 FP32 bytes = numel × 4, INT8 estimated bytes = numel × 1, KiB = B/1024.
 Ví dụ s2 có 2.880 phần tử = 11.520 B = 11,25 KiB FP32; golden batch 20
 có 230.400 B dữ liệu, file NPY 230.528 B do header 128 B.
@@ -130,12 +130,12 @@ allocator/workspace/stack hoặc tham số Flash vào payload tensor.
 
 ## 5. Figure 2 và kết luận không đơn điệu
 
-![Figure 2 kích thước tensor trung gian theo canonical split](../../results/week4-r4/tensor_size_vs_split.png)
+![Figure 2 kích thước tensor trung gian theo canonical split](../ml/results/week4-r4/tensor_size_vs_split.png)
 
 *Figure 2. Trục ngang s=0..10; trục dọc logical payload KiB cho N=1.
 Đường đen là FP32 thực, nét đứt xám là INT8 estimated/theoretical.
 Hình khoa học giữ nguyên qua R2/R3/R4; không chứa timing thiết bị.*
-Xem [PDF vector](../../results/week4-r4/tensor_size_vs_split.pdf).
+Xem [PDF vector](../ml/results/week4-r4/tensor_size_vs_split.pdf).
 
 **KẾT QUẢ QUAN SÁT:** `NON_MONOTONIC=true`, bốn transition tăng, sáu giảm,
 không transition bằng nhau. Max **23.040 B tại s1/s3**; min **20 B tại s10**;
@@ -188,7 +188,7 @@ SV1 host C forward và phép đo MCU là tầng evidence khác.
 
 | Revision/mốc | Lỗi/review và bản sửa | Evidence đúng phạm vi |
 |---|---|---|
-| R2, `1ef28806fa5533fa56afafe746ecb5008ae96c34` | Source CRLF gây hash lệch; thiếu binaries/source; reproduction phụ thuộc Git metadata; duplicate checkpoint/DOCX và compiler provenance. Schema 2, `sha256-utf8-lf-v1`, gói đủ, scientific comparison/invariants và local C bit-check | [Remediation R2](../pr17_remediation_r2.md); verifier/test clean checkout tại 1ef2880; không gán full historical suite cho SHA đó |
+| R2, `1ef28806fa5533fa56afafe746ecb5008ae96c34` | Source CRLF gây hash lệch; thiếu binaries/source; reproduction phụ thuộc Git metadata; duplicate checkpoint/DOCX và compiler provenance. Schema 2, `sha256-utf8-lf-v1`, gói đủ, scientific comparison/invariants và local C bit-check | [Remediation R2](../ml/docs/pr17_remediation_r2.md); verifier/test clean checkout tại 1ef2880; không gán full historical suite cho SHA đó |
 | Evidence/bundle R2, `416820f`, `5429689`, `96fe4ad` | Ghi clean checkout và self-contained bundle; receipt phân biệt source với evidence | [Audit R2 tại 2506239](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/2506239d62f620a41b860f4487ca3ee58c349cd5/ml/docs/week4_review2_audit.md); 18 historical regressions ghi HEAD 39231d0 với source sửa trong working tree, không phải 18 gate trên clean 1ef2880 |
 | Cache fix, `da4bebf06d015b4fce697eef08f97d1e92e086fd` | SV2 v1 sinh `__pycache__` sau export. Chỉ miễn cache CPython hợp lệ cạnh source đã giao; tắt cache writes ở entrypoints; frozen loader compile source bytes đã hash | R2 source-hash gate từ chối source mới, exit 1 `Source file changed`; giữ R2 manifest/ZIP, không nới gate |
 | R3 export, `c793c06385198accc964e0e60988d7e7a7e9b566` | Phát hành từ source đã commit/sạch, kế thừa cache fix; clone/hydrate ZIP và reproduce không overlay source | 18 release commands exit 0; cache suite 10 PASS + 1 symlink SKIP |
@@ -217,7 +217,7 @@ Nguồn: [audit inventory tại 3055bc4](https://github.com/ChouPro205/Adaptive_
 UTF-8/LF; raw manifest và binary/artifact vẫn hash byte thô. R3→R4 có
 26 scientific files và host C report trùng byte, tức **27 payload files**;
 chỉ manifest thay `source_git_commit` và hai source hashes
-`week3_sv2_common.py`, `test_week3_sv2_cache.py`. [Preservation R4](../../provenance/week4-r4/r3_preservation.json)
+`week3_sv2_common.py`, `test_week3_sv2_cache.py`. [Preservation R4](../ml/provenance/week4-r4/r3_preservation.json)
 ghi 389 file lịch sử không đổi; R3 trước đó bảo toàn 405 file trong phạm
 vi snapshot riêng, không cộng hai số như hai tập disjoint. R3 verifier
 đối với source R4 từ chối đúng thiết kế; không sửa anchor R3 để ép PASS.
@@ -233,13 +233,13 @@ Matplotlib 3.11.2. CPU FP32 dùng các điều kiện deterministic của tuần
 |---|---|---|
 | Release tại 89109fd | 18/18 commands exit 0, logs có SHA/cwd/commit | [commands.json tại 3055bc4](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/3055bc403ea752f20699c454d67fdfafaada08b2/ml/provenance/week4-r4/commands.json) |
 | Final bundle checkout tại 3055bc4 | 19/19 commands exit 0, sạch trước/sau, không overlay source | [r4-validation-logs.zip](https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/r4-validation-logs.zip), `final-checkout/commands.json`/`summary.json` |
-| Verifier tuần 4 | 11 splits, 220 golden bitwise, 109.653 C FP32 elements | [verify log](../../provenance/week4-r4/verify_week4.txt) |
-| Tuần 4 tamper/reproduction | 21 expected rejections, bốn monotonic cases; reproduction 26 scientific files trùng byte | [test log](../../provenance/week4-r4/test_week4.txt) |
-| Tuần 3 SV1 regression | Verifier PASS, 27 expected rejections | [verify](../../provenance/week4-r4/verify_week3.txt), [test](../../provenance/week4-r4/test_week3.txt) |
-| SV2 v1 nguyên bản | 200 ONNX comparisons, worst `2.6226043701171875e-6`, strict `<1e-3`; 17 expected rejections | [verify](../../provenance/week4-r4/verify_week3_sv2.txt), [test](../../provenance/week4-r4/test_week3_sv2.txt) |
-| Cache/inventory | 16 tests: 15 PASS + 1 SKIP thật do WinError 1314; guard symlink mô phỏng PASS; POSIX/reversed verifier đủ 200 comparisons | [suite log](../../provenance/week4-r4/test_week3_sv2_cache.txt) |
-| Release/hydration | Sáu tests PASS, vẫn reject các đường dẫn/member/source không hợp lệ | [release test log](../../provenance/week4-r4/test_week4_release.txt) |
-| Linux | WSL Ubuntu 24.04/kernel 6.18.33.2/Python 3.12.3 chỉ tái hiện Path ordering; thiếu dependencies pin | [probe](../../provenance/week4-inventory-fix/linux_probe.json); full verifier PENDING |
+| Verifier tuần 4 | 11 splits, 220 golden bitwise, 109.653 C FP32 elements | [verify log](../ml/provenance/week4-r4/verify_week4.txt) |
+| Tuần 4 tamper/reproduction | 21 expected rejections, bốn monotonic cases; reproduction 26 scientific files trùng byte | [test log](../ml/provenance/week4-r4/test_week4.txt) |
+| Tuần 3 SV1 regression | Verifier PASS, 27 expected rejections | [verify](../ml/provenance/week4-r4/verify_week3.txt), [test](../ml/provenance/week4-r4/test_week3.txt) |
+| SV2 v1 nguyên bản | 200 ONNX comparisons, worst `2.6226043701171875e-6`, strict `<1e-3`; 17 expected rejections | [verify](../ml/provenance/week4-r4/verify_week3_sv2.txt), [test](../ml/provenance/week4-r4/test_week3_sv2.txt) |
+| Cache/inventory | 16 tests: 15 PASS + 1 SKIP thật do WinError 1314; guard symlink mô phỏng PASS; POSIX/reversed verifier đủ 200 comparisons | [suite log](../ml/provenance/week4-r4/test_week3_sv2_cache.txt) |
+| Release/hydration | Sáu tests PASS, vẫn reject các đường dẫn/member/source không hợp lệ | [release test log](../ml/provenance/week4-r4/test_week4_release.txt) |
+| Linux | WSL Ubuntu 24.04/kernel 6.18.33.2/Python 3.12.3 chỉ tái hiện Path ordering; thiếu dependencies pin | [probe](../ml/provenance/week4-inventory-fix/linux_probe.json); full verifier PENDING |
 
 18 lệnh release gồm cả clone/checkout và gate trên local receiver clone;
 19 lệnh final bundle cũng gồm bundle/Git status/history checks. Không đổi
@@ -316,9 +316,9 @@ không lấy commit report làm commit build.
 | ELF image đã đo SHA | `d9a1ef3197705b0aa1d21d64d0420dbea2195dc27c7d36b53ddf89dff107e97c` |
 
 Nguồn công khai: [MCU JSON](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/076719a30d4de2304281d718910c4727deed97d3/results/week4/week4_mcu_validation.json),
-[timing summary](../../../results/week4/week4_timing_summary.csv),
-[footprint](../../../results/week4/week4_footprint.json) và
-[kết quả tuần 4 SV1](../../../results/week4/README.md).
+[timing summary](../results/week4/week4_timing_summary.csv),
+[footprint](../results/week4/week4_footprint.json) và
+[kết quả tuần 4 SV1](../results/week4/README.md).
 SV1 dùng nRF52840 Dongle PCA10059, CPU 64 MHz, NCS 3.4.0/Zephyr 4.4.0,
 GNU Arm GCC 14.3.0; host C của SV1 dùng GCC 13.2.0. Kernel vòng lặp C
 FP32 của dự án không được gọi là CMSIS-NN chỉ vì dùng CMSIS core/DWT.

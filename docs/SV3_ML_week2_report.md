@@ -18,7 +18,7 @@ Nguồn local có tại `ml/docs/project_sources/requirements/`, bị Git ignore
 
 ## 2. Inputs inherited from Week 1
 
-[Loader](../../src/mitdb_week2_data.py) đọc đúng config Week 1, patient manifest, normalization và processed manifest. X lưu `(N,360)` float32, khi đưa vào model chỉ `unsqueeze(1)` thành `(N,1,360)`; y int64, thứ tự `N/S/V/F/Q=0/1/2/3/4`.
+[Loader](../ml/src/mitdb_week2_data.py) đọc đúng config Week 1, patient manifest, normalization và processed manifest. X lưu `(N,360)` float32, khi đưa vào model chỉ `unsqueeze(1)` thành `(N,1,360)`; y int64, thứ tự `N/S/V/F/Q=0/1/2/3/4`.
 
 | Split | Patients | Records | Beats |
 |---|---:|---:|---:|
@@ -35,11 +35,11 @@ Giữ seed 30, patient-wise split và train mean/std `-0.2912026352134608` / `0.
 | Normalization | `37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c` |
 | Processed manifest | `f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c` |
 
-Chín hash X/y/metadata nằm trong [week2_run_manifest.json](../../provenance/week2_run_manifest.json), đồng nhất identifier Week 1. Không sửa manifest đó để khớp báo cáo.
+Chín hash X/y/metadata nằm trong [week2_run_manifest.json](../ml/provenance/week2_run_manifest.json), đồng nhất identifier Week 1. Không sửa manifest đó để khớp báo cáo.
 
 ## 3. Candidate model architecture
 
-Nguồn: [mitdb_baseline_model.py](../../src/mitdb_baseline_model.py), local `architecture.json` được hash trong manifest. Candidate `mitdb_week2_cnn_v1`, chưa architecture freeze cho Week 3.
+Nguồn: [mitdb_baseline_model.py](../ml/src/mitdb_baseline_model.py), local `architecture.json` được hash trong manifest. Candidate `mitdb_week2_cnn_v1`, chưa architecture freeze cho Week 3.
 
 | Learned layer | Module | In → out | Parameters |
 |---:|---|---|---:|
@@ -60,7 +60,7 @@ Tổng **10 learned layers, 109,653 trainable parameters**, FP32 mathematical pa
 
 ## 4. Training configuration
 
-Nguồn chuẩn: [mitdb_week2_baseline.json](../../configs/mitdb_week2_baseline.json), source trainer và `training_config.json` local.
+Nguồn chuẩn: [mitdb_week2_baseline.json](../ml/configs/mitdb_week2_baseline.json), source trainer và `training_config.json` local.
 
 | Setting | Giá trị thực |
 |---|---|
@@ -77,7 +77,7 @@ Nguồn chuẩn: [mitdb_week2_baseline.json](../../configs/mitdb_week2_baseline.
 | Sampler | `shuffle_train_only`; không replacement sampler hoặc oversampling |
 | Checkpoint selection | `validation_accuracy`, chỉ thay khi accuracy cao hơn |
 
-Loss/sampler không cân bằng lớp là đặc điểm baseline được giữ nguyên khi audit; không ngầm thêm weighting để che hạn chế S/F/Q. Môi trường historical run: CPython 3.11.9, PyTorch 2.14.0+cu130, CUDA 13.0 theo [baseline evidence](../week2_baseline.md).
+Loss/sampler không cân bằng lớp là đặc điểm baseline được giữ nguyên khi audit; không ngầm thêm weighting để che hạn chế S/F/Q. Môi trường historical run: CPython 3.11.9, PyTorch 2.14.0+cu130, CUDA 13.0 theo [baseline evidence](../ml/docs/week2_baseline.md).
 
 ## 5. Model-selection methodology
 
@@ -197,7 +197,7 @@ Review nhận ra `week1_common.py` và `mitdb_common.py` là transitive executab
 
 ## 12. Negative-test evidence
 
-Nguồn thực thi lịch sử: [PR #7 review evidence](../pr7_review_body.md); cơ chế được đối chiếu với [test source](../../src/test_week2_provenance.py).
+Nguồn thực thi lịch sử: [PR #7 review evidence](../ml/docs/pr7_review_body.md); cơ chế được đối chiếu với [test source](../ml/src/test_week2_provenance.py).
 
 | Case | Child command trong isolated snapshot | Exit/result |
 |---|---|---|
@@ -262,7 +262,7 @@ Trạng thái hiện tại khác draft này và được ghi ở phần riêng b
 
 ## 16. I3 status
 
-[I3_SV3_input.md](../../../contracts/I3_SV3_input.md): **OPEN**; SV3 consulted, không sở hữu final global `lut.json`. Theo nguồn phân công/báo cáo, các thành viên góp input, schema chung cần cross-team/GV phê duyệt. Ví dụ units `E_dev_uJ`, `t_dev_ms`, `bytes_payload` là input đã ghi, không phải full approved schema.
+[I3_SV3_input.md](../contracts/I3_SV3_input.md): **OPEN**; SV3 consulted, không sở hữu final global `lut.json`. Theo nguồn phân công/báo cáo, các thành viên góp input, schema chung cần cross-team/GV phê duyệt. Ví dụ units `E_dev_uJ`, `t_dev_ms`, `bytes_payload` là input đã ghi, không phải full approved schema.
 
 Chưa có `Pi(s,rho)`, định nghĩa/đơn vị `rho`, energy/latency/privacy measurement hoặc final field inventory/index/version/missing-value policy. #9 thêm lời nhắc I2 chỉ một transform cố định, synthetic vector không là LUT row. Không tạo LUT hoặc fabricate measurements trong Week 2 hay phiên báo cáo.
 
@@ -379,7 +379,7 @@ Tên phần này chỉ phạm vi quyết định phục vụ giai đoạn sau ba
 
 ### SV3 → SV1 handoff format finalized for Week 3
 
-[Handoff contract](../../../contracts/sv3_sv1_week3_model_handoff.md), thêm ở #8, chốt **format `w3-sv1-handoff-v1` bởi SV1**, chưa có hiện vật/nghiệm thu. Một thư mục `ml/artifacts/week3/<handoff_id>/`, revision ID bất biến; manifest UTF-8 khai source commit/checkpoint/config/env/seed/eval/dataset/preprocessing, file path tương đối, size/hash/format/dtype/shape. Binary/file giao hash raw bytes; text UTF-8 LF; upstream Week 1 giữ đúng hash policy gốc.
+[Handoff contract](../contracts/sv3_sv1_week3_model_handoff.md), thêm ở #8, chốt **format `w3-sv1-handoff-v1` bởi SV1**, chưa có hiện vật/nghiệm thu. Một thư mục `ml/artifacts/week3/<handoff_id>/`, revision ID bất biến; manifest UTF-8 khai source commit/checkpoint/config/env/seed/eval/dataset/preprocessing, file path tương đối, size/hash/format/dtype/shape. Binary/file giao hash raw bytes; text UTF-8 LF; upstream Week 1 giữ đúng hash policy gốc.
 
 Gói phải có README, manifest, `model/checkpoint.pt`, `model/train_config.json`, `model/graph.json`, `samples.csv`, `inputs.npy`, weights/bias hai Conv và op liên quan, `firmware/head_parameters.h`, `golden/<milestone_id>.npy`, `scripts/export_week3.py`, `scripts/verify_week3.py`. Đây là **tên file quy định**, không khẳng định đã tồn tại hoặc đã được tạo trong phiên này.
 
@@ -389,7 +389,7 @@ Tensor FP32 `<f4`, C-contiguous, activation NCL; Conv weights `(C_out,C_in/group
 
 ### I2 v1: what became normative after Week 2
 
-[i2_protection_v1.md](../../../contracts/i2_protection_v1.md) là current source of truth: **“QUY CÁCH KỸ THUẬT ĐƯỢC SV1 CHỐT; triển khai Device–Edge và xác nhận SV2/SV3 chưa hoàn tất.”** Version thuật toán/descriptor `I2/1` độc lập I1 protocol version. Nó thay thế draft #7 ở mức technical format, không chứng minh GV đã duyệt wire protocol.
+[i2_protection_v1.md](../contracts/i2_protection_v1.md) là current source of truth: **“QUY CÁCH KỸ THUẬT ĐƯỢC SV1 CHỐT; triển khai Device–Edge và xác nhận SV2/SV3 chưa hoàn tất.”** Version thuật toán/descriptor `I2/1` độc lập I1 protocol version. Nó thay thế draft #7 ở mức technical format, không chứng minh GV đã duyệt wire protocol.
 
 | Quyết định mở ở PR #7 | Normative ở #9 | Phần chưa được đóng |
 |---|---|---|
@@ -416,7 +416,7 @@ Còn mở: real model/split/quantization registry, activation INT8 thật, key p
 
 ### I1 v2 proposed versus finalized; I1 v1 preserved
 
-[I1 v2 proposal](../../../contracts/i1_device_edge_packet_v2_proposal.md) có status **ĐỀ XUẤT WIRE; CHƯA ĐƯỢC SV2 PHÊ DUYỆT, CHƯA TRIỂN KHAI**. Đề xuất giữ magic/header/CRC cơ bản, tăng `protocol_version=2`; request `flags=0x0002` là `I2_TRANSFORMED`, không mở reserved `0x0001`. Thêm `model_profile_id` 4 B trước tensor metadata; transformed request thêm descriptor 28 B và nonce 12 B; INT8/NCL/shape/length/profile lặp lại phải khớp. V1 parser từ chối v2, không fallback; unprotect trước dequantize theo kênh gốc.
+[I1 v2 proposal](../contracts/i1_device_edge_packet_v2_proposal.md) có status **ĐỀ XUẤT WIRE; CHƯA ĐƯỢC SV2 PHÊ DUYỆT, CHƯA TRIỂN KHAI**. Đề xuất giữ magic/header/CRC cơ bản, tăng `protocol_version=2`; request `flags=0x0002` là `I2_TRANSFORMED`, không mở reserved `0x0001`. Thêm `model_profile_id` 4 B trước tensor metadata; transformed request thêm descriptor 28 B và nonce 12 B; INT8/NCL/shape/length/profile lặp lại phải khớp. V1 parser từ chối v2, không fallback; unprotect trước dequantize theo kênh gốc.
 
 Các byte/schema này là **proposal**, chưa normative wire triển khai. SV1/SV2 còn phải duyệt statuses, transport, limits, duplicate cache, response/retry, packet vectors và cross-device tests; SV3 phải giao profile/quantization/activation/tail semantics thật. #9 sửa nội dung giải thích/trạng thái trong `i1_device_edge_packet_v1.md`, nhưng không đổi v1 byte/flag/nonce rules: v1 tiếp tục `flags=0`, `nonce_length=0`, cấm transformed payload và giữ `REVIEW_CANDIDATE`.
 

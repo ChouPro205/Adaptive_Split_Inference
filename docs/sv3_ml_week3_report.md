@@ -34,11 +34,11 @@ kết quả baseline tuần 2, không nhận đó là một lần train mới c�
 | `Huong1_Huong_dan_chi_tiet_tung_thanh_vien.docx` | A.3, tuần 2–3 | `75fcd76999af521a568b039c6983414217c59991d37b5591b85d211db927880d` |
 | `Huong1_Bao_cao_trien_khai_3SV.docx` | 2.2, tuần 3 | `60f83fa7c0779d11c888a8a104c5fa55be0c8c8b171f9d72e29cbba9efcc9a90` |
 
-Hai bản local có hash khớp [danh sách nguồn yêu cầu versioned](../../configs/week4_requirement_references.json).
+Hai bản local có hash khớp [danh sách nguồn yêu cầu versioned](../ml/configs/week4_requirement_references.json).
 DOCX không nằm trong Git; các hash định danh bản đã đọc, không tạo một link
 tải giả. Quy cách nghiệm thu kỹ thuật được cụ thể hóa trong
-[contract SV3–SV1](../../../contracts/sv3_sv1_week3_model_handoff.md) và
-[contract SV3–SV2](../../../contracts/sv3_sv2_week3_fp32.md): đúng model,
+[contract SV3–SV1](../contracts/sv3_sv1_week3_model_handoff.md) và
+[contract SV3–SV2](../contracts/sv3_sv2_week3_fp32.md): đúng model,
 mẫu, shape/layout/dtype; xác thực manifest bằng hash độc lập; mỗi ca MCU
 hoặc ONNX FP32 phải có `max(abs(output − reference)) < 1e-3` nghiêm ngặt.
 Không suy PASS từ việc PR đã merge hoặc lệnh hướng dẫn có trong README.
@@ -61,8 +61,8 @@ bổ sung evidence hoặc commit squash merge.
 | Hạn chế dữ liệu tham chiếu | Bộ 20 mẫu dùng để debug số học, không phải test accuracy hoặc đánh giá đủ năm lớp |
 
 Nguồn: [báo cáo tuần 2 giữ nguyên](SV3_ML_week2_report.md),
-[manifest run tuần 2](../../provenance/week2_run_manifest.json),
-[freeze config](../../configs/week3_model_freeze.json). Overall accuracy đạt
+[manifest run tuần 2](../ml/provenance/week2_run_manifest.json),
+[freeze config](../ml/configs/week3_model_freeze.json). Overall accuracy đạt
 ngưỡng hình thức nhưng không chứng minh khả năng phân loại tốt lớp thiểu
 số hay sử dụng y tế. Tuần 3 không đổi weights, kiến trúc, split bệnh nhân,
 normalization hoặc sample selection để cải thiện số liệu đó.
@@ -191,7 +191,7 @@ nếu manifest/log không ghi điều đó.
 | Gate | Kết quả quan sát | Nguồn/commit xác định phạm vi |
 |---|---|---|
 | SV1 v2 release verifier | PASS, external anchor, 20 raw-derived inputs, năm golden bitwise | [v2 verification tại 7960c47](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/7960c47ddc0165307ff245cb46c3327656a3ade6/ml/provenance/week3/mitdb-week3-fp32-20260925-v2.verification.json) |
-| SV1 negative suite | 27/27 expected rejections; production package không đổi | Cùng v2 verification và [release report](../week3_release.md) |
+| SV1 negative suite | 27/27 expected rejections; production package không đổi | Cùng v2 verification và [release report](../ml/docs/week3_release.md) |
 | C99 host parameter check SV1 | 1.392/1.392 FP32 bit patterns khớp; GCC 15.2.0 | Cùng v2 verification; không phải nRF52840 |
 | Reproduction SV1 v2 | 27 file trùng byte; README/manifest khác vì ID mới | Cùng v2 verification |
 | PyTorch head/tail | 220/220, max error 0 ở cả 11 splits | [numerical tại 6e9af10](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/6e9af108b7b0c39d63bc1c8dbbfbf4fcbf89c67e/ml/provenance/week3/mitdb-week3-sv2-fp32-20261001-v1.numerical.json), source dd1d456 |
@@ -218,7 +218,7 @@ không chuyển kết quả đó thành Linux, DPU hoặc INT8 PASS.
 
 | Mốc | Vấn đề và cách xử lý | Giới hạn chronology |
 |---|---|---|
-| Review r1 → r2, 25/09 | r1 sai bit tại M1: 224 phần tử, max `5.960464477539063e-8`; singleton-channel stride đổi sau NPY serialization. Canonicalize và load input thực đã giao trước khi tính golden; r2 giữ bit equality | [Review evidence](../week3_review_evidence.md) ghi lỗi trước official release; không có SHA riêng cho mọi lần thử tiền commit |
+| Review r1 → r2, 25/09 | r1 sai bit tại M1: 224 phần tử, max `5.960464477539063e-8`; singleton-channel stride đổi sau NPY serialization. Canonicalize và load input thực đã giao trước khi tính golden; r2 giữ bit equality | [Review evidence](../ml/docs/week3_review_evidence.md) ghi lỗi trước official release; không có SHA riêng cho mọi lần thử tiền commit |
 | `4d65849bf11cab40f79026f27130fdbe44d82c58` | Freeze/boundary hai bên đã chốt; phát hành SV1 v1 | v1 sau đó bị supersede về assurance, không phát hiện tensor khoa học sai |
 | `7960c47ddc0165307ff245cb46c3327656a3ade6` | Sau review SV1: yêu cầu external manifest anchor trước parse, pin model_version, bắt buộc test script; fixtures dtype/NaN/identity/shape đi tới đúng semantic gate; phát hành v2 | Sáu file đổi; 23 file trùng byte, gồm 14 scientific payload files; r2/v1 không sửa tại chỗ |
 | Audit 30/09 → `dd1d4562062202c6721a03a81a7f2cfa29867c00`, 01/10 | Interface SV2 ban đầu thiếu quyết định; sau xác nhận nhóm mới chốt mapping/opset và export all-split | `BLOCKED_ON_SV2_INTERFACE` trong tài liệu cũ là trạng thái lịch sử; hiện tại FP32 contract CONFIRMED |
@@ -254,14 +254,14 @@ vào main qua PR15 `bd64c3859e9ce8493e7115285cfbb3dc1f8f3859`.
 
 Nguồn: [SV1 report tại PR15](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/bd64c3859e9ce8493e7115285cfbb3dc1f8f3859/docs/sv1_device_week3_report.md),
 [JSON 20×5](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/bd64c3859e9ce8493e7115285cfbb3dc1f8f3859/results/week3/week3_mcu_validation_20x5.json),
-[CSV sai số](../../../results/week3/week3_milestone_errors_20x5.csv).
+[CSV sai số](../results/week3/week3_milestone_errors_20x5.csv).
 SV3 kiểm lại capture đã lưu và đối chiếu hash, không nhận công port/DFU/đo
 dongle của SV1. Kết quả SV1 tuần 4 mới nhất cũng xác nhận P2 bitwise 20/20
 với MCU tuần 3; đó là evidence bổ sung sau tuần 3.
 
 **TRẠNG THÁI SV2.** Nhánh `origin/dev/edge-sv2` mới nhất là
 `881f3c1ebfb41425f4ee65ccb3c6f97a03dcc301`, có báo cáo tuần 2. Báo cáo
-[SV2 tuần 2](../../../docs/sv2_edge_week2_report.md) ghi thử ResNet18,
+[SV2 tuần 2](sv2_edge_week2_report.md) ghi thử ResNet18,
 chưa chạy board; đây không phải nghiệm thu ECG all-split. Không thấy
 report/log Linux full verifier hoặc ACK SV2 mới hơn trong nguồn đã kiểm.
 PR17/18/19 không có comment ACK tại thời điểm chốt. Thiếu evidence không
@@ -271,10 +271,10 @@ cho phép kết luận SV2 chưa từng làm ngoài repo.
 
 | Deliverable | Định danh/trust anchor | Nguồn công khai và cách kiểm |
 |---|---|---|
-| SV1 v2 | Manifest `0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469`; ZIP `d5511f8c5ebfb1e9eced4aea2f8e89a20dd142b79987a40f6a3347d33d7481eb` | [Exact manifest](../../provenance/week3/mitdb-week3-fp32-20260925-v2.manifest.json), [release/commands](../week3_release.md); binary ngoài Git, clone riêng chưa đủ |
-| SV2 all-split v1 | Manifest `a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6`; ZIP gốc `b7f5b8d0bcd5ec27755f3e44541c0d24a6d23bdd27e199660a7b653bc30a71c7` | [Exact manifest](../../provenance/week3/mitdb-week3-sv2-fp32-20261001-v1.manifest.json), [audit/numerical](../week3_sv2_split_audit.md); nguyên folder 41 file còn được giao trong ZIP R3/R4 |
-| Source verifier đã sửa | Export/fix `89109fd`; bàn giao `3055bc4`; đã vào main qua PR18 `23b2b7d` | [Release R4](https://github.com/ChouPro205/Adaptive_Split_Inference/releases/tag/sv3-week4-r4-20261003), [hướng dẫn nhận](../sv3_sv1_week4_handoff_r4.md); không thay scripts bên trong v1 |
-| Evidence thiết bị | SV1 capture/JSON/CSV với IDs, shape, bit FP32, hash và firmware provenance | [Kết quả tuần 3](../../../results/week3/week3_mcu_validation_20x5.json); nghiệm thu per sample/milestone |
+| SV1 v2 | Manifest `0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469`; ZIP `d5511f8c5ebfb1e9eced4aea2f8e89a20dd142b79987a40f6a3347d33d7481eb` | [Exact manifest](../ml/provenance/week3/mitdb-week3-fp32-20260925-v2.manifest.json), [release/commands](../ml/docs/week3_release.md); binary ngoài Git, clone riêng chưa đủ |
+| SV2 all-split v1 | Manifest `a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6`; ZIP gốc `b7f5b8d0bcd5ec27755f3e44541c0d24a6d23bdd27e199660a7b653bc30a71c7` | [Exact manifest](../ml/provenance/week3/mitdb-week3-sv2-fp32-20261001-v1.manifest.json), [audit/numerical](../ml/docs/week3_sv2_split_audit.md); nguyên folder 41 file còn được giao trong ZIP R3/R4 |
+| Source verifier đã sửa | Export/fix `89109fd`; bàn giao `3055bc4`; đã vào main qua PR18 `23b2b7d` | [Release R4](https://github.com/ChouPro205/Adaptive_Split_Inference/releases/tag/sv3-week4-r4-20261003), [hướng dẫn nhận](../ml/docs/sv3_sv1_week4_handoff_r4.md); không thay scripts bên trong v1 |
+| Evidence thiết bị | SV1 capture/JSON/CSV với IDs, shape, bit FP32, hash và firmware provenance | [Kết quả tuần 3](../results/week3/week3_mcu_validation_20x5.json); nghiệm thu per sample/milestone |
 
 Người nhận xác thực ZIP/size và anchor từ checkout/kênh tin cậy độc lập
 trước khi hydrate; chạy verifier từ trusted source checkout với anchor
