@@ -1,0 +1,30 @@
+[
+  {
+    "command": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/test_week5_quantization.py"
+    ],
+    "exit_code": 0,
+    "log": "ml\\provenance\\week5\\quantization_tests.txt"
+  },
+  {
+    "command": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-O",
+      "-B",
+      "ml/scripts/test_week5_quantization.py"
+    ],
+    "exit_code": 0,
+    "log": "ml\\provenance\\week5\\quantization_optimized_tests.txt"
+  },
+  {
+    "command": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "contracts/i2_ref/test_i2.py"
+    ],
+    "exit_code": 0,
+    "log": "ml\\provenance\\week5\\i2_existing_tests.txt"
+  }
+]

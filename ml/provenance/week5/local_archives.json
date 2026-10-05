@@ -1,0 +1,2284 @@
+{
+  "status": "LOCAL_ARCHIVES_VERIFIED_NOT_YET_UPLOADED",
+  "assets": [
+    {
+      "name": "mitdb-frozen-processed-week5-v1.zip",
+      "repository_path": "ml/artifacts/week5/mitdb-frozen-processed-week5-v1.zip",
+      "size_bytes": 33098461,
+      "sha256": "b95d169f7cf454f11d21a858f6fee6f526347294f6673874318521a11ae8b0bf",
+      "files": [
+        {
+          "path": "ml/data/processed/mitdb/processed_manifest.json",
+          "size_bytes": 1676,
+          "sha256": "63bc21fa51e0e78ae0e3fcbf5aaf60cf5999733f4c861ba916aa26d18dfe6597"
+        },
+        {
+          "path": "ml/data/processed/mitdb/test_metadata.csv",
+          "size_bytes": 254887,
+          "sha256": "ddd333125a68796eaed26794a2ed75772dd262447b0866a9f5f5571b096bc836"
+        },
+        {
+          "path": "ml/data/processed/mitdb/test_X.npy",
+          "size_bytes": 12303488,
+          "sha256": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e"
+        },
+        {
+          "path": "ml/data/processed/mitdb/test_y.npy",
+          "size_bytes": 68480,
+          "sha256": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6"
+        },
+        {
+          "path": "ml/data/processed/mitdb/train_metadata.csv",
+          "size_bytes": 2435521,
+          "sha256": "7c5bd855362ab1e4f3a789252e23d12f69507e1a027008402d6b5f9c042c1210"
+        },
+        {
+          "path": "ml/data/processed/mitdb/train_X.npy",
+          "size_bytes": 116775488,
+          "sha256": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f"
+        },
+        {
+          "path": "ml/data/processed/mitdb/train_y.npy",
+          "size_bytes": 648880,
+          "sha256": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752"
+        },
+        {
+          "path": "ml/data/processed/mitdb/val_metadata.csv",
+          "size_bytes": 459176,
+          "sha256": "b012ae326b34d5e0160987f2c80485a90f59627380ff8285e7df59761df6b160"
+        },
+        {
+          "path": "ml/data/processed/mitdb/val_X.npy",
+          "size_bytes": 22158848,
+          "sha256": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732"
+        },
+        {
+          "path": "ml/data/processed/mitdb/val_y.npy",
+          "size_bytes": 123232,
+          "sha256": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43"
+        }
+      ]
+    },
+    {
+      "name": "sv3-week5-quantization-reference-v1.zip",
+      "repository_path": "ml/artifacts/week5/sv3-week5-quantization-reference-v1.zip",
+      "size_bytes": 807817,
+      "sha256": "3105bc879af3c4d9d4eb87725c7d165328649afd1c5dd28fe1786fe66dc4ff7b",
+      "files": [
+        {
+          "path": "ml/artifacts/week5/quantization20/manifest.json",
+          "size_bytes": 366544,
+          "sha256": "8e20ed054462dda8f99815f20c817de36d21fdc1c5bf112cd2da5f67cdbf29bd"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_00.i8.bin",
+          "size_bytes": 360,
+          "sha256": "c76f3f9ba9a79f5e475a3e07a2a51be430768a79f4590a1ea60e5ad776cb5c32"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_00.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "09f03db258d99145eaff90c394482ee910e0938c93bfe4f576768c30a0b3c53c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_01.i8.bin",
+          "size_bytes": 360,
+          "sha256": "16c32eb22690a744f11135d70059615cee4475e446286e25bb1c3e47de93265f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_01.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "8c28d2c062bdbef808815c8257be0656b229f21600e2f4b87953dbbf3cf53974"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_02.i8.bin",
+          "size_bytes": 360,
+          "sha256": "21c7b6d849f1d6fad719aad4e4e1d89f3e09b4b6377a1f22a9e15e83156e4228"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_02.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "a43f8b4cabe3261f62322c2524fc7445592d482460612bd98ba6f67c0ecddddf"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_03.i8.bin",
+          "size_bytes": 360,
+          "sha256": "6a418ba2a40f3c6e3e220d0517b5f8f8f9ffb2504ee5cc106fa8bbcc3c47d60c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_03.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "09f03db258d99145eaff90c394482ee910e0938c93bfe4f576768c30a0b3c53c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_04.i8.bin",
+          "size_bytes": 360,
+          "sha256": "adbd6ebbf59871fc9a14f2671337fb50e4e0477d9d4852e81673e56f6e9a57ee"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_04.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "9fcd388ad4fb6fd59e12c56da64c7a9b418b311416a15de00acde72ababbee67"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_05.i8.bin",
+          "size_bytes": 360,
+          "sha256": "cf30b4a0e51c138f1aa0afa247ca7f986a0c77140b45ff1aad485288408f4599"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_05.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "e7cd823d26cd5b85c49bb487e9897259299e54f4abaab531b2668274df1c84bd"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_06.i8.bin",
+          "size_bytes": 360,
+          "sha256": "54e501675b1e0058bcda48fe41bbf8e574b4484176843d8e15c1d6df9d8c0046"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_06.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "3328e411e10348295b007bcc6c296cfb67a2d765778ddc2f1519a5d0b3b7eb6a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_07.i8.bin",
+          "size_bytes": 360,
+          "sha256": "eff5dbba9f6154e9bae59c9421b17d4018bb82970d9c6195fe0f01a42b5df288"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_07.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "3328e411e10348295b007bcc6c296cfb67a2d765778ddc2f1519a5d0b3b7eb6a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_08.i8.bin",
+          "size_bytes": 360,
+          "sha256": "4ba4fd3cc4fe7ea25b056ddcdc2c98b326329ec08f777178027b561a4873c0ce"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_08.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "6aed3db89a266c1767cad6670c940e12147e408113370dd0c331451083322985"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_09.i8.bin",
+          "size_bytes": 360,
+          "sha256": "4ce6e5c93cf512db37602cf9e74345309db665a9d8a6939ffe14c60fd3e1320d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_09.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "9d8d20c0e7edf979c57d02d238965dbcd04b40ef876dcd3f1251e2718951c6ba"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_10.i8.bin",
+          "size_bytes": 360,
+          "sha256": "6804bfd1ab686346952f0d7b9f98036e4faebc0d8fa92de251e634ffbd359e7e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_10.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "8fa9c673426f1eef850ca6165ba8b02732505aacc1018fc8761b35b2c87e2039"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_11.i8.bin",
+          "size_bytes": 360,
+          "sha256": "c0936cacc2704485d727e2f74b3a9cd58837a323ff2684977537fbccf705b958"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_11.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "ad754c80eab6f7f98db2acb955042ef4474db4b94f4766ef8755f57bb865867e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_12.i8.bin",
+          "size_bytes": 360,
+          "sha256": "952d3878d4a61580578c3af41e9a55e14c89d6028a755e432f13d633d60685d1"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_12.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "fce1668df9c4a580fff858c418af2efc67a1d51c0ec689a7934df336e195489f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_13.i8.bin",
+          "size_bytes": 360,
+          "sha256": "176f5243afe7eed5f01d06f21c445d83a1e9f38b0a8788611ea6c81013ab30d4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_13.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "80275cc873a81df30fe9e3fc30057e8edcf775d8e46f4b06ac0b99c55d6ce8b3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_14.i8.bin",
+          "size_bytes": 360,
+          "sha256": "4495d81dc745a6a18e5b36b80c1551fbe883872da0a4b7220c0cd81ed7bb09c4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_14.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "9fcd388ad4fb6fd59e12c56da64c7a9b418b311416a15de00acde72ababbee67"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_15.i8.bin",
+          "size_bytes": 360,
+          "sha256": "c7a8eac9cbd81512f34033e78872aa2b038af9e12a01b443eaa8cc8c7021e710"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_15.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "3b3ea8c53ca306020c665444f8deb85d0aeb010697bb7d3dd739079c03e9c702"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_16.i8.bin",
+          "size_bytes": 360,
+          "sha256": "9d41478666bf4e8a1779f2ce19f73c9fc84200993ebd9c8bf2cae09440101584"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_16.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "8c28d2c062bdbef808815c8257be0656b229f21600e2f4b87953dbbf3cf53974"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_17.i8.bin",
+          "size_bytes": 360,
+          "sha256": "1b3702320ef5ab6a5664a8d2ddda0555ea7da53d653556b695756e3709cd9d22"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_17.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "468fbe0780867cfb66bedb8388121fd723d3b07d04bb5d83ede5a7a6766b78be"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_18.i8.bin",
+          "size_bytes": 360,
+          "sha256": "2cffa31448b751aecffa6527a83b83e943595682330ee24267684f310bf867ee"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_18.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "3328e411e10348295b007bcc6c296cfb67a2d765778ddc2f1519a5d0b3b7eb6a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_19.i8.bin",
+          "size_bytes": 360,
+          "sha256": "4278d5f3a4bcb417e21210fc6bcb84cb916ffe4d2399af6ffebccd5e763325a2"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s0/sample_19.scale.f16le.bin",
+          "size_bytes": 2,
+          "sha256": "2129735808606e010cec05a322c4253ab82503aa0064d19d1c606626f180fa7e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_00.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "f0f72015c9c0ddde549a1a9b45dbd18d564986ab1c1a1c454db8b347f3458e38"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_00.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "68b9be989f5e09671b1597923078d41edbf1f204b882f52ec892b043a6cbca47"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_01.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "c40aa8982b2b3ba46f5e6e3aebbd1a55609daa1e553b529dee01288e6bb4bf32"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_01.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "b6bb458b01c1cbafa56ad1df77cdfdde2434b559fede540d2404a1a732142284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_02.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "ebd5d6a95f4e65e0d9d6dc0a0d32b9a7872a6cfc87661ba693b9bdf4bad08c95"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_02.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "276e48b441f0164334d362c023bc236ab1d07091e50d778b2ebc6b5857b9822c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_03.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "47ffe800c51b74a51f25f8e67a84051879fda0ea9dd34f38b66965ea8cb0497c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_03.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "774f5dd420d0dd11d06edd0e2ffd416150f3a0eff93febbec96a32cc578b36a4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_04.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "1572fb399eeed7000766b88901b02d02ce608f4aa372096053a1a8fd60053b08"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_04.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "f3e7117a30561e4a83ad9199f6caf62dcb650244d814c72c084f53f799877f1c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_05.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "510ddcc28ece88a39f8cd07bc1bd0a1ff878f443c83a61ddae7281f3c93e6e96"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_05.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "21f01ca2880831c166d7c4c07a51392cf1092363507723e18df3cad4164b6bcc"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_06.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "c917d8d8ff6b4fd9ccf829b944199e718e5770b1f493ed89a122bc0ca5d11a41"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_06.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "a4394c713ee978f86bd8e9ec80a4eba857a5b4bd2c18d14461400bf1c6044c28"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_07.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "3535487775bab87ef7fbabbd018fb156f43aebf9d550eb2962c30dcfd71e5be9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_07.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "70e0db4a48238663df2701c89560605d3c726570eef6eddd0399da700f9910f5"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_08.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "57796acfd5fb484d8c990064ce550fdbaaec32ea0b2db9fd481618251d363e29"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_08.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "a47aa44a9b96bdf4e8361725a9cbcbeff7b050059417c39743d8853b08936ae9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_09.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "2b9a6c9623553c9f388c60601fcdb16ab732630046efebc6aef8659bd7ba7c86"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_09.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "c71870a24efc1c01d9288412b4578a74c17288175044ec3226a1a9d03d52e489"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_10.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "04b068c4d51a5975fc2da675fc1eef2a455d87cf305247c97dbc5dfe471de2f3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_10.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "c6b3ea85184d713b3ed38ef03b26a65294747d8dbc9548271c5b7d3889423ea0"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_11.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "cee98af640c95f3af40cc1526322069512733ef8314b7d490cace5812187fbae"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_11.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "aa98bf2960ea7d0577a323716caf2380775e486589ff633678acaf5eb8464901"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_12.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "78bda5e189719d868006095c4143043b191b590400996156f89bdd0e18d452cc"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_12.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "d10411cf822b9a0316f3854294c7e11c166e7fb3ef1ca14da7e81e2c4abba617"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_13.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "ffcf8a260f19de30f8899cf0bfb7469f1196707e73dc76c9f2edfd1286e865f4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_13.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "670a0fc1a79bef96de24317a58571c59f7277f405059fe95fa963181bae692b4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_14.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "d4ff5dc6bb65896e3ac2df5f72f62b3b1f5f75f5c7eb27a07214f78d2e9eecd1"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_14.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "d2aa8f968a14201f4d401aae87245a6b9d421b0845021907e6f280f6a806ea9f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_15.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "b38eefe3e646013a80d4e52a7b8a9c14e1c1762f17abc2a1b9987890217e3e94"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_15.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "ecf9147fa160a9343c3b334d03b619e82f0e8f18822b8ff8ffe59e32f29bf958"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_16.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "378eaeb8280a0eb0714d705312fa112742976761e857534aa38c98813a6a9a96"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_16.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "126005b7e8f04c85d0f67631908ef5346074ee6c6b6d189e4050cfda05d178f6"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_17.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "0d935bdf72e12f0fcf9469f22010e22396c195f0439c8173539d7afb7a094c94"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_17.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "a3f985904e9b3d206ba554957e05247fdfbe707d883da27eebeac3c9708750cb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_18.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "307966d99d372af90fd06bd4591a49c64991101ab46c5c5c28e3308c22d1813a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_18.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "6bf025b092a57c46222f17cf1cbfa45ffec444cf72cacb1d3dbf818996c54a78"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_19.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "8702f111ff6383251e91047bc1674c8fe1e79b1d41b129c86796f9fbd6bf2984"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s1/sample_19.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "00e6ed7eabcf033f646d58f2639bdec07ea846769bc22624a9eba8691720063e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_00.i8.bin",
+          "size_bytes": 5,
+          "sha256": "1c91b85b003c12a5a3083d55cd1432009a098c925af6452389213d3ce1059ceb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_00.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "29c5b13685bd5a9c50af3b7f39b90056ff6cdccfaa7eab654c45bbe544e07031"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_01.i8.bin",
+          "size_bytes": 5,
+          "sha256": "1c91b85b003c12a5a3083d55cd1432009a098c925af6452389213d3ce1059ceb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_01.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "89159f7c332e3b672069837e11f49ed089220c1aed3e14c0abd23d554802f680"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_02.i8.bin",
+          "size_bytes": 5,
+          "sha256": "d16dc565881a8a8b07af6dc68e0b1750c7bfa35e3e48d3c3ad5e49314947058b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_02.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "c5e7769e71211df1ed1adf096dd1000787621a9650b9b56091c96b38d909b2ee"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_03.i8.bin",
+          "size_bytes": 5,
+          "sha256": "d16dc565881a8a8b07af6dc68e0b1750c7bfa35e3e48d3c3ad5e49314947058b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_03.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "697e94057af4065dba31122a2e5df226b4e52616a0b0d685a3c63d2571de314a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_04.i8.bin",
+          "size_bytes": 5,
+          "sha256": "2241356d576637b34a3e511e3b1c4961596edebf0cabae7490be7acc80856210"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_04.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "acc596c631bd09d8698b584bee066f798bb041c1e6769a075e57e3161d901d1c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_05.i8.bin",
+          "size_bytes": 5,
+          "sha256": "2241356d576637b34a3e511e3b1c4961596edebf0cabae7490be7acc80856210"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_05.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "232d7bf7fcf2279b316b4ad45291e60cb8d1bdc67534eb5e3b5298964e79bb6d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_06.i8.bin",
+          "size_bytes": 5,
+          "sha256": "9285dce81b46284b542be42a45b7509cc2bcb18fe0a86380384997fab25a702b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_06.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "351e98c183c25326115b57d57e38c81ffc85f0661e7098ab5817690a2e614b04"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_07.i8.bin",
+          "size_bytes": 5,
+          "sha256": "9285dce81b46284b542be42a45b7509cc2bcb18fe0a86380384997fab25a702b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_07.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "01e717a87e4635974a7ff5ad635a0cce654d3d0e21cff01e628283f788b76fc5"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_08.i8.bin",
+          "size_bytes": 5,
+          "sha256": "1c91b85b003c12a5a3083d55cd1432009a098c925af6452389213d3ce1059ceb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_08.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "ceee2d5af4cadc8f738717193b93d5b67713e9d95e5051ad9e24923482782108"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_09.i8.bin",
+          "size_bytes": 5,
+          "sha256": "d16dc565881a8a8b07af6dc68e0b1750c7bfa35e3e48d3c3ad5e49314947058b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_09.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "81701ec0d89c0fa598f527bbc04843fc95f23e5cafee53341def35827414785d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_10.i8.bin",
+          "size_bytes": 5,
+          "sha256": "2241356d576637b34a3e511e3b1c4961596edebf0cabae7490be7acc80856210"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_10.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "745233273a44ac334b0ed951fa5e78b347f22442fc7af3150dd684e1bdacacbe"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_11.i8.bin",
+          "size_bytes": 5,
+          "sha256": "2241356d576637b34a3e511e3b1c4961596edebf0cabae7490be7acc80856210"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_11.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "6aa641fbd44393cc65dbff568fe080c7f3eb56c2efb5c00564561758750e681f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_12.i8.bin",
+          "size_bytes": 5,
+          "sha256": "2241356d576637b34a3e511e3b1c4961596edebf0cabae7490be7acc80856210"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_12.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "835219e2b26e980fbdee1ce957205c9303831342bb94fc3789ddfb8ff3c87ad4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_13.i8.bin",
+          "size_bytes": 5,
+          "sha256": "9285dce81b46284b542be42a45b7509cc2bcb18fe0a86380384997fab25a702b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_13.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "8cfa485a2f546d6ed4947ae92708674431aa39ccaa10b2bf59a7906f5bf38cc2"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_14.i8.bin",
+          "size_bytes": 5,
+          "sha256": "9285dce81b46284b542be42a45b7509cc2bcb18fe0a86380384997fab25a702b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_14.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "78c5e359a0d49905a6af3c533ad75416929741c226e6ef9110d790b5894789d0"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_15.i8.bin",
+          "size_bytes": 5,
+          "sha256": "9285dce81b46284b542be42a45b7509cc2bcb18fe0a86380384997fab25a702b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_15.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "770b4604f87d24bc9b2cc934e3ad44c74d640ac1fa89a41e36afcc993a79098c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_16.i8.bin",
+          "size_bytes": 5,
+          "sha256": "9285dce81b46284b542be42a45b7509cc2bcb18fe0a86380384997fab25a702b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_16.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "01159071567e0fc5ddb46cd32afb172d5b879aea732b9261bfddce4f94571ada"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_17.i8.bin",
+          "size_bytes": 5,
+          "sha256": "9285dce81b46284b542be42a45b7509cc2bcb18fe0a86380384997fab25a702b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_17.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "22f9226c6b190cd659354d93fa89c0bea6f2913a85a27942dc40b0a9c4c42015"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_18.i8.bin",
+          "size_bytes": 5,
+          "sha256": "1c91b85b003c12a5a3083d55cd1432009a098c925af6452389213d3ce1059ceb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_18.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "7fb94dcbc74619e1172d5fea55bd63bc8f350d52f3b69b44004951ec6c7e2e2c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_19.i8.bin",
+          "size_bytes": 5,
+          "sha256": "d16dc565881a8a8b07af6dc68e0b1750c7bfa35e3e48d3c3ad5e49314947058b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s10/sample_19.scale.f16le.bin",
+          "size_bytes": 10,
+          "sha256": "d35c6dc1663b84479d5dc2f1d92a646009ca482dbfe6cff02613d04fc99ae8e2"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_00.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "753083bf155f6227c686ab1f7116c3986f3bd70c68b05559a1be2044d8f2c22e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_00.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "6c29fe30b640a919da053abd040dfcedd1e9668489c74fb73129f9f5bf9fdff9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_01.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "fed6d686f2dae3ea98968c0646b44b7cb841896b49600fca5f0dc360696e0f8b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_01.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "03b4d1e5bfa31e1ed202b799e19ede6456acab242a459859906f9cb452c12a65"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_02.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "7a675d6839e1de6e0316a647fc57d06744a4c377fe7dbc849083da9196e69c3d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_02.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "5c62a17df40a3d0c0ae5d63ac57705af52889b21efc7c19707699a58a00d124c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_03.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "a0ab47f9ddb4a01269921304e8d07c2127e3b0781d65997477612ac0dbf12c4a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_03.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "e9e86eb7d5dd83656132ce7f8fc1f2db61a8237476f89087cab4b6e89783e7e9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_04.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "402f846233016c54b16343575c11b5402b539d2db372443d6a7a71bd7e278486"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_04.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "ba2845dd8704b51b7d69d536c366fa147552d0efc59cd10086652abed26ca50d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_05.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "450fe734c745d8075d314b469a095f6d8cd097d03b400b893547a50304e13220"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_05.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "f45846ce3763121e112e9c955c7b991186def5fe1a38801b745cb300fbe78626"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_06.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "159fae21270999bd68b05bfaa1e0dc01f5041d13f1a2bdb55f98e9778f269072"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_06.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "de162379a2c34b8794fdef981680d5d3b7cad2b21758688e78c17a42cedb8262"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_07.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "933350c44d292ad85e3dec945ef553c9fec3f88e999339bfceb32c794d4c5e9a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_07.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "8da30524fffe1915b59e4e1530d480d7766f199ef6bef8494386c8bf9b77f309"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_08.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "630d6949c6389bfc39aafe73716ab66e95d16bbc669e9a9c4b7f629df23252d8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_08.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "842fcacb3cd5b4300453317e361d09213f5a546553f3f3de44341810531a45ee"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_09.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "eaa362af89f4cd0f877d7bf8de921da889c8e2ba8aec765989549b459f66bf53"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_09.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "a435bafefce86bb2ec0e26406b97411f0f1075f80947adbbf4a0039cee37204b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_10.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "ff054853b366c697577326aa6ec675f4b75d683df77674cb5e17661063477a69"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_10.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "35e1ecf0945c7c77fd68368809dd84bd0ec08feba166f0f986396aef2d93171c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_11.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "ad2ef3ea804b0a36ff126d13a753adb04da2894612d91c9d762eb7a99edc22a0"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_11.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "0bc2e347191ef7dc83a5b5fea22ebacd46051ff35ba6e624424fdf2852a048af"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_12.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "95e6953e74c54caa6f49bf99fdd1a31c13c2e56cca85d45aa78f48b0ef6506ef"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_12.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "8d1b07d7aa20099ebd3f0551fe91cb90900f1922e41b572e008b451892d3dfed"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_13.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "37ba5acac25ef0f23e11ef18c93f2502a14d6130b5ad5603f09d3697c5e61df7"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_13.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "0348cdb7263a6fa1e087f70e5c37341d909ec04c161bf759009f76be0af81c95"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_14.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "641ec1ecb4b97f6b5c5dec4f227cd7210da74e3983b3f90434b0e931fc8e783d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_14.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "cb38ec249dad0f14437b929b020a99e36a2e56943cc34f5b8aab0a94a3e00a5e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_15.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "450740c8cb382802fb32e156c1c776b9620962ddf4ba18fa13e0031028aafadc"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_15.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "b2b26d469d715e948fc001299a55ba7f06ce0b6393240235d72a9ad9150d80d8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_16.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "6686c32f54f176dc6032ea40f9b6135c0c8acdf1f0af040ac1b6ec99f772e4b7"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_16.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "f98cda8012b5829b792fa4c75c6289eb4b32eed9fd1f8bd86ed7a59d105471dd"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_17.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "4f29bc267970532a9ee8c6d541f2bed9ca9205cf198c98655fb6a1640d77dde8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_17.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "90a7d67d463bc32e914069e3abd2b19b2b62777df92e74eb1caa861410511afc"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_18.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "b3202a925d31b2b11776bc6ba55e5e80d8e3716e2ca05ae0d810b49d700fe78b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_18.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "4ecc0c5ad9f25d10da29da12ecd1f466a0b5d51f6cc31881563c72a5619f8047"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_19.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "944049b63d2db4b0c68521be42f23c34d0560ad71126012368f92c0aaa22a854"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s2/sample_19.scale.f16le.bin",
+          "size_bytes": 32,
+          "sha256": "30c6c9be0174ccf19ffe65e34f68b12f972255872b6f497a402df1aabe5e41b4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_00.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "492f40969a182cbb9c648a7ec5ea4ae96a3bfc50406accb7fed94b8bac04f778"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_00.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "00981746c8c3cf253b3546ee2ea7c153b478da174014fe3fa63920249e9bc24c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_01.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "1f9990770ae7f66feb4d4153eb0f18cc68e815685e164a97e2cb948b74c28e01"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_01.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "8d5c82ddffcfa60ad3b3fffec22b54dc1b29e42a716b32a44d7d434a00bc2c4a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_02.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "7b2f49f7177d765069b66e14a53c42b70094594a325da935d30b480eb00d79c3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_02.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "37bf5eb976f9ed9572a8ecf52a601aab548deb73b69fbbe6023480c35ed96d6d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_03.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "c2dace6fcb4ee1eb1813d79602ed652d4204d041e3c5717c65f3a28025279d01"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_03.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "b851162b0b08280ffe7be32d2359f971c9a95b5aa413323b016f1d2dcefb496b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_04.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "35b3f0925d5ebfe156f8d8ba50fd6fcf81478f57a64ef5bfd5365c2adbf7ffb9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_04.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "37dcd1ecc94858e2d264891d859b90ca94fade487f0c2d68f0195b2bdfce8407"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_05.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "272027cc0adbf86e871ec1f9ebabca9a4e7b73a21af5225b82ea046e8a91b182"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_05.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "5d6837e9aa092332998a995ef8c8f0ea6d3955f93a9765cfaed9cb2593103cc6"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_06.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "5c8ab077345daf4a3d785d0e64874eabab9663cd222ccabaa71fad2b9f6a0b71"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_06.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "c518cb6f293b013e30a188b9507b7fae4a6c60e7713344aba0ad96bc5f9b0dbc"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_07.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "57474d5a175657e305e540e94f0a1464893de4b2a362a94c582c63f03508096a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_07.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "71154280077c4d41d2fedd92702e7e67ea7cc12de63ac7c67136b45b4ccad27a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_08.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "e98e208533c4b24da3509a3eae0c314d8384af0fe0dcebb158e9f6a70d7afaa9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_08.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "f6e7ca687ff4a5b0c0cc8a95c3a534222582ae11c1f3926d78c861918c26a9d0"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_09.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "f0f51b548bf1355510f790813d1bfe02cd82560c5731822e82bd18167313076b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_09.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "90b2d718b19f453a5fe1fae6046a87f51bc120d3550d40dbd1a837b1cdd6f965"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_10.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "a3e3245716598fd97658759f5c110cdb9e415c8def493b3c0930f1507101dcf3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_10.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "427a3e5c75eb87b4ca0fc36a501768c76f1ab8a8f53595ce2ca630223bd9df85"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_11.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "74936c0cdd8f12b057b420b2bd13e724bb4494d802a6b625048b5f643ae10513"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_11.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "cb452e58c5d5567d416dd51fe78948fdbd4f9df2acf4216bd6cc7381e9450575"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_12.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "0aea42168f1ef840d22c34d501b95ae30538e247e4a0167022a231e067d3078b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_12.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "1682dd1cd33850f2757ad82d45829d4eb90a6d952848d64f9f9e7cbd8e530f35"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_13.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "7e7e9bb65941d26af55f3a6a39e0331efc07bbcf3ad53e7baebd74f75ffc8245"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_13.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "2951e4aa65babbfd59a0065b93cf1f6aea41d5b7f639832d68fe4077399e4cb0"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_14.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "3d9f4621068c2db3330debdd97f34997fb839508baf2e28c2fcc60b725f98390"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_14.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "648b6cea5d8e28881f7a0df79f651bb4835ebc1a9d0bbbf728c4c82016ae27f7"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_15.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "bbb4fbea9361ce453826ca8a0012f0a8c4d237b2189f6e7f98dd37a2316ba0f6"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_15.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "940417d68162194f0686cf483d8f744a371124f263749916b113ad52958abddb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_16.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "b3c185c9cbe9ab797bc53d64ce9c70bd690fcb18ff318132c8bb6f45714d9e4d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_16.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "09dd58b54a9308b46822d972c4004b4f39bd2c6bf2366b45b7e344deaaecebed"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_17.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "97a6467272b93a8ef234f57e3c009be0ebf95971c6500434252d3f637aa1250c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_17.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "7b1b60441889fde5099566b7445e792a8d337360ef0ad9a7e6a891189d7f1b7f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_18.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "47d8e4bcd47471ccc762dd71a12b516eff8793f36261e69d7822042ae768a808"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_18.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "db56dc9d693efc582f084e3bf084d2299eb681c85c0b9e8111fa97d4a6c988d2"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_19.i8.bin",
+          "size_bytes": 5760,
+          "sha256": "f7668c034bc5ed9245e038e8cf06a4ef57f2d96a509f885ce4748c81c37558c0"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s3/sample_19.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "bf9105b9a69bbf85d21c83203f3210f9b82607a7dc1dfcef498d950b103e85ec"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_00.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "dca00f826abf1ef4d6035881f6735d7c50576ca51c8ac4769ec7919b9a2a19d6"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_00.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "c879bc57397d9b87a4bae32efb7bae842c5cab8177aee45278481001d58ff0a9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_01.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "5940b4dd5628b2c5eb999e74faf3a6729c4a0b11bf549cc43ab7152fa2c05fb8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_01.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "381bfa3052961887136abf9506e6a2e1baf254731c9fee16ed85a88d5dd0af91"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_02.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "743f91bb91c5f87be1abf5106866fbd455cfe0b9ba8cecde355861195a6e2f14"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_02.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "a210b15c7024d9bdee228e05563b09753f201206c643c0d911877290b3d7facb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_03.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "f4b55bc1a0d2fc62cc7ab4789566216525b636caead7914e9068134bb129d6ad"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_03.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "a2ce1d8c7c892ba8322c747156e5af62c85909c3d6f090c6274b4ebbce110c40"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_04.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "044b3bf10a67cce72257303cc45ecd608e4f55720311075841a61ad7ac66c3a5"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_04.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "a1ea0cf81d2e227afb57bd183831c4cdedd816694a06c52d35357ecf847cc19b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_05.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "a17a0db7e1cf236c5c616525d4e16bbe816212105512bc696176a37d033a1eec"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_05.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "866659d5fc54c21f1a562cfd64bf58dddba26fc8d0736d4f105f43ede2619a10"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_06.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "47926fa58bbbccc917227152b97c9e311f8893883fcd067c16f9c93a651475c1"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_06.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "4ecdbccbf602047eb273131467cacdfc51dfe8f334eeb83ce67a16beda58bb21"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_07.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "ddc88b508d8b701e4576506e44a837ce4462cced644e5ef9784c7d0350348e6e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_07.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "ba8168280f4e4f92e9b04a05d000ff300d3d5c56e930eb589d59f4d314c52dcd"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_08.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "0323c0df0e7fc1cc71211b8f4a2a39bd44149c768cfb09c167311c344da1e5cf"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_08.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "01b4aeddfe6fc229975856f4804eec8e1a5f7df785c9a62131a09f8c955f4036"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_09.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "5310684ce9d444700e36dc67f8d8fa76896aa1cfe1c8c528cf373f9996e00682"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_09.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "1eeff179718d0d7e1c16759aa42ef7a9195e3e4c7d91855372f852b357ce08ca"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_10.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "56a953bafa902c1331775c0532ad8cd6190577e92a0bb6ae28634ef1ead4e0b6"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_10.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "6fe4ed0f4fad40f2297485c602bd99d429dadd0eedb063ba0a875a7ec6cfde56"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_11.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "27d74310b6c5aadd501515f7051a16085526293f4eb67d9682753443aa4615bf"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_11.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "4f3902fc0e0a41d827f857f64ad00a6978ae9d925351db177b750d2caf1b23a0"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_12.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "c28a3040f47571c66e53176532fa5ed69977a4fc32aad4dd863ccb435e93a651"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_12.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "035e24823a33ac53608d31d3d1ea03449e1e229f5084344cb131f2cda2a105fe"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_13.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "e4f5aa872b4cdd09165e34f9e7d21e7b6df1124b9cfd526a1dd0c58245134098"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_13.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "51b92ad31092527d780da574f11639939124db092567fcf4b0a1a7fa918b7566"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_14.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "3b1edd8f7b78e5bb0645441f98f638d4cdba6a389e345ff534dda81a5aeaee39"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_14.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "4344497b4dedb16cc9da2b37634f32e5a67cf77271ffaf9fc7a2542c22c24db7"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_15.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "68360c72880d68f4988194b28411dbbe06499a4261caec0942ca743896e7dea2"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_15.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "ddef0ac81af1664f15894cfcc8a43f8bd389d84667a3bce7981a75e96a349c9b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_16.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "ac356d510f52cbd4be9f930af9ca97f07c6cedf9033e0dadcb7472ea574291d1"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_16.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "240c7a599139a6c2a2dc5605ee92ca7801f9462781455d17547073d7e0ddfd4a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_17.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "09905e71f3fd42c2b50aaa793a8dae12c7db78a64a17e4604335e244ba66ae02"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_17.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "92c71d4a123eec4ca5cdd873c193c54ba275beb2be8e9c3a66743db1b0955b22"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_18.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "96331b3126ac8c48b39e88ef2a474d42dd53e34006df45adb703ddfe6904029b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_18.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "280ed17bf904079860e30c943b5bdc08f348eaa108d2759d0a08b4b37a23ce1f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_19.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "62315b18861903ed5316afdd0bbcd448d4e0967b64bff5fa95b7df18c4473925"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s4/sample_19.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "84e258e8f70d82f9b30710097916191d0179b0c1db357e456d4629a568fcd7c1"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_00.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "81e76321b278438c76cb7ab82bc945b37b4d997a96ade5381c0482cfa0789256"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_00.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "dddb6f933cd40554a037f354af8605aff64ce0c4eef5c04342f69f90e2dbfa9e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_01.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "7e6fde25f86967c019e88aee497beada6b6235d9a1fba149c142076e500a828c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_01.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "99efc4b94dbd362ee5017ad3d816364637061d6ec68e48891637262b3b41fcab"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_02.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "02068e230d561a296ec051c275c566c212323eb9c36b85a314ed774783690939"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_02.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "d0f4f4a64799d9f634b55a337ab7b58330c291fe667c4bf0555e9dda7e32f0e3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_03.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "9a5356663e44bd87a458c714d516eec6151fb7cf12f93b6e6c87ed767022c8e5"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_03.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "9cb3c6ac687e31fa86e98fe341779bbcf0fdb984bd51702157d97b0f1787ebf2"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_04.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "5e3c8a5f01d9da11bd3c01ec3900af1fb14e1330917d5f5d9652a88fdc2f1ea9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_04.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "13e3166420cc2e41291f6b00cd4056e032ed71a5be3ae3e78085659c5b8a2dbd"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_05.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "f51d2d99f0ca2b9533b4aa129baeb25cad8fbce179263e121a335a6a4241d16d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_05.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "7fc2789afc7df64bc9c67dc39192f15b884e5b41f0c0d759ff7b28bb05a183af"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_06.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "cd527f7f78df481d3bd25b18fec25c8d2ce7eea0d42bb1c49fb3f710bca37581"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_06.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "4b844ece097de29bbaff8754d84f4187b8bb3c4f75ba13de0f4e14108294b23d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_07.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "f46e9b72b002c0ee964d631b8a5a1e7a26846d32169e89bb567d2bcd2b883011"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_07.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "adf476dad0557ecaa11657ffc0364c1981e28feb4401ce3c1fb660176188fe93"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_08.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "1187b37272a3349b6f092fbc77d0e8eedd704dc5f0ce4caa7b7ecc77a3d47d7f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_08.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "17a4607fcd2f8020376a618cb9ab9f7cb782e2cc99701479d6e35b43763b0307"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_09.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "afc7371e42cca509a3d64f13bf79daa7596a0fd8b6e1a2829789d717d850ca69"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_09.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "16b88cc814f0c5401642780996864a09fa7de225d0553ba42983dcf4e5379e18"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_10.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "408374e190d1932c88e6505eb331f679c6084cf5322e4227423be088516c4447"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_10.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "d054ab708c6cf754681fcf57d40c3d0cae08fe50d9ec1a213896a40c47f890bf"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_11.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "8dd64b840f6291449153eccac50bd86cb3ec020fd4b199d546e804742b7596b5"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_11.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "e6de824901fc031ffaf8672a4c81fe40875c8c3aee759e56b7434265f92ec8cd"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_12.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "b1bf9418d73d006be1b55ba7457217bb99ff4685d69bfe9dbfc53463a6ffe58b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_12.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "52785b59f52fd3d8c1141c7bf521b900ef6ed67e47c6f66ea38ae9e31f1cb65b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_13.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "bc0414cf3566b76fc0202ae0a6414ba79c4eb44e4df54970ba7b41a3a4034f46"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_13.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "03d685bf348802768af5585b80fcff2988b9b4731a1b59647d09704749f9e391"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_14.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "7655ab1b48ed9c5002e04989b2f99e53266cb8757321704ef23a3312f38ebd37"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_14.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "75947e08ad06a812c1b952efe56e14f7433986615ff6d9385506455d67ef2a36"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_15.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "a95dd3f2a85050ccdcf236fd1f0c665ad74408c26424da684d6e2e17c3a9928e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_15.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "813d348ac4ad77e77837080680254308d0e788bc3a1a1e01e6845da708bd0dc9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_16.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "279f5cb254539ec2fbe5af00a60ab182c9981acda2e0c2e0b658c8a8a807ad81"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_16.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "ddd123ea7ec9e5956f5f62471a060e582db6bed26c9d2f51dfa35df002ad9677"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_17.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "20981f060c712551689230847ff214160fc68ca25654dae90ed37d6285af78c6"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_17.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "f4742840ac30eff5046ddc912630bf4a5dddf36ef6737f73cb04ac1d4b4c0366"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_18.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "878556ca36ad80901b8c93f52f349a388747ee61f283a25f47b3abe4d4f7bbbe"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_18.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "f5c414aa8e3bc5cd075e0aa4efc195b9cb3834a7d4e77b78ae65972e87bc8e1f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_19.i8.bin",
+          "size_bytes": 4320,
+          "sha256": "89274ae86a266d527ad55eb717550626fcfbb4692f1eb667559383f0b85a27b8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s5/sample_19.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "b6d53b57ee5caf1ba02fcff65d3ca70a9f7ce8af4488580aa178e3801f087a7c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_00.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "18c155db1027c6c5ec4292f5765c3216c9ae9c1da12af2dea9df67a702ecf5fb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_00.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "503fbd795f74111535155c3d87a91ac3c25f5c2a17a8f324cd42b513e8135849"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_01.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "3d224c001535b6903b7dd45f50be39e5c7cb871bf72190108745181a551da491"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_01.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "da162a1cc8aef900a63a78478fc5fc4123d109f0416d1883590e02ef8728a13c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_02.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "b28974b9629945e7878345c3d279ebc02c0220c7f564715633a7bdd8d32fd9ce"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_02.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "1dd2f73e0471e43796a7684d91528a0a2f6d95bb4f3ea4853e396bfdddae9939"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_03.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "6a930efed3f6cd3fce8af29747b539ea0e59639f244c8b4367c8980cdbb1b64f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_03.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "30e373df386c0011e2df602ff2e813ccf717a97b9eadc9061fbc707e0aa65478"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_04.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "3e2606b4b3474437830b7bcefc06a60bdc905342f7d4ef17324f7f9b2898d3e7"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_04.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "f5468c78dec79e76cd3b5627c903e5191f64dfd666227751bc727f317806594a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_05.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "7b27903f7ab99db39ed18ae1a2c1379d9084dc384348f3ec6b27a69b295595ec"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_05.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "ff9e536b1bc5b3339e6ecd780449e4e1c9fbc0fddebb38e79617252375047aeb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_06.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "14f24bca4cf3f8ccd817c439340bcf93954dc0a3cdcb04103901f6d170f05a98"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_06.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "cd6e57416e24a591ddd6d42273edebfe87d7ffb74d56d25208ff9d3707a72455"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_07.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "f7faa229bfac9568f82eb9951da53f87353e04c9e13d4b68ee6320b8e774b99b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_07.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "b582ba26eafc89c48e85df744f6653422c9bdea7f6d6b70a5339148ffe9fa36d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_08.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "5099b694545184735a2e2ab4a9a4e898ffaed30655cd8fdc492da98cba238669"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_08.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "b2f8fdd53df9a10a2a2c4057cf869fc8cae1976d9a32cd2c5faace5ac7d45175"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_09.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "5306c663e20fe8cb54a961470c376eef45cb14ac5f5cb38e88b638f40c908890"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_09.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "2636f987defba2f4f59fc23cdee82cd4b80a42ea9348620c618b67eb793be461"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_10.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "68873de13e53b52cb119591db3ac32c3787e1421f5698790ec22e7278b29cd6e"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_10.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "643bdcd7789a2fb114f18acd95e8d86f0a7967a51074911a3ae827549f6ceb7a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_11.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "77907a9274287fe44e8fa566c43815aae11b697eb6ff2644a0d28223dafbe63f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_11.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "bc7bf2773b4be6746d957d9a914266773ceb0ab4e9f1be660d8c77036f554543"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_12.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "7560b11c974105ffeb47e75a2b8f9dccf8b3f43f2a45816947ea43589838b9e1"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_12.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "77ce092cf66052913348a0c0bd14b46a906fea7e4f4bff65d2b7ac8d331ddbd3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_13.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "7299ec0c7484d845b1573e727e3d4e97fc341d1cfd51434d330513eb5886a813"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_13.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "3f08e87a87440417b832121eb5a47ace7891551b75f8fd3f1e5f617f6d6b1c63"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_14.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "0eac39753afbec6203273881b4719d162b7d37377a056aadddf05589e97f4fa1"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_14.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "b6b27326d6c00fff0309736ec7857ca53948ff23e49d57155a4ba2e89292e39f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_15.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "7a383a5d092b3062494f5f87d5b24c2d08c7ca9dab79560e7809a50a18a6ede8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_15.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "3e87ce0eb6a31278770c3cd987946af875c8546dfb971e8294c744b393cc73bd"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_16.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "9e9d8fb9099c133f8f7f41445c73ec18c4490c03c2984eb86f1c8b09855161eb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_16.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "62f19b79784aa2365658e585115be489760c966a1a694c92735a3a5bce2c9ece"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_17.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "34046beb39c443f44b617879a8aa006293ab51f0f02cbb2323e49e578d6de18b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_17.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "64db29ac4dbd98dce116fe8d47deedb2e41e64b886c1a4eaef08b1344fc64405"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_18.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "de26d6378c232674f2d302bbd11526ac8c82582a76a857b13c1ec69f99fe8919"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_18.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "7d16c075e34b5a6d968f0b87b7f94db9fc01365155b1e6db33fe84e1ce052b92"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_19.i8.bin",
+          "size_bytes": 2160,
+          "sha256": "ff1699c69c0c9ecd2af5f8aca4584d31ff5d27c3b12c4dd5294fc3c665ad2409"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s6/sample_19.scale.f16le.bin",
+          "size_bytes": 96,
+          "sha256": "e515dd2a8abefdcd9becfc4a208e7969818284c405140e66e803fa3c4c736679"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_00.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "3355c2b1f8b57f8d8f3441c98867e15484c236c92d7abc49bb96adf45dbe6fb6"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_00.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "60757fc87fe7795cf1e8a6db635f8c42fa4019b875e0801e04b8bd09d02d8732"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_01.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "ce47a71dc8effb9301cda0a0e04f1abc6badec8744b911944d4392858825e644"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_01.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "0ff647b73cbb5f300846f12a55c55259c605e60fd87f8cf2206ecdd3e54a2ae3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_02.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "a4c85c2710bc135390d1d3a59168438cb1e97241253fad11e088e510f4663e5c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_02.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "ecb70a0a217e5878db684fbc56a7b1917dda613d8609a21749236fc578218fc9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_03.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "c278af3702ed1f8415b5c75384bcbbf99073240c12697d14c8dd80f72efccb33"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_03.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "46faa729cf2b7e5e659025f348d8e99dcc8911da16754441b8927f9ab33f6d20"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_04.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "a0fce948c3e860a71a5d4f2f0de982ffdb77e1297038b4e6509817d3221fa11d"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_04.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "b43f1a20bbc7bf36cc04094a48548b0a8173e2fc4a55bc21b89f837993f1f4b5"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_05.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "96a3f9257f4e1fb0620b6860eb90d7ebb37a1a9247654d3572c8eaaa84ed3072"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_05.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "27629baee099e6351ba8311eabff58014e31af4865f75ef140622b2fbd81b70a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_06.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "342b10a3ea69005400a98208ee50aa11fff1794910e967a664c402b06e13e021"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_06.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "7b95de1fb61a214e3723f5f009f01cd9187aa7d9aa94c1582ea94dc2b8b58bd9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_07.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "11fed91f792c4daf72fa46b37b38c7c0c7db5cdde09e1eba9602f812ba9c5619"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_07.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "b3ef8a0f9f18a2f617477cc4bbc1eeb6a8273cf98bf7b29db58681e84ed25c79"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_08.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "0d7d245dcb6af04da2bc6bf6fc012a1d3ff04c63e09e7e8fcd3729ea85cac5db"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_08.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "d03ee20acae715a402b2e1e8426b17911a1f521b1be1cce3ea1d96a9eecb30d0"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_09.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "03a2711368b03d7dfe50e9c72556dee99e501b101e615c17340a8d01471adf38"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_09.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "d5197f44b3833fa894d93c9664913fa704b0dd740bee050a5d756e02ab0bf675"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_10.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "ae255edd24fec2159fe83e2205a91a7bd8b384f4f7dc28a8f9b42fe2e24d0da9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_10.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "f8fa47828eb49703b03ee4c221720506f1b7d6a7ed14e072942610cd691da5de"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_11.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "cec2d6e5ff356a01d869855f8be95c6550f27a2764895738621e08ab2da29164"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_11.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "a3646bcdd00d1a1b7dc52989cfce3896375a4fb555f785639d6cfbaedd353d8a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_12.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "c73c765a0e1bf0174e172c081581a6c0829c6be7b4fd3ae93c0470ec7d9acf90"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_12.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "cef4372e40c479e8f23f32056547b90bea6d08d8092e4989c799a7946d1e2923"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_13.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "59774153e0133ab52b7ed64281fad4a196de5343f48b0a9fa442f97e3a30cac2"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_13.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "f81400975a7c176bf5a6b36c5c4d933a2bd857d4f22f497631b7ffc13e79c9d9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_14.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "dc07a341c7818886fe867df5bc6bbfa5b1fcae9ba4265bc2581ff6cce0993c96"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_14.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "a1e37f95fd14744efd5fbbbddb3e4c1719eb025298287f902a870652f2c113eb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_15.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "0872e7bf3033118904878ca5945440bc3cbba8299182e4a71e1d8310835e2a96"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_15.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "a3f58e8232ab4476f63ea9b8239decdd4f7426b7831dddb66fcb5737d97dd365"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_16.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "b0adcbbead46d8104ae14ca2e57827d2a1d5a3afc19053b808597e6b8562d1c4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_16.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "111ae1284d31f456e22ac0baf4930c26bd53c929c8fa162b6c2ffa56c1068a06"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_17.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "2649008e659211d8f0deddcd6bb718f315c50ae58ff7a8636e96eec1e3631ca7"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_17.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "bb0517ab2c673453a595886384bb11b8573c9a7f57495d7eb43ec67ce9c067da"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_18.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "88a21995b96b0fb4ebd9dd450c4381aacccc874abeadd1ee9e6765b8342c97c1"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_18.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "ed989370ffd23446c4f011de13531b11e113f1d1f1c9e72534b6279ea15c4b91"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_19.i8.bin",
+          "size_bytes": 2880,
+          "sha256": "d0e95345044c4038b004e4a47ef6f38b3b3d1e8c4486de32d9e0dbdeef516cd2"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s7/sample_19.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "af38f43dc3a3c2878d4563f35321d9fe6cf50b84db1604af4debfea21b995faa"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_00.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "e2484ccfc42cd0f73ed1e73bb284ea3634c0fc448d7c81607b0bcef73618bfe3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_00.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "fa1d8cdddd25474ca41be68ff28aa31d6d00b0d76c04aa45f8893f38fdfd89a9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_01.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "35d1258ba1f401214b1f930cfb90c50d0196521fa3e70aac4c1f19909c98d236"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_01.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "bc7cbbf9a330068975e413891cf0ea8873e707966d64b849c964dcac53987431"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_02.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "d624e1143c5eb3c82eed8eaf8de26582954cdb42adb55f4af57c17003391ff93"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_02.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "469163feb23dc3451fd53409a43c22e70bf0628543fcff92df5527a4a33a0a00"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_03.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "8d405acb2d309813c40f1ae65127361efe658e4187ecda2307f381eeb222b4c8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_03.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "76f103c66fdcfe31a1b2ab768cff08841ed72c44fe740f294d5dd3bb4c6ba4b3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_04.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "0ed536530edc03c26d4b91b7c7ecf25a9d6922d70e8fa2329f53e771ba48fb88"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_04.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "f1923f78e5d33e6e1cfe116e8048f1a8dd46d6ddf2c3b19cd35f68ba0ff11125"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_05.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "3d66b78c919df70f88e2ec6f74f541ea5d73f6bf12773cab2cc34fc1096552f3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_05.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "29ca062bf24d42e86c573b72dcf10bfdfe6f9e079131818829705135435b6a83"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_06.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "9161d7b77a7e9d279782504ff266772ee01fe49d138e5369e8881dd7d8393984"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_06.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "b1a92304c0de94d3ed859ea03004a08ae605f262d242b95bc363d8470973b5aa"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_07.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "6ba0f270c5983c5e79693b5e3fcfe2f9765d50ad77e5a82a4e48973e720e2586"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_07.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "da0d985336be197bcc248ae3bc4631d06846958dd8536f59e360c1074fdecb41"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_08.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "50973f093d40cf790d11b9c8eae0340469a83edd6a3d4aa29b159749e4d284d3"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_08.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "a1634a42f3ba60b083f12edcead9f6e03ab9eb549195b35d970d2bf839ccae3a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_09.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "90fa91a0da5180b5b282b5e36cace1b9854820ddb0f378978f7b87d421e62128"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_09.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "9ed0004421a999183782500ff3ff5f12898dac07aea28e212858a8e067b190e4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_10.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "82fab9ced55192cd096785261567e8cb92fd78c96b748627b04822f0cd94990a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_10.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "f94f28e3a1cd13013b4b3e476a709ab7900250c5b31c4ef6db1c9e37073f99ac"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_11.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "3cb0709804fcfa8d29c4c5d8d9ce7b718d8fa7e16722c8b68b9765691be40bfb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_11.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "06ebc9ef96bd162b7446933d946acc80493054de3c59778ff64873976af26d6f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_12.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "05220d9e0559a7b71f426e5fb92136e5f0270328f618627c37f19c20f95c0650"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_12.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "ac8e929109c3b73a2be875986a63ee0ca117421d07cf072d3571c8a567350123"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_13.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "16128b041811cad12e0cf767540fb7b1e308f889c5b05356e40d08ee0c7e598a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_13.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "4ef7a4e3f6d9f7090cc3927836346b0e8eb92dcceb31ae909f2c6c3ead74cd31"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_14.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "2d18916be046d56aebb38f7b8c0d5f2c48e4604005292c04b193d4258ceca352"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_14.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "d567ccbb3781e5781754fb321ca9b96848c1652a0e5be0fc026ed1f1ee197133"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_15.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "4ddfa2a8233dae3628e1342a96f44abfb51dd006ccece7ad174e89f81f5a19c7"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_15.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "450ec4c02567616be9acd96801a8900f46f7a27e14ef3fd69fd8a3b7acedc2b4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_16.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "33ca119aeb9e34e755b9bdfe94c514a7451e79b911481155ae88cdb1836e17dc"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_16.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "f936a6270a048c259a79710eaa6e91b2e09443619c0f384d1ae06c5b8bc8efe8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_17.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "94d40525dca82a736e99f295b0534192cc54055ff860f5ae79994a4b22d642fa"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_17.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "968fd57a7b2d811ec7d69704b45629b72222fd179cdcc8a3aefd2ee1429346f8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_18.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "0a7f58c667748af53f66909b0daa31f6607a1c2a0c3daa7db06a7c94ef496412"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_18.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "b944ee9432554b302c9840d316f6ee5e74955368c45ee7ba0dd5bdc7722757d4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_19.i8.bin",
+          "size_bytes": 1408,
+          "sha256": "023a8ad891bfcd34270aebf60a9d1c55da351c764eb7b94e9f7d75eccfafe316"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s8/sample_19.scale.f16le.bin",
+          "size_bytes": 128,
+          "sha256": "787692f4fd6d109320bc40ef7ddc53e918e0bec2d860bd67ee35aa32ede8a0f7"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_00.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_00.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "53eb18613e0c764e181ce178e3cd0cba1200fbbbb4d48aae2ed7c17f60df6153"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_01.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_01.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "082522e79c00697934b9fffa9a8d51c19aa5f759cbc21b2cc24bbcea549c1f69"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_02.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_02.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "e97a4f92a5e9057234f2ddccdd1c87e66b994c05e7d44fd86d93746374d3b404"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_03.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_03.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "51cf4edbee32e40ae83b410f25032bd5687810570197216bcb8fb4add44c5ab1"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_04.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_04.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "588f43834b898293dd7ffe92ab9b382f7b51a43118d30cda3242fd4bc8fb09f9"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_05.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_05.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "017e1d0f6bd432c88d94436fc4e84b092a997f7700a6e3fcb5b786d105290a51"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_06.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_06.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "13fbc2e5f64b1b4b86c3ac163ea626288e3d9a24ed70990b10b42535632987d8"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_07.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_07.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "9ad7dc4750500df0d4039fcd0211897bcea1bee974503c78cb52a88c7dcc5c4a"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_08.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_08.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "e5d05eba64a2c177da895cf167516e40e939439b56a85dc1d73a3ecb69b24ac4"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_09.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_09.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "e66b0689ddb44b827058bdb230ae139367580b5a5ad18778f1780f8863a7266c"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_10.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_10.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "b572993438beffb40399f9480a0929a13a2ff90429a1c0acf5559d9d6406fd98"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_11.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_11.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "73c91c5429f377c2153ab3f417604b7356ffcb331550d61137b315e55bd0f73f"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_12.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_12.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "2f091ae4cb373ca9f0c94bebbf10b77f164d0e70f234a3e27c6d13654b1ce793"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_13.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_13.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "3de8db6cb61e6ebb3eb55f5df5c5102a2a31e22a68aa07e8a21d32de751d262b"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_14.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_14.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "b9a85fda176fad3ebcfefa0da86b66c579d71c5bf74cef0ed10809191d39eefb"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_15.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_15.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "a34731be06f4e49b0af74350331e22716b6559f3d9be9d5356b9785e4a087e22"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_16.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_16.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "fb594fc99bd5fe599d3423c074a5cfa5ea252759209b8a96f652706c702812a5"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_17.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_17.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "55deeae956fd470f3122ce9d5f68aa37b9a9c534c944ce4c6b24c1d3b8e19725"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_18.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_18.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "bab427ba9f93f48d76a48afe467c1cef0562d7ee83a59922d234569f3da636b5"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_19.i8.bin",
+          "size_bytes": 32,
+          "sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284"
+        },
+        {
+          "path": "ml/artifacts/week5/quantization20/s9/sample_19.scale.f16le.bin",
+          "size_bytes": 64,
+          "sha256": "431d548d832de4bcf3812a036e66dc8632a266d1f736888a007e084f301a5164"
+        },
+        {
+          "path": "ml/results/week5/predictions.csv",
+          "size_bytes": 3845162,
+          "sha256": "0776e503b9e404c957cfcfb239356f52b17f34655cb2c5d15fdfe96cb3ae6e56"
+        }
+      ]
+    }
+  ],
+  "version": "week5-v1",
+  "storage": "Existing GitHub Releases repository; upload receipt required for actual URLs",
+  "member_hash_policy": "raw bytes (CSV raw hash may differ from loader LF-normalized hash)"
+}

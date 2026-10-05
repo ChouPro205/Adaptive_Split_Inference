@@ -36,6 +36,8 @@ datasets/
 /ml/results/week4-r4/weights/
 /ml/results/week4-r4/firmware/head_parameters.h
 /ml/artifacts/week4/
+/ml/artifacts/week5/
+/ml/results/week5/predictions.csv
 .env
 *.key
 ml/docs/project_sources/
