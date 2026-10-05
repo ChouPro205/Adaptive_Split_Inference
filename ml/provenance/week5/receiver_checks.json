@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "source_commit_sha": "b73a705461ceea2618f42d39184dda25e227efe5",
+  "external_manifest_sha256": "3fe550cbd3311825c7def1e2a6bb891032d0dd27ffe3990ced9f36451ee6d3ab",
+  "no_source_overlays": true,
+  "receiver_tracked_files_unchanged": true,
+  "public_downloads_hydrated": true,
+  "quantization20_entries_identical": true,
+  "full_test_accuracy_and_predictions_byte_identical": true,
+  "p1_10000_checksum_identical": true,
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/hydrate_week5.py",
+        "--manifest",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\provenance\\week5\\external_assets.json",
+        "--expected-manifest-sha256",
+        "3fe550cbd3311825c7def1e2a6bb891032d0dd27ffe3990ced9f36451ee6d3ab"
+      ],
+      "exit_code": 0,
+      "log": "ml/provenance/week5/receiver_0.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_quantization.py"
+      ],
+      "exit_code": 0,
+      "log": "ml/provenance/week5/receiver_1.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/export_week5.py",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\week5\\receiver\\ml\\artifacts\\week5\\reproduced20"
+      ],
+      "exit_code": 0,
+      "log": "ml/provenance/week5/receiver_2.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/evaluate_week5.py",
+        "--batch-size",
+        "1",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\week5\\receiver\\ml\\results\\week5-reproduced"
+      ],
+      "exit_code": 0,
+      "log": "ml/provenance/week5/receiver_3.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_p1.py",
+        "--cases",
+        "10000",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\week5\\receiver\\ml\\artifacts\\week5\\p1-reproduced.json"
+      ],
+      "exit_code": 0,
+      "log": "ml/provenance/week5/receiver_4.txt"
+    }
+  ],
+  "acceptance": "LOCAL_RECEIVER_SIMULATION; SV1 actual receipt/device acceptance remains pending"
+}

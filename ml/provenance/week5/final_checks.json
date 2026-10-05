@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "verified_source_commit": "b73a705461ceea2618f42d39184dda25e227efe5",
+  "baseline_main_commit": "9bce483ddbf3be2ca471e522833352ab18331736",
+  "production_code_unchanged_since_verified_commit": true,
+  "contracts_model_config_split_unchanged_from_main": true,
+  "full_test_count": 8544,
+  "splits": 11,
+  "quantization_comparison_pairs": 220,
+  "p1_committed_checkout_roundtrips": 10000,
+  "receiver_simulation": "PASS",
+  "external_assets": "PUBLISHED_PUBLIC_DOWNLOADS_VERIFIED",
+  "external_manifest_sha256": "3fe550cbd3311825c7def1e2a6bb891032d0dd27ffe3990ced9f36451ee6d3ab",
+  "missing_resources_for_requested_python_scope": [],
+  "pending": [
+    "SV1 review/ACK",
+    "SV1/SV2 actual device/Edge integration acceptance",
+    "Week 6 C P1 and 50 official Python/C vectors"
+  ],
+  "release_source_commit": "b73a705461ceea2618f42d39184dda25e227efe5"
+}

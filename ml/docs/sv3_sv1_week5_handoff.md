@@ -25,12 +25,17 @@ chỉ activation tại điểm cắt được lượng tử hóa. P1 không nằ
 | Accuracy toàn bộ test | Hoàn thành 8.544 mẫu × 11 split; mọi split giảm <0,5 pp |
 | P1 Python I2/1 | Hoàn thành; tái sử dụng reference đã chốt, 10.000 deterministic và bit-exact round trips |
 | Host I2 Python/C hiện có | 5 tests PASS; chỉ kiểm reference lịch sử, không thay gói 50 vector tuần 6 |
+| Checkout sạch | Hoàn thành tại `b73a705461ceea2618f42d39184dda25e227efe5`; tải/hydrate public assets, 220 entries và accuracy/predictions byte-identical, P1 10.000 checksum-identical; `receiver_checks.json` |
 | C P1 và 50 vector Python/C mới | Theo lịch tuần 6; chưa bàn giao trong tuần 5 |
 | Device/Edge integration | Chưa đánh giá; cần registry deployment, key_id/sender scope, nonce bền qua reboot, buffer/transport do SV1/SV2 chốt |
 
-Trạng thái upload thực tế và link tải nằm trong
-`ml/provenance/week5/external_assets.json` sau khi publish/download verification.
+Hai ZIP đã publish lên kho Releases hiện có và được tải lại qua URL công khai,
+SHA/size khớp. Receipt và link tải nằm trong
+`ml/provenance/week5/external_assets.json`.
 PR cần SV1 review, không tự merge. Host PASS không thay nghiệm thu Dongle/KV260.
+PR: [#20](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/20).
+Các commit cập nhật receipt/docs sau source release không thay mã đã kiểm
+trên checkout sạch. Đây là mô phỏng local máy nhận, chưa phải ACK của SV1.
 
 ## Danh sách tài nguyên và môi trường
 
@@ -150,8 +155,10 @@ kiểm `Get-FileHash -Algorithm SHA256`, hydrate bằng API `release_week4.hydra
 với trusted `ml/provenance/week4-r4/deliverables.json` như hướng dẫn R4.
 ZIP có checkpoint, model/config, 20 inputs/golden và ONNX; không cần thay source.
 
-Hai ZIP mới chứa dữ liệu frozen và comparison/predictions được đặt ngoài Git.
-`external_assets.json` có URL thực sau download verification, SHA-256,
+Hai ZIP mới chứa dữ liệu frozen và comparison/predictions được đặt ngoài Git
+tại [release tuần 5](https://github.com/ChouPro205/Adaptive_Split_Inference/releases/tag/sv3-week5-v1-20261005),
+pin source `b73a705461ceea2618f42d39184dda25e227efe5`.
+`external_assets.json` có URL thực đã download verification, SHA-256,
 size, version và đường đặt từng file; không dùng link dự kiến làm receipt.
 Dataset ZIP chứa 10 processed artifacts cả ba tập để existing loader kiểm
 leakage và hashes; không đổi/nhân bản/chia lại dữ liệu. Archive member hashes
@@ -160,12 +167,17 @@ là raw bytes; hash CSV/JSON của loader vẫn theo LF-normalized policy tuần
 ```powershell
 Get-FileHash ml/provenance/week5/external_assets.json -Algorithm SHA256
 # Authenticate manifest hash từ commit bàn giao/trusted channel trước khi chạy.
-& ml/.venv/Scripts/python.exe -B ml/scripts/hydrate_week5.py --expected-manifest-sha256 <SHA-256-trong-commit-ban-giao>
+& ml/.venv/Scripts/python.exe -B ml/scripts/hydrate_week5.py --expected-manifest-sha256 3fe550cbd3311825c7def1e2a6bb891032d0dd27ffe3990ced9f36451ee6d3ab
 ```
 
 Hydrator kiểm archive SHA/size và mọi member trước ghi; chỉ hydrate data,
 quantization20 và predictions, không ghi đè file khác bytes. Metadata/key
 thật, firmware P1 và nghiệm thu thiết bị là phần ngoài gói host tuần 5.
+
+| ZIP đã tải lại và xác minh | Bytes | SHA-256 | Đường đặt nội dung |
+|---|---:|---|---|
+| [mitdb-frozen-processed-week5-v1.zip](https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week5-v1-20261005/mitdb-frozen-processed-week5-v1.zip) | 33098461 | `b95d169f7cf454f11d21a858f6fee6f526347294f6673874318521a11ae8b0bf` | `ml/data/processed/mitdb/` |
+| [sv3-week5-quantization-reference-v1.zip](https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week5-v1-20261005/sv3-week5-quantization-reference-v1.zip) | 807817 | `3105bc879af3c4d9d4eb87725c7d165328649afd1c5dd28fe1786fe66dc4ff7b` | `ml/artifacts/week5/quantization20/`, `ml/results/week5/predictions.csv` |
 
 ## Accuracy đầy đủ và mapping
 
