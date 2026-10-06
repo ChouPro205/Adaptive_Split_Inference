@@ -15,3 +15,5 @@ Kconfig text eol=lf
 ml/** text=auto eol=lf
 .gitignore text eol=lf
 .gitattributes text eol=lf
+# Historical command/stream receipts authenticate raw bytes, including CRLF.
+ml/provenance/week3-sv2-linux/** -text

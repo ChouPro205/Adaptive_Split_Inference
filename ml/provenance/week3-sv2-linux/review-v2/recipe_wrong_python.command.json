@@ -1,0 +1,48 @@
+{
+  "argv": [
+    "wsl",
+    "-d",
+    "Ubuntu-24.04",
+    "--",
+    "env",
+    "ASI_LINUX_ENV_ROOT=/home/kyanh/asi-week3-review-v2-fixtures/wrong-python",
+    "ASI_LINUX_LOG_ROOT=/mnt/c/Users/Admin/Adaptive_Split_Inference/ml/provenance/week3-sv2-linux/review-v2/recipe_wrong_python",
+    "bash",
+    "/mnt/c/Users/Admin/Adaptive_Split_Inference/ml/scripts/reproduce_week3_sv2_linux.sh"
+  ],
+  "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+  "started_utc": "2026-10-06T08:14:36.317709+00:00",
+  "finished_utc": "2026-10-06T08:14:37.340524+00:00",
+  "base_commit": "415d53431c81c465784dc08be42b568827a39cff",
+  "source_sha256": {
+    "ml/scripts/audit_week3_sv2.py": "c11251b175a95228d6a558e22dec23f8047a18d8af0f9a16595c8c88d808f6cf",
+    "ml/scripts/authenticate_week3_sv2_package.py": "facb771666f75a432db614104575288a3fe838d3d8d2531658d0ecdd77789508",
+    "ml/scripts/diagnose_week3_sv2.py": "c3296d27450e9854d0f844d0a50b4b69a402ce2e72121b6760fe216c1691ce21",
+    "ml/scripts/export_week3.py": "02244b2eb160e6290a890df8e40c94e587e40b31c245c7b088b859c4f76fb678",
+    "ml/scripts/export_week3_sv2.py": "d107774da544c4fd6da39fc579d43d39011643992e441f0db69109c1704b2952",
+    "ml/scripts/record_week3_sv2_recipe.py": "08d6cf133d0e47d07f4d88d5eff178e5b40c795dc16ded1c596f96383fd11387",
+    "ml/scripts/reproduce_week3_sv2_linux.sh": "de3f038769251d77dfc308b26d011ef5923bc390ccddcd721531efd90b329246",
+    "ml/scripts/test_week3.py": "b1ddc24e3855cdcb03d62632d5add7da30230d1f66b6c85a713b23c8e8aa09ae",
+    "ml/scripts/test_week3_sv2.py": "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041",
+    "ml/scripts/test_week3_sv2_cache.py": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f",
+    "ml/scripts/test_week3_sv2_policy.py": "b24f01e3f5d5795710004d40ff6b2576b9cb7c5d9e3ac9c9ef359a38b9fe5e56",
+    "ml/scripts/verify_week3.py": "b90bc36f5488d51fefa893a6c57ab2e928b50090f579b7d1e9510b5fa864eee8",
+    "ml/scripts/verify_week3_sv2.py": "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb",
+    "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0"
+  },
+  "source_unchanged_during_command": true,
+  "exit_code": 2,
+  "streams": {
+    "stdout": {
+      "path": "recipe_wrong_python.stdout.txt",
+      "sha256": "a1aada95ee89bfe1adb682e891b861feada4e3fd7301e7b06333ac03b362e0f3",
+      "size_bytes": 6137
+    },
+    "stderr": {
+      "path": "recipe_wrong_python.stderr.txt",
+      "sha256": "0ba7c1879fd3e55ff6507441880f17cdcb01e9e827430d18d902c668b34ca68a",
+      "size_bytes": 221
+    }
+  }
+}

@@ -1,0 +1,82 @@
+downloading uv 0.12.23 x86_64-unknown-linux-gnu
+Python 3.11.9 is already installed
+Using CPython 3.11.9
+Creating virtual environment at: /home/kyanh/asi-week3-review-v2-clean-env/venv
+Activate with: source /home/kyanh/asi-week3-review-v2-clean-env/venv/bin/activate
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-review-v2-clean-env/venv
+Resolved 29 packages in 2.22s
+Installed 29 packages in 411ms
+ + cuda-bindings==13.3.1
+ + cuda-pathfinder==1.6.0
+ + cuda-toolkit==13.0.3.0
+ + filelock==3.32.3
+ + fsspec==2026.7.0
+ + jinja2==3.1.6
+ + markupsafe==3.0.3
+ + mpmath==1.3.0
+ + networkx==3.6.1
+ + nvidia-cublas==13.1.1.3
+ + nvidia-cuda-cupti==13.0.85
+ + nvidia-cuda-nvrtc==13.0.88
+ + nvidia-cuda-runtime==13.0.96
+ + nvidia-cudnn-cu13==9.24.0.43
+ + nvidia-cufft==12.0.0.61
+ + nvidia-cufile==1.15.1.6
+ + nvidia-curand==10.4.0.35
+ + nvidia-cusolver==12.0.4.66
+ + nvidia-cusparse==12.6.3.3
+ + nvidia-cusparselt-cu13==0.8.1
+ + nvidia-nccl-cu13==2.30.7
+ + nvidia-nvjitlink==13.3.33
+ + nvidia-nvshmem-cu13==3.4.5
+ + nvidia-nvtx==13.0.85
+ + setuptools==78.1.0
+ + sympy==1.14.0
+ + torch==2.14.0+cu130
+ + triton==3.8.0
+ + typing-extensions==4.16.0
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-review-v2-clean-env/venv
+Resolved 8 packages in 306ms
+Installed 7 packages in 133ms
+ + flatbuffers==25.12.19
+ + ml-dtypes==0.6.0
+ + numpy==2.4.6
+ + onnx==1.23.1
+ + onnxruntime==1.30.0
+ + packaging==26.3
+ + protobuf==7.36.2
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-review-v2-clean-env/venv
+test_cache_symlink_guard_without_os_privilege (__main__.CacheRegression.test_cache_symlink_guard_without_os_privilege) ... ok
+test_clean_then_real_caches_after_manifest_and_repeat (__main__.CacheRegression.test_clean_then_real_caches_after_manifest_and_repeat) ... ok
+test_entrypoints_without_B_do_not_write_cache (__main__.CacheRegression.test_entrypoints_without_B_do_not_write_cache) ... ok
+test_extra_source_cannot_authorize_an_extra_cache (__main__.CacheRegression.test_extra_source_cannot_authorize_an_extra_cache) ... ok
+test_frozen_loader_ignores_valid_header_forged_cache (__main__.CacheRegression.test_frozen_loader_ignores_valid_header_forged_cache) ... ok
+test_mutation_missing_and_external_hash_rejected (__main__.CacheRegression.test_mutation_missing_and_external_hash_rejected) ... ok
+test_preexisting_caches_and_other_cpython_versions (__main__.CacheRegression.test_preexisting_caches_and_other_cpython_versions) ... ok
+test_real_v1_cache_reproduces_bug_then_full_verifier_repeats (__main__.CacheRegression.test_real_v1_cache_reproduces_bug_then_full_verifier_repeats) ... ok
+test_regular_extra_file_rejected (__main__.CacheRegression.test_regular_extra_file_rejected) ... ok
+test_symlinks_rejected_before_cache_exception (__main__.CacheRegression.test_symlinks_rejected_before_cache_exception) ... ok
+test_unrecognized_cache_contents_rejected (__main__.CacheRegression.test_unrecognized_cache_contents_rejected) ... ok
+test_actual_missing_extra_file_and_duplicate_rows_rejected (__main__.InventoryOrderRegression.test_actual_missing_extra_file_and_duplicate_rows_rejected) ... ok
+test_manifest_missing_extra_duplicate_and_all_metadata_rejected (__main__.InventoryOrderRegression.test_manifest_missing_extra_duplicate_and_all_metadata_rejected) ... ok
+test_real_v1_posix_and_reverse_full_verifier (__main__.InventoryOrderRegression.test_real_v1_posix_and_reverse_full_verifier) ... ok
+test_windows_manifest_posix_inventory_and_reversed_lists (__main__.InventoryOrderRegression.test_windows_manifest_posix_inventory_and_reversed_lists) ... ok
+test_wrong_anchor_rejected_before_inventory (__main__.InventoryOrderRegression.test_wrong_anchor_rejected_before_inventory) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 26.414s
+
+OK
+test_dense_roundoff_allowed_only_in_explicit_policy (__main__.NumericalPolicyRegression.test_dense_roundoff_allowed_only_in_explicit_policy) ... ok
+test_evidence_errors_metadata_and_summaries_rejected (__main__.NumericalPolicyRegression.test_evidence_errors_metadata_and_summaries_rejected) ... ok
+test_full_verifier_accepts_small_recomputation_only (__main__.NumericalPolicyRegression.test_full_verifier_accepts_small_recomputation_only) ... ok
+test_full_verifier_rejects_changed_computation_with_original_anchor (__main__.NumericalPolicyRegression.test_full_verifier_rejects_changed_computation_with_original_anchor) ... ok
+test_full_verifier_rejects_conv_drift_and_logit_fault (__main__.NumericalPolicyRegression.test_full_verifier_rejects_conv_drift_and_logit_fault) ... ok
+test_nonfinite_shape_and_dtype_rejected (__main__.NumericalPolicyRegression.test_nonfinite_shape_and_dtype_rejected) ... ok
+test_run_specific_error_values_and_worst_case_can_change (__main__.NumericalPolicyRegression.test_run_specific_error_values_and_worst_case_can_change) ... ok
+test_strict_dense_and_logit_boundaries (__main__.NumericalPolicyRegression.test_strict_dense_and_logit_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 8.039s
+
+OK

@@ -1,0 +1,1 @@
+/home/kyanh/asi-week3-review-v2-clean-env/bin/uv pip freeze --python /home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python 

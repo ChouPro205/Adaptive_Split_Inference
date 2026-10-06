@@ -27,6 +27,9 @@ import numpy as np
 from week3_common import load_model, sha
 from week3_sv2_common import SCRIPTS, authenticate, inventory
 from verify_week3_sv2 import verify
+from verify_week3_sv2 import LEGACY, POLICIES
+
+RECOMPUTATION_POLICY = LEGACY
 
 SCRIPTS_ROOT = Path(__file__).resolve().parent
 V1 = SCRIPTS_ROOT.parent / "artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1"
@@ -178,7 +181,8 @@ class CacheRegression(unittest.TestCase):
         before = {str(p.relative_to(fixture)): sha(p) for p in fixture.rglob("*") if p.is_file()}
         for _ in range(2):
             completed = subprocess.run([sys.executable, str(SCRIPTS_ROOT / "verify_week3_sv2.py"),
-                                        "--package", str(fixture), "--expected-manifest-sha256", expected],
+                                        "--package", str(fixture), "--expected-manifest-sha256", expected,
+                                        "--recomputation-policy", RECOMPUTATION_POLICY],
                                        capture_output=True, text=True)
             self.assertEqual(completed.returncode, 0, completed.stderr)
             report = json.loads(completed.stdout)
@@ -190,7 +194,7 @@ class CacheRegression(unittest.TestCase):
         wrong = {**versions(), "python": "3.12.0"}
         with patch("verify_week3_sv2.versions", return_value=wrong):
             with self.assertRaisesRegex(ValueError, "Runtime versions differ"):
-                verify(fixture, expected)
+                verify(fixture, expected, RECOMPUTATION_POLICY)
 
     @unittest.skipUnless(V1.is_dir(), "Local immutable v1 unavailable for frozen-model regression")
     def test_frozen_loader_ignores_valid_header_forged_cache(self):
@@ -306,7 +310,7 @@ class InventoryOrderRegression(unittest.TestCase):
                          sorted(posix, key=lambda row: row["path"]))
         for actual in (posix, posix[::-1]):
             with patch("week3_sv2_common.inventory", return_value=actual):
-                report = verify(V1, expected)
+                report = verify(V1, expected, RECOMPUTATION_POLICY)
                 self.assertEqual(report["status"], "SV2_FP32_REFERENCE_CHECKS_PASS")
                 self.assertEqual(report["comparisons"], 200)
         self.assertEqual(before, {p.relative_to(V1).as_posix(): sha(p)
@@ -314,4 +318,11 @@ class InventoryOrderRegression(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument("--recomputation-policy", choices=POLICIES, default=LEGACY)
+    args, remaining = parser.parse_known_args()
+    RECOMPUTATION_POLICY = args.recomputation_policy
+    sys.argv = [sys.argv[0], *remaining]
+    print(f"Recomputation policy: {RECOMPUTATION_POLICY}", flush=True)
     unittest.main(verbosity=2)

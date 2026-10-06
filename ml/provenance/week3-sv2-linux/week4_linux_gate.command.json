@@ -1,0 +1,55 @@
+{
+  "argv": [
+    "wsl",
+    "-d",
+    "Ubuntu-24.04",
+    "--",
+    "/home/kyanh/asi-week3-sv2-linux/venv/bin/python",
+    "-B",
+    "ml/scripts/verify_week4.py",
+    "--repo-root",
+    ".",
+    "--output",
+    "ml/results/week4-r4",
+    "--expected-manifest-sha256",
+    "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a"
+  ],
+  "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+  "started_utc": "2026-10-06T06:27:55.033666+00:00",
+  "finished_utc": "2026-10-06T06:28:06.335177+00:00",
+  "base_commit": "415d53431c81c465784dc08be42b568827a39cff",
+  "branch": "sv3/fix-week3-sv2-linux-fp32",
+  "exit_code": 1,
+  "streams": {
+    "stdout": {
+      "path": "week4_linux_gate.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "week4_linux_gate.stderr.txt",
+      "sha256": "15f8ef4d47df9d4f7860f7d2745f50e2a4bfe8565c22f2f4a32743b9dc4ed1c5"
+    }
+  },
+  "source_sha256": {
+    "ml/scripts/audit_week3_sv2.py": "c11251b175a95228d6a558e22dec23f8047a18d8af0f9a16595c8c88d808f6cf",
+    "ml/scripts/diagnose_week3_sv2.py": "c3296d27450e9854d0f844d0a50b4b69a402ce2e72121b6760fe216c1691ce21",
+    "ml/scripts/export_week3.py": "02244b2eb160e6290a890df8e40c94e587e40b31c245c7b088b859c4f76fb678",
+    "ml/scripts/export_week3_sv2.py": "d107774da544c4fd6da39fc579d43d39011643992e441f0db69109c1704b2952",
+    "ml/scripts/profile_week4.py": "73b1b5d0ba1dd14a163f016fe3ed33d2acfa455024b5bedd2f0dd1c4d9f1a7df",
+    "ml/scripts/release_week4.py": "532a10438fc26ff5996fd9adc06ac10dc1def5cb1e017da235a93f8b23d31c10",
+    "ml/scripts/run_week4_regressions.py": "b914762eeac36ef6d6ff0c11691f3eca152a3b2efb128acdda20191f4af224af",
+    "ml/scripts/test_week3.py": "b1ddc24e3855cdcb03d62632d5add7da30230d1f66b6c85a713b23c8e8aa09ae",
+    "ml/scripts/test_week3_sv2.py": "b69a519b96c4f0864bce4e323f239bb11138f4a32c5c0183b4f9186069c0d83d",
+    "ml/scripts/test_week3_sv2_cache.py": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f",
+    "ml/scripts/test_week3_sv2_policy.py": "98244fbdc8e5bc98c320c8ab05cbac23a0678a4c6bc22a4ae2f4a5b6174c4ce5",
+    "ml/scripts/test_week4.py": "5fc8cef532c9aaca7926bbc43a3abaa4028eb00860ac01ba207e566c40dbbce4",
+    "ml/scripts/test_week4_release.py": "613e6cda6eff0d31eecea6f8a7c7145b5cea988a46aadd9d6afb7d9e11f592ab",
+    "ml/scripts/verify_week3.py": "b90bc36f5488d51fefa893a6c57ab2e928b50090f579b7d1e9510b5fa864eee8",
+    "ml/scripts/verify_week3_sv2.py": "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb",
+    "ml/scripts/verify_week4.py": "9be6986983e86d0b81b1c57fe71fbd738c97c7e96561787acfeb70f744d89c9c",
+    "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+    "ml/scripts/week4_common.py": "c5509a4f2977caf090e2d76be0bb7e52c99e55e0f8dcb41c0315bc6849187190"
+  },
+  "source_unchanged_during_command": true
+}

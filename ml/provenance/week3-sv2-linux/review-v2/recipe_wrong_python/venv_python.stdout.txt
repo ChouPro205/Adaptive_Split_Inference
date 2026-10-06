@@ -1,0 +1,1 @@
+{"python": "3.12.3", "executable": "/home/kyanh/asi-week3-review-v2-fixtures/wrong-python/venv/bin/python", "resolved_executable": "/usr/bin/python3.12", "platform": "linux", "prefix": "/usr"}

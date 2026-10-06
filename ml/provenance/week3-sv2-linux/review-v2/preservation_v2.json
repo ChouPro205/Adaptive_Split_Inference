@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "historical_files_unchanged": 125,
+  "historical_crlf_count_retained": 61,
+  "artifact_and_old_archive_files_unchanged": 44,
+  "receipts": {
+    "historical_files": 125,
+    "historical_streams": 76,
+    "historical_source_hashes": 13,
+    "new_source_hashes": 12,
+    "new_completed_commands": 27,
+    "example_sha256": "2784a0df309e37134e80e3b8ac0a80be4f5afae930492ee0674f52ad4fe7f567",
+    "historical_script_resolved_to": "ml/provenance/week3-sv2-linux/review-v2/source-before/ml/scripts/reproduce_week3_sv2_linux.sh"
+  },
+  "scientific_source_unchanged_except_recipe_snapshot_resolution": true
+}

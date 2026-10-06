@@ -1,0 +1,1 @@
+/home/kyanh/asi-week3-review-v2-clean-env/bin/uv pip install --python /home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python -r ml/requirements-week3-onnx.txt numpy==2.4.6 

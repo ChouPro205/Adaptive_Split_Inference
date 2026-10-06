@@ -1,0 +1,11 @@
+test_dense_roundoff_allowed_only_in_explicit_policy (__main__.NumericalPolicyRegression.test_dense_roundoff_allowed_only_in_explicit_policy) ... ok
+test_evidence_errors_metadata_and_summaries_rejected (__main__.NumericalPolicyRegression.test_evidence_errors_metadata_and_summaries_rejected) ... ok
+test_full_verifier_rejects_changed_computation_with_original_anchor (__main__.NumericalPolicyRegression.test_full_verifier_rejects_changed_computation_with_original_anchor) ... ok
+test_nonfinite_shape_and_dtype_rejected (__main__.NumericalPolicyRegression.test_nonfinite_shape_and_dtype_rejected) ... ok
+test_run_specific_error_values_and_worst_case_can_change (__main__.NumericalPolicyRegression.test_run_specific_error_values_and_worst_case_can_change) ... ok
+test_strict_dense_and_logit_boundaries (__main__.NumericalPolicyRegression.test_strict_dense_and_logit_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 6.059s
+
+OK

@@ -1,0 +1,896 @@
+{
+  "schema": "sv3-linux-fp32-recipe-receipt-v2",
+  "base_commit": "415d53431c81c465784dc08be42b568827a39cff",
+  "source_sha256": {
+    "ml/scripts/reproduce_week3_sv2_linux.sh": "de3f038769251d77dfc308b26d011ef5923bc390ccddcd721531efd90b329246",
+    "ml/scripts/authenticate_week3_sv2_package.py": "facb771666f75a432db614104575288a3fe838d3d8d2531658d0ecdd77789508",
+    "ml/scripts/record_week3_sv2_recipe.py": "08d6cf133d0e47d07f4d88d5eff178e5b40c795dc16ded1c596f96383fd11387",
+    "ml/scripts/diagnose_week3_sv2.py": "c3296d27450e9854d0f844d0a50b4b69a402ce2e72121b6760fe216c1691ce21",
+    "ml/scripts/verify_week3_sv2.py": "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb",
+    "ml/scripts/test_week3_sv2.py": "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041",
+    "ml/scripts/test_week3_sv2_cache.py": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f",
+    "ml/scripts/test_week3_sv2_policy.py": "b24f01e3f5d5795710004d40ff6b2576b9cb7c5d9e3ac9c9ef359a38b9fe5e56",
+    "ml/scripts/export_week3_sv2.py": "d107774da544c4fd6da39fc579d43d39011643992e441f0db69109c1704b2952",
+    "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+    "ml/requirements-week3-onnx.txt": "763b06fb9c048faa4a6794a10abc6403b151966f5b50ce4c418d8893968703ee"
+  },
+  "python_runtime": {
+    "python": "3.11.9",
+    "executable": "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+    "resolved_executable": "/home/kyanh/.local/share/uv/python/cpython-3.11.9-linux-x86_64-gnu/bin/python3.11",
+    "platform": "linux",
+    "prefix": "/home/kyanh/asi-week3-review-v2-clean-env/venv"
+  },
+  "recomputation_policy": "portable-fp32-v2",
+  "legacy_contract_pass_claimed": false,
+  "artifact_before_after_equal": true,
+  "artifact_authentication": {
+    "status": "AUTHENTICATED_ORIGINAL_V1",
+    "manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "files": {
+      "evidence/numerical_verification.json": {
+        "sha256": "66a5d78a86640ca24e6a230ad85bfb7638014f727f666e2538f1dfbaa8c02a12",
+        "size_bytes": 71238
+      },
+      "evidence/source_provenance.json": {
+        "sha256": "15e4f09a9f480d83e8474fdbd180d1a631863bd2dde570270ae49427f381fe0f",
+        "size_bytes": 2125
+      },
+      "golden/reference_logits.npy": {
+        "sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+        "size_bytes": 528
+      },
+      "golden/z_s0.npy": {
+        "sha256": "dac1d1e9df849bf4ffa30359384d129586f67ec0703157b692d1344685b78dcc",
+        "size_bytes": 28928
+      },
+      "golden/z_s1.npy": {
+        "sha256": "01dc25a4e8eb9e4ad3bcf246dd3e8ed85e06dc0df7af8e78f13b75800f0dc9a6",
+        "size_bytes": 460928
+      },
+      "golden/z_s10.npy": {
+        "sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+        "size_bytes": 528
+      },
+      "golden/z_s2.npy": {
+        "sha256": "5b9607815738e1a3a7ccde941e23a01a9ad927326839f38895e1f289e7d72399",
+        "size_bytes": 230528
+      },
+      "golden/z_s3.npy": {
+        "sha256": "afe72a5e26572060420a93f19ae0ce4a3bc686a90ef1607d4108df7b2bbbd94d",
+        "size_bytes": 460928
+      },
+      "golden/z_s4.npy": {
+        "sha256": "a45a5032e8682d2734642d2842659aac44fd0de208804f660faec7cc357cef16",
+        "size_bytes": 230528
+      },
+      "golden/z_s5.npy": {
+        "sha256": "b713e53387e5e43ba9f8abf0cd0905b108208cf29082669dfd1be706857a706e",
+        "size_bytes": 345728
+      },
+      "golden/z_s6.npy": {
+        "sha256": "a8b92d72c20fa4df5a3e651c87c0335bd7fecbc0657e7310bf6d4589700e8ba8",
+        "size_bytes": 172928
+      },
+      "golden/z_s7.npy": {
+        "sha256": "f1a9300d387aed0abb5ad5d2ff5f08167f162f66e5017e252b9de92053926e60",
+        "size_bytes": 230528
+      },
+      "golden/z_s8.npy": {
+        "sha256": "fda1e8ebc1828134b60daf75d5f60c50f4fa42ca3a9d9db83a66f3ffe0110829",
+        "size_bytes": 112768
+      },
+      "golden/z_s9.npy": {
+        "sha256": "2f6bd177be2a2f8f5aed60b85d65755520f538bfdbeeda0fe77f99206ca056bb",
+        "size_bytes": 2688
+      },
+      "model/checkpoint.pt": {
+        "sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+        "size_bytes": 450551
+      },
+      "model/freeze_decision.json": {
+        "sha256": "d69f0bf0887a965c806984716f556fb444ef2db64c7b6f0d708156d8e1b3a004",
+        "size_bytes": 2430
+      },
+      "model/mitdb_baseline_model.py": {
+        "sha256": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+        "size_bytes": 2912
+      },
+      "model/sv1_v2_manifest.json": {
+        "sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+        "size_bytes": 14408
+      },
+      "model/sv2_interface.json": {
+        "sha256": "7e087b91cf6a68c79ebaae82e606626385106be2926567dbaa0b8bf590036ebe",
+        "size_bytes": 18899
+      },
+      "model/train_config.json": {
+        "sha256": "1f988328ea46db8537bc46d35b9cb5a0a165f128d2326366495fe26eda23715f",
+        "size_bytes": 635
+      },
+      "models/tail_0.onnx": {
+        "sha256": "ffa1cbe02e7b9af405177816cc7edfe9870f61287553ce748f09a1f8bed572cf",
+        "size_bytes": 441852
+      },
+      "models/tail_1.onnx": {
+        "sha256": "4940b21a5101a08b341cbd2b9c191dec0ea21d9c121f08a65062688e0764e9d3",
+        "size_bytes": 441209
+      },
+      "models/tail_2.onnx": {
+        "sha256": "981527fa3d7d37d6b2c4e14b09328221bdf2e1dabbbe0c03506847e64a296355",
+        "size_bytes": 435609
+      },
+      "models/tail_3.onnx": {
+        "sha256": "2f27e2bfb1d7c72c0f98150e299392b6dbe985603be9f1820ded1f2945387874",
+        "size_bytes": 424980
+      },
+      "models/tail_4.onnx": {
+        "sha256": "dd481202cfbfec74ee399df4d0f2693060124cfa26d46a75d33262a2c0bc0f7e",
+        "size_bytes": 403951
+      },
+      "models/tail_5.onnx": {
+        "sha256": "872a26240b566c2c7f66ecfb056987788155cd297e65520f24776f670ea6b501",
+        "size_bytes": 372783
+      },
+      "models/tail_6.onnx": {
+        "sha256": "80a4fff1033b0530936eb1b77f5f9e67469acbccf89755e446a24ad5870c686d",
+        "size_bytes": 326089
+      },
+      "models/tail_7.onnx": {
+        "sha256": "c5181d7fffbd0093e473d67ea042b0c599c0c2e38b1f3319ca3c462a9058a3b0",
+        "size_bytes": 264140
+      },
+      "models/tail_8.onnx": {
+        "sha256": "d108d29c3c79c467ca5830bf4ecda8980d30faddfcad9a6087b5ec2115c99725",
+        "size_bytes": 181557
+      },
+      "models/tail_9.onnx": {
+        "sha256": "d2de785a18a069ff483e2408beb4b95abde4284fba3276f69dc0c0f32c22fb2f",
+        "size_bytes": 907
+      },
+      "README.md": {
+        "sha256": "16049ac0cfbdab7012830d3bfc419f9e12af5d7018cd59b338d66e96f6c40f04",
+        "size_bytes": 4795
+      },
+      "requirements/requirements-core.txt": {
+        "sha256": "c44395a0ff23b2fc3a5a29d44547c46768a002b47ec9b489306650d1a245cea1",
+        "size_bytes": 108
+      },
+      "requirements/requirements-gpu-cu130.txt": {
+        "sha256": "14a29db30f8a99c3e9043ab6be948122e7b678bb8ea932f0bb9b7ce472178f33",
+        "size_bytes": 102
+      },
+      "requirements/requirements-week3-onnx.txt": {
+        "sha256": "763b06fb9c048faa4a6794a10abc6403b151966f5b50ce4c418d8893968703ee",
+        "size_bytes": 172
+      },
+      "samples.csv": {
+        "sha256": "4a6356312d5f62da6b2fdf9e609843d4dea3fc5c20767e201ea21a075e6f227c",
+        "size_bytes": 2430
+      },
+      "scripts/export_week3_sv2.py": {
+        "sha256": "aec06e3b03f28d052704f78d2425fae08e20084a49d052d3247e47ed89c97043",
+        "size_bytes": 10738
+      },
+      "scripts/test_week3_sv2.py": {
+        "sha256": "fdea8298e9287bec0034d34eecbbc17e1b2a0c2f875d3878d33eecbdae1631f8",
+        "size_bytes": 5982
+      },
+      "scripts/verify_week3_sv2.py": {
+        "sha256": "a5fe0e5b018d53e7fb52e0a7a8a3cb38c8599e337640eb83028f855a4057b480",
+        "size_bytes": 5598
+      },
+      "scripts/week3_common.py": {
+        "sha256": "47dea8729d93bc4c66ddc421cff46b70fb66a17dc62b8fac420da5e89e8d93c6",
+        "size_bytes": 20652
+      },
+      "scripts/week3_sv2_common.py": {
+        "sha256": "a86b5c465b33355caaa59997af9a96ba4a1f0bcc08772d96ae0a44fbb04b2595",
+        "size_bytes": 12109
+      }
+    },
+    "original_zip_sha256_if_present": "b7f5b8d0bcd5ec27755f3e44541c0d24a6d23bdd27e199660a7b653bc30a71c7"
+  },
+  "commands": [
+    {
+      "step": "authenticate_after",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "-B",
+        "ml/scripts/authenticate_week3_sv2_package.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:08Z",
+      "finished_utc": "2026-10-06T08:09:09Z",
+      "streams": {
+        "stdout": {
+          "path": "authenticate_after.stdout.txt",
+          "sha256": "6dd53a9fa8dbcccf4da13a2bd99fa48e1618d60ba853d6ae8a7c7285489f79dd",
+          "size_bytes": 6179
+        },
+        "stderr": {
+          "path": "authenticate_after.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "authenticate_before",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "-B",
+        "ml/scripts/authenticate_week3_sv2_package.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:26Z",
+      "finished_utc": "2026-10-06T08:09:27Z",
+      "streams": {
+        "stdout": {
+          "path": "authenticate_before.stdout.txt",
+          "sha256": "6dd53a9fa8dbcccf4da13a2bd99fa48e1618d60ba853d6ae8a7c7285489f79dd",
+          "size_bytes": 6179
+        },
+        "stderr": {
+          "path": "authenticate_before.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "base_commit",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:07:46Z",
+      "finished_utc": "2026-10-06T08:07:46Z",
+      "streams": {
+        "stdout": {
+          "path": "base_commit.stdout.txt",
+          "sha256": "9dba9328ab94bfb7d48dd0391e98e3428175921d444005ab2f1278fee01837ba",
+          "size_bytes": 41
+        },
+        "stderr": {
+          "path": "base_commit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "cache",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "-B",
+        "ml/scripts/test_week3_sv2_cache.py",
+        "--recomputation-policy",
+        "portable-fp32-v2"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:08:29Z",
+      "finished_utc": "2026-10-06T08:08:59Z",
+      "streams": {
+        "stdout": {
+          "path": "cache.stdout.txt",
+          "sha256": "44ae0d77e7ad5ed3abb9e6c33a53d3030bfcb76fb9bfe3e2b14b5887c980f70d",
+          "size_bytes": 39
+        },
+        "stderr": {
+          "path": "cache.stderr.txt",
+          "sha256": "8a7fbb43a34d04fb149b3f1c3db5df288b42a502682ccf7a9f5ab91d8a59f213",
+          "size_bytes": 2289
+        }
+      }
+    },
+    {
+      "step": "cpu",
+      "argv": [
+        "lscpu"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:21Z",
+      "finished_utc": "2026-10-06T08:09:21Z",
+      "streams": {
+        "stdout": {
+          "path": "cpu.stdout.txt",
+          "sha256": "252a409e92afaf6669377c9300437e298c08324926e8237fdd3d35dec8d47ef9",
+          "size_bytes": 3219
+        },
+        "stderr": {
+          "path": "cpu.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "create_venv",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/bin/uv",
+        "venv",
+        "--python",
+        "3.11.9",
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:23Z",
+      "finished_utc": "2026-10-06T08:09:23Z",
+      "streams": {
+        "stdout": {
+          "path": "create_venv.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "create_venv.stderr.txt",
+          "sha256": "8970b5ce0ad3f56fd0ee5ffc54ef8e31c1e942b64794620a5368adb91eb738bb",
+          "size_bytes": 183
+        }
+      }
+    },
+    {
+      "step": "dependency_freeze",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/bin/uv",
+        "pip",
+        "freeze",
+        "--python",
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:26Z",
+      "finished_utc": "2026-10-06T08:09:26Z",
+      "streams": {
+        "stdout": {
+          "path": "dependency_freeze.stdout.txt",
+          "sha256": "3d87f4a51c1e470d52815219567e8f7c1f7b1e9ec547cd666e9f0b571a1edfc2",
+          "size_bytes": 766
+        },
+        "stderr": {
+          "path": "dependency_freeze.stderr.txt",
+          "sha256": "47907d3b8bc639bc1dfb19f0505bce8ae590de97a5b51d4a2a0aa97bf0ea7587",
+          "size_bytes": 83
+        }
+      }
+    },
+    {
+      "step": "diagnostic",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "-B",
+        "ml/scripts/diagnose_week3_sv2.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:27Z",
+      "finished_utc": "2026-10-06T08:09:40Z",
+      "streams": {
+        "stdout": {
+          "path": "diagnostic.stdout.txt",
+          "sha256": "50cfe82b138813e801ebb11f7fe12b1cac05bf9e538d57564c988afe1baeb9f8",
+          "size_bytes": 134194
+        },
+        "stderr": {
+          "path": "diagnostic.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "discover_repo",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/Admin/Adaptive_Split_Inference/ml/scripts",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:07:46Z",
+      "finished_utc": "2026-10-06T08:07:46Z",
+      "streams": {
+        "stdout": {
+          "path": "discover_repo.stdout.txt",
+          "sha256": "abd601898f42f944cd0bd0a4956ff60d2a8c6acc9ccbff30b461ee228c264c90",
+          "size_bytes": 44
+        },
+        "stderr": {
+          "path": "discover_repo.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "download_uv",
+      "argv": [
+        "curl",
+        "-LsSf",
+        "https://astral.sh/uv/install.sh",
+        "-o",
+        "/home/kyanh/asi-week3-review-v2-clean-env/uv-installer.sh"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:21Z",
+      "finished_utc": "2026-10-06T08:09:21Z",
+      "streams": {
+        "stdout": {
+          "path": "download_uv.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "download_uv.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "enter_repo",
+      "argv": [
+        "cd",
+        "/mnt/c/Users/Admin/Adaptive_Split_Inference"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:07:46Z",
+      "finished_utc": "2026-10-06T08:07:46Z",
+      "streams": {
+        "stdout": {
+          "path": "enter_repo.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "enter_repo.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "install_onnx_numpy",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/bin/uv",
+        "pip",
+        "install",
+        "--python",
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "-r",
+        "ml/requirements-week3-onnx.txt",
+        "numpy==2.4.6"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:26Z",
+      "finished_utc": "2026-10-06T08:09:26Z",
+      "streams": {
+        "stdout": {
+          "path": "install_onnx_numpy.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "install_onnx_numpy.stderr.txt",
+          "sha256": "3e7386a6e75b47c4f3b10f0df9f57fdafda47e28d39a593ae17c084f24d045d2",
+          "size_bytes": 281
+        }
+      }
+    },
+    {
+      "step": "install_torch",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/bin/uv",
+        "pip",
+        "install",
+        "--python",
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "torch==2.14.0+cu130",
+        "--index-url",
+        "https://download.pytorch.org/whl/cu130"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:23Z",
+      "finished_utc": "2026-10-06T08:09:26Z",
+      "streams": {
+        "stdout": {
+          "path": "install_torch.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "install_torch.stderr.txt",
+          "sha256": "4413315475383dede2862b5556d3c9f6902e000e61506f576b1e2c244dcad9a2",
+          "size_bytes": 879
+        }
+      }
+    },
+    {
+      "step": "install_uv",
+      "argv": [
+        "env",
+        "UV_INSTALL_DIR=/home/kyanh/asi-week3-review-v2-clean-env/bin",
+        "UV_NO_MODIFY_PATH=1",
+        "sh",
+        "/home/kyanh/asi-week3-review-v2-clean-env/uv-installer.sh"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:21Z",
+      "finished_utc": "2026-10-06T08:09:22Z",
+      "streams": {
+        "stdout": {
+          "path": "install_uv.stdout.txt",
+          "sha256": "48f24bbdf59f40f361301c810135c6cd44ebb7dc42686aac77b81c8bd08e557b",
+          "size_bytes": 95
+        },
+        "stderr": {
+          "path": "install_uv.stderr.txt",
+          "sha256": "5dbf87d8fbd7e9465f948dd626876945289d05044be678436f7d4bbb3d5b8bfa",
+          "size_bytes": 48
+        }
+      }
+    },
+    {
+      "step": "kernel",
+      "argv": [
+        "uname",
+        "-a"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:21Z",
+      "finished_utc": "2026-10-06T08:09:21Z",
+      "streams": {
+        "stdout": {
+          "path": "kernel.stdout.txt",
+          "sha256": "085422706edb030d14215c4e628d9436707d0386b6ddaed81a1d773c4c34142b",
+          "size_bytes": 139
+        },
+        "stderr": {
+          "path": "kernel.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "locate_script",
+      "argv": [
+        "realpath",
+        "--",
+        "ml/scripts/reproduce_week3_sv2_linux.sh"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:07:46Z",
+      "finished_utc": "2026-10-06T08:07:46Z",
+      "streams": {
+        "stdout": {
+          "path": "locate_script.stdout.txt",
+          "sha256": "598cab806572d05d9dd38a13ca1f40cd004311afb1deecbadc45663af9d99198",
+          "size_bytes": 84
+        },
+        "stderr": {
+          "path": "locate_script.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "os",
+      "argv": [
+        "cat",
+        "/etc/os-release"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:21Z",
+      "finished_utc": "2026-10-06T08:09:21Z",
+      "streams": {
+        "stdout": {
+          "path": "os.stdout.txt",
+          "sha256": "87458b3b1f1ca0e5c693ade771de7007c3783bdc692fa6b39eb6414bf2af2763",
+          "size_bytes": 400
+        },
+        "stderr": {
+          "path": "os.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "policy",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "-B",
+        "ml/scripts/test_week3_sv2_policy.py"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:08:59Z",
+      "finished_utc": "2026-10-06T08:09:08Z",
+      "streams": {
+        "stdout": {
+          "path": "policy.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "policy.stderr.txt",
+          "sha256": "0a32f66a3986afb66d66b9223809acd7aca1a8e2b0c357abb9572c8a3d9e36fc",
+          "size_bytes": 1280
+        }
+      }
+    },
+    {
+      "step": "prepare_environment_root",
+      "argv": [
+        "mkdir",
+        "-p",
+        "/home/kyanh/asi-week3-review-v2-clean-env"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:21Z",
+      "finished_utc": "2026-10-06T08:09:21Z",
+      "streams": {
+        "stdout": {
+          "path": "prepare_environment_root.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "prepare_environment_root.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "python_install",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/bin/uv",
+        "python",
+        "install",
+        "3.11.9"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:22Z",
+      "finished_utc": "2026-10-06T08:09:23Z",
+      "streams": {
+        "stdout": {
+          "path": "python_install.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        },
+        "stderr": {
+          "path": "python_install.stderr.txt",
+          "sha256": "9d13c0374381c8b6ddb6c4dbeb3a83e12444978ac0bd431b64355816c8d34443",
+          "size_bytes": 35
+        }
+      }
+    },
+    {
+      "step": "source_hashes",
+      "argv": [
+        "sha256sum",
+        "--",
+        "ml/scripts/reproduce_week3_sv2_linux.sh",
+        "ml/scripts/authenticate_week3_sv2_package.py",
+        "ml/scripts/record_week3_sv2_recipe.py",
+        "ml/scripts/diagnose_week3_sv2.py",
+        "ml/scripts/verify_week3_sv2.py",
+        "ml/scripts/test_week3_sv2.py",
+        "ml/scripts/test_week3_sv2_cache.py",
+        "ml/scripts/test_week3_sv2_policy.py",
+        "ml/scripts/export_week3_sv2.py",
+        "ml/scripts/week3_common.py",
+        "ml/scripts/week3_sv2_common.py",
+        "ml/requirements-week3-onnx.txt"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:21Z",
+      "finished_utc": "2026-10-06T08:09:21Z",
+      "streams": {
+        "stdout": {
+          "path": "source_hashes.stdout.txt",
+          "sha256": "20c8f6cbe1d0d6ad02f80d23c22adb069ad9b2d0eff81f9284c432972ff730a1",
+          "size_bytes": 1199
+        },
+        "stderr": {
+          "path": "source_hashes.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "tamper",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "-B",
+        "ml/scripts/test_week3_sv2.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+        "--recomputation-policy",
+        "portable-fp32-v2"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:47Z",
+      "finished_utc": "2026-10-06T08:08:29Z",
+      "streams": {
+        "stdout": {
+          "path": "tamper.stdout.txt",
+          "sha256": "23dd3b52df6a65000cd3f6860527957355ed8fb711c4962416e6a78e9fbebd19",
+          "size_bytes": 962
+        },
+        "stderr": {
+          "path": "tamper.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "uv_installer_hash",
+      "argv": [
+        "sha256sum",
+        "--",
+        "/home/kyanh/asi-week3-review-v2-clean-env/uv-installer.sh"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:21Z",
+      "finished_utc": "2026-10-06T08:09:21Z",
+      "streams": {
+        "stdout": {
+          "path": "uv_installer_hash.stdout.txt",
+          "sha256": "13cc2ea977969e96c1ea6bbbcfb315860f1bceee68702ce428bcd4d401ba8b69",
+          "size_bytes": 124
+        },
+        "stderr": {
+          "path": "uv_installer_hash.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "uv_version",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/bin/uv",
+        "--version"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:22Z",
+      "finished_utc": "2026-10-06T08:09:22Z",
+      "streams": {
+        "stdout": {
+          "path": "uv_version.stdout.txt",
+          "sha256": "bda25a2f047af04626be126cd42f9e6b995ee476ad4b94ac47d3a528a6f4cea9",
+          "size_bytes": 38
+        },
+        "stderr": {
+          "path": "uv_version.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "venv_python",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "-I",
+        "-c",
+        "import json, os, platform, sys\nactual = platform.python_version()\nprint(json.dumps({\"python\": actual, \"executable\": sys.executable, \"resolved_executable\": os.path.realpath(sys.executable), \"platform\": sys.platform, \"prefix\": sys.prefix}))\nif actual != \"3.11.9\" or sys.platform != \"linux\":\n    print(\"Pinned venv requires native Linux Python 3.11.9; actual=\" + actual + \" platform=\" + sys.platform, file=sys.stderr)\n    sys.exit(2)"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:23Z",
+      "finished_utc": "2026-10-06T08:09:23Z",
+      "streams": {
+        "stdout": {
+          "path": "venv_python.stdout.txt",
+          "sha256": "c0871a130d882ca1fe79bf146ed71a90d50ec55ed09d6139a57fe58f485314ee",
+          "size_bytes": 285
+        },
+        "stderr": {
+          "path": "venv_python.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "verifier",
+      "argv": [
+        "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python",
+        "-B",
+        "ml/scripts/verify_week3_sv2.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+        "--recomputation-policy",
+        "portable-fp32-v2"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:09:40Z",
+      "finished_utc": "2026-10-06T08:09:47Z",
+      "streams": {
+        "stdout": {
+          "path": "verifier.stdout.txt",
+          "sha256": "4118f2ea91d38e29b2a30d9e1849185d1499127701da95a0893c00ad894013ee",
+          "size_bytes": 3470
+        },
+        "stderr": {
+          "path": "verifier.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    },
+    {
+      "step": "working_tree",
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/mnt/c/Users/Admin/Adaptive_Split_Inference",
+      "exit_code": 0,
+      "started_utc": "2026-10-06T08:07:46Z",
+      "finished_utc": "2026-10-06T08:09:21Z",
+      "streams": {
+        "stdout": {
+          "path": "working_tree.stdout.txt",
+          "sha256": "3b949e72da5e0f1906e74f8990455cd1d58f5c0cfa69baf5e18739d04034c819",
+          "size_bytes": 818
+        },
+        "stderr": {
+          "path": "working_tree.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size_bytes": 0
+        }
+      }
+    }
+  ],
+  "status": "AUTHOR_MACHINE_PORTABLE_RECIPE_PASS",
+  "receipt_scope": "Completed steps before receipt creation; receipt command and final exit log are outside self-authentication"
+}

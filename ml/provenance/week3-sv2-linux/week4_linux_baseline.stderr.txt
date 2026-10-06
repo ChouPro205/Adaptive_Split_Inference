@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/verify_week4.py", line 119, in <module>
+    print(json.dumps(verify(args.output_dir, args.repo_root, args.expected_manifest_sha256, args.compiler), indent=2))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/verify_week4.py", line 89, in verify
+    need(same_bits(actual, expected), f"Golden FP32 bits differ: {s}")
+  File "/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/week3_common.py", line 40, in need
+    raise ValueError(message)
+ValueError: Golden FP32 bits differ: 9

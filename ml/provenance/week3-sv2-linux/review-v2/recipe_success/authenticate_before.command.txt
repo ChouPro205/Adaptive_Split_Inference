@@ -1,0 +1,1 @@
+/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python -B ml/scripts/authenticate_week3_sv2_package.py --package ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1 

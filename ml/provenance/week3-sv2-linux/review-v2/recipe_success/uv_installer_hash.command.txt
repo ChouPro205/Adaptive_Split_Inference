@@ -1,0 +1,1 @@
+sha256sum -- /home/kyanh/asi-week3-review-v2-clean-env/uv-installer.sh 

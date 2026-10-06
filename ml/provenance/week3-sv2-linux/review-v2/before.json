@@ -1,0 +1,812 @@
+{
+  "base_commit": "415d53431c81c465784dc08be42b568827a39cff",
+  "historical_files": {
+    "ml/provenance/week3-sv2-linux/artifact_after.json": {
+      "sha256": "2073bd3acaed8f36865c2afa9f13daeb6eb540698ec4ddfebc9886f690e8ef5c",
+      "size_bytes": 4056,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/artifact_before.json": {
+      "sha256": "2073bd3acaed8f36865c2afa9f13daeb6eb540698ec4ddfebc9886f690e8ef5c",
+      "size_bytes": 4056,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/artifact_preservation.json": {
+      "sha256": "26ca733938b18e8867c5229f75efe86b2bc315467d5201e816e1e8bf16929d11",
+      "size_bytes": 258,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/before_linux.command.json": {
+      "sha256": "07ec0c1f74cc0afccc8597b9b6e44fa7f718f43552e13bca2e8132c1d06ac130",
+      "size_bytes": 2173,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/before_linux.stderr.txt": {
+      "sha256": "fbc530fddb3427f6fc1836624a0438cdc0249d076d361bba295a3ee1b7662a94",
+      "size_bytes": 662,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/before_linux.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/dense_comparison.json": {
+      "sha256": "971902e0aa2ea89febaf464f64a18a73892497a5ba03abd1429b301ef6e6d2d0",
+      "size_bytes": 543,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/dense_linux.command.json": {
+      "sha256": "c86be50a9791a0d8c2b67e50b1aaeb8f167f17987c6a3c83dc2e7738ba1c0414",
+      "size_bytes": 3086,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/dense_linux.stderr.txt": {
+      "sha256": "ca5f49b83fb16883f8e75102204149cde0f831684d14b34551cad8ea83f55e58",
+      "size_bytes": 167,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/dense_linux.stdout.txt": {
+      "sha256": "15193510d1415aa67e8a3e7d0b8d9305c78a33cf5541702b996673190a8f4fca",
+      "size_bytes": 23584,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/dense_windows.command.json": {
+      "sha256": "8fffda42acdd6b444258aef8ed13914e3de61138dad131328d860484b6b69825",
+      "size_bytes": 3015,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/dense_windows.stderr.txt": {
+      "sha256": "1d54c11ad2b40f1b1448145296d773b117e731ea8854222da2d026064d6f79a2",
+      "size_bytes": 319,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/dense_windows.stdout.txt": {
+      "sha256": "fd9e9c00cf19148ce9a4d66db623763aee694d157891a56fe79c2b4429e0af33",
+      "size_bytes": 24166,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/diagnostic_linux.command.json": {
+      "sha256": "0b3e8f5be9bd2b4c3d2d7408b71d5def4fa37ce2a8b9f2a09a520284ce4a3ec9",
+      "size_bytes": 2183,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/diagnostic_linux.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/diagnostic_linux.stdout.txt": {
+      "sha256": "50cfe82b138813e801ebb11f7fe12b1cac05bf9e538d57564c988afe1baeb9f8",
+      "size_bytes": 134194,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/diagnostic_linux_compatible.command.json": {
+      "sha256": "0c0ff074435fdeefa5d3bffa0addb0cf4add9b0a2d07b0a861eae49144572756",
+      "size_bytes": 2245,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/diagnostic_linux_compatible.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/diagnostic_linux_compatible.stdout.txt": {
+      "sha256": "8cf5c086f8bbb52886c4bbe46b1b67181fe356ed4e2568df6f537290c0aeb81d",
+      "size_bytes": 168207,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/diagnostic_windows.command.json": {
+      "sha256": "ae683b16efc0cfec703428d20bae9cfd9a4293b4856fa6d4d9596e2349b12330",
+      "size_bytes": 2112,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/diagnostic_windows.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/diagnostic_windows.stdout.txt": {
+      "sha256": "0773d55860d8d382a277e0ff3536b6acb59a4fad9d01f85b0b57d81f660c5494",
+      "size_bytes": 90163,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/environment.sh": {
+      "sha256": "fa5238a86dc5705e377d1437c32f71de6296db27f16b883c0f1d377342113923",
+      "size_bytes": 357,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/environment_linux.command.json": {
+      "sha256": "2fb9b218c06f05d668fbc827cfb0ca723b600fa4ba5c24730999a4a0214f557a",
+      "size_bytes": 2849,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/environment_linux.stderr.txt": {
+      "sha256": "ad9192cb3f60fd2d21e7c9c766543a188647379c2784994a275521bbc4ee6014",
+      "size_bytes": 73,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/environment_linux.stdout.txt": {
+      "sha256": "6a0b464544ef2d8e54eeffd7c986b6de86dbb51fa324d46b7a221b4d00fb99b7",
+      "size_bytes": 5315,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_cache.command.json": {
+      "sha256": "377d88c2550ad8f1a3cf56c33c50564703d5043b6073e6d4d3f17cede08a3431",
+      "size_bytes": 2949,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_cache.stderr.txt": {
+      "sha256": "2d026d4339c4b9df2caad15a2f471166e304eaf724055bfa72a0e1adddf45fa8",
+      "size_bytes": 2289,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_cache.stdout.txt": {
+      "sha256": "44ae0d77e7ad5ed3abb9e6c33a53d3030bfcb76fb9bfe3e2b14b5887c980f70d",
+      "size_bytes": 39,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_policy.command.json": {
+      "sha256": "67e28b810f153262176cf30d41cc7b0dd391628e16bd8c3e098c1f5e5795ba5a",
+      "size_bytes": 2896,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_policy.stderr.txt": {
+      "sha256": "3bb6d849814908e52751e35172c9cc152f52ad13f9419b15af732f25ecf763bb",
+      "size_bytes": 980,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_policy.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_policy_v2.command.json": {
+      "sha256": "65eb44853544c0b5168efa9196c5f272d8687a582becdc1730dd7f5078b26c7b",
+      "size_bytes": 2902,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_policy_v2.stderr.txt": {
+      "sha256": "aad86775fc8aa3893610e921623c5883ecac8ef7e78f5535cef4414f13f67dbe",
+      "size_bytes": 1280,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_policy_v2.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_tamper.command.json": {
+      "sha256": "320f9e3b22319758cb3aa214eb73faca6caf4a06cf2a8bb2f1671e958ff149e0",
+      "size_bytes": 3131,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_tamper.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_tamper.stdout.txt": {
+      "sha256": "affec1dafd371f6c73500c92fff6da98fc07f5ae577b249f55433601f247ace5",
+      "size_bytes": 845,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_tamper_v2.command.json": {
+      "sha256": "f5971f3308c455dd9b575e3dcba05735fbb07faed1cbd93f915f1d80c2159e77",
+      "size_bytes": 3137,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_tamper_v2.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_tamper_v2.stdout.txt": {
+      "sha256": "23dd3b52df6a65000cd3f6860527957355ed8fb711c4962416e6a78e9fbebd19",
+      "size_bytes": 962,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_verifier.command.json": {
+      "sha256": "2784a0df309e37134e80e3b8ac0a80be4f5afae930492ee0674f52ad4fe7f567",
+      "size_bytes": 3137,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_verifier.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_linux_verifier.stdout.txt": {
+      "sha256": "4118f2ea91d38e29b2a30d9e1849185d1499127701da95a0893c00ad894013ee",
+      "size_bytes": 3470,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_cache.command.json": {
+      "sha256": "d18d8527fa0c17da72c1c97f4888062c9fcd107af7d14f4b8d4924ae4f47efa8",
+      "size_bytes": 2822,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_cache.stderr.txt": {
+      "sha256": "d23d96be02b92d3b71770b3455b3e9a122c21af9f8d7f6efe5a636544a9e6f38",
+      "size_bytes": 2687,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_cache.stdout.txt": {
+      "sha256": "a10eb8a682d90ef05bbea7cf46c72bd867eb0677febecab187c37010cc0e094a",
+      "size_bytes": 34,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_legacy.command.json": {
+      "sha256": "7ba089b65443fac4ecffeccc59c2f42a2c90d0610f588ca213adebb1413dcdf7",
+      "size_bytes": 3006,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_legacy.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_legacy.stdout.txt": {
+      "sha256": "a617a9cdc2ca19c2aa6d21db6c55104f1924620f02f6a4235e3444dcdb4ba8f6",
+      "size_bytes": 3361,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_policy.command.json": {
+      "sha256": "ececff434e1dfb9abc51ae3bfa845e07169602d74c0441b8738df2baee6692a5",
+      "size_bytes": 2825,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_policy.stderr.txt": {
+      "sha256": "f26398a75bd419616ea43ace5ce834fbc40716cdbaf8d77ae96ef0aea9cde65d",
+      "size_bytes": 991,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_policy.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_policy_v2.command.json": {
+      "sha256": "fc3efbb9f4311b9390c71cc37b12b841c5086141fcc08c7ee2098e4f81d5aabb",
+      "size_bytes": 2831,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_policy_v2.stderr.txt": {
+      "sha256": "d1d95e922f358018652d4823be1674419fd861f355eba1aaa7aa4f81d09b0196",
+      "size_bytes": 1293,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_policy_v2.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_portable.command.json": {
+      "sha256": "be9ea056077becad47288d4f91deb69638487082332d7ff3e6d871886b7ccc4d",
+      "size_bytes": 3066,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_portable.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_portable.stdout.txt": {
+      "sha256": "64bacbfa503cc37160df98eba9088b552e15fe74f1874392ad12ecae27d47279",
+      "size_bytes": 3369,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_tamper.command.json": {
+      "sha256": "c79f821351034a865a1a357d21a399b32e6cf8ed6e6f19efd692f15fdd20d63f",
+      "size_bytes": 3004,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_tamper.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_tamper.stdout.txt": {
+      "sha256": "d100ad21ac63fbaaa42840fa7658a1b76259248aa685e994164f6ef81abc781c",
+      "size_bytes": 862,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_tamper_v2.command.json": {
+      "sha256": "b14c7239dd832ec480ccfb10ccf150dcf83ff7852a71584fc1d6075ac318ba30",
+      "size_bytes": 3010,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_tamper_v2.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/final_windows_tamper_v2.stdout.txt": {
+      "sha256": "64032f9177b47303fb4e6d5dcc9f066a14ecd68679002037b24ad757980ebf06",
+      "size_bytes": 981,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/finalize_evidence.py": {
+      "sha256": "4df0da91a9c99d7b0768228324547ed37c8e8694755c3c104fb21b4ff0b35d86",
+      "size_bytes": 3034,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/install_core_linux.command.json": {
+      "sha256": "164883666396baf47865d10f8b1b112fba25c9ae39a9d357ac3b82cd16762bba",
+      "size_bytes": 2977,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/install_core_linux.stderr.txt": {
+      "sha256": "84773268ad70ede47989669996832bf021304aa31921c3f00e8feed09d067039",
+      "size_bytes": 890,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/install_core_linux.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/legacy_linux.command.json": {
+      "sha256": "da98f5dc25704d4ed5e7c93965f55e7ff95c4d731a81bea205c9041544145743",
+      "size_bytes": 3115,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/legacy_linux.stderr.txt": {
+      "sha256": "4ee3c2bba8439e0eb3ee70cc356c676d418975189a65687e7fe77d04fc7c3494",
+      "size_bytes": 1023,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/legacy_linux.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/prepare_week4_baseline.command.json": {
+      "sha256": "62701f25e1533407f2d0136ff05dc487be3ee8c14ef7d17d28ee2e6e2cb74ab0",
+      "size_bytes": 2849,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/prepare_week4_baseline.py": {
+      "sha256": "3eb731e0d694c84e186d4567dc59849caea119ede176c1275196b760f366083c",
+      "size_bytes": 1443,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/prepare_week4_baseline.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/prepare_week4_baseline.stdout.txt": {
+      "sha256": "87c6acce4b0db89c7fa0684f7d935a8446714fc89592b8c3cf9f0da86ee92e9b",
+      "size_bytes": 1634,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/recipe_linux.command.json": {
+      "sha256": "6656d746af511c51deb24421e8b49c26ad3f15fbd5061bf3f41747922cd42902",
+      "size_bytes": 2834,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/recipe_linux.stderr.txt": {
+      "sha256": "1fac53fef2ef46c17959f054107b289cda1344534e524d89a77d698978c362db",
+      "size_bytes": 3877,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/recipe_linux.stdout.txt": {
+      "sha256": "2af38b1a83f95d17290f1f8cb7d6983c978c3143fd39a77b3f53e2327f5abe41",
+      "size_bytes": 138861,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/review_receipt.json": {
+      "sha256": "c8fd250d0cb321fd4b75bb428ca0ad94a6488e45065fdb04dd752069d42bec9c",
+      "size_bytes": 9552,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/run_logged.py": {
+      "sha256": "6768bce0d26b9df91da1e13d4ba3936b040c2b5b4c2f87cb099300ecacffc577",
+      "size_bytes": 1764,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/setup.command.json": {
+      "sha256": "ef19d7923b281f953cbc24e2433f6c6a6514f31feab2b0e3f56ad4ed04ce1b3c",
+      "size_bytes": 1933,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/setup.stderr.txt": {
+      "sha256": "a2bf19225dad6dd29837d9aced7f91eb90055ca8f4ef4c59ad7bb2a826c60792",
+      "size_bytes": 3593,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/setup.stdout.txt": {
+      "sha256": "05170977fa6c1ccc200d3abe35802b39a12d79c50efe5e73bd24498e418aefb3",
+      "size_bytes": 99,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/setup_local.sh": {
+      "sha256": "f89f5291b331687472d074c5c738edc5016949be083cebd06f7345f1a7e8ff9f",
+      "size_bytes": 673,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/sv1_linux_verifier.command.json": {
+      "sha256": "3596c4f8d5436a6af5b08f18dbb1852ec690c2df833f9a5f9c6c926d9e404633",
+      "size_bytes": 3099,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/sv1_linux_verifier.stderr.txt": {
+      "sha256": "efc582efae82ac5660d3e1ef09956d9d320ffc3d4e735d501a5271894b9a1f07",
+      "size_bytes": 77,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/sv1_linux_verifier.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/sv1_windows_tests.command.json": {
+      "sha256": "4a187f5f27a0958b82516d380dca70b5baf28f6ee15cf499f422d7f75e615597",
+      "size_bytes": 3076,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/sv1_windows_tests.stderr.txt": {
+      "sha256": "7a85096d799c5d655d2b0e177d4875f94dc0c176fa3dc742e3d3cd21fc59bddb",
+      "size_bytes": 228,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/sv1_windows_tests.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/sv1_windows_tests_corrected.command.json": {
+      "sha256": "d261af2b95ff9394257d4c9f2a03b2190e0efe3df3cde06f74c0a170b2308f84",
+      "size_bytes": 3040,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/sv1_windows_tests_corrected.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/sv1_windows_tests_corrected.stdout.txt": {
+      "sha256": "61c69a50c3d2176c402fcac406458c3037ab06c751b552703705121043bc71cc",
+      "size_bytes": 1608,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/sv1_windows_verifier.command.json": {
+      "sha256": "731d89a0bff26f84151c803f93712bdd4ef63355bec0f47005d4da3a5cbf7a43",
+      "size_bytes": 3084,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/sv1_windows_verifier.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/sv1_windows_verifier.stdout.txt": {
+      "sha256": "f7fa018f98aa54c4dafa528180a8f77614134944e97ab6fe32260e29e1b7fb94",
+      "size_bytes": 1111,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/test_linux_policy.command.json": {
+      "sha256": "3c219962aa0f0ec52f086ff054776ad38df18d4e77dc57d15954341654f0a0b7",
+      "size_bytes": 2221,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/test_linux_policy.stderr.txt": {
+      "sha256": "062f6291dbf6f78c82774496ff646f404070c6ed849f4986745a0def4b9da726",
+      "size_bytes": 980,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/test_linux_policy.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/verify_linux_portable.command.json": {
+      "sha256": "c838b45d058aa004b10b0366aec5649f125c391a44cb1580d5bc3dbabe5dfb07",
+      "size_bytes": 2466,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/verify_linux_portable.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/verify_linux_portable.stdout.txt": {
+      "sha256": "4118f2ea91d38e29b2a30d9e1849185d1499127701da95a0893c00ad894013ee",
+      "size_bytes": 3470,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/week4_baseline_view.json": {
+      "sha256": "87c6acce4b0db89c7fa0684f7d935a8446714fc89592b8c3cf9f0da86ee92e9b",
+      "size_bytes": 1634,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_linux_baseline.command.json": {
+      "sha256": "73a4879462c096cc3bd94fa1c9bb2593dda9285c8f5f7e5172615827e9857124",
+      "size_bytes": 3174,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_linux_baseline.stderr.txt": {
+      "sha256": "f1b823db1d1d144a3503d3fdf1efb54bc7c6d55ca2e0010600df7bd1483ff135",
+      "size_bytes": 849,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/week4_linux_baseline.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/week4_linux_gate.command.json": {
+      "sha256": "9d4792c06a2e8f6b05aa4e912f9308f3a11c1369bdd4f1f31ac450ec9a738ca4",
+      "size_bytes": 3066,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_linux_gate.stderr.txt": {
+      "sha256": "15f8ef4d47df9d4f7860f7d2745f50e2a4bfe8565c22f2f4a32743b9dc4ed1c5",
+      "size_bytes": 763,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/week4_linux_gate.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/week4_linux_release_tests.command.json": {
+      "sha256": "58ff5a766229cf335c1e2b43e8f9d5e9aaff1a4cb76a201db358d8e880048971",
+      "size_bytes": 2907,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_linux_release_tests.stderr.txt": {
+      "sha256": "2cdff5507687cd535dbb3a2e0db13bd7716d1923cdffad1e91653f086b2764f9",
+      "size_bytes": 976,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/week4_linux_release_tests.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/week4_windows_baseline.command.json": {
+      "sha256": "70223de48a76ea9b371f7dfd90b3e32328e5d179aa2e6a7f3f55c656fff4053e",
+      "size_bytes": 3159,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_windows_baseline.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/week4_windows_baseline.stdout.txt": {
+      "sha256": "395c8d01721d6efa9614d5f51292fc7ce7ac54bee4262e3f19f59ff5afa3ead4",
+      "size_bytes": 3442,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_windows_baseline_tests.command.json": {
+      "sha256": "b4fdc52c397dd5e288a47b92083ac373ec37fdf724a1802840eec73cd8d9cd15",
+      "size_bytes": 3169,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_windows_baseline_tests.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/week4_windows_baseline_tests.stdout.txt": {
+      "sha256": "ecbe30ce24d7161c54e02a16dccffe3c28d8eb4d417325e972574dbba4dc281b",
+      "size_bytes": 1184,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_windows_gate.command.json": {
+      "sha256": "d57f281b3f683cd0fcef1230e12598a19668bd5be99cf8f88ffc6c199f123d30",
+      "size_bytes": 3055,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_windows_gate.stderr.txt": {
+      "sha256": "6464dd6a83b735635fc02da7c847637773e64cdf7d92abde84482be993cdfc3e",
+      "size_bytes": 760,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/week4_windows_gate.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/wsl_inventory.command.json": {
+      "sha256": "ccf99aa473a774110d8a476db3e54b748d9efc9f2e891b66a378bd49f8620546",
+      "size_bytes": 2765,
+      "has_crlf": true
+    },
+    "ml/provenance/week3-sv2-linux/wsl_inventory.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "has_crlf": false
+    },
+    "ml/provenance/week3-sv2-linux/wsl_inventory.stdout.txt": {
+      "sha256": "88b703a5f178af2edb679c85dcb5a9f53fc7d97502decf837ffc2b4e206f0f75",
+      "size_bytes": 160,
+      "has_crlf": false
+    }
+  },
+  "historical_file_count": 125,
+  "historical_crlf_count": 61,
+  "artifact_and_old_archive_files": {
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/manifest.json": {
+      "sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+      "size_bytes": 43218
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/README.md": {
+      "sha256": "16049ac0cfbdab7012830d3bfc419f9e12af5d7018cd59b338d66e96f6c40f04",
+      "size_bytes": 4795
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/samples.csv": {
+      "sha256": "4a6356312d5f62da6b2fdf9e609843d4dea3fc5c20767e201ea21a075e6f227c",
+      "size_bytes": 2430
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/evidence/numerical_verification.json": {
+      "sha256": "66a5d78a86640ca24e6a230ad85bfb7638014f727f666e2538f1dfbaa8c02a12",
+      "size_bytes": 71238
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/evidence/source_provenance.json": {
+      "sha256": "15e4f09a9f480d83e8474fdbd180d1a631863bd2dde570270ae49427f381fe0f",
+      "size_bytes": 2125
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/reference_logits.npy": {
+      "sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+      "size_bytes": 528
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s0.npy": {
+      "sha256": "dac1d1e9df849bf4ffa30359384d129586f67ec0703157b692d1344685b78dcc",
+      "size_bytes": 28928
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s1.npy": {
+      "sha256": "01dc25a4e8eb9e4ad3bcf246dd3e8ed85e06dc0df7af8e78f13b75800f0dc9a6",
+      "size_bytes": 460928
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s10.npy": {
+      "sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+      "size_bytes": 528
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s2.npy": {
+      "sha256": "5b9607815738e1a3a7ccde941e23a01a9ad927326839f38895e1f289e7d72399",
+      "size_bytes": 230528
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s3.npy": {
+      "sha256": "afe72a5e26572060420a93f19ae0ce4a3bc686a90ef1607d4108df7b2bbbd94d",
+      "size_bytes": 460928
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s4.npy": {
+      "sha256": "a45a5032e8682d2734642d2842659aac44fd0de208804f660faec7cc357cef16",
+      "size_bytes": 230528
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s5.npy": {
+      "sha256": "b713e53387e5e43ba9f8abf0cd0905b108208cf29082669dfd1be706857a706e",
+      "size_bytes": 345728
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s6.npy": {
+      "sha256": "a8b92d72c20fa4df5a3e651c87c0335bd7fecbc0657e7310bf6d4589700e8ba8",
+      "size_bytes": 172928
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s7.npy": {
+      "sha256": "f1a9300d387aed0abb5ad5d2ff5f08167f162f66e5017e252b9de92053926e60",
+      "size_bytes": 230528
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s8.npy": {
+      "sha256": "fda1e8ebc1828134b60daf75d5f60c50f4fa42ca3a9d9db83a66f3ffe0110829",
+      "size_bytes": 112768
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s9.npy": {
+      "sha256": "2f6bd177be2a2f8f5aed60b85d65755520f538bfdbeeda0fe77f99206ca056bb",
+      "size_bytes": 2688
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/checkpoint.pt": {
+      "sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+      "size_bytes": 450551
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/freeze_decision.json": {
+      "sha256": "d69f0bf0887a965c806984716f556fb444ef2db64c7b6f0d708156d8e1b3a004",
+      "size_bytes": 2430
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/mitdb_baseline_model.py": {
+      "sha256": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+      "size_bytes": 2912
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/sv1_v2_manifest.json": {
+      "sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+      "size_bytes": 14408
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/sv2_interface.json": {
+      "sha256": "7e087b91cf6a68c79ebaae82e606626385106be2926567dbaa0b8bf590036ebe",
+      "size_bytes": 18899
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/train_config.json": {
+      "sha256": "1f988328ea46db8537bc46d35b9cb5a0a165f128d2326366495fe26eda23715f",
+      "size_bytes": 635
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_0.onnx": {
+      "sha256": "ffa1cbe02e7b9af405177816cc7edfe9870f61287553ce748f09a1f8bed572cf",
+      "size_bytes": 441852
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_1.onnx": {
+      "sha256": "4940b21a5101a08b341cbd2b9c191dec0ea21d9c121f08a65062688e0764e9d3",
+      "size_bytes": 441209
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_2.onnx": {
+      "sha256": "981527fa3d7d37d6b2c4e14b09328221bdf2e1dabbbe0c03506847e64a296355",
+      "size_bytes": 435609
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_3.onnx": {
+      "sha256": "2f27e2bfb1d7c72c0f98150e299392b6dbe985603be9f1820ded1f2945387874",
+      "size_bytes": 424980
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_4.onnx": {
+      "sha256": "dd481202cfbfec74ee399df4d0f2693060124cfa26d46a75d33262a2c0bc0f7e",
+      "size_bytes": 403951
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_5.onnx": {
+      "sha256": "872a26240b566c2c7f66ecfb056987788155cd297e65520f24776f670ea6b501",
+      "size_bytes": 372783
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_6.onnx": {
+      "sha256": "80a4fff1033b0530936eb1b77f5f9e67469acbccf89755e446a24ad5870c686d",
+      "size_bytes": 326089
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_7.onnx": {
+      "sha256": "c5181d7fffbd0093e473d67ea042b0c599c0c2e38b1f3319ca3c462a9058a3b0",
+      "size_bytes": 264140
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_8.onnx": {
+      "sha256": "d108d29c3c79c467ca5830bf4ecda8980d30faddfcad9a6087b5ec2115c99725",
+      "size_bytes": 181557
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_9.onnx": {
+      "sha256": "d2de785a18a069ff483e2408beb4b95abde4284fba3276f69dc0c0f32c22fb2f",
+      "size_bytes": 907
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/requirements/requirements-core.txt": {
+      "sha256": "c44395a0ff23b2fc3a5a29d44547c46768a002b47ec9b489306650d1a245cea1",
+      "size_bytes": 108
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/requirements/requirements-gpu-cu130.txt": {
+      "sha256": "14a29db30f8a99c3e9043ab6be948122e7b678bb8ea932f0bb9b7ce472178f33",
+      "size_bytes": 102
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/requirements/requirements-week3-onnx.txt": {
+      "sha256": "763b06fb9c048faa4a6794a10abc6403b151966f5b50ce4c418d8893968703ee",
+      "size_bytes": 172
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/export_week3_sv2.py": {
+      "sha256": "aec06e3b03f28d052704f78d2425fae08e20084a49d052d3247e47ed89c97043",
+      "size_bytes": 10738
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/test_week3_sv2.py": {
+      "sha256": "fdea8298e9287bec0034d34eecbbc17e1b2a0c2f875d3878d33eecbdae1631f8",
+      "size_bytes": 5982
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/verify_week3_sv2.py": {
+      "sha256": "a5fe0e5b018d53e7fb52e0a7a8a3cb38c8599e337640eb83028f855a4057b480",
+      "size_bytes": 5598
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/week3_common.py": {
+      "sha256": "47dea8729d93bc4c66ddc421cff46b70fb66a17dc62b8fac420da5e89e8d93c6",
+      "size_bytes": 20652
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/week3_sv2_common.py": {
+      "sha256": "a86b5c465b33355caaa59997af9a96ba4a1f0bcc08772d96ae0a44fbb04b2595",
+      "size_bytes": 12109
+    },
+    "SV3_LINUX_FP32_REVIEW.zip": {
+      "sha256": "5cf0a253aa36f7f4e57e0bc8d3c407cc0234230719ae1389a37368ede334f528",
+      "size_bytes": 5070426
+    },
+    "SV3_LINUX_FP32_REVIEW.validation.json": {
+      "sha256": "5dc77c05d1a9bb42278b1170e2b12d2dab9fa01ec38b09dd4944547a7f4c21d6",
+      "size_bytes": 1237
+    },
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1.zip": {
+      "sha256": "b7f5b8d0bcd5ec27755f3e44541c0d24a6d23bdd27e199660a7b653bc30a71c7",
+      "size_bytes": 4507827
+    }
+  },
+  "old_script_sha256": "d988e9f16c9617e07c9a621eceaf01d177c825010881a0ebce2b2cb499a428f0",
+  "check_attr_before": "ml/provenance/week3-sv2-linux/final_linux_verifier.command.json: text: auto\nml/provenance/week3-sv2-linux/final_linux_verifier.command.json: eol: lf\n"
+}

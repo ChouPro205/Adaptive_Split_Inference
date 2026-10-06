@@ -1,0 +1,40 @@
+Python 3.11.9 is already installed
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-sv2-linux/venv
+Checked 1 package in 162ms
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-sv2-linux/venv
+Checked 6 packages in 23ms
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-sv2-linux/venv
+test_cache_symlink_guard_without_os_privilege (__main__.CacheRegression.test_cache_symlink_guard_without_os_privilege) ... ok
+test_clean_then_real_caches_after_manifest_and_repeat (__main__.CacheRegression.test_clean_then_real_caches_after_manifest_and_repeat) ... ok
+test_entrypoints_without_B_do_not_write_cache (__main__.CacheRegression.test_entrypoints_without_B_do_not_write_cache) ... ok
+test_extra_source_cannot_authorize_an_extra_cache (__main__.CacheRegression.test_extra_source_cannot_authorize_an_extra_cache) ... ok
+test_frozen_loader_ignores_valid_header_forged_cache (__main__.CacheRegression.test_frozen_loader_ignores_valid_header_forged_cache) ... ok
+test_mutation_missing_and_external_hash_rejected (__main__.CacheRegression.test_mutation_missing_and_external_hash_rejected) ... ok
+test_preexisting_caches_and_other_cpython_versions (__main__.CacheRegression.test_preexisting_caches_and_other_cpython_versions) ... ok
+test_real_v1_cache_reproduces_bug_then_full_verifier_repeats (__main__.CacheRegression.test_real_v1_cache_reproduces_bug_then_full_verifier_repeats) ... ok
+test_regular_extra_file_rejected (__main__.CacheRegression.test_regular_extra_file_rejected) ... ok
+test_symlinks_rejected_before_cache_exception (__main__.CacheRegression.test_symlinks_rejected_before_cache_exception) ... ok
+test_unrecognized_cache_contents_rejected (__main__.CacheRegression.test_unrecognized_cache_contents_rejected) ... ok
+test_actual_missing_extra_file_and_duplicate_rows_rejected (__main__.InventoryOrderRegression.test_actual_missing_extra_file_and_duplicate_rows_rejected) ... ok
+test_manifest_missing_extra_duplicate_and_all_metadata_rejected (__main__.InventoryOrderRegression.test_manifest_missing_extra_duplicate_and_all_metadata_rejected) ... ok
+test_real_v1_posix_and_reverse_full_verifier (__main__.InventoryOrderRegression.test_real_v1_posix_and_reverse_full_verifier) ... ok
+test_windows_manifest_posix_inventory_and_reversed_lists (__main__.InventoryOrderRegression.test_windows_manifest_posix_inventory_and_reversed_lists) ... ok
+test_wrong_anchor_rejected_before_inventory (__main__.InventoryOrderRegression.test_wrong_anchor_rejected_before_inventory) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 21.752s
+
+OK
+test_dense_roundoff_allowed_only_in_explicit_policy (__main__.NumericalPolicyRegression.test_dense_roundoff_allowed_only_in_explicit_policy) ... ok
+test_evidence_errors_metadata_and_summaries_rejected (__main__.NumericalPolicyRegression.test_evidence_errors_metadata_and_summaries_rejected) ... ok
+test_full_verifier_accepts_small_recomputation_only (__main__.NumericalPolicyRegression.test_full_verifier_accepts_small_recomputation_only) ... ok
+test_full_verifier_rejects_changed_computation_with_original_anchor (__main__.NumericalPolicyRegression.test_full_verifier_rejects_changed_computation_with_original_anchor) ... ok
+test_full_verifier_rejects_conv_drift_and_logit_fault (__main__.NumericalPolicyRegression.test_full_verifier_rejects_conv_drift_and_logit_fault) ... ok
+test_nonfinite_shape_and_dtype_rejected (__main__.NumericalPolicyRegression.test_nonfinite_shape_and_dtype_rejected) ... ok
+test_run_specific_error_values_and_worst_case_can_change (__main__.NumericalPolicyRegression.test_run_specific_error_values_and_worst_case_can_change) ... ok
+test_strict_dense_and_logit_boundaries (__main__.NumericalPolicyRegression.test_strict_dense_and_logit_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 7.852s
+
+OK

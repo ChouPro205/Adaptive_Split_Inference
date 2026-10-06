@@ -1,0 +1,1 @@
+/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python -B ml/scripts/verify_week3_sv2.py --package ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1 --expected-manifest-sha256 a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6 --recomputation-policy portable-fp32-v2 

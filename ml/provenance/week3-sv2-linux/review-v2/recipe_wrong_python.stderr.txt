@@ -1,0 +1,2 @@
+Pinned venv requires native Linux Python 3.11.9; actual=3.12.3 platform=linux
+FAIL exit=2; receipt not issued. Logs: /mnt/c/Users/Admin/Adaptive_Split_Inference/ml/provenance/week3-sv2-linux/review-v2/recipe_wrong_python

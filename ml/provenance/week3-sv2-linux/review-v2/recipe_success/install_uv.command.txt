@@ -1,0 +1,1 @@
+env UV_INSTALL_DIR=/home/kyanh/asi-week3-review-v2-clean-env/bin UV_NO_MODIFY_PATH=1 sh /home/kyanh/asi-week3-review-v2-clean-env/uv-installer.sh 
