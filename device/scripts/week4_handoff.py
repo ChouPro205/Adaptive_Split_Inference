@@ -2,6 +2,7 @@
 
 R3 evidence is never relabelled. R4 compatibility requires both pinned source
 bindings and byte-identical payloads; historical blobs are checked, not run.
+The three reviewed PR22 verifier sources form one explicit current-R4 update.
 """
 from __future__ import annotations
 
@@ -19,6 +20,22 @@ R4 = "ml/results/week4-r4"
 SOURCE_COMMITS = {"r3": "c793c06385198accc964e0e60988d7e7a7e9b566",
                   "r4": "89109fd352d84a5fe0815d7e045e52538de7bad8"}
 SOURCE_ANCHORS = {"r3": WEEK4_MANIFEST, "r4": R4_MANIFEST}
+PR22_SOURCE_COMMIT = "add8503d58c6f707a35b4502bf98aff91109c1cd"
+PR22_MERGE_COMMIT = "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+# Independently checked against SOURCE_COMMITS['r4'], PR22_SOURCE_COMMIT and
+# PR22_MERGE_COMMIT. Tuples bind (original R4 hash, reviewed PR22 hash) per path.
+# The immutable R4 manifest and all other source/payload bindings stay strict.
+PR22_R4_SOURCE_HASHES = {
+    "ml/scripts/verify_week3_sv2.py": (
+        "b4c9562ee74c4922fd6180bc9a1a85ffc8a44871fd45ed87610728f2e31230ce",
+        "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb"),
+    "ml/scripts/test_week3_sv2.py": (
+        "c6bad027185bf63c280dc9abc2c9e9a96d809eabd6e42853a7b2cbd732b7fda6",
+        "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041"),
+    "ml/scripts/test_week3_sv2_cache.py": (
+        "9c7a2b6cdba237145ad127a45e5938e7d657b20caa1faaafbf7f5e885232b9b4",
+        "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f"),
+}
 ACCEPTED_R3_REPORT_SHA256 = "4a0342593270485b409465741a6c555659dc98b541c277b264d9727da4605a4d"
 # The report committed at efc0af72aeae3ef6ff872ad3cae19e6304899530 is LF.
 # Converting only its LF bytes to CRLF reproduces the original Windows pin.
@@ -60,12 +77,13 @@ def source_hash(raw: bytes) -> str:
     return hashlib.sha256(raw.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")).hexdigest()
 
 
-def check_sources(repo: Path, manifest: dict, revision: str, *, historical: bool) -> None:
+def check_sources(repo: Path, manifest: dict, revision: str, *, historical: bool) -> list[dict]:
     if revision not in SOURCE_COMMITS or manifest["source_git_commit"] != SOURCE_COMMITS[revision]:
         raise ValueError("Unsupported revision/source commit binding")
     if manifest["source_hash_policy"] != "sha256-utf8-lf-v1":
         raise ValueError("Unsupported source hash policy")
     seen = set()
+    updates = []
     for entry in manifest["source_files"]:
         name = entry["path"]
         path = bound_path(repo, name)
@@ -78,9 +96,23 @@ def check_sources(repo: Path, manifest: dict, revision: str, *, historical: bool
             raw = subprocess.check_output(["git", "show", f"{SOURCE_COMMITS[revision]}:{name}"], cwd=repo)
         else:
             raw = path.read_bytes()
-        if source_hash(raw) != entry["sha256"]:
+        actual = source_hash(raw)
+        reviewed = PR22_R4_SOURCE_HASHES.get(name)
+        if revision == "r4" and reviewed is not None and entry["sha256"] != reviewed[0]:
+            raise ValueError(f"Unsupported verified source update binding: {name}")
+        if actual != entry["sha256"]:
+            if (revision == "r4" and not historical
+                    and reviewed == (entry["sha256"], actual)):
+                updates.append({"path": name, "r4_manifest_sha256": entry["sha256"],
+                                "current_source_sha256": actual,
+                                "reviewed_source_commit": PR22_SOURCE_COMMIT,
+                                "reviewed_merge_commit": PR22_MERGE_COMMIT})
+                continue
             mode = "historical" if historical else "current"
             raise ValueError(f"Pinned ML source mismatch ({revision} {mode}): {name}")
+    if updates and {row["path"] for row in updates} != set(PR22_R4_SOURCE_HASHES):
+        raise ValueError("Incomplete verified PR22 source update")
+    return updates
 
 
 def check_payload_parity(repo: Path, r3: dict, r4: dict) -> int:
@@ -123,14 +155,15 @@ def authenticate_handoff(repo: Path, source_revision: str = "r4",
     if source_revision == "r4":
         current = authenticated_json(repo / R4 / "manifest.json", R4_MANIFEST)
         payload_count = check_payload_parity(repo, r3, current)
-    check_sources(repo, current, source_revision, historical=False)
+    updates = check_sources(repo, current, source_revision, historical=False)
     proof = {"firmware_payload_revision": "r3", "firmware_manifest_sha256": WEEK4_MANIFEST,
              "current_source_revision": source_revision, "current_source_manifest_sha256": anchor,
              "current_source_bindings_checked": len(current["source_files"]),
              "historical_r3_source_commit": SOURCE_COMMITS["r3"],
              "historical_r3_source_bindings_checked": len(r3["source_files"]),
              "r3_r4_identical_payload_files": payload_count,
-             "all_split_manifest_sha256": ALL_SPLIT_MANIFEST}
+             "all_split_manifest_sha256": ALL_SPLIT_MANIFEST,
+             "verified_current_source_updates": updates}
     return r3, splits, proof
 
 

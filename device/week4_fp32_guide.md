@@ -15,6 +15,18 @@ requires identical scientific manifest fields. Headers, weights and the
 firmware banner continue to identify R3; this workflow does not create an
 R4 MCU measurement.
 
+After PR #22 (`e6d3e8cc40323227d0f15a4bb4091957f2498744`), SV1 also accepts
+the complete reviewed trio `verify_week3_sv2.py`, `test_week3_sv2.py` and
+`test_week3_sv2_cache.py` from source commit
+`add8503d58c6f707a35b4502bf98aff91109c1cd`. Each path binds both its original
+R4 hash and its verified PR22 hash; all three updates must be present together.
+The proof records these updates separately in `verified_current_source_updates`.
+The original R4 trio remains supported. Partial updates, other source changes,
+changed manifest bindings and substitution into historical R3/R4 checks fail.
+The R4 manifest/release and measured R3 data remain unchanged. This device
+compatibility does not alter the standalone ML `verify_week4.py` source gate:
+that historical verifier still requires its exact original R4 source checkout.
+
 Obtain both releases using the trusted receipt/bundle instructions for
 [R3](../ml/docs/sv3_sv1_week4_handoff_r3.md) and
 [R4](../ml/docs/sv3_sv1_week4_handoff_r4.md). Keep the historical source commit
