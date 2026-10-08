@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/mnt/c/Users/Admin/Adaptive_Split_Inference/ml/scripts/verify_week3_sv2.py", line 182, in <module>
+    print(json.dumps(verify(args.package,args.expected_manifest_sha256,args.recomputation_policy),indent=2))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/Admin/Adaptive_Split_Inference/ml/scripts/verify_week3_sv2.py", line 148, in verify
+    recomputation[str(s)] = compare_activation(delivered, activations[s], s, recomputation_policy)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/Admin/Adaptive_Split_Inference/ml/scripts/verify_week3_sv2.py", line 31, in compare_activation
+    need(same_bits(delivered, actual), f"Recomputed golden bits differ: s={s}")
+  File "/mnt/c/Users/Admin/Adaptive_Split_Inference/ml/scripts/week3_common.py", line 40, in need
+    raise ValueError(message)
+ValueError: Recomputed golden bits differ: s=9

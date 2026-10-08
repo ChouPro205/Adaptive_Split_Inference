@@ -1,0 +1,26 @@
+{
+  "source": "Current recipe review-v2",
+  "fixture_repo": "exports/week3-sv2-review-v2-20261006/authentication_fixture",
+  "bad_fixture_manifest_sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+  "results": {
+    "recipe_wrong_python": {
+      "status": "PASS_EXPECTED_REJECTION",
+      "recipe_exit_code": 2,
+      "failed_step": "venv_python",
+      "failure_logged": true,
+      "no_success_output_or_receipt": true,
+      "diagnostic_not_started": true,
+      "error": "Pinned venv requires native Linux Python 3.11.9; actual=3.12.3 platform=linux"
+    },
+    "recipe_bad_manifest": {
+      "status": "PASS_EXPECTED_REJECTION",
+      "recipe_exit_code": 1,
+      "failed_step": "authenticate_before",
+      "failure_logged": true,
+      "no_success_output_or_receipt": true,
+      "diagnostic_not_started": true,
+      "error": "Traceback (most recent call last):\n  File \"/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week3-sv2-review-v2-20261006/authentication_fixture/ml/scripts/authenticate_week3_sv2_package.py\", line 45, in <module>\n    print(json.dumps(authenticate(args.package), indent=2))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week3-sv2-review-v2-20261006/authentication_fixture/ml/scripts/authenticate_week3_sv2_package.py\", line 29, in authenticate\n    raise ValueError(\"Manifest anchor mismatch\")\nValueError: Manifest anchor mismatch"
+    }
+  },
+  "real_package_mutated": false
+}

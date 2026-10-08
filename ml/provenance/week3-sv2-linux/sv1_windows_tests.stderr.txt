@@ -1,0 +1,3 @@
+usage: test_week3.py [-h] --repo-root REPO_ROOT --package PACKAGE
+                     --expected-manifest-sha256 EXPECTED_MANIFEST_SHA256
+test_week3.py: error: unrecognized arguments: --compiler C:/msys64/ucrt64/bin/gcc.exe

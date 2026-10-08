@@ -1,0 +1,1 @@
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-sv2-linux/venv

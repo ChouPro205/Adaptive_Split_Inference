@@ -1,0 +1,36 @@
+{
+  "manifest_sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+  "manifest_authenticated": true,
+  "handoff_id": "mitdb-week3-fp32-20260925-v2",
+  "release_eligible": true,
+  "samples": 20,
+  "milestones": [
+    "M0",
+    "M1",
+    "R1",
+    "M2",
+    "R2",
+    "P2"
+  ],
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "source_commit": "8e98a0e4851abc979feb5fd5b97ece612b02cfaa",
+  "memory": {
+    "parameter_total_bytes": 5568,
+    "per_conv_bytes": {
+      "conv1": 384,
+      "conv2": 5184
+    },
+    "largest_intermediate_bytes_N1": 23040,
+    "persistent_parameter_flash_bytes_logical": 5568,
+    "two_activation_buffers_bytes_N1": 46080,
+    "measurement_status": "logical sizes only; no MCU build, stack or workspace measurement"
+  },
+  "compiled_c": {
+    "compiler": "gcc.exe (Rev8, Built by MSYS2 project) 15.2.0",
+    "flags": "-std=c99 -Wall -Wextra -Werror -pedantic",
+    "fp32_elements": 1392,
+    "status": "PASS",
+    "target": "host; not nRF52840 firmware"
+  }
+}
+HANDOFF_CHECKS_PASS

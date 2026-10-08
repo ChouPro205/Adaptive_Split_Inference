@@ -1,0 +1,887 @@
+{
+  "base_commit": "415d53431c81c465784dc08be42b568827a39cff",
+  "head": "415d53431c81c465784dc08be42b568827a39cff",
+  "branch": "sv3/fix-week3-sv2-linux-fp32",
+  "state": "Uncommitted current working tree; local review archive only",
+  "created_utc": "2026-10-06T07:08:04.359324+00:00",
+  "fix_files": [
+    {
+      "path": "docs/README.md",
+      "git_state": "tracked modification",
+      "sha256": "ed6922e8333bbf8cbfd5bb79143edce999d3a863487a71c5eea3a6ca9114b827"
+    },
+    {
+      "path": "docs/sv3_ml_week3_linux_fp32_fix_report.md",
+      "git_state": "new/untracked",
+      "sha256": "649048ac7ec5bfa6032788bd80169a590b52d42b5c1b49bffcf3fc09691c0a46"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/contracts/sv3_sv1_week3_model_handoff.md",
+      "git_state": "new/untracked",
+      "sha256": "69bfd179057f4878a655088bc8daae3b5169470584d8e0117be482b611593bd7"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/contracts/sv3_sv2_week3_fp32.md",
+      "git_state": "new/untracked",
+      "sha256": "f883cc1a3a1076a38a5ac5b5f73a4826c6a32960089dbdb4995305ef6a951b18"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/configs/mitdb_normalization.json",
+      "git_state": "new/untracked",
+      "sha256": "37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/configs/mitdb_week1_config.json",
+      "git_state": "new/untracked",
+      "sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/configs/week3_model_freeze.json",
+      "git_state": "new/untracked",
+      "sha256": "d5dc09df23a4e536d3d79d2c4c1ac357af7cd133810895a444e512b155f31e54"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/configs/week3_sv2_interface_review.json",
+      "git_state": "new/untracked",
+      "sha256": "7e087b91cf6a68c79ebaae82e606626385106be2926567dbaa0b8bf590036ebe"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/configs/week4_requirement_references.json",
+      "git_state": "new/untracked",
+      "sha256": "ad68514433874cb653a86899955dbcea2a7e791d58bd8d482f7fcbfbd644b8e1"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/manifests/mitdb_patient_split.csv",
+      "git_state": "new/untracked",
+      "sha256": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/audit_week3_sv2.py",
+      "git_state": "new/untracked",
+      "sha256": "c11251b175a95228d6a558e22dec23f8047a18d8af0f9a16595c8c88d808f6cf"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/export_week3.py",
+      "git_state": "new/untracked",
+      "sha256": "02244b2eb160e6290a890df8e40c94e587e40b31c245c7b088b859c4f76fb678"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/export_week3_sv2.py",
+      "git_state": "new/untracked",
+      "sha256": "d107774da544c4fd6da39fc579d43d39011643992e441f0db69109c1704b2952"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/profile_week4.py",
+      "git_state": "new/untracked",
+      "sha256": "73b1b5d0ba1dd14a163f016fe3ed33d2acfa455024b5bedd2f0dd1c4d9f1a7df"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/release_week4.py",
+      "git_state": "new/untracked",
+      "sha256": "532a10438fc26ff5996fd9adc06ac10dc1def5cb1e017da235a93f8b23d31c10"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/run_week4_regressions.py",
+      "git_state": "new/untracked",
+      "sha256": "b914762eeac36ef6d6ff0c11691f3eca152a3b2efb128acdda20191f4af224af"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/test_week3.py",
+      "git_state": "new/untracked",
+      "sha256": "b1ddc24e3855cdcb03d62632d5add7da30230d1f66b6c85a713b23c8e8aa09ae"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/test_week3_sv2.py",
+      "git_state": "new/untracked",
+      "sha256": "c6bad027185bf63c280dc9abc2c9e9a96d809eabd6e42853a7b2cbd732b7fda6"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/test_week3_sv2_cache.py",
+      "git_state": "new/untracked",
+      "sha256": "9c7a2b6cdba237145ad127a45e5938e7d657b20caa1faaafbf7f5e885232b9b4"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/test_week4.py",
+      "git_state": "new/untracked",
+      "sha256": "5fc8cef532c9aaca7926bbc43a3abaa4028eb00860ac01ba207e566c40dbbce4"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/test_week4_release.py",
+      "git_state": "new/untracked",
+      "sha256": "613e6cda6eff0d31eecea6f8a7c7145b5cea988a46aadd9d6afb7d9e11f592ab"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/verify_week3.py",
+      "git_state": "new/untracked",
+      "sha256": "b90bc36f5488d51fefa893a6c57ab2e928b50090f579b7d1e9510b5fa864eee8"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/verify_week3_sv2.py",
+      "git_state": "new/untracked",
+      "sha256": "b4c9562ee74c4922fd6180bc9a1a85ffc8a44871fd45ed87610728f2e31230ce"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/verify_week4.py",
+      "git_state": "new/untracked",
+      "sha256": "9be6986983e86d0b81b1c57fe71fbd738c97c7e96561787acfeb70f744d89c9c"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/week3_common.py",
+      "git_state": "new/untracked",
+      "sha256": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/week3_sv2_common.py",
+      "git_state": "new/untracked",
+      "sha256": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/scripts/week4_common.py",
+      "git_state": "new/untracked",
+      "sha256": "c5509a4f2977caf090e2d76be0bb7e52c99e55e0f8dcb41c0315bc6849187190"
+    },
+    {
+      "path": "exports/week3-sv2-linux-review-20261006/baseline/ml/src/mitdb_baseline_model.py",
+      "git_state": "new/untracked",
+      "sha256": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/artifact_after.json",
+      "git_state": "new/untracked",
+      "sha256": "2073bd3acaed8f36865c2afa9f13daeb6eb540698ec4ddfebc9886f690e8ef5c"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/artifact_before.json",
+      "git_state": "new/untracked",
+      "sha256": "2073bd3acaed8f36865c2afa9f13daeb6eb540698ec4ddfebc9886f690e8ef5c"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/artifact_preservation.json",
+      "git_state": "new/untracked",
+      "sha256": "26ca733938b18e8867c5229f75efe86b2bc315467d5201e816e1e8bf16929d11"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/before_linux.command.json",
+      "git_state": "new/untracked",
+      "sha256": "07ec0c1f74cc0afccc8597b9b6e44fa7f718f43552e13bca2e8132c1d06ac130"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/before_linux.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "fbc530fddb3427f6fc1836624a0438cdc0249d076d361bba295a3ee1b7662a94"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/before_linux.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/dense_comparison.json",
+      "git_state": "new/untracked",
+      "sha256": "971902e0aa2ea89febaf464f64a18a73892497a5ba03abd1429b301ef6e6d2d0"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/dense_linux.command.json",
+      "git_state": "new/untracked",
+      "sha256": "c86be50a9791a0d8c2b67e50b1aaeb8f167f17987c6a3c83dc2e7738ba1c0414"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/dense_linux.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "ca5f49b83fb16883f8e75102204149cde0f831684d14b34551cad8ea83f55e58"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/dense_linux.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "15193510d1415aa67e8a3e7d0b8d9305c78a33cf5541702b996673190a8f4fca"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/dense_windows.command.json",
+      "git_state": "new/untracked",
+      "sha256": "8fffda42acdd6b444258aef8ed13914e3de61138dad131328d860484b6b69825"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/dense_windows.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "1d54c11ad2b40f1b1448145296d773b117e731ea8854222da2d026064d6f79a2"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/dense_windows.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "fd9e9c00cf19148ce9a4d66db623763aee694d157891a56fe79c2b4429e0af33"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/diagnostic_linux.command.json",
+      "git_state": "new/untracked",
+      "sha256": "0b3e8f5be9bd2b4c3d2d7408b71d5def4fa37ce2a8b9f2a09a520284ce4a3ec9"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/diagnostic_linux.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/diagnostic_linux.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "50cfe82b138813e801ebb11f7fe12b1cac05bf9e538d57564c988afe1baeb9f8"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/diagnostic_linux_compatible.command.json",
+      "git_state": "new/untracked",
+      "sha256": "0c0ff074435fdeefa5d3bffa0addb0cf4add9b0a2d07b0a861eae49144572756"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/diagnostic_linux_compatible.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/diagnostic_linux_compatible.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "8cf5c086f8bbb52886c4bbe46b1b67181fe356ed4e2568df6f537290c0aeb81d"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/diagnostic_windows.command.json",
+      "git_state": "new/untracked",
+      "sha256": "ae683b16efc0cfec703428d20bae9cfd9a4293b4856fa6d4d9596e2349b12330"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/diagnostic_windows.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/diagnostic_windows.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "0773d55860d8d382a277e0ff3536b6acb59a4fad9d01f85b0b57d81f660c5494"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/environment.sh",
+      "git_state": "new/untracked",
+      "sha256": "fa5238a86dc5705e377d1437c32f71de6296db27f16b883c0f1d377342113923"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/environment_linux.command.json",
+      "git_state": "new/untracked",
+      "sha256": "2fb9b218c06f05d668fbc827cfb0ca723b600fa4ba5c24730999a4a0214f557a"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/environment_linux.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "ad9192cb3f60fd2d21e7c9c766543a188647379c2784994a275521bbc4ee6014"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/environment_linux.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "6a0b464544ef2d8e54eeffd7c986b6de86dbb51fa324d46b7a221b4d00fb99b7"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_cache.command.json",
+      "git_state": "new/untracked",
+      "sha256": "377d88c2550ad8f1a3cf56c33c50564703d5043b6073e6d4d3f17cede08a3431"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_cache.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "2d026d4339c4b9df2caad15a2f471166e304eaf724055bfa72a0e1adddf45fa8"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_cache.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "44ae0d77e7ad5ed3abb9e6c33a53d3030bfcb76fb9bfe3e2b14b5887c980f70d"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_policy.command.json",
+      "git_state": "new/untracked",
+      "sha256": "67e28b810f153262176cf30d41cc7b0dd391628e16bd8c3e098c1f5e5795ba5a"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_policy.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "3bb6d849814908e52751e35172c9cc152f52ad13f9419b15af732f25ecf763bb"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_policy.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_policy_v2.command.json",
+      "git_state": "new/untracked",
+      "sha256": "65eb44853544c0b5168efa9196c5f272d8687a582becdc1730dd7f5078b26c7b"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_policy_v2.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "aad86775fc8aa3893610e921623c5883ecac8ef7e78f5535cef4414f13f67dbe"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_policy_v2.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_tamper.command.json",
+      "git_state": "new/untracked",
+      "sha256": "320f9e3b22319758cb3aa214eb73faca6caf4a06cf2a8bb2f1671e958ff149e0"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_tamper.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_tamper.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "affec1dafd371f6c73500c92fff6da98fc07f5ae577b249f55433601f247ace5"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_tamper_v2.command.json",
+      "git_state": "new/untracked",
+      "sha256": "f5971f3308c455dd9b575e3dcba05735fbb07faed1cbd93f915f1d80c2159e77"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_tamper_v2.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_tamper_v2.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "23dd3b52df6a65000cd3f6860527957355ed8fb711c4962416e6a78e9fbebd19"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_verifier.command.json",
+      "git_state": "new/untracked",
+      "sha256": "2784a0df309e37134e80e3b8ac0a80be4f5afae930492ee0674f52ad4fe7f567"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_verifier.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_linux_verifier.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "4118f2ea91d38e29b2a30d9e1849185d1499127701da95a0893c00ad894013ee"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_cache.command.json",
+      "git_state": "new/untracked",
+      "sha256": "d18d8527fa0c17da72c1c97f4888062c9fcd107af7d14f4b8d4924ae4f47efa8"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_cache.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "d23d96be02b92d3b71770b3455b3e9a122c21af9f8d7f6efe5a636544a9e6f38"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_cache.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "a10eb8a682d90ef05bbea7cf46c72bd867eb0677febecab187c37010cc0e094a"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_legacy.command.json",
+      "git_state": "new/untracked",
+      "sha256": "7ba089b65443fac4ecffeccc59c2f42a2c90d0610f588ca213adebb1413dcdf7"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_legacy.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_legacy.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "a617a9cdc2ca19c2aa6d21db6c55104f1924620f02f6a4235e3444dcdb4ba8f6"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_policy.command.json",
+      "git_state": "new/untracked",
+      "sha256": "ececff434e1dfb9abc51ae3bfa845e07169602d74c0441b8738df2baee6692a5"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_policy.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "f26398a75bd419616ea43ace5ce834fbc40716cdbaf8d77ae96ef0aea9cde65d"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_policy.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_policy_v2.command.json",
+      "git_state": "new/untracked",
+      "sha256": "fc3efbb9f4311b9390c71cc37b12b841c5086141fcc08c7ee2098e4f81d5aabb"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_policy_v2.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "d1d95e922f358018652d4823be1674419fd861f355eba1aaa7aa4f81d09b0196"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_policy_v2.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_portable.command.json",
+      "git_state": "new/untracked",
+      "sha256": "be9ea056077becad47288d4f91deb69638487082332d7ff3e6d871886b7ccc4d"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_portable.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_portable.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "64bacbfa503cc37160df98eba9088b552e15fe74f1874392ad12ecae27d47279"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_tamper.command.json",
+      "git_state": "new/untracked",
+      "sha256": "c79f821351034a865a1a357d21a399b32e6cf8ed6e6f19efd692f15fdd20d63f"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_tamper.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_tamper.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "d100ad21ac63fbaaa42840fa7658a1b76259248aa685e994164f6ef81abc781c"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_tamper_v2.command.json",
+      "git_state": "new/untracked",
+      "sha256": "b14c7239dd832ec480ccfb10ccf150dcf83ff7852a71584fc1d6075ac318ba30"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_tamper_v2.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/final_windows_tamper_v2.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "64032f9177b47303fb4e6d5dcc9f066a14ecd68679002037b24ad757980ebf06"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/finalize_evidence.py",
+      "git_state": "new/untracked",
+      "sha256": "4df0da91a9c99d7b0768228324547ed37c8e8694755c3c104fb21b4ff0b35d86"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/install_core_linux.command.json",
+      "git_state": "new/untracked",
+      "sha256": "164883666396baf47865d10f8b1b112fba25c9ae39a9d357ac3b82cd16762bba"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/install_core_linux.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "84773268ad70ede47989669996832bf021304aa31921c3f00e8feed09d067039"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/install_core_linux.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/legacy_linux.command.json",
+      "git_state": "new/untracked",
+      "sha256": "da98f5dc25704d4ed5e7c93965f55e7ff95c4d731a81bea205c9041544145743"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/legacy_linux.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "4ee3c2bba8439e0eb3ee70cc356c676d418975189a65687e7fe77d04fc7c3494"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/legacy_linux.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/prepare_week4_baseline.command.json",
+      "git_state": "new/untracked",
+      "sha256": "62701f25e1533407f2d0136ff05dc487be3ee8c14ef7d17d28ee2e6e2cb74ab0"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/prepare_week4_baseline.py",
+      "git_state": "new/untracked",
+      "sha256": "3eb731e0d694c84e186d4567dc59849caea119ede176c1275196b760f366083c"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/prepare_week4_baseline.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/prepare_week4_baseline.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "87c6acce4b0db89c7fa0684f7d935a8446714fc89592b8c3cf9f0da86ee92e9b"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/recipe_linux.command.json",
+      "git_state": "new/untracked",
+      "sha256": "6656d746af511c51deb24421e8b49c26ad3f15fbd5061bf3f41747922cd42902"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/recipe_linux.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "1fac53fef2ef46c17959f054107b289cda1344534e524d89a77d698978c362db"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/recipe_linux.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "2af38b1a83f95d17290f1f8cb7d6983c978c3143fd39a77b3f53e2327f5abe41"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/review_receipt.json",
+      "git_state": "new/untracked",
+      "sha256": "c8fd250d0cb321fd4b75bb428ca0ad94a6488e45065fdb04dd752069d42bec9c"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/run_logged.py",
+      "git_state": "new/untracked",
+      "sha256": "6768bce0d26b9df91da1e13d4ba3936b040c2b5b4c2f87cb099300ecacffc577"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/setup.command.json",
+      "git_state": "new/untracked",
+      "sha256": "ef19d7923b281f953cbc24e2433f6c6a6514f31feab2b0e3f56ad4ed04ce1b3c"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/setup.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "a2bf19225dad6dd29837d9aced7f91eb90055ca8f4ef4c59ad7bb2a826c60792"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/setup.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "05170977fa6c1ccc200d3abe35802b39a12d79c50efe5e73bd24498e418aefb3"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/setup_local.sh",
+      "git_state": "new/untracked",
+      "sha256": "f89f5291b331687472d074c5c738edc5016949be083cebd06f7345f1a7e8ff9f"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_linux_verifier.command.json",
+      "git_state": "new/untracked",
+      "sha256": "3596c4f8d5436a6af5b08f18dbb1852ec690c2df833f9a5f9c6c926d9e404633"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_linux_verifier.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "efc582efae82ac5660d3e1ef09956d9d320ffc3d4e735d501a5271894b9a1f07"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_linux_verifier.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_windows_tests.command.json",
+      "git_state": "new/untracked",
+      "sha256": "4a187f5f27a0958b82516d380dca70b5baf28f6ee15cf499f422d7f75e615597"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_windows_tests.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "7a85096d799c5d655d2b0e177d4875f94dc0c176fa3dc742e3d3cd21fc59bddb"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_windows_tests.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_windows_tests_corrected.command.json",
+      "git_state": "new/untracked",
+      "sha256": "d261af2b95ff9394257d4c9f2a03b2190e0efe3df3cde06f74c0a170b2308f84"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_windows_tests_corrected.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_windows_tests_corrected.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "61c69a50c3d2176c402fcac406458c3037ab06c751b552703705121043bc71cc"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_windows_verifier.command.json",
+      "git_state": "new/untracked",
+      "sha256": "731d89a0bff26f84151c803f93712bdd4ef63355bec0f47005d4da3a5cbf7a43"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_windows_verifier.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/sv1_windows_verifier.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "f7fa018f98aa54c4dafa528180a8f77614134944e97ab6fe32260e29e1b7fb94"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/test_linux_policy.command.json",
+      "git_state": "new/untracked",
+      "sha256": "3c219962aa0f0ec52f086ff054776ad38df18d4e77dc57d15954341654f0a0b7"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/test_linux_policy.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "062f6291dbf6f78c82774496ff646f404070c6ed849f4986745a0def4b9da726"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/test_linux_policy.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/verify_linux_portable.command.json",
+      "git_state": "new/untracked",
+      "sha256": "c838b45d058aa004b10b0366aec5649f125c391a44cb1580d5bc3dbabe5dfb07"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/verify_linux_portable.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/verify_linux_portable.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "4118f2ea91d38e29b2a30d9e1849185d1499127701da95a0893c00ad894013ee"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_baseline_view.json",
+      "git_state": "new/untracked",
+      "sha256": "87c6acce4b0db89c7fa0684f7d935a8446714fc89592b8c3cf9f0da86ee92e9b"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_linux_baseline.command.json",
+      "git_state": "new/untracked",
+      "sha256": "73a4879462c096cc3bd94fa1c9bb2593dda9285c8f5f7e5172615827e9857124"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_linux_baseline.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "f1b823db1d1d144a3503d3fdf1efb54bc7c6d55ca2e0010600df7bd1483ff135"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_linux_baseline.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_linux_gate.command.json",
+      "git_state": "new/untracked",
+      "sha256": "9d4792c06a2e8f6b05aa4e912f9308f3a11c1369bdd4f1f31ac450ec9a738ca4"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_linux_gate.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "15f8ef4d47df9d4f7860f7d2745f50e2a4bfe8565c22f2f4a32743b9dc4ed1c5"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_linux_gate.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_linux_release_tests.command.json",
+      "git_state": "new/untracked",
+      "sha256": "58ff5a766229cf335c1e2b43e8f9d5e9aaff1a4cb76a201db358d8e880048971"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_linux_release_tests.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "2cdff5507687cd535dbb3a2e0db13bd7716d1923cdffad1e91653f086b2764f9"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_linux_release_tests.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_windows_baseline.command.json",
+      "git_state": "new/untracked",
+      "sha256": "70223de48a76ea9b371f7dfd90b3e32328e5d179aa2e6a7f3f55c656fff4053e"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_windows_baseline.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_windows_baseline.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "395c8d01721d6efa9614d5f51292fc7ce7ac54bee4262e3f19f59ff5afa3ead4"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_windows_baseline_tests.command.json",
+      "git_state": "new/untracked",
+      "sha256": "b4fdc52c397dd5e288a47b92083ac373ec37fdf724a1802840eec73cd8d9cd15"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_windows_baseline_tests.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_windows_baseline_tests.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "ecbe30ce24d7161c54e02a16dccffe3c28d8eb4d417325e972574dbba4dc281b"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_windows_gate.command.json",
+      "git_state": "new/untracked",
+      "sha256": "d57f281b3f683cd0fcef1230e12598a19668bd5be99cf8f88ffc6c199f123d30"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_windows_gate.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "6464dd6a83b735635fc02da7c847637773e64cdf7d92abde84482be993cdfc3e"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/week4_windows_gate.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/wsl_inventory.command.json",
+      "git_state": "new/untracked",
+      "sha256": "ccf99aa473a774110d8a476db3e54b748d9efc9f2e891b66a378bd49f8620546"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/wsl_inventory.stderr.txt",
+      "git_state": "new/untracked",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ml/provenance/week3-sv2-linux/wsl_inventory.stdout.txt",
+      "git_state": "new/untracked",
+      "sha256": "88b703a5f178af2edb679c85dcb5a9f53fc7d97502decf837ffc2b4e206f0f75"
+    },
+    {
+      "path": "ml/scripts/diagnose_week3_sv2.py",
+      "git_state": "new/untracked",
+      "sha256": "c3296d27450e9854d0f844d0a50b4b69a402ce2e72121b6760fe216c1691ce21"
+    },
+    {
+      "path": "ml/scripts/reproduce_week3_sv2_linux.sh",
+      "git_state": "new/untracked",
+      "sha256": "d988e9f16c9617e07c9a621eceaf01d177c825010881a0ebce2b2cb499a428f0"
+    },
+    {
+      "path": "ml/scripts/test_week3_sv2.py",
+      "git_state": "tracked modification",
+      "sha256": "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041"
+    },
+    {
+      "path": "ml/scripts/test_week3_sv2_cache.py",
+      "git_state": "tracked modification",
+      "sha256": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f"
+    },
+    {
+      "path": "ml/scripts/test_week3_sv2_policy.py",
+      "git_state": "new/untracked",
+      "sha256": "b24f01e3f5d5795710004d40ff6b2576b9cb7c5d9e3ac9c9ef359a38b9fe5e56"
+    },
+    {
+      "path": "ml/scripts/verify_week3_sv2.py",
+      "git_state": "tracked modification",
+      "sha256": "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb"
+    }
+  ],
+  "support_files": [
+    ".gitattributes",
+    ".gitignore",
+    "AGENTS.md",
+    "contracts/sv3_sv1_week3_model_handoff.md",
+    "contracts/sv3_sv2_week3_fp32.md",
+    "ml/configs/mitdb_normalization.json",
+    "ml/configs/mitdb_week1_config.json",
+    "ml/configs/week3_model_freeze.json",
+    "ml/configs/week3_sv2_interface_review.json",
+    "ml/configs/week4_requirement_references.json",
+    "ml/docs/sv3_sv1_week4_handoff_r4.md",
+    "ml/docs/week3_sv2_split_audit.md",
+    "ml/docs/week4_inventory_order_fix.md",
+    "ml/docs/week4_r4_completion.md",
+    "ml/manifests/mitdb_patient_split.csv",
+    "ml/requirements-core.txt",
+    "ml/requirements-gpu-cu130.txt",
+    "ml/requirements-week3-onnx.txt",
+    "ml/results/week4-r4/manifest.json",
+    "ml/scripts/audit_week3_sv2.py",
+    "ml/scripts/export_week3.py",
+    "ml/scripts/export_week3_sv2.py",
+    "ml/scripts/profile_week4.py",
+    "ml/scripts/release_week4.py",
+    "ml/scripts/test_week3.py",
+    "ml/scripts/test_week4.py",
+    "ml/scripts/test_week4_release.py",
+    "ml/scripts/verify_week3.py",
+    "ml/scripts/verify_week4.py",
+    "ml/scripts/week3_common.py",
+    "ml/scripts/week3_sv2_common.py",
+    "ml/scripts/week4_common.py",
+    "ml/src/mitdb_baseline_model.py"
+  ],
+  "package_files": [
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/README.md",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/evidence/numerical_verification.json",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/evidence/source_provenance.json",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/reference_logits.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s0.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s1.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s10.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s2.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s3.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s4.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s5.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s6.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s7.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s8.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s9.npy",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/manifest.json",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/checkpoint.pt",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/freeze_decision.json",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/mitdb_baseline_model.py",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/sv1_v2_manifest.json",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/sv2_interface.json",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/train_config.json",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_0.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_1.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_2.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_3.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_4.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_5.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_6.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_7.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_8.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/models/tail_9.onnx",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/requirements/requirements-core.txt",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/requirements/requirements-gpu-cu130.txt",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/requirements/requirements-week3-onnx.txt",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/samples.csv",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/export_week3_sv2.py",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/test_week3_sv2.py",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/verify_week3_sv2.py",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/week3_common.py",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/scripts/week3_sv2_common.py"
+  ],
+  "diff_includes_untracked_and_binary_logs": true,
+  "known_historical_source_gap": [
+    "verify_linux_portable.command.json and test_linux_policy.command.json reference transient week3_sv2_policy.py, since merged into the current verifier; that deleted intermediate file is not retained"
+  ],
+  "scope": "SV2 FP32 review/rerun; historical SV1/R4 logs preserved, datasets and complete SV1/R4 scientific packages excluded"
+}

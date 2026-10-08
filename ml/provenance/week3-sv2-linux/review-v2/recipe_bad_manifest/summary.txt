@@ -1,0 +1,1 @@
+FAIL exit=1; receipt not issued. Logs: /mnt/c/Users/Admin/Adaptive_Split_Inference/ml/provenance/week3-sv2-linux/review-v2/recipe_bad_manifest

@@ -1,0 +1,23 @@
+{
+  "same_operand_hashes": true,
+  "linear1_pre_relu": {
+    "different_bit_elements": 178,
+    "max_abs_error_float64": 1.9073486328125e-06,
+    "max_index": [
+      0,
+      9
+    ],
+    "windows_at_max": -16.752273559570312,
+    "linux_at_max": -16.752275466918945
+  },
+  "linear2_from_delivered_s9": {
+    "different_bit_elements": 61,
+    "max_abs_error_float64": 9.5367431640625e-07,
+    "max_index": [
+      1,
+      0
+    ],
+    "windows_at_max": 10.582462310791016,
+    "linux_at_max": 10.582463264465332
+  }
+}

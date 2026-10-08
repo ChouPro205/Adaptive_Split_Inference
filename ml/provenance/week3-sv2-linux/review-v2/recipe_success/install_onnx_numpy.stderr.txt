@@ -1,0 +1,10 @@
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-review-v2-clean-env/venv
+Resolved 8 packages in 306ms
+Installed 7 packages in 133ms
+ + flatbuffers==25.12.19
+ + ml-dtypes==0.6.0
+ + numpy==2.4.6
+ + onnx==1.23.1
+ + onnxruntime==1.30.0
+ + packaging==26.3
+ + protobuf==7.36.2

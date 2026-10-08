@@ -1,0 +1,123 @@
+/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week3-sv2-review-v2-20261006/authentication_fixture/ml/scripts/reproduce_week3_sv2_linux.sh
+/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week3-sv2-review-v2-20261006/authentication_fixture
+415d53431c81c465784dc08be42b568827a39cff
+ M device/reports/environment_check.txt
+ M device/reports/environment_check_pre_migration.txt
+ M ml/scripts/test_week3_sv2.py
+ M ml/scripts/test_week3_sv2_cache.py
+ M ml/scripts/verify_week3_sv2.py
+ M results/week3/logs/week3_capture_20x5.txt
+ M results/week3/logs/week3_capture_verified.txt
+?? ml/scripts/authenticate_week3_sv2_package.py
+?? ml/scripts/diagnose_week3_sv2.py
+?? ml/scripts/record_week3_sv2_recipe.py
+?? ml/scripts/reproduce_week3_sv2_linux.sh
+?? ml/scripts/test_week3_sv2_policy.py
+Linux DESKTOP-CK4JLP6 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.5 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  12
+On-line CPU(s) list:                     0-11
+Vendor ID:                               GenuineIntel
+Model name:                              12th Gen Intel(R) Core(TM) i5-12400F
+CPU family:                              6
+Model:                                   151
+Thread(s) per core:                      2
+Core(s) per socket:                      6
+Socket(s):                               1
+Stepping:                                5
+BogoMIPS:                                4991.99
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize arch_lbr ibt flush_l1d arch_capabilities
+Virtualization:                          VT-x
+Hypervisor vendor:                       Microsoft
+Virtualization type:                     full
+L1d cache:                               288 KiB (6 instances)
+L1i cache:                               192 KiB (6 instances)
+L2 cache:                                7.5 MiB (6 instances)
+L3 cache:                                18 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-11
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+de3f038769251d77dfc308b26d011ef5923bc390ccddcd721531efd90b329246  ml/scripts/reproduce_week3_sv2_linux.sh
+facb771666f75a432db614104575288a3fe838d3d8d2531658d0ecdd77789508  ml/scripts/authenticate_week3_sv2_package.py
+08d6cf133d0e47d07f4d88d5eff178e5b40c795dc16ded1c596f96383fd11387  ml/scripts/record_week3_sv2_recipe.py
+c3296d27450e9854d0f844d0a50b4b69a402ce2e72121b6760fe216c1691ce21  ml/scripts/diagnose_week3_sv2.py
+c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb  ml/scripts/verify_week3_sv2.py
+215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041  ml/scripts/test_week3_sv2.py
+7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f  ml/scripts/test_week3_sv2_cache.py
+b24f01e3f5d5795710004d40ff6b2576b9cb7c5d9e3ac9c9ef359a38b9fe5e56  ml/scripts/test_week3_sv2_policy.py
+d107774da544c4fd6da39fc579d43d39011643992e441f0db69109c1704b2952  ml/scripts/export_week3_sv2.py
+0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086  ml/scripts/week3_common.py
+3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0  ml/scripts/week3_sv2_common.py
+763b06fb9c048faa4a6794a10abc6403b151966f5b50ce4c418d8893968703ee  ml/requirements-week3-onnx.txt
+{"python": "3.11.9", "executable": "/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python", "resolved_executable": "/home/kyanh/.local/share/uv/python/cpython-3.11.9-linux-x86_64-gnu/bin/python3.11", "platform": "linux", "prefix": "/home/kyanh/asi-week3-review-v2-clean-env/venv"}
+uv 0.12.23 (x86_64-unknown-linux-gnu)
+cuda-bindings==13.3.1
+cuda-pathfinder==1.6.0
+cuda-toolkit==13.0.3.0
+filelock==3.32.3
+flatbuffers==25.12.19
+fsspec==2026.7.0
+jinja2==3.1.6
+markupsafe==3.0.3
+ml-dtypes==0.6.0
+mpmath==1.3.0
+networkx==3.6.1
+numpy==2.4.6
+nvidia-cublas==13.1.1.3
+nvidia-cuda-cupti==13.0.85
+nvidia-cuda-nvrtc==13.0.88
+nvidia-cuda-runtime==13.0.96
+nvidia-cudnn-cu13==9.24.0.43
+nvidia-cufft==12.0.0.61
+nvidia-cufile==1.15.1.6
+nvidia-curand==10.4.0.35
+nvidia-cusolver==12.0.4.66
+nvidia-cusparse==12.6.3.3
+nvidia-cusparselt-cu13==0.8.1
+nvidia-nccl-cu13==2.30.7
+nvidia-nvjitlink==13.3.33
+nvidia-nvshmem-cu13==3.4.5
+nvidia-nvtx==13.0.85
+onnx==1.23.1
+onnxruntime==1.30.0
+packaging==26.3
+protobuf==7.36.2
+setuptools==78.1.0
+sympy==1.14.0
+torch==2.14.0+cu130
+triton==3.8.0
+typing-extensions==4.16.0

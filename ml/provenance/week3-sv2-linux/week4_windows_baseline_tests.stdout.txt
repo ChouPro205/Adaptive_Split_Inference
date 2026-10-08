@@ -1,0 +1,25 @@
+PASS expected rejection: metadata without anchor
+PASS expected rejection: file raw mutation
+PASS expected rejection: split missing
+PASS expected rejection: split duplicate
+PASS expected rejection: boundary
+PASS expected rejection: N=20 payload
+PASS expected rejection: INT8 estimate
+PASS expected rejection: analysis
+PASS expected rejection: sample order
+PASS expected rejection: checkpoint identity
+PASS expected rejection: source hash policy
+PASS expected rejection: compiler count
+PASS expected rejection: compiler status
+PASS expected rejection: pool attributes
+PASS expected rejection: missing bias
+PASS expected rejection: header precision
+PASS expected rejection: figure missing
+PASS expected rejection: parameter dtype
+PASS expected rejection: parameter nan
+PASS expected rejection: parameter shape
+PASS expected rejection: parameter value
+PASS reproduction: scientific bytes identical; reused 220 golden cases bitwise
+PASS different Git/compiler provenance with unchanged scientific payload
+PASS LF/CRLF normalization and source-content rejection
+WEEK4_TESTS_PASS: 21 expected rejections; 4 monotonic cases; scientific reproduction; source unchanged

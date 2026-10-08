@@ -1,0 +1,5 @@
+installing to /home/kyanh/asi-week3-sv2-linux/bin
+  uv
+  uvx
+everything's installed!
+Python 3.11.9

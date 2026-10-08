@@ -1,0 +1,1 @@
+/home/kyanh/asi-week3-review-v2-clean-env/bin/uv pip install --python /home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python torch==2.14.0+cu130 --index-url https://download.pytorch.org/whl/cu130 

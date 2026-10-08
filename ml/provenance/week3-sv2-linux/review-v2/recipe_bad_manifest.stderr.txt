@@ -1,0 +1,13 @@
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-review-v2-clean-env/venv
+Checked 1 package in 35ms
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-review-v2-clean-env/venv
+Checked 6 packages in 9ms
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-review-v2-clean-env/venv
+Traceback (most recent call last):
+  File "/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week3-sv2-review-v2-20261006/authentication_fixture/ml/scripts/authenticate_week3_sv2_package.py", line 45, in <module>
+    print(json.dumps(authenticate(args.package), indent=2))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/Admin/Adaptive_Split_Inference/exports/week3-sv2-review-v2-20261006/authentication_fixture/ml/scripts/authenticate_week3_sv2_package.py", line 29, in authenticate
+    raise ValueError("Manifest anchor mismatch")
+ValueError: Manifest anchor mismatch
+FAIL exit=1; receipt not issued. Logs: /mnt/c/Users/Admin/Adaptive_Split_Inference/ml/provenance/week3-sv2-linux/review-v2/recipe_bad_manifest

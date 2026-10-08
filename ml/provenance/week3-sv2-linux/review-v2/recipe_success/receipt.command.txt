@@ -1,0 +1,1 @@
+/home/kyanh/asi-week3-review-v2-clean-env/venv/bin/python -B ml/scripts/record_week3_sv2_recipe.py --repo-root /mnt/c/Users/Admin/Adaptive_Split_Inference --log-root /mnt/c/Users/Admin/Adaptive_Split_Inference/ml/provenance/week3-sv2-linux/review-v2/recipe_success 

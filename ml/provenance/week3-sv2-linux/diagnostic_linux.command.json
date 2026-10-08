@@ -1,0 +1,44 @@
+{
+  "argv": [
+    "wsl",
+    "-d",
+    "Ubuntu-24.04",
+    "--",
+    "/home/kyanh/asi-week3-sv2-linux/venv/bin/python",
+    "-B",
+    "ml/scripts/diagnose_week3_sv2.py",
+    "--package",
+    "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+    "--expected-manifest-sha256",
+    "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+  ],
+  "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+  "started_utc": "2026-10-06T06:22:15.578935+00:00",
+  "finished_utc": "2026-10-06T06:22:33.352182+00:00",
+  "base_commit": "415d53431c81c465784dc08be42b568827a39cff",
+  "branch": "sv3/fix-week3-sv2-linux-fp32",
+  "exit_code": 0,
+  "streams": {
+    "stdout": {
+      "path": "diagnostic_linux.stdout.txt",
+      "sha256": "50cfe82b138813e801ebb11f7fe12b1cac05bf9e538d57564c988afe1baeb9f8"
+    },
+    "stderr": {
+      "path": "diagnostic_linux.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "source_sha256": {
+    "ml/scripts/audit_week3_sv2.py": "c11251b175a95228d6a558e22dec23f8047a18d8af0f9a16595c8c88d808f6cf",
+    "ml/scripts/diagnose_week3_sv2.py": "06622e8fc4ffb0644cb6b113b5345357b8a2b52ac515aef6a193d76f5a0e1c11",
+    "ml/scripts/export_week3.py": "02244b2eb160e6290a890df8e40c94e587e40b31c245c7b088b859c4f76fb678",
+    "ml/scripts/export_week3_sv2.py": "d107774da544c4fd6da39fc579d43d39011643992e441f0db69109c1704b2952",
+    "ml/scripts/test_week3.py": "b1ddc24e3855cdcb03d62632d5add7da30230d1f66b6c85a713b23c8e8aa09ae",
+    "ml/scripts/test_week3_sv2.py": "c6bad027185bf63c280dc9abc2c9e9a96d809eabd6e42853a7b2cbd732b7fda6",
+    "ml/scripts/test_week3_sv2_cache.py": "3d0e8241847bc0ba8f0a3ba6f8fd2379fdde60983bd672ca30b7c410aee9afdf",
+    "ml/scripts/verify_week3.py": "b90bc36f5488d51fefa893a6c57ab2e928b50090f579b7d1e9510b5fa864eee8",
+    "ml/scripts/verify_week3_sv2.py": "b4c9562ee74c4922fd6180bc9a1a85ffc8a44871fd45ed87610728f2e31230ce",
+    "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0"
+  }
+}

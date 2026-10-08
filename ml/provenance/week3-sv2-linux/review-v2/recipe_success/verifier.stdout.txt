@@ -1,0 +1,141 @@
+{
+  "status": "SV2_FP32_REFERENCE_CHECKS_PASS",
+  "handoff_id": "mitdb-week3-sv2-fp32-20261001-v1",
+  "manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+  "comparisons": 200,
+  "per_split": [
+    {
+      "split_id": 0,
+      "samples": 20,
+      "pytorch_worst": 1.1920928955078125e-06,
+      "onnx_worst": 2.6226043701171875e-06
+    },
+    {
+      "split_id": 1,
+      "samples": 20,
+      "pytorch_worst": 1.1920928955078125e-06,
+      "onnx_worst": 2.384185791015625e-06
+    },
+    {
+      "split_id": 2,
+      "samples": 20,
+      "pytorch_worst": 1.1920928955078125e-06,
+      "onnx_worst": 2.6226043701171875e-06
+    },
+    {
+      "split_id": 3,
+      "samples": 20,
+      "pytorch_worst": 1.1920928955078125e-06,
+      "onnx_worst": 2.0265579223632812e-06
+    },
+    {
+      "split_id": 4,
+      "samples": 20,
+      "pytorch_worst": 1.1920928955078125e-06,
+      "onnx_worst": 2.0265579223632812e-06
+    },
+    {
+      "split_id": 5,
+      "samples": 20,
+      "pytorch_worst": 1.1920928955078125e-06,
+      "onnx_worst": 2.1457672119140625e-06
+    },
+    {
+      "split_id": 6,
+      "samples": 20,
+      "pytorch_worst": 1.1920928955078125e-06,
+      "onnx_worst": 1.9073486328125e-06
+    },
+    {
+      "split_id": 7,
+      "samples": 20,
+      "pytorch_worst": 1.1920928955078125e-06,
+      "onnx_worst": 1.9073486328125e-06
+    },
+    {
+      "split_id": 8,
+      "samples": 20,
+      "pytorch_worst": 1.1920928955078125e-06,
+      "onnx_worst": 1.9073486328125e-06
+    },
+    {
+      "split_id": 9,
+      "samples": 20,
+      "pytorch_worst": 9.5367431640625e-07,
+      "onnx_worst": 9.5367431640625e-07
+    },
+    {
+      "split_id": 10,
+      "samples": 20,
+      "pytorch_worst": 0.0,
+      "onnx_worst": null
+    }
+  ],
+  "global_worst": {
+    "sample_index": 16,
+    "sample_id": "MIT-BIH:105:4371:MLII",
+    "split_id": 0,
+    "pytorch_tail_max_abs_error": 3.5762786865234375e-07,
+    "onnx_max_abs_error": 2.6226043701171875e-06,
+    "onnx_vs_pytorch_tail_max_abs_error": 2.384185791015625e-06,
+    "status": "PASS"
+  },
+  "s10_identity_samples": 20,
+  "downstream": {
+    "runtime": "VART",
+    "backend": "KV260 DPU",
+    "acceptance": "PENDING_SV2_INDEPENDENT_VALIDATION",
+    "responsibility": "SV2: Vitis AI compatibility, quantization, xmodel compile and VART/KV260 execution",
+    "int8_criterion": "Separate project quantization/device criteria; FP32 <1e-3 does not apply automatically"
+  },
+  "recomputation_policy": "portable-fp32-v2",
+  "legacy_contract_pass": false,
+  "reference_basis": "delivered original logits",
+  "recomputed_activations": {
+    "0": {
+      "same_bits": true,
+      "max_abs_error": 0.0
+    },
+    "1": {
+      "same_bits": true,
+      "max_abs_error": 0.0
+    },
+    "2": {
+      "same_bits": true,
+      "max_abs_error": 0.0
+    },
+    "3": {
+      "same_bits": true,
+      "max_abs_error": 0.0
+    },
+    "4": {
+      "same_bits": true,
+      "max_abs_error": 0.0
+    },
+    "5": {
+      "same_bits": true,
+      "max_abs_error": 0.0
+    },
+    "6": {
+      "same_bits": true,
+      "max_abs_error": 0.0
+    },
+    "7": {
+      "same_bits": true,
+      "max_abs_error": 0.0
+    },
+    "8": {
+      "same_bits": true,
+      "max_abs_error": 0.0
+    },
+    "9": {
+      "same_bits": false,
+      "max_abs_error": 1.9073486328125e-06
+    },
+    "10": {
+      "same_bits": false,
+      "max_abs_error": 1.1920928955078125e-06
+    }
+  },
+  "dense9_strict_max_abs_error": 1e-05
+}

@@ -1,0 +1,219 @@
+{
+  "base_commit": "415d53431c81c465784dc08be42b568827a39cff",
+  "branch": "sv3/fix-week3-sv2-linux-fp32",
+  "state": "Uncommitted local review; no new release or recipient acceptance",
+  "source_sha256": {
+    "ml/scripts/audit_week3_sv2.py": "c11251b175a95228d6a558e22dec23f8047a18d8af0f9a16595c8c88d808f6cf",
+    "ml/scripts/diagnose_week3_sv2.py": "c3296d27450e9854d0f844d0a50b4b69a402ce2e72121b6760fe216c1691ce21",
+    "ml/scripts/export_week3.py": "02244b2eb160e6290a890df8e40c94e587e40b31c245c7b088b859c4f76fb678",
+    "ml/scripts/export_week3_sv2.py": "d107774da544c4fd6da39fc579d43d39011643992e441f0db69109c1704b2952",
+    "ml/scripts/reproduce_week3_sv2_linux.sh": "d988e9f16c9617e07c9a621eceaf01d177c825010881a0ebce2b2cb499a428f0",
+    "ml/scripts/test_week3.py": "b1ddc24e3855cdcb03d62632d5add7da30230d1f66b6c85a713b23c8e8aa09ae",
+    "ml/scripts/test_week3_sv2.py": "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041",
+    "ml/scripts/test_week3_sv2_cache.py": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f",
+    "ml/scripts/test_week3_sv2_policy.py": "b24f01e3f5d5795710004d40ff6b2576b9cb7c5d9e3ac9c9ef359a38b9fe5e56",
+    "ml/scripts/verify_week3.py": "b90bc36f5488d51fefa893a6c57ab2e928b50090f579b7d1e9510b5fa864eee8",
+    "ml/scripts/verify_week3_sv2.py": "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb",
+    "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0"
+  },
+  "artifact_preservation": {
+    "unchanged": true,
+    "changed_paths": [],
+    "entries_including_zip": 42,
+    "manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "zip_sha256": "b7f5b8d0bcd5ec27755f3e44541c0d24a6d23bdd27e199660a7b653bc30a71c7"
+  },
+  "commands": {
+    "before_linux.command": {
+      "exit_code": 1,
+      "sha256": "07ec0c1f74cc0afccc8597b9b6e44fa7f718f43552e13bca2e8132c1d06ac130",
+      "source_unchanged_during_command": null
+    },
+    "dense_linux.command": {
+      "exit_code": 0,
+      "sha256": "c86be50a9791a0d8c2b67e50b1aaeb8f167f17987c6a3c83dc2e7738ba1c0414",
+      "source_unchanged_during_command": true
+    },
+    "dense_windows.command": {
+      "exit_code": 0,
+      "sha256": "8fffda42acdd6b444258aef8ed13914e3de61138dad131328d860484b6b69825",
+      "source_unchanged_during_command": true
+    },
+    "diagnostic_linux.command": {
+      "exit_code": 0,
+      "sha256": "0b3e8f5be9bd2b4c3d2d7408b71d5def4fa37ce2a8b9f2a09a520284ce4a3ec9",
+      "source_unchanged_during_command": null
+    },
+    "diagnostic_linux_compatible.command": {
+      "exit_code": 0,
+      "sha256": "0c0ff074435fdeefa5d3bffa0addb0cf4add9b0a2d07b0a861eae49144572756",
+      "source_unchanged_during_command": null
+    },
+    "diagnostic_windows.command": {
+      "exit_code": 0,
+      "sha256": "ae683b16efc0cfec703428d20bae9cfd9a4293b4856fa6d4d9596e2349b12330",
+      "source_unchanged_during_command": null
+    },
+    "environment_linux.command": {
+      "exit_code": 0,
+      "sha256": "2fb9b218c06f05d668fbc827cfb0ca723b600fa4ba5c24730999a4a0214f557a",
+      "source_unchanged_during_command": true
+    },
+    "final_linux_cache.command": {
+      "exit_code": 0,
+      "sha256": "377d88c2550ad8f1a3cf56c33c50564703d5043b6073e6d4d3f17cede08a3431",
+      "source_unchanged_during_command": true
+    },
+    "final_linux_policy.command": {
+      "exit_code": 0,
+      "sha256": "67e28b810f153262176cf30d41cc7b0dd391628e16bd8c3e098c1f5e5795ba5a",
+      "source_unchanged_during_command": true
+    },
+    "final_linux_policy_v2.command": {
+      "exit_code": 0,
+      "sha256": "65eb44853544c0b5168efa9196c5f272d8687a582becdc1730dd7f5078b26c7b",
+      "source_unchanged_during_command": true
+    },
+    "final_linux_tamper.command": {
+      "exit_code": 0,
+      "sha256": "320f9e3b22319758cb3aa214eb73faca6caf4a06cf2a8bb2f1671e958ff149e0",
+      "source_unchanged_during_command": true
+    },
+    "final_linux_tamper_v2.command": {
+      "exit_code": 0,
+      "sha256": "f5971f3308c455dd9b575e3dcba05735fbb07faed1cbd93f915f1d80c2159e77",
+      "source_unchanged_during_command": true
+    },
+    "final_linux_verifier.command": {
+      "exit_code": 0,
+      "sha256": "2784a0df309e37134e80e3b8ac0a80be4f5afae930492ee0674f52ad4fe7f567",
+      "source_unchanged_during_command": true
+    },
+    "final_windows_cache.command": {
+      "exit_code": 0,
+      "sha256": "d18d8527fa0c17da72c1c97f4888062c9fcd107af7d14f4b8d4924ae4f47efa8",
+      "source_unchanged_during_command": true
+    },
+    "final_windows_legacy.command": {
+      "exit_code": 0,
+      "sha256": "7ba089b65443fac4ecffeccc59c2f42a2c90d0610f588ca213adebb1413dcdf7",
+      "source_unchanged_during_command": true
+    },
+    "final_windows_policy.command": {
+      "exit_code": 0,
+      "sha256": "ececff434e1dfb9abc51ae3bfa845e07169602d74c0441b8738df2baee6692a5",
+      "source_unchanged_during_command": true
+    },
+    "final_windows_policy_v2.command": {
+      "exit_code": 0,
+      "sha256": "fc3efbb9f4311b9390c71cc37b12b841c5086141fcc08c7ee2098e4f81d5aabb",
+      "source_unchanged_during_command": true
+    },
+    "final_windows_portable.command": {
+      "exit_code": 0,
+      "sha256": "be9ea056077becad47288d4f91deb69638487082332d7ff3e6d871886b7ccc4d",
+      "source_unchanged_during_command": true
+    },
+    "final_windows_tamper.command": {
+      "exit_code": 0,
+      "sha256": "c79f821351034a865a1a357d21a399b32e6cf8ed6e6f19efd692f15fdd20d63f",
+      "source_unchanged_during_command": true
+    },
+    "final_windows_tamper_v2.command": {
+      "exit_code": 0,
+      "sha256": "b14c7239dd832ec480ccfb10ccf150dcf83ff7852a71584fc1d6075ac318ba30",
+      "source_unchanged_during_command": true
+    },
+    "install_core_linux.command": {
+      "exit_code": 0,
+      "sha256": "164883666396baf47865d10f8b1b112fba25c9ae39a9d357ac3b82cd16762bba",
+      "source_unchanged_during_command": true
+    },
+    "legacy_linux.command": {
+      "exit_code": 1,
+      "sha256": "da98f5dc25704d4ed5e7c93965f55e7ff95c4d731a81bea205c9041544145743",
+      "source_unchanged_during_command": true
+    },
+    "prepare_week4_baseline.command": {
+      "exit_code": 0,
+      "sha256": "62701f25e1533407f2d0136ff05dc487be3ee8c14ef7d17d28ee2e6e2cb74ab0",
+      "source_unchanged_during_command": true
+    },
+    "recipe_linux.command": {
+      "exit_code": 0,
+      "sha256": "6656d746af511c51deb24421e8b49c26ad3f15fbd5061bf3f41747922cd42902",
+      "source_unchanged_during_command": true
+    },
+    "setup.command": {
+      "exit_code": 0,
+      "sha256": "ef19d7923b281f953cbc24e2433f6c6a6514f31feab2b0e3f56ad4ed04ce1b3c",
+      "source_unchanged_during_command": null
+    },
+    "sv1_linux_verifier.command": {
+      "exit_code": 1,
+      "sha256": "3596c4f8d5436a6af5b08f18dbb1852ec690c2df833f9a5f9c6c926d9e404633",
+      "source_unchanged_during_command": true
+    },
+    "sv1_windows_tests.command": {
+      "exit_code": 2,
+      "sha256": "4a187f5f27a0958b82516d380dca70b5baf28f6ee15cf499f422d7f75e615597",
+      "source_unchanged_during_command": true
+    },
+    "sv1_windows_tests_corrected.command": {
+      "exit_code": 0,
+      "sha256": "d261af2b95ff9394257d4c9f2a03b2190e0efe3df3cde06f74c0a170b2308f84",
+      "source_unchanged_during_command": true
+    },
+    "sv1_windows_verifier.command": {
+      "exit_code": 0,
+      "sha256": "731d89a0bff26f84151c803f93712bdd4ef63355bec0f47005d4da3a5cbf7a43",
+      "source_unchanged_during_command": true
+    },
+    "test_linux_policy.command": {
+      "exit_code": 0,
+      "sha256": "3c219962aa0f0ec52f086ff054776ad38df18d4e77dc57d15954341654f0a0b7",
+      "source_unchanged_during_command": null
+    },
+    "verify_linux_portable.command": {
+      "exit_code": 0,
+      "sha256": "c838b45d058aa004b10b0366aec5649f125c391a44cb1580d5bc3dbabe5dfb07",
+      "source_unchanged_during_command": null
+    },
+    "week4_linux_baseline.command": {
+      "exit_code": 1,
+      "sha256": "73a4879462c096cc3bd94fa1c9bb2593dda9285c8f5f7e5172615827e9857124",
+      "source_unchanged_during_command": true
+    },
+    "week4_linux_gate.command": {
+      "exit_code": 1,
+      "sha256": "9d4792c06a2e8f6b05aa4e912f9308f3a11c1369bdd4f1f31ac450ec9a738ca4",
+      "source_unchanged_during_command": true
+    },
+    "week4_linux_release_tests.command": {
+      "exit_code": 0,
+      "sha256": "58ff5a766229cf335c1e2b43e8f9d5e9aaff1a4cb76a201db358d8e880048971",
+      "source_unchanged_during_command": true
+    },
+    "week4_windows_baseline.command": {
+      "exit_code": 0,
+      "sha256": "70223de48a76ea9b371f7dfd90b3e32328e5d179aa2e6a7f3f55c656fff4053e",
+      "source_unchanged_during_command": true
+    },
+    "week4_windows_baseline_tests.command": {
+      "exit_code": 0,
+      "sha256": "b4fdc52c397dd5e288a47b92083ac373ec37fdf724a1802840eec73cd8d9cd15",
+      "source_unchanged_during_command": true
+    },
+    "week4_windows_gate.command": {
+      "exit_code": 1,
+      "sha256": "d57f281b3f683cd0fcef1230e12598a19668bd5be99cf8f88ffc6c199f123d30",
+      "source_unchanged_during_command": true
+    },
+    "wsl_inventory.command": {
+      "exit_code": 0,
+      "sha256": "ccf99aa473a774110d8a476db3e54b748d9efc9f2e891b66a378bd49f8620546",
+      "source_unchanged_during_command": true
+    }
+  }
+}

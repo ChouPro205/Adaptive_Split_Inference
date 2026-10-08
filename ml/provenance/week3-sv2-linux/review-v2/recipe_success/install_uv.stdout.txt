@@ -1,0 +1,4 @@
+installing to /home/kyanh/asi-week3-review-v2-clean-env/bin
+  uv
+  uvx
+everything's installed!

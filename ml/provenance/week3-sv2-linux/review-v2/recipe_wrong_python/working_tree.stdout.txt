@@ -1,0 +1,25 @@
+ M .gitattributes
+ M device/reports/environment_check.txt
+ M device/reports/environment_check_pre_migration.txt
+ M docs/README.md
+ M ml/scripts/test_week3_sv2.py
+ M ml/scripts/test_week3_sv2_cache.py
+ M ml/scripts/verify_week3_sv2.py
+ M results/week3/logs/week3_capture_20x5.txt
+ M results/week3/logs/week3_capture_verified.txt
+?? AGENTS.md
+?? SV3_LINUX_FP32_REVIEW.validation.json
+?? SV3_LINUX_FP32_REVIEW.zip
+?? docs/sv3_ml_week3_linux_fp32_fix_report.md
+?? exports/
+?? mitdb-week1-snapshot-for-week3-v2.zip
+?? ml/configs.zip
+?? ml/docs.zip
+?? ml/manifests.zip
+?? ml/provenance/week3-sv2-linux/
+?? ml/scripts/authenticate_week3_sv2_package.py
+?? ml/scripts/diagnose_week3_sv2.py
+?? ml/scripts/record_week3_sv2_recipe.py
+?? ml/scripts/reproduce_week3_sv2_linux.sh
+?? ml/scripts/test_week3_sv2_policy.py
+?? ml/src.zip

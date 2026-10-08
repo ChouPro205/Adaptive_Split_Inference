@@ -15,16 +15,18 @@ import onnx
 from week3_common import need, read_json, sha, write_json
 from week3_sv2_common import inventory
 from verify_week3_sv2 import verify
+from verify_week3_sv2 import LEGACY, POLICIES
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--package",type=Path,required=True)
     parser.add_argument("--expected-manifest-sha256",required=True)
+    parser.add_argument("--recomputation-policy", choices=POLICIES, default=LEGACY)
     args = parser.parse_args()
     package = args.package.resolve()
     before = {p.relative_to(package).as_posix():sha(p) for p in package.rglob("*") if p.is_file()}
-    verify(package,args.expected_manifest_sha256)
+    verify(package,args.expected_manifest_sha256,args.recomputation_policy)
 
     def manifest_field(p,key,value):
         m = read_json(p / "manifest.json"); m[key]=value
@@ -39,6 +41,8 @@ def main():
         if kind=="shape": a=a[:,:-1]
         if kind=="dtype": a=a.astype(np.float64)
         if kind=="nan": a[0,0]=np.nan
+        if kind=="inf": a[0,0]=np.inf
+        if kind=="tiny": a[0,0]+=np.float32(1e-6)
         if kind=="value": a[0,0]+=1
         np.save(path,a,allow_pickle=False)
 
@@ -69,7 +73,9 @@ def main():
         ("wrong activation shape",lambda p:tensor(p,"shape"),"Golden shape mismatch: s=9","semantic"),
         ("wrong dtype with matching hashes",lambda p:tensor(p,"dtype"),"Wrong tensor dtype","raw_semantic"),
         ("NaN with matching hashes",lambda p:tensor(p,"nan"),"Non-finite or non-contiguous","raw_semantic"),
-        ("activation value corruption",lambda p:tensor(p,"value"),"Recomputed golden bits differ: s=9","semantic"),
+        ("Inf with matching hashes",lambda p:tensor(p,"inf"),"Non-finite or non-contiguous","raw_semantic"),
+        ("tiny golden mutation with original anchor",lambda p:tensor(p,"tiny"),"File hash/size mismatch","original"),
+        ("activation value corruption",lambda p:tensor(p,"value"),"Recomputed golden bits differ: s=9" if args.recomputation_policy == LEGACY else "Recomputed golden tolerance failure: s=9","semantic"),
         ("wrong ONNX opset",lambda p:graph(p,"opset"),"ONNX opset mismatch","semantic"),
         ("wrong ONNX input name",lambda p:graph(p,"name"),"ONNX input contract mismatch","semantic"),
         ("changed ONNX weights",lambda p:graph(p,"weights"),"ONNX FP32 tolerance failure","semantic"),
@@ -95,7 +101,7 @@ def main():
                 write_json(fixture / "manifest.json",m)
             expected = None if mode=="none" else args.expected_manifest_sha256 if mode.startswith("original") else sha(fixture / "manifest.json")
             try:
-                verify(fixture,expected)
+                verify(fixture,expected,args.recomputation_policy)
             except ValueError as exc:
                 need(message in str(exc),f"Wrong rejection for {name}: {exc}")
             else:

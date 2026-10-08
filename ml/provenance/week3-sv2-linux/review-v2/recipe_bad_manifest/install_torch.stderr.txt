@@ -1,0 +1,2 @@
+Using Python 3.11.9 environment at: /home/kyanh/asi-week3-review-v2-clean-env/venv
+Checked 1 package in 35ms
