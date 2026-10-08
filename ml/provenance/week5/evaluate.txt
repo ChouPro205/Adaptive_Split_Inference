@@ -1,0 +1,13 @@
+FP32 all 11 splits x 8544 samples PASS
+s0: accuracy 98.232678 -> 98.209270; drop 0.023408 pp
+s1: accuracy 98.232678 -> 98.197566; drop 0.035112 pp
+s2: accuracy 98.232678 -> 98.209270; drop 0.023408 pp
+s3: accuracy 98.232678 -> 98.220974; drop 0.011704 pp
+s4: accuracy 98.232678 -> 98.232678; drop 0.000000 pp
+s5: accuracy 98.232678 -> 98.256086; drop -0.023408 pp
+s6: accuracy 98.232678 -> 98.174157; drop 0.058521 pp
+s7: accuracy 98.232678 -> 98.209270; drop 0.023408 pp
+s8: accuracy 98.232678 -> 98.209270; drop 0.023408 pp
+s9: accuracy 98.232678 -> 98.232678; drop 0.000000 pp
+s10: accuracy 98.232678 -> 98.232678; drop 0.000000 pp
+FULL_OFFICIAL_TEST_EVALUATED

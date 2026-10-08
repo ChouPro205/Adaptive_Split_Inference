@@ -141,3 +141,11 @@ from the source-hash rejection at `da4bebf`. Release R3 uses committed source,
 new output/manifest/ZIP and a pinned checkout hydrated from the authenticated
 ZIP without source overlays. R2 and the Week 3 all-split package remain intact.
 SV1 receipt/device acceptance stays PENDING until receiver acknowledgement.
+
+## Week 5 INT8/FP16 and Python P1 handoff
+
+See [SV3 → SV1 Week 5](docs/sv3_sv1_week5_handoff.md) for the authenticated
+full-test loader, per-channel INT8/FP16 reference, all 11 split adapters,
+20-sample byte comparison pack, full-test accuracy and I2/1 Python P1 evidence.
+Large artifacts remain in the project's existing GitHub Releases storage;
+download hashes and hydration commands are included in the handoff README.
