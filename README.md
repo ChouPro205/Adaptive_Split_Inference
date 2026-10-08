@@ -56,6 +56,8 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
 
 ## Tài liệu
 
+- [Kiểm tra checkout hiện tại trước tuần 5](ml/docs/week4_current_verification.md):
+  entrypoint ML dùng chung policy xác thực với device, tách rõ snapshot lịch sử.
 - [Báo cáo SV1/Device Week 4: 11 splits FP32](docs/sv1_device_week4_report.md)
 - [Bằng chứng MCU Week 4](results/week4/README.md) và
   [hydrate/tái kiểm sau tích hợp R4](device/week4_fp32_guide.md): source ML

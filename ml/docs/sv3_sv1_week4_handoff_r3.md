@@ -1,5 +1,9 @@
 # SV3 → SV1 tuần 4 — revision R3
 
+Current checkout verification is documented in
+[shared current verification](week4_current_verification.md). The commands
+below belong to the original historical R3 source/release snapshot.
+
 R3 tiếp nối sửa cache tại `da4bebf…`. R2 và all-split tuần 3 giữ nguyên.
 Kết quả tuần 4: 11 split s=0..10, graph 25 ops, 20 parameter arrays và C99
 header 109.653 FP32 elements; Figure 2 thể hiện payload không đơn điệu.

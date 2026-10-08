@@ -100,6 +100,13 @@ class HandoffRegression(unittest.TestCase):
         cls.git_blobs = {entry["path"]: subprocess.check_output(
             ["git", "show", f"{handoff.SOURCE_COMMITS['r3']}:{entry['path']}"], cwd=REPO)
             for entry in cls.r3["source_files"]}
+        cls.r4_git_blobs = {entry["path"]: subprocess.check_output(
+            ["git", "show", f"89109fd352d84a5fe0815d7e045e52538de7bad8:{entry['path']}"], cwd=REPO)
+            for entry in cls.r4["source_files"]}
+        cls.pr22_git_blobs = {name: subprocess.check_output(
+            ["git", "show", f"add8503d58c6f707a35b4502bf98aff91109c1cd:{name}"], cwd=REPO)
+            for name in ("ml/scripts/verify_week3_sv2.py", "ml/scripts/test_week3_sv2.py",
+                         "ml/scripts/test_week3_sv2_cache.py")}
 
     @classmethod
     def tearDownClass(cls):
@@ -112,8 +119,9 @@ class HandoffRegression(unittest.TestCase):
             self.assertEqual(Path(cwd), self.repo)
             self.assertEqual(command[:2], ["git", "show"])
             commit, name = command[2].split(":", 1)
-            self.assertEqual(commit, handoff.SOURCE_COMMITS["r3"])
-            return self.git_blobs[name]
+            self.assertIn(commit, handoff.SOURCE_COMMITS.values())
+            blobs = self.git_blobs if commit == handoff.SOURCE_COMMITS["r3"] else self.r4_git_blobs
+            return blobs[name]
         self.blob_patch = patch("week4_handoff.subprocess.check_output", side_effect=read_blob)
         self.blob_patch.start()
         self.addCleanup(self.blob_patch.stop)
@@ -127,6 +135,93 @@ class HandoffRegression(unittest.TestCase):
         generate(self.repo, generated_dir=output)
         for name in ("week4_inputs.h", "week4_graph.h"):
             self.assertEqual((output/name).read_bytes(), (REPO/"device/generated"/name).read_bytes())
+
+    def test_historical_mode_never_claims_current_checkout_is_r4_snapshot(self):
+        _, _, proof = handoff.authenticate_handoff(self.repo, source_mode="historical")
+        self.assertEqual(proof["source_verification_mode"], "historical")
+        self.assertEqual(proof["historical_source_commit"], handoff.SOURCE_COMMITS["r4"])
+        self.assertEqual(proof["historical_source_bindings_checked"], 21)
+        self.assertEqual(proof["verified_current_source_updates"], [])
+        self.assertNotIn("current_source_revision", proof)
+        with self.assertRaisesRegex(ValueError, "Unsupported source verification mode"):
+            handoff.authenticate_handoff(self.repo, source_mode="unverified")
+
+    def test_shared_policy_is_the_device_implementation(self):
+        import week4_handoff_auth
+        self.assertIs(handoff.authenticate_handoff, week4_handoff_auth.authenticate_handoff)
+        self.assertIs(handoff.check_sources, week4_handoff_auth.check_sources)
+
+    def test_pr22_update_matches_independent_historical_hashes(self):
+        # Fixed expectations from independently reviewed old/new Git blobs,
+        # not computed from the loader's allowlist or current checkout.
+        expected = {
+            "ml/scripts/verify_week3_sv2.py": (
+                "b4c9562ee74c4922fd6180bc9a1a85ffc8a44871fd45ed87610728f2e31230ce",
+                "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb"),
+            "ml/scripts/test_week3_sv2.py": (
+                "c6bad027185bf63c280dc9abc2c9e9a96d809eabd6e42853a7b2cbd732b7fda6",
+                "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041"),
+            "ml/scripts/test_week3_sv2_cache.py": (
+                "9c7a2b6cdba237145ad127a45e5938e7d657b20caa1faaafbf7f5e885232b9b4",
+                "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f"),
+        }
+        self.assertEqual(handoff.PR22_R4_SOURCE_HASHES, expected)
+        for name, hashes in expected.items():
+            with self.subTest(path=name):
+                actual = (handoff.source_hash(self.r4_git_blobs[name]),
+                          handoff.source_hash(self.pr22_git_blobs[name]))
+                self.assertEqual(actual, hashes)
+                self.assertEqual((self.repo/name).read_bytes(), self.pr22_git_blobs[name])
+        _, _, proof = handoff.authenticate_handoff(self.repo)
+        updates = {row["path"]: row for row in proof["verified_current_source_updates"]}
+        self.assertEqual(set(updates), set(expected))
+        self.assertEqual(proof["current_source_manifest_sha256"], handoff.R4_MANIFEST)
+        for name, row in updates.items():
+            self.assertEqual(row["r4_manifest_sha256"], expected[name][0])
+            self.assertEqual(row["current_source_sha256"], expected[name][1])
+            self.assertEqual(row["reviewed_source_commit"], "add8503d58c6f707a35b4502bf98aff91109c1cd")
+            self.assertEqual(row["reviewed_merge_commit"], "e6d3e8cc40323227d0f15a4bb4091957f2498744")
+
+    def test_original_r4_sources_still_authenticate(self):
+        saved = {name: (self.repo/name).read_bytes() for name in self.pr22_git_blobs}
+        try:
+            for name in saved:
+                (self.repo/name).write_bytes(self.r4_git_blobs[name])
+            _, _, proof = handoff.authenticate_handoff(self.repo)
+            self.assertEqual(proof["verified_current_source_updates"], [])
+            self.assertEqual(proof["current_source_bindings_checked"], 21)
+        finally:
+            for name, raw in saved.items():
+                (self.repo/name).write_bytes(raw)
+
+    def test_partial_pr22_source_update_rejected(self):
+        for name in self.pr22_git_blobs:
+            target = self.repo/name
+            raw = target.read_bytes()
+            try:
+                target.write_bytes(self.r4_git_blobs[name])
+                with self.subTest(path=name), self.assertRaisesRegex(ValueError, "Incomplete verified PR22"):
+                    handoff.authenticate_handoff(self.repo)
+            finally:
+                target.write_bytes(raw)
+
+    def test_pr22_sources_cannot_replace_historical_r4(self):
+        for name, new in self.pr22_git_blobs.items():
+            old = self.r4_git_blobs[name]
+            try:
+                self.r4_git_blobs[name] = new
+                with self.subTest(path=name), self.assertRaisesRegex(ValueError, "r4 historical"):
+                    handoff.check_sources(self.repo, self.r4, "r4", historical=True)
+            finally:
+                self.r4_git_blobs[name] = old
+
+    def test_pr22_exception_cannot_repin_original_manifest(self):
+        for name in self.pr22_git_blobs:
+            for digest in ("0"*64, handoff.source_hash(self.pr22_git_blobs[name])):
+                changed = copy.deepcopy(self.r4)
+                next(row for row in changed["source_files"] if row["path"]==name)["sha256"] = digest
+                with self.subTest(path=name, digest=digest), self.assertRaisesRegex(ValueError, "Unsupported verified source update binding"):
+                    handoff.check_sources(self.repo, changed, "r4", historical=False)
 
     def test_every_current_source_binding_rejects_tamper(self):
         for entry in self.r4["source_files"]:

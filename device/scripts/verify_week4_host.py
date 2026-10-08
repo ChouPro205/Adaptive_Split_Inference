@@ -37,6 +37,7 @@ def host_source_hashes(repo: Path, source_revision: str) -> dict[str, str]:
         "device/src/week3_head.c", "device/src/week3_head.h",
         "device/scripts/verify_week4_host.py", "device/scripts/generate_week4_inputs.py",
         "device/scripts/generate_week3_inputs.py", "device/scripts/week4_handoff.py",
+        "tools/week4_handoff_auth.py",
         R3 + "/manifest.json", R3 + "/firmware/head_parameters.h",
         "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2/firmware/head_parameters.h"]
     source_manifest = repo / (R4 if source_revision == "r4" else R3) / "manifest.json"

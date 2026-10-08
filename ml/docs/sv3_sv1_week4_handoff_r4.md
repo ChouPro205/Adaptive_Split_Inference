@@ -1,5 +1,10 @@
 # SV3 → SV1 tuần 4 — revision R4
 
+For the current checkout after PR22, use the
+[shared current verification entry point](week4_current_verification.md).
+The source-bundle commands below describe the immutable historical R4 release;
+they do not certify changed current source.
+
 R4 sửa thứ tự inventory theo OS tại `89109fd352d84a5fe0815d7e045e52538de7bad8`,
 giữ bảo vệ cache của `da4bebf…`. R3 và all-split tuần 3 giữ nguyên. R3
 không nghiệm thu source mới. Tên ZIP giữ ngày 20261001 theo quy trình

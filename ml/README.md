@@ -133,9 +133,17 @@ side. Versioned source/config/docs and small manifest/evidence copies live in
 `ml/scripts/`, `ml/configs/`, `ml/docs/` and `ml/provenance/week3/`. A Git checkout
 alone does not deliver the checkpoint, inputs, parameters or golden tensors.
 
-## Week 4 review revision R3
+## Week 4 current verification and historical releases
 
-Current handoff instructions: [R3](docs/sv3_sv1_week4_handoff_r3.md).
+Current checkout commands: [shared device/ML verification](docs/week4_current_verification.md).
+Use `ml/scripts/verify_week4_current.py` for the checkout after PR22; it checks
+the current source bindings and the immutable R4 release through separate,
+explicit proofs. `--source-mode historical` authenticates the fixed R4 snapshot
+without claiming the current checkout has historical source. The original
+`verify_week4.py` remains the pinned release engine for that historical snapshot.
+
+Historical handoff instructions: [R3](docs/sv3_sv1_week4_handoff_r3.md),
+[R4](docs/sv3_sv1_week4_handoff_r4.md).
 The [review audit](docs/week4_review2_audit.md) separates historical R2 PASS
 from the source-hash rejection at `da4bebf`. Release R3 uses committed source,
 new output/manifest/ZIP and a pinned checkout hydrated from the authenticated
