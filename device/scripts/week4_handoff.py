@@ -20,6 +20,11 @@ SOURCE_COMMITS = {"r3": "c793c06385198accc964e0e60988d7e7a7e9b566",
                   "r4": "89109fd352d84a5fe0815d7e045e52538de7bad8"}
 SOURCE_ANCHORS = {"r3": WEEK4_MANIFEST, "r4": R4_MANIFEST}
 ACCEPTED_R3_REPORT_SHA256 = "4a0342593270485b409465741a6c555659dc98b541c277b264d9727da4605a4d"
+# The report committed at efc0af72aeae3ef6ff872ad3cae19e6304899530 is LF.
+# Converting only its LF bytes to CRLF reproduces the original Windows pin.
+# These two independently verified raw hashes apply only to this R3 report.
+ACCEPTED_R3_REPORT_LF_SHA256 = "022a5172edd75c60826d27db16761df9d5236caaa1cad312c14ce59c1dd5ab21"
+ACCEPTED_R3_REPORT_HASHES = frozenset({ACCEPTED_R3_REPORT_SHA256, ACCEPTED_R3_REPORT_LF_SHA256})
 
 
 def sha256(path: Path) -> str:
@@ -131,7 +136,12 @@ def authenticate_handoff(repo: Path, source_revision: str = "r4",
 
 def accepted_r3_provenance(repo: Path) -> dict:
     """Preserve the authenticated 02/10 report; tools may change, firmware may not."""
-    accepted = authenticated_json(repo / "results/week4/week4_mcu_validation.json", ACCEPTED_R3_REPORT_SHA256)
+    report_path = repo / "results/week4/week4_mcu_validation.json"
+    report_bytes = report_path.read_bytes()
+    report_sha256 = hashlib.sha256(report_bytes).hexdigest()
+    if report_sha256 not in ACCEPTED_R3_REPORT_HASHES:
+        raise ValueError(f"Accepted R3 report anchor mismatch: {report_path}")
+    accepted = json.loads(report_bytes)
     provenance = accepted["provenance"]
     if provenance["week4_manifest_sha256"] != WEEK4_MANIFEST:
         raise ValueError("Accepted MCU evidence is not R3")
@@ -154,7 +164,7 @@ def accepted_r3_provenance(repo: Path) -> dict:
             available[name] = "MATCH"
         else:
             available[name] = "UNAVAILABLE (ignored historical binary; no new image inferred)"
-    return {"accepted_report_sha256": ACCEPTED_R3_REPORT_SHA256,
+    return {"accepted_report_sha256": report_sha256,
             "measurement_revision": "r3", "validated_at": provenance["validated_at"],
             "compiled_source_sha256": provenance["compiled_source_sha256"],
             "elf_sha256": provenance["elf_sha256"], "dfu_zip_sha256": provenance["dfu_zip_sha256"],

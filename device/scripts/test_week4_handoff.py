@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import shutil
 import subprocess
@@ -15,6 +16,72 @@ from generate_week4_inputs import generate
 from verify_week4_host import validate_reuse
 
 REPO = Path(__file__).resolve().parents[2]
+
+
+class R3ReportBindingRegression(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Read the original committed evidence, never a potentially edited HEAD.
+        cls.lf = subprocess.check_output([
+            "git", "show", "efc0af72aeae3ef6ff872ad3cae19e6304899530:results/week4/week4_mcu_validation.json"
+        ], cwd=REPO)
+        if b"\r" in cls.lf:
+            raise ValueError("Historical R3 fixture must contain only LF newlines")
+        cls.crlf = cls.lf.replace(b"\n", b"\r\n")
+        cls.expected_hashes = (
+            "022a5172edd75c60826d27db16761df9d5236caaa1cad312c14ce59c1dd5ab21",
+            "4a0342593270485b409465741a6c555659dc98b541c277b264d9727da4605a4d",
+        )
+        if tuple(hashlib.sha256(raw).hexdigest() for raw in (cls.lf, cls.crlf)) != cls.expected_hashes:
+            raise ValueError("Historical R3 fixture does not reproduce both reviewed anchors")
+
+    def setUp(self):
+        scratch = tempfile.TemporaryDirectory(prefix="sv1-r3-report-")
+        self.addCleanup(scratch.cleanup)
+        self.repo = Path(scratch.name)
+        self.report = self.repo / "results/week4/week4_mcu_validation.json"
+        self.report.parent.mkdir(parents=True)
+        self.provenance = json.loads(self.lf)["provenance"]
+        for name in self.provenance["compiled_source_sha256"]:
+            target = self.repo / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(REPO / name, target)
+        for name in self.provenance["generated_header_sha256"]:
+            target = self.repo / "device/generated" / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(REPO / "device/generated" / name, target)
+
+    def check_report(self, raw, expected):
+        self.report.write_bytes(raw)
+        proof = handoff.accepted_r3_provenance(self.repo)
+        self.assertEqual(proof["accepted_report_sha256"], expected)
+        self.assertEqual(proof["measurement_revision"], "r3")
+        self.assertEqual(proof["validated_at"], self.provenance["validated_at"])
+        self.assertEqual(proof["elf_sha256"], self.provenance["elf_sha256"])
+
+    def test_historical_lf_report_passes(self):
+        self.check_report(self.lf, self.expected_hashes[0])
+
+    def test_same_historical_crlf_report_passes(self):
+        self.check_report(self.crlf, self.expected_hashes[1])
+
+    def test_changed_report_content_rejected_for_both_newlines(self):
+        changed = json.loads(self.lf)
+        changed["provenance"]["validated_at"] = "2026-10-03T00:00:00+07:00"
+        lf = json.dumps(changed, indent=2).encode("utf-8") + b"\n"
+        for raw in (lf, lf.replace(b"\n", b"\r\n")):
+            with self.subTest(crlf=b"\r\n" in raw):
+                self.report.write_bytes(raw)
+                with self.assertRaisesRegex(ValueError, "Accepted R3 report anchor mismatch"):
+                    handoff.accepted_r3_provenance(self.repo)
+
+    def test_other_byte_representations_rejected(self):
+        for raw in (self.lf + b" ", self.lf.replace(b"\n", b"\r\n", 1),
+                    self.lf.replace(b"\n", b"\r"), b"\xef\xbb\xbf" + self.lf):
+            with self.subTest(sha256=hashlib.sha256(raw).hexdigest()):
+                self.report.write_bytes(raw)
+                with self.assertRaisesRegex(ValueError, "Accepted R3 report anchor mismatch"):
+                    handoff.accepted_r3_provenance(self.repo)
 
 
 class HandoffRegression(unittest.TestCase):
