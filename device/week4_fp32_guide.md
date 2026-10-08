@@ -23,9 +23,13 @@ R4 hash and its verified PR22 hash; all three updates must be present together.
 The proof records these updates separately in `verified_current_source_updates`.
 The original R4 trio remains supported. Partial updates, other source changes,
 changed manifest bindings and substitution into historical R3/R4 checks fail.
-The R4 manifest/release and measured R3 data remain unchanged. This device
-compatibility does not alter the standalone ML `verify_week4.py` source gate:
-that historical verifier still requires its exact original R4 source checkout.
+The R4 manifest/release and measured R3 data remain unchanged. Device and ML
+use `tools/week4_handoff_auth.py` as their shared authentication policy.
+The current ML entry point is `ml/scripts/verify_week4_current.py`; its default
+mode authenticates the current checkout before running the pinned R4 numerical
+engine. `--source-mode historical` reports only the fixed historical snapshot.
+The original `verify_week4.py` remains immutable. See
+[current verification commands](../ml/docs/week4_current_verification.md).
 
 Obtain both releases using the trusted receipt/bundle instructions for
 [R3](../ml/docs/sv3_sv1_week4_handoff_r3.md) and
@@ -59,6 +63,8 @@ Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
 $sv1CheckDir = 'D:\HUST\SV3_week4_R4\sv1-integration\manual-recheck'
 New-Item -ItemType Directory -Force -Path $sv1CheckDir | Out-Null
 $sv1R4Anchor = '3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a'
+& ml/.venv/Scripts/python.exe -B ml/scripts/verify_week4_current.py --repo-root . --expected-manifest-sha256 $sv1R4Anchor --compiler C:/msys64/ucrt64/bin/gcc.exe
+if ($LASTEXITCODE -ne 0) { throw 'Current ML checkout verification failed' }
 & ml/.venv/Scripts/python.exe -B device/scripts/generate_week4_inputs.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor
 if ($LASTEXITCODE -ne 0) { throw 'Handoff authentication failed' }
 & ml/.venv/Scripts/python.exe -B device/scripts/verify_week4_host.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor --report-dir "$sv1CheckDir/host" --compiler C:/msys64/ucrt64/bin/gcc.exe

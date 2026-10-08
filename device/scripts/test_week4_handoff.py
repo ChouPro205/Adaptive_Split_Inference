@@ -136,6 +136,21 @@ class HandoffRegression(unittest.TestCase):
         for name in ("week4_inputs.h", "week4_graph.h"):
             self.assertEqual((output/name).read_bytes(), (REPO/"device/generated"/name).read_bytes())
 
+    def test_historical_mode_never_claims_current_checkout_is_r4_snapshot(self):
+        _, _, proof = handoff.authenticate_handoff(self.repo, source_mode="historical")
+        self.assertEqual(proof["source_verification_mode"], "historical")
+        self.assertEqual(proof["historical_source_commit"], handoff.SOURCE_COMMITS["r4"])
+        self.assertEqual(proof["historical_source_bindings_checked"], 21)
+        self.assertEqual(proof["verified_current_source_updates"], [])
+        self.assertNotIn("current_source_revision", proof)
+        with self.assertRaisesRegex(ValueError, "Unsupported source verification mode"):
+            handoff.authenticate_handoff(self.repo, source_mode="unverified")
+
+    def test_shared_policy_is_the_device_implementation(self):
+        import week4_handoff_auth
+        self.assertIs(handoff.authenticate_handoff, week4_handoff_auth.authenticate_handoff)
+        self.assertIs(handoff.check_sources, week4_handoff_auth.check_sources)
+
     def test_pr22_update_matches_independent_historical_hashes(self):
         # Fixed expectations from independently reviewed old/new Git blobs,
         # not computed from the loader's allowlist or current checkout.
