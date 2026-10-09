@@ -1,0 +1,14 @@
+test_current_pr22_gate_and_numerical_engine_pass (__main__.CurrentCheckoutRegression.test_current_pr22_gate_and_numerical_engine_pass) ... ok
+test_device_and_ml_use_same_authenticator (__main__.CurrentCheckoutRegression.test_device_and_ml_use_same_authenticator) ... ok
+test_each_current_source_mutation_rejected_before_engine (__main__.CurrentCheckoutRegression.test_each_current_source_mutation_rejected_before_engine) ... ok
+test_each_partial_update_rejected_before_engine (__main__.CurrentCheckoutRegression.test_each_partial_update_rejected_before_engine) ... ok
+test_historical_proof_does_not_certify_current_mutation (__main__.CurrentCheckoutRegression.test_historical_proof_does_not_certify_current_mutation) ... ok
+test_manifest_and_payload_changes_rejected_before_engine (__main__.CurrentCheckoutRegression.test_manifest_and_payload_changes_rejected_before_engine) ... ok
+test_original_r4_current_gate_passes (__main__.CurrentCheckoutRegression.test_original_r4_current_gate_passes) ... ok
+test_swapped_verified_sources_rejected (__main__.CurrentCheckoutRegression.test_swapped_verified_sources_rejected) ... ok
+test_wrong_anchor_rejected_before_engine (__main__.CurrentCheckoutRegression.test_wrong_anchor_rejected_before_engine) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 31.917s
+
+OK

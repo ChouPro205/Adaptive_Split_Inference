@@ -1,5 +1,13 @@
 # SV3 → SV1: gói tuần 5, Python lượng tử hóa và P1
 
+**Cập nhật 2026-10-09:** S6 đã chốt INT8 per-channel/FP16 stored scale,
+FP32 LE wire expansion, I2 NCL và gate accuracy strict <0,5 pp.
+[Hồ sơ mới](week5_technical_20261009.md) và
+[decision note v1](../../contracts/sv3_week5_decisions_v1.md) ghi trạng thái
+verification hiện hành. Các mô tả cần review phía dưới là hồ sơ lịch sử của
+release 2026-10-05, giữ nguyên để không đổi provenance hay gói đã nghiệm thu.
+Tổng tuần 5 hiện BLOCKED vì chưa cấp registry wire; REVIEW_STATUS=PENDING.
+
 Gói dành cho SV1 review bản tham chiếu `ncl-int8-fp16-v1-review`. Đã đánh giá đủ
 8.544 mẫu test chính thức, không retrain/fine-tune, không đổi checkpoint,
 kiến trúc, preprocessing, split hay thứ tự nhãn. Cùng checkpoint trên CPU FP32;

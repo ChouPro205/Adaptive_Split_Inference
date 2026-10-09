@@ -1,0 +1,27 @@
+test_current_r4_cannot_claim_current_r3 (__main__.HandoffRegression.test_current_r4_cannot_claim_current_r3) ... ok
+test_current_r4_historical_r3_and_generated_bytes (__main__.HandoffRegression.test_current_r4_historical_r3_and_generated_bytes) ... ok
+test_every_current_source_binding_rejects_tamper (__main__.HandoffRegression.test_every_current_source_binding_rejects_tamper) ... ok
+test_every_historical_source_binding_rejects_tamper (__main__.HandoffRegression.test_every_historical_source_binding_rejects_tamper) ... ok
+test_explicit_current_r3_uses_all_pinned_bindings (__main__.HandoffRegression.test_explicit_current_r3_uses_all_pinned_bindings) ... ok
+test_historical_mode_never_claims_current_checkout_is_r4_snapshot (__main__.HandoffRegression.test_historical_mode_never_claims_current_checkout_is_r4_snapshot) ... ok
+test_host_reuse_requires_complete_revision_and_hash_bindings (__main__.HandoffRegression.test_host_reuse_requires_complete_revision_and_hash_bindings) ... ok
+test_measured_firmware_provenance_and_tampering (__main__.HandoffRegression.test_measured_firmware_provenance_and_tampering) ... ok
+test_original_r4_sources_still_authenticate (__main__.HandoffRegression.test_original_r4_sources_still_authenticate) ... ok
+test_partial_pr22_source_update_rejected (__main__.HandoffRegression.test_partial_pr22_source_update_rejected) ... ok
+test_payload_tamper_rejected_before_compatibility (__main__.HandoffRegression.test_payload_tamper_rejected_before_compatibility) ... ok
+test_pr22_exception_cannot_repin_original_manifest (__main__.HandoffRegression.test_pr22_exception_cannot_repin_original_manifest) ... ok
+test_pr22_sources_cannot_replace_historical_r4 (__main__.HandoffRegression.test_pr22_sources_cannot_replace_historical_r4) ... ok
+test_pr22_update_matches_independent_historical_hashes (__main__.HandoffRegression.test_pr22_update_matches_independent_historical_hashes) ... ok
+test_scientific_and_source_binding_changes_rejected (__main__.HandoffRegression.test_scientific_and_source_binding_changes_rejected) ... ok
+test_shared_policy_is_the_device_implementation (__main__.HandoffRegression.test_shared_policy_is_the_device_implementation) ... ok
+test_tampered_manifest_rejected (__main__.HandoffRegression.test_tampered_manifest_rejected) ... ok
+test_wrong_anchor_and_unknown_revision (__main__.HandoffRegression.test_wrong_anchor_and_unknown_revision) ... ok
+test_changed_report_content_rejected_for_both_newlines (__main__.R3ReportBindingRegression.test_changed_report_content_rejected_for_both_newlines) ... ok
+test_historical_lf_report_passes (__main__.R3ReportBindingRegression.test_historical_lf_report_passes) ... ok
+test_other_byte_representations_rejected (__main__.R3ReportBindingRegression.test_other_byte_representations_rejected) ... ok
+test_same_historical_crlf_report_passes (__main__.R3ReportBindingRegression.test_same_historical_crlf_report_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 8.281s
+
+OK

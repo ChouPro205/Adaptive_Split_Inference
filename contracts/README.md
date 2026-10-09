@@ -13,3 +13,10 @@ Nơi quản lý hợp đồng giao diện I1-I4, packet format, schema, versioni
 Mã tham chiếu Python/C và vector I2 nằm trong [`i2_ref/`](i2_ref/test_i2.py).
 
 [SV3 to SV2 Week 3 FP32](sv3_sv2_week3_fp32.md): confirmed s=0..10 mapping and opset 13; ten FP32 ONNX tails, SV2 hardware validation pending.
+
+## Quyết định SV3 tuần 5 hiện hành
+
+[Decision note v1](sv3_week5_decisions_v1.md) ngày 2026-10-09 ghi S6 và
+[metadata ML registry](sv3_week5_ml_registry_v1.json). Wire allocation còn
+BLOCKED; note v1 không tăng version I1/I2. Kết quả Python không là nghiệm thu
+Device–Edge; CURRENT WEEK=5, REVIEW_STATUS=PENDING.

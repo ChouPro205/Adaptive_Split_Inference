@@ -59,7 +59,8 @@ def load_test(checkpoint):
 
 def provenance(command):
     paths = [ROOT / "ml/src/quantization.py", ROOT / "ml/src/p1.py", *sorted((ROOT / "ml/scripts").glob("*week5*.py")),
-             ROOT / "contracts/i2_ref/i2_reference.py", ROOT / "contracts/i2_protection_v1.md"]
+             ROOT / "contracts/i2_ref/i2_reference.py", ROOT / "contracts/i2_protection_v1.md",
+             ROOT / "ml/src/week5_interfaces.py", ROOT / "contracts/sv3_week5_ml_registry_v1.json"]
     return {"baseline_main_commit": BASE, "week4_r4_merge_commit": R4_MAIN,
             "week4_artifact_generation_commit": "89109fd352d84a5fe0815d7e045e52538de7bad8",
             "checkpoint_sha256": CHECKPOINT, "week3_manifest_sha256": ANCHOR,

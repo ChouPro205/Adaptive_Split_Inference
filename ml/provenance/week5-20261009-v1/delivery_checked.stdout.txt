@@ -1,0 +1,1 @@
+BLOCKED: approved wire registry absent; independent Python/ML/regression/preservation gates PASS
