@@ -1,0 +1,23 @@
+{
+  "status": "PUSHED_DRAFT_PR_CREATED",
+  "TECHNICAL_STATUS": "BLOCKED",
+  "CURRENT_WEEK": 5,
+  "REVIEW_STATUS": "PENDING",
+  "branch": "sv3/week5-technical-20261009",
+  "base_branch": "main",
+  "implementation_commit": "fc1d5ce6d016754633b216d1a28bf9653e711502",
+  "verified_source_commit": "fc1d5ce6d016754633b216d1a28bf9653e711502",
+  "postcommit_evidence": "ml/provenance/week5-20261009-v1/delivery-postcommit.json",
+  "postcommit_exit_code": 2,
+  "postcommit_exit_meaning": "BLOCKED approved wire allocation absent; independent gates PASS",
+  "pr_number": 25,
+  "pr_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/25",
+  "pr_draft": true,
+  "pr_merged": false,
+  "pr_head_at_creation": "fc1d5ce6d016754633b216d1a28bf9653e711502",
+  "publication_method": "Existing GitHub Git credentials after connector create PR returned 403; token stayed in memory and was not logged",
+  "publication_console_note": "PR creation succeeded and saved pr_creation.json; console output then hit a Windows encoding error. GitHub read-back confirmed draft PR25; creation was not repeated.",
+  "remaining_blocker": "Approved model_profile_id and wire split_id allocation missing; proposal in decision note not applied",
+  "device_acceptance": "MCU/DPU Week5 and I1 end-to-end NOT_RUN",
+  "evidence_commit_note": "The commit containing this receipt adds evidence only; implementation remains fc1d5ce."
+}
