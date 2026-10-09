@@ -1,0 +1,56 @@
+[
+  {
+    "sample_index": 8,
+    "sample_id": "MIT-BIH:105:2287:MLII",
+    "split": 10,
+    "phase": "primary",
+    "int8_details": [],
+    "scale_details": [
+      {
+        "channel": 3,
+        "golden_raw_scale_fp32": 0.0010342475725337863,
+        "mcu_raw_scale_fp32": 0.0010342649184167385,
+        "fp16_rounding_midpoint": 0.0010342597961425781,
+        "golden_scale_bits": 5180,
+        "mcu_scale_bits": 5181
+      }
+    ],
+    "explanation": "Python quantization on the exact MCU FP32 input matches every transmitted INT8 byte/FP16 bit; golden differences come from the FP32 head."
+  },
+  {
+    "sample_index": 13,
+    "sample_id": "MIT-BIH:105:3563:MLII",
+    "split": 10,
+    "phase": "primary",
+    "int8_details": [],
+    "scale_details": [
+      {
+        "channel": 3,
+        "golden_raw_scale_fp32": 0.002049451693892479,
+        "mcu_raw_scale_fp32": 0.002049433533102274,
+        "fp16_rounding_midpoint": 0.0020494461059570312,
+        "golden_scale_bits": 6195,
+        "mcu_scale_bits": 6194
+      }
+    ],
+    "explanation": "Python quantization on the exact MCU FP32 input matches every transmitted INT8 byte/FP16 bit; golden differences come from the FP32 head."
+  },
+  {
+    "sample_index": 18,
+    "sample_id": "MIT-BIH:105:4901:MLII",
+    "split": 10,
+    "phase": "primary",
+    "int8_details": [],
+    "scale_details": [
+      {
+        "channel": 2,
+        "golden_raw_scale_fp32": 0.004972483962774277,
+        "mcu_raw_scale_fp32": 0.00497244019061327,
+        "fp16_rounding_midpoint": 0.0049724578857421875,
+        "golden_scale_bits": 7448,
+        "mcu_scale_bits": 7447
+      }
+    ],
+    "explanation": "Python quantization on the exact MCU FP32 input matches every transmitted INT8 byte/FP16 bit; golden differences come from the FP32 head."
+  }
+]
