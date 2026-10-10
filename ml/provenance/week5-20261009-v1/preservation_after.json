@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "file_count": 94518,
+  "changed": [],
+  "before_sha256": "2e9a969fbc01fe91675232369cea35423463126e42daf4f83693de69c22ea4ae",
+  "after_inventory_sha256": "0676b4198fc9b4140c9f7a838638e04b2b654cc37e7b6f4ed2a8959cd4dba1f6",
+  "before_inventory_sha256": "0676b4198fc9b4140c9f7a838638e04b2b654cc37e7b6f4ed2a8959cd4dba1f6"
+}

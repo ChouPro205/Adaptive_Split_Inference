@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\week5-technical-20261009\ml\scripts\verify_week5_delivery.py", line 117, in <module>
+    result = verify(args.evidence, args.accuracy, args.original_root)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\week5-technical-20261009\ml\scripts\verify_week5_delivery.py", line 64, in verify
+    need(sha(path) == member['sha256'] and path.stat().st_size == member['size_bytes'], f'Frozen asset differs: {path}')
+         ^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\week5-technical-20261009\ml\scripts\verify_week5_delivery.py", line 14, in sha
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\week5-technical-20261009\\ml\\results\\week5\\predictions.csv'

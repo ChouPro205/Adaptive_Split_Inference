@@ -1,0 +1,242 @@
+[
+  {
+    "split_point_s": 0,
+    "cut_name": "normalized_model_input (identity head)",
+    "shape": [
+      1,
+      1,
+      360
+    ],
+    "layout": "NCL",
+    "channel_axis": 1,
+    "channels": 1,
+    "num_elements": 360,
+    "num_scales_N1": 1,
+    "quantization_shape": [
+      1,
+      1,
+      360
+    ],
+    "tail": "wrappers(model, 0)[1]",
+    "tail_start": "features.0",
+    "tail_type": "full_model"
+  },
+  {
+    "split_point_s": 1,
+    "cut_name": "features.1",
+    "shape": [
+      1,
+      16,
+      360
+    ],
+    "layout": "NCL",
+    "channel_axis": 1,
+    "channels": 16,
+    "num_elements": 5760,
+    "num_scales_N1": 16,
+    "quantization_shape": [
+      1,
+      16,
+      360
+    ],
+    "tail": "wrappers(model, 1)[1]",
+    "tail_start": "features.2",
+    "tail_type": "remaining_frozen_ops"
+  },
+  {
+    "split_point_s": 2,
+    "cut_name": "features.4",
+    "shape": [
+      1,
+      16,
+      180
+    ],
+    "layout": "NCL",
+    "channel_axis": 1,
+    "channels": 16,
+    "num_elements": 2880,
+    "num_scales_N1": 16,
+    "quantization_shape": [
+      1,
+      16,
+      180
+    ],
+    "tail": "wrappers(model, 2)[1]",
+    "tail_start": "features.5",
+    "tail_type": "remaining_frozen_ops"
+  },
+  {
+    "split_point_s": 3,
+    "cut_name": "features.6",
+    "shape": [
+      1,
+      32,
+      180
+    ],
+    "layout": "NCL",
+    "channel_axis": 1,
+    "channels": 32,
+    "num_elements": 5760,
+    "num_scales_N1": 32,
+    "quantization_shape": [
+      1,
+      32,
+      180
+    ],
+    "tail": "wrappers(model, 3)[1]",
+    "tail_start": "features.7",
+    "tail_type": "remaining_frozen_ops"
+  },
+  {
+    "split_point_s": 4,
+    "cut_name": "features.9",
+    "shape": [
+      1,
+      32,
+      90
+    ],
+    "layout": "NCL",
+    "channel_axis": 1,
+    "channels": 32,
+    "num_elements": 2880,
+    "num_scales_N1": 32,
+    "quantization_shape": [
+      1,
+      32,
+      90
+    ],
+    "tail": "wrappers(model, 4)[1]",
+    "tail_start": "features.10",
+    "tail_type": "remaining_frozen_ops"
+  },
+  {
+    "split_point_s": 5,
+    "cut_name": "features.11",
+    "shape": [
+      1,
+      48,
+      90
+    ],
+    "layout": "NCL",
+    "channel_axis": 1,
+    "channels": 48,
+    "num_elements": 4320,
+    "num_scales_N1": 48,
+    "quantization_shape": [
+      1,
+      48,
+      90
+    ],
+    "tail": "wrappers(model, 5)[1]",
+    "tail_start": "features.12",
+    "tail_type": "remaining_frozen_ops"
+  },
+  {
+    "split_point_s": 6,
+    "cut_name": "features.14",
+    "shape": [
+      1,
+      48,
+      45
+    ],
+    "layout": "NCL",
+    "channel_axis": 1,
+    "channels": 48,
+    "num_elements": 2160,
+    "num_scales_N1": 48,
+    "quantization_shape": [
+      1,
+      48,
+      45
+    ],
+    "tail": "wrappers(model, 6)[1]",
+    "tail_start": "features.15",
+    "tail_type": "remaining_frozen_ops"
+  },
+  {
+    "split_point_s": 7,
+    "cut_name": "features.16",
+    "shape": [
+      1,
+      64,
+      45
+    ],
+    "layout": "NCL",
+    "channel_axis": 1,
+    "channels": 64,
+    "num_elements": 2880,
+    "num_scales_N1": 64,
+    "quantization_shape": [
+      1,
+      64,
+      45
+    ],
+    "tail": "wrappers(model, 7)[1]",
+    "tail_start": "features.17",
+    "tail_type": "remaining_frozen_ops"
+  },
+  {
+    "split_point_s": 8,
+    "cut_name": "features.19",
+    "shape": [
+      1,
+      64,
+      22
+    ],
+    "layout": "NCL",
+    "channel_axis": 1,
+    "channels": 64,
+    "num_elements": 1408,
+    "num_scales_N1": 64,
+    "quantization_shape": [
+      1,
+      64,
+      22
+    ],
+    "tail": "wrappers(model, 8)[1]",
+    "tail_start": "classifier.0",
+    "tail_type": "remaining_frozen_ops"
+  },
+  {
+    "split_point_s": 9,
+    "cut_name": "classifier.3",
+    "shape": [
+      1,
+      32
+    ],
+    "layout": "NC",
+    "channel_axis": 1,
+    "channels": 32,
+    "num_elements": 32,
+    "num_scales_N1": 32,
+    "quantization_shape": [
+      1,
+      32,
+      1
+    ],
+    "tail": "wrappers(model, 9)[1]",
+    "tail_start": "classifier.4",
+    "tail_type": "remaining_frozen_ops"
+  },
+  {
+    "split_point_s": 10,
+    "cut_name": "classifier.4",
+    "shape": [
+      1,
+      5
+    ],
+    "layout": "NC",
+    "channel_axis": 1,
+    "channels": 5,
+    "num_elements": 5,
+    "num_scales_N1": 5,
+    "quantization_shape": [
+      1,
+      5,
+      1
+    ],
+    "tail": "wrappers(model, 10)[1]",
+    "tail_start": null,
+    "tail_type": "identity"
+  }
+]

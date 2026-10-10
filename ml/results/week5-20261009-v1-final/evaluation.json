@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "num_samples": 8544,
+  "batch_size": 1,
+  "gate_rule": "200*(correct_fp32-correct_int8) < num_samples; exact integer strict <0.5 pp",
+  "scale_policy": "Independent per sample/channel over L, also when N>1",
+  "per_split_threshold": [
+    {
+      "s": 0,
+      "drop_pp": 0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 1,
+      "drop_pp": 0.0351123595505618,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 2,
+      "drop_pp": 0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 3,
+      "drop_pp": 0.011704119850187267,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 4,
+      "drop_pp": 0.0,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 5,
+      "drop_pp": -0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 6,
+      "drop_pp": 0.05852059925093633,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 7,
+      "drop_pp": 0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 8,
+      "drop_pp": 0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 9,
+      "drop_pp": 0.0,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 10,
+      "drop_pp": 0.0,
+      "pass_strict_lt_0_5_pp": true
+    }
+  ],
+  "worst_split": {
+    "split_point_s": 6,
+    "num_samples": 8544,
+    "correct_fp32": 8393,
+    "correct_int8_fp16": 8388,
+    "accuracy_fp32_percent": 98.23267790262172,
+    "accuracy_int8_fp16_percent": 98.17415730337079,
+    "accuracy_drop_pp": 0.05852059925093633,
+    "relative_accuracy_drop_percent": 0.05957345406886691,
+    "gate_status": "PASS",
+    "prediction_disagreements": 5
+  },
+  "elapsed_seconds": 129.1869999999999,
+  "provenance": {
+    "baseline_main_commit": "9bce483ddbf3be2ca471e522833352ab18331736",
+    "week4_r4_merge_commit": "23b2b7d3fa152fcc50296a93ff592b42e00af943",
+    "week4_artifact_generation_commit": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+    "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+    "week3_manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "quantization_version": "ncl-int8-fp16-v1-review",
+    "environment": {
+      "python": "3.11.9",
+      "torch": "2.14.0+cu130",
+      "numpy": "2.4.6",
+      "onnx": "1.23.1",
+      "onnxruntime": "1.30.0",
+      "protobuf": "7.36.2",
+      "ml_dtypes": "0.6.0",
+      "flatbuffers": "25.12.19"
+    },
+    "command": "ml/scripts/evaluate_week5.py --output ml/results/week5-20261009-v1-final --batch-size 1",
+    "source_git_commit_at_execution": "65d44d2cd159b28cf9bb505a66d39ef67e8dbc19",
+    "source_files_sha256": {
+      "ml/src/quantization.py": "cb2c6260784fddf43a6fa620d0b258efae643cf98d9399f9625c21d8f14faa3f",
+      "ml/src/p1.py": "7b62bf30b9abd4310898cda73b22be1b7ce8de0e35611250b8457714c8101aa8",
+      "ml/scripts/evaluate_week5.py": "dcfcc1fc172c1781111627469acc7b6f9521f4da1dd4085227620c20d443b223",
+      "ml/scripts/export_week5.py": "d58d543bebea90a51c04a857086f4dc1d406dd9fc46d270e0f70f747efda2109",
+      "ml/scripts/hydrate_week5.py": "4a83fa9c26dac8e94bbe1714dacf7ddd809ddde733fa0432d2dd2f0ed02fd314",
+      "ml/scripts/package_week5.py": "5fd49d066539be7c0ce9d266a7bd88b7e02aec8c2c30e55ea02ff06b18607ce5",
+      "ml/scripts/preserve_week5.py": "ace2bb0303aa104f912f3a810c9ac033092f0f557db96df8f146938d622cde6c",
+      "ml/scripts/run_week5_logged.py": "cad5e9bc3edccdbac3f7ca7c7f65afcf0c4a991dafd04955b5dca76754c27010",
+      "ml/scripts/test_week5_interfaces.py": "18bb3c700b9c8ab6935c26e256d58a3e730a595fa492f0c6b0c55e5ac5224f32",
+      "ml/scripts/test_week5_p1.py": "cbb1c4f44a6ed30451f5e206d30073747d044882bdc91ce70a761b690ff3249a",
+      "ml/scripts/test_week5_quantization.py": "46984d0bdf23523cb4df3ff7ef112e0b7672dad66720dcec83cbaa041b40c7c9",
+      "ml/scripts/verify_week5_delivery.py": "f8296c363e6c540fee58121b47e70557d96362b67e914fa1a089e3ee5eeb4267",
+      "ml/scripts/verify_week5_real.py": "3611c45d872d4dd8850e58170e1ea890c5602715f87d70e3e1815ed29d0db9a7",
+      "ml/scripts/week5_common.py": "b7480d19bcc2932805547b25bc0cc5e5ab4b62276384c4ee63d065302cb3caf2",
+      "contracts/i2_ref/i2_reference.py": "996645acfc5138fa55722b796c401feecbe1254d8d393df36eeb124deb826357",
+      "contracts/i2_protection_v1.md": "28c63957af82da5dd8bbcb5a299d1ef4c3182f62e91a2ab2526782440d016846",
+      "ml/src/week5_interfaces.py": "929a8756d8cd69db76c1f7c1ebded9607a2ab7baa9c42fd51bc42f5c0dc09a2c",
+      "contracts/sv3_week5_ml_registry_v1.json": "ff201031d95cb2e9547786f1b3527dc20f117d5108eb88643596f3512d6da9ae"
+    },
+    "mode": "CPU FP32 eval/inference; deterministic; one thread; MKLDNN disabled"
+  }
+}

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from fractions import Fraction
 from pathlib import Path
 import sys
 import time
@@ -14,6 +15,14 @@ from week5_common import (baseline, load_test, provenance, write_csv, write_json
 from quantization import quantize_per_channel, dequantize_per_channel, to_ncl, from_ncl
 
 
+def strict_accuracy_gate(correct_fp32, correct_int8, count):
+    """Exact count-based strict <0.5 percentage point acceptance."""
+    need(type(count) is int and count > 0, 'Expected positive sample count')
+    need(all(type(v) is int and 0 <= v <= count for v in (correct_fp32, correct_int8)),
+         'Correct counts must be integers within the sample count')
+    return 200 * (correct_fp32 - correct_int8) < count
+
+
 def evaluate(package, output, batch_size):
     need(batch_size > 0, 'batch-size must be positive')
     need(not output.exists(), 'Output exists; use a new directory to preserve results')
@@ -21,6 +30,7 @@ def evaluate(package, output, batch_size):
     checkpoint = torch.load(package / 'model/checkpoint.pt', map_location='cpu', weights_only=True)
     x, labels, meta, data_report = load_test(checkpoint)
     count = len(labels)
+    need(count == 8544, 'Week 5 requires exactly 8544 frozen test samples')
     output.mkdir(parents=True)
     write_json(output / 'dataset_manifest.json', data_report)
     write_json(output / 'split_mapping.json', mapping())
@@ -67,7 +77,9 @@ def evaluate(package, output, batch_size):
                 fp_accuracy, q_accuracy = 100 * correct_fp / count, 100 * correct_q / count
                 row = dict(split_point_s=s, num_samples=count, correct_fp32=correct_fp, correct_int8_fp16=correct_q,
                            accuracy_fp32_percent=fp_accuracy, accuracy_int8_fp16_percent=q_accuracy,
-                           accuracy_drop_pp=fp_accuracy-q_accuracy,
+                           accuracy_drop_pp=float(Fraction(100 * (correct_fp-correct_q), count)),
+                           relative_accuracy_drop_percent=100 * (correct_fp-correct_q) / correct_fp,
+                           gate_status='PASS' if strict_accuracy_gate(correct_fp, correct_q, count) else 'FAIL',
                            prediction_disagreements=int(np.count_nonzero(fp_preds != q_preds)))
                 rows.append(row)
                 for i, m in enumerate(meta.itertuples()):
@@ -79,13 +91,17 @@ def evaluate(package, output, batch_size):
     for row in rows:
         table += '| ' + ' | '.join(f'{row[k]:.6f}' if isinstance(row[k], float) else str(row[k]) for k in columns) + ' |\n'
     (output / 'accuracy.md').write_text(table, encoding='utf-8')
-    result = {'status': 'FULL_OFFICIAL_TEST_EVALUATED', 'num_samples': count, 'batch_size': batch_size,
+    passed = all(r['gate_status'] == 'PASS' for r in rows)
+    result = {'status': 'PASS' if passed else 'FAIL', 'num_samples': count, 'batch_size': batch_size,
+              'gate_rule': '200*(correct_fp32-correct_int8) < num_samples; exact integer strict <0.5 pp',
               'scale_policy': 'Independent per sample/channel over L, also when N>1',
-              'per_split_threshold': [{'s': r['split_point_s'], 'drop_pp': r['accuracy_drop_pp'], 'pass_strict_lt_0_5_pp': r['accuracy_drop_pp'] < .5} for r in rows],
+              'per_split_threshold': [{'s': r['split_point_s'], 'drop_pp': r['accuracy_drop_pp'], 'pass_strict_lt_0_5_pp': r['gate_status'] == 'PASS'} for r in rows],
               'worst_split': max(rows, key=lambda r: r['accuracy_drop_pp']),
               'elapsed_seconds': time.monotonic() - started, 'provenance': provenance(' '.join(sys.argv))}
     write_json(output / 'evaluation.json', result)
     print(result['status'], flush=True)
+    if not passed:
+        raise SystemExit(1)
 
 
 if __name__ == '__main__':

@@ -17,3 +17,5 @@ ml/** text=auto eol=lf
 .gitattributes text eol=lf
 # Historical command/stream receipts authenticate raw bytes, including CRLF.
 ml/provenance/week3-sv2-linux/** -text
+# New Week 5 receipts also authenticate raw stdout/stderr bytes.
+ml/provenance/week5-20261009-v1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

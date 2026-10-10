@@ -15,6 +15,8 @@ SEED = 20261005
 
 
 def run(cases, output):
+    if output.exists():
+        raise ValueError('Output exists; choose a new path to preserve evidence')
     if cases < 10000:
         raise ValueError("At least 10,000 cases required")
     rng = random.Random(SEED)
@@ -52,7 +54,8 @@ def run(cases, output):
         checksums.update(metadata + nonce + protected)
         if (i + 1) % 1000 == 0:
             print(f"P1 {i + 1}/{cases} PASS", flush=True)
-    result = {"status": "PASS", "cases": cases, "determinism_checks": cases, "bit_exact_roundtrips": cases,
+    result = {"status": "PASS", "cases": cases, "tensors_executed": cases, "failed_tensors": 0,
+              "determinism_checks": cases, "bit_exact_roundtrips": cases,
               "seed": SEED, "test_keys": len(keys), "shapes_and_counts": counts,
               "output_stream_sha256": checksums.hexdigest(), "elapsed_seconds": time.monotonic() - started,
               "algorithm": "I2/1 existing IETF ChaCha20 counter=0, source-channel affine256, Fisher-Yates rejection",
