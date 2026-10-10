@@ -44,3 +44,6 @@ ml/docs/project_sources/
 results/**/raw/
 *.ppk
 *.ppk2
+# Private AI context
+AGENTS.md
+.agents/
