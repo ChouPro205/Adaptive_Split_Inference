@@ -49,6 +49,6 @@ def setup(cache, root=ROOT):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--asset-cache', type=Path, required=True, help='Five original ZIPs by their authenticated names')
+    parser.add_argument('--asset-cache', type=Path, required=True, help='Four published original ZIPs by their authenticated names')
     args = parser.parse_args()
     setup(args.asset_cache.resolve())

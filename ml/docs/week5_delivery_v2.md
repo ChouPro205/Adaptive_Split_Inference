@@ -12,7 +12,7 @@ Entry mới là `evaluate_week5_v2.py`, import `week5_common_v2.py`. Gate exact
 
 ## Dependency và scope
 
-`ml/manifests/week5_delivery_scope_v2.json` khai báo **570 file bắt buộc**,
+`ml/manifests/week5_delivery_scope_v2.json` khai báo **569 file bắt buộc**,
 đường dẫn tương đối, SHA256 raw bytes, kích thước, version, nguồn và member ZIP.
 Bao gồm model/checkpoint, toàn package FP32 (manifest độc lập `a6d168...`),
 processed dataset, quantization20/220 goldens, frozen results, năm ZIP,
@@ -38,7 +38,7 @@ Audit toàn workspace tác giả được tách thành
 lịch sử, snapshot source mà receipts từng test đã kiểm, và không phải verifier
 cho máy nhận. Receipts 94518 file/754 copies không sửa; verifier portable kiểm
 bytes và tính toàn vẹn của receipts, ghi rõ REUSED_AUTHOR_WORKSPACE_AUDIT.
-Inventory mới của máy nhận là 570 file trong scope, không gọi là 94518/754.
+Inventory mới của máy nhận là 569 file trong scope, không gọi là 94518/754.
 
 Chỉ `C:/Users/Admin/Downloads/review_report.md` được cung cấp trong phiên sửa.
 Không có `evidence/historical-assets-audit.json` hay
@@ -61,10 +61,10 @@ Set-Location receiver
 git -c core.autocrlf=false checkout --detach cfdfca1025ab5f707b46197b4c5dae868d38d473
 git merge --no-ff <PR25-fix-SHA> -m "Local PR25 acceptance integration"
 python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r ml/requirements/requirements-core.txt -r ml/requirements/requirements-week3-onnx.txt
+.venv/Scripts/python.exe -m pip install -r ml/requirements-core.txt -r ml/requirements-week3-onnx.txt
 # Torch phải đúng 2.14.0+cu130 cho bitwise Windows đã pin; dùng requirements-gpu-cu130.txt.
-.venv/Scripts/python.exe -m pip install -r ml/requirements/requirements-gpu-cu130.txt
-python -B ml/scripts/setup_week5_delivery_v2.py --asset-cache <thu-mục-chứa-5-ZIP-gốc>
+.venv/Scripts/python.exe -m pip install -r ml/requirements-gpu-cu130.txt
+python -B ml/scripts/setup_week5_delivery_v2.py --asset-cache <thu-mục-chứa-4-ZIP-gốc>
 python -B ml/scripts/run_week5_delivery_v2.py --output ml/provenance/receiver-new
 ```
 
