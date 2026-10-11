@@ -1,0 +1,11 @@
+test_corruption_truncation_identity_order (__main__.Tests.test_corruption_truncation_identity_order) ... ok
+test_fake_collector_chunks_and_pacing (__main__.Tests.test_fake_collector_chunks_and_pacing) ... ok
+test_fake_collector_rejects_wrong_banner_and_timeout (__main__.Tests.test_fake_collector_rejects_wrong_banner_and_timeout) ... ok
+test_full_fixture_chunking (__main__.Tests.test_full_fixture_chunking) ... ok
+test_optional_initial_sdk_boot_and_reset_rejection (__main__.Tests.test_optional_initial_sdk_boot_and_reset_rejection) ... ok
+test_simulation_cannot_claim_mcu (__main__.Tests.test_simulation_cannot_claim_mcu) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 86.873s
+
+OK

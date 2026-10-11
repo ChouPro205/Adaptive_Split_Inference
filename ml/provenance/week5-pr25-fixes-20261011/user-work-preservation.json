@@ -1,0 +1,13 @@
+{
+  "scope": "Existing user changes outside excluded exports",
+  "status": "PASS",
+  "files_checked": 623,
+  "changed": [],
+  "git_status_same": false,
+  "branch": "sv3/fix-week3-sv2-linux-fp32",
+  "original_root": "C:\\Users\\Admin\\Adaptive_Split_Inference",
+  "before_raw_sha256": "697c55023ea9197b74d3181398753f7807412c690ad9343be2ea94d2f021bac1",
+  "note": "Pre-existing user file hashes and Git status outside the new task directory are preserved; not author 94518 inventory. Full porcelain includes expected new task outputs.",
+  "git_status_same_outside_new_task_checkout": true,
+  "git_status_exclusion": "exports/pr25-fixes-20261011/ only; task creates new output here"
+}

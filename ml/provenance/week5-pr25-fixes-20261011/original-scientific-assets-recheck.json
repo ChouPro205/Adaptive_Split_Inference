@@ -1,0 +1,7 @@
+{
+  "scope": "Original scientific inputs rechecked against authenticated delivery manifest; no new root inventory claim",
+  "files_present_checked": 553,
+  "mismatched_against_frozen_receipt": [],
+  "not_present_in_original_root": [],
+  "original_model_zip_standalone_sha256": "b7f5b8d0bcd5ec27755f3e44541c0d24a6d23bdd27e199660a7b653bc30a71c7"
+}

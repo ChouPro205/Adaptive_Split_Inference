@@ -1,0 +1,143 @@
+{
+  "scope": "Fresh final results compared against authenticated historical outputs; historical tests not relabelled as fresh",
+  "p1_stream": "cc83bbdd4c3c43dde1126a5ebaf935112aa911fc69adaff5191ae4176f42f365",
+  "real_stream": "2ad478b4a35ed01a6fb4efc6f629de7f953a3854f4a5ca76e585c7e6f006287c",
+  "new_predictions_sha256": "0776e503b9e404c957cfcfb239356f52b17f34655cb2c5d15fdfe96cb3ae6e56",
+  "frozen_predictions_sha256": "0776e503b9e404c957cfcfb239356f52b17f34655cb2c5d15fdfe96cb3ae6e56",
+  "prediction_bytes_same": true,
+  "all_split_counts_and_status_same": true,
+  "rows": [
+    {
+      "split_point_s": "0",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "10"
+    },
+    {
+      "split_point_s": "1",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8390",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.19756554307116",
+      "accuracy_drop_pp": "0.0351123595505618",
+      "relative_accuracy_drop_percent": "0.03574407244132015",
+      "gate_status": "PASS",
+      "prediction_disagreements": "5"
+    },
+    {
+      "split_point_s": "2",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "6"
+    },
+    {
+      "split_point_s": "3",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8392",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.22097378277154",
+      "accuracy_drop_pp": "0.011704119850187267",
+      "relative_accuracy_drop_percent": "0.011914690813773382",
+      "gate_status": "PASS",
+      "prediction_disagreements": "3"
+    },
+    {
+      "split_point_s": "4",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8393",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.23267790262172",
+      "accuracy_drop_pp": "0.0",
+      "relative_accuracy_drop_percent": "0.0",
+      "gate_status": "PASS",
+      "prediction_disagreements": "4"
+    },
+    {
+      "split_point_s": "5",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8395",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.2560861423221",
+      "accuracy_drop_pp": "-0.023408239700374533",
+      "relative_accuracy_drop_percent": "-0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "4"
+    },
+    {
+      "split_point_s": "6",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8388",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.17415730337079",
+      "accuracy_drop_pp": "0.05852059925093633",
+      "relative_accuracy_drop_percent": "0.05957345406886691",
+      "gate_status": "PASS",
+      "prediction_disagreements": "5"
+    },
+    {
+      "split_point_s": "7",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "2"
+    },
+    {
+      "split_point_s": "8",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "2"
+    },
+    {
+      "split_point_s": "9",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8393",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.23267790262172",
+      "accuracy_drop_pp": "0.0",
+      "relative_accuracy_drop_percent": "0.0",
+      "gate_status": "PASS",
+      "prediction_disagreements": "0"
+    },
+    {
+      "split_point_s": "10",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8393",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.23267790262172",
+      "accuracy_drop_pp": "0.0",
+      "relative_accuracy_drop_percent": "0.0",
+      "gate_status": "PASS",
+      "prediction_disagreements": "0"
+    }
+  ]
+}

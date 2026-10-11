@@ -1,0 +1,32 @@
+{
+  "scope": "FRESH final commands; partial interrupted attempt not accepted",
+  "exit_codes": {
+    "quantization": 0,
+    "interfaces": 0,
+    "i2": 0,
+    "delivery_policy": 0,
+    "registry_policy": 0,
+    "week4_policy": 0,
+    "week4_tests": 0,
+    "week4_release": 0,
+    "week3_sv2": 0,
+    "week3_policy": 0,
+    "device_quantization": 0,
+    "device_handoff": 0,
+    "quantization_O": 0,
+    "interfaces_O": 0,
+    "i2_O": 0,
+    "delivery_policy_O": 0,
+    "registry_policy_O": 0,
+    "week4_policy_O": 0,
+    "week4_tests_O": 0,
+    "week4_release_O": 0,
+    "week3_sv2_O": 0,
+    "week3_policy_O": 0,
+    "device_quantization_O": 0,
+    "device_handoff_O": 0,
+    "p1": 0,
+    "real": 0,
+    "accuracy": 0
+  }
+}

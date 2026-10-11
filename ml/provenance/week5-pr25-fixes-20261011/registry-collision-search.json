@@ -1,0 +1,533 @@
+{
+  "proposal_model_profile_id": "0x4D495401",
+  "proposal_wire_ids": [
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266
+  ],
+  "source_search": [
+    {
+      "commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+      "searched_files": 126,
+      "matches": [
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 99,
+          "text": "  `(model_profile_id, split_id)` tới layer/tensor và các ràng buộc cụ thể."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 213,
+          "text": "| 0 | 2 | `split_id` | `uint16_le` | MUST | `0` reserved; `1..65535` do split registry của active `model_profile_id` gán. |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 268,
+          "text": "   `(active_model_profile_id, split_id)`. `split_id` chưa biết trong active"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 508,
+          "text": "1. Device xác nhận active `model_profile_id`, rồi chọn `request_id` mới và"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 644,
+          "text": "| `model_profile_id` | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | `DEFERRED` | [`ml/README.md`](../ml/README.md), [`week1_verification.md`](../ml/docs/week1_verification.md) |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 666,
+          "text": "`(model_profile_id, split_id)` trước deployment. Shape input ở mục 16–17 MUST"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 672,
+          "text": "Wire format v1 hiện chỉ mang `split_id`; packet không mang `model_profile_id`,"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 680,
+          "text": "- `split_id` chỉ có nghĩa trong tuple `(model_profile_id, split_id)`; không được"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 683,
+          "text": "  `model_profile_id` và cùng profile registry."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 690,
+          "text": "`model_profile_id: uint32_le` tại request-metadata offset 0, dịch prefix hiện"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 696,
+          "text": "`model_profile_id` bất biến trước packet đầu tiên và đóng session khi đổi"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 817,
+          "text": "- Nếu chọn thêm `model_profile_id` trên wire theo mục 18.3, thay đổi đó MUST"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 861,
+          "text": "| Nhận diện `model_profile_id` | `BLOCKING REVIEW ITEM` | Kỳ Anh + Châu + Trung | Packet-only parser không phân biệt được cùng `split_id` của hai model/version; chưa thể `FROZEN`. | Chọn explicit field trong protocol version mới và Trung re-approve, hoặc chốt binding/session profile bất biến theo mục 18.3. |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 862,
+          "text": "| Model, version và split registry | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | Kỳ Anh | Không có mapping `(model_profile_id, split_id) -> layer/tensor`; không được chạy inference I1. | Có model artifact/version và registry được Kỳ Anh xác nhận, Châu/Trung import cùng một revision. |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 9,
+          "text": "- V2 phải mang `model_profile_id` tường minh để loại bỏ nhập nhằng `(model_profile_id,split_id)` ở I1 v1; I2 descriptor cũng chứa ID đó và phải khớp. Không dùng input profile MIT-BIH/PTB-XL thay model deployment profile."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 17,
+          "text": "| 0 | 4 | `model_profile_id:uint32_le`, khác 0, tra registry active |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 21,
+          "text": "Nếu `flags=0x0002`: tensor metadata I1 phải là `INT8`, `NCL`, `ndim=3`, `dimensions=[1,C,L]`, affine quantization được registry cho phép; `element_count=payload_length=C*L<=32768`; I2 descriptor lặp lại `model_profile_id`, `split_id`, dtype/layout/shape và `payload_length`, **mọi bản sao phải khớp từng giá trị**. `nonce_length=12`, field nonce chứa đúng `sender_id:uint32_le || sequence:uint64_le` của I2. Payload là transformed bytes, **chỉ payload không tăng byte**; request tăng 28 byte descriptor + 12 byte nonce so với request cùng tensor metadata v2 không biến đổi. Không có tag; CRC chỉ phát hiện lỗi ngẫu nhiên, không xác thực."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 23,
+          "text": "Nếu `flags=0`: không có I2 descriptor, `nonce_length=0`, payload/metadata tensor theo quy tắc I1 v1 và `model_profile_id` thêm ở đầu. `header_length=32+metadata_length+nonce_length`, `total_length=header_length+payload_length+4` như I1 v1. Receiver kiểm giới hạn/overflow trước cấp phát, CRC trước khi tin metadata/request ID, rồi kiểm version/flag/profile. Không chạy tail model nếu I2 validation hoặc unprotect lỗi; sau unprotect mới dequantize với quantization metadata của **kênh gốc**."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 27,
+          "text": "SV1 và SV2 phải duyệt lại bảng status v2 (unknown model/key, I2 metadata và nonce/retry), giới hạn packet/buffer thực, cache duplicate, transport framing, lỗi trước/sau CRC, response semantics và vector packet v2. Kỳ Anh phải giao registry `(model_profile_id,split_id)` cùng dtype, shape, scale/zero point/axis, activation golden INT8 và tail-output semantics. Không lấy shape input hoặc golden hai Conv FP32 Tuần 3 điền thay. SV1/SV2 chỉ bật v2 sau khi kiểm cross-device encode/decode/unprotect, memory/latency và sign-off; hiện **chưa có I1 v2 implementation hoặc packet PASS**."
+        },
+        {
+          "path": "contracts/i2_protection_v1.md",
+          "line": 40,
+          "text": "[`i2_reference.py`](i2_ref/i2_reference.py) và [`i2_reference.h`](i2_ref/i2_reference.h) hiện thực cùng chữ ký logic; C nhận thêm độ dài input/descriptor/nonce/key, con trỏ output và capacity. `active_profile` lấy từ registry cục bộ, **không tin** giá trị khai trong descriptor: `(model_profile_id:uint32, split_id:uint16, C:uint16, L:uint32, key_id:uint32, max_payload_bytes:uint32)`; tất cả ID khác 0, max không vượt 32768. SV3 giao phần model/split và quantization của registry cùng checkpoint; SV1/SV2 hoàn thiện phần key/buffer rồi nạp **cùng revision** trước khi chạy. Split không có profile bị từ chối, không đoán shape từ payload. I2/1 chỉ hỗ trợ một mức transform, không suy `rho` của I3."
+        },
+        {
+          "path": "contracts/i2_protection_v1.md",
+          "line": 42,
+          "text": "Mỗi hàng registry deployment phải gắn `model_profile_id`, `model_name/version`, checkpoint hash, `split_id`, tên layer/tensor xuất activation, dtype `INT8`, layout `NCL`, shape `[1,C,L]`, quantization scheme, scale/zero point/axis theo [I1 mục 8](i1_device_edge_packet_v1.md), và `max_payload_bytes`. **Kỳ Anh cung cấp** giá trị mô hình/tensor và bằng chứng lượng tử hóa; **Châu và Trung cùng gán** `key_id`, sender scope, giới hạn buffer thực và xác nhận hai registry byte/giá trị tương đương. Chưa có một hàng registry thực trong repository; vector synthetic bên dưới không phải split profile để triển khai."
+        },
+        {
+          "path": "contracts/i2_protection_v1.md",
+          "line": 44,
+          "text": "Key thật là 32 byte ngẫu nhiên từ CSPRNG, cấp phát qua kênh tin cậy **ngoài** I2/I1, không commit vào repo/log/test. `key_id` khác 0 là nhãn public tra một key duy nhất; registry buộc key với sender và các `(model_profile_id,split_id)` được phép. Đổi key phải cấp `key_id` mới; không dùng key test vector trong vận hành. Cơ chế lưu/provision key trên nRF52840 và KV260 chưa triển khai, nên chưa có bảo đảm bí mật key trên thiết bị."
+        },
+        {
+          "path": "contracts/i2_protection_v1.md",
+          "line": 58,
+          "text": "| 4 | 4 | `model_profile_id` | `uint32_le`, khác 0, phải khớp registry |"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.c",
+          "line": 32,
+          "text": "    if (!profile || !profile->model_profile_id || !profile->split_id ||"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.c",
+          "line": 52,
+          "text": "    store32(output + 4, profile->model_profile_id);"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.c",
+          "line": 153,
+          "text": "    if (model != profile->model_profile_id || split != profile->split_id ||"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.h",
+          "line": 14,
+          "text": "    uint32_t model_profile_id;"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.py",
+          "line": 27,
+          "text": "    model_profile_id: int"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.py",
+          "line": 40,
+          "text": "        profile.model_profile_id, profile.split_id, 1, profile.channels, 0,"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.py",
+          "line": 47,
+          "text": "        1 <= profile.model_profile_id <= _MASK32"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.py",
+          "line": 82,
+          "text": "    if (model, split, c, length) != (profile.model_profile_id, profile.split_id,"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 37,
+          "text": "    _fields_ = [(\"model_profile_id\", ctypes.c_uint32), (\"split_id\", ctypes.c_uint16),"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 79,
+          "text": "        c_profile = CProfile(profile.model_profile_id, profile.split_id,"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 110,
+          "text": "                c_profile = CProfile(profile.model_profile_id, profile.split_id,"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 148,
+          "text": "                    fields[\"model_profile_id\"] += 1"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 198,
+          "text": "        c_profile = CProfile(profile.model_profile_id, profile.split_id,"
+        },
+        {
+          "path": "contracts/i2_ref/vectors.json",
+          "line": 9,
+          "text": "      \"profile\": {\"model_profile_id\": 270544960, \"split_id\": 7, \"channels\": 3, \"length\": 4, \"key_id\": 16909060, \"max_payload_bytes\": 32768},"
+        },
+        {
+          "path": "contracts/i2_ref/vectors.json",
+          "line": 18,
+          "text": "      \"profile\": {\"model_profile_id\": 2, \"split_id\": 1, \"channels\": 1, \"length\": 5, \"key_id\": 2, \"max_payload_bytes\": 32768},"
+        },
+        {
+          "path": "contracts/i2_ref/vectors.json",
+          "line": 29,
+          "text": "    {\"id\": \"wrong_model\", \"base\": \"three_channels_extreme_int8\", \"change\": \"active_profile.model_profile_id+=1\", \"expected\": \"PROFILE_MISMATCH\"},"
+        },
+        {
+          "path": "contracts/sv3_sv1_week3_model_handoff.md",
+          "line": 22,
+          "text": "Đây là phép thử **cục bộ FP32** của hai Conv, không định nghĩa `split_id`, `model_profile_id`, packet, nonce, key hay thuật toán bảo vệ. Không được đặt output hai Conv vào `PROTECTED_PAYLOAD` của I1 v1. Nếu sau này dùng output làm activation Device–Edge, SV1/SV2/SV3 phải chốt profile I1 và một revision giao thức được duyệt riêng; mục tiêu I2 INT8 không tự sửa I1 v1."
+        },
+        {
+          "path": "docs/SV3_ML_week2_report.md",
+          "line": 407,
+          "text": "Descriptor 28 B gồm version, algorithm, dtype, layout, model_profile_id, split_id, N, C, reserved, L, key_id và payload_length. Multi-byte little-endian; registry active phải độc lập với metadata tự khai và mọi ID/shape phải khớp. Transform dùng affine nguồn rồi hoán vị; inverse dùng hệ số lẻ nghịch đảo modulo 256 để phục hồi bit-exact. Đây là tóm tắt đặc tả hiện hữu, không thêm implementation mới."
+        },
+        {
+          "path": "docs/SV3_ML_week2_report.md",
+          "line": 419,
+          "text": "[I1 v2 proposal](../contracts/i1_device_edge_packet_v2_proposal.md) có status **ĐỀ XUẤT WIRE; CHƯA ĐƯỢC SV2 PHÊ DUYỆT, CHƯA TRIỂN KHAI**. Đề xuất giữ magic/header/CRC cơ bản, tăng `protocol_version=2`; request `flags=0x0002` là `I2_TRANSFORMED`, không mở reserved `0x0001`. Thêm `model_profile_id` 4 B trước tensor metadata; transformed request thêm descriptor 28 B và nonce 12 B; INT8/NCL/shape/length/profile lặp lại phải khớp. V1 parser từ chối v2, không fallback; unprotect trước dequantize theo kênh gốc."
+        },
+        {
+          "path": "ml/configs/week3_sv2_interface_review.json",
+          "line": 7,
+          "text": "  \"split_registry_status\": \"CONFIRMED\","
+        }
+      ]
+    },
+    {
+      "commit": "a2847117ac285bf16c572a56f48dbe39facd6b08",
+      "searched_files": 98,
+      "matches": [
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 99,
+          "text": "  `(model_profile_id, split_id)` tới layer/tensor và các ràng buộc cụ thể."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 213,
+          "text": "| 0 | 2 | `split_id` | `uint16_le` | MUST | `0` reserved; `1..65535` do split registry của active `model_profile_id` gán. |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 268,
+          "text": "   `(active_model_profile_id, split_id)`. `split_id` chưa biết trong active"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 508,
+          "text": "1. Device xác nhận active `model_profile_id`, rồi chọn `request_id` mới và"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 644,
+          "text": "| `model_profile_id` | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | `DEFERRED` | [`ml/README.md`](../ml/README.md), [`week1_verification.md`](../ml/docs/week1_verification.md) |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 666,
+          "text": "`(model_profile_id, split_id)` trước deployment. Shape input ở mục 16–17 MUST"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 672,
+          "text": "Wire format v1 hiện chỉ mang `split_id`; packet không mang `model_profile_id`,"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 680,
+          "text": "- `split_id` chỉ có nghĩa trong tuple `(model_profile_id, split_id)`; không được"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 683,
+          "text": "  `model_profile_id` và cùng profile registry."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 690,
+          "text": "`model_profile_id: uint32_le` tại request-metadata offset 0, dịch prefix hiện"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 696,
+          "text": "`model_profile_id` bất biến trước packet đầu tiên và đóng session khi đổi"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 817,
+          "text": "- Nếu chọn thêm `model_profile_id` trên wire theo mục 18.3, thay đổi đó MUST"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 861,
+          "text": "| Nhận diện `model_profile_id` | `BLOCKING REVIEW ITEM` | Kỳ Anh + Châu + Trung | Packet-only parser không phân biệt được cùng `split_id` của hai model/version; chưa thể `FROZEN`. | Chọn explicit field trong protocol version mới và Trung re-approve, hoặc chốt binding/session profile bất biến theo mục 18.3. |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v1.md",
+          "line": 862,
+          "text": "| Model, version và split registry | `DEFERRED – chưa được triển khai trong phần ML hiện tại` | Kỳ Anh | Không có mapping `(model_profile_id, split_id) -> layer/tensor`; không được chạy inference I1. | Có model artifact/version và registry được Kỳ Anh xác nhận, Châu/Trung import cùng một revision. |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 9,
+          "text": "- V2 phải mang `model_profile_id` tường minh để loại bỏ nhập nhằng `(model_profile_id,split_id)` ở I1 v1; I2 descriptor cũng chứa ID đó và phải khớp. Không dùng input profile MIT-BIH/PTB-XL thay model deployment profile."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 17,
+          "text": "| 0 | 4 | `model_profile_id:uint32_le`, khác 0, tra registry active |"
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 21,
+          "text": "Nếu `flags=0x0002`: tensor metadata I1 phải là `INT8`, `NCL`, `ndim=3`, `dimensions=[1,C,L]`, affine quantization được registry cho phép; `element_count=payload_length=C*L<=32768`; I2 descriptor lặp lại `model_profile_id`, `split_id`, dtype/layout/shape và `payload_length`, **mọi bản sao phải khớp từng giá trị**. `nonce_length=12`, field nonce chứa đúng `sender_id:uint32_le || sequence:uint64_le` của I2. Payload là transformed bytes, **chỉ payload không tăng byte**; request tăng 28 byte descriptor + 12 byte nonce so với request cùng tensor metadata v2 không biến đổi. Không có tag; CRC chỉ phát hiện lỗi ngẫu nhiên, không xác thực."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 23,
+          "text": "Nếu `flags=0`: không có I2 descriptor, `nonce_length=0`, payload/metadata tensor theo quy tắc I1 v1 và `model_profile_id` thêm ở đầu. `header_length=32+metadata_length+nonce_length`, `total_length=header_length+payload_length+4` như I1 v1. Receiver kiểm giới hạn/overflow trước cấp phát, CRC trước khi tin metadata/request ID, rồi kiểm version/flag/profile. Không chạy tail model nếu I2 validation hoặc unprotect lỗi; sau unprotect mới dequantize với quantization metadata của **kênh gốc**."
+        },
+        {
+          "path": "contracts/i1_device_edge_packet_v2_proposal.md",
+          "line": 27,
+          "text": "SV1 và SV2 phải duyệt lại bảng status v2 (unknown model/key, I2 metadata và nonce/retry), giới hạn packet/buffer thực, cache duplicate, transport framing, lỗi trước/sau CRC, response semantics và vector packet v2. Kỳ Anh phải giao registry `(model_profile_id,split_id)` cùng dtype, shape, scale/zero point/axis, activation golden INT8 và tail-output semantics. Không lấy shape input hoặc golden hai Conv FP32 Tuần 3 điền thay. SV1/SV2 chỉ bật v2 sau khi kiểm cross-device encode/decode/unprotect, memory/latency và sign-off; hiện **chưa có I1 v2 implementation hoặc packet PASS**."
+        },
+        {
+          "path": "contracts/i2_protection_v1.md",
+          "line": 40,
+          "text": "[`i2_reference.py`](i2_ref/i2_reference.py) và [`i2_reference.h`](i2_ref/i2_reference.h) hiện thực cùng chữ ký logic; C nhận thêm độ dài input/descriptor/nonce/key, con trỏ output và capacity. `active_profile` lấy từ registry cục bộ, **không tin** giá trị khai trong descriptor: `(model_profile_id:uint32, split_id:uint16, C:uint16, L:uint32, key_id:uint32, max_payload_bytes:uint32)`; tất cả ID khác 0, max không vượt 32768. SV3 giao phần model/split và quantization của registry cùng checkpoint; SV1/SV2 hoàn thiện phần key/buffer rồi nạp **cùng revision** trước khi chạy. Split không có profile bị từ chối, không đoán shape từ payload. I2/1 chỉ hỗ trợ một mức transform, không suy `rho` của I3."
+        },
+        {
+          "path": "contracts/i2_protection_v1.md",
+          "line": 42,
+          "text": "Mỗi hàng registry deployment phải gắn `model_profile_id`, `model_name/version`, checkpoint hash, `split_id`, tên layer/tensor xuất activation, dtype `INT8`, layout `NCL`, shape `[1,C,L]`, quantization scheme, scale/zero point/axis theo [I1 mục 8](i1_device_edge_packet_v1.md), và `max_payload_bytes`. **Kỳ Anh cung cấp** giá trị mô hình/tensor và bằng chứng lượng tử hóa; **Châu và Trung cùng gán** `key_id`, sender scope, giới hạn buffer thực và xác nhận hai registry byte/giá trị tương đương. Chưa có một hàng registry thực trong repository; vector synthetic bên dưới không phải split profile để triển khai."
+        },
+        {
+          "path": "contracts/i2_protection_v1.md",
+          "line": 44,
+          "text": "Key thật là 32 byte ngẫu nhiên từ CSPRNG, cấp phát qua kênh tin cậy **ngoài** I2/I1, không commit vào repo/log/test. `key_id` khác 0 là nhãn public tra một key duy nhất; registry buộc key với sender và các `(model_profile_id,split_id)` được phép. Đổi key phải cấp `key_id` mới; không dùng key test vector trong vận hành. Cơ chế lưu/provision key trên nRF52840 và KV260 chưa triển khai, nên chưa có bảo đảm bí mật key trên thiết bị."
+        },
+        {
+          "path": "contracts/i2_protection_v1.md",
+          "line": 58,
+          "text": "| 4 | 4 | `model_profile_id` | `uint32_le`, khác 0, phải khớp registry |"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.c",
+          "line": 32,
+          "text": "    if (!profile || !profile->model_profile_id || !profile->split_id ||"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.c",
+          "line": 52,
+          "text": "    store32(output + 4, profile->model_profile_id);"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.c",
+          "line": 153,
+          "text": "    if (model != profile->model_profile_id || split != profile->split_id ||"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.h",
+          "line": 14,
+          "text": "    uint32_t model_profile_id;"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.py",
+          "line": 27,
+          "text": "    model_profile_id: int"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.py",
+          "line": 40,
+          "text": "        profile.model_profile_id, profile.split_id, 1, profile.channels, 0,"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.py",
+          "line": 47,
+          "text": "        1 <= profile.model_profile_id <= _MASK32"
+        },
+        {
+          "path": "contracts/i2_ref/i2_reference.py",
+          "line": 82,
+          "text": "    if (model, split, c, length) != (profile.model_profile_id, profile.split_id,"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 37,
+          "text": "    _fields_ = [(\"model_profile_id\", ctypes.c_uint32), (\"split_id\", ctypes.c_uint16),"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 79,
+          "text": "        c_profile = CProfile(profile.model_profile_id, profile.split_id,"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 110,
+          "text": "                c_profile = CProfile(profile.model_profile_id, profile.split_id,"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 148,
+          "text": "                    fields[\"model_profile_id\"] += 1"
+        },
+        {
+          "path": "contracts/i2_ref/test_i2.py",
+          "line": 198,
+          "text": "        c_profile = CProfile(profile.model_profile_id, profile.split_id,"
+        },
+        {
+          "path": "contracts/i2_ref/vectors.json",
+          "line": 9,
+          "text": "      \"profile\": {\"model_profile_id\": 270544960, \"split_id\": 7, \"channels\": 3, \"length\": 4, \"key_id\": 16909060, \"max_payload_bytes\": 32768},"
+        },
+        {
+          "path": "contracts/i2_ref/vectors.json",
+          "line": 18,
+          "text": "      \"profile\": {\"model_profile_id\": 2, \"split_id\": 1, \"channels\": 1, \"length\": 5, \"key_id\": 2, \"max_payload_bytes\": 32768},"
+        },
+        {
+          "path": "contracts/i2_ref/vectors.json",
+          "line": 29,
+          "text": "    {\"id\": \"wrong_model\", \"base\": \"three_channels_extreme_int8\", \"change\": \"active_profile.model_profile_id+=1\", \"expected\": \"PROFILE_MISMATCH\"},"
+        },
+        {
+          "path": "contracts/sv3_sv1_week3_model_handoff.md",
+          "line": 22,
+          "text": "Đây là phép thử **cục bộ FP32** của hai Conv, không định nghĩa `split_id`, `model_profile_id`, packet, nonce, key hay thuật toán bảo vệ. Không được đặt output hai Conv vào `PROTECTED_PAYLOAD` của I1 v1. Nếu sau này dùng output làm activation Device–Edge, SV1/SV2/SV3 phải chốt profile I1 và một revision giao thức được duyệt riêng; mục tiêu I2 INT8 không tự sửa I1 v1."
+        },
+        {
+          "path": "contracts/sv3_week5_decisions_v1.md",
+          "line": 110,
+          "text": "quyết định: cấp model_profile_id `0x4D495401` cho model/version/checkpoint trên,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 9,
+          "text": "  \"model_profile_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 18,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 39,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 60,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 81,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 102,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 123,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 144,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 165,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 186,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 207,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "contracts/sv3_week5_ml_registry_v1.json",
+          "line": 227,
+          "text": "      \"wire_split_id\": null,"
+        },
+        {
+          "path": "docs/SV3_ML_week2_report.md",
+          "line": 407,
+          "text": "Descriptor 28 B gồm version, algorithm, dtype, layout, model_profile_id, split_id, N, C, reserved, L, key_id và payload_length. Multi-byte little-endian; registry active phải độc lập với metadata tự khai và mọi ID/shape phải khớp. Transform dùng affine nguồn rồi hoán vị; inverse dùng hệ số lẻ nghịch đảo modulo 256 để phục hồi bit-exact. Đây là tóm tắt đặc tả hiện hữu, không thêm implementation mới."
+        },
+        {
+          "path": "docs/SV3_ML_week2_report.md",
+          "line": 419,
+          "text": "[I1 v2 proposal](../contracts/i1_device_edge_packet_v2_proposal.md) có status **ĐỀ XUẤT WIRE; CHƯA ĐƯỢC SV2 PHÊ DUYỆT, CHƯA TRIỂN KHAI**. Đề xuất giữ magic/header/CRC cơ bản, tăng `protocol_version=2`; request `flags=0x0002` là `I2_TRANSFORMED`, không mở reserved `0x0001`. Thêm `model_profile_id` 4 B trước tensor metadata; transformed request thêm descriptor 28 B và nonce 12 B; INT8/NCL/shape/length/profile lặp lại phải khớp. V1 parser từ chối v2, không fallback; unprotect trước dequantize theo kênh gốc."
+        },
+        {
+          "path": "docs/sv3_week5_scope_checklist_2026-10-09_v1.1.md",
+          "line": 236,
+          "text": "| W5-03 | BLOCKED | Scale và shape ML PASS; registry wire chưa cấp model_profile_id/split IDs. |"
+        },
+        {
+          "path": "ml/configs/week3_sv2_interface_review.json",
+          "line": 7,
+          "text": "  \"split_registry_status\": \"CONFIRMED\","
+        }
+      ]
+    }
+  ],
+  "conclusion": "No conflicting committed deployment allocation found in scoped repository search; no claim about external namespace or approval",
+  "external_namespace": "PENDING_CHAU_TRUNG",
+  "deployment_registry": "NULL_IDS_UNCHANGED"
+}

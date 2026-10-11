@@ -1,0 +1,6 @@
+{
+  "scope": "Fresh runs on earlier integration a9b8294, preserved unchanged; not labelled as final scope tests",
+  "tested_integration": "a9b8294ae64e23c5747be771210f057354ba3472",
+  "tested_tree": "7b5e8737962ebc9a647bcabd8391c6b760467756",
+  "later_scope": "Final scope drops only redundant standalone FP32 ZIP; frozen package remains fully verified"
+}

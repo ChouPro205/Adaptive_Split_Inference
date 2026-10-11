@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-fixes-20261011\integrated\device\scripts\accept_week5_mcu.py", line 211, in <module>
+    r = validate_session(a.session.resolve(),a.preparation.resolve())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-fixes-20261011\integrated\device\scripts\accept_week5_mcu.py", line 130, in validate_session
+    prepared = verify_package(preparation)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-fixes-20261011\integrated\device\scripts\verify_week5_package.py", line 52, in verify_package
+    preparation = json.loads(Path(path).read_text(encoding='utf-8-sig'))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json'

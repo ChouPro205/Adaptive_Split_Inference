@@ -1,0 +1,21 @@
+{
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "executable": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "packages": {
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1",
+    "onnx": "1.23.1",
+    "onnxruntime": "1.30.0",
+    "protobuf": "7.36.2",
+    "ml_dtypes": "0.6.0",
+    "flatbuffers": "25.12.19",
+    "pyserial": "NOT_INSTALLED; offline acceptance does not open serial"
+  },
+  "gcc": "gcc (Rev8, Built by MSYS2 project) 15.2.0",
+  "mode": "CPU FP32 deterministic; one thread; MKLDNN disabled",
+  "source_commit": "a9b8294ae64e23c5747be771210f057354ba3472",
+  "source_tree": "7b5e8737962ebc9a647bcabd8391c6b760467756"
+}
