@@ -14,6 +14,7 @@ UNIT_SCRIPTS = {
     'interfaces': 'ml/scripts/test_week5_interfaces.py',
     'i2': 'contracts/i2_ref/test_i2.py',
     'delivery_policy': 'ml/scripts/test_week5_delivery_v2.py',
+    'setup_policy': 'ml/scripts/test_week5_setup_v2.py',
     'registry_policy': 'ml/scripts/test_week5_registry_v2.py',
     'week4_policy': 'ml/scripts/verify_week4_current.py',
     'week4_tests': 'ml/scripts/test_week4_current.py',

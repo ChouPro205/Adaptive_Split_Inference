@@ -15,7 +15,7 @@ Entry mới là `evaluate_week5_v2.py`, import `week5_common_v2.py`. Gate exact
 `ml/manifests/week5_delivery_scope_v2.json` khai báo **569 file bắt buộc**,
 đường dẫn tương đối, SHA256 raw bytes, kích thước, version, nguồn và member ZIP.
 Bao gồm model/checkpoint, toàn package FP32 (manifest độc lập `a6d168...`),
-processed dataset, quantization20/220 goldens, frozen results, năm ZIP,
+processed dataset, quantization20/220 goldens, frozen results, bốn ZIP,
 R3/R4 dependencies cho regression, source reference bất biến, hai header fixture
 host tái lập exact và receipts preservation lịch sử được authenticate.
 Nguồn ZIP và mọi SHA256/kích thước đầy đủ nằm trong manifest:
@@ -24,9 +24,14 @@ Nguồn ZIP và mọi SHA256/kích thước đầy đủ nằm trong manifest:
 |---|---|---|
 | mitdb-frozen-processed-week5-v1.zip | GitHub Release sv3-week5-v1-20261005 | week5-v1 |
 | sv3-week5-quantization-reference-v1.zip | Cùng release | week5-v1 |
-| mitdb-week3-sv2-fp32-20261001-v1.zip | Transfer đúng ZIP gốc từ SV3; receipt `ml/provenance/week3/mitdb-week3-sv2-fp32-20261001-v1.verification.json`; chưa xác minh URL public | 20261001-v1 |
 | mitdb-sv1-week4-fp32-20261001-r3.zip | GitHub Release sv3-week4-r3-20261001 | r3 |
 | mitdb-sv1-week4-fp32-20261001-r4.zip | GitHub Release sv3-week4-r4-20261003 | r4 |
+
+Toàn bộ **41 file** package FP32 `mitdb-week3-sv2-fp32-20261001-v1`
+được hydrate từ members của R3/R4 ZIP, rồi kiểm manifest/package/model/checkpoint
+bằng raw hash và kích thước. Standalone `mitdb-week3-sv2-fp32-20261001-v1.zip`
+thuộc audit workspace tác giả, **không bắt buộc cho receiver portable**.
+Không giảm kiểm tra package FP32 hoặc 569 dependency bắt buộc.
 
 Không rebuild ZIP/goldens/manifests hoặc checkpoint để điền dependency thiếu.
 Thiếu/sai hash file bắt buộc exit1; không biến thành PASS. Mọi fresh gate buộc
@@ -66,6 +71,16 @@ python -m venv .venv
 .venv/Scripts/python.exe -m pip install -r ml/requirements-gpu-cu130.txt
 python -B ml/scripts/setup_week5_delivery_v2.py --asset-cache <thu-mục-chứa-4-ZIP-gốc>
 python -B ml/scripts/run_week5_delivery_v2.py --output ml/provenance/receiver-new
+```
+
+Setup kiểm raw SHA256/kích thước của cả `week4_graph.h` và `week4_inputs.h`
+đang có trước thao tác ghi. Header khác phải FAIL và giữ nguyên bytes; header
+đúng giữ nguyên. Header thiếu được generator lịch sử sinh trong thư mục tạm,
+xác thực theo manifest rồi chỉ tạo file chưa tồn tại. Chạy regression cả hai chế độ:
+
+```powershell
+python -B ml/scripts/test_week5_setup_v2.py
+python -O -B ml/scripts/test_week5_setup_v2.py
 ```
 
 Đặt `python` là executable venv đã pin; PATH child có GCC. Môi trường kiểm thử
