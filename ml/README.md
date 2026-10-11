@@ -152,6 +152,11 @@ SV1 receipt/device acceptance stays PENDING until receiver acknowledgement.
 
 ## Week 5 INT8/FP16 and Python P1 handoff
 
+PR25 F1–F3 reproduction now uses [portable delivery v2](docs/week5_delivery_v2.md)
+and `evaluate_week5_v2.py`; the two SV1-bound legacy scripts retain exact bytes.
+Author workspace audit and portable recipient scope are separate. Allocation
+remains BLOCKED; see [Châu/Trung decisions](../contracts/sv3_week5_registry_decisions_v2.md).
+
 Current Week 5 verification and S6 decisions (2026-10-09):
 [technical results and reproduction](docs/week5_technical_20261009.md),
 [decision note v1](../contracts/sv3_week5_decisions_v1.md), and

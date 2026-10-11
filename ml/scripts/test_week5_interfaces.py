@@ -117,7 +117,7 @@ class InterfaceTests(unittest.TestCase):
         self.assertFalse(np.array_equal(wrong, dequantize_per_channel(q, scales)))
 
     def test_strict_accuracy_boundary(self):
-        from evaluate_week5 import strict_accuracy_gate
+        from evaluate_week5_v2 import strict_accuracy_gate
         self.assertFalse(strict_accuracy_gate(1000, 995, 1000))  # exactly 0.5 pp
         self.assertTrue(strict_accuracy_gate(1000, 996, 1000))
         self.assertTrue(strict_accuracy_gate(1000, 999, 1000))

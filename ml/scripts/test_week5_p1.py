@@ -9,7 +9,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from p1 import Profile, descriptor, protect, unprotect
-from week5_common import mapping, provenance, write_json, ROOT
+from week5_common_v2 import mapping, provenance, write_json, ROOT
 
 SEED = 20261005
 
@@ -59,7 +59,7 @@ def run(cases, output):
               "seed": SEED, "test_keys": len(keys), "shapes_and_counts": counts,
               "output_stream_sha256": checksums.hexdigest(), "elapsed_seconds": time.monotonic() - started,
               "algorithm": "I2/1 existing IETF ChaCha20 counter=0, source-channel affine256, Fisher-Yates rejection",
-              "profile_ids": "TEST ONLY; split_id=s+1, not a deployment registry",
+              "profile_ids": "PUBLIC_TEST_ONLY; split_id=s+1, not a deployment registry",
               "acceptance": "Python host only; C and 50 official Python/C vectors remain Week 6",
               "provenance": provenance(' '.join(sys.argv))}
     write_json(output, result)

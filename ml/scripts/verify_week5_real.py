@@ -7,14 +7,14 @@ import struct
 
 import numpy as np
 import torch
-from week5_common import baseline, PACKAGE, ROOT, CHECKPOINT, mapping, wrappers, samples, sha, need, provenance, write_json
+from week5_common_v2 import baseline, PACKAGE, ROOT, CHECKPOINT, mapping, wrappers, samples, sha, need, provenance, write_json
 from quantization import quantize_per_channel, dequantize_per_channel, to_ncl, from_ncl
 from p1 import descriptor, protect, unprotect
 from week5_interfaces import active_profile, scale_wire_fp32_le, load_registry
 from test_week5_interfaces import test_registry
 
 
-def verify(package, goldens, output):
+def verify(package, goldens, output, approved=None, approval_proof=None):
     need(not output.exists(), 'Evidence exists; choose new output')
     model, _ = baseline(package)
     manifest = json.loads((goldens/'manifest.json').read_text(encoding='utf-8'))
@@ -24,7 +24,7 @@ def verify(package, goldens, output):
     need(len(manifest['entries']) == 220, 'Expected 220 entries')
     need({(r['split_point_s'], r['sample_index']) for r in manifest['entries']} ==
          {(s, i) for s in range(11) for i in range(20)}, 'Missing/duplicate golden pair')
-    registry = test_registry()
+    registry = test_registry() if approved is None else approved
     ml_registry = load_registry(ROOT/'contracts/sv3_week5_ml_registry_v1.json')
     inputs = np.load(package/'golden/z_s0.npy', allow_pickle=False)
     identities = samples(package)
@@ -75,8 +75,10 @@ def verify(package, goldens, output):
             counts[str(s)] += 1
     result = {'status': 'PASS', 'tensors_executed': 220, 'failed_tensors': 0, 'per_split_counts': counts,
               'scale_wire': 'I1 v1 FP32 LE expansion from stored FP16; component only',
-              'deployment_registry_status': 'BLOCKED_WIRE_ALLOCATION; all P1 profiles here PUBLIC_TEST_ONLY',
-              'test_registry': registry, 'golden_manifest_sha256': sha(goldens/'manifest.json'),
+              'deployment_registry_status': ('BLOCKED_WIRE_ALLOCATION' if approved is None else 'APPROVED_MAPPING_REAL_TAIL_CHECKED'),
+              'key_execution_scope': 'PUBLIC_TEST_ONLY; does not verify deployed keys, transport or nonce lifecycle',
+              'registry_used': registry, 'approval_proof': approval_proof,
+              'golden_manifest_sha256': sha(goldens/'manifest.json'),
               'stream_sha256': stream.hexdigest(), 'wire_scale_checks': wire,
               'provenance': provenance(' '.join(__import__('sys').argv))}
     write_json(output, result)
