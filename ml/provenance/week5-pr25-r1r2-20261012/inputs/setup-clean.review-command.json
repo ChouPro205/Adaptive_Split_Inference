@@ -1,0 +1,15 @@
+{
+  "name": "setup-clean",
+  "command": [
+    "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+    "-B",
+    "ml/scripts/setup_week5_delivery_v2.py",
+    "--asset-cache",
+    "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-fixes-20261011\\asset-cache"
+  ],
+  "cwd": "C:\\Users\\Admin\\.codex\\.chatgpt-projects\\g-p-6aa0e9f8edd48191976f9b12cd86e2ff\\reviews\\pr25-f0a9453-20261011\\setup-reproduction",
+  "exit_code": 0,
+  "elapsed_seconds": 4.812999999994645,
+  "stdout_sha256": "32f1c40fe0f3a42f76d5c2b4eb73333a0ae6068da43ccfbfe12fabdb4c3ac63c",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

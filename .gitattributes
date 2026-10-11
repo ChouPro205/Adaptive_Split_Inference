@@ -20,3 +20,4 @@ ml/provenance/week3-sv2-linux/** -text
 # New Week 5 receipts also authenticate raw stdout/stderr bytes.
 ml/provenance/week5-20261009-v1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 ml/provenance/week5-pr25-fixes-20261011/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ml/provenance/week5-pr25-r1r2-20261012/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol

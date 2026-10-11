@@ -1,0 +1,8 @@
+{
+  "scope": "FRESH_USER_WORKTREE_CHECK; not historical author inventory",
+  "files_checked": 623,
+  "changed": [],
+  "git_status_same_outside_new_task": true,
+  "exclusion": "exports/pr25-r1r2-20261012/ only, on both snapshots",
+  "status": "PASS"
+}

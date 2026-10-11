@@ -1,0 +1,40 @@
+{
+  "scope": "FRESH_IMMUTABILITY_AUDIT, not rerun of historical receipts",
+  "review_head": "f0a9453313f8c4d70552b6453656e69f69c4c72e",
+  "source_integration": "c5b9e4ae741536b23a38fabd16b76b998d1a8fc4",
+  "existing_tracked_files_checked": 1474,
+  "allowed_changes": [
+    "ml/docs/week5_delivery_v2.md",
+    "ml/scripts/setup_week5_delivery_v2.py",
+    "ml/scripts/verify_week5_delivery_v2.py"
+  ],
+  "unexpected_committed_changes": [],
+  "raw_bindings": {
+    "ml/scripts/week5_common.py": {
+      "sha256": "c1842a380afddaaf7e7968bfdd3ff7c03e08d36e9bec205da2819abdca105934",
+      "size_bytes": 4612,
+      "review_head_raw_match": true
+    },
+    "ml/scripts/evaluate_week5.py": {
+      "sha256": "c420029c0b8b1d7834bb32db0c428f379c1659cef3cc99ffa9a1271bfeb88eef",
+      "size_bytes": 6012,
+      "review_head_raw_match": true
+    },
+    "device/scripts/generate_week4_inputs.py": {
+      "sha256": "d15a3c519324b4a8bf754c763b81a0a3f27d9f4c9f7718a25619bde453a63b0c",
+      "size_bytes": 6408,
+      "review_head_raw_match": true
+    },
+    "ml/manifests/week5_delivery_scope_v2.json": {
+      "sha256": "479fd32220a20e95a9cd6f76022b8e79e60ccbf6915cbc47cc42c3fce51fd1fe",
+      "size_bytes": 321495,
+      "review_head_raw_match": true
+    },
+    "contracts/sv3_week5_ml_registry_v1.json": {
+      "sha256": "ff201031d95cb2e9547786f1b3527dc20f117d5108eb88643596f3512d6da9ae",
+      "size_bytes": 5888,
+      "review_head_raw_match": true
+    }
+  },
+  "status": "PASS"
+}

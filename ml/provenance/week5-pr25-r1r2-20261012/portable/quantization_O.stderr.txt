@@ -1,0 +1,11 @@
+test_file_roundtrip_and_effective_scale (__main__.QuantizationTests.test_file_roundtrip_and_effective_scale) ... ok
+test_nc_and_boundaries (__main__.QuantizationTests.test_nc_and_boundaries) ... ok
+test_rejections (__main__.QuantizationTests.test_rejections) ... ok
+test_rounding_and_clipping (__main__.QuantizationTests.test_rounding_and_clipping) ... ok
+test_small_and_batch_independence (__main__.QuantizationTests.test_small_and_batch_independence) ... ok
+test_zero_constant_signed_channels (__main__.QuantizationTests.test_zero_constant_signed_channels) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.079s
+
+OK

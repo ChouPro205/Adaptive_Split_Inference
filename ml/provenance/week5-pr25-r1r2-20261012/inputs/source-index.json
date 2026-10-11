@@ -1,0 +1,37 @@
+{
+  "review_report.md": {
+    "source": "C:\\Users\\Admin\\.codex\\.chatgpt-projects\\g-p-6aa0e9f8edd48191976f9b12cd86e2ff\\reviews\\pr25-f0a9453-20261011\\review_report.md",
+    "sha256": "f0ef74efda6a79ff1990ef6ed033ec2223c762f32a8f2560dee1ad753937b02c",
+    "scope": "REVIEW_INPUT_REUSE, not a fresh command"
+  },
+  "setup-clean.stdout.txt": {
+    "source": "C:\\Users\\Admin\\.codex\\.chatgpt-projects\\g-p-6aa0e9f8edd48191976f9b12cd86e2ff\\reviews\\pr25-f0a9453-20261011\\setup-clean.stdout.txt",
+    "sha256": "32f1c40fe0f3a42f76d5c2b4eb73333a0ae6068da43ccfbfe12fabdb4c3ac63c",
+    "scope": "REVIEW_INPUT_REUSE, not a fresh command"
+  },
+  "setup-clean.review-command.json": {
+    "source": "C:\\Users\\Admin\\.codex\\.chatgpt-projects\\g-p-6aa0e9f8edd48191976f9b12cd86e2ff\\reviews\\pr25-f0a9453-20261011\\setup-clean.review-command.json",
+    "sha256": "10476fbf87ee1ccd6fb29f280954f8788170e018f963e1615acf699a82a7ec8f",
+    "scope": "REVIEW_INPUT_REUSE, not a fresh command"
+  },
+  "setup-existing-header.stdout.txt": {
+    "source": "C:\\Users\\Admin\\.codex\\.chatgpt-projects\\g-p-6aa0e9f8edd48191976f9b12cd86e2ff\\reviews\\pr25-f0a9453-20261011\\setup-existing-header.stdout.txt",
+    "sha256": "d0887783ca086e80a64cb175628f1ae441684634687db0492ed8884a0b3829b0",
+    "scope": "REVIEW_INPUT_REUSE, not a fresh command"
+  },
+  "setup-existing-header.review-command.json": {
+    "source": "C:\\Users\\Admin\\.codex\\.chatgpt-projects\\g-p-6aa0e9f8edd48191976f9b12cd86e2ff\\reviews\\pr25-f0a9453-20261011\\setup-existing-header.review-command.json",
+    "sha256": "00e0c055ff1dbbe4549bb6cf9afd2061a5c492c29262a41bde01ea6ecacd1111",
+    "scope": "REVIEW_INPUT_REUSE, not a fresh command"
+  },
+  "review-checks.json": {
+    "source": "C:\\Users\\Admin\\.codex\\.chatgpt-projects\\g-p-6aa0e9f8edd48191976f9b12cd86e2ff\\reviews\\pr25-f0a9453-20261011\\review-checks.json",
+    "sha256": "da33a85e177e7a5e59cf44306aaace1439d7f07c4dd648413bf3533a565d727b",
+    "scope": "REVIEW_INPUT_REUSE, not a fresh command"
+  },
+  "AGENTS.md": {
+    "source": "C:/Users/Admin/Adaptive_Split_Inference/AGENTS.md",
+    "sha256": "eff54251bd01f683f782e89c0a027e61beb598a5fcd8d852a26a7506bded8617",
+    "scope": "PROJECT_INSTRUCTIONS_INPUT"
+  }
+}

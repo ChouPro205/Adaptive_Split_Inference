@@ -1,0 +1,6 @@
+R3_PAYLOAD / R4_SOURCE: PASS; generated exact inputs and 25-op graph / 11 splits
+Authenticated mitdb-frozen-processed-week5-v1.zip; hydrated 0 members
+Authenticated sv3-week5-quantization-reference-v1.zip; hydrated 0 members
+Authenticated mitdb-sv1-week4-fp32-20261001-r3.zip; hydrated 0 members
+Authenticated mitdb-sv1-week4-fp32-20261001-r4.zip; hydrated 0 members
+PASS: 569 required delivery files authenticated

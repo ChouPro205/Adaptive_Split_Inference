@@ -1,0 +1,10 @@
+test_channel_sample_independence_repeat_and_nc (__main__.Tests.test_channel_sample_independence_repeat_and_nc) ... ok
+test_dequantize_errors_are_atomic (__main__.Tests.test_dequantize_errors_are_atomic) ... ok
+test_half_independent_oracle (__main__.Tests.test_half_independent_oracle) ... ok
+test_quantize_errors_are_atomic (__main__.Tests.test_quantize_errors_are_atomic) ... ok
+test_zero_signed_ties_clipping_extremes (__main__.Tests.test_zero_signed_ties_clipping_extremes) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.611s
+
+OK

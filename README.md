@@ -56,6 +56,8 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
 
 ## Tài liệu
 
+- [PR25 R1/R2: bảo toàn header và setup bốn ZIP](ml/docs/week5_pr25_r1r2_20261012.md):
+  logs mới và gate portable; registry/SV1 evidence vẫn BLOCKED, REVIEW_STATUS=PENDING.
 - [SV3 tuần 5: implementation và verification](ml/docs/week5_technical_20261009.md):
   Python/ML gates PASS, wire registry BLOCKED, REVIEW_STATUS=PENDING.
 - [Kiểm tra checkout hiện tại trước tuần 5](ml/docs/week4_current_verification.md):
