@@ -73,4 +73,6 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
 - [Báo cáo SV1/Device Week 5](docs/sv1_device_week5_report.md) và
   [kết quả MCU Week 5](results/week5/README.md)
 - [Kết quả đo Week 2](results/week2/README.md)
+- [Đặc tả Device–Edge hiện hành (I1 v2, BLE binding, nonce)](contracts/README.md)
+  và [kế hoạch tuần 6](docs/week6_device_edge_plan.md)
 - [Mục lục tài liệu](docs/README.md)

@@ -20,6 +20,7 @@ và báo cáo của dự án.
 - [Receipt tuần 5 cho source hiện tại](../ml/provenance/week5-current-20261015/README.md)
   và [đánh giá theo lớp](../ml/results/week5-per-class-20261015/README.md)
 - [Firmware và công cụ SV1](../device/README.md)
+- [Kế hoạch và tiêu chí nghiệm thu tuần 6 Device–Edge](week6_device_edge_plan.md)
 
 ### Khối ML (SV3 - ML / Bùi Kỳ Anh)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 1](SV3_ML_week1_report.md)
