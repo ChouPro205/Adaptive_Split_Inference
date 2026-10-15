@@ -17,6 +17,12 @@ EXPECTED = None
 
 
 class SourceTests(unittest.TestCase):
+    def test_base_commit_is_full_and_present(self):
+        from week6_p1 import BASE, git
+        self.assertEqual(len(BASE), 40)
+        self.assertEqual(git("rev-parse", BASE).decode().strip(), BASE)
+        git("merge-base", "--is-ancestor", BASE, "HEAD")
+
     def test_selection_exactly_50_distinct_and_all_splits(self):
         self.assertEqual(len(SELECTION), 50)
         self.assertEqual(len(set(SELECTION)), 50)

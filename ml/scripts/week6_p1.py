@@ -21,7 +21,7 @@ from p1 import Profile, descriptor, protect, unprotect
 from quantization import dequantize_per_channel, from_ncl
 import i1v2_reference as i1
 
-BASE = 'af31ea784700cea163b5c6290536a5208d052da'
+BASE = 'af31ea784700cea1633b5c6290536a5208d052da'
 Q_ANCHOR = '8e20ed054462dda8f99815f20c817de36d21fdc1c5bf112cd2da5f67cdbf29bd'
 MODEL_ANCHOR = 'a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6'
 APPROVAL_ANCHOR = 'a84b5caf89ffb7f8e11be2b308e2d4e1947e4d4f7ed291c47df083d0e15c7a7d'
