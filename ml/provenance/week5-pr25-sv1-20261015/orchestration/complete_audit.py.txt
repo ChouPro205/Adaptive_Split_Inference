@@ -1,0 +1,87 @@
+"""Raw source audit and preparation hashes; no acceptance source/receipt edits."""
+import json
+from pathlib import Path
+import zipfile
+from workflow import BASE,H,PREP,read,save,sha,git,bindings
+
+root = BASE/'after'
+prep = read(PREP)
+records = []
+
+def check(label,path,expected,commit='HEAD',repository=True):
+    path = Path(path)
+    if repository:
+        name = path.as_posix()
+        target = root/path
+        try:
+            blob = git(root,'show',commit+':'+name)
+            blob_sha = sha(blob)
+        except Exception:
+            blob_sha = None
+    else:
+        name = str(path)
+        target = path
+        blob_sha = None
+    actual = sha(target.read_bytes())
+    records.append({'group':label,'path':name,'expected':expected,'current_raw_sha256':actual,
+        'git_blob_raw_sha256':blob_sha,'blob_revision':commit if repository else None,
+        'status':'PASS' if expected == actual else 'DIFFERS'})
+
+for group,entries in bindings().items():
+    for name,expected in entries.items():
+        check(group,Path(name),expected)
+for name,expected in prep['firmware_binding']['source_sha256'].items():
+    check('preparation.firmware_binding.source',Path(name),expected)
+for name,expected in prep['accepted_r3_provenance']['compiled_source_sha256'].items():
+    check('preparation.accepted_r3.compiled_source',Path(name),expected)
+for name,row in prep['artifacts'].items():
+    check('preparation.artifacts.'+name,Path(row['path']),row['sha256'],repository=False)
+    if Path(row['path']).stat().st_size != row['bytes']:
+        raise ValueError('Artifact size differs')
+for name,expected in prep['memory']['artifacts_sha256'].items():
+    check('preparation.memory.artifacts',PREP.parent/'build/zephyr'/name,expected,repository=False)
+for name,row in prep['reports'].items():
+    check('preparation.reports.'+name,PREP.parent/'evidence'/row['relative_path'],row['sha256'],repository=False)
+for name,expected in prep['build_metadata_sha256'].items():
+    check('preparation.build_metadata',Path(name),expected,repository=False)
+for name,row in prep['commands'].items():
+    # The command's raw log is independently byte-bound by the preparation.
+    candidates = [p for p in (H/'preparation').rglob('*') if p.is_file() and p.name.endswith('.log')
+                  and sha(p.read_bytes()) == row['log_sha256']]
+    if not candidates:
+        raise ValueError('Missing original command log: '+name)
+    check('preparation.commands.'+name,candidates[0],row['log_sha256'],repository=False)
+with zipfile.ZipFile(Path(prep['artifacts']['zip']['path'])) as z:
+    for field,member in [('sha256',prep['application']['bin_file']),('init_sha256',prep['application']['dat_file'])]:
+        actual = sha(z.read(member))
+        if actual != prep['application'][field]:
+            raise ValueError('Application member differs')
+        records.append({'group':'preparation.application','path':str(z.filename)+'!'+member,
+            'expected':prep['application'][field],'current_raw_sha256':actual,'status':'PASS'})
+image = prep['firmware_binding'].copy()
+expected_firmware = image.pop('firmware_id')
+actual_firmware = sha(json.dumps(image,sort_keys=True,separators=(',',':')).encode())
+if actual_firmware != expected_firmware:
+    raise ValueError('Firmware composite hash differs')
+legacy = []
+for name in ['ml/scripts/week5_common.py','ml/scripts/evaluate_week5.py','ml/scripts/test_week5_p1.py',
+             'device/scripts/generate_week3_inputs.py','device/scripts/generate_week4_inputs.py',
+             'device/scripts/accept_week5_mcu.py','device/scripts/verify_week5_package.py']:
+    expected = sha(git(root,'show','origin/main:'+name))
+    actual = sha((root/name).read_bytes())
+    legacy.append({'path':name,'main_blob_sha256':expected,'current_raw_sha256':actual,
+                   'integration_blob_sha256':sha(git(root,'show','HEAD:'+name)),
+                   'status':'PASS' if actual == expected else 'DIFFERS'})
+if any(r['status'] != 'PASS' for r in records+legacy):
+    save(BASE/'audit/complete-source-and-preparation-audit-FAIL.json',{'records':records,'legacy':legacy})
+    raise ValueError('Raw source/preparation mismatch')
+save(BASE/'audit/complete-source-and-preparation-audit.json',{'status':'PASS',
+    'main_pin':git(root,'rev-parse','origin/main').decode().strip(),
+    'tested_integration_sha':git(root,'rev-parse','HEAD').decode().strip(),
+    'tested_integration_tree':git(root,'rev-parse','HEAD^{tree}').decode().strip(),
+    'preparation_raw_sha256':sha(PREP.read_bytes()),'firmware_composite_sha256':actual_firmware,
+    'source_and_preparation_bindings':records,'legacy_and_source_gates':legacy,
+    'serialized_q_scale_hashes':'AUTHENTICATED_HISTORICAL_REUSE in unchanged accuracy evaluation; no regeneration',
+    'accepted_r3_artifact_hashes':'Historical acceptance authenticated by unchanged authenticate_handoff/accepted_r3_provenance gates',
+    'comparison_rule':'Exact raw bytes only; no normalized hash is accepted'})
+print('PASS:',len(records),'source/preparation bindings and',len(legacy),'unchanged legacy/gate sources')

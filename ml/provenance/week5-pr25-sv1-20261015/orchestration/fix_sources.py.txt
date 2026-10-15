@@ -1,0 +1,21 @@
+import hashlib
+from pathlib import Path
+import subprocess
+
+ROOT = Path(__file__).resolve().parent/'repo'
+p = ROOT/'ml/scripts/test_week5_p1.py'
+v2 = p.read_bytes().replace(
+    b'10,000 deterministic I2/1 Python round trips with public test keys only.',
+    b'Versioned P1 result/provenance entrypoint; public test keys only.').replace(
+    b'result = {"status": "PASS"', b'result = {"schema": "week5-p1/2", "status": "PASS"').replace(
+    b'ml/provenance/week5/p1_10000.json', b'ml/provenance/week5-v2/p1_10000.json')
+(ROOT/'ml/scripts/test_week5_p1_v2.py').write_bytes(v2)
+original = subprocess.check_output(['git','show','origin/main:ml/scripts/test_week5_p1.py'],cwd=ROOT)
+expected = 'ad6be8d9b126448b2b1179cd6f9eb2da007c2c87bbb13f7869b5ad0b8ccf2cac'
+if hashlib.sha256(original).hexdigest() != expected:
+    raise ValueError('Main P1 blob does not match receipt')
+p.write_bytes(original)
+for name in ('run_week5_delivery_v2.py','verify_week5_delivery_v2.py'):
+    p = ROOT/'ml/scripts'/name
+    p.write_bytes(p.read_bytes().replace(b'ml/scripts/test_week5_p1.py', b'ml/scripts/test_week5_p1_v2.py'))
+print('Restored raw P1 and versioned portable entrypoints')

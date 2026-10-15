@@ -1,0 +1,292 @@
+{
+  "status": "PASS",
+  "scope": "DISPOSABLE_RECEIVER_FIXTURE_CASES; no production input modified",
+  "cases": [
+    {
+      "name": "real-setup-correct-normal",
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "before": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048366644339400
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048366645342100
+        }
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048366644339400
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048366645342100
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "real-setup-missing-graph-normal",
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "before": {
+        "week4_graph.h": null,
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048366645342100
+        }
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048370685459800
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048366645342100
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "real-setup-missing-inputs-normal",
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "before": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048370685459800
+        },
+        "week4_inputs.h": null
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048370685459800
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048372982721600
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "real-setup-marker-graph-normal",
+      "expected_exit_code": 1,
+      "exit_code": 1,
+      "before": {
+        "week4_graph.h": {
+          "sha256": "33b548a15fbd9a4c2e046ca9e3bbc5a7de1f791c30c4d31fb6e60025b96f4104",
+          "size_bytes": 2503,
+          "mtime_ns": 1792048373450557800
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048372982721600
+        }
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "33b548a15fbd9a4c2e046ca9e3bbc5a7de1f791c30c4d31fb6e60025b96f4104",
+          "size_bytes": 2503,
+          "mtime_ns": 1792048373450557800
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048372982721600
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "real-setup-marker-inputs-normal",
+      "expected_exit_code": 1,
+      "exit_code": 1,
+      "before": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048373651600300
+        },
+        "week4_inputs.h": {
+          "sha256": "501452a1a3190231454ab80102ce5299e1771fa669b9abc6963929d3426bae99",
+          "size_bytes": 179852,
+          "mtime_ns": 1792048373651600300
+        }
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048373651600300
+        },
+        "week4_inputs.h": {
+          "sha256": "501452a1a3190231454ab80102ce5299e1771fa669b9abc6963929d3426bae99",
+          "size_bytes": 179852,
+          "mtime_ns": 1792048373651600300
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "real-setup-correct-O",
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "before": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048373651600300
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048373854860500
+        }
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048373651600300
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048373854860500
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "real-setup-missing-graph-O",
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "before": {
+        "week4_graph.h": null,
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048373854860500
+        }
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048377163121000
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048373854860500
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "real-setup-missing-inputs-O",
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "before": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048377163121000
+        },
+        "week4_inputs.h": null
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048377163121000
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048379464510600
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "real-setup-marker-graph-O",
+      "expected_exit_code": 1,
+      "exit_code": 1,
+      "before": {
+        "week4_graph.h": {
+          "sha256": "33b548a15fbd9a4c2e046ca9e3bbc5a7de1f791c30c4d31fb6e60025b96f4104",
+          "size_bytes": 2503,
+          "mtime_ns": 1792048379928095700
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048379464510600
+        }
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "33b548a15fbd9a4c2e046ca9e3bbc5a7de1f791c30c4d31fb6e60025b96f4104",
+          "size_bytes": 2503,
+          "mtime_ns": 1792048379928095700
+        },
+        "week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809,
+          "mtime_ns": 1792048379464510600
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "real-setup-marker-inputs-O",
+      "expected_exit_code": 1,
+      "exit_code": 1,
+      "before": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048380142328300
+        },
+        "week4_inputs.h": {
+          "sha256": "501452a1a3190231454ab80102ce5299e1771fa669b9abc6963929d3426bae99",
+          "size_bytes": 179852,
+          "mtime_ns": 1792048380143327900
+        }
+      },
+      "after": {
+        "week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460,
+          "mtime_ns": 1792048380142328300
+        },
+        "week4_inputs.h": {
+          "sha256": "501452a1a3190231454ab80102ce5299e1771fa669b9abc6963929d3426bae99",
+          "size_bytes": 179852,
+          "mtime_ns": 1792048380143327900
+        }
+      },
+      "status": "PASS"
+    }
+  ],
+  "exit0": 6,
+  "expected_marker_exit1": 4
+}

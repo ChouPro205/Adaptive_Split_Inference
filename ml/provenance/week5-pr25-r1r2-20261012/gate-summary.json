@@ -1,0 +1,236 @@
+{
+  "status": "BLOCKED",
+  "CURRENT_WEEK": 5,
+  "REVIEW_STATUS": "PENDING",
+  "rows": [
+    {
+      "gate": "unit/regression 13 suites, each normal/-O",
+      "actual_child_exits": {
+        "quantization": 0,
+        "quantization_O": 0,
+        "interfaces": 0,
+        "interfaces_O": 0,
+        "i2": 0,
+        "i2_O": 0,
+        "delivery_policy": 0,
+        "delivery_policy_O": 0,
+        "setup_policy": 0,
+        "setup_policy_O": 0,
+        "registry_policy": 0,
+        "registry_policy_O": 0,
+        "week4_policy": 0,
+        "week4_policy_O": 0,
+        "week4_tests": 0,
+        "week4_tests_O": 0,
+        "week4_release": 0,
+        "week4_release_O": 0,
+        "week3_sv2": 0,
+        "week3_sv2_O": 0,
+        "week3_policy": 0,
+        "week3_policy_O": 0,
+        "device_quantization": 0,
+        "device_quantization_O": 0,
+        "device_handoff": 0,
+        "device_handoff_O": 0,
+        "p1": 0,
+        "real": 0,
+        "accuracy": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "gate": "clean setup, 569 files",
+      "actual_child_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "gate": "real setup header preservation, 10 cases",
+      "details": "4 modified-header commands intentionally exit 1 and retain marker/bytes/mtime; correct/missing exit 0",
+      "status": "PASS"
+    },
+    {
+      "gate": "portable normal",
+      "actual_child_exit": 2,
+      "status": "BLOCKED",
+      "gates": {
+        "portable_dependencies": "PASS",
+        "portable_preservation": "PASS",
+        "source_dependencies": "PASS",
+        "p1_10000": "PASS",
+        "real_220": "PASS",
+        "accuracy_8544_x11": "PASS",
+        "related_regressions": "PASS",
+        "deployment_registry": "BLOCKED"
+      }
+    },
+    {
+      "gate": "portable -O",
+      "actual_child_exit": 2,
+      "status": "BLOCKED"
+    },
+    {
+      "gate": "full runner",
+      "actual_child_exit": 2,
+      "status": "BLOCKED_REGISTRY"
+    },
+    {
+      "gate": "SV1 preflight and acceptance normal/-O",
+      "actual_child_exits": {
+        "sv1-acceptance-normal.command": 1,
+        "sv1-acceptance-O.command": 1,
+        "sv1-preflight-normal.command": 1,
+        "sv1-preflight-O.command": 1
+      },
+      "status": "BLOCKED_MISSING_EVIDENCE; FileNotFoundError preparation.json"
+    },
+    {
+      "gate": "reviewer 61 missing artifacts",
+      "status": "BLOCKED_MISSING_TWO_AUDITS; filenames not inferred"
+    },
+    {
+      "gate": "historical preservation 94518/754",
+      "status": "AUTHENTICATED_REUSE, not recipient inventory"
+    },
+    {
+      "gate": "previous main cache suite FAIL/SKIP",
+      "status": "HISTORICAL_ONLY, not rerun or counted as PASS"
+    }
+  ],
+  "fresh_receipt_count": 47,
+  "source_files_per_receipt": 185,
+  "integrity_errors": [],
+  "accuracy": [
+    {
+      "split_point_s": "0",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "10"
+    },
+    {
+      "split_point_s": "1",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8390",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.19756554307116",
+      "accuracy_drop_pp": "0.0351123595505618",
+      "relative_accuracy_drop_percent": "0.03574407244132015",
+      "gate_status": "PASS",
+      "prediction_disagreements": "5"
+    },
+    {
+      "split_point_s": "2",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "6"
+    },
+    {
+      "split_point_s": "3",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8392",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.22097378277154",
+      "accuracy_drop_pp": "0.011704119850187267",
+      "relative_accuracy_drop_percent": "0.011914690813773382",
+      "gate_status": "PASS",
+      "prediction_disagreements": "3"
+    },
+    {
+      "split_point_s": "4",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8393",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.23267790262172",
+      "accuracy_drop_pp": "0.0",
+      "relative_accuracy_drop_percent": "0.0",
+      "gate_status": "PASS",
+      "prediction_disagreements": "4"
+    },
+    {
+      "split_point_s": "5",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8395",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.2560861423221",
+      "accuracy_drop_pp": "-0.023408239700374533",
+      "relative_accuracy_drop_percent": "-0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "4"
+    },
+    {
+      "split_point_s": "6",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8388",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.17415730337079",
+      "accuracy_drop_pp": "0.05852059925093633",
+      "relative_accuracy_drop_percent": "0.05957345406886691",
+      "gate_status": "PASS",
+      "prediction_disagreements": "5"
+    },
+    {
+      "split_point_s": "7",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "2"
+    },
+    {
+      "split_point_s": "8",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "2"
+    },
+    {
+      "split_point_s": "9",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8393",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.23267790262172",
+      "accuracy_drop_pp": "0.0",
+      "relative_accuracy_drop_percent": "0.0",
+      "gate_status": "PASS",
+      "prediction_disagreements": "0"
+    },
+    {
+      "split_point_s": "10",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8393",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.23267790262172",
+      "accuracy_drop_pp": "0.0",
+      "relative_accuracy_drop_percent": "0.0",
+      "gate_status": "PASS",
+      "prediction_disagreements": "0"
+    }
+  ]
+}

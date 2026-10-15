@@ -1,0 +1,25 @@
+import importlib.metadata
+import json
+import os
+from pathlib import Path
+import platform
+import subprocess
+import sys
+import torch
+import numpy
+
+packages = {}
+for name in ('numpy','torch','pandas','onnx','onnxruntime','scipy','PyYAML'):
+    try: packages[name] = importlib.metadata.version(name)
+    except importlib.metadata.PackageNotFoundError: packages[name] = None
+out = Path(sys.argv[1])
+data = {'python':sys.version,'executable':sys.executable,'platform':platform.platform(),
+    'packages':packages,'gcc':subprocess.check_output(['gcc','--version'],text=True),
+    'git':subprocess.check_output(['git','--version'],text=True).strip(),
+    'torch_build':torch.__config__.show(),
+    'execution_policy':'Existing tests configure CPU float32 deterministic, one thread, MKLDNN disabled',
+    'PYTHONHOME':os.getenv('PYTHONHOME'),'PYTHONPATH':os.getenv('PYTHONPATH')}
+with out.open('x',encoding='utf-8',newline='\n') as f:
+    json.dump(data,f,indent=2)
+    f.write('\n')
+print(json.dumps(data,indent=2))

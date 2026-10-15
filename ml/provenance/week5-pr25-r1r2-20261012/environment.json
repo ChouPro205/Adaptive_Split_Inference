@@ -1,0 +1,46 @@
+{
+  "scope": "FRESH_ENVIRONMENT_SNAPSHOT",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "executable": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "packages": {
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1",
+    "onnx": "1.23.1",
+    "onnxruntime": "1.30.0",
+    "protobuf": "7.36.2",
+    "ml_dtypes": "0.6.0",
+    "flatbuffers": "25.12.19"
+  },
+  "gcc": "gcc.exe (Rev8, Built by MSYS2 project) 15.2.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "inference": "CPU deterministic, 1 thread, MKLDNN disabled by week3_sv2_common.configure() called by week5_common_v2.baseline()",
+  "archives": [
+    {
+      "name": "mitdb-frozen-processed-week5-v1.zip",
+      "source": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week5-v1-20261005/mitdb-frozen-processed-week5-v1.zip",
+      "sha256": "b95d169f7cf454f11d21a858f6fee6f526347294f6673874318521a11ae8b0bf",
+      "size_bytes": 33098461
+    },
+    {
+      "name": "sv3-week5-quantization-reference-v1.zip",
+      "source": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week5-v1-20261005/sv3-week5-quantization-reference-v1.zip",
+      "sha256": "3105bc879af3c4d9d4eb87725c7d165328649afd1c5dd28fe1786fe66dc4ff7b",
+      "size_bytes": 807817
+    },
+    {
+      "name": "mitdb-sv1-week4-fp32-20261001-r3.zip",
+      "source": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/mitdb-sv1-week4-fp32-20261001-r3.zip",
+      "sha256": "4426bcd48282f84721d3dc00404de2e0cfaf38891e8fae850d15622323b972ff",
+      "size_bytes": 5659073
+    },
+    {
+      "name": "mitdb-sv1-week4-fp32-20261001-r4.zip",
+      "source": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/mitdb-sv1-week4-fp32-20261001-r4.zip",
+      "sha256": "0b29c1f0bd1327efdf5cad17d0dcfd40fb76cb9d8f7dce3ee8dc5ab4c25dfd8e",
+      "size_bytes": 5659076
+    }
+  ],
+  "archive_cache": "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-r1r2-20261012\\asset-cache"
+}

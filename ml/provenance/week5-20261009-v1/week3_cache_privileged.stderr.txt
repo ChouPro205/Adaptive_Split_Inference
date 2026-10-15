@@ -1,0 +1,21 @@
+test_cache_symlink_guard_without_os_privilege (__main__.CacheRegression.test_cache_symlink_guard_without_os_privilege) ... ok
+test_clean_then_real_caches_after_manifest_and_repeat (__main__.CacheRegression.test_clean_then_real_caches_after_manifest_and_repeat) ... ok
+test_entrypoints_without_B_do_not_write_cache (__main__.CacheRegression.test_entrypoints_without_B_do_not_write_cache) ... ok
+test_extra_source_cannot_authorize_an_extra_cache (__main__.CacheRegression.test_extra_source_cannot_authorize_an_extra_cache) ... ok
+test_frozen_loader_ignores_valid_header_forged_cache (__main__.CacheRegression.test_frozen_loader_ignores_valid_header_forged_cache) ... ok
+test_mutation_missing_and_external_hash_rejected (__main__.CacheRegression.test_mutation_missing_and_external_hash_rejected) ... ok
+test_preexisting_caches_and_other_cpython_versions (__main__.CacheRegression.test_preexisting_caches_and_other_cpython_versions) ... ok
+test_real_v1_cache_reproduces_bug_then_full_verifier_repeats (__main__.CacheRegression.test_real_v1_cache_reproduces_bug_then_full_verifier_repeats) ... ok
+test_regular_extra_file_rejected (__main__.CacheRegression.test_regular_extra_file_rejected) ... ok
+test_symlinks_rejected_before_cache_exception (__main__.CacheRegression.test_symlinks_rejected_before_cache_exception) ... skipped "OS disallows symlink creation: [WinError 1314] A required privilege is not held by the client: 'C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp\\\\week3_cache_kblkfw2g\\\\package\\\\scripts\\\\week3_common.py' -> 'C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp\\\\week3_cache_kblkfw2g\\\\package\\\\scripts\\\\__pycache__\\\\week3_common.cpython-311.pyc'"
+test_unrecognized_cache_contents_rejected (__main__.CacheRegression.test_unrecognized_cache_contents_rejected) ... ok
+test_actual_missing_extra_file_and_duplicate_rows_rejected (__main__.InventoryOrderRegression.test_actual_missing_extra_file_and_duplicate_rows_rejected) ... ok
+test_manifest_missing_extra_duplicate_and_all_metadata_rejected (__main__.InventoryOrderRegression.test_manifest_missing_extra_duplicate_and_all_metadata_rejected) ... ok
+test_real_v1_posix_and_reverse_full_verifier (__main__.InventoryOrderRegression.test_real_v1_posix_and_reverse_full_verifier) ... ok
+test_windows_manifest_posix_inventory_and_reversed_lists (__main__.InventoryOrderRegression.test_windows_manifest_posix_inventory_and_reversed_lists) ... ok
+test_wrong_anchor_rejected_before_inventory (__main__.InventoryOrderRegression.test_wrong_anchor_rejected_before_inventory) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 16.370s
+
+OK (skipped=1)

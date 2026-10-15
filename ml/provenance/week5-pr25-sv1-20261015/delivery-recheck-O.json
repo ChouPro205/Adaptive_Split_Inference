@@ -1,0 +1,549 @@
+{
+  "schema": "week5-portable-delivery/2",
+  "status": "BLOCKED",
+  "CURRENT_WEEK": 5,
+  "REVIEW_STATUS": "PENDING",
+  "gates": {
+    "portable_dependencies": "PASS",
+    "portable_preservation": "PASS",
+    "source_dependencies": "PASS",
+    "p1_10000": "PASS",
+    "real_220": "PASS",
+    "accuracy_8544_x11": "PASS",
+    "related_regressions": "PASS",
+    "deployment_registry": "BLOCKED"
+  },
+  "blocker": "Châu allocation and Châu/Trung shared registry confirmation pending",
+  "scope_manifest_sha256": "479fd32220a20e95a9cd6f76022b8e79e60ccbf6915cbc47cc42c3fce51fd1fe",
+  "recipient_scope_file_count": 569,
+  "historical_preservation_reuse": {
+    "scope": "REUSED_AUTHOR_WORKSPACE_AUDIT; not recipient inventory",
+    "file_count": 94518,
+    "copied_asset_files": 754,
+    "status": "AUTHENTICATED_HISTORICAL_RECEIPT"
+  },
+  "fresh_receipts": {
+    "quantization": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_quantization.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "7b522cbf5f8ea7a3eda5a6630472bc5da52e5423af496165c98af8e26749170f"
+    },
+    "interfaces": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_interfaces.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "9f760f855037e4e41f8f50a8412223d62ac397afbc6a9602a6315073cf626f35"
+    },
+    "i2": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "contracts/i2_ref/test_i2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "38533bd6b01e61e544fd628c7682b9df4db29699974f0d51742de35519166a3c"
+    },
+    "delivery_policy": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_delivery_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "306757d2d2f39ea4ec93c7259e553f85a54061d5dc287d0b737f150537410c93"
+    },
+    "setup_policy": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_setup_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "7807a3c6ee00b76a044ab01e531a00936c43dc63f0406497ef4798c6428f5203"
+    },
+    "registry_policy": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_registry_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "3df0917af63ae28ffa34e7dfd578fa037d389c49a255529244c6ae679a337db7"
+    },
+    "week4_policy": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/verify_week4_current.py",
+        "--regressions"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "32652974d1bdaafb1ce04a19c5171ea7e3c9bd2f7a937b778025f6c06b724377"
+    },
+    "week4_tests": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week4_current.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "44c995d0186089b1a06db986784d574f76b03e1446f8acd8e5c523a7da999349"
+    },
+    "week4_release": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week4_release.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "1018de291038bfbdbd2b4effed1f00d19fefcdbf3a4a1baac3646e44e1680ba3"
+    },
+    "week3_sv2": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week3_sv2.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "579a1a5d411753685b137fd75defd7ca50ab5c8737f57051605b0d1fb3c2a3a4"
+    },
+    "week3_policy": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week3_sv2_policy.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "36e82c7babe9d1e057adab40a12c32d3dfbf6d77b66e5558acd469b4093c6be3"
+    },
+    "device_quantization": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/test_week5_quantization_c.py",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\device_quantization-results"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "29f04586b081e42f577a0a2686b8d456aaab8e26c25be7c480acac82e1881385"
+    },
+    "device_handoff": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/test_week4_handoff.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "293a7cc31c65c19bab41139f729bd51eef9c5d0b5162d73442f56f75b1b918f8"
+    },
+    "quantization_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_quantization.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "468ebcedfbb86bfc1fb90bbb2c998a9a3d784cf8bd51aa13901d000e79a2d8e5"
+    },
+    "interfaces_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_interfaces.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "fe32cff66ba25e19555440cc40fe5b888ea6a78e981ec24dee4e7be9ff9fd156"
+    },
+    "i2_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "contracts/i2_ref/test_i2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "5e4226f1b7e72f739089f26985beed4062cbbfc8f0dba09e9ca82dd932876f08"
+    },
+    "delivery_policy_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_delivery_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "c4e35f86e9de30c4105d766a121a5073aa18082b28f3dad9bf30abd4acd7995a"
+    },
+    "setup_policy_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_setup_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "28a4dba5d17558c21b295ef083b316dccc3cf2edbbda765a6db3a123e0412b09"
+    },
+    "registry_policy_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_registry_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "44f6b562c4986731f77a174e8c6feb8435d01484baa54d04443e93444cf31301"
+    },
+    "week4_policy_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/verify_week4_current.py",
+        "--regressions"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "3e41a5d54f65c4332708ad6dae4e1e7de3dbbd112bfd379f737dc33302963feb"
+    },
+    "week4_tests_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week4_current.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "9be5579a2ca5912731258f42e7cadaf2b2f4f513f62c6a00a6271f3a8646a9d2"
+    },
+    "week4_release_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week4_release.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "57af9aba8efa8dfa0adf7bc830c754c2747bd763ba69dc95b2f880a2bffe015c"
+    },
+    "week3_sv2_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week3_sv2.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "ae05de4bbe7fb3b856846c85eff60c2fde1706e05a40719bd9f013bd647d13f1"
+    },
+    "week3_policy_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week3_sv2_policy.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "e8840a02ffd3518177f1b878dcf9bc3f6cdceacd0be867d14af752a8ce4c5140"
+    },
+    "device_quantization_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "device/scripts/test_week5_quantization_c.py",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\device_quantization_O-results"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "ea64f944e371cf34f762211106002d5d281afaa583662bc04396b18fe5ded607"
+    },
+    "device_handoff_O": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "device/scripts/test_week4_handoff.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "eaf8f2f18e1461851563aef01a4c3d8dd6b73c901c47d448fd6bebe699755159"
+    },
+    "p1": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_p1_v2.py",
+        "--cases",
+        "10000",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\p1_10000.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "c916a5b836a90f789954f62a3cc20314b78ec0e4e012fd2d57791801b48d0072"
+    },
+    "real": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/verify_week5_real.py",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\real_220.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "3e0cec4df4942df818333fcdb541b3d826a30c35f06931651efa567493af738f"
+    },
+    "accuracy": {
+      "scope": "FRESH",
+      "command": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/evaluate_week5_v2.py",
+        "--batch-size",
+        "1",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\accuracy"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "exit_code": 0,
+      "receipt_sha256": "0fea899039ce359395fa10a6df46fd4d794b8416f4c64e675e0d93873dab7041"
+    }
+  },
+  "accuracy": [
+    {
+      "split_point_s": "0",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "10"
+    },
+    {
+      "split_point_s": "1",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8390",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.19756554307116",
+      "accuracy_drop_pp": "0.0351123595505618",
+      "relative_accuracy_drop_percent": "0.03574407244132015",
+      "gate_status": "PASS",
+      "prediction_disagreements": "5"
+    },
+    {
+      "split_point_s": "2",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "6"
+    },
+    {
+      "split_point_s": "3",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8392",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.22097378277154",
+      "accuracy_drop_pp": "0.011704119850187267",
+      "relative_accuracy_drop_percent": "0.011914690813773382",
+      "gate_status": "PASS",
+      "prediction_disagreements": "3"
+    },
+    {
+      "split_point_s": "4",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8393",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.23267790262172",
+      "accuracy_drop_pp": "0.0",
+      "relative_accuracy_drop_percent": "0.0",
+      "gate_status": "PASS",
+      "prediction_disagreements": "4"
+    },
+    {
+      "split_point_s": "5",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8395",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.2560861423221",
+      "accuracy_drop_pp": "-0.023408239700374533",
+      "relative_accuracy_drop_percent": "-0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "4"
+    },
+    {
+      "split_point_s": "6",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8388",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.17415730337079",
+      "accuracy_drop_pp": "0.05852059925093633",
+      "relative_accuracy_drop_percent": "0.05957345406886691",
+      "gate_status": "PASS",
+      "prediction_disagreements": "5"
+    },
+    {
+      "split_point_s": "7",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "2"
+    },
+    {
+      "split_point_s": "8",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8391",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.20926966292134",
+      "accuracy_drop_pp": "0.023408239700374533",
+      "relative_accuracy_drop_percent": "0.023829381627546765",
+      "gate_status": "PASS",
+      "prediction_disagreements": "2"
+    },
+    {
+      "split_point_s": "9",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8393",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.23267790262172",
+      "accuracy_drop_pp": "0.0",
+      "relative_accuracy_drop_percent": "0.0",
+      "gate_status": "PASS",
+      "prediction_disagreements": "0"
+    },
+    {
+      "split_point_s": "10",
+      "num_samples": "8544",
+      "correct_fp32": "8393",
+      "correct_int8_fp16": "8393",
+      "accuracy_fp32_percent": "98.23267790262172",
+      "accuracy_int8_fp16_percent": "98.23267790262172",
+      "accuracy_drop_pp": "0.0",
+      "relative_accuracy_drop_percent": "0.0",
+      "gate_status": "PASS",
+      "prediction_disagreements": "0"
+    }
+  ],
+  "SV1_package_acceptance": "SEPARATE_RECEIPT_REQUIRED; portable ML gate does not imply MCU acceptance",
+  "I1_transport": "NOT_RUN",
+  "week6": "NOT_RUN"
+}

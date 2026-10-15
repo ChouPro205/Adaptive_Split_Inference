@@ -1,0 +1,71 @@
+import hashlib
+import json
+from pathlib import Path, PurePosixPath
+import subprocess
+import zipfile
+
+BASE = Path(__file__).resolve().parent
+ROOT = BASE.parents[1]
+ZIP = Path('C:/Users/Admin/Downloads/pr25-sv1-original-evidence-20261014-final.zip')
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+def save(path, obj):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+def main():
+    report = BASE/'audit'
+    report.mkdir(exist_ok=True)
+    files = subprocess.check_output(['git', 'ls-files', '-co', '--exclude-standard', '-z'], cwd=ROOT).decode().split('\0')
+    protected = {}
+    for name in sorted(set(files)):
+        if not name or name.startswith('exports/pr25-sv1-20261015/'):
+            continue
+        p = ROOT/name
+        if p.is_file():
+            protected[name] = {'size_bytes': p.stat().st_size, 'sha256': sha(p.read_bytes())}
+    save(report/'user-workspace-before.json', protected)
+    (report/'user-status-before.txt').write_bytes(subprocess.check_output(['git', 'status', '--porcelain=v1', '-uall'], cwd=ROOT))
+    actual = sha(ZIP.read_bytes())
+    if actual != '4dcf8de3bba7aae761d7586ac6f684dd0558ce1a756ca197c8d28eadcee41aac':
+        raise ValueError('ZIP hash differs')
+    out = BASE/'original'
+    with zipfile.ZipFile(ZIP) as z:
+        names = z.namelist()
+        if len(names) != len(set(names)) or len(names) != 2281:
+            raise ValueError('ZIP file count/duplicates')
+        inv_raw = z.read('handoff-inventory-final.json')
+        inv = json.loads(inv_raw)
+        expected = {'handoff/'+p for p in inv['files']}
+        if set(names) != expected | {'handoff-inventory-final.json'}:
+            raise ValueError('Inventory file set differs')
+        if len(inv['files']) != 2280 or sum(r['size_bytes'] for r in inv['files'].values()) != 601727245:
+            raise ValueError('Payload totals differ')
+        checked = {}
+        # Validate every payload before exposing any payload for use.
+        for p, rec in inv['files'].items():
+            name = 'handoff/'+p
+            if PurePosixPath(name).is_absolute() or '..' in PurePosixPath(name).parts:
+                raise ValueError('Unsafe archive member')
+            raw = z.read(name)
+            current = {'size_bytes': len(raw), 'sha256': sha(raw)}
+            if current != rec:
+                raise ValueError('Payload differs: '+p)
+            checked[p] = current
+        if out.exists():
+            raise ValueError('Extraction already exists')
+        z.extractall(out)
+    save(report/'input-validation.json', {'status':'PASS', 'zip_path':str(ZIP), 'zip_size_bytes':ZIP.stat().st_size,
+        'zip_sha256':actual, 'inventory_sha256':sha(inv_raw), 'zip_files':2281,
+        'payload_files':2280, 'payload_bytes':601727245, 'payloads':checked,
+        'user_protected_file_count':len(protected)})
+    print('PASS: ZIP and 2280 payloads; protected user files:', len(protected))
+    print((out/'handoff/README-final.txt').read_text(encoding='utf-8'))
+    for f in ('path-mapping-final.json', 'reference-resolution-final.json'):
+        d = json.loads((out/'handoff'/f).read_text(encoding='utf-8'))
+        print(f, json.dumps(d, ensure_ascii=False)[:14000])
+
+if __name__ == '__main__':
+    main()

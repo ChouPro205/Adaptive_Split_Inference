@@ -1,0 +1,12 @@
+test_existing_vectors (__main__.InterfaceTests.test_existing_vectors) ... ok
+test_explicit_registry_and_no_length_inference (__main__.InterfaceTests.test_explicit_registry_and_no_length_inference) ... ok
+test_metadata_errors_both_directions (__main__.InterfaceTests.test_metadata_errors_both_directions) ... ok
+test_parameter_order_and_rejection_sampling (__main__.InterfaceTests.test_parameter_order_and_rejection_sampling) ... ok
+test_strict_accuracy_boundary (__main__.InterfaceTests.test_strict_accuracy_boundary) ... ok
+test_unprotect_before_dequantize (__main__.InterfaceTests.test_unprotect_before_dequantize) ... ok
+test_wire_scale_stored_value (__main__.InterfaceTests.test_wire_scale_stored_value) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.039s
+
+OK

@@ -1,0 +1,98 @@
+Hãy sửa compatibility SV1 của PR25, dùng ba file gốc đã có:
+
+- `C:/Users/Admin/Downloads/review-report.md`
+- `C:/Users/Admin/Downloads/allocation-proposal.md`
+- `C:/Users/Admin/Downloads/pr25-sv1-original-evidence-20261014-final.zip`
+
+Được phép commit/push lên nhánh `sv3/week5-technical-20261009` để review lại. Chưa merge.
+
+1. Đọc hướng dẫn và xác thực input.
+
+Đọc AGENTS.md; fetch và pin PR HEAD/main thực tế. Bản SV1 review dùng PR HEAD `1ebbefb8264d9daee7b4b2cbb95be4d51f4d39c1` và main `cfdfca1025ab5f707b46197b4c5dae868d38d473`.
+
+Làm trong checkout/worktree riêng, bảo toàn working tree người dùng.
+
+ZIP phải có SHA256:
+
+`4dcf8de3bba7aae761d7586ac6f684dd0558ce1a756ca197c8d28eadcee41aac`
+
+Kiểm `handoff-inventory-final.json`: 2.280 payload, tổng 601727245 B; ZIP có thêm inventory nên tổng 2.281 file. Xác thực từng payload trước sử dụng.
+
+Đọc `handoff/README-final.txt`, `path-mapping-final.json` và `reference-resolution-final.json`. Dùng mapping cuối để materialize môi trường thử nghiệm riêng; giữ nguyên bytes và paths bên trong receipts.
+
+2. Sửa file P1 lịch sử bằng commit thật.
+
+Receipt `handoff/preparation/evidence/accuracy/evaluation.json` yêu cầu:
+
+`ml/scripts/test_week5_p1.py`
+SHA256 `ad6be8d9b126448b2b1179cd6f9eb2da007c2c87bbb13f7869b5ad0b8ccf2cac`
+
+PR hiện có hash khác. Khôi phục nguyên raw bytes của file lịch sử đúng receipt/main đã nghiệm thu.
+
+Chuyển chức năng mới sang `ml/scripts/test_week5_p1_v2.py`: import/provenance v2, output guard, schema mới gồm `failed_tensors`, nhãn PUBLIC_TEST_ONLY. Giữ thuật toán, seed, coverage và checksum P1 đã được kiểm chứng.
+
+Cập nhật runner, verifier REQUIRED, provenance/logger, tests và hướng dẫn hiện hành để gọi đúng P1 v2. Đặc biệt kiểm:
+- `run_week5_delivery_v2.py`
+- `verify_week5_delivery_v2.py`
+
+Không overlay file main vào HEAD cũ rồi gọi HEAD đó PASS. Phần sửa P1 phải nằm trong commit thực sự của PR.
+
+3. Kiểm toàn bộ source bindings và fixture bytes.
+
+Đối chiếu mọi hash trong preparation, accuracy C source và frozen ML provenance.
+
+Giữ nguyên các source lịch sử đã nghiệm thu, gồm `week5_common.py`, `evaluate_week5.py`, generator và P1 script sau khôi phục. Giữ nguyên source gates, receipts, expected hashes, model, checkpoint, dataset, reference, goldens, ZIP và manifest khoa học.
+
+Lưu audit expected/current/Git-blob raw hashes. Checkout Windows có thể khác newline ở:
+- `device/scripts/build_week5_head.ps1`
+- `device/scripts/flash_week5_head.ps1`
+- `device/scripts/test_week5_scripts.ps1`
+- `device/scripts/requirements-week5-collector.txt`
+
+Chỉ materialize bytes trong checkout thử sau khi chứng minh blob cùng revision khớp expected hash. Không normalize hash hoặc coi so sánh nội dung đã normalize là PASS.
+
+Capture P2 cần dùng nguyên bytes gốc được ZIP/mapping cung cấp, không thay bằng bản LF trong Git.
+
+4. Tái hiện và kiểm chứng sau sửa.
+
+Dùng cùng evidence/môi trường để đối chứng main và integration trước sửa; phân biệt lỗi fixture bytes với lỗi P1 source drift.
+
+Sau commit sửa, trên tree tích hợp với main đã pin:
+- Chạy preflight SV1 thường và `-O`.
+- Chạy whole acceptance SV1 thường và `-O`.
+- Chạy runner portable đầy đủ với P1 v2 10.000 synthetic, 220 tensor thật, accuracy 8.544×11 và regression liên quan.
+- Chạy delivery verifier thường/`-O`, giữ regression R1/R2.
+- Kiểm source provenance theo tập source thực tế sau khi thêm v2; không hardcode 185 dependencies.
+
+Lưu output mới, argv, environment, source commit/tree/raw hashes, stdout/stderr/result hashes và exit code thật. Giữ lịch sử FAIL/reuse đúng nhãn.
+
+Dùng evidence đã nghiệm thu để kiểm offline; không mở COM hoặc build/flash MCU mới. Host C regression được phép. Không tạo lại accuracy C receipt để né source gate.
+
+5. Đối chiếu và cập nhật tình trạng 61 artifact.
+
+Hai audit gốc đã có trong ZIP. Xác thực raw inventory anchor rồi đối chiếu từng path/hash/size.
+
+Kết quả đã được kiểm độc lập: 15/61 recovered, 46 author-workspace extras còn unavailable; chỉ R3 ZIP thuộc required portable scope và đã được cung cấp đúng hash.
+
+Ghi kết quả trong báo cáo mới. Giữ các kiểm tra bắt buộc và audit workspace lịch sử; không gọi 46 extras là đã phục hồi. Ba DOCX được mapping đánh dấu optional không cần tạo thay thế.
+
+Không tiếp tục báo chung “chưa nhận ZIP/hai audit”. Nếu còn thiếu dependency thực sự, chỉ rõ path, expected hash và gate sử dụng nó.
+
+6. Giữ allocation chưa phê duyệt.
+
+`allocation-proposal.md` chỉ là proposal. Không tự áp model_profile_id `0x4D495401`, wire IDs 256..266, key_id=1 hoặc sender_id=1.
+
+Giữ deployment IDs null và profiles PUBLIC_TEST_ONLY, chờ quyết định riêng của Châu/Trung về namespace, key/sender scope, capacities và shared revision/registry hash.
+
+Compatibility SV1 có thể PASS trong khi tổng vẫn BLOCKED vì allocation; báo riêng hai trạng thái.
+
+7. Bàn giao.
+
+Commit/push nhánh PR25, cập nhật mô tả PR và báo cáo mới. Gửi:
+- HEAD SHA, main pin, tested integration SHA/tree.
+- Audit chứng minh P1 lịch sử đúng raw hash.
+- Logs đối chứng và preflight/whole acceptance thường/`-O` sau sửa.
+- Kết quả portable/regression, integrity sau commit cuối.
+- Đối chiếu 61 artifact và các quyết định còn chờ.
+
+Giữ PR draft, CURRENT WEEK=5, REVIEW_STATUS=PENDING. Chưa merge hoặc triển khai tuần 6.

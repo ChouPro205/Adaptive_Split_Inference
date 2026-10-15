@@ -1,0 +1,19 @@
+{
+  "status": "INTERRUPTED_NO_COMMAND_RECEIPT",
+  "exit_code": null,
+  "scope": "No PASS/reuse claim; incomplete P1 streams preserved before rerun",
+  "files": [
+    {
+      "original_path": "ml\\provenance\\week5-pr25-fixes-20261011\\portable-final\\p1.stdout.txt",
+      "saved_path": "ml\\provenance\\week5-pr25-fixes-20261011\\portable-final\\interrupted-attempt\\p1.stdout.txt",
+      "sha256": "99f40aa507f1ef9cf5eeab4098d164023976f491da9152dc5f280e55c72bfa1c",
+      "size_bytes": 140
+    },
+    {
+      "original_path": "ml\\provenance\\week5-pr25-fixes-20261011\\portable-final\\p1.stderr.txt",
+      "saved_path": "ml\\provenance\\week5-pr25-fixes-20261011\\portable-final\\interrupted-attempt\\p1.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    }
+  ]
+}

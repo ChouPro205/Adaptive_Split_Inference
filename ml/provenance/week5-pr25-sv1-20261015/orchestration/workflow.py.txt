@@ -1,0 +1,178 @@
+"""Offline PR25 workflow. Inputs/receipts stay immutable; every child has a new log."""
+import argparse
+import datetime as dt
+import hashlib
+import importlib.metadata
+import json
+import os
+from pathlib import Path
+import platform
+import subprocess
+import sys
+import time
+
+BASE = Path(__file__).resolve().parent
+H = BASE/'original/handoff'
+PY = BASE.parents[1]/'ml/.venv/Scripts/python.exe'
+PREP = Path('D:/HUST/ASI_week5_prepare/20261009-sv1-prepare01/preparation.json')
+SESSION = Path('D:/HUST/ASI_week5_mcu/20261009-212416')
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+def read(path):
+    return json.loads(path.read_text(encoding='utf-8-sig'))
+
+def save(path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open('x',encoding='utf-8',newline='\n') as f:
+        json.dump(data,f,indent=2,ensure_ascii=False)
+        f.write('\n')
+
+def git(root,*args):
+    return subprocess.check_output(['git',*args],cwd=root)
+
+def source_hashes(root):
+    names = git(root,'ls-files').decode().splitlines()
+    paths = {p for p in names if p.endswith(('.py','.c','.h','.ps1')) or p.startswith(('ml/configs/','ml/manifests/','contracts/'))}
+    paths |= {p.relative_to(root).as_posix() for p in (root/'ml/scripts').glob('*week5*.py')}
+    return {p:sha((root/p).read_bytes()) for p in sorted(paths) if (root/p).is_file()}
+
+def logged(root,name,command,result_paths=(),reuse=None):
+    out = root/'ml/provenance/week5-pr25-sv1-20261015'/name
+    paths = [Path(str(out)+s) for s in ('.stdout.txt','.stderr.txt','.command.json')]
+    if any(p.exists() for p in paths):
+        raise ValueError('Log already exists: '+name)
+    out.parent.mkdir(parents=True,exist_ok=True)
+    env = os.environ.copy()
+    env.pop('PYTHONHOME',None)
+    env.pop('PYTHONPATH',None)
+    env['PATH'] = 'C:/msys64/ucrt64/bin;'+env['PATH']
+    started = dt.datetime.now(dt.timezone.utc).isoformat()
+    before = source_hashes(root)
+    tick = time.monotonic()
+    with paths[0].open('xb') as stdout, paths[1].open('xb') as stderr:
+        result = subprocess.run(list(map(str,command)),cwd=root,env=env,stdout=stdout,stderr=stderr)
+    results = {}
+    for p in map(Path,result_paths):
+        for f in (sorted(p.rglob('*')) if p.is_dir() else [p]):
+            if f.is_file():
+                results[str(f)] = sha(f.read_bytes())
+    receipt = {'command':list(map(str,command)),'cwd':str(root),'exit_code':result.returncode,
+        'started_utc':started,'finished_utc':dt.datetime.now(dt.timezone.utc).isoformat(),
+        'elapsed_seconds':time.monotonic()-tick,'source_git_commit':git(root,'rev-parse','HEAD').decode().strip(),
+        'source_tree':git(root,'rev-parse','HEAD^{tree}').decode().strip(),
+        'source_files_sha256':before,'source_file_count':len(before),
+        'source_unchanged_during_command':before == source_hashes(root),
+        'git_status_before_receipt':git(root,'status','--porcelain=v1','-uno').decode(),
+        'stdout_sha256':sha(paths[0].read_bytes()),'stderr_sha256':sha(paths[1].read_bytes()),
+        'result_files_sha256':results,'scope':'FRESH_INVOCATION', 'reused_inputs':reuse or [],
+        'environment':{'platform':platform.platform(),'python_launcher':sys.version,'child_python':str(PY),
+          'child_python_sha256':sha(PY.read_bytes()),'PATH':env['PATH'],'PYTHONHOME':None,'PYTHONPATH':None},
+        'orchestrator_sha256':sha(Path(__file__).read_bytes())}
+    save(paths[2],receipt)
+    print(name,'exit='+str(result.returncode),flush=True)
+    return result.returncode
+
+def bindings():
+    prep = read(H/'preparation/preparation.json')
+    accuracy = read(H/'preparation/evidence/accuracy/evaluation.json')
+    return {'preparation':prep['source_sha256'], 'accuracy_c':accuracy['source_sha256'],
+            'frozen_ml':accuracy['provenance']['source_files_sha256']}
+
+def hydrate(root,p2=False):
+    rows = read(H/'path-mapping-final.json')
+    tracked = set(git(root,'ls-files').decode().splitlines())
+    records = []
+    for row in rows:
+        rp = row['relative_path']
+        prefix = next((p for p in ('dependencies/portable/','dependencies/workspace/') if rp.startswith(p)),None)
+        if not prefix:
+            continue
+        name = rp[len(prefix):]
+        dest = root/name
+        raw = (H/rp).read_bytes()
+        if sha(raw) != row['sha256'] or len(raw) != row['size_bytes']:
+            raise ValueError('Mapping differs: '+rp)
+        if dest.exists():
+            action = 'UNCHANGED' if dest.read_bytes() == raw else 'RETAINED_EXISTING_BYTES'
+        elif name in tracked:
+            raise ValueError('Missing tracked path')
+        else:
+            dest.parent.mkdir(parents=True,exist_ok=True)
+            dest.write_bytes(raw)
+            action = 'COPIED_MISSING_DEPENDENCY'
+        records.append({'path':name,'expected':row['sha256'],'current':sha(dest.read_bytes()),'action':action})
+    # Check raw current/blob before touching the four Windows checkout files.
+    audits = []
+    for group, names in bindings().items():
+        for name,expected in names.items():
+            dest = root/name
+            current = sha(dest.read_bytes()) if dest.is_file() else None
+            blob = git(root,'show','HEAD:'+name) if name in tracked else None
+            blob_hash = sha(blob) if blob is not None else None
+            action = 'UNCHANGED'
+            if current != expected and name in {
+                'device/scripts/build_week5_head.ps1','device/scripts/flash_week5_head.ps1',
+                'device/scripts/test_week5_scripts.ps1','device/scripts/requirements-week5-collector.txt'}:
+                if blob_hash != expected:
+                    raise ValueError('Same-revision Git blob does not match receipt: '+name)
+                dest.write_bytes(blob)
+                action = 'MATERIALIZED_EXACT_SAME_REVISION_GIT_BLOB'
+            audits.append({'group':group,'path':name,'expected':expected,'current_before':current,
+                'git_blob_sha256':blob_hash,'current_after':sha(dest.read_bytes()),'action':action,
+                'status':'PASS' if sha(dest.read_bytes()) == expected else 'SOURCE_DRIFT'})
+    label = 'raw-source-bindings'
+    save(BASE/'audit'/root.name/(label+'.json'), {'commit':git(root,'rev-parse','HEAD').decode().strip(),
+        'tree':git(root,'rev-parse','HEAD^{tree}').decode().strip(),'bindings':audits, 'hydration':records})
+    if p2:
+        materialize_p2(root)
+    print('Hydrated',root.name,'source mismatches',[(x['group'],x['path']) for x in audits if x['status']!='PASS'])
+
+def materialize_p2(root):
+    name = 'results/week3/logs/week3_capture_20x5.txt'
+    rows = [r for r in read(H/'path-mapping-final.json') if r['source'].replace('\\','/').endswith('/'+name)]
+    if len(rows) != 1:
+        raise ValueError('P2 mapping count')
+    row = rows[0]
+    raw = (H/row['relative_path']).read_bytes()
+    expected = read(root/'results/week3/week3_mcu_validation_20x5.json')['capture_sha256']
+    blob = git(root,'show','HEAD:'+name)
+    dest = root/name
+    current = sha(dest.read_bytes())
+    if sha(raw) != expected or sha(raw) != row['sha256'] or len(raw) != row['size_bytes']:
+        raise ValueError('Original P2 bytes do not match receipt')
+    save(BASE/'audit'/root.name/'p2-original-capture.json', {'path':name,'expected':expected,
+        'current_before':current,'git_blob_sha256':sha(blob),'mapped_original_sha256':sha(raw),
+        'mapped_original_size_bytes':len(raw),'source_mapping':row,
+        'action':'MATERIALIZE_ORIGINAL_CAPTURE_RAW_BYTES_FROM_AUTHENTICATED_ZIP'})
+    dest.write_bytes(raw)
+
+def sv1(root,label,accept=True):
+    for optimized in (False,True):
+        suffix = '-O' if optimized else '-normal'
+        python = [PY,*(['-O'] if optimized else []),'-B']
+        logged(root,label+'-preflight'+suffix,[*python,'device/scripts/verify_week5_package.py','--preparation',PREP],
+               reuse=['Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations'])
+        if accept:
+            output = root/'ml/provenance/week5-pr25-sv1-20261015'/(label+'-acceptance'+suffix+'-results')
+            logged(root,label+'-acceptance'+suffix,[*python,'device/scripts/accept_week5_mcu.py',
+                '--session',SESSION,'--preparation',PREP,'--output',output],[output],
+                reuse=['Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate'])
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument('action',choices=['hydrate','p2','sv1','log'])
+    p.add_argument('checkout')
+    p.add_argument('--label',default='postfix')
+    p.add_argument('--with-p2',action='store_true')
+    p.add_argument('command',nargs='*')
+    a = p.parse_args()
+    root = BASE/a.checkout
+    if a.action == 'hydrate': hydrate(root,a.with_p2)
+    elif a.action == 'p2': materialize_p2(root)
+    elif a.action == 'sv1': sv1(root,a.label)
+    elif a.action == 'log': logged(root,a.label,a.command)
+
+if __name__ == '__main__':
+    main()

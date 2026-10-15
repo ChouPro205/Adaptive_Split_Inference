@@ -1,0 +1,46 @@
+import gzip
+import hashlib
+import json
+from pathlib import Path
+from workflow import BASE,H,read,save,sha
+
+raw = gzip.decompress((H/'dependencies/portable/ml/provenance/week5-20261009-v1/preservation_before.json.gz').read_bytes())
+inventory = json.loads(raw)
+audit_path = H/'historical-review/evidence/historical-assets-audit.json'
+copies_path = H/'historical-review/evidence/historical-missing-copied.json'
+audit,copies = read(audit_path),read(copies_path)
+anchor = sha(raw)
+if anchor != copies['raw_inventory_anchor'] or anchor != '2e9a969fbc01fe91675232369cea35423463126e42daf4f83693de69c22ea4ae':
+    raise ValueError('Raw inventory anchor differs')
+missing = {r['path']:{'size_bytes':r['size_bytes'],'sha256':r['sha256']} for r in audit['missing']}
+copied = {r['path']:{'size_bytes':r['bytes'],'sha256':r['sha256']} for r in copies['copied']}
+unavailable = {r['path']:{'size_bytes':r['size_bytes'],'sha256':r['sha256']} for r in copies['unavailable']}
+if len(missing)!=226 or len(copied)!=165 or len(unavailable)!=61 or set(copied)&set(unavailable) or missing != copied|unavailable:
+    raise ValueError('Original partition differs')
+for name,rec in missing.items():
+    if inventory['files'][name] != rec:
+        raise ValueError('Path/hash/size differs from raw inventory: '+name)
+scope = read(BASE/'repo/ml/manifests/week5_delivery_scope_v2.json')
+required = {r['path'] for r in scope['files']}
+mapping = {r['relative_path']:r for r in read(H/'path-mapping-final.json')}
+rows = []
+for name,expected in unavailable.items():
+    target = H/'dependencies/historical-audit-recovered'/name
+    rp = target.relative_to(H).as_posix()
+    actual = {'size_bytes':target.stat().st_size,'sha256':sha(target.read_bytes())} if target.is_file() else None
+    if actual is not None and (actual != expected or rp not in mapping):
+        raise ValueError('Recovered bytes/mapping differ: '+name)
+    rows.append({'path':name,'expected':expected,'current':actual,
+        'status':'RECOVERED_EXACT_RAW_BYTES' if actual else 'UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA',
+        'required_portable_scope':name in required,'handoff_path':rp if actual else None})
+recovered = sum(r['current'] is not None for r in rows)
+portable = [r for r in rows if r['required_portable_scope']]
+if recovered != 15 or len(rows)-recovered != 46 or len(portable)!=1 or not portable[0]['current']:
+    raise ValueError('61 artifact classification differs')
+save(BASE/'audit/historical-61-current-audit.json',{'status':'PASS','raw_inventory_anchor':anchor,
+    'audit_raw_sha256':sha(audit_path.read_bytes()),'copies_raw_sha256':sha(copies_path.read_bytes()),
+    'historical_missing':226,'historical_copied':165,'historical_unavailable':61,
+    'current_recovered':15,'current_unavailable_author_extras':46,'required_portable_among_61':1,
+    'all_226_path_hash_size_match_raw_inventory':True,'runtime_evidence_unresolved':[],
+    'optional_docx':read(H/'reference-resolution-final.json')['optional_historical_docx_missing'],'rows':rows})
+print('PASS: raw inventory anchor; 226=165+61; 15 recovered, 46 unavailable extras; required R3 recovered')

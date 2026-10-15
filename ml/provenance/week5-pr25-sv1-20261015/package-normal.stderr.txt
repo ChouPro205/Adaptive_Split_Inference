@@ -1,0 +1,8 @@
+test_actual_package (__main__.Tests.test_actual_package) ... ok
+test_artifact_tamper (__main__.Tests.test_artifact_tamper) ... ok
+test_source_binding_and_application_tamper (__main__.Tests.test_source_binding_and_application_tamper) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.652s
+
+OK

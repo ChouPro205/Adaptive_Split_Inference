@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "status": "BLOCKED_WIRE_ALLOCATION",
+  "authority": "ML fields copied from CONFIRMED FP32 registry; no wire allocation authority present",
+  "reference_registry": "ml/configs/week3_sv2_interface_review.json",
+  "model_name": "mitdb_week2_cnn_v1",
+  "model_version": "mitdb_week2_cnn_v1",
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "model_profile_id": null,
+  "key_id": null,
+  "sender_scope": null,
+  "quantization_reference": "ml/src/quantization.py",
+  "quantization_version": "ncl-int8-fp16-v1-review",
+  "quantization_scheme": "INT8 symmetric per sample/channel; zero_point=0; axis=1; FP16 stored/reloaded scales; wire FP32 LE expanded",
+  "splits": [
+    {
+      "split_point_s": 0,
+      "wire_split_id": null,
+      "head_endpoint": "normalized_model_input (identity head)",
+      "shape_original": [
+        1,
+        1,
+        360
+      ],
+      "layout_original": "NCL",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        1,
+        360
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 1,
+      "wire_split_id": null,
+      "head_endpoint": "features.1",
+      "shape_original": [
+        1,
+        16,
+        360
+      ],
+      "layout_original": "NCL",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        16,
+        360
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 2,
+      "wire_split_id": null,
+      "head_endpoint": "features.4",
+      "shape_original": [
+        1,
+        16,
+        180
+      ],
+      "layout_original": "NCL",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        16,
+        180
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 3,
+      "wire_split_id": null,
+      "head_endpoint": "features.6",
+      "shape_original": [
+        1,
+        32,
+        180
+      ],
+      "layout_original": "NCL",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        32,
+        180
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 4,
+      "wire_split_id": null,
+      "head_endpoint": "features.9",
+      "shape_original": [
+        1,
+        32,
+        90
+      ],
+      "layout_original": "NCL",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        32,
+        90
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 5,
+      "wire_split_id": null,
+      "head_endpoint": "features.11",
+      "shape_original": [
+        1,
+        48,
+        90
+      ],
+      "layout_original": "NCL",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        48,
+        90
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 6,
+      "wire_split_id": null,
+      "head_endpoint": "features.14",
+      "shape_original": [
+        1,
+        48,
+        45
+      ],
+      "layout_original": "NCL",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        48,
+        45
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 7,
+      "wire_split_id": null,
+      "head_endpoint": "features.16",
+      "shape_original": [
+        1,
+        64,
+        45
+      ],
+      "layout_original": "NCL",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        64,
+        45
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 8,
+      "wire_split_id": null,
+      "head_endpoint": "features.19",
+      "shape_original": [
+        1,
+        64,
+        22
+      ],
+      "layout_original": "NCL",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        64,
+        22
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 9,
+      "wire_split_id": null,
+      "head_endpoint": "classifier.3",
+      "shape_original": [
+        1,
+        32
+      ],
+      "layout_original": "NC",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        32,
+        1
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    },
+    {
+      "split_point_s": 10,
+      "wire_split_id": null,
+      "head_endpoint": "classifier.4",
+      "shape_original": [
+        1,
+        5
+      ],
+      "layout_original": "NC",
+      "dtype": "INT8",
+      "i2_layout": "NCL",
+      "i2_shape_NCL": [
+        1,
+        5,
+        1
+      ],
+      "channel_axis": 1,
+      "max_payload_bytes": 32768,
+      "device_buffer_limit_status": "PENDING_SV1_SV2; 32768 is contract ceiling only"
+    }
+  ]
+}

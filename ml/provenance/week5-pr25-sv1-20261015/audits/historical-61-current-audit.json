@@ -1,0 +1,737 @@
+{
+  "status": "PASS",
+  "raw_inventory_anchor": "2e9a969fbc01fe91675232369cea35423463126e42daf4f83693de69c22ea4ae",
+  "audit_raw_sha256": "ded4c764becfb670cd565db9333cad18d3e7395a0a0b04f4fae66d3fc5394190",
+  "copies_raw_sha256": "f6d29da9db91ddf5ef0225e954582c1684ff56d65fa04d37d783a28ea359557b",
+  "historical_missing": 226,
+  "historical_copied": 165,
+  "historical_unavailable": 61,
+  "current_recovered": 15,
+  "current_unavailable_author_extras": 46,
+  "required_portable_among_61": 1,
+  "all_226_path_hash_size_match_raw_inventory": true,
+  "runtime_evidence_unresolved": [],
+  "optional_docx": [
+    "D:\\HUST\\Adaptive_Split_Inference\\ml\\docs\\project_sources\\requirements\\06_Huong1_Adaptive_Split_Inference_Lo_trinh.docx",
+    "D:\\HUST\\Adaptive_Split_Inference\\ml\\docs\\project_sources\\requirements\\Huong1_Bao_cao_trien_khai_3SV.docx",
+    "D:\\HUST\\Adaptive_Split_Inference\\ml\\docs\\project_sources\\requirements\\Huong1_Huong_dan_chi_tiet_tung_thanh_vien.docx"
+  ],
+  "rows": [
+    {
+      "path": "ml/artifacts/week3/mitdb-week3-fp32-20260925-v1-repro/manifest.json",
+      "expected": {
+        "size_bytes": 14412,
+        "sha256": "b95940f39cb56386c5a127cbe6ea88e8f38bceb1fb0f035004a373e6c7015259"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week3/mitdb-week3-fp32-20260925-v1-repro/README.md",
+      "expected": {
+        "size_bytes": 6281,
+        "sha256": "40413c26c529bb34f82793248b1c8a5fb0a313ee4ac618da2b6a6756f42209f5"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week3/mitdb-week3-fp32-20260925-v1.zip",
+      "expected": {
+        "size_bytes": 1601258,
+        "sha256": "59a3d5ac9546c754ddeaca6fa3f207c08a8724148f55d8d3b58c32e8ba7b75c3"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2-repro/manifest.json",
+      "expected": {
+        "size_bytes": 14414,
+        "sha256": "234ec090939875d8eedd5bfbf0eb94f2fb715bfc8ff43d2fb75ca976ad5decb1"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2-repro/README.md",
+      "expected": {
+        "size_bytes": 6944,
+        "sha256": "2da082ee97a75b8a11a305546ab308704cdd49efbee5fb04988ee3ceb4600ad4"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1-repro/manifest.json",
+      "expected": {
+        "size_bytes": 43224,
+        "sha256": "84067252c782e1c5f934aa0c26dfc85b68a3ee0f14af98e53d6f4d5a815029a3"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1-repro/README.md",
+      "expected": {
+        "size_bytes": 4807,
+        "sha256": "507af5839f548cd4abc5d3ecf210fc8260c9f7410290fa2203a75729d4616d71"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1.zip",
+      "expected": {
+        "size_bytes": 4507827,
+        "sha256": "b7f5b8d0bcd5ec27755f3e44541c0d24a6d23bdd27e199660a7b653bc30a71c7"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/mitdb-sv1-week4-fp32-20261001-r2.zip",
+      "expected": {
+        "size_bytes": 5658710,
+        "sha256": "0ac95f9855484659ea1d8c988dd77d7a4635427169a7bdc8ed1884fef19f1140"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/mitdb-sv1-week4-fp32-20261001-r3.zip",
+      "expected": {
+        "size_bytes": 5659073,
+        "sha256": "4426bcd48282f84721d3dc00404de2e0cfaf38891e8fae850d15622323b972ff"
+      },
+      "current": {
+        "size_bytes": 5659073,
+        "sha256": "4426bcd48282f84721d3dc00404de2e0cfaf38891e8fae850d15622323b972ff"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": true,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/mitdb-sv1-week4-fp32-20261001-r3.zip"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r2/adaptive-split-inference-r2.bundle",
+      "expected": {
+        "size_bytes": 3653678,
+        "sha256": "018bf4aa8e4074310054660b6a60e1d82fbd31aef8ff99146b11a31be37d8b9c"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r2/mitdb-sv1-week4-fp32-20261001-r2.zip",
+      "expected": {
+        "size_bytes": 5658710,
+        "sha256": "0ac95f9855484659ea1d8c988dd77d7a4635427169a7bdc8ed1884fef19f1140"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r2/SHA256SUMS.txt",
+      "expected": {
+        "size_bytes": 744,
+        "sha256": "6ad2c26d4a645880d782b54e8113179dee2235c36a0dff30fc1ec164b4c01681"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/adaptive-split-inference-r3-source.zip",
+      "expected": {
+        "size_bytes": 3997950,
+        "sha256": "09d63416231122d7ff6e719d270cc52f8f2b7eece70496f7155c2ffd6ab5a3f8"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/adaptive-split-inference-r3.bundle",
+      "expected": {
+        "size_bytes": 3718066,
+        "sha256": "711ddbdb8e69beeb70c4409752339232a9f8ab60e602f6d03c0f07215fdcd91b"
+      },
+      "current": {
+        "size_bytes": 3718066,
+        "sha256": "711ddbdb8e69beeb70c4409752339232a9f8ab60e602f6d03c0f07215fdcd91b"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r3/adaptive-split-inference-r3.bundle"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/delivery_summary.json",
+      "expected": {
+        "size_bytes": 638,
+        "sha256": "4cd3ee14c197defb461fe14e8a4275dc939a275ebbf08febe4d3411e23b4eca3"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/final-checkout/bundle_heads.txt",
+      "expected": {
+        "size_bytes": 150,
+        "sha256": "738cba833c47479c5e3ac461aabbd5ab538e4b60d87e6a590f1e442e8b0d3c59"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/final-checkout/bundle_verify.txt",
+      "expected": {
+        "size_bytes": 383,
+        "sha256": "2a511aea505c9adfa67ad4e93027fdab1b8c89a38037c09be3d5326ea531f601"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/final-checkout/checkout_final.txt",
+      "expected": {
+        "size_bytes": 87,
+        "sha256": "29c6f1e7248b5a7e4ecc3b5337c0bda7d7f18e6e5e1800a613d3944ced16479f"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/final-checkout/clone_bundle.txt",
+      "expected": {
+        "size_bytes": 159,
+        "sha256": "17720529095578fb92efeea867c83a2bb30256ac8d7ce6946d006ce0e983e893"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/final-checkout/commands.json",
+      "expected": {
+        "size_bytes": 13539,
+        "sha256": "30d2cc0c65a7b54d6dfd722956b9f675f64f20b212ed4a08a533a95430bdcf44"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/final-checkout/reproduction_export.txt",
+      "expected": {
+        "size_bytes": 179,
+        "sha256": "3af287ff6282b068fc46e7c2a4687b87241fb244734d12eed3e931ecfae7295d"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/final-checkout/reproduction_verify.txt",
+      "expected": {
+        "size_bytes": 3285,
+        "sha256": "0e7d16b1c660dd3b1d677532fd78fda931da5a4a70dc04f05f92163b75d5b055"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/final-checkout/summary.json",
+      "expected": {
+        "size_bytes": 15245,
+        "sha256": "a02160ac2321dbb6048a4d6422936d2fa7d3a89c0390c07da39115205d704f49"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/final-checkout/test_week3_sv2_cache.txt",
+      "expected": {
+        "size_bytes": 1913,
+        "sha256": "7a058e89354d641aad813fb687e15cd17a42a964787aff357634ab1e3ce16811"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/mitdb-sv1-week4-fp32-20261001-r3.zip",
+      "expected": {
+        "size_bytes": 5659073,
+        "sha256": "4426bcd48282f84721d3dc00404de2e0cfaf38891e8fae850d15622323b972ff"
+      },
+      "current": {
+        "size_bytes": 5659073,
+        "sha256": "4426bcd48282f84721d3dc00404de2e0cfaf38891e8fae850d15622323b972ff"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r3/mitdb-sv1-week4-fp32-20261001-r3.zip"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/r3-initial-bundle-history-check.txt",
+      "expected": {
+        "size_bytes": 560,
+        "sha256": "4211ceb0210114668b56d73ee96a32f260bd5a69f3b92ae9f503f84fbf7510e7"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/r3-validation-logs.zip",
+      "expected": {
+        "size_bytes": 47037,
+        "sha256": "ef0474517c793c44595c16684dc6deece5c40d1c279b006739cbd152a46c103d"
+      },
+      "current": {
+        "size_bytes": 47037,
+        "sha256": "ef0474517c793c44595c16684dc6deece5c40d1c279b006739cbd152a46c103d"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r3/r3-validation-logs.zip"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/SHA256SUMS.txt",
+      "expected": {
+        "size_bytes": 1039,
+        "sha256": "4c758fb4a6c0114ee5bc39d77c422065a1389c10b089799d19f653dafd5cbdd3"
+      },
+      "current": {
+        "size_bytes": 1039,
+        "sha256": "4c758fb4a6c0114ee5bc39d77c422065a1389c10b089799d19f653dafd5cbdd3"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r3/SHA256SUMS.txt"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/source_transfer_receipt.json",
+      "expected": {
+        "size_bytes": 3089,
+        "sha256": "5987457c0d27c05b319d234459b456658d83917f6cd715e5fe58502138f3d69e"
+      },
+      "current": {
+        "size_bytes": 3089,
+        "sha256": "5987457c0d27c05b319d234459b456658d83917f6cd715e5fe58502138f3d69e"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r3/source_transfer_receipt.json"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3/sv3_sv1_week4_handoff_r3.md",
+      "expected": {
+        "size_bytes": 6035,
+        "sha256": "f01245c1efd6d1d9f7cb465477d63542ad4dd6be43a18bc55bb4231681a82798"
+      },
+      "current": {
+        "size_bytes": 6035,
+        "sha256": "f01245c1efd6d1d9f7cb465477d63542ad4dd6be43a18bc55bb4231681a82798"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r3/sv3_sv1_week4_handoff_r3.md"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/adaptive-split-inference-r3-source.zip",
+      "expected": {
+        "size_bytes": 3997950,
+        "sha256": "09d63416231122d7ff6e719d270cc52f8f2b7eece70496f7155c2ffd6ab5a3f8"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/adaptive-split-inference-r3.bundle",
+      "expected": {
+        "size_bytes": 3703461,
+        "sha256": "616ef742db9a985b4d0ddbe4f5dedeb0d29e90b2811c5bb940f3191fb322980f"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/bundle_heads.txt",
+      "expected": {
+        "size_bytes": 79,
+        "sha256": "ef51cccb340fa8231a07eba88f6b59b5400f76a2e41c97ceae6137c08fa1f123"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/bundle_verify.txt",
+      "expected": {
+        "size_bytes": 308,
+        "sha256": "d490878423333281e63cec0cd36e42b300fa3779272fef48f9950abf754841f9"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/checkout_final.txt",
+      "expected": {
+        "size_bytes": 87,
+        "sha256": "29c6f1e7248b5a7e4ecc3b5337c0bda7d7f18e6e5e1800a613d3944ced16479f"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/clone_bundle.txt",
+      "expected": {
+        "size_bytes": 159,
+        "sha256": "4bfeb67c1f735d422b27a36c3b3106925dc47479d04b19e19a26cb57bcd65483"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/commands.json",
+      "expected": {
+        "size_bytes": 11583,
+        "sha256": "9237258b71dc4dd343f0399286f7d9f48a77231772b0df14218e1b3f3e4d3989"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/reproduction_export.txt",
+      "expected": {
+        "size_bytes": 179,
+        "sha256": "98f89b1286e3755dd29818f9b0e65aa88aa39336b555a54eb1105605f82e1f02"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/reproduction_verify.txt",
+      "expected": {
+        "size_bytes": 3285,
+        "sha256": "0e7d16b1c660dd3b1d677532fd78fda931da5a4a70dc04f05f92163b75d5b055"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/test_week3_sv2_cache.txt",
+      "expected": {
+        "size_bytes": 1913,
+        "sha256": "4d2fa79991c31b9b7df0d8ae3df2fc7e1a7c6af65ea3bd76a11a7442657bfd12"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/test_week4_release.txt",
+      "expected": {
+        "size_bytes": 976,
+        "sha256": "a860670a6cfb63a164fa1c33e5fb488142b38a3a3615c0ce93ed2bdc2b15ed0d"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/final-checkout/verify_week3.txt",
+      "expected": {
+        "size_bytes": 270,
+        "sha256": "1f6e49869bd01a750e13e4948ad7ba95ef471b3313965ecb27c9a2731cb1f4ac"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/mitdb-sv1-week4-fp32-20261001-r3.zip",
+      "expected": {
+        "size_bytes": 5659073,
+        "sha256": "4426bcd48282f84721d3dc00404de2e0cfaf38891e8fae850d15622323b972ff"
+      },
+      "current": {
+        "size_bytes": 5659073,
+        "sha256": "4426bcd48282f84721d3dc00404de2e0cfaf38891e8fae850d15622323b972ff"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r3-attempt1/mitdb-sv1-week4-fp32-20261001-r3.zip"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r3-attempt1/sv3_sv1_week4_handoff_r3.md",
+      "expected": {
+        "size_bytes": 6035,
+        "sha256": "f01245c1efd6d1d9f7cb465477d63542ad4dd6be43a18bc55bb4231681a82798"
+      },
+      "current": {
+        "size_bytes": 6035,
+        "sha256": "f01245c1efd6d1d9f7cb465477d63542ad4dd6be43a18bc55bb4231681a82798"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r3-attempt1/sv3_sv1_week4_handoff_r3.md"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/adaptive-split-inference-r4-source.zip",
+      "expected": {
+        "size_bytes": 4177752,
+        "sha256": "0e89fac65ff39b4af9b1e0924696642574a6aa97b3c663ca1a64db3ef3643418"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/adaptive-split-inference-r4.bundle",
+      "expected": {
+        "size_bytes": 3749777,
+        "sha256": "4ba2d70fc16b89b5a2a4637530386970b9fb34c615a16371ccafd8517b7ae7f2"
+      },
+      "current": {
+        "size_bytes": 3749777,
+        "sha256": "4ba2d70fc16b89b5a2a4637530386970b9fb34c615a16371ccafd8517b7ae7f2"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r4/adaptive-split-inference-r4.bundle"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/bundle_heads.txt",
+      "expected": {
+        "size_bytes": 150,
+        "sha256": "190bce2b00e80f98d171e5242c80bdc408b0d5a55c581ddd6ac79d93a320d589"
+      },
+      "current": {
+        "size_bytes": 150,
+        "sha256": "190bce2b00e80f98d171e5242c80bdc408b0d5a55c581ddd6ac79d93a320d589"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r4/final-checkout/bundle_heads.txt"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/bundle_verify.txt",
+      "expected": {
+        "size_bytes": 383,
+        "sha256": "3ddd88c7e5a8cf76616768f4b0d1833b49690b40f3e77c51ccd67d42cd1a7bc6"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/checkout_final.txt",
+      "expected": {
+        "size_bytes": 86,
+        "sha256": "259c55c480a57deac06dc8e0ed86f487ee2cf59d118981ea7757e5ce52c35c77"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/clone_bundle.txt",
+      "expected": {
+        "size_bytes": 159,
+        "sha256": "dcf2bf711e175da4a86cd58b69e78bb5548dd5fad1a12dfa70e520ed7d0ccfb1"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/commands.json",
+      "expected": {
+        "size_bytes": 13539,
+        "sha256": "c107b00e4f8bfbaf3dda0cf17922f00991ba7ac05d7279b9c1b74c5bd6c47be5"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/reproduction_export.txt",
+      "expected": {
+        "size_bytes": 179,
+        "sha256": "511094b6fbbda38af780b691eb02416eabe1dde513c6fcd6f69464cdede81e74"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/reproduction_verify.txt",
+      "expected": {
+        "size_bytes": 3285,
+        "sha256": "108217514eb905799cde5b6eeb8fb65dac15ea3022b3bab88623e998823e24a5"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/summary.json",
+      "expected": {
+        "size_bytes": 15385,
+        "sha256": "40b53b28f78b41a414351d044e5699398fa3f9a6aa5ff9ca81227bf63903052f"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/test_week3_sv2_cache.txt",
+      "expected": {
+        "size_bytes": 2666,
+        "sha256": "91bf19376c8b32cdba0c20fa8de394af131b7e1a73ee41886e791956391a178a"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/final-checkout/test_week4_release.txt",
+      "expected": {
+        "size_bytes": 976,
+        "sha256": "0232e418b73309643f1c7ad108557dd05f1e972889e4a42e247e87d1ecb1be36"
+      },
+      "current": null,
+      "status": "UNAVAILABLE_AUTHOR_WORKSPACE_EXTRA",
+      "required_portable_scope": false,
+      "handoff_path": null
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/r4-validation-logs.zip",
+      "expected": {
+        "size_bytes": 64860,
+        "sha256": "77b936d7a7372e71c01ca49bb5deed6e05d42d648031d7dbeecb599efe3c7de4"
+      },
+      "current": {
+        "size_bytes": 64860,
+        "sha256": "77b936d7a7372e71c01ca49bb5deed6e05d42d648031d7dbeecb599efe3c7de4"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r4/r4-validation-logs.zip"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/SHA256SUMS.txt",
+      "expected": {
+        "size_bytes": 855,
+        "sha256": "02295dae4cb18b982d4ac5091093c598f693771d96df7245cc61273ceff9daca"
+      },
+      "current": {
+        "size_bytes": 855,
+        "sha256": "02295dae4cb18b982d4ac5091093c598f693771d96df7245cc61273ceff9daca"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r4/SHA256SUMS.txt"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/source_transfer_receipt.json",
+      "expected": {
+        "size_bytes": 2761,
+        "sha256": "32aa168770264778de95b2ec3f165a6e8f015ae5ff77b8c02dbdc55bc1c07361"
+      },
+      "current": {
+        "size_bytes": 2761,
+        "sha256": "32aa168770264778de95b2ec3f165a6e8f015ae5ff77b8c02dbdc55bc1c07361"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r4/source_transfer_receipt.json"
+    },
+    {
+      "path": "ml/artifacts/week4/sv1-transfer-r4/sv3_sv1_week4_handoff_r4.md",
+      "expected": {
+        "size_bytes": 9148,
+        "sha256": "02a4b9c7748b8ce65662e447bd4ff532a257eb7d5231dffc468046b878928651"
+      },
+      "current": {
+        "size_bytes": 9148,
+        "sha256": "02a4b9c7748b8ce65662e447bd4ff532a257eb7d5231dffc468046b878928651"
+      },
+      "status": "RECOVERED_EXACT_RAW_BYTES",
+      "required_portable_scope": false,
+      "handoff_path": "dependencies/historical-audit-recovered/ml/artifacts/week4/sv1-transfer-r4/sv3_sv1_week4_handoff_r4.md"
+    }
+  ]
+}

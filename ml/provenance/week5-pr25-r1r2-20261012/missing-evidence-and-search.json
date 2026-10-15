@@ -1,0 +1,338 @@
+{
+  "scope": "FRESH_EVIDENCE_SEARCH; not historical artifact audit",
+  "refs_searched": [
+    "refs/heads/local/pr25-final-clean-20261011",
+    "refs/heads/local/pr25-handoff-20261011",
+    "refs/heads/local/pr25-integrated-20261011",
+    "refs/heads/local/pr25-r1r2-20261012",
+    "refs/heads/local/pr25-r1r2-integrated-20261012",
+    "refs/heads/sv3/fix-week3-sv2-linux-fp32",
+    "refs/heads/sv3/week5-technical-20261009",
+    "refs/remotes/origin/HEAD",
+    "refs/remotes/origin/dev/device-sv1",
+    "refs/remotes/origin/dev/edge-sv2",
+    "refs/remotes/origin/dev/model-sv3",
+    "refs/remotes/origin/docs/sv3-week1-week2-reports",
+    "refs/remotes/origin/docs/sv3-week3-week4-reports",
+    "refs/remotes/origin/main",
+    "refs/remotes/origin/sv3/fix-week3-sv2-linux-fp32",
+    "refs/remotes/origin/sv3/week1-env",
+    "refs/remotes/origin/sv3/week2-baseline",
+    "refs/remotes/origin/sv3/week2-baseline-v2",
+    "refs/remotes/origin/sv3/week3-fp32-handoff",
+    "refs/remotes/origin/sv3/week3-sv2-fp32-handoff",
+    "refs/remotes/origin/sv3/week4-r4-inventory-fix",
+    "refs/remotes/origin/sv3/week5-technical-20261009",
+    "refs/remotes/origin/sv3/week5-verification-20261009",
+    "refs/tags/sv3-week4-r3-20261001",
+    "refs/tags/sv3-week4-r4-20261003",
+    "refs/tags/sv3-week5-v1-20261005"
+  ],
+  "tip_matches": [],
+  "history_matches": [],
+  "supplied_local_roots": [
+    "C:/Users/Admin/Adaptive_Split_Inference",
+    "C:/Users/Admin/Downloads",
+    "C:/Users/Admin/.codex/.chatgpt-projects/g-p-6aa0e9f8edd48191976f9b12cd86e2ff/reviews"
+  ],
+  "exact_local_filename_matches": [],
+  "local_search": "rg --files --hidden with exact filenames, no matches; simulated host captures are not MCU evidence",
+  "release_metadata": [
+    {
+      "tag": "sv3-week5-v1-20261005",
+      "published_at": "2026-10-05T07:47:38Z",
+      "assets": [
+        {
+          "name": "mitdb-frozen-processed-week5-v1.zip",
+          "size": 33098461,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week5-v1-20261005/mitdb-frozen-processed-week5-v1.zip"
+        },
+        {
+          "name": "sv3-week5-quantization-reference-v1.zip",
+          "size": 807817,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week5-v1-20261005/sv3-week5-quantization-reference-v1.zip"
+        }
+      ]
+    },
+    {
+      "tag": "sv3-week4-r4-20261003",
+      "published_at": "2026-10-03T20:48:31Z",
+      "assets": [
+        {
+          "name": "adaptive-split-inference-r4-source.zip",
+          "size": 4177752,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/adaptive-split-inference-r4-source.zip"
+        },
+        {
+          "name": "adaptive-split-inference-r4.bundle",
+          "size": 3749777,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/adaptive-split-inference-r4.bundle"
+        },
+        {
+          "name": "deliverables.json",
+          "size": 15197,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/deliverables.json"
+        },
+        {
+          "name": "mitdb-sv1-week4-fp32-20261001-r4.zip",
+          "size": 5659076,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/mitdb-sv1-week4-fp32-20261001-r4.zip"
+        },
+        {
+          "name": "r4-validation-logs.zip",
+          "size": 64860,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/r4-validation-logs.zip"
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 855,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/SHA256SUMS.txt"
+        },
+        {
+          "name": "source_transfer_receipt.json",
+          "size": 2761,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/source_transfer_receipt.json"
+        },
+        {
+          "name": "sv3_sv1_week4_handoff_r4.md",
+          "size": 9148,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/sv3_sv1_week4_handoff_r4.md"
+        },
+        {
+          "name": "week4_inventory_order_fix.md",
+          "size": 4182,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/week4_inventory_order_fix.md"
+        },
+        {
+          "name": "week4_r4_completion.md",
+          "size": 4922,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r4-20261003/week4_r4_completion.md"
+        }
+      ]
+    },
+    {
+      "tag": "sv3-week4-r3-20261001",
+      "published_at": "2026-10-01T16:35:43Z",
+      "assets": [
+        {
+          "name": "adaptive-split-inference-r3-source.zip",
+          "size": 3997950,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/adaptive-split-inference-r3-source.zip"
+        },
+        {
+          "name": "adaptive-split-inference-r3.bundle",
+          "size": 3718066,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/adaptive-split-inference-r3.bundle"
+        },
+        {
+          "name": "deliverables.json",
+          "size": 15197,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/deliverables.json"
+        },
+        {
+          "name": "delivery_summary.json",
+          "size": 638,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/delivery_summary.json"
+        },
+        {
+          "name": "mitdb-sv1-week4-fp32-20261001-r3.zip",
+          "size": 5659073,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/mitdb-sv1-week4-fp32-20261001-r3.zip"
+        },
+        {
+          "name": "r3-initial-bundle-history-check.txt",
+          "size": 560,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/r3-initial-bundle-history-check.txt"
+        },
+        {
+          "name": "r3-validation-logs.zip",
+          "size": 47037,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/r3-validation-logs.zip"
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 1039,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/SHA256SUMS.txt"
+        },
+        {
+          "name": "source_transfer_receipt.json",
+          "size": 3089,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/source_transfer_receipt.json"
+        },
+        {
+          "name": "sv3_sv1_week4_handoff_r3.md",
+          "size": 6035,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/sv3_sv1_week4_handoff_r3.md"
+        },
+        {
+          "name": "week4_r3_completion.md",
+          "size": 3865,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/week4_r3_completion.md"
+        },
+        {
+          "name": "week4_review2_audit.md",
+          "size": 3614,
+          "browser_download_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week4-r3-20261001/week4_review2_audit.md"
+        }
+      ]
+    }
+  ],
+  "authenticated_archive_members": [
+    {
+      "archive": "mitdb-frozen-processed-week5-v1.zip",
+      "matched_members": []
+    },
+    {
+      "archive": "mitdb-sv1-week4-fp32-20261001-r3.zip",
+      "matched_members": []
+    },
+    {
+      "archive": "mitdb-sv1-week4-fp32-20261001-r4.zip",
+      "matched_members": []
+    },
+    {
+      "archive": "sv3-week5-quantization-reference-v1.zip",
+      "matched_members": []
+    }
+  ],
+  "search_limit": "Three public releases enumerated; four portable ZIP member lists inspected. Older R3/R4 source/log release artifacts predate SV1 October 9 session; metadata is not proof about unknown external files. No assertion outside supplied roots/repository/releases.",
+  "required_missing": [
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+      "sha256": "bed996d79ea68a888ccee254869c45921296bb85fa6ed3e93b36debe10c63cac",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\dfu\\dfu-20261009-212510.json",
+      "sha256": "43f83486eb6af436fc3ebb05864c4e6a4cbb2e23d03b311d6f107591bc1cc647",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.receipt.json",
+      "sha256": "99552915f99574d1d236874058f13aea97309be5eeacbc91f80782d1ecc3cc95",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.txt",
+      "sha256": "0c915b90658be5d01ce87eddab747f0f4c35dfdc893e1a617df8d6d42d986378",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\evidence\\accuracy\\evaluation.json",
+      "sha256": "68fb4ad72725106b982c79403ddacee0edc975929f2793005354a4dd3d283500",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\collect.command.json",
+      "sha256": "f1bf587171a620f8e00c30c804989971bf2062a9d349986b718ec48831136710",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\ports-before.json",
+      "sha256": "4dfe99bce6849fb530589f785c2288184dc088049e5c8be50c807494f66926f4",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\ports-after-dfu.json",
+      "sha256": "2b4f359b47d7953b9804c132f9519c137968196333ede4b1c7f75d6c87afe5cf",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_mcu_validation.json",
+      "sha256": "6b9520ffadbfce3fac4bd57ba8b446db0df55edcf887059dd2beca82079ae865",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_mcu_recheck.json",
+      "sha256": "206987373bb643ed3ef792fd4c64183881fe75e0b6839e2b18ff4e0e017e90cb",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_mcu_recheck_O.json",
+      "sha256": "206987373bb643ed3ef792fd4c64183881fe75e0b6839e2b18ff4e0e017e90cb",
+      "source": "pinned main results/week5/week5_mcu_validation.json:evidence_sha256",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.elf",
+      "sha256": "64b930ec978c5f628c1de85cd32cd51f44a3a2ec95c84a0cdddf58529c87ccab",
+      "size_bytes": 1943752,
+      "source": "pinned main results/week5/week5_mcu_validation.json:artifacts",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.hex",
+      "sha256": "0da170739e6170fbc6b639c2f66ff4f0e713d1e59183ad57484e94d270c61d41",
+      "size_bytes": 1474553,
+      "source": "pinned main results/week5/week5_mcu_validation.json:artifacts",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.bin",
+      "sha256": "15f07bffb1411eff9d565381fce1078cc477fa01e0533db0cce9923f53a0bf27",
+      "size_bytes": 524180,
+      "source": "pinned main results/week5/week5_mcu_validation.json:artifacts",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\adaptive_split_week5.zip",
+      "sha256": "00760b2a8467bdf0875883ac865b8b2e6c24f2e250555e93c3a722f11952b40f",
+      "size_bytes": 524709,
+      "source": "pinned main results/week5/week5_mcu_validation.json:artifacts",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.map",
+      "sha256": "2970ffd48da1de92155b5390d3d270a022e0b388e96a000037a7e1d3702c1356",
+      "size_bytes": 587219,
+      "source": "pinned main results/week5/week5_mcu_validation.json:artifacts",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\.config",
+      "sha256": "9b086f47ba302783b198da6d5da4de65f37ae15827987d6139ce161e07735347",
+      "size_bytes": 55113,
+      "source": "pinned main results/week5/week5_mcu_validation.json:artifacts",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\linker.cmd",
+      "sha256": "4ea9ea40f3b7cb43e373ca9173d5613d52fb599db8dced4a592845119c718ce3",
+      "size_bytes": 29909,
+      "source": "pinned main results/week5/week5_mcu_validation.json:artifacts",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.dts",
+      "sha256": "e20047a0d8af0e3da2a480b0bda3ad8d5eadaffe2fbbe8b3027b5288a1dd66f2",
+      "size_bytes": 64331,
+      "source": "pinned main results/week5/week5_mcu_validation.json:artifacts",
+      "status": "MISSING_LOCAL"
+    },
+    {
+      "path": "historical-assets-audit.json",
+      "sha256": null,
+      "source": "SV1 reviewer audit; original path/hash not provided",
+      "status": "MISSING_EVIDENCE; 61 filenames unknown"
+    },
+    {
+      "path": "historical-missing-copied.json",
+      "sha256": null,
+      "source": "SV1 reviewer audit; original path/hash not provided",
+      "status": "MISSING_EVIDENCE; 61 filenames unknown"
+    }
+  ],
+  "source_summary_sha256": "6663de496c3227ed41b1760fe2564b352c2f92be27623875ee5004db44796227",
+  "status": "BLOCKED_MISSING_SV1_AND_REVIEWER_AUDITS",
+  "must_receive": "Complete original preparation/build/evidence and MCU session trees, including transitive files named by their receipts; hash inventory for unavailable transitive files cannot be inferred"
+}

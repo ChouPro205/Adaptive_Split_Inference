@@ -13,3 +13,11 @@ Nơi quản lý hợp đồng giao diện I1-I4, packet format, schema, versioni
 Mã tham chiếu Python/C và vector I2 nằm trong [`i2_ref/`](i2_ref/test_i2.py).
 
 [SV3 to SV2 Week 3 FP32](sv3_sv2_week3_fp32.md): confirmed s=0..10 mapping and opset 13; ten FP32 ONNX tails, SV2 hardware validation pending.
+
+## Quyết định SV3 tuần 5 hiện hành
+
+[Allocation v2](sv3_week5_allocation_v2.md): Châu đã duyệt testbed ASI/MIT-BIH,
+revision `mitdb-week5-i2-registry-v1-r1`; final verifier v3 kết hợp science,
+approved registry và offline SV1 compatibility. Registry baseline và decision
+notes v1/v2 là hồ sơ lịch sử. Runtime provisioning/nonce persistence/transport
+chưa nghiệm thu; I1 tiếp tục REVIEW_CANDIDATE.

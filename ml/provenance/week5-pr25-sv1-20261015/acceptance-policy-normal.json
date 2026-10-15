@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "scope": "OFFLINE_TESTS_USING_REAL_EVIDENCE",
+  "tests_run": 4,
+  "tool_sha256": "ea9405b9cb9457ffefd8db17a8b62f859d44906848cbd9c10cbdd54e1202ffe4",
+  "acceptance_tool_sha256": "8db0c6d5d3dba7d91a56ad4a82d591faa654a46a281d9d71e976a44db5eeb6d1"
+}

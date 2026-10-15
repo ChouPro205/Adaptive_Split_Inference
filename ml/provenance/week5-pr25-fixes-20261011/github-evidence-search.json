@@ -1,0 +1,26 @@
+{
+  "scope": "All fetched remote branches and tags, tracked file names only",
+  "refs_checked": [
+    "refs/remotes/origin/HEAD",
+    "refs/remotes/origin/dev/device-sv1",
+    "refs/remotes/origin/dev/edge-sv2",
+    "refs/remotes/origin/dev/model-sv3",
+    "refs/remotes/origin/docs/sv3-week1-week2-reports",
+    "refs/remotes/origin/docs/sv3-week3-week4-reports",
+    "refs/remotes/origin/main",
+    "refs/remotes/origin/sv3/fix-week3-sv2-linux-fp32",
+    "refs/remotes/origin/sv3/week1-env",
+    "refs/remotes/origin/sv3/week2-baseline",
+    "refs/remotes/origin/sv3/week2-baseline-v2",
+    "refs/remotes/origin/sv3/week3-fp32-handoff",
+    "refs/remotes/origin/sv3/week3-sv2-fp32-handoff",
+    "refs/remotes/origin/sv3/week4-r4-inventory-fix",
+    "refs/remotes/origin/sv3/week5-technical-20261009",
+    "refs/remotes/origin/sv3/week5-verification-20261009",
+    "refs/tags/sv3-week4-r3-20261001",
+    "refs/tags/sv3-week4-r4-20261003",
+    "refs/tags/sv3-week5-v1-20261005"
+  ],
+  "found": [],
+  "excluded": "Ignored/unpublished local files are not Git objects; no reconstruction from summaries"
+}

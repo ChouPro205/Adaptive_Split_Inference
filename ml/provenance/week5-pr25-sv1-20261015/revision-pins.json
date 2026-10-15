@@ -1,0 +1,19 @@
+{
+  "main_pin": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+  "reviewed_pr_head_before_fix": "1ebbefb8264d9daee7b4b2cbb95be4d51f4d39c1",
+  "implementation_head": "48e1b1412854e8cbcf52cded3c2ce7e62ae07997",
+  "control": {
+    "commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+    "tree": "5287c5897c4942f8feecf18a621a06d30a7b4208"
+  },
+  "before_fix_integration": {
+    "commit": "abcc3a511d329f39f985e2e09b68832beaa37c80",
+    "tree": "097a606ecdeb35202cf0e295179787cb26c501de"
+  },
+  "full_suite_integration": {
+    "commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+    "tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc"
+  },
+  "current_branch_is_not_remote_main": true,
+  "merge_or_mcu_deploy": "NOT_PERFORMED"
+}

@@ -1,5 +1,17 @@
 # SV3 → SV1: gói tuần 5, Python lượng tử hóa và P1
 
+> L?nh t?i l?p hi?n h?nh sau s?a PR25: [delivery v2](week5_delivery_v2.md),
+> entrypoint accuracy `evaluate_week5_v2.py`. C?c k?t qu?/receipts b?n d??i gi?
+> nguy?n nh? h? s? l?ch s?; kh?ng g?n nh?n ch?y m?i.
+
+**Cập nhật 2026-10-09:** S6 đã chốt INT8 per-channel/FP16 stored scale,
+FP32 LE wire expansion, I2 NCL và gate accuracy strict <0,5 pp.
+[Hồ sơ mới](week5_technical_20261009.md) và
+[decision note v1](../../contracts/sv3_week5_decisions_v1.md) ghi trạng thái
+verification hiện hành. Các mô tả cần review phía dưới là hồ sơ lịch sử của
+release 2026-10-05, giữ nguyên để không đổi provenance hay gói đã nghiệm thu.
+Tổng tuần 5 hiện BLOCKED vì chưa cấp registry wire; REVIEW_STATUS=PENDING.
+
 Gói dành cho SV1 review bản tham chiếu `ncl-int8-fp16-v1-review`. Đã đánh giá đủ
 8.544 mẫu test chính thức, không retrain/fine-tune, không đổi checkpoint,
 kiến trúc, preprocessing, split hay thứ tự nhãn. Cùng checkpoint trên CPU FP32;
@@ -48,6 +60,7 @@ trên checkout sạch. Đây là mô phỏng local máy nhận, chưa phải ACK
 | `ml/scripts/evaluate_week5.py` | FP32 gate đủ test trước đánh giá INT8/FP16 |
 | `ml/scripts/export_week5.py` | Xuất đúng 20 `sample_id` từ `samples.csv` cũ |
 | `ml/scripts/test_week5_quantization.py`, `test_week5_p1.py` | Numerical contract và P1 10.000 tensor |
+| `ml/scripts/test_week5_p1_v2.py` | Entrypoint chạy P1 mới; giữ file P1 lịch sử đúng raw binding SV1 |
 | `ml/scripts/package_week5.py`, `hydrate_week5.py` | ZIP/hash/inventory và tải/đặt file ngoài Git |
 | `ml/results/week5/` | `accuracy.csv`, `accuracy.md`, `evaluation.json`, `fp32_gates.json`, `dataset_manifest.json`, `split_mapping.json` |
 | `ml/provenance/week5/` | Commands/logs, P1 seed/count/checksum, asset manifests/receipts |
@@ -125,7 +138,7 @@ dùng `s+1` **chỉ trong test profile**, không phải wire/deployment registry
 & ml/.venv/Scripts/python.exe -B ml/scripts/test_week5_quantization.py
 & ml/.venv/Scripts/python.exe -B ml/scripts/export_week5.py
 & ml/.venv/Scripts/python.exe -B ml/scripts/evaluate_week5.py --batch-size 1
-& ml/.venv/Scripts/python.exe -B ml/scripts/test_week5_p1.py --cases 10000
+& ml/.venv/Scripts/python.exe -B ml/scripts/test_week5_p1_v2.py --cases 10000 --output ml/provenance/p1-v2-new/p1_10000.json
 $env:CC='C:/msys64/ucrt64/bin/gcc.exe'
 & ml/.venv/Scripts/python.exe -B contracts/i2_ref/test_i2.py
 & ml/.venv/Scripts/python.exe -B ml/scripts/package_week5.py

@@ -1,0 +1,284 @@
+{
+  "scope": "FRESH_REAL_SETUP; controlled header mutations only in isolated integration checkout",
+  "cases": [
+    {
+      "case": "correct",
+      "mode": "normal",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": null,
+      "before": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "missing-graph",
+      "mode": "normal",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": null,
+      "before": {
+        "device/generated/week4_graph.h": null,
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "missing-inputs",
+      "mode": "normal",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": null,
+      "before": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": null
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "marker-graph",
+      "mode": "normal",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": true,
+      "before": {
+        "device/generated/week4_graph.h": {
+          "sha256": "f4e9da8b4007beb0995ee087f14d942f3d509ca7a64fdbfee6a7425bd6d02dfd",
+          "size_bytes": 2525
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "f4e9da8b4007beb0995ee087f14d942f3d509ca7a64fdbfee6a7425bd6d02dfd",
+          "size_bytes": 2525
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "marker-inputs",
+      "mode": "normal",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": true,
+      "before": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "4b1eb81db68802e3de966e4a8a98334368452e59c7a75d38f6a975d60804f52a",
+          "size_bytes": 179874
+        }
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "4b1eb81db68802e3de966e4a8a98334368452e59c7a75d38f6a975d60804f52a",
+          "size_bytes": 179874
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "correct",
+      "mode": "O",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": null,
+      "before": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "missing-graph",
+      "mode": "O",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": null,
+      "before": {
+        "device/generated/week4_graph.h": null,
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "missing-inputs",
+      "mode": "O",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": null,
+      "before": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": null
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "marker-graph",
+      "mode": "O",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": true,
+      "before": {
+        "device/generated/week4_graph.h": {
+          "sha256": "f4e9da8b4007beb0995ee087f14d942f3d509ca7a64fdbfee6a7425bd6d02dfd",
+          "size_bytes": 2525
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "f4e9da8b4007beb0995ee087f14d942f3d509ca7a64fdbfee6a7425bd6d02dfd",
+          "size_bytes": 2525
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6",
+          "size_bytes": 179809
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "case": "marker-inputs",
+      "mode": "O",
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "existing_bytes_and_mtimes_preserved": true,
+      "marker_retained": true,
+      "before": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "4b1eb81db68802e3de966e4a8a98334368452e59c7a75d38f6a975d60804f52a",
+          "size_bytes": 179874
+        }
+      },
+      "after": {
+        "device/generated/week4_graph.h": {
+          "sha256": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+          "size_bytes": 2460
+        },
+        "device/generated/week4_inputs.h": {
+          "sha256": "4b1eb81db68802e3de966e4a8a98334368452e59c7a75d38f6a975d60804f52a",
+          "size_bytes": 179874
+        }
+      },
+      "status": "PASS"
+    }
+  ],
+  "final_inventory_count": 569
+}

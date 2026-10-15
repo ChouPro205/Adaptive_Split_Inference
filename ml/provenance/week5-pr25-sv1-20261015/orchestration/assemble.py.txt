@@ -1,0 +1,223 @@
+import json
+from pathlib import Path
+import shutil
+from workflow import BASE,H,read,save,sha,git,source_hashes
+
+NAME = 'ml/provenance/week5-pr25-sv1-20261015'
+repo = BASE/'repo'
+dest = repo/NAME
+if dest.exists():
+    raise ValueError('Evidence destination exists')
+shutil.copytree(BASE/'after'/NAME,dest)
+for checkout in ('control','before','setup-probe'):
+    shutil.copytree(BASE/checkout/NAME,dest/checkout)
+shutil.copytree(BASE/'audit',dest/'audits')
+inputs = dest/'inputs'
+inputs.mkdir()
+for source,name in [
+    (Path('C:/Users/Admin/Downloads/review-report.md'),'review-report.md'),
+    (Path('C:/Users/Admin/Downloads/allocation-proposal.md'),'allocation-proposal.md'),
+    (BASE.parents[1]/'AGENTS.md','AGENTS.md'),
+    (Path('C:/Users/Admin/.codex/attachments/95cfa3ef-6924-4d56-b06f-6d4caa45155d/Pasted text.txt'),'request.txt')]:
+    shutil.copyfile(source,inputs/name)
+save(inputs/'input-hashes.json',{p.name:{'size_bytes':p.stat().st_size,'sha256':sha(p.read_bytes())} for p in inputs.iterdir()})
+snap = dest/'orchestration'
+snap.mkdir()
+for p in BASE.glob('*.py'):
+    # Preserve raw wrapper bytes as audit text; these are outside the tested repository.
+    shutil.copyfile(p,snap/(p.name+'.txt'))
+save(snap/'snapshot-hashes.json',{p.name:sha(p.read_bytes()) for p in snap.iterdir()})
+
+index = []
+for f in sorted(dest.rglob('*.command.json')):
+    r = read(f)
+    if 'source_git_commit' not in r:
+        continue
+    rel = f.relative_to(dest).as_posix()
+    code = r['exit_code']
+    if code == 0:
+        classification = 'PASS_FRESH_INVOCATION'
+    elif code == 2:
+        classification = 'BLOCKED_ALLOCATION; portable gates PASS'
+    elif 'real-setup-marker-' in rel:
+        classification = 'EXPECTED_NEGATIVE: changed header refused; bytes/mtime preserved'
+    elif 'initial-git-capture-acceptance' in rel:
+        classification = 'RECORDED_FIXTURE_BYTE_FAIL: Git LF capture differs from accepted original CRLF bytes'
+    elif rel.startswith('before/') and 'original-raw-capture-acceptance' in rel:
+        classification = 'REPRODUCED_IMPLEMENTATION_FAIL: historical P1 raw source drift before fix'
+    else:
+        raise ValueError('Unexpected failed receipt: '+rel)
+    for stream in ('stdout','stderr'):
+        target = f.with_name(f.name[:-len('.command.json')]+'.'+stream+'.txt')
+        if sha(target.read_bytes()) != r[stream+'_sha256']:
+            raise ValueError('Copied log raw hash differs: '+str(target))
+    actual_root = Path(r['cwd'])
+    if r['source_files_sha256'] != source_hashes(actual_root):
+        raise ValueError('Source drift/omission in original execution tree: '+rel)
+    for name,expected in r.get('result_files_sha256',{}).items():
+        p = Path(name)
+        p = p if p.is_absolute() else actual_root/p
+        if sha(p.read_bytes()) != expected:
+            raise ValueError('Original result raw hash changed: '+str(p))
+    index.append({'receipt':rel,'receipt_raw_sha256':sha(f.read_bytes()),'classification':classification,
+        'exit_code':code,'argv':r['command'],'source_commit':r['source_git_commit'],'source_tree':r.get('source_tree'),
+        'actual_source_dependency_count':len(r['source_files_sha256']),
+        'stdout_sha256':r['stdout_sha256'],'stderr_sha256':r['stderr_sha256'],
+        'original_result_count':len(r.get('result_files_sha256',{})),
+        'reused_inputs':r.get('reused_inputs',[])})
+save(dest/'command-index.json',{'scope':'FRESH_INVOCATIONS_ON_PINNED_TREES; classify historical reuse/negative and initial failures explicitly',
+    'count':len(index),'copied_receipts_and_streams_are_raw_identical':True,'commands':index})
+pins = {'main_pin':git(repo,'rev-parse','origin/main').decode().strip(),
+    'reviewed_pr_head_before_fix':'1ebbefb8264d9daee7b4b2cbb95be4d51f4d39c1',
+    'implementation_head':git(repo,'rev-parse','HEAD').decode().strip(),
+    'control':{'commit':git(BASE/'control','rev-parse','HEAD').decode().strip(),'tree':git(BASE/'control','rev-parse','HEAD^{tree}').decode().strip()},
+    'before_fix_integration':{'commit':git(BASE/'before','rev-parse','HEAD').decode().strip(),'tree':git(BASE/'before','rev-parse','HEAD^{tree}').decode().strip()},
+    'full_suite_integration':{'commit':git(BASE/'after','rev-parse','HEAD').decode().strip(),'tree':git(BASE/'after','rev-parse','HEAD^{tree}').decode().strip()},
+    'current_branch_is_not_remote_main':True,'merge_or_mcu_deploy':'NOT_PERFORMED'}
+save(dest/'revision-pins.json',pins)
+result = read(BASE/'audit/fresh-result-integrity.json')
+report = f'''# PR25 — sửa compatibility SV1 ngày 15/10/2026
+
+**COMPATIBILITY_SV1=PASS. OVERALL_STATUS=BLOCKED_ALLOCATION.**
+CURRENT WEEK=5; REVIEW_STATUS=PENDING; PR giữ draft, chưa merge; tuần 6 NOT_RUN.
+
+## Revision và phạm vi bằng chứng
+
+| Vai trò | Commit / tree |
+|---|---|
+| PR HEAD đã review trước sửa | `{pins['reviewed_pr_head_before_fix']}` |
+| main fetch/pin | `{pins['main_pin']}` |
+| Commit implementation | `{pins['implementation_head']}` |
+| Integration đối chứng trước sửa LOCAL | `{pins['before_fix_integration']['commit']}` / `{pins['before_fix_integration']['tree']}` |
+| Integration chạy full suite sau sửa LOCAL | `{pins['full_suite_integration']['commit']}` / `{pins['full_suite_integration']['tree']}` |
+
+Commit bàn giao evidence/tài liệu là hậu duệ của implementation; SHA cuối và integration
+bàn giao được ghi trong PR description cùng integrity postcommit. Các merge integration
+đều LOCAL, không phải merge PR trên GitHub. Source thực thi được kiểm raw theo từng receipt,
+không gọi HEAD trước sửa PASS bằng cách overlay source main.
+
+Clone/worktrees nằm riêng tại `exports/pr25-sv1-20261015/`; không checkout/reset working tree
+người dùng. Xem [revision pins](../provenance/week5-pr25-sv1-20261015/revision-pins.json).
+
+## Sửa P1 và giữ source đã nghiệm thu
+
+`ml/scripts/test_week5_p1.py` đã khôi phục **nguyên raw bytes từ Git blob main**,
+SHA256 `ad6be8d9b126448b2b1179cd6f9eb2da007c2c87bbb13f7869b5ad0b8ccf2cac`.
+Thay đổi này nằm trong commit implementation thực sự của PR. Bản PR cũ có raw hash
+`88a3a1beeafd945074d7f0b77e82717b88ad9c46ec48a7efe2aced921a619271`.
+
+Chức năng mới chuyển sang `test_week5_p1_v2.py`: import/provenance v2, output guard,
+schema `week5-p1/2`, `tensors_executed`, `failed_tensors`, profiles `PUBLIC_TEST_ONLY`.
+Runner và verifier REQUIRED gọi v2; verifier yêu cầu schema/profile v2. Regression kiểm
+raw binding lịch sử, output refusal và minimum coverage chạy thường/-O. Logger v2 ghi
+UTC/environment/package versions và đếm source từ tập source thực tế. Hướng dẫn hiện hành
+dùng v2. Audit workspace lịch sử và receipts cũ được giữ nguyên.
+
+Giữ nguyên `week5_common.py`, `evaluate_week5.py`, hai generator Week 3/4, source gates,
+receipts/expected hashes, scientific manifests, model/checkpoint, dataset/reference/goldens,
+bốn ZIP và registry. Audit raw expected/current/Git-blob kiểm **182 source/preparation
+bindings + 7 legacy/gate sources**, không mismatch sau sửa. Xem
+[audit đầy đủ](../provenance/week5-pr25-sv1-20261015/audits/complete-source-and-preparation-audit.json)
+và [checkout bytes](../provenance/week5-pr25-sv1-20261015/audits/after/raw-source-bindings.json).
+
+Ba ps1 có CRLF do checkout Windows: chỉ materialize Git blob **cùng revision** sau khi
+raw blob hash khớp expected. File requirements collector cũng được audit raw/current/blob;
+không đổi nếu đã khớp. Capture P2 dùng nguyên bytes từ mapping/ZIP, raw SHA256
+`72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606`,
+không dùng bản LF trong Git. Không normalize hash để gọi PASS.
+
+## Input và materialization
+
+Đã nhận `review-report.md`, `allocation-proposal.md` và ZIP cuối
+`pr25-sv1-original-evidence-20261014-final.zip`. ZIP size **230944445 B**, SHA256
+`4dcf8de3bba7aae761d7586ac6f684dd0558ce1a756ca197c8d28eadcee41aac`.
+Inventory có **2.280 payload, 601727245 B**; ZIP có **2.281 file** gồm inventory.
+Từng payload được kiểm hash/size trước dùng. Không còn thiếu ZIP hoặc hai audit gốc.
+
+Đã đọc README-final, path-mapping-final và reference-resolution-final. Copy 796 file
+preparation/session nguyên bytes tới hai đường dẫn receipt trước đó chưa tồn tại
+`D:/HUST/ASI_week5_prepare/20261009-sv1-prepare01` và
+`D:/HUST/ASI_week5_mcu/20261009-212416`; script từ chối ghi đè. Paths/bytes bên trong
+receipts giữ nguyên. Dependencies checkout được hydrate riêng theo mapping. Ba DOCX
+được mapping phân loại optional historical requirement documents; không tạo thay thế.
+Xem [input validation](../provenance/week5-pr25-sv1-20261015/audits/input-validation.json)
+và [receipt-path copies](../provenance/week5-pr25-sv1-20261015/audits/receipt-path-materialization.json).
+
+## Đối chứng và gate mới
+
+| Gate / tree | Thường | -O | Kết luận |
+|---|---:|---:|---|
+| Main, Git LF P2 fixture ban đầu: preflight / acceptance | 0 / 1 | 0 / 1 | FAIL do fixture bytes; giữ logs |
+| Integration trước sửa, Git LF P2 ban đầu | 0 / 1 | 0 / 1 | FAIL do fixture bytes; giữ logs |
+| Main, cùng original raw evidence: preflight / whole acceptance | 0 / 0 | 0 / 0 | PASS đối chứng |
+| Integration trước sửa, original raw evidence | 0 / 1 | 0 / 1 | Frozen ML/tail source drift: P1 |
+| Integration sau commit sửa: preflight / whole acceptance | 0 / 0 | 0 / 0 | COMPATIBILITY SV1 PASS |
+| Portable full runner | 2 | — | 29 children exit0; allocation BLOCKED |
+| Delivery verifier chạy lại | 2 | 2 | Portable PASS; allocation BLOCKED |
+| Parser / package / acceptance-corruption / real capture checker | 0 mỗi gate | 0 mỗi gate | 8 invocation mới PASS |
+| Setup R1 policy suite | 0 | 0 | 6 methods/mode PASS |
+| 10 real setup cases | 3 exit0 + 2 expected exit1 | 3 exit0 + 2 expected exit1 | Header đúng/thiếu đạt; marker giữ bytes/mtime |
+
+Full portable runner: 26 unit/regression children thường/-O + P1 + real + accuracy,
+**29/29 exit0**. Setup sạch đúng **569/569 required dependency**, package FP32 đủ 41 file
+hydrate từ R3/R4; không cần standalone FP32 ZIP. R1/R2 và strict boundary đúng 0,5 pp FAIL
+tiếp tục được kiểm. Bốn gate SV1 chạy trên integration chứa commit sửa P1.
+
+P1 **10.000 synthetic**, seed 20261005, coverage/checksum khớp frozen:
+`{result['p1_stream_sha256']}`. Real **220 tensors (20/split)**,
+stream `{result['real_stream_sha256']}` khớp lịch sử; unprotect trước dequantize,
+NC/NCL adapter và stored-FP16→FP32-LE scales được kiểm.
+
+Accuracy mới **8544×11**, FP32 **8393/8544**, worst s6 INT8 **8388/8544**, drop
+**0.05852059925093633 pp**. Predictions **93984 rows**, raw SHA256
+`{result['predictions_raw_sha256']}` khớp frozen. Giữ strict integer gate và full coverage.
+
+Whole acceptance: **220 primary +16 mixed**, oracle **236**, s0 20/20 bitwise,
+P2 20/20 bitwise; max FP32 `{result['sv1_max_fp32_abs_error']}` <1e-3,
+unexplained mismatches **0**. Ba scale FP16 s10 khác golden do FP32 midpoint vẫn giữ
+phân tích gốc; không đổi thresholds/goldens.
+
+Môi trường Windows/Python3.11.9, torch2.14.0+cu130, numpy2.4.6; CPU FP32 deterministic,
+một thread, MKLDNN disabled; GCC host có trong environment receipt. Kiểm **186 source
+dependencies thực tế**, gồm v2, cho cả 30 portable receipts; 0 omission/raw drift.
+Xem [fresh result integrity](../provenance/week5-pr25-sv1-20261015/audits/fresh-result-integrity.json).
+
+## 61 artifact và reuse
+
+Raw inventory anchor đã kiểm:
+`2e9a969fbc01fe91675232369cea35423463126e42daf4f83693de69c22ea4ae`.
+Partition **226 missing =165 copied +61 unavailable** khớp từng path/hash/size.
+Đối chiếu mới **15/61 recovered exact bytes, 46 author-workspace extras unavailable**.
+Chỉ **1/61** thuộc required portable scope: R3 ZIP, đã cung cấp đúng hash. Không gọi
+46 extras là đã phục hồi, không bỏ gate hoặc audit workspace lịch sử. Không có unresolved
+runtime evidence dependency trong gói cuối. Bảng đủ 61 hàng:
+[historical artifact audit](../provenance/week5-pr25-sv1-20261015/audits/historical-61-current-audit.json).
+
+Fresh invocation: các commands trong index, portable evaluations, SV1 verifiers và regressions.
+Authenticated historical reuse: C accuracy 8544×11, C host activations cho parser,
+DFU/raw captures/USB receipts, preservation 94518 files/754 copies. Không gọi reuse là
+MCU measurement mới. Không mở COM, build/flash MCU hoặc tạo lại accuracy C receipt.
+Historical FAIL/reuse records giữ nguyên; các FAIL ban đầu ở phiên này được phân loại riêng.
+
+## Allocation và bàn giao
+
+`allocation-proposal.md` chỉ là proposal. `model_profile_id`, `key_id`, `sender_scope`
+và cả 11 `wire_split_id` tiếp tục **null**; profiles chạy test là **PUBLIC_TEST_ONLY**.
+Không áp 0x4D495401, IDs256..266, key_id=1 hoặc sender_id=1 làm deployment allocation.
+Chờ Châu/Trung chốt namespace, model/version/checkpoint/mapping, key/sender scope,
+nonce reboot/retry/persistence, Device/Edge capacities và shared revision/registry raw hash.
+5760 B/C64/FP16scale128 đã có evidence Device; FP32 wire scale256 và trần I2 32768 B
+không chứng minh hai buffer transport/Edge capacity. Chưa triển khai tuần 6.
+
+[Command index](../provenance/week5-pr25-sv1-20261015/command-index.json) có **{len(index)} receipts**,
+argv/cwd/source commit/tree/raw hashes, stdout/stderr/result hashes và exit code thật.
+Các receipt/log/result copy giữ nguyên bytes và original paths; namespace control/before/
+setup-probe chỉ là vị trí lưu bản sao. Orchestrator ngoài PR lưu raw dưới `.py.txt` cùng
+snapshot hashes; chúng không được tính vào source của code PR đã thực thi.
+Integrity sau commit bàn giao kiểm lại source set/raw hashes, evidence, 569 dependencies,
+preflight/whole acceptance thường/-O và verifier thường/-O trên integration final;
+supplemental receipts được lưu trong gói bàn giao ngoài Git để tránh self-referential commit.
+PR draft, CURRENT WEEK=5, REVIEW_STATUS=PENDING; **compatibility PASS, tổng BLOCKED allocation**.
+'''
+(repo/'ml/docs/week5_pr25_sv1_20261015.md').write_text(report,encoding='utf-8',newline='\n')
+print('Assembled',len(index),'command receipts and report; raw streams/results verified')

@@ -38,6 +38,10 @@ datasets/
 /ml/artifacts/week4/
 /ml/artifacts/week5/
 /ml/results/week5/predictions.csv
+/ml/results/week5-20261009-v1/predictions.csv
+/ml/results/week5-20261009-v1-final/predictions.csv
+# Full new preservation inventory is versioned as lossless .json.gz evidence.
+/ml/provenance/week5-20261009-v1/preservation_before.json
 .env
 *.key
 ml/docs/project_sources/

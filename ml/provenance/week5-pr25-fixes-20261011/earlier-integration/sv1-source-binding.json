@@ -1,0 +1,23 @@
+{
+  "scope": "F1 two raw source bindings only; full SV1 acceptance BLOCKED by external evidence",
+  "integration_commit": "a9b8294ae64e23c5747be771210f057354ba3472",
+  "integration_tree": "7b5e8737962ebc9a647bcabd8391c6b760467756",
+  "rows": [
+    {
+      "path": "ml/scripts/week5_common.py",
+      "expected_review_receipt_sha256": "c1842a380afddaaf7e7968bfdd3ff7c03e08d36e9bec205da2819abdca105934",
+      "current_raw_sha256": "c1842a380afddaaf7e7968bfdd3ff7c03e08d36e9bec205da2819abdca105934",
+      "main_blob_sha256": "c1842a380afddaaf7e7968bfdd3ff7c03e08d36e9bec205da2819abdca105934",
+      "exact_bytes": true,
+      "status": "PASS"
+    },
+    {
+      "path": "ml/scripts/evaluate_week5.py",
+      "expected_review_receipt_sha256": "c420029c0b8b1d7834bb32db0c428f379c1659cef3cc99ffa9a1271bfeb88eef",
+      "current_raw_sha256": "c420029c0b8b1d7834bb32db0c428f379c1659cef3cc99ffa9a1271bfeb88eef",
+      "main_blob_sha256": "c420029c0b8b1d7834bb32db0c428f379c1659cef3cc99ffa9a1271bfeb88eef",
+      "exact_bytes": true,
+      "status": "PASS"
+    }
+  ]
+}

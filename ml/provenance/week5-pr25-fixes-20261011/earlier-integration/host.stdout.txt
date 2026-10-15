@@ -1,0 +1,2 @@
+R3_PAYLOAD / R4_SOURCE: PASS; generated exact inputs and 25-op graph / 11 splits
+HOST_C PASS: Layer A 220 byte-exact; Layer B 220 oracle-exact; reverse/repeat PASS; explained golden differences=3; max FP32 error=1.430511474609375e-05

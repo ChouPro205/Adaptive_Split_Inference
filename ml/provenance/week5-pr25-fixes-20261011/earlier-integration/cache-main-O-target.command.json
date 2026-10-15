@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+    "-B",
+    "-O",
+    "ml/scripts/test_week3_sv2_cache.py",
+    "CacheRegression.test_frozen_loader_ignores_valid_header_forged_cache"
+  ],
+  "cwd": "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-fixes-20261011\\main-check",
+  "exit_code": 1,
+  "elapsed_seconds": 6.437000000005355,
+  "source_git_commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+  "source_files_sha256": {
+    "ml/scripts/test_week3_sv2_cache.py": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+    "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086"
+  },
+  "stdout_sha256": "a10eb8a682d90ef05bbea7cf46c72bd867eb0677febecab187c37010cc0e094a",
+  "stderr_sha256": "0a6e826541970955e55c932351e457e6877ad11c88efb65a92bce75c14c0f92b",
+  "scope": "FRESH main baseline harness regression",
+  "dependency_manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+}

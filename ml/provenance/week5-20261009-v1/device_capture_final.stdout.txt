@@ -1,0 +1,21 @@
+NEGATIVE_CHECKER: PASS reject=wrong_release
+NEGATIVE_CHECKER: PASS reject=wrong_manifest_anchor
+NEGATIVE_CHECKER: PASS reject=empty
+NEGATIVE_CHECKER: PASS reject=truncated_header
+NEGATIVE_CHECKER: PASS reject=missing_done
+NEGATIVE_CHECKER: PASS reject=wrong_sample_id
+NEGATIVE_CHECKER: PASS reject=wrong_split
+NEGATIVE_CHECKER: PASS reject=wrong_shape
+NEGATIVE_CHECKER: PASS reject=malformed_hex
+NEGATIVE_CHECKER: PASS reject=nan
+NEGATIVE_CHECKER: PASS reject=extra_element
+NEGATIVE_CHECKER: PASS reject=duplicate_tensor
+NEGATIVE_CHECKER: PASS reject=duplicate_command
+NEGATIVE_CHECKER: PASS reject=reset_banner
+NEGATIVE_CHECKER: PASS reject=identity_one_bit
+NEGATIVE_CHECKER: PASS reject=timing_zero_identity_baseline
+NEGATIVE_CHECKER: PASS reject=timing_missing_iteration
+NEGATIVE_CHECKER: PASS reject=timing_duplicate_iteration
+NEGATIVE_CHECKER: PASS reject=timing_bad_cpu_clock
+NEGATIVE_CHECKER: PASS reject=timing_short_warmup
+NEGATIVE_CHECKER: 20/20 PASS; source is real capture; no passing MCU data fabricated

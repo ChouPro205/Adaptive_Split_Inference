@@ -152,6 +152,24 @@ SV1 receipt/device acceptance stays PENDING until receiver acknowledgement.
 
 ## Week 5 INT8/FP16 and Python P1 handoff
 
+Current acceptance uses [approved allocation and final v3](../contracts/sv3_week5_allocation_v2.md).
+Châu approved the internal ASI/MIT-BIH allocation at revision `mitdb-week5-i2-registry-v1-r1`.
+Final v3 checks science, approved mapping/220 real tensors and fresh offline SV1 gates.
+Historical portable reproduction uses [portable delivery v2](docs/week5_delivery_v2.md)
+and [F1?F3 evidence report](docs/week5_pr25_fixes_20261011.md)
+and `evaluate_week5_v2.py`/`test_week5_p1_v2.py`; the three SV1-bound legacy scripts retain exact bytes.
+The [SV1 compatibility fix and fresh evidence](docs/week5_pr25_sv1_20261015.md)
+records the earlier compatibility PASS and allocation BLOCKED state.
+Author workspace audit and portable recipient scope remain separate; the null-ID
+baseline and two-person v1 approval verifier remain historical references.
+
+Current Week 5 verification and S6 decisions (2026-10-09):
+[technical results and reproduction](docs/week5_technical_20261009.md),
+[decision note v1](../contracts/sv3_week5_decisions_v1.md), and
+[checklist 1.1](../docs/sv3_week5_scope_checklist_2026-10-09_v1.1.md).
+Final acceptance status comes from `verify_week5_delivery_v3.py`; runtime key
+provisioning, nonce persistence/reboot and I1 transport are not accepted. Historical packages remain unchanged.
+
 See [SV3 → SV1 Week 5](docs/sv3_sv1_week5_handoff.md) for the authenticated
 full-test loader, per-channel INT8/FP16 reference, all 11 split adapters,
 20-sample byte comparison pack, full-test accuracy and I2/1 Python P1 evidence.
