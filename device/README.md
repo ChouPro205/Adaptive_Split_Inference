@@ -108,6 +108,11 @@ script tuần 3–5 thì từ chối ghi đè image đã đo và yêu cầu thư
   ảnh hưởng luồng đang dùng nên không sửa.
 - Profile INT8 của I1 theo [addendum r1](../contracts/i1_device_edge_packet_v1_addendum_r1.md);
   kiểm biên bằng `scripts/test_i1_profile.py --compiler <gcc>`.
+- Firmware tuần 6 theo [I1 v2](../contracts/i1_device_edge_packet_v2.md),
+  [BLE binding](../contracts/i1_ble_binding_v1.md) và
+  [nonce/provisioning](../contracts/i2_nonce_provisioning_v1.md); làm ứng dụng
+  riêng `week6/`, image phải kết thúc trước `0xDC000` (vùng NVS). Tiêu chí:
+  [kế hoạch tuần 6](../docs/week6_device_edge_plan.md).
 
 ## Benchmark DWT của firmware Active
 
