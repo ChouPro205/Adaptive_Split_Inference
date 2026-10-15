@@ -1,0 +1,17 @@
+phase,sample_index,sample_id,split,max_abs_error,int8_oracle_exact,fp16_oracle_exact,golden_q_difference_count,golden_scale_difference_count,p2_historical_max_abs_error,p2_historical_bitwise
+mixed,19,MIT-BIH:105:5154:MLII,10,2.384185791015625e-06,True,True,0,0,,
+mixed,0,MIT-BIH:105:197:MLII,0,0.0,True,True,0,0,,
+mixed,7,MIT-BIH:105:2015:MLII,8,3.814697265625e-06,True,True,0,0,,
+mixed,3,MIT-BIH:105:965:MLII,2,7.152557373046875e-07,True,True,0,0,0.0,True
+mixed,19,MIT-BIH:105:5154:MLII,1,4.76837158203125e-07,True,True,0,0,,
+mixed,0,MIT-BIH:105:197:MLII,10,3.5762786865234375e-06,True,True,0,0,,
+mixed,12,MIT-BIH:105:3303:MLII,0,0.0,True,True,0,0,,
+mixed,1,MIT-BIH:105:459:MLII,9,6.67572021484375e-06,True,True,0,0,,
+mixed,18,MIT-BIH:105:4901:MLII,4,1.7881393432617188e-07,True,True,0,0,,
+mixed,2,MIT-BIH:105:708:MLII,7,7.152557373046875e-07,True,True,0,0,,
+mixed,14,MIT-BIH:105:3835:MLII,6,3.5762786865234375e-07,True,True,0,0,,
+mixed,5,MIT-BIH:105:1479:MLII,3,2.384185791015625e-07,True,True,0,0,,
+mixed,11,MIT-BIH:105:3052:MLII,5,1.7881393432617188e-07,True,True,0,0,,
+mixed,0,MIT-BIH:105:197:MLII,2,4.76837158203125e-07,True,True,0,0,0.0,True
+mixed,19,MIT-BIH:105:5154:MLII,10,2.384185791015625e-06,True,True,0,0,,
+mixed,0,MIT-BIH:105:197:MLII,0,0.0,True,True,0,0,,

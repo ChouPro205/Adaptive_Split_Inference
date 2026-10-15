@@ -6,6 +6,8 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $Output = [System.IO.Path]::GetFullPath($Output)
+# The default path holds the accepted Week 3 capture; never truncate evidence.
+if (Test-Path -LiteralPath $Output) { throw "Capture already exists; choose a new -Output: $Output" }
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $Output) | Out-Null
 $serial = New-Object System.IO.Ports.SerialPort($Port, 115200)
 $serial.NewLine = "`n"

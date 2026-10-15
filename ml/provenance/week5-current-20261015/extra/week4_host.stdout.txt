@@ -1,0 +1,14 @@
+R3_PAYLOAD / R4_SOURCE: PASS; generated exact inputs and 25-op graph / 11 splits
+s=0: max_abs_error=0 PASS
+s=1: max_abs_error=4.76837158e-07 PASS
+s=2: max_abs_error=7.15255737e-07 PASS
+s=3: max_abs_error=4.76837158e-07 PASS
+s=4: max_abs_error=4.76837158e-07 PASS
+s=5: max_abs_error=5.96046448e-07 PASS
+s=6: max_abs_error=7.15255737e-07 PASS
+s=7: max_abs_error=1.43051147e-06 PASS
+s=8: max_abs_error=3.81469727e-06 PASS
+s=9: max_abs_error=1.43051147e-05 PASS
+s=10: max_abs_error=5.60283661e-06 PASS
+HOST_C: PASS 220/220 + reverse 220/220; Week 3 P2 bitwise 20/20; SKIP=0; MCU=PENDING
+REPORT: D:\HUST\Adaptive_Split_Inference\.cache\current-week4-host\week4_host_validation.json

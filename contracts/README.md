@@ -4,11 +4,12 @@ Nơi quản lý hợp đồng giao diện I1-I4, packet format, schema, versioni
 
 | Tài liệu | Trạng thái / phạm vi |
 |---|---|
-| [I1 v1](i1_device_edge_packet_v1.md) | `REVIEW_CANDIDATE`; packet Device–Edge v1, chưa cho phép transformed payload. |
+| [I1 v1](i1_device_edge_packet_v1.md) | `REVIEW_CANDIDATE`; packet Device–Edge v1, chưa cho phép transformed payload. Bản gốc giữ nguyên vì nằm trong receipt lịch sử. |
+| [I1 v1 addendum r1](i1_device_edge_packet_v1_addendum_r1.md) | Deployment profile theo approved registry: logical/wire split, `model_profile_id`, s10 empty-tail, metadata INT8, miền `q∈[-127,127]` (từ chối −128 ở mức tensor lượng tử); các điểm còn OPEN. Không đổi wire v1. |
 | [I2/1](i2_protection_v1.md) | Quy cách kỹ thuật SV1 đã chốt cho biến đổi đảo ngược activation INT8; chưa tích hợp thiết bị/Edge. |
 | [I1 v2 proposal](i1_device_edge_packet_v2_proposal.md) | Đề xuất wire riêng để mang I2/1, chưa được SV2 duyệt hoặc triển khai. |
 | [I3 input](I3_SV3_input.md) | SV3 góp ý LUT; schema/số đo vẫn mở. |
-| [Bàn giao SV3 → SV1 Tuần 3](sv3_sv1_week3_model_handoff.md) | Gói FP32 `mitdb-week3-fp32-20260925-v2` verify PASS, boundary P2 đã được SV3/SV1 xác nhận; package review/MCU validation của SV1 PENDING. |
+| [Bàn giao SV3 → SV1 Tuần 3](sv3_sv1_week3_model_handoff.md) | Gói FP32 `mitdb-week3-fp32-20260925-v2` verify PASS, boundary P2 đã được SV3/SV1 xác nhận; SV1 package review PASS, P2 trên MCU 20/20 PASS (28/09/2026), bảng 20 × 5 hoàn tất (30/09/2026). |
 
 Mã tham chiếu Python/C và vector I2 nằm trong [`i2_ref/`](i2_ref/test_i2.py).
 

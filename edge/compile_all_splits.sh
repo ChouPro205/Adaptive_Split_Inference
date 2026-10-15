@@ -5,8 +5,10 @@
 # Vai tro: SV2 (FPGA / Edge) - Tuan 4
 # Du an : Adaptive Split Inference
 # Muc tieu:
-#   - Tu dong hoa quy trinh luong tu hoa (vai_q_onnx) va bien dich (vai_c_xir)
-#     cho 10 mo hinh ONNX tail tu diem cat s=0 den s=9.
+#   - Tu dong hoa quy trinh luong tu hoa (vai_q_pytorch qua quantize_tail.py) va
+#     bien dich (vai_c_xir) cho 10 tail PyTorch tu diem cat s=0 den s=9.
+#   - Chi dung checkpoint da duyet (quantize_tail.py kiem SHA-256) va calibration
+#     tu split train; khong dung tap test, khong dung du lieu/trong so gia.
 #   - Luu tru toan bo ket qua build va log vao thu muc noi bo edge/build/
 #   - Bat loi tung buoc rieng biet cho tung s, khong dung set -e, chay qua dem.
 #   - Xuat file tong ket edge/build/summary.txt.
@@ -29,6 +31,16 @@ out_quantized_dir="${out_build_dir}/quantized"
 out_compiled_dir="${out_build_dir}/compiled"
 out_logs_dir="${out_build_dir}/logs"
 summary_file="${out_build_dir}/summary.txt"
+
+# Dung ngay neu thieu dau vao bat buoc, khong tao artifact co ve hop le
+if [ ! -f "${checkpoint_file}" ]; then
+    echo "Loi: thieu checkpoint ${checkpoint_file}; hydrate tai san theo ml/docs/week5_delivery_v2.md" >&2
+    exit 2
+fi
+if [ ! -f "${arch_file}" ]; then
+    echo "Loi: thieu ${arch_file}; chay trong Vitis AI container" >&2
+    exit 2
+fi
 
 # Tao cac thu muc output neu chua ton tai
 mkdir -p "${out_quantized_dir}"
@@ -67,7 +79,8 @@ for s in {0..9}; do
         -s "${s}" \
         --quant_mode calib \
         --output_dir "${quantized_dir_s}" \
-        --checkpoint "${checkpoint_file}" >> "${log_file}" 2>&1
+        --checkpoint "${checkpoint_file}" \
+        --calib-split train >> "${log_file}" 2>&1
 
     calib_exit_code=$?
     if [ ${calib_exit_code} -ne 0 ]; then
@@ -83,11 +96,22 @@ for s in {0..9}; do
         -s "${s}" \
         --quant_mode test \
         --output_dir "${quantized_dir_s}" \
-        --checkpoint "${checkpoint_file}" >> "${log_file}" 2>&1
+        --checkpoint "${checkpoint_file}" \
+        --calib-split train >> "${log_file}" 2>&1
 
     test_exit_code=$?
     if [ ${test_exit_code} -ne 0 ]; then
         echo "Loi o buoc xuat XIR int xmodel cho s = ${s} (exit code: ${test_exit_code})" >> "${log_file}"
+        echo "s=${s}: THAT_BAI (xem log_s${s}.txt)" >> "${summary_file}"
+        fail_count=$((fail_count + 1))
+        continue
+    fi
+
+    # Chi bien dich ket qua co provenance hop le, khong phai synthetic
+    provenance_file="${quantized_dir_s}/quantize_provenance.json"
+    if [ -f "${quantized_dir_s}/SYNTHETIC_NOT_FOR_ACCEPTANCE" ] || \
+       ! grep -q '"acceptance_evidence": true' "${provenance_file}" 2>/dev/null; then
+        echo "Loi: ${quantized_dir_s} khong co provenance nghiem thu hop le (synthetic hoac thieu)" >> "${log_file}"
         echo "s=${s}: THAT_BAI (xem log_s${s}.txt)" >> "${summary_file}"
         fail_count=$((fail_count + 1))
         continue

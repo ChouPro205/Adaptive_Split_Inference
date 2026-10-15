@@ -12,13 +12,19 @@
 CMakeLists.txt text eol=lf
 Kconfig text eol=lf
 *.ps1 text eol=crlf
+# Shell scripts run on Linux/KV260; CRLF breaks bash.
+*.sh text eol=lf
 ml/** text=auto eol=lf
 .gitignore text eol=lf
 .gitattributes text eol=lf
 # Historical command/stream receipts authenticate raw bytes, including CRLF.
 ml/provenance/week3-sv2-linux/** -text
+# Week 3 CDC captures are stored LF; their published SHA-256 values are of the
+# original CRLF bytes, so every checkout must restore CRLF, not only autocrlf.
+results/week3/logs/*.txt text eol=crlf
 # New Week 5 receipts also authenticate raw stdout/stderr bytes.
 ml/provenance/week5-20261009-v1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 ml/provenance/week5-pr25-fixes-20261011/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 ml/provenance/week5-pr25-r1r2-20261012/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 ml/provenance/week5-pr25-sv1-20261015/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+ml/provenance/week5-current-20261015/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol

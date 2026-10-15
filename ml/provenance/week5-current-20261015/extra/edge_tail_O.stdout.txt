@@ -1,0 +1,19 @@
+[INFO] Đã nạp checkpoint: D:\HUST\Adaptive_Split_Inference\ml\artifacts\week3\mitdb-week3-sv2-fp32-20261001-v1\model\checkpoint.pt
+[INFO] Calibration s=9: {'type': 'processed_split', 'split': 'train', 'path': 'ml/data/processed/mitdb/train_X.npy', 'sha256': '80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f', 'samples': 4, 'indices_sha256': 'ca9ccadd8130cb9fe7490bcdf7eeceff2d09eb1aa0d7395d385366092f1e457d'}
+--- BẮT ĐẦU LƯỢNG TỬ HÓA: s=9, mode=test, input_shape=(1, 32) ---
+[DRY-RUN] Forward pass thành công! Đầu ra logits: (1, 5); không tạo xmodel.
+[INFO] Đã nạp checkpoint: D:\HUST\Adaptive_Split_Inference\ml\artifacts\week3\mitdb-week3-sv2-fp32-20261001-v1\model\checkpoint.pt
+[INFO] Calibration s=2: {'type': 'provided_activations', 'declared_split': 'val', 'path': 'C:\\Users\\admin\\AppData\\Local\\Temp\\tmphgkjo1wl\\z.npy', 'sha256': '8ed6d1d8179f242e9cfcc0b3d6a76c0bcde4c615b389c92e14cafe52282321e9', 'samples': 4}
+[INFO] Đã nạp checkpoint: D:\HUST\Adaptive_Split_Inference\ml\artifacts\week3\mitdb-week3-sv2-fp32-20261001-v1\model\checkpoint.pt
+[INFO] Calibration s=4: {'type': 'processed_split', 'split': 'train', 'path': 'ml/data/processed/mitdb/train_X.npy', 'sha256': '80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f', 'samples': 8, 'indices_sha256': '993735d2c24be25226c1b6a0154a64bd44b2dda4b02975cd4362520de987e88b'}
+--- BẮT ĐẦU LƯỢNG TỬ HÓA: s=4, mode=calib, input_shape=(1, 32, 90) ---
+[SUCCESS] Đã xuất cấu hình lượng tử hóa cho s=4 tại C:\Users\admin\AppData\Local\Temp\tmpt8b68sv1\real
+[INFO] Đã nạp checkpoint: D:\HUST\Adaptive_Split_Inference\ml\artifacts\week3\mitdb-week3-sv2-fp32-20261001-v1\model\checkpoint.pt
+[INFO] Calibration s=4: {'type': 'processed_split', 'split': 'train', 'path': 'ml/data/processed/mitdb/train_X.npy', 'sha256': '80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f', 'samples': 8, 'indices_sha256': '993735d2c24be25226c1b6a0154a64bd44b2dda4b02975cd4362520de987e88b'}
+--- BẮT ĐẦU LƯỢNG TỬ HÓA: s=4, mode=test, input_shape=(1, 32, 90) ---
+[SUCCESS] Đã xuất XIR model cho s=4 tại C:\Users\admin\AppData\Local\Temp\tmpt8b68sv1\real
+[SYNTHETIC] Trọng số ngẫu nhiên; kết quả không dùng làm minh chứng nghiệm thu.
+[SYNTHETIC] Sinh 2 mẫu chuẩn tắc cho s=4 shape=(1, 32, 90)
+--- BẮT ĐẦU LƯỢNG TỬ HÓA: s=4, mode=test, input_shape=(1, 32, 90) ---
+[SUCCESS] Đã xuất XIR model cho s=4 tại C:\Users\admin\AppData\Local\Temp\tmpt8b68sv1\synthetic
+[INFO] Đã nạp checkpoint: D:\HUST\Adaptive_Split_Inference\ml\artifacts\week3\mitdb-week3-sv2-fp32-20261001-v1\model\checkpoint.pt

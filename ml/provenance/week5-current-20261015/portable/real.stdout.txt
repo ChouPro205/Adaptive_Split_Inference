@@ -1,0 +1,1 @@
+PASS: 220 real tensors, 11 splits; exact q, FP16/FP32 wire, adapters and tail goldens
