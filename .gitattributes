@@ -30,4 +30,4 @@ ml/provenance/week5-pr25-sv1-20261015/** -text whitespace=-blank-at-eol,-blank-a
 ml/provenance/week5-current-20261015/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 
 # Week 6 command receipts preserve raw stdout/stderr bytes.
-ml/provenance/week6-p1-20261016/** -text
+ml/provenance/week6-p1-20261016/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol

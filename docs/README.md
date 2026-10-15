@@ -48,3 +48,7 @@ thành viên khác.
 Tài liệu chuyên biệt cho firmware nằm tại
 [`device/README.md`](../device/README.md); tài liệu pipeline ML nằm tại
 [`ml/docs/`](../ml/docs/).
+
+## SV3 tuần 6
+
+- [Gói 50 vector P1 chính thức và xác nhận output](../ml/docs/week6_p1_delivery.md): A+B host PASS; MCU/BLE/KV260 chưa nghiệm thu.

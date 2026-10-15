@@ -1,0 +1,1 @@
+PASS A: 50 real vectors, 11 splits; Python/C protect and roundtrip 50/50; transformed 0x80 present

@@ -1,0 +1,14 @@
+[
+  {
+    "case": "missing",
+    "expected_exit": 1,
+    "actual_exit": 1,
+    "result": "PASS_EXPECTED_REJECTION"
+  },
+  {
+    "case": "modified",
+    "expected_exit": 1,
+    "actual_exit": 1,
+    "result": "PASS_EXPECTED_REJECTION"
+  }
+]

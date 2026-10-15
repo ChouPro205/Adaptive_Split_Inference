@@ -1,0 +1,28 @@
+test_fragment_faults (__main__.BleBindingTests.test_fragment_faults) ... ok
+test_header_mismatch_timeout_disconnect_and_retry (__main__.BleBindingTests.test_header_mismatch_timeout_disconnect_and_retry) ... ok
+test_lossy_link_never_delivers_wrong_bytes (__main__.BleBindingTests.test_lossy_link_never_delivers_wrong_bytes) ... ok
+test_roundtrip_all_mtus_and_counts (__main__.BleBindingTests.test_roundtrip_all_mtus_and_counts) ... ok
+test_timer_configuration_covers_retry_horizon (__main__.BleBindingTests.test_timer_configuration_covers_retry_horizon) ... ok
+test_argmax_on_raw_logits_ties_pick_smallest_index (__main__.CodecTests.test_argmax_on_raw_logits_ties_pick_smallest_index) ... ok
+test_boundaries_and_0x80_in_transformed_bytes (__main__.CodecTests.test_boundaries_and_0x80_in_transformed_bytes) ... ok
+test_c_and_python_encoders_match_golden (__main__.CodecTests.test_c_and_python_encoders_match_golden) ... ok
+test_differential_fuzz_python_vs_c (__main__.CodecTests.test_differential_fuzz_python_vs_c) ... ok
+test_golden_requests_parse_identically (__main__.CodecTests.test_golden_requests_parse_identically) ... ok
+test_i2_s10_golden_layout (__main__.CodecTests.test_i2_s10_golden_layout) ... ok
+test_pipeline_cases (__main__.CodecTests.test_pipeline_cases) ... ok
+test_plain_s10_golden_assembled_independently (__main__.CodecTests.test_plain_s10_golden_assembled_independently) ... ok
+test_request_negative_vectors_on_both_parsers (__main__.CodecTests.test_request_negative_vectors_on_both_parsers) ... ok
+test_response_cases_on_both_parsers (__main__.CodecTests.test_response_cases_on_both_parsers) ... ok
+test_split_table_matches_encoder (__main__.CodecTests.test_split_table_matches_encoder) ... ok
+test_status_enum_and_i2_mapping (__main__.CodecTests.test_status_enum_and_i2_mapping) ... ok
+test_vectors_file_is_reproducible (__main__.CodecTests.test_vectors_file_is_reproducible) ... ok
+test_exhaustion_stops (__main__.NonceReservationTests.test_exhaustion_stops) ... ok
+test_failures_stop_and_never_reinitialise (__main__.NonceReservationTests.test_failures_stop_and_never_reinitialise) ... ok
+test_random_power_loss_never_reuses_a_sequence (__main__.NonceReservationTests.test_random_power_loss_never_reuses_a_sequence) ... ok
+test_record_layout (__main__.NonceReservationTests.test_record_layout) ... ok
+test_sequences_start_at_one_and_reboot_skips_unused_block (__main__.NonceReservationTests.test_sequences_start_at_one_and_reboot_skips_unused_block) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.436s
+
+OK

@@ -1,0 +1,509 @@
+[
+  {
+    "name": "p1_50",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\p1_50",
+      "--result-path",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\p1_50.json",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/verify_week6_p1.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\artifacts\\week6\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\p1_50.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "output_50",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\output_50",
+      "--result-path",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\output_50.json",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/verify_week6_output.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\artifacts\\week6\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\output_50.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "package_regressions",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\package_regressions",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/test_week6_p1.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\artifacts\\week6\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "p1_50_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\p1_50_O",
+      "--result-path",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\p1_50_O.json",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "ml/scripts/verify_week6_p1.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\artifacts\\week6\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\p1_50_O.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "output_50_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\output_50_O",
+      "--result-path",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\output_50_O.json",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "ml/scripts/verify_week6_output.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\artifacts\\week6\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\output_50_O.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "package_regressions_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\package_regressions_O",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "ml/scripts/test_week6_p1.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\artifacts\\week6\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "i2",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\i2",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "contracts/i2_ref/test_i2.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "i2_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\i2_O",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "contracts/i2_ref/test_i2.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "i1v2",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\i1v2",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "contracts/i1v2_ref/test_i1v2.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "i1v2_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\i1v2_O",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "contracts/i1v2_ref/test_i1v2.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "i1v2_golden",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\i1v2_golden",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "contracts/i1v2_ref/make_vectors.py",
+      "--check"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "i1v2_golden_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\i1v2_golden_O",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "contracts/i1v2_ref/make_vectors.py",
+      "--check"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "quantization",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\quantization",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/test_week5_quantization.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "quantization_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\quantization_O",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "ml/scripts/test_week5_quantization.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "interfaces",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\interfaces",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/test_week5_interfaces.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "interfaces_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\interfaces_O",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "ml/scripts/test_week5_interfaces.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "allocation",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\allocation",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/test_week5_allocation_v3.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "allocation_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\allocation_O",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "ml/scripts/test_week5_allocation_v3.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "historical_registry",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\historical_registry",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/test_week5_registry_v2.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "historical_registry_O",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\historical_registry_O",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-O",
+      "ml/scripts/test_week5_registry_v2.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "approved_real_220",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\approved_real_220",
+      "--result-path",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\approved_real_220.json",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/verify_week5_registry_v3.py",
+      "--registry",
+      "contracts/sv3_week5_approved_registry_v2.json",
+      "--approval",
+      "contracts/sv3_week5_allocation_approval_v2.json",
+      "--expected-approval-sha256",
+      "a84b5caf89ffb7f8e11be2b308e2d4e1947e4d4f7ed291c47df083d0e15c7a7d",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\approved_real_220.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "p1_10000",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\p1_10000",
+      "--result-path",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\p1_10000.json",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/test_week5_p1_v2.py",
+      "--cases",
+      "10000",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\p1_10000.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "reproduce",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\reproduce",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/generate_week6_p1.py",
+      "--source-commit",
+      "766a3cfa7e7828ecd00b9eb23cc3e5da4015ced5",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\.cache\\week6-reproduction\\mitdb-week6-p1-50-20261016-v1"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "package",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\package",
+      "--result-path",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\artifacts\\week6\\mitdb-week6-p1-50-20261016-v1.zip.json",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/package_week6_p1.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\artifacts\\week6\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\artifacts\\week6\\mitdb-week6-p1-50-20261016-v1.zip"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "reproduced_zip",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\reproduced_zip",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/package_week6_p1.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\.cache\\week6-reproduction\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\.cache\\week6-reproduction\\mitdb-week6-p1-50-20261016-v1.zip"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "independent_p1_50",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\independent_p1_50",
+      "--result-path",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\independent_p1_50.json",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/verify_week6_p1.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\.cache\\week6-independent-extraction\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\independent_p1_50.json"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "independent_output_50",
+    "argv": [
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\scripts\\run_week5_logged_v2.py",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\independent_output_50",
+      "--result-path",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\independent_output_50.json",
+      "--",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+      "-B",
+      "ml/scripts/verify_week6_output.py",
+      "--package",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\.cache\\week6-independent-extraction\\mitdb-week6-p1-50-20261016-v1",
+      "--expected-manifest-sha256",
+      "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "--output",
+      "C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\ml\\provenance\\week6-p1-20261016\\final\\independent_output_50.json"
+    ],
+    "exit_code": 0
+  }
+]

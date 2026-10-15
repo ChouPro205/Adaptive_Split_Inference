@@ -1,0 +1,22 @@
+{
+  "schema": "week6-artifact-receipt/1",
+  "status": "PACKAGED_AND_INDEPENDENT_READBACK_PASS",
+  "manifest_sha256": "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+  "implementation_commit": "766a3cfa7e7828ecd00b9eb23cc3e5da4015ced5",
+  "base_commit": "af31ea784700cea1633b5c6290536a5208d052da",
+  "assets": [
+    {
+      "name": "mitdb-week6-p1-50-20261016-v1.zip",
+      "sha256": "2afbab35b601ac14128c32018d6dc1d39afd1991759a7a0fd9ad2051d923359a",
+      "size_bytes": 412045
+    },
+    {
+      "name": "sv3-week6-p1-handoff-20261016-v1.zip",
+      "sha256": "40294b39c3863d9b5c72a807e971662bebfbcf38bb6246c20d4b6c1ec84a84cd",
+      "size_bytes": 1714357
+    }
+  ],
+  "handoff_files_verified": 326,
+  "release_tag": "sv3-week6-p1-v1-20261016",
+  "source_gate_policy": "Historical Week 5 receipts are unchanged; A+B have fresh Week 6 evidence."
+}

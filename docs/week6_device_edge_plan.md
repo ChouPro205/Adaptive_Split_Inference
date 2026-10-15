@@ -12,6 +12,8 @@ Trạng thái hiện tại: thiết kế APPROVED; mọi hạng mục dưới đ
 nRF52840, laptop BLE hoặc KV260. Không mục nào được đánh dấu ACCEPTED trước khi
 có bằng chứng theo đúng tiêu chí.
 
+Cập nhật SV3 ngày 16/10/2026: [gói 50 vector P1 và output semantics](../ml/docs/week6_p1_delivery.md) đã bàn giao A+B với bằng chứng host mới. Các tiêu chí trên thiết bị và KV260 bên dưới chưa được thay bằng kết quả host.
+
 ## 1. Tiêu chí nghiệm thu tuần 6
 
 | # | Tiêu chí | Bằng chứng tối thiểu |
@@ -86,7 +88,9 @@ Quy tắc chung:
 | I1 v2 reference, BLE reference, mô hình nonce, vector | `contracts/i1v2_ref/` | Golden cho firmware, công cụ laptop, KV260 |
 | Script lượng tử/biên dịch tail | `edge/quantize_tail.py`, `edge/compile_all_splits.sh` | Chuẩn bị tail DPU (chưa chạy trên KV260) |
 
-**Chưa được bàn giao:** gói 50 vector P1 (SV3); bất kỳ firmware BLE, công cụ echo
+**SV3 đã bàn giao:** [50 vector P1 và output semantics host](../ml/docs/week6_p1_delivery.md), có manifest và Python/C logs; chưa thay nghiệm thu MCU tiêu chí 1–2.
+
+**Chưa được bàn giao:** bất kỳ firmware BLE, công cụ echo
 laptop, parser I1 v2 trên KV260, xmodel tail đã chạy trên KV260; key bench và state
 nonce trên Flash; mọi số đo RAM/stack/latency của tuần 6.
 

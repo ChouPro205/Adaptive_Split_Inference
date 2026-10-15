@@ -175,3 +175,7 @@ full-test loader, per-channel INT8/FP16 reference, all 11 split adapters,
 20-sample byte comparison pack, full-test accuracy and I2/1 Python P1 evidence.
 Large artifacts remain in the project's existing GitHub Releases storage;
 download hashes and hydration commands are included in the handoff README.
+
+## SV3 Week 6 official P1 handoff
+
+[50 real P1 vectors and host output semantics](docs/week6_p1_delivery.md) are delivered with fresh Python/C evidence. MCU/BLE/NVS and real KV260/DPU acceptance remain separate.

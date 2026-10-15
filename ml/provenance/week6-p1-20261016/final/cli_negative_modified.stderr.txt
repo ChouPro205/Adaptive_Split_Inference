@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016\ml\scripts\verify_week6_p1.py", line 14, in <module>
+    result = verify(a.package, a.expected_manifest_sha256, a.compiler)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016\ml\scripts\week6_p1.py", line 302, in verify
+    package, data, registry, entries = authenticate_package(package, expected)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016\ml\scripts\week6_p1.py", line 276, in authenticate_package
+    same(manifest['files'], inventory(package), 'Package inventory/hash/size differs (missing, changed or extra file)')
+  File "C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016\ml\scripts\week6_p1.py", line 70, in same
+    need(json.dumps(a, sort_keys=True, allow_nan=False) == json.dumps(b, sort_keys=True, allow_nan=False), message)
+  File "C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016\ml\scripts\week6_p1.py", line 43, in need
+    raise ValueError(message)
+ValueError: Package inventory/hash/size differs (missing, changed or extra file)

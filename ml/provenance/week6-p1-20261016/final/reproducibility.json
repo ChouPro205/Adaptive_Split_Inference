@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "files_including_manifest": 406,
+  "same_file_hashes": true,
+  "identical_zip_bytes": true,
+  "independent_extraction_verified": true,
+  "manifest_sha256": "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+  "ZIP_sha256": "2afbab35b601ac14128c32018d6dc1d39afd1991759a7a0fd9ad2051d923359a",
+  "ZIP_size_bytes": 412045,
+  "base_commit": "af31ea784700cea1633b5c6290536a5208d052da",
+  "implementation_commit": "766a3cfa7e7828ecd00b9eb23cc3e5da4015ced5"
+}

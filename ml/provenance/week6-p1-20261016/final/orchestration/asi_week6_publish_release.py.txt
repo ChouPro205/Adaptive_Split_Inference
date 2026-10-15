@@ -1,0 +1,46 @@
+﻿from pathlib import Path
+import subprocess,json,urllib.request,urllib.error,urllib.parse,hashlib,datetime,os
+ROOT=Path(r'C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016');E=ROOT/'ml/provenance/week6-p1-20261016';P=ROOT/'ml/artifacts/week6';spec=json.loads((E/'delivery-assets.json').read_text('utf-8'))
+TAG=spec['release_tag'];SHA=spec['implementation_commit'];API='https://api.github.com/repos/ChouPro205/Adaptive_Split_Inference'
+p=subprocess.run(['git','-c','safe.directory='+ROOT.as_posix(),'-c','credential.interactive=false','credential','fill'],cwd=ROOT,input=b'protocol=https\nhost=github.com\npath=ChouPro205/Adaptive_Split_Inference.git\n\n',stdout=subprocess.PIPE,stderr=subprocess.PIPE,env={**os.environ,'GIT_TERMINAL_PROMPT':'0'})
+if p.returncode:raise SystemExit('Existing Git credential lookup failed; no credential was printed')
+fields=dict(line.split(b'=',1) for line in p.stdout.splitlines() if b'=' in line);token=fields.get(b'password');assert token
+headers={'Authorization':'Bearer '+token.decode(),'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'ASI-authorized-SV3-week6-handoff'}
+operations=[]
+def request(url,method='GET',body=None,raw=None,content_type=None):
+ h=dict(headers);data=json.dumps(body,ensure_ascii=False).encode() if body is not None else raw
+ if content_type:h['Content-Type']=content_type
+ try:
+  with urllib.request.urlopen(urllib.request.Request(url,data=data,headers=h,method=method),timeout=60) as resp:
+   value=json.load(resp);operations.append({'method':method,'operation_url':url,'http_status':resp.status});return value
+ except urllib.error.HTTPError as ex:
+  if ex.code==404 and method=='GET':return None
+  raise RuntimeError(f'GitHub operation failed: HTTP {ex.code}; credentials withheld') from None
+release=request(API+'/releases/tags/'+TAG)
+body='SV3 Week 6 A+B host handoff: 50 real P1 vectors from authenticated Week 5 tensors; Python/C 50/50, reference logits/tails and s10 identity verified. PUBLIC_TEST_ONLY key 00..1f; not for bench provisioning. MCU/BLE/nonce NVS and real KV260/DPU acceptance remain with SV1/SV2.\n\nSource implementation: '+SHA+'\nManifest SHA-256: '+spec['manifest_sha256']+'\n\n'
+for asset in spec['assets']:body+=asset['name']+': '+asset['sha256']+' ('+str(asset['size_bytes'])+' bytes)\n'
+if release is None:
+ release=request(API+'/releases','POST',{'tag_name':TAG,'target_commitish':SHA,'name':'SV3 Week 6: official 50 P1 vectors and host output semantics','body':body,'draft':False,'prerelease':False})
+ref=request(API+'/git/ref/tags/'+TAG);assert ref and ref['object']['sha']==SHA,'Release tag must target exact implementation commit'
+assert release['draft'] is False
+assets={x['name']:x for x in release.get('assets',[])};items=[]
+for spec_asset in spec['assets']:
+ file=P/spec_asset['name'];raw=file.read_bytes();assert hashlib.sha256(raw).hexdigest()==spec_asset['sha256']
+ for f in [file,Path(str(file)+'.sha256')]:
+  expected=f.read_bytes();name=f.name
+  asset=assets.get(name)
+  if asset is None:
+   url=release['upload_url'].split('{',1)[0]+'?'+urllib.parse.urlencode({'name':name})
+   asset=request(url,'POST',raw=expected,content_type='application/zip' if name.endswith('.zip') else 'text/plain')
+  assert asset['size']==len(expected),'Existing remote asset size differs; refusing replace'
+  # Download from the published asset URL; retain no signed redirect or auth header in receipts.
+  req=urllib.request.Request(asset['browser_download_url'],headers=headers)
+  with urllib.request.urlopen(req,timeout=60) as response:downloaded=response.read();status=response.status
+  assert downloaded==expected,'Published asset download differs'
+  target=P/'downloaded-release'/name;target.parent.mkdir(exist_ok=True)
+  if target.exists():assert target.read_bytes()==downloaded
+  else:target.write_bytes(downloaded)
+  items.append({'name':name,'asset_id':asset['id'],'url':asset['browser_download_url'],'size_bytes':len(downloaded),'sha256':hashlib.sha256(downloaded).hexdigest(),'download_http_status':status,'download_matches':True})
+receipt={'schema':'week6-release-publication/1','status':'PUBLISHED_AND_DOWNLOADED_BYTES_VERIFIED','release_url':release['html_url'],'release_id':release['id'],'tag':TAG,'tag_commit':SHA,'assets':items,'operations':operations,'recorded_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'credential_scope':'Existing Git credential helper; never printed, stored or included in package','script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+(E/'release-publication.json').write_text(json.dumps(receipt,indent=2)+'\n','utf-8');(E/'final/orchestration/asi_week6_publish_release.py.txt').write_bytes(Path(__file__).read_bytes())
+print(json.dumps({'status':receipt['status'],'release':release['html_url'],'assets':[(x['name'],x['size_bytes'],x['download_matches']) for x in items]}))

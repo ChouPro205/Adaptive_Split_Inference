@@ -1,0 +1,1 @@
+{'path': 'C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\.cache\\week6-reproduction\\mitdb-week6-p1-50-20261016-v1.zip', 'sha256': '2afbab35b601ac14128c32018d6dc1d39afd1991759a7a0fd9ad2051d923359a', 'size_bytes': 412045}
