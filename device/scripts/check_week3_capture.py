@@ -98,6 +98,11 @@ def main() -> None:
         parser.error("--csv-output is only valid with --mode 20x5")
 
     repo = args.repo_root.resolve()
+    # The default report path is the accepted Week 3 evidence; never overwrite it.
+    report_path = args.report_output.resolve() if args.report_output else repo / "device/reports/week3_mcu_validation.json"
+    for output in (report_path, args.csv_output):
+        if output is not None and output.exists():
+            parser.error(f"{output} already exists; keep accepted evidence and choose a new output path")
     capture = args.capture.resolve()
     package = repo / "ml/artifacts/week3/mitdb-week3-fp32-20260925-v2"
     check_inventory(package)
@@ -177,7 +182,6 @@ def main() -> None:
             name: results[0]["max_abs_error"][name] for name in MILESTONES[:-1]
         }
         report["threshold_strict"] = THRESHOLD
-    report_path = args.report_output.resolve() if args.report_output else repo / "device/reports/week3_mcu_validation.json"
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     if full_trace:

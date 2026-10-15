@@ -69,5 +69,8 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
   có fix R4, phép đo chính thức giữ provenance R3 ngày 02/10/2026.
 - [Báo cáo SV1/Device Week 1](docs/sv1_device_week1_report.md)
 - [Báo cáo SV1/Device Week 2](docs/sv1_device_week2_report.md)
+- [Báo cáo SV1/Device Week 3](docs/sv1_device_week3_report.md)
+- [Báo cáo SV1/Device Week 5](docs/sv1_device_week5_report.md) và
+  [kết quả MCU Week 5](results/week5/README.md)
 - [Kết quả đo Week 2](results/week2/README.md)
 - [Mục lục tài liệu](docs/README.md)

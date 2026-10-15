@@ -3,14 +3,23 @@
 quantize_tail.py - Lượng tử hóa mô hình Tail cho điểm cắt s bằng vai_q_pytorch (Vitis AI)
 Thuộc phạm vi SV2 (FPGA / Edge) - Tuần 4
 Dự án: Adaptive Split Inference
+
+Luồng nghiệm thu chỉ chạy với checkpoint đã duyệt (kiểm SHA-256) và dữ liệu
+calibration lấy từ split train/val đã xác thực; không bao giờ dùng tập test.
+Trọng số/dữ liệu ngẫu nhiên chỉ có qua --synthetic-demo và kết quả bị đánh dấu
+SYNTHETIC, không dùng làm minh chứng nghiệm thu.
 """
 
+from __future__ import annotations
+
 import argparse
-import os
+import hashlib
+import json
+import shutil
 import sys
 from pathlib import Path
-from typing import Optional, List
-import shutil
+from typing import Optional
+
 import numpy as np
 import torch
 from torch import nn
@@ -35,9 +44,28 @@ SHAPES = {
 
 CUTS = (0, 2, 5, 7, 10, 12, 15, 17, 20, 24, 25)
 
+# Checkpoint của approved registry (contracts/sv3_week5_approved_registry_v2.json).
+CHECKPOINT_SHA256 = "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90"
+DEFAULT_CHECKPOINT = REPO_ROOT / "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/checkpoint.pt"
+PROCESSED_DIR = REPO_ROOT / "ml/data/processed/mitdb"
+# Hash raw của dữ liệu processed đã chuẩn hóa, được track trong repo.
+DATASET_MANIFEST = REPO_ROOT / "ml/results/week5/dataset_manifest.json"
+CALIBRATION_SPLITS = ("train", "val")  # Tập test frozen chỉ dùng để đánh giá.
+DEFAULT_CALIBRATION_SAMPLES = 1000
+PROVENANCE_NAME = "quantize_provenance.json"
+SYNTHETIC_MARKER = "SYNTHETIC_NOT_FOR_ACCEPTANCE"
+HYDRATE_HINT = "Hydrate the frozen assets first (ml/docs/week5_delivery_v2.md, setup_week5_delivery_v2.py)."
 
-def build_tail_model(s: int, checkpoint_path: Optional[Path] = None) -> nn.Module:
-    """Tạo mô hình Tail cho điểm cắt s từ mô hình baseline MitdbBaselineCNN."""
+
+class TailQuantizationError(Exception):
+    """Thiếu hoặc sai đầu vào; không tạo artifact."""
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def baseline_model() -> nn.Module:
     try:
         from ml.src.mitdb_baseline_model import MitdbBaselineCNN
     except ImportError:
@@ -58,69 +86,138 @@ def build_tail_model(s: int, checkpoint_path: Optional[Path] = None) -> nn.Modul
                     nn.Flatten(), nn.Dropout(dropout),
                     nn.Linear(64 * 22, 32), nn.ReLU(), nn.Linear(32, 5)
                 )
+    return MitdbBaselineCNN(dropout=0.0).eval()
 
-    full_model = MitdbBaselineCNN(dropout=0.0).eval()
 
-    if checkpoint_path and checkpoint_path.exists():
+def load_full_model(checkpoint_path: Optional[Path], synthetic: bool = False) -> nn.Module:
+    """Nạp checkpoint đã duyệt; chỉ khởi tạo ngẫu nhiên khi synthetic được chọn tường minh."""
+    if synthetic:
+        torch.manual_seed(42)
+        print("[SYNTHETIC] Trọng số ngẫu nhiên; kết quả không dùng làm minh chứng nghiệm thu.")
+        return baseline_model()
+    if checkpoint_path is None or not Path(checkpoint_path).is_file():
+        raise TailQuantizationError(f"Checkpoint not found: {checkpoint_path}. {HYDRATE_HINT}")
+    actual = sha256(checkpoint_path)
+    if actual != CHECKPOINT_SHA256:
+        raise TailQuantizationError(f"Checkpoint SHA-256 {actual} differs from the approved {CHECKPOINT_SHA256}")
+    try:
+        ckpt = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+    except TypeError:  # Older PyTorch in the Vitis AI container; the file hash is already verified.
         ckpt = torch.load(checkpoint_path, map_location="cpu")
-        if "state_dict" in ckpt:
-            state_dict = ckpt["state_dict"]
-        elif "model_state_dict" in ckpt:
-            state_dict = ckpt["model_state_dict"]
-        else:
-            state_dict = ckpt
-        full_model.load_state_dict(state_dict)
-        print(f"[INFO] Đã nạp checkpoint: {checkpoint_path}")
-    else:
-        print("[WARN] Không tìm thấy checkpoint; khởi tạo trọng số ngẫu nhiên cho mục đích kiểm thử.")
-
-    # Tách module theo CUTS
-    leaves = [(n, m) for n, m in full_model.named_modules() if n and not list(m.children())]
-    modules = [m for _, m in leaves]
-    tail_ops = modules[CUTS[s]:]
-    tail_model = nn.Sequential(*tail_ops).eval()
-    return tail_model
+    full_model = baseline_model()
+    state_dict = ckpt.get("state_dict", ckpt.get("model_state_dict", ckpt)) if isinstance(ckpt, dict) else ckpt
+    full_model.load_state_dict(state_dict, strict=True)
+    print(f"[INFO] Đã nạp checkpoint: {checkpoint_path}")
+    return full_model.eval()
 
 
-def get_calibration_data(s: int, calib_data_path: Optional[Path] = None, num_samples: int = 20) -> List[torch.Tensor]:
-    """Lấy dữ liệu calibration: dùng golden z_s nếu có, hoặc sinh ngẫu nhiên đúng shape."""
+def split_modules(full_model: nn.Module, s: int) -> tuple[nn.Sequential, nn.Sequential]:
+    """Tách head/tail theo CUTS, cùng quy ước số phép toán với firmware SV1."""
+    leaves = [m for n, m in full_model.named_modules() if n and not list(m.children())]
+    if len(leaves) != CUTS[-1]:
+        raise TailQuantizationError(f"Expected {CUTS[-1]} leaf operations, found {len(leaves)}")
+    return nn.Sequential(*leaves[:CUTS[s]]).eval(), nn.Sequential(*leaves[CUTS[s]:]).eval()
+
+
+def build_tail_model(s: int, checkpoint_path: Optional[Path] = None, synthetic: bool = False) -> nn.Module:
+    """Tạo mô hình Tail cho điểm cắt s từ mô hình baseline MitdbBaselineCNN."""
+    return split_modules(load_full_model(checkpoint_path, synthetic), s)[1]
+
+
+def calibration_inputs(split: str, count: int) -> tuple[np.ndarray, dict]:
+    """Chọn đều count mẫu đã chuẩn hóa từ split train/val, sau khi kiểm hash raw."""
+    if split not in CALIBRATION_SPLITS:
+        raise TailQuantizationError(f"Calibration split must be one of {CALIBRATION_SPLITS}; the test split is evaluation-only")
+    if count < 1:
+        raise TailQuantizationError("Calibration sample count must be positive")
+    path = PROCESSED_DIR / f"{split}_X.npy"
+    if not path.is_file() or not DATASET_MANIFEST.is_file():
+        raise TailQuantizationError(f"Missing processed calibration data {path}. {HYDRATE_HINT}")
+    expected = json.loads(DATASET_MANIFEST.read_text(encoding="utf-8"))["identifiers"]["processed_artifacts"][path.name]
+    actual = sha256(path)
+    if actual != expected:
+        raise TailQuantizationError(f"{path.name} SHA-256 {actual} differs from the frozen {expected}")
+    x = np.load(path, allow_pickle=False)
+    if x.ndim != 2 or x.shape[1] != 360 or x.dtype != np.float32 or not np.isfinite(x).all():
+        raise TailQuantizationError(f"{path.name} is not finite normalized FP32 (N,360)")
+    indices = np.unique(np.linspace(0, len(x) - 1, min(count, len(x))).round().astype(np.int64))
+    source = {"type": "processed_split", "split": split, "path": path.relative_to(REPO_ROOT).as_posix(),
+              "sha256": actual, "samples": int(len(indices)),
+              "indices_sha256": hashlib.sha256(indices.astype("<i8").tobytes()).hexdigest()}
+    return np.ascontiguousarray(x[indices][:, None, :]), source
+
+
+def head_activations(full_model: nn.Module, s: int, x: np.ndarray, batch: int = 256) -> np.ndarray:
+    head = split_modules(full_model, s)[0]
+    outputs = []
+    with torch.no_grad():
+        for start in range(0, len(x), batch):
+            outputs.append(head(torch.from_numpy(x[start:start + batch])).numpy())
+    z = np.concatenate(outputs).astype(np.float32)
+    if z.shape[1:] != SHAPES[s][1:]:
+        raise TailQuantizationError(f"Head output {z.shape[1:]} differs from split {s} shape {SHAPES[s][1:]}")
+    return z
+
+
+def get_calibration_data(s: int, full_model: nn.Module, calib_split: str, calib_samples: int,
+                         calib_data_path: Optional[Path] = None, calib_data_split: Optional[str] = None,
+                         synthetic: bool = False) -> tuple[list, dict]:
+    """Trả về các tensor z_s một mẫu (batch 1) và mô tả nguồn calibration."""
     shape = SHAPES[s]
-    if calib_data_path and calib_data_path.exists():
-        data = np.load(calib_data_path)
-        print(f"[INFO] Nạp dữ liệu calibration từ {calib_data_path}, shape: {data.shape}")
-        samples = [torch.from_numpy(data[i:i+1]).float() for i in range(min(len(data), num_samples))]
-        return samples
+    if synthetic:
+        torch.manual_seed(42)
+        print(f"[SYNTHETIC] Sinh {calib_samples} mẫu chuẩn tắc cho s={s} shape={shape}")
+        return [torch.randn(*shape) for _ in range(calib_samples)], {"type": "synthetic_normal", "samples": calib_samples}
+    if calib_data_path is not None:
+        if calib_data_split not in CALIBRATION_SPLITS:
+            raise TailQuantizationError("--calib_data requires --calib-data-split train|val declaring its source split")
+        if not calib_data_path.is_file():
+            raise TailQuantizationError(f"Calibration file not found: {calib_data_path}")
+        data = np.load(calib_data_path, allow_pickle=False)
+        if data.ndim != len(shape) or data.shape[1:] != shape[1:] or not np.isfinite(data).all():
+            raise TailQuantizationError(f"Calibration data must be finite {('N',) + shape[1:]}, got {data.shape}")
+        data = data[:calib_samples].astype(np.float32)
+        source = {"type": "provided_activations", "declared_split": calib_data_split,
+                  "path": str(calib_data_path), "sha256": sha256(calib_data_path), "samples": int(len(data))}
+    else:
+        x, source = calibration_inputs(calib_split, calib_samples)
+        data = head_activations(full_model, s, x)
+    print(f"[INFO] Calibration s={s}: {source}")
+    return [torch.from_numpy(data[i:i + 1].copy()) for i in range(len(data))], source
 
-    # Tìm file golden mặc định từ ml/artifacts
-    default_golden = REPO_ROOT / f"ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/golden/z_s{s}.npy"
-    if default_golden.exists():
-        data = np.load(default_golden)
-        print(f"[INFO] Nạp dữ liệu calibration từ {default_golden}")
-        return [torch.from_numpy(data[i:i+1]).float() for i in range(min(len(data), num_samples))]
 
-    print(f"[INFO] Sinh {num_samples} mẫu giả lập có phân phối chuẩn cho s={s} shape={shape}")
-    torch.manual_seed(42)
-    return [torch.randn(*shape) for _ in range(num_samples)]
+def write_provenance(output_dir: Path, record: dict) -> None:
+    (output_dir / PROVENANCE_NAME).write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def run_quantization(s: int, quant_mode: str, output_dir: Path, checkpoint_path: Optional[Path],
-                     calib_data_path: Optional[Path], dry_run: bool = False):
+                     calib_data_path: Optional[Path] = None, dry_run: bool = False,
+                     calib_split: str = "train", calib_samples: int = DEFAULT_CALIBRATION_SAMPLES,
+                     calib_data_split: Optional[str] = None, synthetic: bool = False) -> int:
     """Thực hiện lượng tử hóa tail_s bằng vai_q_pytorch (hoặc dry-run)."""
     shape = SHAPES[s]
-    dummy_input = torch.randn(*shape)
-    tail_model = build_tail_model(s, checkpoint_path)
+    marker = output_dir / SYNTHETIC_MARKER
+    if marker.exists() and not synthetic:
+        raise TailQuantizationError(f"{output_dir} holds synthetic results; use a fresh output directory")
+    full_model = load_full_model(checkpoint_path, synthetic)
+    tail_model = split_modules(full_model, s)[1]
+    calib_samples_list, calibration = get_calibration_data(s, full_model, calib_split, calib_samples,
+                                                           calib_data_path, calib_data_split, synthetic)
     output_dir.mkdir(parents=True, exist_ok=True)
+    if synthetic:
+        marker.write_text("Random weights/calibration; never acceptance evidence.\n", encoding="utf-8")
+    record = {"split_point_s": s, "quant_mode": quant_mode, "input_shape": list(shape),
+              "checkpoint": None if synthetic else {"path": str(checkpoint_path), "sha256": CHECKPOINT_SHA256},
+              "calibration": calibration, "synthetic": synthetic, "acceptance_evidence": not synthetic,
+              "dry_run": dry_run, "dpu_validation": "NOT_RUN"}
 
     print(f"--- BẮT ĐẦU LƯỢNG TỬ HÓA: s={s}, mode={quant_mode}, input_shape={shape} ---")
 
     if dry_run:
-        print("[DRY-RUN] Kiểm tra tính hợp lệ của mô hình tail và tensor đầu vào:")
         with torch.no_grad():
-            out = tail_model(dummy_input)
-            print(f"[DRY-RUN] Forward pass thành công! Đầu ra logits: {tuple(out.shape)}")
-        mock_xmodel = output_dir / f"tail_{s}_int.xmodel"
-        mock_xmodel.write_text(f"Mock XIR for split {s}\n")
-        print(f"[DRY-RUN] Đã tạo mock file lượng tử hóa: {mock_xmodel}")
+            out = tail_model(calib_samples_list[0])
+        print(f"[DRY-RUN] Forward pass thành công! Đầu ra logits: {tuple(out.shape)}; không tạo xmodel.")
+        write_provenance(output_dir, {**record, "dry_run_logits_shape": list(out.shape)})
         return 0
 
     try:
@@ -131,20 +228,18 @@ def run_quantization(s: int, quant_mode: str, output_dir: Path, checkpoint_path:
         print("[HINT] Hoặc dùng cờ --dry-run để kiểm thử cấu trúc trên môi trường host.", file=sys.stderr)
         return 1
 
-    device = torch.device("cpu")
     quantizer = torch_quantizer(
         quant_mode=quant_mode,
         module=tail_model,
-        input_args=(dummy_input,),
+        input_args=(calib_samples_list[0],),
         output_dir=str(output_dir),
-        device=device
+        device=torch.device("cpu")
     )
     quant_model = quantizer.quant_model
 
     # Chạy forward pass cho tập calibration
-    calib_samples = get_calibration_data(s, calib_data_path)
     with torch.no_grad():
-        for i, sample in enumerate(calib_samples):
+        for sample in calib_samples_list:
             _ = quant_model(sample)
 
     if quant_mode == "calib":
@@ -153,11 +248,13 @@ def run_quantization(s: int, quant_mode: str, output_dir: Path, checkpoint_path:
     elif quant_mode == "test":
         quantizer.export_xmodel(output_dir=str(output_dir), deploy_check=False)
         gen_xmodel = output_dir / "Sequential_int.xmodel"
-        target_xmodel = output_dir / f"tail_{s}_int.xmodel"
-        if gen_xmodel.exists() and not target_xmodel.exists():
+        target_xmodel = output_dir / (f"tail_{s}_SYNTHETIC_int.xmodel" if synthetic else f"tail_{s}_int.xmodel")
+        if gen_xmodel.exists():
+            # Luôn thay bản sao cũ để xmodel khớp checkpoint/calibration của lần chạy này.
             shutil.copyfile(gen_xmodel, target_xmodel)
+            record["xmodel_sha256"] = sha256(target_xmodel)
         print(f"[SUCCESS] Đã xuất XIR model cho s={s} tại {output_dir}")
-
+    write_provenance(output_dir, record)
     return 0
 
 
@@ -169,31 +266,34 @@ def main():
                         help="Chế độ lượng tử hóa (calib để hiệu chỉnh dải động, test để xuất file _int.xmodel)")
     parser.add_argument("--output_dir", type=Path, default=None,
                         help="Thư mục lưu kết quả lượng tử hóa")
-    parser.add_argument("--checkpoint", type=Path, default=None,
-                        help="Đường dẫn file PyTorch checkpoint .pt")
+    parser.add_argument("--checkpoint", type=Path, default=DEFAULT_CHECKPOINT,
+                        help="Checkpoint PyTorch đã duyệt (kiểm SHA-256)")
+    parser.add_argument("--calib-split", choices=CALIBRATION_SPLITS, default="train",
+                        help="Split processed dùng sinh activation calibration (không bao giờ là test)")
+    parser.add_argument("--calib-samples", type=int, default=DEFAULT_CALIBRATION_SAMPLES,
+                        help="Số mẫu calibration, chọn đều và tất định trong split")
     parser.add_argument("--calib_data", type=Path, default=None,
-                        help="Đường dẫn file .npy chứa các tensor kích hoạt golden")
+                        help="File .npy activation z_s tự cung cấp (thay cho --calib-split)")
+    parser.add_argument("--calib-data-split", choices=CALIBRATION_SPLITS, default=None,
+                        help="Khai báo split nguồn của --calib_data")
+    parser.add_argument("--synthetic-demo", action="store_true",
+                        help="Trọng số và calibration ngẫu nhiên, đánh dấu SYNTHETIC, không dùng nghiệm thu")
     parser.add_argument("--dry-run", action="store_true",
-                        help="Kiểm tra tương thích mô hình và forward pass mà không gọi vai_q_pytorch")
+                        help="Kiểm tra checkpoint, calibration và forward pass; không gọi vai_q_pytorch, không tạo xmodel")
 
     args = parser.parse_args()
 
     s = args.split
     output_dir = args.output_dir or (REPO_ROOT / f"edge/build/quantized/s{s}")
-    checkpoint_path = args.checkpoint
-    if not checkpoint_path:
-        default_ckpt = REPO_ROOT / "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/checkpoint.pt"
-        if default_ckpt.exists():
-            checkpoint_path = default_ckpt
-
-    exit_code = run_quantization(
-        s=s,
-        quant_mode=args.quant_mode,
-        output_dir=output_dir,
-        checkpoint_path=checkpoint_path,
-        calib_data_path=args.calib_data,
-        dry_run=args.dry_run
-    )
+    try:
+        exit_code = run_quantization(
+            s=s, quant_mode=args.quant_mode, output_dir=output_dir,
+            checkpoint_path=args.checkpoint, calib_data_path=args.calib_data,
+            dry_run=args.dry_run, calib_split=args.calib_split, calib_samples=args.calib_samples,
+            calib_data_split=args.calib_data_split, synthetic=args.synthetic_demo)
+    except TailQuantizationError as error:
+        print(f"[ERROR] {error}", file=sys.stderr)
+        exit_code = 2
     sys.exit(exit_code)
 
 
