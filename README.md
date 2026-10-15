@@ -59,7 +59,8 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
 - [PR25 R1/R2: bảo toàn header và setup bốn ZIP](ml/docs/week5_pr25_r1r2_20261012.md):
   logs mới và gate portable; registry/SV1 evidence vẫn BLOCKED, REVIEW_STATUS=PENDING.
 - [SV3 tuần 5: implementation và verification](ml/docs/week5_technical_20261009.md):
-  Python/ML gates PASS, wire registry BLOCKED, REVIEW_STATUS=PENDING.
+  kết quả lịch sử. [Allocation đã duyệt và final acceptance v3](contracts/sv3_week5_allocation_v2.md)
+  là luồng hiện hành cho testbed ASI/MIT-BIH; runtime transport/provisioning còn mở.
 - [Kiểm tra checkout hiện tại trước tuần 5](ml/docs/week4_current_verification.md):
   entrypoint ML dùng chung policy xác thực với device, tách rõ snapshot lịch sử.
 - [Báo cáo SV1/Device Week 4: 11 splits FP32](docs/sv1_device_week4_report.md)

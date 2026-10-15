@@ -16,7 +16,8 @@ Mã tham chiếu Python/C và vector I2 nằm trong [`i2_ref/`](i2_ref/test_i2.p
 
 ## Quyết định SV3 tuần 5 hiện hành
 
-[Decision note v1](sv3_week5_decisions_v1.md) ngày 2026-10-09 ghi S6 và
-[metadata ML registry](sv3_week5_ml_registry_v1.json). Wire allocation còn
-BLOCKED; note v1 không tăng version I1/I2. Kết quả Python không là nghiệm thu
-Device–Edge; CURRENT WEEK=5, REVIEW_STATUS=PENDING.
+[Allocation v2](sv3_week5_allocation_v2.md): Châu đã duyệt testbed ASI/MIT-BIH,
+revision `mitdb-week5-i2-registry-v1-r1`; final verifier v3 kết hợp science,
+approved registry và offline SV1 compatibility. Registry baseline và decision
+notes v1/v2 là hồ sơ lịch sử. Runtime provisioning/nonce persistence/transport
+chưa nghiệm thu; I1 tiếp tục REVIEW_CANDIDATE.

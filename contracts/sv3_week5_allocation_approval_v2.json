@@ -1,0 +1,36 @@
+{
+  "schema": "asi-project-registry-approval/2",
+  "authority_policy": "asi-project-lead/1",
+  "decision": "APPROVED",
+  "approved_by": [
+    "Lê Hải Châu"
+  ],
+  "approver_role": "ASI project lead; final project authority",
+  "recorded_by": "Codex",
+  "authorization": "Direct authorization by Lê Hải Châu in this session, 2026-10-15 Asia/Saigon",
+  "attestation_type": "delegated decision record; not a cryptographic signature or manual user hash attestation",
+  "scope": {
+    "namespace": "ASI/MIT-BIH",
+    "environment": "internal-team-testbed",
+    "protocol": "I2/1",
+    "production_authorized": false,
+    "external_systems_authorized": false
+  },
+  "revision": "mitdb-week5-i2-registry-v1-r1",
+  "device_revision": "mitdb-week5-i2-registry-v1-r1",
+  "edge_revision": "mitdb-week5-i2-registry-v1-r1",
+  "registry_sha256": "79392b6db73cde6d83eadb1f265f14102888ebdbf8ea1b72b6c127c5566eed24",
+  "technical_confirmation": {
+    "person": "Trung",
+    "source": "Reported by Châu in the direct authorization",
+    "type": "conditional Edge technical confirmation",
+    "conditions": [
+      "internal ASI/MIT-BIH I2/1 model/profile/revision scope",
+      "Edge executable tails s0..s9; s10 Device-only/empty-tail",
+      "separate payload/scales/metadata ceilings; packet budget remains design-only",
+      "runtime key provisioning, nonce persistence/reboot and transport not accepted"
+    ],
+    "final_registry_or_approval_hash_independently_attested": false
+  },
+  "independent_final_hash_attestation_by_ky_anh": false
+}

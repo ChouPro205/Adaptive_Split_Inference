@@ -1,6 +1,9 @@
 # PR25 F1/F3 — tái lập có phạm vi, version 2
 
-CURRENT WEEK=5; REVIEW_STATUS=PENDING. Tổng BLOCKED vì registry chưa duyệt.
+Luồng nghiệm thu hiện hành: [allocation và final v3](../../contracts/sv3_week5_allocation_v2.md).
+Allocation testbed đã được Châu duyệt, revision `mitdb-week5-i2-registry-v1-r1`.
+V2 dưới đây tiếp tục kiểm baseline lịch sử null-ID và trả BLOCKED/2; kết luận
+hiện hành phải lấy từ `verify_week5_delivery_v3.py` cùng approved registry riêng.
 
 `week5_common.py`, `evaluate_week5.py` và `test_week5_p1.py` là source lịch sử bị receipts SV1
 ràng buộc. Giữ nguyên raw bytes theo main `cfdfca1025ab5f707b46197b4c5dae868d38d473`:
