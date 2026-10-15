@@ -1,0 +1,10 @@
+test_explicit_nonproposal_mapping_descriptor (__main__.RegistryPolicyTests.test_explicit_nonproposal_mapping_descriptor) ... ok
+test_ids_alone_do_not_pass (__main__.RegistryPolicyTests.test_ids_alone_do_not_pass) ... ok
+test_mapping_buffers_and_key_scope_rejected (__main__.RegistryPolicyTests.test_mapping_buffers_and_key_scope_rejected) ... ok
+test_shared_revision_and_approval_required (__main__.RegistryPolicyTests.test_shared_revision_and_approval_required) ... ok
+test_trust_anchor_and_registry_bytes (__main__.RegistryPolicyTests.test_trust_anchor_and_registry_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.092s
+
+OK
