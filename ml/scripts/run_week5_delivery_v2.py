@@ -32,7 +32,7 @@ def run(output):
             actual = ['--output', output/(gate_name+'-results')] if name == 'device_quantization' else arguments
             gate(gate_name, script, actual, optimized)
     for name, script, args, result in [
-        ('p1','ml/scripts/test_week5_p1.py',['--cases','10000','--output',output/'p1_10000.json'],output/'p1_10000.json'),
+        ('p1','ml/scripts/test_week5_p1_v2.py',['--cases','10000','--output',output/'p1_10000.json'],output/'p1_10000.json'),
         ('real','ml/scripts/verify_week5_real.py',['--output',output/'real_220.json'],output/'real_220.json'),
         ('accuracy','ml/scripts/evaluate_week5_v2.py',['--batch-size','1','--output',output/'accuracy'],output/'accuracy')]:
         gate(name, script, args, result=result)

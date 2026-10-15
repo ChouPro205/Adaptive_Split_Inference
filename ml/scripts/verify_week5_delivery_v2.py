@@ -26,7 +26,7 @@ UNIT_SCRIPTS = {
 }
 REQUIRED = {**{name: script for name, script in UNIT_SCRIPTS.items()},
             **{name+'_O': script for name, script in UNIT_SCRIPTS.items()},
-            'p1': 'ml/scripts/test_week5_p1.py', 'real': 'ml/scripts/verify_week5_real.py',
+            'p1': 'ml/scripts/test_week5_p1_v2.py', 'real': 'ml/scripts/verify_week5_real.py',
             'accuracy': 'ml/scripts/evaluate_week5_v2.py'}
 
 
@@ -106,6 +106,8 @@ def verify(evidence, accuracy):
     need(before['files'] == after['files'] == current, 'Portable delivery preservation failed')
     records = {n: check_receipt(evidence, n, s) for n, s in REQUIRED.items()}
     p1, real = read(evidence/'p1_10000.json'), read(evidence/'real_220.json')
+    need(p1.get('schema') == 'week5-p1/2' and p1.get('profile_ids', '').startswith('PUBLIC_TEST_ONLY;'),
+         'Versioned P1 result/public test profile contract missing')
     need(p1['status'] == real['status'] == 'PASS' and p1['cases'] >= 10000
          and p1['failed_tensors'] == real['failed_tensors'] == 0, 'Roundtrip failed')
     need(p1['bit_exact_roundtrips'] == p1['determinism_checks'] == p1['cases'], 'Synthetic coverage differs')

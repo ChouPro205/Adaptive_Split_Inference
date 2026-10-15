@@ -128,7 +128,7 @@ $asiPython = 'C:/Users/Admin/Adaptive_Split_Inference/ml/.venv/Scripts/python.ex
 & $asiPython -B ml/scripts/test_week5_interfaces.py
 & $asiPython -O -B ml/scripts/test_week5_interfaces.py
 & $asiPython -B contracts/i2_ref/test_i2.py
-& $asiPython -B ml/scripts/test_week5_p1.py --cases 10000 --output ml/provenance/week5-new-run/p1_10000.json
+& $asiPython -B ml/scripts/test_week5_p1_v2.py --cases 10000 --output ml/provenance/week5-new-run/p1_10000.json
 & $asiPython -B ml/scripts/verify_week5_real.py --output ml/provenance/week5-new-run/real_220.json
 & $asiPython -B ml/scripts/evaluate_week5.py --batch-size 1 --output ml/results/week5-new-run
 & $asiPython -B ml/scripts/verify_week4_current.py --regressions

@@ -2,13 +2,21 @@
 
 CURRENT WEEK=5; REVIEW_STATUS=PENDING. Tổng BLOCKED vì registry chưa duyệt.
 
-`week5_common.py` và `evaluate_week5.py` là source lịch sử bị receipts SV1
+`week5_common.py`, `evaluate_week5.py` và `test_week5_p1.py` là source lịch sử bị receipts SV1
 ràng buộc. Giữ nguyên raw bytes theo main `cfdfca1025ab5f707b46197b4c5dae868d38d473`:
 `c1842a380afddaaf7e7968bfdd3ff7c03e08d36e9bec205da2819abdca105934` và
 `c420029c0b8b1d7834bb32db0c428f379c1659cef3cc99ffa9a1271bfeb88eef`.
 Entry mới là `evaluate_week5_v2.py`, import `week5_common_v2.py`. Gate exact
 `200*(correct_FP32-correct_INT8)<num_samples`; n phải 8544 tại mọi s0..s10.
 Đúng 0,5 điểm phần trăm FAIL. Không đổi source gate hoặc receipt SV1.
+
+P1 lịch sử giữ raw SHA256
+`ad6be8d9b126448b2b1179cd6f9eb2da007c2c87bbb13f7869b5ad0b8ccf2cac`.
+Chạy mới bằng `test_week5_p1_v2.py`: import/provenance v2, output guard,
+schema `week5-p1/2` có `failed_tensors` và profiles `PUBLIC_TEST_ONLY`.
+Runner và verifier REQUIRED đều dùng entrypoint v2; source logger/provenance
+thu thập tập source thực tế, gồm cả file v2, không cố định số dependency.
+Thuật toán, seed 20261005, coverage và checksum stream giữ nguyên.
 
 ## Dependency và scope
 
@@ -45,15 +53,16 @@ cho máy nhận. Receipts 94518 file/754 copies không sửa; verifier portable 
 bytes và tính toàn vẹn của receipts, ghi rõ REUSED_AUTHOR_WORKSPACE_AUDIT.
 Inventory mới của máy nhận là 569 file trong scope, không gọi là 94518/754.
 
-Chỉ `C:/Users/Admin/Downloads/review_report.md` được cung cấp trong phiên sửa.
-Không có `evidence/historical-assets-audit.json` hay
-`evidence/historical-missing-copied.json`; không có thư mục
-`D:/HUST/ASI_pr25_review/20261010-pr25-01`. Vì vậy chưa đối chiếu được **61 đường
-dẫn cuối** reviewer thiếu. Ví dụ repro/manifest/ZIP/bundle trong báo cáo thuộc
-audit workspace; kết luận từng file cần hai audit đầy đủ. Cần nhận hai audit,
-inventory gốc và command/log hydrated được dẫn; không đoán danh sách 61.
-Scope portable dựa trên inventory releases đã xác thực, không dựa vào xóa file
-khỏi danh sách 61 chưa nhận. Missing required dependency trong scope vẫn FAIL.
+Ngày 15/10/2026 đã nhận ZIP evidence cuối và cả hai audit gốc. ZIP SHA256
+`4dcf8de3bba7aae761d7586ac6f684dd0558ce1a756ca197c8d28eadcee41aac`;
+2.280 payload/601727245 B được kiểm raw hash/size trước dùng. Dùng
+`handoff/path-mapping-final.json` và `reference-resolution-final.json`, giữ nguyên
+receipts. Đối chiếu raw inventory anchor và từng path/hash/size: **15/61 recovered,
+46 author-workspace extras unavailable**. Chỉ R3 ZIP trong 61 là dependency
+portable bắt buộc và đã có đúng hash. Ba DOCX là optional historical audit,
+không tạo thay thế. Xem [báo cáo SV1 mới](week5_pr25_sv1_20261015.md).
+Scope 569 dependency portable và audit workspace lịch sử tiếp tục giữ nguyên;
+missing required dependency vẫn FAIL.
 
 ## Setup sạch và lệnh đầy đủ
 
@@ -89,6 +98,12 @@ thread, MKLDNN disabled. Wrapper chỉ bỏ PYTHONHOME/PYTHONPATH ở child.
 Suite chạy P1 10000, 220 tensor thật, accuracy8544×11 và unit/regression thường/-O.
 Exit2 nghĩa các gate portable đạt và allocation BLOCKED; exit1 là gate/dependency
 lỗi. Suite không thay thế SV1 preflight/acceptance tổng.
+
+P1 v2 độc lập (output mới, không ghi đè evidence):
+
+```powershell
+python -B ml/scripts/test_week5_p1_v2.py --cases 10000 --output ml/provenance/p1-v2-new/p1_10000.json
+```
 
 Để kiểm lại bằng evidence mới đã có (không gọi tests reuse là chạy mới):
 

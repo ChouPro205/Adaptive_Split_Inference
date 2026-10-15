@@ -137,7 +137,7 @@ dùng `s+1` **chỉ trong test profile**, không phải wire/deployment registry
 & ml/.venv/Scripts/python.exe -B ml/scripts/test_week5_quantization.py
 & ml/.venv/Scripts/python.exe -B ml/scripts/export_week5.py
 & ml/.venv/Scripts/python.exe -B ml/scripts/evaluate_week5.py --batch-size 1
-& ml/.venv/Scripts/python.exe -B ml/scripts/test_week5_p1.py --cases 10000
+& ml/.venv/Scripts/python.exe -B ml/scripts/test_week5_p1_v2.py --cases 10000 --output ml/provenance/p1-v2-new/p1_10000.json
 $env:CC='C:/msys64/ucrt64/bin/gcc.exe'
 & ml/.venv/Scripts/python.exe -B contracts/i2_ref/test_i2.py
 & ml/.venv/Scripts/python.exe -B ml/scripts/package_week5.py

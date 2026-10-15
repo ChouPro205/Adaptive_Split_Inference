@@ -1,8 +1,11 @@
 """Run one command with exclusive new logs and source/environment provenance."""
 import argparse
+import datetime as dt
 import hashlib
+import importlib.metadata
 import json
 import os
+import platform
 from pathlib import Path
 import subprocess
 import sys
@@ -41,15 +44,26 @@ if __name__ == '__main__':
     sources = [p for p in sources if p.is_file()]
     hashes = {p.relative_to(ROOT).as_posix(): sha(p) for p in sources}
     started = time.monotonic()
+    started_utc = dt.datetime.now(dt.timezone.utc).isoformat()
     with paths[0].open('xb') as out, paths[1].open('xb') as err:
         process = subprocess.run(command, cwd=ROOT, env=env, stdout=out, stderr=err)
     record = {'command': command, 'cwd': str(ROOT), 'exit_code': process.returncode,
+              'started_utc': started_utc, 'finished_utc': dt.datetime.now(dt.timezone.utc).isoformat(),
               'elapsed_seconds': time.monotonic()-started, 'source_git_commit': commit,
               'source_files_sha256': hashes,
               'source_tree': subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}'], cwd=ROOT, env=env, text=True).strip(),
               'scope': 'FRESH_COMMAND; outputs are not historical receipt reuse',
               'stdout_sha256': sha(paths[0]), 'stderr_sha256': sha(paths[1]),
               'git_trust': ROOT.as_posix(), 'python': sys.version}
+    record['environment'] = {'platform': platform.platform(), 'executable': sys.executable,
+                             'PATH': env.get('PATH'), 'PYTHONHOME': None, 'PYTHONPATH': None,
+                             'packages': {}}
+    for package in ('numpy', 'torch', 'pandas', 'onnx', 'onnxruntime', 'PyYAML'):
+        try:
+            record['environment']['packages'][package] = importlib.metadata.version(package)
+        except importlib.metadata.PackageNotFoundError:
+            record['environment']['packages'][package] = None
+    record['source_file_count'] = len(hashes)
     results = []
     for path in args.result_path:
         path = path.resolve()

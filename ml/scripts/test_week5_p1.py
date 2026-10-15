@@ -9,14 +9,12 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from p1 import Profile, descriptor, protect, unprotect
-from week5_common_v2 import mapping, provenance, write_json, ROOT
+from week5_common import mapping, provenance, write_json, ROOT
 
 SEED = 20261005
 
 
 def run(cases, output):
-    if output.exists():
-        raise ValueError('Output exists; choose a new path to preserve evidence')
     if cases < 10000:
         raise ValueError("At least 10,000 cases required")
     rng = random.Random(SEED)
@@ -54,12 +52,11 @@ def run(cases, output):
         checksums.update(metadata + nonce + protected)
         if (i + 1) % 1000 == 0:
             print(f"P1 {i + 1}/{cases} PASS", flush=True)
-    result = {"status": "PASS", "cases": cases, "tensors_executed": cases, "failed_tensors": 0,
-              "determinism_checks": cases, "bit_exact_roundtrips": cases,
+    result = {"status": "PASS", "cases": cases, "determinism_checks": cases, "bit_exact_roundtrips": cases,
               "seed": SEED, "test_keys": len(keys), "shapes_and_counts": counts,
               "output_stream_sha256": checksums.hexdigest(), "elapsed_seconds": time.monotonic() - started,
               "algorithm": "I2/1 existing IETF ChaCha20 counter=0, source-channel affine256, Fisher-Yates rejection",
-              "profile_ids": "PUBLIC_TEST_ONLY; split_id=s+1, not a deployment registry",
+              "profile_ids": "TEST ONLY; split_id=s+1, not a deployment registry",
               "acceptance": "Python host only; C and 50 official Python/C vectors remain Week 6",
               "provenance": provenance(' '.join(sys.argv))}
     write_json(output, result)
