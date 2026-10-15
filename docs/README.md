@@ -5,6 +5,7 @@ và báo cáo của dự án.
 
 ## Báo cáo tiến độ
 
+### Khối Thiết bị (SV1 - Device / Châu)
 - [Báo cáo SV1/Device (Châu) – Week 1](sv1_device_week1_report.md)
 - [Báo cáo SV1/Device (Châu) – Week 2](sv1_device_week2_report.md)
 - [Báo cáo SV1/Device (Châu) – Week 3](sv1_device_week3_report.md)
@@ -19,6 +20,12 @@ và báo cáo của dự án.
 - [Mục lục và tài liệu bổ trợ SV3](../ml/docs/reports/README.md)
 - [Kết quả và hình minh chứng Week 2](../results/week2/README.md)
 - [Kết quả MCU và timing Week 4](../results/week4/README.md)
+
+### Khối Máy chủ biên (SV2 - Edge / KV260)
+- [Báo cáo SV2/Edge – Week 1](sv2_edge_week1_report.md)
+- [Báo cáo SV2/Edge – Week 2](sv2_edge_week2_report.md)
+- [Báo cáo SV2/Edge – Week 3](sv2_edge_week3_report.md)
+- [Báo cáo SV2/Edge – Week 4](sv2_edge_week4_report.md)
 
 ## Quy ước đặt tên báo cáo
 
