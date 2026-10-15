@@ -1,0 +1,12 @@
+test_approved_mapping_descriptor_and_s10 (__main__.AllocationTests.test_approved_mapping_descriptor_and_s10) ... ok
+test_authority_scope_revision_and_false_attestation_rejected (__main__.AllocationTests.test_authority_scope_revision_and_false_attestation_rejected) ... ok
+test_missing_approval_is_blocked_and_never_pass (__main__.AllocationTests.test_missing_approval_is_blocked_and_never_pass) ... ok
+test_missing_fields_rejected (__main__.AllocationTests.test_missing_fields_rejected) ... ok
+test_raw_hashes_and_malformed_json_rejected (__main__.AllocationTests.test_raw_hashes_and_malformed_json_rejected) ... ok
+test_registry_mapping_capacity_key_sender_nonce_and_s10_rejected (__main__.AllocationTests.test_registry_mapping_capacity_key_sender_nonce_and_s10_rejected) ... ok
+test_sv1_strict_boundary_coverage_and_oracle_rejected (__main__.AllocationTests.test_sv1_strict_boundary_coverage_and_oracle_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 5.976s
+
+OK

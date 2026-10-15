@@ -17,6 +17,8 @@ và báo cáo của dự án.
 - [Kết quả và hình minh chứng Week 2](../results/week2/README.md)
 - [Kết quả MCU và timing Week 4](../results/week4/README.md)
 - [Kết quả MCU Week 5](../results/week5/README.md)
+- [Receipt tuần 5 cho source hiện tại](../ml/provenance/week5-current-20261015/README.md)
+  và [đánh giá theo lớp](../ml/results/week5-per-class-20261015/README.md)
 - [Firmware và công cụ SV1](../device/README.md)
 
 ### Khối ML (SV3 - ML / Bùi Kỳ Anh)

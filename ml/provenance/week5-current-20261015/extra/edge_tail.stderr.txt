@@ -1,0 +1,11 @@
+test_calibration_split_policy (__main__.QuantizeTailTests.test_calibration_split_policy) ... ok
+test_dry_run_creates_no_xmodel (__main__.QuantizeTailTests.test_dry_run_creates_no_xmodel) ... ok
+test_missing_or_unapproved_checkpoint_fails (__main__.QuantizeTailTests.test_missing_or_unapproved_checkpoint_fails) ... ok
+test_provided_activations_need_declared_split_and_shape (__main__.QuantizeTailTests.test_provided_activations_need_declared_split_and_shape) ... ok
+test_run_records_provenance_and_marks_synthetic (__main__.QuantizeTailTests.test_run_records_provenance_and_marks_synthetic) ... ok
+test_split_matches_frozen_goldens (__main__.QuantizeTailTests.test_split_matches_frozen_goldens) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.986s
+
+OK
