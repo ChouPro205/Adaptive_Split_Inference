@@ -1,16 +1,27 @@
 param(
     [string]$NcsRoot = 'D:\ncs\v3.4.0',
-    [string]$ToolchainRoot = 'D:\ncs\toolchains\dcbdc366a1'
+    [string]$ToolchainRoot = 'D:\ncs\toolchains\dcbdc366a1',
+    [string]$BuildDir,
+    [string]$DfuZipPath
 )
 
 # Build and package only. Never flash from this script.
 $ErrorActionPreference = 'Continue'
 $RepoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $DeviceDir = Join-Path $RepoRoot 'device'
-$BuildDir = Join-Path $DeviceDir 'build-week3'
+if (-not $BuildDir) { $BuildDir = Join-Path $DeviceDir 'build-week3' }
+if (-not $DfuZipPath) { $DfuZipPath = Join-Path $DeviceDir 'artifacts\adaptive_split_week3_fp32_v2.zip' }
+$BuildDir = [System.IO.Path]::GetFullPath($BuildDir)
+$DfuZipPath = [System.IO.Path]::GetFullPath($DfuZipPath)
+# The defaults hold the flashed and measured Week 3 image (HEX/ZIP SHA-256 in
+# device/reports/week3_build.md). A rebuild must go to fresh paths.
+foreach ($target in @($BuildDir, $DfuZipPath)) {
+    if (Test-Path -LiteralPath $target) {
+        throw "Preserve the accepted Week 3 image; choose a fresh -BuildDir/-DfuZipPath: $target"
+    }
+}
 $HexPath = Join-Path $BuildDir 'zephyr\zephyr.hex'
 $ElfPath = Join-Path $BuildDir 'zephyr\zephyr.elf'
-$DfuZipPath = Join-Path $DeviceDir 'artifacts\adaptive_split_week3_fp32_v2.zip'
 $BoardTarget = 'nrf52840dongle/nrf52840'
 $MlPython = Join-Path $RepoRoot 'ml\.venv\Scripts\python.exe'
 $HostScript = Join-Path $DeviceDir 'scripts\verify_week3_host.py'
@@ -73,7 +84,6 @@ if ($LASTEXITCODE -ne 0) { throw 'Unable to read Week 3 ELF size' }
 $sizeOutput | Write-Output
 
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $DfuZipPath) | Out-Null
-if (Test-Path -LiteralPath $DfuZipPath) { Remove-Item -LiteralPath $DfuZipPath -Force }
 $savedNrfutilHome = $env:NRFUTIL_HOME
 Remove-Item Env:NRFUTIL_HOME -ErrorAction SilentlyContinue
 try {

@@ -1,5 +1,13 @@
 # SV1 Week 5: prepared firmware and later Dongle acceptance
 
+Status: the prepared image was flashed and accepted on the Dongle on
+2026-10-09 (220/220 + 16/16 cases); see [the Week 5 results](../results/week5/README.md)
+and [SV1 report](../docs/sv1_device_week5_report.md). This guide records the
+preparation and acceptance procedure. Every file bound by `preparation.json`
+(including `device/week5/*`, the shared Week 4 kernel/protocol/marker sources and
+the `device/scripts/*week5*` tools) must stay unchanged, otherwise the preflight and
+acceptance rechecks fail; new firmware belongs in a new application directory.
+
 This is an independent Zephyr application in `device/week5/`. It uses the
 unchanged accepted Week 4 FP32 kernels, R3 parameters and normalized 20 inputs.
 Only cut activations are quantized: symmetric INT8 per sample/channel over L,
@@ -124,7 +132,7 @@ during preparation. Use the exact prepared `preparation.json` path.
    PENDING. Preserve any explained golden differences; do not alter golden
    files, thresholds or MCU output to force a match.
 
-Flash remains NOT_RUN and MCU validation, device timing, runtime RAM/stack
-remain PENDING until the corresponding real later steps are performed. This
-application prepares numerical acceptance; it currently has no BENCH command
-and does not claim device timing or runtime stack measurements.
+`preparation.json` itself keeps its pre-flash snapshot (flash NOT_RUN, MCU
+PENDING); the real DFU, collection and acceptance are recorded separately.
+This application has no BENCH command, so device timing and runtime RAM/stack
+of quantization remain NOT_MEASURED.

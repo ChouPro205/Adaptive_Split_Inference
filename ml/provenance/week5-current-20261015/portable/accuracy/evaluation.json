@@ -1,0 +1,138 @@
+{
+  "status": "PASS",
+  "num_samples": 8544,
+  "batch_size": 1,
+  "gate_rule": "200*(correct_fp32-correct_int8) < num_samples; exact integer strict <0.5 pp",
+  "scale_policy": "Independent per sample/channel over L, also when N>1",
+  "per_split_threshold": [
+    {
+      "s": 0,
+      "drop_pp": 0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 1,
+      "drop_pp": 0.0351123595505618,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 2,
+      "drop_pp": 0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 3,
+      "drop_pp": 0.011704119850187267,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 4,
+      "drop_pp": 0.0,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 5,
+      "drop_pp": -0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 6,
+      "drop_pp": 0.05852059925093633,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 7,
+      "drop_pp": 0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 8,
+      "drop_pp": 0.023408239700374533,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 9,
+      "drop_pp": 0.0,
+      "pass_strict_lt_0_5_pp": true
+    },
+    {
+      "s": 10,
+      "drop_pp": 0.0,
+      "pass_strict_lt_0_5_pp": true
+    }
+  ],
+  "worst_split": {
+    "split_point_s": 6,
+    "num_samples": 8544,
+    "correct_fp32": 8393,
+    "correct_int8_fp16": 8388,
+    "accuracy_fp32_percent": 98.23267790262172,
+    "accuracy_int8_fp16_percent": 98.17415730337079,
+    "accuracy_drop_pp": 0.05852059925093633,
+    "relative_accuracy_drop_percent": 0.05957345406886691,
+    "gate_status": "PASS",
+    "prediction_disagreements": 5
+  },
+  "elapsed_seconds": 109.53099999998813,
+  "provenance": {
+    "baseline_main_commit": "9bce483ddbf3be2ca471e522833352ab18331736",
+    "week4_r4_merge_commit": "23b2b7d3fa152fcc50296a93ff592b42e00af943",
+    "week4_artifact_generation_commit": "89109fd352d84a5fe0815d7e045e52538de7bad8",
+    "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+    "week3_manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "quantization_version": "ncl-int8-fp16-v1-review",
+    "environment": {
+      "python": "3.11.9",
+      "torch": "2.14.0+cu130",
+      "numpy": "2.4.6",
+      "onnx": "1.23.1",
+      "onnxruntime": "1.30.0",
+      "protobuf": "7.36.2",
+      "ml_dtypes": "0.6.0",
+      "flatbuffers": "25.12.19"
+    },
+    "command": "ml/scripts/evaluate_week5_v2.py --batch-size 1 --output D:\\HUST\\Adaptive_Split_Inference\\ml\\provenance\\week5-current-20261015\\portable\\accuracy",
+    "source_git_commit_at_execution": "e50c4717ce2e1b42293637650893c392168c1011",
+    "source_files_sha256": {
+      "ml/src/quantization.py": "cb2c6260784fddf43a6fa620d0b258efae643cf98d9399f9625c21d8f14faa3f",
+      "ml/src/p1.py": "7b62bf30b9abd4310898cda73b22be1b7ce8de0e35611250b8457714c8101aa8",
+      "ml/scripts/evaluate_week5.py": "c420029c0b8b1d7834bb32db0c428f379c1659cef3cc99ffa9a1271bfeb88eef",
+      "ml/scripts/evaluate_week5_per_class.py": "6f3ff40146123a327dc65cd66663681a214b936d097f9d370ec1e568d33d0b08",
+      "ml/scripts/evaluate_week5_v2.py": "a6c0f49957f95ed2a8a6070cfbf91473be0146c9fe79d1d98d86794c41ab4ce6",
+      "ml/scripts/export_week5.py": "d58d543bebea90a51c04a857086f4dc1d406dd9fc46d270e0f70f747efda2109",
+      "ml/scripts/hydrate_week5.py": "4a83fa9c26dac8e94bbe1714dacf7ddd809ddde733fa0432d2dd2f0ed02fd314",
+      "ml/scripts/package_week5.py": "5fd49d066539be7c0ce9d266a7bd88b7e02aec8c2c30e55ea02ff06b18607ce5",
+      "ml/scripts/preserve_week5.py": "ace2bb0303aa104f912f3a810c9ac033092f0f557db96df8f146938d622cde6c",
+      "ml/scripts/run_week5_delivery_v2.py": "dbe68aa5897b3d566da2a79a714bf0388269a723c6a4e13ad500445aed0a91db",
+      "ml/scripts/run_week5_logged.py": "cad5e9bc3edccdbac3f7ca7c7f65afcf0c4a991dafd04955b5dca76754c27010",
+      "ml/scripts/run_week5_logged_v2.py": "d99c33da21480c59bca686a47d6e0e39bebe8eb55743bcfb7b04c63ddf4d3644",
+      "ml/scripts/setup_week5_delivery_v2.py": "bdc6df47d413d4f3499024f755332139ba0c7b8592de526b8d65eca06ed45da1",
+      "ml/scripts/test_week5_allocation_v3.py": "0210e7ac8305c78e33b40f9085d088df0369c7695820dd9256bc9cefae63c8b1",
+      "ml/scripts/test_week5_delivery_v2.py": "177004c95a9519f7825f97886a8caa0df4ea38673108127dde33ec07573cb33a",
+      "ml/scripts/test_week5_interfaces.py": "2b1589d8d62612d69b13a08f3a12585920f58b4b14baa0c97a51e7e51b0e6f1b",
+      "ml/scripts/test_week5_p1.py": "ad6be8d9b126448b2b1179cd6f9eb2da007c2c87bbb13f7869b5ad0b8ccf2cac",
+      "ml/scripts/test_week5_p1_v2.py": "68d494ee93eea027e283274774fbd419e576008f53cb1bee2f90df5914b9e7e7",
+      "ml/scripts/test_week5_quantization.py": "46984d0bdf23523cb4df3ff7ef112e0b7672dad66720dcec83cbaa041b40c7c9",
+      "ml/scripts/test_week5_receipt_scope.py": "48949a07436f0e2759512753ce5ffa7761529aa6045b6c7dd728ef289553ec7a",
+      "ml/scripts/test_week5_registry_v2.py": "e3439765425e88f54f4025e02b6afbd53d9fda4f5e6cfbbcc0c76dc7a1602527",
+      "ml/scripts/test_week5_setup_v2.py": "000ac9ee285491f36c386284af5d6b3f7b7359bf3a4162ce7891b7bece9c97ab",
+      "ml/scripts/verify_week5_author_workspace_v1.py": "f8296c363e6c540fee58121b47e70557d96362b67e914fa1a089e3ee5eeb4267",
+      "ml/scripts/verify_week5_delivery.py": "e31c08db4bdb597b2a0541aa4352824c1fa3691c116dd97a9b396238b971dbf6",
+      "ml/scripts/verify_week5_delivery_v2.py": "a22dabc4c4af2de116024d1caaf720b9f0eca0e552fa42a662fe6c0c8286d5fc",
+      "ml/scripts/verify_week5_delivery_v3.py": "5f306385dfaee742223f3f0df0fd5a37aa67e8155da044867f17cc91d900b890",
+      "ml/scripts/verify_week5_real.py": "8e96dcd79cedfbe7d54e8dd5ff0a71ef01bdf1c1452a49f4df938d36f6eb54fe",
+      "ml/scripts/verify_week5_registry_v2.py": "52db83e6bce094f7a5a91bec7f76cf93cf1b441dfa4a8403840cdc50a291770d",
+      "ml/scripts/verify_week5_registry_v3.py": "7446aeab128bc2839f513428eb30273a0c4e0370bcc9fa8eadf563310d04f2d5",
+      "ml/scripts/week5_common.py": "c1842a380afddaaf7e7968bfdd3ff7c03e08d36e9bec205da2819abdca105934",
+      "ml/scripts/week5_common_v2.py": "b7480d19bcc2932805547b25bc0cc5e5ab4b62276384c4ee63d065302cb3caf2",
+      "ml/scripts/week5_delivery_scope_v2.py": "d3c40c842751df0cd1d1cc7b8e1b3f2eb9469cc849bc729ed30bd006bd3b2829",
+      "ml/scripts/week5_registry_acceptance_v2.py": "1773a71349b312c169c0646aee10de5d8d763db88386cfba6502d393c8571402",
+      "ml/scripts/week5_registry_acceptance_v3.py": "55ba394825e06df4ee0622dd801f8e5e195558b9d3161dc3b7e8d596eceb26a1",
+      "contracts/i2_ref/i2_reference.py": "996645acfc5138fa55722b796c401feecbe1254d8d393df36eeb124deb826357",
+      "contracts/i2_protection_v1.md": "28c63957af82da5dd8bbcb5a299d1ef4c3182f62e91a2ab2526782440d016846",
+      "ml/src/week5_interfaces.py": "929a8756d8cd69db76c1f7c1ebded9607a2ab7baa9c42fd51bc42f5c0dc09a2c",
+      "contracts/sv3_week5_ml_registry_v1.json": "ff201031d95cb2e9547786f1b3527dc20f117d5108eb88643596f3512d6da9ae"
+    },
+    "mode": "CPU FP32 eval/inference; deterministic; one thread; MKLDNN disabled"
+  }
+}

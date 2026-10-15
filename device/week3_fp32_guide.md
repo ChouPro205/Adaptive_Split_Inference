@@ -14,6 +14,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\build_w
 
 The host script compiles the same C head used by Zephyr and checks sample 0 at M1, R1, M2, R2 and P2 against the v2 golden tensors. The build script repeats that check, builds a pristine `nrf52840dongle/nrf52840` image with `overlay-week3.conf`, and creates `device/artifacts/adaptive_split_week3_fp32_v2.zip`. Build files stay in `device/build-week3`; generated input constants stay in `device/generated`. The existing Active and Idle build targets are separate.
 
+`device/build-week3` and that ZIP now hold the flashed and measured image, so the build script refuses to overwrite them. For a new build choose fresh paths, for example `-BuildDir D:\HUST\week3-rebuild\build -DfuZipPath D:\HUST\week3-rebuild\week3.zip`, and compare its HEX SHA-256 with the accepted HEX in [the build report](reports/week3_build.md) before flashing it. The ZIP hash changes on every packaging even when the HEX is identical (observed on 2026-10-15: rebuilt HEX matched, ZIP differed).
+
 ## USB DFU and capture
 
 1. Close any terminal holding the dongle. Record ports with `[System.IO.Ports.SerialPort]::GetPortNames() | Sort-Object`.
@@ -28,12 +30,12 @@ The host script compiles the same C head used by Zephyr and checks sample 0 at M
 4. After DFU, locate the application USB CDC COM port again; it can differ from the bootloader port. Capture one full sample 0 trace and the remaining 19 P2 tensors:
 
    ```powershell
-   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\collect_week3.ps1 -Port COMy
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\collect_week3.ps1 -Port COMy -Output .\device\artifacts\week3_capture_new.txt
    Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
-   & ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture device/artifacts/week3_capture.txt
+   & ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture device/artifacts/week3_capture_new.txt --report-output $env:TEMP/week3_mcu_recheck.json
    ```
 
-The collector sends `TRACE 0` followed by `RUN 1` through `RUN 19` and reads continuously until each `DONE`. The firmware sends every FP32 element as eight hexadecimal bit digits, with a 5 ms pause after each 16-element line to keep USB CDC output draining. The checker maps sample indices through the v2 `samples.csv`, checks full tensors and ordered command completion, and reports P2 max absolute error for each `sample_id`. It writes `device/reports/week3_mcu_validation.json` and prints `MCU_20_OF_20: PASS` only when all 20 P2 errors are strictly below `1e-3`. Sample 0 intermediate errors and the measured main-thread stack high-water mark are also reported. Keep the capture and report as measurement evidence.
+The collector sends `TRACE 0` followed by `RUN 1` through `RUN 19` and reads continuously until each `DONE`. The firmware sends every FP32 element as eight hexadecimal bit digits, with a 5 ms pause after each 16-element line to keep USB CDC output draining. The checker maps sample indices through the v2 `samples.csv`, checks full tensors and ordered command completion, and reports P2 max absolute error for each `sample_id`. It prints `MCU_20_OF_20: PASS` only when all 20 P2 errors are strictly below `1e-3`. Sample 0 intermediate errors and the measured main-thread stack high-water mark are also reported. The accepted capture `device/artifacts/week3_capture.txt` and report `device/reports/week3_mcu_validation.json` came from this procedure on 2026-09-28; the collector and checker refuse to overwrite an existing output, so a new run needs new file names.
 
 ## Current status
 

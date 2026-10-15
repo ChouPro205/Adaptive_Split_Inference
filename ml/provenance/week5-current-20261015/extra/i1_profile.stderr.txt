@@ -1,0 +1,10 @@
+test_0x80_allowed_in_transformed_bytes_only (__main__.ProfileBoundaryTests.test_0x80_allowed_in_transformed_bytes_only) ... ok
+test_extremes_map_to_pm127_never_minus128 (__main__.ProfileBoundaryTests.test_extremes_map_to_pm127_never_minus128) ... ok
+test_minus128_rejected_by_profile_consumers (__main__.ProfileBoundaryTests.test_minus128_rejected_by_profile_consumers) ... ok
+test_payload_length_and_registry_bounds (__main__.ProfileBoundaryTests.test_payload_length_and_registry_bounds) ... ok
+test_wire_scales_valid_and_invalid (__main__.ProfileBoundaryTests.test_wire_scales_valid_and_invalid) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.022s
+
+OK

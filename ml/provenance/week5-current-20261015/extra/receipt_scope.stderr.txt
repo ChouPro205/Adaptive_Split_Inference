@@ -1,0 +1,10 @@
+test_bound_source_drift_detected (__main__.ReceiptScopeTests.test_bound_source_drift_detected) ... ok
+test_intact_snapshot_and_unbound_files_pass (__main__.ReceiptScopeTests.test_intact_snapshot_and_unbound_files_pass) ... ok
+test_log_exit_and_mode_tampering_rejected (__main__.ReceiptScopeTests.test_log_exit_and_mode_tampering_rejected) ... ok
+test_missing_bound_source_is_not_pass (__main__.ReceiptScopeTests.test_missing_bound_source_is_not_pass) ... ok
+test_new_tracked_source_requires_new_receipt (__main__.ReceiptScopeTests.test_new_tracked_source_requires_new_receipt) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 3.178s
+
+OK

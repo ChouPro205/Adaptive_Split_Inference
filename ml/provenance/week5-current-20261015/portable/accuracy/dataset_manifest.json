@@ -1,0 +1,207 @@
+{
+  "dataset": {
+    "name": "MIT-BIH Arrhythmia Database",
+    "slug": "mitdb",
+    "version": "1.0.0",
+    "source_url": "https://physionet.org/files/mitdb/1.0.0/",
+    "landing_page": "https://physionet.org/content/mitdb/1.0.0/",
+    "doi": "10.13026/C2F305",
+    "license": "Open Data Commons Attribution License v1.0"
+  },
+  "label_mapping": {
+    "N": 0,
+    "S": 1,
+    "V": 2,
+    "F": 3,
+    "Q": 4
+  },
+  "identifiers": {
+    "week1_config_sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54",
+    "patient_manifest_sha256": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe",
+    "normalization_sha256": "37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c",
+    "processed_manifest_sha256": "f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c",
+    "processed_artifacts": {
+      "train_X.npy": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f",
+      "train_y.npy": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752",
+      "train_metadata.csv": "86c5c3a634fc5adfca09ec2f8378efb0d52f21205cfaf9470432f89ffdc0977a",
+      "val_X.npy": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732",
+      "val_y.npy": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43",
+      "val_metadata.csv": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+      "test_X.npy": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e",
+      "test_y.npy": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6",
+      "test_metadata.csv": "02a6a91c0e35710d0be13f10b2360e034918f546b3ba2c7df7a2fd484ecd1178"
+    }
+  },
+  "preprocessing": {
+    "lead": {
+      "preferred": "MLII",
+      "selection_rule": "select_by_name",
+      "excluded_records_missing_mlii": [
+        "102",
+        "104"
+      ]
+    },
+    "segmentation": {
+      "sampling_rate_hz": 360,
+      "window_size": 360,
+      "left_samples": 180,
+      "right_samples": 180,
+      "center": "expert_annotation",
+      "boundary_policy": "drop"
+    },
+    "filtering": {
+      "enabled": false
+    },
+    "normalization": {
+      "method": "z_score",
+      "fit_split": "train",
+      "mean": -0.2912026352134608,
+      "std": 0.45653058276514263
+    }
+  },
+  "resample": "none; native 360 Hz",
+  "split_manifest": "ml/manifests/mitdb_patient_split.csv",
+  "patient_leakage_check": "PASS; official metadata incl. records 201/202 as one patient",
+  "splits": {
+    "train": {
+      "num_samples": 81094,
+      "class_counts": {
+        "N": 69215,
+        "S": 1275,
+        "V": 5927,
+        "F": 790,
+        "Q": 3887
+      },
+      "patient_ids": [
+        "P100",
+        "P103",
+        "P106",
+        "P107",
+        "P108",
+        "P109",
+        "P112",
+        "P113",
+        "P114",
+        "P115",
+        "P117",
+        "P118",
+        "P121",
+        "P123",
+        "P124",
+        "P200",
+        "P201_202",
+        "P203",
+        "P208",
+        "P209",
+        "P210",
+        "P212",
+        "P213",
+        "P214",
+        "P215",
+        "P217",
+        "P220",
+        "P221",
+        "P222",
+        "P223",
+        "P230",
+        "P231",
+        "P233",
+        "P234"
+      ],
+      "record_ids": [
+        "100",
+        "103",
+        "106",
+        "107",
+        "108",
+        "109",
+        "112",
+        "113",
+        "114",
+        "115",
+        "117",
+        "118",
+        "121",
+        "123",
+        "124",
+        "200",
+        "201",
+        "202",
+        "203",
+        "208",
+        "209",
+        "210",
+        "212",
+        "213",
+        "214",
+        "215",
+        "217",
+        "220",
+        "221",
+        "222",
+        "223",
+        "230",
+        "231",
+        "233",
+        "234"
+      ]
+    },
+    "val": {
+      "num_samples": 15388,
+      "class_counts": {
+        "N": 13003,
+        "S": 1493,
+        "V": 876,
+        "F": 11,
+        "Q": 5
+      },
+      "patient_ids": [
+        "P105",
+        "P111",
+        "P116",
+        "P119",
+        "P205",
+        "P207",
+        "P232"
+      ],
+      "record_ids": [
+        "105",
+        "111",
+        "116",
+        "119",
+        "205",
+        "207",
+        "232"
+      ]
+    },
+    "test": {
+      "num_samples": 8544,
+      "class_counts": {
+        "N": 8102,
+        "S": 13,
+        "V": 426,
+        "F": 1,
+        "Q": 2
+      },
+      "patient_ids": [
+        "P101",
+        "P122",
+        "P219",
+        "P228"
+      ],
+      "record_ids": [
+        "101",
+        "122",
+        "219",
+        "228"
+      ]
+    }
+  },
+  "input_dtype": "<f4",
+  "model_input_shape": [
+    8544,
+    1,
+    360
+  ],
+  "patient_id_policy": "Existing public pseudonyms P<record>; not newly generated identities"
+}

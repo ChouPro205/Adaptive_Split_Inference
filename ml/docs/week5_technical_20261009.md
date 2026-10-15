@@ -1,8 +1,8 @@
 # SV3 tuần 5 — implementation, verification và bàn giao 2026-10-09
 
-> L?nh t?i l?p hi?n h?nh sau s?a PR25: [delivery v2](week5_delivery_v2.md),
-> entrypoint accuracy `evaluate_week5_v2.py`. C?c k?t qu?/receipts b?n d??i gi?
-> nguy?n nh? h? s? l?ch s?; kh?ng g?n nh?n ch?y m?i.
+> Lệnh tái lập hiện hành sau sửa PR25: [delivery v2](week5_delivery_v2.md),
+> entrypoint accuracy `evaluate_week5_v2.py`. Các kết quả/receipts bên dưới giữ
+> nguyên như hồ sơ lịch sử; không gắn nhãn chạy mới.
 
 `CURRENT WEEK=5`, `REVIEW_STATUS=PENDING`, **TECHNICAL_STATUS=BLOCKED**.
 P1 Python, ML reference, accuracy, regression liên quan và preservation PASS.
