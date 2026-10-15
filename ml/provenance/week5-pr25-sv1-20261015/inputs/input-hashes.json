@@ -1,0 +1,18 @@
+{
+  "AGENTS.md": {
+    "size_bytes": 1013,
+    "sha256": "eff54251bd01f683f782e89c0a027e61beb598a5fcd8d852a26a7506bded8617"
+  },
+  "allocation-proposal.md": {
+    "size_bytes": 2696,
+    "sha256": "ca80dfda940522459172a5353f78c714c4b3c53ebfb1a36d50b347cb35cdff6a"
+  },
+  "request.txt": {
+    "size_bytes": 5973,
+    "sha256": "efd021646d981e132f4ad4887ff72451a1b8dd9929452457d0409ee20f624a5c"
+  },
+  "review-report.md": {
+    "size_bytes": 20390,
+    "sha256": "75220406466374b82fd82867d17fcf14f485f885feeb1a9a933b907d1a23915d"
+  }
+}

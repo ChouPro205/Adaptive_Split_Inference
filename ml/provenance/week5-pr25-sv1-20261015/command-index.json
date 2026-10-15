@@ -1,0 +1,1617 @@
+{
+  "scope": "FRESH_INVOCATIONS_ON_PINNED_TREES; classify historical reuse/negative and initial failures explicitly",
+  "count": 74,
+  "copied_receipts_and_streams_are_raw_identical": true,
+  "commands": [
+    {
+      "receipt": "acceptance-policy-normal.command.json",
+      "receipt_raw_sha256": "5f240717b2190f4e9837b3190ceb59f7e1f3c4a3f0100410a242a93a67582bce",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/test_week5_acceptance.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\acceptance-policy-normal.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b159e81e8038d7227dfc89990eaf1e26c7b71bcf0c93648bf5813cd480e59bca",
+      "original_result_count": 1,
+      "reused_inputs": [
+        "Accepted real MCU evidence; offline corruption tests"
+      ]
+    },
+    {
+      "receipt": "acceptance-policy-O.command.json",
+      "receipt_raw_sha256": "f90af65599066b7debb3a2e4f1c6806d0c05828bd69ec948cad7dcc6f7f5e3ac",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/test_week5_acceptance.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\acceptance-policy-O.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bb149d161103d5da6d1e910b0a542159caa36ca4a6b65da80b3d10c518b79df9",
+      "original_result_count": 1,
+      "reused_inputs": [
+        "Accepted real MCU evidence; offline corruption tests"
+      ]
+    },
+    {
+      "receipt": "before/initial-git-capture-acceptance-normal.command.json",
+      "receipt_raw_sha256": "89c9c253c2486ae54a42152bed8e5fb33ea38f141975287c33102126af004bfe",
+      "classification": "RECORDED_FIXTURE_BYTE_FAIL: Git LF capture differs from accepted original CRLF bytes",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\before\\ml\\provenance\\week5-pr25-sv1-20261015\\initial-git-capture-acceptance-normal-results"
+      ],
+      "source_commit": "abcc3a511d329f39f985e2e09b68832beaa37c80",
+      "source_tree": "097a606ecdeb35202cf0e295179787cb26c501de",
+      "actual_source_dependency_count": 185,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "87175160efea42ed0b6ec63477e649bdd59f64b5b7b87d0d9370417956c76e76",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "before/initial-git-capture-acceptance-O.command.json",
+      "receipt_raw_sha256": "ffecb774b8fd5418dc8cf6264aec61cc859d949eff7e68b566554a579fd8aa2d",
+      "classification": "RECORDED_FIXTURE_BYTE_FAIL: Git LF capture differs from accepted original CRLF bytes",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\before\\ml\\provenance\\week5-pr25-sv1-20261015\\initial-git-capture-acceptance-O-results"
+      ],
+      "source_commit": "abcc3a511d329f39f985e2e09b68832beaa37c80",
+      "source_tree": "097a606ecdeb35202cf0e295179787cb26c501de",
+      "actual_source_dependency_count": 185,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "87175160efea42ed0b6ec63477e649bdd59f64b5b7b87d0d9370417956c76e76",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "before/initial-git-capture-preflight-normal.command.json",
+      "receipt_raw_sha256": "78e83a95846e2a1622622ec24cf74c79951cd8e7e072b8f6d13265852f425e3e",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "abcc3a511d329f39f985e2e09b68832beaa37c80",
+      "source_tree": "097a606ecdeb35202cf0e295179787cb26c501de",
+      "actual_source_dependency_count": 185,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "before/initial-git-capture-preflight-O.command.json",
+      "receipt_raw_sha256": "ba172f847dd5304209548f6618a47330437cf3e475ef2f670dc52a2ec4c09436",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "abcc3a511d329f39f985e2e09b68832beaa37c80",
+      "source_tree": "097a606ecdeb35202cf0e295179787cb26c501de",
+      "actual_source_dependency_count": 185,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "before/original-raw-capture-acceptance-normal.command.json",
+      "receipt_raw_sha256": "89ffffae673ca2abfd7a4b135748f10a398456cb0e783ce3810d9190f82aee0c",
+      "classification": "REPRODUCED_IMPLEMENTATION_FAIL: historical P1 raw source drift before fix",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\before\\ml\\provenance\\week5-pr25-sv1-20261015\\original-raw-capture-acceptance-normal-results"
+      ],
+      "source_commit": "abcc3a511d329f39f985e2e09b68832beaa37c80",
+      "source_tree": "097a606ecdeb35202cf0e295179787cb26c501de",
+      "actual_source_dependency_count": 185,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1345db5cf7da2c1d83f733a0a7c1cdf43c421373f7ff29e8459f8eab18e27125",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "before/original-raw-capture-acceptance-O.command.json",
+      "receipt_raw_sha256": "89389d2c0f621267c835ef8e084b33d0c0d14f0bef74182f1aada3e0a337241c",
+      "classification": "REPRODUCED_IMPLEMENTATION_FAIL: historical P1 raw source drift before fix",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\before\\ml\\provenance\\week5-pr25-sv1-20261015\\original-raw-capture-acceptance-O-results"
+      ],
+      "source_commit": "abcc3a511d329f39f985e2e09b68832beaa37c80",
+      "source_tree": "097a606ecdeb35202cf0e295179787cb26c501de",
+      "actual_source_dependency_count": 185,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1345db5cf7da2c1d83f733a0a7c1cdf43c421373f7ff29e8459f8eab18e27125",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "before/original-raw-capture-preflight-normal.command.json",
+      "receipt_raw_sha256": "ff7c82b759f6952042b334aca427e9160baf0ad5f7c80981c01f7b4713c81e06",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "abcc3a511d329f39f985e2e09b68832beaa37c80",
+      "source_tree": "097a606ecdeb35202cf0e295179787cb26c501de",
+      "actual_source_dependency_count": 185,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "before/original-raw-capture-preflight-O.command.json",
+      "receipt_raw_sha256": "bb0d992eb075eeb29c31de25457fb119f78b8e2db65ba06aa006d5b30b409d92",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "abcc3a511d329f39f985e2e09b68832beaa37c80",
+      "source_tree": "097a606ecdeb35202cf0e295179787cb26c501de",
+      "actual_source_dependency_count": 185,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "capture-checker-normal.command.json",
+      "receipt_raw_sha256": "ce00915e13d46b7feadc4b506ea68a23b98d6e4651d18118dca1d5d0e828184c",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/check_week5_capture.py",
+        "--capture",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.txt",
+        "--collection-receipt",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.receipt.json",
+        "--report",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\capture-checker-normal.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "fb28c5f2769c5e5130b1f17c8a559285e9e729b9bea735152c343cd8af076b4b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 1,
+      "reused_inputs": [
+        "Original real MCU capture; fresh checker invocation"
+      ]
+    },
+    {
+      "receipt": "capture-checker-O.command.json",
+      "receipt_raw_sha256": "40ad5f8d37c3c27760b7c4b870ba8e3789908801f1ac46c57ea29a9fce232ed9",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/check_week5_capture.py",
+        "--capture",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.txt",
+        "--collection-receipt",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.receipt.json",
+        "--report",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\capture-checker-O.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "fb28c5f2769c5e5130b1f17c8a559285e9e729b9bea735152c343cd8af076b4b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 1,
+      "reused_inputs": [
+        "Original real MCU capture; fresh checker invocation"
+      ]
+    },
+    {
+      "receipt": "control/initial-git-capture-acceptance-normal.command.json",
+      "receipt_raw_sha256": "ba2de5fc26630d05a24c782305dbe2f740ccdeb8e15eb935959e908a9c3c54e0",
+      "classification": "RECORDED_FIXTURE_BYTE_FAIL: Git LF capture differs from accepted original CRLF bytes",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\control\\ml\\provenance\\week5-pr25-sv1-20261015\\initial-git-capture-acceptance-normal-results"
+      ],
+      "source_commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+      "source_tree": "5287c5897c4942f8feecf18a621a06d30a7b4208",
+      "actual_source_dependency_count": 162,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "460793c8f5e5a76126b03ea501b12d35592acbde461415eeeb35ab88c939cfa0",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "control/initial-git-capture-acceptance-O.command.json",
+      "receipt_raw_sha256": "4ddfc1d2bd8cf02df2d3f12a6c4a501d853ca636756f10421dcac8d18ff5454e",
+      "classification": "RECORDED_FIXTURE_BYTE_FAIL: Git LF capture differs from accepted original CRLF bytes",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\control\\ml\\provenance\\week5-pr25-sv1-20261015\\initial-git-capture-acceptance-O-results"
+      ],
+      "source_commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+      "source_tree": "5287c5897c4942f8feecf18a621a06d30a7b4208",
+      "actual_source_dependency_count": 162,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "460793c8f5e5a76126b03ea501b12d35592acbde461415eeeb35ab88c939cfa0",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "control/initial-git-capture-preflight-normal.command.json",
+      "receipt_raw_sha256": "5731ebd7505053fcf3f9e2c475e36f1d85f22b079ed6e1d00e5273592343a6ce",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+      "source_tree": "5287c5897c4942f8feecf18a621a06d30a7b4208",
+      "actual_source_dependency_count": 162,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "control/initial-git-capture-preflight-O.command.json",
+      "receipt_raw_sha256": "267c69463ff406d8999929462a4ac89caa65eb34d11f19e5b485b33401fce77c",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+      "source_tree": "5287c5897c4942f8feecf18a621a06d30a7b4208",
+      "actual_source_dependency_count": 162,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "control/original-raw-capture-acceptance-normal.command.json",
+      "receipt_raw_sha256": "2fc8a5c948c466d70b087cb0a4b5b58017be2388c917e73ddfb2bf01cb30f93e",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\control\\ml\\provenance\\week5-pr25-sv1-20261015\\original-raw-capture-acceptance-normal-results"
+      ],
+      "source_commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+      "source_tree": "5287c5897c4942f8feecf18a621a06d30a7b4208",
+      "actual_source_dependency_count": 162,
+      "stdout_sha256": "56d39d4f54078b9fbc232c6a17458c80b5aeff8092b0eeb714dfde3b0ba304b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 6,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "control/original-raw-capture-acceptance-O.command.json",
+      "receipt_raw_sha256": "7514770cc101515046e0fcc54bcc3a2eb9ed2d6a6a9b55d0b007ed17b9060a0a",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\control\\ml\\provenance\\week5-pr25-sv1-20261015\\original-raw-capture-acceptance-O-results"
+      ],
+      "source_commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+      "source_tree": "5287c5897c4942f8feecf18a621a06d30a7b4208",
+      "actual_source_dependency_count": 162,
+      "stdout_sha256": "56d39d4f54078b9fbc232c6a17458c80b5aeff8092b0eeb714dfde3b0ba304b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 6,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "control/original-raw-capture-preflight-normal.command.json",
+      "receipt_raw_sha256": "cd0285c170a2fbe9883b768adce8a372d4993299cb3120a605cfd143d90fd7e0",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+      "source_tree": "5287c5897c4942f8feecf18a621a06d30a7b4208",
+      "actual_source_dependency_count": 162,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "control/original-raw-capture-preflight-O.command.json",
+      "receipt_raw_sha256": "cd2beb54209f28398977c2b63fe20bd568a4f17d5fb9ae74fc705e5397c32513",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "cfdfca1025ab5f707b46197b4c5dae868d38d473",
+      "source_tree": "5287c5897c4942f8feecf18a621a06d30a7b4208",
+      "actual_source_dependency_count": 162,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "delivery-recheck-normal.command.json",
+      "receipt_raw_sha256": "db82e03eaf28326650684731f79150b8ee24a9dcc89372a8a0b5587eea986730",
+      "classification": "BLOCKED_ALLOCATION; portable gates PASS",
+      "exit_code": 2,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/verify_week5_delivery_v2.py",
+        "--evidence",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable",
+        "--accuracy",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\accuracy",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\delivery-recheck-normal.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "5074408c692751f0fb40f7e97188a96d02b5302316dc80e31bb1dd1eeb02781c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 1,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "delivery-recheck-O.command.json",
+      "receipt_raw_sha256": "f178a2004efc8d66096af5206122ee87798af03a01ac8a355f36128c0e4cb817",
+      "classification": "BLOCKED_ALLOCATION; portable gates PASS",
+      "exit_code": 2,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_week5_delivery_v2.py",
+        "--evidence",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable",
+        "--accuracy",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\accuracy",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\delivery-recheck-O.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "5074408c692751f0fb40f7e97188a96d02b5302316dc80e31bb1dd1eeb02781c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 1,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "environment-probe.command.json",
+      "receipt_raw_sha256": "3cc3d3334935059874807c820b9b6984066fb35bf8c4f191912d73f3d2ff2459",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\environment_probe.py",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\environment.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "7e004715fe37cc9a5f409b0bdc822c20864c8f4e98558c1018ed03fbe6db3e20",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 1,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "package-normal.command.json",
+      "receipt_raw_sha256": "f3d6d6624175addc72be4596d3a629bd7b68ffb9a7c85db939423a56db491d80",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/test_week5_package.py",
+        "--build-report",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\package-normal.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e4780c10d3f726e8013a516867afaf7b5d7c4f5381cf852c8fb2dd33e50d06f1",
+      "original_result_count": 1,
+      "reused_inputs": [
+        "Original firmware/build, no rebuild"
+      ]
+    },
+    {
+      "receipt": "package-O.command.json",
+      "receipt_raw_sha256": "6ee32c8b03a1cfd768492dc44655645419df4698654cbd5e5fac7b48e2a8acfc",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/test_week5_package.py",
+        "--build-report",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\package-O.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3ac7f7ec4c73c6f97c7aa92889706ef80e321a3c1aa9b288c1dbc7c006848ebd",
+      "original_result_count": 1,
+      "reused_inputs": [
+        "Original firmware/build, no rebuild"
+      ]
+    },
+    {
+      "receipt": "parser-normal.command.json",
+      "receipt_raw_sha256": "e1fc44855d7defa168d09b0603822c143d627b3f64bd5e6ae233e141bbdb2424",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/test_week5_capture.py",
+        "--host",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\original\\handoff\\preparation\\evidence\\host",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\parser-normal-results"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "56bc19f4590676d0d45d755954a739de98ba748375cfa4418d3a93af522bf522",
+      "original_result_count": 2,
+      "reused_inputs": [
+        "Accepted historical C host activations; parser invocation is fresh"
+      ]
+    },
+    {
+      "receipt": "parser-O.command.json",
+      "receipt_raw_sha256": "2be8f5bd4e88992db8889b5a02b0219cda8015333f4d2a00efafca0d5e303888",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/test_week5_capture.py",
+        "--host",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\original\\handoff\\preparation\\evidence\\host",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\parser-O-results"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "35b16ec9e0d0a2c15b6be39e1f51fc0e2eb1189ebc890e4f0b78d9537e5fd6d5",
+      "original_result_count": 2,
+      "reused_inputs": [
+        "Accepted historical C host activations; parser invocation is fresh"
+      ]
+    },
+    {
+      "receipt": "portable/accuracy.command.json",
+      "receipt_raw_sha256": "0fea899039ce359395fa10a6df46fd4d794b8416f4c64e675e0d93873dab7041",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/evaluate_week5_v2.py",
+        "--batch-size",
+        "1",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\accuracy"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "308d091e3866c079c36d05d0d1c0acfd65f4818ba34ffaf367fc224b405d4f7c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 7,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/delivery.command.json",
+      "receipt_raw_sha256": "2bb61f6289c3eb1feaefca781138ff3656171f7823ee302cb292c071b52d34b7",
+      "classification": "BLOCKED_ALLOCATION; portable gates PASS",
+      "exit_code": 2,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/verify_week5_delivery_v2.py",
+        "--evidence",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable",
+        "--accuracy",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\accuracy",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\delivery.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "5074408c692751f0fb40f7e97188a96d02b5302316dc80e31bb1dd1eeb02781c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 1,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/delivery_policy.command.json",
+      "receipt_raw_sha256": "306757d2d2f39ea4ec93c7259e553f85a54061d5dc287d0b737f150537410c93",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_delivery_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "310258f6190537f4f97360f7adaa382690b9ced578208b3562de939aded25c44",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/delivery_policy_O.command.json",
+      "receipt_raw_sha256": "c4e35f86e9de30c4105d766a121a5073aa18082b28f3dad9bf30abd4acd7995a",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_delivery_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "310258f6190537f4f97360f7adaa382690b9ced578208b3562de939aded25c44",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/device_handoff.command.json",
+      "receipt_raw_sha256": "293a7cc31c65c19bab41139f729bd51eef9c5d0b5162d73442f56f75b1b918f8",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/test_week4_handoff.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "66ecbe690da4d86f58482bf8eb7b02fbb53eb6da1b0c55dbc16cb445bd3b29de",
+      "stderr_sha256": "796c1f43c9f285421685e49ab1dc435d1e9e736d6fe7bd58383c002e37c15348",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/device_handoff_O.command.json",
+      "receipt_raw_sha256": "eaf8f2f18e1461851563aef01a4c3d8dd6b73c901c47d448fd6bebe699755159",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "device/scripts/test_week4_handoff.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "66ecbe690da4d86f58482bf8eb7b02fbb53eb6da1b0c55dbc16cb445bd3b29de",
+      "stderr_sha256": "43827ab7954551b0177af394d09670ed0646ba0fc82a7a76225b99ff3202b900",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/device_quantization.command.json",
+      "receipt_raw_sha256": "29f04586b081e42f577a0a2686b8d456aaab8e26c25be7c480acac82e1881385",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/test_week5_quantization_c.py",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\device_quantization-results"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3a940fc8d22e7d7bf4f62a32d93eb543bd16e7c290933833c51da23a90d28473",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/device_quantization_O.command.json",
+      "receipt_raw_sha256": "ea64f944e371cf34f762211106002d5d281afaa583662bc04396b18fe5ded607",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "device/scripts/test_week5_quantization_c.py",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\device_quantization_O-results"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ed3e56b3f34284b9927352f82a4b86693576c0a56938cedb1e6d0508a9d4d5a3",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/i2.command.json",
+      "receipt_raw_sha256": "38533bd6b01e61e544fd628c7682b9df4db29699974f0d51742de35519166a3c",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "contracts/i2_ref/test_i2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "5478bd28494b7141a53d7f4d555642b1891e92c401f5f80f81ffb8309a55ef18",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/i2_O.command.json",
+      "receipt_raw_sha256": "5e4226f1b7e72f739089f26985beed4062cbbfc8f0dba09e9ca82dd932876f08",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "contracts/i2_ref/test_i2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "77e6e887c3b5cb4206d3ddafde0efe9b8fd056dfc64a7566b665f611287e4162",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/interfaces.command.json",
+      "receipt_raw_sha256": "9f760f855037e4e41f8f50a8412223d62ac397afbc6a9602a6315073cf626f35",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_interfaces.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b0fec951edc44e4c6b9eb7cc82e2736d7b22c97c24f1b7eee02e11548bd5c3c2",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/interfaces_O.command.json",
+      "receipt_raw_sha256": "fe32cff66ba25e19555440cc40fe5b888ea6a78e981ec24dee4e7be9ff9fd156",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_interfaces.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6098a37f566c8ffcf5cdd686ef92d5d56eefed432c900a540ab0190e9fb47b86",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/p1.command.json",
+      "receipt_raw_sha256": "c916a5b836a90f789954f62a3cc20314b78ec0e4e012fd2d57791801b48d0072",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_p1_v2.py",
+        "--cases",
+        "10000",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\p1_10000.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "52c581867cb8c8a8cc45f2556a05affb7b1e11821be61fcfea5ad614af500e0e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 1,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/quantization.command.json",
+      "receipt_raw_sha256": "7b522cbf5f8ea7a3eda5a6630472bc5da52e5423af496165c98af8e26749170f",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_quantization.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c868edfb87018fde6f99548b9c77a1ae801e715fef4f6969920a8f3894267bdc",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/quantization_O.command.json",
+      "receipt_raw_sha256": "468ebcedfbb86bfc1fb90bbb2c998a9a3d784cf8bd51aa13901d000e79a2d8e5",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_quantization.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ac48e60ad576b8d9687c8011fd7107ace5e5fed870711f0a13757b0dbe2fa5d4",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/real.command.json",
+      "receipt_raw_sha256": "3e0cec4df4942df818333fcdb541b3d826a30c35f06931651efa567493af738f",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/verify_week5_real.py",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable\\real_220.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "9975da91a35a613bd1fdd10f26d18c7e24d66990ee6e587d89035b5d24834b12",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 1,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/registry_policy.command.json",
+      "receipt_raw_sha256": "3df0917af63ae28ffa34e7dfd578fa037d389c49a255529244c6ae679a337db7",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_registry_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ca4c22deaa4c536599fdf1bc32499075a8c613c0d4e35f46bd35c996ddb34800",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/registry_policy_O.command.json",
+      "receipt_raw_sha256": "44f6b562c4986731f77a174e8c6feb8435d01484baa54d04443e93444cf31301",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_registry_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "193bae68a3b09eceb522545ea65aed2796625b13e2bece855b7933007a21e9e7",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/setup_policy.command.json",
+      "receipt_raw_sha256": "7807a3c6ee00b76a044ab01e531a00936c43dc63f0406497ef4798c6428f5203",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week5_setup_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "06f24f8942acd4981a02d62b5dd1d8241c6f61067f01830c3b0d9058e5ecd6b5",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/setup_policy_O.command.json",
+      "receipt_raw_sha256": "28a4dba5d17558c21b295ef083b316dccc3cf2edbbda765a6db3a123e0412b09",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week5_setup_v2.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "016f60bf294799d7d37360c75528a59582736b5a1daaad3fb594210d6f8e6a8f",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week3_policy.command.json",
+      "receipt_raw_sha256": "36e82c7babe9d1e057adab40a12c32d3dfbf6d77b66e5558acd469b4093c6be3",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week3_sv2_policy.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b5542afe4a5f322018f8f9b318e9544beecf13e03e4a2d8f1bbb2468b15c31db",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week3_policy_O.command.json",
+      "receipt_raw_sha256": "e8840a02ffd3518177f1b878dcf9bc3f6cdceacd0be867d14af752a8ce4c5140",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week3_sv2_policy.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "344e7fc978c56629b74e2d3a4f29f3794acdcfc892e06ae97cdc21fbc3e1c591",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week3_sv2.command.json",
+      "receipt_raw_sha256": "579a1a5d411753685b137fd75defd7ca50ab5c8737f57051605b0d1fb3c2a3a4",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week3_sv2.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "64032f9177b47303fb4e6d5dcc9f066a14ecd68679002037b24ad757980ebf06",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week3_sv2_O.command.json",
+      "receipt_raw_sha256": "ae05de4bbe7fb3b856846c85eff60c2fde1706e05a40719bd9f013bd647d13f1",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week3_sv2.py",
+        "--package",
+        "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+        "--expected-manifest-sha256",
+        "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "64032f9177b47303fb4e6d5dcc9f066a14ecd68679002037b24ad757980ebf06",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week4_policy.command.json",
+      "receipt_raw_sha256": "32652974d1bdaafb1ce04a19c5171ea7e3c9bd2f7a937b778025f6c06b724377",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/verify_week4_current.py",
+        "--regressions"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "82d1b1ce6e908a66f218ed99e3efa80a2d07771cb833396f817eeb5523411c5b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week4_policy_O.command.json",
+      "receipt_raw_sha256": "3e41a5d54f65c4332708ad6dae4e1e7de3dbbd112bfd379f737dc33302963feb",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/verify_week4_current.py",
+        "--regressions"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "34b6dc31633bc989d75371b0128053f532903351bc5537c5b695face29650390",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week4_release.command.json",
+      "receipt_raw_sha256": "1018de291038bfbdbd2b4effed1f00d19fefcdbf3a4a1baac3646e44e1680ba3",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week4_release.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3eae8d6eb2e0df09ac3d3daf328706560c46ce57c517ccc718558b15088dc86e",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week4_release_O.command.json",
+      "receipt_raw_sha256": "57af9aba8efa8dfa0adf7bc830c754c2747bd763ba69dc95b2f880a2bffe015c",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week4_release.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "5aaca756c42c6852b7b4c09f12f8b7f3adf5c71331c7fc0810288b71419ff4bf",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week4_tests.command.json",
+      "receipt_raw_sha256": "44c995d0186089b1a06db986784d574f76b03e1446f8acd8e5c523a7da999349",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/test_week4_current.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b83dea1774ff392540887ee839a26722a49610df29b09d8848cfb125ee192eee",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable/week4_tests_O.command.json",
+      "receipt_raw_sha256": "9be5579a2ca5912731258f42e7cadaf2b2f4f513f62c6a00a6271f3a8646a9d2",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-O",
+        "ml/scripts/test_week4_current.py"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "17324bba0ce5e36c097dc4ec6d23854f5d98b6b00476c6f5be0bdc0694340c21",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "portable-runner.command.json",
+      "receipt_raw_sha256": "34dc70a99b44f0341cc6c7b0d6858df479d3e45924d7132007fac037b9f7beb1",
+      "classification": "BLOCKED_ALLOCATION; portable gates PASS",
+      "exit_code": 2,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/run_week5_delivery_v2.py",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\portable"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "828da084c16f5fa838fbbe16ac37a0aa726e85d434cf7fca33a6e8bea471325d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 107,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "postfix-acceptance-normal.command.json",
+      "receipt_raw_sha256": "5986ad4bb9d8289f4617800797dbd08e35c445af811c87f68778abfbe77841f3",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\postfix-acceptance-normal-results"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "56d39d4f54078b9fbc232c6a17458c80b5aeff8092b0eeb714dfde3b0ba304b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 6,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "postfix-acceptance-O.command.json",
+      "receipt_raw_sha256": "37d94d305cc795af848d440c7129aec072fd557528e2583bdf3bef723504c4ce",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/accept_week5_mcu.py",
+        "--session",
+        "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+        "--output",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\after\\ml\\provenance\\week5-pr25-sv1-20261015\\postfix-acceptance-O-results"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "56d39d4f54078b9fbc232c6a17458c80b5aeff8092b0eeb714dfde3b0ba304b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 6,
+      "reused_inputs": [
+        "Original DFU/MCU capture/C accuracy evaluation; raw source and frozen assets validated by unchanged gate"
+      ]
+    },
+    {
+      "receipt": "postfix-preflight-normal.command.json",
+      "receipt_raw_sha256": "76385b18cd0dd7309d587fd53ed0629eb2e81818f9caa7acb5b14a08802f2c46",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "postfix-preflight-O.command.json",
+      "receipt_raw_sha256": "1c9f6543ad417119e05def3f99dd3d46546d24edf95be0fa094f902a720504dd",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "device/scripts/verify_week5_package.py",
+        "--preparation",
+        "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": [
+        "Original preparation/build/DFU/capture; authenticated ZIP; no new MCU operations"
+      ]
+    },
+    {
+      "receipt": "setup-postfix.command.json",
+      "receipt_raw_sha256": "a6fc6ffa343ea28f276d7bf24249a3dedacd18e57da664a9c375e5a06364d110",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "45144bbf739b8bfd3c34e147e65358456caf51ec383b60b67c10b79569c45caa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/clean-setup.command.json",
+      "receipt_raw_sha256": "af6b14a5a31ee0570a45b2d93d7a9dc6094a0d21f2a1e954534cf2002b160e64",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "32f1c40fe0f3a42f76d5c2b4eb73333a0ae6068da43ccfbfe12fabdb4c3ac63c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-correct-normal.command.json",
+      "receipt_raw_sha256": "ff604b95f6a92fd332e0ba52d103106add140c5f180a271e29cd099c47872056",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "45144bbf739b8bfd3c34e147e65358456caf51ec383b60b67c10b79569c45caa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-correct-O.command.json",
+      "receipt_raw_sha256": "3372c933bca85e53f65cea8e331e731aa266eafd77da78188d08baf7f7596fae",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "45144bbf739b8bfd3c34e147e65358456caf51ec383b60b67c10b79569c45caa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-marker-graph-normal.command.json",
+      "receipt_raw_sha256": "4753019fef2c04d24f459cd8aece09a26b58e65196d5ad330a834ec041370141",
+      "classification": "EXPECTED_NEGATIVE: changed header refused; bytes/mtime preserved",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "abcdefe4753748f66bbc092f20763ec840f5df46e60fbf12993ccb0eafda08ef",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-marker-graph-O.command.json",
+      "receipt_raw_sha256": "5eaffc9f3da0c507acd088346c102d3912c6947010743f03dff08612d1252cec",
+      "classification": "EXPECTED_NEGATIVE: changed header refused; bytes/mtime preserved",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "abcdefe4753748f66bbc092f20763ec840f5df46e60fbf12993ccb0eafda08ef",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-marker-inputs-normal.command.json",
+      "receipt_raw_sha256": "f8a85616bcd1df0ca86770f0312aadee7dc22b464fd361186edda08bf876e319",
+      "classification": "EXPECTED_NEGATIVE: changed header refused; bytes/mtime preserved",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "611560ad33676b12d3ee33da87d2b5ec0141945741db2c5526db4e319bd25a23",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-marker-inputs-O.command.json",
+      "receipt_raw_sha256": "573b5acbfef5ffc3646961d5b1f4808b0762d42785f78a1e699e5b8ed80e7689",
+      "classification": "EXPECTED_NEGATIVE: changed header refused; bytes/mtime preserved",
+      "exit_code": 1,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "611560ad33676b12d3ee33da87d2b5ec0141945741db2c5526db4e319bd25a23",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-missing-graph-normal.command.json",
+      "receipt_raw_sha256": "a1f57d2f2f352b4ea78952433a9b6d417a6a965b87774910ba4b0b6328a54a8d",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "d0887783ca086e80a64cb175628f1ae441684634687db0492ed8884a0b3829b0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-missing-graph-O.command.json",
+      "receipt_raw_sha256": "788e547c3b743b30718f925ea38fba5ee6fbeff8a0de84df2d5f070f6174cfe6",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "d0887783ca086e80a64cb175628f1ae441684634687db0492ed8884a0b3829b0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-missing-inputs-normal.command.json",
+      "receipt_raw_sha256": "56ca5a3e8bffa62843aded1708177f95586e9e1033f30935ce7ae00e3fb66da3",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "d0887783ca086e80a64cb175628f1ae441684634687db0492ed8884a0b3829b0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    },
+    {
+      "receipt": "setup-probe/real-setup-missing-inputs-O.command.json",
+      "receipt_raw_sha256": "ffa783a1cb2bf61408347c7f47d262b36c1ee227900ac50e1a38695961066f60",
+      "classification": "PASS_FRESH_INVOCATION",
+      "exit_code": 0,
+      "argv": [
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/setup_week5_delivery_v2.py",
+        "--asset-cache",
+        "C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\pr25-sv1-20261015\\cache"
+      ],
+      "source_commit": "964beb4b344d27709b7285c36f7205ea339b0660",
+      "source_tree": "c754d8c25569dbf5972c3f95c0bb484a828a92fc",
+      "actual_source_dependency_count": 186,
+      "stdout_sha256": "d0887783ca086e80a64cb175628f1ae441684634687db0492ed8884a0b3829b0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_result_count": 0,
+      "reused_inputs": []
+    }
+  ]
+}

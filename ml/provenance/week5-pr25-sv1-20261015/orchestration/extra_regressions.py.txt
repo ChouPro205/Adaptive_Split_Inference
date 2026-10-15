@@ -1,0 +1,24 @@
+from workflow import BASE,H,PY,PREP,SESSION,logged
+
+root = BASE/'after'
+evidence = root/'ml/provenance/week5-pr25-sv1-20261015'
+for optimized in (False,True):
+    mode = '-O' if optimized else '-normal'
+    python = [PY,*(['-O'] if optimized else []),'-B']
+    parser_out = evidence/('parser'+mode+'-results')
+    commands = [
+        ('parser'+mode, [*python,'device/scripts/test_week5_capture.py','--host',H/'preparation/evidence/host',
+                       '--output',parser_out], [parser_out], ['Accepted historical C host activations; parser invocation is fresh']),
+        ('package'+mode,[*python,'device/scripts/test_week5_package.py','--build-report',PREP.parent,
+                       '--output',evidence/('package'+mode+'.json')], [evidence/('package'+mode+'.json')], ['Original firmware/build, no rebuild']),
+        ('acceptance-policy'+mode,[*python,'device/scripts/test_week5_acceptance.py','--session',SESSION,
+                       '--preparation',PREP,'--output',evidence/('acceptance-policy'+mode+'.json')],
+                       [evidence/('acceptance-policy'+mode+'.json')], ['Accepted real MCU evidence; offline corruption tests']),
+        ('capture-checker'+mode,[*python,'device/scripts/check_week5_capture.py','--capture',SESSION/'week5_capture.txt',
+                       '--collection-receipt',SESSION/'week5_capture.receipt.json','--report',evidence/('capture-checker'+mode+'.json')],
+                       [evidence/('capture-checker'+mode+'.json')], ['Original real MCU capture; fresh checker invocation']),
+    ]
+    for name,argv,results,reuse in commands:
+        if logged(root,name,argv,results,reuse) != 0:
+            raise SystemExit('Regression failed: '+name)
+print('PASS: eight offline SV1 regression/checker invocations',flush=True)

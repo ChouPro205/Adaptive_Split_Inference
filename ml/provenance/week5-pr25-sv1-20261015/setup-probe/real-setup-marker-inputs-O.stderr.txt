@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\setup-probe\ml\scripts\setup_week5_delivery_v2.py", line 105, in <module>
+    setup(args.asset_cache.resolve())
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\setup-probe\ml\scripts\setup_week5_delivery_v2.py", line 65, in setup
+    check_existing_headers(root, header_entries(scope))
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\setup-probe\ml\scripts\setup_week5_delivery_v2.py", line 28, in check_existing_headers
+    need(target.is_file() and target.stat().st_size == row['size_bytes']
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\setup-probe\ml\scripts\week5_delivery_scope_v2.py", line 12, in need
+    raise ValueError(message)
+ValueError: Existing header changed; refusing overwrite: C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\setup-probe\device\generated\week4_inputs.h

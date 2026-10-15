@@ -154,7 +154,9 @@ SV1 receipt/device acceptance stays PENDING until receiver acknowledgement.
 
 PR25 F1–F3 reproduction now uses [portable delivery v2](docs/week5_delivery_v2.md)
 and [F1?F3 evidence report](docs/week5_pr25_fixes_20261011.md)
-and `evaluate_week5_v2.py`; the two SV1-bound legacy scripts retain exact bytes.
+and `evaluate_week5_v2.py`/`test_week5_p1_v2.py`; the three SV1-bound legacy scripts retain exact bytes.
+The [SV1 compatibility fix and fresh evidence](docs/week5_pr25_sv1_20261015.md)
+records compatibility PASS separately from deployment allocation BLOCKED.
 Author workspace audit and portable recipient scope are separate. Allocation
 remains BLOCKED; see [Châu/Trung decisions](../contracts/sv3_week5_registry_decisions_v2.md).
 

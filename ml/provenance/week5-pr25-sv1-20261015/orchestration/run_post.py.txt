@@ -1,0 +1,24 @@
+from workflow import BASE,PY,H,logged,sv1,read,save
+import sys
+
+root = BASE/'after'
+evidence = root/'ml/provenance/week5-pr25-sv1-20261015'
+cache = BASE/'cache'
+cache.mkdir(exist_ok=True)
+scope = read(root/'ml/manifests/week5_delivery_scope_v2.json')
+for row in scope['archives']:
+    p = cache/row['name']
+    if not p.exists():
+        p.write_bytes((H/'dependencies/portable'/row['path']).read_bytes())
+if logged(root,'setup-postfix',[PY,'-B','ml/scripts/setup_week5_delivery_v2.py','--asset-cache',cache]) != 0:
+    raise SystemExit('Setup failed')
+sv1(root,'postfix')
+portable = evidence/'portable'
+code = logged(root,'portable-runner',[PY,'-B','ml/scripts/run_week5_delivery_v2.py','--output',portable],[portable])
+print('Runner final exit:',code,flush=True)
+for optimized in (False,True):
+    label = 'delivery-recheck'+('-O' if optimized else '-normal')
+    result = evidence/(label+'.json')
+    logged(root,label,[PY,*(['-O'] if optimized else []),'-B','ml/scripts/verify_week5_delivery_v2.py',
+        '--evidence',portable,'--accuracy',portable/'accuracy','--output',result],[result])
+print('Post-fix offline suite completed',flush=True)

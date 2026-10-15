@@ -1,0 +1,16 @@
+{
+  "path": "results/week3/logs/week3_capture_20x5.txt",
+  "expected": "72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606",
+  "current_before": "1471f620bddc0402ad68d5b4ac2943a70d4eac2faa9b1d2b768892a7127f551e",
+  "git_blob_sha256": "1471f620bddc0402ad68d5b4ac2943a70d4eac2faa9b1d2b768892a7127f551e",
+  "mapped_original_sha256": "72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606",
+  "mapped_original_size_bytes": 4702276,
+  "source_mapping": {
+    "source": "D:\\HUST\\Adaptive_Split_Inference\\results\\week3\\logs\\week3_capture_20x5.txt",
+    "relative_path": "dependencies/workspace/results/week3/logs/week3_capture_20x5.txt",
+    "role": "RECEIPT_DEPENDENCY",
+    "size_bytes": 4702276,
+    "sha256": "72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606"
+  },
+  "action": "MATERIALIZE_ORIGINAL_CAPTURE_RAW_BYTES_FROM_AUTHENTICATED_ZIP"
+}

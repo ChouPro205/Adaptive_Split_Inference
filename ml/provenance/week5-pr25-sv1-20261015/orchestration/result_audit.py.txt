@@ -1,0 +1,69 @@
+import csv
+from workflow import BASE,read,save,sha,source_hashes,git
+
+root = BASE/'after'
+e = root/'ml/provenance/week5-pr25-sv1-20261015'
+p = e/'portable'
+suite = read(p/'suite.json')
+if len(suite['exit_codes']) != 29 or any(suite['exit_codes'].values()):
+    raise ValueError('Portable suite did not pass all 29 children')
+p1,old_p1 = read(p/'p1_10000.json'),read(root/'ml/provenance/week5/p1_10000.json')
+for field in ('cases','seed','test_keys','shapes_and_counts','output_stream_sha256','determinism_checks','bit_exact_roundtrips'):
+    if p1[field] != old_p1[field]:
+        raise ValueError('P1 historical result differs: '+field)
+real = read(p/'real_220.json')
+old_real = read(root/'ml/provenance/week5-20261009-v1/real_220_final_v2.json')
+if real['stream_sha256'] != old_real['stream_sha256'] or real['failed_tensors'] != 0 or real['tensors_executed'] != 220:
+    raise ValueError('Real result differs')
+pred_sha = sha((p/'accuracy/predictions.csv').read_bytes())
+if pred_sha != sha((root/'ml/results/week5/predictions.csv').read_bytes()) or pred_sha != '0776e503b9e404c957cfcfb239356f52b17f34655cb2c5d15fdfe96cb3ae6e56':
+    raise ValueError('Prediction raw hash differs')
+with (p/'accuracy/accuracy.csv').open(encoding='utf-8',newline='') as f:
+    rows = list(csv.DictReader(f))
+for row in rows:
+    n,fp,q = (int(row[k]) for k in ('num_samples','correct_fp32','correct_int8_fp16'))
+    if n != 8544 or fp != 8393 or 200*(fp-q) >= n or row['gate_status'] != 'PASS':
+        raise ValueError('Exact accuracy failed')
+if len(rows)!=11:
+    raise ValueError('Accuracy split count')
+current = source_hashes(root)
+receipts = list(p.glob('*.command.json'))
+for f in receipts:
+    rec = read(f)
+    if rec['source_files_sha256'] != current:
+        raise ValueError('Source omission/drift in fresh portable receipt: '+f.name)
+    for stream in ('stdout','stderr'):
+        target = f.with_name(f.name[:-len('.command.json')]+'.'+stream+'.txt')
+        if sha(target.read_bytes()) != rec[stream+'_sha256']:
+            raise ValueError('Raw stream changed: '+str(target))
+    for name,expected in rec['result_files_sha256'].items():
+        if sha((root/name).read_bytes()) != expected:
+            raise ValueError('Result changed: '+name)
+for name in ('delivery-recheck-normal','delivery-recheck-O'):
+    if read(e/(name+'.command.json'))['exit_code'] != 2 or read(e/(name+'.json'))['gates']['deployment_registry'] != 'BLOCKED':
+        raise ValueError('Registry blocked status differs')
+registry = read(root/'contracts/sv3_week5_ml_registry_v1.json')
+if any(registry[k] is not None for k in ('model_profile_id','key_id','sender_scope')) or any(r['wire_split_id'] is not None for r in registry['splits']):
+    raise ValueError('Allocation was applied')
+accepted = [read(e/('postfix-acceptance'+mode+'-results/week5_mcu_validation.json')) for mode in ('-normal','-O')]
+if any(r['status']!='SV1_WEEK5_TECHNICAL_ACCEPTANCE_PASS' for r in accepted):
+    raise ValueError('SV1 did not pass')
+worst = min(rows,key=lambda r:int(r['correct_int8_fp16']))
+save(BASE/'audit/fresh-result-integrity.json',{'status':'PASS','scope':'FRESH_AFTER_FIX_SUITE; historical checksum comparison is authenticated reuse',
+    'implementation_head':git(BASE/'repo','rev-parse','HEAD').decode().strip(),
+    'tested_integration_sha':git(root,'rev-parse','HEAD').decode().strip(),
+    'tested_integration_tree':git(root,'rev-parse','HEAD^{tree}').decode().strip(),
+    'portable_children':29,'all_child_exit_codes':suite['exit_codes'],'runner_exit':2,'delivery_verifier_exits':[2,2],
+    'source_dependency_count_actual':len(current),'portable_receipts_checked':len(receipts),
+    'source_omissions_or_raw_drift':[], 'p1_v2_schema':p1['schema'],'p1_cases':p1['cases'],
+    'p1_stream_sha256':p1['output_stream_sha256'],'p1_frozen_fields_match':True,
+    'real_tensors':220,'real_stream_sha256':real['stream_sha256'],'predictions_rows':8544*11,'predictions_raw_sha256':pred_sha,
+    'accuracy_baseline_correct':8393,'worst_split':int(worst['split_point_s']),
+    'worst_correct_int8':int(worst['correct_int8_fp16']),
+    'worst_accuracy_drop_pp':100*(8393-int(worst['correct_int8_fp16']))/8544,
+    'sv1_preflight_exits':[0,0],'sv1_whole_acceptance_exits':[0,0],
+    'sv1_max_fp32_abs_error':accepted[0]['max_fp32_abs_error'],
+    'sv1_historical_p2':accepted[0]['historical_p2'],
+    'sv1_oracle_exact_cases':accepted[0]['oracle_exact_cases'],'sv1_unexplained_mismatches':accepted[0]['unexplained_mismatches'],
+    'COMPATIBILITY_SV1':'PASS','OVERALL_STATUS':'BLOCKED_ALLOCATION','CURRENT_WEEK':5,'REVIEW_STATUS':'PENDING'})
+print('PASS: 29 children, raw source/log/result integrity, frozen checksums; compatibility PASS, allocation BLOCKED')

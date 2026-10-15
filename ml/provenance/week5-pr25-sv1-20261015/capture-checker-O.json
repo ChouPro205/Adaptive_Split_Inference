@@ -1,0 +1,3595 @@
+{
+  "status": "PASS",
+  "scope": "REAL_MCU_CAPTURE",
+  "primary_cases": 220,
+  "mixed_cases": 16,
+  "rows": [
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 6.67572021484375e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.5762786865234375e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 6.67572021484375e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 5.960464477539062e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.049041748046875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.039836883544922e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 5.960464477539062e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 1.9073486328125e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 8.106231689453125e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 1.430511474609375e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 8.58306884765625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.0265579223632812e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.33514404296875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.919005393981934e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.337860107421875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.430511474609375e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 6,
+      "sample_id": "MIT-BIH:105:1741:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.9653310775756836e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.239776611328125e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.337860107421875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.049041748046875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 4.76837158203125e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [
+        3
+      ],
+      "explanation": "All transmitted bytes/bits match reference on actual activation; golden differences originate in FP32 head"
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.33514404296875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 9,
+      "sample_id": "MIT-BIH:105:2550:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 1.6689300537109375e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 5.960464477539062e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.1444091796875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 10,
+      "sample_id": "MIT-BIH:105:2803:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.725290298461914e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.049041748046875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 5.125999450683594e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.1444091796875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.2186508178710938e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 8.58306884765625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.4437904357910156e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [
+        3
+      ],
+      "explanation": "All transmitted bytes/bits match reference on actual activation; golden differences originate in FP32 head"
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.980232238769531e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 9.5367431640625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 8.344650268554688e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.049041748046875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 15,
+      "sample_id": "MIT-BIH:105:4102:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 1.4901161193847656e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.337860107421875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 8.58306884765625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 16,
+      "sample_id": "MIT-BIH:105:4371:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 1.2516975402832031e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.1444091796875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 17,
+      "sample_id": "MIT-BIH:105:4635:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.86102294921875e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 1.1444091796875e-05,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 5.602836608886719e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [
+        2
+      ],
+      "explanation": "All transmitted bytes/bits match reference on actual activation; golden differences originate in FP32 head"
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.086162567138672e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 6.67572021484375e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.384185791015625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.384185791015625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 7,
+      "sample_id": "MIT-BIH:105:2015:MLII",
+      "split": 8,
+      "shape": [
+        1,
+        64,
+        22
+      ],
+      "max_abs_error": 3.814697265625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 1,
+      "shape": [
+        1,
+        16,
+        360
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 3.5762786865234375e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 12,
+      "sample_id": "MIT-BIH:105:3303:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "split": 9,
+      "shape": [
+        1,
+        32
+      ],
+      "max_abs_error": 6.67572021484375e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 4,
+      "shape": [
+        1,
+        32,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "split": 7,
+      "shape": [
+        1,
+        64,
+        45
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 14,
+      "sample_id": "MIT-BIH:105:3835:MLII",
+      "split": 6,
+      "shape": [
+        1,
+        48,
+        45
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 5,
+      "sample_id": "MIT-BIH:105:1479:MLII",
+      "split": 3,
+      "shape": [
+        1,
+        32,
+        180
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 11,
+      "sample_id": "MIT-BIH:105:3052:MLII",
+      "split": 5,
+      "shape": [
+        1,
+        48,
+        90
+      ],
+      "max_abs_error": 1.7881393432617188e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 2,
+      "shape": [
+        1,
+        16,
+        180
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 19,
+      "sample_id": "MIT-BIH:105:5154:MLII",
+      "split": 10,
+      "shape": [
+        1,
+        5
+      ],
+      "max_abs_error": 2.384185791015625e-06,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    },
+    {
+      "sample_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "split": 0,
+      "shape": [
+        1,
+        1,
+        360
+      ],
+      "max_abs_error": 0.0,
+      "oracle_exact": true,
+      "golden_q_differences": [],
+      "golden_scale_differences": [],
+      "explanation": null
+    }
+  ],
+  "mcu_validation": "PASS",
+  "timing": "PENDING",
+  "runtime_stack": "PENDING",
+  "capture": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.txt",
+  "capture_sha256": "0c915b90658be5d01ce87eddab747f0f4c35dfdc893e1a617df8d6d42d986378",
+  "firmware_binding": {
+    "source_sha256": {
+      "device/week5/app.overlay": "a351f2c95acffd495de917dc5dbe1123cdabca4645fc36a8786ad32b786d825c",
+      "device/week5/CMakeLists.txt": "1bbf73f8297c6f1c6ba9666c637ae0d6e71c4591150e31ea9b1fcaf2d8df19a7",
+      "device/week5/Kconfig": "4eccf74dd602ae7d05e65f4adf65af33cff32676c1922f0fa1159a6cab06b494",
+      "device/week5/main.c": "cfa3297679ba36930597b9ae727bcc27bced24eabb83521bb2242d2f8c0cd7b1",
+      "device/week5/prj.conf": "1d8913a02ae6c13a03201a4a41929a9edcca32cedd5489c35a74265f44e8c427",
+      "device/week5/quantization.c": "08b2131b29eacb2a1822b97dca2f30fdd138f942fac16e1f202251213572f529",
+      "device/week5/quantization.h": "9fb7982b84ee3b6a5e4c7e60cf89b294a099d6fb29ee85dd9adc50b4ad4fa564",
+      "device/src/week4_head.c": "92e501bf8ab424e66d0e096d0f1e1950a890d7ce5c29f830fe1f40ca3d4885f5",
+      "device/src/week4_head.h": "0cf3cf70e3ee382c257df233d227e0a81b8fdb72c8d467fe77b9f52471fd0a0d",
+      "device/src/week4_protocol.c": "60e78b83cd8d683e5023692d2d646c1292bf2359a547ef1cbe980462587571b4",
+      "device/src/week4_protocol.h": "909437f303a0dbe832e75ae0bbd38debc262f23530ae663485789878d8ff069b",
+      "device/src/markers.c": "130afe2664cdd4af977de2f1aff42f34ca2fb615ab1a226df99aede73bb9890b",
+      "device/src/markers.h": "c8e0188d8a5303a51dd2c9bfd314cd9471e26cefdf457e7db5fdfe2931f53ca0",
+      "ml/results/week4-r3/firmware/head_parameters.h": "3f811758ca6fc6a8fdefa74ff50ccb48031c006e9a12b617604dad033657487b",
+      "device/generated/week4_graph.h": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+      "device/generated/week4_inputs.h": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6"
+    },
+    "model_anchor": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "quant_anchor": "8e20ed054462dda8f99815f20c817de36d21fdc1c5bf112cd2da5f67cdbf29bd",
+    "firmware_id": "04fbe659696a183e4680c16f1f425081500654da44cdb6fbf233de1372507207"
+  },
+  "handoff_authentication": {
+    "firmware_payload_revision": "r3",
+    "firmware_manifest_sha256": "80e4cea3b70bdafef1b6925b208d4951a87bba4ff8cf10dbb6a671e36439635c",
+    "source_verification_mode": "current",
+    "historical_r3_source_commit": "c793c06385198accc964e0e60988d7e7a7e9b566",
+    "historical_r3_source_bindings_checked": 21,
+    "r3_r4_identical_payload_files": 27,
+    "all_split_manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "verified_current_source_updates": [
+      {
+        "path": "ml/scripts/verify_week3_sv2.py",
+        "r4_manifest_sha256": "b4c9562ee74c4922fd6180bc9a1a85ffc8a44871fd45ed87610728f2e31230ce",
+        "current_source_sha256": "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb",
+        "reviewed_source_commit": "add8503d58c6f707a35b4502bf98aff91109c1cd",
+        "reviewed_merge_commit": "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+      },
+      {
+        "path": "ml/scripts/test_week3_sv2.py",
+        "r4_manifest_sha256": "c6bad027185bf63c280dc9abc2c9e9a96d809eabd6e42853a7b2cbd732b7fda6",
+        "current_source_sha256": "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041",
+        "reviewed_source_commit": "add8503d58c6f707a35b4502bf98aff91109c1cd",
+        "reviewed_merge_commit": "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+      },
+      {
+        "path": "ml/scripts/test_week3_sv2_cache.py",
+        "r4_manifest_sha256": "9c7a2b6cdba237145ad127a45e5938e7d657b20caa1faaafbf7f5e885232b9b4",
+        "current_source_sha256": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f",
+        "reviewed_source_commit": "add8503d58c6f707a35b4502bf98aff91109c1cd",
+        "reviewed_merge_commit": "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+      }
+    ],
+    "current_source_revision": "r4",
+    "current_source_manifest_sha256": "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a",
+    "current_source_bindings_checked": 21
+  },
+  "accepted_r3_provenance": {
+    "accepted_report_sha256": "022a5172edd75c60826d27db16761df9d5236caaa1cad312c14ce59c1dd5ab21",
+    "measurement_revision": "r3",
+    "validated_at": "2026-10-02T16:25:33.162465+07:00",
+    "compiled_source_sha256": {
+      "device/CMakeLists.txt": "2316167327a6a0cb978cea8feca38e5f9b131558791e85170f521b8d3d4498da",
+      "device/Kconfig": "c835825f912f68af9f9501ce7dbe0a5ccf701940f907d7593507f252e931483d",
+      "device/overlay-week4.conf": "e570a55bad0dde8986fcce27bb085d4f5a1176ff864ecdef6408af325dc4fc44",
+      "device/src/main_week4.c": "d22134512696b7400398fc651d64c31df31f9e4a422db35d5d35817caa0f7d83",
+      "device/src/week4_head.c": "92e501bf8ab424e66d0e096d0f1e1950a890d7ce5c29f830fe1f40ca3d4885f5",
+      "device/src/week4_head.h": "0cf3cf70e3ee382c257df233d227e0a81b8fdb72c8d467fe77b9f52471fd0a0d",
+      "device/src/week4_protocol.c": "60e78b83cd8d683e5023692d2d646c1292bf2359a547ef1cbe980462587571b4",
+      "device/src/week4_protocol.h": "909437f303a0dbe832e75ae0bbd38debc262f23530ae663485789878d8ff069b"
+    },
+    "elf_sha256": "d9a1ef3197705b0aa1d21d64d0420dbea2195dc27c7d36b53ddf89dff107e97c",
+    "dfu_zip_sha256": "d13facbca1fd7d83b036361eeea3ef33bdff015d62a9476142cfcc6244faf171",
+    "application_sha256": "5e6169561f561ee533cc153c1807b7b129d4e1940df54039f0448c726bbd2cae",
+    "local_historical_binaries": {
+      "device/build-week4/zephyr/zephyr.elf": "MATCH",
+      "device/artifacts/adaptive_split_week4_r3_fp32.zip": "MATCH"
+    }
+  }
+}

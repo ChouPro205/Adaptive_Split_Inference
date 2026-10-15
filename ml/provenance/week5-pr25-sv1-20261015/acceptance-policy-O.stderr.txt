@@ -1,0 +1,9 @@
+test_independent_actual_capture_acceptance (__main__.Tests.test_independent_actual_capture_acceptance) ... ok
+test_payload_and_scales_sizes (__main__.Tests.test_payload_and_scales_sizes) ... ok
+test_receipt_chain (__main__.Tests.test_receipt_chain) ... ok
+test_receipt_corruption (__main__.Tests.test_receipt_corruption) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 4.101s
+
+OK

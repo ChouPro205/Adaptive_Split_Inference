@@ -1,0 +1,48 @@
+"""Copy authenticated preparation/session to unused exact receipt paths, never overwrite."""
+import hashlib
+import json
+from pathlib import Path
+
+BASE = Path(__file__).resolve().parent
+HANDOFF = BASE/'original/handoff'
+ROOTS = {
+    'preparation/': Path('D:/HUST/ASI_week5_prepare/20261009-sv1-prepare01'),
+    'mcu-session/': Path('D:/HUST/ASI_week5_mcu/20261009-212416'),
+}
+
+def digest(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+def main():
+    mapping = json.loads((HANDOFF/'path-mapping-final.json').read_text(encoding='utf-8'))
+    work = []
+    for prefix, target in ROOTS.items():
+        if target.exists():
+            raise ValueError('Refuse existing receipt destination: '+str(target))
+        for row in mapping:
+            if not row['relative_path'].startswith(prefix):
+                continue
+            suffix = row['relative_path'][len(prefix):]
+            dest = target/suffix
+            if dest.resolve() != Path(row['source']).resolve() or not dest.resolve().is_relative_to(target.resolve()):
+                raise ValueError('Mapping destination mismatch')
+            raw = (HANDOFF/row['relative_path']).read_bytes()
+            if len(raw) != row['size_bytes'] or digest(raw) != row['sha256']:
+                raise ValueError('Authenticated bytes differ')
+            work.append((row, dest, raw))
+    records = []
+    for row, dest, raw in work:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        with dest.open('xb') as stream:
+            stream.write(raw)
+        if digest(dest.read_bytes()) != row['sha256']:
+            raise ValueError('Copy differs')
+        records.append({'mapping_path':row['relative_path'], 'destination':str(dest),
+                        'size_bytes':len(raw), 'sha256':row['sha256']})
+    (BASE/'audit/receipt-path-materialization.json').write_text(json.dumps({
+        'scope':'FRESH_BYTE_IDENTICAL_COPIES_AT_PREVIOUSLY_ABSENT_RECEIPT_PATHS; no MCU operation',
+        'files':records, 'count':len(records)},indent=2)+'\n', encoding='utf-8')
+    print('PASS:',len(records),'exact receipt-path copies; no existing files changed')
+
+if __name__ == '__main__':
+    main()

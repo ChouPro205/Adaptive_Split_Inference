@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\before\device\scripts\accept_week5_mcu.py", line 211, in <module>
+    r = validate_session(a.session.resolve(),a.preparation.resolve())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\before\device\scripts\accept_week5_mcu.py", line 167, in validate_session
+    need(sha(ROOT/source) == expected, f'Frozen ML/tail source drift: {source}')
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\before\device\scripts\week5_common.py", line 26, in need
+    raise ValueError(message)
+ValueError: Frozen ML/tail source drift: ml/scripts/test_week5_p1.py

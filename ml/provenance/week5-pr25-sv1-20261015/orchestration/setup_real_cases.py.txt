@@ -1,0 +1,46 @@
+"""Run real setup on correct/missing/marker headers, preserving byte and mtime evidence."""
+from workflow import BASE,PY,logged,read,save,sha
+
+root = BASE/'setup-probe'
+headers = [root/'device/generated'/name for name in ('week4_graph.h','week4_inputs.h')]
+cache = BASE/'cache'
+results = []
+if logged(root,'clean-setup',[PY,'-B','ml/scripts/setup_week5_delivery_v2.py','--asset-cache',cache]) != 0:
+    raise SystemExit('Clean setup failed')
+original = {p:p.read_bytes() for p in headers}
+
+def snapshot():
+    return {p.name:{'sha256':sha(p.read_bytes()),'size_bytes':p.stat().st_size,'mtime_ns':p.stat().st_mtime_ns}
+            if p.exists() else None for p in headers}
+
+for optimized in (False,True):
+    for case in ('correct','missing-graph','missing-inputs','marker-graph','marker-inputs'):
+        # These two disposable generated fixtures are the only files modified.
+        for p,raw in original.items():
+            if not p.exists() or p.read_bytes() != raw:
+                p.write_bytes(raw)
+        if case.startswith('missing-'):
+            headers[0 if case.endswith('graph') else 1].unlink()
+        if case.startswith('marker-'):
+            p = headers[0 if case.endswith('graph') else 1]
+            p.write_bytes(original[p]+b'\n/* ORIGINAL_HEADER_MARKER_MUST_SURVIVE */\n')
+        before = snapshot()
+        name = 'real-setup-'+case+('-O' if optimized else '-normal')
+        code = logged(root,name,[PY,*(['-O'] if optimized else []),'-B','ml/scripts/setup_week5_delivery_v2.py','--asset-cache',cache])
+        after = snapshot()
+        expected_code = 1 if case.startswith('marker-') else 0
+        if code != expected_code:
+            raise ValueError('Unexpected setup exit: '+name)
+        for p in headers:
+            if before[p.name] is not None and before[p.name] != after[p.name]:
+                raise ValueError('Existing header bytes/mtime changed: '+name)
+            if before[p.name] is None and after[p.name]['sha256'] != sha(original[p]):
+                raise ValueError('Missing header was not authenticated: '+name)
+        results.append({'name':name,'expected_exit_code':expected_code,'exit_code':code,
+                        'before':before,'after':after,'status':'PASS'})
+for p,raw in original.items():
+    if p.read_bytes() != raw:
+        p.write_bytes(raw)
+save(BASE/'audit/real-setup-cases.json',{'status':'PASS','scope':'DISPOSABLE_RECEIVER_FIXTURE_CASES; no production input modified',
+    'cases':results,'exit0':sum(x['exit_code']==0 for x in results),'expected_marker_exit1':sum(x['exit_code']==1 for x in results)})
+print('PASS: 10 real setup cases; 6 exit0, 4 expected marker exit1; existing bytes/mtime preserved',flush=True)

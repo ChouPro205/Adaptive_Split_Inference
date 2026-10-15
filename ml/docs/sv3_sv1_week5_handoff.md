@@ -60,6 +60,7 @@ trên checkout sạch. Đây là mô phỏng local máy nhận, chưa phải ACK
 | `ml/scripts/evaluate_week5.py` | FP32 gate đủ test trước đánh giá INT8/FP16 |
 | `ml/scripts/export_week5.py` | Xuất đúng 20 `sample_id` từ `samples.csv` cũ |
 | `ml/scripts/test_week5_quantization.py`, `test_week5_p1.py` | Numerical contract và P1 10.000 tensor |
+| `ml/scripts/test_week5_p1_v2.py` | Entrypoint chạy P1 mới; giữ file P1 lịch sử đúng raw binding SV1 |
 | `ml/scripts/package_week5.py`, `hydrate_week5.py` | ZIP/hash/inventory và tải/đặt file ngoài Git |
 | `ml/results/week5/` | `accuracy.csv`, `accuracy.md`, `evaluation.json`, `fp32_gates.json`, `dataset_manifest.json`, `split_mapping.json` |
 | `ml/provenance/week5/` | Commands/logs, P1 seed/count/checksum, asset manifests/receipts |

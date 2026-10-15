@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\before\device\scripts\accept_week5_mcu.py", line 211, in <module>
+    r = validate_session(a.session.resolve(),a.preparation.resolve())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\before\device\scripts\accept_week5_mcu.py", line 144, in validate_session
+    old_tensors, old_ids, p2_proof = historical_p2()
+                                     ^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\before\device\scripts\accept_week5_mcu.py", line 61, in historical_p2
+    need(old['manifest_sha256'] == TRUSTED_MANIFEST and old['mcu_20_of_20'] == 'PASS' and
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\pr25-sv1-20261015\before\device\scripts\week5_common.py", line 26, in need
+    raise ValueError(message)
+ValueError: Historical P2 evidence binding failed
