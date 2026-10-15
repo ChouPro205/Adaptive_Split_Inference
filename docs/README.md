@@ -10,16 +10,24 @@ và báo cáo của dự án.
 - [Báo cáo SV1/Device (Châu) – Week 2](sv1_device_week2_report.md)
 - [Báo cáo SV1/Device (Châu) – Week 3](sv1_device_week3_report.md)
 - [Báo cáo SV1/Device (Châu) – Week 4](sv1_device_week4_report.md)
+- [Báo cáo SV1/Device (Châu) – Week 5](sv1_device_week5_report.md): sinh tự
+  động khi nghiệm thu ngày 09/10/2026 và giữ nguyên từng byte vì hash của nó
+  nằm trong hồ sơ nghiệm thu. Wire split ID được cấp sau đó, ngày 15/10/2026,
+  trong [allocation hiện hành](../contracts/sv3_week5_allocation_v2.md).
+- [Kết quả và hình minh chứng Week 2](../results/week2/README.md)
+- [Kết quả MCU và timing Week 4](../results/week4/README.md)
+- [Kết quả MCU Week 5](../results/week5/README.md)
+- [Firmware và công cụ SV1](../device/README.md)
+
+### Khối ML (SV3 - ML / Bùi Kỳ Anh)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 1](SV3_ML_week1_report.md)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 2](SV3_ML_week2_report.md)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 3](sv3_ml_week3_report.md)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 4](sv3_ml_week4_report.md)
 - [SV3: sửa verifier FP32 tuần 3 trên Ubuntu/WSL](sv3_ml_week3_linux_fp32_fix_report.md)
 - [SV3 Linux FP32 review v2: bảo toàn provenance và recipe](sv3_ml_week3_linux_fp32_review_v2_report.md)
-- [SV3 ??? SV2: b??n giao Week 3 FP32 Linux](sv3_sv2_week3_linux_fp32_handoff.md)
+- [SV3 → SV2: bàn giao Week 3 FP32 Linux](sv3_sv2_week3_linux_fp32_handoff.md)
 - [Mục lục và tài liệu bổ trợ SV3](../ml/docs/reports/README.md)
-- [Kết quả và hình minh chứng Week 2](../results/week2/README.md)
-- [Kết quả MCU và timing Week 4](../results/week4/README.md)
 
 ### Khối Máy chủ biên (SV2 - Edge / KV260)
 - [Báo cáo SV2/Edge – Week 1](sv2_edge_week1_report.md)
