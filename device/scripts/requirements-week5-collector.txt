@@ -1,0 +1,2 @@
+# Only the later device collector needs this package. No serial access on install.
+pyserial==3.5

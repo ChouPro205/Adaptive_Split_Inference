@@ -1,0 +1,968 @@
+{
+  "status": "SV1_WEEK5_TECHNICAL_ACCEPTANCE_PASS",
+  "scope": "REAL_MCU_CAPTURE",
+  "primary_cases": 220,
+  "mixed_cases": 16,
+  "mcu_validation": "PASS",
+  "timing": "NOT_MEASURED",
+  "runtime_stack": "NOT_MEASURED",
+  "image_source_sha": "51ef9c966e052bfd63c8e416dcfad3d6af30e755",
+  "firmware_binding": {
+    "source_sha256": {
+      "device/week5/app.overlay": "a351f2c95acffd495de917dc5dbe1123cdabca4645fc36a8786ad32b786d825c",
+      "device/week5/CMakeLists.txt": "1bbf73f8297c6f1c6ba9666c637ae0d6e71c4591150e31ea9b1fcaf2d8df19a7",
+      "device/week5/Kconfig": "4eccf74dd602ae7d05e65f4adf65af33cff32676c1922f0fa1159a6cab06b494",
+      "device/week5/main.c": "cfa3297679ba36930597b9ae727bcc27bced24eabb83521bb2242d2f8c0cd7b1",
+      "device/week5/prj.conf": "1d8913a02ae6c13a03201a4a41929a9edcca32cedd5489c35a74265f44e8c427",
+      "device/week5/quantization.c": "08b2131b29eacb2a1822b97dca2f30fdd138f942fac16e1f202251213572f529",
+      "device/week5/quantization.h": "9fb7982b84ee3b6a5e4c7e60cf89b294a099d6fb29ee85dd9adc50b4ad4fa564",
+      "device/src/week4_head.c": "92e501bf8ab424e66d0e096d0f1e1950a890d7ce5c29f830fe1f40ca3d4885f5",
+      "device/src/week4_head.h": "0cf3cf70e3ee382c257df233d227e0a81b8fdb72c8d467fe77b9f52471fd0a0d",
+      "device/src/week4_protocol.c": "60e78b83cd8d683e5023692d2d646c1292bf2359a547ef1cbe980462587571b4",
+      "device/src/week4_protocol.h": "909437f303a0dbe832e75ae0bbd38debc262f23530ae663485789878d8ff069b",
+      "device/src/markers.c": "130afe2664cdd4af977de2f1aff42f34ca2fb615ab1a226df99aede73bb9890b",
+      "device/src/markers.h": "c8e0188d8a5303a51dd2c9bfd314cd9471e26cefdf457e7db5fdfe2931f53ca0",
+      "ml/results/week4-r3/firmware/head_parameters.h": "3f811758ca6fc6a8fdefa74ff50ccb48031c006e9a12b617604dad033657487b",
+      "device/generated/week4_graph.h": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+      "device/generated/week4_inputs.h": "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6"
+    },
+    "model_anchor": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "quant_anchor": "8e20ed054462dda8f99815f20c817de36d21fdc1c5bf112cd2da5f67cdbf29bd",
+    "firmware_id": "04fbe659696a183e4680c16f1f425081500654da44cdb6fbf233de1372507207"
+  },
+  "artifacts": {
+    "elf": {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.elf",
+      "sha256": "64b930ec978c5f628c1de85cd32cd51f44a3a2ec95c84a0cdddf58529c87ccab",
+      "bytes": 1943752
+    },
+    "hex": {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.hex",
+      "sha256": "0da170739e6170fbc6b639c2f66ff4f0e713d1e59183ad57484e94d270c61d41",
+      "bytes": 1474553
+    },
+    "bin": {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.bin",
+      "sha256": "15f07bffb1411eff9d565381fce1078cc477fa01e0533db0cce9923f53a0bf27",
+      "bytes": 524180
+    },
+    "zip": {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\adaptive_split_week5.zip",
+      "sha256": "00760b2a8467bdf0875883ac865b8b2e6c24f2e250555e93c3a722f11952b40f",
+      "bytes": 524709
+    },
+    "map": {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.map",
+      "sha256": "2970ffd48da1de92155b5390d3d270a022e0b388e96a000037a7e1d3702c1356",
+      "bytes": 587219
+    },
+    "config": {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\.config",
+      "sha256": "9b086f47ba302783b198da6d5da4de65f37ae15827987d6139ce161e07735347",
+      "bytes": 55113
+    },
+    "linker": {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\linker.cmd",
+      "sha256": "4ea9ea40f3b7cb43e373ca9173d5613d52fb599db8dced4a592845119c718ce3",
+      "bytes": 29909
+    },
+    "devicetree": {
+      "path": "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\build\\zephyr\\zephyr.dts",
+      "sha256": "e20047a0d8af0e3da2a480b0bda3ad8d5eadaffe2fbbe8b3027b5288a1dd66f2",
+      "bytes": 64331
+    }
+  },
+  "application": {
+    "bin_file": "zephyr.bin",
+    "dat_file": "zephyr.dat",
+    "bytes": 524180,
+    "sha256": "15f07bffb1411eff9d565381fce1078cc477fa01e0533db0cce9923f53a0bf27",
+    "init_sha256": "990a9d82cd13c3b738b2bd6f0c5a3c8f5ba25e1bc5fce9fcf5189b32ca357f7e"
+  },
+  "preparation_snapshot_sha256": "bed996d79ea68a888ccee254869c45921296bb85fa6ed3e93b36debe10c63cac",
+  "flash": {
+    "status": "PASS",
+    "receipt": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\dfu\\dfu-20261009-212510.json",
+    "port": "COM6",
+    "exit_code": 0,
+    "timestamp_utc": "2026-10-09T14:25:36.9203075+00:00"
+  },
+  "collection": {
+    "status": "PASS",
+    "receipt": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.receipt.json",
+    "port": "COM7",
+    "timestamp_utc": "2026-10-09T14:39:59.880726+00:00"
+  },
+  "evidence_sha256": {
+    "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json": "bed996d79ea68a888ccee254869c45921296bb85fa6ed3e93b36debe10c63cac",
+    "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\dfu\\dfu-20261009-212510.json": "43f83486eb6af436fc3ebb05864c4e6a4cbb2e23d03b311d6f107591bc1cc647",
+    "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.receipt.json": "99552915f99574d1d236874058f13aea97309be5eeacbc91f80782d1ecc3cc95",
+    "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.txt": "0c915b90658be5d01ce87eddab747f0f4c35dfdc893e1a617df8d6d42d986378",
+    "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\evidence\\accuracy\\evaluation.json": "68fb4ad72725106b982c79403ddacee0edc975929f2793005354a4dd3d283500",
+    "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\collect.command.json": "f1bf587171a620f8e00c30c804989971bf2062a9d349986b718ec48831136710",
+    "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\ports-before.json": "4dfe99bce6849fb530589f785c2288184dc088049e5c8be50c807494f66926f4",
+    "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\ports-after-dfu.json": "2b4f359b47d7953b9804c132f9519c137968196333ede4b1c7f75d6c87afe5cf",
+    "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_mcu_validation.json": "6b9520ffadbfce3fac4bd57ba8b446db0df55edcf887059dd2beca82079ae865",
+    "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_mcu_recheck.json": "206987373bb643ed3ef792fd4c64183881fe75e0b6839e2b18ff4e0e017e90cb",
+    "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_mcu_recheck_O.json": "206987373bb643ed3ef792fd4c64183881fe75e0b6839e2b18ff4e0e017e90cb"
+  },
+  "handoff_authentication": {
+    "firmware_payload_revision": "r3",
+    "firmware_manifest_sha256": "80e4cea3b70bdafef1b6925b208d4951a87bba4ff8cf10dbb6a671e36439635c",
+    "source_verification_mode": "current",
+    "historical_r3_source_commit": "c793c06385198accc964e0e60988d7e7a7e9b566",
+    "historical_r3_source_bindings_checked": 21,
+    "r3_r4_identical_payload_files": 27,
+    "all_split_manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "verified_current_source_updates": [
+      {
+        "path": "ml/scripts/verify_week3_sv2.py",
+        "r4_manifest_sha256": "b4c9562ee74c4922fd6180bc9a1a85ffc8a44871fd45ed87610728f2e31230ce",
+        "current_source_sha256": "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb",
+        "reviewed_source_commit": "add8503d58c6f707a35b4502bf98aff91109c1cd",
+        "reviewed_merge_commit": "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+      },
+      {
+        "path": "ml/scripts/test_week3_sv2.py",
+        "r4_manifest_sha256": "c6bad027185bf63c280dc9abc2c9e9a96d809eabd6e42853a7b2cbd732b7fda6",
+        "current_source_sha256": "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041",
+        "reviewed_source_commit": "add8503d58c6f707a35b4502bf98aff91109c1cd",
+        "reviewed_merge_commit": "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+      },
+      {
+        "path": "ml/scripts/test_week3_sv2_cache.py",
+        "r4_manifest_sha256": "9c7a2b6cdba237145ad127a45e5938e7d657b20caa1faaafbf7f5e885232b9b4",
+        "current_source_sha256": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f",
+        "reviewed_source_commit": "add8503d58c6f707a35b4502bf98aff91109c1cd",
+        "reviewed_merge_commit": "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+      }
+    ],
+    "current_source_revision": "r4",
+    "current_source_manifest_sha256": "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a",
+    "current_source_bindings_checked": 21
+  },
+  "accepted_r3_provenance": {
+    "accepted_report_sha256": "022a5172edd75c60826d27db16761df9d5236caaa1cad312c14ce59c1dd5ab21",
+    "measurement_revision": "r3",
+    "validated_at": "2026-10-02T16:25:33.162465+07:00",
+    "compiled_source_sha256": {
+      "device/CMakeLists.txt": "2316167327a6a0cb978cea8feca38e5f9b131558791e85170f521b8d3d4498da",
+      "device/Kconfig": "c835825f912f68af9f9501ce7dbe0a5ccf701940f907d7593507f252e931483d",
+      "device/overlay-week4.conf": "e570a55bad0dde8986fcce27bb085d4f5a1176ff864ecdef6408af325dc4fc44",
+      "device/src/main_week4.c": "d22134512696b7400398fc651d64c31df31f9e4a422db35d5d35817caa0f7d83",
+      "device/src/week4_head.c": "92e501bf8ab424e66d0e096d0f1e1950a890d7ce5c29f830fe1f40ca3d4885f5",
+      "device/src/week4_head.h": "0cf3cf70e3ee382c257df233d227e0a81b8fdb72c8d467fe77b9f52471fd0a0d",
+      "device/src/week4_protocol.c": "60e78b83cd8d683e5023692d2d646c1292bf2359a547ef1cbe980462587571b4",
+      "device/src/week4_protocol.h": "909437f303a0dbe832e75ae0bbd38debc262f23530ae663485789878d8ff069b"
+    },
+    "elf_sha256": "d9a1ef3197705b0aa1d21d64d0420dbea2195dc27c7d36b53ddf89dff107e97c",
+    "dfu_zip_sha256": "d13facbca1fd7d83b036361eeea3ef33bdff015d62a9476142cfcc6244faf171",
+    "application_sha256": "5e6169561f561ee533cc153c1807b7b129d4e1940df54039f0448c726bbd2cae",
+    "local_historical_binaries": {
+      "device/build-week4/zephyr/zephyr.elf": "MATCH",
+      "device/artifacts/adaptive_split_week4_r3_fp32.zip": "MATCH"
+    }
+  },
+  "historical_p2": {
+    "status": "PASS",
+    "manifest_sha256": "0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469",
+    "report_sha256": "53303d10c4d2f8036fa916a658b5871d734072150d6395308ff802fda1149db8",
+    "report_pinned_git_commit": "51ef9c966e052bfd63c8e416dcfad3d6af30e755",
+    "capture_sha256": "72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606",
+    "capture_path": "D:\\HUST\\Adaptive_Split_Inference\\results\\week3\\logs\\week3_capture_20x5.txt",
+    "primary_cases": 20,
+    "max_abs_error": 0.0,
+    "bitwise_cases": 20
+  },
+  "max_fp32_abs_error": 1.430511474609375e-05,
+  "oracle_exact_cases": 236,
+  "unexplained_mismatches": 0,
+  "golden_difference_analysis": [
+    {
+      "sample_index": 8,
+      "sample_id": "MIT-BIH:105:2287:MLII",
+      "split": 10,
+      "phase": "primary",
+      "int8_details": [],
+      "scale_details": [
+        {
+          "channel": 3,
+          "golden_raw_scale_fp32": 0.0010342475725337863,
+          "mcu_raw_scale_fp32": 0.0010342649184167385,
+          "fp16_rounding_midpoint": 0.0010342597961425781,
+          "golden_scale_bits": 5180,
+          "mcu_scale_bits": 5181
+        }
+      ],
+      "explanation": "Python quantization on the exact MCU FP32 input matches every transmitted INT8 byte/FP16 bit; golden differences come from the FP32 head."
+    },
+    {
+      "sample_index": 13,
+      "sample_id": "MIT-BIH:105:3563:MLII",
+      "split": 10,
+      "phase": "primary",
+      "int8_details": [],
+      "scale_details": [
+        {
+          "channel": 3,
+          "golden_raw_scale_fp32": 0.002049451693892479,
+          "mcu_raw_scale_fp32": 0.002049433533102274,
+          "fp16_rounding_midpoint": 0.0020494461059570312,
+          "golden_scale_bits": 6195,
+          "mcu_scale_bits": 6194
+        }
+      ],
+      "explanation": "Python quantization on the exact MCU FP32 input matches every transmitted INT8 byte/FP16 bit; golden differences come from the FP32 head."
+    },
+    {
+      "sample_index": 18,
+      "sample_id": "MIT-BIH:105:4901:MLII",
+      "split": 10,
+      "phase": "primary",
+      "int8_details": [],
+      "scale_details": [
+        {
+          "channel": 2,
+          "golden_raw_scale_fp32": 0.004972483962774277,
+          "mcu_raw_scale_fp32": 0.00497244019061327,
+          "fp16_rounding_midpoint": 0.0049724578857421875,
+          "golden_scale_bits": 7448,
+          "mcu_scale_bits": 7447
+        }
+      ],
+      "explanation": "Python quantization on the exact MCU FP32 input matches every transmitted INT8 byte/FP16 bit; golden differences come from the FP32 head."
+    }
+  ],
+  "accuracy_offline": {
+    "status": "PASS_REUSED_UNCHANGED_SOURCE_AND_FROZEN_ASSETS",
+    "scope": "OFFLINE_STANDARD_FP32_HEAD_C_QUANTIZATION_FROZEN_TAIL",
+    "num_samples": 8544,
+    "splits": 11,
+    "baseline_correct": 8393,
+    "rows": [
+      {
+        "split_point_s": 0,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8391,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.20926966292134,
+        "accuracy_drop_pp": 0.0234082397003732,
+        "accuracy_drop_relative_percent": 0.023829381627546765,
+        "prediction_disagreements": 10,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "9dcb799a8d156a23b209fcb755798c278436d24c1255593cdf9f0417d7150927",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 1,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8390,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.19756554307116,
+        "accuracy_drop_pp": 0.035112359550552696,
+        "accuracy_drop_relative_percent": 0.03574407244132015,
+        "prediction_disagreements": 5,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "4c0b77f4815879c207ab5c87ebfdc30bb9630dbae7008402d90af26247792e3a",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 2,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8391,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.20926966292134,
+        "accuracy_drop_pp": 0.0234082397003732,
+        "accuracy_drop_relative_percent": 0.023829381627546765,
+        "prediction_disagreements": 6,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "1f8646d5a0dd34176a2bd2e787189e75e08de56d578b4fcf60502065e4110d49",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 3,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8392,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.22097378277154,
+        "accuracy_drop_pp": 0.011704119850179495,
+        "accuracy_drop_relative_percent": 0.011914690813773382,
+        "prediction_disagreements": 3,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "bb97c37ae49991e63cb48de48214a6e06efd79b0f0c643d07bf08a68101705b8",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 4,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8393,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.23267790262172,
+        "accuracy_drop_pp": 0.0,
+        "accuracy_drop_relative_percent": 0.0,
+        "prediction_disagreements": 4,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "e8d9d566004400158e656c8c7aedd93735b87b267167d7f2e0f82e475f091955",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 5,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8395,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.2560861423221,
+        "accuracy_drop_pp": -0.023408239700387412,
+        "accuracy_drop_relative_percent": -0.023829381627546765,
+        "prediction_disagreements": 4,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "a1790d05e3aa7a1c31365038bf3a40518563199c1946055cde867a170f1567d1",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 6,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8388,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.17415730337079,
+        "accuracy_drop_pp": 0.0585205992509259,
+        "accuracy_drop_relative_percent": 0.05957345406886691,
+        "prediction_disagreements": 5,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "a5264067f8363cfac2319d9f8810c34071c26da594961e4965cdc650a3bec8a1",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 7,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8391,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.20926966292134,
+        "accuracy_drop_pp": 0.0234082397003732,
+        "accuracy_drop_relative_percent": 0.023829381627546765,
+        "prediction_disagreements": 2,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "717f773c4bf39611b78666fc286be4f73fd70ceda88e1831589ecc27cac41e26",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 8,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8391,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.20926966292134,
+        "accuracy_drop_pp": 0.0234082397003732,
+        "accuracy_drop_relative_percent": 0.023829381627546765,
+        "prediction_disagreements": 2,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "771b48e6809f42af09214d1a5925389c1e628cabff08199dd1032b8fc4ea5bcf",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 9,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8393,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.23267790262172,
+        "accuracy_drop_pp": 0.0,
+        "accuracy_drop_relative_percent": 0.0,
+        "prediction_disagreements": 0,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "84e5498d27c97f3ade4d49f14effa2dc4eefb9ccfd54371ca391354c24eb473f",
+        "status": "PASS"
+      },
+      {
+        "split_point_s": 10,
+        "num_samples": 8544,
+        "correct_fp32": 8393,
+        "correct_int8_fp16": 8393,
+        "accuracy_fp32_percent": 98.23267790262172,
+        "accuracy_int8_fp16_percent": 98.23267790262172,
+        "accuracy_drop_pp": 0.0,
+        "accuracy_drop_relative_percent": 0.0,
+        "prediction_disagreements": 0,
+        "fp32_split_max_abs_error": 0.0,
+        "serialized_q_scale_sha256": "e756a6be2402d52a6266d10248179d3d7a683acb6378bf6d304c3c115af9f0bc",
+        "status": "PASS"
+      }
+    ],
+    "evaluation_sha256": "68fb4ad72725106b982c79403ddacee0edc975929f2793005354a4dd3d283500",
+    "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+    "full_test_on_mcu": "NOT_RUN"
+  },
+  "tensor_sizes": [
+    {
+      "split": 0,
+      "cut_name": "normalized_model_input (identity head)",
+      "shape": "1x1x360",
+      "layout": "NCL",
+      "channels": 1,
+      "num_elements": 360,
+      "fp32_bytes": 1440,
+      "int8_payload_bytes": 360,
+      "fp16_scale_bytes": 2,
+      "int8_plus_fp16_bytes": 362,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 3.977900552486188,
+      "total_reduction_percent": 74.86111111111111
+    },
+    {
+      "split": 1,
+      "cut_name": "features.1",
+      "shape": "1x16x360",
+      "layout": "NCL",
+      "channels": 16,
+      "num_elements": 5760,
+      "fp32_bytes": 23040,
+      "int8_payload_bytes": 5760,
+      "fp16_scale_bytes": 32,
+      "int8_plus_fp16_bytes": 5792,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 3.977900552486188,
+      "total_reduction_percent": 74.86111111111111
+    },
+    {
+      "split": 2,
+      "cut_name": "features.4",
+      "shape": "1x16x180",
+      "layout": "NCL",
+      "channels": 16,
+      "num_elements": 2880,
+      "fp32_bytes": 11520,
+      "int8_payload_bytes": 2880,
+      "fp16_scale_bytes": 32,
+      "int8_plus_fp16_bytes": 2912,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 3.956043956043956,
+      "total_reduction_percent": 74.72222222222223
+    },
+    {
+      "split": 3,
+      "cut_name": "features.6",
+      "shape": "1x32x180",
+      "layout": "NCL",
+      "channels": 32,
+      "num_elements": 5760,
+      "fp32_bytes": 23040,
+      "int8_payload_bytes": 5760,
+      "fp16_scale_bytes": 64,
+      "int8_plus_fp16_bytes": 5824,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 3.956043956043956,
+      "total_reduction_percent": 74.72222222222223
+    },
+    {
+      "split": 4,
+      "cut_name": "features.9",
+      "shape": "1x32x90",
+      "layout": "NCL",
+      "channels": 32,
+      "num_elements": 2880,
+      "fp32_bytes": 11520,
+      "int8_payload_bytes": 2880,
+      "fp16_scale_bytes": 64,
+      "int8_plus_fp16_bytes": 2944,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 3.9130434782608696,
+      "total_reduction_percent": 74.44444444444444
+    },
+    {
+      "split": 5,
+      "cut_name": "features.11",
+      "shape": "1x48x90",
+      "layout": "NCL",
+      "channels": 48,
+      "num_elements": 4320,
+      "fp32_bytes": 17280,
+      "int8_payload_bytes": 4320,
+      "fp16_scale_bytes": 96,
+      "int8_plus_fp16_bytes": 4416,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 3.9130434782608696,
+      "total_reduction_percent": 74.44444444444444
+    },
+    {
+      "split": 6,
+      "cut_name": "features.14",
+      "shape": "1x48x45",
+      "layout": "NCL",
+      "channels": 48,
+      "num_elements": 2160,
+      "fp32_bytes": 8640,
+      "int8_payload_bytes": 2160,
+      "fp16_scale_bytes": 96,
+      "int8_plus_fp16_bytes": 2256,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 3.8297872340425534,
+      "total_reduction_percent": 73.88888888888889
+    },
+    {
+      "split": 7,
+      "cut_name": "features.16",
+      "shape": "1x64x45",
+      "layout": "NCL",
+      "channels": 64,
+      "num_elements": 2880,
+      "fp32_bytes": 11520,
+      "int8_payload_bytes": 2880,
+      "fp16_scale_bytes": 128,
+      "int8_plus_fp16_bytes": 3008,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 3.8297872340425534,
+      "total_reduction_percent": 73.88888888888889
+    },
+    {
+      "split": 8,
+      "cut_name": "features.19",
+      "shape": "1x64x22",
+      "layout": "NCL",
+      "channels": 64,
+      "num_elements": 1408,
+      "fp32_bytes": 5632,
+      "int8_payload_bytes": 1408,
+      "fp16_scale_bytes": 128,
+      "int8_plus_fp16_bytes": 1536,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 3.6666666666666665,
+      "total_reduction_percent": 72.72727272727273
+    },
+    {
+      "split": 9,
+      "cut_name": "classifier.3",
+      "shape": "1x32",
+      "layout": "NC",
+      "channels": 32,
+      "num_elements": 32,
+      "fp32_bytes": 128,
+      "int8_payload_bytes": 32,
+      "fp16_scale_bytes": 64,
+      "int8_plus_fp16_bytes": 96,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 1.3333333333333333,
+      "total_reduction_percent": 25.0
+    },
+    {
+      "split": 10,
+      "cut_name": "classifier.4",
+      "shape": "1x5",
+      "layout": "NC",
+      "channels": 5,
+      "num_elements": 5,
+      "fp32_bytes": 20,
+      "int8_payload_bytes": 5,
+      "fp16_scale_bytes": 10,
+      "int8_plus_fp16_bytes": 15,
+      "payload_reduction_factor": 4.0,
+      "total_reduction_factor": 1.3333333333333333,
+      "total_reduction_percent": 25.0
+    }
+  ],
+  "runtime_ram": "NOT_MEASURED",
+  "git_integration": {
+    "status": "PENDING_AT_REPORT_CREATION",
+    "image_source_sha": "51ef9c966e052bfd63c8e416dcfad3d6af30e755",
+    "report_commit_sha": null,
+    "merge_sha": null,
+    "final_receipt_path": "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\git\\git_integration_final.json"
+  },
+  "acceptance_tooling_sha256": {
+    "device/scripts/accept_week5_mcu.py": "8db0c6d5d3dba7d91a56ad4a82d591faa654a46a281d9d71e976a44db5eeb6d1"
+  },
+  "optimized_python": false,
+  "validated_at": "2026-10-09T22:03:16.480073+07:00",
+  "regressions": {
+    "status": "PASS",
+    "commands": {
+      "real-mcu-recheck": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\check_week5_capture.py",
+          "--capture",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.txt",
+          "--collection-receipt",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.receipt.json",
+          "--report",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_mcu_recheck.json"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:42:52.064742+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:42:54.319049+00:00",
+        "receipt_sha256": "61d1b4055f12b752887f074f68bc227875d128a29678ca4ab24614886316ca33",
+        "log_sha256": "fb28c5f2769c5e5130b1f17c8a559285e9e729b9bea735152c343cd8af076b4b"
+      },
+      "real-mcu-recheck-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\check_week5_capture.py",
+          "--capture",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.txt",
+          "--collection-receipt",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_capture.receipt.json",
+          "--report",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\week5_mcu_recheck_O.json"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:42:54.319049+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:42:56.754117+00:00",
+        "receipt_sha256": "626e89eeb15ced04ba1e490932fe2780b821deb93bd68915bc9a6c78412fac0f",
+        "log_sha256": "fb28c5f2769c5e5130b1f17c8a559285e9e729b9bea735152c343cd8af076b4b"
+      },
+      "technical-acceptance": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\accept_week5_mcu.py",
+          "--session",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+          "--preparation",
+          "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+          "--output",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\acceptance"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:48:33.548943+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:48:37.739408+00:00",
+        "receipt_sha256": "91c211edf3256b9fb96acfba112043ee610da96fac00a0c62a4d8fb895789746",
+        "log_sha256": "56d39d4f54078b9fbc232c6a17458c80b5aeff8092b0eeb714dfde3b0ba304b8"
+      },
+      "technical-acceptance-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\accept_week5_mcu.py",
+          "--session",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+          "--preparation",
+          "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+          "--output",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\acceptance-O"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:48:37.740407+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:48:41.738826+00:00",
+        "receipt_sha256": "322f2f05820b96ca5a5bd29ccf43305a3d0780ab362ba361a3d495fff5653daf",
+        "log_sha256": "56d39d4f54078b9fbc232c6a17458c80b5aeff8092b0eeb714dfde3b0ba304b8"
+      },
+      "acceptance-negative-tests": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\test_week5_acceptance.py",
+          "--session",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+          "--preparation",
+          "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+          "--output",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\acceptance-tests.json"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:51:21.852621+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:51:25.586411+00:00",
+        "receipt_sha256": "6a79c2617dd9bdd6988c5bb7b4508f73dbe1b9772a045d7df8ce720ace29f445",
+        "log_sha256": "d6851822d4b63dbeec031ff218bad19da80c67d3a0b4b483f23c9f0413be8bf6"
+      },
+      "acceptance-negative-tests-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\test_week5_acceptance.py",
+          "--session",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416",
+          "--preparation",
+          "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json",
+          "--output",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\acceptance-tests-O.json"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:51:25.586411+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:51:29.490559+00:00",
+        "receipt_sha256": "4ea58fa8a8e3a6eff2adda842c13e6bd72c8d92d244d00e0b5fcccceb1b4733b",
+        "log_sha256": "2b8406e34ae028382802fd5c3534a50ab22980244a80a1d2b4309bab2efc3995"
+      },
+      "package-preflight": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\verify_week5_package.py",
+          "--preparation",
+          "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:38:51.384598+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:38:52.688444+00:00",
+        "receipt_sha256": "ee76a7c1e472c92a22f47ed7624ce057286363bbbe6f9cc63a2f58062a936733",
+        "log_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86"
+      },
+      "package-preflight-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\verify_week5_package.py",
+          "--preparation",
+          "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\preparation.json"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:40:58.403650+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:41:04.242837+00:00",
+        "receipt_sha256": "fb5c4ad0e1112e55f205502123a1c09cd264e9b18547362c734f3be4da7cdeee",
+        "log_sha256": "63744f2d30583164a5aa4efa1b65c6fff1b2675c71a84c86d7eb3872d9ad0c86"
+      },
+      "current-gate": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\scripts\\verify_week4_current.py",
+          "--compiler",
+          "C:/msys64/ucrt64/bin/gcc.exe"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:38:52.688444+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:39:19.416387+00:00",
+        "receipt_sha256": "fd3c2d7257775ea67f552625f70b536eb25f581e78debb154190887210284fe8",
+        "log_sha256": "62e16254caa9708872b0755033d5b343de9dc561b830ace40d368605a32c628a"
+      },
+      "current-gate-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\scripts\\verify_week4_current.py",
+          "--compiler",
+          "C:/msys64/ucrt64/bin/gcc.exe"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:41:04.243821+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:42:06.731725+00:00",
+        "receipt_sha256": "0f26d45a735a31763419b4c7e1108a97ffc48132315f479afe02ea244673e629",
+        "log_sha256": "a48aea428c94eedfa36fc685cd93a5d403403d41015296db8a8f599af7c12066"
+      },
+      "current-policy": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\scripts\\test_week4_current.py"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:39:19.416387+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:39:47.321729+00:00",
+        "receipt_sha256": "d8a2c6a5ef21fe49fc1a6703827c28a93bbc1bec2cafb29060ff33d3bf2766b7",
+        "log_sha256": "41eb8ed83162b18860a1c9c9ef5274e910224938b56f01b00d8f155bc56e8e95"
+      },
+      "current-policy-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\scripts\\test_week4_current.py"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:42:06.731725+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:42:37.083881+00:00",
+        "receipt_sha256": "05092e8a7de9ed021b9fc8d93b8687eceadc5e423c14c2b8b3af4003d1484d92",
+        "log_sha256": "65119be0682e33e41b17d71ba3fb061c154dd1ea4c2ca7e4bd501665ad0075dd"
+      },
+      "handoff-policy": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\test_week4_handoff.py"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:39:47.321729+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:39:57.599255+00:00",
+        "receipt_sha256": "b3f6e6d2c5f873207a35d021de6e6aa113d6fd062f875ed2877103f0ad7951e2",
+        "log_sha256": "ba9a6ef1cdb2a46ee253b4f98ed8c0ff473fd234c8feaa5ec9b4930d8cf7cb84"
+      },
+      "handoff-policy-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\test_week4_handoff.py"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:42:37.083881+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:42:47.518458+00:00",
+        "receipt_sha256": "cd0a205ee5d2987cbd57fe4f727ab4c7557c1679a9b9b64c5ebf09596ff7ec5d",
+        "log_sha256": "a39b5a1896181c3c56cc4088b2acd42ad20266eff9f9119a7a7786035cb4fb2b"
+      },
+      "python-quantization": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\scripts\\test_week5_quantization.py"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:39:57.599255+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:39:57.872719+00:00",
+        "receipt_sha256": "b3f28a1c12e92c70d38481c259ef5283d3bb85ab1aa8686b1450a172cbbf70e0",
+        "log_sha256": "f38316b4009e3274baf9d99c5fe5b2c4be5a0390a47cbf72676c7d1fc914da8b"
+      },
+      "python-quantization-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\scripts\\test_week5_quantization.py"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:42:47.519458+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:42:48.255482+00:00",
+        "receipt_sha256": "1cb7eb3e3a2626d56934f5007edc308b1dc51595cd823f2ef081b4d9e4bb51cc",
+        "log_sha256": "e5856019e3fe855169283506a3afa153f04f7f3d50e86f8ca46329eaa64e4207"
+      },
+      "historical-capture": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\check_week4_capture.py",
+          "--capture",
+          "results/week4/logs/week4_capture.txt",
+          "--report",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\historical-capture.json",
+          "--bench-sample",
+          "0",
+          "--mixed-order"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:39:57.872719+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:40:00.160950+00:00",
+        "receipt_sha256": "f7026e06d05c9b7ec902bc9497ff641c56ee30448a9aca17f119e92297010c98",
+        "log_sha256": "7bc10bf76f561b8bcaf786ffd1d1e03327b15c4387396ef0bc1e83aa7867334a"
+      },
+      "historical-capture-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\check_week4_capture.py",
+          "--capture",
+          "results/week4/logs/week4_capture.txt",
+          "--report",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\historical-capture-O.json",
+          "--bench-sample",
+          "0",
+          "--mixed-order"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:42:48.255482+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:42:50.479131+00:00",
+        "receipt_sha256": "3ca58e7ba53c286340bc15495bf84db1d825825e83315017ac64216407fe7431",
+        "log_sha256": "d38ef78a09f3389330b6b34d41f3a41d354d311028416dba3e12fe1b65d45962"
+      },
+      "parser-regression": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\test_week5_capture.py",
+          "--output",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\parser-regression",
+          "--host",
+          "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\evidence\\host"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:40:00.160950+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:40:58.403650+00:00",
+        "receipt_sha256": "155687aca993ce6606528b28c531ba6ff29cb3e167c24799f758386e06fb0e77",
+        "log_sha256": "507b28fe359cae60b8c61ff6faa66fb174558c9fe49c9439bfe8689ed0eef4ea"
+      },
+      "parser-regression-O": {
+        "command": [
+          "D:\\HUST\\Adaptive_Split_Inference\\ml\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-O",
+          "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\test_week5_capture.py",
+          "--output",
+          "D:\\HUST\\ASI_week5_mcu\\20261009-212416\\parser-regression-O",
+          "--host",
+          "D:\\HUST\\ASI_week5_prepare\\20261009-sv1-prepare01\\evidence\\host"
+        ],
+        "cwd": "D:\\HUST\\Adaptive_Split_Inference",
+        "started_utc": "2026-10-09T14:42:50.479131+00:00",
+        "exit_code": 0,
+        "finished_utc": "2026-10-09T14:43:49.001717+00:00",
+        "receipt_sha256": "eb2c2a5d8e24dc8bcf2409b32cd915af91fa625d09e4a3d41319679d468506a0",
+        "log_sha256": "6914bc700b56ffced1ac07bf6e3d4b5910f19b4aad2775469edbd021ca7a8f9a"
+      }
+    }
+  },
+  "analysis_tooling_sha256": {
+    "device/scripts/accept_week5_mcu.py": "8db0c6d5d3dba7d91a56ad4a82d591faa654a46a281d9d71e976a44db5eeb6d1",
+    "device/scripts/run_week5_acceptance.py": "403037f83320e6acf68f48116120fda91ea5ad8e8877832958677ea75d19cb8b",
+    "device/scripts/test_week5_acceptance.py": "ea9405b9cb9457ffefd8db17a8b62f859d44906848cbd9c10cbdd54e1202ffe4",
+    "device/scripts/publish_week5_acceptance.py": "d8cacc0ca7284d1f9936a865ffc3805d39f27ce0ae2667f417c6438687447c59"
+  },
+  "decisions": {
+    "quantization": "INT8 symmetric per sample/channel over L; zero-point 0; FP16 stored scale; q uses stored FP16 expanded to FP32",
+    "i1_v1_wire_scales": "FP32 little-endian, exact expansion of stored FP16; wire implementation PENDING",
+    "i2_v1": "NCL descriptor/profile N,C,L; s9/s10 adapter L=1; inverse I2 before dequantization; firmware integration PENDING",
+    "model_splits": "s=0..10 unchanged; wire split_id requires explicit registry mapping, not assigned here",
+    "accuracy_gate": "strict drop <0.5 percentage points at every split; relative percent additionally reported"
+  },
+  "limitations": {
+    "timing": "NOT_MEASURED",
+    "runtime_ram": "NOT_MEASURED",
+    "runtime_stack": "NOT_MEASURED",
+    "full_accuracy_on_dongle": "NOT_RUN",
+    "p1_c": "NOT_RUN",
+    "radio": "NOT_RUN",
+    "device_edge_integration": "NOT_RUN",
+    "i1_frozen": false
+  },
+  "case_tables": {
+    "validation_20x11.csv": {
+      "path": "results/week5/validation_20x11.csv",
+      "sha256": "eb1a708ae979dd5ba8c2040a5424f42f0f862e792f230cfae444b112f8c7402e"
+    },
+    "validation_mixed.csv": {
+      "path": "results/week5/validation_mixed.csv",
+      "sha256": "55993551de75a733ec051dad74299dacfef6bae3550902ef8366afd21315e49a"
+    },
+    "tensor_sizes.csv": {
+      "path": "results/week5/tensor_sizes.csv",
+      "sha256": "9004115faaf2d9f6e7579adb65495d55d350c2dad3e8824e2222ae0d55c03549"
+    },
+    "accuracy_offline.csv": {
+      "path": "results/week5/accuracy_offline.csv",
+      "sha256": "f5b0912ea9a85e45d78386a3d1236ecc53a19450c66cdb53ba22a41c321b29c7"
+    },
+    "golden_difference_analysis.json": {
+      "path": "results/week5/golden_difference_analysis.json",
+      "sha256": "3eaeb1194e9cdec74f14c7e87287337091af1c764580aeacb69d490043907b43"
+    }
+  }
+}

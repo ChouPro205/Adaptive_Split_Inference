@@ -1,0 +1,2 @@
+mainmenu "Adaptive Split Inference Week 5 preparation"
+source "Kconfig.zephyr"
