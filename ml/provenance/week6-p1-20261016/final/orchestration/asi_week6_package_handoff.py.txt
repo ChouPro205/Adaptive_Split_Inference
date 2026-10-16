@@ -1,0 +1,70 @@
+﻿from pathlib import Path
+import hashlib,json,shutil,subprocess,zipfile,sys
+ROOT=Path(r'C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016');sys.path.insert(0,str(ROOT/'ml/scripts'))
+from week6_p1 import inventory,archive,digest,write
+P=ROOT/'ml/artifacts/week6';E=ROOT/'ml/provenance/week6-p1-20261016';v=P/'mitdb-week6-p1-50-20261016-v1';z=P/(v.name+'.zip');d=json.loads((v/'vectors.json').read_text('utf-8'));rep=json.loads((E/'final/reproducibility.json').read_text('utf-8'))
+handoff=P/'sv3-week6-p1-handoff-20261016-v1';handoff.mkdir(exist_ok=False)
+for p in [z,Path(str(z)+'.sha256'),Path(str(z)+'.json')]:shutil.copyfile(p,handoff/p.name)
+shutil.copytree(E,handoff/'evidence')
+for name,h in d['provenance']['source_files_sha256'].items():
+ source=ROOT/name;raw=source.read_bytes();assert digest(raw)==h;target=handoff/'tooling'/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(raw)
+patch=subprocess.check_output(['git','--no-optional-locks','diff','--binary','--full-index',rep['base_commit'],rep['implementation_commit']],cwd=ROOT)
+(handoff/'implementation.patch').write_bytes(patch)
+readme=f'''# SV3 tuần 6: bàn giao A+B
+
+PASS bàn giao SV3 tuần 6 cho A (50 vector P1 thật) + B (host reference output semantics).
+MCU/BLE/nonce NVS và DPU/KV260 chưa được nghiệm thu bởi gói này.
+
+Base: {rep['base_commit']}
+Implementation sinh vector: {rep['implementation_commit']}
+Repository: https://github.com/ChouPro205/Adaptive_Split_Inference
+Source: https://github.com/ChouPro205/Adaptive_Split_Inference/tree/{rep['implementation_commit']}
+
+Giải nén {z.name}; bên trong là {v.name}/.
+Manifest SHA-256 tin cậy: {rep['manifest_sha256']}
+ZIP vector SHA-256: {rep['ZIP_sha256']}
+ZIP vector: {rep['ZIP_size_bytes']} byte.
+
+Gói vector chứa README đọc từng ca và lệnh verify/generate. Key PUBLIC_TEST_ONLY 00..1f,
+không provision bench/vận hành. q và scale từ 220 cặp validation lịch sử tuần 5,
+không phải 50 mẫu test accuracy độc lập. 39 vector có transformed 0x80 tự nhiên.
+
+evidence/ giữ nguyên log/receipt nguồn, kể cả lượt sinh đầu bị gate bắt typo SHA
+nền, sau đó đã sửa và chạy lại. final/p1_50.json có log hash Python/C trên từng
+vector; final/output_50.json có logits/tail/identity và tie tests.
+final/reproducibility.json xác nhận tái sinh và giải nén độc lập.
+
+tooling/ là snapshot source đã ràng buộc hash để review; khi chạy dùng clone
+Git đầy đủ tại implementation commit với asset hydrate chính thức, không coi
+snapshot tooling là clone có đủ model/data hoặc object store.
+Không sửa files trong tooling để gắn lại receipt cũ. implementation.patch chỉ
+mô tả source mới so với base; không chứa dataset/model.
+
+Từ clone (Python 3.11.9 và dependencies đã pin, GCC trên PATH):
+python -B ml/scripts/verify_week6_p1.py --package <unpacked-package> --expected-manifest-sha256 {rep['manifest_sha256']} --output <new-A.json>
+python -B ml/scripts/verify_week6_output.py --package <unpacked-package> --expected-manifest-sha256 {rep['manifest_sha256']} --output <new-B.json>
+
+SV1 có thể port/chạy P1 C trên MCU và so hash transformed/q từng ca.
+SV2 có thể kiểm parser và original-channel recovery từ request.i1v2.bin;
+accuracy/sai số DPU còn cần backend KV260 thật và tập test chính thức.
+MANIFEST.json băm mọi file trong handoff ngoại trừ chính MANIFEST.json.
+Hash ZIP handoff nằm ngoài ZIP, không có vòng tự tham chiếu.
+'''
+(handoff/'README.md').write_text(readme,'utf-8',newline='\n')
+write(handoff/'HANDOFF.json',{'schema':'sv3-week6-handoff/1','status':'PASS_SV3_A_PLUS_B_HOST_ONLY','base_commit':rep['base_commit'],'implementation_commit':rep['implementation_commit'],'official_vector_zip':{k:rep[k] for k in ['ZIP_sha256','ZIP_size_bytes','manifest_sha256']},'P1_C_Python':50,'python_roundtrip':50,'C_roundtrip':50,'real_vectors':50,'splits':11,'transformed_0x80_vectors':39,'output_semantics':'PASS_46_TAIL_AND_4_IDENTITY_3_SEPARATE_TIES','MCU_BLE':'NOT_RUN_SV1','DPU':'NOT_RUN_SV2_REAL_BACKEND_REQUIRED'})
+write(handoff/'MANIFEST.json',{'schema':'handoff-file-hashes/1','scope':'All regular files except root MANIFEST.json','files':[r for r in inventory(handoff) if r['path']!='MANIFEST.json']})
+zip_path=P/(handoff.name+'.zip');result=archive(handoff,zip_path)
+Path(str(zip_path)+'.sha256').write_text(result['sha256']+'  '+zip_path.name+'\n','ascii')
+# Verify every member after a real independent extraction.
+target=ROOT/'.cache/week6-independent-handoff';target.mkdir(exist_ok=False)
+with zipfile.ZipFile(zip_path) as f:
+ assert len(f.namelist())==len(set(f.namelist()));f.extractall(target)
+unpacked=target/handoff.name;m=json.loads((unpacked/'MANIFEST.json').read_text('utf-8'))
+for entry in m['files']:
+ raw=(unpacked/entry['path']).read_bytes();assert len(raw)==entry['size_bytes'] and digest(raw)==entry['sha256']
+assert len(m['files'])+1==len(list(p for p in unpacked.rglob('*') if p.is_file()))
+assert digest((unpacked/z.name).read_bytes())==rep['ZIP_sha256']
+assets=[{'name':z.name,'sha256':rep['ZIP_sha256'],'size_bytes':rep['ZIP_size_bytes']},{'name':zip_path.name,'sha256':result['sha256'],'size_bytes':result['size_bytes']}]
+write(E/'delivery-assets.json',{'schema':'week6-artifact-receipt/1','status':'PACKAGED_AND_INDEPENDENT_READBACK_PASS','manifest_sha256':rep['manifest_sha256'],'implementation_commit':rep['implementation_commit'],'base_commit':rep['base_commit'],'assets':assets,'handoff_files_verified':len(m['files'])+1,'release_tag':'sv3-week6-p1-v1-20261016','source_gate_policy':'Historical Week 5 receipts are unchanged; A+B have fresh Week 6 evidence.'})
+(E/'final/orchestration/asi_week6_package_handoff.py.txt').write_bytes(Path(__file__).read_bytes())
+print(json.dumps(assets))

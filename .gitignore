@@ -51,3 +51,6 @@ results/**/raw/
 # Private AI context
 AGENTS.md
 .agents/
+
+# Week 6 official vector packages and delivery ZIPs use release storage.
+/ml/artifacts/week6/

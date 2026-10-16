@@ -1,0 +1,1 @@
+{'package': 'C:\\Users\\Admin\\Adaptive_Split_Inference_sv3_week6_20261016\\.cache\\week6-reproduction\\mitdb-week6-p1-50-20261016-v1', 'manifest_sha256': 'd0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36', 'vectors': 50}

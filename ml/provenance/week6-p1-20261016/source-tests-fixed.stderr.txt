@@ -1,0 +1,8 @@
+test_base_commit_is_full_and_present (__main__.SourceTests.test_base_commit_is_full_and_present) ... ok
+test_real_input_bytes_and_NC_adapters (__main__.SourceTests.test_real_input_bytes_and_NC_adapters) ... ok
+test_selection_exactly_50_distinct_and_all_splits (__main__.SourceTests.test_selection_exactly_50_distinct_and_all_splits) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.137s
+
+OK

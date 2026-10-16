@@ -1,0 +1,19 @@
+fatal: Not a valid object name af31ea784700cea163b5c6290536a5208d052da
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016\ml\scripts\generate_week6_p1.py", line 13, in <module>
+    print(generate(a.output, goldens=a.goldens, model_package=a.model_package, source_commit=a.source_commit))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016\ml\scripts\week6_p1.py", line 178, in generate
+    bindings = source_bindings(source_commit)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016\ml\scripts\week6_p1.py", line 99, in source_bindings
+    git('merge-base', '--is-ancestor', BASE, commit)
+  File "C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016\ml\scripts\week6_p1.py", line 94, in git
+    return subprocess.check_output(['git', '--no-optional-locks', '-c', 'safe.directory=' + ROOT.as_posix(),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', '--no-optional-locks', '-c', 'safe.directory=C:/Users/Admin/Adaptive_Split_Inference_sv3_week6_20261016', 'merge-base', '--is-ancestor', 'af31ea784700cea163b5c6290536a5208d052da', 'dec0449c6c25ed6c271351c2b44653aad6581937']' returned non-zero exit status 128.

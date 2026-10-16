@@ -1,0 +1,9 @@
+{
+  "status": "PASS_PRESERVATION_SCOPE",
+  "original_source_bindings": 210,
+  "source_drift": [],
+  "week5_dependencies_checked": 569,
+  "original_archives_checked": 4,
+  "sources_directory_edits": [],
+  "scope": "Read-only checks of original sources plus manifest-bound hydrated dependencies and original ZIPs; no full rehash of all old datasets/exports."
+}

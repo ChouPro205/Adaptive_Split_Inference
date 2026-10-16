@@ -1,0 +1,46 @@
+﻿from pathlib import Path
+import subprocess,os,json,hashlib,sys,zipfile,time
+ROOT=Path(r'C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016')
+PY=Path(r'C:\Users\Admin\Adaptive_Split_Inference\ml\.venv\Scripts\python.exe')
+E=ROOT/'ml/provenance/week6-p1-20261016/final';E.mkdir(parents=True,exist_ok=False)
+PACKAGE=ROOT/'ml/artifacts/week6/mitdb-week6-p1-50-20261016-v1'
+EXPECTED=hashlib.sha256((PACKAGE/'manifest.json').read_bytes()).hexdigest()
+env=os.environ.copy();env.pop('PYTHONHOME',None);env.pop('PYTHONPATH',None);env.update(PYTHONDONTWRITEBYTECODE='1',CC=r'C:\msys64\ucrt64\bin\gcc.exe');env['PATH']=r'C:\msys64\ucrt64\bin'+os.pathsep+env['PATH']
+index=[]
+def run(name,args,results=()):
+ cmd=[str(PY),'-B',str(ROOT/'ml/scripts/run_week5_logged_v2.py'),'--output',str(E/name)]
+ for r in results:cmd+=['--result-path',str(r)]
+ cmd+=['--',str(PY),'-B',*args]
+ print('START',name,flush=True);p=subprocess.run(cmd,cwd=ROOT,env=env);index.append({'name':name,'argv':cmd,'exit_code':p.returncode})
+ (E/'command-index.json').write_text(json.dumps(index,indent=2)+'\n','utf-8')
+ if p.returncode:raise SystemExit(p.returncode)
+common=['--package',str(PACKAGE),'--expected-manifest-sha256',EXPECTED]
+for optimized in (False,True):
+ tag='_O' if optimized else '';pre=['-O'] if optimized else []
+ run('p1_50'+tag,pre+['ml/scripts/verify_week6_p1.py',*common,'--output',str(E/('p1_50'+tag+'.json'))],[E/('p1_50'+tag+'.json')])
+ run('output_50'+tag,pre+['ml/scripts/verify_week6_output.py',*common,'--output',str(E/('output_50'+tag+'.json'))],[E/('output_50'+tag+'.json')])
+ run('package_regressions'+tag,pre+['ml/scripts/test_week6_p1.py',*common])
+for script,name in [('contracts/i2_ref/test_i2.py','i2'),('contracts/i1v2_ref/test_i1v2.py','i1v2'),('contracts/i1v2_ref/make_vectors.py','i1v2_golden'),('ml/scripts/test_week5_quantization.py','quantization'),('ml/scripts/test_week5_interfaces.py','interfaces'),('ml/scripts/test_week5_allocation_v3.py','allocation'),('ml/scripts/test_week5_registry_v2.py','historical_registry')]:
+ for optimized in (False,True):
+  run(name+('_O' if optimized else ''),(['-O'] if optimized else [])+[script]+(['--check'] if 'make_vectors' in script else []))
+run('approved_real_220',['ml/scripts/verify_week5_registry_v3.py','--registry','contracts/sv3_week5_approved_registry_v2.json','--approval','contracts/sv3_week5_allocation_approval_v2.json','--expected-approval-sha256','a84b5caf89ffb7f8e11be2b308e2d4e1947e4d4f7ed291c47df083d0e15c7a7d','--output',str(E/'approved_real_220.json')],[E/'approved_real_220.json'])
+run('p1_10000',['ml/scripts/test_week5_p1_v2.py','--cases','10000','--output',str(E/'p1_10000.json')],[E/'p1_10000.json'])
+# Reproduce from exact implementation revision; package parent path must not affect bytes.
+REPRO=ROOT/'.cache/week6-reproduction'/PACKAGE.name
+source=json.loads((PACKAGE/'vectors.json').read_text('utf-8'))['provenance']['source_commit']
+run('reproduce',['ml/scripts/generate_week6_p1.py','--source-commit',source,'--output',str(REPRO)])
+def hashes(root):return {p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}
+a,b=hashes(PACKAGE),hashes(REPRO);assert a==b,'Reproduced package differs'
+ZIP=PACKAGE.parent/(PACKAGE.name+'.zip');ZIP2=REPRO.parent/(PACKAGE.name+'.zip')
+run('package',['ml/scripts/package_week6_p1.py',*common,'--output',str(ZIP)],[ZIP.with_suffix('.zip.json')])
+run('reproduced_zip',['ml/scripts/package_week6_p1.py','--package',str(REPRO),'--expected-manifest-sha256',EXPECTED,'--output',str(ZIP2)])
+assert ZIP.read_bytes()==ZIP2.read_bytes(),'Deterministic ZIP differs'
+EXTRACT=ROOT/'.cache/week6-independent-extraction';EXTRACT.mkdir(exist_ok=False)
+with zipfile.ZipFile(ZIP) as z:z.extractall(EXTRACT)
+EXTRACTED=EXTRACT/PACKAGE.name
+assert hashes(EXTRACTED)==a
+independent=['--package',str(EXTRACTED),'--expected-manifest-sha256',EXPECTED]
+run('independent_p1_50',['ml/scripts/verify_week6_p1.py',*independent,'--output',str(E/'independent_p1_50.json')],[E/'independent_p1_50.json'])
+run('independent_output_50',['ml/scripts/verify_week6_output.py',*independent,'--output',str(E/'independent_output_50.json')],[E/'independent_output_50.json'])
+repro={'status':'PASS','files_including_manifest':len(a),'same_file_hashes':a==b,'identical_zip_bytes':True,'independent_extraction_verified':True,'manifest_sha256':EXPECTED,'ZIP_sha256':hashlib.sha256(ZIP.read_bytes()).hexdigest(),'ZIP_size_bytes':ZIP.stat().st_size,'base_commit':'af31ea784700cea1633b5c6290536a5208d052da','implementation_commit':source}
+(E/'reproducibility.json').write_text(json.dumps(repro,indent=2)+'\n','utf-8');print(json.dumps(repro),flush=True)

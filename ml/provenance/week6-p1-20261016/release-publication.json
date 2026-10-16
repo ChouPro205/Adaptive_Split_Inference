@@ -1,0 +1,81 @@
+{
+  "schema": "week6-release-publication/1",
+  "status": "PUBLISHED_AND_DOWNLOADED_BYTES_VERIFIED",
+  "release_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/tag/sv3-week6-p1-v1-20261016",
+  "release_id": 414150879,
+  "tag": "sv3-week6-p1-v1-20261016",
+  "tag_commit": "766a3cfa7e7828ecd00b9eb23cc3e5da4015ced5",
+  "assets": [
+    {
+      "name": "mitdb-week6-p1-50-20261016-v1.zip",
+      "asset_id": 644813198,
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week6-p1-v1-20261016/mitdb-week6-p1-50-20261016-v1.zip",
+      "size_bytes": 412045,
+      "sha256": "2afbab35b601ac14128c32018d6dc1d39afd1991759a7a0fd9ad2051d923359a",
+      "download_http_status": 200,
+      "download_matches": true
+    },
+    {
+      "name": "mitdb-week6-p1-50-20261016-v1.zip.sha256",
+      "asset_id": 644813303,
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week6-p1-v1-20261016/mitdb-week6-p1-50-20261016-v1.zip.sha256",
+      "size_bytes": 100,
+      "sha256": "ad3d81310ced1f52a61f14308e4f1a6762c9e58d2e88afcbbf9372e9f97639ca",
+      "download_http_status": 200,
+      "download_matches": true
+    },
+    {
+      "name": "sv3-week6-p1-handoff-20261016-v1.zip",
+      "asset_id": 644813371,
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week6-p1-v1-20261016/sv3-week6-p1-handoff-20261016-v1.zip",
+      "size_bytes": 1714357,
+      "sha256": "40294b39c3863d9b5c72a807e971662bebfbcf38bb6246c20d4b6c1ec84a84cd",
+      "download_http_status": 200,
+      "download_matches": true
+    },
+    {
+      "name": "sv3-week6-p1-handoff-20261016-v1.zip.sha256",
+      "asset_id": 644813484,
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-week6-p1-v1-20261016/sv3-week6-p1-handoff-20261016-v1.zip.sha256",
+      "size_bytes": 104,
+      "sha256": "c96e035274f6852823b3a8b97b10967866c60a38b9e6af7ec18c6ad024566d1d",
+      "download_http_status": 200,
+      "download_matches": true
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "operation_url": "https://api.github.com/repos/ChouPro205/Adaptive_Split_Inference/releases",
+      "http_status": 201
+    },
+    {
+      "method": "GET",
+      "operation_url": "https://api.github.com/repos/ChouPro205/Adaptive_Split_Inference/git/ref/tags/sv3-week6-p1-v1-20261016",
+      "http_status": 200
+    },
+    {
+      "method": "POST",
+      "operation_url": "https://uploads.github.com/repos/ChouPro205/Adaptive_Split_Inference/releases/414150879/assets?name=mitdb-week6-p1-50-20261016-v1.zip",
+      "http_status": 201
+    },
+    {
+      "method": "POST",
+      "operation_url": "https://uploads.github.com/repos/ChouPro205/Adaptive_Split_Inference/releases/414150879/assets?name=mitdb-week6-p1-50-20261016-v1.zip.sha256",
+      "http_status": 201
+    },
+    {
+      "method": "POST",
+      "operation_url": "https://uploads.github.com/repos/ChouPro205/Adaptive_Split_Inference/releases/414150879/assets?name=sv3-week6-p1-handoff-20261016-v1.zip",
+      "http_status": 201
+    },
+    {
+      "method": "POST",
+      "operation_url": "https://uploads.github.com/repos/ChouPro205/Adaptive_Split_Inference/releases/414150879/assets?name=sv3-week6-p1-handoff-20261016-v1.zip.sha256",
+      "http_status": 201
+    }
+  ],
+  "recorded_utc": "2026-10-15T18:44:13.564546+00:00",
+  "credential_scope": "Existing Git credential helper; never printed, stored or included in package",
+  "script_sha256": "5e054a6b7adfd4ae8cde40ac8b07b99ef56b7bec8ece54031e29b30999634aab"
+}

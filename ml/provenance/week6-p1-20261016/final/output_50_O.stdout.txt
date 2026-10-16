@@ -1,0 +1,1 @@
+PASS B: N,S,V,F,Q raw logits, first-index ties, s0..s9 reference tails, s9 NC, s10 exact identity

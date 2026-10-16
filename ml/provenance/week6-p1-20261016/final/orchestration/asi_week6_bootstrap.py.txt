@@ -1,0 +1,14 @@
+﻿from pathlib import Path
+import subprocess,hashlib,json,os,shutil
+root=Path(r'C:\Users\Admin\Adaptive_Split_Inference_sv3_week6_20261016');old=Path(r'C:\Users\Admin\Adaptive_Split_Inference');cache=root/'.cache/week6-assets';cache.mkdir(parents=True,exist_ok=True)
+manifest=json.loads((root/'ml/manifests/week5_delivery_scope_v2.json').read_text('utf-8'));records=[]
+for asset in manifest['archives']:
+ source=old/asset['path'];raw=source.read_bytes();assert len(raw)==asset['size_bytes'] and hashlib.sha256(raw).hexdigest()==asset['sha256'],source
+ target=cache/asset['name']
+ if not target.exists():target.write_bytes(raw)
+ assert target.read_bytes()==raw
+ records.append({'source':str(source),'destination':target.relative_to(root).as_posix(),'sha256':asset['sha256'],'size_bytes':len(raw)})
+out=root/'ml/provenance/week6-p1-20261016';out.mkdir(parents=True,exist_ok=True);(out/'bootstrap-assets.json').write_text(json.dumps(records,indent=2)+'\n','utf-8')
+python=old/'ml/.venv/Scripts/python.exe';env=os.environ.copy();env.pop('PYTHONHOME',None);env.pop('PYTHONPATH',None);env['PYTHONDONTWRITEBYTECODE']='1';env['PATH']=r'C:\msys64\ucrt64\bin'+os.pathsep+env['PATH']
+cmd=[str(python),'-B',str(root/'ml/scripts/run_week5_logged_v2.py'),'--output',str(out/'hydrate'),'--',str(python),'-B','ml/scripts/setup_week5_delivery_v2.py','--asset-cache',str(cache)]
+p=subprocess.run(cmd,cwd=root,env=env);raise SystemExit(p.returncode)

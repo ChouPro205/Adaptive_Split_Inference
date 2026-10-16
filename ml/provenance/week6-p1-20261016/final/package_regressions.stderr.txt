@@ -1,0 +1,21 @@
+test_NC_metadata_rejected_on_wire (__main__.RealPackageTests.test_NC_metadata_rejected_on_wire) ... ok
+test_changed_scale_cannot_be_reestimated (__main__.RealPackageTests.test_changed_scale_cannot_be_reestimated) ... ok
+test_changed_source_manifest_not_trusted (__main__.RealPackageTests.test_changed_source_manifest_not_trusted) ... ok
+test_complete_relocated_package_C_and_Python (__main__.RealPackageTests.test_complete_relocated_package_C_and_Python) ... ok
+test_duplicate_sequence_even_with_rehashed_manifest (__main__.RealPackageTests.test_duplicate_sequence_even_with_rehashed_manifest) ... ok
+test_extra_nested_manifest_is_not_excluded (__main__.RealPackageTests.test_extra_nested_manifest_is_not_excluded) ... ok
+test_logical_split_id_not_wire_id (__main__.RealPackageTests.test_logical_split_id_not_wire_id) ... ok
+test_missing_file (__main__.RealPackageTests.test_missing_file) ... ok
+test_modified_file (__main__.RealPackageTests.test_modified_file) ... ok
+test_nonce_zero_rejected_after_integrity_passes (__main__.RealPackageTests.test_nonce_zero_rejected_after_integrity_passes) ... ok
+test_q_minus128_cannot_be_relabelled_as_real (__main__.RealPackageTests.test_q_minus128_cannot_be_relabelled_as_real) ... ok
+test_transformed_mutation_rejected_after_integrity_passes (__main__.RealPackageTests.test_transformed_mutation_rejected_after_integrity_passes) ... ok
+test_wrong_external_anchor (__main__.RealPackageTests.test_wrong_external_anchor) ... ok
+test_base_commit_is_full_and_present (__main__.SourceTests.test_base_commit_is_full_and_present) ... ok
+test_real_input_bytes_and_NC_adapters (__main__.SourceTests.test_real_input_bytes_and_NC_adapters) ... ok
+test_selection_exactly_50_distinct_and_all_splits (__main__.SourceTests.test_selection_exactly_50_distinct_and_all_splits) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 16.112s
+
+OK
