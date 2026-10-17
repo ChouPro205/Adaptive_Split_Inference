@@ -1,0 +1,2 @@
+mainmenu "Adaptive Split Inference Week 6 Device-Edge BLE"
+source "Kconfig.zephyr"
