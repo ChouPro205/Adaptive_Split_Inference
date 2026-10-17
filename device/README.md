@@ -27,6 +27,7 @@ Quy ước chung cho mọi chế độ:
 | Đầu FP32 đến P2 (tuần 3) | `overlay-week3.conf` | `src/main_week3.c`, `src/week3_head.c` | `scripts/build_week3_head.ps1` | [hướng dẫn tuần 3](week3_fp32_guide.md), [kết quả](../results/week3/) |
 | 11 điểm cắt FP32, gói R3 (tuần 4) | `overlay-week4.conf` | `src/main_week4.c`, `src/week4_head.c`, `src/week4_protocol.c` | `scripts/build_week4_head.ps1` | [hướng dẫn tuần 4](week4_fp32_guide.md), [kết quả](../results/week4/README.md) |
 | Lượng tử hóa INT8 + scale FP16 (tuần 5) | ứng dụng riêng `week5/` | `week5/main.c`, `week5/quantization.c` (dùng lại kernel/giao thức tuần 4) | `scripts/build_week5_head.ps1` | [hướng dẫn tuần 5](week5_prepare_guide.md), [kết quả](../results/week5/README.md) |
+| BLE Device–Edge (tuần 6, đang xây dựng: mới có khung GATT) | ứng dụng riêng `week6/`, biến thể `default`/`mtu23` | `week6/main.c` | `scripts/build_week6.ps1` | [README tuần 6](week6/README.md), [kế hoạch](../docs/week6_device_edge_plan.md) |
 
 Bốn chế độ đầu dùng chung `CMakeLists.txt`/`Kconfig` của thư mục này; CMake
 chọn đúng một entry point theo Kconfig. Ứng dụng tuần 5 có `CMakeLists.txt`
