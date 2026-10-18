@@ -94,7 +94,42 @@ Quy tắc chung:
 laptop, parser I1 v2 trên KV260, xmodel tail đã chạy trên KV260; key bench và state
 nonce trên Flash; mọi số đo RAM/stack/latency của tuần 6.
 
-## 4. Thứ tự thực hiện
+## 4. Quyết định triển khai D1–D6 (trưởng nhóm chốt 18/10/2026)
+
+Các quyết định dưới đây cụ thể hóa cách chạy tiêu chí 4, 6, 7 và nguồn dữ liệu; chúng
+**không** đổi contract (I1 v2, binding v1, nonce v1) và không đổi tiêu chí ở §1.
+
+| # | Quyết định | Cách thực hiện trong firmware/công cụ |
+|---|---|---|
+| D1 | Reset cho tiêu chí 7 = **≥ 100 reset mềm tự động + 10–20 lần ngắt nguồn thật**, báo cáo tách riêng hai loại. Nút RESET của dongle vào bootloader nên không dùng làm reset ứng dụng. | `NTEST STRESS <ms> 1`: vòng lặp đặt trước một khối mới rồi cấp một sequence ở mỗi vòng (mỗi sequence đều đi sau một lần ghi `NONCE_STATE`), timer gọi `sys_reboot` ở thời điểm ngẫu nhiên. P0.15 (`MARKER_PROTECTION`) lên cao trong lúc `nvs_write`; biến `__noinit` cho biết reset mềm có rơi vào lúc ghi (`boot_in_write`, chỉ là thống kê). Mặc định 110 chu kỳ (`week6_lab.py nonce-reboot`) và 12 lần rút USB (`nonce-unplug`). Ước tính hao mòn: khoảng 60–70 nghìn lần ghi 48 B, dưới 10 % tuổi thọ 10 000 chu kỳ xóa của 4 trang. |
+| D2 | Test "record hỏng/xóa → FAULT" và "lỗi ghi → dừng" **giả lập ở lớp lưu trữ**, không hủy state thật, nên không cần cặp `key_id`/`sender_id` dự phòng. | `NTEST FAILWRITE` (không gọi `nvs_write`, trả `-EIO`), `NTEST READBACK` (ghi thật, đọc lại bị lệch), `NTEST BOOT <hook>` với hook `STATE_CRC`, `STATE_MISSING`, `PROVISION_CORRUPT`, `KEY_MISMATCH` (chạy lại logic boot với hook đọc, đếm số lần ghi phải bằng 0), rồi `REBOOT` thật để kiểm state còn nguyên. |
+| D3 | 1000 packet chính thức ở **MTU thương lượng 247**; ở **MTU 23** chạy đủ 4 cỡ bắt buộc, **mỗi cỡ 10 packet**, có counter đầy đủ. | `RUN 1000 MIX` (bản `default`) và `RUN 40 SIZES=113,153,6124,6380` (bản `mtu23`). Nếu MTU 23 quá chậm trên Windows: `CONNPARAM 6 12` xin connection interval ngắn hơn; giá trị quan sát được ghi trong log. |
+| D4 | Frame 6380 B là **profile test**, chỉ dùng ở echo, không phải request của registry. | Metadata giống vector `i2_ceiling_c64_payload5760` (model 1, split 1, `[1,64,90]`), payload là q thật 5760 B của vector s3 đầu tiên, scale thật C=64 của vector s7 đầu tiên; transform bằng key bench + nonce từ allocator. |
+| D5 | Nguồn tensor = **50 vector P1 thật của SV3** nhúng vào firmware; không nhúng head tuần 4–5 vào firmware tuần 6. | `build_week6.ps1` xác thực manifest `d0914acb…1c36` (hash từng file, đúng inventory) rồi sinh bảng; DWT quantize đo bằng `week5/quantization.c` trên `z = q × scale` cùng shape (`SELFTEST QUANT`). |
+| D6 | Key bench sinh ngoài repo bằng `secrets.token_bytes(32)`; chỉ log `key_id`, `sender_id`, `key_check`. | `D:\HUST\ASI_week6\secrets\bench_key_65537.bin` (ACL chỉ tài khoản hiện tại), `key_check = 4379e570eb84f891`, cặp `65537/131073`. Provisioning qua USB CDC ở `PROV MODE ON`; firmware không in lại key. |
+
+Chốt thêm hai khóa an toàn:
+
+- Firmware từ chối `RUN` có packet I2/1 cho tới khi có lệnh `I2 ARM` (chỉ thành công khi
+  nonce `READY`); operator chỉ arm sau khi tiêu chí 7 đạt.
+- `PROV KEY` từ chối mọi trường hợp có thể làm sequence bắt đầu lại: state đã có
+  `reserved_through > 0` (`STATE_IN_USE`), state hỏng/lạ, hoặc còn key mà mất state
+  (`STATE_UNREADABLE`). `PROV ERASE` chỉ được phép khi NVS không mount được.
+
+## 5. Trạng thái chuẩn bị ngày 18/10/2026 (chưa có bằng chứng trên MCU)
+
+Đã làm xong mọi việc không cần dongle; **chưa tiêu chí nào ACCEPTED**.
+
+| Hạng mục | Trạng thái | Bằng chứng host |
+|---|---|---|
+| Firmware `device/week6/` đầy đủ (fragment/reassembly, sender thread + 4 credit, máy trạng thái timeout/retry, echo, response §8.3, P1, NVS nonce, provisioning, hook D2, sentinel DFU, DWT, counter §11) | Build PASS cả `default` và `mtu23` (NCS 3.4.0, không cảnh báo) | `default`: `zephyr.bin` 333 044 B, image kết thúc `0x524f4` < `0xDC000`, RAM tĩnh 102 284 B; `mtu23`: 331 312 B, `0x51e30`, 96 511 B (`check_week6_build.py`, 18 kiểm tĩnh) |
+| Module C thuần của firmware so với reference | PASS 27/27 | `device/scripts/test_week6_host.py`: reassembly vi sai với Python reference (300 chuỗi lỗi ngẫu nhiên), timeout/retry/backoff/horizon, phân loại echo/response 15 vector, nonce: record khớp byte, 400 boot mất điện ngẫu nhiên không lặp sequence, lỗi ghi chốt FAULT, provisioning từ chối tái dùng; packet: golden, 2 vector biên, **50 vector SV3 khớp từng byte** (transformed, round-trip, request) |
+| Kịch bản negative (tiêu chí 6) | PASS 19/19 trong mô phỏng | `test_week6_sim.py`: state machine C của firmware nối với peer thật của `week6_lab.py`, đồng hồ ảo; thêm 1000 packet MIX không lỗi và MTU 23 |
+| Checker offline + test âm | PASS 10/10 | `test_week6_checkers.py`: capture đúng → PASS, mỗi capture bị sửa → FAIL |
+| Key bench (D6) | Đã sinh, ngoài repo | chỉ `key_check` được ghi |
+| Chạy trên dongle (tiêu chí 1–8) | **Chưa làm** | theo [runbook](../device/week6/RUNBOOK.md) |
+
+## 6. Thứ tự thực hiện
 
 1. SV1: firmware BLE + echo với request thường; tiêu chí 3–6 và 8 (phần truyền).
 2. SV3 bàn giao gói 50 vector → SV1 port P1 C; tiêu chí 1–2.
