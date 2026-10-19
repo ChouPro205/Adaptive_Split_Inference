@@ -79,6 +79,12 @@ Kỳ vọng counter cho từng kịch bản nằm trong `device/scripts/week6_co
 (`NEGATIVE_SCENARIOS`) và đã khớp trong mô phỏng `test_week6_sim.py`. Chạy lại một kịch bản:
 `--only crc,stale` với `--out` mới.
 
+`disconnect_mid` **tắt radio Bluetooth của laptop** khoảng 1,5 s ngay sau nửa transfer (WinRT
+`Windows.Devices.Radios`, tự bật lại) để link rớt bằng supervision timeout. Lý do: buổi lab
+19/10/2026 cho thấy sau `BleakClient.disconnect()` Windows còn giữ link radio khoảng 3,2 s, lâu
+hơn timeout reassembly 2 s, nên Device chỉ thấy timeout chứ không thấy mất kết nối giữa transfer.
+Đừng để app khác dùng Bluetooth trong lúc chạy kịch bản này.
+
 ## 5. Provisioning key bench (nonce §4)
 
 ```powershell
@@ -150,8 +156,11 @@ Nạp `$BuildDefault` như bước 1, rồi:
 
 ```powershell
 & $Py -B $Lab sentinel --op read --out "$S\11-sentinel-read-default"
-& $Py -B $Chk sentinel --before "$S\08-sentinel-write" --after "$S\11-sentinel-read-default" --output "$S\11-sentinel-check.json"
+& $Py -B $Chk sentinel --before "$S\08-sentinel-write" --image-before "$S\09-sentinel-read-mtu23" --after "$S\11-sentinel-read-default" --output "$S\11-sentinel-check.json"
 ```
+
+`--image-before` là phiên chạy trên image bị DFU này thay thế (`mtu23`): kiểm "đã nạp image khác",
+`reserved_through` và `key_check` so với phiên đó; giá trị sentinel vẫn so với lần ghi ở bước 8.
 
 ## 11. 1000 packet chính thức — tiêu chí 3, 4 (MTU thương lượng), 5 và RTT của tiêu chí 8
 

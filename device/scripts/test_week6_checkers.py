@@ -358,10 +358,12 @@ class SentinelCheckerTests(unittest.TestCase):
         write_capture(d, lines)
         return d
 
-    def check(self, before, after) -> int:
+    def check(self, before, after, image_before=None) -> int:
         out = after / f"report_{len(list(after.glob('report_*')))}.json"
+        extra = ["--image-before", str(image_before)] if image_before else []
         return subprocess.run([sys.executable, "-B", str(CHECK), "sentinel", "--before", str(before),
-                               "--after", str(after), "--output", str(out)], capture_output=True).returncode
+                               "--after", str(after), "--output", str(out)] + extra,
+                              capture_output=True).returncode
 
     def test_dfu_sentinel(self):
         before = self.session("w", "WRITE", "build-default", self.VALUE, 5120)
@@ -369,6 +371,15 @@ class SentinelCheckerTests(unittest.TestCase):
         self.assertEqual(self.check(before, self.session("r2", "READ", "build-mtu23", "f" * 32, 5120)), 1)
         self.assertEqual(self.check(before, self.session("r3", "READ", "build-default", self.VALUE, 5120)), 1)
         self.assertEqual(self.check(before, self.session("r4", "READ", "build-mtu23", self.VALUE, 1024)), 1)
+
+    def test_second_dfu_back_to_first_image(self):
+        before = self.session("w2", "WRITE", "build-default", self.VALUE, 5120)
+        mtu23 = self.session("m2", "READ", "build-mtu23", self.VALUE, 6144)
+        back = self.session("d2", "READ", "build-default", self.VALUE, 6144)
+        self.assertEqual(self.check(before, back, mtu23), 0)
+        self.assertEqual(self.check(before, back), 1)
+        self.assertEqual(self.check(before, self.session("d3", "READ", "build-mtu23", self.VALUE, 6144), mtu23), 1)
+        self.assertEqual(self.check(before, self.session("d4", "READ", "build-default", self.VALUE, 5120), mtu23), 1)
 
 
 if __name__ == "__main__":

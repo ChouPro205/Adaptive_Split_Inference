@@ -432,19 +432,23 @@ def sentinel_state(session: Path) -> dict:
 def check_sentinel(args) -> int:
     """Nonce §8 item 6: after DFU of another image, sentinel and NONCE_STATE are intact."""
     before, after = sentinel_state(args.before), sentinel_state(args.after)
+    # A later DFU (e.g. mtu23 -> default) is compared with the image that ran just before it.
+    previous = sentinel_state(args.image_before) if args.image_before else before
     b, a = before["sentinel"] or {}, after["sentinel"] or {}
-    bn, an = before["nonce"] or {}, after["nonce"] or {}
+    pn, an = previous["nonce"] or {}, after["nonce"] or {}
     checks = {
         "sentinel_written": b.get("op") == "WRITE" and b.get("err") == "0",
         "sentinel_read_after_dfu": a.get("op") == "READ" and a.get("err") == "0",
         "sentinel_value_unchanged": bool(b.get("value")) and a.get("value") == b.get("value"),
-        "different_image_flashed": before["banner"].get("build") != after["banner"].get("build"),
+        "different_image_flashed": previous["banner"].get("build") != after["banner"].get("build"),
         "nonce_state_ready_after_dfu": an.get("status") == "READY",
-        "reserved_through_not_decreased": int(an.get("reserved_through", -1)) >= int(bn.get("reserved_through", 0)),
-        "key_check_unchanged": bool(bn.get("key_check")) and an.get("key_check") == bn.get("key_check"),
+        "reserved_through_not_decreased": int(an.get("reserved_through", -1)) >= int(pn.get("reserved_through", 0)),
+        "key_check_unchanged": bool(pn.get("key_check")) and an.get("key_check") == pn.get("key_check"),
     }
-    return finish(args, {"schema": "week6-check-sentinel/1", "before": before, "after": after,
-                         "checks": checks})
+    report = {"schema": "week6-check-sentinel/1", "before": before, "after": after, "checks": checks}
+    if args.image_before:
+        report["image_before"] = previous
+    return finish(args, report)
 
 
 def main() -> int:
@@ -469,6 +473,7 @@ def main() -> int:
     p = sub.add_parser("sentinel")
     p.add_argument("--before", required=True, help="session of 'week6_lab.py sentinel --op write'")
     p.add_argument("--after", required=True, help="session of '--op read' after DFU of another image")
+    p.add_argument("--image-before", help="session on the image replaced by this DFU (default: --before)")
     for p in sub.choices.values():
         p.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
