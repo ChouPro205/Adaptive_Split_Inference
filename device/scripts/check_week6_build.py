@@ -43,6 +43,19 @@ def elf_load_end(path):
     return max(s["lma"] + s["filesz"] for s in flash), min(s["lma"] for s in flash), segments
 
 
+def ram_static_bytes(path):
+    """Sum of allocated ELF sections placed in nRF52840 RAM (0x20000000, 256 KiB)."""
+    data = path.read_bytes()
+    shoff, = struct.unpack_from("<I", data, 32)
+    shentsize, shnum = struct.unpack_from("<HH", data, 46)
+    total = 0
+    for i in range(shnum):
+        _, sh_type, flags, addr, _, size = struct.unpack_from("<6I", data, shoff + i * shentsize)
+        if flags & 0x2 and 0x20000000 <= addr < 0x20040000 and sh_type != 0:
+            total += size
+    return total
+
+
 def read_config(path):
     values = {}
     for line in path.read_text(encoding="utf-8").splitlines():
@@ -64,6 +77,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--build", required=True, type=pathlib.Path)
     parser.add_argument("--variant", required=True, choices=sorted(EXPECTED_MTU))
+    parser.add_argument("--build-id", required=True)
     parser.add_argument("--output", required=True, type=pathlib.Path)
     args = parser.parse_args()
     if args.output.exists():
@@ -92,6 +106,12 @@ def main():
         "device_name": config.get("CONFIG_BT_DEVICE_NAME") == "ASI-SV1",
         "tx_credits_4_available": int(config.get("CONFIG_BT_BUF_ACL_TX_COUNT", "0")) >= 4,
         "configured_att_mtu": att_mtu == EXPECTED_MTU[args.variant],
+        "att_tx_buffers_above_credits": int(config.get("CONFIG_BT_ATT_TX_COUNT", "0")) > 4,
+        "nvs_enabled_with_data_crc": config.get("CONFIG_NVS") == "y" and config.get("CONFIG_NVS_DATA_CRC") == "y",
+        "nvs_never_auto_formats": "CONFIG_NVS_INIT_BAD_MEMORY_REGION" not in config,
+        "flash_writes_radio_synced": config.get("CONFIG_SOC_FLASH_NRF_RADIO_SYNC_MPSL") == "y",
+        "csprng_for_request_id": config.get("CONFIG_CSPRNG_ENABLED") == "y",
+        "build_id_in_image": args.build_id.encode() in binf.read_bytes(),
     }
     report = {
         "schema": "week6-build-check/1",
@@ -108,18 +128,22 @@ def main():
         "storage_partition": [hex(v) for v in partition] if partition else None,
         "load_segments": segments,
         "configured_att_mtu": att_mtu,
+        "build_id": args.build_id,
+        "ram_static_bytes": ram_static_bytes(elf),
         "frame_bytes_per_fragment": att_mtu - FRAGMENT_OVERHEAD,
         "kconfig": {k: config.get(k) for k in (
             "CONFIG_FLASH_LOAD_OFFSET", "CONFIG_FLASH_LOAD_SIZE", "CONFIG_BT_L2CAP_TX_MTU",
             "CONFIG_BT_BUF_ACL_RX_SIZE", "CONFIG_BT_BUF_ACL_TX_SIZE", "CONFIG_BT_BUF_ACL_TX_COUNT",
-            "CONFIG_BT_CTLR_DATA_LENGTH_MAX", "CONFIG_BT_LL_SOFTDEVICE")},
+            "CONFIG_BT_CTLR_DATA_LENGTH_MAX", "CONFIG_BT_LL_SOFTDEVICE", "CONFIG_BT_ATT_TX_COUNT",
+            "CONFIG_BT_CONN_TX_MAX", "CONFIG_MAIN_STACK_SIZE", "CONFIG_NVS", "CONFIG_NVS_DATA_CRC",
+            "CONFIG_SOC_FLASH_NRF_RADIO_SYNC_MPSL", "CONFIG_CSPRNG_ENABLED")},
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     for name, ok in checks.items():
         print(f"{'PASS' if ok else 'FAIL'} {name}")
     print(f"image end {hex(load_end)} / limit {hex(NVS_START)}; bin {bin_size} B, headroom "
-          f"{BIN_LIMIT - bin_size} B; ATT MTU {att_mtu} ({att_mtu - FRAGMENT_OVERHEAD} B/fragment)")
+          f"{BIN_LIMIT - bin_size} B; RAM static {report['ram_static_bytes']} B; ATT MTU {att_mtu} ({att_mtu - FRAGMENT_OVERHEAD} B/fragment)")
     print(f"RESULT: {report['status']} ({args.variant})")
     return 0 if report["status"] == "PASS" else 1
 

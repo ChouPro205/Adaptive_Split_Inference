@@ -1,0 +1,185 @@
+{
+  "schema": "week6-results-manifest/1",
+  "created_utc": "2026-10-19T06:17:14.463142+00:00",
+  "raw_session": "D:\\HUST\\ASI_week6\\device-session-20261019",
+  "kept_fail_reports": [
+    "negative_first_run_summary.json",
+    "sentinel_dfu_mtu23_to_default_wrong_baseline.json"
+  ],
+  "files": [
+    {
+      "path": "build_check/default_source.json",
+      "sha256": "3c09be277efe300769167a7580fc0a0d64c901f1255611ddd64d9a0012e7b0a9",
+      "bytes": 338,
+      "source": "D:\\HUST\\ASI_week6\\20261019-r1-default\\source.json"
+    },
+    {
+      "path": "build_check/default_week6_build_check.json",
+      "sha256": "95b58a91bbbf00457203feba05f8ced1450413e4c7b6ae6374e3cd483201e866",
+      "bytes": 2194,
+      "source": "D:\\HUST\\ASI_week6\\20261019-r1-default\\week6_build_check.json"
+    },
+    {
+      "path": "build_check/mtu23_source.json",
+      "sha256": "70554e6ecb67bb10281e78dd0fe183aed8453e37a19c82acee4ce4a685842019",
+      "bytes": 334,
+      "source": "D:\\HUST\\ASI_week6\\20261019-r1-mtu23\\source.json"
+    },
+    {
+      "path": "build_check/mtu23_week6_build_check.json",
+      "sha256": "f8df111507965c9315a91dd7f0949803613bf01a3c2979f8064d3f54fb88d6d1",
+      "bytes": 2183,
+      "source": "D:\\HUST\\ASI_week6\\20261019-r1-mtu23\\week6_build_check.json"
+    },
+    {
+      "path": "dfu/dfu-20261019-123405-default.json",
+      "sha256": "b3e45f8a83b5ecc0dcaa450d1770aa38f17816d13de955b0891933644160e1bb",
+      "bytes": 1019,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\dfu\\dfu-20261019-123405-default.json"
+    },
+    {
+      "path": "dfu/dfu-20261019-123405-default.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\dfu\\dfu-20261019-123405-default.log"
+    },
+    {
+      "path": "dfu/dfu-20261019-130949-mtu23.json",
+      "sha256": "1e7a40a6f6e4434f7f404346d3cb2d9133efdb30c1d0da458879c82483717aac",
+      "bytes": 1007,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\dfu\\dfu-20261019-130949-mtu23.json"
+    },
+    {
+      "path": "dfu/dfu-20261019-130949-mtu23.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\dfu\\dfu-20261019-130949-mtu23.log"
+    },
+    {
+      "path": "dfu/dfu-20261019-131313-default.json",
+      "sha256": "598f462258f1a31cc939db89638578e8199b8cf526b0f123e3b6ed518474ec43",
+      "bytes": 1019,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\dfu\\dfu-20261019-131313-default.json"
+    },
+    {
+      "path": "dfu/dfu-20261019-131313-default.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\dfu\\dfu-20261019-131313-default.log"
+    },
+    {
+      "path": "dwt_by_split.csv",
+      "sha256": "269942a481f525e78a7312c4c2c77160892aedc913a496c4be06aeb06a1fef0d",
+      "bytes": 2124,
+      "source": "derived: selftest_default.json dwt_cycles_by_split, dwt_clock_hz"
+    },
+    {
+      "path": "loopback_counters.csv",
+      "sha256": "402e1655d579c6d46c748fb699aa9385b1ee527a23e1a3ed171b9a5a79ef75c1",
+      "bytes": 409,
+      "source": "derived: loopback_plain200_mtu247.json, loopback_mtu23_4sizes_x10.json, loopback_official_1000_mtu247.json"
+    },
+    {
+      "path": "loopback_mtu23_4sizes_x10.json",
+      "sha256": "78e45df69f4320d36331d419c3de7bc3b791a2f8fa5278512d9970ea56087c89",
+      "bytes": 7354,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\10-mtu23-sizes\\check_loopback.json"
+    },
+    {
+      "path": "loopback_official_1000_mtu247.json",
+      "sha256": "0d3fb23daa1d5e37f3b1e7c76946a251ed51e6dc6a45c8e91b64201d5427f339",
+      "bytes": 23935,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\12-official-1000\\check_loopback.json"
+    },
+    {
+      "path": "loopback_plain200_mtu247.json",
+      "sha256": "c980e0b7fd8ccd2dc6537f906e94f84006744f6b3d4681a69fb1251fecb95e0c",
+      "bytes": 12646,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\02-plain-200\\check_loopback.json"
+    },
+    {
+      "path": "loopback_rtt_by_size.csv",
+      "sha256": "3ff9a27ff7ed38c7895444ff1d248e17cb4395d72db681d70eeb929d74b5dc3a",
+      "bytes": 3300,
+      "source": "derived: loopback_plain200_mtu247.json, loopback_mtu23_4sizes_x10.json, loopback_official_1000_mtu247.json"
+    },
+    {
+      "path": "negative_19_summary.json",
+      "sha256": "dcafd6db8af07057a649ad66b4c739dce3776be75546ae1102e88e60e3c41514",
+      "bytes": 29985,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\03b-negative\\summary.json"
+    },
+    {
+      "path": "negative_disconnect_mid_trial.json",
+      "sha256": "cb33fbbc1c103c6d10dff0e1095129a255a893e78ba30bff3c3f1f208af0b1c1",
+      "bytes": 1440,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\03a-trial-disconnect_mid\\disconnect_mid\\check_negative.json"
+    },
+    {
+      "path": "negative_first_run_summary.json",
+      "sha256": "84c74269ff7d39acb2ad00b22a2c6d79d83d7a9d58ee020be271817a38094ceb",
+      "bytes": 30013,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\03-negative\\summary.json"
+    },
+    {
+      "path": "nonce_combined.json",
+      "sha256": "802f8aa260b48cad22cf64adcd7667ab82f25f0a901819b6b21cf8fbd0b392a8",
+      "bytes": 1007,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\nonce-combined.json"
+    },
+    {
+      "path": "nonce_hooks.json",
+      "sha256": "fb1a6655a8dad1613fa2402943315f0f9afd30276185c98c763bcc0a003308ba",
+      "bytes": 3833,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\05-nonce-hooks\\check_nonce.json"
+    },
+    {
+      "path": "nonce_power_cut_12.json",
+      "sha256": "ba7bcfdbec1473b845045fdd9df6ea0a18d53758ae0fd9e9e6d7a656884908c9",
+      "bytes": 872,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\07-nonce-power\\check_nonce.json"
+    },
+    {
+      "path": "nonce_soft_reset_110.json",
+      "sha256": "f588165062a0983907e08d1d110f5d0884a777f003a08727077d4bedac424a42",
+      "bytes": 868,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\06-nonce-soft\\check_nonce.json"
+    },
+    {
+      "path": "p1_vectors_50.csv",
+      "sha256": "2f4c77b939d90e72d8dd4c194c7d7431801d2c8b5adfd17ceebd7e3f11b60f9e",
+      "bytes": 3224,
+      "source": "derived: selftest_default.json p1_vectors"
+    },
+    {
+      "path": "selftest_default.json",
+      "sha256": "2697d3589e6d4d8865003471c532abe797ff22538706d4e37122c154f13431d9",
+      "bytes": 30885,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\01-selftest-default\\check_selftest.json"
+    },
+    {
+      "path": "sentinel_dfu_default_to_mtu23.json",
+      "sha256": "43d3082cbc683b1ae4b892c08ee8334c8879d3d310c07806652e4d9788e22af1",
+      "bytes": 2187,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\09-sentinel-check.json"
+    },
+    {
+      "path": "sentinel_dfu_mtu23_to_default.json",
+      "sha256": "911ce118f44c05397d271383a7fc740c61ebddfe5fc9deec33a4fc2884b404c6",
+      "bytes": 3101,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\11b-sentinel-check.json"
+    },
+    {
+      "path": "sentinel_dfu_mtu23_to_default_wrong_baseline.json",
+      "sha256": "838c38f5379f2c516762ee55da79f2271fd678437895049646fe94fff471bc6d",
+      "bytes": 2228,
+      "source": "D:\\HUST\\ASI_week6\\device-session-20261019\\11-sentinel-check.json"
+    },
+    {
+      "path": "stack_highwater.csv",
+      "sha256": "c6aaf4879da08a48813ee305cb3434d220ad3a038a75ac0108b480e41a5e0590",
+      "bytes": 1236,
+      "source": "derived: loopback_plain200_mtu247.json, loopback_mtu23_4sizes_x10.json, loopback_official_1000_mtu247.json"
+    }
+  ]
+}

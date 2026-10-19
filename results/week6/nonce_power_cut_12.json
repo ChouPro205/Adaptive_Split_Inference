@@ -1,0 +1,26 @@
+{
+  "schema": "week6-check-nonce/1",
+  "sessions": [
+    "D:\\HUST\\ASI_week6\\device-session-20261019\\07-nonce-power"
+  ],
+  "checks": {
+    "sequences_never_repeat_or_decrease": true,
+    "every_boot_reserved_through_covers_used": true,
+    "soft_resets_at_least": true,
+    "power_cuts_at_least": true,
+    "sequences_observed": true
+  },
+  "boots": 13,
+  "soft_resets": 0,
+  "power_cuts": 12,
+  "soft_resets_landing_in_nvs_write": 0,
+  "boots_not_ready": 0,
+  "sequences_used": 53283,
+  "highest_sequence": 60614657,
+  "first_reserved_through": "5952512",
+  "last_reserved_through": "60624896",
+  "hooks": {},
+  "note": "SOFT_RESET = sys_reboot from a timer inside the stress loop; POWER_CUT = USB unplugged by the operator. boot_in_write comes from a RAM marker that only survives soft resets.",
+  "status": "PASS",
+  "failed_checks": []
+}

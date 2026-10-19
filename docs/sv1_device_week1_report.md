@@ -138,3 +138,64 @@ Tuần 2 sẽ:
 - đo dòng bằng PPK2, đồng bộ dòng điện với tín hiệu marker;
 - giữ dữ liệu raw ở máy cục bộ, sinh summary/hình bằng script tái lập và chỉ
   đưa kết quả đã xử lý lên Git.
+
+## 10. Phụ lục: nạp DFU và chạy demo Active trên dongle
+
+Gộp từ hướng dẫn `device/week1_dfu_demo_guide.md` cũ (đã xóa ngày 19/10/2026).
+
+1. Đóng Serial Monitor đang mở, cắm PCA10059 vào USB, nhấn **RESET/SW2** (nút ở
+   cạnh xa đầu USB, đẩy từ ngoài vào phía đầu USB). LED đỏ sáng mờ dần là Nordic
+   USB bootloader đang chạy. Không giữ SW1, không dùng MCUboot, `west flash`,
+   `erase` hay `recover`.
+2. Liệt kê cổng trước và sau khi nhấn RESET; cổng mới xuất hiện là bootloader:
+
+   ```powershell
+   [System.IO.Ports.SerialPort]::GetPortNames() | Sort-Object
+   ```
+
+3. Nạp gói `device\artifacts\adaptive_split_week1_demo.zip` (tạo bằng
+   `build_week1_demo.ps1` ở mục 4 nếu chưa có); thành công khi lệnh in
+   `DFU succeeded (exit code 0)`:
+
+   ```powershell
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\flash_week1_demo.ps1 -Port COMx
+   ```
+
+4. Sau DFU, liệt kê lại cổng: cổng USB CDC của ứng dụng có thể mang số khác cổng
+   bootloader. Mở monitor (115200 baud, `Ctrl+]` để thoát). Mỗi lần mở (DTR bật),
+   firmware in banner và chạy lại benchmark; sau đó cứ khoảng 5 s in một dòng `STATUS`:
+
+   ```powershell
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\monitor_week1_demo.ps1 -Port COMy
+   ```
+
+   ```text
+   ADAPTIVE SPLIT INFERENCE - SV1 WEEK 1 + WEEK 2 MARKERS
+   Board: nRF52840 Dongle PCA10059
+   CPU: 64 MHz
+   USB CDC: READY
+   LED heartbeat: RUNNING
+   GPIO marker self-test: RUNNING
+   GPIO marker self-test: <HEAD|PROTECTION|TX|WAIT> ON
+   DWT benchmark: START
+   Warm-up runs: 20; measured runs: 20; iterations/run: 10000
+   Run 01: ... cycles
+   ...
+   Run 20: ... cycles
+   Min: ... cycles
+   Max: ... cycles
+   Average: ....... cycles
+   Deviation: 0....%
+   RESULT: PASS
+   ```
+
+Checklist bằng chứng: LED xanh heartbeat chu kỳ khoảng 1 s; banner đúng board và
+`USB CDC: READY`; có trạng thái marker self-test (D0–D3 lần lượt chuyển mức nếu
+đang quan sát); đủ `Run 01`–`Run 20` sau 20 warm-up; deviation < 1,000 % và log tự
+in `RESULT: PASS` (từ 1,000 % trở lên in `RESULT: FAIL`); script build kết thúc bằng
+`RESULT: PASS (build + DFU package)`.
+
+Nếu không thấy cổng ứng dụng: chờ 5 s rồi liệt kê lại và xem Device Manager mục
+**Ports (COM & LPT)**; cắm thẳng vào cổng USB khác, tránh hub; nếu LED đỏ vẫn sáng
+mờ thì thiết bị còn ở bootloader, chạy lại DFU và kiểm exit code; nếu LED xanh nhấp
+nháy mà chưa có cổng, đóng chương trình đang giữ cổng rồi rút/cắm lại.

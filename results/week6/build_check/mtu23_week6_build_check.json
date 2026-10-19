@@ -1,0 +1,74 @@
+{
+  "schema": "week6-build-check/1",
+  "variant": "mtu23",
+  "status": "PASS",
+  "scope": "STATIC_BUILD_ONLY; runtime MTU/RAM/stack need the dongle",
+  "checks": {
+    "flash_load_offset_0x1000": true,
+    "flash_load_size_limits_to_nvs": true,
+    "elf_starts_at_app_start": true,
+    "elf_ends_before_nvs": true,
+    "bin_fits_before_nvs": true,
+    "bin_matches_elf_span": true,
+    "storage_partition_0xdc000_16k": true,
+    "bt_enabled": true,
+    "single_connection": true,
+    "device_name": true,
+    "tx_credits_4_available": true,
+    "configured_att_mtu": true,
+    "att_tx_buffers_above_credits": true,
+    "nvs_enabled_with_data_crc": true,
+    "nvs_never_auto_formats": true,
+    "flash_writes_radio_synced": true,
+    "csprng_for_request_id": true,
+    "build_id_in_image": true
+  },
+  "elf_sha256": "e5d8ec827a8b0879327b50bef687382f548922c6ed8a8444a8485307ab37fc65",
+  "bin_sha256": "f1ef001afe84421c3d4b9a075dc46551e7e27b78ae3df3d6945ebfc0134950e3",
+  "bin_bytes": 331304,
+  "bin_limit_bytes": 897024,
+  "headroom_bytes": 565720,
+  "image_end_hex": "0x51e28",
+  "storage_partition": [
+    "0xdc000",
+    "0x4000"
+  ],
+  "load_segments": [
+    {
+      "lma": 4096,
+      "filesz": 328456,
+      "memsz": 328456
+    },
+    {
+      "lma": 332552,
+      "filesz": 2844,
+      "memsz": 2844
+    },
+    {
+      "lma": 335396,
+      "filesz": 4,
+      "memsz": 4
+    }
+  ],
+  "configured_att_mtu": 23,
+  "build_id": "afa88870379c-mtu23-20261018T062140Z",
+  "ram_static_bytes": 96511,
+  "frame_bytes_per_fragment": 12,
+  "kconfig": {
+    "CONFIG_FLASH_LOAD_OFFSET": "0x1000",
+    "CONFIG_FLASH_LOAD_SIZE": "0xdb000",
+    "CONFIG_BT_L2CAP_TX_MTU": "23",
+    "CONFIG_BT_BUF_ACL_RX_SIZE": "27",
+    "CONFIG_BT_BUF_ACL_TX_SIZE": "27",
+    "CONFIG_BT_BUF_ACL_TX_COUNT": "4",
+    "CONFIG_BT_CTLR_DATA_LENGTH_MAX": null,
+    "CONFIG_BT_LL_SOFTDEVICE": "y",
+    "CONFIG_BT_ATT_TX_COUNT": "6",
+    "CONFIG_BT_CONN_TX_MAX": "4",
+    "CONFIG_MAIN_STACK_SIZE": "8192",
+    "CONFIG_NVS": "y",
+    "CONFIG_NVS_DATA_CRC": "y",
+    "CONFIG_SOC_FLASH_NRF_RADIO_SYNC_MPSL": "y",
+    "CONFIG_CSPRNG_ENABLED": "y"
+  }
+}

@@ -65,14 +65,16 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
   entrypoint ML dùng chung policy xác thực với device, tách rõ snapshot lịch sử.
 - [Báo cáo SV1/Device Week 4: 11 splits FP32](docs/sv1_device_week4_report.md)
 - [Bằng chứng MCU Week 4](results/week4/README.md) và
-  [hydrate/tái kiểm sau tích hợp R4](device/week4_fp32_guide.md): source ML
+  [hydrate/tái kiểm sau tích hợp R4](docs/sv1_device_week4_report.md#12-phụ-lục-hydrate-tái-kiểm-build-và-chạy-lại-firmware-tuần-4): source ML
   có fix R4, phép đo chính thức giữ provenance R3 ngày 02/10/2026.
 - [Báo cáo SV1/Device Week 1](docs/sv1_device_week1_report.md)
 - [Báo cáo SV1/Device Week 2](docs/sv1_device_week2_report.md)
 - [Báo cáo SV1/Device Week 3](docs/sv1_device_week3_report.md)
 - [Báo cáo SV1/Device Week 5](docs/sv1_device_week5_report.md) và
   [kết quả MCU Week 5](results/week5/README.md)
+- [Báo cáo SV1/Device Week 6: BLE Device–laptop, P1 C và nonce](docs/sv1_device_week6_report.md) và
+  [kết quả Dongle Week 6](results/week6/README.md)
 - [Kết quả đo Week 2](results/week2/README.md)
 - [Đặc tả Device–Edge hiện hành (I1 v2, BLE binding, nonce)](contracts/README.md)
-  và [kế hoạch tuần 6](docs/week6_device_edge_plan.md)
+  và [tiêu chí tuần 6](docs/sv1_device_week6_report.md#phụ-lục-a-tiêu-chí-nghiệm-thu-và-quyết-định-d1d6)
 - [Mục lục tài liệu](docs/README.md)

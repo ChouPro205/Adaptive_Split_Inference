@@ -98,7 +98,7 @@ chuẩn hóa lại. `sample_index=0..19` ánh xạ đúng các dòng `samples.cs
 
 Mapping lấy từ manifest all-split đã xác thực, đối chiếu với
 [graph R3](../ml/results/week4-r3/model_graph.json) và
-[guide firmware](../device/week4_fp32_guide.md). Shape là kích thước tensor của
+[phụ lục 12.4](#12-phụ-lục-hydrate-tái-kiểm-build-và-chạy-lại-firmware-tuần-4). Shape là kích thước tensor của
 **một mẫu**; NCL là thứ tự mẫu–kênh–chiều dài, NC là mẫu–đặc trưng. Mọi tensor
 theo C order (phần tử của chiều cuối nằm liên tiếp).
 
@@ -355,7 +355,7 @@ ELF/HEX/map trong `device/build-week4/`, ZIP
 `device/artifacts/adaptive_split_week4_r3_fp32.zip`, generated header và log
 chuẩn bị/DFU ở `D:/HUST/SV3_week4_R3/` nằm ngoài Git. Release R3 cung cấp
 **đầu vào ML/source**, không chứa ZIP firmware của SV1. Khi clone repo mới, nhận
-input/golden theo mục 3; build image mới theo [guide firmware](../device/week4_fp32_guide.md)
+input/golden theo mục 3; build image mới theo [phụ lục 12](#12-phụ-lục-hydrate-tái-kiểm-build-và-chạy-lại-firmware-tuần-4)
 và đối chiếu image của lần build đó.
 
 Từ repo root, kiểm lại **capture đã lưu** mà không mở COM hay nạp firmware:
@@ -428,7 +428,7 @@ GCC 13.2.0 MSYS2 UCRT64 (log cũ không được dùng thay PASS):
 | Build riêng bằng NCS và audit bộ nhớ | PASS: tuần 4 và hồi quy tuần 3; wrapper không ghi đè build/header/ZIP đã đo |
 
 Cách nhận đủ artifact R3/R4/v1/v2, dùng API hydrate chính thức và tái kiểm
-capture trên source đã tích hợp nằm trong [guide firmware tuần 4](../device/week4_fp32_guide.md).
+capture trên source đã tích hợp nằm trong [phụ lục 12](#12-phụ-lục-hydrate-tái-kiểm-build-và-chạy-lại-firmware-tuần-4).
 Lệnh checker ở mục 10 mặc định xác thực source R4; `--source-revision r3` chỉ
 dành cho checkout chứa đủ source R3 đúng pin, và anchor khác revision bị từ
 chối. Host-reuse dùng cùng loader, yêu cầu đủ hash source/generated và số ca
@@ -440,7 +440,8 @@ phiên bản, lệnh/exit code, báo cáo host, recheck capture và đối chi�
 mới yêu cầu thư mục output riêng, giữ `device/build-week4`, generated header và
 ZIP đã nghiệm thu. **Không nạp, không mở COM, không đo lại dongle.** Build mới
 nằm ở `device/build-week4-r3-recheck` (hồi quy tuần 3 ở
-`device/build-week4-r3-recheck-week3-regression`); ELF mới khác hash ELF đã đo
+`device/build-week4-r3-recheck-week3-regression`; hai thư mục build chưa nạp này đã xóa ngày
+19/10/2026); ELF mới khác hash ELF đã đo
 và được ghi riêng trong `new-build/week4_memory.json`. Footprint tĩnh của build
 mới là Flash 523.424 B, RAM 65.464 B; báo cáo mới không thay footprint hay
 high-water chính thức của image ngày 02/10, và nghiệm thu MCU/timing của image
@@ -470,3 +471,140 @@ trên dongle PCA10059 thật**, có kiểm đổi mẫu/split và giữ tương 
 Bộ timing 11 split và footprint là số liệu nền cho việc chọn điểm cắt ở giai
 đoạn sau, với lưu ý ở mục 8. Đo năng lượng, bộ nhớ lúc chạy đầy đủ, stress test
 và nghiệm thu tích hợp là phần việc còn lại.
+
+## 12. Phụ lục: hydrate, tái kiểm, build và chạy lại firmware tuần 4
+
+Gộp từ hướng dẫn `device/week4_fp32_guide.md` cũ (đã xóa ngày 19/10/2026).
+
+### 12.1. Nhận và hydrate R3/R4
+
+Target dùng graph/tham số R3 đã xác thực trong `ml/results/week4-r3` và gói all-split bất biến
+`mitdb-week3-sv2-fp32-20261001-v1`; Kconfig riêng `CONFIG_APP_WEEK4_HEAD` và `main_week4.c`
+giữ nguyên entry point và bằng chứng tuần 3. Lấy hai release theo receipt/bundle tin cậy của
+[R3](../ml/docs/sv3_sv1_week4_handoff_r3.md) và [R4](../ml/docs/sv3_sv1_week4_handoff_r4.md); giữ
+commit source lịch sử trong Git local (clone nông có thể cần bundle R3 đã xác thực). Hydrate từng ZIP
+bằng API chính thức (hydrate từ chối byte khác trước khi ghi bất kỳ file nào):
+
+```python
+import json, sys
+from pathlib import Path
+sys.path.insert(0, "ml/scripts")
+from release_week4 import hydrate
+for revision, folder in (("r3", "D:/HUST/SV3_week4_R3"),
+                         ("r4", "D:/HUST/SV3_week4_R4")):
+    delivery = Path(folder)  # receipts/ZIPs authenticated against trusted source first
+    receipt = json.loads((delivery / "deliverables.json").read_text(encoding="utf-8"))
+    hydrate(Path("."), delivery / f"mitdb-sv1-week4-fp32-20261001-{revision}.zip",
+            receipt["archive_sha256"], receipt["archive_size_bytes"], receipt["files"])
+```
+
+Sau PR #22 (`e6d3e8cc40323227d0f15a4bb4091957f2498744`), SV1 chấp nhận đủ bộ ba đã review
+`verify_week3_sv2.py`, `test_week3_sv2.py`, `test_week3_sv2_cache.py` từ source commit
+`add8503d58c6f707a35b4502bf98aff91109c1cd`; mỗi đường dẫn gắn cả hash R4 gốc và hash PR22, và ba
+file phải cập nhật cùng nhau (ghi riêng trong `verified_current_source_updates`). Device và ML dùng
+chung chính sách xác thực `tools/week4_handoff_auth.py`; entry point ML hiện hành là
+`ml/scripts/verify_week4_current.py` ([lệnh kiểm](../ml/docs/week4_current_verification.md)).
+
+### 12.2. Tái kiểm ngoại tuyến trên checkout đã tích hợp
+
+Báo cáo ghi ra ngoài repo; chỉ tiến trình con mất biến NCS Python, venv và PATH giữ nguyên:
+
+```powershell
+Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
+$sv1CheckDir = 'D:\HUST\SV3_week4_R4\sv1-integration\manual-recheck'
+New-Item -ItemType Directory -Force -Path $sv1CheckDir | Out-Null
+$sv1R4Anchor = '3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a'
+& ml/.venv/Scripts/python.exe -B ml/scripts/verify_week4_current.py --repo-root . --expected-manifest-sha256 $sv1R4Anchor --compiler C:/msys64/ucrt64/bin/gcc.exe
+if ($LASTEXITCODE -ne 0) { throw 'Current ML checkout verification failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/generate_week4_inputs.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor
+if ($LASTEXITCODE -ne 0) { throw 'Handoff authentication failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/verify_week4_host.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor --report-dir "$sv1CheckDir/host" --compiler C:/msys64/ucrt64/bin/gcc.exe
+if ($LASTEXITCODE -ne 0) { throw 'Host validation failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor --capture results/week4/logs/week4_capture.txt --report "$sv1CheckDir/capture.json" --bench-sample 0 --mixed-order
+if ($LASTEXITCODE -ne 0) { throw 'Capture recheck failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/test_week4_handoff.py
+if ($LASTEXITCODE -ne 0) { throw 'Compatibility regression failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/test_week4_capture.py --repo-root . --capture results/week4/logs/week4_capture.txt --work-dir "$sv1CheckDir/tamper"
+if ($LASTEXITCODE -ne 0) { throw 'Capture tamper regression failed' }
+```
+
+`--source-revision r3` chỉ dùng cho checkout có đủ source binding R3 gốc và từ chối checkout R4;
+anchor của revision khác luôn bị từ chối. Checker giữ banner/anchor R3, xác thực report gốc, source đã
+biên dịch, generated header và ELF/ZIP cũ nếu còn trên máy; binary lịch sử bị Git ignore mà thiếu thì
+được báo là không có, không coi là đã kiểm image mới. Kiểm bộ thu (chỉ cắt chuỗi, không mở cổng):
+`powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\test_week4_collector.ps1`.
+
+### 12.3. Build
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\build_week4_head.ps1 -PackageDfu
+```
+
+Script xác thực R3, biên dịch kernel C bằng GCC host và so đủ 20 × 11 golden, thứ tự đảo, đối số/lệnh
+sai và P2 bitwise với kernel tuần 3; `-ReuseHostValidation` chỉ nhận report PASS cũ khi hash
+source/generated còn khớp. Sau đó build `nrf52840dongle/nrf52840` (NCS v3.4.0, `--no-sysbuild`,
+`prj.conf` + `overlay-week4.conf`) và một build hồi quy tuần 3 ở thư mục riêng, vì CMake/Kconfig
+dùng chung. Wrapper yêu cầu thư mục build mới (mặc định `device/build-week4-r3-recheck`, đổi bằng
+`-BuildDir`), không bao giờ build đè `device/build-week4`; report/log mặc định ở
+`D:\HUST\SV3_week4_R4\sv1-integration\new-build` (`-ReportDir`). Đầu ra: ELF/HEX/map/`linker.cmd`,
+ELF hồi quy tuần 3, header `week4_inputs.h`/`week4_graph.h` (cài vào `device/generated` nếu thiếu,
+bắt buộc trùng byte nếu đã có), ZIP `device/artifacts/adaptive_split_week4_r3_recheck_fp32.zip`
+khi có `-PackageDfu`, cùng `week4_host_validation.json`, `split_mapping.md`, `week4_memory.json`.
+Đóng gói từ chối ghi đè ZIP đã có; ZIP đã nghiệm thu `adaptive_split_week4_r3_fp32.zip` giữ nguyên.
+Image build mới là bản build lại chưa nạp, nghiệm thu MCU/timing của nó là PENDING.
+
+Ứng dụng nạp trực tiếp qua Nordic USB DFU bắt đầu ở `0x1000` sau MBR; Flash bị giới hạn `0xdf000` B,
+kết thúc trước bootloader ở `0xe0000`. Audit bộ nhớ kiểm biên linker thật, mọi địa chỉ HEX, 20 mảng
+weight chỉ đọc, buffer và stack; đây là báo cáo tĩnh, không đo peak stack/USB lúc chạy.
+
+### 12.4. Lệnh CDC và định dạng dữ liệu
+
+`RUN n s` chọn mẫu `n=0..19`, split `s=0..10`; `BENCH n s` chạy cùng head với 20 warm-up và 100 lượt
+đo. Lệnh sai hoặc quá dài bị từ chối (dòng quá dài bị bỏ tới hết newline). Banner ghim hash manifest R3.
+Mỗi lệnh in:
+
+```text
+BEGIN <n> <sample_id> <s> RUN|BENCH
+[TIMING <n> <sample_id> <s> warmup=20 measured=100 cpu_hz=<Hz> irq=locked baseline=raw]
+[CYCLES <n> <s> <iteration 0..99> <raw cycles>]
+TENSOR <n> <sample_id> <s> FP32 <NCL|NC> <rank> <dimensions...> <numel>
+<8-digit FP32 hexadecimal words in C order; at most 16 per line>
+END <n> <s>
+[STACK main_peak_bytes=<measured high-water> main_size_bytes=<size>]
+DONE <n> <s> RUN|BENCH
+```
+
+Dòng trong ngoặc vuông chỉ xuất hiện khi có timing/stack. USB giữ RTS/CTS lúc chạy, bật RX interrupt
+để mở lần nhận USB OUT đầu tiên và nghỉ 5 ms sau mỗi 16 word tensor như tuần 3. Bộ đếm DWT 32 bit
+quay vòng sau khoảng 67 s ở 64 MHz, nên một lần gọi head phải ngắn hơn thế.
+
+### 12.5. Chạy lại trên dongle
+
+Vào bootloader, nạp **ZIP tuần 4** bằng script riêng (không dùng script tuần 3, vốn ghim ZIP tuần 3).
+Script kiểm hash gói/ELF/source với hồ sơ chuẩn bị rồi ghi receipt/log DFU ngoài repo:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\flash_week4_head.ps1 -Port COMx
+```
+
+Khi cổng CDC của ứng dụng xuất hiện, thu và kiểm 220 tensor, rồi 16 lệnh RUN xen kẽ mẫu/split, rồi
+11 benchmark của mẫu 0 (timing chỉ bắt đầu sau khi hai mốc kiểm đều PASS; lỗi giữa chừng vẫn giữ
+capture một phần). Dùng thư mục làm việc mới ngoài repo:
+
+```powershell
+Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\collect_week4.ps1 -Port COMy -Output D:/HUST/SV3_week4_R3/mcu-week4-work/new-run/week4_capture.txt -Report D:/HUST/SV3_week4_R3/mcu-week4-work/new-run/validation.json -BenchSample 0
+```
+
+`analyze_week4_mcu.py` (`--capture`, `--dfu-receipt`, `--memory-report`, `--application-port`,
+`--output-dir`) công bố capture đã kiểm, sai số 20 × 11, 1100 cycles, thống kê, hình, footprint và
+hash vào `results/week4`; nó từ chối ghi vào thư mục bằng chứng không rỗng. Collector `-NoTiming` và
+checker không có `--bench-sample` chỉ kiểm 220 + 16 lệnh và để timing PENDING. Kiểm lại một capture
+thật đã lưu mà không mở cổng:
+
+```powershell
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --capture results/week4/logs/week4_capture.txt --report D:/HUST/SV3_week4_R3/mcu-week4-work/recheck.json --bench-sample 0 --mixed-order
+```
+
+`test_week4_capture.py --capture <file thật> --work-dir <thư mục ngoài>` kiểm rằng bản bị cắt, lặp,
+sai định dạng hay hỏng không thể cho PASS.
