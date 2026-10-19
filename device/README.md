@@ -22,12 +22,12 @@ Quy ước chung cho mọi chế độ:
 
 | Chế độ | Chọn bằng | Mã nguồn chính | Build | Hướng dẫn / kết quả |
 |---|---|---|---|---|
-| Active (tuần 1–2): LED heartbeat, benchmark DWT, tự kiểm marker | `prj.conf` (mặc định) | `src/main.c` | `scripts/build_week1_demo.ps1` | [DFU và chạy demo](week1_dfu_demo_guide.md), [báo cáo tuần 1](../docs/sv1_device_week1_report.md) |
+| Active (tuần 1–2): LED heartbeat, benchmark DWT, tự kiểm marker | `prj.conf` (mặc định) | `src/main.c` | `scripts/build_week1_demo.ps1` | [báo cáo tuần 1](../docs/sv1_device_week1_report.md) (phụ lục 10: DFU và chạy demo) |
 | Idle (tuần 2): đo dòng nền bằng PPK2 | `overlay-idle.conf` làm `CONF_FILE` | `src/main_idle.c` | `scripts/build_week2_idle.ps1` | [kết quả tuần 2](../results/week2/README.md) |
-| Đầu FP32 đến P2 (tuần 3) | `overlay-week3.conf` | `src/main_week3.c`, `src/week3_head.c` | `scripts/build_week3_head.ps1` | [hướng dẫn tuần 3](week3_fp32_guide.md), [kết quả](../results/week3/) |
-| 11 điểm cắt FP32, gói R3 (tuần 4) | `overlay-week4.conf` | `src/main_week4.c`, `src/week4_head.c`, `src/week4_protocol.c` | `scripts/build_week4_head.ps1` | [hướng dẫn tuần 4](week4_fp32_guide.md), [kết quả](../results/week4/README.md) |
-| Lượng tử hóa INT8 + scale FP16 (tuần 5) | ứng dụng riêng `week5/` | `week5/main.c`, `week5/quantization.c` (dùng lại kernel/giao thức tuần 4) | `scripts/build_week5_head.ps1` | [hướng dẫn tuần 5](week5_prepare_guide.md), [kết quả](../results/week5/README.md) |
-| BLE Device–Edge (tuần 6: 8 tiêu chí phía Device PASS trên dongle ngày 19/10/2026, peer laptop) | ứng dụng riêng `week6/`, biến thể `default`/`mtu23` | `week6/main.c` | `scripts/build_week6.ps1` | [README tuần 6](week6/README.md), [runbook lab](week6/RUNBOOK.md), [kế hoạch](../docs/week6_device_edge_plan.md) |
+| Đầu FP32 đến P2 (tuần 3) | `overlay-week3.conf` | `src/main_week3.c`, `src/week3_head.c` | `scripts/build_week3_head.ps1` | [báo cáo tuần 3](../docs/sv1_device_week3_report.md) (phụ lục 13), [kết quả](../results/week3/) |
+| 11 điểm cắt FP32, gói R3 (tuần 4) | `overlay-week4.conf` | `src/main_week4.c`, `src/week4_head.c`, `src/week4_protocol.c` | `scripts/build_week4_head.ps1` | [báo cáo tuần 4](../docs/sv1_device_week4_report.md) (phụ lục 12), [kết quả](../results/week4/README.md) |
+| Lượng tử hóa INT8 + scale FP16 (tuần 5) | ứng dụng riêng `week5/` | `week5/main.c`, `week5/quantization.c` (dùng lại kernel/giao thức tuần 4) | `scripts/build_week5_head.ps1` | [tái lập tuần 5](#tái-lập-tuần-5), [kết quả](../results/week5/README.md) |
+| BLE Device–Edge (tuần 6: 8 tiêu chí phía Device PASS trên dongle ngày 19/10/2026, peer laptop) | ứng dụng riêng `week6/`, biến thể `default`/`mtu23` | `week6/main.c` | `scripts/build_week6.ps1` | [báo cáo tuần 6](../docs/sv1_device_week6_report.md) (phụ lục B: firmware, C: quy trình lab), [kết quả](../results/week6/README.md) |
 
 Bốn chế độ đầu dùng chung `CMakeLists.txt`/`Kconfig` của thư mục này; CMake
 chọn đúng một entry point theo Kconfig. Ứng dụng tuần 5 có `CMakeLists.txt`
@@ -59,9 +59,14 @@ ngoài repo sau khi xác thực gói ML.
     [`reports/week3_build.md`](reports/week3_build.md).
 - `reports/`: hồ sơ gốc tuần 1 và tuần 3. `results/week3/` giữ bản sao trùng
   byte của biên bản và JSON tuần 3; cả hai vị trí đều đang được tài liệu khác dẫn tới.
-- `generated/`, `build*/`, `artifacts/`: bị Git ignore. `build-week3/`,
-  `build-week4/` và các ZIP trong `artifacts/` chứa đúng image đã nạp và đo,
-  hash ghi trong báo cáo; không xóa hoặc build đè lên chúng.
+- `generated/`, `build*/`, `artifacts/`, `host/.venv`: bị Git ignore, chỉ có trên máy local.
+  Giữ lại `build/` (Active), `build-idle/` (Idle), `build-week3/`, `build-week4/`, các ZIP và
+  capture trong `artifacts/`: đó là image đã nạp và đo, hash ghi trong báo cáo; không xóa hoặc
+  build đè lên chúng. Các build kiểm/hồi quy chưa nạp (`build-*-check`, `build-ml-env-check`,
+  `build-pre-week5-cleanup*`, `build-week3-regression`, `build-week4-r3-recheck*`) đã xóa ngày
+  19/10/2026; script build tạo lại khi cần. `generated/` phải giữ vì test tuần 4–5 đọc trực tiếp.
+- Hướng dẫn chạy từng tuần nằm trong phụ lục của báo cáo tuần tương ứng ở `docs/`; tuần 5 ở
+  mục [Tái lập tuần 5](#tái-lập-tuần-5) vì báo cáo tuần 5 bị khóa hash.
 
 ## File đang bị khóa bởi bằng chứng
 
@@ -112,8 +117,8 @@ script tuần 3–5 thì từ chối ghi đè image đã đo và yêu cầu thư
 - Firmware tuần 6 theo [I1 v2](../contracts/i1_device_edge_packet_v2.md),
   [BLE binding](../contracts/i1_ble_binding_v1.md) và
   [nonce/provisioning](../contracts/i2_nonce_provisioning_v1.md); làm ứng dụng
-  riêng `week6/`, image phải kết thúc trước `0xDC000` (vùng NVS). Tiêu chí:
-  [kế hoạch tuần 6](../docs/week6_device_edge_plan.md).
+  riêng `week6/`, image phải kết thúc trước `0xDC000` (vùng NVS). Tiêu chí và kết quả:
+  [báo cáo tuần 6](../docs/sv1_device_week6_report.md).
 
 ## Benchmark DWT của firmware Active
 
@@ -122,3 +127,57 @@ Firmware Active đo vòng lặp rỗng 10.000 lần lặp bằng bộ đếm chu
 báo `PASS` khi `(max − min) / trung bình < 1%`. Benchmark chạy lại mỗi khi mở
 terminal (tín hiệu DTR); khi terminal vẫn mở, firmware in trạng thái mỗi 5 giây.
 Phép đo này chỉ kiểm tra cơ chế đếm chu kỳ, không phải thời gian suy luận.
+
+## Tái lập tuần 5
+
+Gộp từ `week5_prepare_guide.md` cũ (đã xóa ngày 19/10/2026). Không đưa vào báo cáo tuần 5 vì
+báo cáo đó được giữ nguyên từng byte (hash nằm trong hồ sơ nghiệm thu). Image đã nạp và nghiệm
+thu ngày 09/10/2026 (220/220 + 16/16): xem [kết quả](../results/week5/README.md) và
+[báo cáo](../docs/sv1_device_week5_report.md).
+
+Ứng dụng `week5/` dùng nguyên kernel FP32 tuần 4, tham số R3 và 20 input đã chuẩn hóa; chỉ
+activation ở điểm cắt được lượng tử: INT8 đối xứng theo mẫu/kênh trên L, scale FP16
+little-endian, làm tròn nearest ties-to-even. Mọi file `preparation.json` gắn hash (gồm
+`week5/*`, kernel/giao thức/marker tuần 4 dùng chung và `scripts/*week5*`) phải giữ nguyên.
+
+Chuẩn bị không cần dongle (thư mục bằng chứng và build mới, ngoài repo):
+
+```powershell
+Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
+$sv1Evidence = 'D:\HUST\ASI_week5_prepare\NEW_RUN\checks'
+$sv1Build = 'D:\HUST\ASI_week5_prepare\NEW_RUN\firmware'
+& ml/.venv/Scripts/python.exe -m pip install -r device/scripts/requirements-week5-collector.txt
+foreach ($stage in @('baseline','host','accuracy','regression','capture-tests','tools-check')) {
+    & ml/.venv/Scripts/python.exe -B device/scripts/run_week5_preparation.py --stage $stage --output $sv1Evidence
+    if ($LASTEXITCODE -ne 0) { throw "Preparation failed: $stage" }
+}
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File device/scripts/build_week5_head.ps1 -ReportDir $sv1Build
+if ($LASTEXITCODE -ne 0) { throw 'Build/audit/package failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/run_week5_preparation.py --stage memory-audit --output $sv1Evidence --build-report $sv1Build
+if ($LASTEXITCODE -ne 0) { throw 'Final ELF/map audit failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/run_week5_preparation.py --stage package-tests --output $sv1Evidence --build-report $sv1Build
+if ($LASTEXITCODE -ne 0) { throw 'Package corruption tests failed' }
+& ml/.venv/Scripts/python.exe -B device/scripts/summarize_week5_preparation.py --output $sv1Build --evidence $sv1Evidence
+if ($LASTEXITCODE -ne 0) { throw 'Preparation evidence incomplete/stale' }
+```
+
+Mỗi lệnh có receipt (lệnh, exit code) và log; output từ chối ghi đè build đã nghiệm thu. Sau khi
+commit/push source đã kiểm, `summarize_week5_preparation.py --output <build> --refresh-git` ghi SHA
+cuối và kiểm nhánh remote, không đổi hash artifact.
+
+Trên dongle (dùng đúng `preparation.json` đã chuẩn bị):
+
+1. Nhấn RESET, xác nhận bootloader `VID_1915&PID_521F` và số COM hiện tại
+   (`Get-PnpDevice -PresentOnly -Class Ports | Select-Object FriendlyName,InstanceId`).
+2. Preflight chỉ đọc; dừng nếu có bất kỳ sai khác hash/source/package nào:
+   `& ml/.venv/Scripts/python.exe -B device/scripts/verify_week5_package.py --preparation '<preparation.json>'`
+3. Nạp: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File device/scripts/flash_week5_head.ps1 -Port COM<n> -Preparation '<preparation.json>' -ReceiptDir '<thư mục receipt mới>'`
+4. Tìm lại cổng CDC (`Adaptive Split Inference SV1`, PID `0004`) rồi thu 20 mẫu × 11 split và 16
+   lượt đổi mẫu/split: `& ml/.venv/Scripts/python.exe -B device/scripts/collect_week5.py --port COM<n> --preparation '<preparation.json>' --capture '<capture.txt mới>' --report '<report.json mới>'`
+5. Kiểm lại capture đã lưu không cần cổng:
+   `& ml/.venv/Scripts/python.exe -B device/scripts/check_week5_capture.py --capture '<capture.txt>' --collection-receipt '<capture.receipt.json>' --report '<recheck.json mới>'`
+
+Checker kiểm ID, anchor, thứ tự, shape, FP32 strict `<1e-3`, s0 bitwise và lượng tử đúng Python
+trên chính activation của MCU; từ chối reset, lặp, cắt cụt, payload/scale hỏng. `--simulated` chỉ
+dùng cho fixture offline và luôn báo MCU PENDING. Ứng dụng không có lệnh BENCH nên timing và
+RAM/stack lúc chạy của lượng tử hóa là NOT_MEASURED.

@@ -5,7 +5,7 @@
 Sau đồng bộ main có PR #18, source ML hiện tại là R4. Công cụ SV1 dùng
 anchor R4 kiểm checkout, source R3 lịch sử đã pin và payload R3/R4 trùng
 bytes; banner/manifest và provenance phép đo 02/10 vẫn là R3. Xem
-[hydrate và tái kiểm ngoại tuyến](../../device/week4_fp32_guide.md).
+[hydrate và tái kiểm ngoại tuyến](../../docs/sv1_device_week4_report.md#12-phụ-lục-hydrate-tái-kiểm-build-và-chạy-lại-firmware-tuần-4).
 Report tái kiểm lưu ngoài repo tại `D:/HUST/SV3_week4_R4/sv1-integration`,
 không ghi đè JSON, capture, CSV hoặc hình chính thức trong thư mục này.
 

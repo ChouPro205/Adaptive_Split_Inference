@@ -304,7 +304,7 @@ phải số đo của một lần build lại ngày 30/09.
 - Firmware đã chạy trên thiết bị: `33a5288e475646c80f14a9cfcd2e797db64c5e41`;
   commit bổ sung hash firmware vào [biên bản kỹ thuật](../device/reports/week3_build.md):
   `f1624f43fc68ef1472005b9edb2b5fc450cb1443`.
-- Trong Git: [guide build/DFU/capture](../device/week3_fp32_guide.md),
+- Trong Git: [lệnh build/DFU/capture](#13-phụ-lục-build-và-nạp-lại-firmware-tuần-3),
   [JSON host mẫu 0](../device/reports/week3_host_sample0.json),
   [JSON MCU 20 mẫu](../device/reports/week3_mcu_validation.json),
   [firmware tuần 3](../device/src/main_week3.c) và [kernel C](../device/src/week3_head.c).
@@ -351,7 +351,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\collect
 ```
 
 Thay `COMy` bằng cổng vừa tìm, sau đó chạy checker chế độ `20x5` trên file mới.
-Nếu cần nạp lại image, làm theo [guide](../device/week3_fp32_guide.md): đóng
+Nếu cần nạp lại image, làm theo [phụ lục](#13-phụ-lục-build-và-nạp-lại-firmware-tuần-3): đóng
 terminal, nhấn SW2, xác nhận LED đỏ sáng mờ dần, xác định **lại** cổng
 bootloader rồi chạy `flash_week3_head.ps1 -Port COMx`, sau đó tìm lại cổng
 ứng dụng. Không cố định COM6/COM7 và không dùng `west flash`.
@@ -375,3 +375,51 @@ tuần 4. Theo [audit mô hình](../ml/docs/week3_audit.md), profiling các đi�
 thuộc tuần 4 và chưa làm trong phép đo này. Trước khi dùng P2 cho truyền
 Device–Edge, các bên cần chốt profile giao diện I1/SV2; trạng thái hiện tại vẫn
 là `BLOCKED_ON_SV2_INTERFACE`.
+
+## 13. Phụ lục: build và nạp lại firmware tuần 3
+
+Gộp từ hướng dẫn `device/week3_fp32_guide.md` cũ (đã xóa ngày 19/10/2026).
+
+Gói đã nghiệm thu là `ml/artifacts/week3/mitdb-week3-fp32-20260925-v2`, `manifest.json`
+SHA-256 `0d263abeb09d5425d98568af755527457a52a6b468573cd12ac12efd97f00469`. Firmware dùng
+`firmware/head_parameters.h` của gói và nhúng nguyên `inputs.npy` đã chuẩn hóa; không chuẩn
+hóa lần hai, không chuyển INT8. Từ repo root, trong PowerShell không có `PYTHONHOME`/`PYTHONPATH` của NCS:
+
+```powershell
+Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
+& ml/.venv/Scripts/python.exe -B device/scripts/verify_week3_host.py --repo-root .
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\build_week3_head.ps1
+```
+
+Script host biên dịch chính kernel C của Zephyr và so mẫu 0 ở M1, R1, M2, R2, P2 với golden v2.
+Script build lặp lại phép kiểm đó, build pristine `nrf52840dongle/nrf52840` với
+`overlay-week3.conf` và tạo `device/artifacts/adaptive_split_week3_fp32_v2.zip`; build ở
+`device/build-week3`, hằng số input ở `device/generated`. Hai vị trí này giữ đúng image đã nạp và
+đo nên script từ chối ghi đè. Build lại phải chọn đường dẫn mới, ví dụ
+`-BuildDir D:\HUST\week3-rebuild\build -DfuZipPath D:\HUST\week3-rebuild\week3.zip`, rồi so HEX
+SHA-256 với HEX đã nghiệm thu ở mục 5 trước khi nạp. Hash ZIP đổi mỗi lần đóng gói dù HEX giống
+hệt (quan sát ngày 15/10/2026).
+
+Nạp và thu một capture mới:
+
+1. Đóng terminal đang giữ dongle; liệt kê cổng; nhấn RESET/SW2 (LED đỏ sáng mờ dần), liệt kê lại để
+   tìm cổng bootloader mới xuất hiện.
+2. Chỉ nạp ZIP tuần 3, không dùng `west flash`, erase, recover, MCUboot hay ZIP tuần 1:
+
+   ```powershell
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\flash_week3_head.ps1 -Port COMx
+   ```
+
+3. Tìm lại cổng CDC của ứng dụng (có thể khác cổng bootloader), thu dấu vết đủ của mẫu 0 và P2 của
+   19 mẫu còn lại, rồi kiểm:
+
+   ```powershell
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\collect_week3.ps1 -Port COMy -Output .\device\artifacts\week3_capture_new.txt
+   Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
+   & ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture device/artifacts/week3_capture_new.txt --report-output $env:TEMP/week3_mcu_recheck.json
+   ```
+
+Collector gửi `TRACE 0` rồi `RUN 1`..`RUN 19`, đọc liên tục tới từng `DONE`; firmware in mỗi phần
+tử FP32 bằng 8 chữ số hex, nghỉ 5 ms sau mỗi dòng 16 phần tử để USB CDC kịp thoát dữ liệu. Checker
+in `MCU_20_OF_20: PASS` chỉ khi cả 20 sai số P2 nhỏ hơn hẳn `1e-3`. Collector và checker từ chối
+ghi đè file đã có, nên mỗi lần chạy cần tên file mới.

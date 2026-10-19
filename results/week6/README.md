@@ -3,7 +3,7 @@
 Phiên lab `device-session-20261019`, ngày 19/10/2026 (Asia/Saigon). nRF52840 Dongle (PCA10059) là BLE
 peripheral; laptop Windows 11 (bleak 3.0.2) là BLE central/echo peer. Firmware build
 `afa88870379c-default-20261018T062058Z` và `afa88870379c-mtu23-20261018T062140Z` (commit `afa8887`,
-cây sạch). Cả 8 tiêu chí ở [kế hoạch tuần 6](../../docs/week6_device_edge_plan.md) §1 **PASS** trên MCU.
+cây sạch). Cả 8 tiêu chí tuần 6 ([phụ lục A của báo cáo](../../docs/sv1_device_week6_report.md#phụ-lục-a-tiêu-chí-nghiệm-thu-và-quyết-định-d1d6)) **PASS** trên MCU.
 
 - [Báo cáo cho thầy](../../docs/sv1_device_week6_report.md)
 - Tiêu chí 1–2, 8 (DWT): [self-test](selftest_default.json), [50 vector P1](p1_vectors_50.csv), [DWT theo split](dwt_by_split.csv)
