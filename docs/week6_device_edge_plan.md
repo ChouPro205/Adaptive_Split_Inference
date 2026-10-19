@@ -8,9 +8,10 @@ liệu này theo dõi **triển khai và nghiệm thu**; thiết kế đã chố
 - [I2/1 nonce và provisioning v1](../contracts/i2_nonce_provisioning_v1.md) — NVS, dải sequence, key.
 - [Reference/test host](../contracts/i1v2_ref/test_i1v2.py) và [vector](../contracts/i1v2_ref/vectors.json).
 
-Trạng thái hiện tại: thiết kế APPROVED; mọi hạng mục dưới đây **chưa chạy** trên
-nRF52840, laptop BLE hoặc KV260. Không mục nào được đánh dấu ACCEPTED trước khi
-có bằng chứng theo đúng tiêu chí.
+Trạng thái hiện tại: thiết kế APPROVED. Ngày 19/10/2026 cả 8 tiêu chí §1 **PASS trên
+nRF52840 với laptop Windows làm BLE peer** ([báo cáo SV1 tuần 6](sv1_device_week6_report.md),
+[bằng chứng](../results/week6/README.md)). Các hạng mục KV260 của SV2 (§2.2) và đánh giá DPU
+của SV3 chưa chạy; chưa thay laptop bằng KV260.
 
 Cập nhật SV3 ngày 16/10/2026: [gói 50 vector P1 và output semantics](../ml/docs/week6_p1_delivery.md) đã bàn giao A+B với bằng chứng host mới. Các tiêu chí trên thiết bị và KV260 bên dưới chưa được thay bằng kết quả host.
 
@@ -116,9 +117,10 @@ Chốt thêm hai khóa an toàn:
   `reserved_through > 0` (`STATE_IN_USE`), state hỏng/lạ, hoặc còn key mà mất state
   (`STATE_UNREADABLE`). `PROV ERASE` chỉ được phép khi NVS không mount được.
 
-## 5. Trạng thái chuẩn bị ngày 18/10/2026 (chưa có bằng chứng trên MCU)
+## 5. Trạng thái chuẩn bị ngày 18/10/2026 và kết quả trên dongle ngày 19/10/2026
 
-Đã làm xong mọi việc không cần dongle; **chưa tiêu chí nào ACCEPTED**.
+Bảng dưới là trạng thái chuẩn bị trên host ngày 18/10/2026 (số Flash/RAM ở dòng đầu là của build
+trước `afa8887`; build dùng trong lab là `20261019-r1`, xem báo cáo). Dòng cuối cập nhật ngày 19/10/2026.
 
 | Hạng mục | Trạng thái | Bằng chứng host |
 |---|---|---|
@@ -127,7 +129,7 @@ Chốt thêm hai khóa an toàn:
 | Kịch bản negative (tiêu chí 6) | PASS 19/19 trong mô phỏng | `test_week6_sim.py`: state machine C của firmware nối với peer thật của `week6_lab.py`, đồng hồ ảo; thêm 1000 packet MIX không lỗi và MTU 23 |
 | Checker offline + test âm | PASS 10/10 | `test_week6_checkers.py`: capture đúng → PASS, mỗi capture bị sửa → FAIL |
 | Key bench (D6) | Đã sinh, ngoài repo | chỉ `key_check` được ghi |
-| Chạy trên dongle (tiêu chí 1–8) | **Chưa làm** | theo [runbook](../device/week6/RUNBOOK.md) |
+| Chạy trên dongle (tiêu chí 1–8) | **PASS 8/8** ngày 19/10/2026, peer laptop Windows | [báo cáo](sv1_device_week6_report.md), [results/week6](../results/week6/README.md); `runtime.nonce_persistence_reboot` chờ revision registry mới (Châu + Trung) |
 
 ## 6. Thứ tự thực hiện
 

@@ -1,0 +1,104 @@
+{
+  "schema": "week6-check-sentinel/1",
+  "before": {
+    "banner": {
+      "build": "afa88870379c-default-20261018T062058Z",
+      "variant": "default",
+      "cfg_att_mtu": "247",
+      "package": "mitdb-week6-p1-50-20261016-v1",
+      "vectors_manifest": "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "i1v2_vectors": "64e6b026c2aacf317242a3d97dbdc62a98b602f54b68719a808c2533383408e1"
+    },
+    "sentinel": {
+      "op": "WRITE",
+      "err": "0",
+      "value": "d7a0f04212d2ea215f8470ea49aabc8e"
+    },
+    "nonce": {
+      "status": "READY",
+      "reason": "NONE",
+      "mounted": "1",
+      "mount_err": "0",
+      "reserved_through": "60624896",
+      "next": "60624897",
+      "limit": "60624896",
+      "key_id": "65537",
+      "sender_id": "131073",
+      "key_check": "4379e570eb84f891",
+      "writes": "0",
+      "write_cyc_max": "0",
+      "write_cyc_total": "0"
+    }
+  },
+  "after": {
+    "banner": {
+      "build": "afa88870379c-default-20261018T062058Z",
+      "variant": "default",
+      "cfg_att_mtu": "247",
+      "package": "mitdb-week6-p1-50-20261016-v1",
+      "vectors_manifest": "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "i1v2_vectors": "64e6b026c2aacf317242a3d97dbdc62a98b602f54b68719a808c2533383408e1"
+    },
+    "sentinel": {
+      "op": "READ",
+      "err": "0",
+      "value": "d7a0f04212d2ea215f8470ea49aabc8e"
+    },
+    "nonce": {
+      "status": "READY",
+      "reason": "NONE",
+      "mounted": "1",
+      "mount_err": "0",
+      "reserved_through": "60625920",
+      "next": "60625921",
+      "limit": "60625920",
+      "key_id": "65537",
+      "sender_id": "131073",
+      "key_check": "4379e570eb84f891",
+      "writes": "0",
+      "write_cyc_max": "0",
+      "write_cyc_total": "0"
+    }
+  },
+  "checks": {
+    "sentinel_written": true,
+    "sentinel_read_after_dfu": true,
+    "sentinel_value_unchanged": true,
+    "different_image_flashed": true,
+    "nonce_state_ready_after_dfu": true,
+    "reserved_through_not_decreased": true,
+    "key_check_unchanged": true
+  },
+  "image_before": {
+    "banner": {
+      "build": "afa88870379c-mtu23-20261018T062140Z",
+      "variant": "mtu23",
+      "cfg_att_mtu": "23",
+      "package": "mitdb-week6-p1-50-20261016-v1",
+      "vectors_manifest": "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+      "i1v2_vectors": "64e6b026c2aacf317242a3d97dbdc62a98b602f54b68719a808c2533383408e1"
+    },
+    "sentinel": {
+      "op": "READ",
+      "err": "0",
+      "value": "d7a0f04212d2ea215f8470ea49aabc8e"
+    },
+    "nonce": {
+      "status": "READY",
+      "reason": "NONE",
+      "mounted": "1",
+      "mount_err": "0",
+      "reserved_through": "60624896",
+      "next": "60624897",
+      "limit": "60624896",
+      "key_id": "65537",
+      "sender_id": "131073",
+      "key_check": "4379e570eb84f891",
+      "writes": "0",
+      "write_cyc_max": "0",
+      "write_cyc_total": "0"
+    }
+  },
+  "status": "PASS",
+  "failed_checks": []
+}

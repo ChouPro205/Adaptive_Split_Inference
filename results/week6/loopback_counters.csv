@@ -1,0 +1,4 @@
+run,variant,att_mtu,planned,sent_first,retries,timeouts,disconnect_abort,tx_stall,completed,failed,error_final,edge_busy,crc_fail,byte_mismatch,duplicate_response,stale_response,invalid_response,wrong_stream
+plain200_mtu247,default,247,200,200,0,0,0,0,200,0,0,0,0,0,0,0,0,0
+mtu23_4sizes_x10,mtu23,23,40,40,0,0,0,0,40,0,0,0,0,0,0,0,0,0
+official_1000_mtu247,default,247,1000,1000,0,0,0,0,1000,0,0,0,0,0,0,0,0,0

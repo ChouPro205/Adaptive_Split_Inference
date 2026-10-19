@@ -80,7 +80,8 @@ Kỳ vọng counter cho từng kịch bản nằm trong `device/scripts/week6_co
 `--only crc,stale` với `--out` mới.
 
 `disconnect_mid` **tắt radio Bluetooth của laptop** khoảng 1,5 s ngay sau nửa transfer (WinRT
-`Windows.Devices.Radios`, tự bật lại) để link rớt bằng supervision timeout. Lý do: buổi lab
+`Windows.Devices.Radios`, tự bật lại); link rớt ngay với lý do HCI `0x15` (remote power off), hoặc
+bằng supervision timeout nếu controller không kịp gửi terminate. Lý do: buổi lab
 19/10/2026 cho thấy sau `BleakClient.disconnect()` Windows còn giữ link radio khoảng 3,2 s, lâu
 hơn timeout reassembly 2 s, nên Device chỉ thấy timeout chứ không thấy mất kết nối giữa transfer.
 Đừng để app khác dùng Bluetooth trong lúc chạy kịch bản này.

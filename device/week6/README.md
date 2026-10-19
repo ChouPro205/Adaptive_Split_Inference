@@ -6,8 +6,9 @@
 quyết định D1–D6: [kế hoạch tuần 6](../../docs/week6_device_edge_plan.md). Không sửa file tuần 3–5
 bị khóa hash (`../src/markers.c`, `../week5/quantization.c` được biên dịch nguyên vẹn).
 
-**Trạng thái 18/10/2026:** build và kiểm trên host xong; **chưa chạy trên dongle**. Các bước
-trên dongle: [RUNBOOK.md](RUNBOOK.md).
+**Trạng thái 19/10/2026:** đã chạy trên dongle theo [RUNBOOK.md](RUNBOOK.md), cả 8 tiêu chí phía
+Device PASS (peer là laptop Windows). Báo cáo: [sv1_device_week6_report.md](../../docs/sv1_device_week6_report.md),
+bằng chứng: [results/week6](../../results/week6/README.md).
 
 ## Cấu trúc
 

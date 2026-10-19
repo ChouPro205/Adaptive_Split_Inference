@@ -1,0 +1,10 @@
+﻿{
+    "build_id":  "afa88870379c-default-20261018T062058Z",
+    "commit":  "afa88870379c03d50db61ad49ed34d39c0305aca",
+    "dirty":  false,
+    "status_porcelain":  [
+
+                         ],
+    "variant":  "default",
+    "expected_manifest_sha256":  "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36"
+}

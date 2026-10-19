@@ -21,6 +21,9 @@ và báo cáo của dự án.
   và [đánh giá theo lớp](../ml/results/week5-per-class-20261015/README.md)
 - [Firmware và công cụ SV1](../device/README.md)
 - [Kế hoạch và tiêu chí nghiệm thu tuần 6 Device–Edge](week6_device_edge_plan.md)
+- [Báo cáo SV1/Device (Châu) – Week 6](sv1_device_week6_report.md): 8 tiêu chí phía
+  Device PASS trên Dongle qua BLE ngày 19/10/2026, peer là laptop Windows
+- [Kết quả Dongle Week 6](../results/week6/README.md)
 
 ### Khối ML (SV3 - ML / Bùi Kỳ Anh)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 1](SV3_ML_week1_report.md)

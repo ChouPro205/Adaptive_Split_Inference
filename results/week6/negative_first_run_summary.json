@@ -1,0 +1,1168 @@
+{
+  "schema": "week6-check-negative-summary/1",
+  "session": "D:\\HUST\\ASI_week6\\device-session-20261019\\03-negative",
+  "checks": {
+    "busy_once": true,
+    "crc": true,
+    "disconnect_mid": false,
+    "disconnect_rx": true,
+    "drop_fragment": true,
+    "duplicate_fragment": true,
+    "duplicate_response": true,
+    "header_mismatch": true,
+    "invalid_once": true,
+    "malformed": true,
+    "mismatch": true,
+    "orphan": true,
+    "reasm_timeout": true,
+    "reorder": true,
+    "silent_all": true,
+    "silent_once": true,
+    "stale": true,
+    "superseded": true,
+    "wrong_stream": true,
+    "all_scenarios_present": true
+  },
+  "scenarios": [
+    {
+      "scenario": "busy_once",
+      "spec": {
+        "mode": "respond",
+        "sizes": "113",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "edge_busy": 1,
+          "retries": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "edge_busy==1": true,
+        "retries==1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 0,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 1,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 3
+      },
+      "pass": true
+    },
+    {
+      "scenario": "crc",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "crc_fail": 1,
+          "timeouts": 1,
+          "retries": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "crc_fail==1": true,
+        "timeouts==1": true,
+        "retries==1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 1,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 1,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 3
+      },
+      "pass": true
+    },
+    {
+      "scenario": "disconnect_mid",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "disconnect_abort": 1,
+          "retries": 1
+        },
+        "reasm_min": {
+          "disconnect": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "disconnect_abort==1": true,
+        "retries==1": true,
+        "reasm.disconnect>=1": false,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 0,
+        "disconnect_abort": 1,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 1,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 1,
+        "frames_delivered": 2
+      },
+      "pass": false
+    },
+    {
+      "scenario": "disconnect_rx",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "disconnect_abort": 1,
+          "retries": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "disconnect_abort==1": true,
+        "retries==1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 0,
+        "disconnect_abort": 1,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "drop_fragment",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "timeouts": 1,
+          "retries": 1
+        },
+        "reasm_min": {
+          "gap": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "timeouts==1": true,
+        "retries==1": true,
+        "reasm.gap>=1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 1,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 5,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 1,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 1,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "duplicate_fragment",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "timeouts": 0,
+          "retries": 0
+        },
+        "reasm_min": {
+          "duplicate_fragment": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "timeouts==0": true,
+        "retries==0": true,
+        "reasm.duplicate_fragment>=1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 0,
+        "timeouts": 0,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 1,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "duplicate_response",
+      "spec": {
+        "mode": "echo",
+        "sizes": "113",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "duplicate_response": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "duplicate_response==1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 0,
+        "timeouts": 0,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 1,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 3
+      },
+      "pass": true
+    },
+    {
+      "scenario": "header_mismatch",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "timeouts": 1,
+          "retries": 1
+        },
+        "reasm_min": {
+          "frame_header_mismatch": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "timeouts==1": true,
+        "retries==1": true,
+        "reasm.frame_header_mismatch>=1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 1,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 13,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 1,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 1,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "invalid_once",
+      "spec": {
+        "mode": "respond",
+        "sizes": "113",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "invalid_response": 1,
+          "retries": 0
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "invalid_response==1": true,
+        "retries==0": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 0,
+        "timeouts": 0,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 1,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 3
+      },
+      "pass": true
+    },
+    {
+      "scenario": "malformed",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "timeouts": 0,
+          "retries": 0
+        },
+        "reasm_min": {
+          "malformed_fragment": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "timeouts==0": true,
+        "retries==0": true,
+        "reasm.malformed_fragment>=1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 0,
+        "timeouts": 0,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 1,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "mismatch",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "byte_mismatch": 1,
+          "timeouts": 1,
+          "retries": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "byte_mismatch==1": true,
+        "timeouts==1": true,
+        "retries==1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 1,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 1,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 3
+      },
+      "pass": true
+    },
+    {
+      "scenario": "orphan",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "timeouts": 0,
+          "retries": 0
+        },
+        "reasm_min": {
+          "orphan_fragment": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "timeouts==0": true,
+        "retries==0": true,
+        "reasm.orphan_fragment>=1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 0,
+        "timeouts": 0,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 1,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "reasm_timeout",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "timeouts": 1,
+          "retries": 1
+        },
+        "reasm_min": {
+          "reassembly_timeout": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "timeouts==1": true,
+        "retries==1": true,
+        "reasm.reassembly_timeout>=1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 1,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 1,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 1,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "reorder",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "timeouts": 1,
+          "retries": 1
+        },
+        "reasm_min": {
+          "gap": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "timeouts==1": true,
+        "retries==1": true,
+        "reasm.gap>=1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 1,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 12,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 1,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 1,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "silent_all",
+      "spec": {
+        "mode": "echo",
+        "sizes": "113",
+        "count": 2,
+        "fault_count": 3,
+        "expect": {
+          "completed": 1,
+          "failed": 1,
+          "timeouts": 3,
+          "retries": 2
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==1": true,
+        "failed==1": true,
+        "timeouts==3": true,
+        "retries==2": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 2,
+        "timeouts": 3,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 1,
+        "failed": 1,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 1
+      },
+      "pass": true
+    },
+    {
+      "scenario": "silent_once",
+      "spec": {
+        "mode": "echo",
+        "sizes": "113",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "timeouts": 1,
+          "retries": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "timeouts==1": true,
+        "retries==1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 1,
+        "timeouts": 1,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "stale",
+      "spec": {
+        "mode": "echo",
+        "sizes": "113",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "stale_response": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "stale_response==1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 0,
+        "timeouts": 0,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 1,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 3
+      },
+      "pass": true
+    },
+    {
+      "scenario": "superseded",
+      "spec": {
+        "mode": "echo",
+        "sizes": "3076",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "timeouts": 0,
+          "retries": 0
+        },
+        "reasm_min": {
+          "superseded_transfer": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "timeouts==0": true,
+        "retries==0": true,
+        "reasm.superseded_transfer>=1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 0,
+        "timeouts": 0,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 0
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 1,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 1,
+        "frames_delivered": 2
+      },
+      "pass": true
+    },
+    {
+      "scenario": "wrong_stream",
+      "spec": {
+        "mode": "echo",
+        "sizes": "113",
+        "count": 2,
+        "fault_count": 1,
+        "expect": {
+          "completed": 2,
+          "failed": 0,
+          "wrong_stream": 1
+        }
+      },
+      "checks": {
+        "run_complete": true,
+        "planned_equals_count": true,
+        "completed==2": true,
+        "failed==0": true,
+        "wrong_stream==1": true,
+        "fault_was_applied_by_peer": true
+      },
+      "counters": {
+        "planned": 2,
+        "sent_first": 2,
+        "retries": 0,
+        "timeouts": 0,
+        "disconnect_abort": 0,
+        "tx_stall": 0,
+        "completed": 2,
+        "failed": 0,
+        "error_final": 0,
+        "edge_busy": 0,
+        "crc_fail": 0,
+        "byte_mismatch": 0,
+        "duplicate_response": 0,
+        "stale_response": 0,
+        "invalid_response": 0,
+        "wrong_stream": 1
+      },
+      "reassembly": {
+        "malformed_fragment": 0,
+        "inconsistent_fragment": 0,
+        "orphan_fragment": 0,
+        "duplicate_fragment": 0,
+        "superseded_transfer": 0,
+        "overlap_conflict": 0,
+        "gap": 0,
+        "frame_header_mismatch": 0,
+        "reassembly_timeout": 0,
+        "disconnect": 0,
+        "rx_busy": 0,
+        "aborted_transfers": 0,
+        "frames_delivered": 3
+      },
+      "pass": true
+    }
+  ],
+  "status": "FAIL",
+  "failed_checks": [
+    "disconnect_mid"
+  ]
+}

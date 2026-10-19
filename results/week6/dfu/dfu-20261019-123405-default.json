@@ -1,0 +1,22 @@
+﻿{
+    "origin":  "REAL_USB_DFU",
+    "port":  "COM6",
+    "variant":  "default",
+    "report_dir":  "D:\\HUST\\ASI_week6\\20261019-r1-default",
+    "zip":  "D:\\HUST\\ASI_week6\\20261019-r1-default\\adaptive_split_week6_default.zip",
+    "zip_sha256":  "a9b0b1f5e7be698c63b3158d90a1c3a68ece2df2922afefe2ee53d7b4d6371c9",
+    "bin_sha256":  "2e3e51928a806272beff3b64c6adc02d437de389223c6ac9f5911d832165b233",
+    "elf_sha256":  "553c68bff4e26d8ede64da4663fe7489323f1c13f8f0e2188b5c32bb2ca763b8",
+    "executable":  "D:\\ncs\\toolchains\\dcbdc366a1\\nrfutil\\bin\\nrfutil.exe",
+    "arguments":  [
+                      "nrf5sdk-tools",
+                      "dfu",
+                      "usb-serial",
+                      "--package",
+                      "D:\\HUST\\ASI_week6\\20261019-r1-default\\adaptive_split_week6_default.zip",
+                      "--port",
+                      "COM6"
+                  ],
+    "exit_code":  0,
+    "timestamp":  "2026-10-19T05:34:23.4371597+00:00"
+}
