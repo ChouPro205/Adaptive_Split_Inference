@@ -51,6 +51,9 @@ class SimPeer(lab.Peer):
     def request_disconnect(self) -> None:
         self.sim.disconnect()
 
+    async def drop_link(self) -> None:
+        self.sim.disconnect()
+
     async def pause(self, seconds: float) -> None:
         self.sim.advance(int(seconds * 1000))
 

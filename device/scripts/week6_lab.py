@@ -43,6 +43,7 @@ import i1v2_reference as ref  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 FRAME_GAP_S = 0.3  # between a bogus whole frame and the real one (avoid rx_busy, rule 8)
+RADIO_OFF_S = 1.5  # disconnect_mid: > supervision timeout 420 ms seen at interval 45 ms
 
 
 def now_ms() -> int:
@@ -207,6 +208,8 @@ class Peer:
         self.counts = {"rx_frames": 0, "tx_frames": 0, "rx_crc_fail": 0, "connections": 0,
                        "faults_applied": 0, "rx_fragments": 0, "tx_fragments": 0}
         self.disconnect_on_rx = False
+        self.radio_ready = asyncio.Event()
+        self.radio_ready.set()
 
     def event(self, ev: str, **fields) -> None:
         self.log.write(json.dumps({"t": now_ms(), "ev": ev, **fields}) + "\n")
@@ -214,6 +217,25 @@ class Peer:
 
     def request_disconnect(self) -> None:
         asyncio.ensure_future(self.client.disconnect())
+
+    async def drop_link(self) -> None:
+        """Cuts the radio link now. WinRT keeps the link ~3.2 s after client.disconnect() (lab
+        19/10/2026), longer than the 2 s reassembly timeout, so a disconnect would reach the
+        Device only after its partial transfer had timed out. Switching the Bluetooth radio off
+        ends the link by supervision timeout while the transfer is still open."""
+        from winrt.windows.devices.radios import Radio, RadioKind, RadioState
+        await Radio.request_access_async()
+        radio = next(r for r in await Radio.get_radios_async() if r.kind == RadioKind.BLUETOOTH)
+        self.radio_ready.clear()
+        try:
+            status = await radio.set_state_async(RadioState.OFF)
+            self.event("radio_off", status=int(status))
+            await asyncio.sleep(RADIO_OFF_S)
+        finally:
+            status = await radio.set_state_async(RadioState.ON)
+            self.event("radio_on", status=int(status))
+            await asyncio.sleep(1.0)
+            self.radio_ready.set()
 
     async def pause(self, seconds: float) -> None:
         """Lets the Device take a delivered frame before the next one: binding §5 rule 8 drops a
@@ -248,6 +270,7 @@ class Peer:
         responder = asyncio.ensure_future(self.respond_loop())
         try:
             while not self.stop.is_set():
+                await self.radio_ready.wait()
                 device = await self.find()
                 if device is None:
                     self.event("scan_timeout")
@@ -389,7 +412,7 @@ class Peer:
             frags = self.fragments(reply, stream)
             await self.send_fragments(frags[:len(frags) // 2], "half")
             self.event("fault_disconnect_mid")
-            await self.client.disconnect()
+            await self.drop_link()
         elif fault == "duplicate_response":
             await self.send_frame(reply, stream)
             await self.pause(FRAME_GAP_S)
