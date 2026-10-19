@@ -31,3 +31,6 @@ ml/provenance/week5-current-20261015/** -text whitespace=-blank-at-eol,-blank-at
 
 # Week 6 command receipts preserve raw stdout/stderr bytes.
 ml/provenance/week6-p1-20261016/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+# Week 6 dongle evidence: copies of checker/DFU outputs, hashed byte-exact in manifest.json.
+results/week6/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+results/week6/README.md text eol=lf
