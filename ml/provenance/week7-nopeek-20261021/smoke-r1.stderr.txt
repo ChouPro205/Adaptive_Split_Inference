@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-20261021\ml\scripts\run_week7_nopeek.py", line 179, in <module>
+    run(args.config, args.output, args.artifacts)
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-20261021\ml\scripts\run_week7_nopeek.py", line 154, in run
+    "final_state_sha256": after, "artifact": str(target.relative_to(ROOT)),
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 730, in relative_to
+    raise ValueError("{!r} is not in the subpath of {!r}"
+ValueError: 'ml\\artifacts\\week7\\smoke-r1\\s2-lambda0.pt' is not in the subpath of 'C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\sv3-week7-20261021' OR one path is relative and the other is absolute.
