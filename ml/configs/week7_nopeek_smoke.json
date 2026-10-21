@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "splits": [2, 5, 8],
+  "lambda1": [0, 0.5],
+  "seed": 20261021,
+  "batch_size": 32,
+  "steps": 4,
+  "validation_samples": 512,
+  "learning_rate": 0.0001,
+  "threads": 1,
+  "device": "cpu",
+  "purpose": "Short wiring and gradient smoke only; no model selection, full grid or test evaluation"
+}

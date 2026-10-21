@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "status": "PREPARED_NOT_EXECUTED",
+  "objective": "CE + lambda1 * biased_sample_distance_correlation_Rn",
+  "initial_checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "splits": [2, 5, 8],
+  "lambda1": [0, 0.1, 0.5, 1, 2, 5],
+  "seeds": [20261021],
+  "selection_data": "authenticated frozen train/val only; test excluded",
+  "dcor_batch_size": 32,
+  "initialization": "fresh copy of approved checkpoint for every (split, lambda1, seed)",
+  "optimizer": {"name": "Adam", "lr": 0.0001},
+  "training_policy": {"max_epochs": 30, "early_stopping_patience": 5, "select_by": "validation CE", "drop_last_train": true},
+  "sv2_deployment_confirmation": {"2": "PENDING_KV260_DPU_PLUS_CPU", "5": "PENDING_KV260_DPU_PLUS_CPU", "8": "PENDING_KV260_DPU_PLUS_CPU"},
+  "deployment_model_profile_id": null,
+  "notes": "Week 8 proposal, not a deployment registry or proof of privacy. Multiple seeds and class imbalance strategy require study-design review before paper claims. Week 7 smoke runner intentionally does not execute this grid."
+}
