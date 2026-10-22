@@ -142,6 +142,24 @@ class Reference(unittest.TestCase):
         self.assertEqual(request.payload, w7.golden_tensor(4, 2).q)
 
 
+    def test_device_tensor_week5_differences(self):
+        # Scale SHA-256 the dongle sent on 20/10/2026 (energy-usb-fast, VERIFY ALL).
+        on_device = {(8, 10): "e4c2399cebca1fd877df363050b4ce65cc5703a702f55aa296ce38582e1b4704",
+                     (13, 10): "4b460ab0fba8579f28a7dfcea1178fde02fe0d8716cf631f0d1075a511bdc007",
+                     (18, 10): "018d971ad188c48560365c475630dcb1876345528fa6de0a9c992b4bde882b67"}
+        differing = {}
+        for sample in range(20):
+            for split in range(11):
+                golden, device = w7.golden_tensor(sample, split), w7.device_tensor(sample, split)
+                self.assertEqual(device.q, golden.q)
+                if device.scale_le != golden.scale_le:
+                    differing[(sample, split)] = device.scale_sha256
+                    a = struct.unpack(f"<{golden.channels}H", golden.scale_le)
+                    b = struct.unpack(f"<{golden.channels}H", device.scale_le)
+                    self.assertEqual(sorted(abs(x - y) for x, y in zip(a, b) if x != y), [1])
+        self.assertEqual(differing, on_device)
+
+
 class StubEdge(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -166,6 +184,20 @@ class StubEdge(unittest.TestCase):
             self.assertEqual(struct.pack("<5f", *logits),
                              struct.pack("<5f", *w7.reference_logits(i, 2)))
         self.assertEqual(edge.counters["response_sent"], 4)
+
+    def test_s10_shared_q_and_mcu_scales(self):
+        # At s=10 samples 7 and 13 share q; the scales select the sample. Sample 8 must carry the
+        # MCU scale bits: the golden-scale request is not what the firmware sends.
+        edge = w7.StubEdge(split=10, key=None)
+        self.assertEqual(w7.golden_tensor(7, 10).q, w7.golden_tensor(13, 10).q)
+        for sample in (7, 13, 8):
+            response, record = edge.handle(w7.build_request(sample, 10, 1, None, None, mcu=True))
+            self.assertEqual((record["result"], record["sample"]), ("OK", sample))
+            kind, logits = w7.ref.parse_response(response, 1, 6380)
+            self.assertEqual(struct.pack("<5f", *logits),
+                             struct.pack("<5f", *w7.reference_logits(sample, 10)))
+        _, record = edge.handle(w7.build_request(8, 10, 2, None, None))
+        self.assertEqual(record["result"], "SCALE_MISMATCH")
 
     def test_rejections(self):
         key = bytes(range(32))
@@ -266,9 +298,30 @@ class Checkers(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertEqual(report["mismatches"], [{"n": 7, "s": 2, "what": "q/scale"}])
 
+    def test_verify_s10_explained(self):
+        def lines(mcu):
+            out = ["READY WEEK7 build=x variant=energy-usb kernel=FAST split=2"]
+            for n in range(20):
+                g = (w7.device_tensor if mcu else w7.golden_tensor)(n, 10)
+                out.append(f"VQ n={n} s=10 C=5 L=1 q_sha256={g.q_sha256} scale_sha256={g.scale_sha256}")
+                for rho, key, seq in (("P0", None, None), ("P1", w7.PUBLIC_TEST_KEY, n + 1)):
+                    f = w7.build_request(n, 10, n + 1, key, seq, mcu=mcu)
+                    extra = f" seq={seq}" if seq else ""
+                    out.append(f"VREQ n={n} s=10 rho={rho} rid={n + 1}{extra} len={len(f)} "
+                               f"sha256={w7.sha256_hex(f)}")
+            return out + ["VERIFY END kernel=FAST"]
+        code, report = self.run_check("verify", lines(mcu=True))
+        self.assertEqual(code, 0, report["checks"])
+        self.assertEqual([(e["n"], e["channels"]) for e in report["explained_golden_differences"]],
+                         [(8, [3]), (13, [3]), (18, [2])])
+        code, report = self.run_check("verify", lines(mcu=False))
+        self.assertEqual(code, 1)
+        self.assertEqual(sorted({m["n"] for m in report["mismatches"]}), [8, 13, 18])
+
     def test_dryrun(self):
         lines = ["READY WEEK7 build=x variant=energy-usb kernel=FAST split=2",
-                 "NONCE status=READY reason=NONE reserved_through=4096 next=4098 limit=5120"]
+                 "NONCE status=READY reason=NONE reserved_through=5120 next=4098 limit=5120 "
+                 "writes=1 session_reserved_sequence=4097"]
         for i in range(6):
             p1 = i < 3
             lines.append(f"CYCLE i={i} rho={'P1' if p1 else 'P0'} n={i} s=2 rid=0000000{i + 1} "
@@ -276,8 +329,18 @@ class Checkers(unittest.TestCase):
                          f"ctrl_us=200 head_us=120000 quant_us=900 prot_us={1400 if p1 else 0} "
                          f"enc_us=4500 tx_us=90000 wait_us=60000 enomem=0 invalid=0 nonce_writes=0 "
                          f"status=0 res=OK")
-        code, report = self.run_check("dryrun", lines, ["--p1", "3", "--p0", "3"])
+        code, report = self.run_check("dryrun", lines, ["--p1", "3", "--p0", "3",
+                                                        "--prior-reserved-through", "4096"])
         self.assertEqual(code, 0, report["checks"])
+        self.assertTrue(report["checks"]["p1_sequence_above_prior_reservation"])
+        # A sequence at or below the value read before the session would be a reuse.
+        code, report = self.run_check("dryrun", lines, ["--p1", "3", "--p0", "3",
+                                                        "--prior-reserved-through", "4098"])
+        self.assertFalse(report["checks"]["p1_sequence_above_prior_reservation"])
+        # A sequence outside the boot block (beyond reserved_through) needs a Flash write.
+        outside = [l.replace("seq=4100", "seq=5121") for l in lines]
+        code, report = self.run_check("dryrun", outside, ["--p1", "3", "--p0", "3"])
+        self.assertFalse(report["checks"]["p1_sequence_in_boot_block"])
         lines[3] = lines[3].replace("nonce_writes=0", "nonce_writes=1")
         code, report = self.run_check("dryrun", lines, ["--p1", "3", "--p0", "3"])
         self.assertFalse(report["checks"]["no_flash_write_in_cycle"])

@@ -2,6 +2,9 @@
 
 Golden data: the SV3 quantization20 package (20 samples x 11 splits, INT8 q + FP16 scales and
 reference logits of the INT8/FP16 path; the same golden the week 5 MCU matched byte for byte).
+The MCU FP32 head differs from it in 3 FP16 scale bits at s=10 (samples 8, 13, 18: raw scale
+next to an FP16 rounding midpoint), explained in results/week5/golden_difference_analysis.json;
+device_tensor() applies exactly those bits and is what the firmware must transmit.
 Requests are built only with the contract references (contracts/i1v2_ref, contracts/i2_ref).
 """
 from __future__ import annotations
@@ -10,7 +13,7 @@ import hashlib
 import json
 import struct
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from functools import lru_cache
 from pathlib import Path
 
@@ -29,6 +32,8 @@ QUANT20 = ROOT / "ml" / "artifacts" / "week5" / "quantization20"
 QUANT20_MANIFEST_SHA256 = "8e20ed054462dda8f99815f20c817de36d21fdc1c5bf112cd2da5f67cdbf29bd"
 P1_PACKAGE = ROOT / "ml" / "artifacts" / "week6" / "mitdb-week6-p1-50-20261016-v1"
 REGISTRY = ROOT / "contracts" / "sv3_week5_approved_registry_v2.json"
+WEEK5_VALIDATION = ROOT / "results" / "week5" / "week5_mcu_validation.json"
+WEEK5_DIFFERENCES = ROOT / "results" / "week5" / "golden_difference_analysis.json"
 PUBLIC_TEST_KEY = bytes(range(32))   # PUBLIC_TEST_ONLY (I1 v2 §12), never a bench key
 KEY_ID, SENDER_ID = 65537, 131073
 RESPONSE_BYTES = 64
@@ -78,6 +83,40 @@ def golden_tensor(sample: int, split: int) -> Golden:
                   tuple(float(v) for v in entry["reference_logits_int8_fp16"]))
 
 
+@lru_cache(maxsize=1)
+def mcu_scale_differences() -> dict:
+    """(sample, split) -> {channel: (golden_bits, mcu_bits)} of the week 5 acceptance."""
+    validation = json.loads(WEEK5_VALIDATION.read_text(encoding="utf-8"))
+    raw = WEEK5_DIFFERENCES.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != validation["case_tables"]["golden_difference_analysis.json"]["sha256"]:
+        raise ValueError("golden_difference_analysis.json differs from the week 5 acceptance")
+    out: dict = {}
+    for case in json.loads(raw.decode("utf-8")):
+        if case["int8_details"]:
+            raise ValueError("week 5 INT8 golden difference: not a scale-only case")
+        key = (int(case["sample_index"]), int(case["split"]))
+        for d in case["scale_details"]:
+            out.setdefault(key, {})[int(d["channel"])] = (int(d["golden_scale_bits"]),
+                                                          int(d["mcu_scale_bits"]))
+    return out
+
+
+@lru_cache(maxsize=None)
+def device_tensor(sample: int, split: int) -> Golden:
+    """Golden with the week 5 MCU scale bits applied (identical to golden for 217/220 cases)."""
+    golden = golden_tensor(sample, split)
+    fix = mcu_scale_differences().get((sample, split))
+    if not fix:
+        return golden
+    halves = list(struct.unpack(f"<{golden.channels}H", golden.scale_le))
+    for channel, (golden_bits, mcu_bits) in fix.items():
+        if halves[channel] != golden_bits:
+            raise ValueError(f"golden ({sample},{split}) channel {channel} bits differ from week 5")
+        halves[channel] = mcu_bits
+    scale = struct.pack(f"<{golden.channels}H", *halves)
+    return replace(golden, scale_le=scale, scale_sha256=hashlib.sha256(scale).hexdigest())
+
+
 def reference_logits(sample: int, split: int) -> tuple:
     return golden_tensor(sample, split).logits
 
@@ -98,9 +137,10 @@ def i2_profile(split: int) -> i2.Profile:
 
 
 def build_request(sample: int, split: int, request_id: int, key: bytes | None,
-                  sequence: int | None) -> bytes:
-    """I1 v2 request of a golden tensor: plain (key None, rho = P0) or I2/1 (rho = P1)."""
-    golden = golden_tensor(sample, split)
+                  sequence: int | None, mcu: bool = False) -> bytes:
+    """I1 v2 request of a golden tensor: plain (key None, rho = P0) or I2/1 (rho = P1).
+    mcu=True uses device_tensor() (what the firmware sends)."""
+    golden = device_tensor(sample, split) if mcu else golden_tensor(sample, split)
     profile = registry_profile()
     payload, descriptor, nonce = golden.q, None, None
     if key is not None:
@@ -131,7 +171,9 @@ class StubEdge:
         self.split = split
         self.key = key
         self.last_sequence = 0
-        self.by_q = {golden_tensor(n, split).q: n for n in range(SAMPLE_COUNT)}
+        self.by_q: dict = {}   # q -> samples (several samples share q at s=9/10)
+        for n in range(SAMPLE_COUNT):
+            self.by_q.setdefault(golden_tensor(n, split).q, []).append(n)
         self.counters = {name: 0 for name in (
             "received", "crc_fail", "drop", "reject", "wrong_split", "sequence_not_increasing",
             "no_key", "unknown_q", "p1", "p0", "response_sent")}
@@ -164,14 +206,17 @@ class StubEdge:
                 q = ref.recover_q(request, {KEY_ID: self.key})
             except ref.Reject as error:
                 return self._fail(record, f"REJECT_{error.status}", "reject")
-        sample = self.by_q.get(q)
-        if sample is None:
+        candidates = self.by_q.get(q)
+        if candidates is None:
             return self._fail(record, "UNKNOWN_Q", "unknown_q")
-        record["sample"] = sample
-        record["scales_match"] = list(request.scales) == scales_fp32(
-            golden_tensor(sample, self.split).scale_le)
+        scales = list(request.scales)
+        matches = [n for n in candidates
+                   if scales == scales_fp32(device_tensor(n, self.split).scale_le)]
+        record["sample"] = matches[0] if len(matches) == 1 else candidates[0]
+        record["scales_match"] = len(matches) == 1
         if not record["scales_match"]:
             return self._fail(record, "SCALE_MISMATCH", "unknown_q")
+        sample = matches[0]
         self.counters["p1" if request.transformed else "p0"] += 1
         response = ref.encode_response(request.request_id, list(reference_logits(sample, self.split)))
         assert len(response) == RESPONSE_BYTES

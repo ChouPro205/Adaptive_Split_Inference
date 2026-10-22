@@ -4,11 +4,14 @@
   bench   TC7: CMP 220/220 bitwise (on-device W4 vs FAST) and every W4 output hash equal to the host
           kernel (test_week7_host.py --write-head-hashes); MIX 16/16; BENCH 100 valid timings per
           kernel and split -> t_dev table (ms), speed-up vs W4 and vs the week 4 published means.
-  verify  TC4: for every VQ line q/scale SHA-256 equal to the SV3 quantization20 golden; every VREQ
-          (P0 plain, P1 PUBLIC_TEST key, sequence n+1, request_id n+1) equal to the request built by
-          contracts/i1v2_ref + i2_ref from that golden.
-  dryrun  energy-usb + stub edge: every CYCLE OK, no Flash write inside a cycle, P1 sequences above
-          the boot reserved_through and strictly increasing, frame lengths per I1 v2, stub PASS;
+  verify  TC4: for every VQ line q/scale SHA-256 equal to the SV3 quantization20 golden, except the
+          3 FP16 scale bits at s=10 explained by the week 5 acceptance (week7_common.device_tensor,
+          reported as explained_golden_differences); every VREQ (P0 plain, P1 PUBLIC_TEST key,
+          sequence n+1, request_id n+1) equal to the request built by contracts/i1v2_ref + i2_ref
+          from that tensor.
+  dryrun  energy-usb + stub edge: every CYCLE OK, no Flash write inside a cycle, P1 sequences inside
+          the block reserved at boot [session_reserved_sequence, reserved_through] (and above
+          --prior-reserved-through, the NONCE value read before the session) and strictly increasing, frame lengths per I1 v2, stub PASS;
           DWT phase times summarized (debug only, never energy numbers).
 Exit 0 = PASS. Writes a JSON report to a new --output path.
 """
@@ -93,19 +96,21 @@ def check_verify(capture) -> dict:
     import week7_common as w7
     vq = lines_with(capture, "VQ n=")
     vreq = lines_with(capture, "VREQ n=")
-    q_ok, req_ok, details = [], [], []
+    q_ok, req_ok, details, explained = [], [], [], []
     for r in vq:
         n, s = int(r["n"]), int(r["s"])
-        g = w7.golden_tensor(n, s)
+        g = w7.device_tensor(n, s)
         ok = r.get("q_sha256") == g.q_sha256 and r.get("scale_sha256") == g.scale_sha256
         q_ok.append(ok)
         if not ok:
             details.append({"n": n, "s": s, "what": "q/scale"})
+        elif g.scale_sha256 != w7.golden_tensor(n, s).scale_sha256:
+            explained.append({"n": n, "s": s, "channels": sorted(w7.mcu_scale_differences()[(n, s)])})
     for r in vreq:
         n, s, rid = int(r["n"]), int(r["s"]), int(r["rid"])
         p1 = r["rho"] == "P1"
         frame = w7.build_request(n, s, rid, w7.PUBLIC_TEST_KEY if p1 else None,
-                                 int(r["seq"]) if p1 else None)
+                                 int(r["seq"]) if p1 else None, mcu=True)
         ok = int(r["len"]) == len(frame) and r["sha256"] == w7.sha256_hex(frame)
         req_ok.append(ok)
         if not ok:
@@ -117,13 +122,20 @@ def check_verify(capture) -> dict:
         "request_cases": len(vreq) == 2 * len(vq),
         "requests_equal_python_reference": bool(req_ok) and all(req_ok),
     }
-    return {"checks": checks, "splits": splits, "mismatches": details}
+    return {"checks": checks, "splits": splits, "mismatches": details,
+            "explained_golden_differences": explained,
+            "explained_note": "q/scale compared with device_tensor(): SV3 golden except the FP16 "
+                              "scale bits of results/week5/golden_difference_analysis.json"}
 
 
-def check_dryrun(capture, stub_summary: Path | None, p1: int, p0: int, split: int) -> dict:
+def check_dryrun(capture, stub_summary: Path | None, p1: int, p0: int, split: int,
+                 prior_reserved: int | None = None) -> dict:
     rows = lines_with(capture, "CYCLE i=")
+    # The first NONCE line follows the boot reservation: reserved_through is the END of the new
+    # block and session_reserved_sequence its first value (week 6 nonce_store semantics).
     boot_nonce = next((wc.kv(t) for _, t in capture if t.startswith("NONCE status=")), {})
     reserved_at_boot = int(boot_nonce.get("reserved_through", "0"))
+    block_first = int(boot_nonce.get("session_reserved_sequence", "0"))
     sequences = [int(r["seq"]) for r in rows if r["rho"] == "P1"]
     channels, length = {0: (1, 360), 1: (16, 360), 2: (16, 180), 3: (32, 180), 4: (32, 90),
                         5: (48, 90), 6: (48, 45), 7: (64, 45), 8: (64, 22), 9: (32, 1),
@@ -134,11 +146,15 @@ def check_dryrun(capture, stub_summary: Path | None, p1: int, p0: int, split: in
         "all_ok": bool(rows) and all(r["res"] == "OK" for r in rows),
         "rho_order": [r["rho"] for r in rows] == ["P1"] * p1 + ["P0"] * p0,
         "no_flash_write_in_cycle": all(r["nonce_writes"] == "0" for r in rows),
-        "p1_sequence_above_boot_reservation": all(s > reserved_at_boot for s in sequences),
+        "p1_sequence_in_boot_block": block_first > 0 and bool(sequences) and all(
+            block_first <= s <= reserved_at_boot for s in sequences),
         "p1_sequence_strictly_increasing": all(b > a for a, b in zip(sequences, sequences[1:])),
         "frame_lengths": all(int(r["len"]) == want_len[r["rho"]] for r in rows),
         "single_attempt": all(r["invalid"] == "0" for r in rows),
     }
+    if prior_reserved is not None:
+        checks["p1_sequence_above_prior_reservation"] = bool(sequences) and all(
+            s > prior_reserved for s in sequences)
     if stub_summary and stub_summary.exists():
         stub = json.loads(stub_summary.read_text(encoding="utf-8"))
         checks["stub_edge_pass"] = stub.get("status") == "PASS"
@@ -150,6 +166,7 @@ def check_dryrun(capture, stub_summary: Path | None, p1: int, p0: int, split: in
                 phases[f"{rho}_{key}"] = {"mean": statistics.fmean(values), "min": min(values),
                                           "max": max(values)}
     return {"checks": checks, "reserved_through_at_boot": reserved_at_boot,
+            "session_reserved_sequence": block_first, "prior_reserved_through": prior_reserved,
             "first_p1_sequence": sequences[0] if sequences else None,
             "last_p1_sequence": sequences[-1] if sequences else None,
             "dwt_phases_us": phases,
@@ -166,6 +183,8 @@ def main() -> int:
     parser.add_argument("--p1", type=int, default=50)
     parser.add_argument("--p0", type=int, default=50)
     parser.add_argument("--split", type=int, default=2)
+    parser.add_argument("--prior-reserved-through", type=int,
+                        help="dryrun: NONCE reserved_through read before the session")
     args = parser.parse_args()
     if args.output.exists():
         sys.exit(f"refusing to overwrite {args.output}")
@@ -176,7 +195,7 @@ def main() -> int:
         result = check_verify(capture)
     else:
         result = check_dryrun(capture, args.session / "stub" / "summary.json", args.p1, args.p0,
-                              args.split)
+                              args.split, args.prior_reserved_through)
     banner = next((t for _, t in capture if t.startswith("READY WEEK7")), "")
     report = {"schema": f"week7-check-{args.kind}/1", "session": str(args.session),
               "status": "PASS" if all(result["checks"].values()) else "FAIL",

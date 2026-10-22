@@ -202,9 +202,13 @@ def counter_check(counter: np.ndarray) -> dict:
         return {"available": False, "discontinuities": None, "lost_samples_min": None}
     step = (counter[1:].astype(np.int16) - counter[:-1].astype(np.int16)) % 64
     bad = np.flatnonzero(step != 1)
+    histogram = np.bincount(step, minlength=64)
+    top = np.argsort(histogram)[::-1][:5]
     return {"available": True, "discontinuities": int(bad.size),
             "lost_samples_min": int(np.sum((step[bad] - 1) % 64)),
-            "first_discontinuity_sample": int(bad[0] + 1) if bad.size else None}
+            "first_discontinuity_sample": int(bad[0] + 1) if bad.size else None,
+            # a real counter gives {1: n-1}; many other steps mean bits 18-23 are not a counter
+            "step_histogram_top": {int(s): int(histogram[s]) for s in top if histogram[s]}}
 
 
 def load_raw_capture(directory: Path, spike_filter: bool = True) -> Trace:
@@ -227,10 +231,22 @@ def load_raw_capture(directory: Path, spike_filter: bool = True) -> Trace:
             "trailing_bytes": len(data) - usable, "counter": counter_check(counter),
             "spike_filter": spike_filter, "range_counts": np.bincount(ranges, minlength=5).tolist(),
             "capture": {k: meta.get(k) for k in ("started_utc", "seconds_requested",
-                                                   "dut_power_on_byte", "temp_room_C", "label")}}
+                                                   "dut_power_on_byte", "temp_room_C", "label",
+                                                   "status", "dut_on_rate_deviation_pct",
+                                                   "reader_error")}}
     if "dut_power_on_byte" in meta and meta["dut_power_on_byte"] is not None:
         info["dut_power_on_sample"] = int(meta["dut_power_on_byte"]) // 4
+    if meta.get("dut_power_off_byte") is not None:
+        info["dut_power_off_sample"] = int(meta["dut_power_off_byte"]) // 4
     return Trace(current, bits, float(meta["v_supply_mV"]), f"raw:{directory}", None, info)
+
+
+def slice_trace(trace: Trace, start: int, stop: int) -> Trace:
+    """Samples [start, stop) as a new Trace (e.g. DUT ON..OFF, so a pulse cut by the PPK2
+    switching the DUT off touches the end and is treated as truncated)."""
+    return Trace(trace.current_ua[start:stop], trace.bits[start:stop], trace.v_supply_mv,
+                 f"{trace.source}[{start}:{stop}]",
+                 None if trace.time_ms is None else trace.time_ms[start:stop], dict(trace.info))
 
 
 def load_trace(raw: Path | None, csv_path: Path | None, v_supply_mv: float | None,
@@ -397,16 +413,20 @@ def selftest_check(trace: Trace, phase_map: dict, width_ms=200.0, tol_ms=5.0,
                    max_join_ms=1.0) -> dict:
     """Firmware week 7 boot self-test: D0..D4 HIGH one after another for width_ms each.
 
-    The self-test is the first CTRL pulse; each other marker's self-test pulse is the last of
-    its runs that ends before that CTRL pulse ends (a boot NVS write may pulse D1 earlier).
+    The self-test is the first CTRL pulse about width_ms wide (a glitch while the pins still float
+    at power-on is skipped); each other marker's self-test pulse is the last of its runs that
+    ends before that CTRL pulse starts (a boot NVS write may pulse D1 earlier).
     """
     ctrl_starts, ctrl_ends = channel_runs(trace.bits, phase_map["ctrl"])
     if ctrl_starts.size == 0:
         return {"found": False, "pass": False, "reason": "no CTRL pulse"}
-    pulses = {"ctrl": (int(ctrl_starts[0]), int(ctrl_ends[0]))}
+    widths = (ctrl_ends - ctrl_starts) * DT_S * 1e3
+    wide = np.flatnonzero(np.abs(widths - width_ms) <= tol_ms)
+    pick = int(wide[0]) if wide.size else 0
+    pulses = {"ctrl": (int(ctrl_starts[pick]), int(ctrl_ends[pick]))}
     for name in SELFTEST_ORDER[:-1]:
         starts, ends = channel_runs(trace.bits, phase_map[name])
-        keep = np.flatnonzero(ends <= ctrl_starts[0] + 1)
+        keep = np.flatnonzero(ends <= ctrl_starts[pick] + 1)
         if keep.size == 0:
             return {"found": False, "pass": False, "reason": f"no self-test pulse on {name}"}
         pulses[name] = (int(starts[keep[-1]]), int(ends[keep[-1]]))
@@ -426,7 +446,7 @@ def selftest_check(trace: Trace, phase_map: dict, width_ms=200.0, tol_ms=5.0,
     overlap = int(np.count_nonzero(level > 1))
     ok &= overlap == 0
     return {"found": True, "pass": bool(ok), "pulses": rows, "overlap_samples": overlap,
-            "end_sample": last}
+            "end_sample": last, "ctrl_pulses_before_selftest": pick}
 
 
 # ----------------------------------------------------------------------------- cycles
@@ -677,6 +697,23 @@ def cmd_markers(args) -> int:
     return result
 
 
+RATE_LIMIT_PCT = 0.1   # TC2: samples between DUT ON and OFF vs host time x 100 kS/s
+
+
+def data_loss_checks(trace: Trace, ignore_counter: bool = False) -> dict:
+    """TC2 checks of a raw capture: sample counter continuity (unless the session A test showed
+    bits 18-23 are not a counter: --ignore-counter) and the capture's sample-rate deviation."""
+    out = {}
+    counter = trace.info.get("counter")
+    if counter is not None and not ignore_counter:
+        out["no_data_loss"] = counter.get("discontinuities") in (0, None)
+    capture = trace.info.get("capture") or {}
+    if capture.get("dut_on_rate_deviation_pct") is not None:
+        out["sample_rate_ok"] = capture["dut_on_rate_deviation_pct"] <= RATE_LIMIT_PCT \
+            and capture.get("reader_error") is None
+    return out
+
+
 def cmd_analyze(args) -> int:
     trace = load_trace(args.raw, args.csv, args.v_supply_mV, not args.no_spike_filter)
     phase_map = args.map
@@ -702,8 +739,11 @@ def cmd_analyze(args) -> int:
         "cycle_count": len(cycles) == args.expect_cycles,
         "all_cycles_valid": len(valid) == len(cycles) and bool(cycles),
         "diff_below_3pct_all": bool(diffs) and max(diffs) < DIFF_LIMIT_PCT and len(diffs) == len(cycles),
-        "no_data_loss": trace.info.get("counter", {}).get("discontinuities") in (0, None),
     }
+    unused = [c for c in range(8) if c not in phase_map.values()]
+    stray = {f"D{c}": int(np.count_nonzero((trace.bits >> c) & 1)) for c in unused}
+    checks["unused_channels_low"] = not any(stray.values())
+    checks.update(data_loss_checks(trace, args.ignore_counter))
     if args.expect_p1 is not None:
         checks["p1_cycles"] = p1 == args.expect_p1
     if args.expect_p0 is not None:
@@ -722,12 +762,14 @@ def cmd_analyze(args) -> int:
         "phase_map": {k: f"D{v}" for k, v in phase_map.items()},
         "method": "per-sample phase assignment, rectangle sum E = V*sum(i)*dt (W7-D11); "
                   "gross = primary, net = gross - V*I_idle*t (W7-D5)",
+        "counter_ignored": bool(args.ignore_counter),
         "selftest": selftest,
         "idle": idle,
         "I_idle_uA": i_idle,
         "cycles_found": len(cycles), "cycles_valid": len(valid), "p1_cycles": p1, "p0_cycles": p0,
         "diff_pct": describe(diffs),
         "anomalies": anomalies,
+        "unused_channel_high_samples": stray,
         "errors": {i: c["errors"] for i, c in enumerate(cycles) if c["errors"]},
         "conn_interval_diagnostic": conn,
         "groups": summarize_cycles(cycles),
@@ -788,6 +830,9 @@ def build_parser() -> argparse.ArgumentParser:
                    help="idle window start after the self-test CTRL pulse ends")
     p.add_argument("--idle-seconds", type=float, default=29.0)
     p.add_argument("--no-plot", action="store_true")
+    p.add_argument("--ignore-counter", action="store_true",
+                   help="only if session A showed bits 18-23 are not a sample counter (TC2 then "
+                        "rests on the sample-rate check)")
     p.add_argument("--out", type=Path, required=True, help="new directory")
     p.set_defaults(func=cmd_analyze)
     return parser

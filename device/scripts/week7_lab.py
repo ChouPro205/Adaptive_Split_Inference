@@ -151,8 +151,10 @@ def cmd_dryrun(args) -> int:
     wc.write_new_json(out / "stub" / "summary.json", {
         "schema": "week7-stub-edge/1", "counters": edge.counters, "peer_counts": peer.counts,
         "reassembler": peer.reasm.counters, **result})
+    extra = [] if args.prior_reserved_through is None else [
+        "--prior-reserved-through", str(args.prior_reserved_through)]
     return checker("dryrun", out, ["--p1", str(args.p1), "--p0", str(args.p0),
-                                   "--split", str(args.split)])
+                                   "--split", str(args.split), *extra])
 
 
 def main() -> int:
@@ -180,6 +182,8 @@ def main() -> int:
     p.add_argument("--conn-interval", type=int, default=12,
                    help="CONNPARAM value in 1.25 ms units (W7-D7), 0 = leave the central's choice")
     p.add_argument("--key-file", help="32-byte bench key (P1 requests need it)")
+    p.add_argument("--prior-reserved-through", type=int,
+                   help="NONCE reserved_through read with the previous image (lab step 1)")
     p.set_defaults(func=cmd_dryrun)
     args = parser.parse_args()
     return args.func(args)

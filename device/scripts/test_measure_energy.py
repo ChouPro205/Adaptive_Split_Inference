@@ -151,7 +151,7 @@ class RawConversion(unittest.TestCase):
         counter = (np.arange(1000) % 64).astype(np.uint8)
         self.assertEqual(ep.counter_check(counter),
                          {"available": True, "discontinuities": 0, "lost_samples_min": 0,
-                          "first_discontinuity_sample": None})
+                          "first_discontinuity_sample": None, "step_histogram_top": {1: 999}})
         dropped = np.delete(counter, [100, 101, 102, 500])
         check = ep.counter_check(dropped)
         self.assertEqual(check["discontinuities"], 2)
@@ -425,6 +425,74 @@ class Capture(unittest.TestCase):
                         np.mean(trace.current_ua[on + 1000:]))
         with self.assertRaises(SystemExit):
             me.capture("COM_FAKE", 5000, 0.1, out, "", None, "", opener=opener)
+        self.assertEqual(meta["counter"]["discontinuities"], 0)
+        self.assertEqual(meta["stale_bytes_dropped_at_open"], 0)
+
+    def test_stale_stream_and_probe(self):
+        """A PPK2 left measuring by an aborted run: stop it, drop the words, read metadata."""
+        import ppk2_api.ppk2_api as api
+        fake = FakeSerial()
+        fake.measuring = True
+        time.sleep(0.05)
+
+        def opener(_port):
+            with mock.patch("serial.Serial", return_value=fake):
+                return api.PPK2_API("COM_FAKE"), api
+
+        info = me.probe("COM_FAKE", 0.3, opener=opener)
+        self.assertGreater(info["stale_bytes_dropped"], 0)
+        self.assertEqual([w[0] for w in fake.written][:2], [0x07, 0x19])
+        self.assertTrue(info["metadata_ok"])
+        self.assertEqual(info["counter"]["discontinuities"], 0)
+        self.assertAlmostEqual(info["samples_per_s"], 100_000, delta=5_000)
+        self.assertNotIn(bytes([0x0C, 0x01]), fake.written)      # probe never powers the DUT
+
+
+class Week7Driver(unittest.TestCase):
+    def test_selftest_skips_power_on_glitch(self):
+        b = Builder().add(500, 30).add(3, 900, ["ctrl"]).add(500, 30)
+        for name in ep.SELFTEST_ORDER:
+            b.add(20000, 400, [name])
+        b.add(1000, 25)
+        check = ep.selftest_check(b.trace(), MAP)
+        self.assertTrue(check["pass"], check)
+        self.assertEqual(check["ctrl_pulses_before_selftest"], 1)
+
+    def test_slice_and_rotation_cut_at_power_off(self):
+        b = Builder().add(100, 0)
+        for k in range(8):
+            b.add(50000, 900, [("dev", "prot", "tx", "wait")[k % 4]])
+        b.add(20000, 900, ["dev"]).add(20000, 0)        # pulse cut by the DUT power OFF
+        trace = b.trace()
+        self.assertFalse(ep.rotation_check(trace, (0, 1, 2, 3))["pass"])
+        cut = ep.slice_trace(trace, 100, trace.n - 20000)
+        self.assertTrue(ep.rotation_check(cut, (0, 1, 2, 3))["pass"])
+
+    def test_data_loss_checks(self):
+        trace = Builder().add(10, 1).trace()
+        trace.info = {"counter": {"available": True, "discontinuities": 2},
+                      "capture": {"dut_on_rate_deviation_pct": 0.01, "reader_error": None}}
+        self.assertEqual(ep.data_loss_checks(trace), {"no_data_loss": False, "sample_rate_ok": True})
+        self.assertEqual(ep.data_loss_checks(trace, ignore_counter=True), {"sample_rate_ok": True})
+
+    def test_interval_match(self):
+        import week7_ppk2 as drv
+        # B1 2026-10-22: the first TX takes 74 ms longer (connection events), so start spacing and
+        # arrival spacing differ by 74 ms while the TX ends still line up with the arrivals.
+        tx = [102.0, 28.0, 29.0, 40.0, 28.0]
+        cycles = [{"start_sample": 100_000 + k * 106_000, "rho": "P1", "t_ctrl_ms": 0.2,
+                   "t_dev_ms": 37.8, "t_prot_ms": 1.3, "t_tx_ms": tx[k]} for k in range(5)]
+        records = [{"t_rx_ms": 5000 + k * 1060 + 39.3 + tx[k] + (7 if k == 3 else 0), "rho": "P1"}
+                   for k in range(5)]
+        match = drv.match_intervals(cycles, records)
+        self.assertTrue(match["pass"])
+        self.assertGreater(match["start_spacing_max_abs_delta_ms"], 70)
+        records[3]["t_rx_ms"] += 40
+        self.assertFalse(drv.match_intervals(cycles, records)["pass"])
+        records[3]["t_rx_ms"] -= 40
+        records[4]["rho"] = "P0"
+        self.assertFalse(drv.match_intervals(cycles, records)["pass"])
+        self.assertFalse(drv.match_intervals(cycles[:4], records)["pass"])
 
 
 def tearDownModule():
