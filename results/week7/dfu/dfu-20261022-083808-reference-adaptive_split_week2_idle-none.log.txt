@@ -1,0 +1,26 @@
+﻿
+Traceback (most recent call last):
+  File "nordicsemi\dfu\dfu_transport_serial.py", line 198, in open
+  File "serial\serialwin32.py", line 33, in __init__
+  File "serial\serialutil.py", line 244, in __init__
+  File "serial\serialwin32.py", line 80, in open
+  File "serial\serialwin32.py", line 222, in _reconfigure_port
+serial.serialutil.SerialException: Cannot configure port, something went wrong. Original message: PermissionError(13, 'A device attached to the system is not functioning.', None, 31)
+System.Management.Automation.RemoteException
+During handling of the above exception, another exception occurred:
+System.Management.Automation.RemoteException
+Traceback (most recent call last):
+  File "nordicsemi\__main__.py", line 1555, in <module>
+  File "click\core.py", line 1137, in __call__
+  File "click\core.py", line 1062, in main
+  File "click\core.py", line 1668, in invoke
+  File "click\core.py", line 1668, in invoke
+  File "click\core.py", line 1404, in invoke
+  File "click\core.py", line 763, in invoke
+  File "nordicsemi\__main__.py", line 1032, in usb_serial
+  File "nordicsemi\__main__.py", line 988, in do_serial
+  File "nordicsemi\dfu\dfu.py", line 127, in dfu_send_images
+  File "nordicsemi\dfu\dfu.py", line 88, in _dfu_send_image
+  File "nordicsemi\dfu\dfu_transport_serial.py", line 202, in open
+pc_ble_driver_py.exceptions.NordicSemiException: Serial port could not be opened on COM6. Reason: None
+[10568] Failed to execute script '__main__' due to unhandled exception!

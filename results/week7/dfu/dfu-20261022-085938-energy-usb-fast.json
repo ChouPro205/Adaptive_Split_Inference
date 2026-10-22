@@ -1,0 +1,25 @@
+﻿{
+    "origin":  "REAL_USB_DFU",
+    "port":  "COM6",
+    "variant":  "energy-usb",
+    "kernel":  "fast",
+    "build_id":  "f16d897c0009-energy-usb-fast-20261019T141057Z",
+    "dirty":  false,
+    "report_dir":  "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-usb-fast",
+    "zip":  "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-usb-fast\\adaptive_split_week7_energy-usb_fast.zip",
+    "zip_sha256":  "d22de6484f70f87e7a74938063f3abceb228cb3cb2c9e9577e5b0bc7406ea431",
+    "bin_sha256":  "f570adaf0504039357d10f6ad7cab088bfef761b94c6d2c3428893a12321c561",
+    "elf_sha256":  "3ff2e9c26529b6c37f62928784b9a0f93aa06fb81be11e2608a00beea9add607",
+    "executable":  "D:\\ncs\\toolchains\\dcbdc366a1\\nrfutil\\bin\\nrfutil.exe",
+    "arguments":  [
+                      "nrf5sdk-tools",
+                      "dfu",
+                      "usb-serial",
+                      "--package",
+                      "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-usb-fast\\adaptive_split_week7_energy-usb_fast.zip",
+                      "--port",
+                      "COM6"
+                  ],
+    "exit_code":  0,
+    "timestamp":  "2026-10-22T02:00:08.0757998+00:00"
+}

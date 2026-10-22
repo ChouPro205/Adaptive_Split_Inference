@@ -1,0 +1,78 @@
+mainmenu "Adaptive Split Inference Week 7 energy measurement"
+
+choice WEEK7_VARIANT
+	prompt "Week 7 firmware variant"
+	default WEEK7_ENERGY_USB
+
+config WEEK7_BENCH
+	bool "bench: USB CDC, both FP32 kernels (CMP/MIX/BENCH), no radio (TC7)"
+
+config WEEK7_ENERGY_USB
+	bool "energy-usb: measurement cycle over BLE with USB CDC debug output (TC4, dry runs)"
+
+config WEEK7_ENERGY
+	bool "energy: automatic PPK2 session, no USB/console/log/LED (TC1, TC5, TC6)"
+
+endchoice
+
+choice WEEK7_KERNEL
+	prompt "Head kernel used by the measurement cycle (decision W7-D8)"
+	default WEEK7_KERNEL_FAST
+
+config WEEK7_KERNEL_FAST
+	bool "optimized FP32 kernel (week7/head_fast.c)"
+
+config WEEK7_KERNEL_WEEK4
+	bool "week 4 reference kernel (src/week4_head.c)"
+
+endchoice
+
+config WEEK7_SPLIT
+	int "Fixed split point s of the measurement cycle (W7-D9)"
+	range 0 10
+	default 2
+
+config WEEK7_P1_CYCLES
+	int "Cycles with rho = P1 (I2/1 protect), run first"
+	range 0 1000
+	default 50
+
+config WEEK7_P0_CYCLES
+	int "Cycles with rho = P0 (plain), run after the P1 cycles"
+	range 0 1000
+	default 50
+
+config WEEK7_CYCLE_GAP_MS
+	int "Connected idle between two cycles (ms)"
+	default 1000
+
+config WEEK7_BOOT_IDLE_S
+	int "Idle window after the boot self-test, radio off (W7-D3)"
+	default 30
+
+config WEEK7_CONNECTED_IDLE_S
+	int "Connected idle before the first cycle (s)"
+	default 30
+
+config WEEK7_SETTLE_S
+	int "Wait after the link is ready and the parameters are requested (s)"
+	default 5
+
+config WEEK7_SELFTEST_MS
+	int "Width of each marker pulse in the boot self-test D0..D4 (TC1)"
+	default 200
+
+config WEEK7_CTRL_MIN_US
+	int "Minimum CTRL pulse width so 100 kS/s sampling sees it (stub controller)"
+	default 200
+
+config WEEK7_RESPONSE_TIMEOUT_MS
+	int "WAIT gives up after this long without a valid response (no retry in week 7)"
+	default 5000
+
+config WEEK7_CONN_INTERVAL_1250US
+	int "Connection interval requested from the central, 1.25 ms units, 0 = do not ask (W7-D7)"
+	range 0 3200
+	default 12
+
+source "Kconfig.zephyr"

@@ -1,0 +1,78 @@
+{
+  "schema": "week7-ppk2-idle/1",
+  "status": "PASS",
+  "checks": {
+    "capture_status_pass": true,
+    "no_data_loss": true,
+    "sample_rate_ok": true,
+    "counter_available": true,
+    "capture_at_least_120_s": true,
+    "idle_mean_within_tolerance": true,
+    "logic_all_low_in_window": true
+  },
+  "I_idle_uA": 25.792650330044527,
+  "deviation_pct": 1.4779491287111983,
+  "window": {
+    "start_sample": 550176,
+    "stop_sample": 6550176,
+    "sample_count": 6000000,
+    "duration_s": 60.00000000000001,
+    "mean_uA": 25.792650330044527,
+    "sample_std_uA": 9.963729948011373,
+    "min_uA": 7.575890222594213,
+    "max_uA": 462.60592654450653,
+    "charge_rect_mC": 1.5475590198026719,
+    "v_supply_mV": 5000.0,
+    "energy_rect_uJ": 7737.795099013359,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0,
+      "D7": 0
+    }
+  },
+  "after_power_on_1s_to_end": {
+    "mean_uA": 25.283725564378166,
+    "sample_std_uA": 8.869838947166608,
+    "duration_s": 124.21472000000001,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0,
+      "D7": 0
+    }
+  },
+  "counter": {
+    "available": true,
+    "discontinuities": 0,
+    "lost_samples_min": 0,
+    "first_discontinuity_sample": null,
+    "step_histogram_top": {
+      "1": 12571647
+    }
+  },
+  "capture": {
+    "samples": 12571648,
+    "dut_on_samples": 12500992.0,
+    "dut_on_samples_expected": 12501499.999999987,
+    "dut_on_rate_deviation_pct": 0.004063512378410287,
+    "host_max_gap_between_reads_s": 0.0069540999998025654,
+    "raw_sha256": "c1c78ecea7c324029c58c6d29bd2b7a43991a9fb11efa568f0109e76bb1bab4b",
+    "status": "PASS"
+  },
+  "range_counts": [
+    12532393,
+    34916,
+    98,
+    4218,
+    23
+  ]
+}
