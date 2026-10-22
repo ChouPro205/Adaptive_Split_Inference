@@ -1,0 +1,47 @@
+{
+  "schema": "week7-stub-edge/1",
+  "counters": {
+    "received": 100,
+    "crc_fail": 0,
+    "drop": 0,
+    "reject": 0,
+    "wrong_split": 0,
+    "sequence_not_increasing": 0,
+    "no_key": 0,
+    "unknown_q": 0,
+    "p1": 50,
+    "p0": 50,
+    "response_sent": 100
+  },
+  "peer_counts": {
+    "rx_frames": 100,
+    "tx_frames": 100,
+    "rx_crc_fail": 0,
+    "connections": 1,
+    "faults_applied": 0,
+    "rx_fragments": 1400,
+    "tx_fragments": 100
+  },
+  "reassembler": {
+    "frames_delivered": 100
+  },
+  "checks": {
+    "count": true,
+    "all_ok": true,
+    "rho_order": true,
+    "samples_rotate": true,
+    "request_id_increasing": true,
+    "responses_sent": true
+  },
+  "status": "PASS",
+  "request_lengths": [
+    3076,
+    3116
+  ],
+  "first_sequence": 60626946,
+  "last_sequence": 60626995,
+  "inter_request_ms": {
+    "min": 1078,
+    "max": 1125
+  }
+}

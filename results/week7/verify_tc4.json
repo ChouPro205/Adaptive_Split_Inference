@@ -1,0 +1,68 @@
+{
+  "schema": "week7-check-verify/1",
+  "session": "D:\\HUST\\ASI_week7\\session-20261020\\verify2",
+  "status": "PASS",
+  "device_banner": {
+    "build": "f16d897c0009-energy-usb-fast-20261019T141057Z",
+    "variant": "energy-usb",
+    "kernel": "FAST",
+    "split": "2",
+    "p1": "50",
+    "p0": "50",
+    "gap_ms": "1000",
+    "boot_idle_s": "30",
+    "connected_idle_s": "30",
+    "ctrl_min_us": "200",
+    "timeout_ms": "5000",
+    "conn_interval_1250us": "12",
+    "d4_pin": "P0.22"
+  },
+  "checks": {
+    "q_scale_cases": true,
+    "q_scale_equal_golden": true,
+    "request_cases": true,
+    "requests_equal_python_reference": true
+  },
+  "splits": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "mismatches": [],
+  "explained_golden_differences": [
+    {
+      "n": 8,
+      "s": 10,
+      "channels": [
+        3
+      ]
+    },
+    {
+      "n": 13,
+      "s": 10,
+      "channels": [
+        3
+      ]
+    },
+    {
+      "n": 18,
+      "s": 10,
+      "channels": [
+        2
+      ]
+    }
+  ],
+  "explained_note": "q/scale compared with device_tensor(): SV3 golden except the FP16 scale bits of results/week5/golden_difference_analysis.json",
+  "tool_sha256": {
+    "check_week7.py": "f89590f198a6d3547d912a6de602207b2f3b12027c8727df929fd66299ac10cd",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b"
+  }
+}

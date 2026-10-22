@@ -1,0 +1,96 @@
+{
+  "schema": "week7-check-verify/1",
+  "session": "D:\\HUST\\ASI_week7\\session-20261020\\verify",
+  "status": "FAIL",
+  "device_banner": {
+    "build": "f16d897c0009-energy-usb-fast-20261019T141057Z",
+    "variant": "energy-usb",
+    "kernel": "FAST",
+    "split": "2",
+    "p1": "50",
+    "p0": "50",
+    "gap_ms": "1000",
+    "boot_idle_s": "30",
+    "connected_idle_s": "30",
+    "ctrl_min_us": "200",
+    "timeout_ms": "5000",
+    "conn_interval_1250us": "12",
+    "d4_pin": "P0.22"
+  },
+  "checks": {
+    "q_scale_cases": true,
+    "q_scale_equal_golden": false,
+    "request_cases": true,
+    "requests_equal_python_reference": false
+  },
+  "splits": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "mismatches": [
+    {
+      "n": 8,
+      "s": 10,
+      "what": "q/scale"
+    },
+    {
+      "n": 13,
+      "s": 10,
+      "what": "q/scale"
+    },
+    {
+      "n": 18,
+      "s": 10,
+      "what": "q/scale"
+    },
+    {
+      "n": 8,
+      "s": 10,
+      "rho": "P0",
+      "what": "request"
+    },
+    {
+      "n": 8,
+      "s": 10,
+      "rho": "P1",
+      "what": "request"
+    },
+    {
+      "n": 13,
+      "s": 10,
+      "rho": "P0",
+      "what": "request"
+    },
+    {
+      "n": 13,
+      "s": 10,
+      "rho": "P1",
+      "what": "request"
+    },
+    {
+      "n": 18,
+      "s": 10,
+      "rho": "P0",
+      "what": "request"
+    },
+    {
+      "n": 18,
+      "s": 10,
+      "rho": "P1",
+      "what": "request"
+    }
+  ],
+  "tool_sha256": {
+    "check_week7.py": "0234542d9d2150784e693b3b9105fc126433d1a0c5b34f6644a1051f26af49ca",
+    "week7_common.py": "a55476e1b67453b3b9e5ef961b152c7e267417e0ca3cb92cbecc9017ae3b379a"
+  }
+}

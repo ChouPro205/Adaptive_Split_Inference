@@ -1,0 +1,44 @@
+{
+  "schema": "week7-ppk2-session/1",
+  "kind": "active",
+  "command": [
+    "device/scripts/week7_ppk2.py",
+    "active",
+    "--port",
+    "COM8",
+    "--out",
+    "D:/HUST/ASI_week7/session-20261022/A2-active-w1",
+    "--temp-c",
+    "26.5",
+    "--image",
+    "device/artifacts/adaptive_split_week1_demo.zip",
+    "--receipt",
+    "D:/HUST/ASI_week7/session-20261022/dfu/dfu-20261022-085010-reference-adaptive_split_week1_demo-none.json"
+  ],
+  "started_utc": "2026-10-22T01:53:07.294634+00:00",
+  "temp_room_C": 26.5,
+  "v_supply_mV": 5000,
+  "power": "PPK2 Source Meter -> USB breakout VBUS 5 V; dongle not on laptop USB",
+  "tool_sha256": {
+    "week7_ppk2.py": "b914ce9d827f43badf9bfc629a7743c8bafe250e92513984245a9d283da3648f",
+    "measure_energy.py": "32ba8c602b71642c96fbcd45d299f5f0cb3ddbd40d11b513226c8b58b2e9be4c",
+    "energy_phases.py": "a212e178c9796b46d097de75ffc871213ea65e70eaab95e4c033cc1ee4442984",
+    "week7_stub_edge.py": "cb544b07f9f8c12453565e21253d29a73babe4ea55899e739e884b0335e2e7f9",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b",
+    "week6_lab.py": "52f79e40bd575626eaeb8bdbc0a6ecc66cd24d5cf2abea66c08f1a302ff46c2a",
+    "week6_common.py": "a15377a7cd05f73f6b17a2ce0210193da28e499af67ba8bd17e2faa64f7b312a"
+  },
+  "photos": "add with: week7_ppk2.py note --out <this dir> --photo <file>",
+  "image": {
+    "image": "device\\artifacts\\adaptive_split_week1_demo.zip",
+    "zip_sha256": "c0a261c48068c41522a6f30a24e59a1e25a0c91b9be4630ac42d266c721dd34c",
+    "zip_bytes": 49773,
+    "receipt": {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-085010-reference-adaptive_split_week1_demo-none.json",
+      "exit_code": 0,
+      "build_id": null,
+      "timestamp": "2026-10-22T01:50:17.2397172+00:00",
+      "zip_sha256": "c0a261c48068c41522a6f30a24e59a1e25a0c91b9be4630ac42d266c721dd34c"
+    }
+  }
+}

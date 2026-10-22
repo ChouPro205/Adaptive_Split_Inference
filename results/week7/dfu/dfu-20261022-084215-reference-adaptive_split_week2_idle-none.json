@@ -1,0 +1,25 @@
+﻿{
+    "origin":  "REAL_USB_DFU",
+    "port":  "COM6",
+    "variant":  "reference-adaptive_split_week2_idle",
+    "kernel":  "none",
+    "build_id":  null,
+    "dirty":  null,
+    "report_dir":  "",
+    "zip":  "D:\\HUST\\Adaptive_Split_Inference\\device\\artifacts\\adaptive_split_week2_idle.zip",
+    "zip_sha256":  "be88891a44dcf6939b50172f09f6162a5a806a6fb7b14f4a767ee81a95da78d5",
+    "bin_sha256":  null,
+    "elf_sha256":  null,
+    "executable":  "D:\\ncs\\toolchains\\dcbdc366a1\\nrfutil\\bin\\nrfutil.exe",
+    "arguments":  [
+                      "nrf5sdk-tools",
+                      "dfu",
+                      "usb-serial",
+                      "--package",
+                      "D:\\HUST\\Adaptive_Split_Inference\\device\\artifacts\\adaptive_split_week2_idle.zip",
+                      "--port",
+                      "COM6"
+                  ],
+    "exit_code":  0,
+    "timestamp":  "2026-10-22T01:42:20.7337622+00:00"
+}

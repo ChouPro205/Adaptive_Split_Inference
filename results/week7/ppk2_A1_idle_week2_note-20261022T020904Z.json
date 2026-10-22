@@ -1,0 +1,13 @@
+{
+  "schema": "week7-ppk2-note/1",
+  "utc": "20261022T020904Z",
+  "temp_end_C": null,
+  "photos": [
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\photos\\bench_ppk2_20261022.png",
+      "sha256": "5a99749c5ffcaf58ff68219680d04020b84180e604e4435231c0e8251fe6997e",
+      "bytes": 4020492
+    }
+  ],
+  "text": "Anh ban do chup 09:08 22/10 (sau phien A, cung cach dau day; dongle tren breakout USB-A). Nhiet do phong 26-27 C (uoc luong, khong co nhiet ke); P0.22 do thong mach khong chap (Chau)."
+}

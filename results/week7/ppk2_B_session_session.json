@@ -1,0 +1,63 @@
+{
+  "schema": "week7-ppk2-session/1",
+  "kind": "session",
+  "command": [
+    "device/scripts/week7_ppk2.py",
+    "session",
+    "--port",
+    "COM8",
+    "--out",
+    "D:/HUST/ASI_week7/session-20261022/B2",
+    "--temp-c",
+    "26.5",
+    "--image",
+    "D:/HUST/ASI_week7/firmware-20261019/energy-fast",
+    "--receipt",
+    "D:/HUST/ASI_week7/session-20261022/dfu/dfu-20261022-090419-energy-fast.json",
+    "--key-file",
+    "D:/HUST/ASI_week6/secrets/bench_key_65537.bin",
+    "--prior-reserved-through",
+    "60634163",
+    "--dryrun-check",
+    "D:/HUST/ASI_week7/session-20261020/dryrun/check_dryrun_recheck_block.json",
+    "--a1",
+    "D:/HUST/ASI_week7/session-20261022/A1-idle-w2"
+  ],
+  "started_utc": "2026-10-22T02:18:04.739423+00:00",
+  "temp_room_C": 26.5,
+  "v_supply_mV": 5000,
+  "power": "PPK2 Source Meter -> USB breakout VBUS 5 V; dongle not on laptop USB",
+  "tool_sha256": {
+    "week7_ppk2.py": "7d3f448c5ba32ecca335580683ef1abef7bec429913873b7958798f582dcf32f",
+    "measure_energy.py": "32ba8c602b71642c96fbcd45d299f5f0cb3ddbd40d11b513226c8b58b2e9be4c",
+    "energy_phases.py": "a212e178c9796b46d097de75ffc871213ea65e70eaab95e4c033cc1ee4442984",
+    "week7_stub_edge.py": "cb544b07f9f8c12453565e21253d29a73babe4ea55899e739e884b0335e2e7f9",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b",
+    "week6_lab.py": "52f79e40bd575626eaeb8bdbc0a6ecc66cd24d5cf2abea66c08f1a302ff46c2a",
+    "week6_common.py": "a15377a7cd05f73f6b17a2ce0210193da28e499af67ba8bd17e2faa64f7b312a"
+  },
+  "photos": "add with: week7_ppk2.py note --out <this dir> --photo <file>",
+  "image": {
+    "image": "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-fast",
+    "build_id": "f16d897c0009-energy-fast-20261019T141139Z",
+    "variant": "energy",
+    "kernel": "fast",
+    "check_status": "PASS",
+    "dirty": false,
+    "bin_sha256": "281baf890239a5a4a39b70f3d652ffb046f25603f967752fb865def8645e07eb",
+    "receipt": {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-090419-energy-fast.json",
+      "exit_code": 0,
+      "build_id": "f16d897c0009-energy-fast-20261019T141139Z",
+      "timestamp": "2026-10-22T02:04:47.7822744+00:00",
+      "zip_sha256": "49d5c7b7ff1de61b08becb613dbba54babd1ad13c0d2c5d3910ac615d19f065e"
+    }
+  },
+  "split": 2,
+  "p1": 50,
+  "p0": 50,
+  "prior_reserved_through": 60634163,
+  "key": "bench key file",
+  "dryrun_check": "D:\\HUST\\ASI_week7\\session-20261020\\dryrun\\check_dryrun_recheck_block.json",
+  "session_a_idle": "D:\\HUST\\ASI_week7\\session-20261022\\A1-idle-w2"
+}

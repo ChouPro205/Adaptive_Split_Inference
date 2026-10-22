@@ -34,3 +34,6 @@ ml/provenance/week6-p1-20261016/** -text whitespace=-blank-at-eol,-blank-at-eof,
 # Week 6 dongle evidence: copies of checker/DFU outputs, hashed byte-exact in manifest.json.
 results/week6/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 results/week6/README.md text eol=lf
+# Week 7 PPK2/dongle evidence: copies of checker/DFU outputs, hashed byte-exact in manifest.json.
+results/week7/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+results/week7/README.md text eol=lf

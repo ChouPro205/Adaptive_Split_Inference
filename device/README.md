@@ -28,7 +28,7 @@ Quy ước chung cho mọi chế độ:
 | 11 điểm cắt FP32, gói R3 (tuần 4) | `overlay-week4.conf` | `src/main_week4.c`, `src/week4_head.c`, `src/week4_protocol.c` | `scripts/build_week4_head.ps1` | [báo cáo tuần 4](../docs/sv1_device_week4_report.md) (phụ lục 12), [kết quả](../results/week4/README.md) |
 | Lượng tử hóa INT8 + scale FP16 (tuần 5) | ứng dụng riêng `week5/` | `week5/main.c`, `week5/quantization.c` (dùng lại kernel/giao thức tuần 4) | `scripts/build_week5_head.ps1` | [tái lập tuần 5](#tái-lập-tuần-5), [kết quả](../results/week5/README.md) |
 | BLE Device–Edge (tuần 6: 8 tiêu chí phía Device PASS trên dongle ngày 19/10/2026, peer laptop) | ứng dụng riêng `week6/`, biến thể `default`/`mtu23` | `week6/main.c` | `scripts/build_week6.ps1` | [báo cáo tuần 6](../docs/sv1_device_week6_report.md) (phụ lục B: firmware, C: quy trình lab), [kết quả](../results/week6/README.md) |
-| Đo năng lượng theo pha (tuần 7, đang làm): marker D0–D4, chu kỳ CTRL→HEAD→PROT→TX→WAIT, kernel FP32 tối ưu | ứng dụng riêng `week7/`, biến thể `bench`/`energy-usb`/`energy` × kernel `fast`/`week4` | `week7/main.c`, `week7/energy_cycle.c`, `week7/head_fast.c` | `scripts/build_week7.ps1` | báo cáo tuần 7 (chưa có); công cụ đo `scripts/measure_energy.py`, phân tích `scripts/energy_phases.py` |
+| Đo năng lượng theo pha (tuần 7: 9 tiêu chí PASS, PPK2 ngày 22/10/2026): marker D0–D4, chu kỳ CTRL→HEAD→PROT→TX→WAIT, kernel FP32 tối ưu | ứng dụng riêng `week7/`, biến thể `bench`/`energy-usb`/`energy` × kernel `fast`/`week4` | `week7/main.c`, `week7/energy_cycle.c`, `week7/head_fast.c` | `scripts/build_week7.ps1` | [báo cáo tuần 7](../docs/sv1_device_week7_report.md) (phụ lục C: quy trình lab PPK2), [kết quả](../results/week7/README.md); công cụ `scripts/week7_ppk2.py`, `scripts/measure_energy.py`, `scripts/energy_phases.py` |
 
 Bốn chế độ đầu dùng chung `CMakeLists.txt`/`Kconfig` của thư mục này; CMake
 chọn đúng một entry point theo Kconfig. Ứng dụng tuần 5 có `CMakeLists.txt`
@@ -118,6 +118,8 @@ script tuần 3–5 thì từ chối ghi đè image đã đo và yêu cầu thư
   có revision mới do Châu và Trung xác nhận `device_revision = edge_revision`.
 - Tuần 7: energy image cấp phát trước khối nonce lúc boot (một lần ghi NVS, một xung D1 trước
   self-test) để không chu kỳ đo nào ghi Flash; mỗi lần boot chạy tối đa 1023 chu kỳ P1.
+  Sau phiên đo image energy vẫn quảng bá lại (`week6/ble_link.c` khởi động advertising khi connection được giải
+  phóng); không chạm 100 chu kỳ đo, sửa ở tuần 8. `E_tx`/`E_wait` phụ thuộc vị trí dongle so với laptop.
 - Firmware tuần 3–5 đã nghiệm thu được giữ nguyên; lỗi parser cũ của
   `main_week3.c` (phần còn lại của dòng quá dài được xử lý như lệnh mới) không
   ảnh hưởng luồng đang dùng nên không sửa.
