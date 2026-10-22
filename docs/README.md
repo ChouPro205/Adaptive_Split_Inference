@@ -30,6 +30,13 @@ và báo cáo của dự án.
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 2](SV3_ML_week2_report.md)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 3](sv3_ml_week3_report.md)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 4](sv3_ml_week4_report.md)
+- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 5](sv3_ml_week5_report.md): INT8/FP16,
+  P1 Python, accuracy 8.544 x 11, allocation/final acceptance PR25
+- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 6](sv3_ml_week6_report.md): 50 vector
+  P1 thật, C/Python và output host; tiếp nhận MCU SV1 được ghi riêng
+- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 7](sv3_ml_week7_report.md): dCor,
+  NoPeek smoke offline và cấu hình tuần 8; không thay nghiệm thu KV260
+- [Checklist phụ thuộc SV3 tuần 7](sv3_week7_dependency_checklist.md)
 - [SV3: sửa verifier FP32 tuần 3 trên Ubuntu/WSL](sv3_ml_week3_linux_fp32_fix_report.md)
 - [SV3 Linux FP32 review v2: bảo toàn provenance và recipe](sv3_ml_week3_linux_fp32_review_v2_report.md)
 - [SV3 → SV2: bàn giao Week 3 FP32 Linux](sv3_sv2_week3_linux_fp32_handoff.md)
@@ -52,6 +59,17 @@ Tài liệu chuyên biệt cho firmware nằm tại
 [`device/README.md`](../device/README.md); tài liệu pipeline ML nằm tại
 [`ml/docs/`](../ml/docs/).
 
-## SV3 tuần 6
+## Tài liệu kỹ thuật bổ trợ SV3
 
-- [Gói 50 vector P1 chính thức và xác nhận output](../ml/docs/week6_p1_delivery.md): A+B host PASS; MCU/BLE/KV260 chưa nghiệm thu.
+Báo cáo SV3 tuần 5–7 và checklist được quản lý tập trung ở `main/docs/`.
+Phần code/evidence tuần 7 được bàn giao qua
+[PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34).
+
+Các báo cáo tiến độ tuần 5–7 nằm ở `docs/` phía trên. Hồ sơ kỹ thuật và receipts
+được dẫn tới vị trí gốc để giữ nguyên bằng chứng:
+
+- [Delivery và allocation tuần 5](../ml/docs/week5_delivery_v2.md).
+- [Gói 50 vector P1 tuần 6](../ml/docs/week6_p1_delivery.md): A+B host PASS ngày
+  16/10; SV1 MCU/BLE PASS ngày 19/10 được ghi trong báo cáo tuần 6 tại root docs;
+  KV260 còn chờ bằng chứng riêng. Không sửa tài liệu bàn giao ngày 16/10 để đổi lịch sử.
+- [Code/kết quả smoke tuần 7](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/results/week7-nopeek/README.md).
