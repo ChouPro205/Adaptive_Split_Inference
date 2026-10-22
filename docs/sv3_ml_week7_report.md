@@ -1,11 +1,29 @@
-# Báo cáo SV3 Model Privacy tuần 7
+# Báo cáo tiến độ SV3 Bùi Kỳ Anh tuần 7
 
-Ngày đối chiếu: **21/10/2026**, múi giờ Asia/Saigon. Người phụ trách: Bùi Kỳ Anh;
-Codex thực hiện triển khai và review theo yêu cầu. **Phần độc lập tuần 7 đạt trên
-host**, gồm dCor, kiểm thử, chạy thử NoPeek bằng MIT-BIH thật và cấu hình chuẩn bị
-tuần 8. Không có bằng chứng KV260 mới, không nghiệm thu riêng tư hay toàn hệ thống.
+**Người thực hiện:** SV3/Bùi Kỳ Anh, phụ trách Model/Privacy và NoPeek offline.
+**Ngày lập bản kỹ thuật:** 21/10/2026, múi giờ Asia/Saigon.
+**Ngày chuẩn hóa báo cáo tại root docs:** 22/10/2026.
+**Chốt bằng chứng kỹ thuật:** implementation `6be51e3a5d6be8309ef87720e98ed4305352f467`,
+delivery `aadf27bf87dbd291c2ab48323c4edaa67c651a2f`; nền
+`3c56b657aa5003483810b307bb5b666201bb8897`. Cập nhật sau mốc chốt được ghi riêng
+ở mục 9, không đổi nhãn thời điểm hoặc người thực hiện của bằng chứng gốc.
 
-## Phiên bản và nguồn yêu cầu
+Phần độc lập tuần 7 **PASS trên host**: dCor, loss NoPeek, kiểm toán học/gradient,
+chạy thử MIT-BIH thật và cấu hình chuẩn bị tuần 8. Chưa nghiệm thu runtime/accuracy
+KV260, hiệu quả chống tấn công hoặc toàn hệ thống. Hai báo cáo tiền đề nằm tại
+[tuần 5](sv3_ml_week5_report.md) và [tuần 6](sv3_ml_week6_report.md).
+
+Quy ước: **YÊU CẦU DỰ ÁN** là tiêu chí nguồn; **QUYẾT ĐỊNH TRIỂN KHAI** là
+lựa chọn công thức/config/code; **KẾT QUẢ QUAN SÁT** có log/manifest đối chiếu.
+`PASS` chỉ cho phạm vi đã kiểm; `PENDING` là còn chờ; `BLOCKED` có dependency
+cụ thể; `NOT VERIFIED` chưa có bằng chứng. Code/test PASS không thay học hiểu.
+
+**YÊU CẦU DỰ ÁN:** hàm dCor đúng ít nhất ba ca ở tuần 7; quét NoPeek ba split
+ở tuần 8. **QUYẾT ĐỊNH TRIỂN KHAI:** dùng R_n biased, thêm gradient checks và
+smoke ngắn; chưa chạy lưới dài. **KẾT QUẢ QUAN SÁT:** các số liệu của mục 5 thuộc
+đúng implementation pin, không phải một lần huấn luyện mới khi biên tập báo cáo.
+
+## 1. Mục tiêu, phiên bản và nguồn yêu cầu
 
 - Nhánh: `sv3/week7-nopeek-20261021`, worktree
   `exports/sv3-week7-20261021`. Checkout cũ `sv3/fix-week3-sv2-linux-fp32` và các
@@ -35,7 +53,7 @@ tuần 8. Không có bằng chứng KV260 mới, không nghiệm thu riêng tư 
   Tài liệu không cung cấp toàn bộ hội thoại/lập luận trước đây; không suy diễn
   xác nhận thành viên từ phần lịch sử còn thiếu.
 
-## Hiện trạng GitHub và bàn giao
+## 2. Phối hợp và trạng thái bàn giao tại mốc 21/10
 
 [Snapshot truy vấn và PR](../ml/provenance/week7-nopeek-20261021/github-state.json)
 lưu kết quả đọc GitHub, gồm PR, branch và các discussion đã truy vấn.
@@ -65,7 +83,7 @@ bằng chứng kỹ thuật host đã có. Không tự điền chữ ký của K
 Registry hiện hành vẫn `NOT_ACCEPTED` cho nonce runtime; bằng chứng MCU đã có
 nhưng cần revision do đúng thẩm quyền Châu/Trung phê duyệt, không sửa tại chỗ.
 
-## Code mới nằm ở đâu trong luồng suy luận
+## 3. Công việc đã làm và các file chính
 
 Luồng baseline: **ECG chuẩn hóa → head → activation z_s → lượng tử/P1 → truyền →
 unprotect/giải lượng tử → tail → 5 logits N,S,V,F,Q**. Các phần trên wire giữ nguyên.
@@ -89,7 +107,7 @@ unprotect/giải lượng tử → tail → 5 logits N,S,V,F,Q**. Các phần tr
 Không đưa quantization/P1 vào đồ thị huấn luyện thử, không sửa firmware SV1 hay
 backend SV2. Đây là khung NoPeek offline, chưa mô phỏng sai số DPU hoặc mạng BLE.
 
-## Định nghĩa dCor và giới hạn số học
+## 4. Định nghĩa dCor và giới hạn số học
 
 Dùng **R_n, không phải R_n²**, estimator mẫu biased với khoảng cách Euclid,
 alpha=1 và double centering thông thường; giữ đường chéo, chuẩn hóa bởi n².
@@ -120,7 +138,7 @@ Ca độc lập dùng n=1024, mỗi bên một chiều, ba seed cố định. R_
 không bắt bằng 0. Không áp ngưỡng gần 0 của ca này cho ECG 360 chiều hoặc
 activation hàng nghìn chiều ở B=32; không coi một giá trị dCor là bằng chứng riêng tư.
 
-## Kết quả đã chạy trên commit triển khai
+## 5. Kết quả kiểm chứng và chạy thử trên commit triển khai
 
 Môi trường: Python 3.11.9, PyTorch 2.14.0+cu130, NumPy 2.4.6; smoke CPU một
 thread, deterministic, MKLDNN tắt. Có kiểm đối chiếu CUDA cho giá trị/gradient dCor.
@@ -135,7 +153,7 @@ thread, deterministic, MKLDNN tắt. Có kiểm đối chiếu CUDA cho giá tr�
 | Một bước SGD, ca toán | R_n 0.7814269659902954 → 0.7801803187694226 |
 | I1 v2 hồi quy | **23/23 PASS**; `i1-regression-final.*` |
 | I2 hồi quy | **5/5 PASS**; `i2-regression-final.*` |
-| Bảo toàn | **2.441 file tracked gốc không đổi byte nào**; checkpoint, contract, registry, mapping, golden/reference và bằng chứng lịch sử nguyên trạng |
+| Bảo toàn snapshot lịch sử | **2.441 file tracked gốc không đổi byte nào tại pin 6be51e3/aadf27b**; không chứng nhận toàn checkout sau biên tập docs hoặc merge main |
 
 Các file bằng chứng nằm trong
 [`ml/provenance/week7-nopeek-20261021`](../ml/provenance/week7-nopeek-20261021/).
@@ -176,7 +194,7 @@ Kết quả chính ở
 6 checkpoint mỗi lượt nằm ở `ml/artifacts/week7/<run>/`, ngoài Git; có hash/size
 trong summary và metadata `EXPERIMENT_ONLY_NOT_APPROVED`, profile ID=null.
 
-## Chuẩn bị tuần 8
+## 6. Cấu hình chuẩn bị tuần 8
 
 [Cấu hình](../ml/configs/week8_nopeek_sweep.json) chứa lambda
 `{0,0.1,0.5,1,2,5}` cho ba split, mỗi run khởi tạo lại từ checkpoint gốc.
@@ -196,7 +214,7 @@ head identity không có tham số; s10 là logits/device-only, khác mục tiê
 Quét offline vẫn làm được khi chưa có SV2; chủ động để tuần 8 nhằm tránh huấn luyện
 lại nếu tập split triển khai thay đổi. Không gắn toàn bộ NoPeek là BLOCKED_SV2.
 
-## Review và việc tiếp theo
+## 7. Review và việc tiếp theo
 
 Đã đọc toàn bộ diff source/config/tests, đối chiếu công thức, kiểm data binding,
 mode train/eval, checkpoint copies, paths và kết quả sau sửa. Lỗi phát hiện đã sửa:
@@ -235,7 +253,7 @@ hay gán trọng số NoPeek vào profile baseline hiện hành.
 estimator, batch, gradient, finite-sample bias và ý nghĩa riêng tư cần buổi trao đổi/
 demo riêng; không đánh dấu phần học hiểu DONE tự động.
 
-## Chạy lại
+## 8. Deliverables và cách nghiệm thu
 
 Từ root của worktree/checkout mới, dùng Python theo `ml/README.md`; nếu thiếu asset,
 dùng workflow [setup tuần 5](../ml/scripts/setup_week5_delivery_v2.py) và
@@ -249,7 +267,67 @@ python -B ml/scripts/run_week7_nopeek.py --output ml/results/week7-nopeek/new-ru
 ```
 
 Dùng `log_week7_command.py --name <tên-mới> --directory <thư-mục-evidence> --
-<python> ...` để lưu đầy đủ log. Audit có thể gọi hàm `audit()` của
+<python> ...` để lưu đầy đủ log. Chỉ trên snapshot lịch sử `6be51e3`/`aadf27b`
+nguyên trạng, có thể gọi hàm `audit()` của
 `ml/provenance/week7-nopeek-20261021/audit_results.py` để kiểm lại; CLI từ chối
-ghi đè `review-audit.json` đã có. Audit kiểm artifact thử nghiệm nên cần giữ hoặc
+ghi đè `review-audit.json` đã có. Không dùng gate baseline nguyên trạng để chứng nhận
+checkout đã sửa docs/merge main. Audit kiểm artifact thử nghiệm nên cần giữ hoặc
 tái tạo đúng các artifact ngoài Git trước khi chạy lại toàn audit tại máy khác.
+
+## 9. Cập nhật sau mốc chốt ngày 21/10
+
+Review độc lập ngày **21/10**, tại implementation `6be51e3` và delivery `aadf27b`,
+đã chạy lại 19 test thường và `-O` đều PASS;
+tái hiện sáu run bằng full-model forward và activation hooks, không gọi smoke
+runner/head-tail wrappers của tác giả. Toàn bộ 120 batch records, selected IDs,
+metrics và hash trạng thái trọng số cuối khớp. Audit đọc lại xác nhận 2.441 file
+baseline ở snapshot đã kiểm không thay raw bytes; 29 file evidence SV1 và 50
+record P1 đúng. Evidence review được lưu ngoài Git ở thư mục project ChatGPT,
+không coi là file đã publish trong repository này.
+
+Ngày 22/10, GitHub main có thêm
+[PR #33 của SV1](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/33),
+merge `fedeee9db111dedf74ff4102fd3b320992602d35`: báo cáo marker/PPK2 tuần 7
+PASS 9/9, peer laptop stub. Đây là cập nhật của SV1, không phải phép đo của SV3
+và không chứng nhận KV260. Kết quả năng lượng chỉ dùng kiểm phương pháp ở phạm
+vi SV1 công bố; không lấy làm Pareto của model NoPeek hoặc Table II hoàn chỉnh.
+Trước quy trình tạo PR ngày 22/10, chưa thấy PR cho nhánh SV3 tuần 7;
+nhánh remote vẫn `aadf27b`. Trạng thái và kiểm thử sau đồng bộ main được ghi trong PR.
+
+Việc biên tập này bổ sung root-docs tuần 5/6, chuẩn hóa báo cáo tuần 7 và mục lục.
+Không sửa code/config/tests, contract/registry, model/dataset, results/provenance
+hoặc receipts. Mục lục `docs/README.md` là thay đổi tài liệu có chủ đích so với
+baseline 3c56b65: vì vậy audit lịch sử yêu cầu 2.441 file nguyên trạng phải chạy
+trên snapshot 6be51e3/aadf27b đúng pin, không gán kết quả đó cho toàn checkout
+sau khi đã biên tập docs hoặc đồng bộ main mới. Không sửa audit để bỏ gate.
+
+## 10. Trạng thái nghiệm thu
+
+| Hạng mục | Trạng thái | Giới hạn/điều kiện |
+|---|---|---|
+| dCor, reference độc lập, suy biến và gradient | PASS | Host, R_n biased và batch policy ghi rõ |
+| Loss NoPeek và wiring lambda=0/lambda>0 | PASS | Gradient tới head; không thay baseline tích hợp |
+| Smoke s2/s5/s8 x lambda0/0,5 | PASS | 128 train/512 val mỗi run, không chứng minh hội tụ/privacy |
+| Tái lập và bảo toàn snapshot kỹ thuật | PASS tại pin đã kiểm | 120 batch records và sáu state hashes khớp; audit lịch sử không chứng nhận docs/main mới |
+| Cấu hình quét tuần 8 | PASS chuẩn bị | Chưa có runner huấn luyện dài hoặc grid đã chạy |
+| KV260 runtime/accuracy và Device–Edge thật | PENDING | Cần đầu ra SV2 theo checklist |
+| Xác nhận I1 v2, revision nonce registry | PENDING | Đúng người và change control; không tự ký thay |
+| Đánh giá tấn công/riêng tư | NOT VERIFIED | Thuộc giai đoạn sau |
+| Học hiểu/demo GVHD | NOT VERIFIED trong phiên này | Người dùng cần tự giải thích/demo |
+
+## 11. Công việc chuyển tiếp
+
+1. Đưa nhánh qua PR review của nhóm, giữ nguyên các SHA lịch sử đã pin; đồng bộ
+   main mới theo workflow, không rebase/force-push để đổi lịch sử bằng chứng.
+2. Chốt thiết kế quét tuần 8 với GVHD: seeds/batch, metrics và lớp hiếm; viết
+   runner train dài riêng, chọn mô hình bằng validation, không dùng test để tuning.
+3. Nhận SV2 xác nhận checkpoint/split chạy thật, xmodel/provenance và output;
+   ưu tiên s2/s5/s8 để giảm chạy lại. Offline NoPeek không cần đợi đủ BLE/server.
+4. Đánh giá DPU khi có backend thật; profiling và BLE end-to-end là các gate
+   riêng. Dùng [checklist phụ thuộc](sv3_week7_dependency_checklist.md) tại mốc
+   21/10 và cập nhật trạng thái bằng evidence mới, không sửa lịch sử kết quả.
+5. Ghi xác nhận ML I1 v2 của Kỳ Anh, phối hợp Châu/Trung về registry; model
+   NoPeek được duyệt phải có checkpoint/golden/version triển khai mới phù hợp.
+
+Phiên chuẩn hóa ngày 22/10 chỉ chỉnh tài liệu. Các kết quả ML/MCU/DPU không được
+gọi là đã chạy mới ở phiên biên tập báo cáo này.
