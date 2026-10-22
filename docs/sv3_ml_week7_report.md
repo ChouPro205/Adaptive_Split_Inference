@@ -23,6 +23,12 @@ cụ thể; `NOT VERIFIED` chưa có bằng chứng. Code/test PASS không thay 
 smoke ngắn; chưa chạy lưới dài. **KẾT QUẢ QUAN SÁT:** các số liệu của mục 5 thuộc
 đúng implementation pin, không phải một lần huấn luyện mới khi biên tập báo cáo.
 
+**Vị trí báo cáo chính thức:** `main/docs/`. PR #35 đưa báo cáo và checklist
+lên main trước phần code tuần 7. Code/config, kết quả và receipts được bàn giao qua
+[PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34);
+các liên kết tương ứng giữ pin commit `1518943` để định danh bản đã review.
+Việc công bố báo cáo không thay thế review code hoặc nghiệm thu KV260.
+
 ## 1. Mục tiêu, phiên bản và nguồn yêu cầu
 
 - Nhánh: `sv3/week7-nopeek-20261021`, worktree
@@ -55,7 +61,7 @@ smoke ngắn; chưa chạy lưới dài. **KẾT QUẢ QUAN SÁT:** các số li
 
 ## 2. Phối hợp và trạng thái bàn giao tại mốc 21/10
 
-[Snapshot truy vấn và PR](../ml/provenance/week7-nopeek-20261021/github-state.json)
+[Snapshot truy vấn và PR](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/provenance/week7-nopeek-20261021/github-state.json)
 lưu kết quả đọc GitHub, gồm PR, branch và các discussion đã truy vấn.
 
 | Bằng chứng | Kết luận đúng phạm vi |
@@ -88,20 +94,20 @@ nhưng cần revision do đúng thẩm quyền Châu/Trung phê duyệt, không 
 Luồng baseline: **ECG chuẩn hóa → head → activation z_s → lượng tử/P1 → truyền →
 unprotect/giải lượng tử → tail → 5 logits N,S,V,F,Q**. Các phần trên wire giữ nguyên.
 
-- [distance_correlation.py](../ml/src/distance_correlation.py) đo phụ thuộc giữa
+- [distance_correlation.py](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/src/distance_correlation.py) đo phụ thuộc giữa
   ECG đầu vào và activation **trước lượng tử/P1**, dùng lúc huấn luyện.
-- [nopeek.py](../ml/src/nopeek.py) cộng `CE + lambda1 * dCor(x,z_s)`. Gradient CE
+- [nopeek.py](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/src/nopeek.py) cộng `CE + lambda1 * dCor(x,z_s)`. Gradient CE
   cập nhật head và tail, gradient dCor đi qua head. Không detach activation.
-- [nopeek_data.py](../ml/src/nopeek_data.py) xác thực train/val theo provenance
+- [nopeek_data.py](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/src/nopeek_data.py) xác thực train/val theo provenance
   checkpoint đã duyệt. Không tái chia bệnh nhân, không fit lại normalization,
   không mở test NPY/metadata trong loader hay quá trình huấn luyện/validation.
-- [run_week7_nopeek.py](../ml/scripts/run_week7_nopeek.py) tái sử dụng nguyên
+- [run_week7_nopeek.py](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/scripts/run_week7_nopeek.py) tái sử dụng nguyên
   `MitdbBaselineCNN`, `CUTS`, `SHAPES`, `wrappers` hiện hành; wrapper dùng chung
   module với model nên `.train()` vẫn kích hoạt Dropout đúng như CE baseline.
   Không thêm hay đổi lớp. Mỗi `(s,lambda)` bắt đầu từ bản sao checkpoint gốc.
-- [test_week7_nopeek.py](../ml/scripts/test_week7_nopeek.py) kiểm toán học,
+- [test_week7_nopeek.py](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/scripts/test_week7_nopeek.py) kiểm toán học,
   gradient, objective, xác thực dữ liệu và điều kiện từ chối ghi đè/chạy sai phạm vi.
-- [log_week7_command.py](../ml/scripts/log_week7_command.py) lưu command, exit code,
+- [log_week7_command.py](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/scripts/log_week7_command.py) lưu command, exit code,
   commit, hash source và raw stdout/stderr, không lấy exit code lệnh sau để che lỗi.
 
 Không đưa quantization/P1 vào đồ thị huấn luyện thử, không sửa firmware SV1 hay
@@ -156,8 +162,8 @@ thread, deterministic, MKLDNN tắt. Có kiểm đối chiếu CUDA cho giá tr�
 | Bảo toàn snapshot lịch sử | **2.441 file tracked gốc không đổi byte nào tại pin 6be51e3/aadf27b**; không chứng nhận toàn checkout sau biên tập docs hoặc merge main |
 
 Các file bằng chứng nằm trong
-[`ml/provenance/week7-nopeek-20261021`](../ml/provenance/week7-nopeek-20261021/).
-[Review audit](../ml/provenance/week7-nopeek-20261021/review-audit.json) kiểm hash
+[`ml/provenance/week7-nopeek-20261021`](https://github.com/ChouPro205/Adaptive_Split_Inference/tree/151894367b0a35df83a0effd86961816ffc89942/ml/provenance/week7-nopeek-20261021).
+[Review audit](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/provenance/week7-nopeek-20261021/review-audit.json) kiểm hash
 log/source, đối chiếu hai lượt cuối và hash artifact thử nghiệm. Không dùng receipt
 tuần 5 để chứng nhận code tuần 7.
 
@@ -189,14 +195,14 @@ kết luận accuracy cải thiện; không so loss/dCor của hai batch khác n
 Hai lượt cuối `smoke-final` và `smoke-final-repeat-O` cho **cùng toàn bộ số liệu
 batch, IDs được chọn, metrics, kiểm gradient và hash tensor trạng thái cuối**.
 Kết quả chính ở
-[`summary.json`](../ml/results/week7-nopeek/smoke-final/summary.json) và
-[`batch_metrics.json`](../ml/results/week7-nopeek/smoke-final/batch_metrics.json).
+[`summary.json`](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/results/week7-nopeek/smoke-final/summary.json) và
+[`batch_metrics.json`](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/results/week7-nopeek/smoke-final/batch_metrics.json).
 6 checkpoint mỗi lượt nằm ở `ml/artifacts/week7/<run>/`, ngoài Git; có hash/size
 trong summary và metadata `EXPERIMENT_ONLY_NOT_APPROVED`, profile ID=null.
 
 ## 6. Cấu hình chuẩn bị tuần 8
 
-[Cấu hình](../ml/configs/week8_nopeek_sweep.json) chứa lambda
+[Cấu hình](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/configs/week8_nopeek_sweep.json) chứa lambda
 `{0,0.1,0.5,1,2,5}` cho ba split, mỗi run khởi tạo lại từ checkpoint gốc.
 Max 30 epoch/patience 5 theo val CE là **đề xuất**, chưa chạy. Test frozen không
 dùng cho early stopping/chọn lambda. Cần thảo luận nhiều seed, batch size và mất

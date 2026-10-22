@@ -1,8 +1,13 @@
 # Checklist SV3 tuần 7 và điều kiện tiếp tục
 
+Bản tài liệu đặt tại `main/docs/`; code/evidence tuần 7 được bàn giao qua
+[PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34).
+Liên kết evidence được pin tới commit `1518943`; các trạng thái bên dưới giữ mốc
+đối chiếu lịch sử, không coi việc chuyển tài liệu là nghiệm thu code hay KV260.
+
 Đối chiếu ngày 21/10/2026 trên nền `3c56b657`, code độc lập `6be51e3a`.
-[Báo cáo và review](sv3_ml_week7_report.md) giải thích phạm vi; [snapshot GitHub](../ml/provenance/week7-nopeek-20261021/github-state.json)
-và [audit cuối](../ml/provenance/week7-nopeek-20261021/review-audit.json) là bằng chứng.
+[Báo cáo và review](sv3_ml_week7_report.md) giải thích phạm vi; [snapshot GitHub](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/provenance/week7-nopeek-20261021/github-state.json)
+và [audit cuối](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/provenance/week7-nopeek-20261021/review-audit.json) là bằng chứng.
 Không có xác nhận hay liên hệ nào được Codex thực hiện thay thành viên.
 
 Trạng thái: DONE = đã có kết quả trong phạm vi ghi rõ; READY = có thể thực hiện

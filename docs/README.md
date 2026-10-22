@@ -61,6 +61,10 @@ Tài liệu chuyên biệt cho firmware nằm tại
 
 ## Tài liệu kỹ thuật bổ trợ SV3
 
+Báo cáo SV3 tuần 5–7 và checklist được quản lý tập trung ở `main/docs/`.
+Phần code/evidence tuần 7 được bàn giao qua
+[PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34).
+
 Các báo cáo tiến độ tuần 5–7 nằm ở `docs/` phía trên. Hồ sơ kỹ thuật và receipts
 được dẫn tới vị trí gốc để giữ nguyên bằng chứng:
 
@@ -68,4 +72,4 @@ Các báo cáo tiến độ tuần 5–7 nằm ở `docs/` phía trên. Hồ sơ
 - [Gói 50 vector P1 tuần 6](../ml/docs/week6_p1_delivery.md): A+B host PASS ngày
   16/10; SV1 MCU/BLE PASS ngày 19/10 được ghi trong báo cáo tuần 6 tại root docs;
   KV260 còn chờ bằng chứng riêng. Không sửa tài liệu bàn giao ngày 16/10 để đổi lịch sử.
-- [Code/kết quả smoke tuần 7](../ml/results/week7-nopeek/README.md).
+- [Code/kết quả smoke tuần 7](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/results/week7-nopeek/README.md).
