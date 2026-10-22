@@ -1,0 +1,111 @@
+{
+  "schema": "week7-check-dryrun/1",
+  "session": "D:\\HUST\\ASI_week7\\session-20261020\\dryrun",
+  "status": "FAIL",
+  "device_banner": {
+    "build": "f16d897c0009-energy-usb-fast-20261019T141057Z",
+    "variant": "energy-usb",
+    "kernel": "FAST",
+    "split": "2",
+    "p1": "50",
+    "p0": "50",
+    "gap_ms": "1000",
+    "boot_idle_s": "30",
+    "connected_idle_s": "30",
+    "ctrl_min_us": "200",
+    "timeout_ms": "5000",
+    "conn_interval_1250us": "12",
+    "d4_pin": "P0.22"
+  },
+  "checks": {
+    "cycle_count": true,
+    "all_ok": true,
+    "rho_order": true,
+    "no_flash_write_in_cycle": true,
+    "p1_sequence_above_boot_reservation": false,
+    "p1_sequence_strictly_increasing": true,
+    "frame_lengths": true,
+    "single_attempt": true,
+    "stub_edge_pass": true
+  },
+  "reserved_through_at_boot": 60627968,
+  "first_p1_sequence": 60626946,
+  "last_p1_sequence": 60626995,
+  "dwt_phases_us": {
+    "P1_ctrl_us": {
+      "mean": 200.0,
+      "min": 200,
+      "max": 200
+    },
+    "P0_ctrl_us": {
+      "mean": 200.0,
+      "min": 200,
+      "max": 200
+    },
+    "P1_head_us": {
+      "mean": 37698.18,
+      "min": 37626,
+      "max": 37962
+    },
+    "P0_head_us": {
+      "mean": 37695.74,
+      "min": 37681,
+      "max": 37711
+    },
+    "P1_quant_us": {
+      "mean": 4120.06,
+      "min": 4111,
+      "max": 4131
+    },
+    "P0_quant_us": {
+      "mean": 4120.74,
+      "min": 4111,
+      "max": 4131
+    },
+    "P1_prot_us": {
+      "mean": 1347.0,
+      "min": 1347,
+      "max": 1347
+    },
+    "P0_prot_us": {
+      "mean": 0.0,
+      "min": 0,
+      "max": 0
+    },
+    "P1_enc_us": {
+      "mean": 3433.0,
+      "min": 3433,
+      "max": 3433
+    },
+    "P0_enc_us": {
+      "mean": 3392.0,
+      "min": 3392,
+      "max": 3392
+    },
+    "P1_tx_us": {
+      "mean": 11004.06,
+      "min": 10937,
+      "max": 12002
+    },
+    "P0_tx_us": {
+      "mean": 10914.26,
+      "min": 10888,
+      "max": 11132
+    },
+    "P1_wait_us": {
+      "mean": 1302.98,
+      "min": 1268,
+      "max": 1653
+    },
+    "P0_wait_us": {
+      "mean": 1305.0,
+      "min": 1272,
+      "max": 1654
+    }
+  },
+  "scope": "energy-usb on laptop power: timing/debug evidence only, not energy",
+  "tool_sha256": {
+    "check_week7.py": "f89590f198a6d3547d912a6de602207b2f3b12027c8727df929fd66299ac10cd",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b"
+  }
+}

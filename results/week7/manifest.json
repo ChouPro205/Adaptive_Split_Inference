@@ -1,0 +1,490 @@
+{
+  "schema": "week7-results-manifest/1",
+  "created_utc": "2026-10-22T02:35:01.468855+00:00",
+  "kept_fail_reports": [
+    "dryrun_first_check_FAIL.json",
+    "verify_first_run_FAIL.json",
+    "ppk2_B_attempt1_FAIL.json"
+  ],
+  "failed_dfu_receipts": [
+    "dfu/dfu-20261022-083808-reference-adaptive_split_week2_idle-none.json"
+  ],
+  "raw_outside_git": [
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261020\\bench\\cdc.log",
+      "sha256": "6faca0f92bbe2bb97892bbee521f7a6640129a92fec32e58d8e2cae4d6fd0659",
+      "bytes": 142942,
+      "note": "laptop-USB session"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261020\\verify\\cdc.log",
+      "sha256": "beab56d4da78432b14ae2727b78acb42dd836a2c7c38864fddab7e290b6fca06",
+      "bytes": 96929,
+      "note": "laptop-USB session"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261020\\verify2\\cdc.log",
+      "sha256": "c002d741045b5289a8b4ad661ed114d9fc5c53c43f6b6effd6d1cda65898b914",
+      "bytes": 96929,
+      "note": "laptop-USB session"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261020\\dryrun\\cdc.log",
+      "sha256": "62f1f61e94978d2f7fe88ed4872b15c55cd57c853be842983fadaaa5c23c24fe",
+      "bytes": 24960,
+      "note": "laptop-USB session"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261020\\dryrun\\stub\\peer.jsonl",
+      "sha256": "cc518f5705c98c0b5ebf00f89ba0f66aab970c4a16e3a0bcb32b5f96ec11345b",
+      "bytes": 39076,
+      "note": "laptop-USB session"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261020\\nonce\\nonce_before_week7.txt",
+      "sha256": "ef27d004f8849f53090bad9ec8f792b025e1891d3d86d7e6e1e38283465a74ad",
+      "bytes": 298,
+      "note": "laptop-USB session"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\A1-idle-w2\\ppk2\\raw.bin",
+      "sha256": "c1c78ecea7c324029c58c6d29bd2b7a43991a9fb11efa568f0109e76bb1bab4b",
+      "bytes": 50286592,
+      "note": "ppk2_A1_idle_week2: PPK2 raw words (energy_phases.py)"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\A2-active-w1\\ppk2\\raw.bin",
+      "sha256": "e03a541425656ce9a6463632c575884545951c69dbb5e0715e6d27c76bb3048b",
+      "bytes": 6297600,
+      "note": "ppk2_A2_active_week1: PPK2 raw words (energy_phases.py)"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\ppk2\\raw.bin",
+      "sha256": "feb58b4b810a50f4f6e435428ba74ed7a8f3e64c518dfbea2c65d9fa90bf01fd",
+      "bytes": 120281088,
+      "note": "ppk2_B_session: PPK2 raw words (energy_phases.py)"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\B1\\ppk2\\raw.bin",
+      "sha256": "276ef6c4babef7827041e414616e43a66c985c37f7173577aed25bf7b8a9891b",
+      "bytes": 120281088,
+      "note": "ppk2_B_attempt1: PPK2 raw words (replication)"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\B1\\stub\\peer.jsonl",
+      "sha256": "a82620794e5d1a9cabda3768600c0bafa87fcc23e781a202277e12d8d7d124f2",
+      "bytes": 39066,
+      "note": "ppk2_B_attempt1 stub edge"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\stub\\peer.jsonl",
+      "sha256": "2d5e73b3f34aea34b298e2e33a07d1c529f5f4d556a9564543b1f369cac4805a",
+      "bytes": 39066,
+      "note": "session B stub edge"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\stub.out",
+      "sha256": "da876ba1b06b3921c1ebd1b8a997f5c0092856ecc7073044d69538f1e52729fc",
+      "bytes": 431,
+      "note": "session B stub edge"
+    }
+  ],
+  "files": [
+    {
+      "path": "bench_tc7.json",
+      "sha256": "9abeacab18a3900f13f2430ac6a9b3743d2c2b2ef1de17dded6aaa10be9edb84",
+      "bytes": 6904,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\bench\\check_bench.json"
+    },
+    {
+      "path": "build_check/bench-fast_source.json",
+      "sha256": "ed56e19550c516dd0bfb911e55aade50cd0541b4b1f4d4a65aa95786f89775de",
+      "bytes": 703,
+      "source": "D:\\HUST\\ASI_week7\\firmware-20261019\\bench-fast\\source.json"
+    },
+    {
+      "path": "build_check/bench-fast_week7_build_check.json",
+      "sha256": "5235fdaf9bbaa06d33312ffcbb7db0a4101275abfa1e52cede7f14a5d9e09620",
+      "bytes": 5686,
+      "source": "D:\\HUST\\ASI_week7\\firmware-20261019\\bench-fast\\week7_build_check.json"
+    },
+    {
+      "path": "build_check/energy-fast_source.json",
+      "sha256": "e2ec0e4afb612a78a8777271aed382bc951058cb899d2640d7e8b8adb9b7d7d0",
+      "bytes": 705,
+      "source": "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-fast\\source.json"
+    },
+    {
+      "path": "build_check/energy-fast_week7_build_check.json",
+      "sha256": "4767d095a06217ca7222176a7433264d0938e0348d3d62d4656e6b726db35710",
+      "bytes": 6988,
+      "source": "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-fast\\week7_build_check.json"
+    },
+    {
+      "path": "build_check/energy-usb-fast_source.json",
+      "sha256": "7c91b5ea3dd6f3aa2b2f88e95c1cb21538cd394854115fa3bb1ef89164cfa1f4",
+      "bytes": 713,
+      "source": "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-usb-fast\\source.json"
+    },
+    {
+      "path": "build_check/energy-usb-fast_week7_build_check.json",
+      "sha256": "7e686a2f66116729c57b765160dab1c7d5cfa7bca8947b5ed6d9f0fa8d58b425",
+      "bytes": 7024,
+      "source": "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-usb-fast\\week7_build_check.json"
+    },
+    {
+      "path": "build_check/energy-week4_source.json",
+      "sha256": "abba692b3ba18bd58cfff74eb4f308a65fdb941b643cbfd6298332bce16733a0",
+      "bytes": 707,
+      "source": "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-week4\\source.json"
+    },
+    {
+      "path": "build_check/energy-week4_week7_build_check.json",
+      "sha256": "b9922f876783d146321fab5078adcd9b3ab6e06b1bfec0f8153f8e1f4f777251",
+      "bytes": 6994,
+      "source": "D:\\HUST\\ASI_week7\\firmware-20261019\\energy-week4\\week7_build_check.json"
+    },
+    {
+      "path": "build_resources.csv",
+      "sha256": "ca6ba7a6e71ab5a7ffb6427d00d63c240b5ec084f67759c31c429896db45123f",
+      "bytes": 754,
+      "source": "derived: build_check/*_week7_build_check.json"
+    },
+    {
+      "path": "cycles_100.csv",
+      "sha256": "3b644379aa0cedfd008d8391e7e9979edd654bbd456a1d3836302d89b3ece7ea",
+      "bytes": 27455,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\analysis\\cycles.csv"
+    },
+    {
+      "path": "dfu/dfu-20261020-123614-bench-fast.json",
+      "sha256": "38915c93883d14f11844e73f2a59c89afd47378f41a8669ffbf0961e96ab7be8",
+      "bytes": 1161,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\dfu\\dfu-20261020-123614-bench-fast.json"
+    },
+    {
+      "path": "dfu/dfu-20261020-123614-bench-fast.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\dfu\\dfu-20261020-123614-bench-fast.log"
+    },
+    {
+      "path": "dfu/dfu-20261020-151518-energy-usb-fast.json",
+      "sha256": "31d4c05bdca92b06d60865513206598885eb090303392204aeece51011c3ea35",
+      "bytes": 1196,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\dfu\\dfu-20261020-151518-energy-usb-fast.json"
+    },
+    {
+      "path": "dfu/dfu-20261020-151518-energy-usb-fast.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\dfu\\dfu-20261020-151518-energy-usb-fast.log"
+    },
+    {
+      "path": "dfu/dfu-20261022-083808-reference-adaptive_split_week2_idle-none.json",
+      "sha256": "22e48ef79fcf6fb2fc65d59e911e833538e6b3e03dbcae00cb5a5857b9b1f700",
+      "bytes": 972,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-083808-reference-adaptive_split_week2_idle-none.json"
+    },
+    {
+      "path": "dfu/dfu-20261022-083808-reference-adaptive_split_week2_idle-none.log.txt",
+      "sha256": "1dbafb052d685b2a0db2f332a7a201d2a0e2b7f308059c92524b4ad83d2d35a6",
+      "bytes": 1528,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-083808-reference-adaptive_split_week2_idle-none.log"
+    },
+    {
+      "path": "dfu/dfu-20261022-084215-reference-adaptive_split_week2_idle-none.json",
+      "sha256": "94ca0574f146b00edd280e831bd44d96e1564f0bd092d265adee22284dd6c886",
+      "bytes": 972,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-084215-reference-adaptive_split_week2_idle-none.json"
+    },
+    {
+      "path": "dfu/dfu-20261022-084215-reference-adaptive_split_week2_idle-none.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-084215-reference-adaptive_split_week2_idle-none.log"
+    },
+    {
+      "path": "dfu/dfu-20261022-085010-reference-adaptive_split_week1_demo-none.json",
+      "sha256": "178527519973569ccac0d94a2d61dd472d8ec5212d34c79e03742176e2a9a0a8",
+      "bytes": 972,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-085010-reference-adaptive_split_week1_demo-none.json"
+    },
+    {
+      "path": "dfu/dfu-20261022-085010-reference-adaptive_split_week1_demo-none.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-085010-reference-adaptive_split_week1_demo-none.log"
+    },
+    {
+      "path": "dfu/dfu-20261022-085938-energy-usb-fast.json",
+      "sha256": "062c5d5a010c926d73c059021c48ad62a6526555762ee4b7b5935486abed21c4",
+      "bytes": 1196,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-085938-energy-usb-fast.json"
+    },
+    {
+      "path": "dfu/dfu-20261022-085938-energy-usb-fast.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-085938-energy-usb-fast.log"
+    },
+    {
+      "path": "dfu/dfu-20261022-090419-energy-fast.json",
+      "sha256": "faaddcbece14f5e707663419501e11efa469f64f9538206fa9837b629ef4fcac",
+      "bytes": 1168,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-090419-energy-fast.json"
+    },
+    {
+      "path": "dfu/dfu-20261022-090419-energy-fast.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\dfu\\dfu-20261022-090419-energy-fast.log"
+    },
+    {
+      "path": "dryrun_50p1_50p0.json",
+      "sha256": "c817130460ab51c1c89eb6c9d2c18e49a6ed933213540086cf30c8924b222e5d",
+      "bytes": 2646,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\dryrun\\check_dryrun_recheck_block.json"
+    },
+    {
+      "path": "dryrun_first_check_FAIL.json",
+      "sha256": "159a76ca2f4c9c85eebb90174de40268280335cefa36f4313aef3131f0ca044e",
+      "bytes": 2525,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\dryrun\\check_dryrun.json"
+    },
+    {
+      "path": "dryrun_stub_edge.json",
+      "sha256": "4fb1a62d1296d40f2889511900f1a1e83d94db2cab8b00d8694ce7645f168c5e",
+      "bytes": 920,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\dryrun\\stub\\summary.json"
+    },
+    {
+      "path": "figures/fig_cycle_waveform_P0.pdf",
+      "sha256": "2240d8238d388919ac63f81162bae8f3d24b9394e98bcab61822008d9e69bcae",
+      "bytes": 66340,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_cycle_waveform_P0.pdf"
+    },
+    {
+      "path": "figures/fig_cycle_waveform_P0.png",
+      "sha256": "4451d320f907e199f8b5f2be82f7a3e36351645fd9a013f760c917edec59c3fb",
+      "bytes": 191695,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_cycle_waveform_P0.png"
+    },
+    {
+      "path": "figures/fig_cycle_waveform_P1.pdf",
+      "sha256": "952442976575b6af1310027eb35de7fc7ec9dc1f1a99db3e9e8dc145f4c17582",
+      "bytes": 67890,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_cycle_waveform_P1.pdf"
+    },
+    {
+      "path": "figures/fig_cycle_waveform_P1.png",
+      "sha256": "82a5c7b99e67a3df5602c7a06f8283c73b9cdb146ec378e990f6689216d665a9",
+      "bytes": 191150,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_cycle_waveform_P1.png"
+    },
+    {
+      "path": "figures/fig_diff_pct.pdf",
+      "sha256": "ef14c1c799f87f1562fc96af79f5380e877932429073c7eb72f9b5ada42a0e3b",
+      "bytes": 34024,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_diff_pct.pdf"
+    },
+    {
+      "path": "figures/fig_diff_pct.png",
+      "sha256": "2063e47bbfb11f7ba67bed5c4419b1d8b112558efc7dcfc1163c0946492b3fea",
+      "bytes": 81716,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_diff_pct.png"
+    },
+    {
+      "path": "figures/fig_idle_histogram.pdf",
+      "sha256": "d27800d2cd341f0f0595361dc73e10d0a170223930b9f6d03362555e69480175",
+      "bytes": 37337,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_idle_histogram.pdf"
+    },
+    {
+      "path": "figures/fig_idle_histogram.png",
+      "sha256": "d5c96b2a127235840b833a090ca1de01a85904b359546290efd81efc32346c87",
+      "bytes": 118244,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_idle_histogram.png"
+    },
+    {
+      "path": "figures/fig_phase_energy.pdf",
+      "sha256": "b8ef2c8172608f54d99737274902ff0c425ff7644f2c402adcd51044b00d4dfa",
+      "bytes": 32872,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_phase_energy.pdf"
+    },
+    {
+      "path": "figures/fig_phase_energy.png",
+      "sha256": "50f9a283064352fdbd210d322444b0fa34f45538d8e41612955cffbf8f9d7049",
+      "bytes": 84436,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_phase_energy.png"
+    },
+    {
+      "path": "figures/fig_session_overview.pdf",
+      "sha256": "f8ccde990100625fb91cdae6fa0c37e46348331ddde0eb569da95b75cd620467",
+      "bytes": 106658,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_session_overview.pdf"
+    },
+    {
+      "path": "figures/fig_session_overview.png",
+      "sha256": "f9b4e24870c7095e28c746dfbcc4ea8a16164161ad4f58863067fd2480eaa5e6",
+      "bytes": 292460,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\figures\\fig_session_overview.png"
+    },
+    {
+      "path": "phase_analysis_summary.json",
+      "sha256": "ee04147691b6a92a744d7eb71223dd62ad58ab192bebbad19da0f97d2489e4e7",
+      "bytes": 22586,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\analysis\\summary.json"
+    },
+    {
+      "path": "phase_energy_summary.csv",
+      "sha256": "97fa2874a1b6817890c478f01f8ec603bdeeb2033cc55e403e9f74bbbb026764",
+      "bytes": 5673,
+      "source": "derived: phase_analysis_summary.json groups"
+    },
+    {
+      "path": "phase_time_marker_vs_dwt.csv",
+      "sha256": "a43011bdb841860925b7358566507887838c6f2a70c3e415d1b81dc38817e175",
+      "bytes": 755,
+      "source": "derived: ppk2_B_session.json phase_vs_dwt"
+    },
+    {
+      "path": "ppk2_A1_idle_week2.json",
+      "sha256": "c325a0b81ad529d7213da1afa46de4318313d5d8cf2b5b3e621b21673c4dc35b",
+      "bytes": 1910,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\A1-idle-w2\\check_idle.json"
+    },
+    {
+      "path": "ppk2_A1_idle_week2_capture.json",
+      "sha256": "785e4b94c451d18767e397d8b91098bc5541de0044a8ffc410b00e5b014a71b9",
+      "bytes": 4213,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\A1-idle-w2\\ppk2\\capture.json"
+    },
+    {
+      "path": "ppk2_A1_idle_week2_note-20261022T020904Z.json",
+      "sha256": "a9650dd554a535e519c6d86170487e44757d08d860f9cfa92dc43250d0e7317b",
+      "bytes": 523,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\A1-idle-w2\\note-20261022T020904Z.json"
+    },
+    {
+      "path": "ppk2_A1_idle_week2_session.json",
+      "sha256": "5e93655307f442055a8a99d71e44ca2d2823bb94e790718687937cb46836e473",
+      "bytes": 2086,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\A1-idle-w2\\session.json"
+    },
+    {
+      "path": "ppk2_A2_active_week1.json",
+      "sha256": "a312f5768c0e113ad9357292781c18a095f7b5cf79789de72894397ffe3a5658",
+      "bytes": 2414,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\A2-active-w1\\check_active.json"
+    },
+    {
+      "path": "ppk2_A2_active_week1_capture.json",
+      "sha256": "a46574b9df5b74f35a8a4722bef34dc67fbd66e4ec4934e1d85424c73b7fd6ce",
+      "bytes": 4136,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\A2-active-w1\\ppk2\\capture.json"
+    },
+    {
+      "path": "ppk2_A2_active_week1_note-20261022T020904Z.json",
+      "sha256": "a9650dd554a535e519c6d86170487e44757d08d860f9cfa92dc43250d0e7317b",
+      "bytes": 523,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\A2-active-w1\\note-20261022T020904Z.json"
+    },
+    {
+      "path": "ppk2_A2_active_week1_session.json",
+      "sha256": "c14e1f0864c27d03a786e6c468f1b132591eb056a8b6d4ec1e48e29d9b4c3656",
+      "bytes": 1943,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\A2-active-w1\\session.json"
+    },
+    {
+      "path": "ppk2_B_attempt1_capture.json",
+      "sha256": "3c33681816a19b0c326d4ba9b50ae8e93528f480542edf09d5b36f47653c9c9e",
+      "bytes": 4128,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B1\\ppk2\\capture.json"
+    },
+    {
+      "path": "ppk2_B_attempt1_cycles_100.csv",
+      "sha256": "68f7cd0154062331ba6340ad4d251a2f7d3dea40ab7d77e8e1bcebe1485197bf",
+      "bytes": 27451,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B1\\analysis\\cycles.csv"
+    },
+    {
+      "path": "ppk2_B_attempt1_FAIL.json",
+      "sha256": "5ec089abb8a889f0b2bfc5c8064206287bc348d350311e53b8ab0cd1c7263824",
+      "bytes": 4584,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B1\\check_session.json"
+    },
+    {
+      "path": "ppk2_B_attempt1_note-20261022T023309Z.json",
+      "sha256": "7f7b65420ea98446f4068f25eaccdefcbf83d6d2c005539d31a50ad68ba21427",
+      "bytes": 454,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B1\\note-20261022T023309Z.json"
+    },
+    {
+      "path": "ppk2_B_attempt1_phase_analysis_summary.json",
+      "sha256": "3e5508bfa4cd09965dcbd178dcf716e9d0f8ece378f3e342770ae82e1fc7a4a6",
+      "bytes": 22507,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B1\\analysis\\summary.json"
+    },
+    {
+      "path": "ppk2_B_attempt1_recheck_PASS.json",
+      "sha256": "370b0e57518e76ac38e818abd38e9bfd44d64a105965d81a3f32a9a2dcf76459",
+      "bytes": 4858,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B1\\check_session_recheck.json"
+    },
+    {
+      "path": "ppk2_B_attempt1_session.json",
+      "sha256": "977ed273f1e46a56f21958c146dc28ba5e01af32b2e3031eb9db49f0add0a279",
+      "bytes": 2634,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B1\\session.json"
+    },
+    {
+      "path": "ppk2_B_session.json",
+      "sha256": "44be3a493d7e446be813e925853f602d9e4b54f07e740f5b6cb682ab96c7d0f7",
+      "bytes": 4844,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\check_session.json"
+    },
+    {
+      "path": "ppk2_B_session_capture.json",
+      "sha256": "3b3e7502685985fa2bb9fb4a01062bf6d715b40fbbf569fbc71df5299160f293",
+      "bytes": 4147,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\ppk2\\capture.json"
+    },
+    {
+      "path": "ppk2_B_session_note-20261022T023310Z.json",
+      "sha256": "ed8ca5daa92e09677215fdd471997065ea4bf05c5247bfadea214efa4940259a",
+      "bytes": 454,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\note-20261022T023310Z.json"
+    },
+    {
+      "path": "ppk2_B_session_session.json",
+      "sha256": "2445886b65376d78545725b6387fff65750e9b46cc991067afc641b5c35ef914",
+      "bytes": 2634,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\session.json"
+    },
+    {
+      "path": "stub_edge_session.json",
+      "sha256": "e4b8eb240ca97227645b9a1589581bbb5ae79266cb4dd0a610f066e5fd29a24a",
+      "bytes": 2004,
+      "source": "D:\\HUST\\ASI_week7\\session-20261022\\B2\\stub\\summary.json"
+    },
+    {
+      "path": "t_dev_bench_by_split.csv",
+      "sha256": "bd97766d8fd67c25c589275258b2d404f7cc0ef384e67161152af89f9d840907",
+      "bytes": 1209,
+      "source": "derived: bench_tc7.json t_dev_table"
+    },
+    {
+      "path": "verify_first_run_FAIL.json",
+      "sha256": "56d22569130323bd1aec7565a8a06181d578d9066f419a72446e3f5d5116e543",
+      "bytes": 1780,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\verify\\check_verify.json"
+    },
+    {
+      "path": "verify_tc4.json",
+      "sha256": "2ed02b75ec3a3e0a88aedf777fc1eba8e2fd893ff74e98618591614307c3d00b",
+      "bytes": 1466,
+      "source": "D:\\HUST\\ASI_week7\\session-20261020\\verify2\\check_verify.json"
+    }
+  ]
+}
