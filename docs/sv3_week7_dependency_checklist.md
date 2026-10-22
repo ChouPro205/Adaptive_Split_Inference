@@ -1,7 +1,7 @@
 # Checklist SV3 tuần 7 và điều kiện tiếp tục
 
-Bản tài liệu đặt tại `main/docs/`; code/evidence tuần 7 còn ở
-[PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34), chưa merge.
+Bản tài liệu đặt tại `main/docs/`; code/evidence tuần 7 được bàn giao qua
+[PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34).
 Liên kết evidence được pin tới commit `1518943`; các trạng thái bên dưới giữ mốc
 đối chiếu lịch sử, không coi việc chuyển tài liệu là nghiệm thu code hay KV260.
 

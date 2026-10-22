@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "baseline_commit": "3c56b657aa5003483810b307bb5b666201bb8897",
+  "implementation_commit": "6be51e3a5d6be8309ef87720e98ed4305352f467",
+  "original_tracked_files_checked": 2441,
+  "changed_original_tracked_files": [],
+  "commands": {
+    "tests-final": {
+      "exit_code": 0,
+      "git_commit": "6be51e3a5d6be8309ef87720e98ed4305352f467"
+    },
+    "tests-final-O": {
+      "exit_code": 0,
+      "git_commit": "6be51e3a5d6be8309ef87720e98ed4305352f467"
+    },
+    "smoke-final": {
+      "exit_code": 0,
+      "git_commit": "6be51e3a5d6be8309ef87720e98ed4305352f467"
+    },
+    "smoke-final-repeat-O": {
+      "exit_code": 0,
+      "git_commit": "6be51e3a5d6be8309ef87720e98ed4305352f467"
+    },
+    "i1-regression-final": {
+      "exit_code": 0,
+      "git_commit": "6be51e3a5d6be8309ef87720e98ed4305352f467"
+    },
+    "i2-regression-final": {
+      "exit_code": 0,
+      "git_commit": "6be51e3a5d6be8309ef87720e98ed4305352f467"
+    }
+  },
+  "repeat": "exact equal batch metrics, selections, wiring checks, all final tensor state digests and classification metrics",
+  "test_usage": "No test arrays/metadata in loader, training, validation or model selection; original test files only hashed/copied for preservation",
+  "sv1_historical_manifest_files_verified": 29,
+  "sv1_p1_vectors_pass": 50,
+  "working_tree_diff_check_exit_code": 0,
+  "remaining_findings": [
+    "KV260 runtime and DPU accuracy not verified",
+    "I1 v2 SV3 signature row still pending; evidence delivered",
+    "Nonce registry revision still requires Châu/Trung"
+  ],
+  "resolved": [
+    "Initial tests expected wrong exception class and read count, corrected without changing numerical tolerances",
+    "Relative artifact path failed in initial smoke-r1, canonicalized before writes; final runs passed"
+  ]
+}

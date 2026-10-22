@@ -23,11 +23,11 @@ cụ thể; `NOT VERIFIED` chưa có bằng chứng. Code/test PASS không thay 
 smoke ngắn; chưa chạy lưới dài. **KẾT QUẢ QUAN SÁT:** các số liệu của mục 5 thuộc
 đúng implementation pin, không phải một lần huấn luyện mới khi biên tập báo cáo.
 
-**Vị trí báo cáo chính thức:** `main/docs/`. Bản cập nhật này chỉ đưa báo cáo
-và checklist lên main. Code/config, kết quả và receipts tuần 7 vẫn ở
-[PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34), chưa merge;
-các liên kết tương ứng được pin tới commit `1518943` để đọc được ngay từ main.
-Việc công bố báo cáo không đồng nghĩa code tuần 7 đã được tích hợp vào main.
+**Vị trí báo cáo chính thức:** `main/docs/`. PR #35 đưa báo cáo và checklist
+lên main trước phần code tuần 7. Code/config, kết quả và receipts được bàn giao qua
+[PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34);
+các liên kết tương ứng giữ pin commit `1518943` để định danh bản đã review.
+Việc công bố báo cáo không thay thế review code hoặc nghiệm thu KV260.
 
 ## 1. Mục tiêu, phiên bản và nguồn yêu cầu
 

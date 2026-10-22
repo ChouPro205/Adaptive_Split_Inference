@@ -1,0 +1,1202 @@
+[
+  {
+    "run_id": "s2-lambda0",
+    "phase": "train",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.024159256368875504,
+    "dcor": 0.9744962453842163,
+    "total": 0.024159256368875504,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "train",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.328603059053421,
+    "dcor": 0.9754965305328369,
+    "total": 0.328603059053421,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "train",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.3211050033569336,
+    "dcor": 0.9719311594963074,
+    "total": 0.3211050033569336,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "train",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.014967385679483414,
+    "dcor": 0.9788066744804382,
+    "total": 0.014967385679483414,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.38233745098114014,
+    "dcor": 0.9887239336967468,
+    "total": 0.38233745098114014,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.7414591908454895,
+    "dcor": 0.9864984154701233,
+    "total": 0.7414591908454895,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.6045938730239868,
+    "dcor": 0.9909167885780334,
+    "total": 0.6045938730239868,
+    "accuracy": 0.75
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.7187027931213379,
+    "dcor": 0.977803647518158,
+    "total": 0.7187027931213379,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 4,
+    "samples": 32,
+    "ce": 0.6512699127197266,
+    "dcor": 0.988938570022583,
+    "total": 0.6512699127197266,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 5,
+    "samples": 32,
+    "ce": 0.43143850564956665,
+    "dcor": 0.9811788201332092,
+    "total": 0.43143850564956665,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 6,
+    "samples": 32,
+    "ce": 0.6891496181488037,
+    "dcor": 0.9823551774024963,
+    "total": 0.6891496181488037,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 7,
+    "samples": 32,
+    "ce": 0.7590306401252747,
+    "dcor": 0.9808359742164612,
+    "total": 0.7590306401252747,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 8,
+    "samples": 32,
+    "ce": 0.8581323623657227,
+    "dcor": 0.9864904880523682,
+    "total": 0.8581323623657227,
+    "accuracy": 0.71875
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 9,
+    "samples": 32,
+    "ce": 0.48644566535949707,
+    "dcor": 0.9775202870368958,
+    "total": 0.48644566535949707,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 10,
+    "samples": 32,
+    "ce": 0.3929347097873688,
+    "dcor": 0.9889329671859741,
+    "total": 0.3929347097873688,
+    "accuracy": 0.875
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 11,
+    "samples": 32,
+    "ce": 0.21603798866271973,
+    "dcor": 0.9882868528366089,
+    "total": 0.21603798866271973,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 12,
+    "samples": 32,
+    "ce": 1.084313154220581,
+    "dcor": 0.9845412373542786,
+    "total": 1.084313154220581,
+    "accuracy": 0.6875
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 13,
+    "samples": 32,
+    "ce": 0.8732436895370483,
+    "dcor": 0.9864698052406311,
+    "total": 0.8732436895370483,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 14,
+    "samples": 32,
+    "ce": 0.20872606337070465,
+    "dcor": 0.9777743220329285,
+    "total": 0.20872606337070465,
+    "accuracy": 0.875
+  },
+  {
+    "run_id": "s2-lambda0",
+    "phase": "val",
+    "step": 15,
+    "samples": 32,
+    "ce": 0.1534467339515686,
+    "dcor": 0.9735345244407654,
+    "total": 0.1534467339515686,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "train",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.024159256368875504,
+    "dcor": 0.9744962453842163,
+    "total": 0.5114073753356934,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "train",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.3286201059818268,
+    "dcor": 0.9750696420669556,
+    "total": 0.816154956817627,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "train",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.32135775685310364,
+    "dcor": 0.971413791179657,
+    "total": 0.8070646524429321,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "train",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.01496562547981739,
+    "dcor": 0.9780699014663696,
+    "total": 0.5040006041526794,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.3825165331363678,
+    "dcor": 0.9881150722503662,
+    "total": 0.8765740394592285,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.7414082288742065,
+    "dcor": 0.9858204126358032,
+    "total": 1.234318494796753,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.605331301689148,
+    "dcor": 0.9903765320777893,
+    "total": 1.1005195379257202,
+    "accuracy": 0.75
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.7194175124168396,
+    "dcor": 0.9769046902656555,
+    "total": 1.2078698873519897,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 4,
+    "samples": 32,
+    "ce": 0.6518279314041138,
+    "dcor": 0.9884369969367981,
+    "total": 1.1460464000701904,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 5,
+    "samples": 32,
+    "ce": 0.4291234016418457,
+    "dcor": 0.9803458452224731,
+    "total": 0.9192963242530823,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 6,
+    "samples": 32,
+    "ce": 0.6894921064376831,
+    "dcor": 0.981441080570221,
+    "total": 1.1802126169204712,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 7,
+    "samples": 32,
+    "ce": 0.7598006725311279,
+    "dcor": 0.9799970388412476,
+    "total": 1.2497992515563965,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 8,
+    "samples": 32,
+    "ce": 0.8572063446044922,
+    "dcor": 0.9857965111732483,
+    "total": 1.350104570388794,
+    "accuracy": 0.71875
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 9,
+    "samples": 32,
+    "ce": 0.4856300950050354,
+    "dcor": 0.976451575756073,
+    "total": 0.9738558530807495,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 10,
+    "samples": 32,
+    "ce": 0.39461851119995117,
+    "dcor": 0.9884456992149353,
+    "total": 0.8888413906097412,
+    "accuracy": 0.875
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 11,
+    "samples": 32,
+    "ce": 0.21396619081497192,
+    "dcor": 0.9876195192337036,
+    "total": 0.7077759504318237,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 12,
+    "samples": 32,
+    "ce": 1.084840178489685,
+    "dcor": 0.9837371110916138,
+    "total": 1.5767087936401367,
+    "accuracy": 0.6875
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 13,
+    "samples": 32,
+    "ce": 0.8744542598724365,
+    "dcor": 0.9857872724533081,
+    "total": 1.3673479557037354,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 14,
+    "samples": 32,
+    "ce": 0.209811270236969,
+    "dcor": 0.9767321348190308,
+    "total": 0.6981773376464844,
+    "accuracy": 0.90625
+  },
+  {
+    "run_id": "s2-lambda0.5",
+    "phase": "val",
+    "step": 15,
+    "samples": 32,
+    "ce": 0.15188497304916382,
+    "dcor": 0.9726196527481079,
+    "total": 0.6381947994232178,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "train",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.024159256368875504,
+    "dcor": 0.8510715365409851,
+    "total": 0.024159256368875504,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "train",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.328603059053421,
+    "dcor": 0.8892073631286621,
+    "total": 0.328603059053421,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "train",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.3211050033569336,
+    "dcor": 0.8675606846809387,
+    "total": 0.3211050033569336,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "train",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.014967385679483414,
+    "dcor": 0.8718486428260803,
+    "total": 0.014967385679483414,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.38233745098114014,
+    "dcor": 0.9104989767074585,
+    "total": 0.38233745098114014,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.7414591908454895,
+    "dcor": 0.8837127685546875,
+    "total": 0.7414591908454895,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.6045938730239868,
+    "dcor": 0.9098212718963623,
+    "total": 0.6045938730239868,
+    "accuracy": 0.75
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.7187027931213379,
+    "dcor": 0.8596768975257874,
+    "total": 0.7187027931213379,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 4,
+    "samples": 32,
+    "ce": 0.6512699127197266,
+    "dcor": 0.9375935792922974,
+    "total": 0.6512699127197266,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 5,
+    "samples": 32,
+    "ce": 0.43143850564956665,
+    "dcor": 0.9221503734588623,
+    "total": 0.43143850564956665,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 6,
+    "samples": 32,
+    "ce": 0.6891496181488037,
+    "dcor": 0.8881194591522217,
+    "total": 0.6891496181488037,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 7,
+    "samples": 32,
+    "ce": 0.7590306401252747,
+    "dcor": 0.9046567678451538,
+    "total": 0.7590306401252747,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 8,
+    "samples": 32,
+    "ce": 0.8581323623657227,
+    "dcor": 0.8959482908248901,
+    "total": 0.8581323623657227,
+    "accuracy": 0.71875
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 9,
+    "samples": 32,
+    "ce": 0.48644566535949707,
+    "dcor": 0.9008173942565918,
+    "total": 0.48644566535949707,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 10,
+    "samples": 32,
+    "ce": 0.3929347097873688,
+    "dcor": 0.9353705644607544,
+    "total": 0.3929347097873688,
+    "accuracy": 0.875
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 11,
+    "samples": 32,
+    "ce": 0.21603798866271973,
+    "dcor": 0.9091917872428894,
+    "total": 0.21603798866271973,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 12,
+    "samples": 32,
+    "ce": 1.084313154220581,
+    "dcor": 0.8887872695922852,
+    "total": 1.084313154220581,
+    "accuracy": 0.6875
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 13,
+    "samples": 32,
+    "ce": 0.8732436895370483,
+    "dcor": 0.9164145588874817,
+    "total": 0.8732436895370483,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 14,
+    "samples": 32,
+    "ce": 0.20872606337070465,
+    "dcor": 0.9006879925727844,
+    "total": 0.20872606337070465,
+    "accuracy": 0.875
+  },
+  {
+    "run_id": "s5-lambda0",
+    "phase": "val",
+    "step": 15,
+    "samples": 32,
+    "ce": 0.1534467339515686,
+    "dcor": 0.9003852009773254,
+    "total": 0.1534467339515686,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "train",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.024159256368875504,
+    "dcor": 0.8510715365409851,
+    "total": 0.44969502091407776,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "train",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.32834145426750183,
+    "dcor": 0.8882633447647095,
+    "total": 0.7724730968475342,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "train",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.3173776865005493,
+    "dcor": 0.8655328750610352,
+    "total": 0.7501441240310669,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "train",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.01496464665979147,
+    "dcor": 0.8692407608032227,
+    "total": 0.4495850205421448,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.3851444125175476,
+    "dcor": 0.9086877107620239,
+    "total": 0.8394882678985596,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.7418927550315857,
+    "dcor": 0.8817301988601685,
+    "total": 1.18275785446167,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.6087766885757446,
+    "dcor": 0.9075485467910767,
+    "total": 1.0625510215759277,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.7183224558830261,
+    "dcor": 0.8538795709609985,
+    "total": 1.1452622413635254,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 4,
+    "samples": 32,
+    "ce": 0.655877947807312,
+    "dcor": 0.936794638633728,
+    "total": 1.1242752075195312,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 5,
+    "samples": 32,
+    "ce": 0.4278106987476349,
+    "dcor": 0.9210014939308167,
+    "total": 0.8883114457130432,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 6,
+    "samples": 32,
+    "ce": 0.6924689412117004,
+    "dcor": 0.8853859901428223,
+    "total": 1.1351618766784668,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 7,
+    "samples": 32,
+    "ce": 0.7593590021133423,
+    "dcor": 0.9033840894699097,
+    "total": 1.2110509872436523,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 8,
+    "samples": 32,
+    "ce": 0.8674977421760559,
+    "dcor": 0.8946412205696106,
+    "total": 1.3148183822631836,
+    "accuracy": 0.71875
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 9,
+    "samples": 32,
+    "ce": 0.49133312702178955,
+    "dcor": 0.8996316194534302,
+    "total": 0.9411489367485046,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 10,
+    "samples": 32,
+    "ce": 0.4025561511516571,
+    "dcor": 0.9348461031913757,
+    "total": 0.869979202747345,
+    "accuracy": 0.875
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 11,
+    "samples": 32,
+    "ce": 0.21540921926498413,
+    "dcor": 0.9074209332466125,
+    "total": 0.6691197156906128,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 12,
+    "samples": 32,
+    "ce": 1.0781487226486206,
+    "dcor": 0.8868067264556885,
+    "total": 1.5215520858764648,
+    "accuracy": 0.6875
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 13,
+    "samples": 32,
+    "ce": 0.8754826784133911,
+    "dcor": 0.9153954386711121,
+    "total": 1.3331804275512695,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 14,
+    "samples": 32,
+    "ce": 0.20769231021404266,
+    "dcor": 0.898111879825592,
+    "total": 0.6567482352256775,
+    "accuracy": 0.90625
+  },
+  {
+    "run_id": "s5-lambda0.5",
+    "phase": "val",
+    "step": 15,
+    "samples": 32,
+    "ce": 0.15170221030712128,
+    "dcor": 0.8987114429473877,
+    "total": 0.6010579466819763,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "train",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.024159256368875504,
+    "dcor": 0.8232422471046448,
+    "total": 0.024159256368875504,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "train",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.328603059053421,
+    "dcor": 0.8488737940788269,
+    "total": 0.328603059053421,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "train",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.3211050033569336,
+    "dcor": 0.8014054894447327,
+    "total": 0.3211050033569336,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "train",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.014967385679483414,
+    "dcor": 0.8490841388702393,
+    "total": 0.014967385679483414,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.38233745098114014,
+    "dcor": 0.8125569820404053,
+    "total": 0.38233745098114014,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.7414591908454895,
+    "dcor": 0.7322748899459839,
+    "total": 0.7414591908454895,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.6045938730239868,
+    "dcor": 0.7716714143753052,
+    "total": 0.6045938730239868,
+    "accuracy": 0.75
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.7187027931213379,
+    "dcor": 0.6614100933074951,
+    "total": 0.7187027931213379,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 4,
+    "samples": 32,
+    "ce": 0.6512699127197266,
+    "dcor": 0.8634864091873169,
+    "total": 0.6512699127197266,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 5,
+    "samples": 32,
+    "ce": 0.43143850564956665,
+    "dcor": 0.812140703201294,
+    "total": 0.43143850564956665,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 6,
+    "samples": 32,
+    "ce": 0.6891496181488037,
+    "dcor": 0.782919704914093,
+    "total": 0.6891496181488037,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 7,
+    "samples": 32,
+    "ce": 0.7590306401252747,
+    "dcor": 0.8155155777931213,
+    "total": 0.7590306401252747,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 8,
+    "samples": 32,
+    "ce": 0.8581323623657227,
+    "dcor": 0.7895795702934265,
+    "total": 0.8581323623657227,
+    "accuracy": 0.71875
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 9,
+    "samples": 32,
+    "ce": 0.48644566535949707,
+    "dcor": 0.7586254477500916,
+    "total": 0.48644566535949707,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 10,
+    "samples": 32,
+    "ce": 0.3929347097873688,
+    "dcor": 0.8679771423339844,
+    "total": 0.3929347097873688,
+    "accuracy": 0.875
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 11,
+    "samples": 32,
+    "ce": 0.21603798866271973,
+    "dcor": 0.7454381585121155,
+    "total": 0.21603798866271973,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 12,
+    "samples": 32,
+    "ce": 1.084313154220581,
+    "dcor": 0.7875776290893555,
+    "total": 1.084313154220581,
+    "accuracy": 0.6875
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 13,
+    "samples": 32,
+    "ce": 0.8732436895370483,
+    "dcor": 0.8167771697044373,
+    "total": 0.8732436895370483,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 14,
+    "samples": 32,
+    "ce": 0.20872606337070465,
+    "dcor": 0.7376073598861694,
+    "total": 0.20872606337070465,
+    "accuracy": 0.875
+  },
+  {
+    "run_id": "s8-lambda0",
+    "phase": "val",
+    "step": 15,
+    "samples": 32,
+    "ce": 0.1534467339515686,
+    "dcor": 0.7815750241279602,
+    "total": 0.1534467339515686,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "train",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.024159256368875504,
+    "dcor": 0.8232422471046448,
+    "total": 0.4357803761959076,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "train",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.3275592625141144,
+    "dcor": 0.8474417328834534,
+    "total": 0.7512801289558411,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "train",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.31357866525650024,
+    "dcor": 0.795382559299469,
+    "total": 0.7112699747085571,
+    "accuracy": 0.96875
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "train",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.015118960291147232,
+    "dcor": 0.8452195525169373,
+    "total": 0.43772873282432556,
+    "accuracy": 1.0
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 0,
+    "samples": 32,
+    "ce": 0.37553268671035767,
+    "dcor": 0.813907265663147,
+    "total": 0.7824863195419312,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 1,
+    "samples": 32,
+    "ce": 0.735510528087616,
+    "dcor": 0.7351999878883362,
+    "total": 1.1031105518341064,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 2,
+    "samples": 32,
+    "ce": 0.6064165830612183,
+    "dcor": 0.7735940217971802,
+    "total": 0.9932135939598083,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 3,
+    "samples": 32,
+    "ce": 0.7124412059783936,
+    "dcor": 0.6597612500190735,
+    "total": 1.042321801185608,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 4,
+    "samples": 32,
+    "ce": 0.6546478271484375,
+    "dcor": 0.8650264739990234,
+    "total": 1.0871610641479492,
+    "accuracy": 0.8125
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 5,
+    "samples": 32,
+    "ce": 0.4195783734321594,
+    "dcor": 0.8133966326713562,
+    "total": 0.8262766599655151,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 6,
+    "samples": 32,
+    "ce": 0.6922866106033325,
+    "dcor": 0.7838236689567566,
+    "total": 1.0841984748840332,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 7,
+    "samples": 32,
+    "ce": 0.7453536987304688,
+    "dcor": 0.8162994384765625,
+    "total": 1.15350341796875,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 8,
+    "samples": 32,
+    "ce": 0.8667586445808411,
+    "dcor": 0.792831540107727,
+    "total": 1.2631744146347046,
+    "accuracy": 0.71875
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 9,
+    "samples": 32,
+    "ce": 0.4921034574508667,
+    "dcor": 0.7619084119796753,
+    "total": 0.8730576634407043,
+    "accuracy": 0.84375
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 10,
+    "samples": 32,
+    "ce": 0.40677013993263245,
+    "dcor": 0.8706690073013306,
+    "total": 0.8421046733856201,
+    "accuracy": 0.875
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 11,
+    "samples": 32,
+    "ce": 0.20893555879592896,
+    "dcor": 0.7465276718139648,
+    "total": 0.5821993947029114,
+    "accuracy": 0.9375
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 12,
+    "samples": 32,
+    "ce": 1.0640517473220825,
+    "dcor": 0.7880505323410034,
+    "total": 1.4580769538879395,
+    "accuracy": 0.6875
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 13,
+    "samples": 32,
+    "ce": 0.8679446578025818,
+    "dcor": 0.818396806716919,
+    "total": 1.2771430015563965,
+    "accuracy": 0.78125
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 14,
+    "samples": 32,
+    "ce": 0.1939486861228943,
+    "dcor": 0.7349851727485657,
+    "total": 0.5614413022994995,
+    "accuracy": 0.90625
+  },
+  {
+    "run_id": "s8-lambda0.5",
+    "phase": "val",
+    "step": 15,
+    "samples": 32,
+    "ce": 0.1437089443206787,
+    "dcor": 0.7792820930480957,
+    "total": 0.5333499908447266,
+    "accuracy": 0.96875
+  }
+]

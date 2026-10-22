@@ -1,0 +1,55 @@
+{
+  "note": "Authenticated local cache; CSV/JSON hashes use existing LF-normalized policy; arrays/checkpoint raw SHA256. Test assets copied for preservation only, never fed into training or selection.",
+  "assets": {
+    "train_X.npy": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\processed\\mitdb\\train_X.npy",
+      "sha256_project": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f",
+      "bytes": 116775488
+    },
+    "train_y.npy": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\processed\\mitdb\\train_y.npy",
+      "sha256_project": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752",
+      "bytes": 648880
+    },
+    "train_metadata.csv": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\processed\\mitdb\\train_metadata.csv",
+      "sha256_project": "86c5c3a634fc5adfca09ec2f8378efb0d52f21205cfaf9470432f89ffdc0977a",
+      "bytes": 2435521
+    },
+    "val_X.npy": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\processed\\mitdb\\val_X.npy",
+      "sha256_project": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732",
+      "bytes": 22158848
+    },
+    "val_y.npy": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\processed\\mitdb\\val_y.npy",
+      "sha256_project": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43",
+      "bytes": 123232
+    },
+    "val_metadata.csv": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\processed\\mitdb\\val_metadata.csv",
+      "sha256_project": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+      "bytes": 459176
+    },
+    "test_X.npy": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\processed\\mitdb\\test_X.npy",
+      "sha256_project": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e",
+      "bytes": 12303488
+    },
+    "test_y.npy": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\processed\\mitdb\\test_y.npy",
+      "sha256_project": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6",
+      "bytes": 68480
+    },
+    "test_metadata.csv": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\processed\\mitdb\\test_metadata.csv",
+      "sha256_project": "02a6a91c0e35710d0be13f10b2360e034918f546b3ba2c7df7a2fd484ecd1178",
+      "bytes": 254887
+    },
+    "checkpoint": {
+      "source": "C:\\Users\\Admin\\Adaptive_Split_Inference\\ml\\data\\week2\\mitdb_baseline\\best_checkpoint.pt",
+      "sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+      "bytes": 450551
+    }
+  }
+}

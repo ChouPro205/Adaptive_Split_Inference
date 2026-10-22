@@ -62,7 +62,7 @@ Tài liệu chuyên biệt cho firmware nằm tại
 ## Tài liệu kỹ thuật bổ trợ SV3
 
 Báo cáo SV3 tuần 5–7 và checklist được quản lý tập trung ở `main/docs/`.
-Phần code/evidence tuần 7 chưa merge, theo dõi riêng tại
+Phần code/evidence tuần 7 được bàn giao qua
 [PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34).
 
 Các báo cáo tiến độ tuần 5–7 nằm ở `docs/` phía trên. Hồ sơ kỹ thuật và receipts
