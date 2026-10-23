@@ -1,5 +1,7 @@
 **/build/
 **/build-*/
+# Local Vitis AI 2.5 models, generated code and experiment logs.
+/edge/build_vai25/
 device/build*/
 **/.cache/
 **/__pycache__/

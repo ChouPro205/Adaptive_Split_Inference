@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "source_run_id": "do_du_10_tail",
+  "model_id": "mitdb_week2_cnn_v1",
+  "batch_size": 1,
+  "logical_splits": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "loads": 5,
+  "warmup": 20,
+  "repeats": 100,
+  "timeout_s": 1800,
+  "scope": "root graph CPU/PS+DPU; calibration-reuse golden",
+  "source_profile_sha256": "7d02fab4938eb858cd3f81cc11272de516ee1d0403c5a704992c5d0461f3d0fd"
+}

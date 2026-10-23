@@ -1,0 +1,9 @@
+{
+  "created_utc": "2026-10-22T09:34:24.313495+00:00",
+  "machine": "aarch64",
+  "runner_sha256": "7fa722acb7ba248f8a8ce47b2bc8e5fc9068d56ee36566f784c872d9443b9d1e",
+  "driver_sha256": "7d0ff17c3a3bb63404fb75c2cead83b7b55cd3382b315aa8f0986b8108b9a40b",
+  "reference_sha256": "5ce7c1741e8fd096c70ab29484dcfb176224dbad286ea3bc8b99488f1133bcc4",
+  "samples_csv_sha256": "4a6356312d5f62da6b2fdf9e609843d4dea3fc5c20767e201ea21a075e6f227c",
+  "scope": "frozen Week 3 calibration-reuse golden; not independent test accuracy"
+}

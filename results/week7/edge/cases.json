@@ -1,0 +1,3005 @@
+{
+  "schema_version": 1,
+  "rows": [
+    {
+      "backend": "reference",
+      "vector_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 1,
+      "status": "OK",
+      "logits": [
+        11.085938453674316,
+        2.4384169578552246,
+        -0.2332960069179535,
+        -0.5148026943206787,
+        -2.4582457542419434
+      ],
+      "reference_logits": [
+        11.085938453674316,
+        2.4384171962738037,
+        -0.2332957684993744,
+        -0.514802098274231,
+        -2.4582457542419434
+      ],
+      "max_abs_error": 5.960464477539062e-07,
+      "class_match": true,
+      "request_sha256": "5666c35a1690a0681e62d861864971a0ebb59c56d13402c83a89b11aaf82159d",
+      "response_sha256": "2992b127fffb1eecd8116ea0feba740da06508aa679d2de3bd5ef6f4c4da43f7",
+      "q_sha256": "c76f3f9ba9a79f5e475a3e07a2a51be430768a79f4590a1ea60e5ad776cb5c32",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 2,
+      "status": "OK",
+      "logits": [
+        10.605215072631836,
+        2.3277390003204346,
+        -0.5498436689376831,
+        -0.10958606004714966,
+        -2.2454540729522705
+      ],
+      "reference_logits": [
+        10.605216026306152,
+        2.3277390003204346,
+        -0.5498439073562622,
+        -0.10958588123321533,
+        -2.2454543113708496
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "6adb66a449d11ce0f7e5bd7ff68810c50c17792df21c3cb0d0e97bbcda35cb78",
+      "response_sha256": "63a46af9082c0bb4d7c35d96c806fccf8624d3c01abf0372f2e637a69d0b5a7a",
+      "q_sha256": "16c32eb22690a744f11135d70059615cee4475e446286e25bb1c3e47de93265f",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 3,
+      "status": "OK",
+      "logits": [
+        11.019262313842773,
+        2.3858652114868164,
+        0.01942112296819687,
+        0.3937835693359375,
+        -3.155386447906494
+      ],
+      "reference_logits": [
+        11.01926326751709,
+        2.3858649730682373,
+        0.019421003758907318,
+        0.39378368854522705,
+        -3.155385971069336
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "7f6e680174ab867ec090d2c3cce4c4da6c6207522527975d61d87e0515a94cd3",
+      "response_sha256": "4ae1b5b3bfac24b6716766aeec5fc63aee9a942f8474dc65584788eca6878be2",
+      "q_sha256": "21c7b6d849f1d6fad719aad4e4e1d89f3e09b4b6377a1f22a9e15e83156e4228",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 4,
+      "status": "OK",
+      "logits": [
+        10.533601760864258,
+        1.9228228330612183,
+        0.020109079778194427,
+        0.27270835638046265,
+        -2.2202975749969482
+      ],
+      "reference_logits": [
+        10.533601760864258,
+        1.9228224754333496,
+        0.02010955661535263,
+        0.27270829677581787,
+        -2.2202982902526855
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "class_match": true,
+      "request_sha256": "c8b03635571109640ffdfe5f2612fb8ebc872086dfaa879c533b42d50d65c3e7",
+      "response_sha256": "c24f6d8a0c2ea587b569467c0043b083f7f6901ab4a02bab7df5f100cf42a06a",
+      "q_sha256": "6a418ba2a40f3c6e3e220d0517b5f8f8f9ffb2504ee5cc106fa8bbcc3c47d60c",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 5,
+      "status": "OK",
+      "logits": [
+        10.531088829040527,
+        1.5859405994415283,
+        -0.7386109828948975,
+        0.49883604049682617,
+        -1.6335598230361938
+      ],
+      "reference_logits": [
+        10.531088829040527,
+        1.5859410762786865,
+        -0.7386114597320557,
+        0.4988361597061157,
+        -1.6335593461990356
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "9fdcfdd13de0817531f8344c7fafc862f72384f0800367dcfd141ae22e9d76f3",
+      "response_sha256": "f6a7d8c0a523ab87f7a625124157b45f8639468f0e8d4c12225c8afc47e6075a",
+      "q_sha256": "adbd6ebbf59871fc9a14f2671337fb50e4e0477d9d4852e81673e56f6e9a57ee",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 5,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 6,
+      "status": "OK",
+      "logits": [
+        11.082379341125488,
+        2.4619193077087402,
+        -0.22185954451560974,
+        -0.5483038425445557,
+        -2.469576358795166
+      ],
+      "reference_logits": [
+        11.082378387451172,
+        2.4619193077087402,
+        -0.22185978293418884,
+        -0.5483036041259766,
+        -2.469576835632324
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "eb8d220ae3cb8b4fc5b75ce1b30dd291692a1eb965b70ba93fe4bc3b81c11f13",
+      "response_sha256": "eb1f33870d9391b6fd960394893b180ff593391a69406461aa78312a3d24bbb3",
+      "q_sha256": "f0f72015c9c0ddde549a1a9b45dbd18d564986ab1c1a1c454db8b347f3458e38",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 6,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 7,
+      "status": "OK",
+      "logits": [
+        10.586688041687012,
+        2.322561502456665,
+        -0.5508171319961548,
+        -0.09243154525756836,
+        -2.246412515640259
+      ],
+      "reference_logits": [
+        10.586688041687012,
+        2.322561264038086,
+        -0.5508172512054443,
+        -0.09243154525756836,
+        -2.246412754058838
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "class_match": true,
+      "request_sha256": "be08f72763e5b0990043f382bd3be72698a31db628df02efe2a99d185bf9084e",
+      "response_sha256": "4fa0e62f7e048ed0c7fad4eb89cabb2e87f1f9f209a7549eb4a77556b67ccf5d",
+      "q_sha256": "c40aa8982b2b3ba46f5e6e3aebbd1a55609daa1e553b529dee01288e6bb4bf32",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 7,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 8,
+      "status": "OK",
+      "logits": [
+        10.979677200317383,
+        2.3489503860473633,
+        -0.005965925753116608,
+        0.35854804515838623,
+        -3.0809531211853027
+      ],
+      "reference_logits": [
+        10.9796781539917,
+        2.3489503860473633,
+        -0.005965687334537506,
+        0.35854828357696533,
+        -3.080953598022461
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "7e88ead5c4033a85346f4340f6e73b2c4cd21be56922378007473160b6c5535e",
+      "response_sha256": "7de03388ce191ccd21db2f6ebc69dcfa9c2c192dc91171030aeeef6af5464254",
+      "q_sha256": "ebd5d6a95f4e65e0d9d6dc0a0d32b9a7872a6cfc87661ba693b9bdf4bad08c95",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 8,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 9,
+      "status": "OK",
+      "logits": [
+        10.542850494384766,
+        1.9140985012054443,
+        0.0462663397192955,
+        0.25924569368362427,
+        -2.2131171226501465
+      ],
+      "reference_logits": [
+        10.542850494384766,
+        1.9140989780426025,
+        0.04626622051000595,
+        0.2592456340789795,
+        -2.2131171226501465
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "58da5a28a7b760784d3539e9fb17a4e847740baa288337219803a5c8cb599d83",
+      "response_sha256": "be5227936e643e607a300ba66fe8925a550b61e257050bd1ca2ffafca2f1b671",
+      "q_sha256": "47ffe800c51b74a51f25f8e67a84051879fda0ea9dd34f38b66965ea8cb0497c",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 9,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 10,
+      "status": "OK",
+      "logits": [
+        10.571520805358887,
+        1.5728983879089355,
+        -0.741508960723877,
+        0.5314582586288452,
+        -1.6486378908157349
+      ],
+      "reference_logits": [
+        10.571520805358887,
+        1.5728983879089355,
+        -0.7415084838867188,
+        0.5314581394195557,
+        -1.6486374139785767
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "876df19d83ce92d497688680e6e8fd464c2160a05f38c4c99026c444998a84e3",
+      "response_sha256": "5e6a74f10324cd3119d8c08c84280ba787d87bb4859165a99f6636cb2a271da7",
+      "q_sha256": "1572fb399eeed7000766b88901b02d02ce608f4aa372096053a1a8fd60053b08",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 10,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 11,
+      "status": "OK",
+      "logits": [
+        11.079105377197266,
+        2.4518637657165527,
+        -0.22429785132408142,
+        -0.5500050783157349,
+        -2.4431936740875244
+      ],
+      "reference_logits": [
+        11.079105377197266,
+        2.4518637657165527,
+        -0.22429832816123962,
+        -0.550005316734314,
+        -2.4431934356689453
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "b62b962377308f17a86ebc22a8523992505909b687b2b30bbaec7f94b9d5a188",
+      "response_sha256": "a21ed8312ed42ffdb31b64e35d203ed9f0a36db0fed2701dcb474d5170b088fd",
+      "q_sha256": "753083bf155f6227c686ab1f7116c3986f3bd70c68b05559a1be2044d8f2c22e",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 11,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 12,
+      "status": "OK",
+      "logits": [
+        10.624439239501953,
+        2.357457160949707,
+        -0.5134087800979614,
+        -0.09196901321411133,
+        -2.294020652770996
+      ],
+      "reference_logits": [
+        10.624439239501953,
+        2.357457160949707,
+        -0.5134087800979614,
+        -0.09196913242340088,
+        -2.2940211296081543
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "e1274a23ded1be00aabb24f24ff2ec6b0e2b69b3ed2658d531539acac6a69c5a",
+      "response_sha256": "34c64a2118d32845cd9b8632118356c0cae431046d46e1854eafc08fc5f80baf",
+      "q_sha256": "fed6d686f2dae3ea98968c0646b44b7cb841896b49600fca5f0dc360696e0f8b",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 12,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 13,
+      "status": "OK",
+      "logits": [
+        11.025070190429688,
+        2.3812437057495117,
+        0.00397028774023056,
+        0.3757191300392151,
+        -3.129582405090332
+      ],
+      "reference_logits": [
+        11.025071144104004,
+        2.3812429904937744,
+        0.00397028774023056,
+        0.37571918964385986,
+        -3.129582405090332
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "4eb7cc296be7015a596ca23896fc1d0286f49287ca36d12b42339665f2bb8178",
+      "response_sha256": "9b7b0c9854293e746fe556f78a6e1b366d90bcc06a9ae3e07828ea6c05ff885f",
+      "q_sha256": "7a675d6839e1de6e0316a647fc57d06744a4c377fe7dbc849083da9196e69c3d",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 13,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 14,
+      "status": "OK",
+      "logits": [
+        10.525486946105957,
+        1.9643092155456543,
+        0.06063570827245712,
+        0.23491030931472778,
+        -2.2244253158569336
+      ],
+      "reference_logits": [
+        10.525486946105957,
+        1.9643092155456543,
+        0.06063570827245712,
+        0.23491060733795166,
+        -2.224424362182617
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "1ef135038da6a2dc93c7bbc2034ca51681bbf40f3780091d0d93e1bbb2d7d356",
+      "response_sha256": "4b0d4e3bd04410605b5c7a691bf1bde9419fceb0b4dba589bb9359be7e3030ad",
+      "q_sha256": "a0ab47f9ddb4a01269921304e8d07c2127e3b0781d65997477612ac0dbf12c4a",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 14,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 15,
+      "status": "OK",
+      "logits": [
+        10.523492813110352,
+        1.5463800430297852,
+        -0.7222670316696167,
+        0.5572466850280762,
+        -1.6094990968704224
+      ],
+      "reference_logits": [
+        10.523492813110352,
+        1.5463802814483643,
+        -0.722266674041748,
+        0.5572465658187866,
+        -1.6094986200332642
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "3435762958096e17795d18fa12c2a130fa0a99de1f202e6583e8066f8c728894",
+      "response_sha256": "6c44c07a15ad7dd77b2a48c8b7769720a6b39b3b18ab9004d811b37e6414dfe9",
+      "q_sha256": "402f846233016c54b16343575c11b5402b539d2db372443d6a7a71bd7e278486",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 15,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 16,
+      "status": "OK",
+      "logits": [
+        11.037089347839355,
+        2.4397568702697754,
+        -0.23796328902244568,
+        -0.5617491006851196,
+        -2.41970157623291
+      ],
+      "reference_logits": [
+        11.037088394165039,
+        2.4397568702697754,
+        -0.23796328902244568,
+        -0.5617489814758301,
+        -2.41970157623291
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "de85886c3541343052064a663d11643f5fb3ea142ae288c638c4d8f8410fd55d",
+      "response_sha256": "2c6eb9234adbd2f1327d4ce409a42a0dadfac99bac4e356e2ade479642f9b976",
+      "q_sha256": "492f40969a182cbb9c648a7ec5ea4ae96a3bfc50406accb7fed94b8bac04f778",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 16,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 17,
+      "status": "OK",
+      "logits": [
+        10.57337474822998,
+        2.3341760635375977,
+        -0.537647008895874,
+        -0.10644495487213135,
+        -2.2447850704193115
+      ],
+      "reference_logits": [
+        10.57337474822998,
+        2.3341760635375977,
+        -0.5376472473144531,
+        -0.10644495487213135,
+        -2.244784355163574
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "class_match": true,
+      "request_sha256": "d50d72ef3efff4971976d20b666c210106247aeba64374a3c4e408dd73b3c1b4",
+      "response_sha256": "bec3c7a220e11caf8c44c276d2dcbcbe5dd0801ce441ceb15a7adf1e13120c35",
+      "q_sha256": "1f9990770ae7f66feb4d4153eb0f18cc68e815685e164a97e2cb948b74c28e01",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 17,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 18,
+      "status": "OK",
+      "logits": [
+        10.979229927062988,
+        2.3598337173461914,
+        0.01341249793767929,
+        0.37596744298934937,
+        -3.0936455726623535
+      ],
+      "reference_logits": [
+        10.979230880737305,
+        2.3598337173461914,
+        0.01341237872838974,
+        0.3759671449661255,
+        -3.0936455726623535
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "82acf9ca0e7a6ec15b47f30127c6a1752ac150c04217ff21aadf42926551b358",
+      "response_sha256": "7f4504a523d9a60c4dbbf461903c3a497b95a619b8f96760ec99472886ec82ba",
+      "q_sha256": "7b2f49f7177d765069b66e14a53c42b70094594a325da935d30b480eb00d79c3",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 18,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 19,
+      "status": "OK",
+      "logits": [
+        10.561923027038574,
+        1.94150710105896,
+        0.0431685671210289,
+        0.23510360717773438,
+        -2.221672296524048
+      ],
+      "reference_logits": [
+        10.56192398071289,
+        1.941507339477539,
+        0.04316892474889755,
+        0.23510336875915527,
+        -2.221672534942627
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "411af58d268c94d05b2a47921c0d9e3e43fb3e3ad9f83ec57ee7ec96618be9af",
+      "response_sha256": "b437080459dca82f42f2858ec31d71c0e860ca60923ddb65f5f5cd0c715c443f",
+      "q_sha256": "c2dace6fcb4ee1eb1813d79602ed652d4204d041e3c5717c65f3a28025279d01",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 19,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 20,
+      "status": "OK",
+      "logits": [
+        10.545369148254395,
+        1.5868101119995117,
+        -0.7458343505859375,
+        0.5144410133361816,
+        -1.6393433809280396
+      ],
+      "reference_logits": [
+        10.545368194580078,
+        1.5868101119995117,
+        -0.7458341121673584,
+        0.5144408941268921,
+        -1.6393433809280396
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "301705318ceeb6b3a14cb85b43424930bf9ca4b82812420ca7667c538d9ff414",
+      "response_sha256": "c979d0d8f20604b85790f076b671d6a3db1a3c411e648ba904fff484c8557d8b",
+      "q_sha256": "35b3f0925d5ebfe156f8d8ba50fd6fcf81478f57a64ef5bfd5365c2adbf7ffb9",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 20,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 21,
+      "status": "OK",
+      "logits": [
+        11.086043357849121,
+        2.450026512145996,
+        -0.22468385100364685,
+        -0.5553393363952637,
+        -2.4522900581359863
+      ],
+      "reference_logits": [
+        11.086043357849121,
+        2.450026750564575,
+        -0.22468385100364685,
+        -0.5553398132324219,
+        -2.4522900581359863
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "933d31a90ed65678f7a1bae5e1480cacfa2da1544839014fb21cf734aafab10b",
+      "response_sha256": "3d1a27c64deea83527fc085ddc10c791a9b876d95cdaf39d12f2723e72e4a79d",
+      "q_sha256": "dca00f826abf1ef4d6035881f6735d7c50576ca51c8ac4769ec7919b9a2a19d6",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 21,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 22,
+      "status": "OK",
+      "logits": [
+        10.575631141662598,
+        2.3268074989318848,
+        -0.5394300222396851,
+        -0.10542941093444824,
+        -2.2350170612335205
+      ],
+      "reference_logits": [
+        10.575631141662598,
+        2.326807975769043,
+        -0.5394301414489746,
+        -0.10542929172515869,
+        -2.235016345977783
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "class_match": true,
+      "request_sha256": "9c39340aef48d4a8cd448f5fa70f596eabe8da3a41189d429099f4d94d5737a1",
+      "response_sha256": "21cb9c0c3c3c40fbe6733c72707de8d602b13886202a891763867c50a716c6cd",
+      "q_sha256": "5940b4dd5628b2c5eb999e74faf3a6729c4a0b11bf549cc43ab7152fa2c05fb8",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 22,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 23,
+      "status": "OK",
+      "logits": [
+        10.973166465759277,
+        2.356088638305664,
+        0.003218434751033783,
+        0.3795822262763977,
+        -3.094599723815918
+      ],
+      "reference_logits": [
+        10.973166465759277,
+        2.356088638305664,
+        0.003218315541744232,
+        0.37958216667175293,
+        -3.094600200653076
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "35884de93e701626acffe0a4a8f77894b4ebe79d4ae2bf58d37376726214f253",
+      "response_sha256": "2ee9f035c39c0bd46e98eb6b716fec8d1a3676a8799da40f7ab01b5224332532",
+      "q_sha256": "743f91bb91c5f87be1abf5106866fbd455cfe0b9ba8cecde355861195a6e2f14",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 23,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 24,
+      "status": "OK",
+      "logits": [
+        10.566872596740723,
+        1.922917127609253,
+        0.023636125028133392,
+        0.25659674406051636,
+        -2.2242350578308105
+      ],
+      "reference_logits": [
+        10.566871643066406,
+        1.9229168891906738,
+        0.02363600581884384,
+        0.2565966844558716,
+        -2.2242350578308105
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "8e202764f2de67cbd444a421cf3627f71d1580dd6f0cd02fb60f0f00edc23120",
+      "response_sha256": "370da5423f96fd7aa75f417653d07bf8833f163cbc32fbd8dcb13eede8e84e88",
+      "q_sha256": "f4b55bc1a0d2fc62cc7ab4789566216525b636caead7914e9068134bb129d6ad",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 24,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 25,
+      "status": "OK",
+      "logits": [
+        10.559843063354492,
+        1.58993661403656,
+        -0.7425218820571899,
+        0.49324822425842285,
+        -1.643375277519226
+      ],
+      "reference_logits": [
+        10.559842109680176,
+        1.5899364948272705,
+        -0.7425224781036377,
+        0.49324774742126465,
+        -1.643375039100647
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "a67792b639f1fff711ed9ea58b81e5cc76c1add28df1614e9cfa90eee917e358",
+      "response_sha256": "b07a7edebb9cce5ad723e5ccf8e99c423331c881ccb2f6894243dd22dec7b5b6",
+      "q_sha256": "044b3bf10a67cce72257303cc45ecd608e4f55720311075841a61ad7ac66c3a5",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 25,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 26,
+      "status": "OK",
+      "logits": [
+        11.070547103881836,
+        2.428185224533081,
+        -0.2433522641658783,
+        -0.5256498456001282,
+        -2.4355735778808594
+      ],
+      "reference_logits": [
+        11.07054615020752,
+        2.428185224533081,
+        -0.2433525025844574,
+        -0.525649905204773,
+        -2.435573101043701
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "805bc52a8e1edb8d5b1b87b207956903dbb0403a96fdd4cb1571515d2a4a03b6",
+      "response_sha256": "97a23cd0de903c37eb5f5ca320e16fd9e7a49c546f8d9a74d6ef94b74959e637",
+      "q_sha256": "81e76321b278438c76cb7ab82bc945b37b4d997a96ade5381c0482cfa0789256",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 26,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 27,
+      "status": "OK",
+      "logits": [
+        10.584012985229492,
+        2.336453437805176,
+        -0.5343157052993774,
+        -0.10580325126647949,
+        -2.2496113777160645
+      ],
+      "reference_logits": [
+        10.584012031555176,
+        2.336453437805176,
+        -0.5343159437179565,
+        -0.10580325126647949,
+        -2.2496113777160645
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "5afdf0a0bd7315ae076d356f10aef448c0002a0de651e7a7bd37298baff4c041",
+      "response_sha256": "15d043e65d4515db9fd39f453d75f7d98e0ddcf4302638e038b77f704139e894",
+      "q_sha256": "7e6fde25f86967c019e88aee497beada6b6235d9a1fba149c142076e500a828c",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 27,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 28,
+      "status": "OK",
+      "logits": [
+        10.997551918029785,
+        2.3793816566467285,
+        0.010030888020992279,
+        0.36552172899246216,
+        -3.1135621070861816
+      ],
+      "reference_logits": [
+        10.997551918029785,
+        2.3793814182281494,
+        0.01003100723028183,
+        0.3655219078063965,
+        -3.11356258392334
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "c0e8618e17f18431195fbea2f678300748a9876733fa9c29a582a7c6c9e8bda4",
+      "response_sha256": "b360669492a5f1d0ff70cdc51bc56553b9a7aa09877d0e7bdd8cd4b5dab9ddca",
+      "q_sha256": "02068e230d561a296ec051c275c566c212323eb9c36b85a314ed774783690939",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 28,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 29,
+      "status": "OK",
+      "logits": [
+        10.559447288513184,
+        1.947471261024475,
+        0.017101310193538666,
+        0.23064976930618286,
+        -2.2276811599731445
+      ],
+      "reference_logits": [
+        10.559447288513184,
+        1.9474711418151855,
+        0.017101071774959564,
+        0.23064982891082764,
+        -2.2276811599731445
+      ],
+      "max_abs_error": 2.384185791015625e-07,
+      "class_match": true,
+      "request_sha256": "db2c0b7de3381207ab6d94a91300ee1dd8d974dd3e35522299251b2ee28647e4",
+      "response_sha256": "fed6953e6e9e57991ae40f68b4314e7cf17cff1248f4af1fa1faacfb4b06d72a",
+      "q_sha256": "9a5356663e44bd87a458c714d516eec6151fb7cf12f93b6e6c87ed767022c8e5",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 29,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 30,
+      "status": "OK",
+      "logits": [
+        10.577105522155762,
+        1.5929936170578003,
+        -0.7346863746643066,
+        0.5178462266921997,
+        -1.6589974164962769
+      ],
+      "reference_logits": [
+        10.577105522155762,
+        1.5929934978485107,
+        -0.7346862554550171,
+        0.517845869064331,
+        -1.6589971780776978
+      ],
+      "max_abs_error": 3.5762786865234375e-07,
+      "class_match": true,
+      "request_sha256": "e21aff4655381cf0e79713e32ebf057d88b685fc59b9b3c74db6d1994682472e",
+      "response_sha256": "1fc3bbf016465252125b8c25958c89a88552b7e743c1bf1b4fb5ec90818f2a29",
+      "q_sha256": "5e3c8a5f01d9da11bd3c01ec3900af1fb14e1330917d5f5d9652a88fdc2f1ea9",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 30,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 6,
+      "wire_split_id": 262,
+      "request_id": 31,
+      "status": "OK",
+      "logits": [
+        11.092179298400879,
+        2.446992874145508,
+        -0.25653108954429626,
+        -0.5339308977127075,
+        -2.463102102279663
+      ],
+      "reference_logits": [
+        11.092179298400879,
+        2.446992874145508,
+        -0.25653132796287537,
+        -0.5339304208755493,
+        -2.4631028175354004
+      ],
+      "max_abs_error": 7.152557373046875e-07,
+      "class_match": true,
+      "request_sha256": "5abca863ce7844c1ecb0d9c36a76ea96301288b6418be9e440d1650e23f4d9a4",
+      "response_sha256": "3706eca5d89cc3901569c16daf89744e9f733d9bd14c6ed488bfb3336b592377",
+      "q_sha256": "18c155db1027c6c5ec4292f5765c3216c9ae9c1da12af2dea9df67a702ecf5fb",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 31,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 6,
+      "wire_split_id": 262,
+      "request_id": 32,
+      "status": "OK",
+      "logits": [
+        10.540103912353516,
+        2.298574686050415,
+        -0.5123916864395142,
+        -0.07355952262878418,
+        -2.2200300693511963
+      ],
+      "reference_logits": [
+        10.5401029586792,
+        2.298574924468994,
+        -0.5123914480209351,
+        -0.07355916500091553,
+        -2.2200303077697754
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "d8c8e51f6e853e790927fa8a960db0163eb9abea384d46e62732e58f989124fb",
+      "response_sha256": "521ed96123986662e99257e52d51c4bfc17ac61129c03ec7fc0f0cc6ac9423c1",
+      "q_sha256": "3d224c001535b6903b7dd45f50be39e5c7cb871bf72190108745181a551da491",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 32,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 6,
+      "wire_split_id": 262,
+      "request_id": 33,
+      "status": "OK",
+      "logits": [
+        10.98228931427002,
+        2.3580541610717773,
+        0.02871384471654892,
+        0.39496803283691406,
+        -3.110903263092041
+      ],
+      "reference_logits": [
+        10.98228931427002,
+        2.3580541610717773,
+        0.028713367879390717,
+        0.3949676752090454,
+        -3.110902786254883
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "5c55148a2f237b680f31334d87e66b4237bd0e2fb479e054f9c8c7932d12b978",
+      "response_sha256": "622c0a5d115bda4815cf53f44520f92591b4c6e5d4b8d64719391b9c7c8015b4",
+      "q_sha256": "b28974b9629945e7878345c3d279ebc02c0220c7f564715633a7bdd8d32fd9ce",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 33,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 6,
+      "wire_split_id": 262,
+      "request_id": 34,
+      "status": "OK",
+      "logits": [
+        10.526751518249512,
+        1.9340368509292603,
+        0.04073276370763779,
+        0.24398523569107056,
+        -2.2183775901794434
+      ],
+      "reference_logits": [
+        10.526750564575195,
+        1.9340367317199707,
+        0.04073300212621689,
+        0.24398529529571533,
+        -2.2183775901794434
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "359d51941c0725ff248b6690bc702e32a8c50934e628231b587e9616e3b80708",
+      "response_sha256": "33301a35a77a53e44b93916bfba8ec689a88d0324e5e94d6b7a2799f423e33a1",
+      "q_sha256": "6a930efed3f6cd3fce8af29747b539ea0e59639f244c8b4367c8980cdbb1b64f",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 34,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 7,
+      "wire_split_id": 263,
+      "request_id": 35,
+      "status": "OK",
+      "logits": [
+        11.055870056152344,
+        2.438249111175537,
+        -0.23463758826255798,
+        -0.5479365587234497,
+        -2.4334216117858887
+      ],
+      "reference_logits": [
+        11.055870056152344,
+        2.4382500648498535,
+        -0.23463746905326843,
+        -0.547936201095581,
+        -2.4334211349487305
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "f8c97b634f4c246ef84c819a11b91dbbaafbb7f43afae1cec24c911e2dbb0a79",
+      "response_sha256": "536f373093c54fd00cedb86d50815b3ce09236a9fd311bb8840e15d1f1735bdc",
+      "q_sha256": "3355c2b1f8b57f8d8f3441c98867e15484c236c92d7abc49bb96adf45dbe6fb6",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 35,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 7,
+      "wire_split_id": 263,
+      "request_id": 36,
+      "status": "OK",
+      "logits": [
+        10.594376564025879,
+        2.33030104637146,
+        -0.5308727025985718,
+        -0.09360402822494507,
+        -2.260383129119873
+      ],
+      "reference_logits": [
+        10.594376564025879,
+        2.330301523208618,
+        -0.5308722257614136,
+        -0.0936042070388794,
+        -2.2603836059570312
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "2a5c97ce1cde712ae68a182b4b81be786d050057add19cc5bed0f52627b40f1e",
+      "response_sha256": "3b29dc0acdbc072b55bfc54f2e471c6a52c787e2c8f732476313d6a5994a615a",
+      "q_sha256": "ce47a71dc8effb9301cda0a0e04f1abc6badec8744b911944d4392858825e644",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 36,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 7,
+      "wire_split_id": 263,
+      "request_id": 37,
+      "status": "OK",
+      "logits": [
+        10.994980812072754,
+        2.3595399856567383,
+        -0.001986958086490631,
+        0.37471264600753784,
+        -3.100581169128418
+      ],
+      "reference_logits": [
+        10.994980812072754,
+        2.3595404624938965,
+        -0.001987077295780182,
+        0.37471258640289307,
+        -3.1005806922912598
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "ce678cbe532a481c2356a13f0755fa9a86bee18753fecf1e87a24ba4c30cd1d5",
+      "response_sha256": "90d40f1f52bb8decab28fee430ca21aa55a88503c1068ad19aac9b5cee57de59",
+      "q_sha256": "a4c85c2710bc135390d1d3a59168438cb1e97241253fad11e088e510f4663e5c",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 37,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 7,
+      "wire_split_id": 263,
+      "request_id": 38,
+      "status": "OK",
+      "logits": [
+        10.527497291564941,
+        1.9443120956420898,
+        0.059206269681453705,
+        0.2200896143913269,
+        -2.211458683013916
+      ],
+      "reference_logits": [
+        10.527497291564941,
+        1.9443120956420898,
+        0.059206269681453705,
+        0.22008943557739258,
+        -2.2114572525024414
+      ],
+      "max_abs_error": 1.430511474609375e-06,
+      "class_match": true,
+      "request_sha256": "ec796035c0fe3f778542b5f35018bb9a73197cc2dd959ed75a576de115cf4187",
+      "response_sha256": "66e08b0822051f543be8229422cb11597bf0aa45a59a2cf37255e7e3463212fd",
+      "q_sha256": "c278af3702ed1f8415b5c75384bcbbf99073240c12697d14c8dd80f72efccb33",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 38,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 8,
+      "wire_split_id": 264,
+      "request_id": 39,
+      "status": "OK",
+      "logits": [
+        11.088074684143066,
+        2.449225902557373,
+        -0.2220226228237152,
+        -0.5471282005310059,
+        -2.4630813598632812
+      ],
+      "reference_logits": [
+        11.08807373046875,
+        2.449225902557373,
+        -0.22202333807945251,
+        -0.547128438949585,
+        -2.463080883026123
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "7b62139810df7c0e7ecec07614d51fb826c8c8cbe6a77e50d0ecf062ab99c449",
+      "response_sha256": "288fc906b3cb2ec0a878846793e75798233264c64a7a002b3a6e38920c084b83",
+      "q_sha256": "e2484ccfc42cd0f73ed1e73bb284ea3634c0fc448d7c81607b0bcef73618bfe3",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 39,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 8,
+      "wire_split_id": 264,
+      "request_id": 40,
+      "status": "OK",
+      "logits": [
+        10.588961601257324,
+        2.3121838569641113,
+        -0.5360389947891235,
+        -0.09042227268218994,
+        -2.244081497192383
+      ],
+      "reference_logits": [
+        10.588961601257324,
+        2.312183380126953,
+        -0.5360391139984131,
+        -0.09042203426361084,
+        -2.244081974029541
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "b0f2dc8721990cb04b12c29ab1d80d70ba10b6fcd050b7ccb42ddbe284f5efc1",
+      "response_sha256": "ba7948a53adade745b0cb76fac846adfa6a1600778d00827c2a342bbb88d0771",
+      "q_sha256": "35d1258ba1f401214b1f930cfb90c50d0196521fa3e70aac4c1f19909c98d236",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 40,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 8,
+      "wire_split_id": 264,
+      "request_id": 41,
+      "status": "OK",
+      "logits": [
+        10.9827299118042,
+        2.364840269088745,
+        0.012727759778499603,
+        0.37432974576950073,
+        -3.0973153114318848
+      ],
+      "reference_logits": [
+        10.982730865478516,
+        2.3648409843444824,
+        0.0127272829413414,
+        0.3743298053741455,
+        -3.0973153114318848
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "999bcb3adc7cf207d943f2fbb7aeb783367e1dbfdd45d564b41d427cdc4e21f6",
+      "response_sha256": "e1eaaa73a63470b1ffcd72929df9f8310675415ba5cca2ea26e2a3d84fdc968c",
+      "q_sha256": "d624e1143c5eb3c82eed8eaf8de26582954cdb42adb55f4af57c17003391ff93",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 41,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 8,
+      "wire_split_id": 264,
+      "request_id": 42,
+      "status": "OK",
+      "logits": [
+        10.537335395812988,
+        1.9404853582382202,
+        0.04392948001623154,
+        0.23940622806549072,
+        -2.225886344909668
+      ],
+      "reference_logits": [
+        10.537334442138672,
+        1.9404850006103516,
+        0.04392971843481064,
+        0.23940646648406982,
+        -2.225886821746826
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "0f92f2b55035d6446b567105bd26d0887e34d2e047fd9da915a42a8e7d93b7ff",
+      "response_sha256": "4def3fc8f26c06ab28e893cb2b52d1648205414a727710102b45e9d1212203d3",
+      "q_sha256": "8d405acb2d309813c40f1ae65127361efe658e4187ecda2307f381eeb222b4c8",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 42,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 9,
+      "wire_split_id": 265,
+      "request_id": 43,
+      "status": "OK",
+      "logits": [
+        11.071553230285645,
+        2.445634603500366,
+        -0.22808870673179626,
+        -0.5461366772651672,
+        -2.4480373859405518
+      ],
+      "reference_logits": [
+        11.071553230285645,
+        2.4456350803375244,
+        -0.22808870673179626,
+        -0.5461364984512329,
+        -2.4480371475219727
+      ],
+      "max_abs_error": 4.76837158203125e-07,
+      "class_match": true,
+      "request_sha256": "7c6df778cbe91817f131eeb0598632f39522ba800271299902b7be5e948e1d71",
+      "response_sha256": "bd066bf33b895075cec7c4ba181cc2f762289200f3282e888d126e65bbb1f3ed",
+      "q_sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 43,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 9,
+      "wire_split_id": 265,
+      "request_id": 44,
+      "status": "OK",
+      "logits": [
+        10.58210277557373,
+        2.322913646697998,
+        -0.5324493646621704,
+        -0.09067225456237793,
+        -2.2500193119049072
+      ],
+      "reference_logits": [
+        10.582103729248047,
+        2.322913885116577,
+        -0.5324493646621704,
+        -0.09067237377166748,
+        -2.2500195503234863
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "ab2762fbb6332e3eba86816b5d03f921923fc27ea9073114c5747a9127b56b92",
+      "response_sha256": "51887a824a00cf89e01ae5d6c542f8894e7a1ebd19eeab46ae3e0d843f038c87",
+      "q_sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 44,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 9,
+      "wire_split_id": 265,
+      "request_id": 45,
+      "status": "OK",
+      "logits": [
+        10.984024047851562,
+        2.359452247619629,
+        0.009726308286190033,
+        0.37271928787231445,
+        -3.094398021697998
+      ],
+      "reference_logits": [
+        10.984023094177246,
+        2.359452724456787,
+        0.009726308286190033,
+        0.3727191686630249,
+        -3.0943989753723145
+      ],
+      "max_abs_error": 9.5367431640625e-07,
+      "class_match": true,
+      "request_sha256": "39e1b7060109a7da4fe97cd299a1e3bd8cf5f655a192cefa2ad40cf504442af2",
+      "response_sha256": "dc8e3e3ed9395448662ecec3fdaa1af5086b5b7683e3cd8d6cb4d90508b0050f",
+      "q_sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 45,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 9,
+      "wire_split_id": 265,
+      "request_id": 46,
+      "status": "OK",
+      "logits": [
+        10.535970687866211,
+        1.9351428747177124,
+        0.04742004722356796,
+        0.23491930961608887,
+        -2.2137866020202637
+      ],
+      "reference_logits": [
+        10.535970687866211,
+        1.9351427555084229,
+        0.04742016643285751,
+        0.23491930961608887,
+        -2.2137866020202637
+      ],
+      "max_abs_error": 1.1920928955078125e-07,
+      "class_match": true,
+      "request_sha256": "af39a88c2ff0422691849e8b947f0e7746e83283981fc30dbdeef25cc807b74d",
+      "response_sha256": "28f2fbc726d3d3614e511b495c93c4e0e76e788e306bf6def835489d59ad6698",
+      "q_sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 46,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 10,
+      "wire_split_id": 266,
+      "request_id": 47,
+      "status": "OK",
+      "logits": [
+        11.069091796875,
+        2.445587158203125,
+        -0.22830486297607422,
+        -0.546478271484375,
+        -2.4475250244140625
+      ],
+      "reference_logits": [
+        11.069091796875,
+        2.445587158203125,
+        -0.22830486297607422,
+        -0.546478271484375,
+        -2.4475250244140625
+      ],
+      "max_abs_error": 0.0,
+      "class_match": true,
+      "request_sha256": "d76f335c04b28a6a415853bd09c95b720142059bb6dd3d3cfee8353038474869",
+      "response_sha256": "5f7708ee7682de54d9e692ae4f9b70186fa0ac7bfb6c11d9743385574270bef1",
+      "q_sha256": "1c91b85b003c12a5a3083d55cd1432009a098c925af6452389213d3ce1059ceb",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 47,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 10,
+      "wire_split_id": 266,
+      "request_id": 48,
+      "status": "OK",
+      "logits": [
+        10.58074951171875,
+        2.3235015869140625,
+        -0.5343666076660156,
+        -0.09029245376586914,
+        -2.2498626708984375
+      ],
+      "reference_logits": [
+        10.58074951171875,
+        2.3235015869140625,
+        -0.5343666076660156,
+        -0.09029245376586914,
+        -2.2498626708984375
+      ],
+      "max_abs_error": 0.0,
+      "class_match": true,
+      "request_sha256": "a189a462a6ff78e3492df27c18eff540070a0b7c460e27897d6369b84cfbf605",
+      "response_sha256": "5fc5eaa47b53bb3587a8488e40bcdc0307cccd7d116e6b1ca35f8e083fe1e97d",
+      "q_sha256": "1c91b85b003c12a5a3083d55cd1432009a098c925af6452389213d3ce1059ceb",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 48,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 10,
+      "wire_split_id": 266,
+      "request_id": 49,
+      "status": "OK",
+      "logits": [
+        10.98382568359375,
+        2.360321044921875,
+        0.009303271770477295,
+        0.3744926452636719,
+        -3.096710205078125
+      ],
+      "reference_logits": [
+        10.98382568359375,
+        2.360321044921875,
+        0.009303271770477295,
+        0.3744926452636719,
+        -3.096710205078125
+      ],
+      "max_abs_error": 0.0,
+      "class_match": true,
+      "request_sha256": "da56e83fa08c8a7bf3b975aee527c49282b7198576192171fca90bd91dd1c11c",
+      "response_sha256": "c1d730c4928e3a1cee885f5af3f2d3e03cb8b5d79ec52dddb31bb18d135fd045",
+      "q_sha256": "d16dc565881a8a8b07af6dc68e0b1750c7bfa35e3e48d3c3ad5e49314947058b",
+      "model_sha256": null
+    },
+    {
+      "backend": "reference",
+      "vector_index": 49,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 10,
+      "wire_split_id": 266,
+      "request_id": 50,
+      "status": "OK",
+      "logits": [
+        10.53424072265625,
+        1.9349594116210938,
+        0.04690241813659668,
+        0.23532962799072266,
+        -2.2149810791015625
+      ],
+      "reference_logits": [
+        10.53424072265625,
+        1.9349594116210938,
+        0.04690241813659668,
+        0.23532962799072266,
+        -2.2149810791015625
+      ],
+      "max_abs_error": 0.0,
+      "class_match": true,
+      "request_sha256": "bf053fca1d1948661bdffa1c9d50933add95b575d2bdbabaea5ff27c6227f206",
+      "response_sha256": "cf4b5cd2d7be7df4829650b97273baf846c4ebbbb416636be70d71949c1ff34d",
+      "q_sha256": "d16dc565881a8a8b07af6dc68e0b1750c7bfa35e3e48d3c3ad5e49314947058b",
+      "model_sha256": null
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 0,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 1,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.375,
+        -0.375,
+        -0.625,
+        -2.375
+      ],
+      "reference_logits": [
+        11.085938453674316,
+        2.4384171962738037,
+        -0.2332957684993744,
+        -0.514802098274231,
+        -2.4582457542419434
+      ],
+      "max_abs_error": 0.1417042315006256,
+      "class_match": true,
+      "request_sha256": "5666c35a1690a0681e62d861864971a0ebb59c56d13402c83a89b11aaf82159d",
+      "response_sha256": "5b009402dd75fde057c40fe000a5e739882b2ce854f7236025e820b5d3259355",
+      "q_sha256": "c76f3f9ba9a79f5e475a3e07a2a51be430768a79f4590a1ea60e5ad776cb5c32",
+      "model_sha256": "b6ce1d02ae32db7116a3e72fccdc0453c33964372fd60ddcf19f0e5eb6e02193"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 1,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 2,
+      "status": "OK",
+      "logits": [
+        10.625,
+        2.125,
+        -0.625,
+        -0.125,
+        -2.125
+      ],
+      "reference_logits": [
+        10.605216026306152,
+        2.3277390003204346,
+        -0.5498439073562622,
+        -0.10958588123321533,
+        -2.2454543113708496
+      ],
+      "max_abs_error": 0.20273900032043457,
+      "class_match": true,
+      "request_sha256": "6adb66a449d11ce0f7e5bd7ff68810c50c17792df21c3cb0d0e97bbcda35cb78",
+      "response_sha256": "489f2ebb1a479bf198827cb92b847294f199dc3267148cc8553baadaefe5e4c7",
+      "q_sha256": "16c32eb22690a744f11135d70059615cee4475e446286e25bb1c3e47de93265f",
+      "model_sha256": "b6ce1d02ae32db7116a3e72fccdc0453c33964372fd60ddcf19f0e5eb6e02193"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 2,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 3,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.625,
+        0.25,
+        0.5,
+        -3.375
+      ],
+      "reference_logits": [
+        11.01926326751709,
+        2.3858649730682373,
+        0.019421003758907318,
+        0.39378368854522705,
+        -3.155385971069336
+      ],
+      "max_abs_error": 0.2391350269317627,
+      "class_match": true,
+      "request_sha256": "7f6e680174ab867ec090d2c3cce4c4da6c6207522527975d61d87e0515a94cd3",
+      "response_sha256": "a3b7227179ea54337a112fe3a748142a82484ac83f4467afecde893acc235243",
+      "q_sha256": "21c7b6d849f1d6fad719aad4e4e1d89f3e09b4b6377a1f22a9e15e83156e4228",
+      "model_sha256": "b6ce1d02ae32db7116a3e72fccdc0453c33964372fd60ddcf19f0e5eb6e02193"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 3,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 4,
+      "status": "OK",
+      "logits": [
+        10.75,
+        2.25,
+        0.25,
+        0.125,
+        -2.625
+      ],
+      "reference_logits": [
+        10.533601760864258,
+        1.9228224754333496,
+        0.02010955661535263,
+        0.27270829677581787,
+        -2.2202982902526855
+      ],
+      "max_abs_error": 0.40470170974731445,
+      "class_match": true,
+      "request_sha256": "c8b03635571109640ffdfe5f2612fb8ebc872086dfaa879c533b42d50d65c3e7",
+      "response_sha256": "22784ce1809064b05427a3f69cfc1cffdd04ecc2f686e5582367f85bdbd359b9",
+      "q_sha256": "6a418ba2a40f3c6e3e220d0517b5f8f8f9ffb2504ee5cc106fa8bbcc3c47d60c",
+      "model_sha256": "b6ce1d02ae32db7116a3e72fccdc0453c33964372fd60ddcf19f0e5eb6e02193"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 4,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 0,
+      "wire_split_id": 256,
+      "request_id": 5,
+      "status": "OK",
+      "logits": [
+        10.375,
+        1.5,
+        -0.375,
+        0.25,
+        -1.625
+      ],
+      "reference_logits": [
+        10.531088829040527,
+        1.5859410762786865,
+        -0.7386114597320557,
+        0.4988361597061157,
+        -1.6335593461990356
+      ],
+      "max_abs_error": 0.36361145973205566,
+      "class_match": true,
+      "request_sha256": "9fdcfdd13de0817531f8344c7fafc862f72384f0800367dcfd141ae22e9d76f3",
+      "response_sha256": "77ba285f8e02592a981e873728a17ca5f39d76eb3cf012df1d8fbe9abf8b706b",
+      "q_sha256": "adbd6ebbf59871fc9a14f2671337fb50e4e0477d9d4852e81673e56f6e9a57ee",
+      "model_sha256": "b6ce1d02ae32db7116a3e72fccdc0453c33964372fd60ddcf19f0e5eb6e02193"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 5,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 6,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.375,
+        -0.375,
+        -0.75,
+        -2.375
+      ],
+      "reference_logits": [
+        11.082378387451172,
+        2.4619193077087402,
+        -0.22185978293418884,
+        -0.5483036041259766,
+        -2.469576835632324
+      ],
+      "max_abs_error": 0.20169639587402344,
+      "class_match": true,
+      "request_sha256": "eb8d220ae3cb8b4fc5b75ce1b30dd291692a1eb965b70ba93fe4bc3b81c11f13",
+      "response_sha256": "405945be7a178e4ea15d1ad192a2513a4c5cdd4e815c210bd14264245a6df574",
+      "q_sha256": "f0f72015c9c0ddde549a1a9b45dbd18d564986ab1c1a1c454db8b347f3458e38",
+      "model_sha256": "a6cd8ca55894569a849d59a82ad725dcdd1ba77c95442e98bfe6f732aa1f795f"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 6,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 7,
+      "status": "OK",
+      "logits": [
+        10.75,
+        2.25,
+        -0.625,
+        0.0,
+        -2.625
+      ],
+      "reference_logits": [
+        10.586688041687012,
+        2.322561264038086,
+        -0.5508172512054443,
+        -0.09243154525756836,
+        -2.246412754058838
+      ],
+      "max_abs_error": 0.3785872459411621,
+      "class_match": true,
+      "request_sha256": "be08f72763e5b0990043f382bd3be72698a31db628df02efe2a99d185bf9084e",
+      "response_sha256": "b34f4dacbd99609d687adbc10a1c32270196b5b9f30308405fc8f50a8d118960",
+      "q_sha256": "c40aa8982b2b3ba46f5e6e3aebbd1a55609daa1e553b529dee01288e6bb4bf32",
+      "model_sha256": "a6cd8ca55894569a849d59a82ad725dcdd1ba77c95442e98bfe6f732aa1f795f"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 7,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 8,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.5,
+        0.125,
+        0.25,
+        -3.375
+      ],
+      "reference_logits": [
+        10.9796781539917,
+        2.3489503860473633,
+        -0.005965687334537506,
+        0.35854828357696533,
+        -3.080953598022461
+      ],
+      "max_abs_error": 0.29404640197753906,
+      "class_match": true,
+      "request_sha256": "7e88ead5c4033a85346f4340f6e73b2c4cd21be56922378007473160b6c5535e",
+      "response_sha256": "46252a6463c4e829089b9a05433f02b748a47a62d150a85043da9c6da1265b31",
+      "q_sha256": "ebd5d6a95f4e65e0d9d6dc0a0d32b9a7872a6cfc87661ba693b9bdf4bad08c95",
+      "model_sha256": "a6cd8ca55894569a849d59a82ad725dcdd1ba77c95442e98bfe6f732aa1f795f"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 8,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 9,
+      "status": "OK",
+      "logits": [
+        10.75,
+        2.0,
+        0.25,
+        0.125,
+        -2.375
+      ],
+      "reference_logits": [
+        10.542850494384766,
+        1.9140989780426025,
+        0.04626622051000595,
+        0.2592456340789795,
+        -2.2131171226501465
+      ],
+      "max_abs_error": 0.20714950561523438,
+      "class_match": true,
+      "request_sha256": "58da5a28a7b760784d3539e9fb17a4e847740baa288337219803a5c8cb599d83",
+      "response_sha256": "b3ca998c141a2e4313098e14a5e921b7cfb6914e9daf017714f0e3fdc8e70748",
+      "q_sha256": "47ffe800c51b74a51f25f8e67a84051879fda0ea9dd34f38b66965ea8cb0497c",
+      "model_sha256": "a6cd8ca55894569a849d59a82ad725dcdd1ba77c95442e98bfe6f732aa1f795f"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 9,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 1,
+      "wire_split_id": 257,
+      "request_id": 10,
+      "status": "OK",
+      "logits": [
+        10.5,
+        1.625,
+        -0.375,
+        0.125,
+        -1.75
+      ],
+      "reference_logits": [
+        10.571520805358887,
+        1.5728983879089355,
+        -0.7415084838867188,
+        0.5314581394195557,
+        -1.6486374139785767
+      ],
+      "max_abs_error": 0.40645813941955566,
+      "class_match": true,
+      "request_sha256": "876df19d83ce92d497688680e6e8fd464c2160a05f38c4c99026c444998a84e3",
+      "response_sha256": "7db9a87a284a8aafe648fa8684cba4e94922c93d935b2d9df2894113ff9fd88e",
+      "q_sha256": "1572fb399eeed7000766b88901b02d02ce608f4aa372096053a1a8fd60053b08",
+      "model_sha256": "a6cd8ca55894569a849d59a82ad725dcdd1ba77c95442e98bfe6f732aa1f795f"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 10,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 11,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.5,
+        -0.125,
+        -0.5,
+        -2.5
+      ],
+      "reference_logits": [
+        11.079105377197266,
+        2.4518637657165527,
+        -0.22429832816123962,
+        -0.550005316734314,
+        -2.4431934356689453
+      ],
+      "max_abs_error": 0.09929832816123962,
+      "class_match": true,
+      "request_sha256": "b62b962377308f17a86ebc22a8523992505909b687b2b30bbaec7f94b9d5a188",
+      "response_sha256": "3e18d11bb04893a6729a899e2a24c283a79539f3b37aac246233cc78c392ce11",
+      "q_sha256": "753083bf155f6227c686ab1f7116c3986f3bd70c68b05559a1be2044d8f2c22e",
+      "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 11,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 12,
+      "status": "OK",
+      "logits": [
+        10.5,
+        2.375,
+        -0.375,
+        -0.125,
+        -2.25
+      ],
+      "reference_logits": [
+        10.624439239501953,
+        2.357457160949707,
+        -0.5134087800979614,
+        -0.09196913242340088,
+        -2.2940211296081543
+      ],
+      "max_abs_error": 0.13840878009796143,
+      "class_match": true,
+      "request_sha256": "e1274a23ded1be00aabb24f24ff2ec6b0e2b69b3ed2658d531539acac6a69c5a",
+      "response_sha256": "8e33f592f0bafc947d536069af9e796907a714b0afcab94cc8d32aaa5ea6a224",
+      "q_sha256": "fed6d686f2dae3ea98968c0646b44b7cb841896b49600fca5f0dc360696e0f8b",
+      "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 12,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 13,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.5,
+        0.0,
+        0.375,
+        -3.375
+      ],
+      "reference_logits": [
+        11.025071144104004,
+        2.3812429904937744,
+        0.00397028774023056,
+        0.37571918964385986,
+        -3.129582405090332
+      ],
+      "max_abs_error": 0.24541759490966797,
+      "class_match": true,
+      "request_sha256": "4eb7cc296be7015a596ca23896fc1d0286f49287ca36d12b42339665f2bb8178",
+      "response_sha256": "87145e1cb1f3bbc40d897bfee32e0f67e693aa3a708dd4a9ef5b1a6f24a99574",
+      "q_sha256": "7a675d6839e1de6e0316a647fc57d06744a4c377fe7dbc849083da9196e69c3d",
+      "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 13,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 14,
+      "status": "OK",
+      "logits": [
+        10.75,
+        2.125,
+        0.125,
+        0.125,
+        -2.375
+      ],
+      "reference_logits": [
+        10.525486946105957,
+        1.9643092155456543,
+        0.06063570827245712,
+        0.23491060733795166,
+        -2.224424362182617
+      ],
+      "max_abs_error": 0.22451305389404297,
+      "class_match": true,
+      "request_sha256": "1ef135038da6a2dc93c7bbc2034ca51681bbf40f3780091d0d93e1bbb2d7d356",
+      "response_sha256": "3dc6faea61143f293e031301ad6a93abc230690a18f5f15bfd7d407a807575b2",
+      "q_sha256": "a0ab47f9ddb4a01269921304e8d07c2127e3b0781d65997477612ac0dbf12c4a",
+      "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 14,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 2,
+      "wire_split_id": 258,
+      "request_id": 15,
+      "status": "OK",
+      "logits": [
+        10.25,
+        1.375,
+        -0.375,
+        0.375,
+        -1.5
+      ],
+      "reference_logits": [
+        10.523492813110352,
+        1.5463802814483643,
+        -0.722266674041748,
+        0.5572465658187866,
+        -1.6094986200332642
+      ],
+      "max_abs_error": 0.34726667404174805,
+      "class_match": true,
+      "request_sha256": "3435762958096e17795d18fa12c2a130fa0a99de1f202e6583e8066f8c728894",
+      "response_sha256": "a8bcb6da145d926e41150acaa3c76a116c331efc11393df7b9528ff1edcbece9",
+      "q_sha256": "402f846233016c54b16343575c11b5402b539d2db372443d6a7a71bd7e278486",
+      "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 15,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 16,
+      "status": "OK",
+      "logits": [
+        11.0,
+        2.375,
+        -0.25,
+        -0.625,
+        -2.25
+      ],
+      "reference_logits": [
+        11.037088394165039,
+        2.4397568702697754,
+        -0.23796328902244568,
+        -0.5617489814758301,
+        -2.41970157623291
+      ],
+      "max_abs_error": 0.16970157623291016,
+      "class_match": true,
+      "request_sha256": "de85886c3541343052064a663d11643f5fb3ea142ae288c638c4d8f8410fd55d",
+      "response_sha256": "c5c3d5e03f32409edcba8dd5dbc4f1a532e76d78936c8a21b645cfb4a5f4e597",
+      "q_sha256": "492f40969a182cbb9c648a7ec5ea4ae96a3bfc50406accb7fed94b8bac04f778",
+      "model_sha256": "88f541f6b9ddb923ffe9229c5c35713d194102819457b84880e59a1e3fa90a43"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 16,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 17,
+      "status": "OK",
+      "logits": [
+        10.375,
+        2.375,
+        -0.375,
+        -0.125,
+        -2.125
+      ],
+      "reference_logits": [
+        10.57337474822998,
+        2.3341760635375977,
+        -0.5376472473144531,
+        -0.10644495487213135,
+        -2.244784355163574
+      ],
+      "max_abs_error": 0.19837474822998047,
+      "class_match": true,
+      "request_sha256": "d50d72ef3efff4971976d20b666c210106247aeba64374a3c4e408dd73b3c1b4",
+      "response_sha256": "779c083ba6891d33c44270f1bb338ec1da506314fdf04c400e862a8cd455c7f2",
+      "q_sha256": "1f9990770ae7f66feb4d4153eb0f18cc68e815685e164a97e2cb948b74c28e01",
+      "model_sha256": "88f541f6b9ddb923ffe9229c5c35713d194102819457b84880e59a1e3fa90a43"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 17,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 18,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.375,
+        0.0,
+        0.5,
+        -3.25
+      ],
+      "reference_logits": [
+        10.979230880737305,
+        2.3598337173461914,
+        0.01341237872838974,
+        0.3759671449661255,
+        -3.0936455726623535
+      ],
+      "max_abs_error": 0.15635442733764648,
+      "class_match": true,
+      "request_sha256": "82acf9ca0e7a6ec15b47f30127c6a1752ac150c04217ff21aadf42926551b358",
+      "response_sha256": "4de6812e171ff8ad6165dd9eaaab59fd0ae814ab8c655de387c8985b87b2a923",
+      "q_sha256": "7b2f49f7177d765069b66e14a53c42b70094594a325da935d30b480eb00d79c3",
+      "model_sha256": "88f541f6b9ddb923ffe9229c5c35713d194102819457b84880e59a1e3fa90a43"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 18,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 19,
+      "status": "OK",
+      "logits": [
+        10.625,
+        2.0,
+        0.125,
+        0.125,
+        -2.25
+      ],
+      "reference_logits": [
+        10.56192398071289,
+        1.941507339477539,
+        0.04316892474889755,
+        0.23510336875915527,
+        -2.221672534942627
+      ],
+      "max_abs_error": 0.11010336875915527,
+      "class_match": true,
+      "request_sha256": "411af58d268c94d05b2a47921c0d9e3e43fb3e3ad9f83ec57ee7ec96618be9af",
+      "response_sha256": "21471e14aa05854eb61306d9c8b3a3411846fe5105827f456c2a5360a42828c7",
+      "q_sha256": "c2dace6fcb4ee1eb1813d79602ed652d4204d041e3c5717c65f3a28025279d01",
+      "model_sha256": "88f541f6b9ddb923ffe9229c5c35713d194102819457b84880e59a1e3fa90a43"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 19,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 3,
+      "wire_split_id": 259,
+      "request_id": 20,
+      "status": "OK",
+      "logits": [
+        10.25,
+        1.5,
+        -0.5,
+        0.125,
+        -1.5
+      ],
+      "reference_logits": [
+        10.545368194580078,
+        1.5868101119995117,
+        -0.7458341121673584,
+        0.5144408941268921,
+        -1.6393433809280396
+      ],
+      "max_abs_error": 0.3894408941268921,
+      "class_match": true,
+      "request_sha256": "301705318ceeb6b3a14cb85b43424930bf9ca4b82812420ca7667c538d9ff414",
+      "response_sha256": "bcab75a6692d9051df01fbce0abcc527850d6f4ae87edad7eae67628e104c412",
+      "q_sha256": "35b3f0925d5ebfe156f8d8ba50fd6fcf81478f57a64ef5bfd5365c2adbf7ffb9",
+      "model_sha256": "88f541f6b9ddb923ffe9229c5c35713d194102819457b84880e59a1e3fa90a43"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 20,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 21,
+      "status": "OK",
+      "logits": [
+        11.0,
+        2.375,
+        -0.25,
+        -0.625,
+        -2.375
+      ],
+      "reference_logits": [
+        11.086043357849121,
+        2.450026750564575,
+        -0.22468385100364685,
+        -0.5553398132324219,
+        -2.4522900581359863
+      ],
+      "max_abs_error": 0.0860433578491211,
+      "class_match": true,
+      "request_sha256": "933d31a90ed65678f7a1bae5e1480cacfa2da1544839014fb21cf734aafab10b",
+      "response_sha256": "bfe2f4e521c067f85c77b25c777af3bd73de7e4e176974380701592d6461fc02",
+      "q_sha256": "dca00f826abf1ef4d6035881f6735d7c50576ca51c8ac4769ec7919b9a2a19d6",
+      "model_sha256": "cf798b74a3c40a6c5432a80640fd4621baa4aeb1715bee0ecba1596903d03a22"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 21,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 22,
+      "status": "OK",
+      "logits": [
+        10.625,
+        2.375,
+        -0.5,
+        -0.25,
+        -2.25
+      ],
+      "reference_logits": [
+        10.575631141662598,
+        2.326807975769043,
+        -0.5394301414489746,
+        -0.10542929172515869,
+        -2.235016345977783
+      ],
+      "max_abs_error": 0.1445707082748413,
+      "class_match": true,
+      "request_sha256": "9c39340aef48d4a8cd448f5fa70f596eabe8da3a41189d429099f4d94d5737a1",
+      "response_sha256": "4b1d9273952c81b41df4860ab3aee650ded6d408faf5d17575ee003539af343a",
+      "q_sha256": "5940b4dd5628b2c5eb999e74faf3a6729c4a0b11bf549cc43ab7152fa2c05fb8",
+      "model_sha256": "cf798b74a3c40a6c5432a80640fd4621baa4aeb1715bee0ecba1596903d03a22"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 22,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 23,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.5,
+        0.125,
+        0.5,
+        -3.375
+      ],
+      "reference_logits": [
+        10.973166465759277,
+        2.356088638305664,
+        0.003218315541744232,
+        0.37958216667175293,
+        -3.094600200653076
+      ],
+      "max_abs_error": 0.28039979934692383,
+      "class_match": true,
+      "request_sha256": "35884de93e701626acffe0a4a8f77894b4ebe79d4ae2bf58d37376726214f253",
+      "response_sha256": "26b197fb6f65486e90d3cfa78dea4baec5b9be5a4fc926648312010331b33e0c",
+      "q_sha256": "743f91bb91c5f87be1abf5106866fbd455cfe0b9ba8cecde355861195a6e2f14",
+      "model_sha256": "cf798b74a3c40a6c5432a80640fd4621baa4aeb1715bee0ecba1596903d03a22"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 23,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 24,
+      "status": "OK",
+      "logits": [
+        10.625,
+        2.0,
+        0.125,
+        0.25,
+        -2.375
+      ],
+      "reference_logits": [
+        10.566871643066406,
+        1.9229168891906738,
+        0.02363600581884384,
+        0.2565966844558716,
+        -2.2242350578308105
+      ],
+      "max_abs_error": 0.15076494216918945,
+      "class_match": true,
+      "request_sha256": "8e202764f2de67cbd444a421cf3627f71d1580dd6f0cd02fb60f0f00edc23120",
+      "response_sha256": "a7e4db470277e97806c3ab292414a9fb2491d5fb07490313311e420379c217d5",
+      "q_sha256": "f4b55bc1a0d2fc62cc7ab4789566216525b636caead7914e9068134bb129d6ad",
+      "model_sha256": "cf798b74a3c40a6c5432a80640fd4621baa4aeb1715bee0ecba1596903d03a22"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 24,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 4,
+      "wire_split_id": 260,
+      "request_id": 25,
+      "status": "OK",
+      "logits": [
+        10.375,
+        1.625,
+        -0.375,
+        0.25,
+        -1.75
+      ],
+      "reference_logits": [
+        10.559842109680176,
+        1.5899364948272705,
+        -0.7425224781036377,
+        0.49324774742126465,
+        -1.643375039100647
+      ],
+      "max_abs_error": 0.3675224781036377,
+      "class_match": true,
+      "request_sha256": "a67792b639f1fff711ed9ea58b81e5cc76c1add28df1614e9cfa90eee917e358",
+      "response_sha256": "c9b3ae608216baeb8cb717735c2e55c7e215e9a71ed752641ff347bd12a5199f",
+      "q_sha256": "044b3bf10a67cce72257303cc45ecd608e4f55720311075841a61ad7ac66c3a5",
+      "model_sha256": "cf798b74a3c40a6c5432a80640fd4621baa4aeb1715bee0ecba1596903d03a22"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 25,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 26,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.375,
+        -0.25,
+        -0.625,
+        -2.375
+      ],
+      "reference_logits": [
+        11.07054615020752,
+        2.428185224533081,
+        -0.2433525025844574,
+        -0.525649905204773,
+        -2.435573101043701
+      ],
+      "max_abs_error": 0.09935009479522705,
+      "class_match": true,
+      "request_sha256": "805bc52a8e1edb8d5b1b87b207956903dbb0403a96fdd4cb1571515d2a4a03b6",
+      "response_sha256": "963c52b1524aa2dc5d6d57737de454ade4f7fa700cbdf90d01fbd050e6925b11",
+      "q_sha256": "81e76321b278438c76cb7ab82bc945b37b4d997a96ade5381c0482cfa0789256",
+      "model_sha256": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 26,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 27,
+      "status": "OK",
+      "logits": [
+        10.375,
+        2.375,
+        -0.375,
+        -0.125,
+        -2.25
+      ],
+      "reference_logits": [
+        10.584012031555176,
+        2.336453437805176,
+        -0.5343159437179565,
+        -0.10580325126647949,
+        -2.2496113777160645
+      ],
+      "max_abs_error": 0.20901203155517578,
+      "class_match": true,
+      "request_sha256": "5afdf0a0bd7315ae076d356f10aef448c0002a0de651e7a7bd37298baff4c041",
+      "response_sha256": "d648ee2501c6c68d5e5ccc7b3b0bf3b8a4d5e33d2f2069f8fea0a0a5b14caaa9",
+      "q_sha256": "7e6fde25f86967c019e88aee497beada6b6235d9a1fba149c142076e500a828c",
+      "model_sha256": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 27,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 28,
+      "status": "OK",
+      "logits": [
+        10.875,
+        2.375,
+        0.0,
+        0.5,
+        -3.125
+      ],
+      "reference_logits": [
+        10.997551918029785,
+        2.3793814182281494,
+        0.01003100723028183,
+        0.3655219078063965,
+        -3.11356258392334
+      ],
+      "max_abs_error": 0.13447809219360352,
+      "class_match": true,
+      "request_sha256": "c0e8618e17f18431195fbea2f678300748a9876733fa9c29a582a7c6c9e8bda4",
+      "response_sha256": "bcf5feddbebc7e15192c8f537a35d7b2b228fd5c7cc71e536231849f7909edb9",
+      "q_sha256": "02068e230d561a296ec051c275c566c212323eb9c36b85a314ed774783690939",
+      "model_sha256": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 28,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 29,
+      "status": "OK",
+      "logits": [
+        10.625,
+        2.0,
+        0.0,
+        0.25,
+        -2.375
+      ],
+      "reference_logits": [
+        10.559447288513184,
+        1.9474711418151855,
+        0.017101071774959564,
+        0.23064982891082764,
+        -2.2276811599731445
+      ],
+      "max_abs_error": 0.14731884002685547,
+      "class_match": true,
+      "request_sha256": "db2c0b7de3381207ab6d94a91300ee1dd8d974dd3e35522299251b2ee28647e4",
+      "response_sha256": "21089ad404f7813fa15514d0b7350aee8fd41b0b45730cff7f767b4654056300",
+      "q_sha256": "9a5356663e44bd87a458c714d516eec6151fb7cf12f93b6e6c87ed767022c8e5",
+      "model_sha256": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 29,
+      "sample_id": "MIT-BIH:105:1222:MLII",
+      "sample_index": 4,
+      "split": 5,
+      "wire_split_id": 261,
+      "request_id": 30,
+      "status": "OK",
+      "logits": [
+        10.25,
+        1.5,
+        -0.5,
+        0.25,
+        -1.5
+      ],
+      "reference_logits": [
+        10.577105522155762,
+        1.5929934978485107,
+        -0.7346862554550171,
+        0.517845869064331,
+        -1.6589971780776978
+      ],
+      "max_abs_error": 0.3271055221557617,
+      "class_match": true,
+      "request_sha256": "e21aff4655381cf0e79713e32ebf057d88b685fc59b9b3c74db6d1994682472e",
+      "response_sha256": "d7d8de2aa982ebb2e2fc732acce579401d769f34f2237cc0d52a6d8d5dcc3c9b",
+      "q_sha256": "5e3c8a5f01d9da11bd3c01ec3900af1fb14e1330917d5f5d9652a88fdc2f1ea9",
+      "model_sha256": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 30,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 6,
+      "wire_split_id": 262,
+      "request_id": 31,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.375,
+        -0.25,
+        -0.625,
+        -2.375
+      ],
+      "reference_logits": [
+        11.092179298400879,
+        2.446992874145508,
+        -0.25653132796287537,
+        -0.5339304208755493,
+        -2.4631028175354004
+      ],
+      "max_abs_error": 0.09106957912445068,
+      "class_match": true,
+      "request_sha256": "5abca863ce7844c1ecb0d9c36a76ea96301288b6418be9e440d1650e23f4d9a4",
+      "response_sha256": "5430e0ad162227b0a0b0a40634d5c4dd0046ec63d4df68dcccbcdcbed2f7808b",
+      "q_sha256": "18c155db1027c6c5ec4292f5765c3216c9ae9c1da12af2dea9df67a702ecf5fb",
+      "model_sha256": "4578b7c1e352e2b5be65ba31c75bfa667c5d84ac24ff804921222720688e9ebd"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 31,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 6,
+      "wire_split_id": 262,
+      "request_id": 32,
+      "status": "OK",
+      "logits": [
+        10.375,
+        2.25,
+        -0.375,
+        0.0,
+        -2.125
+      ],
+      "reference_logits": [
+        10.5401029586792,
+        2.298574924468994,
+        -0.5123914480209351,
+        -0.07355916500091553,
+        -2.2200303077697754
+      ],
+      "max_abs_error": 0.16510295867919922,
+      "class_match": true,
+      "request_sha256": "d8c8e51f6e853e790927fa8a960db0163eb9abea384d46e62732e58f989124fb",
+      "response_sha256": "9af3cacc019e0c5adc50443ed743f087a6e9ec25ee78466a94a3de3a741ddd36",
+      "q_sha256": "3d224c001535b6903b7dd45f50be39e5c7cb871bf72190108745181a551da491",
+      "model_sha256": "4578b7c1e352e2b5be65ba31c75bfa667c5d84ac24ff804921222720688e9ebd"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 32,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 6,
+      "wire_split_id": 262,
+      "request_id": 33,
+      "status": "OK",
+      "logits": [
+        11.0,
+        2.375,
+        0.0,
+        0.5,
+        -3.125
+      ],
+      "reference_logits": [
+        10.98228931427002,
+        2.3580541610717773,
+        0.028713367879390717,
+        0.3949676752090454,
+        -3.110902786254883
+      ],
+      "max_abs_error": 0.10503232479095459,
+      "class_match": true,
+      "request_sha256": "5c55148a2f237b680f31334d87e66b4237bd0e2fb479e054f9c8c7932d12b978",
+      "response_sha256": "f780ea0e53e7b1fc8966f0b33a188cabf37aeea0f42e6876cad59cb28c66f8bf",
+      "q_sha256": "b28974b9629945e7878345c3d279ebc02c0220c7f564715633a7bdd8d32fd9ce",
+      "model_sha256": "4578b7c1e352e2b5be65ba31c75bfa667c5d84ac24ff804921222720688e9ebd"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 33,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 6,
+      "wire_split_id": 262,
+      "request_id": 34,
+      "status": "OK",
+      "logits": [
+        10.625,
+        2.0,
+        0.125,
+        0.25,
+        -2.375
+      ],
+      "reference_logits": [
+        10.526750564575195,
+        1.9340367317199707,
+        0.04073300212621689,
+        0.24398529529571533,
+        -2.2183775901794434
+      ],
+      "max_abs_error": 0.15662240982055664,
+      "class_match": true,
+      "request_sha256": "359d51941c0725ff248b6690bc702e32a8c50934e628231b587e9616e3b80708",
+      "response_sha256": "8c6f4fb272f7897ca9ea67d73d401815282096deb5aaf94c522d5dc5b0211092",
+      "q_sha256": "6a930efed3f6cd3fce8af29747b539ea0e59639f244c8b4367c8980cdbb1b64f",
+      "model_sha256": "4578b7c1e352e2b5be65ba31c75bfa667c5d84ac24ff804921222720688e9ebd"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 34,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 7,
+      "wire_split_id": 263,
+      "request_id": 35,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.5,
+        -0.25,
+        -0.625,
+        -2.5
+      ],
+      "reference_logits": [
+        11.055870056152344,
+        2.4382500648498535,
+        -0.23463746905326843,
+        -0.547936201095581,
+        -2.4334211349487305
+      ],
+      "max_abs_error": 0.07706379890441895,
+      "class_match": true,
+      "request_sha256": "f8c97b634f4c246ef84c819a11b91dbbaafbb7f43afae1cec24c911e2dbb0a79",
+      "response_sha256": "2b4dc1e3bcb30ab3c96c82bbcaf65e3a0820d370cbcaeb671a72e5fff078a8b0",
+      "q_sha256": "3355c2b1f8b57f8d8f3441c98867e15484c236c92d7abc49bb96adf45dbe6fb6",
+      "model_sha256": "80408887800aeec2be97e67a0cb59c2be78e235f726299d562dd571220dc4c14"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 35,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 7,
+      "wire_split_id": 263,
+      "request_id": 36,
+      "status": "OK",
+      "logits": [
+        10.625,
+        2.25,
+        -0.375,
+        -0.125,
+        -2.25
+      ],
+      "reference_logits": [
+        10.594376564025879,
+        2.330301523208618,
+        -0.5308722257614136,
+        -0.0936042070388794,
+        -2.2603836059570312
+      ],
+      "max_abs_error": 0.15587222576141357,
+      "class_match": true,
+      "request_sha256": "2a5c97ce1cde712ae68a182b4b81be786d050057add19cc5bed0f52627b40f1e",
+      "response_sha256": "43f5820bd722a82a576f41f9184a3d2ab405545984f571cb0650c82286f15c7c",
+      "q_sha256": "ce47a71dc8effb9301cda0a0e04f1abc6badec8744b911944d4392858825e644",
+      "model_sha256": "80408887800aeec2be97e67a0cb59c2be78e235f726299d562dd571220dc4c14"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 36,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 7,
+      "wire_split_id": 263,
+      "request_id": 37,
+      "status": "OK",
+      "logits": [
+        11.0,
+        2.375,
+        0.125,
+        0.375,
+        -3.125
+      ],
+      "reference_logits": [
+        10.994980812072754,
+        2.3595404624938965,
+        -0.001987077295780182,
+        0.37471258640289307,
+        -3.1005806922912598
+      ],
+      "max_abs_error": 0.12698707729578018,
+      "class_match": true,
+      "request_sha256": "ce678cbe532a481c2356a13f0755fa9a86bee18753fecf1e87a24ba4c30cd1d5",
+      "response_sha256": "3ae847330872f35f0d76b20ef0aa523661fb8d3383e7189eeb8751c38cc92fc5",
+      "q_sha256": "a4c85c2710bc135390d1d3a59168438cb1e97241253fad11e088e510f4663e5c",
+      "model_sha256": "80408887800aeec2be97e67a0cb59c2be78e235f726299d562dd571220dc4c14"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 37,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 7,
+      "wire_split_id": 263,
+      "request_id": 38,
+      "status": "OK",
+      "logits": [
+        10.625,
+        2.0,
+        0.125,
+        0.25,
+        -2.25
+      ],
+      "reference_logits": [
+        10.527497291564941,
+        1.9443120956420898,
+        0.059206269681453705,
+        0.22008943557739258,
+        -2.2114572525024414
+      ],
+      "max_abs_error": 0.0975027084350586,
+      "class_match": true,
+      "request_sha256": "ec796035c0fe3f778542b5f35018bb9a73197cc2dd959ed75a576de115cf4187",
+      "response_sha256": "bd6c5e9a8789f2b2f1e8e2870c84c4ac34867b05cf2a390461c7e54e0e45f632",
+      "q_sha256": "c278af3702ed1f8415b5c75384bcbbf99073240c12697d14c8dd80f72efccb33",
+      "model_sha256": "80408887800aeec2be97e67a0cb59c2be78e235f726299d562dd571220dc4c14"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 38,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 8,
+      "wire_split_id": 264,
+      "request_id": 39,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.375,
+        -0.25,
+        -0.5,
+        -2.375
+      ],
+      "reference_logits": [
+        11.08807373046875,
+        2.449225902557373,
+        -0.22202333807945251,
+        -0.547128438949585,
+        -2.463080883026123
+      ],
+      "max_abs_error": 0.08808088302612305,
+      "class_match": true,
+      "request_sha256": "7b62139810df7c0e7ecec07614d51fb826c8c8cbe6a77e50d0ecf062ab99c449",
+      "response_sha256": "5f53d9b343eb9c17fb2a0816266508d32979f38941c25e25bc819b12d3d41ea3",
+      "q_sha256": "e2484ccfc42cd0f73ed1e73bb284ea3634c0fc448d7c81607b0bcef73618bfe3",
+      "model_sha256": "dcc460edff10e22874f27d60bd0c98374bd3937f87690944287eab8213e5517e"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 39,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 8,
+      "wire_split_id": 264,
+      "request_id": 40,
+      "status": "OK",
+      "logits": [
+        10.5,
+        2.25,
+        -0.5,
+        -0.125,
+        -2.25
+      ],
+      "reference_logits": [
+        10.588961601257324,
+        2.312183380126953,
+        -0.5360391139984131,
+        -0.09042203426361084,
+        -2.244081974029541
+      ],
+      "max_abs_error": 0.08896160125732422,
+      "class_match": true,
+      "request_sha256": "b0f2dc8721990cb04b12c29ab1d80d70ba10b6fcd050b7ccb42ddbe284f5efc1",
+      "response_sha256": "086c345c1fdf6efbf08388a7e3157c0570aeec7d57344adb0b756970c4f47a21",
+      "q_sha256": "35d1258ba1f401214b1f930cfb90c50d0196521fa3e70aac4c1f19909c98d236",
+      "model_sha256": "dcc460edff10e22874f27d60bd0c98374bd3937f87690944287eab8213e5517e"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 40,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 8,
+      "wire_split_id": 264,
+      "request_id": 41,
+      "status": "OK",
+      "logits": [
+        11.0,
+        2.375,
+        0.0,
+        0.375,
+        -3.125
+      ],
+      "reference_logits": [
+        10.982730865478516,
+        2.3648409843444824,
+        0.0127272829413414,
+        0.3743298053741455,
+        -3.0973153114318848
+      ],
+      "max_abs_error": 0.027684688568115234,
+      "class_match": true,
+      "request_sha256": "999bcb3adc7cf207d943f2fbb7aeb783367e1dbfdd45d564b41d427cdc4e21f6",
+      "response_sha256": "7a532fc44863527b98e84cca8284b5ebfb23da11cab0815d1b0a9d60a59dad0d",
+      "q_sha256": "d624e1143c5eb3c82eed8eaf8de26582954cdb42adb55f4af57c17003391ff93",
+      "model_sha256": "dcc460edff10e22874f27d60bd0c98374bd3937f87690944287eab8213e5517e"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 41,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 8,
+      "wire_split_id": 264,
+      "request_id": 42,
+      "status": "OK",
+      "logits": [
+        10.5,
+        1.875,
+        0.0,
+        0.25,
+        -2.25
+      ],
+      "reference_logits": [
+        10.537334442138672,
+        1.9404850006103516,
+        0.04392971843481064,
+        0.23940646648406982,
+        -2.225886821746826
+      ],
+      "max_abs_error": 0.06548500061035156,
+      "class_match": true,
+      "request_sha256": "0f92f2b55035d6446b567105bd26d0887e34d2e047fd9da915a42a8e7d93b7ff",
+      "response_sha256": "456a5a27ef1821e2e084e4d841a876f682e0698af911391db8946d17035e44cb",
+      "q_sha256": "8d405acb2d309813c40f1ae65127361efe658e4187ecda2307f381eeb222b4c8",
+      "model_sha256": "dcc460edff10e22874f27d60bd0c98374bd3937f87690944287eab8213e5517e"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 42,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 9,
+      "wire_split_id": 265,
+      "request_id": 43,
+      "status": "OK",
+      "logits": [
+        11.125,
+        2.375,
+        -0.25,
+        -0.5,
+        -2.5
+      ],
+      "reference_logits": [
+        11.071553230285645,
+        2.4456350803375244,
+        -0.22808870673179626,
+        -0.5461364984512329,
+        -2.4480371475219727
+      ],
+      "max_abs_error": 0.07063508033752441,
+      "class_match": true,
+      "request_sha256": "7c6df778cbe91817f131eeb0598632f39522ba800271299902b7be5e948e1d71",
+      "response_sha256": "9850abd9e6dcf54a9b8d968774f1fa9ec145c8fbc0de56ead5c1ea68d9518eeb",
+      "q_sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284",
+      "model_sha256": "c30d20d55ba759065a01e07258adde8b7acdfbd8c3587b68f35ce5ca222ca17a"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 43,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 9,
+      "wire_split_id": 265,
+      "request_id": 44,
+      "status": "OK",
+      "logits": [
+        10.5,
+        2.25,
+        -0.5,
+        -0.125,
+        -2.25
+      ],
+      "reference_logits": [
+        10.582103729248047,
+        2.322913885116577,
+        -0.5324493646621704,
+        -0.09067237377166748,
+        -2.2500195503234863
+      ],
+      "max_abs_error": 0.08210372924804688,
+      "class_match": true,
+      "request_sha256": "ab2762fbb6332e3eba86816b5d03f921923fc27ea9073114c5747a9127b56b92",
+      "response_sha256": "1d9cbaf8d2b0ab034f71ed91a915ef7eddee7434976cee77386b1552784641d8",
+      "q_sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284",
+      "model_sha256": "c30d20d55ba759065a01e07258adde8b7acdfbd8c3587b68f35ce5ca222ca17a"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 44,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 9,
+      "wire_split_id": 265,
+      "request_id": 45,
+      "status": "OK",
+      "logits": [
+        11.0,
+        2.375,
+        0.0,
+        0.375,
+        -3.0
+      ],
+      "reference_logits": [
+        10.984023094177246,
+        2.359452724456787,
+        0.009726308286190033,
+        0.3727191686630249,
+        -3.0943989753723145
+      ],
+      "max_abs_error": 0.09439897537231445,
+      "class_match": true,
+      "request_sha256": "39e1b7060109a7da4fe97cd299a1e3bd8cf5f655a192cefa2ad40cf504442af2",
+      "response_sha256": "ba7b5f9ce0d33868b579cdce96c1a6e84c92058e7e5104f5c46d63780c34e580",
+      "q_sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284",
+      "model_sha256": "c30d20d55ba759065a01e07258adde8b7acdfbd8c3587b68f35ce5ca222ca17a"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 45,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 9,
+      "wire_split_id": 265,
+      "request_id": 46,
+      "status": "OK",
+      "logits": [
+        10.5,
+        1.875,
+        0.0,
+        0.25,
+        -2.125
+      ],
+      "reference_logits": [
+        10.535970687866211,
+        1.9351427555084229,
+        0.04742016643285751,
+        0.23491930961608887,
+        -2.2137866020202637
+      ],
+      "max_abs_error": 0.08878660202026367,
+      "class_match": true,
+      "request_sha256": "af39a88c2ff0422691849e8b947f0e7746e83283981fc30dbdeef25cc807b74d",
+      "response_sha256": "7bc1543541c358c036a322fa47c41c59decaf233d02ecf74ffb9c5dc6dcf6173",
+      "q_sha256": "25115a26f21db79a8de8abbee70ac2c78ce6604a0c1f376d6c9aaa46599cf284",
+      "model_sha256": "c30d20d55ba759065a01e07258adde8b7acdfbd8c3587b68f35ce5ca222ca17a"
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 46,
+      "sample_id": "MIT-BIH:105:197:MLII",
+      "sample_index": 0,
+      "split": 10,
+      "wire_split_id": 266,
+      "request_id": 47,
+      "status": "OK",
+      "logits": [
+        11.069091796875,
+        2.445587158203125,
+        -0.22830486297607422,
+        -0.546478271484375,
+        -2.4475250244140625
+      ],
+      "reference_logits": [
+        11.069091796875,
+        2.445587158203125,
+        -0.22830486297607422,
+        -0.546478271484375,
+        -2.4475250244140625
+      ],
+      "max_abs_error": 0.0,
+      "class_match": true,
+      "request_sha256": "d76f335c04b28a6a415853bd09c95b720142059bb6dd3d3cfee8353038474869",
+      "response_sha256": "5f7708ee7682de54d9e692ae4f9b70186fa0ac7bfb6c11d9743385574270bef1",
+      "q_sha256": "1c91b85b003c12a5a3083d55cd1432009a098c925af6452389213d3ce1059ceb",
+      "model_sha256": null
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 47,
+      "sample_id": "MIT-BIH:105:459:MLII",
+      "sample_index": 1,
+      "split": 10,
+      "wire_split_id": 266,
+      "request_id": 48,
+      "status": "OK",
+      "logits": [
+        10.58074951171875,
+        2.3235015869140625,
+        -0.5343666076660156,
+        -0.09029245376586914,
+        -2.2498626708984375
+      ],
+      "reference_logits": [
+        10.58074951171875,
+        2.3235015869140625,
+        -0.5343666076660156,
+        -0.09029245376586914,
+        -2.2498626708984375
+      ],
+      "max_abs_error": 0.0,
+      "class_match": true,
+      "request_sha256": "a189a462a6ff78e3492df27c18eff540070a0b7c460e27897d6369b84cfbf605",
+      "response_sha256": "5fc5eaa47b53bb3587a8488e40bcdc0307cccd7d116e6b1ca35f8e083fe1e97d",
+      "q_sha256": "1c91b85b003c12a5a3083d55cd1432009a098c925af6452389213d3ce1059ceb",
+      "model_sha256": null
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 48,
+      "sample_id": "MIT-BIH:105:708:MLII",
+      "sample_index": 2,
+      "split": 10,
+      "wire_split_id": 266,
+      "request_id": 49,
+      "status": "OK",
+      "logits": [
+        10.98382568359375,
+        2.360321044921875,
+        0.009303271770477295,
+        0.3744926452636719,
+        -3.096710205078125
+      ],
+      "reference_logits": [
+        10.98382568359375,
+        2.360321044921875,
+        0.009303271770477295,
+        0.3744926452636719,
+        -3.096710205078125
+      ],
+      "max_abs_error": 0.0,
+      "class_match": true,
+      "request_sha256": "da56e83fa08c8a7bf3b975aee527c49282b7198576192171fca90bd91dd1c11c",
+      "response_sha256": "c1d730c4928e3a1cee885f5af3f2d3e03cb8b5d79ec52dddb31bb18d135fd045",
+      "q_sha256": "d16dc565881a8a8b07af6dc68e0b1750c7bfa35e3e48d3c3ad5e49314947058b",
+      "model_sha256": null
+    },
+    {
+      "backend": "kv260",
+      "vector_index": 49,
+      "sample_id": "MIT-BIH:105:965:MLII",
+      "sample_index": 3,
+      "split": 10,
+      "wire_split_id": 266,
+      "request_id": 50,
+      "status": "OK",
+      "logits": [
+        10.53424072265625,
+        1.9349594116210938,
+        0.04690241813659668,
+        0.23532962799072266,
+        -2.2149810791015625
+      ],
+      "reference_logits": [
+        10.53424072265625,
+        1.9349594116210938,
+        0.04690241813659668,
+        0.23532962799072266,
+        -2.2149810791015625
+      ],
+      "max_abs_error": 0.0,
+      "class_match": true,
+      "request_sha256": "bf053fca1d1948661bdffa1c9d50933add95b575d2bdbabaea5ff27c6227f206",
+      "response_sha256": "cf4b5cd2d7be7df4829650b97273baf846c4ebbbb416636be70d71949c1ff34d",
+      "q_sha256": "d16dc565881a8a8b07af6dc68e0b1750c7bfa35e3e48d3c3ad5e49314947058b",
+      "model_sha256": null
+    }
+  ]
+}
