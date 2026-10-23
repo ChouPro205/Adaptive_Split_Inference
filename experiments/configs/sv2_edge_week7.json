@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "source_run_id": "dich_vu",
+  "model_id": "mitdb_week2_cnn_v1",
+  "model_profile_id": 1296651265,
+  "registry_revision": "mitdb-week5-i2-registry-v1-r1",
+  "package_id": "mitdb-week6-p1-50-20261016-v1",
+  "package_manifest_sha256": "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+  "board_archive_sha256": "ca8bea529211e5890b9abf097c41a13632d9bc32f90b0b57b4a2ad12c8ad69bb",
+  "backends": ["reference", "kv260"],
+  "transport": "file",
+  "batch_size": 1,
+  "vector_count_per_backend": 50,
+  "unique_ecg_samples": 5,
+  "tail_calls_per_backend": 46,
+  "s10_identity_per_backend": 4,
+  "native_process_timeout_s": 4,
+  "model_load_policy": "new process and model load per request",
+  "socket_smoke": {"transport": "TCP localhost", "host": "127.0.0.1", "port": 7797, "split": 10, "requests": 1, "backend": "reference"},
+  "scope": "PUBLIC_TEST_ONLY validation sample/split pairs; no BLE, independent test accuracy or server performance measurement"
+}

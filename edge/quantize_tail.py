@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import inspect
 import shutil
 import sys
 from pathlib import Path
@@ -59,6 +60,36 @@ HYDRATE_HINT = "Hydrate the frozen assets first (ml/docs/week5_delivery_v2.md, s
 
 class TailQuantizationError(Exception):
     """Thiếu hoặc sai đầu vào; không tạo artifact."""
+
+
+def fix_vai25_conv1d_padding() -> list:
+    """Bridge known 1D padding getter/setter mismatches, in this process only."""
+    try:
+        from pytorch_nndct.parse.torch_op_def import _TorchConv1d, TorchMaxPool1d
+    except ImportError:
+        return []
+    fixes = []
+    for cls in (_TorchConv1d, TorchMaxPool1d):
+        padding = cls.padding
+        name = "vai25_scalar_padding:" + cls.__name__
+        if getattr(padding.fset, "_asi_scalar_padding", False):
+            fixes.append(name)
+            continue
+        try:
+            source = inspect.getsource(padding.fset)
+        except (OSError, TypeError):
+            continue
+        if "[value[0], value[0]]" not in source:
+            continue
+
+        def set_padding(op, value, original_setter=padding.fset):
+            original_setter(op, (value,) if isinstance(value, int) else value)
+
+        set_padding._asi_scalar_padding = True
+        cls.padding = property(padding.fget, set_padding, padding.fdel, padding.__doc__)
+        print("[COMPAT] %s: accept scalar padding when cloning deploy graph" % cls.__name__)
+        fixes.append(name)
+    return fixes
 
 
 def sha256(path: Path) -> str:
@@ -116,6 +147,12 @@ def split_modules(full_model: nn.Module, s: int) -> tuple[nn.Sequential, nn.Sequ
     leaves = [m for n, m in full_model.named_modules() if n and not list(m.children())]
     if len(leaves) != CUTS[-1]:
         raise TailQuantizationError(f"Expected {CUTS[-1]} leaf operations, found {len(leaves)}")
+    # Vitis AI 2.5 rewrites Flatten(end_dim=-1) to end_dim=3, assuming
+    # a 4D image tensor. This contract has NCL tensors (3D) before Flatten.
+    # Make the equivalent positive axis explicit without changing frozen ML code.
+    leaves = [nn.Flatten(start_dim=1, end_dim=2)
+              if isinstance(m, nn.Flatten) and m.start_dim == 1 and m.end_dim == -1
+              else m for m in leaves]
     return nn.Sequential(*leaves[:CUTS[s]]).eval(), nn.Sequential(*leaves[CUTS[s]:]).eval()
 
 
@@ -228,6 +265,7 @@ def run_quantization(s: int, quant_mode: str, output_dir: Path, checkpoint_path:
         print("[HINT] Hoặc dùng cờ --dry-run để kiểm thử cấu trúc trên môi trường host.", file=sys.stderr)
         return 1
 
+    record["compatibility_fixes"] = fix_vai25_conv1d_padding()
     quantizer = torch_quantizer(
         quant_mode=quant_mode,
         module=tail_model,
@@ -264,7 +302,7 @@ def main():
                         help="Điểm cắt s (0..9)")
     parser.add_argument("--quant_mode", choices=["calib", "test"], default="test",
                         help="Chế độ lượng tử hóa (calib để hiệu chỉnh dải động, test để xuất file _int.xmodel)")
-    parser.add_argument("--output_dir", type=Path, default=None,
+    parser.add_argument("--output_dir", type=Path, required=True,
                         help="Thư mục lưu kết quả lượng tử hóa")
     parser.add_argument("--checkpoint", type=Path, default=DEFAULT_CHECKPOINT,
                         help="Checkpoint PyTorch đã duyệt (kiểm SHA-256)")
@@ -284,7 +322,7 @@ def main():
     args = parser.parse_args()
 
     s = args.split
-    output_dir = args.output_dir or (REPO_ROOT / f"edge/build/quantized/s{s}")
+    output_dir = args.output_dir
     try:
         exit_code = run_quantization(
             s=s, quant_mode=args.quant_mode, output_dir=output_dir,

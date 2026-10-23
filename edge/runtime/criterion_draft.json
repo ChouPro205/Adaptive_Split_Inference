@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "status": "DRAFT",
+  "approved_by": "",
+  "revision": "",
+  "scope": "frozen_week3_calibration_reuse",
+  "samples_per_split": 20,
+  "argmax_tie_break": "first_N_S_V_F_Q",
+  "max_abs_error": null,
+  "max_abs_error_comparison": "<",
+  "minimum_class_agreement": null
+}

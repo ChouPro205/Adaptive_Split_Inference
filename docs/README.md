@@ -42,7 +42,12 @@ và báo cáo của dự án.
 - [SV3 → SV2: bàn giao Week 3 FP32 Linux](sv3_sv2_week3_linux_fp32_handoff.md)
 - [Mục lục và tài liệu bổ trợ SV3](../ml/docs/reports/README.md)
 
-### Khối Máy chủ biên (SV2 - Edge / KV260)
+### Khối Máy chủ biên (SV2 - Edge / KV260) — báo cáo lịch sử
+
+Các báo cáo dưới đây ghi nhận môi trường tại thời điểm viết, gồm stack cũ
+Ubuntu/Kria-PYNQ/Vitis AI 3.5. Không dùng các lệnh setup trong đó cho luồng mới.
+Công cụ đang dùng được mô tả tại [README Edge](../edge/README.md).
+
 - [Báo cáo SV2/Edge – Week 1](sv2_edge_week1_report.md)
 - [Báo cáo SV2/Edge – Week 2](sv2_edge_week2_report.md)
 - [Báo cáo SV2/Edge – Week 3](sv2_edge_week3_report.md)
@@ -73,3 +78,13 @@ Các báo cáo tiến độ tuần 5–7 nằm ở `docs/` phía trên. Hồ sơ
   16/10; SV1 MCU/BLE PASS ngày 19/10 được ghi trong báo cáo tuần 6 tại root docs;
   KV260 còn chờ bằng chứng riêng. Không sửa tài liệu bàn giao ngày 16/10 để đổi lịch sử.
 - [Code/kết quả smoke tuần 7](https://github.com/ChouPro205/Adaptive_Split_Inference/blob/151894367b0a35df83a0effd86961816ffc89942/ml/results/week7-nopeek/README.md).
+
+## SV2 / Edge — Vitis AI 2.5 hiện hành
+
+- [Tuần 5: 10 full tail CPU/DPU, 200 case](sv2_edge_week5_report.md).
+- [Tuần 6: 50 load và 5000 observations timing](sv2_edge_week6_report.md).
+- [Kết quả tuần 5](../results/week5/edge/README.md) và
+  [tuần 6](../results/week6/edge/README.md), tách biệt bằng chứng SV1.
+
+- [Tuần 7: packet I1 v2 qua file, 50 request KV260](sv2_edge_week7_report.md) và
+  [hồ sơ riêng SV2](../results/week7/edge/README.md).

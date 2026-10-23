@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "runs": [
+    {
+      "run_id": "socket_smoke",
+      "sha256": "5be1fd7b79facf5d9538142f7604029949778a723c9a63dcfb00a3bddbba3684",
+      "scope": "LOCAL_TCP_BENCH_NOT_BLE",
+      "rows": [
+        {
+          "index": 0,
+          "error": "Invalid envelope size/magic"
+        }
+      ]
+    },
+    {
+      "run_id": "socket_smoke_lan_2",
+      "sha256": "2d3104f5bb96ec9828e4ef827c49d750c75aca29063649925f7947523e5e062c",
+      "scope": "LOCAL_TCP_BENCH_NOT_BLE",
+      "rows": [
+        {
+          "index": 0,
+          "exit_code": 0,
+          "response_sent": true
+        }
+      ]
+    }
+  ]
+}

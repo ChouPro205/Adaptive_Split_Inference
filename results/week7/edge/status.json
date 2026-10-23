@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "FILE_PIPELINE_EXECUTED_NUMERIC_REVIEW_PENDING",
+  "scope": "50 validation sample/split pairs, PUBLIC_TEST_ONLY, file transport; TCP HOST smoke separately",
+  "unique_ecg_samples": 5,
+  "class_order": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "manifest_sha256": "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36",
+  "reference_vectors": 50,
+  "kv260_vectors": 50,
+  "kv260_root_tail_calls": 46,
+  "s10_identity_vectors": 4,
+  "reference_class_matches": 50,
+  "kv260_class_matches": 50,
+  "reference_max_abs_error": 1.430511474609375e-06,
+  "kv260_max_abs_error": 0.40645813941955566,
+  "numeric_acceptance": "PENDING_TEAM_REVIEW",
+  "independent_test_accuracy": "NOT_MEASURED",
+  "ble_device_kv260": "NOT_TESTED",
+  "service_latency_throughput": "NOT_MEASURED"
+}
