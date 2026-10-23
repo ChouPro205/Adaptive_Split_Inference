@@ -1,103 +1,160 @@
-# Khối Edge (KV260 / DPU / VART) - Phạm vi SV2
+# SV2 / Edge — Vitis AI 2.5
 
-Khối **Edge** do **SV2** phụ trách trong dự án **Adaptive Split Inference**. Khối này đảm nhiệm việc triển khai, lượng tử hóa và tăng tốc các mô hình phần đuôi (**Tail Models**) trên bo mạch **Xilinx Kria KV260**, đồng thời quản lý máy chủ xử lý suy luận, hàng đợi và phản hồi kết quả về phía Device (MCU).
+Luồng hiện tại dùng Docker `xilinx/vitis-ai:2.5.0` và conda `vitis-ai-pytorch`
+để lượng tử hóa, compile và kiểm graph tail ECG trên PC. Runtime mục tiêu của
+KV260 là PetaLinux 2022.1 / Vitis AI 2.5. Build thành công chưa chứng minh
+full-tail inference hoặc accuracy trên thiết bị.
 
----
+## Các file đang dùng
 
-## 1. Mục tiêu & Nhiệm vụ Tuần 4 (SV2)
+| File | Chức năng |
+|---|---|
+| `quantize_tail.py` | Nạp checkpoint, tách tail, dry-run/calibration/export XIR |
+| `build_and_audit_models.py` | Audit model có sẵn hoặc batch calib/export/compile 10 split |
+| `tests/test_quantize_tail.py` | Kiểm FP32/golden và quy tắc đầu vào; quantizer dùng stub |
+| `tests/test_build_and_audit_models.py` | Kiểm cô lập lỗi từng split và lưu exit code |
+| [`runtime/`](runtime/README.md) | Source C++ root GraphRunner, build riêng và driver chạy golden trên KV260 |
+| `build_vai25/` | Output cục bộ bị Git ignore; mở README ở đây để chọn kết quả |
 
-Theo tài liệu kế hoạch nghiên cứu (`Huong1_Huong_dan_chi_tiet_tung_thanh_vien.pdf` - Mục A.2):
+Script batch của setup cũ đã được loại bỏ. Dùng `build_and_audit_models.py` cho công việc mới.
 
-* **Nhiệm vụ:**
-  1. Viết script `compile_all_splits.sh`: chạy vòng lặp qua mọi điểm cắt $s \in \{0, 1, \dots, 9\}$, tự động gọi `vai_q_onnx` (lượng tử hóa INT8) và `vai_c_xir` (biên dịch ra `.xmodel` cho DPU KV260).
-  2. Tách biệt và lưu trữ log chi tiết cho từng điểm cắt $s$ (`log_s<id>.txt`), cô lập lỗi để một split thất bại không làm dừng quá trình chạy hàng loạt.
-* **Tiêu chí nghiệm thu:**
-  * Script chạy tự động qua đêm, sinh ra danh sách và bảng tổng kết các điểm cắt $s$ thành công / thất bại (`summary.txt`).
-
----
-
-## 2. Cấu trúc thư mục khối Edge
+## Đầu vào và luồng xử lý
 
 ```text
-edge/
-├── compile_all_splits.sh       # Kịch bản chính tự động hóa quantize và compile ONNX
-├── quantize_tail.py            # (Dự phòng) Script Python gọi vai_q_pytorch cho code cũ
-├── server/                     # (Tuần 7) Server socket/BLE tiếp nhận gói tin I1
-├── dpu_runner/                 # (Tuần 8-10) Runtime VART nạp .xmodel và suy luận
-├── broker/                     # (Tuần 9) Trình mô phỏng trạng thái hàng đợi MQTT
-├── tests/                      # Kiểm thử tích hợp khối Edge
-└── README.md
+checkpoint + golden activations đã xác thực
+  → quantize_tail.py: calib → test/export
+  → vai_c_xir với KV260 arch của container 2.5
+  → XIR inspection + summary + model hashes
 ```
 
----
+- Package: `ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/`.
+- Checkpoint: `model/checkpoint.pt`; script đối chiếu SHA-256 trước khi nạp.
+- Batch dùng 20 mẫu trong mỗi `golden/z_sN.npy`, khai báo đúng nguồn `val`.
+- Không cần dữ liệu train/raw bên ngoài package cho luồng batch này.
+- Arch: `/opt/vitis_ai/compiler/arch/DPUCZDX8G/KV260/arch.json`.
+- Giữ nguyên bytes package, sample order và preprocessing.
 
-## 3. Lý do & Nguyên lý hoạt động
+ONNX bàn giao phục vụ kiểm hợp đồng FP32; không đưa FP32 ONNX trực tiếp vào
+`vai_c_xir`. Kiểm trên bộ calibration không thay thế accuracy trên test độc lập.
+CLI `quantize_tail.py` bắt buộc chỉ định `--output_dir` để không tạo output ngầm.
 
-### 3.1. Lý do kỹ thuật (Why)
-1. **Tính thích ứng động (Adaptive Split):** Hệ thống thay đổi điểm cắt $s$ tại runtime tùy theo biến động mạng và năng lượng của MCU. Phía Edge bắt buộc phải có sẵn các mô hình tail tương ứng cho mọi $s$ khả dĩ ($s = 0..9$).
-2. **Đặc thù phần cứng DPU (`DPUCZDX8G`):** DPU trên KV260 tối ưu cho mạng 2D CNN và có các ràng buộc chặt chẽ về toán tử phần cứng (nhiều lớp 1D-Conv, Flatten, Linear hoặc một số phép tính có thể không được DPU hỗ trợ hoàn toàn).
-3. **Tự động hóa qua đêm:** Quá trình lượng tử hóa và biên dịch 10 mô hình tail tốn nhiều thời gian và dễ phát sinh lỗi compiler ở các lớp lạ. Script tự động hóa giúp SV2 chạy kiểm tra qua đêm, phát hiện chính xác các lớp bị từ chối để chuẩn bị cho **Tuần 5** (phân loại mô hình: DPU thuần vs Lai DPU+PS).
+## Audit model đã có — không rebuild
 
-### 3.2. Nguyên lý thực hiện (Principle)
-Quy trình tuân thủ chặt chẽ hợp đồng kỹ thuật và quy ước thư mục mới:
-* **Bước 1 - Lượng tử hóa (`vai_q_pytorch` qua `quantize_tail.py`):**
-  - Khởi tạo và nạp trọng số mô hình Tail cho điểm cắt $s$ từ checkpoint đã duyệt; script kiểm SHA-256 `9b8be076…` của approved registry và dừng (exit 2) nếu thiếu hoặc sai checkpoint.
-  - Chạy `vai_q_pytorch` (`pytorch_nndct`) ở 2 pha: hiệu chỉnh phân phối dải động (`calib`) và xuất đồ thị lượng tử hóa trung gian (`test`), sinh file `Sequential_int.xmodel` (hoặc `tail_<id>_int.xmodel`) và `quantize_provenance.json` ghi checkpoint, nguồn calibration và cờ synthetic.
-* **Bước 2 - Biên dịch cho DPU (`vai_c_xir`):**
-  - Nạp file `_int.xmodel` và ánh xạ đồ thị tính toán vào kiến trúc DPU KV260 (`DPUCZDX8G_ISA1_B4096`).
-  - Phân tách đồ thị thành các kernel DPU và các subgraph fallback trên CPU (ARM PS), xuất file `.xmodel` cuối cùng vào `edge/build/compiled/tail_s<id>.xmodel`.
-* **Bước 3 - Tổng hợp & Phân tích:**
-  - Bắt mã lỗi, lưu log độc lập vào `edge/build/logs/log_s<id>.txt` và xuất báo cáo nghiệm thu dạng văn bản (`edge/build/summary.txt`).
-
----
-
-## 4. Hướng dẫn sử dụng
-
-Script `compile_all_splits.sh` bắt buộc phải chạy trong môi trường **Vitis AI Docker container**.
-
-1. **Khởi động Vitis AI container:**
-   ```bash
-   ./docker_run.sh xilinx/vitis-ai-pytorch-cpu:ubuntu2004-3.5.0.306
-   ```
-2. **Kích hoạt môi trường conda:**
-   ```bash
-   conda activate vitis-ai-pytorch
-   ```
-3. **Thực thi script biên dịch toàn bộ các split:**
-   ```bash
-   cd /workspace/Adaptive_Split_Inference
-   bash edge/compile_all_splits.sh
-   ```
-4. **Kiểm tra báo cáo nghiệm thu:**
-   ```bash
-   cat edge/build/summary.txt
-   ```
-
----
-
-## 5. Đầu vào bắt buộc và calibration
-
-- Checkpoint: `ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/checkpoint.pt`, đúng SHA-256 của approved registry. Thiếu hoặc sai thì `quantize_tail.py` dừng, không tạo artifact.
-- Calibration mặc định: `--calib-split train --calib-samples 1000`. Script chọn đều, tất định 1000 mẫu từ `ml/data/processed/mitdb/train_X.npy` (kiểm hash raw với `ml/results/week5/dataset_manifest.json`), cho chạy qua head FP32 để lấy activation $z_s$. Có thể chọn `val`; **không cho phép** `test` vì tập test frozen chỉ dùng để đánh giá.
-- `--calib_data <file.npy>` chỉ được dùng kèm `--calib-data-split train|val` để khai báo split nguồn của dữ liệu.
-- `--synthetic-demo` là lựa chọn tường minh duy nhất cho trọng số/dữ liệu ngẫu nhiên. Kết quả có file `SYNTHETIC_NOT_FOR_ACCEPTANCE`, xmodel tên `tail_<s>_SYNTHETIC_int.xmodel`, và `compile_all_splits.sh` từ chối biên dịch.
-- `--dry-run` chỉ kiểm checkpoint, calibration và forward pass; không tạo xmodel.
-
-## 6. Lượng tử hóa từ Device đến tail trên DPU
-
-| Bước | Bên thực hiện | Biểu diễn | Ghi chú |
-|---|---|---|---|
-| 1 | Device | INT8 đối xứng theo mẫu/kênh, zero-point 0, $q\in[-127,127]$, scale lưu FP16 | Đã nghiệm thu trên MCU tuần 5 |
-| 2 | Device → Edge | Payload INT8 `C×L` byte; scale FP32 LE (mở rộng đúng FP16 đã lưu); zero-point int32 = 0 | Quy cách trong [addendum I1 v1](../contracts/i1_device_edge_packet_v1_addendum_r1.md); chưa có codec/transport |
-| 3 | Edge | Đảo I2/1 nếu có, rồi giải lượng tử $\hat z = q \cdot scale$ (FP32) theo kênh gốc; s9 bỏ chiều L=1 | Đã kiểm trên host trong gate tuần 5 |
-| 4 | DPU | Lớp đầu của xmodel lượng tử $\hat z$ sang định dạng fix-point INT8 của DPU (scale lũy thừa 2, theo tensor, do `vai_q` calibrate); trọng số INT8 | Bắt buộc với backend DPU |
-
-Bước 4 không phải bước thừa: DPU chỉ nhận tensor ở định dạng fix-point của chính nó, còn scale của Device thay đổi theo từng mẫu và từng kênh nên không gộp được vào trọng số tĩnh hay vào scale theo tensor của DPU. Gate accuracy tuần 5 (8.544 mẫu × 11 split) chỉ bao phủ bước 1–3 với **tail FP32**; sai số do bước 4 (lượng tử đầu vào và trọng số trên DPU) **chưa được đo**. Cần đánh giá tail đã lượng tử bằng `vai_q_pytorch` trên tập test hoặc chạy end-to-end trên KV260 trước khi kết luận accuracy của luồng DPU. Calibration dùng activation FP32 của head, còn lúc chạy DPU nhận tensor đã giải lượng tử từ INT8; ảnh hưởng của khác biệt này cũng chưa được đo.
-
-## 7. Kiểm thử trên host
+Chạy trong container 2.5, checkout mount tại `/workspace/asi`. Lệnh mở container
+cần dùng UID/GID của host và Bash entrypoint để tránh tạo file thuộc root.
+Các khối dưới chạy phần có thể lỗi trong shell con, giữ terminal mở và lưu log.
 
 ```bash
-python -B edge/tests/test_quantize_tail.py
+set +e +u
+set +o pipefail
+export BUILD_ROOT='/workspace/asi/edge/build_vai25/ket_qua_hien_tai'
+export REPORT_DIR="$BUILD_ROOT/week4/kiem_tra_model"
+ASI_REPORT_INDEX=2
+while [ -e "$REPORT_DIR" ]; do
+  export REPORT_DIR="$BUILD_ROOT/week4/kiem_tra_model_lan_$ASI_REPORT_INDEX"
+  ASI_REPORT_INDEX=$((ASI_REPORT_INDEX + 1))
+done
+ASI_STEP_LOG="$(mktemp /tmp/asi_edge_audit_XXXXXX.log)"
+(
+  set -Ee -o pipefail
+  source /opt/vitis_ai/conda/etc/profile.d/conda.sh
+  conda activate vitis-ai-pytorch
+  set -u
+  cd /workspace/asi
+  python -B edge/build_and_audit_models.py audit --models "$BUILD_ROOT/compiled" --output "$REPORT_DIR"
+) 2>&1 | tee "$ASI_STEP_LOG"
+ASI_LAST_STATUS=${PIPESTATUS[0]}
+printf 'Exit=%s | Log=%s | Report=%s\n' "$ASI_LAST_STATUS" "$ASI_STEP_LOG" "$REPORT_DIR"
 ```
 
-Test dùng checkpoint và golden thật để kiểm head/tail của cả 10 điểm cắt (sai số `<1e-3` so với golden), kiểm từ chối checkpoint sai/thiếu, chính sách calibration và đánh dấu synthetic. API `vai_q_pytorch` được thay bằng stub, nên test **không** chứng minh xmodel hay DPU chạy đúng.
+## Batch mới — calib, export, compile đủ 10 split
+
+Chạy trong cùng container 2.5. Output mới có timestamp; không ghi đè model/log cũ.
+
+```bash
+set +e +u
+set +o pipefail
+export BUILD_ROOT='/workspace/asi/edge/build_vai25/ket_qua_hien_tai'
+export REPORT_DIR="$BUILD_ROOT/week4/bien_dich_tu_dong"
+ASI_REPORT_INDEX=2
+while [ -e "$REPORT_DIR" ]; do
+  export REPORT_DIR="$BUILD_ROOT/week4/bien_dich_tu_dong_lan_$ASI_REPORT_INDEX"
+  ASI_REPORT_INDEX=$((ASI_REPORT_INDEX + 1))
+done
+ASI_STEP_LOG="$(mktemp /tmp/asi_edge_batch_XXXXXX.log)"
+(
+  set -Ee -o pipefail
+  source /opt/vitis_ai/conda/etc/profile.d/conda.sh
+  conda activate vitis-ai-pytorch
+  set -u
+  cd /workspace/asi
+  python -B edge/build_and_audit_models.py build --output "$REPORT_DIR"
+) 2>&1 | tee "$ASI_STEP_LOG"
+ASI_LAST_STATUS=${PIPESTATUS[0]}
+printf 'Exit=%s | Log=%s | Report=%s\n' "$ASI_LAST_STATUS" "$ASI_STEP_LOG" "$REPORT_DIR"
+```
+
+Mã 0 nghĩa tất cả split qua bước host; khác 0 thì đọc summary/log và chưa chạy
+bước phụ thuộc. Một split lỗi không chặn split khác; calib/export lỗi thì không
+chạy các stage phụ thuộc cho split đó. Công cụ từ chối output đã tồn tại.
+
+## Cách đọc output
+
+| Nội dung | File/thư mục |
+|---|---|
+| Tổng hợp và trạng thái từng split | `summary.txt`, `summary.csv`, `summary.json` |
+| Log gộp từng split | `logs/sN/log_sN.txt` |
+| Log từng stage, command, exit code | `logs/sN/{calib,test,compile}.log` |
+| Model và metadata compiler riêng từng split | `compiled/sN/` |
+| Phân vùng CPU/DPU, operator types, hash | `graph_sN.json` |
+| Xác thực package, source hashes, conda, arch | `provenance/` |
+
+`PASS_HOST_ONLY` không phải runtime PASS. `HAS_DPU_AND_CPU` là graph lai;
+`DPU_PRESENT_REVIEW_OTHER_NODES` không khẳng định toàn DPU. Trên board còn cần
+query arch/fingerprint, xác nhận CPU op và chạy root GraphRunner đúng input,
+quantization và logits cuối. Nếu runner chưa có, ghi BLOCKED thay vì inference PASS.
+
+## Kiểm thử trên host
+
+Với Python host và dependency ML phù hợp:
+
+```bash
+python -B edge/tests/test_build_and_audit_models.py
+python -B edge/tests/test_quantize_tail.py QuantizeTailTests.test_flatten_has_explicit_ncl_axes_for_vai25 QuantizeTailTests.test_split_matches_frozen_goldens
+```
+
+Bộ test lượng tử hóa đầy đủ còn có case dùng dữ liệu processed train/val riêng.
+Thiếu dữ liệu đó không phải lỗi của luồng batch chỉ dùng package golden.
+Test bằng stub không chứng nhận Vitis AI/DPU thực tế.
+
+## Chạy full tail trên KV260
+
+[`runtime/README.md`](runtime/README.md) mô tả runner C++ và driver chạy từng
+split hoặc 10 split × 20 golden, lưu final logits, lỗi từng case và provenance.
+Đã có hồ sơ native ARM/full-tail KV260 tại báo cáo tuần 5; xem các liên kết kết quả bên dưới. Không dùng binary host trên ARM.
+Không truyền criterion thì driver chỉ báo sai khác, chưa kết luận số học PASS.
+
+Kiểm input/layout/rounding và quy tắc báo cáo trên host (cần numpy, GCC):
+
+```bash
+python -B edge/tests/test_tail_runtime.py
+```
+
+Test này không chạy GraphRunner/DPU và không chứng nhận kết quả thiết bị.
+
+## Tài liệu liên quan
+
+- [Hợp đồng FP32 SV3–SV2](../contracts/sv3_sv2_week3_fp32.md).
+- [Bàn giao FP32 Linux](../docs/sv3_sv2_week3_linux_fp32_handoff.md).
+- [Mục lục báo cáo](../docs/README.md): các báo cáo SV2 cũ chỉ là hồ sơ lịch sử.
+
+## Báo cáo và hồ sơ SV2 hiện hành
+
+- [Tuần 5](../docs/sv2_edge_week5_report.md): 10 tail ×20 case thực thi.
+- [Tuần 6](../docs/sv2_edge_week6_report.md): profiling load/first/steady CPU+DPU.
+- [Notebook quan sát](../experiments/notebooks/sv2_edge_week5_week6.ipynb) đọc
+  tóm tắt Git và kiểm checksum, không chạy lại thiết bị.
+- `export_weekly_evidence.py`: export có anchor/checksum; không ghi đè đầu ra.
+
+Không dùng kết quả calibration-reuse làm accuracy test độc lập hoặc suy ra
+nghiệm thu số học từ việc execution/profiling đã đủ.

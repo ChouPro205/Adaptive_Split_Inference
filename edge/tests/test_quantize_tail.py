@@ -65,6 +65,15 @@ class QuantizeTailTests(unittest.TestCase):
         with self.assertRaisesRegex(qt.TailQuantizationError, "differs from the approved"):
             qt.load_full_model(other)
 
+    def test_flatten_has_explicit_ncl_axes_for_vai25(self):
+        full = qt.load_full_model(qt.DEFAULT_CHECKPOINT)
+        for s in range(10):
+            head, tail = qt.split_modules(full, s)
+            flatten = [m for m in (*head, *tail) if isinstance(m, torch.nn.Flatten)]
+            self.assertEqual(len(flatten), 1)
+            self.assertEqual((flatten[0].start_dim, flatten[0].end_dim), (1, 2))
+        self.assertEqual(full.classifier[0].end_dim, -1)
+
     def test_calibration_split_policy(self):
         for split, count in (("test", 4), ("train", 0)):
             with self.assertRaises(qt.TailQuantizationError):
