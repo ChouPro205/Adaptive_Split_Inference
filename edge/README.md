@@ -158,3 +158,13 @@ Test này không chạy GraphRunner/DPU và không chứng nhận kết quả th
 
 Không dùng kết quả calibration-reuse làm accuracy test độc lập hoặc suy ra
 nghiệm thu số học từ việc execution/profiling đã đủ.
+
+## SV2 tuần 7 — packet service
+
+[File/TCP bench service](server/week7/README.md) dùng codec I1 v2 và native
+[single-input root GraphRunner](runtime/single_input/README.md). Xem
+[báo cáo tuần 7](../docs/sv2_edge_week7_report.md),
+[kết quả](../results/week7/edge/README.md) và
+[notebook chỉ đọc](../experiments/notebooks/sv2_edge_week7.ipynb).
+50 sample/split pairs trên 5 ECG validation, numeric review pending; chưa có
+BLE Device–KV260 hoặc accuracy test độc lập.
