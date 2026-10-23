@@ -53,6 +53,12 @@ Công cụ đang dùng được mô tả tại [README Edge](../edge/README.md).
 - [Báo cáo SV2/Edge – Week 3](sv2_edge_week3_report.md)
 - [Báo cáo SV2/Edge – Week 4](sv2_edge_week4_report.md)
 
+### Khối Máy chủ biên (SV2 - Edge / KV260)
+- [Báo cáo SV2/Edge – Week 1](sv2_edge_week1_report.md)
+- [Báo cáo SV2/Edge – Week 2](sv2_edge_week2_report.md)
+- [Báo cáo SV2/Edge – Week 3](sv2_edge_week3_report.md)
+- [Báo cáo SV2/Edge – Week 4](sv2_edge_week4_report.md)
+
 ## Quy ước đặt tên báo cáo
 
 Báo cáo mới dùng dạng `<sinh_vien>_<mang>_weekN_report.md`, ví dụ
