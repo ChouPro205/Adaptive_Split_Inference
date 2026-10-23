@@ -78,3 +78,6 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
 - [Đặc tả Device–Edge hiện hành (I1 v2, BLE binding, nonce)](contracts/README.md)
   và [tiêu chí tuần 6](docs/sv1_device_week6_report.md#phụ-lục-a-tiêu-chí-nghiệm-thu-và-quyết-định-d1d6)
 - [Mục lục tài liệu](docs/README.md)
+
+- [SV2/Edge tuần 7: packet I1 v2 từ file đến KV260](docs/sv2_edge_week7_report.md),
+  [source service](edge/server/week7/README.md) và [kết quả](results/week7/edge/README.md).

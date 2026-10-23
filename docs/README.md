@@ -85,3 +85,6 @@ Các báo cáo tiến độ tuần 5–7 nằm ở `docs/` phía trên. Hồ sơ
 - [Tuần 6: 50 load và 5000 observations timing](sv2_edge_week6_report.md).
 - [Kết quả tuần 5](../results/week5/edge/README.md) và
   [tuần 6](../results/week6/edge/README.md), tách biệt bằng chứng SV1.
+
+- [Tuần 7: packet I1 v2 qua file, 50 request KV260](sv2_edge_week7_report.md) và
+  [hồ sơ riêng SV2](../results/week7/edge/README.md).
