@@ -23,12 +23,12 @@ Quy ước chung cho mọi chế độ:
 | Chế độ | Chọn bằng | Mã nguồn chính | Build | Hướng dẫn / kết quả |
 |---|---|---|---|---|
 | Active (tuần 1–2): LED heartbeat, benchmark DWT, tự kiểm marker | `prj.conf` (mặc định) | `src/main.c` | `scripts/build_week1_demo.ps1` | [báo cáo tuần 1](../docs/sv1_device_week1_report.md) (phụ lục 10: DFU và chạy demo) |
-| Idle (tuần 2): đo dòng nền bằng PPK2 | `overlay-idle.conf` làm `CONF_FILE` | `src/main_idle.c` | `scripts/build_week2_idle.ps1` | [kết quả tuần 2](../results/week2/README.md) |
-| Đầu FP32 đến P2 (tuần 3) | `overlay-week3.conf` | `src/main_week3.c`, `src/week3_head.c` | `scripts/build_week3_head.ps1` | [báo cáo tuần 3](../docs/sv1_device_week3_report.md) (phụ lục 13), [kết quả](../results/week3/) |
-| 11 điểm cắt FP32, gói R3 (tuần 4) | `overlay-week4.conf` | `src/main_week4.c`, `src/week4_head.c`, `src/week4_protocol.c` | `scripts/build_week4_head.ps1` | [báo cáo tuần 4](../docs/sv1_device_week4_report.md) (phụ lục 12), [kết quả](../results/week4/README.md) |
-| Lượng tử hóa INT8 + scale FP16 (tuần 5) | ứng dụng riêng `week5/` | `week5/main.c`, `week5/quantization.c` (dùng lại kernel/giao thức tuần 4) | `scripts/build_week5_head.ps1` | [tái lập tuần 5](#tái-lập-tuần-5), [kết quả](../results/week5/README.md) |
-| BLE Device–Edge (tuần 6: 8 tiêu chí phía Device PASS trên dongle ngày 19/10/2026, peer laptop) | ứng dụng riêng `week6/`, biến thể `default`/`mtu23` | `week6/main.c` | `scripts/build_week6.ps1` | [báo cáo tuần 6](../docs/sv1_device_week6_report.md) (phụ lục B: firmware, C: quy trình lab), [kết quả](../results/week6/README.md) |
-| Đo năng lượng theo pha (tuần 7: 9 tiêu chí PASS, PPK2 ngày 22/10/2026): marker D0–D4, chu kỳ CTRL→HEAD→PROT→TX→WAIT, kernel FP32 tối ưu | ứng dụng riêng `week7/`, biến thể `bench`/`energy-usb`/`energy` × kernel `fast`/`week4` | `week7/main.c`, `week7/energy_cycle.c`, `week7/head_fast.c` | `scripts/build_week7.ps1` | [báo cáo tuần 7](../docs/sv1_device_week7_report.md) (phụ lục C: quy trình lab PPK2), [kết quả](../results/week7/README.md); công cụ `scripts/week7_ppk2.py`, `scripts/measure_energy.py`, `scripts/energy_phases.py` |
+| Idle (tuần 2): đo dòng nền bằng PPK2 | `overlay-idle.conf` làm `CONF_FILE` | `src/main_idle.c` | `scripts/build_week2_idle.ps1` | [kết quả tuần 2](../results/week2/device/README.md) |
+| Đầu FP32 đến P2 (tuần 3) | `overlay-week3.conf` | `src/main_week3.c`, `src/week3_head.c` | `scripts/build_week3_head.ps1` | [báo cáo tuần 3](../docs/sv1_device_week3_report.md) (phụ lục 13), [kết quả](../results/week3/device/) |
+| 11 điểm cắt FP32, gói R3 (tuần 4) | `overlay-week4.conf` | `src/main_week4.c`, `src/week4_head.c`, `src/week4_protocol.c` | `scripts/build_week4_head.ps1` | [báo cáo tuần 4](../docs/sv1_device_week4_report.md) (phụ lục 12), [kết quả](../results/week4/device/README.md) |
+| Lượng tử hóa INT8 + scale FP16 (tuần 5) | ứng dụng riêng `week5/` | `week5/main.c`, `week5/quantization.c` (dùng lại kernel/giao thức tuần 4) | `scripts/build_week5_head.ps1` | [tái lập tuần 5](#tái-lập-tuần-5), [kết quả](../results/week5/device/README.md) |
+| BLE Device–Edge (tuần 6: 8 tiêu chí phía Device PASS trên dongle ngày 19/10/2026, peer laptop) | ứng dụng riêng `week6/`, biến thể `default`/`mtu23` | `week6/main.c` | `scripts/build_week6.ps1` | [báo cáo tuần 6](../docs/sv1_device_week6_report.md) (phụ lục B: firmware, C: quy trình lab), [kết quả](../results/week6/device/README.md) |
+| Đo năng lượng theo pha (tuần 7: 9 tiêu chí PASS, PPK2 ngày 22/10/2026): marker D0–D4, chu kỳ CTRL→HEAD→PROT→TX→WAIT, kernel FP32 tối ưu | ứng dụng riêng `week7/`, biến thể `bench`/`energy-usb`/`energy` × kernel `fast`/`week4` | `week7/main.c`, `week7/energy_cycle.c`, `week7/head_fast.c` | `scripts/build_week7.ps1` | [báo cáo tuần 7](../docs/sv1_device_week7_report.md) (phụ lục C: quy trình lab PPK2), [kết quả](../results/week7/device/README.md); công cụ `scripts/week7_ppk2.py`, `scripts/measure_energy.py`, `scripts/energy_phases.py` |
 
 Bốn chế độ đầu dùng chung `CMakeLists.txt`/`Kconfig` của thư mục này; CMake
 chọn đúng một entry point theo Kconfig. Ứng dụng tuần 5 có `CMakeLists.txt`
@@ -63,7 +63,7 @@ ngoài repo sau khi xác thực gói ML.
   - `diagnose_week3_serial.ps1`, `diagnose_week3_pyserial.py`, `probe_week3_bulk.py`:
     công cụ chẩn đoán lỗi USB CDC tuần 3, được dẫn trong bảng bằng chứng
     [`reports/week3_build.md`](reports/week3_build.md).
-- `reports/`: hồ sơ gốc tuần 1 và tuần 3. `results/week3/` giữ bản sao trùng
+- `reports/`: hồ sơ gốc tuần 1 và tuần 3. `results/week3/device/` giữ bản sao trùng
   byte của biên bản và JSON tuần 3; cả hai vị trí đều đang được tài liệu khác dẫn tới.
 - `generated/`, `build*/`, `artifacts/`, `host/.venv`: bị Git ignore, chỉ có trên máy local.
   Giữ lại `build/` (Active), `build-idle/` (Idle), `build-week3/`, `build-week4/`, các ZIP và
@@ -143,7 +143,7 @@ Phép đo này chỉ kiểm tra cơ chế đếm chu kỳ, không phải thời 
 
 Gộp từ `week5_prepare_guide.md` cũ (đã xóa ngày 19/10/2026). Không đưa vào báo cáo tuần 5 vì
 báo cáo đó được giữ nguyên từng byte (hash nằm trong hồ sơ nghiệm thu). Image đã nạp và nghiệm
-thu ngày 09/10/2026 (220/220 + 16/16): xem [kết quả](../results/week5/README.md) và
+thu ngày 09/10/2026 (220/220 + 16/16): xem [kết quả](../results/week5/device/README.md) và
 [báo cáo](../docs/sv1_device_week5_report.md).
 
 Ứng dụng `week5/` dùng nguyên kernel FP32 tuần 4, tham số R3 và 20 input đã chuẩn hóa; chỉ

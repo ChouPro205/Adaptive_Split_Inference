@@ -24,11 +24,11 @@ import numpy as np
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = (
-    REPO_ROOT / "results/week2/raw/2026-09-22_idle_vbus5v_60s.csv"
+    REPO_ROOT / "results/week2/device/raw/2026-09-22_idle_vbus5v_60s.csv"
 )
-DEFAULT_SUMMARY = REPO_ROOT / "results/week2/summary/week2_idle_summary.csv"
+DEFAULT_SUMMARY = REPO_ROOT / "results/week2/device/summary/week2_idle_summary.csv"
 DEFAULT_HISTOGRAM = (
-    REPO_ROOT / "results/week2/figures/idle_current_histogram.png"
+    REPO_ROOT / "results/week2/device/figures/idle_current_histogram.png"
 )
 
 TIME_TO_SECONDS = {

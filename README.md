@@ -9,7 +9,8 @@ Adaptive Split Inference là dự án nghiên cứu hệ thống suy luận thí
 - `ml`: mô hình, lượng tử hóa và protection của SV3.
 - `contracts`: hợp đồng giao diện I1-I4, packet format và test vector dùng chung.
 - `experiments`: cấu hình thí nghiệm, dữ liệu đo đã xử lý và kết quả.
-- `results`: kết quả đo, bảng tổng hợp và hình minh chứng; dữ liệu raw được
+- `results`: kết quả đo, bảng tổng hợp và hình minh chứng, chia theo tuần
+  (`results/weekN/device` của SV1, `results/weekN/edge` của SV2); dữ liệu raw được
   giữ cục bộ.
 - `docs`: tài liệu kỹ thuật, tiến độ và báo cáo.
 - `tools`: công cụ dùng chung của nhóm.
@@ -48,7 +49,7 @@ Hai script chỉ build và tạo artifact; thao tác DFU/flash là bước riên
 Khi file raw đang có ở máy cục bộ:
 
 ```powershell
-python .\tools\analyze_week2_idle.py .\results\week2\raw\2026-09-22_idle_vbus5v_60s.csv
+python .\tools\analyze_week2_idle.py .\results\week2\device\raw\2026-09-22_idle_vbus5v_60s.csv
 ```
 
 Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh chứng vẫn
@@ -64,17 +65,17 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
 - [Kiểm tra checkout hiện tại trước tuần 5](ml/docs/week4_current_verification.md):
   entrypoint ML dùng chung policy xác thực với device, tách rõ snapshot lịch sử.
 - [Báo cáo SV1/Device Week 4: 11 splits FP32](docs/sv1_device_week4_report.md)
-- [Bằng chứng MCU Week 4](results/week4/README.md) và
+- [Bằng chứng MCU Week 4](results/week4/device/README.md) và
   [hydrate/tái kiểm sau tích hợp R4](docs/sv1_device_week4_report.md#12-phụ-lục-hydrate-tái-kiểm-build-và-chạy-lại-firmware-tuần-4): source ML
   có fix R4, phép đo chính thức giữ provenance R3 ngày 02/10/2026.
 - [Báo cáo SV1/Device Week 1](docs/sv1_device_week1_report.md)
 - [Báo cáo SV1/Device Week 2](docs/sv1_device_week2_report.md)
 - [Báo cáo SV1/Device Week 3](docs/sv1_device_week3_report.md)
 - [Báo cáo SV1/Device Week 5](docs/sv1_device_week5_report.md) và
-  [kết quả MCU Week 5](results/week5/README.md)
+  [kết quả MCU Week 5](results/week5/device/README.md)
 - [Báo cáo SV1/Device Week 6: BLE Device–laptop, P1 C và nonce](docs/sv1_device_week6_report.md) và
-  [kết quả Dongle Week 6](results/week6/README.md)
-- [Kết quả đo Week 2](results/week2/README.md)
+  [kết quả Dongle Week 6](results/week6/device/README.md)
+- [Kết quả đo Week 2](results/week2/device/README.md)
 - [Đặc tả Device–Edge hiện hành (I1 v2, BLE binding, nonce)](contracts/README.md)
   và [tiêu chí tuần 6](docs/sv1_device_week6_report.md#phụ-lục-a-tiêu-chí-nghiệm-thu-và-quyết-định-d1d6)
 - [Mục lục tài liệu](docs/README.md)

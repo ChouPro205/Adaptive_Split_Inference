@@ -201,29 +201,29 @@ xạ index/ID; sau đó so từng phần tử với golden cùng hàng. Capture 
 exit 0 và [JSON kết quả lịch sử](../device/reports/week3_mcu_validation.json)
 lưu hash capture cùng từng phép so P2.
 
-`results/week3/` lưu bản sao [capture đã xác minh](../results/week3/logs/week3_capture_verified.txt),
-[JSON so sánh](../results/week3/week3_mcu_validation.json) và
-[biên bản build/đo](../results/week3/week3_build.md), trùng byte với bản gốc
+`results/week3/device/` lưu bản sao [capture đã xác minh](../results/week3/device/logs/week3_capture_verified.txt),
+[JSON so sánh](../results/week3/device/week3_mcu_validation.json) và
+[biên bản build/đo](../results/week3/device/week3_build.md), trùng byte với bản gốc
 trong `device/`. Phiên thu COM7 ngày 29/09 chỉ lặp lại P2, không thuộc capture
 đã được checker xác nhận và không dùng làm căn cứ cho kết luận 20/20.
 
 **Phiên bổ sung 20 × 5 (30/09/2026).** Collector chạy `-FullTrace`, xác nhận
 banner trên COM7 rồi gửi `TRACE 0` đến `TRACE 19`, chỉ gửi mẫu tiếp theo sau khi
-nhận đúng `DONE` của mẫu trước. [Capture mới](../results/week3/logs/week3_capture_20x5.txt)
+nhận đúng `DONE` của mẫu trước. [Capture mới](../results/week3/device/logs/week3_capture_20x5.txt)
 dài **4.702.276 B**, SHA-256
 **`72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606`**.
 Checker chế độ `20x5` (Python của `ml/.venv`) kiểm 100/100 tensor theo thứ tự
 M1/R1/M2/R2/P2, 20 khung lệnh, 20 dòng stack, bit FP32, số phần tử/shape, giá
 trị hữu hạn và ánh xạ sang `samples.csv`. Kết quả ở
-[CSV sai số](../results/week3/week3_milestone_errors_20x5.csv) và
-[JSON kiểm chứng](../results/week3/week3_mcu_validation_20x5.json). Mọi phép
+[CSV sai số](../results/week3/device/week3_milestone_errors_20x5.csv) và
+[JSON kiểm chứng](../results/week3/device/week3_mcu_validation_20x5.json). Mọi phép
 trừ dùng float64 sau khi giải mã FP32. Phiên này không build hay nạp lại
 firmware.
 
 Lưu ý tái lập (bổ sung ngày 15/10/2026): hai capture tuần 3 được lưu LF trong
 Git nhưng SHA-256 ở trên là của bản CRLF gốc. Trước đây hash chỉ khớp trên máy
 đặt `core.autocrlf=true`; nay `.gitattributes` buộc checkout trả về CRLF
-(`results/week3/logs/*.txt text eol=crlf`), nên hash khớp trên mọi máy.
+(`results/week3/device/logs/*.txt text eol=crlf`), nên hash khớp trên mọi máy.
 
 ## 8. Kết quả 20 mẫu trên MCU
 
@@ -264,7 +264,7 @@ RAM linker và không liên quan năng lượng.
 ### Phiên bổ sung: đủ 20 mẫu × 5 mốc
 
 Mỗi ô là `max(abs(MCU − PyTorch))` của đúng `sample_index` và mốc tương ứng,
-đơn vị **× 10⁻⁷**, làm tròn để dễ đọc; [CSV](../results/week3/week3_milestone_errors_20x5.csv)
+đơn vị **× 10⁻⁷**, làm tròn để dễ đọc; [CSV](../results/week3/device/week3_milestone_errors_20x5.csv)
 giữ giá trị float64 đầy đủ. P2 đạt khi sai số thực của **từng mẫu** `< 1e-3`.
 
 | Index | `sample_id` | M1 | R1 | M2 | R2 | P2 | P2 đạt |
@@ -295,7 +295,7 @@ Giá trị max chính xác: M1/R1 `4.76837158203125e-7`, M2/R2 `9.5367431640625e
 P2 `7.152557373046875e-7`. Checker báo **100/100 tensor hợp lệ** và
 **P2 20/20 PASS**; mức dùng stack main lớn nhất vẫn là `544/4096 B`. Đây là
 phép thu tensor mới trên dongle; số Flash `84072 B` và RAM linker `64248 B`
-vẫn lấy từ [biên bản build trước đó](../results/week3/week3_build.md), không
+vẫn lấy từ [biên bản build trước đó](../results/week3/device/week3_build.md), không
 phải số đo của một lần build lại ngày 30/09.
 
 ## 9. Revision và hiện vật bằng chứng
@@ -308,9 +308,9 @@ phải số đo của một lần build lại ngày 30/09.
   [JSON host mẫu 0](../device/reports/week3_host_sample0.json),
   [JSON MCU 20 mẫu](../device/reports/week3_mcu_validation.json),
   [firmware tuần 3](../device/src/main_week3.c) và [kernel C](../device/src/week3_head.c).
-- Phiên bổ sung 20 × 5: [capture USB CDC](../results/week3/logs/week3_capture_20x5.txt),
-  [CSV sai số](../results/week3/week3_milestone_errors_20x5.csv) và
-  [JSON xác minh](../results/week3/week3_mcu_validation_20x5.json).
+- Phiên bổ sung 20 × 5: [capture USB CDC](../results/week3/device/logs/week3_capture_20x5.txt),
+  [CSV sai số](../results/week3/device/week3_milestone_errors_20x5.csv) và
+  [JSON xác minh](../results/week3/device/week3_mcu_validation_20x5.json).
 - Ngoài Git (không `git add -f`): `device/artifacts/adaptive_split_week3_fp32_v2.zip`,
   `device/artifacts/week3_capture.txt`, các log chẩn đoán, `device/build-week3/`,
   `device/generated/`, ZIP ML và dữ liệu MIT-BIH. Kiểm một file bằng
@@ -327,9 +327,9 @@ Kiểm lại **capture đã có**, không cần nạp lại. Từ repo root, tro
 sạch cho ML:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath .\results\week3\logs\week3_capture_verified.txt
+Get-FileHash -Algorithm SHA256 -LiteralPath .\results\week3\device\logs\week3_capture_verified.txt
 Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
-& ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture results/week3/logs/week3_capture_verified.txt --mode legacy --report-output $env:TEMP/week3_legacy_recheck.json
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture results/week3/device/logs/week3_capture_verified.txt --mode legacy --report-output $env:TEMP/week3_legacy_recheck.json
 ```
 
 Checker cần gói v2 và golden ở đúng vị trí local; `--report-output` ghi kết quả
@@ -339,7 +339,7 @@ ghi đè file đã có, nên mỗi lần chạy cần tên file mới. Kiểm l�
 
 ```powershell
 Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
-& ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture results/week3/logs/week3_capture_20x5.txt --mode 20x5 --report-output $env:TEMP/week3_20x5_recheck.json --csv-output $env:TEMP/week3_20x5_recheck.csv --port COM7
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week3_capture.py --repo-root . --capture results/week3/device/logs/week3_capture_20x5.txt --mode 20x5 --report-output $env:TEMP/week3_20x5_recheck.json --csv-output $env:TEMP/week3_20x5_recheck.csv --port COM7
 ```
 
 Thu **một capture 20 × 5 mới** trên dongle đang chạy đúng firmware tuần 3: đóng

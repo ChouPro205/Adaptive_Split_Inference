@@ -20,7 +20,7 @@ chứng trên thiết bị. Truyền Device–Edge và KV260 thuộc giai đoạ
 
 Kết quả chính: **220/220 tensor PASS, chuỗi đổi mẫu/split 16/16 PASS,
 1.100/1.100 số đo thời gian hợp lệ**, và P2 của 20 mẫu khớp từng bit với MCU
-tuần 3. Kết luận dựa trên [capture và hồ sơ kiểm chứng](../results/week4/README.md),
+tuần 3. Kết luận dựa trên [capture và hồ sơ kiểm chứng](../results/week4/device/README.md),
 không suy từ việc build thành công hay thấy banner `READY`.
 
 ## 2. Thiết bị, nguồn và môi trường
@@ -32,7 +32,7 @@ không suy từ việc build thành công hay thấy banner `READY`.
 - Máy phát triển Windows 11, PowerShell; NCS v3.4.0, Zephyr v4.4.0, target
   `nrf52840dongle/nrf52840`, West với `--no-sysbuild`, GNU Arm GCC 14.3.0 từ
   Zephyr SDK 1.0.1. [Biên bản môi trường](../device/reports/environment_check.txt)
-  ghi cấu hình nền; [provenance tuần 4](../results/week4/week4_mcu_validation.json)
+  ghi cấu hình nền; [provenance tuần 4](../results/week4/device/week4_mcu_validation.json)
   ghi phiên bản NCS/Zephyr/ARM GCC của kết quả này.
 - Kiểm chứng và phân tích dùng `ml/.venv` (Python 3.11.9, NumPy 2.4.6, hình
   vẽ bằng Matplotlib 3.11.2). Host C dùng GCC 13.2.0 (MSYS2 UCRT64). Collector
@@ -167,7 +167,7 @@ Host dùng [`verify_week4_host.py`](../device/scripts/verify_week4_host.py); h�
 chuẩn bị ở `D:/HUST/SV3_week4_R3/firmware-build/` gồm
 `week4_host_validation.json`, `preparation_summary.json`, log build và báo cáo
 bộ nhớ. Các trường MCU `PENDING` trong hồ sơ chuẩn bị là trạng thái **trước
-DFU**, không phủ định [JSON MCU sau phép đo](../results/week4/week4_mcu_validation.json).
+DFU**, không phủ định [JSON MCU sau phép đo](../results/week4/device/week4_mcu_validation.json).
 Khi lập báo cáo chỉ đọc hồ sơ này và chạy checker capture ngoại tuyến.
 
 ## 7. Kết quả số học trên MCU: 20 mẫu × 11 split
@@ -182,7 +182,7 @@ không đạt.
 **220/220 ca chính thức PASS.** Sai số lớn nhất là **`1.430511474609375e-05`**,
 tại `sample_index=6`, `sample_id=MIT-BIH:105:1741:MLII`, **`s=9`** (shape
 `1×32`). Bảng dưới lấy max trên 20 mẫu của từng split từ
-[CSV đầy đủ 20×11](../results/week4/week4_errors_20x11.csv), làm tròn để dễ
+[CSV đầy đủ 20×11](../results/week4/device/week4_errors_20x11.csv), làm tròn để dễ
 đọc; CSV giữ giá trị đầy đủ. Sai số là chênh lệch giá trị tensor, không có đơn vị.
 
 | `s` | Sai số tuyệt đối lớn nhất trên 20 mẫu | Số ca PASS (`<1e-3`) |
@@ -209,8 +209,8 @@ firmware và workspace; mỗi cặp là `(sample_index, s)`:
 
 Mọi ca `s=0` giữ nguyên bit input. **20/20 đầu ra P2 (`s=2`) khớp từng bit với
 capture MCU tuần 3** đã nghiệm thu (sai số giữa hai lần chạy MCU bằng 0). Mốc
-đối chiếu là [capture 20×5 tuần 3](../results/week3/logs/week3_capture_20x5.txt)
-và [JSON tuần 3](../results/week3/week3_mcu_validation_20x5.json), capture SHA-256
+đối chiếu là [capture 20×5 tuần 3](../results/week3/device/logs/week3_capture_20x5.txt)
+và [JSON tuần 3](../results/week3/device/week3_mcu_validation_20x5.json), capture SHA-256
 `72c7b6a2ba554f7e6d242a49e20065a4b56a3967108206a9a4d8845f1e795606`. Sai số P2
 so với **golden PyTorch** vẫn khác 0 như bảng trên: đó là hai phép đối chiếu
 với hai tham chiếu khác nhau.
@@ -236,8 +236,8 @@ của Zephyr không dùng để đổi DWT cycles sang thời gian.
 *Mean* là trung bình; *std* là độ lệch chuẩn mẫu (mẫu số `n−1`, `ddof=1`);
 *p95* là phân vị 95%, nội suy tuyến tính kiểu NumPy với vị trí `h=(n−1)×0,95`.
 Bảng tính bằng **ms**, làm tròn 9 chữ số thập phân;
-[CSV 1.100 lượt](../results/week4/week4_timing_1100.csv) lưu cycles và thời gian
-từng lượt, [CSV tổng hợp](../results/week4/week4_timing_summary.csv) lưu đủ
+[CSV 1.100 lượt](../results/week4/device/week4_timing_1100.csv) lưu cycles và thời gian
+từng lượt, [CSV tổng hợp](../results/week4/device/week4_timing_summary.csv) lưu đủ
 mean/std/p95/min/max.
 
 | `s` | Số lượt đo | Mean (ms) | Std (ms) | P95 (ms) |
@@ -254,7 +254,7 @@ mean/std/p95/min/max.
 | 9 | 100 | 2409.012078125 | 0.000000000 | 2409.012078125 |
 | 10 | 100 | 2409.063171875 | 0.000000000 | 2409.063171875 |
 
-![Thời gian head FP32 trên nRF52840 theo 11 splits](../results/week4/figures/week4_t_dev.png)
+![Thời gian head FP32 trên nRF52840 theo 11 splits](../results/week4/device/figures/week4_t_dev.png)
 
 *Hình 1. Trục ngang là split `s=0..10`; trục dọc là thời gian head trên thiết bị
 (ms). Đường xanh là mean ± std mẫu, đường cam là p95. Điều kiện: mẫu 0 cố định,
@@ -288,7 +288,7 @@ Ghi chú bổ sung ngày 15/10/2026 về cách dùng số liệu này:
 ## 9. Flash, RAM và stack main
 
 Flash lưu chương trình và tham số; RAM là bộ nhớ làm việc.
-[Footprint](../results/week4/week4_footprint.json) ghi vùng linker thực tế:
+[Footprint](../results/week4/device/week4_footprint.json) ghi vùng linker thực tế:
 
 | Vùng bộ nhớ | Đã dùng (B) | Giới hạn (B) | Còn lại theo linker (B) |
 | --- | ---: | ---: | ---: |
@@ -316,13 +316,13 @@ nhỏ nhất khi chạy.
 
 | Bằng chứng trong Git | Nội dung |
 | --- | --- |
-| [README kết quả tuần 4](../results/week4/README.md) | Điều kiện đo, công cụ và truy nguồn |
-| [Capture USB CDC](../results/week4/logs/week4_capture.txt) | 5.772.678 B; 220 RUN + 16 RUN đổi thứ tự + 11 BENCH = 247 tensor |
-| [JSON kiểm chứng MCU](../results/week4/week4_mcu_validation.json) | 247 ca, 11 batch/1.100 cycles, 247 quan sát stack và provenance |
-| [CSV sai số 20×11](../results/week4/week4_errors_20x11.csv) | 220 ca chính thức: ID/shape/layout/sai số/PASS |
-| [CSV timing gốc](../results/week4/week4_timing_1100.csv) và [tổng hợp](../results/week4/week4_timing_summary.csv) | 1.100 lượt và thống kê 11 split |
-| [Footprint JSON](../results/week4/week4_footprint.json) | Linker, symbol ELF, bộ nhớ tĩnh và stack main đo được |
-| [Hình timing](../results/week4/figures/week4_t_dev.png) | Hình 1, vẽ trực tiếp từ dữ liệu đã nghiệm thu |
+| [README kết quả tuần 4](../results/week4/device/README.md) | Điều kiện đo, công cụ và truy nguồn |
+| [Capture USB CDC](../results/week4/device/logs/week4_capture.txt) | 5.772.678 B; 220 RUN + 16 RUN đổi thứ tự + 11 BENCH = 247 tensor |
+| [JSON kiểm chứng MCU](../results/week4/device/week4_mcu_validation.json) | 247 ca, 11 batch/1.100 cycles, 247 quan sát stack và provenance |
+| [CSV sai số 20×11](../results/week4/device/week4_errors_20x11.csv) | 220 ca chính thức: ID/shape/layout/sai số/PASS |
+| [CSV timing gốc](../results/week4/device/week4_timing_1100.csv) và [tổng hợp](../results/week4/device/week4_timing_summary.csv) | 1.100 lượt và thống kê 11 split |
+| [Footprint JSON](../results/week4/device/week4_footprint.json) | Linker, symbol ELF, bộ nhớ tĩnh và stack main đo được |
+| [Hình timing](../results/week4/device/figures/week4_t_dev.png) | Hình 1, vẽ trực tiếp từ dữ liệu đã nghiệm thu |
 
 Các hash dưới đây đọc từ provenance và được đối chiếu lại với file gốc khi lập
 báo cáo. Hash artifact/firmware/capture tính trên **byte thô**; source ML được
@@ -341,7 +341,7 @@ xác thực theo chính sách chuẩn hóa UTF-8 LF ghi trong manifest.
 | Sample CSV | `4a6356312d5f62da6b2fdf9e609843d4dea3fc5c20767e201ea21a075e6f227c` |
 
 JSON provenance còn lưu hash của 11 golden, generated header, source đã build
-và công cụ thu/kiểm/phân tích. `.gitattributes` trong `results/week4` giữ nguyên
+và công cụ thu/kiểm/phân tích. `.gitattributes` trong `results/week4/device` giữ nguyên
 byte của capture khi checkout, tránh đổi hash do CRLF/LF.
 
 Commit ghi kết quả là **`efc0af72aeae3ef6ff872ad3cae19e6304899530`** trên
@@ -361,10 +361,10 @@ và đối chiếu image của lần build đó.
 Từ repo root, kiểm lại **capture đã lưu** mà không mở COM hay nạp firmware:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath .\results\week4\logs\week4_capture.txt
+Get-FileHash -Algorithm SHA256 -LiteralPath .\results\week4\device\logs\week4_capture.txt
 $week4ReportCheckDir = Join-Path $env:TEMP ('sv1-week4-recheck-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $week4ReportCheckDir | Out-Null
-& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --capture results/week4/logs/week4_capture.txt --report "$week4ReportCheckDir/check.json" --bench-sample 0 --mixed-order
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --capture results/week4/device/logs/week4_capture.txt --report "$week4ReportCheckDir/check.json" --bench-sample 0 --mixed-order
 if ($LASTEXITCODE -ne 0) { throw 'Kiem tra capture tuan 4 that bai' }
 ```
 
@@ -436,7 +436,7 @@ thuận/đảo/P2; report R3 cũ không tự được dùng lại như report t�
 
 Hồ sơ tích hợp ở `D:/HUST/SV3_week4_R4/sv1-integration` gồm snapshot SHA/size,
 phiên bản, lệnh/exit code, báo cáo host, recheck capture và đối chiếu khoa học.
-`results/week4` vẫn chỉ chứa bộ kết quả chính thức cùng README. Wrapper build
+`results/week4/device` vẫn chỉ chứa bộ kết quả chính thức cùng README. Wrapper build
 mới yêu cầu thư mục output riêng, giữ `device/build-week4`, generated header và
 ZIP đã nghiệm thu. **Không nạp, không mở COM, không đo lại dongle.** Build mới
 nằm ở `device/build-week4-r3-recheck` (hồi quy tuần 3 ở
@@ -520,11 +520,11 @@ if ($LASTEXITCODE -ne 0) { throw 'Current ML checkout verification failed' }
 if ($LASTEXITCODE -ne 0) { throw 'Handoff authentication failed' }
 & ml/.venv/Scripts/python.exe -B device/scripts/verify_week4_host.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor --report-dir "$sv1CheckDir/host" --compiler C:/msys64/ucrt64/bin/gcc.exe
 if ($LASTEXITCODE -ne 0) { throw 'Host validation failed' }
-& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor --capture results/week4/logs/week4_capture.txt --report "$sv1CheckDir/capture.json" --bench-sample 0 --mixed-order
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --source-revision r4 --expected-source-anchor $sv1R4Anchor --capture results/week4/device/logs/week4_capture.txt --report "$sv1CheckDir/capture.json" --bench-sample 0 --mixed-order
 if ($LASTEXITCODE -ne 0) { throw 'Capture recheck failed' }
 & ml/.venv/Scripts/python.exe -B device/scripts/test_week4_handoff.py
 if ($LASTEXITCODE -ne 0) { throw 'Compatibility regression failed' }
-& ml/.venv/Scripts/python.exe -B device/scripts/test_week4_capture.py --repo-root . --capture results/week4/logs/week4_capture.txt --work-dir "$sv1CheckDir/tamper"
+& ml/.venv/Scripts/python.exe -B device/scripts/test_week4_capture.py --repo-root . --capture results/week4/device/logs/week4_capture.txt --work-dir "$sv1CheckDir/tamper"
 if ($LASTEXITCODE -ne 0) { throw 'Capture tamper regression failed' }
 ```
 
@@ -598,12 +598,12 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\collect
 
 `analyze_week4_mcu.py` (`--capture`, `--dfu-receipt`, `--memory-report`, `--application-port`,
 `--output-dir`) công bố capture đã kiểm, sai số 20 × 11, 1100 cycles, thống kê, hình, footprint và
-hash vào `results/week4`; nó từ chối ghi vào thư mục bằng chứng không rỗng. Collector `-NoTiming` và
+hash vào `results/week4/device`; nó từ chối ghi vào thư mục bằng chứng không rỗng. Collector `-NoTiming` và
 checker không có `--bench-sample` chỉ kiểm 220 + 16 lệnh và để timing PENDING. Kiểm lại một capture
 thật đã lưu mà không mở cổng:
 
 ```powershell
-& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --capture results/week4/logs/week4_capture.txt --report D:/HUST/SV3_week4_R3/mcu-week4-work/recheck.json --bench-sample 0 --mixed-order
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --capture results/week4/device/logs/week4_capture.txt --report D:/HUST/SV3_week4_R3/mcu-week4-work/recheck.json --bench-sample 0 --mixed-order
 ```
 
 `test_week4_capture.py --capture <file thật> --work-dir <thư mục ngoài>` kiểm rằng bản bị cắt, lặp,

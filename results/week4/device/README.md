@@ -1,11 +1,11 @@
 # SV1 tuần 4 — kiểm chứng MCU và timing R3
 
-[Báo cáo SV1/Châu tuần 4](../../docs/sv1_device_week4_report.md) trình bày mục tiêu, triển khai, kết quả và giới hạn nghiệm thu.
+[Báo cáo SV1/Châu tuần 4](../../../docs/sv1_device_week4_report.md) trình bày mục tiêu, triển khai, kết quả và giới hạn nghiệm thu.
 
 Sau đồng bộ main có PR #18, source ML hiện tại là R4. Công cụ SV1 dùng
 anchor R4 kiểm checkout, source R3 lịch sử đã pin và payload R3/R4 trùng
 bytes; banner/manifest và provenance phép đo 02/10 vẫn là R3. Xem
-[hydrate và tái kiểm ngoại tuyến](../../docs/sv1_device_week4_report.md#12-phụ-lục-hydrate-tái-kiểm-build-và-chạy-lại-firmware-tuần-4).
+[hydrate và tái kiểm ngoại tuyến](../../../docs/sv1_device_week4_report.md#12-phụ-lục-hydrate-tái-kiểm-build-và-chạy-lại-firmware-tuần-4).
 Report tái kiểm lưu ngoài repo tại `D:/HUST/SV3_week4_R4/sv1-integration`,
 không ghi đè JSON, capture, CSV hoặc hình chính thức trong thư mục này.
 
@@ -107,7 +107,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\build_w
 # Nạp ZIP đã đối chiếu: nhấn RESET/SW2 để vào bootloader trước.
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\flash_week4_head.ps1 -Port COMx
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\device\scripts\collect_week4.ps1 -Port COMy -Output D:/HUST/SV3_week4_R3/mcu-week4-work/new-run/week4_capture.txt -Report D:/HUST/SV3_week4_R3/mcu-week4-work/new-run/validation.json -BenchSample 0
-& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --capture results/week4/logs/week4_capture.txt --report D:/HUST/SV3_week4_R3/mcu-week4-work/recheck.json --bench-sample 0 --mixed-order
+& ml/.venv/Scripts/python.exe -B device/scripts/check_week4_capture.py --repo-root . --capture results/week4/device/logs/week4_capture.txt --report D:/HUST/SV3_week4_R3/mcu-week4-work/recheck.json --bench-sample 0 --mixed-order
 # Xuất bộ kết quả mới vào thư mục rỗng; dùng receipt và memory report của build vừa nạp.
 & ml/.venv/Scripts/python.exe -B device/scripts/analyze_week4_mcu.py --repo-root . --capture D:/HUST/SV3_week4_R3/mcu-week4-work/new-run/week4_capture.txt --dfu-receipt D:/HUST/SV3_week4_R3/mcu-week4-work/dfu-YYYYMMDD-HHMMSS.json --memory-report D:/HUST/SV3_week4_R3/firmware-build/week4_memory.json --application-port COMy --bench-sample 0 --output-dir D:/HUST/SV3_week4_R3/mcu-week4-work/new-evidence
 ```
