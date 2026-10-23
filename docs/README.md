@@ -35,7 +35,12 @@ và báo cáo của dự án.
 - [SV3 → SV2: bàn giao Week 3 FP32 Linux](sv3_sv2_week3_linux_fp32_handoff.md)
 - [Mục lục và tài liệu bổ trợ SV3](../ml/docs/reports/README.md)
 
-### Khối Máy chủ biên (SV2 - Edge / KV260)
+### Khối Máy chủ biên (SV2 - Edge / KV260) — báo cáo lịch sử
+
+Các báo cáo dưới đây ghi nhận môi trường tại thời điểm viết, gồm stack cũ
+Ubuntu/Kria-PYNQ/Vitis AI 3.5. Không dùng các lệnh setup trong đó cho luồng mới.
+Công cụ đang dùng được mô tả tại [README Edge](../edge/README.md).
+
 - [Báo cáo SV2/Edge – Week 1](sv2_edge_week1_report.md)
 - [Báo cáo SV2/Edge – Week 2](sv2_edge_week2_report.md)
 - [Báo cáo SV2/Edge – Week 3](sv2_edge_week3_report.md)
@@ -55,3 +60,10 @@ Tài liệu chuyên biệt cho firmware nằm tại
 ## SV3 tuần 6
 
 - [Gói 50 vector P1 chính thức và xác nhận output](../ml/docs/week6_p1_delivery.md): A+B host PASS; MCU/BLE/KV260 chưa nghiệm thu.
+
+## SV2 / Edge — Vitis AI 2.5 hiện hành
+
+- [Tuần 5: 10 full tail CPU/DPU, 200 case](sv2_edge_week5_report.md).
+- [Tuần 6: 50 load và 5000 observations timing](sv2_edge_week6_report.md).
+- [Kết quả tuần 5](../results/week5/edge/README.md) và
+  [tuần 6](../results/week6/edge/README.md), tách biệt bằng chứng SV1.

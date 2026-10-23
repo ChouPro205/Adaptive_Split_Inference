@@ -1,0 +1,3328 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-23T04:44:57.760150+00:00",
+  "scope": "KV260 root graph CPU+PS+DPU, fixed batch 1; calibration-reuse inputs",
+  "units": "ms",
+  "load_scope": "fresh process reload; OS filesystem cache uncontrolled",
+  "configuration": {
+    "loads": 5,
+    "warmup": 20,
+    "repeats": 100,
+    "timeout_s": 1800
+  },
+  "week5_status": {
+    "full_10_tail_executed": true,
+    "approved_golden_scope_pass": false,
+    "independent_test_accuracy": "NOT_MEASURED",
+    "profiling": "NOT_MEASURED",
+    "status": "EXECUTION_COMPLETE_ACCEPTANCE_PENDING"
+  },
+  "week5_status_sha256": "492a7c2eae04c821d9de1642641b490489e8112848a710f6537d20b54081465c",
+  "bundle_inventory_sha256": "41fe3388db89bdb0d1759e4bc7b6b926af1fb8d87bd8c71d880505695ce14a44",
+  "runner_sha256": "60c75ac2a00463b0494f1e69110ca104d99f07c9a69982e1410e4b1784e3ac2e",
+  "driver_sha256": "6763d14d3bf4c8c6c3e432482b49b8f164054c6e5162c997342a0b1fc3a87efc",
+  "source_hashes": {
+    "profile_tail_models.py": "6763d14d3bf4c8c6c3e432482b49b8f164054c6e5162c997342a0b1fc3a87efc",
+    "week6_shell.sh": "98864fa484ae36c14c736c08c3c2755fe4908a70386ddf97bf97f60f66335735",
+    "tail_io.hpp": "f96e4054429449a0c963b5ccc1e2ec9b81adf767131545019f09c1951418fa89",
+    "profile_tail_runner.cpp": "1700da1ae4b6dbed191ebfebeb345f5c11460f3b184045b758e96a74b7d00b5b",
+    "check_cpu_libraries.py": "9bf590c71d594fdd29cebd383c7233a36b19e31c03f656a1dbe5bea53044493d",
+    "build_tail_profiler.sh": "268c82caace78db2105f09efba3142eefea1811f07e7a7cb225f5c02267c28d2"
+  },
+  "environment_before": {
+    "machine": "aarch64",
+    "platform": "Linux-5.15.19-xilinx-v2022.1-aarch64-with-glibc2.34",
+    "python": "3.9.9 (main, Nov 15 2021, 18:05:17) \n[GCC 11.2.0]",
+    "process_cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "/etc/os-release": "ID=petalinux\nNAME=\"PetaLinux\"\nVERSION=\"2022.1_release_S04190222 (honister)\"\nVERSION_ID=2022.1_release_s04190222\nPRETTY_NAME=\"PetaLinux 2022.1_release_S04190222 (honister)\"\n",
+    "/proc/loadavg": "0.00 0.02 0.05 1/147 1418\n",
+    "/proc/meminfo": "MemTotal:        4022656 kB\nMemFree:         3557932 kB\nMemAvailable:    3655528 kB\nBuffers:           15284 kB\nCached:           217216 kB\nSwapCached:            0 kB\nActive:            86124 kB\nInactive:         271852 kB\nActive(anon):       1952 kB\nInactive(anon):   142184 kB\nActive(file):      84172 kB\nInactive(file):   129668 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:             0 kB\nSwapFree:              0 kB\nDirty:                 4 kB\nWriteback:             0 kB\nAnonPages:        125500 kB\nMapped:            71632 kB\nShmem:             18784 kB\nKReclaimable:      31020 kB\nSlab:              64908 kB\nSReclaimable:      31020 kB\nSUnreclaim:        33888 kB\nKernelStack:        2416 kB\nPageTables:         2912 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     2011328 kB\nCommitted_AS:     318836 kB\nVmallocTotal:   133143592960 kB\nVmallocUsed:        6880 kB\nVmallocChunk:          0 kB\nPercpu:             2000 kB\nAnonHugePages:         0 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:        1572864 kB\nCmaFree:         1558112 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\n",
+    "/sys/devices/system/cpu/cpufreq/policy0/scaling_governor": "userspace",
+    "/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq": "1333333"
+  },
+  "environment_after": {
+    "machine": "aarch64",
+    "platform": "Linux-5.15.19-xilinx-v2022.1-aarch64-with-glibc2.34",
+    "python": "3.9.9 (main, Nov 15 2021, 18:05:17) \n[GCC 11.2.0]",
+    "process_cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "/etc/os-release": "ID=petalinux\nNAME=\"PetaLinux\"\nVERSION=\"2022.1_release_S04190222 (honister)\"\nVERSION_ID=2022.1_release_s04190222\nPRETTY_NAME=\"PetaLinux 2022.1_release_S04190222 (honister)\"\n",
+    "/proc/loadavg": "0.96 0.50 0.24 1/151 1477\n",
+    "/proc/meminfo": "MemTotal:        4022656 kB\nMemFree:         3542828 kB\nMemAvailable:    3643040 kB\nBuffers:           15656 kB\nCached:           220044 kB\nSwapCached:            0 kB\nActive:            88076 kB\nInactive:         273980 kB\nActive(anon):       2588 kB\nInactive(anon):   143216 kB\nActive(file):      85488 kB\nInactive(file):   130764 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:             0 kB\nSwapFree:              0 kB\nDirty:               136 kB\nWriteback:             0 kB\nAnonPages:        126388 kB\nMapped:            72644 kB\nShmem:             19420 kB\nKReclaimable:      31428 kB\nSlab:              65584 kB\nSReclaimable:      31428 kB\nSUnreclaim:        34156 kB\nKernelStack:        2464 kB\nPageTables:         2896 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     2011328 kB\nCommitted_AS:     320292 kB\nVmallocTotal:   133143592960 kB\nVmallocUsed:        6992 kB\nVmallocChunk:          0 kB\nPercpu:             2048 kB\nAnonHugePages:         0 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:        1572864 kB\nCmaFree:         1558076 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\n",
+    "/sys/devices/system/cpu/cpufreq/policy0/scaling_governor": "userspace",
+    "/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq": "1333333"
+  },
+  "splits": [
+    {
+      "split": 0,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s0/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s0/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s0/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s0/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s0/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "b6ce1d02ae32db7116a3e72fccdc0453c33964372fd60ddcf19f0e5eb6e02193",
+      "input_sha256": "dac1d1e9df849bf4ffa30359384d129586f67ec0703157b692d1344685b78dcc",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 37.9069394,
+          "std_ms": 1.0908051819210451,
+          "min_ms": 37.304278,
+          "max_ms": 39.839274,
+          "median_ms": 37.36015,
+          "p95_ms": 39.4082452,
+          "ci95_mean_ms": [
+            36.55252592787242,
+            39.261352872127574
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 56.152929,
+          "std_ms": 0.2985736259040623,
+          "min_ms": 55.838197,
+          "max_ms": 56.581118,
+          "median_ms": 56.056334,
+          "p95_ms": 56.529768999999995,
+          "ci95_mean_ms": [
+            55.78220089194843,
+            56.52365710805157
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.012594,
+          "std_ms": 0.00042512351146460907,
+          "min_ms": 0.0119,
+          "max_ms": 0.01295,
+          "median_ms": 0.01269,
+          "p95_ms": 0.012942,
+          "ci95_mean_ms": [
+            0.012066139461024741,
+            0.013121860538975258
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 94.0724624,
+          "std_ms": 0.951783668797327,
+          "min_ms": 93.324438,
+          "max_ms": 95.690161,
+          "median_ms": 93.898306,
+          "p95_ms": 95.3562094,
+          "ci95_mean_ms": [
+            92.89066692915357,
+            95.25425787084644
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 0.5597246,
+          "std_ms": 0.014146486500187929,
+          "min_ms": 0.544755,
+          "max_ms": 0.578575,
+          "median_ms": 0.561954,
+          "p95_ms": 0.5761809999999999,
+          "ci95_mean_ms": [
+            0.542159417677175,
+            0.577289782322825
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.013186,
+          "std_ms": 0.008360288870607283,
+          "min_ms": 0.00691,
+          "max_ms": 0.02297,
+          "median_ms": 0.0072,
+          "p95_ms": 0.022714,
+          "ci95_mean_ms": [
+            0.0028053306881005054,
+            0.023566669311899494
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 48.4110364,
+          "std_ms": 0.12755387552834413,
+          "min_ms": 48.296447,
+          "max_ms": 48.625179,
+          "median_ms": 48.387656,
+          "p95_ms": 48.5820056,
+          "ci95_mean_ms": [
+            48.25265735092598,
+            48.56941544907402
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.008446,
+          "std_ms": 0.00020755722102591389,
+          "min_ms": 0.0081,
+          "max_ms": 0.00864,
+          "median_ms": 0.00849,
+          "p95_ms": 0.008624,
+          "ci95_mean_ms": [
+            0.008188283680849614,
+            0.008703716319150387
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 48.992393,
+          "std_ms": 0.11299318600915516,
+          "min_ms": 48.889811,
+          "max_ms": 49.185734,
+          "median_ms": 48.969951,
+          "p95_ms": 49.1427984,
+          "ci95_mean_ms": [
+            48.852093434205955,
+            49.132692565794045
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 0.55124479,
+          "std_ms": 0.009124385522555943,
+          "min_ms": 0.542085,
+          "max_ms": 0.588305,
+          "median_ms": 0.546801,
+          "p95_ms": 0.5648414,
+          "ci95_mean_ms": [
+            0.550411430442875,
+            0.5520781495571251
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.00372088,
+          "std_ms": 0.0007354900521649953,
+          "min_ms": 0.00297,
+          "max_ms": 0.01921,
+          "median_ms": 0.00367,
+          "p95_ms": 0.00411,
+          "ci95_mean_ms": [
+            0.0036537053214830855,
+            0.003788054678516915
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 48.296889922,
+          "std_ms": 0.11941836538978677,
+          "min_ms": 48.10137,
+          "max_ms": 49.58961,
+          "median_ms": 48.2894405,
+          "p95_ms": 48.43279885,
+          "ci95_mean_ms": [
+            48.285983057548926,
+            48.30779678645107
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.008617386,
+          "std_ms": 0.0007398158933925605,
+          "min_ms": 0.00762,
+          "max_ms": 0.02114,
+          "median_ms": 0.00858,
+          "p95_ms": 0.00905,
+          "ci95_mean_ms": [
+            0.008549816228452361,
+            0.008684955771547638
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 48.860472978,
+          "std_ms": 0.11708909104106649,
+          "min_ms": 48.675696,
+          "max_ms": 50.145695,
+          "median_ms": 48.8524545,
+          "p95_ms": 48.9933063,
+          "ci95_mean_ms": [
+            48.84977885368741,
+            48.87116710231258
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 0.55124479,
+          "std_ms": 0.0073215890411781614,
+          "min_ms": 0.54620663,
+          "max_ms": 0.5641382,
+          "median_ms": 0.5485086,
+          "p95_ms": 0.561257872,
+          "ci95_mean_ms": [
+            0.5421538368223765,
+            0.5603357431776236
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.00372088,
+          "std_ms": 0.0001561497425550231,
+          "min_ms": 0.00356497,
+          "max_ms": 0.00395968,
+          "median_ms": 0.00366239,
+          "p95_ms": 0.003925278,
+          "ci95_mean_ms": [
+            0.0035269944936868443,
+            0.003914765506313156
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 48.296889922,
+          "std_ms": 0.08138476441001437,
+          "min_ms": 48.20936569,
+          "max_ms": 48.39443865,
+          "median_ms": 48.28861181,
+          "p95_ms": 48.388353988,
+          "ci95_mean_ms": [
+            48.1958373938586,
+            48.39794245014139
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.008617386,
+          "std_ms": 0.00012308735792111223,
+          "min_ms": 0.008470749999999999,
+          "max_ms": 0.00878443,
+          "median_ms": 0.008595769999999999,
+          "p95_ms": 0.008765789999999999,
+          "ci95_mean_ms": [
+            0.008464552864826088,
+            0.008770219135173911
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 48.860472978,
+          "std_ms": 0.07664869499608612,
+          "min_ms": 48.7861548,
+          "max_ms": 48.95533069,
+          "median_ms": 48.84837891,
+          "p95_ms": 48.948778825999995,
+          "ci95_mean_ms": [
+            48.76530105652006,
+            48.955644899479935
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.5122596025466919,
+      "sequential_rate_hz": 20.46644125713359
+    },
+    {
+      "split": 1,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s1/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s1/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s1/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s1/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s1/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "a6cd8ca55894569a849d59a82ad725dcdd1ba77c95442e98bfe6f732aa1f795f",
+      "input_sha256": "01dc25a4e8eb9e4ad3bcf246dd3e8ed85e06dc0df7af8e78f13b75800f0dc9a6",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 34.4166364,
+          "std_ms": 0.13189025350571035,
+          "min_ms": 34.331163,
+          "max_ms": 34.644578,
+          "median_ms": 34.357251,
+          "p95_ms": 34.5988534,
+          "ci95_mean_ms": [
+            34.252873026712884,
+            34.58039977328712
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 50.1285978,
+          "std_ms": 0.32984683611594656,
+          "min_ms": 49.810632,
+          "max_ms": 50.662994,
+          "median_ms": 49.995217,
+          "p95_ms": 50.571165799999996,
+          "ci95_mean_ms": [
+            49.71903887419135,
+            50.538156725808655
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.012908,
+          "std_ms": 0.0003398087697514585,
+          "min_ms": 0.01238,
+          "max_ms": 0.01321,
+          "median_ms": 0.01309,
+          "p95_ms": 0.013188,
+          "ci95_mean_ms": [
+            0.012486071700312304,
+            0.013329928299687694
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 84.5581422,
+          "std_ms": 0.4596997113488333,
+          "min_ms": 84.154175,
+          "max_ms": 85.320662,
+          "median_ms": 84.365228,
+          "p95_ms": 85.1831332,
+          "ci95_mean_ms": [
+            83.98734964006047,
+            85.12893475993954
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 8.5745006,
+          "std_ms": 0.026121618160060107,
+          "min_ms": 8.543091,
+          "max_ms": 8.611939,
+          "median_ms": 8.575084,
+          "p95_ms": 8.606315799999999,
+          "ci95_mean_ms": [
+            8.542066328384744,
+            8.606934871615257
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.008288,
+          "std_ms": 0.00039669887824393923,
+          "min_ms": 0.00777,
+          "max_ms": 0.00862,
+          "median_ms": 0.00847,
+          "p95_ms": 0.00862,
+          "ci95_mean_ms": [
+            0.007795433303419731,
+            0.00878056669658027
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 47.0324604,
+          "std_ms": 0.055596915240865796,
+          "min_ms": 46.947977,
+          "max_ms": 47.092564,
+          "median_ms": 47.04587,
+          "p95_ms": 47.086882800000005,
+          "ci95_mean_ms": [
+            46.96342771454984,
+            47.10149308545016
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.008242,
+          "std_ms": 0.0002928651566847788,
+          "min_ms": 0.00779,
+          "max_ms": 0.00859,
+          "median_ms": 0.00832,
+          "p95_ms": 0.008538,
+          "ci95_mean_ms": [
+            0.007878359892394306,
+            0.008605640107605693
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 55.623491,
+          "std_ms": 0.04885739014212565,
+          "min_ms": 55.54901,
+          "max_ms": 55.674459,
+          "median_ms": 55.638814,
+          "p95_ms": 55.6698482,
+          "ci95_mean_ms": [
+            55.56282653991287,
+            55.68415546008713
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 8.541885602,
+          "std_ms": 0.03177445108629364,
+          "min_ms": 8.489873,
+          "max_ms": 8.713577,
+          "median_ms": 8.536621,
+          "p95_ms": 8.593875650000001,
+          "ci95_mean_ms": [
+            8.538983538905482,
+            8.54478766509452
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.005241764,
+          "std_ms": 0.0003181899652912141,
+          "min_ms": 0.00456,
+          "max_ms": 0.0064,
+          "median_ms": 0.0052,
+          "p95_ms": 0.00583,
+          "ci95_mean_ms": [
+            0.005212702684265235,
+            0.005270825315734765
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 46.973717616,
+          "std_ms": 0.08250878186626333,
+          "min_ms": 46.812142,
+          "max_ms": 47.780153,
+          "median_ms": 46.9660095,
+          "p95_ms": 47.09165195,
+          "ci95_mean_ms": [
+            46.96618182285042,
+            46.98125340914958
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.008389266,
+          "std_ms": 0.0003118571548225695,
+          "min_ms": 0.00754,
+          "max_ms": 0.00958,
+          "median_ms": 0.00838,
+          "p95_ms": 0.008910499999999998,
+          "ci95_mean_ms": [
+            0.008360783080269487,
+            0.008417748919730511
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 55.529234248,
+          "std_ms": 0.09214706291689877,
+          "min_ms": 55.352868,
+          "max_ms": 56.50711,
+          "median_ms": 55.522760000000005,
+          "p95_ms": 55.6473621,
+          "ci95_mean_ms": [
+            55.52081815955734,
+            55.53765033644267
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 8.541885602,
+          "std_ms": 0.018498254546358783,
+          "min_ms": 8.52900878,
+          "max_ms": 8.57416575,
+          "median_ms": 8.53730598,
+          "p95_ms": 8.567002942,
+          "ci95_mean_ms": [
+            8.518916986170444,
+            8.564854217829557
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.005241764,
+          "std_ms": 0.00012914055009949444,
+          "min_ms": 0.00511467,
+          "max_ms": 0.00543037,
+          "median_ms": 0.0052670699999999996,
+          "p95_ms": 0.0053985100000000005,
+          "ci95_mean_ms": [
+            0.0050814148343087595,
+            0.005402113165691241
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 46.973717616,
+          "std_ms": 0.02957959725872532,
+          "min_ms": 46.92524198,
+          "max_ms": 46.99677355,
+          "median_ms": 46.98542571,
+          "p95_ms": 46.996316556000004,
+          "ci95_mean_ms": [
+            46.93698969639407,
+            47.01044553560593
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.008389266000000001,
+          "std_ms": 0.00012478783967198077,
+          "min_ms": 0.00831098,
+          "max_ms": 0.00860987,
+          "median_ms": 0.00833853,
+          "p95_ms": 0.008560400000000001,
+          "ci95_mean_ms": [
+            0.008234321437936433,
+            0.00854421056206357
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 55.529234248,
+          "std_ms": 0.03553745158572598,
+          "min_ms": 55.46788435,
+          "max_ms": 55.55455952,
+          "median_ms": 55.54537261,
+          "p95_ms": 55.553423628,
+          "ci95_mean_ms": [
+            55.485108675449986,
+            55.57335982055002
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.45711013674736023,
+      "sequential_rate_hz": 18.00853214603832
+    },
+    {
+      "split": 2,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s2/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s2/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s2/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s2/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s2/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+      "input_sha256": "5b9607815738e1a3a7ccde941e23a01a9ad927326839f38895e1f289e7d72399",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 30.5641376,
+          "std_ms": 0.03768549904538997,
+          "min_ms": 30.535168,
+          "max_ms": 30.627922,
+          "median_ms": 30.5524,
+          "p95_ms": 30.6155742,
+          "ci95_mean_ms": [
+            30.51734487435394,
+            30.610930325646056
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 43.0474636,
+          "std_ms": 0.1650531109349368,
+          "min_ms": 42.904123,
+          "max_ms": 43.314925,
+          "median_ms": 43.025322,
+          "p95_ms": 43.266200000000005,
+          "ci95_mean_ms": [
+            42.842523102125625,
+            43.252404097874376
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.0128318,
+          "std_ms": 0.00026876792963447123,
+          "min_ms": 0.01255,
+          "max_ms": 0.013199,
+          "median_ms": 0.01281,
+          "p95_ms": 0.0131572,
+          "ci95_mean_ms": [
+            0.01249808055054554,
+            0.013165519449454462
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 73.624433,
+          "std_ms": 0.1471728796976537,
+          "min_ms": 73.473213,
+          "max_ms": 73.862903,
+          "median_ms": 73.604704,
+          "p95_ms": 73.81766040000001,
+          "ci95_mean_ms": [
+            73.44169374069132,
+            73.80717225930867
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 4.3703588,
+          "std_ms": 0.06461300311237676,
+          "min_ms": 4.294163,
+          "max_ms": 4.472545,
+          "median_ms": 4.357156,
+          "p95_ms": 4.4528062,
+          "ci95_mean_ms": [
+            4.29013116325931,
+            4.45058643674069
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.014948,
+          "std_ms": 0.00934470812813327,
+          "min_ms": 0.00759,
+          "max_ms": 0.02609,
+          "median_ms": 0.0089,
+          "p95_ms": 0.025712,
+          "ci95_mean_ms": [
+            0.0033450127832048825,
+            0.026550987216795115
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 42.6206044,
+          "std_ms": 0.11268276211248916,
+          "min_ms": 42.529122,
+          "max_ms": 42.80515,
+          "median_ms": 42.592746,
+          "p95_ms": 42.772171799999995,
+          "ci95_mean_ms": [
+            42.48069027636802,
+            42.76051852363197
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.008162,
+          "std_ms": 0.0002451938009004302,
+          "min_ms": 0.00787,
+          "max_ms": 0.00853,
+          "median_ms": 0.00817,
+          "p95_ms": 0.008466,
+          "ci95_mean_ms": [
+            0.007857551696374554,
+            0.008466448303625447
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 47.0140732,
+          "std_ms": 0.07615793256910336,
+          "min_ms": 46.908891,
+          "max_ms": 47.114773,
+          "median_ms": 47.03154,
+          "p95_ms": 47.0990038,
+          "ci95_mean_ms": [
+            46.91951064053423,
+            47.10863575946577
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 4.30161672,
+          "std_ms": 0.056077150094267364,
+          "min_ms": 4.24837,
+          "max_ms": 4.447896,
+          "median_ms": 4.2790845,
+          "p95_ms": 4.40620955,
+          "ci95_mean_ms": [
+            4.296495013025665,
+            4.306738426974335
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.004588774,
+          "std_ms": 0.00043083177105908497,
+          "min_ms": 0.00395,
+          "max_ms": 0.01215,
+          "median_ms": 0.004545,
+          "p95_ms": 0.005030499999999999,
+          "ci95_mean_ms": [
+            0.004549424744859735,
+            0.004628123255140265
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 42.497201712,
+          "std_ms": 0.09058878805642624,
+          "min_ms": 42.289243,
+          "max_ms": 42.770291,
+          "median_ms": 42.4769565,
+          "p95_ms": 42.6595797,
+          "ci95_mean_ms": [
+            42.488927945825985,
+            42.50547547817401
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.007897424,
+          "std_ms": 0.0005810961415078839,
+          "min_ms": 0.00692,
+          "max_ms": 0.01766,
+          "median_ms": 0.00786,
+          "p95_ms": 0.008521499999999998,
+          "ci95_mean_ms": [
+            0.00784435061528418,
+            0.00795049738471582
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 46.81130463,
+          "std_ms": 0.09830866825686305,
+          "min_ms": 46.590915,
+          "max_ms": 47.104008,
+          "median_ms": 46.79921,
+          "p95_ms": 46.952531,
+          "ci95_mean_ms": [
+            46.80232578226965,
+            46.82028347773036
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 4.30161672,
+          "std_ms": 0.060004712647819175,
+          "min_ms": 4.26715698,
+          "max_ms": 4.40796103,
+          "median_ms": 4.27302611,
+          "p95_ms": 4.384100988,
+          "ci95_mean_ms": [
+            4.227111031405616,
+            4.376122408594385
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.004588774,
+          "std_ms": 9.864089050692904e-05,
+          "min_ms": 0.004458,
+          "max_ms": 0.0047217,
+          "median_ms": 0.0045847,
+          "p95_ms": 0.004704396,
+          "ci95_mean_ms": [
+            0.004466295162147435,
+            0.004711252837852566
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 42.497201712,
+          "std_ms": 0.08120608115189529,
+          "min_ms": 42.4400859,
+          "max_ms": 42.6375101,
+          "median_ms": 42.47861051,
+          "p95_ms": 42.607453146,
+          "ci95_mean_ms": [
+            42.39637104841889,
+            42.598032375581106
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.007897424,
+          "std_ms": 0.00021191861275027244,
+          "min_ms": 0.0076808,
+          "max_ms": 0.00821099,
+          "median_ms": 0.0077934,
+          "p95_ms": 0.008170684,
+          "ci95_mean_ms": [
+            0.0076342922979686,
+            0.0081605557020314
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 46.81130463,
+          "std_ms": 0.09201909336896572,
+          "min_ms": 46.72544877,
+          "max_ms": 46.91680588,
+          "median_ms": 46.78873232,
+          "p95_ms": 46.913234632,
+          "ci95_mean_ms": [
+            46.69704783894553,
+            46.925561421054475
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.5382317304611206,
+      "sequential_rate_hz": 21.36236124808043
+    },
+    {
+      "split": 3,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s3/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s3/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s3/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s3/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s3/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "88f541f6b9ddb923ffe9229c5c35713d194102819457b84880e59a1e3fa90a43",
+      "input_sha256": "afe72a5e26572060420a93f19ae0ce4a3bc686a90ef1607d4108df7b2bbbd94d",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 27.8179648,
+          "std_ms": 0.16461065576292405,
+          "min_ms": 27.672308,
+          "max_ms": 28.042661,
+          "median_ms": 27.724745,
+          "p95_ms": 28.0227584,
+          "ci95_mean_ms": [
+            27.613573682762716,
+            28.02235591723728
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 38.4614062,
+          "std_ms": 0.07956341675481271,
+          "min_ms": 38.348955,
+          "max_ms": 38.569523,
+          "median_ms": 38.458831,
+          "p95_ms": 38.552963999999996,
+          "ci95_mean_ms": [
+            38.362615173584594,
+            38.560197226415404
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.012596,
+          "std_ms": 0.0006936713919428996,
+          "min_ms": 0.01167,
+          "max_ms": 0.01351,
+          "median_ms": 0.01262,
+          "p95_ms": 0.013394,
+          "ci95_mean_ms": [
+            0.011734693238674992,
+            0.013457306761325007
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 66.291967,
+          "std_ms": 0.22496759667671956,
+          "min_ms": 66.068847,
+          "max_ms": 66.624804,
+          "median_ms": 66.179409,
+          "p95_ms": 66.582689,
+          "ci95_mean_ms": [
+            66.0126328450279,
+            66.5713011549721
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 8.6099384,
+          "std_ms": 0.10143210744286034,
+          "min_ms": 8.520343,
+          "max_ms": 8.781675,
+          "median_ms": 8.588436,
+          "p95_ms": 8.7464256,
+          "ci95_mean_ms": [
+            8.483993808698228,
+            8.735882991301773
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.00822,
+          "std_ms": 0.00015132745950421583,
+          "min_ms": 0.00802,
+          "max_ms": 0.00839,
+          "median_ms": 0.00827,
+          "p95_ms": 0.008374,
+          "ci95_mean_ms": [
+            0.008032102148713312,
+            0.008407897851286688
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 38.051928,
+          "std_ms": 0.06235355068077458,
+          "min_ms": 37.993125,
+          "max_ms": 38.153631,
+          "median_ms": 38.045732,
+          "p95_ms": 38.1341776,
+          "ci95_mean_ms": [
+            37.974505843892985,
+            38.12935015610701
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.007614,
+          "std_ms": 0.0003528880842420162,
+          "min_ms": 0.00731,
+          "max_ms": 0.00807,
+          "median_ms": 0.00746,
+          "p95_ms": 0.008038,
+          "ci95_mean_ms": [
+            0.007175831587003524,
+            0.008052168412996477
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 46.6777004,
+          "std_ms": 0.07199034049648566,
+          "min_ms": 46.615272,
+          "max_ms": 46.79098,
+          "median_ms": 46.677412,
+          "p95_ms": 46.7706468,
+          "ci95_mean_ms": [
+            46.588312589373935,
+            46.76708821062606
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 8.566758958,
+          "std_ms": 0.08366678478285175,
+          "min_ms": 8.465512,
+          "max_ms": 8.865718,
+          "median_ms": 8.5299,
+          "p95_ms": 8.74833395,
+          "ci95_mean_ms": [
+            8.559117400709336,
+            8.574400515290662
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.00505402,
+          "std_ms": 0.0005073508148200781,
+          "min_ms": 0.00441,
+          "max_ms": 0.01255,
+          "median_ms": 0.00501,
+          "p95_ms": 0.005510999999999999,
+          "ci95_mean_ms": [
+            0.005007682013809008,
+            0.005100357986190992
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 37.90671357,
+          "std_ms": 0.0710662779995866,
+          "min_ms": 37.782216,
+          "max_ms": 38.881805,
+          "median_ms": 37.8981215,
+          "p95_ms": 37.9901129,
+          "ci95_mean_ms": [
+            37.90022285763215,
+            37.91320428236785
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.0072898600000000004,
+          "std_ms": 0.000791288558976518,
+          "min_ms": 0.00575,
+          "max_ms": 0.02113,
+          "median_ms": 0.00724,
+          "p95_ms": 0.00806,
+          "ci95_mean_ms": [
+            0.0072175890638984256,
+            0.007362130936101575
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 46.485816408,
+          "std_ms": 0.11050433857523166,
+          "min_ms": 46.319515,
+          "max_ms": 47.414712,
+          "median_ms": 46.448381,
+          "p95_ms": 46.681940999999995,
+          "ci95_mean_ms": [
+            46.47572369036681,
+            46.49590912563318
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 8.566758958,
+          "std_ms": 0.0833313597313011,
+          "min_ms": 8.51029108,
+          "max_ms": 8.71370268,
+          "median_ms": 8.5377724,
+          "p95_ms": 8.680465862,
+          "ci95_mean_ms": [
+            8.463289412620673,
+            8.670228503379326
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.00505402,
+          "std_ms": 0.00017662456510916024,
+          "min_ms": 0.0048741,
+          "max_ms": 0.0052414,
+          "median_ms": 0.0050228,
+          "p95_ms": 0.00523978,
+          "ci95_mean_ms": [
+            0.004834711644615018,
+            0.005273328355384983
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 37.90671357,
+          "std_ms": 0.017882715547315027,
+          "min_ms": 37.88639681,
+          "max_ms": 37.92641277,
+          "median_ms": 37.91242714,
+          "p95_ms": 37.924905122,
+          "ci95_mean_ms": [
+            37.88450924675609,
+            37.92891789324391
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.0072898600000000004,
+          "std_ms": 0.0003955864674126253,
+          "min_ms": 0.0068672,
+          "max_ms": 0.00786442,
+          "median_ms": 0.007193,
+          "p95_ms": 0.007790112,
+          "ci95_mean_ms": [
+            0.0067986745438478515,
+            0.007781045456152149
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 46.485816408,
+          "std_ms": 0.08821971595874371,
+          "min_ms": 46.41185628,
+          "max_ms": 46.6385212,
+          "median_ms": 46.46366133,
+          "p95_ms": 46.604557266,
+          "ci95_mean_ms": [
+            46.37627716691264,
+            46.59535564908736
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.4132317304611206,
+      "sequential_rate_hz": 21.511937990356657
+    },
+    {
+      "split": 4,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s4/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s4/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s4/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s4/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s4/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "cf798b74a3c40a6c5432a80640fd4621baa4aeb1715bee0ecba1596903d03a22",
+      "input_sha256": "a45a5032e8682d2734642d2842659aac44fd0de208804f660faec7cc357cef16",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 24.1068148,
+          "std_ms": 0.09902371086108516,
+          "min_ms": 24.010656,
+          "max_ms": 24.274108,
+          "median_ms": 24.078953,
+          "p95_ms": 24.2386746,
+          "ci95_mean_ms": [
+            23.98386062791391,
+            24.229768972086088
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 33.367557,
+          "std_ms": 0.19441647260584577,
+          "min_ms": 33.205453,
+          "max_ms": 33.697464,
+          "median_ms": 33.292953,
+          "p95_ms": 33.633267599999996,
+          "ci95_mean_ms": [
+            33.12615707445404,
+            33.608956925545954
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.012372,
+          "std_ms": 0.00036120631223720347,
+          "min_ms": 0.01194,
+          "max_ms": 0.01285,
+          "median_ms": 0.0123,
+          "p95_ms": 0.012802000000000001,
+          "ci95_mean_ms": [
+            0.011923503143164387,
+            0.012820496856835612
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 57.4867438,
+          "std_ms": 0.19466881732239483,
+          "min_ms": 57.315004,
+          "max_ms": 57.78373,
+          "median_ms": 57.467735,
+          "p95_ms": 57.737324199999996,
+          "ci95_mean_ms": [
+            57.245030547116244,
+            57.728457052883755
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 4.3525614,
+          "std_ms": 0.09902871887639474,
+          "min_ms": 4.285019,
+          "max_ms": 4.523907,
+          "median_ms": 4.303978,
+          "p95_ms": 4.489446,
+          "ci95_mean_ms": [
+            4.229601009641833,
+            4.475521790358167
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.011028,
+          "std_ms": 0.007088449759996892,
+          "min_ms": 0.0075,
+          "max_ms": 0.0237,
+          "median_ms": 0.00788,
+          "p95_ms": 0.020603999999999997,
+          "ci95_mean_ms": [
+            0.0022265274634181275,
+            0.01982947253658187
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 30.3001788,
+          "std_ms": 0.039158520831359955,
+          "min_ms": 30.254956,
+          "max_ms": 30.359905,
+          "median_ms": 30.300868,
+          "p95_ms": 30.349287800000003,
+          "ci95_mean_ms": [
+            30.251557076303037,
+            30.348800523696966
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.007536,
+          "std_ms": 0.0004788319120526535,
+          "min_ms": 0.00689,
+          "max_ms": 0.00799,
+          "median_ms": 0.00777,
+          "p95_ms": 0.007964,
+          "ci95_mean_ms": [
+            0.00694145167614022,
+            0.00813054832385978
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 34.6713042,
+          "std_ms": 0.11467448659880748,
+          "min_ms": 34.578415,
+          "max_ms": 34.846336,
+          "median_ms": 34.619236,
+          "p95_ms": 34.8225862,
+          "ci95_mean_ms": [
+            34.52891702387272,
+            34.81369137612728
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 4.2591408,
+          "std_ms": 0.023579233302001575,
+          "min_ms": 4.2291,
+          "max_ms": 4.410598,
+          "median_ms": 4.2531345,
+          "p95_ms": 4.2852519000000004,
+          "ci95_mean_ms": [
+            4.256987232576383,
+            4.261294367423617
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.003974212,
+          "std_ms": 0.00041906838066280144,
+          "min_ms": 0.00323,
+          "max_ms": 0.01075,
+          "median_ms": 0.00394,
+          "p95_ms": 0.004461,
+          "ci95_mean_ms": [
+            0.0039359371332431175,
+            0.004012486866756883
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 30.100565048,
+          "std_ms": 0.0930598238387302,
+          "min_ms": 29.939471,
+          "max_ms": 30.468074,
+          "median_ms": 30.075283499999998,
+          "p95_ms": 30.299917699999998,
+          "ci95_mean_ms": [
+            30.09206559415857,
+            30.10906450184143
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.006269976,
+          "std_ms": 0.0007674222104697286,
+          "min_ms": 0.00483,
+          "max_ms": 0.01769,
+          "median_ms": 0.0062,
+          "p95_ms": 0.00722,
+          "ci95_mean_ms": [
+            0.006199884854479681,
+            0.006340067145520319
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 34.369950036,
+          "std_ms": 0.0984574977152446,
+          "min_ms": 34.202285,
+          "max_ms": 34.763285,
+          "median_ms": 34.3468895,
+          "p95_ms": 34.575856,
+          "ci95_mean_ms": [
+            34.36095759519522,
+            34.37894247680478
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 4.2591408,
+          "std_ms": 0.013077870603924749,
+          "min_ms": 4.24772793,
+          "max_ms": 4.27984982,
+          "median_ms": 4.25579845,
+          "p95_ms": 4.276499074,
+          "ci95_mean_ms": [
+            4.242902479513199,
+            4.275379120486801
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.0039742119999999995,
+          "std_ms": 0.00011989618475998309,
+          "min_ms": 0.00377973,
+          "max_ms": 0.0040852,
+          "median_ms": 0.00398321,
+          "p95_ms": 0.004079942,
+          "ci95_mean_ms": [
+            0.0038253412295021637,
+            0.004123082770497836
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 30.100565048,
+          "std_ms": 0.0794586015235893,
+          "min_ms": 30.02688895,
+          "max_ms": 30.2341544,
+          "median_ms": 30.08710074,
+          "p95_ms": 30.206587304000003,
+          "ci95_mean_ms": [
+            30.00190416687874,
+            30.19922592912126
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.006269976,
+          "std_ms": 0.000331222408254635,
+          "min_ms": 0.00582683,
+          "max_ms": 0.00674321,
+          "median_ms": 0.00624372,
+          "p95_ms": 0.006667052,
+          "ci95_mean_ms": [
+            0.005858709075854522,
+            0.0066812429241454785
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 34.369950036,
+          "std_ms": 0.08566754116438041,
+          "min_ms": 34.2853241,
+          "max_ms": 34.50739264,
+          "median_ms": 34.3531318,
+          "p95_ms": 34.483193246,
+          "ci95_mean_ms": [
+            34.26357973835185,
+            34.47632033364815
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.4132317304611206,
+      "sequential_rate_hz": 29.095183407382713
+    },
+    {
+      "split": 5,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s5/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s5/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s5/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s5/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s5/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2",
+      "input_sha256": "b713e53387e5e43ba9f8abf0cd0905b108208cf29082669dfd1be706857a706e",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 21.2249972,
+          "std_ms": 0.05471653137489573,
+          "min_ms": 21.166796,
+          "max_ms": 21.304827,
+          "median_ms": 21.224473,
+          "p95_ms": 21.2930632,
+          "ci95_mean_ms": [
+            21.157057655459393,
+            21.292936744540608
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 29.8984522,
+          "std_ms": 0.06255299901043836,
+          "min_ms": 29.830893,
+          "max_ms": 29.983703,
+          "median_ms": 29.878115,
+          "p95_ms": 29.975166599999998,
+          "ci95_mean_ms": [
+            29.820782396091925,
+            29.976122003908078
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.01244,
+          "std_ms": 0.00038961519477556325,
+          "min_ms": 0.01198,
+          "max_ms": 0.01292,
+          "median_ms": 0.01232,
+          "p95_ms": 0.012888,
+          "ci95_mean_ms": [
+            0.011956228857823827,
+            0.012923771142176172
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 51.135889399999996,
+          "std_ms": 0.035082961566835456,
+          "min_ms": 51.089121,
+          "max_ms": 51.175336,
+          "median_ms": 51.136223,
+          "p95_ms": 51.1729526,
+          "ci95_mean_ms": [
+            51.0923281513226,
+            51.179450648677395
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 6.4975676,
+          "std_ms": 0.07601507920998289,
+          "min_ms": 6.4317,
+          "max_ms": 6.628607,
+          "median_ms": 6.480316,
+          "p95_ms": 6.599381999999999,
+          "ci95_mean_ms": [
+            6.403182416400553,
+            6.591952783599447
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.008496,
+          "std_ms": 0.0004563770371085735,
+          "min_ms": 0.00825,
+          "max_ms": 0.00931,
+          "median_ms": 0.00831,
+          "p95_ms": 0.009116,
+          "ci95_mean_ms": [
+            0.007929333084886043,
+            0.009062666915113957
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 24.3929664,
+          "std_ms": 0.03393310858586328,
+          "min_ms": 24.352124,
+          "max_ms": 24.436559,
+          "median_ms": 24.390952,
+          "p95_ms": 24.4323124,
+          "ci95_mean_ms": [
+            24.350832882318205,
+            24.435099917681793
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.007344,
+          "std_ms": 0.00042270557129046697,
+          "min_ms": 0.00683,
+          "max_ms": 0.00783,
+          "median_ms": 0.00749,
+          "p95_ms": 0.007782,
+          "ci95_mean_ms": [
+            0.00681914173017503,
+            0.00786885826982497
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 30.906374,
+          "std_ms": 0.0661747265200234,
+          "min_ms": 30.84854,
+          "max_ms": 31.015278,
+          "median_ms": 30.888514,
+          "p95_ms": 30.995544799999998,
+          "ci95_mean_ms": [
+            30.824207227602354,
+            30.988540772397645
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 6.43362567,
+          "std_ms": 0.07282365657633098,
+          "min_ms": 6.367374,
+          "max_ms": 6.610039,
+          "median_ms": 6.396472,
+          "p95_ms": 6.57672855,
+          "ci95_mean_ms": [
+            6.42697445057896,
+            6.440276889421039
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.004176856,
+          "std_ms": 0.0004736136305112133,
+          "min_ms": 0.00344,
+          "max_ms": 0.01058,
+          "median_ms": 0.00414,
+          "p95_ms": 0.0046004999999999996,
+          "ci95_mean_ms": [
+            0.0041335993396588175,
+            0.004220112660341182
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 24.158832176,
+          "std_ms": 0.04901371389491478,
+          "min_ms": 24.055765,
+          "max_ms": 24.674431,
+          "median_ms": 24.1517825,
+          "p95_ms": 24.2295759,
+          "ci95_mean_ms": [
+            24.154355595434268,
+            24.163308756565733
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.005771834,
+          "std_ms": 0.0008888629619769004,
+          "min_ms": 0.00464,
+          "max_ms": 0.01652,
+          "median_ms": 0.00568,
+          "p95_ms": 0.0066809999999999994,
+          "ci95_mean_ms": [
+            0.005690651278982046,
+            0.005853016721017954
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 30.602406536,
+          "std_ms": 0.08198626403104514,
+          "min_ms": 30.46187,
+          "max_ms": 31.073967,
+          "median_ms": 30.5791415,
+          "p95_ms": 30.752619000000003,
+          "ci95_mean_ms": [
+            30.5949184660895,
+            30.6098946059105
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 6.4336256700000005,
+          "std_ms": 0.07918327914204974,
+          "min_ms": 6.39674271,
+          "max_ms": 6.57526273,
+          "median_ms": 6.3986394,
+          "p95_ms": 6.540080448,
+          "ci95_mean_ms": [
+            6.335306646754845,
+            6.531944693245156
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.004176856,
+          "std_ms": 0.0001715878490161819,
+          "min_ms": 0.00398452,
+          "max_ms": 0.00433662,
+          "median_ms": 0.00426682,
+          "p95_ms": 0.004329098,
+          "ci95_mean_ms": [
+            0.003963801553419886,
+            0.0043899104465801135
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 24.158832176,
+          "std_ms": 0.017946930782078967,
+          "min_ms": 24.14241983,
+          "max_ms": 24.18536526,
+          "median_ms": 24.15500777,
+          "p95_ms": 24.181797772,
+          "ci95_mean_ms": [
+            24.136548119013966,
+            24.181116232986035
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.005771834,
+          "std_ms": 0.0004898224391348358,
+          "min_ms": 0.00520511,
+          "max_ms": 0.00645502,
+          "median_ms": 0.00558402,
+          "p95_ms": 0.00637728,
+          "ci95_mean_ms": [
+            0.0051636391348580495,
+            0.0063800288651419505
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 30.602406536,
+          "std_ms": 0.07297245477186484,
+          "min_ms": 30.55059245,
+          "max_ms": 30.72985696,
+          "median_ms": 30.57385186,
+          "p95_ms": 30.702651686,
+          "ci95_mean_ms": [
+            30.511799269482278,
+            30.693013802517722
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.4132317304611206,
+      "sequential_rate_hz": 32.67716866722955
+    },
+    {
+      "split": 6,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s6/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s6/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s6/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s6/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s6/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "4578b7c1e352e2b5be65ba31c75bfa667c5d84ac24ff804921222720688e9ebd",
+      "input_sha256": "a8b92d72c20fa4df5a3e651c87c0335bd7fecbc0657e7310bf6d4589700e8ba8",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 17.601066199999998,
+          "std_ms": 0.10345145867845418,
+          "min_ms": 17.502855,
+          "max_ms": 17.776217,
+          "median_ms": 17.584522,
+          "p95_ms": 17.7379332,
+          "ci95_mean_ms": [
+            17.47261425306426,
+            17.729518146935735
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 26.560538,
+          "std_ms": 0.13865399024550362,
+          "min_ms": 26.434361,
+          "max_ms": 26.794557,
+          "median_ms": 26.539998,
+          "p95_ms": 26.7453182,
+          "ci95_mean_ms": [
+            26.388376338627964,
+            26.73269966137204
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.012272,
+          "std_ms": 0.00012008330441822439,
+          "min_ms": 0.01208,
+          "max_ms": 0.01239,
+          "median_ms": 0.01229,
+          "p95_ms": 0.012382,
+          "ci95_mean_ms": [
+            0.012122896889767972,
+            0.012421103110232028
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 44.1738762,
+          "std_ms": 0.23274257051450517,
+          "min_ms": 44.031449,
+          "max_ms": 44.582854,
+          "median_ms": 44.055103,
+          "p95_ms": 44.4953382,
+          "ci95_mean_ms": [
+            43.88488814029232,
+            44.462864259707686
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 3.2588312,
+          "std_ms": 0.05929572946848693,
+          "min_ms": 3.206094,
+          "max_ms": 3.360216,
+          "median_ms": 3.236764,
+          "p95_ms": 3.33909,
+          "ci95_mean_ms": [
+            3.1852058302613697,
+            3.33245656973863
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.0178384,
+          "std_ms": 0.009486449667815668,
+          "min_ms": 0.00733,
+          "max_ms": 0.025641,
+          "median_ms": 0.02386,
+          "p95_ms": 0.025463,
+          "ci95_mean_ms": [
+            0.0060594174229996346,
+            0.02961738257700037
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 15.9546326,
+          "std_ms": 0.05975168964389213,
+          "min_ms": 15.904589,
+          "max_ms": 16.05819,
+          "median_ms": 15.933304,
+          "p95_ms": 16.0355226,
+          "ci95_mean_ms": [
+            15.880441080948405,
+            16.028824119051595
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.006864,
+          "std_ms": 0.0004960645119336796,
+          "min_ms": 0.00617,
+          "max_ms": 0.00743,
+          "median_ms": 0.00695,
+          "p95_ms": 0.00738,
+          "ci95_mean_ms": [
+            0.006248054578083222,
+            0.007479945421916778
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 19.2381662,
+          "std_ms": 0.08070993012448956,
+          "min_ms": 19.164447,
+          "max_ms": 19.327775,
+          "median_ms": 19.189625,
+          "p95_ms": 19.3270488,
+          "ci95_mean_ms": [
+            19.13795158926395,
+            19.338380810736048
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 3.218914554,
+          "std_ms": 0.03608821105715404,
+          "min_ms": 3.175665,
+          "max_ms": 3.383767,
+          "median_ms": 3.2042205,
+          "p95_ms": 3.2963375,
+          "ci95_mean_ms": [
+            3.215618501294897,
+            3.222210606705103
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.00333408,
+          "std_ms": 0.0004816521890976154,
+          "min_ms": 0.00282,
+          "max_ms": 0.01298,
+          "median_ms": 0.00331,
+          "p95_ms": 0.00369,
+          "ci95_mean_ms": [
+            0.0032900891521777074,
+            0.003378070847822293
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 15.626592782,
+          "std_ms": 0.05048341764866417,
+          "min_ms": 15.516828,
+          "max_ms": 15.785042,
+          "median_ms": 15.6169125,
+          "p95_ms": 15.72280895,
+          "ci95_mean_ms": [
+            15.621981968650449,
+            15.63120359534955
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.004962428,
+          "std_ms": 0.000434264740158685,
+          "min_ms": 0.00422,
+          "max_ms": 0.00788,
+          "median_ms": 0.00492,
+          "p95_ms": 0.00564,
+          "ci95_mean_ms": [
+            0.004922765200720089,
+            0.00500209079927991
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 18.853803844,
+          "std_ms": 0.058261266012595854,
+          "min_ms": 18.721334,
+          "max_ms": 19.053273,
+          "median_ms": 18.851591,
+          "p95_ms": 18.9460458,
+          "ci95_mean_ms": [
+            18.848482654674783,
+            18.85912503332522
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 3.218914554,
+          "std_ms": 0.03786680217800853,
+          "min_ms": 3.19702018,
+          "max_ms": 3.28552775,
+          "median_ms": 3.20037803,
+          "p95_ms": 3.271214998,
+          "ci95_mean_ms": [
+            3.17189671078994,
+            3.26593239721006
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.00333408,
+          "std_ms": 0.00012475274005006862,
+          "min_ms": 0.00316144,
+          "max_ms": 0.00350241,
+          "median_ms": 0.00333432,
+          "p95_ms": 0.003478212,
+          "ci95_mean_ms": [
+            0.0031791790198716597,
+            0.0034889809801283405
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 15.626592782,
+          "std_ms": 0.04417868376055217,
+          "min_ms": 15.57956997,
+          "max_ms": 15.69960706,
+          "median_ms": 15.61790781,
+          "p95_ms": 15.684163596,
+          "ci95_mean_ms": [
+            15.571737702964917,
+            15.681447861035082
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.004962428,
+          "std_ms": 0.00028871103056516567,
+          "min_ms": 0.00454522,
+          "max_ms": 0.00535024,
+          "median_ms": 0.00497684,
+          "p95_ms": 0.005287318,
+          "ci95_mean_ms": [
+            0.004603945921045592,
+            0.005320910078954407
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 18.853803843999998,
+          "std_ms": 0.052324159849274396,
+          "min_ms": 18.78495945,
+          "max_ms": 18.90725561,
+          "median_ms": 18.84035105,
+          "p95_ms": 18.906876268,
+          "ci95_mean_ms": [
+            18.788834820940533,
+            18.918772867059463
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.4132317304611206,
+      "sequential_rate_hz": 53.0396947095765
+    },
+    {
+      "split": 7,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s7/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s7/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s7/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s7/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s7/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "80408887800aeec2be97e67a0cb59c2be78e235f726299d562dd571220dc4c14",
+      "input_sha256": "f1a9300d387aed0abb5ad5d2ff5f08167f162f66e5017e252b9de92053926e60",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 14.7409672,
+          "std_ms": 0.09236771263109181,
+          "min_ms": 14.650649,
+          "max_ms": 14.893766,
+          "median_ms": 14.730818,
+          "p95_ms": 14.862769,
+          "ci95_mean_ms": [
+            14.626277540975062,
+            14.855656859024938
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 24.5742238,
+          "std_ms": 0.09119062448355052,
+          "min_ms": 24.468096,
+          "max_ms": 24.668775,
+          "median_ms": 24.576529,
+          "p95_ms": 24.6669236,
+          "ci95_mean_ms": [
+            24.4609956888952,
+            24.687451911104798
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.012,
+          "std_ms": 0.00011726039399558599,
+          "min_ms": 0.01189,
+          "max_ms": 0.01216,
+          "median_ms": 0.01197,
+          "p95_ms": 0.012144,
+          "ci95_mean_ms": [
+            0.01185440199587711,
+            0.01214559800412289
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 39.327191,
+          "std_ms": 0.09961061776236516,
+          "min_ms": 39.16075,
+          "max_ms": 39.419446,
+          "median_ms": 39.36242,
+          "p95_ms": 39.4103232,
+          "ci95_mean_ms": [
+            39.203508086771905,
+            39.450873913228094
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 4.3749972,
+          "std_ms": 0.08236581918308114,
+          "min_ms": 4.298033,
+          "max_ms": 4.471814,
+          "median_ms": 4.341362,
+          "p95_ms": 4.4683982,
+          "ci95_mean_ms": [
+            4.27272653151278,
+            4.47726786848722
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.010568000000000001,
+          "std_ms": 0.0069942526405613915,
+          "min_ms": 0.00718,
+          "max_ms": 0.02307,
+          "median_ms": 0.00752,
+          "p95_ms": 0.020027999999999997,
+          "ci95_mean_ms": [
+            0.0018834886309241038,
+            0.019252511369075898
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 10.0902764,
+          "std_ms": 0.046616265195744605,
+          "min_ms": 10.038226,
+          "max_ms": 10.157784,
+          "median_ms": 10.079204,
+          "p95_ms": 10.1489304,
+          "ci95_mean_ms": [
+            10.032394663968828,
+            10.148158136031173
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.0062699999999999995,
+          "std_ms": 0.00027313000567495325,
+          "min_ms": 0.00599,
+          "max_ms": 0.00671,
+          "median_ms": 0.00625,
+          "p95_ms": 0.006626,
+          "ci95_mean_ms": [
+            0.005930864317973863,
+            0.0066091356820261364
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 14.4821116,
+          "std_ms": 0.06777617181797756,
+          "min_ms": 14.400754,
+          "max_ms": 14.565588,
+          "median_ms": 14.506731,
+          "p95_ms": 14.5549636,
+          "ci95_mean_ms": [
+            14.397956370706135,
+            14.566266829293864
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 4.318242204,
+          "std_ms": 0.06938676842692593,
+          "min_ms": 4.237452,
+          "max_ms": 4.461266,
+          "median_ms": 4.2788975,
+          "p95_ms": 4.4411355,
+          "ci95_mean_ms": [
+            4.3119048866580645,
+            4.324579521341935
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.003395712,
+          "std_ms": 0.00013561773259714076,
+          "min_ms": 0.00318,
+          "max_ms": 0.00411,
+          "median_ms": 0.00337,
+          "p95_ms": 0.00362,
+          "ci95_mean_ms": [
+            0.0033833255950967804,
+            0.0034080984049032195
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 9.85133084,
+          "std_ms": 0.02813681105639453,
+          "min_ms": 9.781265,
+          "max_ms": 10.025022,
+          "median_ms": 9.8480275,
+          "p95_ms": 9.89345965,
+          "ci95_mean_ms": [
+            9.848761014301282,
+            9.853900665698717
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.00447257,
+          "std_ms": 0.0004985844944402025,
+          "min_ms": 0.00415,
+          "max_ms": 0.01458,
+          "median_ms": 0.00442,
+          "p95_ms": 0.004710499999999999,
+          "ci95_mean_ms": [
+            0.004427032670121845,
+            0.0045181073298781555
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 14.177441326,
+          "std_ms": 0.06966015752281884,
+          "min_ms": 14.051054,
+          "max_ms": 14.33732,
+          "median_ms": 14.156168000000001,
+          "p95_ms": 14.3044445,
+          "ci95_mean_ms": [
+            14.171079039150221,
+            14.183803612849779
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 4.318242204,
+          "std_ms": 0.07492683862522863,
+          "min_ms": 4.26018703,
+          "max_ms": 4.43476419,
+          "median_ms": 4.28511376,
+          "p95_ms": 4.417970112,
+          "ci95_mean_ms": [
+            4.2252082495048295,
+            4.41127615849517
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.003395712,
+          "std_ms": 4.353562989092956e-05,
+          "min_ms": 0.00331992,
+          "max_ms": 0.0034255,
+          "median_ms": 0.00341521,
+          "p95_ms": 0.0034242820000000003,
+          "ci95_mean_ms": [
+            0.003341655377773481,
+            0.0034497686222265188
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 9.85133084,
+          "std_ms": 0.014993666372325172,
+          "min_ms": 9.83915576,
+          "max_ms": 9.87681276,
+          "median_ms": 9.84672668,
+          "p95_ms": 9.871769283999999,
+          "ci95_mean_ms": [
+            9.832713744969794,
+            9.869947935030204
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.00447257,
+          "std_ms": 0.00012579904033815188,
+          "min_ms": 0.00428771,
+          "max_ms": 0.0046037,
+          "median_ms": 0.00447901,
+          "p95_ms": 0.004596882,
+          "ci95_mean_ms": [
+            0.004316369866521861,
+            0.00462877013347814
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 14.177441326,
+          "std_ms": 0.07000603524505637,
+          "min_ms": 14.11026386,
+          "max_ms": 14.28192217,
+          "median_ms": 14.16991554,
+          "p95_ms": 14.266620676,
+          "ci95_mean_ms": [
+            14.090517355672725,
+            14.264365296327275
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.4132317304611206,
+      "sequential_rate_hz": 70.53458921153147
+    },
+    {
+      "split": 8,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s8/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s8/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s8/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s8/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s8/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "dcc460edff10e22874f27d60bd0c98374bd3937f87690944287eab8213e5517e",
+      "input_sha256": "fda1e8ebc1828134b60daf75d5f60c50f4fa42ca3a9d9db83a66f3ffe0110829",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 9.238799199999999,
+          "std_ms": 0.026071102540936402,
+          "min_ms": 9.220023,
+          "max_ms": 9.282802,
+          "median_ms": 9.226453,
+          "p95_ms": 9.2746864,
+          "ci95_mean_ms": [
+            9.206427651807978,
+            9.27117074819202
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 20.510458,
+          "std_ms": 0.14439908568270035,
+          "min_ms": 20.375847,
+          "max_ms": 20.756009,
+          "median_ms": 20.484568,
+          "p95_ms": 20.7021406,
+          "ci95_mean_ms": [
+            20.331162860727634,
+            20.689753139272366
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.0126402,
+          "std_ms": 0.00024300246912325806,
+          "min_ms": 0.0123,
+          "max_ms": 0.01298,
+          "median_ms": 0.012641,
+          "p95_ms": 0.012922,
+          "ci95_mean_ms": [
+            0.012338472594047295,
+            0.012941927405952706
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 29.7618974,
+          "std_ms": 0.16973684096359337,
+          "min_ms": 29.60846,
+          "max_ms": 30.051791,
+          "median_ms": 29.719703,
+          "p95_ms": 29.989749,
+          "ci95_mean_ms": [
+            29.551141283392088,
+            29.97265351660791
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 2.1361984,
+          "std_ms": 0.04213843695843491,
+          "min_ms": 2.090072,
+          "max_ms": 2.204932,
+          "median_ms": 2.126012,
+          "p95_ms": 2.1911242,
+          "ci95_mean_ms": [
+            2.0838766218705724,
+            2.1885201781294277
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.0174062,
+          "std_ms": 0.00930760641625977,
+          "min_ms": 0.007,
+          "max_ms": 0.02453,
+          "median_ms": 0.02385,
+          "p95_ms": 0.0244682,
+          "ci95_mean_ms": [
+            0.005849280641364455,
+            0.028963119358635547
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 0.3016634,
+          "std_ms": 0.010793652917339884,
+          "min_ms": 0.287241,
+          "max_ms": 0.315822,
+          "median_ms": 0.303071,
+          "p95_ms": 0.3139238,
+          "ci95_mean_ms": [
+            0.288261310271229,
+            0.3150654897287711
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.0060620000000000005,
+          "std_ms": 0.0002068090907092819,
+          "min_ms": 0.00585,
+          "max_ms": 0.00634,
+          "median_ms": 0.006,
+          "p95_ms": 0.006314,
+          "ci95_mean_ms": [
+            0.005805212607294545,
+            0.006318787392705456
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 2.46133,
+          "std_ms": 0.04471100150410407,
+          "min_ms": 2.390593,
+          "max_ms": 2.514124,
+          "median_ms": 2.470345,
+          "p95_ms": 2.505756,
+          "ci95_mean_ms": [
+            2.405813961212188,
+            2.5168460387878118
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 2.101447406,
+          "std_ms": 0.048491333066872554,
+          "min_ms": 2.061252,
+          "max_ms": 2.219103,
+          "median_ms": 2.080562,
+          "p95_ms": 2.20212395,
+          "ci95_mean_ms": [
+            2.0970185361600406,
+            2.1058762758399596
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.002879496,
+          "std_ms": 0.0001369212066030506,
+          "min_ms": 0.00261,
+          "max_ms": 0.00324,
+          "median_ms": 0.00289,
+          "p95_ms": 0.00308,
+          "ci95_mean_ms": [
+            0.0028669905446119443,
+            0.0028920014553880558
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 0.180473454,
+          "std_ms": 0.0025841676564878056,
+          "min_ms": 0.174121,
+          "max_ms": 0.192901,
+          "median_ms": 0.180191,
+          "p95_ms": 0.1834315,
+          "ci95_mean_ms": [
+            0.18023743363365052,
+            0.1807094743663495
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.004265726,
+          "std_ms": 7.324772612692856e-05,
+          "min_ms": 0.00411,
+          "max_ms": 0.00463,
+          "median_ms": 0.00425,
+          "p95_ms": 0.00441,
+          "ci95_mean_ms": [
+            0.004259036048939224,
+            0.004272415951060776
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 2.289066082,
+          "std_ms": 0.04865903942923274,
+          "min_ms": 2.246093,
+          "max_ms": 2.409084,
+          "median_ms": 2.268638,
+          "p95_ms": 2.3896770000000003,
+          "ci95_mean_ms": [
+            2.284621894997091,
+            2.293510269002909
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 2.101447406,
+          "std_ms": 0.053676230312024835,
+          "min_ms": 2.07402063,
+          "max_ms": 2.19728519,
+          "median_ms": 2.0767994,
+          "p95_ms": 2.174409428,
+          "ci95_mean_ms": [
+            2.034799565787511,
+            2.168095246212489
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.002879496,
+          "std_ms": 2.872207217454887e-05,
+          "min_ms": 0.00284562,
+          "max_ms": 0.00292423,
+          "median_ms": 0.0028746,
+          "p95_ms": 0.002916166,
+          "ci95_mean_ms": [
+            0.002843832838378308,
+            0.0029151591616216922
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 0.180473454,
+          "std_ms": 0.00032050280245265073,
+          "min_ms": 0.1799544,
+          "max_ms": 0.18078186,
+          "median_ms": 0.18052354,
+          "p95_ms": 0.180761118,
+          "ci95_mean_ms": [
+            0.18007549722394947,
+            0.18087141077605054
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.004265726,
+          "std_ms": 5.337145332478766e-05,
+          "min_ms": 0.00422123,
+          "max_ms": 0.00435724,
+          "median_ms": 0.00425407,
+          "p95_ms": 0.00433776,
+          "ci95_mean_ms": [
+            0.0041994565903857054,
+            0.004331995409614295
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 2.289066082,
+          "std_ms": 0.0537441437396338,
+          "min_ms": 2.2615608,
+          "max_ms": 2.38504988,
+          "median_ms": 2.26466162,
+          "p95_ms": 2.362036698,
+          "ci95_mean_ms": [
+            2.222333916132649,
+            2.355798247867351
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.4132317304611206,
+      "sequential_rate_hz": 436.85938464750706
+    },
+    {
+      "split": 9,
+      "status": "PROFILE_EXECUTED",
+      "runs": [
+        {
+          "file": "s9/load_1.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s9/load_2.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s9/load_3.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s9/load_4.json",
+          "exit_code": 0
+        },
+        {
+          "file": "s9/load_5.json",
+          "exit_code": 0
+        }
+      ],
+      "model_sha256": "c30d20d55ba759065a01e07258adde8b7acdfbd8c3587b68f35ce5ca222ca17a",
+      "input_sha256": "2f6bd177be2a2f8f5aed60b85d65755520f538bfdbeeda0fe77f99206ca056bb",
+      "loading": {
+        "deserialize_ms": {
+          "n": 5,
+          "mean_ms": 7.9285986,
+          "std_ms": 0.03546803987112901,
+          "min_ms": 7.882857,
+          "max_ms": 7.974887,
+          "median_ms": 7.921496,
+          "p95_ms": 7.970092999999999,
+          "ci95_mean_ms": [
+            7.884559213473788,
+            7.972637986526212
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "create_runner_ms": {
+          "n": 5,
+          "mean_ms": 19.7357502,
+          "std_ms": 0.048437281908670284,
+          "min_ms": 19.665837,
+          "max_ms": 19.779967,
+          "median_ms": 19.744296,
+          "p95_ms": 19.7796528,
+          "ci95_mean_ms": [
+            19.67560737316193,
+            19.795893026838066
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tensor_setup_ms": {
+          "n": 5,
+          "mean_ms": 0.0126642,
+          "std_ms": 0.0004517280155137599,
+          "min_ms": 0.01227,
+          "max_ms": 0.013321,
+          "median_ms": 0.01246,
+          "p95_ms": 0.0132448,
+          "ci95_mean_ms": [
+            0.012103305607408478,
+            0.013225094392591523
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "model_load_ms": {
+          "n": 5,
+          "mean_ms": 27.677013,
+          "std_ms": 0.055065016848268394,
+          "min_ms": 27.590943,
+          "max_ms": 27.742253,
+          "median_ms": 27.678122,
+          "p95_ms": 27.733495,
+          "ci95_mean_ms": [
+            27.608640753609603,
+            27.745385246390395
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "first_inference": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 0.072864,
+          "std_ms": 0.0011763205345483043,
+          "min_ms": 0.07157,
+          "max_ms": 0.07462,
+          "median_ms": 0.07263,
+          "p95_ms": 0.074364,
+          "ci95_mean_ms": [
+            0.0714034051972446,
+            0.0743245948027554
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.006816,
+          "std_ms": 0.00019718012070185986,
+          "min_ms": 0.0066,
+          "max_ms": 0.00708,
+          "median_ms": 0.00672,
+          "p95_ms": 0.007056000000000001,
+          "ci95_mean_ms": [
+            0.006571168552239541,
+            0.007060831447760459
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 0.297858,
+          "std_ms": 0.016601214714592413,
+          "min_ms": 0.276002,
+          "max_ms": 0.313892,
+          "median_ms": 0.303392,
+          "p95_ms": 0.31331,
+          "ci95_mean_ms": [
+            0.27724487014345883,
+            0.3184711298565412
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.006054,
+          "std_ms": 0.0004189033301371572,
+          "min_ms": 0.0057,
+          "max_ms": 0.00674,
+          "median_ms": 0.00592,
+          "p95_ms": 0.00662,
+          "ci95_mean_ms": [
+            0.005533862835948704,
+            0.006574137164051297
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 0.383592,
+          "std_ms": 0.015756263833790037,
+          "min_ms": 0.363502,
+          "max_ms": 0.399872,
+          "median_ms": 0.388322,
+          "p95_ms": 0.39898,
+          "ci95_mean_ms": [
+            0.3640280151926502,
+            0.40315598480734977
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "steady": {
+        "prepare_ms": {
+          "n": 500,
+          "mean_ms": 0.0518122,
+          "std_ms": 0.0026154658673756027,
+          "min_ms": 0.05109,
+          "max_ms": 0.104571,
+          "median_ms": 0.0516,
+          "p95_ms": 0.0519005,
+          "ci95_mean_ms": [
+            0.051573321067109275,
+            0.05205107893289073
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "input_sync_ms": {
+          "n": 500,
+          "mean_ms": 0.00231765,
+          "std_ms": 0.0004484728568225877,
+          "min_ms": 0.00214,
+          "max_ms": 0.01222,
+          "median_ms": 0.00229,
+          "p95_ms": 0.00239,
+          "ci95_mean_ms": [
+            0.00227668952760212,
+            0.00235861047239788
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "execute_wait_ms": {
+          "n": 500,
+          "mean_ms": 0.157416298,
+          "std_ms": 0.014021735728320718,
+          "min_ms": 0.152671,
+          "max_ms": 0.334972,
+          "median_ms": 0.154826,
+          "p95_ms": 0.16163349999999999,
+          "ci95_mean_ms": [
+            0.15613564765398041,
+            0.1586969483460196
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "output_read_ms": {
+          "n": 500,
+          "mean_ms": 0.004231782,
+          "std_ms": 5.9569653038491465e-05,
+          "min_ms": 0.00406,
+          "max_ms": 0.00453,
+          "median_ms": 0.00423,
+          "p95_ms": 0.00433,
+          "ci95_mean_ms": [
+            0.004226341311467986,
+            0.004237222688532014
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        },
+        "tail_total_ms": {
+          "n": 500,
+          "mean_ms": 0.21577793,
+          "std_ms": 0.0143493846545777,
+          "min_ms": 0.210631,
+          "max_ms": 0.393192,
+          "median_ms": 0.2130515,
+          "p95_ms": 0.2228615,
+          "ci95_mean_ms": [
+            0.21446735442083423,
+            0.21708850557916579
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 30
+        }
+      },
+      "steady_run_means": {
+        "prepare_ms": {
+          "n": 5,
+          "mean_ms": 0.0518122,
+          "std_ms": 0.0002762162096076194,
+          "min_ms": 0.051537480000000004,
+          "max_ms": 0.05216421,
+          "median_ms": 0.05168323,
+          "p95_ms": 0.052140888,
+          "ci95_mean_ms": [
+            0.05146923228980475,
+            0.05215516771019525
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "input_sync_ms": {
+          "n": 5,
+          "mean_ms": 0.00231765,
+          "std_ms": 6.736366639368725e-05,
+          "min_ms": 0.00224081,
+          "max_ms": 0.0024259,
+          "median_ms": 0.00230202,
+          "p95_ms": 0.002404462,
+          "ci95_mean_ms": [
+            0.002234006963821133,
+            0.0024012930361788673
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "execute_wait_ms": {
+          "n": 5,
+          "mean_ms": 0.157416298,
+          "std_ms": 0.0013989961132433453,
+          "min_ms": 0.15520573000000001,
+          "max_ms": 0.15867475,
+          "median_ms": 0.15804964,
+          "p95_ms": 0.158589586,
+          "ci95_mean_ms": [
+            0.15567921495837575,
+            0.15915338104162427
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "output_read_ms": {
+          "n": 5,
+          "mean_ms": 0.004231782,
+          "std_ms": 1.8854766506111806e-05,
+          "min_ms": 0.00420462,
+          "max_ms": 0.00425522,
+          "median_ms": 0.00423063,
+          "p95_ms": 0.00425258,
+          "ci95_mean_ms": [
+            0.004208370716121862,
+            0.004255193283878138
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        },
+        "tail_total_ms": {
+          "n": 5,
+          "mean_ms": 0.21577793,
+          "std_ms": 0.001329237369358839,
+          "min_ms": 0.21379737,
+          "max_ms": 0.21675898,
+          "median_ms": 0.21661328,
+          "p95_ms": 0.21675071599999998,
+          "ci95_mean_ms": [
+            0.2141274638759352,
+            0.2174283961240648
+          ],
+          "ci_method": "conservative Student-t, assumes independent observations",
+          "ci_df": 4
+        }
+      },
+      "regression_vs_week5": "BIT_EXACT",
+      "max_abs_error_vs_fp32": 0.4132317304611206,
+      "sequential_rate_hz": 4634.394258949467
+    }
+  ],
+  "full_10_tail_profiled": true,
+  "status": "PROFILE_EXECUTION_COMPLETE_REVIEW_PENDING",
+  "numeric_acceptance": "SEPARATE_SEE_WEEK5_STATUS_AND_TEAM_DECISION",
+  "independent_test_accuracy": "NOT_MEASURED",
+  "dpu_only_timing": "NOT_MEASURED",
+  "s10": {
+    "status": "NOT_APPLICABLE_EMPTY_TAIL",
+    "latency_ms": null
+  },
+  "cpu_plugins": {
+    "libvart_op_imp_conv1d.so": {
+      "sha256": "ba0eeaa3559c5d42c672536ebe3cc65f77558ead8eb43c77f99bb0e80829a2ee"
+    },
+    "libvart_op_imp_maxpool1d.so": {
+      "sha256": "7c81f9eb3d754bc52b2e995b77c895cdd73120c68ffa6515cc0eb9084a2f5b19"
+    },
+    "libvart_op_imp_relu.so": {
+      "sha256": "6c3a30cd53404a9e691bed554056243e22d06ec42c07b222a1955b243f740f50"
+    }
+  },
+  "source_profile_sha256": "7d02fab4938eb858cd3f81cc11272de516ee1d0403c5a704992c5d0461f3d0fd",
+  "processing_version": 1
+}
