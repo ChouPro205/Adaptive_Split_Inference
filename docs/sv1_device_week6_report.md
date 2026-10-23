@@ -9,7 +9,7 @@ scope **REAL_MCU + BLE radio**, ngày 19/10/2026 (Asia/Saigon). Peer BLE là lap
 | Source firmware | commit `afa88870379c03d50db61ad49ed34d39c0305aca`, cây sạch (`dirty=false`) |
 | Build | NCS 3.4.0, `nrf52840dongle/nrf52840`; `default` (ATT MTU 247) và `mtu23` (ép MTU 23) |
 | Công cụ lab/checker | commit `33cd6ab` (sửa `disconnect_mid`) và `04154b2` (checker sentinel); SHA-256 từng file trong `session.json` mỗi bước |
-| Phiên raw | `D:\HUST\ASI_week6\device-session-20261019` (ngoài Git); bằng chứng đã kiểm ở [results/week6](../results/week6/README.md) |
+| Phiên raw | `D:\HUST\ASI_week6\device-session-20261019` (ngoài Git); bằng chứng đã kiểm ở [results/week6/device](../results/week6/device/README.md) |
 | DFU thật | 3 lần, bootloader `1915:521F` COM6, exit 0: `default` 05:34:23Z, `mtu23` 06:10:09Z, `default` 06:13:31Z (UTC) |
 | Nguồn | USB laptop (không phải phiên đo năng lượng PPK2) |
 
@@ -17,14 +17,14 @@ scope **REAL_MCU + BLE radio**, ngày 19/10/2026 (Asia/Saigon). Peer BLE là lap
 
 | # | Tiêu chí | Kết quả trên MCU | Bằng chứng |
 |---:|---|---|---|
-| 1 | P1 C khớp Python 50/50 vector SV3 | **PASS** 50/50 transformed bytes khớp gói `mitdb-week6-p1-50-20261016-v1` (manifest `d0914acb…1c36`); 50/50 request I1 v2 khớp `request.i1v2.bin`; 4 golden encoder + 15 vector response đúng | [selftest_default.json](../results/week6/selftest_default.json), [p1_vectors_50.csv](../results/week6/p1_vectors_50.csv) |
+| 1 | P1 C khớp Python 50/50 vector SV3 | **PASS** 50/50 transformed bytes khớp gói `mitdb-week6-p1-50-20261016-v1` (manifest `d0914acb…1c36`); 50/50 request I1 v2 khớp `request.i1v2.bin`; 4 golden encoder + 15 vector response đúng | [selftest_default.json](../results/week6/device/selftest_default.json), [p1_vectors_50.csv](../results/week6/device/p1_vectors_50.csv) |
 | 2 | Unprotect đúng byte, có `0x80` | **PASS** 50/50 byte-exact; 39/50 vector có `0x80` trong transformed bytes | như trên |
-| 3 | 1000 packet hợp lệ qua BLE loopback | **PASS** `planned = completed = 1000`, `crc_fail = byte_mismatch = failed = 0`, 0 retry, 0 timeout, 0 mất kết nối; peer nhận 1000/1000 frame CRC đúng (14 290 fragment mỗi chiều); 125,5 s | [loopback_official_1000_mtu247.json](../results/week6/loopback_official_1000_mtu247.json) |
-| 4 | Nhiều fragment, đủ cỡ biên ở MTU thương lượng và MTU 23 | **PASS** MTU 247: 113 (30), 153 (30), 6124 (50), 6380 (40 packet) trong 1000 packet. MTU 23 (bản `mtu23`): mỗi cỡ 10 packet, 40/40, 6380 B = 532 fragment mỗi chiều | như trên, [loopback_mtu23_4sizes_x10.json](../results/week6/loopback_mtu23_4sizes_x10.json) |
-| 5 | Đủ counter theo application packet | **PASS** 16 counter §11 + 13 counter reassembly, mẫu số `planned` | [loopback_counters.csv](../results/week6/loopback_counters.csv) |
-| 6 | Negative test chạy riêng | **PASS** 19/19 kịch bản, mỗi kịch bản một run 2 packet riêng, counter đúng từng giá trị kỳ vọng | [negative_19_summary.json](../results/week6/negative_19_summary.json) |
-| 7 | Nonce qua reboot/mất điện, lỗi ghi, DFU | **PASS** 110 reset mềm (79 lần rơi đúng lúc `nvs_write`) + 12 lần rút USB thật trong lúc ghi; 128 boot, 0 boot không READY, 58 659 sequence quan sát được không lặp/giảm; `FAILWRITE`/`READBACK` → FAULT chốt; 4 hook boot → FAULT, 0 lần ghi; 2 lần DFU (default→mtu23→default) giữ sentinel, `READY`, `reserved_through` không giảm, `key_check` không đổi | [nonce_combined.json](../results/week6/nonce_combined.json), [nonce_hooks.json](../results/week6/nonce_hooks.json), 2 file `sentinel_dfu_*.json` |
-| 8 | Build, tài nguyên, DWT, RTT | **PASS** xem §2 | [build_check/](../results/week6/build_check/), [stack_highwater.csv](../results/week6/stack_highwater.csv), [dwt_by_split.csv](../results/week6/dwt_by_split.csv), [loopback_rtt_by_size.csv](../results/week6/loopback_rtt_by_size.csv) |
+| 3 | 1000 packet hợp lệ qua BLE loopback | **PASS** `planned = completed = 1000`, `crc_fail = byte_mismatch = failed = 0`, 0 retry, 0 timeout, 0 mất kết nối; peer nhận 1000/1000 frame CRC đúng (14 290 fragment mỗi chiều); 125,5 s | [loopback_official_1000_mtu247.json](../results/week6/device/loopback_official_1000_mtu247.json) |
+| 4 | Nhiều fragment, đủ cỡ biên ở MTU thương lượng và MTU 23 | **PASS** MTU 247: 113 (30), 153 (30), 6124 (50), 6380 (40 packet) trong 1000 packet. MTU 23 (bản `mtu23`): mỗi cỡ 10 packet, 40/40, 6380 B = 532 fragment mỗi chiều | như trên, [loopback_mtu23_4sizes_x10.json](../results/week6/device/loopback_mtu23_4sizes_x10.json) |
+| 5 | Đủ counter theo application packet | **PASS** 16 counter §11 + 13 counter reassembly, mẫu số `planned` | [loopback_counters.csv](../results/week6/device/loopback_counters.csv) |
+| 6 | Negative test chạy riêng | **PASS** 19/19 kịch bản, mỗi kịch bản một run 2 packet riêng, counter đúng từng giá trị kỳ vọng | [negative_19_summary.json](../results/week6/device/negative_19_summary.json) |
+| 7 | Nonce qua reboot/mất điện, lỗi ghi, DFU | **PASS** 110 reset mềm (79 lần rơi đúng lúc `nvs_write`) + 12 lần rút USB thật trong lúc ghi; 128 boot, 0 boot không READY, 58 659 sequence quan sát được không lặp/giảm; `FAILWRITE`/`READBACK` → FAULT chốt; 4 hook boot → FAULT, 0 lần ghi; 2 lần DFU (default→mtu23→default) giữ sentinel, `READY`, `reserved_through` không giảm, `key_check` không đổi | [nonce_combined.json](../results/week6/device/nonce_combined.json), [nonce_hooks.json](../results/week6/device/nonce_hooks.json), 2 file `sentinel_dfu_*.json` |
+| 8 | Build, tài nguyên, DWT, RTT | **PASS** xem §2 | [build_check/](../results/week6/device/build_check/), [stack_highwater.csv](../results/week6/device/stack_highwater.csv), [dwt_by_split.csv](../results/week6/device/dwt_by_split.csv), [loopback_rtt_by_size.csv](../results/week6/device/loopback_rtt_by_size.csv) |
 
 Thứ tự đúng kế hoạch: packet I2/1 (153/6124/6380 B và các lượt lẻ của `MIX`) chỉ chạy sau khi tiêu chí 7 đạt
 (bước 5–7 rồi mới `I2 ARM`), với key bench `key_id=65537`, `sender_id=131073`, `key_check=4379e570eb84f891`.
@@ -46,7 +46,7 @@ dưới dạng `<key redacted>`.
 
 **DWT ở 64 MHz** (median, đo trên chính 50 vector, n = 4–5 mỗi split): ví dụ split lớn nhất s3 `[1,32,180]`
 quantize 8 839 µs, protect 2 765 µs, unprotect 2 370 µs, encode I1 v2 (gồm CRC) 8 979 µs; s10 tương ứng
-36 / 138 / 197 / 217 µs. Bảng đủ 11 split ở [dwt_by_split.csv](../results/week6/dwt_by_split.csv).
+36 / 138 / 197 / 217 µs. Bảng đủ 11 split ở [dwt_by_split.csv](../results/week6/device/dwt_by_split.csv).
 Quantize đo bằng `week5/quantization.c` trên `z = q × scale` cùng shape (D5), không có head CNN trong firmware.
 
 **RTT loopback** (từ lúc Device bắt đầu gửi tới khi nhận đủ echo, gồm cả hai chiều radio và xử lý trên laptop;
@@ -83,7 +83,7 @@ power off), Device thấy `DISCONNECTED` khoảng 150 ms sau nửa transfer. L�
 3. **Kiểm sentinel sau DFU lần hai FAIL ở `different_image_flashed`.** Lệnh runbook so phiên ghi sentinel
    (image `default`) với phiên đọc sau khi nạp lại `default`, tức so một image với chính nó. Thêm tham số
    `--image-before` cho checker (so với phiên chạy trên image bị thay, `mtu23`); thêm test dương/âm vào
-   `test_week6_checkers.py` (12/12 PASS). Kết quả PASS; file FAIL được giữ lại trong `results/week6/`.
+   `test_week6_checkers.py` (12/12 PASS). Kết quả PASS; file FAIL được giữ lại trong `results/week6/device/`.
 
 Test host sau các sửa đổi: `test_week6_host.py` 27/27, `test_week6_sim.py` 3/3, `test_week6_checkers.py` 12/12,
 `test_week6_lab.py` 4/4.
@@ -247,7 +247,7 @@ $BuildMtu23   = "D:\HUST\ASI_week6\20261019-r1-mtu23"
 | 9. MTU 23 (tc 4) | `& $Py -B $Lab loopback --count 40 --pattern SIZES=113,153,6124,6380 --expect-mtu 23 --require-sizes 113,153,6124,6380 --out "$S\10-mtu23-sizes"` | 40/40; nếu timeout thêm `--pre "CONNPARAM 6 12"` |
 | 10. Nạp lại `default` (RESET lần 3) | `& $Py -B $Lab sentinel --op read --out "$S\11-sentinel-read-default"`; `& $Py -B $Chk sentinel --before "$S\08-sentinel-write" --image-before "$S\09-sentinel-read-mtu23" --after "$S\11-sentinel-read-default" --output "$S\11-sentinel-check.json"` | PASS (`--image-before` = phiên trên image bị DFU thay thế) |
 | 11. 1000 packet (tc 3, 4, 5, 8) | `& $Py -B $Lab loopback --count 1000 --pattern MIX --expect-mtu 247 --require-sizes 113,153,6124,6380 --out "$S\12-official-1000"` | 1000/1000, 0 lỗi |
-| 12. Công bố | `device\host\.venv\Scripts\python.exe -B device\scripts\publish_week6_results.py --session $S --build-default $BuildDefault --build-mtu23 $BuildMtu23 --out results\week6` | thư mục kết quả + `manifest.json` |
+| 12. Công bố | `device\host\.venv\Scripts\python.exe -B device\scripts\publish_week6_results.py --session $S --build-default $BuildDefault --build-mtu23 $BuildMtu23 --out results\week6\device` | thư mục kết quả + `manifest.json` |
 
 `MIX`: vector `i % 50`, lượt chẵn request thường, lượt lẻ I2/1, mỗi packet thứ 25 là frame 6380 B.
 `disconnect_mid` tắt radio Bluetooth laptop khoảng 1,5 s ngay sau nửa transfer (xem §3).

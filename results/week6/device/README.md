@@ -3,9 +3,9 @@
 Phiên lab `device-session-20261019`, ngày 19/10/2026 (Asia/Saigon). nRF52840 Dongle (PCA10059) là BLE
 peripheral; laptop Windows 11 (bleak 3.0.2) là BLE central/echo peer. Firmware build
 `afa88870379c-default-20261018T062058Z` và `afa88870379c-mtu23-20261018T062140Z` (commit `afa8887`,
-cây sạch). Cả 8 tiêu chí tuần 6 ([phụ lục A của báo cáo](../../docs/sv1_device_week6_report.md#phụ-lục-a-tiêu-chí-nghiệm-thu-và-quyết-định-d1d6)) **PASS** trên MCU.
+cây sạch). Cả 8 tiêu chí tuần 6 ([phụ lục A của báo cáo](../../../docs/sv1_device_week6_report.md#phụ-lục-a-tiêu-chí-nghiệm-thu-và-quyết-định-d1d6)) **PASS** trên MCU.
 
-- [Báo cáo cho thầy](../../docs/sv1_device_week6_report.md)
+- [Báo cáo cho thầy](../../../docs/sv1_device_week6_report.md)
 - Tiêu chí 1–2, 8 (DWT): [self-test](selftest_default.json), [50 vector P1](p1_vectors_50.csv), [DWT theo split](dwt_by_split.csv)
 - Tiêu chí 3–5, 8 (RTT): [1000 packet MTU 247](loopback_official_1000_mtu247.json), [40 packet MTU 23](loopback_mtu23_4sizes_x10.json),
   [200 packet thường](loopback_plain200_mtu247.json), [counter](loopback_counters.csv), [RTT theo cỡ frame](loopback_rtt_by_size.csv)

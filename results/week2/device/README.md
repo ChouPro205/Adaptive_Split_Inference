@@ -73,9 +73,9 @@ thống.
 Chạy từ thư mục gốc của repository:
 
 ```powershell
-python .\tools\analyze_week2_idle.py .\results\week2\raw\2026-09-22_idle_vbus5v_60s.csv
+python .\tools\analyze_week2_idle.py .\results\week2\device\raw\2026-09-22_idle_vbus5v_60s.csv
 ```
 
-Các file đo thô CSV/PPK2 được lưu cục bộ trong `results/week2/raw/` và bị Git
+Các file đo thô CSV/PPK2 được lưu cục bộ trong `results/week2/device/raw/` và bị Git
 ignore. GitHub chỉ lưu script phân tích, bảng summary, README và các hình minh
 chứng; dữ liệu đo thô không được đưa lên repository.

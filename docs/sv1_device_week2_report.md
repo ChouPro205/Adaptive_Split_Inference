@@ -17,7 +17,7 @@ Tuần 2 đo dòng tiêu thụ của nRF52840 Dongle bằng Nordic Power Profile
 - Nguồn được đưa vào dongle qua USB breakout. Không sửa cầu hàn SB1/SB2.
 - Kênh logic D0–D3 của PPK2 nối lần lượt với P0.13, P0.15, P0.17 và P0.20.
 
-![Đấu nối PPK2, USB breakout và dongle](../results/week2/figures/setup_wiring_vbus5v.jpg)
+![Đấu nối PPK2, USB breakout và dongle](../results/week2/device/figures/setup_wiring_vbus5v.jpg)
 
 Khi PPK2 đang cấp nguồn qua USB breakout, không cấp nguồn đồng thời từ cổng
 USB máy tính. Nạp DFU qua bootloader USB là bước riêng, không làm trong phiên
@@ -50,9 +50,9 @@ module marker trên GPIO Port 0. Mỗi cạnh marker là đúng một lần ghi 
 Ở chế độ tự kiểm, firmware chuyển marker mỗi 500 ms để kiểm tra thứ tự và
 thời gian trên PPK2.
 
-![Active và marker trong 60 giây](../results/week2/figures/active_marker_overview_60s.png)
+![Active và marker trong 60 giây](../results/week2/device/figures/active_marker_overview_60s.png)
 
-![Active và marker phóng to 3 giây](../results/week2/figures/active_marker_zoom_3s.png)
+![Active và marker phóng to 3 giây](../results/week2/device/figures/active_marker_zoom_3s.png)
 
 Phép đo Active dùng để xác nhận firmware chạy, chu kỳ và logic marker; chưa
 phải số liệu năng lượng cuối cùng. Build hiện tại bằng `build_week1_demo.ps1`
@@ -88,12 +88,12 @@ cho quy trình demo.
 5. Ghi 60 giây cho Active hoặc Idle với cùng cấu hình.
 6. Lưu raw CSV/PPK2 ở máy cục bộ rồi chạy script phân tích để sinh summary và hình.
 
-![Dạng sóng Idle trong 60 giây](../results/week2/figures/idle_waveform_60s.png)
+![Dạng sóng Idle trong 60 giây](../results/week2/device/figures/idle_waveform_60s.png)
 
 ## 7. Kết quả Idle
 
 Nguồn số liệu:
-[`results/week2/summary/week2_idle_summary.csv`](../results/week2/summary/week2_idle_summary.csv).
+[`results/week2/device/summary/week2_idle_summary.csv`](../results/week2/device/summary/week2_idle_summary.csv).
 
 | Đại lượng | Kết quả |
 |---|---:|
@@ -117,7 +117,7 @@ CSV có đủ bốn kênh D0–D3. Trên toàn bộ 6.000.001 mẫu, mỗi kênh
 không ở mức LOW và 0 mẫu không hợp lệ (`all_low=TRUE`), đúng hành vi thiết kế
 của firmware Idle.
 
-![Phân bố dòng Idle](../results/week2/figures/idle_current_histogram.png)
+![Phân bố dòng Idle](../results/week2/device/figures/idle_current_histogram.png)
 
 Histogram lệch phải: phần lớn mẫu nằm ở vùng dòng thấp, một số mẫu dòng cao
 hơn tạo đuôi bên phải, nên mean cao hơn median. Hình có đường đánh dấu
@@ -125,14 +125,14 @@ mean/median và chú thích 60 s, 5,0 V, 100 kS/s.
 
 ## 8. Quản lý dữ liệu và chạy lại phân tích
 
-Raw CSV và PPK2 nằm ở `results/week2/raw/` trên máy cục bộ. `.gitignore` loại
+Raw CSV và PPK2 nằm ở `results/week2/device/raw/` trên máy cục bộ. `.gitignore` loại
 `results/**/raw/`, `*.ppk` và `*.ppk2`, nên Git chỉ lưu script phân tích,
 summary, README và hình. Dữ liệu raw không bị sửa hoặc đổi tên khi tạo báo cáo.
 
 Từ Git root, khi có file raw:
 
 ```powershell
-python .\tools\analyze_week2_idle.py .\results\week2\raw\2026-09-22_idle_vbus5v_60s.csv
+python .\tools\analyze_week2_idle.py .\results\week2\device\raw\2026-09-22_idle_vbus5v_60s.csv
 ```
 
 Script nhận diện cột và đơn vị từ header, đọc theo từng khối, dùng file tạm
