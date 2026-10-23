@@ -1,0 +1,25 @@
+﻿{
+    "origin":  "REAL_USB_DFU",
+    "port":  "COM6",
+    "variant":  "bench",
+    "kernel":  "fast",
+    "build_id":  "f16d897c0009-bench-fast-20261019T141021Z",
+    "dirty":  false,
+    "report_dir":  "D:\\HUST\\ASI_week7\\firmware-20261019\\bench-fast",
+    "zip":  "D:\\HUST\\ASI_week7\\firmware-20261019\\bench-fast\\adaptive_split_week7_bench_fast.zip",
+    "zip_sha256":  "d2f0371d8f2590f3312667c18e4176ae0624e44df4f2bd8be2a827170703a91a",
+    "bin_sha256":  "84e50831b50f936a61d963d1395e40df9847b3d0d4eeede038b45ccac15cc6bb",
+    "elf_sha256":  "3511bd62b5f4b697570ac2f6fa57ee3e68dd4618d987e6861629f22201462d60",
+    "executable":  "D:\\ncs\\toolchains\\dcbdc366a1\\nrfutil\\bin\\nrfutil.exe",
+    "arguments":  [
+                      "nrf5sdk-tools",
+                      "dfu",
+                      "usb-serial",
+                      "--package",
+                      "D:\\HUST\\ASI_week7\\firmware-20261019\\bench-fast\\adaptive_split_week7_bench_fast.zip",
+                      "--port",
+                      "COM6"
+                  ],
+    "exit_code":  0,
+    "timestamp":  "2026-10-20T05:36:41.8494631+00:00"
+}

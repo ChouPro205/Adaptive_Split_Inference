@@ -1,0 +1,1 @@
+fatal: unable to access 'https://github.com/ChouPro205/Adaptive_Split_Inference.git/': schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS (0x8009030e) - No credentials are available in the security package

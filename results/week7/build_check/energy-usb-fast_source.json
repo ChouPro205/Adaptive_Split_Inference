@@ -1,0 +1,15 @@
+﻿{
+    "build_id":  "f16d897c0009-energy-usb-fast-20261019T141057Z",
+    "commit":  "f16d897c0009c7450d95de0de05faef4a25190b3",
+    "dirty":  false,
+    "status_porcelain":  [
+
+                         ],
+    "variant":  "energy-usb",
+    "kernel":  "fast",
+    "r3_anchors":  {
+                       "ml/results/week4-r3/firmware/head_parameters.h":  "3f811758ca6fc6a8fdefa74ff50ccb48031c006e9a12b617604dad033657487b",
+                       "device/generated/week4_graph.h":  "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+                       "device/generated/week4_inputs.h":  "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6"
+                   }
+}

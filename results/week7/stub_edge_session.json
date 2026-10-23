@@ -1,0 +1,77 @@
+{
+  "schema": "week7-stub-edge/1",
+  "started_utc": "2026-10-22T02:18:04.948929+00:00",
+  "finished_utc": "2026-10-22T02:21:08.915712+00:00",
+  "command": [
+    "D:\\HUST\\Adaptive_Split_Inference\\device\\scripts\\week7_stub_edge.py",
+    "--out",
+    "D:\\HUST\\ASI_week7\\session-20261022\\B2\\stub",
+    "--split",
+    "2",
+    "--expect-p1",
+    "50",
+    "--expect-p0",
+    "50",
+    "--max-s",
+    "420.0",
+    "--key-file",
+    "D:\\HUST\\ASI_week6\\secrets\\bench_key_65537.bin"
+  ],
+  "split": 2,
+  "expect_p1": 50,
+  "expect_p0": 50,
+  "key": "bench key file given",
+  "counters": {
+    "received": 100,
+    "crc_fail": 0,
+    "drop": 0,
+    "reject": 0,
+    "wrong_split": 0,
+    "sequence_not_increasing": 0,
+    "no_key": 0,
+    "unknown_q": 0,
+    "p1": 50,
+    "p0": 50,
+    "response_sent": 100
+  },
+  "peer_counts": {
+    "rx_frames": 100,
+    "tx_frames": 100,
+    "rx_crc_fail": 0,
+    "connections": 2,
+    "faults_applied": 0,
+    "rx_fragments": 1400,
+    "tx_fragments": 100
+  },
+  "reassembler": {
+    "frames_delivered": 100
+  },
+  "checks": {
+    "count": true,
+    "all_ok": true,
+    "rho_order": true,
+    "samples_rotate": true,
+    "request_id_increasing": true,
+    "responses_sent": true
+  },
+  "status": "PASS",
+  "request_lengths": [
+    3076,
+    3116
+  ],
+  "first_sequence": 60635138,
+  "last_sequence": 60635187,
+  "inter_request_ms": {
+    "min": 1062,
+    "max": 1110
+  },
+  "tool_sha256": {
+    "week7_stub_edge.py": "cb544b07f9f8c12453565e21253d29a73babe4ea55899e739e884b0335e2e7f9",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b",
+    "week6_lab.py": "52f79e40bd575626eaeb8bdbc0a6ecc66cd24d5cf2abea66c08f1a302ff46c2a",
+    "week6_common.py": "a15377a7cd05f73f6b17a2ce0210193da28e499af67ba8bd17e2faa64f7b312a"
+  },
+  "golden": {
+    "quantization20_manifest_sha256": "8e20ed054462dda8f99815f20c817de36d21fdc1c5bf112cd2da5f67cdbf29bd"
+  }
+}

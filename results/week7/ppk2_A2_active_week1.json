@@ -1,0 +1,100 @@
+{
+  "schema": "week7-ppk2-active/1",
+  "status": "PASS",
+  "checks": {
+    "capture_status_pass": true,
+    "no_data_loss": true,
+    "sample_rate_ok": true,
+    "counter_available": true,
+    "rotation_order_D0_D3": true,
+    "rotation_width_500ms": true,
+    "no_overlap": true,
+    "D5_D7_low": true
+  },
+  "rotation": {
+    "pulses": 29,
+    "order_errors": 0,
+    "width_errors": 0,
+    "overlap_samples": 0,
+    "stray_high_samples": {
+      "D5": 0,
+      "D6": 0,
+      "D7": 0
+    },
+    "pass": true
+  },
+  "D4_high_samples_week1_image": 0,
+  "pulses": {
+    "D0": {
+      "pulses": 9,
+      "width_ms": {
+        "n": 9,
+        "mean": 445.61333333333334,
+        "min": 10.67,
+        "max": 500.0,
+        "std": 163.10375018680597,
+        "ci95_half": 125.37264079936055,
+        "ci95_low": 320.2406925339728,
+        "ci95_high": 570.9859741326939,
+        "ci95_rel_pct": 28.134849525603787
+      }
+    },
+    "D1": {
+      "pulses": 8,
+      "width_ms": {
+        "n": 8,
+        "mean": 450.87125000000003,
+        "min": 107.13000000000001,
+        "max": 499.98,
+        "std": 138.89243941549057,
+        "ci95_half": 116.11698520753724,
+        "ci95_low": 334.7542647924628,
+        "ci95_high": 566.9882352075373,
+        "ci95_rel_pct": 25.753912055279024
+      }
+    },
+    "D2": {
+      "pulses": 7,
+      "width_ms": {
+        "n": 7,
+        "mean": 499.9771428571429,
+        "min": 499.97,
+        "max": 499.98,
+        "std": 0.004879500364738228,
+        "ci95_half": 0.0045127851662444774,
+        "ci95_low": 499.97263007197665,
+        "ci95_high": 499.98165564230914,
+        "ci95_rel_pct": 0.000902598294885233
+      }
+    },
+    "D3": {
+      "pulses": 7,
+      "width_ms": {
+        "n": 7,
+        "mean": 499.9771428571429,
+        "min": 499.97,
+        "max": 499.98,
+        "std": 0.004879500364738228,
+        "ci95_half": 0.0045127851662444774,
+        "ci95_low": 499.97263007197665,
+        "ci95_high": 499.98165564230914,
+        "ci95_rel_pct": 0.000902598294885233
+      }
+    },
+    "D4": {
+      "pulses": 0,
+      "width_ms": {
+        "n": 0
+      }
+    }
+  },
+  "counter": {
+    "available": true,
+    "discontinuities": 0,
+    "lost_samples_min": 0,
+    "first_discontinuity_sample": null,
+    "step_histogram_top": {
+      "1": 1574399
+    }
+  }
+}

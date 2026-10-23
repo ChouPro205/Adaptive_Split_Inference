@@ -1,0 +1,6 @@
+/ {
+    chosen { zephyr,console = &board_cdc_acm_uart; };
+};
+&zephyr_udc0 { status = "okay"; };
+&board_cdc_acm_uart { status = "okay"; };
+&uart0 { status = "disabled"; };

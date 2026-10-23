@@ -1,0 +1,25 @@
+﻿{
+    "origin":  "REAL_USB_DFU",
+    "port":  "COM6",
+    "variant":  "reference-adaptive_split_week1_demo",
+    "kernel":  "none",
+    "build_id":  null,
+    "dirty":  null,
+    "report_dir":  "",
+    "zip":  "D:\\HUST\\Adaptive_Split_Inference\\device\\artifacts\\adaptive_split_week1_demo.zip",
+    "zip_sha256":  "c0a261c48068c41522a6f30a24e59a1e25a0c91b9be4630ac42d266c721dd34c",
+    "bin_sha256":  null,
+    "elf_sha256":  null,
+    "executable":  "D:\\ncs\\toolchains\\dcbdc366a1\\nrfutil\\bin\\nrfutil.exe",
+    "arguments":  [
+                      "nrf5sdk-tools",
+                      "dfu",
+                      "usb-serial",
+                      "--package",
+                      "D:\\HUST\\Adaptive_Split_Inference\\device\\artifacts\\adaptive_split_week1_demo.zip",
+                      "--port",
+                      "COM6"
+                  ],
+    "exit_code":  0,
+    "timestamp":  "2026-10-22T01:50:17.2397172+00:00"
+}

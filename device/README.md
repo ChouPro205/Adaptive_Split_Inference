@@ -28,6 +28,7 @@ Quy ước chung cho mọi chế độ:
 | 11 điểm cắt FP32, gói R3 (tuần 4) | `overlay-week4.conf` | `src/main_week4.c`, `src/week4_head.c`, `src/week4_protocol.c` | `scripts/build_week4_head.ps1` | [báo cáo tuần 4](../docs/sv1_device_week4_report.md) (phụ lục 12), [kết quả](../results/week4/README.md) |
 | Lượng tử hóa INT8 + scale FP16 (tuần 5) | ứng dụng riêng `week5/` | `week5/main.c`, `week5/quantization.c` (dùng lại kernel/giao thức tuần 4) | `scripts/build_week5_head.ps1` | [tái lập tuần 5](#tái-lập-tuần-5), [kết quả](../results/week5/README.md) |
 | BLE Device–Edge (tuần 6: 8 tiêu chí phía Device PASS trên dongle ngày 19/10/2026, peer laptop) | ứng dụng riêng `week6/`, biến thể `default`/`mtu23` | `week6/main.c` | `scripts/build_week6.ps1` | [báo cáo tuần 6](../docs/sv1_device_week6_report.md) (phụ lục B: firmware, C: quy trình lab), [kết quả](../results/week6/README.md) |
+| Đo năng lượng theo pha (tuần 7: 9 tiêu chí PASS, PPK2 ngày 22/10/2026): marker D0–D4, chu kỳ CTRL→HEAD→PROT→TX→WAIT, kernel FP32 tối ưu | ứng dụng riêng `week7/`, biến thể `bench`/`energy-usb`/`energy` × kernel `fast`/`week4` | `week7/main.c`, `week7/energy_cycle.c`, `week7/head_fast.c` | `scripts/build_week7.ps1` | [báo cáo tuần 7](../docs/sv1_device_week7_report.md) (phụ lục C: quy trình lab PPK2), [kết quả](../results/week7/README.md); công cụ `scripts/week7_ppk2.py`, `scripts/measure_energy.py`, `scripts/energy_phases.py` |
 
 Bốn chế độ đầu dùng chung `CMakeLists.txt`/`Kconfig` của thư mục này; CMake
 chọn đúng một entry point theo Kconfig. Ứng dụng tuần 5 có `CMakeLists.txt`
@@ -44,7 +45,12 @@ ngoài repo sau khi xác thực gói ML.
   thanh ghi `OUTSET/OUTCLR`: D0 = P0.13 `HEAD`, D1 = P0.15 `PROTECTION`,
   D2 = P0.17 `TX`, D3 = P0.20 `WAIT`. Firmware Active chạy tự kiểm cả bốn
   marker; firmware tuần 3–5 mới bật/tắt `HEAD` quanh phần tính head.
-- `src/`, `week5/`: mã nguồn firmware như bảng trên.
+  Marker thứ năm D4 = P0.22 `CTRL` (tuần 7, cạnh P0.20 trên mép castellated) nằm ở
+  `week7/marker_ctrl.c` vì `src/markers.c` đang bị khóa hash.
+- `src/`, `week5/`, `week6/`, `week7/`: mã nguồn firmware như bảng trên. Từ tuần 5 mỗi tuần là
+  một ứng dụng Zephyr riêng, dùng lại module tuần trước qua đường dẫn và biên dịch nguyên vẹn.
+  `week7/head_fast.c` `#include` nguyên vẹn `src/week4_head.c` để hai kernel dùng chung trọng số
+  (`static` trong `head_parameters.h`, 438,6 KB) thay vì nhân đôi Flash.
 - `scripts/`: công cụ theo tuần. Tiền tố cho biết vai trò: `build_*` build và
   đóng gói, `flash_*` nạp USB DFU, `collect_*` thu dữ liệu qua CDC, `check_*`
   kiểm capture ngoại tuyến, `verify_*` kiểm trên host, `test_*` kiểm thử âm,
@@ -97,7 +103,7 @@ Hai lệnh này ghi đè build/ZIP Active/Idle cũ theo chủ ý để chuyển 
 hai chế độ; gói lịch sử `adaptive_split_base_v1.zip` không bị đụng tới. Các
 script tuần 3–5 thì từ chối ghi đè image đã đo và yêu cầu thư mục output mới.
 
-## Đo thời gian và các giới hạn đã chốt cho tuần 6
+## Đo thời gian và các giới hạn đã chốt (áp dụng từ tuần 6)
 
 - t_dev của tuần 4 là thời gian của **cách hiện thực hiện tại**: kernel vòng
   lặp C FP32, build `CONFIG_SIZE_OPTIMIZATIONS=y` (`-Os`), DWT 64 MHz, khóa
@@ -107,8 +113,13 @@ script tuần 3–5 thì từ chối ghi đè image đã đo và yêu cầu thư
 - Khóa IRQ suốt một lần gọi head (tới khoảng 2,4 s ở `s=8..10`) chỉ dùng cho
   firmware debug USB. Ứng dụng có radio không lấy cách này làm thiết kế mặc
   định; số đo khi đó sẽ gồm cả chi phí xử lý ngắt.
-- Cấp phát key và lưu nonce bền qua reboot/mất điện vẫn `NOT_ACCEPTED` theo
-  registry cho tới khi có triển khai và kiểm tra tương ứng.
+- Cấp phát key và lưu nonce bền qua reboot/mất điện: đã triển khai và kiểm PASS trên dongle
+  (tiêu chí 7 tuần 6). Registry `mitdb-week5-i2-registry-v1-r1` vẫn ghi `NOT_ACCEPTED` cho tới khi
+  có revision mới do Châu và Trung xác nhận `device_revision = edge_revision`.
+- Tuần 7: energy image cấp phát trước khối nonce lúc boot (một lần ghi NVS, một xung D1 trước
+  self-test) để không chu kỳ đo nào ghi Flash; mỗi lần boot chạy tối đa 1023 chu kỳ P1.
+  Sau phiên đo image energy vẫn quảng bá lại (`week6/ble_link.c` khởi động advertising khi connection được giải
+  phóng); không chạm 100 chu kỳ đo, sửa ở tuần 8. `E_tx`/`E_wait` phụ thuộc vị trí dongle so với laptop.
 - Firmware tuần 3–5 đã nghiệm thu được giữ nguyên; lỗi parser cũ của
   `main_week3.c` (phần còn lại của dòng quá dài được xử lý như lệnh mới) không
   ảnh hưởng luồng đang dùng nên không sửa.
