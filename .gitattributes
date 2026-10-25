@@ -17,6 +17,8 @@ Kconfig text eol=lf
 ml/** text=auto eol=lf
 .gitignore text eol=lf
 .gitattributes text eol=lf
+# Keep the Week 5 Edge checksum list readable by sha256sum after Windows checkout.
+results/week5/edge/sha256sum_export.txt text eol=lf
 # Historical command/stream receipts authenticate raw bytes, including CRLF.
 ml/provenance/week3-sv2-linux/** -text
 # Week 3 CDC captures are stored LF; their published SHA-256 values are of the
