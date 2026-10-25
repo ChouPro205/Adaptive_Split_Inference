@@ -14,16 +14,16 @@ và báo cáo của dự án.
   động khi nghiệm thu ngày 09/10/2026 và giữ nguyên từng byte vì hash của nó
   nằm trong hồ sơ nghiệm thu. Wire split ID được cấp sau đó, ngày 15/10/2026,
   trong [allocation hiện hành](../contracts/sv3_week5_allocation_v2.md).
-- [Kết quả và hình minh chứng Week 2](../results/week2/README.md)
-- [Kết quả MCU và timing Week 4](../results/week4/README.md)
-- [Kết quả MCU Week 5](../results/week5/README.md)
+- [Kết quả và hình minh chứng Week 2](../results/week2/device/README.md)
+- [Kết quả MCU và timing Week 4](../results/week4/device/README.md)
+- [Kết quả MCU Week 5](../results/week5/device/README.md)
 - [Receipt tuần 5 cho source hiện tại](../ml/provenance/week5-current-20261015/README.md)
   và [đánh giá theo lớp](../ml/results/week5-per-class-20261015/README.md)
 - [Firmware và công cụ SV1](../device/README.md)
 - [Báo cáo SV1/Device (Châu) – Week 6](sv1_device_week6_report.md): 8 tiêu chí phía
   Device PASS trên Dongle qua BLE ngày 19/10/2026, peer là laptop Windows; tiêu chí,
   quyết định D1–D6, việc còn mở của SV2/SV3 và quy trình lab nằm trong phụ lục
-- [Kết quả Dongle Week 6](../results/week6/README.md)
+- [Kết quả Dongle Week 6](../results/week6/device/README.md)
 
 ### Khối ML (SV3 - ML / Bùi Kỳ Anh)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 1](SV3_ML_week1_report.md)

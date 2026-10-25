@@ -11,7 +11,7 @@ scope **REAL_MCU + PPK2 Source Meter 5000 mV + BLE radio**. Peer BLE là laptop 
 | Build | NCS 3.4.0, `nrf52840dongle/nrf52840`, `--no-sysbuild`; biến thể `bench-fast`, `energy-usb-fast`, `energy-fast`, `energy-week4` |
 | Image đo năng lượng | `f16d897c0009-energy-fast-20261019T141139Z` (không USB/console/log/LED), kernel FP32 tối ưu, `s = 2`, 50 P1 + 50 P0 |
 | Công cụ | `measure_energy.py`, `energy_phases.py`, `week7_ppk2.py`, `week7_lab.py`, `check_week7.py`, `week7_stub_edge.py`, `week7_figures.py`, `publish_week7_results.py`; SHA-256 từng file trong `session.json` mỗi bước; ppk2-api 0.9.2 |
-| Phiên raw | `D:\HUST\ASI_week7\session-20261020` (dongle cấp từ USB laptop: TC4, TC7, dry run), `D:\HUST\ASI_week7\session-20261022` (PPK2 A1, A2, B1, B2 ngày 22/10/2026); ngoài Git, SHA-256 trong [manifest](../results/week7/manifest.json) |
+| Phiên raw | `D:\HUST\ASI_week7\session-20261020` (dongle cấp từ USB laptop: TC4, TC7, dry run), `D:\HUST\ASI_week7\session-20261022` (PPK2 A1, A2, B1, B2 ngày 22/10/2026); ngoài Git, SHA-256 trong [manifest](../results/week7/device/manifest.json) |
 | Nguồn khi đo năng lượng | PPK2 Source Meter 5000 mV → USB breakout VBUS (quyết định PPK2 VBUS), dongle không cắm USB máy tính; nhiệt độ phòng 26–27 °C đầu và cuối (ước lượng, không có nhiệt kế; ghi `temp_room_C = 26.5`) |
 | Số chính | Phiên **B2** (PASS ngay lần chạy gốc); B1 là phiên lặp lại cùng ngày (FAIL gốc do lỗi checker, kiểm lại PASS — §4) |
 
@@ -19,15 +19,15 @@ scope **REAL_MCU + PPK2 Source Meter 5000 mV + BLE radio**. Peer BLE là laptop 
 
 | # | Tiêu chí | Kết quả | Bằng chứng |
 |---:|---|---|---|
-| 1 | Marker D0–D4 trên PPK2 | **PASS** tự kiểm lúc boot của image energy (B2): D0→D1→D2→D3→D4 mỗi xung 200,09–200,10 ms, liền nhau (khe 0), 0 mẫu chồng, D5–D7 LOW cả bản ghi; image Active tuần 1 (A2): 29 xung D0→D3, xung trọn vẹn 499,97–499,98 ms, 0 lỗi thứ tự/độ rộng/chồng; D4 0 mẫu HIGH với image tuần 1 (P0.22 không chập P0.20, khớp đo thông mạch). D4 = P0.22 (W7-D4) | [ppk2_B_session.json](../results/week7/ppk2_B_session.json), [ppk2_A2_active_week1.json](../results/week7/ppk2_A2_active_week1.json), ảnh đấu dây (note trong `*_note-*.json`) |
-| 2 | `measure_energy.py` thu đúng | **PASS** Source Meter 5000 mV, `GET_META_DATA` ngay sau khi mở cổng, DUT bật trong lúc ghi (bắt cả boot); bộ đếm mẫu 6 bit (bit 18–23) xác nhận là bộ đếm thật (bước 1 ở mọi mẫu), 0 gián đoạn trên A1 125 s, A2 15 s, B1 và B2 mỗi phiên 300 s; số mẫu DUT-ON lệch ≤ 0,011 % so với thời gian máy × 100 kS/s (giới hạn 0,1 %) | [ppk2_A1_idle_week2.json](../results/week7/ppk2_A1_idle_week2.json), `*_capture.json` |
-| 3 | Bộ phân tích đã kiểm định | **PASS**: CSV tuần 2 → mean 25,416651984 µA, std 3,706868927 µA, 6 000 001 mẫu, điện tích hình thang 1,524999098 mC (chữ nhật 1,524999 mC), D0–D3 LOW 100 %; CSV Active tuần 2: 119 xung D0→D3, 500 ms, 0 chồng. Chuyển đổi raw trùng bit `PPK2_API.get_samples()`; 9 kịch bản tổng hợp. Đối chứng thu: image Idle tuần 2 qua ppk2-api **25,793 µA**, lệch 1,48 % so với 25,417 µA (giới hạn 10 %); điện tích 60 s 1,548 mC | `test_measure_energy.py` 22/22, [ppk2_A1_idle_week2.json](../results/week7/ppk2_A1_idle_week2.json) |
-| 4 | Pipeline tuần 7 đúng byte | **PASS** 11 split × 20 mẫu: 220/220 q/scale trùng tensor MCU (golden SV3 trừ 3 bit scale FP16 đã giải thích ở tuần 5), 440/440 request I1 v2 (P0 + P1 key PUBLIC_TEST) trùng Python reference; dry run 50 P1 + 50 P0 với key bench: stub kiểm CRC + header + sequence tăng ngặt 100/100 | [verify_tc4.json](../results/week7/verify_tc4.json), [dryrun_50p1_50p0.json](../results/week7/dryrun_50p1_50p0.json) |
-| 5 | Firmware đo tự chạy không USB | **PASS** (B2) stub nhận 100/100 request hợp lệ (0 CRC sai, 0 từ chối, q trùng byte golden), trả 100/100 response; bản ghi có đúng 100 chu kỳ đủ pha (50 P1, 50 P0), mỗi chu kỳ 1 xung TX, WAIT max 29,1 ms ≪ 5 s; cả 100 chu kỳ trên một kết nối (ngắt sau chu kỳ cuối theo thiết kế); cuối TX trên bản ghi khớp thời điểm stub nhận xong từng request, đúng thứ tự ρ (lệch khoảng cách max 18,4 ms < 30 ms). Nonce: sequence P1 60635138…60635187 > 60634163 (sequence cuối của B1) > 60631040 (`reserved_through` đọc ngay trước phiên B), stub unprotect đúng bằng key bench ⇒ key không đổi. B1: 13/14 gốc, 14/14 khi kiểm lại (§4.5) | [ppk2_B_session.json](../results/week7/ppk2_B_session.json), [stub_edge_session.json](../results/week7/stub_edge_session.json), [ppk2_B_attempt1_recheck_PASS.json](../results/week7/ppk2_B_attempt1_recheck_PASS.json) |
-| 6 | Tách pha, tổng < 3 % | **PASS** `|E_cycle − Σ E_pha| / E_cycle`: B2 mean 0,116 %, max 0,144 % trên 100/100 chu kỳ (B1: 0,117 % / 0,159 %); mean ± CI95 mọi pha ở §3, thời lượng marker so DWT ở §2.2 | [cycles_100.csv](../results/week7/cycles_100.csv), [phase_energy_summary.csv](../results/week7/phase_energy_summary.csv) |
-| 7 | Kernel FP32 tối ưu | **PASS** trên dongle: `CMP ALL` 220/220 trùng từng bit với kernel tuần 4 cùng image, `CMP MIX` 16/16; BENCH 11 split × (20 warm-up + 100) cho cả hai kernel, 1100 + 1100 số đo; tăng tốc 6,4–7,2× ở s = 1…10 (s = 10: 6,38× ≥ 1,5×) | [bench_tc7.json](../results/week7/bench_tc7.json), [t_dev_bench_by_split.csv](../results/week7/t_dev_bench_by_split.csv) |
-| 8 | Build và tài nguyên | **PASS** 4 image kết thúc trước `0xDC000`, `dirty=false`, check tĩnh PASS; stack high-water §2 | [build_resources.csv](../results/week7/build_resources.csv), [build_check/](../results/week7/build_check/) |
-| 9 | Hồ sơ | **PASS** results/week7 (66 file) + manifest, raw ngoài Git có SHA-256 (13 mục), session.json + ảnh + nhiệt độ mỗi phiên PPK2, báo cáo này; test host PASS | [results/week7](../results/week7/README.md) |
+| 1 | Marker D0–D4 trên PPK2 | **PASS** tự kiểm lúc boot của image energy (B2): D0→D1→D2→D3→D4 mỗi xung 200,09–200,10 ms, liền nhau (khe 0), 0 mẫu chồng, D5–D7 LOW cả bản ghi; image Active tuần 1 (A2): 29 xung D0→D3, xung trọn vẹn 499,97–499,98 ms, 0 lỗi thứ tự/độ rộng/chồng; D4 0 mẫu HIGH với image tuần 1 (P0.22 không chập P0.20, khớp đo thông mạch). D4 = P0.22 (W7-D4) | [ppk2_B_session.json](../results/week7/device/ppk2_B_session.json), [ppk2_A2_active_week1.json](../results/week7/device/ppk2_A2_active_week1.json), ảnh đấu dây (note trong `*_note-*.json`) |
+| 2 | `measure_energy.py` thu đúng | **PASS** Source Meter 5000 mV, `GET_META_DATA` ngay sau khi mở cổng, DUT bật trong lúc ghi (bắt cả boot); bộ đếm mẫu 6 bit (bit 18–23) xác nhận là bộ đếm thật (bước 1 ở mọi mẫu), 0 gián đoạn trên A1 125 s, A2 15 s, B1 và B2 mỗi phiên 300 s; số mẫu DUT-ON lệch ≤ 0,011 % so với thời gian máy × 100 kS/s (giới hạn 0,1 %) | [ppk2_A1_idle_week2.json](../results/week7/device/ppk2_A1_idle_week2.json), `*_capture.json` |
+| 3 | Bộ phân tích đã kiểm định | **PASS**: CSV tuần 2 → mean 25,416651984 µA, std 3,706868927 µA, 6 000 001 mẫu, điện tích hình thang 1,524999098 mC (chữ nhật 1,524999 mC), D0–D3 LOW 100 %; CSV Active tuần 2: 119 xung D0→D3, 500 ms, 0 chồng. Chuyển đổi raw trùng bit `PPK2_API.get_samples()`; 9 kịch bản tổng hợp. Đối chứng thu: image Idle tuần 2 qua ppk2-api **25,793 µA**, lệch 1,48 % so với 25,417 µA (giới hạn 10 %); điện tích 60 s 1,548 mC | `test_measure_energy.py` 22/22, [ppk2_A1_idle_week2.json](../results/week7/device/ppk2_A1_idle_week2.json) |
+| 4 | Pipeline tuần 7 đúng byte | **PASS** 11 split × 20 mẫu: 220/220 q/scale trùng tensor MCU (golden SV3 trừ 3 bit scale FP16 đã giải thích ở tuần 5), 440/440 request I1 v2 (P0 + P1 key PUBLIC_TEST) trùng Python reference; dry run 50 P1 + 50 P0 với key bench: stub kiểm CRC + header + sequence tăng ngặt 100/100 | [verify_tc4.json](../results/week7/device/verify_tc4.json), [dryrun_50p1_50p0.json](../results/week7/device/dryrun_50p1_50p0.json) |
+| 5 | Firmware đo tự chạy không USB | **PASS** (B2) stub nhận 100/100 request hợp lệ (0 CRC sai, 0 từ chối, q trùng byte golden), trả 100/100 response; bản ghi có đúng 100 chu kỳ đủ pha (50 P1, 50 P0), mỗi chu kỳ 1 xung TX, WAIT max 29,1 ms ≪ 5 s; cả 100 chu kỳ trên một kết nối (ngắt sau chu kỳ cuối theo thiết kế); cuối TX trên bản ghi khớp thời điểm stub nhận xong từng request, đúng thứ tự ρ (lệch khoảng cách max 18,4 ms < 30 ms). Nonce: sequence P1 60635138…60635187 > 60634163 (sequence cuối của B1) > 60631040 (`reserved_through` đọc ngay trước phiên B), stub unprotect đúng bằng key bench ⇒ key không đổi. B1: 13/14 gốc, 14/14 khi kiểm lại (§4.5) | [ppk2_B_session.json](../results/week7/device/ppk2_B_session.json), [stub_edge_session.json](../results/week7/device/stub_edge_session.json), [ppk2_B_attempt1_recheck_PASS.json](../results/week7/device/ppk2_B_attempt1_recheck_PASS.json) |
+| 6 | Tách pha, tổng < 3 % | **PASS** `|E_cycle − Σ E_pha| / E_cycle`: B2 mean 0,116 %, max 0,144 % trên 100/100 chu kỳ (B1: 0,117 % / 0,159 %); mean ± CI95 mọi pha ở §3, thời lượng marker so DWT ở §2.2 | [cycles_100.csv](../results/week7/device/cycles_100.csv), [phase_energy_summary.csv](../results/week7/device/phase_energy_summary.csv) |
+| 7 | Kernel FP32 tối ưu | **PASS** trên dongle: `CMP ALL` 220/220 trùng từng bit với kernel tuần 4 cùng image, `CMP MIX` 16/16; BENCH 11 split × (20 warm-up + 100) cho cả hai kernel, 1100 + 1100 số đo; tăng tốc 6,4–7,2× ở s = 1…10 (s = 10: 6,38× ≥ 1,5×) | [bench_tc7.json](../results/week7/device/bench_tc7.json), [t_dev_bench_by_split.csv](../results/week7/device/t_dev_bench_by_split.csv) |
+| 8 | Build và tài nguyên | **PASS** 4 image kết thúc trước `0xDC000`, `dirty=false`, check tĩnh PASS; stack high-water §2 | [build_resources.csv](../results/week7/device/build_resources.csv), [build_check/](../results/week7/device/build_check/) |
+| 9 | Hồ sơ | **PASS** results/week7/device (66 file) + manifest, raw ngoài Git có SHA-256 (13 mục), session.json + ảnh + nhiệt độ mỗi phiên PPK2, báo cáo này; test host PASS | [results/week7/device](../results/week7/device/README.md) |
 
 ## 2. Thời gian và tài nguyên (TC7, TC8)
 
@@ -88,7 +88,7 @@ breakout PPK2 xa hơn: 2–3 connection event (TX 27,8–40 ms, trung vị 29,1 
 interval (8,5–29 ms). Connection interval trên bản ghi vẫn 15,01 ms. Image energy không có console nên không đọc
 được PHY thực tế ở phiên PPK2. Chu kỳ đầu tiên sau khi kết nối có TX ≈ 102 ms ở cả B1 và B2 (lặp lại, có hệ
 thống). Hệ quả: `E_tx`/`E_wait` phụ thuộc vị trí đặt dongle so với laptop — phải cố định hình học bàn đo khi khóa
-bàn đo (tuần 9). Bảng đầy đủ: [phase_time_marker_vs_dwt.csv](../results/week7/phase_time_marker_vs_dwt.csv).
+bàn đo (tuần 9). Bảng đầy đủ: [phase_time_marker_vs_dwt.csv](../results/week7/device/phase_time_marker_vs_dwt.csv).
 
 ### 2.4. Image và RAM
 
@@ -138,28 +138,28 @@ mỗi lần, phủ cả dải trong cả hai khối, không tương quan với `
 cùng cỡ chi phí bảo vệ, **tuần 9 nên xen kẽ P1/P0 trong một phiên** thay cho hai khối liên tiếp (W7-D9) để
 không lẫn hiệu ứng thời gian/trạng thái liên kết vào `ΔE_prot`.
 
-Hình (thư mục [figures/](../results/week7/figures/)): [một chu kỳ P1](../results/week7/figures/fig_cycle_waveform_P1.png)
-(bản nháp Figure 3 của bài báo), [một chu kỳ P0](../results/week7/figures/fig_cycle_waveform_P0.png),
-[toàn phiên](../results/week7/figures/fig_session_overview.png), [năng lượng từng pha](../results/week7/figures/fig_phase_energy.png),
-[histogram idle](../results/week7/figures/fig_idle_histogram.png), [diff 100 chu kỳ](../results/week7/figures/fig_diff_pct.png).
+Hình (thư mục [figures/](../results/week7/device/figures/)): [một chu kỳ P1](../results/week7/device/figures/fig_cycle_waveform_P1.png)
+(bản nháp Figure 3 của bài báo), [một chu kỳ P0](../results/week7/device/figures/fig_cycle_waveform_P0.png),
+[toàn phiên](../results/week7/device/figures/fig_session_overview.png), [năng lượng từng pha](../results/week7/device/figures/fig_phase_energy.png),
+[histogram idle](../results/week7/device/figures/fig_idle_histogram.png), [diff 100 chu kỳ](../results/week7/device/figures/fig_diff_pct.png).
 Mỗi hình có bản PDF vector cùng tên (IEEE: 3,5 / 7,16 in, Times 8 pt, font TrueType nhúng).
 
 ## 4. Sự cố và cách xử lý
 
 1. **`verify` lần đầu FAIL 3 ca s = 10** (n = 8, 13, 18): lệch 1 ULP một kênh scale FP16. Đây đúng là chênh lệch MCU
-   so với golden SV3 đã giải thích ở tuần 5 (`results/week5/golden_difference_analysis.json`), không phải lỗi firmware.
+   so với golden SV3 đã giải thích ở tuần 5 (`results/week5/device/golden_difference_analysis.json`), không phải lỗi firmware.
    Sửa checker: `week7_common.device_tensor()` áp đúng các bit MCU đó (kiểm SHA với `case_tables` của
    `week5_mcu_validation.json`); stub edge chọn mẫu theo cả q và scale (ở s = 10 nhiều mẫu trùng q). Chạy lại PASS.
-   Bản FAIL giữ ở [verify_first_run_FAIL.json](../results/week7/verify_first_run_FAIL.json).
+   Bản FAIL giữ ở [verify_first_run_FAIL.json](../results/week7/device/verify_first_run_FAIL.json).
 2. **Dry run: `p1_sequence_above_boot_reservation` FAIL do ngữ nghĩa checker sai.** `reserved_through` in lúc boot là
    **đầu trên** của block vừa đặt (60626945…60627968), không phải giá trị trước block. Thay bằng
    `p1_sequence_in_boot_block` + `--prior-reserved-through` (60626944 đọc bằng image tuần 6 trước khi nạp tuần 7).
-   Bản FAIL giữ ở [dryrun_first_check_FAIL.json](../results/week7/dryrun_first_check_FAIL.json).
+   Bản FAIL giữ ở [dryrun_first_check_FAIL.json](../results/week7/device/dryrun_first_check_FAIL.json).
 3. **Bench nhanh buổi sáng dừng giữa chừng** (hết phiên làm việc); không dùng làm bằng chứng, chạy lại đủ 11 split
    buổi chiều.
 4. **Ngày PPK2: DFU lần đầu FAIL, nonce đọc muộn hơn runbook.** Khi chuyển dongle từ breakout sang USB laptop, dongle
    vào thẳng bootloader và cổng COM6 không mở được ("device not functioning"); rút cắm lại + RESET thì nạp được. Receipt
-   exit 1 giữ trong [dfu/](../results/week7/dfu/) và liệt kê ở `failed_dfu_receipts` của manifest. Vì không chạy được
+   exit 1 giữ trong [dfu/](../results/week7/device/dfu/) và liệt kê ở `failed_dfu_receipts` của manifest. Vì không chạy được
    image `energy-usb` lúc đầu, bước đọc nonce dời tới ngay trước phiên B: nạp `energy-usb-fast` → `verify --split 2`
    (PASS) → `reserved_through = 60631040` → nạp `energy-fast`.
 5. **B1: `TC5_one_cycle_per_request` FAIL do checker so sai mốc.** Checker so khoảng cách **đầu** chu kỳ trên bản ghi
@@ -169,14 +169,14 @@ Mỗi hình có bản PDF vector cùng tên (IEEE: 3,5 / 7,16 in, Times 8 pt, fo
    điểm stub nhận xong, thêm điều kiện thứ tự ρ trùng và lệch từng chu kỳ quanh trung vị < 30 ms; lệnh mới `recheck`
    ghi `check_session_recheck.json` cạnh bản gốc. B1 kiểm lại 14/14 (lệch max 14,2 ms). Vì checker sửa sau khi đã
    thấy dữ liệu, chạy thêm **B2** bằng checker mới: PASS 14/14 ngay lần gốc → B2 là số chính. Bản FAIL giữ ở
-   [ppk2_B_attempt1_FAIL.json](../results/week7/ppk2_B_attempt1_FAIL.json).
+   [ppk2_B_attempt1_FAIL.json](../results/week7/device/ppk2_B_attempt1_FAIL.json).
 6. **A1: độ lệch chuẩn 9,96 µA (tuần 2: 3,71 µA).** Có 137 gai > 100 µA (tối đa 463 µA) trong 60 s, phần lớn dồn
    vào một giây (trung bình giây đó 48,75 µA, các giây khác 24,9–26 µA); gai chiếm 1,38 % điện tích, bỏ gai trung
    bình còn 25,48 µA. Nguồn gai chưa rõ. Cửa sổ idle 29 s trong image energy không có gai như vậy (std 3,6–3,7 µA, max 35,5 µA ở B2, 42,4 µA ở B1).
 7. **Sau chu kỳ cuối, dongle quảng bá lại.** `link_disconnect()` ngắt đúng lúc, nhưng `week6/ble_link.c` khởi động lại
    advertising khi connection được giải phóng (`recycled` → `adv_start`), nên stub kết nối thêm một lần ≈ 1,5 s sau
    response cuối, và dòng trung bình từ đó tới hết bản ghi ≈ 450 µA (thấy rõ trên
-   [hình toàn phiên](../results/week7/figures/fig_session_overview.png)). Không chạm 100 chu kỳ đo; nhưng "ngắt kết nối,
+   [hình toàn phiên](../results/week7/device/figures/fig_session_overview.png)). Không chạm 100 chu kỳ đo; nhưng "ngắt kết nối,
    ngủ" của TC5 chưa đúng nghĩa đen → sửa ở tuần 8 (không quảng bá lại sau phiên đo).
 8. **Số block nonce.** Giữa lần đọc nonce (block kết thúc 60631040) và B1 (block bắt đầu 60634113) có 3 block: một do
    boot ngay sau DFU `energy-fast` trên USB, hai lần boot chưa xác định (nghi do tiếp xúc khi rút dongle). Không ảnh
@@ -210,7 +210,7 @@ Firmware không đổi sau các sửa này (chỉ sửa script host), nên image
 | TC6 | Tổng < 3 % | `|E_cycle − Σ E_pha| / E_cycle < 3 %` cho mọi chu kỳ (mean và max); thời lượng pha so với DWT; mean ± CI95 Student-t |
 | TC7 | Kernel tối ưu | Trùng từng bit kernel tuần 4: host 220/220, dongle 220/220 + 16 xen kẽ; BENCH 11 split 1100/1100; báo GV nếu tăng tốc < 1,5× ở s = 10 |
 | TC8 | Build | NCS 3.4.0, image < `0xDC000`, Flash/RAM từ ELF, stack high-water, check tĩnh PASS, `dirty=false` |
-| TC9 | Hồ sơ | results/week7 + manifest, raw ngoài Git có SHA-256, session.json mỗi bước, báo cáo có phụ lục, test host PASS |
+| TC9 | Hồ sơ | results/week7/device + manifest, raw ngoài Git có SHA-256, session.json mỗi bước, báo cáo có phụ lục, test host PASS |
 
 ### A.2. Quyết định đã chốt 19/10/2026 (GV giao SV1 tự chốt)
 
@@ -298,7 +298,7 @@ $key = "D:\HUST\ASI_week6\secrets\bench_key_65537.bin"   # không in, không com
    (`publish_week7_results.py --b-failed`). Sửa checker sau khi thấy dữ liệu thì `week7_ppk2.py recheck --out $S\B1`
    (ghi `check_session_recheck.json`, bản gốc giữ nguyên) **và** vẫn chạy phiên mới để có PASS gốc.
 5. Hình: `$py -B device\scripts\week7_figures.py --session $S\B2 --a1 $S\A1-idle-w2 --out $S\figures`.
-6. Công bố (lệnh đã chạy 22/10): `$py -B device\scripts\publish_week7_results.py --lab D:\HUST\ASI_week7\session-20261020 --firmware $fw --a1 $S\A1-idle-w2 --a2 $S\A2-active-w1 --b $S\B2 --b-failed $S\B1 --ppk2-dfu $S\dfu --figures $S\figures --out results\week7`.
+6. Công bố (lệnh đã chạy 22/10): `$py -B device\scripts\publish_week7_results.py --lab D:\HUST\ASI_week7\session-20261020 --firmware $fw --a1 $S\A1-idle-w2 --a2 $S\A2-active-w1 --b $S\B2 --b-failed $S\B1 --ppk2-dfu $S\dfu --figures $S\figures --out results\week7\device`.
 
 ### C.4. Checklist bàn đo (in dán lên bàn)
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tests of energy_phases.py and measure_energy.py without hardware (week 7 TC2/TC3).
 
-1. Week 2 reproduction on results/week2/raw (skipped if the raw CSVs are not on this machine):
+1. Week 2 reproduction on results/week2/device/raw (skipped if the raw CSVs are not on this machine):
    idle mean 25.416651984 uA, std 3.706868927 uA, 6 000 001 samples, trapezoid charge
    1.524999098 mC, D0-D3 LOW; Active capture D0->D3 rotation, 500 ms per marker.
 2. Raw-word conversion equals ppk2-api 0.9.2 PPK2_API.get_samples() bit for bit (range switches,
@@ -34,7 +34,7 @@ sys.path.insert(0, str(HERE))
 import energy_phases as ep  # noqa: E402
 import measure_energy as me  # noqa: E402
 
-WEEK2 = ROOT / "results" / "week2" / "raw"
+WEEK2 = ROOT / "results" / "week2" / "device" / "raw"
 IDLE_CSV = WEEK2 / "2026-09-22_idle_vbus5v_60s.csv"
 ACTIVE_CSV = WEEK2 / "2026-09-22_active_marker_vbus5v_60s.csv"
 MAP = dict(ep.DEFAULT_MAP)
