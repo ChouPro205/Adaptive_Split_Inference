@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
     require(std::regex_match(options.at("--split"), std::regex("[0-9]")), "split must be 0..9");
     require(std::regex_match(options.at("--samples"), std::regex("[0-9]+")), "invalid samples");
     int split = std::stoi(options.at("--split")), samples = std::stoi(options.at("--samples"));
-    require(samples == 1, "samples must be 1..20");
+    require(samples == 1, "samples must be 1");
     fs::path output = options.at("--output");
     require(!fs::exists(output) && !fs::exists(output.string() + ".partial"), "output already exists");
     auto npy = asi::load_npy(options.at("--input"));
