@@ -1,5 +1,10 @@
 # SV3 tuần 7 — đối soát SV2 và hồ sơ tiếp nhận accuracy
 
+**Bổ sung sau review, hồ sơ ngày 27/10/2026:** evaluator có hai lỗi validation
+đã được sửa tại `18e74ab`; evidence mới 18/18 thường +18/18 `-O` ở
+[hồ sơ sửa lỗi](../ml/provenance/week7-evaluator-fix-20261026/README.md).
+Các số liệu/receipts bên dưới giữ nguyên mốc 26/10; reference không tạo lại.
+
 Ngày đối soát: **26/10/2026, Asia/Saigon**. Kết luận: phần SV3 có đủ đầu vào đã
 hoàn tất; **không đánh dấu toàn bộ tuần 7 DONE**. Accuracy DPU và các xác nhận
 đúng owner còn riêng. Không flash, chạy BLE/E2E hoặc huấn luyện lưới NoPeek.

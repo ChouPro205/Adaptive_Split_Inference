@@ -1,5 +1,8 @@
 # Báo cáo tiến độ SV3 Bùi Kỳ Anh tuần 7
 
+**Sửa evaluator, cập nhật hồ sơ 27/10/2026:** xem §13. Hai lỗi validation đã
+được sửa tại `18e74ab`, tests 18/18 thường và `-O`; reference cũ còn nguyên.
+
 **Cập nhật 26/10/2026:** đã đối soát kết quả SV2 trên main và các nhánh chưa merge;
 xem §12 và [hồ sơ đối soát mới](sv3_week7_reconciliation_20261026.md). Các mốc
 21–22/10 bên dưới giữ nguyên lịch sử, không đại diện trạng thái phụ thuộc mới nhất.
@@ -390,3 +393,36 @@ Phần SV3 có đủ đầu vào đã hoàn tất. Còn chờ output test/proven
 Trung, quyết định numeric theo nhóm, xác nhận ML của Kỳ Anh, revision
 nonce/provisioning của Châu/Trung và buổi demo/nghiệm thu đúng người.
 **Không đánh dấu toàn bộ tuần 7 DONE**, không tự merge hay đổi registry thành ACCEPTED.
+
+## 13. Sửa validation evaluator sau review, hồ sơ ngày 27/10/2026
+
+Review phát hiện hai lỗi ở evaluator `08e4b42`/hồ sơ `0545b47`: danh sách split
+rỗng có thể tạo `results=[]` và CLI exit 0 qua `all([])`; inventory thiếu một
+file reference vẫn cho phép đọc file chưa được hash, có thể tạo PASS sai khi
+baseline bị thay. Các kết quả 9/9 cũ vẫn là lịch sử đúng phạm vi tests lúc đó,
+chưa phủ hai đường lỗi này; không dùng chúng để phủ nhận finding review.
+
+Implementation sửa: **`18e74ab198bd444e6cc0ae5eedaa9969132bd935`**. Manifest
+phải có split list không rỗng, int s0…s9, không bool/duplicate. Inventory phải đủ
+samples, full-FP32 reference, inputs và wire-FP32-tail reference cho mọi split;
+file tồn tại, path/size/hash đều được kiểm trước khi đọc để đánh giá. CLI kiểm
+coverage result đúng toàn bộ split yêu cầu trước ghi report, không thể thành
+công với kết quả rỗng hoặc thiếu split. Giữ schema/gate accuracy hiện hành.
+
+Kiểm mới trên đúng commit sửa: **18/18 thường và 18/18 `-O`**, không skip.
+Reproducer dùng source Git `0545b47` tái hiện hai false-success bằng CLI trên
+SYNTHETIC_TEST_ONLY fixtures; CLI `18e74ab` từ chối cả hai, exit 1 và không tạo
+report. Đồng thời các CLI một split/hai split hợp lệ vẫn exit 0 trong tests.
+
+Bộ reference thật `.cache/week7-reconcile/accuracy-8544-delivery/` vẫn qua
+validation mới: 8 file, 295.210.600 byte, 8.544 IDs, s2/s5/s8; manifest SHA
+`612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c` không đổi.
+Đếm lại 8.393 correct FP32 từ logits có sẵn; không tạo lại input hoặc chạy model.
+Generation pin vẫn `08e4b42`, validation pin là `18e74ab`; không sửa receipts cũ
+để gán source mới. Cả 54 file evidence cũ khớp raw Git blobs tại `0545b47`.
+
+[Evidence sửa lỗi, commands, kết quả và phạm vi](../ml/provenance/week7-evaluator-fix-20261026/README.md),
+[summary kiểm](../ml/provenance/week7-evaluator-fix-20261026/verification.json).
+Không thay gate drop <0,5 điểm phần trăm, baseline/dataset/golden/contract/registry.
+Không có training hoặc phép chạy phần cứng mới. Các nghiệm thu SV2/owner/GVHD
+ở §12 vẫn còn chờ đúng đầu ra và thẩm quyền, không đánh dấu tuần 7 DONE toàn bộ.

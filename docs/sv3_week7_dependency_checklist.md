@@ -1,5 +1,8 @@
 # Checklist SV3 tuần 7 và điều kiện tiếp tục
 
+**Bổ sung sửa evaluator, hồ sơ 27/10/2026:** hai lỗi split rỗng/inventory thiếu
+đã được sửa và kiểm mới 18/18 thường +18/18 `-O` tại `18e74ab`; xem mục cuối.
+
 **Cập nhật mới nhất 26/10/2026:** xem [đối soát SV2](sv3_week7_reconciliation_20261026.md)
 và bảng trạng thái cuối tài liệu. Các mục mô tả ngày 21/10 bên dưới được giữ
 nguyên để bảo toàn lịch sử; không đọc BLOCKED_SV2 cũ thành thiếu receipt hiện tại.
@@ -286,3 +289,32 @@ Không thay trạng thái/hashes/receipt ở các mục lịch sử phía trên.
 Không còn mục SV3 độc lập có đủ đầu vào mà chỉ dừng ở kế hoạch trong phạm vi
 nhiệm vụ này. **Toàn bộ tuần 7 vẫn chưa DONE** do accuracy DPU và các xác nhận
 bên ngoài còn mở; không tự ký, merge hoặc sửa baseline/registry/contract.
+
+## Bổ sung sau review evaluator — hồ sơ 27/10/2026
+
+- **E-05 /validation split: DONE phần sửa.** `split_points` phải là list
+  không rỗng, int s0…s9 không bool hoặc duplicate; CLI từ chối results rỗng,
+  thiếu/trùng/sai split yêu cầu trước khi ghi report hoặc chọn exit thành công.
+- **E-05 /inventory reference: DONE phần sửa.** Buộc đủ `samples.csv`,
+  `reference_fp32.npy`, `inputs_s{s}.npy`, `reference_wire_fp32tail_s{s}.npy`
+  theo mỗi split. Kiểm file/path/size/hash trước đọc để đánh giá; thiếu mục,
+  thiếu file hoặc bytes không đúng đều bị từ chối, không sửa hash để làm PASS.
+- **E-05 /regressions và reference: DONE kiểm mới**, implementation
+  `18e74ab198bd444e6cc0ae5eedaa9969132bd935`: 18/18 thường +18/18 `-O`;
+  CLI hợp lệ 1/2 split, invalid manifests, inventory tamper/missing/path và các
+  gate cũ được phủ. Reproducer xác nhận CLI source `0545b47` từng false-success,
+  còn bản sửa exit 1 không tạo report. Mọi output test là SYNTHETIC_TEST_ONLY.
+- **Bộ reference thật giữ nguyên và hợp lệ:** kiểm mới 8 file, 295.210.600 byte,
+  manifest SHA `612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c`;
+  8.544 IDs tại s2/s5/s8, 8.393 correct FP32 từ logits đã lưu. Không tạo lại
+  inputs/chạy model. Giữ generation pin `08e4b42` và receipts cũ nguyên trạng.
+- **E-05 nghiệm thu DPU vẫn CHỜ SV2:** output thật 8.544×split, status/logits
+  và provenance/quant_info/compile artifacts. Khi nhận, chạy evaluator đã sửa,
+  giữ gate `200*(correct_fp32-correct_dpu) < 8544`; không đợi BLE.
+- **H-02/H-03/L-01 và numeric acceptance:** vẫn cần xác nhận thực tế của
+  Kỳ Anh/Châu/Trung/GVHD theo mục cũ; không tự ký hoặc đổi registry ACCEPTED.
+
+[Evidence mới và hướng dẫn tái kiểm](../ml/provenance/week7-evaluator-fix-20261026/README.md),
+[verification.json](../ml/provenance/week7-evaluator-fix-20261026/verification.json).
+Các trạng thái/tests 9/9 và receipts tại mốc `0545b47` giữ như lịch sử; không
+gán bằng chứng source cũ cho evaluator mới. Toàn bộ tuần 7 vẫn chưa DONE.
