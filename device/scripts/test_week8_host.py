@@ -273,6 +273,64 @@ class LaptopEdge(unittest.TestCase):
                                                           self.set, first, pairs)["checks"].items() if not ok]
         self.assertIn("dongle_logits_equal_edge_logits", failed)
 
+    def external_session(self, records, lines, first, pairs, one=None, log_records=None) -> tuple:
+        """A cycles --peer external directory + a peer log in the PEER_LOG_FIELDS form, imported."""
+        import week8_lab
+        out = Path(tempfile.mkdtemp(dir=TMP))
+        (out / "cdc.log").write_text("".join(f"{i}\t{t}\n" for i, t in enumerate(lines)), encoding="utf-8")
+        (out / "session.json").write_text(json.dumps({
+            "schema": "week8-lab-session/1", "kind": "cycles", "samples": str(SAMPLES), "first_pair": first,
+            "pairs": pairs, "one": list(one) if one else None, "peer": "external: KV260 (test)",
+            "prior_reserved_through": 999}), encoding="utf-8")
+        log = TMP / f"peer_{out.name}.jsonl"
+        with open(log, "w", encoding="utf-8") as handle:
+            handle.write(json.dumps({"ev": "connected", "mtu": 247}) + "\n")
+            for r in (log_records if log_records is not None else records):
+                line = {k: r[k] for k in ("request_id", "rho", "result", "q_sha256", "scale_sha256", "label",
+                                          "t_rx_ms") if k in r}
+                if "sequence" in r:
+                    line["sequence"] = r["sequence"]
+                # Plain numbers, as a KV260 script would most likely write them.
+                line["logits"] = [float(v) for v in w8.logits_from_hex(r["logits"])]
+                handle.write(json.dumps({"ev": "request", **line}) + "\n")
+        code = week8_lab.cmd_import_peer(argparse.Namespace(out=out, peer_log=log))
+        return code, json.loads((out / "check_cycles.json").read_text(encoding="utf-8"))
+
+    def test_external_peer_import(self):
+        first, pairs = 10, 3
+        _, records, lines = self.session(first, pairs)
+        code, report = self.external_session(records, lines, first, pairs)
+        self.assertEqual(code, 0, report["checks"])
+        self.assertNotIn("laptop_tail_logits_equal_reference", report["checks"])
+        self.assertEqual(report["peer"], "KV260 (test)")
+        # One answer with a changed logit (the dongle printed what it received) must fail.
+        bad = [dict(r) for r in records]
+        bad[2]["logits"] = "00000000," + bad[2]["logits"].split(",", 1)[1]
+        with self.assertRaises(ValueError):   # a peer label that is not argmax of its own logits
+            self.external_session(records, lines, first, pairs, log_records=bad)
+        del bad[2]["label"]
+        code, report = self.external_session(records, lines, first, pairs, log_records=bad)
+        self.assertEqual(code, 1)
+        self.assertFalse(report["checks"]["dongle_logits_equal_edge_logits"])
+
+    def test_external_one(self):
+        for n, rho in ((7, "P0"), (7, "P1")):
+            edge = self.edge()
+            seq = 1001 if rho == "P1" else 0
+            frame = w8.build_request(self.set, n, 77, w7.PUBLIC_TEST_KEY if rho == "P1" else None,
+                                     seq if rho == "P1" else None)
+            _, record = edge.handle(frame)
+            sample = self.set.samples[n]
+            lines = ["NONCE status=READY reason=NONE reserved_through=2023 next=1001 session_reserved_sequence=1000",
+                     f"CYCLE i=0 pair=0 rho={rho} n={n} id={sample.sample_id} s=2 rid=0000004d seq={seq} "
+                     f"len={len(frame)} frags=13 mtu=247 ctrl_us=200 head_us=1 quant_us=1 prot_us=1 enc_us=1 "
+                     f"tx_us=1 wait_us=1 enomem=0 invalid=0 nonce_writes=0 status=0 res=OK "
+                     f"logits={record['logits']} label={record['label']} ref={sample.label_ref} match=1",
+                     "ONE END ok=1 label_match=1"]
+            code, report = self.external_session([record], lines, 0, 1, one=(n, rho))
+            self.assertEqual(code, 0, (rho, report["checks"]))
+            self.assertEqual("p1_sequence_in_boot_block" in report["checks"], rho == "P1")
+
     def test_rejects_without_answer(self):
         edge = self.edge()
         frame = w8.build_request(self.set, 3, 9, w7.PUBLIC_TEST_KEY, 50)

@@ -175,9 +175,11 @@ class EdgePeer(week6_lab.Peer):
             self.done.set()
 
 
-def evaluate(records: list, counters: dict, sample_set: w8.SampleSet, first: int, pairs: int) -> dict:
-    """Requests in the W8-D1 order of PAIRS <first> <pairs>; labels against W8-D4."""
-    plan = w8.plan(first, pairs)
+def evaluate(records: list, counters: dict, sample_set: w8.SampleSet, first: int, pairs: int,
+             one: tuple | None = None) -> dict:
+    """Requests in the W8-D1 order of PAIRS <first> <pairs> (or ONE <n> <rho>); labels against W8-D4."""
+    plan = w8.one_plan(*one) if one else w8.plan(first, pairs)
+    want = {rho: sum(1 for p in plan if p[3] == rho) for rho in ("P1", "P0")}
     request_ids = [r.get("request_id") for r in records]
     labels_ok = {rho: sum(1 for r in records if r.get("rho") == rho and r.get("sample") is not None
                           and r.get("label") == sample_set.samples[r["sample"]].label_ref) for rho in ("P1", "P0")}
@@ -189,8 +191,8 @@ def evaluate(records: list, counters: dict, sample_set: w8.SampleSet, first: int
         "request_id_increasing": all(b == (a % 0xFFFFFFFF) + 1 for a, b in zip(request_ids, request_ids[1:])
                                      if a is not None and b is not None),
         "responses_sent": counters["response_sent"] == len(plan),
-        "labels_equal_reference_p1": labels_ok["P1"] == pairs,
-        "labels_equal_reference_p0": labels_ok["P0"] == pairs,
+        "labels_equal_reference_p1": labels_ok["P1"] == want["P1"],
+        "labels_equal_reference_p0": labels_ok["P0"] == want["P0"],
     }
     gaps = [b["t_rx_ms"] - a["t_rx_ms"] for a, b in zip(records, records[1:])]
     tail_us = [r["tail_us"] for r in records if "tail_us" in r]
@@ -199,7 +201,7 @@ def evaluate(records: list, counters: dict, sample_set: w8.SampleSet, first: int
             "labels_equal_reference": labels_ok,
             "first_sequence": sequences[0] if sequences else None,
             "last_sequence": sequences[-1] if sequences else None,
-            "request_lengths": sorted({r["len"] for r in records}),
+            "request_lengths": sorted({r["len"] for r in records if "len" in r}),
             "tail_us": {"min": min(tail_us), "max": max(tail_us)} if tail_us else None,
             "inter_request_ms": {"min": min(gaps), "max": max(gaps)} if gaps else None}
 

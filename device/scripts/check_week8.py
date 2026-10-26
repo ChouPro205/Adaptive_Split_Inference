@@ -6,8 +6,9 @@
           the host C reference of samples.csv (week8_common.load_set), the sample ID and order equal
           the set, every request equals the one built by contracts/i1v2_ref + i2_ref from that
           tensor, and the image reports the W8-D3 set SHA-256 (banner and VERIFY END).
-  cycles  TC3/TC5: PAIRS <first> <pairs> against an edge peer (edge/peer.jsonl + edge/summary.json of
-          week8_lab.py). Device side: every CYCLE OK in the W8-D1 order (pair, sample, rho), one
+  cycles  TC3/TC5: PAIRS <first> <pairs> (or ONE <n> <rho>, --one) against an edge peer
+          (edge/peer.jsonl + edge/summary.json of week8_lab.py: the laptop edge, or an external peer's
+          log brought in with week8_lab.py import-peer). Device side: every CYCLE OK in the W8-D1 order (pair, sample, rho), one
           attempt, no Flash write inside a cycle, P1 sequences inside the block reserved at boot,
           strictly increasing (and above --prior-reserved-through), frame lengths per I1 v2; the
           label printed equals argmax of the printed logits and the reference label (W8-D4) for
@@ -96,10 +97,12 @@ def logits_hex(logits) -> str:
 
 
 def check_cycles(capture, session: Path, sample_set: w8.SampleSet, first: int, pairs: int,
-                 prior_reserved: int | None = None) -> dict:
+                 prior_reserved: int | None = None, one: tuple | None = None) -> dict:
     rows = lines_with(capture, "CYCLE i=")
-    plan = w8.plan(first, pairs)
-    end = lines_with(capture, "PAIRS END")
+    plan = w8.one_plan(*one) if one else w8.plan(first, pairs)
+    want = {rho: sum(1 for p in plan if p[3] == rho) for rho in ("P1", "P0")}
+    covered = {rho: len({p[2] for p in plan if p[3] == rho}) for rho in ("P1", "P0")}
+    end = lines_with(capture, "ONE END" if one else "PAIRS END")
     # The first NONCE line follows the boot reservation (week 7 check_dryrun semantics).
     boot_nonce = next((wc.kv(t) for _, t in capture if t.startswith("NONCE status=")), {})
     reserved_at_boot = int(boot_nonce.get("reserved_through", "0"))
@@ -132,7 +135,6 @@ def check_cycles(capture, session: Path, sample_set: w8.SampleSet, first: int, p
                       and e.get("scale_sha256") == sample.scale_sha256)
         edge_reference.append(e.get("logits") == logits_hex(sample.logits))
     want_len = {rho: w8.frame_length(sample_set, rho) for rho in ("P1", "P0")}
-    covered = min(pairs, w8.SAMPLE_COUNT)
     checks = {
         "cycle_count": len(rows) == len(plan),
         "all_ok": bool(rows) and all(r["res"] == "OK" for r in rows),
@@ -140,22 +142,25 @@ def check_cycles(capture, session: Path, sample_set: w8.SampleSet, first: int, p
         "sample_ids": all(r["id"] == sample_set.samples[int(r["n"])].sample_id for r in rows),
         "single_attempt": all(r["invalid"] == "0" for r in rows),
         "no_flash_write_in_cycle": all(r["nonce_writes"] == "0" for r in rows),
-        "p1_sequence_in_boot_block": block_first > 0 and bool(sequences) and all(
-            block_first <= q <= reserved_at_boot for q in sequences),
-        "p1_sequence_strictly_increasing": all(b > a for a, b in zip(sequences, sequences[1:])),
         "frame_lengths": all(int(r["len"]) == want_len[r["rho"]] for r in rows),
         "label_is_argmax_of_logits": bool(label_from_logits) and all(label_from_logits),
-        "labels_equal_reference_p1": per_rho["P1"]["match"] == pairs and len(per_rho["P1"]["samples"]) == covered,
-        "labels_equal_reference_p0": per_rho["P0"]["match"] == pairs and len(per_rho["P0"]["samples"]) == covered,
-        "pairs_end_totals": len(end) == 1 and end[0].get("ok") == str(2 * pairs)
-                            and end[0].get("label_match") == str(2 * pairs),
+        "labels_equal_reference_p1": per_rho["P1"]["match"] == want["P1"]
+                                     and len(per_rho["P1"]["samples"]) == covered["P1"],
+        "labels_equal_reference_p0": per_rho["P0"]["match"] == want["P0"]
+                                     and len(per_rho["P0"]["samples"]) == covered["P0"],
+        "end_totals": len(end) == 1 and end[0].get("ok") == str(len(plan))
+                      and end[0].get("label_match") == str(len(plan)),
         "dongle_logits_equal_edge_logits": bool(edge_logits) and all(edge_logits),
         "edge_q_scale_equal_samples": bool(edge_q) and all(edge_q),
         "edge_summary_pass": summary.get("status") == "PASS",
     }
     if laptop_peer:
         checks["laptop_tail_logits_equal_reference"] = bool(edge_reference) and all(edge_reference)
-    if prior_reserved is not None:
+    if want["P1"]:
+        checks["p1_sequence_in_boot_block"] = block_first > 0 and bool(sequences) and all(
+            block_first <= q <= reserved_at_boot for q in sequences)
+        checks["p1_sequence_strictly_increasing"] = all(b > a for a, b in zip(sequences, sequences[1:]))
+    if prior_reserved is not None and want["P1"]:
         checks["p1_sequence_above_prior_reservation"] = bool(sequences) and all(q > prior_reserved for q in sequences)
     phases = {}
     for key in ("ctrl_us", "head_us", "quant_us", "prot_us", "enc_us", "tx_us", "wait_us"):
@@ -166,6 +171,7 @@ def check_cycles(capture, session: Path, sample_set: w8.SampleSet, first: int, p
     true_match = sum(1 for r in rows if r["res"] == "OK"
                      and int(r["label"]) == sample_set.samples[int(r["n"])].true_label)
     return {"checks": checks, "peer": summary.get("peer"), "first_pair": first, "pairs": pairs,
+            "one": list(one) if one else None,
             "labels": {rho: {k: (len(v) if k == "samples" else v) for k, v in b.items()}
                        for rho, b in per_rho.items()},
             "label_equals_true_class_cycles": true_match,
@@ -191,6 +197,8 @@ def main() -> int:
     parser.add_argument("--pairs", type=int, default=100, help="cycles: number of pairs")
     parser.add_argument("--prior-reserved-through", type=int,
                         help="cycles: NONCE reserved_through read before this boot/image")
+    parser.add_argument("--one", nargs=2, metavar=("N", "RHO"),
+                        help="cycles: the session ran ONE <n> P1|P0 instead of PAIRS")
     args = parser.parse_args()
     if args.output.exists():
         sys.exit(f"refusing to overwrite {args.output}")
@@ -199,8 +207,9 @@ def main() -> int:
     if args.kind == "verify":
         result = check_verify(capture, sample_set)
     else:
+        one = (int(args.one[0]), args.one[1]) if args.one else None
         result = check_cycles(capture, args.session, sample_set, args.first, args.pairs,
-                              args.prior_reserved_through)
+                              args.prior_reserved_through, one)
     banner = next((t for _, t in capture if t.startswith("READY WEEK8")), "")
     report = {"schema": f"week8-check-{args.kind}/1", "session": str(args.session),
               "status": "PASS" if all(result["checks"].values()) else "FAIL",

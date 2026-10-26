@@ -149,6 +149,11 @@ def plan(first: int, count: int, sample_count: int = SAMPLE_COUNT) -> list:
     return out
 
 
+def one_plan(sample: int, rho: str) -> list:
+    """[(cycle, pair, sample, rho)] of ONE <n> P1|P0 (printed as cycle 0 of pair 0)."""
+    return [(0, 0, sample, rho)]
+
+
 def logits_from_hex(text: str) -> tuple:
     """'3f800000,...' (FP32 bits as printed by the firmware) -> five floats."""
     return tuple(struct.unpack("<f", struct.pack("<I", int(h, 16)))[0] for h in text.split(","))
