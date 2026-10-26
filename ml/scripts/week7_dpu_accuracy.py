@@ -124,17 +124,51 @@ def error_stats(actual, reference):
             'per_class_max_abs':errors.max(axis=0).tolist(), 'gate':'DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD'}
 
 
-def evaluate(reference, outputs):
-    from evaluate_week5_v2 import strict_accuracy_gate
+def validate_split_points(splits):
+    need(isinstance(splits, list) and bool(splits), 'split_points must be a nonempty list')
+    need(all(type(s) is int and 0 <= s <= 9 for s in splits),
+         'split_points must contain integers s0..s9, not bool or other types')
+    need(len(set(splits)) == len(splits), 'split_points must not contain duplicates')
+
+
+def validate_reference(reference):
+    """Authenticate the complete required inventory before any evaluation reads."""
     manifest = read(reference/'manifest.json')
     need(manifest['schema'] == 'sv3-week7-dpu-reference/1' and manifest['count'] == 8544,
          'Wrong frozen reference schema/count')
     need(manifest['checkpoint_sha256'] == CHECKPOINT and manifest['class_order'] == CLASSES, 'Reference identity differs')
-    for p,entry in manifest['files'].items():
+    validate_split_points(manifest.get('split_points'))
+    inventory = manifest.get('files')
+    need(isinstance(inventory, dict), 'Reference inventory must be an object')
+    required = {'samples.csv', 'reference_fp32.npy'}
+    for s in manifest['split_points']:
+        required.update((f'inputs_s{s}.npy', f'reference_wire_fp32tail_s{s}.npy'))
+    missing = required - inventory.keys()
+    need(not missing, 'Missing required reference inventory entries: ' + ', '.join(sorted(missing)))
+    directory = reference.resolve()
+    for p,entry in inventory.items():
         candidate = reference/p
-        need(candidate.resolve().is_relative_to(reference.resolve()), 'Unsafe reference member')
-        need(sha(candidate)==entry['sha256'] and candidate.stat().st_size==entry['size_bytes'],
+        need(candidate.resolve().is_relative_to(directory), 'Unsafe reference member')
+        need(candidate.is_file(), 'Missing reference file: '+p)
+        need(candidate.stat().st_size==entry['size_bytes'] and sha(candidate)==entry['sha256'],
              'Reference file differs: '+p)
+    return manifest
+
+
+def ensure_result_coverage(result):
+    """Refuse empty, duplicate or partial split results at the CLI boundary."""
+    requested = result.get('requested_split_points')
+    validate_split_points(requested)
+    rows = result.get('results')
+    need(isinstance(rows, list) and bool(rows), 'No evaluated split results')
+    actual = [r.get('split_point_s') for r in rows]
+    need(all(type(s) is int for s in actual) and len(actual)==len(requested) and
+         set(actual)==set(requested), 'Results do not cover requested splits exactly')
+
+
+def evaluate(reference, outputs):
+    from evaluate_week5_v2 import strict_accuracy_gate
+    manifest = validate_reference(reference)
     samples = read_csv(reference/'samples.csv')
     need(len(samples)==8544 and len({r['sample_id'] for r in samples})==8544, 'Reference IDs differ')
     ids = {r['sample_id']:i for i,r in enumerate(samples)}
@@ -219,10 +253,11 @@ def evaluate(reference, outputs):
             'evaluator_sha256':sha(__file__), 'reference_manifest_sha256':sha(reference/'manifest.json'),
             'output_sha256':sha(outputs), 'class_order':CLASSES, 'backend_provenance':provenance,
             'gate':'200*(correct_fp32-correct_dpu) < 8544; missing/failure prevents acceptance',
-            'scope':'Offline accuracy only; no BLE/E2E/privacy or signature acceptance','results':results}
+            'scope':'Offline accuracy only; no BLE/E2E/privacy or signature acceptance',
+            'requested_split_points':manifest['split_points'], 'results':results}
 
 
-if __name__=='__main__':
+def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     sub=p.add_subparsers(dest='command',required=True)
     prep=sub.add_parser('prepare')
@@ -234,13 +269,19 @@ if __name__=='__main__':
     ev.add_argument('--reference',type=Path,required=True)
     ev.add_argument('--outputs',type=Path,required=True)
     ev.add_argument('--output',type=Path,required=True)
-    args=p.parse_args()
+    args=p.parse_args(argv)
     if args.command=='prepare':
         m=prepare(args.output,args.model_package,tuple(args.splits),args.batch_size)
         print(m['status'], 'FP32 correct:', m['fp32_baseline_metrics']['correct'])
+        return 0
     else:
         need(not args.output.exists(),'Refuse to overwrite evaluation')
         result=evaluate(args.reference,args.outputs)
+        ensure_result_coverage(result)
         write(args.output,result)
         print([(r['split_point_s'],r['status']) for r in result['results']])
-        sys.exit(0 if all(r['status']=='PASS_ACCURACY_GATE' for r in result['results']) else 1)
+        return 0 if all(r['status']=='PASS_ACCURACY_GATE' for r in result['results']) else 1
+
+
+if __name__=='__main__':
+    sys.exit(main())
