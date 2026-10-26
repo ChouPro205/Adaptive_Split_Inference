@@ -19,6 +19,7 @@ import ctypes
 import hashlib
 import json
 import os
+import re
 import shutil
 import struct
 import subprocess
@@ -26,6 +27,8 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+
+import numpy as np
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -273,7 +276,8 @@ class LaptopEdge(unittest.TestCase):
                                                           self.set, first, pairs)["checks"].items() if not ok]
         self.assertIn("dongle_logits_equal_edge_logits", failed)
 
-    def external_session(self, records, lines, first, pairs, one=None, log_records=None) -> tuple:
+    def external_session(self, records, lines, first, pairs, one=None, log_records=None,
+                         edge_reference=None) -> tuple:
         """A cycles --peer external directory + a peer log in the PEER_LOG_FIELDS form, imported."""
         import week8_lab
         out = Path(tempfile.mkdtemp(dir=TMP))
@@ -293,7 +297,7 @@ class LaptopEdge(unittest.TestCase):
                 # Plain numbers, as a KV260 script would most likely write them.
                 line["logits"] = [float(v) for v in w8.logits_from_hex(r["logits"])]
                 handle.write(json.dumps({"ev": "request", **line}) + "\n")
-        code = week8_lab.cmd_import_peer(argparse.Namespace(out=out, peer_log=log))
+        code = week8_lab.cmd_import_peer(argparse.Namespace(out=out, peer_log=log, edge_reference=edge_reference))
         return code, json.loads((out / "check_cycles.json").read_text(encoding="utf-8"))
 
     def test_external_peer_import(self):
@@ -312,6 +316,52 @@ class LaptopEdge(unittest.TestCase):
         code, report = self.external_session(records, lines, first, pairs, log_records=bad)
         self.assertEqual(code, 1)
         self.assertFalse(report["checks"]["dongle_logits_equal_edge_logits"])
+
+    def test_external_edge_reference(self):
+        """W8-D8: an INT8 peer (logits on a 0.125 grid, one label flipped vs W8-D4) passes against its
+        own offline run, fails against W8-D4, and fails when the offline logits differ by one bit."""
+        first, pairs = 20, 2
+        _, records, lines = self.session(first, pairs)
+        offline = {n: np.array(s.logits, np.float32) for n, s in enumerate(self.set.samples)}
+        for n in {r["sample"] for r in records}:
+            v = np.round(offline[n] * 8) / 8
+            if n == first:
+                v[(self.set.samples[n].label_ref + 1) % 5] = v.max() + 1
+            offline[n] = v.astype(np.float32)
+        for r in records:
+            r["logits"] = check_week8.logits_hex(offline[r["sample"]])
+            r["label"] = w8.label(tuple(float(x) for x in offline[r["sample"]]))
+        fixed = []
+        for t in lines:
+            m = re.search(r" n=(\d+) ", t)
+            if t.startswith("CYCLE") and m:
+                n = int(m.group(1))
+                label = w8.label(tuple(float(x) for x in offline[n]))
+                t = re.sub(r"logits=\S+ label=\d+ ref=(\d+) match=\d",
+                           lambda g: f"logits={check_week8.logits_hex(offline[n])} label={label} ref={g.group(1)} "
+                                     f"match={int(label == self.set.samples[n].label_ref)}", t)
+            fixed.append(t)
+
+        def reference(change_bit=False) -> Path:
+            path = Path(tempfile.mkstemp(dir=TMP, suffix=".jsonl")[1])
+            with open(path, "w", encoding="utf-8") as handle:
+                for n, s in enumerate(self.set.samples):
+                    v = offline[n].copy()
+                    if change_bit and n == first + 1:
+                        v.view("<u4")[0] ^= 1
+                    handle.write(json.dumps({"sample_id": s.sample_id, "logits": [float(x) for x in v]}) + "\n")
+            return path
+
+        code, report = self.external_session(records, fixed, first, pairs, edge_reference=reference())
+        self.assertEqual(code, 0, report["checks"])
+        self.assertTrue(report["checks"]["dongle_logits_equal_edge_offline"])
+        self.assertEqual(report["labels_equal_w8d4_fp32"], {"P1": 1, "P0": 1})
+        code, report = self.external_session(records, fixed, first, pairs)
+        self.assertEqual(code, 1)
+        self.assertFalse(report["checks"]["labels_equal_reference_p1"])
+        code, report = self.external_session(records, fixed, first, pairs, edge_reference=reference(True))
+        self.assertEqual(code, 1)
+        self.assertFalse(report["checks"]["dongle_logits_equal_edge_offline"])
 
     def test_external_one(self):
         for n, rho in ((7, "P0"), (7, "P1")):

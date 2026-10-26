@@ -176,13 +176,15 @@ class EdgePeer(week6_lab.Peer):
 
 
 def evaluate(records: list, counters: dict, sample_set: w8.SampleSet, first: int, pairs: int,
-             one: tuple | None = None) -> dict:
-    """Requests in the W8-D1 order of PAIRS <first> <pairs> (or ONE <n> <rho>); labels against W8-D4."""
+             one: tuple | None = None, labels: tuple | None = None) -> dict:
+    """Requests in the W8-D1 order of PAIRS <first> <pairs> (or ONE <n> <rho>); labels against W8-D4,
+    or against `labels` (per set index: the peer's offline reference, W8-D8)."""
     plan = w8.one_plan(*one) if one else w8.plan(first, pairs)
     want = {rho: sum(1 for p in plan if p[3] == rho) for rho in ("P1", "P0")}
+    target = labels or tuple(s.label_ref for s in sample_set.samples)
     request_ids = [r.get("request_id") for r in records]
     labels_ok = {rho: sum(1 for r in records if r.get("rho") == rho and r.get("sample") is not None
-                          and r.get("label") == sample_set.samples[r["sample"]].label_ref) for rho in ("P1", "P0")}
+                          and r.get("label") == target[r["sample"]]) for rho in ("P1", "P0")}
     checks = {
         "count": len(records) == len(plan),
         "all_ok": bool(records) and all(r.get("result") == "OK" for r in records),

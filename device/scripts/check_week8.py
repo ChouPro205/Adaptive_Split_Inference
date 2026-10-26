@@ -14,7 +14,10 @@
           label printed equals argmax of the printed logits and the reference label (W8-D4) for
           every sample, per rho. Cross-checks: the dongle's logits equal the edge's, bit for bit,
           per request_id; the edge recovered exactly the samples' q/scale (P1 unprotect bit-exact);
-          laptop peer only: the edge logits equal reference_s2.npz bit for bit.
+          laptop peer only: the edge logits equal reference_s2.npz bit for bit. --edge-reference (W8-D8,
+          a peer whose tail is not the FP32 one, e.g. the KV260 INT8 DPU): labels are judged against
+          that peer's offline run of the same q/scale and the dongle's logits must equal it bit for bit;
+          agreement with W8-D4 is reported, not required.
           DWT phase times summarized (laptop power: debug only, never energy numbers).
 Exit 0 = PASS. Writes a JSON report to a new --output path.
 """
@@ -97,7 +100,8 @@ def logits_hex(logits) -> str:
 
 
 def check_cycles(capture, session: Path, sample_set: w8.SampleSet, first: int, pairs: int,
-                 prior_reserved: int | None = None, one: tuple | None = None) -> dict:
+                 prior_reserved: int | None = None, one: tuple | None = None,
+                 edge_ref: w8.EdgeReference | None = None) -> dict:
     rows = lines_with(capture, "CYCLE i=")
     plan = w8.one_plan(*one) if one else w8.plan(first, pairs)
     want = {rho: sum(1 for p in plan if p[3] == rho) for rho in ("P1", "P0")}
@@ -114,6 +118,7 @@ def check_cycles(capture, session: Path, sample_set: w8.SampleSet, first: int, p
     laptop_peer = str(summary.get("peer", "")).startswith("laptop")
     per_rho = {rho: {"match": 0, "mismatch": 0, "failed": 0, "samples": set()} for rho in ("P1", "P0")}
     label_from_logits, edge_logits, edge_q, edge_reference, mismatches = [], [], [], [], []
+    offline_logits, fp32_label = [], {"P1": 0, "P0": 0}
     for r in rows:
         n, rho = int(r["n"]), r["rho"]
         sample = sample_set.samples[n]
@@ -124,11 +129,17 @@ def check_cycles(capture, session: Path, sample_set: w8.SampleSet, first: int, p
             continue
         label = int(r["label"])
         label_from_logits.append(w8.label(w8.logits_from_hex(r["logits"])) == label)
-        ok = label == sample.label_ref and int(r["ref"]) == sample.label_ref and r["match"] == "1"
+        fp32_label[rho] += label == sample.label_ref
+        if edge_ref:   # W8-D8: the peer's offline labels; the firmware's ref/match stay W8-D4 (FP32)
+            ok = label == edge_ref.labels[n] and int(r["ref"]) == sample.label_ref
+            offline_logits.append(r["logits"] == edge_ref.logits_hex[n])
+        else:
+            ok = label == sample.label_ref and int(r["ref"]) == sample.label_ref and r["match"] == "1"
         bucket["match" if ok else "mismatch"] += 1
         bucket["samples"].add(n)
         if not ok:
-            mismatches.append({"i": int(r["i"]), "n": n, "rho": rho, "label": label, "ref": sample.label_ref})
+            mismatches.append({"i": int(r["i"]), "n": n, "rho": rho, "label": label, "ref": sample.label_ref,
+                               "edge_reference_label": edge_ref.labels[n] if edge_ref else None})
         e = edge.get(int(r["rid"], 16), {})
         edge_logits.append(e.get("logits") == r["logits"])
         edge_q.append(e.get("sample") == n and e.get("q_sha256") == sample.q_sha256
@@ -149,13 +160,15 @@ def check_cycles(capture, session: Path, sample_set: w8.SampleSet, first: int, p
         "labels_equal_reference_p0": per_rho["P0"]["match"] == want["P0"]
                                      and len(per_rho["P0"]["samples"]) == covered["P0"],
         "end_totals": len(end) == 1 and end[0].get("ok") == str(len(plan))
-                      and end[0].get("label_match") == str(len(plan)),
+                      and (edge_ref is not None or end[0].get("label_match") == str(len(plan))),
         "dongle_logits_equal_edge_logits": bool(edge_logits) and all(edge_logits),
         "edge_q_scale_equal_samples": bool(edge_q) and all(edge_q),
         "edge_summary_pass": summary.get("status") == "PASS",
     }
     if laptop_peer:
         checks["laptop_tail_logits_equal_reference"] = bool(edge_reference) and all(edge_reference)
+    if edge_ref:
+        checks["dongle_logits_equal_edge_offline"] = bool(offline_logits) and all(offline_logits)
     if want["P1"]:
         checks["p1_sequence_in_boot_block"] = block_first > 0 and bool(sequences) and all(
             block_first <= q <= reserved_at_boot for q in sequences)
@@ -172,6 +185,9 @@ def check_cycles(capture, session: Path, sample_set: w8.SampleSet, first: int, p
                      and int(r["label"]) == sample_set.samples[int(r["n"])].true_label)
     return {"checks": checks, "peer": summary.get("peer"), "first_pair": first, "pairs": pairs,
             "one": list(one) if one else None,
+            "label_reference": f"W8-D8 peer offline {edge_ref.path} sha256 {edge_ref.sha256}" if edge_ref
+                               else "W8-D4 prediction_int8_fp16 (FP32 tail)",
+            "labels_equal_w8d4_fp32": fp32_label,
             "labels": {rho: {k: (len(v) if k == "samples" else v) for k, v in b.items()}
                        for rho, b in per_rho.items()},
             "label_equals_true_class_cycles": true_match,
@@ -199,6 +215,8 @@ def main() -> int:
                         help="cycles: NONCE reserved_through read before this boot/image")
     parser.add_argument("--one", nargs=2, metavar=("N", "RHO"),
                         help="cycles: the session ran ONE <n> P1|P0 instead of PAIRS")
+    parser.add_argument("--edge-reference", type=Path,
+                        help="cycles: the peer's offline logits of the 100 samples (W8-D8, KV260 INT8 tail)")
     args = parser.parse_args()
     if args.output.exists():
         sys.exit(f"refusing to overwrite {args.output}")
@@ -208,8 +226,9 @@ def main() -> int:
         result = check_verify(capture, sample_set)
     else:
         one = (int(args.one[0]), args.one[1]) if args.one else None
+        edge_ref = w8.load_edge_reference(args.edge_reference, sample_set) if args.edge_reference else None
         result = check_cycles(capture, args.session, sample_set, args.first, args.pairs,
-                              args.prior_reserved_through, one)
+                              args.prior_reserved_through, one, edge_ref)
     banner = next((t for _, t in capture if t.startswith("READY WEEK8")), "")
     report = {"schema": f"week8-check-{args.kind}/1", "session": str(args.session),
               "status": "PASS" if all(result["checks"].values()) else "FAIL",

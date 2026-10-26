@@ -9,6 +9,7 @@
   import-peer  the external peer's request log (JSON lines, PEER_LOG_FIELDS) -> edge/peer.jsonl
           (normalized; the raw file kept as edge/peer_raw.jsonl), edge/summary.json, then
           check_week8.py cycles. The W8-D3 sample of each request is found from its q/scale SHA-256.
+          --edge-reference: labels judged against the peer's offline logits (W8-D8, KV260 INT8 tail).
           Laptop power: labels/logits are G2 evidence, timings are debug only.
 Each run writes a NEW --out directory: cdc.log (week 6 format), session.json, check_<kind>.json and
 for cycles edge/ (peer.jsonl, tail.log, summary.json). USB CDC/BLE helpers are week6_lab's,
@@ -286,15 +287,19 @@ def cmd_import_peer(args) -> int:
         for r in records:
             handle.write(json.dumps({"ev": "request", **r}) + "\n")
     one = tuple(record["one"]) if record.get("one") else None
-    result = edge_mod.evaluate(records, counters, sample_set, record["first_pair"], record["pairs"], one)
+    edge_ref = w8.load_edge_reference(args.edge_reference, sample_set) if args.edge_reference else None
+    result = edge_mod.evaluate(records, counters, sample_set, record["first_pair"], record["pairs"], one,
+                               edge_ref.labels if edge_ref else None)
     wc.write_new_json(edge / "summary.json", {
         "schema": "week8-external-peer/1", "peer": record["peer"].removeprefix("external: "),
         "source_log": str(args.peer_log), "source_log_sha256": wc.sha256_file(raw),
         "imported_utc": datetime.now(timezone.utc).isoformat(), "counters": counters,
-        "set_sha256": sample_set.set_sha256, "field_spec": PEER_LOG_FIELDS, **result,
+        "set_sha256": sample_set.set_sha256, "field_spec": PEER_LOG_FIELDS,
+        "label_reference": {"path": edge_ref.path, "sha256": edge_ref.sha256} if edge_ref else "W8-D4", **result,
         "tool_sha256": {n: wc.sha256_file(HERE / n) for n in ("week8_lab.py", "week8_edge.py", "week8_common.py")}})
     print(f"peer log: {len(records)} requests, {counters}")
-    return checker("cycles", out, Path(record["samples"]), checker_args(record))
+    extra = checker_args(record) + (["--edge-reference", str(args.edge_reference)] if edge_ref else [])
+    return checker("cycles", out, Path(record["samples"]), extra)
 
 
 def main() -> int:
@@ -328,6 +333,8 @@ def main() -> int:
     p = sub.add_parser("import-peer")
     p.add_argument("--out", type=Path, required=True, help="the cycles --peer external directory")
     p.add_argument("--peer-log", type=Path, required=True, help="request log of the external peer")
+    p.add_argument("--edge-reference", type=Path,
+                   help="the peer's offline logits of the 100 samples (W8-D8: KV260 predictions.jsonl)")
     p.set_defaults(func=cmd_import_peer)
     args = parser.parse_args()
     return args.func(args)

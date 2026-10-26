@@ -149,6 +149,37 @@ def plan(first: int, count: int, sample_count: int = SAMPLE_COUNT) -> list:
     return out
 
 
+@dataclass(frozen=True)
+class EdgeReference:
+    """W8-D8: the peer's own tail run offline on the 100 W8-D3 q/scale (the KV260 DPU tail is INT8,
+    so its labels need not equal W8-D4; G2 then means the dongle reads exactly these logits)."""
+    path: str
+    sha256: str
+    logits_hex: tuple      # per set index, the firmware's text (5 FP32 bit patterns)
+    labels: tuple          # per set index, label() of those logits
+
+
+def load_edge_reference(path: Path, sample_set: SampleSet) -> EdgeReference:
+    """One JSON line per sample with sample_id and logits (5 numbers), e.g. the KV260 offline
+    predictions.jsonl; every sample of the set exactly once, any order."""
+    index = {s.sample_id: n for n, s in enumerate(sample_set.samples)}
+    logits = [None] * SAMPLE_COUNT
+    for line in Path(path).read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        n = index[row["sample_id"]]
+        values = np.array(row["logits"], dtype=np.float64)
+        if logits[n] is not None or values.shape != (5,) or not np.array_equal(values.astype("<f4"), values):
+            raise ValueError(f"{path}: {row['sample_id']} repeated or logits not 5 FP32 values")
+        logits[n] = values.astype("<f4")
+    if any(v is None for v in logits):
+        raise ValueError(f"{path}: {logits.count(None)} samples of the set missing")
+    return EdgeReference(str(path), sha256_hex(Path(path).read_bytes()),
+                         tuple(",".join(f"{w:08x}" for w in v.view("<u4").tolist()) for v in logits),
+                         tuple(label(tuple(float(x) for x in v)) for v in logits))
+
+
 def one_plan(sample: int, rho: str) -> list:
     """[(cycle, pair, sample, rho)] of ONE <n> P1|P0 (printed as cycle 0 of pair 0)."""
     return [(0, 0, sample, rho)]
