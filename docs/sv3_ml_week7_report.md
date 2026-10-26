@@ -1,5 +1,9 @@
 # Báo cáo tiến độ SV3 Bùi Kỳ Anh tuần 7
 
+**Cập nhật 26/10/2026:** đã đối soát kết quả SV2 trên main và các nhánh chưa merge;
+xem §12 và [hồ sơ đối soát mới](sv3_week7_reconciliation_20261026.md). Các mốc
+21–22/10 bên dưới giữ nguyên lịch sử, không đại diện trạng thái phụ thuộc mới nhất.
+
 **Người thực hiện:** SV3/Bùi Kỳ Anh, phụ trách Model/Privacy và NoPeek offline.
 **Ngày lập bản kỹ thuật:** 21/10/2026, múi giờ Asia/Saigon.
 **Ngày chuẩn hóa báo cáo tại root docs:** 22/10/2026.
@@ -337,3 +341,52 @@ sau khi đã biên tập docs hoặc đồng bộ main mới. Không sửa audit
 
 Phiên chuẩn hóa ngày 22/10 chỉ chỉnh tài liệu. Các kết quả ML/MCU/DPU không được
 gọi là đã chạy mới ở phiên biên tập báo cáo này.
+
+## 12. Đối soát SV2 và hoàn thiện SV3 ngày 26/10/2026
+
+Main đã fetch: `d91fe27cc83e617d8a86ad7d6731687eea518d6a`; PR34 và PR36 đã
+merge, PR38 SV2 vẫn mở và không có output DPU test mới. Nhánh SV1 có cùng tree
+với main. Dùng worktree/branch SV3 mới, bảo toàn checkout gốc và công việc cũ.
+Implementation mới: `08e4b4259a2757be7b663b88cc1c98607602d266`.
+
+Đã đối soát P1 A+B, version/ZIP/manifest, checkpoint/registry/profile/wire IDs,
+model/source/runtime/calibration, 100 dòng cases và 22 nhóm backend/split.
+P1 input raw từ gói SV3 đúng hash; source bindings lịch sử và measured Git blobs
+khớp. Tái tính 50/50 argmax match mỗi backend, HOST max-abs
+`1.430511474609375e-6`, KV260 `0.40645813941955566`; 46 tail +4 identity mỗi
+backend, chỉ 5 ECG val và prediction/reference argmax đều N. Đây không phải
+accuracy độc lập hay coverage S/V/F/Q. Raw output/NPY/binary board chỉ có
+inventory trên Git, chưa được SV3 tự đọc lại. Numeric INT8/DPU acceptance vẫn riêng.
+
+s2/s5/s8 có runtime root CPU+DPU và model hashes khớp các tuần 5/6/7. Review
+load/first/steady theo profile đã có; giữ ba split để chuẩn bị tuần 8. Không lấy
+thời gian Edge riêng làm tối ưu toàn hệ thống. dCor/objective/loader/config và
+smoke evidence giữ đúng pin, không chạy lại training vì không có thay đổi tensor,
+split hay checkpoint. Không có grid dài, tấn công hoặc kết luận privacy mới.
+
+Đã tạo manifest, 8.544 sample IDs, inputs/ref FP32 và wire+FP32-tail s2/s5/s8,
+evaluator nhận output DPU theo ID và báo missing/failure/confusion/per-class/error.
+FP32 tính lại 8.393/8.544 correct, khớp số lịch sử. Gate accuracy giữ
+`200*(correct_fp32-correct_dpu) < 8544`, drop <0,5 điểm phần trăm; output thiếu/lỗi
+không được nghiệm thu, không tự áp ngưỡng logit FP32 cho DPU. Bộ tiếp nhận đã
+sẵn sàng; **chưa có output DPU full-test** nên chưa thể đo accuracy DPU.
+
+Kiểm mới trên implementation nói trên: audit PASS; bộ tests tiếp nhận/audit
+**9/9 thường và 9/9 `-O`**; prepare 8.544×3 và demo read-only dCor/gradient/loss
+đều exit 0. Source/log SHA và argv nằm trong
+[receipts](../ml/provenance/week7-reconcile-20261026/). Các lượt lỗi phát triển
+giữ riêng, không gọi là PASS. Demo do Codex chạy không chứng nhận Kỳ Anh đã học
+hiểu hoặc trình diễn cho GVHD.
+
+Đầu ra để review:
+
+- [Đối soát đầy đủ, bảng nguồn/hash, profiling, các lệnh đã chạy và đầu ra SV2 còn thiếu](sv3_week7_reconciliation_20261026.md).
+- [Checklist cập nhật](sv3_week7_dependency_checklist.md), tách phần đã xong,
+  chờ output SV2, chờ owner và tuần 8/sau.
+- [Dự thảo xác nhận ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md), **chưa ký**.
+- [Demo guide](sv3_week7_demo_guide.md), sẵn sàng cho Kỳ Anh tự chạy/giải thích.
+
+Phần SV3 có đủ đầu vào đã hoàn tất. Còn chờ output test/provenance thật của
+Trung, quyết định numeric theo nhóm, xác nhận ML của Kỳ Anh, revision
+nonce/provisioning của Châu/Trung và buổi demo/nghiệm thu đúng người.
+**Không đánh dấu toàn bộ tuần 7 DONE**, không tự merge hay đổi registry thành ACCEPTED.

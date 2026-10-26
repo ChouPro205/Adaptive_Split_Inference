@@ -37,6 +37,9 @@ và báo cáo của dự án.
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 7](sv3_ml_week7_report.md): dCor,
   NoPeek smoke offline và cấu hình tuần 8; không thay nghiệm thu KV260
 - [Checklist phụ thuộc SV3 tuần 7](sv3_week7_dependency_checklist.md)
+- [SV3 đối soát SV2 ngày 26/10, runtime/profiling và chuẩn bị accuracy DPU](sv3_week7_reconciliation_20261026.md)
+- [Dự thảo xác nhận ML I1 v2, chờ Kỳ Anh review](sv3_week7_ml_i1v2_confirmation_draft.md)
+- [Demo SV3 tuần 7: dCor, gradients và loss NoPeek](sv3_week7_demo_guide.md)
 - [SV3: sửa verifier FP32 tuần 3 trên Ubuntu/WSL](sv3_ml_week3_linux_fp32_fix_report.md)
 - [SV3 Linux FP32 review v2: bảo toàn provenance và recipe](sv3_ml_week3_linux_fp32_review_v2_report.md)
 - [SV3 → SV2: bàn giao Week 3 FP32 Linux](sv3_sv2_week3_linux_fp32_handoff.md)

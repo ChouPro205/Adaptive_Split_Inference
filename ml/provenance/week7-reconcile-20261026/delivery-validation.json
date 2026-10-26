@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "implementation_commit": "08e4b4259a2757be7b663b88cc1c98607602d266",
+  "delivery_commands": [
+    "delivery-accuracy-prepare.command.json",
+    "delivery-audit.command.json",
+    "delivery-demo.command.json",
+    "delivery-tests-O.command.json",
+    "delivery-tests.command.json"
+  ],
+  "new_local_links_checked": 28,
+  "audit_input_hashes_checked": 20,
+  "prepared_source_hashes_checked": 7,
+  "validator_sha256": "4456cb96dcd386b6862f2a087249f8ddb80ee5e56feb0d26a8cde5520754c004",
+  "git_diff_check_exit": 0,
+  "historical_report_and_checklist_bodies_preserved": true
+}

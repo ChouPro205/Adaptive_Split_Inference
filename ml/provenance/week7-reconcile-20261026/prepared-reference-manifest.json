@@ -1,0 +1,396 @@
+{
+  "schema": "sv3-week7-dpu-reference/1",
+  "status": "PREPARED_NOT_DPU_ACCEPTANCE",
+  "source_commit": "08e4b4259a2757be7b663b88cc1c98607602d266",
+  "source_sha256": {
+    "ml/scripts/week7_dpu_accuracy.py": "2c54857b7a19ba7d44dac463064ec3dd1c844cbe46c44c2cbb70f3a060c0ce06",
+    "ml/scripts/review_week7_sv2.py": "3e7e12d90abdb6e432901416a4e3f8e92ac3ade8a7c5bc3c7e4636f9622796f7",
+    "ml/scripts/week5_common_v2.py": "b7480d19bcc2932805547b25bc0cc5e5ab4b62276384c4ee63d065302cb3caf2",
+    "ml/scripts/evaluate_week5_v2.py": "a6c0f49957f95ed2a8a6070cfbf91473be0146c9fe79d1d98d86794c41ab4ce6",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+    "ml/src/quantization.py": "cb2c6260784fddf43a6fa620d0b258efae643cf98d9399f9625c21d8f14faa3f",
+    "ml/src/mitdb_week2_data.py": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907"
+  },
+  "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "model_manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+  "class_order": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "count": 8544,
+  "split_points": [
+    2,
+    5,
+    8
+  ],
+  "batch_size_reference": 32,
+  "dataset": {
+    "dataset": {
+      "name": "MIT-BIH Arrhythmia Database",
+      "slug": "mitdb",
+      "version": "1.0.0",
+      "source_url": "https://physionet.org/files/mitdb/1.0.0/",
+      "landing_page": "https://physionet.org/content/mitdb/1.0.0/",
+      "doi": "10.13026/C2F305",
+      "license": "Open Data Commons Attribution License v1.0"
+    },
+    "label_mapping": {
+      "N": 0,
+      "S": 1,
+      "V": 2,
+      "F": 3,
+      "Q": 4
+    },
+    "identifiers": {
+      "week1_config_sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54",
+      "patient_manifest_sha256": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe",
+      "normalization_sha256": "37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c",
+      "processed_manifest_sha256": "f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c",
+      "processed_artifacts": {
+        "train_X.npy": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f",
+        "train_y.npy": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752",
+        "train_metadata.csv": "86c5c3a634fc5adfca09ec2f8378efb0d52f21205cfaf9470432f89ffdc0977a",
+        "val_X.npy": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732",
+        "val_y.npy": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43",
+        "val_metadata.csv": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+        "test_X.npy": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e",
+        "test_y.npy": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6",
+        "test_metadata.csv": "02a6a91c0e35710d0be13f10b2360e034918f546b3ba2c7df7a2fd484ecd1178"
+      }
+    },
+    "preprocessing": {
+      "lead": {
+        "preferred": "MLII",
+        "selection_rule": "select_by_name",
+        "excluded_records_missing_mlii": [
+          "102",
+          "104"
+        ]
+      },
+      "segmentation": {
+        "sampling_rate_hz": 360,
+        "window_size": 360,
+        "left_samples": 180,
+        "right_samples": 180,
+        "center": "expert_annotation",
+        "boundary_policy": "drop"
+      },
+      "filtering": {
+        "enabled": false
+      },
+      "normalization": {
+        "method": "z_score",
+        "fit_split": "train",
+        "mean": -0.2912026352134608,
+        "std": 0.45653058276514263
+      }
+    },
+    "resample": "none; native 360 Hz",
+    "split_manifest": "ml/manifests/mitdb_patient_split.csv",
+    "patient_leakage_check": "PASS; official metadata incl. records 201/202 as one patient",
+    "splits": {
+      "train": {
+        "num_samples": 81094,
+        "class_counts": {
+          "N": 69215,
+          "S": 1275,
+          "V": 5927,
+          "F": 790,
+          "Q": 3887
+        },
+        "patient_ids": [
+          "P100",
+          "P103",
+          "P106",
+          "P107",
+          "P108",
+          "P109",
+          "P112",
+          "P113",
+          "P114",
+          "P115",
+          "P117",
+          "P118",
+          "P121",
+          "P123",
+          "P124",
+          "P200",
+          "P201_202",
+          "P203",
+          "P208",
+          "P209",
+          "P210",
+          "P212",
+          "P213",
+          "P214",
+          "P215",
+          "P217",
+          "P220",
+          "P221",
+          "P222",
+          "P223",
+          "P230",
+          "P231",
+          "P233",
+          "P234"
+        ],
+        "record_ids": [
+          "100",
+          "103",
+          "106",
+          "107",
+          "108",
+          "109",
+          "112",
+          "113",
+          "114",
+          "115",
+          "117",
+          "118",
+          "121",
+          "123",
+          "124",
+          "200",
+          "201",
+          "202",
+          "203",
+          "208",
+          "209",
+          "210",
+          "212",
+          "213",
+          "214",
+          "215",
+          "217",
+          "220",
+          "221",
+          "222",
+          "223",
+          "230",
+          "231",
+          "233",
+          "234"
+        ]
+      },
+      "val": {
+        "num_samples": 15388,
+        "class_counts": {
+          "N": 13003,
+          "S": 1493,
+          "V": 876,
+          "F": 11,
+          "Q": 5
+        },
+        "patient_ids": [
+          "P105",
+          "P111",
+          "P116",
+          "P119",
+          "P205",
+          "P207",
+          "P232"
+        ],
+        "record_ids": [
+          "105",
+          "111",
+          "116",
+          "119",
+          "205",
+          "207",
+          "232"
+        ]
+      },
+      "test": {
+        "num_samples": 8544,
+        "class_counts": {
+          "N": 8102,
+          "S": 13,
+          "V": 426,
+          "F": 1,
+          "Q": 2
+        },
+        "patient_ids": [
+          "P101",
+          "P122",
+          "P219",
+          "P228"
+        ],
+        "record_ids": [
+          "101",
+          "122",
+          "219",
+          "228"
+        ]
+      }
+    },
+    "input_dtype": "<f4",
+    "model_input_shape": [
+      8544,
+      1,
+      360
+    ],
+    "patient_id_policy": "Existing public pseudonyms P<record>; not newly generated identities"
+  },
+  "fp32_baseline_metrics": {
+    "count": 8544,
+    "correct": 8393,
+    "accuracy_percent": 98.23267790262172,
+    "confusion_matrix_true_rows_predicted_columns": [
+      [
+        8021,
+        66,
+        8,
+        0,
+        7
+      ],
+      [
+        13,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        48,
+        3,
+        372,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "per_class": [
+      {
+        "class": "N",
+        "support": 8102,
+        "predicted": 8084,
+        "precision": 0.9922068283028204,
+        "recall": 0.9900024685262898,
+        "f1": 0.9911034227109847
+      },
+      {
+        "class": "S",
+        "support": 13,
+        "predicted": 69,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      {
+        "class": "V",
+        "support": 426,
+        "predicted": 381,
+        "precision": 0.9763779527559056,
+        "recall": 0.8732394366197183,
+        "f1": 0.9219330855018587
+      },
+      {
+        "class": "F",
+        "support": 1,
+        "predicted": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      {
+        "class": "Q",
+        "support": 2,
+        "predicted": 9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    ],
+    "macro_f1": 0.3826073016425687,
+    "zero_division": 0
+  },
+  "input_policy": "Per-sample/channel INT8 [-127,127], serialized FP16 scales, unprotected dequantized FP32 NCL; s9 NC. No P1/BLE required for offline numeric evaluation.",
+  "dpu_requantization": "Use actual native runner fix_point/DPU_ROUND and report it; do not apply FP32 <1e-3 as DPU gate",
+  "expected_xmodel_sha256": {
+    "2": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+    "5": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2",
+    "8": "dcc460edff10e22874f27d60bd0c98374bd3937f87690944287eab8213e5517e"
+  },
+  "expected_calibration": {
+    "split": "val",
+    "sample_ids": [
+      "MIT-BIH:105:197:MLII",
+      "MIT-BIH:105:459:MLII",
+      "MIT-BIH:105:708:MLII",
+      "MIT-BIH:105:965:MLII",
+      "MIT-BIH:105:1222:MLII",
+      "MIT-BIH:105:1479:MLII",
+      "MIT-BIH:105:1741:MLII",
+      "MIT-BIH:105:2015:MLII",
+      "MIT-BIH:105:2287:MLII",
+      "MIT-BIH:105:2550:MLII",
+      "MIT-BIH:105:2803:MLII",
+      "MIT-BIH:105:3052:MLII",
+      "MIT-BIH:105:3303:MLII",
+      "MIT-BIH:105:3563:MLII",
+      "MIT-BIH:105:3835:MLII",
+      "MIT-BIH:105:4102:MLII",
+      "MIT-BIH:105:4371:MLII",
+      "MIT-BIH:105:4635:MLII",
+      "MIT-BIH:105:4901:MLII",
+      "MIT-BIH:105:5154:MLII"
+    ],
+    "samples_csv_sha256": "4a6356312d5f62da6b2fdf9e609843d4dea3fc5c20767e201ea21a075e6f227c",
+    "golden_sha256": {
+      "2": "5b9607815738e1a3a7ccde941e23a01a9ad927326839f38895e1f289e7d72399",
+      "5": "b713e53387e5e43ba9f8abf0cd0905b108208cf29082669dfd1be706857a706e",
+      "8": "fda1e8ebc1828134b60daf75d5f60c50f4fa42ca3a9d9db83a66f3ffe0110829"
+    }
+  },
+  "gate": "200*(correct_fp32-correct_dpu) < count; strict accuracy drop <0.5 pp; requires complete coverage",
+  "files": {
+    "samples.csv": {
+      "sha256": "8d313fa956985da72d53c3a57dce4beb11f0defe930cc67ddf89c1adff3b435a",
+      "size_bytes": 339176
+    },
+    "reference_fp32.npy": {
+      "sha256": "3dd1eba8af262a5f2ccd60f44d322ce40c812600f8d9f4abf696ca96bb3132e1",
+      "size_bytes": 171008
+    },
+    "inputs_s2.npy": {
+      "sha256": "f379b878bffe1562272b811cdaab1041e82c55cd0c762c64a383343b1966d3b2",
+      "size_bytes": 98427008
+    },
+    "reference_wire_fp32tail_s2.npy": {
+      "sha256": "7867fdeb2dedcdcc1ef093520c652da1b5ba3dc685ba17c4b2c6b38ce8204edd",
+      "size_bytes": 171008
+    },
+    "inputs_s5.npy": {
+      "sha256": "925146418ccdb91b0a461c2460203248966ca84261e0813d7f72257277f434db",
+      "size_bytes": 147640448
+    },
+    "reference_wire_fp32tail_s5.npy": {
+      "sha256": "404a2a280c59d9fe86da39a46b4360156a5946809dfa1ec371ecf1895ba33372",
+      "size_bytes": 171008
+    },
+    "inputs_s8.npy": {
+      "sha256": "98e0ad690e8d2c44c34e94f279ef2b29b2e4c513cf9fc1c45d02fd24d18c5bc4",
+      "size_bytes": 48119936
+    },
+    "reference_wire_fp32tail_s8.npy": {
+      "sha256": "069c5a82244e45c7d72b919997db60e843cdeabce7db2cb5dc5cddb9531c26cf",
+      "size_bytes": 171008
+    }
+  }
+}

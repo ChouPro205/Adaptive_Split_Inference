@@ -1,5 +1,10 @@
 # Checklist SV3 tuần 7 và điều kiện tiếp tục
 
+**Cập nhật mới nhất 26/10/2026:** xem [đối soát SV2](sv3_week7_reconciliation_20261026.md)
+và bảng trạng thái cuối tài liệu. Các mục mô tả ngày 21/10 bên dưới được giữ
+nguyên để bảo toàn lịch sử; không đọc BLOCKED_SV2 cũ thành thiếu receipt hiện tại.
+Phần offline SV3 đã làm xong; accuracy DPU và xác nhận owner vẫn chưa nghiệm thu.
+
 Bản tài liệu đặt tại `main/docs/`; code/evidence tuần 7 được bàn giao qua
 [PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34).
 Liên kết evidence được pin tới commit `1518943`; các trạng thái bên dưới giữ mốc
@@ -251,3 +256,33 @@ merge main, trình diễn cho GVHD, học hiểu hoặc nghiệm thu phần cứ
 - **Điều kiện nghiệm thu:** demo/trao đổi thực tế, không suy từ code PASS.
 - **Bước sau/tái sử dụng:** dùng ca nhỏ, log real-data và checklist này; không cần
   đợi SV2 để học hoặc demo phần độc lập tuần 7.
+
+## Cập nhật đối soát ngày 26/10/2026
+
+Main được fetch tại `d91fe27cc83e617d8a86ad7d6731687eea518d6a`; PR34/36 đã
+merge, PR38 SV2 còn mở. Branch SV1 không có tree diff riêng so với main.
+Implementation đối soát SV3 `08e4b4259a2757be7b663b88cc1c98607602d266`;
+[audit mới](../ml/provenance/week7-reconcile-20261026/delivery-audit.json),
+[chi tiết kiểm/owner/đầu ra còn thiếu](sv3_week7_reconciliation_20261026.md).
+Không thay trạng thái/hashes/receipt ở các mục lịch sử phía trên.
+
+| Mục | Trạng thái hiện tại và phần SV3 đã hoàn tất | Phần còn chờ /bước tiếp theo |
+|---|---|---|
+| W7-01/02/03 | **DONE trong scope host đã pin**; 13 source/config/evidence bindings khớp; giữ dCor/loss/smoke cũ | Không cần train/smoke lại vì checkpoint/split/tensor không đổi; không gán audit 2.441 file cũ cho main mới |
+| W8-01 | **DONE chuẩn bị, giữ s2/s5/s8**; cả ba có file runtime CPU+DPU và profile model hash khớp | Chưa chọn split tối ưu cho toàn hệ thống, chưa chọn λ |
+| E-01 | **DONE đối soát receipt P1 A+B**; version/ZIP/manifest/vector IDs khớp; 199 source blobs lịch sử và raw input SV3 kiểm được | Không yêu cầu SV2 gửi lại dữ liệu đã có; current-source verifier tuần 6 không PASS trên main mới, xem ghi chú đúng phạm vi |
+| E-02 | **DONE đối soát định danh đã công bố**, checkpoint/model/registry/profile/wire IDs/runtime/model hashes khớp | **Chờ SV2** quant_info/quantizer provenance/compile artifacts thật gắn từng xmodel để đóng lineage calibration; 20 golden val/IDs đã có |
+| E-03 | **DONE review execution** s0…s9 qua root CPU+DPU, s10 identity; s2/s5/s8 giữ được | Xmodel/binary raw chỉ có hash/inventory trên Git; không chứng nhận đã tự chạy board |
+| E-04 | **DONE kiểm bảng** 50 request/backend, 46 tail +4 identity, 50/50 argmax, HOST max `1.430511e-6`, KV260 `0.4064581394` | Chỉ 5 ECG val và prediction N. Raw output SV2 chưa tự đọc; numeric DPU acceptance vẫn riêng |
+| E-05 chuẩn bị | **DONE** manifest/8.544 IDs/input/reference s2/s5/s8 và evaluator có tests thường/`-O` 9/9; FP32 8.393 correct | **Chờ Trung/SV2:** output đủ 8.544×split/status/logits và provenance; chạy evaluator, gate drop <0,5 pp, confusion/per-class/errors. Không đợi BLE |
+| E-06 | **DONE review profile đã công bố**, 10 model hashes qua 3 tuần khớp, load/first/steady JSON↔CSV | Là CPU/PS+DPU, cache không kiểm soát; raw timings/DPU-only/service latency chưa tái kiểm hoặc chưa đo. Không yêu cầu lại bảng đã có |
+| E-07 | **DONE review ML semantics/source và bảng file pipeline**: unprotect→q→scale gốc, s9 NC, s10 identity, 5 logits/tie policy | Không tự xác nhận parser/buffer hardware thay Trung; raw output audit và numeric acceptance riêng |
+| E-08 | **DEFERRED_SCOPE tuần 8** cho BLE/E2E trong nhiệm vụ này; vẫn chưa nghiệm thu Device–KV260 | Châu/Trung triển khai/kiểm link thật và 100 mẫu bằng nhiệm vụ riêng |
+| H-02 | **DONE soạn dự thảo; CHỜ KỲ ANH XÁC NHẬN** | Review [draft ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md); Châu ghi nhận đúng change control |
+| H-03 | **BLOCKED_OTHER /chờ owner** | Châu/Trung phát hành revision nonce/provisioning phù hợp; không tự đổi registry ACCEPTED |
+| L-01 | **DONE runbook và lệnh demo do Codex kiểm; READY cho Kỳ Anh thực hiện** | [Demo guide](sv3_week7_demo_guide.md); chưa đánh dấu học hiểu/demo GVHD DONE |
+| W8-02/P-01 | **DEFERRED_SCOPE** | Grid dài, threat model/attacks/privacy/Pareto theo thiết kế SV3/GVHD ở giai đoạn sau |
+
+Không còn mục SV3 độc lập có đủ đầu vào mà chỉ dừng ở kế hoạch trong phạm vi
+nhiệm vụ này. **Toàn bộ tuần 7 vẫn chưa DONE** do accuracy DPU và các xác nhận
+bên ngoài còn mở; không tự ký, merge hoặc sửa baseline/registry/contract.
