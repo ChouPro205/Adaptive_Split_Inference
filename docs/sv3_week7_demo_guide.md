@@ -78,3 +78,31 @@ flatten, R so với R², bias mẫu hữu hạn, vì sao gradient dCor tới hea
 λ=0 trở về CE và vì sao metric này không thay đánh giá tấn công. GVHD/người
 nghiệm thu ghi nhận sau buổi thực tế; runbook và log do Codex chạy không thay
 việc đó.
+
+## 5. Lượt kiểm host 28/10/2026 và cách trình bày với GVHD
+
+[Evidence mới](../ml/provenance/week7-host-20261028/README.md) ghi commit thực
+chạy và output `demo.json` mới do Codex tạo; không gán lại lượt chạy cũ.
+Lệnh này chỉ forward/backward, **không optimizer step**, 32 train IDs, không
+test inference; hash trạng thái model trước/sau phải khớp. Để tự demo, dùng
+output mới như `.cache/week7-demo-kyanh-01.json` theo §2.
+
+Trình bày trong 5–10 phút:
+
+1. Nêu mục tiêu: CE giữ thông tin phân lớp, λ·dCor tạo gradient phạt phụ thuộc
+   giữa ECG x và activation z; λ=0 trở về CE. Inference không cần tính dCor.
+2. Chỉ bốn ca toán trong output: self≈1, independent nhỏ nhưng dương, nonlinear
+   square vẫn có phụ thuộc, constant=0 theo chính sách suy biến. Giải thích R
+   có căn cuối, khác R²; bias mẫu hữu hạn phụ thuộc batch và số chiều.
+3. Chỉ rows s2/s5/s8: CE, dCor, total và gradient head. Kiểm
+   `gTotal−gCE≈0.5·gdCor`, gradient dCor khác 0 và weights unchanged. Bảng này
+   không chọn λ/split tối ưu hoặc chứng minh model đã học tốt hơn.
+4. Phân biệt P1 đảo được trên INT8 với regularizer NoPeek. dCor thấp không là
+   chứng minh chống reconstruction/attribute attacks; phần đó để thiết kế sau.
+5. Nêu kết quả hệ thống đã có: G2 200/200 so cùng backend. Accuracy DPU độc lập
+   vẫn cần 8.544 mẫu/split, baseline 8.393 và ≥8.351 correct, đủ coverage.
+
+Câu tự kiểm trước buổi gặp: vì sao noise độc lập không ra đúng 0, batch axis
+là gì, gradient đến head qua đường nào, và vì sao G2 PASS không suy accuracy
+DPU PASS? Kỳ Anh tự trả lời và thực hiện; GVHD ghi nhận sau buổi thật.
+**Chưa ghi Kỳ Anh đã hiểu, đã demo hoặc đã xác nhận ML.**

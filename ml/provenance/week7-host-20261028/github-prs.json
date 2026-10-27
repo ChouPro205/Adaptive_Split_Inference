@@ -1,0 +1,91 @@
+{
+  "checked_on": "2026-10-28 Asia/Saigon",
+  "source": "GitHub connector get_pr_info (read-only)",
+  "prs": [
+    {
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34",
+      "number": 34,
+      "state": "closed",
+      "merged": true,
+      "mergeable": false,
+      "draft": false,
+      "body": "## Mục tiêu và phạm vi\n\nBổ sung phần SV3 tuần 7 độc lập trên host: dCor khả vi **R_n biased** (Euclid, double centering, căn cuối), objective **CE + lambda*dCor**, loader xác thực train/validation và smoke NoPeek offline. Kiểm toán học/gradient, lambda=0 khớp CE và lambda>0 truyền gradient đến head.\n\nSmoke lịch sử tại implementation `6be51e3a5d6be8309ef87720e98ed4305352f467`, evidence delivery `aadf27bf87dbd291c2ab48323c4edaa67c651a2f`: s2/s5/s8 × lambda 0/0.5, mỗi run 4 bước ×32 train và 512 validation; không dùng test để train/chọn mô hình. Đây là smoke wiring, chưa chứng minh hội tụ, cải thiện accuracy hay chống tấn công. Các log lỗi phát triển được giữ nguyên và không gọi là PASS.\n\n## Tài liệu và đồng bộ main\n\nBa báo cáo tiến độ nằm ở **root `docs/`**:\n- `docs/sv3_ml_week5_report.md`: INT8/FP16, P1 Python, accuracy 8.544 ×11, chronology allocation/final acceptance PR #25.\n- `docs/sv3_ml_week6_report.md`: 50 vector P1 thật, C/Python và ngữ nghĩa output host; tách evidence MCU/BLE của SV1 ngày 19/10.\n- `docs/sv3_ml_week7_report.md`: chuẩn hóa báo cáo, pin evidence và làm rõ giới hạn audit.\n- `docs/README.md`: cập nhật mục lục và đường dẫn hồ sơ kỹ thuật.\n\nDocs được commit riêng tại `60290c6`. Merge main `fedeee9db111dedf74ff4102fd3b320992602d35` bằng merge commit **`151894367b0a35df83a0effd86961816ffc89942`**, không conflict, không rebase/force-push. Giữ nguyên các commit provenance đã pin.\n\nPR #33 của SV1 được kế thừa từ main: MCU/marker/PPK2 PASS 9/9 trong phạm vi SV1 công bố, peer laptop stub. Đây không phải phép đo mới của SV3, không phải kết quả KV260 hoặc Pareto của NoPeek.\n\nDiff cuối so với main gồm **73 file thuộc SV3**: 70 file đã giao ban đầu, thêm README docs và hai báo cáo tuần 5/6; trong 70 file cũ chỉ báo cáo tuần 7 được biên tập. 69 file SV3 còn lại giữ nguyên Git blob so với `aadf27b`. Không có diff `device/`, `edge/`, `contracts/` hoặc `.gitattributes` gốc so với main.\n\n## Kiểm tra thực sự chạy trên HEAD cuối\n\nPhiên tạo PR ngày **22/10/2026 (Asia/Saigon)**, trên **`151894367b0a35df83a0effd86961816ffc89942`**:\n- `python -B ml/scripts/test_week7_nopeek.py`: **19/19 PASS**, exit 0, không skip.\n- `python -O -B ml/scripts/test_week7_nopeek.py`: **19/19 PASS**, exit 0, không skip.\n- Bao gồm reference độc lập, gradcheck, suy biến, SGD, loss/gradient/Adam, CUDA parity, train/val binding và từ chối output/grid không hợp lệ.\n- Kiểm **72 liên kết nội bộ** trong bốn tài liệu (đường dẫn có xét hoa/thường, anchor và file được track), các commit pin: PASS. Chín URL ngoài được đối chiếu qua GitHub connector/web: PASS; release tuần 6 đúng size/SHA đã báo cáo.\n- Kiểm hash log/source của sáu command evidence lịch sử: khớp; source/config/test tuần 7 giữ nguyên so với `6be51e3`.\n- `git diff --check origin/main...HEAD` và `git diff --check`: PASS. Working tree sạch; remote branch khớp HEAD.\n\nMôi trường thực chạy: Windows build 26200, Python 3.11.9, PyTorch 2.14.0+cu130, NumPy 2.4.6, NVIDIA GeForce RTX 5060. Có cảnh báo PyTorch chuyển tensor requires_grad sang scalar trong test; không có test failure.\n\nLogs/receipts mới được lưu cục bộ tại `.cache/pr-week7-20261022/` (ignored), pin đúng HEAD cuối. Trích log hai lượt:\n\n```text\nNormal: Ran 19 tests in 3.351s — OK\n-O:     Ran 19 tests in 4.822s — OK\n```\n\nKhông chạy mới training smoke/grid, suite đầy đủ tuần 5–6 hoặc flash/đo phần cứng trong nhiệm vụ tạo PR. I1 v2 23/23, I2 5/5 và các số liệu smoke trong báo cáo là evidence lịch sử tại `6be51e3`, không gán thành lần chạy mới trên HEAD này.\n\n## Baseline và tính toàn vẹn evidence\n\nKhông ảnh hưởng giao diện I1–I4; không thay contract, registry, split mapping, dataset, golden/reference hoặc baseline model/checkpoint. Checkpoint cục bộ được kiểm SHA-256:\n`9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90`.\nTrọng số smoke là `EXPERIMENT_ONLY_NOT_APPROVED`, không được gán vào deployment profile baseline.\n\nAudit **“2.441 file baseline nguyên trạng” chỉ chứng nhận snapshot `6be51e3`/`aadf27b` trên nền `3c56b65`**. Checkout hiện tại có biên tập docs và kế thừa cập nhật SV1 từ main; không dùng audit đó để tuyên bố toàn checkout mới không đổi. Không chạy lại gate nguyên trạng trên checkout đã thay đổi, không sửa receipt/audit hoặc bỏ gate để ép PASS. Các kiểm tra mới ở trên có scope và HEAD riêng.\n\n## Việc còn lại và nghiệm thu riêng\n\n- Tuần 8 mới **chuẩn bị config** quét s2/s5/s8 × lambda {0,0.1,0.5,1,2,5}; chưa có kết quả grid dài. Cần chốt thiết kế và runner train dài riêng.\n- KV260/DPU runtime, accuracy, CPU fallback và tích hợp Device–Edge cần evidence SV2 trên backend thật.\n- Hiệu quả chống tấn công/riêng tư cần thí nghiệm riêng; dCor thấp hoặc smoke PASS không thay chứng minh bảo vệ.\n- Xác nhận tensor/quantization/response I1 v2 và revision nonce runtime registry cần đúng owner/change control; không tự ký thay thành viên.\n- Học hiểu, giải thích/demo của Kỳ Anh và GVHD sign-off có phạm vi nghiệm thu riêng.\n\nPR này chỉ đề nghị review; **chưa merge**.\n",
+      "title": "SV3 tuần 7: dCor/NoPeek offline và báo cáo tuần 5–7",
+      "base": "main",
+      "base_sha": "089e4c53881055bfca3103178f120d19e84c9755",
+      "head": "sv3/week7-nopeek-20261021",
+      "head_sha": "c3c1839a93ecdf120b11fbf8cd475cd0badf445b",
+      "head_repo_id": 1365464803,
+      "head_repo_full_name": "ChouPro205/Adaptive_Split_Inference",
+      "merge_commit_sha": "cbb54157431cb278b165c5b00931f2b806fbbca2",
+      "user": {
+        "login": "kyanhhbt-code",
+        "name": "kyanhhbt-code",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/236932279?v=4",
+        "id": 236932279
+      },
+      "requested_reviewers": null,
+      "requested_team_reviewers": null,
+      "diff": null,
+      "comments": null,
+      "created_at": "2026-10-22T05:18:37Z",
+      "updated_at": "2026-10-27T16:10:11Z",
+      "closed_at": "2026-10-22T08:04:54Z",
+      "merged_at": "2026-10-22T08:04:54Z",
+      "commits": 5,
+      "changed_files": 71,
+      "additions": 36982,
+      "deletions": 8,
+      "display_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34",
+      "display_title": "SV3 tuần 7: dCor/NoPeek offline và báo cáo tuần 5–7"
+    },
+    {
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/40",
+      "number": 40,
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "draft": false,
+      "body": "Pipeline BLE Device–KV260 tại s2 đã thực thi G2 với persistent root GraphRunner\nCPU+DPU. PR công bố source, test, báo cáo và export bằng chứng có checksum;\nnotebook chỉ đọc giúp nhóm kiểm tra kết quả mà không chạy lại board.\n\n- G2: 212 request toàn phiên OK; 200 request chính thức khớp bit offline.\n  Device checker PASS và hash log import khớp Edge; offline lặp 100/100 bit-exact.\n- Bổ sung: 21/21 request, 0 cache hit; receiver import PASS. Thiếu trace cả buổi\n  đã được ghi rõ; dùng Device link logs + Edge Read PHY theo báo cáo PR39.\n- Agreement reference 87/100; không gọi là accuracy test độc lập, không tune/bỏ mẫu.\n- Source G2: 16d5b43 (service SHA79a1…); patch giữ kết nối: 4b605e9 (SHAa424…).\n  Model/worker/plugins không đổi; không sửa raw hoặc registry v2.\n- Báo cáo: docs/sv2_edge_week8_report.md. Export: results/week8/edge.\n  Cấu hình và notebook chỉ đọc: experiments/configs và experiments/notebooks.\n- 50 test HOST PASS: I1v2 23, I2 5, service 8, session 1, review 1,\n  supplemental 4, single-input 3, runtime 5. Notebook chạy với export thật.\n  Reject overwrite/tampered archive; checkout Windows giữ checksum Edge + 49 Device.\n- Runtime đã đo: KV260 PetaLinux2022.1/VitisAI2.5, UB500/BlueZ5.61/Bleak0.22.3.\n  Không build ARM, chạy radio hoặc flash lại trong lần xuất bản.\n- Không ảnh hưởng giao diện I1–I4. Chưa triển khai queue/MQTT hay tự Set PHY tuần9.\n- Delta r2 đã review base SHA và 9 evidence SHA; xác nhận TC7 vẫn chờ comment\n  người dùng. Edge high-water còn RAM; provisioning/P1 authorization không mở.\n- Đã đồng bộ main02ad8c8 (PR39/PR38). Không đưa raw/model/key/.agents vào Git.\n",
+      "title": "SV2 tuần 8: BLE G2 KV260, persistent s2 và hồ sơ kết quả",
+      "base": "main",
+      "base_sha": "02ad8c83297d5bee9298342b2bd4e4ff406922ac",
+      "head": "dev/edge-sv2",
+      "head_sha": "8d962095a11a0e41696b9cdeac163ed0d240daed",
+      "head_repo_id": 1365464803,
+      "head_repo_full_name": "ChouPro205/Adaptive_Split_Inference",
+      "merge_commit_sha": "bb3f5d633fd6d4185760b767a0888b3edd1bdf0e",
+      "user": {
+        "login": "trungmai2511",
+        "name": "trungmai2511",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/158754693?v=4",
+        "id": 158754693
+      },
+      "requested_reviewers": [
+        {
+          "login": "ChouPro205",
+          "name": "ChouPro205",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/144701285?v=4",
+          "id": 144701285
+        }
+      ],
+      "requested_team_reviewers": null,
+      "diff": null,
+      "comments": null,
+      "created_at": "2026-10-27T08:40:56Z",
+      "updated_at": "2026-10-27T08:40:56Z",
+      "closed_at": null,
+      "merged_at": null,
+      "commits": 22,
+      "changed_files": 43,
+      "additions": 3004,
+      "deletions": 0,
+      "display_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/40",
+      "display_title": "SV2 tuần 8: BLE G2 KV260, persistent s2 và hồ sơ kết quả"
+    }
+  ],
+  "review_status_source": "User handoff 2026-10-28: two P2 findings fixed and review accepted; no independent signature inferred."
+}

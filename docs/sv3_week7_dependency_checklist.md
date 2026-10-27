@@ -318,3 +318,23 @@ bên ngoài còn mở; không tự ký, merge hoặc sửa baseline/registry/con
 [verification.json](../ml/provenance/week7-evaluator-fix-20261026/verification.json).
 Các trạng thái/tests 9/9 và receipts tại mốc `0545b47` giữ như lịch sử; không
 gán bằng chứng source cũ cho evaluator mới. Toàn bộ tuần 7 vẫn chưa DONE.
+
+## Cập nhật dependency 28/10/2026 — nguồn hiện hành
+
+Bảng hiện hành ở [phụ lục host và hệ thống](sv3_week7_host_update_20261028.md)
+thay cho việc suy trạng thái hiện tại từ các mục lịch sử phía trên.
+
+- W7 host: source/tests/demo/reference/template sẵn sàng review, có
+  [evidence mới theo revision](../ml/provenance/week7-host-20261028/README.md).
+  Hai finding P2 evaluator đã đóng theo review được bàn giao, không blocker mở.
+- E-08: đã có file pipeline KV260 trên main và G2 s2 200/200; PR40 head
+  `8d962095` vẫn mở. Không tiếp tục ghi “chưa có BLE/KV260”; G2 không thay E-05.
+- E-05: `INCOMPLETE_NO_ACCEPTANCE`, chờ Trung output thật 8.544 mẫu mỗi split
+  s2/s5/s8 và provenance/artifacts. Baseline 8.393 correct, tối thiểu 8.351 và
+  đủ coverage; giữ strict drop <0,5 pp. [Bàn giao](sv3_week7_sv2_handoff_20261028.md)
+  sẵn sàng chuyển, chưa nói Trung đã nhận.
+- H-03: r2 `CONFIRMED` ở SV1 `549aa102`, Trung xác nhận trực tiếp với Châu;
+  main `02ad8c8` còn `PENDING_EDGE_CONFIRMATION`. Chờ Châu/Trung tích hợp,
+  không tự sửa registry hoặc đòi lại xác nhận đã có.
+- H-02/L-01: còn chờ Kỳ Anh xác nhận ML và tự giải thích/demo với GVHD.
+  Codex chạy demo không là bằng chứng cá nhân. W8 grid/attack vẫn ngoài scope.

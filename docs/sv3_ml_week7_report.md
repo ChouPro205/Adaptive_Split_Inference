@@ -426,3 +426,18 @@ Generation pin vẫn `08e4b42`, validation pin là `18e74ab`; không sửa recei
 Không thay gate drop <0,5 điểm phần trăm, baseline/dataset/golden/contract/registry.
 Không có training hoặc phép chạy phần cứng mới. Các nghiệm thu SV2/owner/GVHD
 ở §12 vẫn còn chờ đúng đầu ra và thẩm quyền, không đánh dấu tuần 7 DONE toàn bộ.
+
+## Cập nhật tiếp nối 28/10/2026 — host và trạng thái hệ thống
+
+[Phụ lục có ngày/source pin và dependency hiện tại](sv3_week7_host_update_20261028.md)
+ghi main `02ad8c8`, merge bảo toàn bốn commit SV3 tại `32ea846`, PR40 mở head
+`8d962095`, G2 s2 đã có 200/200 và SV1 tuần 7 PASS 9/9. r2 `CONFIRMED` tại nhánh
+SV1 `549aa102` theo Trung→Châu, trong khi main vẫn pending; không sửa registry.
+Hai finding P2 evaluator đã sửa/review chấp nhận theo bàn giao, không là blocker.
+
+[Evidence mới](../ml/provenance/week7-host-20261028/README.md) lưu suite NoPeek
+và reconciliation thường/`-O`, demo read-only, preservation và kiểm tài liệu theo
+revision thực chạy. [Gói bàn giao Trung](sv3_week7_sv2_handoff_20261028.md) giữ
+manifest frozen nguyên SHA. Chưa có output full-test DPU thật đủ provenance;
+E-05 `INCOMPLETE_NO_ACCEPTANCE`. H-02 và L-01 vẫn chờ Kỳ Anh/GVHD; phần host
+sẵn sàng review, không tự xác nhận ML, học hiểu hoặc toàn bộ tuần 7 DONE.

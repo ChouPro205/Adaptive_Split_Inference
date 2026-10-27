@@ -231,3 +231,19 @@ Các lượt phát triển/lỗi được giữ nguyên, tách khỏi `delivery-
 | H-03 nonce/provisioning | Châu/SV1 và Trung/SV2: revision có thẩm quyền | Kiểm consumer theo revision; giữ registry cũ nguyên trạng |
 | L-01 học hiểu/demo | Kỳ Anh và GVHD: buổi giải thích/demo thực tế | Dùng [runbook demo](sv3_week7_demo_guide.md), chỉ ghi đã demo sau khi diễn ra |
 | Tuần 8 và sau | BLE central/reassembly/E2E 100 mẫu của SV1/SV2; thiết kế grid dài và attackers của SV3/GVHD | Mở nhiệm vụ riêng; không chặn phần toán/reference offline đã hoàn tất |
+
+## 8. Tiếp nối ngày 28/10/2026 (không viết lại snapshot 26–27/10)
+
+[Reconciliation mới có pin GitHub](sv3_week7_host_update_20261028.md) đối soát
+main `02ad8c8` với bốn commit local; merge `32ea846` giữ nguyên lịch sử trên
+`dev/ml-sv3`. SV1 tuần 7 PASS 9/9; SV2 đã có file pipeline KV260 và G2 s2
+200/200, PR40 head `8d962095` vẫn mở. r2 đã `CONFIRMED` trên nhánh SV1
+`549aa102` theo xác nhận trực tiếp Trung→Châu, main còn pending. Không sửa
+contract/registry và không coi hai finding P2 evaluator đã sửa là blocker mở.
+
+[Evidence host mới](../ml/provenance/week7-host-20261028/README.md) tách receipts
+cũ. [Bộ chuyển Trung](sv3_week7_sv2_handoff_20261028.md) đóng từ reference có
+sẵn, giữ manifest SHA. Không regenerate theo lệnh prepare lịch sử ở §5 trong
+phiên này. Chưa có output DPU full-test thật đủ provenance để đánh giá;
+E-05 `INCOMPLETE_NO_ACCEPTANCE`. H-02 và L-01 vẫn cần Kỳ Anh/GVHD thực hiện;
+không tự gọi toàn bộ tuần 7 DONE.
