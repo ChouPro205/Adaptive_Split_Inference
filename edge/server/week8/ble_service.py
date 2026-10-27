@@ -34,6 +34,7 @@ async def run(a):
         'logits_encoding':'five float32 little-endian byte strings; label index 0..4',
         'scale_hash_encoding':'original-channel float32 little-endian bytes',
         'sv1_session':a.sv1_session,'target_address':a.address,
+        'hold_after_count':getattr(a,'hold_after_count',False),
         'sv1_scale_hash_encoding':'original-channel float16 little-endian bytes',
         'tx_done_scope':'all fragments submitted via BlueZ Write Without Response; not proof of dongle reception',
         'stage_assignment':'ordered request counts 1,1,10,200; abort and review on any error/retry/missing request',
@@ -93,6 +94,11 @@ async def run(a):
                                 # Do not immediately tear down the last queued Write Without Response.
                                 try:await asyncio.wait_for(disconnected.wait(),5)
                                 except asyncio.TimeoutError:event('final_response_grace_elapsed',ms=5000)
+                        if getattr(a,'hold_after_count',False) and a.expect and len(rows)>=a.expect:
+                            event('count_reached_hold',rows=len(rows))
+                            print('COUNT_REACHED %d; connection held. Confirm dongle reception, then Ctrl+C here to disconnect.'%len(rows),flush=True)
+                            try:await asyncio.wait_for(disconnected.wait(),max(0.1,deadline-time.monotonic()))
+                            except asyncio.TimeoutError:event('hold_deadline_elapsed')
                     event('connection_end',peer=device.address,reassembly=reasm.counters)
             except Exception as e:
                 event('connection_error',error=str(e));print('BLE_ERROR '+str(e),flush=True)
@@ -115,11 +121,14 @@ def main():
     ap.add_argument('--key-file',type=Path)
     ap.add_argument('--address',help='Optional confirmed BLE peer address filter')
     ap.add_argument('--sv1-session',action='store_true',help='ONE P0, ONE P1, PAIRS 5, PAIRS 100 in one connection; 212 requests')
+    ap.add_argument('--hold-after-count',action='store_true',help='After expected count keep connection for operator PHY checks; Ctrl+C disconnects')
     a=ap.parse_args()
     if a.sv1_session:
         if a.mode!='inference' or a.key_file is None:ap.error('SV1 session requires inference and bench key')
         if a.expect not in (0,212):ap.error('SV1 session requires --expect 212')
         a.expect=212
+    if a.hold_after_count and (a.mode!='inference' or a.sv1_session or a.expect<=0):
+        ap.error('Hold mode requires inference with an explicit count, separately from the 212-request session')
     if a.expect<0 or a.max_s<=0 or not 23<=a.mtu<=517:ap.error('Invalid limits')
     try:asyncio.run(run(a))
     except KeyboardInterrupt:print('Stopped; preserve logs; no G2 acceptance claimed')
