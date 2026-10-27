@@ -1,0 +1,13 @@
+{
+  "schema": "week7-ppk2-note/1",
+  "utc": "20261026T053628Z",
+  "temp_end_C": 26.5,
+  "photos": [
+    {
+      "path": "D:\\HUST\\ASI_week8\\B5-20261026-1225\\photos\\bench-20261026.png",
+      "sha256": "c7a3d8f5d2fd1bb7228373acf1ca07e7a12e97f55a4581e1ca11ab7b9ce6f4c5",
+      "bytes": 3306266
+    }
+  ],
+  "text": "Nhiet do phong 26-27 C, khong doi tu dau toi cuoi phien. Dongle cach giua laptop ~40 cm. PPK2 Source Meter 5 V -> breakout VBUS, logic D0-D4. Central = laptop Windows (Intel BT), week8_edge.py. check_session.json FAIL one_cycle_per_request (moc don tuan 7, Windows giao notify tre, max 47 ms > 30 ms); check_session_recheck.json PASS 20/20 voi ghep hai moc (week8_ppk2.match_cycles)."
+}

@@ -1,0 +1,144 @@
+{
+  "schema": "week7-ppk2-session/1",
+  "status": "PASS",
+  "checks": {
+    "selftest_D0_D4": true,
+    "unused_channels_low": true,
+    "capture_pass": true,
+    "no_data_loss": true,
+    "edge_pass_labels_100_per_rho": true,
+    "edge_answered_all": true,
+    "cycle_count_200": true,
+    "p1_100_p0_100": true,
+    "trace_rho_order_paired": true,
+    "all_cycles_valid_single_tx": true,
+    "one_cycle_per_request": true,
+    "wait_below_timeout": true,
+    "idle_markers_low": true,
+    "diff_below_3pct_all": true,
+    "nonce_above_prior": true,
+    "TC6_post_window_at_least_20s": true,
+    "TC6_post_mean_at_idle": true,
+    "TC6_no_radio_activity_after_session": true,
+    "TC6_post_markers_low": true,
+    "TC6_single_connection": true
+  },
+  "analysis_status": "PASS",
+  "edge_status": "PASS",
+  "labels_equal_reference": {
+    "P1": 100,
+    "P0": 100
+  },
+  "first_p1_sequence": 60645378,
+  "last_p1_sequence": 60645477,
+  "prior_reserved_through": 60643328,
+  "interval_match": {
+    "pass": true,
+    "reference": "min(|trace TX end - edge t_rx_ms|, |trace WAIT end - edge t_tx_done_ms|), median-centred",
+    "rho_order_equal": true,
+    "max_abs_offset_ms": {
+      "tx_end_vs_rx": 76.9550000000745,
+      "wait_end_vs_reply": 51.02999999932945,
+      "best_anchor": 24.25
+    },
+    "cycles_over_limit": {
+      "tx_end_vs_rx": 12,
+      "wait_end_vs_reply": 5
+    },
+    "min_cycle_spacing_ms": 1124.9799999999814,
+    "edge_clock_resolution_s": 0.015625,
+    "limit_ms": 30.0
+  },
+  "interval_match_week7_single_anchor": {
+    "pass": false,
+    "reference": "trace TX end vs stub t_rx_ms",
+    "rho_order_equal": true,
+    "max_abs_delta_ms": 85.62999999997555,
+    "mean_abs_delta_ms": 9.900150753771134,
+    "offset_range_ms": [
+      -9.994999999180436,
+      76.9550000000745
+    ],
+    "start_spacing_max_abs_delta_ms": 218.9899999999907,
+    "stub_clock_resolution_s": 0.015625,
+    "limit_ms": 30.0
+  },
+  "wait_ms_max": 120.18,
+  "I_idle_uA_firmware_window": 25.14980489078795,
+  "post_session": {
+    "found": true,
+    "offset_after_last_cycle_s": 2.0,
+    "duration_s": 58.72565,
+    "mean_uA": 24.963749651584255,
+    "sample_std_uA": 3.6110020968082823,
+    "max_uA": 35.5066924812043,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0,
+      "D7": 0
+    },
+    "samples_above_3mA": 0,
+    "per_second_mean_uA": {
+      "min": 24.93897372531146,
+      "max": 24.981637694827807
+    },
+    "I_idle_uA_firmware_window": 25.14980489078795,
+    "deviation_from_idle_pct": 0.7397880023786829
+  },
+  "edge_connections": 1,
+  "conn_interval_estimate_ms": 45.01,
+  "conn_interval_note": "central = laptop (Windows); the week 9 peer decides TC8",
+  "diff_pct": {
+    "n": 200,
+    "mean": 0.12585616220363374,
+    "min": 0.08512764675096668,
+    "max": 0.1666247932094289,
+    "std": 0.01497551367524944,
+    "ci95_half": 0.0020881614334037034,
+    "ci95_low": 0.12376800077023004,
+    "ci95_high": 0.12794432363703745,
+    "ci95_rel_pct": 1.6591650316057498
+  },
+  "ci95_rel_pct": {
+    "P1": {
+      "E_cycle_uJ": 1.3181876632916674,
+      "E_ctrl_uJ": 0.34805042907915684,
+      "E_dev_uJ": 1.9555121412700625,
+      "E_prot_uJ": 3.6207908066521743,
+      "E_tx_uJ": 2.1474823395944918,
+      "E_wait_uJ": 3.8060393837260853,
+      "E_gap_uJ": 2.4276012738487545,
+      "E_overlap_uJ": null,
+      "E_phases_uJ": 1.3189289034737517
+    },
+    "P0": {
+      "E_cycle_uJ": 1.098832558536143,
+      "E_ctrl_uJ": 0.32185173629969194,
+      "E_dev_uJ": 1.8570440492177354,
+      "E_prot_uJ": null,
+      "E_tx_uJ": 1.3693778588253895,
+      "E_wait_uJ": 3.12946320451491,
+      "E_gap_uJ": 2.4240262039264,
+      "E_overlap_uJ": null,
+      "E_phases_uJ": 1.0992647216289086
+    }
+  },
+  "capture": {
+    "samples": 36070912,
+    "dut_on_rate_deviation_pct": 0.000611085649291841,
+    "raw_sha256": "37850762ea3d9d091cc1a969a8c3e16bd8f0434bf691f12aec877a2756cd6705",
+    "host_max_gap_between_reads_s": 0.009107599999879312,
+    "status": "PASS"
+  },
+  "scope": "B5 behaviour check of the week 8 energy image (TC6); energy numbers are not week 9 results",
+  "checker_sha256": {
+    "week8_ppk2.py": "9c2c9c079262e6962b99aa60b7569a9352a0924ced538262516f9c03e8d6f342",
+    "week7_ppk2.py": "7d3f448c5ba32ecca335580683ef1abef7bec429913873b7958798f582dcf32f",
+    "energy_phases.py": "a212e178c9796b46d097de75ffc871213ea65e70eaab95e4c033cc1ee4442984"
+  }
+}

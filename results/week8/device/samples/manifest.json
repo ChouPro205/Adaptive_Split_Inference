@@ -1,0 +1,184 @@
+{
+  "status": "PASS",
+  "purpose": "Week 8 G2 sample set (W8-D3) and host references (W8-D4); host evidence only",
+  "created_utc": "2026-10-23T03:34:31+00:00",
+  "command": "python.exe device/scripts/generate_week8_samples.py --output D:/HUST/ASI_week8/samples-20261023-c",
+  "git": {
+    "head": "151f2c046e662d3f0c2aef279a94078ddaeef3b1",
+    "status_of_generator_sources": "?? device/scripts/generate_week8_samples.py\n?? device/week8/host_test/head_shim.c"
+  },
+  "split_point_s": 2,
+  "seed": 20261027,
+  "rng": "numpy.random.default_rng(seed).choice without replacement: predicted S, then true V, then true N",
+  "selection_rule": "W8-D3 amended 23/10: all true S/F/Q + all predicted F/Q + 11 predicted S + 30 true V + 34 true N; draws never take the 6 FP32 != INT8 samples; test-set order",
+  "set_sha256_definition": "SHA-256 of ordered sample IDs (UTF-8, '\\n' after each) then the inputs as FP32 LE [100,1,360]",
+  "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+  "selection_sources": {
+    "draw_N": 34,
+    "true_Q": 2,
+    "true_S": 13,
+    "pred_S": 11,
+    "draw_V": 30,
+    "true_F": 1,
+    "pred_Q": 8,
+    "pred_F": 1
+  },
+  "true_class_counts": {
+    "N": 51,
+    "S": 13,
+    "V": 33,
+    "F": 1,
+    "Q": 2
+  },
+  "reference_label_counts": {
+    "N": 55,
+    "S": 11,
+    "V": 25,
+    "F": 1,
+    "Q": 8
+  },
+  "reference_label_equals_true_label": 58,
+  "excluded": [
+    {
+      "test_index": 4931,
+      "sample_id": "MIT-BIH:219:169074:MLII",
+      "true_class": "N",
+      "prediction_fp32": 0,
+      "label_ref_int8_fp16": 1,
+      "label_host": 1
+    },
+    {
+      "test_index": 5229,
+      "sample_id": "MIT-BIH:219:253724:MLII",
+      "true_class": "N",
+      "prediction_fp32": 0,
+      "label_ref_int8_fp16": 1,
+      "label_host": 1
+    },
+    {
+      "test_index": 6977,
+      "sample_id": "MIT-BIH:228:149849:MLII",
+      "true_class": "V",
+      "prediction_fp32": 0,
+      "label_ref_int8_fp16": 2,
+      "label_host": 2
+    },
+    {
+      "test_index": 7867,
+      "sample_id": "MIT-BIH:228:435745:MLII",
+      "true_class": "N",
+      "prediction_fp32": 4,
+      "label_ref_int8_fp16": 0,
+      "label_host": 0
+    },
+    {
+      "test_index": 8159,
+      "sample_id": "MIT-BIH:228:529856:MLII",
+      "true_class": "N",
+      "prediction_fp32": 0,
+      "label_ref_int8_fp16": 1,
+      "label_host": 1
+    },
+    {
+      "test_index": 8321,
+      "sample_id": "MIT-BIH:228:580919:MLII",
+      "true_class": "N",
+      "prediction_fp32": 0,
+      "label_ref_int8_fp16": 1,
+      "label_host": 1
+    }
+  ],
+  "torch_path_comparison": {
+    "q_equal": 99,
+    "scale_equal": 100,
+    "head_c_vs_torch_max_abs": 1.9073486328125e-06,
+    "note": "references are the C head path (what the dongle computes); the PyTorch/Python path is the SV3 week 5 pipeline"
+  },
+  "checks": {
+    "set_size_100_unique": true,
+    "all_true_S_F_Q_included": true,
+    "all_predicted_F_Q_included": true,
+    "selection_sources": true,
+    "reference_labels_cover_5_classes": true,
+    "no_fp32_int8_mismatch_in_set": true,
+    "host_label_equals_reference_100": true,
+    "excluded_host_label_equals_reference": true
+  },
+  "pipeline": "device/week7/head_fast.c (host gcc -O2 -ffp-contract=off -fno-fast-math) -> device/week5/quantization.c -> C dequantization -> frozen PyTorch tail wrappers(model, 2)[1], CPU FP32, one thread",
+  "sources_sha256": {
+    "device/scripts/generate_week8_samples.py": "41b7e9a547962c5a90443d47098e4a9232a629dffc9e4a3f0c198bbaa81f40e6",
+    "device/week8/host_test/head_shim.c": "3046c92748bbfccae76a05690ba923d3fa569b4b44b4207f593fe6f692a2dc74",
+    "device/week7/head_fast.c": "2784ac89a27f9c06d97d11e27cca8e87d25c1e82b01fc71530be1540b9ae8c71",
+    "device/week7/head_fast.h": "3044429934f48a5c908de1c5069f235c30b1e18aa342342d8d1706904aac2561",
+    "device/src/week4_head.c": "92e501bf8ab424e66d0e096d0f1e1950a890d7ce5c29f830fe1f40ca3d4885f5",
+    "device/src/week4_head.h": "0cf3cf70e3ee382c257df233d227e0a81b8fdb72c8d467fe77b9f52471fd0a0d",
+    "device/week5/quantization.c": "08b2131b29eacb2a1822b97dca2f30fdd138f942fac16e1f202251213572f529",
+    "device/week5/quantization.h": "9fb7982b84ee3b6a5e4c7e60cf89b294a099d6fb29ee85dd9adc50b4ad4fa564",
+    "ml/results/week4-r3/firmware/head_parameters.h": "3f811758ca6fc6a8fdefa74ff50ccb48031c006e9a12b617604dad033657487b",
+    "device/generated/week4_graph.h": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+    "ml/results/week5/predictions.csv": "0776e503b9e404c957cfcfb239356f52b17f34655cb2c5d15fdfe96cb3ae6e56",
+    "checkpoint": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+    "dataset_artifacts": {
+      "train_X.npy": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f",
+      "train_y.npy": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752",
+      "train_metadata.csv": "86c5c3a634fc5adfca09ec2f8378efb0d52f21205cfaf9470432f89ffdc0977a",
+      "val_X.npy": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732",
+      "val_y.npy": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43",
+      "val_metadata.csv": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+      "test_X.npy": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e",
+      "test_y.npy": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6",
+      "test_metadata.csv": "02a6a91c0e35710d0be13f10b2360e034918f546b3ba2c7df7a2fd484ecd1178"
+    }
+  },
+  "r3_handoff": {
+    "firmware_payload_revision": "r3",
+    "firmware_manifest_sha256": "80e4cea3b70bdafef1b6925b208d4951a87bba4ff8cf10dbb6a671e36439635c",
+    "source_verification_mode": "current",
+    "historical_r3_source_commit": "c793c06385198accc964e0e60988d7e7a7e9b566",
+    "historical_r3_source_bindings_checked": 21,
+    "r3_r4_identical_payload_files": 27,
+    "all_split_manifest_sha256": "a6d16809036c035936825b0e0cdc178e0bdf9f53ca81a132ece0522911d3d2a6",
+    "verified_current_source_updates": [
+      {
+        "path": "ml/scripts/verify_week3_sv2.py",
+        "r4_manifest_sha256": "b4c9562ee74c4922fd6180bc9a1a85ffc8a44871fd45ed87610728f2e31230ce",
+        "current_source_sha256": "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb",
+        "reviewed_source_commit": "add8503d58c6f707a35b4502bf98aff91109c1cd",
+        "reviewed_merge_commit": "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+      },
+      {
+        "path": "ml/scripts/test_week3_sv2.py",
+        "r4_manifest_sha256": "c6bad027185bf63c280dc9abc2c9e9a96d809eabd6e42853a7b2cbd732b7fda6",
+        "current_source_sha256": "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041",
+        "reviewed_source_commit": "add8503d58c6f707a35b4502bf98aff91109c1cd",
+        "reviewed_merge_commit": "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+      },
+      {
+        "path": "ml/scripts/test_week3_sv2_cache.py",
+        "r4_manifest_sha256": "9c7a2b6cdba237145ad127a45e5938e7d657b20caa1faaafbf7f5e885232b9b4",
+        "current_source_sha256": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f",
+        "reviewed_source_commit": "add8503d58c6f707a35b4502bf98aff91109c1cd",
+        "reviewed_merge_commit": "e6d3e8cc40323227d0f15a4bb4091957f2498744"
+      }
+    ],
+    "current_source_revision": "r4",
+    "current_source_manifest_sha256": "3ca39030081c6b53a5191f927ead6fdc84cdeba1c69766bbdbc9f1cb9ca3d49a",
+    "current_source_bindings_checked": 21
+  },
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "onnx": "1.23.1",
+    "onnxruntime": "1.30.0",
+    "protobuf": "7.36.2",
+    "ml_dtypes": "0.6.0",
+    "flatbuffers": "25.12.19"
+  },
+  "outputs_sha256": {
+    "week8_inputs.h": "4091e4613e0680aebd7c656c408311534a5645bf4ab30ef3faf0d7e896d41317",
+    "samples.csv": "d77e8c662d03818f94c345c2c2f6d385c431768da20899b88ac54227857b5e20",
+    "excluded.csv": "f2c465413f79a4fb569a1d08a7a92113fb3dcfea8ef671fad0a56a8bb90fb6ab",
+    "reference_s2.npz": "e7407378e7870afbfa94b850f809c85165a1d640673d1f01bbd32f6d1aab76d5"
+  }
+}

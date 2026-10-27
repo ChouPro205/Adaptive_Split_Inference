@@ -1,0 +1,3 @@
+variant,build_id,commit,bin_bytes,image_end,headroom_before_0xDC000_bytes,ram_static_bytes,bin_sha256
+energy-usb,5d070cbaddf0-week8-energy-usb-fast-20261026T055056Z,5d070cbaddf0,752244,0xb8a74,144780,125767,196c7d3b75277219bdc587bf1db4dd7544bcc323fc45869fd1a18ee2488b2989
+energy,5d070cbaddf0-week8-energy-fast-20261026T055457Z,5d070cbaddf0,713632,0xaf3a0,183392,110992,e7c115117a58963bb66958d391b853092626c088fbc9d51483ec60d707e0e55a
