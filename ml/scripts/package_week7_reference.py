@@ -11,6 +11,9 @@ ANCHOR = '612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c'
 
 
 def package(reference, output):
+    reference, output = reference.resolve(), output.resolve()
+    need(output.is_relative_to(ROOT) and not output.is_relative_to(reference),
+         'Handoff output must be inside checkout and outside frozen reference')
     need(not output.exists(), 'Refuse to overwrite handoff directory')
     need(sha(reference/'manifest.json') == ANCHOR, 'Frozen manifest anchor differs')
     manifest = validate_reference(reference)

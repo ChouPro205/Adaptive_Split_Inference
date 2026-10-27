@@ -9,13 +9,13 @@ receipt hay gán pin mới. Kiểm HEAD bàn giao lưu riêng ở
 
 | Lệnh qua `ml/scripts/log_week7_command.py` | Receipt/output mới |
 |---|---|
-| `python -B ml/scripts/test_week7_nopeek.py` | [nopeek-normal.command.json](validated/nopeek-normal.command.json), stdout/stderr cùng prefix |
-| `python -O -B ml/scripts/test_week7_nopeek.py` | [nopeek-O.command.json](validated/nopeek-O.command.json) |
-| `python -B ml/scripts/test_week7_reconcile.py` | [reconcile-normal.command.json](validated/reconcile-normal.command.json) |
-| `python -O -B ml/scripts/test_week7_reconcile.py` | [reconcile-O.command.json](validated/reconcile-O.command.json) |
-| `python -B ml/scripts/demo_week7_nopeek.py --output <new>/demo.json` | [demo.command.json](validated/demo.command.json), [demo.json](validated/demo.json) |
-| `python -B ml/provenance/week7-evaluator-fix-20261026/verify_reference.py` | [reference.command.json](validated/reference.command.json), stdout JSON; không chạy inference |
-| `python -B ml/scripts/package_week7_reference.py --output .cache/week7-sv2-handoff-20261028` | [package.command.json](validated/package.command.json), [handoff-receipt.json](handoff-receipt.json) |
+| `python -B ml/scripts/test_week7_nopeek.py` | [nopeek-normal.command.json](delivery/nopeek-normal.command.json), stdout/stderr cùng prefix |
+| `python -O -B ml/scripts/test_week7_nopeek.py` | [nopeek-O.command.json](delivery/nopeek-O.command.json) |
+| `python -B ml/scripts/test_week7_reconcile.py` | [reconcile-normal.command.json](delivery/reconcile-normal.command.json) |
+| `python -O -B ml/scripts/test_week7_reconcile.py` | [reconcile-O.command.json](delivery/reconcile-O.command.json) |
+| `python -B ml/scripts/demo_week7_nopeek.py --output <new>/demo.json` | [demo.command.json](delivery/demo.command.json), [demo.json](delivery/demo.json) |
+| `python -B ml/provenance/week7-evaluator-fix-20261026/verify_reference.py` | [reference.command.json](delivery/reference.command.json), stdout JSON; không chạy inference |
+| `python -B ml/scripts/package_week7_reference.py --output .cache/week7-sv2-handoff-20261028-r1` | [package.command.json](delivery/package.command.json), [handoff-receipt.json](handoff-receipt.json) |
 | `capture_state.py` | [capture.command.json](capture.command.json), [github-refs.json](github-refs.json), [source-review.json](source-review.json), [environment.json](environment.json), [preservation-before.json](preservation-before.json) |
 | `verify_host.py --tested-commit <receipt commit> --output <new>/verification.json` | [verification.json](verification.json); source/log/hash/links/diff/preservation |
 
@@ -55,3 +55,8 @@ so cùng backend; 87/100 agreement không là accuracy độc lập. Gate strict
 [Phụ lục hiện hành/owner](../../../docs/sv3_week7_host_update_20261028.md),
 [bàn giao Trung](../../../docs/sv3_week7_sv2_handoff_20261028.md),
 [runbook GVHD](../../../docs/sv3_week7_demo_guide.md).
+
+L??t `validated/` t?i `9b08aa7`: NoPeek 19/19 th??ng v? -O, reconciliation
+18/18 th??ng v? -O, demo/reference PASS. Packaging ?? ki?m member ZIP nh?ng
+exit 1 tr??c khi ghi receipt do x? l? relative path. Gi? ZIP/l??t l?i ??;
+source s?a resolve path r?i ch?y output m?i h?u t? r1 v? receipts `delivery/`.

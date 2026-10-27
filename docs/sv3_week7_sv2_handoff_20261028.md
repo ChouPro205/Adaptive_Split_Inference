@@ -11,7 +11,7 @@ Generation commit `08e4b4259a2757be7b663b88cc1c98607602d266`.
 Không chạy lệnh `prepare` ở hồ sơ cũ cho lần bàn giao này.
 
 Gói được kiểm rồi đóng tại:
-`.cache/week7-sv2-handoff-20261028/sv3-week7-frozen-reference.zip`.
+`.cache/week7-sv2-handoff-20261028-r1/sv3-week7-frozen-reference.zip`.
 SHA/size ZIP và từng member ở
 [handoff-receipt.json](../ml/provenance/week7-host-20261028/handoff-receipt.json).
 Gói có manifest gốc, 8 file dữ liệu/reference (295.210.600 byte) và bản sao
@@ -25,7 +25,7 @@ Lệnh đóng gói đã dùng (output phải mới nếu cần chạy lại):
 
 ```powershell
 $py = 'C:/Users/Admin/Adaptive_Split_Inference/ml/.venv/Scripts/python.exe'
-& $py -B ml/scripts/package_week7_reference.py --output .cache/week7-sv2-handoff-20261028
+& $py -B ml/scripts/package_week7_reference.py --output .cache/week7-sv2-handoff-20261028-r1
 ```
 
 Trung dùng native **root GraphRunner CPU+DPU**, model xmodel đã pin, lần lượt
