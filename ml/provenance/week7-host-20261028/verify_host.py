@@ -79,7 +79,8 @@ def main():
                 continue
             target, _, anchor = unquote(link).partition('#')
             dest = (path.parent/target).resolve() if target else path
-            need(dest.exists(), 'Missing document link: '+name+' -> '+link)
+            # The report being created is checked by successful exclusive write below.
+            need(dest.exists() or dest==a.output.resolve(), 'Missing document link: '+name+' -> '+link)
             if anchor and dest.suffix=='.md':
                 headings = re.findall(r'^#+\s+(.+)$',dest.read_text('utf-8'),re.M)
                 slugs = [re.sub(r'[^\w\- ]','',h.lower()).replace(' ','-') for h in headings]
@@ -88,6 +89,7 @@ def main():
     for args in (('diff','--check',MAIN+'...HEAD'),('diff','--check'),('diff','--cached','--check')):
         git(*args)
     result = {'status':'PASS_HOST_SCOPE_ONLY', 'checked_head':git('rev-parse','HEAD').decode().strip(),
+              'verifier_sha256':sha(Path(__file__)),
               'tested_commit':a.tested_commit, 'commands':commands,
               'historical_evidence_files_raw_unchanged':len(old),
               'ignored_artifact_files_hash_unchanged':len(read(HERE/'preservation-before.json')),
