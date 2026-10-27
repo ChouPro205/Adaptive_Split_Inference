@@ -11,6 +11,7 @@ Nơi quản lý hợp đồng giao diện I1-I4, packet format, schema, versioni
 | [I2/1 nonce và provisioning v1](i2_nonce_provisioning_v1.md) | Dải sequence lưu NVS trên `storage_partition`, provisioning key qua USB CDC. Thiết kế duyệt; persistence vẫn `NOT_ACCEPTED`. |
 | [I2/1](i2_protection_v1.md) | Biến đổi đảo ngược activation INT8 (không phải mã hóa); không đổi. |
 | [Approved registry](sv3_week5_approved_registry_v2.json) và [allocation](sv3_week5_allocation_v2.md) | Model profile, split ID 256..266, key/sender, trần buffer. |
+| [Revision registry r2 (tuần 8)](sv1_sv2_week8_registry_revision_r2.json) | Delta trên registry v2 (không sửa file gốc): `runtime.nonce_persistence_reboot = ACCEPTED` cho bộ đếm nonce dongle; SV1 xác nhận, **chờ SV2 xác nhận** cùng mã `mitdb-week5-i2-registry-v1-r2`. |
 
 Reference/test host của I1 v2, BLE binding và mô hình nonce:
 [`i1v2_ref/`](i1v2_ref/test_i1v2.py) (`python -B contracts/i1v2_ref/test_i1v2.py`).

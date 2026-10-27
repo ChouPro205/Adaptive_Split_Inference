@@ -1,0 +1,23 @@
+﻿{
+    "app":  "week8",
+    "build_id":  "5d070cbaddf0-week8-energy-fast-20261026T055457Z",
+    "commit":  "5d070cbaddf0a3ef175359802905869ae3851f1d",
+    "dirty":  false,
+    "status_porcelain":  [
+
+                         ],
+    "variant":  "energy",
+    "kernel":  "fast",
+    "r3_anchors":  {
+                       "ml/results/week4-r3/firmware/head_parameters.h":  "3f811758ca6fc6a8fdefa74ff50ccb48031c006e9a12b617604dad033657487b",
+                       "device/generated/week4_graph.h":  "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c",
+                       "device/generated/week4_inputs.h":  "82a752cff0ef1ae5ed1c8d8bd596f89163e4af3c1a0c3bbac14f6cff262178c6"
+                   },
+    "samples_dir":  "D:\\HUST\\ASI_week8\\samples-20261023-c",
+    "set_sha256":  "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+    "sample_anchors":  {
+                           "week8_inputs.h":  "4091e4613e0680aebd7c656c408311534a5645bf4ab30ef3faf0d7e896d41317",
+                           "samples.csv":  "d77e8c662d03818f94c345c2c2f6d385c431768da20899b88ac54227857b5e20",
+                           "reference_s2.npz":  "e7407378e7870afbfa94b850f809c85165a1d640673d1f01bbd32f6d1aab76d5"
+                       }
+}

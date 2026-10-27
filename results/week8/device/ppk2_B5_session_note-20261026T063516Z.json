@@ -1,0 +1,13 @@
+{
+  "schema": "week7-ppk2-note/1",
+  "utc": "20261026T063516Z",
+  "temp_end_C": 26.5,
+  "photos": [
+    {
+      "path": "D:\\HUST\\ASI_week8\\B5-official-20261026-1328\\photos\\bench-20261026.png",
+      "sha256": "c7a3d8f5d2fd1bb7228373acf1ca07e7a12e97f55a4581e1ca11ab7b9ce6f4c5",
+      "bytes": 3306266
+    }
+  ],
+  "text": "Phien TC6 chinh thuc, image sach 5d070cb. Ban do giu nguyen nhu phien 12:25 (Chau xac nhan lap y het, anh chup luc 12:25). Phong 26-27 C khong doi. Laptop Windows tu chon interval 45 ms o phien nay (phien 12:25: 15 ms): central quyet, khong anh huong TC6; ghi cho TC8."
+}

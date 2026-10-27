@@ -1,0 +1,120 @@
+{
+  "schema": "week8-check-cycles/1",
+  "session": "D:\\HUST\\ASI_week8\\kv260-supp1-1M-one0P0-20261027-1351",
+  "status": "PASS",
+  "device_banner": {
+    "build": "5d070cbaddf0-week8-energy-usb-fast-20261026T055056Z",
+    "variant": "energy-usb",
+    "kernel": "FAST",
+    "split": "2",
+    "samples": "100",
+    "pairs": "100",
+    "gap_ms": "1000",
+    "boot_idle_s": "30",
+    "connected_idle_s": "30",
+    "ctrl_min_us": "200",
+    "timeout_ms": "5000",
+    "conn_interval_1250us": "12",
+    "d4_pin": "P0.22",
+    "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639"
+  },
+  "checks": {
+    "cycle_count": true,
+    "all_ok": true,
+    "plan_order_pair_sample_rho": true,
+    "sample_ids": true,
+    "single_attempt": true,
+    "no_flash_write_in_cycle": true,
+    "frame_lengths": true,
+    "label_is_argmax_of_logits": true,
+    "labels_equal_reference_p1": true,
+    "labels_equal_reference_p0": true,
+    "end_totals": true,
+    "dongle_logits_equal_edge_logits": true,
+    "edge_q_scale_equal_samples": true,
+    "edge_summary_pass": true,
+    "dongle_logits_equal_edge_offline": true
+  },
+  "peer": "KV260",
+  "first_pair": 0,
+  "pairs": 100,
+  "one": [
+    0,
+    "P0"
+  ],
+  "label_reference": "W8-D8 peer offline D:\\HUST\\ASI_week8\\from-trung-20261026-g2\\review\\offline_second\\predictions.jsonl sha256 c91af325c1dd87b04d032a72d72a7feff69ff669492d8f0bb7bf0ae2b1cf39e1",
+  "labels_equal_w8d4_fp32": {
+    "P1": 0,
+    "P0": 1
+  },
+  "labels": {
+    "P1": {
+      "match": 0,
+      "mismatch": 0,
+      "failed": 0,
+      "samples": 0
+    },
+    "P0": {
+      "match": 1,
+      "mismatch": 0,
+      "failed": 0,
+      "samples": 1
+    }
+  },
+  "label_equals_true_class_cycles": 1,
+  "label_equals_true_class_note": "model accuracy on the W8-D3 set (not a G2 criterion)",
+  "mismatches": [],
+  "reserved_through_at_boot": 60651520,
+  "session_reserved_sequence": 60650497,
+  "prior_reserved_through": 60650496,
+  "first_p1_sequence": null,
+  "last_p1_sequence": null,
+  "att_mtu": [
+    "247"
+  ],
+  "dwt_phases_us": {
+    "P0_ctrl_us": {
+      "mean": 200.0,
+      "min": 200,
+      "max": 200
+    },
+    "P0_head_us": {
+      "mean": 37897.0,
+      "min": 37897,
+      "max": 37897
+    },
+    "P0_quant_us": {
+      "mean": 4313.0,
+      "min": 4313,
+      "max": 4313
+    },
+    "P0_prot_us": {
+      "mean": 0.0,
+      "min": 0,
+      "max": 0
+    },
+    "P0_enc_us": {
+      "mean": 3349.0,
+      "min": 3349,
+      "max": 3349
+    },
+    "P0_tx_us": {
+      "mean": 11059.0,
+      "min": 11059,
+      "max": 11059
+    },
+    "P0_wait_us": {
+      "mean": 2276.0,
+      "min": 2276,
+      "max": 2276
+    }
+  },
+  "scope": "energy-usb on laptop power: correctness evidence; timings debug only, not energy",
+  "tool_sha256": {
+    "check_week8.py": "88f6236a93d31be85fd2e91c126cea1d17a7f5bf02829e589ad6c5f9a7f5eac6",
+    "week8_common.py": "60d242188875815842e157aa475ea21ab796937fd519b587f28ba607bb83af91",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b",
+    "week8_edge.py": "c6f4814033794862a546fd3ca0fad0684d45e2559bf31ee13a09af16213c9982",
+    "week8_tail_worker.py": "080adb4f9830eb2978bd840f3b5fc04f79ac8854d02a3097e79264e2c65529fc"
+  }
+}

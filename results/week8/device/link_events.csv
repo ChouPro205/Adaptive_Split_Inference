@@ -1,0 +1,46 @@
+session,host_ms,event,fields
+tc3_laptop,12155218,LINK,connected=0 att_mtu=0 interval_1250us=12 timeout_10ms=400 phy_tx=2 phy_rx=2 connections=1
+tc3_laptop,12155437,EVT ATT_MTU,tx=23 rx=23 uatt_mtu=23 frame_bytes_per_fragment=12
+tc3_laptop,12155437,EVT CONNECTED,uatt_mtu=23 interval_1250us=12 latency=0 timeout_10ms=400
+tc3_laptop,12155437,EVT ATT_MTU,tx=527 rx=247 uatt_mtu=247 frame_bytes_per_fragment=236
+tc3_laptop,12155546,EVT DATA_LEN,tx=251 rx=251
+tc3_laptop,12155656,EVT PHY,tx=2 rx=2
+tc3_laptop,12155765,EVT CONN_PARAM,interval_1250us=12 latency=0 timeout_10ms=960
+tc3_laptop,12156203,EVT TX_CCC,notify=1
+tc3_laptop,12157546,EVT CONN_PARAM,interval_1250us=12 latency=0 timeout_10ms=400
+tc3_laptop,12157656,CONNPARAM,request min_1250us=12 max_1250us=12 err=0
+tc3_laptop,12160781,LINK,connected=1 att_mtu=247 interval_1250us=12 timeout_10ms=400 phy_tx=2 phy_rx=2 connections=2
+kv260_g2_one0P0,11235500,LINK,connected=1 att_mtu=247 interval_1250us=36 timeout_10ms=42 phy_tx=0 phy_rx=0 connections=1
+kv260_g2_one0P0,11235625,CONNPARAM,request min_1250us=12 max_1250us=12 err=0
+kv260_g2_one0P0,11236062,EVT CONN_PARAM,interval_1250us=12 latency=0 timeout_10ms=400
+kv260_g2_one0P0,11238625,LINK,connected=1 att_mtu=247 interval_1250us=12 timeout_10ms=400 phy_tx=0 phy_rx=0 connections=1
+kv260_g2_one0P1,11273390,LINK,connected=1 att_mtu=247 interval_1250us=12 timeout_10ms=400 phy_tx=0 phy_rx=0 connections=1
+kv260_g2_one0P1,11273515,CONNPARAM,request min_1250us=12 max_1250us=12 err=0
+kv260_g2_pairs5,11288453,LINK,connected=1 att_mtu=247 interval_1250us=12 timeout_10ms=400 phy_tx=0 phy_rx=0 connections=1
+kv260_g2_pairs5,11288562,CONNPARAM,request min_1250us=12 max_1250us=12 err=0
+kv260_g2_pairs100,11325140,LINK,connected=1 att_mtu=247 interval_1250us=12 timeout_10ms=400 phy_tx=0 phy_rx=0 connections=1
+kv260_g2_pairs100,11325250,CONNPARAM,request min_1250us=12 max_1250us=12 err=0
+kv260_supp1_1M,11026875,LINK,connected=0 att_mtu=0 interval_1250us=0 timeout_10ms=0 phy_tx=0 phy_rx=0 connections=0
+kv260_supp1_1M,11080687,EVT ATT_MTU,tx=23 rx=23 uatt_mtu=23 frame_bytes_per_fragment=12
+kv260_supp1_1M,11080687,EVT CONNECTED,uatt_mtu=23 interval_1250us=36 latency=0 timeout_10ms=42
+kv260_supp1_1M,11080796,EVT ATT_MTU,tx=517 rx=247 uatt_mtu=247 frame_bytes_per_fragment=236
+kv260_supp1_1M,11080796,EVT DATA_LEN,tx=251 rx=251
+kv260_supp1_1M,11081562,EVT TX_CCC,notify=1
+kv260_supp1_1M,11082031,LINK,connected=1 att_mtu=247 interval_1250us=36 timeout_10ms=42 phy_tx=0 phy_rx=0 connections=1
+kv260_supp1_1M,11082140,CONNPARAM,request min_1250us=12 max_1250us=12 err=0
+kv260_supp1_1M,11086140,EVT CONN_PARAM,interval_1250us=12 latency=0 timeout_10ms=400
+kv260_supp1_1M,11086812,LINK,connected=1 att_mtu=247 interval_1250us=12 timeout_10ms=400 phy_tx=0 phy_rx=0 connections=1
+kv260_supp2_1M,11173468,LINK,connected=0 att_mtu=0 interval_1250us=12 timeout_10ms=400 phy_tx=0 phy_rx=0 connections=1
+kv260_supp2_1M,11281171,EVT ATT_MTU,tx=23 rx=23 uatt_mtu=23 frame_bytes_per_fragment=12
+kv260_supp2_1M,11281171,EVT CONNECTED,uatt_mtu=23 interval_1250us=36 latency=0 timeout_10ms=42
+kv260_supp2_1M,11281281,EVT ATT_MTU,tx=517 rx=247 uatt_mtu=247 frame_bytes_per_fragment=236
+kv260_supp2_1M,11281390,EVT DATA_LEN,tx=251 rx=251
+kv260_supp2_1M,11281765,LINK,connected=1 att_mtu=247 interval_1250us=36 timeout_10ms=42 phy_tx=0 phy_rx=0 connections=2
+kv260_supp2_1M,11282093,EVT TX_CCC,notify=1
+kv260_supp2_1M,11284000,CONNPARAM,request min_1250us=12 max_1250us=12 err=0
+kv260_supp2_1M,11286625,EVT CONN_PARAM,interval_1250us=12 latency=0 timeout_10ms=400
+kv260_supp2_1M,11287015,LINK,connected=1 att_mtu=247 interval_1250us=12 timeout_10ms=400 phy_tx=0 phy_rx=0 connections=2
+kv260_supp4_2M,12261140,LINK,connected=1 att_mtu=247 interval_1250us=36 timeout_10ms=42 phy_tx=2 phy_rx=2 connections=3
+kv260_supp4_2M,12261250,CONNPARAM,request min_1250us=12 max_1250us=12 err=0
+kv260_supp4_2M,12261687,EVT CONN_PARAM,interval_1250us=12 latency=0 timeout_10ms=400
+kv260_supp4_2M,12264281,LINK,connected=1 att_mtu=247 interval_1250us=12 timeout_10ms=400 phy_tx=2 phy_rx=2 connections=3
