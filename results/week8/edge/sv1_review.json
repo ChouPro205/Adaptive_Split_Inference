@@ -2,7 +2,7 @@
   "schema_version": 1,
   "review_date": "2026-10-27",
   "reviewer_role": "SV1 / Device",
-  "source": "SV1 review relayed by SV2 in the project discussion; original Device report/PR not present in fetched branches at publication",
+  "source": "docs/sv1_device_week8_report.md; results/week8/device checker receipts, PR39 merged into origin/main before final publication. Saved bytes verified; hardware not rerun.",
   "g2": "PASS_REPORTED_BY_SV1",
   "criteria": "8/9 Device criteria PASS; TC7 registry pending SV2 review",
   "receiver_import": {
@@ -66,15 +66,17 @@
     },
     "sv1_explanation": "Tail DPU quantization; internal output fix_point 3 and systematic Q logit reduction. No transport error, tuning or sample removal.",
     "edge_verification_limit": "Edge saved root runner receipt: XINT8 input fix_point 5, FLOAT32 final output fix_point null. Internal DPU fix_point 3 is SV1-reported, not independently established by this root receipt.",
-    "independent_8544_accuracy": "NOT_MEASURED_OPTIONAL"
+    "independent_8544_accuracy": "NOT_MEASURED_OPTIONAL",
+    "timing_explanation": "SV1 report section4: DWT CYCCNT stops during WFI; tx_us/wait_us measure CPU awake time, unlike PPK2 markers or Edge steady_clock."
   },
   "registry": {
     "proposed_revision": "mitdb-week5-i2-registry-v1-r2",
     "delta_path": "contracts/sv1_sv2_week8_registry_revision_r2.json",
-    "delta_available_in_fetched_branches": false,
-    "joint_confirmation": "PENDING",
+    "delta_available_in_fetched_branches": true,
+    "joint_confirmation": "PENDING_USER_PR_COMMENT_AFTER_SV2_TECHNICAL_REVIEW",
     "scope_requested": "Only Dongle nonce counter persistence/reboot; provisioning remains NOT_ACCEPTED and p1_transmission_authorized remains false; Edge high-water is volatile"
   },
   "week9_requirement": "Set/Read PHY for each connect/reconnect; only verified 2M sessions count. Alternate P1/P0 pairs; same numeric request log interface.",
-  "highwater_persistence": "Required before outside-bench use; not a Week9 blocker per SV1"
+  "highwater_persistence": "Required before outside-bench use; not a Week9 blocker per SV1",
+  "device_receipts_manifest_sha256": "e4f4cb63efc82b5ee4b8cc711140ee3210215c3d3fffb920a3f124d9b359e2a9"
 }

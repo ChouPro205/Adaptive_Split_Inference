@@ -70,5 +70,12 @@
     "Bash scripts bash -n",
     "Python source parses for Python 3.9"
   ],
-  "hardware_this_publication": "NOT_RUN"
+  "hardware_this_publication": "NOT_RUN",
+  "device_update_checks": {
+    "source": "PR39 merged into main before publication",
+    "manifest_files_sha256_verified": 49,
+    "registry_evidence_sha256_verified": 9,
+    "imported_g2_log_hash_matches_edge": true,
+    "hardware_rerun": false
+  }
 }

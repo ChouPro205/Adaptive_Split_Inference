@@ -13,12 +13,12 @@ ngày 27/10; registry TC7 còn chờ delta r2 và xác nhận chung.
 | `source_versions.json` | Hai SHA service trước/sau patch giữ kết nối |
 | `sha256sum_export.txt` | Checksum năm file export ở trên |
 | `publication.json`, `validation.json` | Commit chứa hai source service thực đo và kiểm tra HOST khi xuất bản |
+| `registry_r2_review.json` | Review kỹ thuật delta r2 và 9 checksum evidence; không sửa registry hay thay xác nhận PR |
 | `sv1_review.json` | Kết luận receiver review được SV1 gửi qua SV2; nguồn và giới hạn tách riêng |
 
 `sha256sum_export.txt` kiểm bytes của năm file exporter tạo, không bao gồm README
-, ghi nhận receiver review, publication và validation. Không viết lại receipt lịch sử để cập nhật trạng thái.
-SV1 review không thay raw; report/PR Device và delta registry r2 chưa có trên các
-nhánh remote được fetch trong phiên xuất bản này.
+, ghi nhận receiver review, publication, validation và registry review. Không viết lại receipt lịch sử để cập nhật trạng thái.
+SV1 review không thay raw; report/PR Device và delta r2 đã nhận qua PR39 trong lần fetch cuối, vẫn chờ xác nhận chính thức.
 
 ## Tái tạo từ raw cục bộ
 

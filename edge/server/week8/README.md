@@ -54,8 +54,8 @@ index 0..4 (N,S,V,F,Q), ties pick the first. `scale_sha256` hashes original-chan
 wire scales (16 float32_le), not the FP16 storage bytes. `t_rx_ms` is monotonic
 on Edge when reassembly finishes; it is not a synchronized one-way timestamp.
 A downstream SV1 checker must agree on these encodings; do not edit raw logs to
-force a PASS. The receiver confirmed import compatibility on 27 October; its original
-Week 8 checker/report is not present in the fetched branches at publication.
+force a PASS. The receiver confirmed import compatibility on 27 October; its Week8 checker/report and field specification are now available through
+[the Device report](../../../docs/sv1_device_week8_report.md) merged in PR39.
 
 The four SV1 stage logs use the handoff's additional convention: `ev=request`,
 `scale_sha256` hashes 16 FP16 little-endian scales, and `logits` contains the five

@@ -55,8 +55,8 @@
   "independent_test_accuracy": "NOT_MEASURED",
   "supplement_full_hci_trace": "NOT_RECOVERED",
   "nonce_registry_joint_acceptance": "PENDING_R2_REVIEW",
-  "device_g2_acceptance": "SV1_REPORTED_PASS_2026_10_27",
-  "device_review_source": "SV1 review relayed by SV2 on 2026-10-27; original Device report/PR absent from fetched branches",
+  "device_g2_acceptance": "SV1_CHECKER_PASS_SAVED_RECEIPTS_VERIFIED",
+  "device_review_source": "docs/sv1_device_week8_report.md and results/week8/device (PR39), saved receipt hashes verified; no new Device run",
   "worker_backend": {
     "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
     "worker_sha256": "9f542a2c5aaaf97e94a08a7c529ddd371e0894e5e74f9c5962bc31b5e6da222b",

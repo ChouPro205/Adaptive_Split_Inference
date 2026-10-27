@@ -174,7 +174,7 @@ def export(a):
         'scale_sha256 is FP16 little-endian; raw peer.jsonl uses FP32 scale hash and hex logits.\n'
         'Numeric logits are checked against original response FP32 bits; tail_us converts saved tail_ms.\n'
         'PHY names in delivery filenames reflect the SV1-reported trial mapping, not an exporter PHY verdict.\n'
-        'PEER_LOG_FIELDS definition was not available locally: receiver schema completeness still needs checking.\n'
+        'Receiver confirmed numeric import compatibility; see Device Week8 peer summary field_spec for the accepted fields.\n'
         'Missing historical command timestamps cannot be recreated using file mtime or current time.\n')
     save(a.output/'summary.json',{'scope':'SUPPLEMENTAL_1_2_4_NOT_ORIGINAL_212' if trial4 else 'SUPPLEMENTAL_1_PLUS_10_NOT_ORIGINAL_212_REQUEST_SESSION',
         'trials':{name:{'rows':len(rows),'source_inventory_sha256':digest,'source_folder':source} for name,rows,digest,source in trials},

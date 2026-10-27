@@ -12,6 +12,7 @@ import zipfile
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+DEVICE_MANIFEST_SHA = 'e4f4cb63efc82b5ee4b8cc711140ee3210215c3d3fffb920a3f124d9b359e2a9'
 PINS = {
     'nhan_sau_g2/after_g2.tar.gz': '017298062c086407d94d0c1a9b28df676a06794a50505a3ba85702895119d935',
     'gui_sv1_g2.zip': '0d376d369a20eface170d62d5808998d888133d424913c0f0378defe5a7d078e',
@@ -76,6 +77,14 @@ def main():
     session = a.session.resolve()
     for name, expected in PINS.items():
         require(sha(session / name) == expected, 'Pinned input/archive differs: ' + name)
+    device = ROOT / 'results/week8/device'
+    require(sha(device / 'manifest.json') == DEVICE_MANIFEST_SHA, 'Device manifest revision differs')
+    device_manifest = read(device / 'manifest.json')
+    for entry in device_manifest['files']:
+        path = device / entry['path']
+        require(device.resolve() in path.resolve().parents and sha(path) == entry['sha256'], 'Device receipt checksum differs')
+    device_check = read(device / 'kv260_g2_pairs100.json')
+    require(device_check['status'] == 'PASS' and all(device_check['checks'].values()), 'Device G2 checker not PASS')
     board = session / 'nhan_sau_g2/ho_so'
     # Compare extracted bytes to the independently pinned received archive.
     archive_count = 0
@@ -100,6 +109,9 @@ def main():
             if path.is_file():
                 require(path.read_bytes() == archive.read('raw/' + path.relative_to(supplemental).as_posix()),
                         'Supplement raw differs from pinned ZIP')
+    imported = read(device / 'kv260_g2_pairs100_peer_summary.json')
+    require(imported['status'] == 'PASS' and imported['source_log_sha256'] == sha(board / 'sv1_session/pairs_100.jsonl'),
+            'Device imported a different Edge G2 stage log')
     with np.load(session / 'inputs/reference_s2.npz', allow_pickle=False) as data:
         q = data['q'].copy()
         scales = data['scale_f16'].copy()
@@ -188,10 +200,12 @@ def main():
               'edge_rx_to_tx_submit_ms': stats([r['edge_rx_to_tx_submit_ms'] for r in g2]),
               'independent_test_accuracy': 'NOT_MEASURED', 'supplement_full_hci_trace': 'NOT_RECOVERED',
               'nonce_registry_joint_acceptance': 'PENDING_R2_REVIEW',
-              'device_g2_acceptance': 'SV1_REPORTED_PASS_2026_10_27',
-              'device_review_source': 'SV1 review relayed by SV2 on 2026-10-27; original Device report/PR absent from fetched branches',
+              'device_g2_acceptance': 'SV1_CHECKER_PASS_SAVED_RECEIPTS_VERIFIED',
+              'device_review_source': 'docs/sv1_device_week8_report.md and results/week8/device (PR39), saved receipt hashes verified; no new Device run',
               'worker_backend': backend, 'service_sha256': source_versions}
     provenance = {'schema_version': 1, 'exporter_sha256': sha(__file__), 'pinned_inputs': PINS,
+                  'device_manifest_sha256': DEVICE_MANIFEST_SHA,
+                  'device_receipt_files_verified': len(device_manifest['files']),
                   'received_archive_files_verified': archive_count, 'checksum_files_verified': counts,
                   'measured_source_sha256': {k: sha(p) for k, p in source_paths.items()},
                   'current_checkout_service_matches_supplement': sha(ROOT / 'edge/server/week8/ble_service.py') == source_versions['supp4'],

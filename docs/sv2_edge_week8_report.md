@@ -22,13 +22,17 @@ trùng bit offline. Bằng chứng và số tính lại ở [results/week8/edge]
 | Gói bổ sung 1+10+10 | SV1 import PASS, 21/21 dòng khớp raw, 0 cache hit |
 | Trace HCI cả buổi bổ sung | Chưa khôi phục; receiver chấp nhận log Dongle + Read PHY, ghi giới hạn |
 | Tiêu chí Device | SV1 báo 8/9 PASS, TC7 registry chờ SV2 |
-| Revision registry r2 | Chưa đọc delta/PR; chưa xác nhận chung, không sửa registry lịch sử |
+| Revision registry r2 | Đã review delta và 9 checksum evidence; chờ người dùng xác nhận trong PR, không sửa registry lịch sử |
 | Đo toàn bộ 8.544 mẫu | Chưa thực hiện; tùy chọn sau khi xác nhận pipeline |
 
 Kết luận Device/link do SV1 review được ghi riêng trong
-[sv1_review.json](../results/week8/edge/sv1_review.json). Bản báo cáo/CDC/checker
-Device gốc và delta r2 chưa có trên các nhánh remote được fetch khi xuất bản;
-không trình bày review được chuyển qua SV2 như agent đã tự chạy checker Device.
+[sv1_review.json](../results/week8/edge/sv1_review.json). Fetch cuối nhận PR [#39](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/39)
+đã merge: [báo cáo Device](sv1_device_week8_report.md),
+[49 file receipt có manifest](../results/week8/device/manifest.json) và delta r2
+đã được đồng bộ. Đã kiểm 49 SHA receipt và hash log Edge mà Device importer
+đã đọc khớp log G2 phía Edge. Đây là kiểm kết quả đã lưu, không chạy lại checker
+trên CDC raw hoặc firmware. Nguồn này thay trạng thái chưa có report/delta ở
+lần fetch đầu của phiên xuất bản.
 Việc thiếu btsnoop bổ sung và schema log riêng không còn là yêu cầu phải gửi
 thêm theo receiver review mới; giới hạn bằng chứng vẫn được bảo toàn.
 
@@ -135,8 +139,13 @@ Native timer `steady_clock` gồm input conversion/quantization, copy/sync,
 execute/wait và output conversion; không gồm model load, BLE, Python parser,
 unprotect hoặc pipe IPC. Edge timer là monotonic integer ms, kết thúc khi
 BlueZ nhận write submissions, không phải ACK radio/Device hoặc E2E latency.
-Không dùng hai scope này để tự giải thích timing Device khoảng 3 ms từng được
-nêu trong trao đổi trước; chưa có phép đo đồng bộ đủ để kết luận scope đó.
+[Báo cáo SV1 §4](sv1_device_week8_report.md#4-thời-gian) giải thích DWT CYCCNT
+dừng khi CPU ngủ (WFI trong lúc chờ notify/response). Vì thế tx_us/wait_us chỉ
+đo thời gian CPU thức, không phải latency thực; wait_us khoảng 3 ms không mâu
+thuẫn với tail khoảng 45,7 ms. Timing TX/WAIT thực lấy từ PPK2 marker D2/D3.
+Đây là kết luận SV1 dựa trên firmware/đo Device; phiên xuất bản không đo lại
+hoặc tự coi DWT là đồng hồ E2E. Số năng lượng B5 peer laptop chỉ kiểm hành vi
+image, không đưa vào Table II hoặc thay bàn đo KV260 tuần 9.
 
 Link do SV1 xác nhận từ Dongle cùng liên kết: **MTU 247, DLE 251/251, interval
 45 → 15 ms, supervision timeout 4 s; PHY mặc định 1M, lên 2M sau LE Set PHY**.
@@ -188,10 +197,13 @@ Cấu hình đã chạy: [sv2_edge_week8.json](../experiments/configs/sv2_edge_w
 ## 7. Việc còn lại và bàn giao tuần 9
 
 - **TC7 đóng tuần 8:** đọc delta `mitdb-week5-i2-registry-v1-r2` và PR do SV1
-  gửi, xác nhận cùng revision. Delta dự kiến chỉ ACCEPTED counter nonce
-  persistence của Dongle; provisioning vẫn NOT_ACCEPTED và
-  p1_transmission_authorized=false. File/PR chưa có khi fetch, không tự sửa
-  registry v2 hoặc đặt ACCEPTED.
+  gửi, xác nhận cùng revision. [Delta r2](../contracts/sv1_sv2_week8_registry_revision_r2.json)
+  đã có qua PR39: chỉ ACCEPTED counter nonce persistence của Dongle;
+  provisioning vẫn NOT_ACCEPTED, p1_transmission_authorized=false. Đã kiểm
+  base registry SHA, 9 SHA evidence, scope và giới hạn RAM high-water Edge;
+  [kết quả review](../results/week8/edge/registry_r2_review.json) đủ để người
+  dùng gửi xác nhận đúng phạm vi. File delta vẫn PENDING_EDGE_CONFIRMATION;
+  không tự sửa registry v2 hoặc thay trạng thái xác nhận của người dùng.
 - **Trước đo tuần 9:** mỗi connect/reconnect phải Set PHY 0032 đúng handle mới,
   Read PHY 0030 xác nhận TX/RX 2M, ghi log rồi mới cho SV1 phát request. Service
   tuần 8 chưa tự động bước này. Phiên không xác nhận 2M không tính theo SV1.
@@ -222,4 +234,4 @@ mục receiver đã đóng.
   commit SHA; [validation.json](../results/week8/edge/validation.json) cho kiểm tra.
 
 Chỉ push nhánh dev/edge-sv2; đưa vào main bằng PR và review của thành viên khác.
-Không tự tạo/merge PR hoặc xác nhận delta registry chưa nhận.
+Không tự tạo/merge PR hoặc thay lời xác nhận registry của người dùng.
