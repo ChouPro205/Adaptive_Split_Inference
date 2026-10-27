@@ -1,0 +1,16 @@
+"""Open the app CDC, send STATUS twice, log everything with host timestamps. No cycles."""
+import sys, time, datetime, serial
+port, out = sys.argv[1], sys.argv[2]
+with serial.Serial(port, 115200, timeout=0.2) as s, open(out, "w", encoding="utf-8", newline="\n") as f:
+    def log(line):
+        f.write(f"{datetime.datetime.now().isoformat(timespec='milliseconds')}\t{line}\n"); print(line)
+    log(f"#HOST CDC_OPEN port={port}")
+    end = time.monotonic() + 2
+    for cmd_at in (0.5, 3.0):
+        pass
+    t0 = time.monotonic(); sent = 0
+    while time.monotonic() - t0 < 6:
+        if sent < 2 and time.monotonic() - t0 > [0.5, 3.0][sent]:
+            log("#HOST SEND STATUS"); s.write(b"STATUS\r\n"); sent += 1
+        b = s.readline()
+        if b: log(b.decode("utf-8", "replace").rstrip("\r\n"))

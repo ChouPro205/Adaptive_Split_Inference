@@ -1,0 +1,10 @@
+# Week 8 options. The week 7 options (variant, kernel, split, session timings, CTRL pad, response
+# timeout, connection interval) are reused unmodified from ../week7/Kconfig, which also sources
+# Kconfig.zephyr; CONFIG_WEEK7_P1_CYCLES/P0_CYCLES are not used by the week 8 firmware.
+
+config WEEK8_PAIRS
+	int "P1/P0 pairs per session (W8-D1, W8-D5): pair k uses sample k mod 100, P1 first when k is even"
+	range 1 1000
+	default 100
+
+rsource "../week7/Kconfig"

@@ -1,0 +1,103 @@
+{
+  "schema": "week8-laptop-edge/1",
+  "peer": "laptop (W8-D7 fallback): real tail on CPU, not KV260",
+  "started_utc": "2026-10-23T06:14:34.882561+00:00",
+  "finished_utc": "2026-10-23T06:18:20.908322+00:00",
+  "command": [
+    "device/scripts/week8_lab.py",
+    "cycles",
+    "--out",
+    "D:/HUST/ASI_week8/cycles-tc3-20261023-1345",
+    "--samples",
+    "D:/HUST/ASI_week8/samples-20261023-c",
+    "--pairs",
+    "100",
+    "--key-file",
+    "D:/HUST/ASI_week6/secrets/bench_key_65537.bin",
+    "--prior-reserved-through",
+    "60638208"
+  ],
+  "first_pair": 0,
+  "pairs": 100,
+  "key": "bench key file given",
+  "tail_worker": {
+    "ready": true,
+    "selftest_bit_exact": 100,
+    "split": 2,
+    "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+    "environment": {
+      "python": "3.11.9",
+      "torch": "2.14.0+cu130",
+      "numpy": "2.4.6",
+      "onnx": "1.23.1",
+      "onnxruntime": "1.30.0",
+      "protobuf": "7.36.2",
+      "ml_dtypes": "0.6.0",
+      "flatbuffers": "25.12.19"
+    },
+    "torch_threads": 1
+  },
+  "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+  "counters": {
+    "received": 200,
+    "crc_fail": 0,
+    "drop": 0,
+    "reject": 0,
+    "wrong_split": 0,
+    "sequence_not_increasing": 0,
+    "no_key": 0,
+    "scale_not_fp16": 0,
+    "tail_error": 0,
+    "p1": 100,
+    "p0": 100,
+    "response_sent": 200,
+    "unknown_sample": 0
+  },
+  "peer_counts": {
+    "rx_frames": 200,
+    "tx_frames": 200,
+    "rx_crc_fail": 0,
+    "connections": 1,
+    "faults_applied": 0,
+    "rx_fragments": 2800,
+    "tx_fragments": 200
+  },
+  "reassembler": {
+    "frames_delivered": 200
+  },
+  "checks": {
+    "count": true,
+    "all_ok": true,
+    "rho_order": true,
+    "samples_in_plan_order": true,
+    "request_id_increasing": true,
+    "responses_sent": true,
+    "labels_equal_reference_p1": true,
+    "labels_equal_reference_p0": true
+  },
+  "status": "PASS",
+  "labels_equal_reference": {
+    "P1": 100,
+    "P0": 100
+  },
+  "request_lengths": [
+    3076,
+    3116
+  ],
+  "tail_us": {
+    "min": 666,
+    "max": 1385
+  },
+  "inter_request_ms": {
+    "min": 1062,
+    "max": 1110
+  },
+  "tool_sha256": {
+    "week8_edge.py": "2c691ae9239445631cadcf9fcb8f4a9d19f76c4e7c8ea5f7fa9d20532adfb74c",
+    "week8_tail_worker.py": "080adb4f9830eb2978bd840f3b5fc04f79ac8854d02a3097e79264e2c65529fc",
+    "week8_common.py": "102ffd1f77f89fc2f29aed11156368c92ebe5029686b6de7ba9e7d70428c1dbd",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b",
+    "week6_lab.py": "52f79e40bd575626eaeb8bdbc0a6ecc66cd24d5cf2abea66c08f1a302ff46c2a",
+    "week6_common.py": "a15377a7cd05f73f6b17a2ce0210193da28e499af67ba8bd17e2faa64f7b312a"
+  }
+}

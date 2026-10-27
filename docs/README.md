@@ -24,6 +24,10 @@ và báo cáo của dự án.
   Device PASS trên Dongle qua BLE ngày 19/10/2026, peer là laptop Windows; tiêu chí,
   quyết định D1–D6, việc còn mở của SV2/SV3 và quy trình lab nằm trong phụ lục
 - [Kết quả Dongle Week 6](../results/week6/device/README.md)
+- [Báo cáo SV1/Device (Châu) – Week 7](sv1_device_week7_report.md): marker D0–D4, PPK2 và năng lượng
+  từng pha, 9 tiêu chí PASS ngày 22/10/2026, peer laptop; [kết quả](../results/week7/device/README.md)
+- [Báo cáo SV1/Device (Châu) – Week 8](sv1_device_week8_report.md): G2 Dongle → BLE → KV260 với 100 mẫu
+  PASS ngày 26/10/2026, chốt bàn đo tuần 9 (PHY 2M); [kết quả](../results/week8/device/README.md)
 
 ### Khối ML (SV3 - ML / Bùi Kỳ Anh)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 1](SV3_ML_week1_report.md)

@@ -1,5 +1,13 @@
 # Báo cáo tiến độ Tuần 4 — SV2 (FPGA/Edge, KV260)
 
+> **Ghi chú hiện hành (25/10/2026):** Nội dung bên dưới là hồ sơ lịch sử của
+> luồng Vitis AI 3.5. Script `edge/compile_all_splits.sh` được nhắc trong báo cáo
+> đã được thay thế; không dùng các đường dẫn/lệnh cũ để build hoặc deploy mới.
+> Luồng hiện hành dùng `edge/build_and_audit_models.py` với Vitis AI 2.5 và
+> runtime KV260 PetaLinux 2022.1. Xem [hướng dẫn Edge](../edge/README.md) để
+> chọn môi trường, đầu vào và thư mục output mới. Các số liệu và mô tả thực thi
+> lịch sử bên dưới được giữ nguyên.
+
 ## 1. Mục tiêu Tuần 4
 
 Theo kế hoạch nghiên cứu (`Huong1_Huong_dan_chi_tiet_tung_thanh_vien.pdf` - Mục A.2) và định hướng từ Tuần 3:
