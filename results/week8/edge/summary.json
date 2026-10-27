@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "scope": "SAVED_KV260_EVIDENCE_HOST_VERIFIED",
+  "radio_requests": 212,
+  "g2_requests": 200,
+  "g2_bit_matches_offline": 200,
+  "supplement_requests": 21,
+  "supplement_bit_matches_offline": 21,
+  "offline_repeat_bit_matches": 100,
+  "reference_class_matches": 87,
+  "reference_samples": 100,
+  "per_class_reference_agreement": [
+    {
+      "class": "N",
+      "reference_count": 55,
+      "class_matches": 54
+    },
+    {
+      "class": "S",
+      "reference_count": 11,
+      "class_matches": 8
+    },
+    {
+      "class": "V",
+      "reference_count": 25,
+      "class_matches": 25
+    },
+    {
+      "class": "F",
+      "reference_count": 1,
+      "class_matches": 0
+    },
+    {
+      "class": "Q",
+      "reference_count": 8,
+      "class_matches": 0
+    }
+  ],
+  "tail_ms": {
+    "count": 212,
+    "min": 45.533725,
+    "mean": 45.67422575943397,
+    "std": 0.15667569966179462,
+    "p95": 45.7981385,
+    "max": 47.765797
+  },
+  "edge_rx_to_tx_submit_ms": {
+    "count": 212,
+    "min": 69.0,
+    "mean": 75.33018867924528,
+    "std": 5.595182729430818,
+    "p95": 81.0,
+    "max": 83.0
+  },
+  "independent_test_accuracy": "NOT_MEASURED",
+  "supplement_full_hci_trace": "NOT_RECOVERED",
+  "nonce_registry_joint_acceptance": "PENDING_R2_REVIEW",
+  "device_g2_acceptance": "SV1_REPORTED_PASS_2026_10_27",
+  "device_review_source": "SV1 review relayed by SV2 on 2026-10-27; original Device report/PR absent from fetched branches",
+  "worker_backend": {
+    "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+    "worker_sha256": "9f542a2c5aaaf97e94a08a7c529ddd371e0894e5e74f9c5962bc31b5e6da222b",
+    "plugins": {
+      "libvart_op_imp_relu.so": "6c3a30cd53404a9e691bed554056243e22d06ec42c07b222a1955b243f740f50",
+      "libvart_op_imp_maxpool1d.so": "7c81f9eb3d754bc52b2e995b77c895cdd73120c68ffa6515cc0eb9084a2f5b19",
+      "libvart_op_imp_conv1d.so": "ba0eeaa3559c5d42c672536ebe3cc65f77558ead8eb43c77f99bb0e80829a2ee"
+    }
+  },
+  "service_sha256": {
+    "g2_212": "79a1da1bea8e4c07825efa1f0500a2b24ffce46e53e4ac4b3824323a2faf67e5",
+    "supp1": "a424bc905265e109ee225bc712a063695b9af25b010483162be8c6c16c0337bc",
+    "supp2": "a424bc905265e109ee225bc712a063695b9af25b010483162be8c6c16c0337bc",
+    "supp4": "a424bc905265e109ee225bc712a063695b9af25b010483162be8c6c16c0337bc"
+  }
+}

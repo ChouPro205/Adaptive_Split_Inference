@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "exporter_sha256": "e922e23fdeb511a68f66280a6968bf8af20675c1a2cf02c281370f2c668779b4",
+  "pinned_inputs": {
+    "nhan_sau_g2/after_g2.tar.gz": "017298062c086407d94d0c1a9b28df676a06794a50505a3ba85702895119d935",
+    "gui_sv1_g2.zip": "0d376d369a20eface170d62d5808998d888133d424913c0f0378defe5a7d078e",
+    "bo_sung_link/nhan_request/gui_sv1_bo_sung.zip": "ee1298b3f9201a211af6f51f5f1d2a5aa9730d43cee568914cf70c62e18b53ab",
+    "inputs/reference_s2.npz": "e7407378e7870afbfa94b850f809c85165a1d640673d1f01bbd32f6d1aab76d5"
+  },
+  "received_archive_files_verified": 52,
+  "checksum_files_verified": {
+    "offline_first": 5,
+    "offline_second": 5,
+    "g2_212": 9,
+    "supp1": 4,
+    "supp2": 4,
+    "supp4": 5,
+    "parity": 12
+  },
+  "measured_source_sha256": {
+    "g2_service": "79a1da1bea8e4c07825efa1f0500a2b24ffce46e53e4ac4b3824323a2faf67e5",
+    "supplement_service": "a424bc905265e109ee225bc712a063695b9af25b010483162be8c6c16c0337bc",
+    "persistent_worker": "25a597692abc07437c1ff7940c34b4a3cb9396bf1e02441ef35db755bd99cd77"
+  },
+  "current_checkout_service_matches_supplement": true,
+  "trial_mapping": {
+    "supp1": "trial1",
+    "supp2": "trial2",
+    "supp4": "trial3_2m"
+  },
+  "receipts": {
+    "nhan_sau_g2/ho_so/ble_update/edge/server/week8/ble_service.py": "79a1da1bea8e4c07825efa1f0500a2b24ffce46e53e4ac4b3824323a2faf67e5",
+    "bo_sung_link/nhan_request/raw/source/edge/server/week8/ble_service.py": "a424bc905265e109ee225bc712a063695b9af25b010483162be8c6c16c0337bc",
+    "nhan_sau_g2/ho_so/source/edge/runtime/persistent/tail_worker.cpp": "25a597692abc07437c1ff7940c34b4a3cb9396bf1e02441ef35db755bd99cd77"
+  },
+  "root_tensor_receipt": {
+    "schema_version": 1,
+    "execution": "root_graph",
+    "split": 2,
+    "input_tensor": {
+      "name": "Sequential__input_0_fix",
+      "shape": [
+        1,
+        180,
+        16
+      ],
+      "dtype": "XINT8",
+      "fix_point": 5
+    },
+    "output_tensor": {
+      "name": "Sequential__Sequential_Linear_19__476_fix_",
+      "shape": [
+        1,
+        5
+      ],
+      "dtype": "FLOAT32",
+      "fix_point": null
+    },
+    "quantization_rounding": "DPU_ROUND_HALF_TO_POSITIVE_INFINITY",
+    "samples": [
+      {
+        "sample_index": 0,
+        "shape": [
+          1,
+          5
+        ],
+        "logits": [
+          10.25,
+          4.625,
+          -1.5,
+          -2.125,
+          -3.125
+        ],
+        "raw_int8": null
+      }
+    ],
+    "status": "FULL_TAIL_EXECUTED_NOT_NUMERICALLY_ACCEPTED"
+  }
+}

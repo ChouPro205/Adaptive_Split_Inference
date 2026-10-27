@@ -88,3 +88,5 @@ Các báo cáo tiến độ tuần 5–7 nằm ở `docs/` phía trên. Hồ sơ
 
 - [Tuần 7: packet I1 v2 qua file, 50 request KV260](sv2_edge_week7_report.md) và
   [hồ sơ riêng SV2](../results/week7/edge/README.md).
+
+- [Tuần 8: BLE Device–KV260 G2, offline repeat và bổ sung PHY](sv2_edge_week8_report.md); [hồ sơ SV2](../results/week8/edge/README.md).

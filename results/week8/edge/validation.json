@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-27",
+  "python_version": "3.11.9",
+  "scope": "HOST checks on saved evidence; no new ARM build/radio/model inference",
+  "tests": [
+    {
+      "command": "python -B contracts/i1v2_ref/test_i1v2.py",
+      "tests": 23,
+      "exit_code": 0,
+      "scope": "HOST fixture/codec"
+    },
+    {
+      "command": "python -B contracts/i2_ref/test_i2.py",
+      "tests": 5,
+      "exit_code": 0,
+      "scope": "HOST fixture/codec"
+    },
+    {
+      "command": "python -B edge/tests/test_week8_service.py",
+      "tests": 8,
+      "exit_code": 0,
+      "scope": "HOST fixture/codec"
+    },
+    {
+      "command": "python -B edge/tests/test_week8_ble_session.py",
+      "tests": 1,
+      "exit_code": 0,
+      "scope": "HOST fixture/codec"
+    },
+    {
+      "command": "python -B edge/tests/test_week8_review.py",
+      "tests": 1,
+      "exit_code": 0,
+      "scope": "HOST fixture/codec"
+    },
+    {
+      "command": "python -B edge/tests/test_week8_supplement.py",
+      "tests": 4,
+      "exit_code": 0,
+      "scope": "HOST fixture/codec"
+    },
+    {
+      "command": "python -B edge/tests/test_single_input.py",
+      "tests": 3,
+      "exit_code": 0,
+      "scope": "HOST fixture/codec"
+    },
+    {
+      "command": "python -B edge/tests/test_tail_runtime.py",
+      "tests": 5,
+      "exit_code": 0,
+      "scope": "HOST fixture/codec"
+    }
+  ],
+  "total_tests": 50,
+  "evidence_export": [
+    "Pinned archives/extracted bytes verified",
+    "Output overwrite rejected",
+    "Tampered archive rejected before output creation",
+    "Repeated real export byte-identical"
+  ],
+  "notebook": {
+    "kernel": "sv2_week5_pc",
+    "all_cells_executed": true,
+    "input": "results/week8/edge",
+    "output_kept_local": true
+  },
+  "syntax": [
+    "Bash scripts bash -n",
+    "Python source parses for Python 3.9"
+  ],
+  "hardware_this_publication": "NOT_RUN"
+}

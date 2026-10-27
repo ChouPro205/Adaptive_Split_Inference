@@ -1,0 +1,11 @@
+{
+  "g2_212": {
+    "service_sha256": "79a1da1bea8e4c07825efa1f0500a2b24ffce46e53e4ac4b3824323a2faf67e5",
+    "note": "Before hold-after-count patch"
+  },
+  "supplement": {
+    "service_sha256": "a424bc905265e109ee225bc712a063695b9af25b010483162be8c6c16c0337bc",
+    "note": "Same service in all three trials; final max-s 1800 instead of 900"
+  },
+  "persistent_worker_sha256": "25a597692abc07437c1ff7940c34b4a3cb9396bf1e02441ef35db755bd99cd77"
+}
