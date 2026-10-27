@@ -48,7 +48,13 @@ def main():
     need(demo['weights_unchanged'] and demo['human_learning_or_GVHD_demo']=='NOT_ATTESTED', 'Demo scope differs')
     handoff = read(HERE/'handoff-receipt.json')
     need(sha(ROOT/handoff['archive_path']) == handoff['archive_sha256'], 'Handoff ZIP differs')
-    need(inventory() == read(HERE/'preservation-before.json'), 'Existing ignored arrays/model artifacts changed')
+    before, after = read(HERE/'preservation-before.json'), inventory()
+    need(all(after.get(name)==entry for name,entry in before.items()), 'Existing ignored arrays/model artifacts changed')
+    hydration = read(HERE/'hydration.json')
+    need(not hydration['target_previously_existed'] and hydration['sha256']==
+         '9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90', 'Hydration identity differs')
+    need(set(after)-set(before)=={hydration['target']}, 'Unrecorded ignored artifact additions')
+    need(after[hydration['target']]=={'sha256':hydration['sha256'],'size':hydration['size']}, 'Hydrated bytes differ')
     old = []
     for scope in ('ml/provenance/week7-reconcile-20261026','ml/provenance/week7-evaluator-fix-20261026'):
         for name in git('ls-tree','-r','--name-only',BASE,scope).decode().splitlines():
