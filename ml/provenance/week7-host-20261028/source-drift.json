@@ -1,0 +1,38 @@
+{
+  "checked_main": "02ad8c83297d5bee9298342b2bd4e4ff406922ac",
+  "scope": "Source identity review only; no rerun or alteration of historical audit",
+  "measured_source_bindings": [
+    {
+      "path": "edge/server/week7/serve.py",
+      "execution_recorded_sha256": "29fa33ecb8ccd15792524334dc0a55c30efbe30a1e0693e3470990bf7c0f4e0a",
+      "current_main_blob_sha256": "29fa33ecb8ccd15792524334dc0a55c30efbe30a1e0693e3470990bf7c0f4e0a",
+      "unchanged": true
+    },
+    {
+      "path": "edge/server/week7/batch.py",
+      "execution_recorded_sha256": "f3157edc7bd563dcce6029c77e6d9453748818a6372184f6a97a1fb2e72509fe",
+      "current_main_blob_sha256": "f3157edc7bd563dcce6029c77e6d9453748818a6372184f6a97a1fb2e72509fe",
+      "unchanged": true
+    },
+    {
+      "path": "edge/runtime/single_input/tail_runner.cpp",
+      "execution_recorded_sha256": "4e32bc43b7bdefcd2bbfd93edeee6351d49eb15eb46966a181ad9540f767fe27",
+      "current_main_blob_sha256": "99be8899c804e2847ebad107de4ea00fcec94ecdb14f987a28c333f8e03f6efc",
+      "unchanged": false
+    },
+    {
+      "path": "edge/runtime/single_input/tail_io.hpp",
+      "execution_recorded_sha256": "635256dcf3b460c0d1199dbd7672fc203e7ffdc012733dd6dee8817edcdd4b02",
+      "current_main_blob_sha256": "635256dcf3b460c0d1199dbd7672fc203e7ffdc012733dd6dee8817edcdd4b02",
+      "unchanged": true
+    },
+    {
+      "path": "edge/runtime/single_input/build_tail_runner.sh",
+      "execution_recorded_sha256": "e34c267c543cb211a17118bf0fcf96d75ad3a44a08c56a2f645536c3b0eefc7c",
+      "current_main_blob_sha256": "e34c267c543cb211a17118bf0fcf96d75ad3a44a08c56a2f645536c3b0eefc7c",
+      "unchanged": true
+    }
+  ],
+  "main_delta": "diff --git a/edge/runtime/single_input/tail_runner.cpp b/edge/runtime/single_input/tail_runner.cpp\nindex 9e992e8..466e52e 100644\n--- a/edge/runtime/single_input/tail_runner.cpp\n+++ b/edge/runtime/single_input/tail_runner.cpp\n@@ -61,7 +61,7 @@ int main(int argc, char** argv) {\n     require(std::regex_match(options.at(\"--split\"), std::regex(\"[0-9]\")), \"split must be 0..9\");\n     require(std::regex_match(options.at(\"--samples\"), std::regex(\"[0-9]+\")), \"invalid samples\");\n     int split = std::stoi(options.at(\"--split\")), samples = std::stoi(options.at(\"--samples\"));\n-    require(samples == 1, \"samples must be 1..20\");\n+    require(samples == 1, \"samples must be 1\");\n     fs::path output = options.at(\"--output\");\n     require(!fs::exists(output) && !fs::exists(output.string() + \".partial\"), \"output already exists\");\n     auto npy = asi::load_npy(options.at(\"--input\"));\n",
+  "finding": "PR38 changes diagnostic text samples must be 1..20 to samples must be 1; predicate samples == 1 unchanged. Historical runtime remains bound to measured hashes; no current-source audit PASS claimed."
+}

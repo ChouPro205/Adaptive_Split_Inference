@@ -30,6 +30,13 @@ JSON xác nhận r2 không phải chữ ký mật mã hoặc lần kiểm board 
 r2 chỉ xét nonce persistence Device; provisioning, quyền P1, production và
 Edge high-water bền qua restart vẫn không được mở bởi phụ lục này.
 
+PR38 đổi thông báo `samples must be 1..20` thành `samples must be 1`, giữ
+predicate `samples == 1` trong `tail_runner.cpp`. Vì Git blob khác execution
+tuần 7, audit source-exact 26/10 không được gán PASS cho source main mới.
+[Đối chiếu source hashes và diff](../ml/provenance/week7-host-20261028/source-drift.json)
+ghi thay đổi này; receipts/runtime cũ vẫn thuộc hashes thực đo, không chỉnh
+source pin hoặc checksum để làm chúng khớp revision mới.
+
 ## Reconciliation và dependency checklist hiện tại
 
 | Mục | Phần đã có, đúng nguồn | Còn chờ đúng owner |

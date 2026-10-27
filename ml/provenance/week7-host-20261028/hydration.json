@@ -1,0 +1,10 @@
+{
+  "status": "HYDRATED_MISSING_PATH_ONLY",
+  "source": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1/model/checkpoint.pt",
+  "target": "ml/data/week2/mitdb_baseline/best_checkpoint.pt",
+  "sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "size": 450551,
+  "target_previously_existed": false,
+  "existing_inputs_modified": false,
+  "git_commit": "0544558b66b91a1220dda8907aef506830e35f83"
+}

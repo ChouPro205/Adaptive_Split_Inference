@@ -56,7 +56,22 @@ so cùng backend; 87/100 agreement không là accuracy độc lập. Gate strict
 [bàn giao Trung](../../../docs/sv3_week7_sv2_handoff_20261028.md),
 [runbook GVHD](../../../docs/sv3_week7_demo_guide.md).
 
-L??t `validated/` t?i `9b08aa7`: NoPeek 19/19 th??ng v? -O, reconciliation
-18/18 th??ng v? -O, demo/reference PASS. Packaging ?? ki?m member ZIP nh?ng
-exit 1 tr??c khi ghi receipt do x? l? relative path. Gi? ZIP/l??t l?i ??;
-source s?a resolve path r?i ch?y output m?i h?u t? r1 v? receipts `delivery/`.
+Lượt `validated/` tại `9b08aa7`: NoPeek 19/19 thường và -O, reconciliation
+18/18 thường và -O, demo/reference PASS. Packaging đã kiểm member ZIP nhưng
+exit 1 trước khi ghi receipt do xử lý relative path. Giữ ZIP/lượt lỗi đó;
+source sửa resolve path rồi chạy output mới hậu tố r1 và receipts `delivery/`.
+
+Kết quả delivery tại **`6326082eba9cdb64c96f95e61d95abab37b40ada`**:
+NoPeek **19/19 +19/19 -O**, reconciliation **18/18 +18/18 -O**, không skip,
+exit 0. Demo/reference/package đều exit 0. Verifier receipt tại `337a9e7` kiểm
+pins/logs/source, preservation, links và diff; kết quả [verification.json](verification.json).
+ZIP mới 295.225.733 byte, SHA-256
+`74775bf3ea3c6fde306e601315c32b8293d3db74fc12975515b503c406fd3429`.
+Kiểm HEAD bàn giao trong `.cache/week7-host-final-20261028/` là lượt mới riêng,
+không thay git_commit hoặc kết quả các receipts tracked ở đây.
+
+[Source drift so execution tuần 7](source-drift.json): PR38 chỉ đổi thông báo
+`samples must be 1`, predicate giữ nguyên. Không gọi audit source-exact cũ là
+PASS cho runner blob mới; checksum export PR40 và phần source/tests SV3 được
+kiểm theo phạm vi riêng. Verifier kiểm 74 file evidence lịch sử nguyên raw
+bytes và 51 artifact/array ban đầu, cộng một checkpoint mới có hydration receipt.
