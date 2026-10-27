@@ -8,7 +8,7 @@ Nơi quản lý hợp đồng giao diện I1-I4, packet format, schema, versioni
 |---|---|
 | [I1 v2](i1_device_edge_packet_v2.md) | **Nguồn hiện hành của I1.** `protocol_version=2`: `model_profile_id` trên wire, request thường hoặc I2/1, thứ tự xử lý lỗi, response `SCORE_VECTOR`. Thiết kế Châu duyệt 15/10/2026; chưa triển khai, chưa `FROZEN`. |
 | [I1 BLE binding v1](i1_ble_binding_v1.md) | Transport BLE dùng chung laptop/KV260: GATT, fragment, reassembly, timeout/retry, duplicate cache, chế độ echo. Thiết kế duyệt; chưa triển khai. |
-| [I2/1 nonce và provisioning v1](i2_nonce_provisioning_v1.md) | Dải sequence lưu NVS trên `storage_partition`, provisioning key qua USB CDC. Thiết kế duyệt; persistence vẫn `NOT_ACCEPTED`. |
+| [I2/1 nonce và provisioning v1](i2_nonce_provisioning_v1.md) | Dải sequence lưu NVS trên `storage_partition`, provisioning key qua USB CDC. Thiết kế duyệt; persistence `ACCEPTED` từ revision r2 (27/10/2026), provisioning vẫn `NOT_ACCEPTED`. |
 | [I2/1](i2_protection_v1.md) | Biến đổi đảo ngược activation INT8 (không phải mã hóa); không đổi. |
 | [Approved registry](sv3_week5_approved_registry_v2.json) và [allocation](sv3_week5_allocation_v2.md) | Model profile, split ID 256..266, key/sender, trần buffer. |
 | [Revision registry r2 (tuần 8)](sv1_sv2_week8_registry_revision_r2.json) | Delta trên registry v2 (không sửa file gốc): `runtime.nonce_persistence_reboot = ACCEPTED` cho bộ đếm nonce dongle; SV1 và SV2 cùng xác nhận mã `mitdb-week5-i2-registry-v1-r2`, có hiệu lực từ 27/10/2026. |
