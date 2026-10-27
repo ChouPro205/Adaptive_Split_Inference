@@ -29,6 +29,7 @@ Quy ước chung cho mọi chế độ:
 | Lượng tử hóa INT8 + scale FP16 (tuần 5) | ứng dụng riêng `week5/` | `week5/main.c`, `week5/quantization.c` (dùng lại kernel/giao thức tuần 4) | `scripts/build_week5_head.ps1` | [tái lập tuần 5](#tái-lập-tuần-5), [kết quả](../results/week5/device/README.md) |
 | BLE Device–Edge (tuần 6: 8 tiêu chí phía Device PASS trên dongle ngày 19/10/2026, peer laptop) | ứng dụng riêng `week6/`, biến thể `default`/`mtu23` | `week6/main.c` | `scripts/build_week6.ps1` | [báo cáo tuần 6](../docs/sv1_device_week6_report.md) (phụ lục B: firmware, C: quy trình lab), [kết quả](../results/week6/device/README.md) |
 | Đo năng lượng theo pha (tuần 7: 9 tiêu chí PASS, PPK2 ngày 22/10/2026): marker D0–D4, chu kỳ CTRL→HEAD→PROT→TX→WAIT, kernel FP32 tối ưu | ứng dụng riêng `week7/`, biến thể `bench`/`energy-usb`/`energy` × kernel `fast`/`week4` | `week7/main.c`, `week7/energy_cycle.c`, `week7/head_fast.c` | `scripts/build_week7.ps1` | [báo cáo tuần 7](../docs/sv1_device_week7_report.md) (phụ lục C: quy trình lab PPK2), [kết quả](../results/week7/device/README.md); công cụ `scripts/week7_ppk2.py`, `scripts/measure_energy.py`, `scripts/energy_phases.py` |
+| G2 end-to-end với KV260 (tuần 8: G2 PASS ngày 26/10/2026, 100 mẫu × P1/P0): bộ 100 mẫu nhúng vào image, chu kỳ theo cặp P1/P0, in logits + nhãn; không quảng bá lại sau phiên | ứng dụng riêng `week8/`, biến thể `energy-usb`/`energy` | `week8/main.c`, `week8/g2_cycle.c`, `week8/ble_link.c` | `scripts/build_week8.ps1 -Samples <bộ mẫu>` | [báo cáo tuần 8](../docs/sv1_device_week8_report.md) (phụ lục C: quy trình chạy lại), [kết quả](../results/week8/device/README.md); công cụ `scripts/week8_lab.py`, `scripts/week8_ppk2.py`, `scripts/week8_edge.py` |
 
 Bốn chế độ đầu dùng chung `CMakeLists.txt`/`Kconfig` của thư mục này; CMake
 chọn đúng một entry point theo Kconfig. Ứng dụng tuần 5 có `CMakeLists.txt`
@@ -47,7 +48,7 @@ ngoài repo sau khi xác thực gói ML.
   marker; firmware tuần 3–5 mới bật/tắt `HEAD` quanh phần tính head.
   Marker thứ năm D4 = P0.22 `CTRL` (tuần 7, cạnh P0.20 trên mép castellated) nằm ở
   `week7/marker_ctrl.c` vì `src/markers.c` đang bị khóa hash.
-- `src/`, `week5/`, `week6/`, `week7/`: mã nguồn firmware như bảng trên. Từ tuần 5 mỗi tuần là
+- `src/`, `week5/`, `week6/`, `week7/`, `week8/`: mã nguồn firmware như bảng trên. Từ tuần 5 mỗi tuần là
   một ứng dụng Zephyr riêng, dùng lại module tuần trước qua đường dẫn và biên dịch nguyên vẹn.
   `week7/head_fast.c` `#include` nguyên vẹn `src/week4_head.c` để hai kernel dùng chung trọng số
   (`static` trong `head_parameters.h`, 438,6 KB) thay vì nhân đôi Flash.

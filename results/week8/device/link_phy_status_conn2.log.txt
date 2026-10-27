@@ -1,0 +1,15 @@
+2026-10-27T14:04:36.663	#HOST CDC_OPEN port=COM7
+2026-10-27T14:04:36.782	READY WEEK8 build=5d070cbaddf0-week8-energy-usb-fast-20261026T055056Z variant=energy-usb kernel=FAST split=2 samples=100 pairs=100 gap_ms=1000 boot_idle_s=30 connected_idle_s=30 ctrl_min_us=200 timeout_ms=5000 conn_interval_1250us=12 d4_pin=P0.22 set_sha256=7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639
+2026-10-27T14:04:36.783	NONCE status=READY reason=NONE reserved_through=60651520 next=60650503 limit=60651520 key_id=65537 sender_id=131073 key_check=4379e570eb84f891 writes=1 session_reserved_sequence=60650497
+2026-10-27T14:04:36.784	LINK connected=1 ready=1 att_mtu=247 interval_1250us=12 latency=0 timeout_10ms=400 phy_tx=2 phy_rx=2 connections=2 disconnections=1
+2026-10-27T14:04:36.784	BOOT bt_enable=0 nonce_session_ready=1
+2026-10-27T14:04:36.784	COMMANDS HELP | STATUS | STACK | MARKERS | REBOOT
+2026-10-27T14:04:36.785	COMMANDS NONCE | CONNPARAM <min> <max> | VERIFY | ONE <n> P1|P0 | PAIRS <first> <count> | SESSION
+2026-10-27T14:04:37.199	#HOST SEND STATUS
+2026-10-27T14:04:37.210	READY WEEK8 build=5d070cbaddf0-week8-energy-usb-fast-20261026T055056Z variant=energy-usb kernel=FAST split=2 samples=100 pairs=100 gap_ms=1000 boot_idle_s=30 connected_idle_s=30 ctrl_min_us=200 timeout_ms=5000 conn_interval_1250us=12 d4_pin=P0.22 set_sha256=7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639
+2026-10-27T14:04:37.212	NONCE status=READY reason=NONE reserved_through=60651520 next=60650503 limit=60651520 key_id=65537 sender_id=131073 key_check=4379e570eb84f891 writes=1 session_reserved_sequence=60650497
+2026-10-27T14:04:37.213	LINK connected=1 ready=1 att_mtu=247 interval_1250us=12 latency=0 timeout_10ms=400 phy_tx=2 phy_rx=2 connections=2 disconnections=1
+2026-10-27T14:04:39.869	#HOST SEND STATUS
+2026-10-27T14:04:39.885	READY WEEK8 build=5d070cbaddf0-week8-energy-usb-fast-20261026T055056Z variant=energy-usb kernel=FAST split=2 samples=100 pairs=100 gap_ms=1000 boot_idle_s=30 connected_idle_s=30 ctrl_min_us=200 timeout_ms=5000 conn_interval_1250us=12 d4_pin=P0.22 set_sha256=7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639
+2026-10-27T14:04:39.887	NONCE status=READY reason=NONE reserved_through=60651520 next=60650503 limit=60651520 key_id=65537 sender_id=131073 key_check=4379e570eb84f891 writes=1 session_reserved_sequence=60650497
+2026-10-27T14:04:39.888	LINK connected=1 ready=1 att_mtu=247 interval_1250us=12 latency=0 timeout_10ms=400 phy_tx=2 phy_rx=2 connections=2 disconnections=1

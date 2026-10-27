@@ -1,0 +1,61 @@
+{
+  "schema": "week8-external-peer/1",
+  "peer": "KV260",
+  "source_log": "D:\\HUST\\ASI_week8\\from-trung-20261026-g2\\evidence\\sv1_session\\pairs_100.jsonl",
+  "source_log_sha256": "c2312b77aca25b223fd1e48d959fb3bbc49e1593247848cc31166000718e7bcd",
+  "imported_utc": "2026-10-26T09:19:58.947314+00:00",
+  "counters": {
+    "response_sent": 200,
+    "unknown_sample": 0,
+    "not_ok": 0
+  },
+  "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+  "field_spec": {
+    "request_id": "uint32 of the I1 v2 header (int, or hex text)",
+    "rho": "P1 | P0",
+    "sequence": "P1: nonce sequence (uint64) read from the frame",
+    "result": "OK when the 64 B response was sent, else an error code (no response)",
+    "q_sha256": "SHA-256 hex of q (C*L int8 bytes) after unprotect",
+    "scale_sha256": "SHA-256 hex of the C scales as FP16 little-endian",
+    "logits": "5 FP32 as sent: '3f800000,...' (bit patterns, hex) or a list of 5 numbers",
+    "label": "argmax of the logits (first maximum); optional",
+    "len": "request frame length in bytes after reassembly; optional",
+    "t_rx_ms": "time the complete request was received (ms, any monotonic clock); optional",
+    "t_tx_done_ms": "time the response was sent (ms, same clock); optional"
+  },
+  "label_reference": {
+    "path": "D:\\HUST\\ASI_week8\\from-trung-20261026-g2\\review\\offline_second\\predictions.jsonl",
+    "sha256": "c91af325c1dd87b04d032a72d72a7feff69ff669492d8f0bb7bf0ae2b1cf39e1"
+  },
+  "checks": {
+    "count": true,
+    "all_ok": true,
+    "rho_order": true,
+    "samples_in_plan_order": true,
+    "request_id_increasing": true,
+    "responses_sent": true,
+    "labels_equal_reference_p1": true,
+    "labels_equal_reference_p0": true
+  },
+  "status": "PASS",
+  "labels_equal_reference": {
+    "P1": 100,
+    "P0": 100
+  },
+  "first_sequence": 60647432,
+  "last_sequence": 60647531,
+  "request_lengths": [
+    3076,
+    3116
+  ],
+  "tail_us": null,
+  "inter_request_ms": {
+    "min": 1159,
+    "max": 1215
+  },
+  "tool_sha256": {
+    "week8_lab.py": "28babd070a9f5dd317f88eb2f90d176c452cfc9f1f21e67d273779a50dd059f2",
+    "week8_edge.py": "c6f4814033794862a546fd3ca0fad0684d45e2559bf31ee13a09af16213c9982",
+    "week8_common.py": "60d242188875815842e157aa475ea21ab796937fd519b587f28ba607bb83af91"
+  }
+}
