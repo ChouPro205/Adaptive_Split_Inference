@@ -1,7 +1,7 @@
 # Demo SV3 tuần 7 — dCor, gradient và loss NoPeek
 
 Mục tiêu: Kỳ Anh tự chạy và giải thích phần toán/wiring trong khoảng 5–10 phút.
-Runbook đã được Codex chạy thử trên commit
+Runbook đã được chạy thử trên commit
 `08e4b4259a2757be7b663b88cc1c98607602d266`; **chưa xác nhận Kỳ Anh đã học hiểu
 hoặc đã demo với GVHD**. Không chạy grid dài, cập nhật model hoặc dùng test để học.
 
@@ -76,13 +76,13 @@ hữu hạn; gradcheck; λ=0 khớp CE/loss/gradient/Adam; λ>0 thêm đúng gra
 Trước khi đánh dấu đã học hiểu/demo, Kỳ Anh cần tự giải thích: batch axis và
 flatten, R so với R², bias mẫu hữu hạn, vì sao gradient dCor tới head, vì sao
 λ=0 trở về CE và vì sao metric này không thay đánh giá tấn công. GVHD/người
-nghiệm thu ghi nhận sau buổi thực tế; runbook và log do Codex chạy không thay
+nghiệm thu ghi nhận sau buổi thực tế; runbook và log của lượt chạy kiểm thử không thay
 việc đó.
 
 ## 5. Lượt kiểm host 28/10/2026 và cách trình bày với GVHD
 
 [Evidence mới](../ml/provenance/week7-host-20261028/README.md) ghi commit thực
-chạy và output `demo.json` mới do Codex tạo; không gán lại lượt chạy cũ.
+chạy và output `demo.json` mới của lượt chạy kiểm thử; không gán lại lượt chạy cũ.
 Lệnh này chỉ forward/backward, **không optimizer step**, 32 train IDs, không
 test inference; hash trạng thái model trước/sau phải khớp. Để tự demo, dùng
 output mới như `.cache/week7-demo-kyanh-01.json` theo §2.

@@ -47,7 +47,7 @@ source pin hoặc checksum để làm chúng khớp revision mới.
 | E-05 chuẩn bị | Reference frozen s2/s5/s8 đủ 8.544 mẫu/split, evaluator đã sửa và tests, gói chuyển giao/template có kiểm checksum | Trung/SV2: output full-test thật 25.632 row cùng provenance và artifacts; Kỳ Anh/SV3 tiếp nhận, kiểm rồi chạy evaluator |
 | H-02 | [Draft ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md) sẵn sàng | Kỳ Anh xác nhận thực tế phạm vi ML; Châu ghi theo change control. Yêu cầu làm việc này không tự là xác nhận |
 | H-03 | r2 `CONFIRMED` trên SV1, main pending; nguồn trực tiếp Trung→Châu đã ghi rõ | Châu/Trung xử lý tích hợp revision; không yêu cầu Trung xác nhận lại chỉ vì main chưa cập nhật |
-| L-01 | [Runbook](sv3_week7_demo_guide.md), demo Codex forward/backward mới, không optimizer step, weights trước/sau khớp | Kỳ Anh tự giải thích/demo; GVHD ghi nhận. Chưa xác nhận đã hiểu/đã demo |
+| L-01 | [Runbook](sv3_week7_demo_guide.md), lượt chạy demo kiểm thử forward/backward mới, không optimizer step, weights trước/sau khớp | Kỳ Anh tự giải thích/demo; GVHD ghi nhận. Chưa xác nhận đã hiểu/đã demo |
 | W8-01 | Giữ đề xuất s2/s5/s8, không chọn split/λ tối ưu từ timing hoặc demo | Grid dài/attacks/privacy/Pareto: SV3/GVHD, ngoài phạm vi phiên này |
 
 G2 đo **tính đúng của đường truyền/so với cùng backend**; 87/100 agreement

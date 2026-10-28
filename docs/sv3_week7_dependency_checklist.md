@@ -283,7 +283,7 @@ Không thay trạng thái/hashes/receipt ở các mục lịch sử phía trên.
 | E-08 | **DEFERRED_SCOPE tuần 8** cho BLE/E2E trong nhiệm vụ này; vẫn chưa nghiệm thu Device–KV260 | Châu/Trung triển khai/kiểm link thật và 100 mẫu bằng nhiệm vụ riêng |
 | H-02 | **DONE soạn dự thảo; CHỜ KỲ ANH XÁC NHẬN** | Review [draft ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md); Châu ghi nhận đúng change control |
 | H-03 | **BLOCKED_OTHER /chờ owner** | Châu/Trung phát hành revision nonce/provisioning phù hợp; không tự đổi registry ACCEPTED |
-| L-01 | **DONE runbook và lệnh demo do Codex kiểm; READY cho Kỳ Anh thực hiện** | [Demo guide](sv3_week7_demo_guide.md); chưa đánh dấu học hiểu/demo GVHD DONE |
+| L-01 | **DONE runbook và lệnh demo đã được kiểm thử; READY cho Kỳ Anh thực hiện** | [Demo guide](sv3_week7_demo_guide.md); chưa đánh dấu học hiểu/demo GVHD DONE |
 | W8-02/P-01 | **DEFERRED_SCOPE** | Grid dài, threat model/attacks/privacy/Pareto theo thiết kế SV3/GVHD ở giai đoạn sau |
 
 Không còn mục SV3 độc lập có đủ đầu vào mà chỉ dừng ở kế hoạch trong phạm vi
@@ -337,4 +337,4 @@ thay cho việc suy trạng thái hiện tại từ các mục lịch sử phía
   main `02ad8c8` còn `PENDING_EDGE_CONFIRMATION`. Chờ Châu/Trung tích hợp,
   không tự sửa registry hoặc đòi lại xác nhận đã có.
 - H-02/L-01: còn chờ Kỳ Anh xác nhận ML và tự giải thích/demo với GVHD.
-  Codex chạy demo không là bằng chứng cá nhân. W8 grid/attack vẫn ngoài scope.
+  Lượt chạy demo chuẩn bị/kiểm thử không là bằng chứng cá nhân. W8 grid/attack vẫn ngoài scope.

@@ -213,7 +213,7 @@ với source SHA/log SHA, argv, cwd, exit và timestamps trong command receipts.
 | `test_week7_reconcile.py` / `delivery-tests` | 9/9, exit 0 | Synthetic validator fixtures; có full 8.544 IDs giả, không gọi hardware |
 | `python -O -B ...test_week7_reconcile.py` / `delivery-tests-O` | 9/9, exit 0 | Kiểm gate không phụ thuộc Python assert |
 | `week7_dpu_accuracy.py prepare ...` / `delivery-accuracy-prepare` | 8.544×3 input/reference, FP32 8.393 correct, exit 0 | Chưa có accuracy DPU |
-| `demo_week7_nopeek.py ...` / `delivery-demo` | Ca toán, CE/dCor gradients s2/s5/s8 và loss PASS; weights giữ nguyên | Lệnh do Codex chạy; chưa xác nhận Kỳ Anh học hiểu/demo GVHD |
+| `demo_week7_nopeek.py ...` / `delivery-demo` | Ca toán, CE/dCor gradients s2/s5/s8 và loss PASS; weights giữ nguyên | Lượt chạy demo chuẩn bị/kiểm thử; chưa xác nhận Kỳ Anh học hiểu/demo GVHD |
 | `nopeek-reuse.json` | 13 bindings khớp lịch sử | Tái sử dụng bằng chứng cũ, không gán thành smoke mới |
 | `validate_delivery.py` / `delivery-validation.json` | PASS: 28 link nội bộ mới, 20 audit-input hashes, 7 prepared-source hashes, source/log pins; `git diff --check` exit 0 | Hai body báo cáo/checklist lịch sử giữ nguyên |
 

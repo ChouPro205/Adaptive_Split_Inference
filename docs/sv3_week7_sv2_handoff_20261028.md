@@ -1,6 +1,6 @@
 # SV3 → Trung/SV2: input/reference accuracy DPU, 28/10/2026
 
-Trạng thái: **READY_FOR_TRANSFER_NOT_SENT**. Codex chuẩn bị gói cục bộ; chưa
+Trạng thái: **READY_FOR_TRANSFER_NOT_SENT**. Gói đã được chuẩn bị cục bộ; chưa
 gửi, chưa xác nhận Trung đã nhận, chưa có nghiệm thu DPU.
 
 Nguồn frozen:

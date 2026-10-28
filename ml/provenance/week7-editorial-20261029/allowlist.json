@@ -1,0 +1,71 @@
+{
+  "reviewed_head": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+  "edits": [
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "line": 381,
+      "before": "giữ riêng, không gọi là PASS. Demo do Codex chạy không chứng nhận Kỳ Anh đã học",
+      "after": "giữ riêng, không gọi là PASS. Lượt chạy demo chuẩn bị/kiểm thử không chứng nhận Kỳ Anh đã học"
+    },
+    {
+      "path": "docs/sv3_week7_demo_guide.md",
+      "line": 4,
+      "before": "Runbook đã được Codex chạy thử trên commit",
+      "after": "Runbook đã được chạy thử trên commit"
+    },
+    {
+      "path": "docs/sv3_week7_demo_guide.md",
+      "line": 79,
+      "before": "nghiệm thu ghi nhận sau buổi thực tế; runbook và log do Codex chạy không thay",
+      "after": "nghiệm thu ghi nhận sau buổi thực tế; runbook và log của lượt chạy kiểm thử không thay"
+    },
+    {
+      "path": "docs/sv3_week7_demo_guide.md",
+      "line": 85,
+      "before": "chạy và output `demo.json` mới do Codex tạo; không gán lại lượt chạy cũ.",
+      "after": "chạy và output `demo.json` mới của lượt chạy kiểm thử; không gán lại lượt chạy cũ."
+    },
+    {
+      "path": "docs/sv3_week7_dependency_checklist.md",
+      "line": 286,
+      "before": "| L-01 | **DONE runbook và lệnh demo do Codex kiểm; READY cho Kỳ Anh thực hiện** | [Demo guide](sv3_week7_demo_guide.md); chưa đánh dấu học hiểu/demo GVHD DONE |",
+      "after": "| L-01 | **DONE runbook và lệnh demo đã được kiểm thử; READY cho Kỳ Anh thực hiện** | [Demo guide](sv3_week7_demo_guide.md); chưa đánh dấu học hiểu/demo GVHD DONE |"
+    },
+    {
+      "path": "docs/sv3_week7_dependency_checklist.md",
+      "line": 340,
+      "before": "  Codex chạy demo không là bằng chứng cá nhân. W8 grid/attack vẫn ngoài scope.",
+      "after": "  Lượt chạy demo chuẩn bị/kiểm thử không là bằng chứng cá nhân. W8 grid/attack vẫn ngoài scope."
+    },
+    {
+      "path": "docs/sv3_week7_host_update_20261028.md",
+      "line": 50,
+      "before": "| L-01 | [Runbook](sv3_week7_demo_guide.md), demo Codex forward/backward mới, không optimizer step, weights trước/sau khớp | Kỳ Anh tự giải thích/demo; GVHD ghi nhận. Chưa xác nhận đã hiểu/đã demo |",
+      "after": "| L-01 | [Runbook](sv3_week7_demo_guide.md), lượt chạy demo kiểm thử forward/backward mới, không optimizer step, weights trước/sau khớp | Kỳ Anh tự giải thích/demo; GVHD ghi nhận. Chưa xác nhận đã hiểu/đã demo |"
+    },
+    {
+      "path": "docs/sv3_week7_ml_i1v2_confirmation_draft.md",
+      "line": 4,
+      "before": "SV3 — Model/Privacy. Codex không xác nhận hay ký thay Kỳ Anh, Châu, Trung hoặc GVHD.",
+      "after": "SV3 — Model/Privacy. Hồ sơ này không thay xác nhận/chữ ký của các owner: Kỳ Anh, Châu, Trung hoặc GVHD."
+    },
+    {
+      "path": "docs/sv3_week7_reconciliation_20261026.md",
+      "line": 216,
+      "before": "| `demo_week7_nopeek.py ...` / `delivery-demo` | Ca toán, CE/dCor gradients s2/s5/s8 và loss PASS; weights giữ nguyên | Lệnh do Codex chạy; chưa xác nhận Kỳ Anh học hiểu/demo GVHD |",
+      "after": "| `demo_week7_nopeek.py ...` / `delivery-demo` | Ca toán, CE/dCor gradients s2/s5/s8 và loss PASS; weights giữ nguyên | Lượt chạy demo chuẩn bị/kiểm thử; chưa xác nhận Kỳ Anh học hiểu/demo GVHD |"
+    },
+    {
+      "path": "docs/sv3_week7_sv2_handoff_20261028.md",
+      "line": 3,
+      "before": "Trạng thái: **READY_FOR_TRANSFER_NOT_SENT**. Codex chuẩn bị gói cục bộ; chưa",
+      "after": "Trạng thái: **READY_FOR_TRANSFER_NOT_SENT**. Gói đã được chuẩn bị cục bộ; chưa"
+    },
+    {
+      "path": "ml/provenance/week7-host-20261028/README.md",
+      "line": 33,
+      "before": "và verification. Demo Codex không xác nhận Kỳ Anh học hiểu/đã demo/đã ký ML.",
+      "after": "và verification. Lượt chạy demo chuẩn bị/kiểm thử không xác nhận Kỳ Anh học hiểu/đã demo/đã ký ML."
+    }
+  ]
+}

@@ -378,7 +378,7 @@ Kiểm mới trên implementation nói trên: audit PASS; bộ tests tiếp nh�
 **9/9 thường và 9/9 `-O`**; prepare 8.544×3 và demo read-only dCor/gradient/loss
 đều exit 0. Source/log SHA và argv nằm trong
 [receipts](../ml/provenance/week7-reconcile-20261026/). Các lượt lỗi phát triển
-giữ riêng, không gọi là PASS. Demo do Codex chạy không chứng nhận Kỳ Anh đã học
+giữ riêng, không gọi là PASS. Lượt chạy demo chuẩn bị/kiểm thử không chứng nhận Kỳ Anh đã học
 hiểu hoặc trình diễn cho GVHD.
 
 Đầu ra để review:

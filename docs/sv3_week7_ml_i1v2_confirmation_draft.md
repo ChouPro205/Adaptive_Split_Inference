@@ -1,7 +1,7 @@
 # Dự thảo xác nhận ML I1 v2 — chờ Kỳ Anh review
 
 **DRAFT / CHƯA KÝ / CHƯA PHÊ DUYỆT.** Chuẩn bị ngày 26/10/2026 cho Bùi Kỳ Anh,
-SV3 — Model/Privacy. Codex không xác nhận hay ký thay Kỳ Anh, Châu, Trung hoặc GVHD.
+SV3 — Model/Privacy. Hồ sơ này không thay xác nhận/chữ ký của các owner: Kỳ Anh, Châu, Trung hoặc GVHD.
 Không sửa contract §14, registry `NOT_ACCEPTED` hoặc revision nonce/provisioning.
 
 ## Nội dung đề nghị Kỳ Anh xem xét xác nhận
