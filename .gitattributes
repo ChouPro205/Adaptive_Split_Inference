@@ -42,3 +42,5 @@ results/week7/device/README.md text eol=lf
 # Week 8 G2/PPK2 evidence: copies of checker/DFU outputs, hashed byte-exact in manifest.json.
 results/week8/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 results/week8/device/README.md text eol=lf
+# Edge exports are derived UTF-8 text; preserve their LF checksum bytes.
+results/week8/edge/** text eol=lf
