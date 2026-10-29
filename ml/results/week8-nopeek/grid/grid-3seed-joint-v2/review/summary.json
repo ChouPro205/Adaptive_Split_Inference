@@ -1,0 +1,14 @@
+{
+  "status": "PASS_COMPLETE_GRID_ANALYSIS",
+  "completed_runs": 54,
+  "aggregate_rows": 18,
+  "candidates": 3,
+  "checkpoints_per_candidate": 3,
+  "files": {
+    "aggregate-metrics.csv": "9224a143562f69cbc54b66d3aabf292a3a92205cef3fbe493d7a5df043d5478c",
+    "aggregate-metrics.json": "c77696cbcdbca616daca9085d66ad787b6101a3e76becce3eff9bec6e8a02841",
+    "candidate-lock.json": "994892cd2bd1b3e0f3c8bd436ab11bc45eafba64a49a3eae721b0fc1857fe7ba",
+    "per-seed-metrics.csv": "380c39489357308e4c30a71ae8ca511a604fa11d4cac46230775313ee40323a7",
+    "per-seed-metrics.json": "7d7c3d4f101b703d85d55e79add3cb76aa9adf8bf90bf9df8813965c057fffbb"
+  }
+}

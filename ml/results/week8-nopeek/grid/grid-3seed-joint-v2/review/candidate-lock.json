@@ -1,0 +1,943 @@
+{
+  "schema_version": 1,
+  "status": "CANDIDATES_LOCKED_VALIDATION_ONLY",
+  "locked_at_utc": "2026-10-29T18:53:27.225522+00:00",
+  "expected_runs": 54,
+  "completed_runs": 54,
+  "seeds": [
+    20261021,
+    20261022,
+    20261023
+  ],
+  "validation": {
+    "samples": 15388,
+    "selected_samples_sha256": "0286b6fce369dbb3ea560af13fa11998403735dc3423be47d0000a565c33fa71",
+    "patients": [
+      "P105",
+      "P111",
+      "P116",
+      "P119",
+      "P205",
+      "P207",
+      "P232"
+    ],
+    "per_class_support": [
+      13003,
+      1493,
+      876,
+      11,
+      5
+    ]
+  },
+  "config": {
+    "sha256": "c085b43c5de518f6788a59aa52e27ae47c89f19bf7dfc290ad997679fc550b45",
+    "file_sha256": "e061025b6f8449d512c943f4cd7218014d0c8fc3c4587b3ed4f09d756822de34",
+    "protocol_id": "week8-nopeek-3seed-joint-v1",
+    "approval_scope": "EXPERIMENT_PROTOCOL_USER_CONFIRMED_NOT_GVHD_ATTESTATION_NOT_DEPLOYMENT_APPROVAL"
+  },
+  "source": {
+    "training_git_head": "d851e8621ee35e3e5da6451ca9c229094d147780",
+    "training_source_sha256": {
+      "ml/scripts/run_week8_nopeek.py": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+      "ml/scripts/summarize_week8_nopeek.py": "ff517de3b57f792980334c657ebe001adae8c822baa4048a37949a3a14a793ec",
+      "ml/scripts/test_week8_nopeek.py": "af40fcf2f5810751b702f1d178d4786c9d10544341b61f280b096df8933f3a27",
+      "ml/src/distance_correlation.py": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+      "ml/src/nopeek.py": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+      "ml/src/nopeek_data.py": "2d85836ed96047af8df853febe733aaa3b48ae0c73e5d54d79d26a67c318307f",
+      "ml/src/train_mitdb_baseline.py": "65a6ae4bc1e89b624050913cb9e02c7e520e5902e49113441c7539bccd55bf18",
+      "ml/src/mitdb_week2_data.py": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907",
+      "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+      "ml/src/mitdb_common.py": "acd81b4aa9331d90cdb0abdaf16cb1935e9afbd6e34e654ac16dc5f51d236c1d",
+      "ml/src/week1_common.py": "34c3402987e1f8712c844830c6db7a9325ef7a616e9d3dbe5dbb739f2fbc2dba",
+      "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+      "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0"
+    },
+    "analysis_source_sha256": "322d779d24b10a7d7474d49ede579d411dc7fb832efba1ec267b10e7ee721c65",
+    "analysis_tests_sha256": "bcb922e244cb94e86ddab90c84a270c47374a5f783b92080db5825e52c1c0e02"
+  },
+  "data": {
+    "dataset_bindings": {
+      "week1_config_sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54",
+      "patient_manifest_sha256": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe",
+      "normalization_sha256": "37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c",
+      "processed_manifest_sha256": "f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c",
+      "processed_artifacts": {
+        "train_X.npy": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f",
+        "train_y.npy": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752",
+        "train_metadata.csv": "86c5c3a634fc5adfca09ec2f8378efb0d52f21205cfaf9470432f89ffdc0977a",
+        "val_X.npy": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732",
+        "val_y.npy": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43",
+        "val_metadata.csv": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+        "test_X.npy": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e",
+        "test_y.npy": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6",
+        "test_metadata.csv": "02a6a91c0e35710d0be13f10b2360e034918f546b3ba2c7df7a2fd484ecd1178"
+      }
+    },
+    "selected_samples_sha256": "0286b6fce369dbb3ea560af13fa11998403735dc3423be47d0000a565c33fa71"
+  },
+  "rule": {
+    "path": "ml/provenance/week8-grid-20261029/candidate-selection-rule.json",
+    "sha256": "c52e44459f7559d639ce1572f5c96d52bad1063dc208ab5818baf86aae709a2b"
+  },
+  "experiment": {
+    "path": "ml/results/week8-nopeek/grid/grid-3seed-joint-v2",
+    "identity_sha256": "ddf9dbf22c0054d006c1cf4e400614dacb8ac66c0286b8f532c603aae1e233ce",
+    "inventory_sha256": "4d9eb529fec4d1d8748f80812184481ddfa8943d844513743478445263fd7eb5",
+    "analysis_summary_sha256": "d61cd2c312bf9734cf952b8fa49b69bd01e48c703652097280979b384907496a"
+  },
+  "candidates": [
+    {
+      "split": 2,
+      "lambda1": 5,
+      "mean_validation_ce": 0.6351336837358778,
+      "seeds": [
+        {
+          "seed": 20261021,
+          "run_id": "s2-lambda5-seed20261021",
+          "best_epoch": 8,
+          "checkpoint_path": "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261021/best-epoch-008.pt",
+          "checkpoint_path_base": "repo_root",
+          "checkpoint_sha256": "223087e0fdc88bfa5e3928e5c6bf390280f2b4d3b3d26c6dd78499194a2dbcb9",
+          "validation": {
+            "accuracy": 0.8452040551078762,
+            "macro_f1": 0.18458344895045303,
+            "weighted_f1": 0.7744940717778215,
+            "confusion_matrix": [
+              [
+                13003,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1493,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                873,
+                0,
+                3,
+                0,
+                0
+              ],
+              [
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "per_class": {
+              "N": {
+                "support": 13003,
+                "precision": 0.8451738706532337,
+                "recall": 1.0,
+                "f1": 0.9160913061857123
+              },
+              "S": {
+                "support": 1493,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "V": {
+                "support": 876,
+                "precision": 1.0,
+                "recall": 0.003424657534246575,
+                "f1": 0.006825938566552901
+              },
+              "F": {
+                "support": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "Q": {
+                "support": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "ce": 0.6836874570231763,
+            "dcor": 0.01777875147641774,
+            "total": 0.772581214870079,
+            "samples": 15388,
+            "dcor_samples": 15388,
+            "batches": 481,
+            "batch_size": 32,
+            "dropped_samples": 0
+          },
+          "summary_sha256": "353745cc7b3b01f4f5721947f59554d8e9b4e2082f84e1cea5cc9c3db1344a99",
+          "history_sha256": "aab12d9ca259ccb4430757768e637fee1f8e4a7f9e21d5635b952198b73287ab"
+        },
+        {
+          "seed": 20261022,
+          "run_id": "s2-lambda5-seed20261022",
+          "best_epoch": 2,
+          "checkpoint_path": "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261022/best-epoch-002.pt",
+          "checkpoint_path_base": "repo_root",
+          "checkpoint_sha256": "2e0679770da8d9e9ef3aebf69714ca0d8811fbcc484f5fbaef56b15e28307fd0",
+          "validation": {
+            "accuracy": 0.8483233688588511,
+            "macro_f1": 0.20970251642481036,
+            "weighted_f1": 0.7830484842410026,
+            "confusion_matrix": [
+              [
+                12992,
+                0,
+                6,
+                0,
+                5
+              ],
+              [
+                1492,
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                808,
+                7,
+                61,
+                0,
+                0
+              ],
+              [
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "per_class": {
+              "N": {
+                "support": 13003,
+                "precision": 0.8487065586621374,
+                "recall": 0.9991540413750672,
+                "f1": 0.9178057998657765
+              },
+              "S": {
+                "support": 1493,
+                "precision": 0.125,
+                "recall": 0.0006697923643670462,
+                "f1": 0.0013324450366422385
+              },
+              "V": {
+                "support": 876,
+                "precision": 0.9104477611940298,
+                "recall": 0.06963470319634703,
+                "f1": 0.12937433722163308
+              },
+              "F": {
+                "support": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "Q": {
+                "support": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "ce": 0.6258897499501132,
+            "dcor": 0.3134925587938952,
+            "total": 2.193352539569705,
+            "samples": 15388,
+            "dcor_samples": 15388,
+            "batches": 481,
+            "batch_size": 32,
+            "dropped_samples": 0
+          },
+          "summary_sha256": "4663c547c2cbf44ef8ac6aa0008b0f45dd499f4f9f4c9fc286fed513e2b9d2a8",
+          "history_sha256": "d988ad1ea7e9878c0fa665e5992b73c4d835b517232a79770e7e74d2d9e7c262"
+        },
+        {
+          "seed": 20261023,
+          "run_id": "s2-lambda5-seed20261023",
+          "best_epoch": 2,
+          "checkpoint_path": "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261023/best-epoch-002.pt",
+          "checkpoint_path_base": "repo_root",
+          "checkpoint_sha256": "73ee6d17b612dcd1fc1d09b70a9ea27749267de7149e9f6b6a21a2cddf59e420",
+          "validation": {
+            "accuracy": 0.8060826618144008,
+            "macro_f1": 0.24525879652373922,
+            "weighted_f1": 0.7757889932864015,
+            "confusion_matrix": [
+              [
+                12124,
+                0,
+                454,
+                2,
+                423
+              ],
+              [
+                1406,
+                1,
+                86,
+                0,
+                0
+              ],
+              [
+                521,
+                0,
+                279,
+                5,
+                71
+              ],
+              [
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                5,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "per_class": {
+              "N": {
+                "support": 13003,
+                "precision": 0.8618753110115874,
+                "recall": 0.9324002153349227,
+                "f1": 0.8957517547100111
+              },
+              "S": {
+                "support": 1493,
+                "precision": 1.0,
+                "recall": 0.0006697923643670462,
+                "f1": 0.0013386880856760374
+              },
+              "V": {
+                "support": 876,
+                "precision": 0.34065934065934067,
+                "recall": 0.3184931506849315,
+                "f1": 0.3292035398230089
+              },
+              "F": {
+                "support": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "Q": {
+                "support": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "ce": 0.5958238442343436,
+            "dcor": 0.799903455928979,
+            "total": 4.595341129367433,
+            "samples": 15388,
+            "dcor_samples": 15388,
+            "batches": 481,
+            "batch_size": 32,
+            "dropped_samples": 0
+          },
+          "summary_sha256": "548d1b89b8510c8c44c39648aad6a484de9fa0ac08e0252ba8944719e0c237a3",
+          "history_sha256": "12339485a9fdb2c433adc8f7e108526105830df5a4b8153c20ffeaf04f514e40"
+        }
+      ]
+    },
+    {
+      "split": 5,
+      "lambda1": 2,
+      "mean_validation_ce": 0.4944933233944244,
+      "seeds": [
+        {
+          "seed": 20261021,
+          "run_id": "s5-lambda2-seed20261021",
+          "best_epoch": 1,
+          "checkpoint_path": "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261021/best-epoch-001.pt",
+          "checkpoint_path_base": "repo_root",
+          "checkpoint_sha256": "5f567585527d9e61159330d73d45c9a9d466f8482e029eeaf589fd4404ae49db",
+          "validation": {
+            "accuracy": 0.7590979984403431,
+            "macro_f1": 0.2571396084151152,
+            "weighted_f1": 0.7496837366026756,
+            "confusion_matrix": [
+              [
+                10855,
+                8,
+                2129,
+                0,
+                11
+              ],
+              [
+                1382,
+                9,
+                102,
+                0,
+                0
+              ],
+              [
+                57,
+                1,
+                817,
+                0,
+                1
+              ],
+              [
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                4,
+                0,
+                0
+              ]
+            ],
+            "per_class": {
+              "N": {
+                "support": 13003,
+                "precision": 0.8820900373801398,
+                "recall": 0.834807352149504,
+                "f1": 0.8577976213995021
+              },
+              "S": {
+                "support": 1493,
+                "precision": 0.5,
+                "recall": 0.006028131279303416,
+                "f1": 0.011912640635340834
+              },
+              "V": {
+                "support": 876,
+                "precision": 0.26769331585845346,
+                "recall": 0.932648401826484,
+                "f1": 0.4159877800407331
+              },
+              "F": {
+                "support": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "Q": {
+                "support": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "ce": 0.5455474394983906,
+            "dcor": 0.7868553705654858,
+            "total": 2.1192581863690885,
+            "samples": 15388,
+            "dcor_samples": 15388,
+            "batches": 481,
+            "batch_size": 32,
+            "dropped_samples": 0
+          },
+          "summary_sha256": "54270e254811fd3f92fa09482d040c0ec108987d99c235cd592f86d35815e0ee",
+          "history_sha256": "4ac57803e90b404f7d286fc1b732c5b7f6bd63890907aa57b59989d09b55a314"
+        },
+        {
+          "seed": 20261022,
+          "run_id": "s5-lambda2-seed20261022",
+          "best_epoch": 1,
+          "checkpoint_path": "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261022/best-epoch-001.pt",
+          "checkpoint_path_base": "repo_root",
+          "checkpoint_sha256": "f29c8d414c7e2ce714aa6085d3bbc75431e8a2639978d9f581c6987c49daaa8f",
+          "validation": {
+            "accuracy": 0.8749675071484273,
+            "macro_f1": 0.3347122633657582,
+            "weighted_f1": 0.8298248680395403,
+            "confusion_matrix": [
+              [
+                12810,
+                0,
+                189,
+                0,
+                4
+              ],
+              [
+                1445,
+                3,
+                45,
+                0,
+                0
+              ],
+              [
+                223,
+                0,
+                651,
+                0,
+                2
+              ],
+              [
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                4,
+                0,
+                0
+              ]
+            ],
+            "per_class": {
+              "N": {
+                "support": 13003,
+                "precision": 0.8840579710144928,
+                "recall": 0.985157271398908,
+                "f1": 0.9318735678172626
+              },
+              "S": {
+                "support": 1493,
+                "precision": 1.0,
+                "recall": 0.0020093770931011385,
+                "f1": 0.004010695187165775
+              },
+              "V": {
+                "support": 876,
+                "precision": 0.7322834645669292,
+                "recall": 0.7431506849315068,
+                "f1": 0.7376770538243627
+              },
+              "F": {
+                "support": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "Q": {
+                "support": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "ce": 0.47425671617395415,
+            "dcor": 0.8272451481510517,
+            "total": 2.128747014154048,
+            "samples": 15388,
+            "dcor_samples": 15388,
+            "batches": 481,
+            "batch_size": 32,
+            "dropped_samples": 0
+          },
+          "summary_sha256": "111702e8dabb51755b04e5cc4a53fe29dcb977fc3b35c763fbaed4f07c38e46a",
+          "history_sha256": "c80b04b4e53b56b0cf7d053b6b2036e5038f26ac569df06a0daf80c570876dd6"
+        },
+        {
+          "seed": 20261023,
+          "run_id": "s5-lambda2-seed20261023",
+          "best_epoch": 1,
+          "checkpoint_path": "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261023/best-epoch-001.pt",
+          "checkpoint_path_base": "repo_root",
+          "checkpoint_sha256": "44fee81f3a134a63b6433725e404d258a5d9c3d455788c1806aeabee89d80fda",
+          "validation": {
+            "accuracy": 0.8762022355081882,
+            "macro_f1": 0.33916281748093535,
+            "weighted_f1": 0.831549279028933,
+            "confusion_matrix": [
+              [
+                12811,
+                4,
+                179,
+                0,
+                9
+              ],
+              [
+                1456,
+                3,
+                34,
+                0,
+                0
+              ],
+              [
+                196,
+                2,
+                669,
+                0,
+                9
+              ],
+              [
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                4,
+                0,
+                0
+              ]
+            ],
+            "per_class": {
+              "N": {
+                "support": 13003,
+                "precision": 0.8850431778929189,
+                "recall": 0.9852341767284473,
+                "f1": 0.9324550549530533
+              },
+              "S": {
+                "support": 1493,
+                "precision": 0.3333333333333333,
+                "recall": 0.0020093770931011385,
+                "f1": 0.0039946737683089215
+              },
+              "V": {
+                "support": 876,
+                "precision": 0.755079006772009,
+                "recall": 0.7636986301369864,
+                "f1": 0.7593643586833144
+              },
+              "F": {
+                "support": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "Q": {
+                "support": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "ce": 0.4636758145109286,
+            "dcor": 0.783843005279891,
+            "total": 2.0313618273000023,
+            "samples": 15388,
+            "dcor_samples": 15388,
+            "batches": 481,
+            "batch_size": 32,
+            "dropped_samples": 0
+          },
+          "summary_sha256": "22a7c8556d9477cb2e664a8c79ba1d7aced2f959b320188db4ab9344bdf9df22",
+          "history_sha256": "0870ed43e6de9a10a50625990e2da52ca16acb84d23264e1c15d2e84cfc9e7a7"
+        }
+      ]
+    },
+    {
+      "split": 8,
+      "lambda1": 2,
+      "mean_validation_ce": 0.5592763637078139,
+      "seeds": [
+        {
+          "seed": 20261021,
+          "run_id": "s8-lambda2-seed20261021",
+          "best_epoch": 3,
+          "checkpoint_path": "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261021/best-epoch-003.pt",
+          "checkpoint_path_base": "repo_root",
+          "checkpoint_sha256": "7161c9eabc02ed9cab786364f92b87e9dc9e5a7165c6a0532ac4386454ccc520",
+          "validation": {
+            "accuracy": 0.8118014036911879,
+            "macro_f1": 0.28010523456588093,
+            "weighted_f1": 0.7844629018907661,
+            "confusion_matrix": [
+              [
+                11732,
+                2,
+                1268,
+                0,
+                1
+              ],
+              [
+                1382,
+                3,
+                108,
+                0,
+                0
+              ],
+              [
+                116,
+                2,
+                757,
+                0,
+                1
+              ],
+              [
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                4,
+                0,
+                0
+              ]
+            ],
+            "per_class": {
+              "N": {
+                "support": 13003,
+                "precision": 0.8859688868750943,
+                "recall": 0.9022533261555026,
+                "f1": 0.8940369594208419
+              },
+              "S": {
+                "support": 1493,
+                "precision": 0.42857142857142855,
+                "recall": 0.0020093770931011385,
+                "f1": 0.003999999999999999
+              },
+              "V": {
+                "support": 876,
+                "precision": 0.35423490875058494,
+                "recall": 0.8641552511415526,
+                "f1": 0.5024892134085629
+              },
+              "F": {
+                "support": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "Q": {
+                "support": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "ce": 0.5236947475997903,
+            "dcor": 0.7979952555555537,
+            "total": 2.1196852636424044,
+            "samples": 15388,
+            "dcor_samples": 15388,
+            "batches": 481,
+            "batch_size": 32,
+            "dropped_samples": 0
+          },
+          "summary_sha256": "9ea8df030b26d94fcb0306ead3abbe9186aa792953f85703c41ce5f82a2c1916",
+          "history_sha256": "0c0b095938b2d49045c2448569862d3a8a27a6eb3f6bed3d9ffb9def36004d72"
+        },
+        {
+          "seed": 20261022,
+          "run_id": "s8-lambda2-seed20261022",
+          "best_epoch": 1,
+          "checkpoint_path": "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261022/best-epoch-001.pt",
+          "checkpoint_path_base": "repo_root",
+          "checkpoint_sha256": "0b43caf5f74b2c2b2fdb16e79f307afcbec2098c775d1aa64f091406e60c7d18",
+          "validation": {
+            "accuracy": 0.8454639979204575,
+            "macro_f1": 0.29730850245137325,
+            "weighted_f1": 0.8065002857619885,
+            "confusion_matrix": [
+              [
+                12359,
+                0,
+                644,
+                0,
+                0
+              ],
+              [
+                1386,
+                0,
+                107,
+                0,
+                0
+              ],
+              [
+                225,
+                0,
+                651,
+                0,
+                0
+              ],
+              [
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                4,
+                0,
+                0
+              ]
+            ],
+            "per_class": {
+              "N": {
+                "support": 13003,
+                "precision": 0.8839221856672865,
+                "recall": 0.9504729677766669,
+                "f1": 0.9159903650176023
+              },
+              "S": {
+                "support": 1493,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "V": {
+                "support": 876,
+                "precision": 0.46301564722617355,
+                "recall": 0.7431506849315068,
+                "f1": 0.5705521472392638
+              },
+              "F": {
+                "support": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "Q": {
+                "support": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "ce": 0.5839729614070505,
+            "dcor": 0.759906509881953,
+            "total": 2.103785982372422,
+            "samples": 15388,
+            "dcor_samples": 15388,
+            "batches": 481,
+            "batch_size": 32,
+            "dropped_samples": 0
+          },
+          "summary_sha256": "18198e4c6586d6471dc477b2486cb934da6df397eb44c72b2d496f6da4449f69",
+          "history_sha256": "bfef5e308b90c2c5dac77b16c63c209a0dd1e6105fe94afb625c0331da425159"
+        },
+        {
+          "seed": 20261023,
+          "run_id": "s8-lambda2-seed20261023",
+          "best_epoch": 1,
+          "checkpoint_path": "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261023/best-epoch-001.pt",
+          "checkpoint_path_base": "repo_root",
+          "checkpoint_sha256": "754a2e5350240899c8047cdd5832ef91c3b4275379181ca5695634111582d66b",
+          "validation": {
+            "accuracy": 0.8162854172082142,
+            "macro_f1": 0.2702787369476862,
+            "weighted_f1": 0.7857554738217972,
+            "confusion_matrix": [
+              [
+                11975,
+                0,
+                1023,
+                0,
+                5
+              ],
+              [
+                1384,
+                1,
+                108,
+                0,
+                0
+              ],
+              [
+                256,
+                0,
+                585,
+                0,
+                35
+              ],
+              [
+                11,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                4,
+                0,
+                0
+              ]
+            ],
+            "per_class": {
+              "N": {
+                "support": 13003,
+                "precision": 0.8787700887943054,
+                "recall": 0.9209413212335615,
+                "f1": 0.899361622230567
+              },
+              "S": {
+                "support": 1493,
+                "precision": 1.0,
+                "recall": 0.0006697923643670462,
+                "f1": 0.0013386880856760374
+              },
+              "V": {
+                "support": 876,
+                "precision": 0.34011627906976744,
+                "recall": 0.6678082191780822,
+                "f1": 0.45069337442218793
+              },
+              "F": {
+                "support": 11,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "Q": {
+                "support": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              }
+            },
+            "ce": 0.5701613821166011,
+            "dcor": 0.7409676954843547,
+            "total": 2.0520967700929496,
+            "samples": 15388,
+            "dcor_samples": 15388,
+            "batches": 481,
+            "batch_size": 32,
+            "dropped_samples": 0
+          },
+          "summary_sha256": "1d5df142021471296706b67bde10eb442719dc2b08246aa5d4316905fee3bb6f",
+          "history_sha256": "7b5650380a99b3a1cf5d3f81c40a73cdad6c3f25acddb489af9fd80a1b2ab7fc"
+        }
+      ]
+    }
+  ],
+  "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED",
+  "test_status": "NOT_READ_BY_CANDIDATE_SELECTION",
+  "cross_split_optimization": "OUT_OF_SCOPE",
+  "variation": "Sample standard deviation across seeds (ddof=1), not patient-cohort uncertainty"
+}

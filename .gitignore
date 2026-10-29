@@ -56,3 +56,9 @@ AGENTS.md
 
 # Week 6 official vector packages and delivery ZIPs use release storage.
 /ml/artifacts/week6/
+
+# Week 8 weights and interrupted attempts stay local; sample IDs are losslessly compressed.
+/ml/artifacts/week8-nopeek/
+/ml/results/week8-nopeek/grid/grid-3seed-joint-v1/
+/ml/results/week8-nopeek/grid/grid-3seed-joint-v2/selected_samples.json
+/ml/results/week8-nopeek/**/*.lock

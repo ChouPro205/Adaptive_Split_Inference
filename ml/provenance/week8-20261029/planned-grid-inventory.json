@@ -1,0 +1,116 @@
+{
+  "protocol_status": "PROPOSED",
+  "seed_count_not_yet_agreed": true,
+  "proposed_expected_runs": 18,
+  "completed_runs": 0,
+  "runs": [
+    {
+      "split": 2,
+      "lambda1": 0,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 2,
+      "lambda1": 0.1,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 2,
+      "lambda1": 0.5,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 2,
+      "lambda1": 1,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 2,
+      "lambda1": 2,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 2,
+      "lambda1": 5,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 5,
+      "lambda1": 0,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 5,
+      "lambda1": 0.1,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 5,
+      "lambda1": 0.5,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 5,
+      "lambda1": 1,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 5,
+      "lambda1": 2,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 5,
+      "lambda1": 5,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 8,
+      "lambda1": 0,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 8,
+      "lambda1": 0.1,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 8,
+      "lambda1": 0.5,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 8,
+      "lambda1": 1,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 8,
+      "lambda1": 2,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    },
+    {
+      "split": 8,
+      "lambda1": 5,
+      "seed": 20261021,
+      "status": "NOT_STARTED_PROTOCOL_PROPOSED"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+authenticated_initial_week8_engine CUDA 4-batch median seconds: 0.06300000008195639
+run_week8_nopeek CUDA 4-batch median seconds: 0.0470000000204891

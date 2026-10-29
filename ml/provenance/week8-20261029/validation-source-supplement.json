@@ -1,0 +1,9 @@
+{
+  "base_revision": "d851e8621ee35e3e5da6451ca9c229094d147780",
+  "unchanged_week7_test_entrypoints": {
+    "ml/scripts/test_week7_nopeek.py": "377fa8ea2eafa48047571c1a4bd5904c0de1ff078d635ecfb32f3d3537962ff0",
+    "ml/scripts/run_week7_nopeek.py": "136bb576db9cec7a5890977c57068236d15ac6b058c24840fb93646d535fe569",
+    "ml/configs/week7_nopeek_smoke.json": "679c434a3453cedb489fdfb1e3c6d9bc164ea1da167a8e0556a6c033e9d6c2fe"
+  },
+  "binding": "Files match preservation-before and HEAD; new test receipts also bind shared runtime sources."
+}

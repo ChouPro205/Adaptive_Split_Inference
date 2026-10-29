@@ -1,0 +1,45 @@
+{
+  "status": "PASS_CE_ONLY_JOINT_TRAINING_SANITY_CHECK",
+  "scope": "Artifact equality check, not an additional scientific acceptance threshold",
+  "checks": [
+    {
+      "seed": 20261021,
+      "splits": [
+        2,
+        5,
+        8
+      ],
+      "same_selected_weights": true,
+      "state_sha256": "06770a0e2d45ff43e5aef05e1ad9b97703104653077cc02b5be5d340afa481e5",
+      "best_epoch": 2,
+      "same_ce_accuracy_classification_metrics": true,
+      "dcor_note": "Representation differs by split; dCor values are intentionally not required to match."
+    },
+    {
+      "seed": 20261022,
+      "splits": [
+        2,
+        5,
+        8
+      ],
+      "same_selected_weights": true,
+      "state_sha256": "ca902177d8450fa91f806ec91614ef3a694e04a7ff1f6a8d35ae365a405b75ef",
+      "best_epoch": 2,
+      "same_ce_accuracy_classification_metrics": true,
+      "dcor_note": "Representation differs by split; dCor values are intentionally not required to match."
+    },
+    {
+      "seed": 20261023,
+      "splits": [
+        2,
+        5,
+        8
+      ],
+      "same_selected_weights": true,
+      "state_sha256": "212e9c276279ba740c4d66d73ce9c49fb8642ab63b1d86a0b40c36eaeb0a7ae0",
+      "best_epoch": 1,
+      "same_ce_accuracy_classification_metrics": true,
+      "dcor_note": "Representation differs by split; dCor values are intentionally not required to match."
+    }
+  ]
+}

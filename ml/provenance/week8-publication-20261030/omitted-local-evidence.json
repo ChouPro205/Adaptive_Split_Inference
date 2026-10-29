@@ -1,0 +1,147 @@
+{
+  "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v1.lock": {
+    "sha256": "cb0af4839fdef074fe8ac635895d2ed0b1bf37887e4aa5423ac43d786b6febdc",
+    "bytes": 66,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/provenance/week8-20261029/preflight-ignored-paths.txt": {
+    "sha256": "518109c579bcf886d02050799d2fbf2214d8a9490f125631aa785d9e4c6b41f2",
+    "bytes": 47052,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/provenance/week8-20261029/preservation-before.json": {
+    "sha256": "a9c35dfff1604b7b032400598e74a02955e7342e6f4439c902c573387084f0d5",
+    "bytes": 639123,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/provenance/week8-20261029/week7-tests-O.stderr.txt": {
+    "sha256": "57dac92887c24a5433d73642913741897d29eade001a514d0e47cbd23d58063f",
+    "bytes": 2930,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/provenance/week8-20261029/week7-tests.stderr.txt": {
+    "sha256": "568e13ff265b53b09d2fd0c19732babf3d344f8bca19a2f19c703e8496e615b1",
+    "bytes": 2930,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/provenance/week8-continuation-20261030/analysis-tests.stderr.txt": {
+    "sha256": "91561b3f6ffcb18fedc79d6c092cc634386fb08a2ef7e119231ca8d46eaaa235",
+    "bytes": 4830,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1.lock": {
+    "sha256": "cb0af4839fdef074fe8ac635895d2ed0b1bf37887e4aa5423ac43d786b6febdc",
+    "bytes": 66,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/config.json": {
+    "sha256": "e061025b6f8449d512c943f4cd7218014d0c8fc3c4587b3ed4f09d756822de34",
+    "bytes": 1904,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/data-audit.json": {
+    "sha256": "c654fad1d5675d4c53b60ac0dd0e33a83a918b55a659626a8a75aecacabd4a5a",
+    "bytes": 3109,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/identity.json": {
+    "sha256": "b194d1246eca3db59ec33665244446ea4ed97dce745bc115425629d6d48ed690",
+    "bytes": 3241,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/inventory.json": {
+    "sha256": "6b344f32e8e374646f40949b071b2db32c2be402aebfc96513b9fcabf834f606",
+    "bytes": 7307,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/s2-lambda0-seed20261021/history.json": {
+    "sha256": "2c7f60ba59f8b4901103bf90c56e57eb142906a4a10a84de0a6a94aa41679857",
+    "bytes": 21007,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/s2-lambda0-seed20261021/status.json": {
+    "sha256": "c18f692b7348ac8f00a719e671db574bd989b9f9b0573f2ce768b75049acf7c9",
+    "bytes": 3901,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/selected_samples.json": {
+    "sha256": "52a94b921c29aee6df61b9368c2d7812bd3a41d298ca3bcc25ebc9779b8ea2c2",
+    "bytes": 13099412,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/scripts/run_week8_nopeek.py": {
+    "sha256": "2ea61d0dd9ae571a02b38413005cfa660e8814e71682061bba197b9b2ecbfcf0",
+    "bytes": 23583,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/scripts/summarize_week8_nopeek.py": {
+    "sha256": "ff517de3b57f792980334c657ebe001adae8c822baa4048a37949a3a14a793ec",
+    "bytes": 6988,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/scripts/test_week8_nopeek.py": {
+    "sha256": "af40fcf2f5810751b702f1d178d4786c9d10544341b61f280b096df8933f3a27",
+    "bytes": 26075,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/scripts/week3_common.py": {
+    "sha256": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+    "bytes": 20897,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/scripts/week3_sv2_common.py": {
+    "sha256": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+    "bytes": 13554,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/src/distance_correlation.py": {
+    "sha256": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+    "bytes": 3362,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/src/mitdb_baseline_model.py": {
+    "sha256": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+    "bytes": 2912,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/src/mitdb_common.py": {
+    "sha256": "acd81b4aa9331d90cdb0abdaf16cb1935e9afbd6e34e654ac16dc5f51d236c1d",
+    "bytes": 4052,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/src/mitdb_week2_data.py": {
+    "sha256": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907",
+    "bytes": 4619,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/src/nopeek.py": {
+    "sha256": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+    "bytes": 1088,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/src/nopeek_data.py": {
+    "sha256": "2d85836ed96047af8df853febe733aaa3b48ae0c73e5d54d79d26a67c318307f",
+    "bytes": 4562,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/src/train_mitdb_baseline.py": {
+    "sha256": "65a6ae4bc1e89b624050913cb9e02c7e520e5902e49113441c7539bccd55bf18",
+    "bytes": 14178,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/sources/ml/src/week1_common.py": {
+    "sha256": "34c3402987e1f8712c844830c6db7a9325ef7a616e9d3dbe5dbb739f2fbc2dba",
+    "bytes": 10331,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v1/status.json": {
+    "sha256": "7c86a8ce86ea391c3695766a404027f0d411526739b93acb6afe921c29962198",
+    "bytes": 119,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  },
+  "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/selected_samples.json": {
+    "sha256": "52a94b921c29aee6df61b9368c2d7812bd3a41d298ca3bcc25ebc9779b8ea2c2",
+    "bytes": 13099412,
+    "reason": "LOCAL_ONLY_OR_COMPRESSED_OR_PRIOR_ATTEMPT"
+  }
+}

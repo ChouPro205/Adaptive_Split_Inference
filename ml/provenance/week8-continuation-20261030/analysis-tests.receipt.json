@@ -1,0 +1,20 @@
+{
+  "runtime": "project_shared_venv",
+  "arguments": [
+    "-B",
+    "ml/scripts/test_week8_grid_analysis.py"
+  ],
+  "cwd": ".",
+  "timestamp_utc": "2026-10-29T18:49:23.286482+00:00",
+  "exit_code": 1,
+  "seconds": 10.234000000171363,
+  "source_sha256": {
+    "ml/scripts/analyze_week8_grid.py": "322d779d24b10a7d7474d49ede579d411dc7fb832efba1ec267b10e7ee721c65",
+    "ml/scripts/test_week8_grid_analysis.py": "10a442756e5570f58647911e9ea21f5ac63128d2250c10fb933f6fc7c50702c5",
+    "ml/scripts/run_week8_nopeek.py": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+    "ml/scripts/summarize_week8_nopeek.py": "ff517de3b57f792980334c657ebe001adae8c822baa4048a37949a3a14a793ec"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "91561b3f6ffcb18fedc79d6c092cc634386fb08a2ef7e119231ca8d46eaaa235",
+  "device": "CPU_ONLY_SYNTHETIC_FIXTURES_NO_GPU"
+}

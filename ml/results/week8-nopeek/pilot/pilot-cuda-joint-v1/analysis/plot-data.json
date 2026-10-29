@@ -1,0 +1,44 @@
+[
+  {
+    "split": 2,
+    "lambda1": 0,
+    "seeds_completed": 1,
+    "accuracy_mean": 0.8359375,
+    "accuracy_std_sample": null
+  },
+  {
+    "split": 2,
+    "lambda1": 0.5,
+    "seeds_completed": 1,
+    "accuracy_mean": 0.8359375,
+    "accuracy_std_sample": null
+  },
+  {
+    "split": 5,
+    "lambda1": 0,
+    "seeds_completed": 1,
+    "accuracy_mean": 0.8359375,
+    "accuracy_std_sample": null
+  },
+  {
+    "split": 5,
+    "lambda1": 0.5,
+    "seeds_completed": 1,
+    "accuracy_mean": 0.8203125,
+    "accuracy_std_sample": null
+  },
+  {
+    "split": 8,
+    "lambda1": 0,
+    "seeds_completed": 1,
+    "accuracy_mean": 0.8359375,
+    "accuracy_std_sample": null
+  },
+  {
+    "split": 8,
+    "lambda1": 0.5,
+    "seeds_completed": 1,
+    "accuracy_mean": 0.83984375,
+    "accuracy_std_sample": null
+  }
+]

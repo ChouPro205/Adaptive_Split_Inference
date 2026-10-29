@@ -1,0 +1,70 @@
+{
+  "status": "PASS_INDEPENDENT_EVIDENCE_REVIEW",
+  "runs_authenticated": 54,
+  "total_epochs": 386,
+  "epoch_range": [
+    6,
+    15
+  ],
+  "selected_and_last_checkpoint_bindings_checked": 54,
+  "source_files_hash_checked": 13,
+  "historical_files_preserved": 3508,
+  "initial_completed_runs": 52,
+  "completed_files_preserved": 301,
+  "package_files_checked": 434,
+  "independent_csv_statistics": "PASS",
+  "candidate_rule": "PASS",
+  "majority_N_validation_accuracy": 0.8450090979984404,
+  "candidates": [
+    {
+      "split": "2",
+      "lambda1": "5",
+      "accuracy_mean": "0.8332033619270427",
+      "accuracy_std_sample": "0.02353894242567294",
+      "macro_f1_mean": "0.21318158729966755",
+      "recall_S_mean": "0.0004465282429113641",
+      "recall_V_mean": "0.13051750380517504",
+      "dcor_mean": "0.37705825539976395",
+      "dcor_std_sample": "0.3949179809371734"
+    },
+    {
+      "split": "5",
+      "lambda1": "2",
+      "accuracy_mean": "0.8367559136989863",
+      "accuracy_std_sample": "0.06725656094589988",
+      "macro_f1_mean": "0.31033822975393627",
+      "recall_S_mean": "0.0033489618218352306",
+      "recall_V_mean": "0.8131659056316591",
+      "dcor_mean": "0.7993145079988094",
+      "dcor_std_sample": "0.024235492168284828"
+    },
+    {
+      "split": "8",
+      "lambda1": "2",
+      "accuracy_mean": "0.82451693960662",
+      "accuracy_std_sample": "0.018278704366220897",
+      "macro_f1_mean": "0.28256415798831347",
+      "recall_S_mean": "0.0008930564858227282",
+      "recall_V_mean": "0.7583713850837138",
+      "dcor_mean": "0.7662898203072871",
+      "dcor_std_sample": "0.02904471795194762"
+    }
+  ],
+  "scope": "CPU metadata/hash/statistical review; no retraining, no fresh full validation inference, no test evaluation",
+  "reviewer_tests": {
+    "normal": {
+      "exit_code": 0,
+      "passed": 11
+    },
+    "optimized": {
+      "exit_code": 0,
+      "passed": 11
+    },
+    "scope": "CPU synthetic aggregation tests; no training or test-set evaluation"
+  },
+  "quality_observations": [
+    "All three candidate mean validation accuracies are below the always-N accuracy 84.5009098%; this comparison alone does not rank macro-F1 or CE.",
+    "s2/lambda5 mean macro-F1 is 0.2131816 and dCor sample SD 0.394918; inspect per-seed class collapse before deployment or privacy claims.",
+    "Candidate choice follows the pre-locked minimum mean validation CE rule, not maximum accuracy."
+  ]
+}

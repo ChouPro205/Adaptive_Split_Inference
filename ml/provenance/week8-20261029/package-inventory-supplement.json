@@ -1,0 +1,12 @@
+{
+  "base_inventory_sha256": "a86970b0f60b03a3ff8201ab69979ec0d47e8b726c81361ccc61b2e4d42dd622",
+  "base_inventory_files_verified": 155,
+  "supplement_files": [
+    {
+      "path": "ml/provenance/week8-20261029/remote-main-preflight.json",
+      "sha256": "f38c25fccbdcba64479995cd6631ef2ec5ab3c9b16c776d5654dc98836eb3213",
+      "bytes": 1471
+    }
+  ],
+  "status": "PASS_PACKAGE_HASHES"
+}

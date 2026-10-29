@@ -1,0 +1,41 @@
+{
+  "runtime": "project_shared_venv",
+  "arguments": [
+    "-B",
+    "ml/scripts/summarize_week8_nopeek.py",
+    "--experiment",
+    "ml/results/week8-nopeek/pilot/pilot-cuda-joint-v2",
+    "--artifacts",
+    "ml/artifacts/week8-nopeek/pilot/pilot-cuda-joint-v2",
+    "--output",
+    "ml/results/week8-nopeek/pilot/pilot-cuda-joint-v2/analysis"
+  ],
+  "cwd": ".",
+  "source_identity": {
+    "git_head": "d851e8621ee35e3e5da6451ca9c229094d147780",
+    "source_sha256": {
+      "ml/scripts/run_week8_nopeek.py": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+      "ml/scripts/summarize_week8_nopeek.py": "ff517de3b57f792980334c657ebe001adae8c822baa4048a37949a3a14a793ec",
+      "ml/scripts/test_week8_nopeek.py": "af40fcf2f5810751b702f1d178d4786c9d10544341b61f280b096df8933f3a27",
+      "ml/src/distance_correlation.py": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+      "ml/src/nopeek.py": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+      "ml/src/nopeek_data.py": "2d85836ed96047af8df853febe733aaa3b48ae0c73e5d54d79d26a67c318307f",
+      "ml/src/train_mitdb_baseline.py": "65a6ae4bc1e89b624050913cb9e02c7e520e5902e49113441c7539bccd55bf18",
+      "ml/src/mitdb_week2_data.py": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907",
+      "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+      "ml/src/mitdb_common.py": "acd81b4aa9331d90cdb0abdaf16cb1935e9afbd6e34e654ac16dc5f51d236c1d",
+      "ml/src/week1_common.py": "34c3402987e1f8712c844830c6db7a9325ef7a616e9d3dbe5dbb739f2fbc2dba",
+      "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+      "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0"
+    },
+    "config_sha256": "c085b43c5de518f6788a59aa52e27ae47c89f19bf7dfc290ad997679fc550b45"
+  },
+  "extra_source_sha256": {
+    "ml/scripts/test_week8_engine_equivalence.py": "44e7144cbdd3c82f0ac4f66b4316ef1ef21b3d83153b5badf5e9ba6a518919bb"
+  },
+  "config_file_sha256": "e061025b6f8449d512c943f4cd7218014d0c8fc3c4587b3ed4f09d756822de34",
+  "approval_file_sha256": "8902f6e60de0f0d36a072d2c6b7e9d0c5467cdeefedf3e4a3fb2341024ccda37",
+  "approval_utf8_supplement_sha256": "c26fd56b3cc2e6e2d7cea8afc5c9821161877e00a13962e9bc8d25b87ef8b170",
+  "candidate_rule_sha256": "c52e44459f7559d639ce1572f5c96d52bad1063dc208ab5818baf86aae709a2b",
+  "started_at_utc": "2026-10-29T15:43:35.170566+00:00"
+}

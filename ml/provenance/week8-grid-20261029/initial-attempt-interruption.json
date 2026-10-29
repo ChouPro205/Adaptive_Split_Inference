@@ -1,0 +1,386 @@
+{
+  "status": "INTERRUPTED_FOR_ENGINE_VALIDATION",
+  "original_experiment": "ml/results/week8-nopeek/grid/grid-3seed-joint-v1",
+  "last_inventory": [
+    {
+      "run_id": "s2-lambda0-seed20261021",
+      "split": 2,
+      "lambda1": 0,
+      "seed": 20261021,
+      "status": "RUNNING"
+    },
+    {
+      "run_id": "s2-lambda0.1-seed20261021",
+      "split": 2,
+      "lambda1": 0.1,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda0.5-seed20261021",
+      "split": 2,
+      "lambda1": 0.5,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda1-seed20261021",
+      "split": 2,
+      "lambda1": 1,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda2-seed20261021",
+      "split": 2,
+      "lambda1": 2,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda5-seed20261021",
+      "split": 2,
+      "lambda1": 5,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda0-seed20261021",
+      "split": 5,
+      "lambda1": 0,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda0.1-seed20261021",
+      "split": 5,
+      "lambda1": 0.1,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda0.5-seed20261021",
+      "split": 5,
+      "lambda1": 0.5,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda1-seed20261021",
+      "split": 5,
+      "lambda1": 1,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda2-seed20261021",
+      "split": 5,
+      "lambda1": 2,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda5-seed20261021",
+      "split": 5,
+      "lambda1": 5,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda0-seed20261021",
+      "split": 8,
+      "lambda1": 0,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda0.1-seed20261021",
+      "split": 8,
+      "lambda1": 0.1,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda0.5-seed20261021",
+      "split": 8,
+      "lambda1": 0.5,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda1-seed20261021",
+      "split": 8,
+      "lambda1": 1,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda2-seed20261021",
+      "split": 8,
+      "lambda1": 2,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda5-seed20261021",
+      "split": 8,
+      "lambda1": 5,
+      "seed": 20261021,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda0-seed20261022",
+      "split": 2,
+      "lambda1": 0,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda0.1-seed20261022",
+      "split": 2,
+      "lambda1": 0.1,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda0.5-seed20261022",
+      "split": 2,
+      "lambda1": 0.5,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda1-seed20261022",
+      "split": 2,
+      "lambda1": 1,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda2-seed20261022",
+      "split": 2,
+      "lambda1": 2,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda5-seed20261022",
+      "split": 2,
+      "lambda1": 5,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda0-seed20261022",
+      "split": 5,
+      "lambda1": 0,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda0.1-seed20261022",
+      "split": 5,
+      "lambda1": 0.1,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda0.5-seed20261022",
+      "split": 5,
+      "lambda1": 0.5,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda1-seed20261022",
+      "split": 5,
+      "lambda1": 1,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda2-seed20261022",
+      "split": 5,
+      "lambda1": 2,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda5-seed20261022",
+      "split": 5,
+      "lambda1": 5,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda0-seed20261022",
+      "split": 8,
+      "lambda1": 0,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda0.1-seed20261022",
+      "split": 8,
+      "lambda1": 0.1,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda0.5-seed20261022",
+      "split": 8,
+      "lambda1": 0.5,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda1-seed20261022",
+      "split": 8,
+      "lambda1": 1,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda2-seed20261022",
+      "split": 8,
+      "lambda1": 2,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda5-seed20261022",
+      "split": 8,
+      "lambda1": 5,
+      "seed": 20261022,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda0-seed20261023",
+      "split": 2,
+      "lambda1": 0,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda0.1-seed20261023",
+      "split": 2,
+      "lambda1": 0.1,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda0.5-seed20261023",
+      "split": 2,
+      "lambda1": 0.5,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda1-seed20261023",
+      "split": 2,
+      "lambda1": 1,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda2-seed20261023",
+      "split": 2,
+      "lambda1": 2,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s2-lambda5-seed20261023",
+      "split": 2,
+      "lambda1": 5,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda0-seed20261023",
+      "split": 5,
+      "lambda1": 0,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda0.1-seed20261023",
+      "split": 5,
+      "lambda1": 0.1,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda0.5-seed20261023",
+      "split": 5,
+      "lambda1": 0.5,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda1-seed20261023",
+      "split": 5,
+      "lambda1": 1,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda2-seed20261023",
+      "split": 5,
+      "lambda1": 2,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s5-lambda5-seed20261023",
+      "split": 5,
+      "lambda1": 5,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda0-seed20261023",
+      "split": 8,
+      "lambda1": 0,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda0.1-seed20261023",
+      "split": 8,
+      "lambda1": 0.1,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda0.5-seed20261023",
+      "split": 8,
+      "lambda1": 0.5,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda1-seed20261023",
+      "split": 8,
+      "lambda1": 1,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda2-seed20261023",
+      "split": 8,
+      "lambda1": 2,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    },
+    {
+      "run_id": "s8-lambda5-seed20261023",
+      "split": 8,
+      "lambda1": 5,
+      "seed": 20261023,
+      "status": "NOT_STARTED"
+    }
+  ],
+  "completed_runs": 0,
+  "reason": "Full epoch timing about43seconds; preserve the initial attempt and validate grouped finite guards before a fresh54run experiment. Same loss/config/data. No old logs/checkpoints/status files rewritten. Stale locks retained because this attempt will not be resumed."
+}
