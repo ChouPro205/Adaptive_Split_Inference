@@ -11,6 +11,7 @@ from check_week6_build.py and check_week7_build.py (unchanged).
 import argparse
 import json
 import pathlib
+import re
 import sys
 
 from check_week6_build import (APP_START, BIN_LIMIT, NVS_SIZE, NVS_START, elf_load_end,
@@ -28,6 +29,23 @@ RADIO_NONCE_SYMBOLS = ("bt_enable", "link_init", "mpsl_init", "nonce_nvs_init", 
                        "nvs_mount", "nvs_write", "pkt_protect", "g2_cycle_run", "energy_cycle_run")
 
 
+# soc/nordic/nrf52/soc.c: DCDCEN0 (REG0) while reg0 is okay, DCDCEN (REG1) when reg1's
+# regulator-initial-mode is DCDC (1). The nRF52840 dongle board sets both.
+REGULATOR_MODES = {"board": {"reg0": "DCDC", "reg1": "DCDC"}, "reg0-ldo": {"reg0": "LDO", "reg1": "DCDC"},
+                   "reg1-ldo": {"reg0": "DCDC", "reg1": "LDO"}}
+
+
+def regulator_modes(dts: str) -> dict:
+    """REG0/REG1 modes the image applies at boot, read from the final zephyr.dts."""
+    def node(label):
+        m = re.search(label + r": regulator@[0-9a-f]+ \{(.*?)\n\t*\};", dts, re.S)
+        return m.group(1) if m else ""
+    reg0, reg1 = node("reg0"), node("reg1")
+    mode1 = re.search(r"regulator-initial-mode = < (0x[0-9a-f]+|\d+) >", reg1)
+    return {"reg0": "DCDC" if re.search(r'status = "okay"', reg0) else "LDO",
+            "reg1": "DCDC" if mode1 and int(mode1.group(1), 0) == 1 else "LDO"}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--build", required=True, type=pathlib.Path)
@@ -35,6 +53,8 @@ def main():
     parser.add_argument("--build-id", required=True)
     parser.add_argument("--set-sha256", required=True)
     parser.add_argument("--plan-sha256", required=True)
+    parser.add_argument("--regulator", choices=["board", "reg0-ldo", "reg1-ldo"], default="board",
+                        help="regulator experiment: REG0 or REG1 in LDO mode (board: both DC/DC)")
     parser.add_argument("--output", required=True, type=pathlib.Path)
     args = parser.parse_args()
     if args.output.exists():
@@ -47,7 +67,9 @@ def main():
     load_end, load_start, segments = elf_load_end(elf)
     image = binf.read_bytes()
     bin_size = len(image)
-    partition = storage_partition((zdir / "zephyr.dts").read_text(encoding="utf-8"))
+    dts = (zdir / "zephyr.dts").read_text(encoding="utf-8")
+    partition = storage_partition(dts)
+    regulators = regulator_modes(dts)
     on = lambda key: config.get(key) == "y"  # noqa: E731
     flags = {name: compile_flags(args.build, name) for name in (
         "week7/head_fast.c", "week5/quantization.c", "week9/dev_cycle.c", "week9/main.c",
@@ -82,6 +104,8 @@ def main():
         "no_bt": not on("CONFIG_BT"),
         "no_nvs": not on("CONFIG_NVS"),
         "no_radio_nonce_i2_code_linked": not any(syms[n] for n in RADIO_NONCE_SYMBOLS),
+        "regulator_modes_as_requested": regulators == REGULATOR_MODES[args.regulator],
+        "soc_dcdc_kconfig_not_forcing": not on("CONFIG_SOC_DCDC_NRF52X") and not on("CONFIG_SOC_DCDC_NRF52X_HV"),
     }
     if args.variant == "dev":
         checks.update({
@@ -110,6 +134,8 @@ def main():
         "build_id": args.build_id,
         "set_sha256": args.set_sha256,
         "plan_sha256": args.plan_sha256,
+        "regulator": args.regulator,
+        "regulator_modes": regulators,
         "compile_flags": {n: f for n, f in flags.items() if f},
         "kconfig": {k: config.get(k) for k in KCONFIG_KEYS},
     }

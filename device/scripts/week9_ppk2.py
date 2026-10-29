@@ -208,7 +208,8 @@ def image_info(image: Path, receipt: Path | None) -> dict:
     info = {"image": str(image), "build_id": check.get("build_id"), "variant": check.get("variant"),
             "kernel": check.get("kernel"), "check_status": check.get("status"), "dirty": source.get("dirty"),
             "bin_sha256": check.get("bin_sha256"), "set_sha256": check.get("set_sha256"),
-            "plan_sha256": check.get("plan_sha256"), "kconfig": check.get("kconfig")}
+            "plan_sha256": check.get("plan_sha256"), "kconfig": check.get("kconfig"),
+            "regulator": check.get("regulator", "board"), "regulator_modes": check.get("regulator_modes")}
     if check.get("status") != "PASS" or check.get("variant") != "dev" or source.get("dirty"):
         raise SystemExit(f"{image}: static check not PASS, not the dev variant, or dirty tree")
     if check.get("plan_sha256") != w9.PLAN_SHA256:

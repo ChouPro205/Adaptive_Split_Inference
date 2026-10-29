@@ -3,6 +3,7 @@ param(
     [Parameter(Mandatory=$true)][ValidateSet('dev-usb','dev')][string]$Variant,
     [Parameter(Mandatory=$true)][string]$Samples,
     [Parameter(Mandatory=$true)][string]$Plan,
+    [ValidateSet('board','reg0-ldo','reg1-ldo')][string]$Regulator='board',
     [string]$NcsRoot='D:\ncs\v3.4.0',
     [string]$ToolchainRoot='D:\ncs\toolchains\dcbdc366a1'
 )
@@ -11,8 +12,11 @@ param(
 # week8_inputs.h is copied into the build's generated directory) and the W9-D4 plan ($Plan =
 # generate_week9_plan.py output; week9_plan.h copied likewise), write the build ID, build one
 # variant (fast kernel, W7-D8), static checks (check_week9_build.py), pkg generate/display.
+# -Regulator reg0-ldo|reg1-ldo (regulator experiment of 29/10, dev only): week9/overlay-<mode>.overlay
+# puts REG0 or REG1 in LDO mode; the board default (both DC/DC) is 'board'.
 # No device or serial access; DFU is a separate step (flash_week9.ps1).
 $ErrorActionPreference = 'Stop'
+if ($Regulator -ne 'board' -and $Variant -ne 'dev') { throw 'Regulator experiments use the dev variant' }
 $RepoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $AppDir = Join-Path $RepoRoot 'device\week9'
 $HostPython = Join-Path $RepoRoot 'device\host\.venv\Scripts\python.exe'
@@ -85,9 +89,10 @@ $commit = (& $gitExe -C $RepoRoot rev-parse HEAD).Trim()
 $porcelain = @(& $gitExe -C $RepoRoot status --porcelain --untracked-files=all)
 $dirty = if ($porcelain.Count -gt 0) { '-dirty' } else { '' }
 $stamp = [DateTimeOffset]::UtcNow.ToString('yyyyMMddTHHmmssZ')
-$buildId = $commit.Substring(0, 12) + $dirty + '-week9-' + $Variant + '-' + $stamp
+$tag = if ($Regulator -eq 'board') { $Variant } else { $Variant + '-' + $Regulator }
+$buildId = $commit.Substring(0, 12) + $dirty + '-week9-' + $tag + '-' + $stamp
 [ordered]@{ app='week9'; build_id=$buildId; commit=$commit; dirty=($dirty -ne ''); status_porcelain=$porcelain;
-    variant=$Variant; kernel='fast'; r3_anchors=$Anchors; samples_dir=$Samples; set_sha256=$SetSha256;
+    variant=$Variant; regulator=$Regulator; kernel='fast'; r3_anchors=$Anchors; samples_dir=$Samples; set_sha256=$SetSha256;
     sample_anchors=$SampleAnchors; plan_dir=$Plan; plan_sha256=$PlanSha256; plan_anchors=$PlanAnchors } |
     ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $ReportDir 'source.json') -Encoding UTF8
 $GeneratedDir = Join-Path $ReportDir 'generated'
@@ -113,6 +118,7 @@ $westExe = (Get-Command west -ErrorAction Stop).Source
 # (week9/CMakeLists.txt).
 $cmakeArgs = @(('-DWEEK9_GENERATED_DIR=' + ($GeneratedDir -replace '\\','/')), "-DEXTRA_CONF_FILE=overlay-$Variant.conf",
     '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON')
+if ($Regulator -ne 'board') { $cmakeArgs += "-DEXTRA_DTC_OVERLAY_FILE=overlay-$Regulator.overlay" }
 Push-Location $NcsRoot
 try {
     Invoke-Logged 'build' $westExe (@('build','--no-sysbuild','-b','nrf52840dongle/nrf52840','-d',$BuildDir,
@@ -121,7 +127,7 @@ try {
 Remove-Item Env:PYTHONHOME,Env:PYTHONPATH -ErrorAction SilentlyContinue
 Invoke-Logged 'check' $HostPython @('-B',(Join-Path $PSScriptRoot 'check_week9_build.py'),'--build',$BuildDir,
     '--variant',$Variant,'--build-id',$buildId,'--set-sha256',$SetSha256,'--plan-sha256',$PlanSha256,
-    '--output',(Join-Path $ReportDir 'week9_build_check.json'))
+    '--regulator',$Regulator,'--output',(Join-Path $ReportDir 'week9_build_check.json'))
 $nrfutilExe = Join-Path $ToolchainRoot 'nrfutil\bin\nrfutil.exe'
 $savedNrfutilHome = $env:NRFUTIL_HOME
 Remove-Item Env:NRFUTIL_HOME -ErrorAction SilentlyContinue
@@ -132,4 +138,4 @@ try {
 } finally {
     if ($null -ne $savedNrfutilHome) { $env:NRFUTIL_HOME = $savedNrfutilHome }
 }
-Write-Output "BUILD AND STATIC CHECK COMPLETE ($Variant): $ReportDir; build_id=$buildId; MCU=PENDING"
+Write-Output "BUILD AND STATIC CHECK COMPLETE ($tag): $ReportDir; build_id=$buildId; MCU=PENDING"
