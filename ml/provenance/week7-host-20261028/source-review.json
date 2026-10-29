@@ -1,0 +1,34 @@
+{
+  "snapshots": {
+    "main-r2": {
+      "commit": "02ad8c83297d5bee9298342b2bd4e4ff406922ac",
+      "path": "contracts/sv1_sv2_week8_registry_revision_r2.json",
+      "sha256": "72d6aedc0f63226cb361a8e45b290504ab2c811d947faa67b3c4ca72609b1d2f"
+    },
+    "sv1-r2": {
+      "commit": "549aa1021c250c5c8319f99c35b5b6d90c9744d1",
+      "path": "contracts/sv1_sv2_week8_registry_revision_r2.json",
+      "sha256": "5ad6e38ab062dcdb7dab804328c4f728772cd38c8b40c5693e526783eeba8fa4"
+    },
+    "edge-summary": {
+      "commit": "8d962095a11a0e41696b9cdeac163ed0d240daed",
+      "path": "results/week8/edge/summary.json",
+      "sha256": "721b8be233e2088f000c1b4fae97da4c0e6d767cd127554fa6593ae4f31ef240"
+    },
+    "edge-provenance": {
+      "commit": "8d962095a11a0e41696b9cdeac163ed0d240daed",
+      "path": "results/week8/edge/provenance.json",
+      "sha256": "269979fa715b6df8a3cd35201db1dfc7a682b502897995cf49cb2f05c823238f"
+    }
+  },
+  "edge_export_checksum_files": [
+    "offline.csv",
+    "provenance.json",
+    "requests.csv",
+    "source_versions.json",
+    "summary.json"
+  ],
+  "full_dpu_output_candidates": [],
+  "search_scope": "Pinned main/SV1/SV2 results and ml/results JSON; local .cache, results and ml/results JSON. No external inbox claim.",
+  "DPU_acceptance": "INCOMPLETE_NO_ACCEPTANCE"
+}

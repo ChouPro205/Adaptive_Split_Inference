@@ -1,0 +1,19 @@
+{
+  "root_head": "415d53431c81c465784dc08be42b568827a39cff",
+  "status": "PASS_5_PREEXISTING_MODIFIED_FILES_UNCHANGED",
+  "checks": {
+    ".gitattributes": true,
+    "docs/README.md": true,
+    "ml/scripts/test_week3_sv2.py": true,
+    "ml/scripts/test_week3_sv2_cache.py": true,
+    "ml/scripts/verify_week3_sv2.py": true
+  },
+  "sha256": {
+    ".gitattributes": "c3556612a14e940aa25c71e7fa6eb3b9545028c3f69722119240c0a07111ee38",
+    "docs/README.md": "6e70419a6e563e55f61b7e039a98421d2003ce7562bbe5b73f29783d4a78f7ba",
+    "ml/scripts/test_week3_sv2.py": "215e11a614986cd2fbacb67ac8ed2fd4711e8525180cfab28a5a8ec176ec7041",
+    "ml/scripts/test_week3_sv2_cache.py": "7d448049234882f159401d0d1d5dfc703309d207730d01d4661a9c51bdb87f0f",
+    "ml/scripts/verify_week3_sv2.py": "c783c81a12439618c3ede435b495f7a2e605bc216dc9efa1fe04ecc9f35e31cb"
+  },
+  "scope": "Five initially modified tracked files. No claim that all old untracked archives were individually inventoried."
+}

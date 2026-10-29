@@ -1,0 +1,11 @@
+{
+  "checked_utc": "2026-10-27T18:35:17.854319+00:00",
+  "command": "git -c http.sslBackend=openssl ls-remote origin refs/heads/main refs/heads/dev/device-sv1 refs/heads/dev/edge-sv2",
+  "refs": {
+    "dev/device-sv1": "549aa1021c250c5c8319f99c35b5b6d90c9744d1",
+    "dev/edge-sv2": "8d962095a11a0e41696b9cdeac163ed0d240daed",
+    "main": "02ad8c83297d5bee9298342b2bd4e4ff406922ac"
+  },
+  "raw_stdout": "549aa1021c250c5c8319f99c35b5b6d90c9744d1\trefs/heads/dev/device-sv1\n8d962095a11a0e41696b9cdeac163ed0d240daed\trefs/heads/dev/edge-sv2\n02ad8c83297d5bee9298342b2bd4e4ff406922ac\trefs/heads/main\n",
+  "local_head": "0544558b66b91a1220dda8907aef506830e35f83"
+}

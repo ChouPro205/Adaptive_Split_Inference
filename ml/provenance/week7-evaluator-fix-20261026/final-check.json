@@ -1,0 +1,19 @@
+{
+  "status": "PASS_FINAL_DOCUMENT_AND_EVIDENCE_CHECK",
+  "implementation_commit": "18e74ab198bd444e6cc0ae5eedaa9969132bd935",
+  "historical_document_bodies_preserved": 3,
+  "new_local_links_verified": 6,
+  "diff_check_base": "0545b470ebccb577baa8e11c1fff1c502f716b17",
+  "diff_check_exit": 0,
+  "new_command_receipts_verified": 4,
+  "changed_paths": [
+    "docs/sv3_ml_week7_report.md",
+    "docs/sv3_week7_dependency_checklist.md",
+    "docs/sv3_week7_reconciliation_20261026.md",
+    "ml/provenance/week7-evaluator-fix-20261026/.gitattributes",
+    "ml/provenance/week7-evaluator-fix-20261026/reproduce_regressions.py",
+    "ml/provenance/week7-evaluator-fix-20261026/verify_reference.py",
+    "ml/scripts/test_week7_reconcile.py",
+    "ml/scripts/week7_dpu_accuracy.py"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "checked_on": "2026-10-26 Asia/Saigon",
+  "repository": "ChouPro205/Adaptive_Split_Inference",
+  "main_sha": "d91fe27cc83e617d8a86ad7d6731687eea518d6a",
+  "prs": [
+    {
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34",
+      "number": 34,
+      "state": "closed",
+      "merged": true,
+      "mergeable": false,
+      "draft": false,
+      "body": "## Mục tiêu và phạm vi\n\nBổ sung phần SV3 tuần 7 độc lập trên host: dCor khả vi **R_n biased** (Euclid, double centering, căn cuối), objective **CE + lambda*dCor**, loader xác thực train/validation và smoke NoPeek offline. Kiểm toán học/gradient, lambda=0 khớp CE và lambda>0 truyền gradient đến head.\n\nSmoke lịch sử tại implementation `6be51e3a5d6be8309ef87720e98ed4305352f467`, evidence delivery `aadf27bf87dbd291c2ab48323c4edaa67c651a2f`: s2/s5/s8 × lambda 0/0.5, mỗi run 4 bước ×32 train và 512 validation; không dùng test để train/chọn mô hình. Đây là smoke wiring, chưa chứng minh hội tụ, cải thiện accuracy hay chống tấn công. Các log lỗi phát triển được giữ nguyên và không gọi là PASS.\n\n## Tài liệu và đồng bộ main\n\nBa báo cáo tiến độ nằm ở **root `docs/`**:\n- `docs/sv3_ml_week5_report.md`: INT8/FP16, P1 Python, accuracy 8.544 ×11, chronology allocation/final acceptance PR #25.\n- `docs/sv3_ml_week6_report.md`: 50 vector P1 thật, C/Python và ngữ nghĩa output host; tách evidence MCU/BLE của SV1 ngày 19/10.\n- `docs/sv3_ml_week7_report.md`: chuẩn hóa báo cáo, pin evidence và làm rõ giới hạn audit.\n- `docs/README.md`: cập nhật mục lục và đường dẫn hồ sơ kỹ thuật.\n\nDocs được commit riêng tại `60290c6`. Merge main `fedeee9db111dedf74ff4102fd3b320992602d35` bằng merge commit **`151894367b0a35df83a0effd86961816ffc89942`**, không conflict, không rebase/force-push. Giữ nguyên các commit provenance đã pin.\n\nPR #33 của SV1 được kế thừa từ main: MCU/marker/PPK2 PASS 9/9 trong phạm vi SV1 công bố, peer laptop stub. Đây không phải phép đo mới của SV3, không phải kết quả KV260 hoặc Pareto của NoPeek.\n\nDiff cuối so với main gồm **73 file thuộc SV3**: 70 file đã giao ban đầu, thêm README docs và hai báo cáo tuần 5/6; trong 70 file cũ chỉ báo cáo tuần 7 được biên tập. 69 file SV3 còn lại giữ nguyên Git blob so với `aadf27b`. Không có diff `device/`, `edge/`, `contracts/` hoặc `.gitattributes` gốc so với main.\n\n## Kiểm tra thực sự chạy trên HEAD cuối\n\nPhiên tạo PR ngày **22/10/2026 (Asia/Saigon)**, trên **`151894367b0a35df83a0effd86961816ffc89942`**:\n- `python -B ml/scripts/test_week7_nopeek.py`: **19/19 PASS**, exit 0, không skip.\n- `python -O -B ml/scripts/test_week7_nopeek.py`: **19/19 PASS**, exit 0, không skip.\n- Bao gồm reference độc lập, gradcheck, suy biến, SGD, loss/gradient/Adam, CUDA parity, train/val binding và từ chối output/grid không hợp lệ.\n- Kiểm **72 liên kết nội bộ** trong bốn tài liệu (đường dẫn có xét hoa/thường, anchor và file được track), các commit pin: PASS. Chín URL ngoài được đối chiếu qua GitHub connector/web: PASS; release tuần 6 đúng size/SHA đã báo cáo.\n- Kiểm hash log/source của sáu command evidence lịch sử: khớp; source/config/test tuần 7 giữ nguyên so với `6be51e3`.\n- `git diff --check origin/main...HEAD` và `git diff --check`: PASS. Working tree sạch; remote branch khớp HEAD.\n\nMôi trường thực chạy: Windows build 26200, Python 3.11.9, PyTorch 2.14.0+cu130, NumPy 2.4.6, NVIDIA GeForce RTX 5060. Có cảnh báo PyTorch chuyển tensor requires_grad sang scalar trong test; không có test failure.\n\nLogs/receipts mới được lưu cục bộ tại `.cache/pr-week7-20261022/` (ignored), pin đúng HEAD cuối. Trích log hai lượt:\n\n```text\nNormal: Ran 19 tests in 3.351s — OK\n-O:     Ran 19 tests in 4.822s — OK\n```\n\nKhông chạy mới training smoke/grid, suite đầy đủ tuần 5–6 hoặc flash/đo phần cứng trong nhiệm vụ tạo PR. I1 v2 23/23, I2 5/5 và các số liệu smoke trong báo cáo là evidence lịch sử tại `6be51e3`, không gán thành lần chạy mới trên HEAD này.\n\n## Baseline và tính toàn vẹn evidence\n\nKhông ảnh hưởng giao diện I1–I4; không thay contract, registry, split mapping, dataset, golden/reference hoặc baseline model/checkpoint. Checkpoint cục bộ được kiểm SHA-256:\n`9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90`.\nTrọng số smoke là `EXPERIMENT_ONLY_NOT_APPROVED`, không được gán vào deployment profile baseline.\n\nAudit **“2.441 file baseline nguyên trạng” chỉ chứng nhận snapshot `6be51e3`/`aadf27b` trên nền `3c56b65`**. Checkout hiện tại có biên tập docs và kế thừa cập nhật SV1 từ main; không dùng audit đó để tuyên bố toàn checkout mới không đổi. Không chạy lại gate nguyên trạng trên checkout đã thay đổi, không sửa receipt/audit hoặc bỏ gate để ép PASS. Các kiểm tra mới ở trên có scope và HEAD riêng.\n\n## Việc còn lại và nghiệm thu riêng\n\n- Tuần 8 mới **chuẩn bị config** quét s2/s5/s8 × lambda {0,0.1,0.5,1,2,5}; chưa có kết quả grid dài. Cần chốt thiết kế và runner train dài riêng.\n- KV260/DPU runtime, accuracy, CPU fallback và tích hợp Device–Edge cần evidence SV2 trên backend thật.\n- Hiệu quả chống tấn công/riêng tư cần thí nghiệm riêng; dCor thấp hoặc smoke PASS không thay chứng minh bảo vệ.\n- Xác nhận tensor/quantization/response I1 v2 và revision nonce runtime registry cần đúng owner/change control; không tự ký thay thành viên.\n- Học hiểu, giải thích/demo của Kỳ Anh và GVHD sign-off có phạm vi nghiệm thu riêng.\n\nPR này chỉ đề nghị review; **chưa merge**.\n",
+      "title": "SV3 tuần 7: dCor/NoPeek offline và báo cáo tuần 5–7",
+      "base": "main",
+      "base_sha": "089e4c53881055bfca3103178f120d19e84c9755",
+      "head": "sv3/week7-nopeek-20261021",
+      "head_sha": "c3c1839a93ecdf120b11fbf8cd475cd0badf445b",
+      "head_repo_id": 1365464803,
+      "head_repo_full_name": "ChouPro205/Adaptive_Split_Inference",
+      "merge_commit_sha": "cbb54157431cb278b165c5b00931f2b806fbbca2",
+      "user": {
+        "login": "kyanhhbt-code",
+        "name": "kyanhhbt-code",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/236932279?v=4",
+        "id": 236932279
+      },
+      "requested_reviewers": null,
+      "requested_team_reviewers": null,
+      "diff": null,
+      "comments": null,
+      "created_at": "2026-10-22T05:18:37Z",
+      "updated_at": "2026-10-22T08:04:54Z",
+      "closed_at": "2026-10-22T08:04:54Z",
+      "merged_at": "2026-10-22T08:04:54Z",
+      "commits": 5,
+      "changed_files": 71,
+      "additions": 36982,
+      "deletions": 8,
+      "display_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34",
+      "display_title": "SV3 tuần 7: dCor/NoPeek offline và báo cáo tuần 5–7"
+    },
+    {
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/36",
+      "number": 36,
+      "state": "closed",
+      "merged": true,
+      "mergeable": false,
+      "draft": false,
+      "body": "Bổ sung luồng SV2 Vitis AI 2.5 trên KV260, runner root GraphRunner CPU/DPU,\nCPU plugins app-local và công cụ profiling. Thay batch shell cũ bằng batch\nPython có log/exit code và cô lập lỗi từng split.\n\nKết quả thiết bị đã lưu:\n- Tuần 5: 10 tail ×20 golden =200 case thực thi, khớp lớp FP32 100% trong\n  bộ golden reuse calibration. Numeric acceptance còn riêng, không phải\n  accuracy trên test độc lập.\n- Tuần 6: 50 lượt nạp và 5000 observations steady-state; tách load/first/steady.\n  Đo toàn root CPU+DPU, chưa có timing DPU-only.\n- KV260 PetaLinux 2022.1, Vitis AI 2.5, B4096, GCC 11.2.0.\n\nFile chính: edge/runtime, edge/build_and_audit_models.py,\nedge/quantize_tail.py, edge/export_weekly_evidence.py;\ndocs/sv2_edge_week5_report.md và sv2_edge_week6_report.md;\nresults/week5/edge, results/week6/edge; experiments/configs và notebook.\n\nKiểm tra:\n- Batch tests 2/2; CPU kernels 4/4; runtime 5/5; profiler 5/5.\n- Quantize: 2 test liên quan Flatten/frozen golden đạt; chưa chạy full suite\n  phụ thuộc processed train/val.\n- I1 v2 reference 23/23; đây là host tests, không thay radio.\n- Checksum evidence tuần 5:46 file; tuần 6:167 file; kiểm lại 5000 raw timings.\n- Notebook chỉ đọc đã chạy với kết quả thật; path/syntax/diff checks đạt.\n\nKhông ảnh hưởng giao diện I1–I4. Không sửa mã Device/ML/contracts, không đưa\nmodel, binary, raw hoặc tài liệu riêng lên Git. Không chạy lại đo thiết bị\ntrong phiên viết báo cáo; source/runtime đo gốc được ràng buộc bằng hash.\n",
+      "title": "Dev/edge sv2",
+      "base": "main",
+      "base_sha": "cbb54157431cb278b165c5b00931f2b806fbbca2",
+      "head": "dev/edge-sv2",
+      "head_sha": "5a0df3db37ad02785dac9f3d37cd0cb3600c39ea",
+      "head_repo_id": 1365464803,
+      "head_repo_full_name": "ChouPro205/Adaptive_Split_Inference",
+      "merge_commit_sha": "91aa696a18c6c48f12928943ce9fa4901d1c8987",
+      "user": {
+        "login": "trungmai2511",
+        "name": "trungmai2511",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/158754693?v=4",
+        "id": 158754693
+      },
+      "requested_reviewers": [
+        {
+          "login": "ChouPro205",
+          "name": "ChouPro205",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/144701285?v=4",
+          "id": 144701285
+        }
+      ],
+      "requested_team_reviewers": null,
+      "diff": null,
+      "comments": null,
+      "created_at": "2026-10-23T05:51:55Z",
+      "updated_at": "2026-10-23T08:04:47Z",
+      "closed_at": "2026-10-23T07:46:23Z",
+      "merged_at": "2026-10-23T07:46:23Z",
+      "commits": 12,
+      "changed_files": 70,
+      "additions": 13394,
+      "deletions": 255,
+      "display_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/36",
+      "display_title": "Dev/edge sv2"
+    },
+    {
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/38",
+      "number": 38,
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "draft": false,
+      "body": "Khắc phục ba điểm trong review của SV1:\n\n- Thêm ghi chú vào báo cáo tuần 4, dẫn tới luồng build Vitis AI 2.5 hiện hành.\n- Sửa thông báo giới hạn một mẫu của single-input runner và ghi rõ source lịch sử.\n- Giữ LF cho danh sách checksum Edge tuần 5 khi checkout trên Windows.\n\nKiểm tra trên PC/WSL:\n- test_single_input.py: 3/3 PASS.\n- Checksum export tuần 5–7: PASS.\n- Mô phỏng checkout autocrlf=true: file checksum giữ nguyên LF/bytes.\n- git diff --check: PASS.\n\nKhông thay đổi giao diện I1–I4, dữ liệu đo, model hoặc binary đã chạy.\nChưa build/chạy lại runner trên KV260.\nLỗi đọc danh sách CRLF chưa tái hiện với GNU sha256sum hiện tại.",
+      "title": "SV2: sửa chỉ dẫn build, thông báo runner và LF của checksum",
+      "base": "main",
+      "base_sha": "d91fe27cc83e617d8a86ad7d6731687eea518d6a",
+      "head": "dev/edge-sv2",
+      "head_sha": "e53868088aceeba1bb4b70569597462539250f06",
+      "head_repo_id": 1365464803,
+      "head_repo_full_name": "ChouPro205/Adaptive_Split_Inference",
+      "merge_commit_sha": "45058d0e8d5ba8448cba37aa74c1902c6a8c23cc",
+      "user": {
+        "login": "trungmai2511",
+        "name": "trungmai2511",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/158754693?v=4",
+        "id": 158754693
+      },
+      "requested_reviewers": [
+        {
+          "login": "ChouPro205",
+          "name": "ChouPro205",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/144701285?v=4",
+          "id": 144701285
+        }
+      ],
+      "requested_team_reviewers": null,
+      "diff": null,
+      "comments": null,
+      "created_at": "2026-10-25T11:02:48Z",
+      "updated_at": "2026-10-25T11:02:48Z",
+      "closed_at": null,
+      "merged_at": null,
+      "commits": 17,
+      "changed_files": 4,
+      "additions": 20,
+      "deletions": 4,
+      "display_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/38",
+      "display_title": "SV2: sửa chỉ dẫn build, thông báo runner và LF của checksum"
+    }
+  ],
+  "open_prs": {
+    "issues": [
+      {
+        "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/38",
+        "title": "SV2: sửa chỉ dẫn build, thông báo runner và LF của checksum",
+        "issue_number": 38,
+        "body": "Khắc phục ba điểm trong review của SV1:\n\n- Thêm ghi chú vào báo cáo tuần 4, dẫn tới luồng build Vitis AI 2.5 hiện hành.\n- Sửa thông báo giới hạn một mẫu của single-input runner và ghi rõ source lịch sử.\n- Giữ LF cho danh sách checksum Edge tuần 5 khi checkout trên Windows.\n\nKiểm tra trên PC/WSL:\n- test_single_input.py: 3/3 PASS.\n- Checksum export tuần 5–7: PASS.\n- Mô phỏng checkout autocrlf=true: file checksum giữ nguyên LF/bytes.\n- git diff --check: PASS.\n\nKhông thay đổi giao diện I1–I4, dữ liệu đo, model hoặc binary đã chạy.\nChưa build/chạy lại runner trên KV260.\nLỗi đọc danh sách CRLF chưa tái hiện với GNU sha256sum hiện tại.",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/pull/38",
+        "display_title": "SV2: sửa chỉ dẫn build, thông báo runner và LF của checksum"
+      }
+    ]
+  }
+}

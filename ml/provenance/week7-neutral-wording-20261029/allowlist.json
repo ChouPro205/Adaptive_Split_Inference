@@ -1,0 +1,349 @@
+{
+  "base_commit": "1fa21ba1f2da671b837d8e28cbb4863b6c6be9b8",
+  "scope": "PUBLIC_PROSE_ONLY_NO_NEW_ATTESTATION",
+  "hash_policy": "Exact UTF-8 without BOM; all source blocks are LF. Hash normalizes CRLF/CR to LF, preserving whether the block has a final LF. Byte offsets address the original LF Git blob.",
+  "edits": [
+    {
+      "path": "docs/README.md",
+      "start_byte": 3115,
+      "length_bytes": 57,
+      "before_sha256": "26d7b7d479aeee33591b7165cb0b8b43bfeabbd75fd5c02c83c6e836bd3e96d9",
+      "original_block_has_final_lf": false,
+      "after": "[Biểu mẫu review giao diện ML I1 v2]"
+    },
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "start_byte": 251,
+      "length_bytes": 179,
+      "before_sha256": "a5e6aa424814f66599716575967a56e81d4478f8a12dcd4507851d7fa5c9d5e1",
+      "original_block_has_final_lf": true,
+      "after": "Các mục chờ output bên dưới là snapshot lịch sử. Hồ sơ review ML và demo\nvới GVHD được quản lý riêng theo quy trình nghiệm thu của nhóm.\n"
+    },
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "start_byte": 2235,
+      "length_bytes": 40,
+      "before_sha256": "0d0ed5bd19d40f7abb867528ac6ec40c105c056fbe69fd3463c8ff8e30b79e19",
+      "original_block_has_final_lf": false,
+      "after": "Review nội dung và demo có hồ sơ nghiệm thu riêng."
+    },
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "start_byte": 7638,
+      "length_bytes": 191,
+      "before_sha256": "c12dbe74530f79eeb6389380a2200d488d4733f7d24391066b9d82750832982e",
+      "original_block_has_final_lf": true,
+      "after": "“Chưa xác nhận”. Quyết định **tensor/quantization/response** được ghi tại hồ sơ\nreview giao diện; bằng chứng kỹ thuật host đã có.\n"
+    },
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "start_byte": 21286,
+      "length_bytes": 276,
+      "before_sha256": "a2519f04340d68da60000310cbcb6647c8ff54a737af550b5b5c6aa5b76911de",
+      "original_block_has_final_lf": true,
+      "after": "**Phạm vi báo cáo là kết quả triển khai và kiểm thử kỹ thuật.** Estimator, batch,\ngradient, finite-sample bias và ý nghĩa riêng tư là nội dung của buổi trao đổi/demo;\nkết quả buổi làm việc được ghi trong hồ sơ nghiệm thu riêng.\n"
+    },
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "start_byte": 25829,
+      "length_bytes": 106,
+      "before_sha256": "5b8ecce8bf4feeaf9dfafe0fa992295c13bc8fe942ecb3e5b36ba1a4e4cae7bc",
+      "original_block_has_final_lf": false,
+      "after": "| Review nội dung/demo GVHD | NOT VERIFIED trong phiên này | Ghi nhận trong hồ sơ nghiệm thu riêng |"
+    },
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "start_byte": 29603,
+      "length_bytes": 125,
+      "before_sha256": "91d46bd68217b959ef490b48c6ac3ef31534a3073992691df652802c696c0396",
+      "original_block_has_final_lf": false,
+      "after": "Lượt chạy demo chuẩn bị/kiểm thử xác minh phần toán/wiring;\nhoạt động trao đổi và demo với GVHD có hồ sơ ghi nhận riêng."
+    },
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "start_byte": 30051,
+      "length_bytes": 91,
+      "before_sha256": "5659a67933b48475f4cc3585577bbc8dfe415b89508e650e6df8f81e3b5de7a6",
+      "original_block_has_final_lf": false,
+      "after": "[Biểu mẫu review ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md), trạng thái **DRAFT**."
+    },
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "start_byte": 30145,
+      "length_bytes": 90,
+      "before_sha256": "818b5313b2eed1d6a4b558b97cf12b448afbf57b3b813bcd27e910de9e6b3fab",
+      "original_block_has_final_lf": false,
+      "after": "[Demo guide](sv3_week7_demo_guide.md), hướng dẫn chạy và giải thích các kết quả."
+    },
+    {
+      "path": "docs/sv3_ml_week7_report.md",
+      "start_byte": 33959,
+      "length_bytes": 179,
+      "before_sha256": "abc67ce4eb19c47f11895c7b7044f4996f41f3df1746c5c5c18710e380429699",
+      "original_block_has_final_lf": false,
+      "after": "E-05 `INCOMPLETE_NO_ACCEPTANCE`. H-02/L-01 được ghi nhận trong hồ sơ review/demo\nriêng theo quy trình nhóm; phần host sẵn sàng review ở mốc lịch sử này."
+    },
+    {
+      "path": "docs/sv3_week7_demo_guide.md",
+      "start_byte": 56,
+      "length_bytes": 100,
+      "before_sha256": "ef918325bc7f78eefa1d93af2e186874dddf77d9648bef1c54a8f46569fc04f2",
+      "original_block_has_final_lf": false,
+      "after": "Mục tiêu: trình bày và chạy phần toán/wiring trong khoảng 5–10 phút."
+    },
+    {
+      "path": "docs/sv3_week7_demo_guide.md",
+      "start_byte": 205,
+      "length_bytes": 196,
+      "before_sha256": "a4e8b55af3ccb4bc8b36a47b8e01226bae7d5cf905ab64294c38582b97ed8885",
+      "original_block_has_final_lf": false,
+      "after": "`08e4b4259a2757be7b663b88cc1c98607602d266`. Kết quả kiểm thử xác minh toán/wiring;\nhoạt động demo với GVHD được ghi nhận riêng. Không chạy grid dài, cập nhật model hoặc dùng test để học."
+    },
+    {
+      "path": "docs/sv3_week7_demo_guide.md",
+      "start_byte": 4548,
+      "length_bytes": 407,
+      "before_sha256": "c320243b352a7015e030cad8a9dd7bf7146db120895d0ed17f3266d916889796",
+      "original_block_has_final_lf": false,
+      "after": "Nội dung trao đổi/demo: batch axis và flatten, R so với R², bias mẫu hữu hạn,\nvì sao gradient dCor tới head, vì sao λ=0 trở về CE và vì sao metric này không\nthay đánh giá tấn công. Kết quả buổi demo được ghi trong hồ sơ nghiệm thu riêng;\nrunbook và log kiểm thử là tài liệu chuẩn bị."
+    },
+    {
+      "path": "docs/sv3_week7_demo_guide.md",
+      "start_byte": 6759,
+      "length_bytes": 163,
+      "before_sha256": "ca6f4b1e95b77327619e13b73670f5543afb811b56dca025018bf3292325f01e",
+      "original_block_has_final_lf": false,
+      "after": "DPU PASS? Dùng các câu hỏi này khi trình bày; kết quả trao đổi/demo và quyết định\nreview ML được ghi riêng theo quy trình nghiệm thu của nhóm."
+    },
+    {
+      "path": "docs/sv3_week7_dependency_checklist.md",
+      "start_byte": 427,
+      "length_bytes": 99,
+      "before_sha256": "40277f6ad19c432d7385a75e9f5594ffa50c7873bb19bdde0df29ca56b632937",
+      "original_block_has_final_lf": false,
+      "after": "Hồ sơ review ML/demo GVHD được quản lý riêng; r2 do Châu/Trung tích hợp theo quy trình."
+    },
+    {
+      "path": "docs/sv3_week7_dependency_checklist.md",
+      "start_byte": 2423,
+      "length_bytes": 186,
+      "before_sha256": "c7e8d722253ff13dac62ec27c1fb389688cb81523b1c40c5257f99a05dac7a60",
+      "original_block_has_final_lf": false,
+      "after": "DONE của code mới gồm commit/đẩy nhánh và các lệnh đã lưu. Merge main, review/demo\nvới GVHD và nghiệm thu phần cứng có hồ sơ ghi nhận riêng."
+    },
+    {
+      "path": "docs/sv3_week7_dependency_checklist.md",
+      "start_byte": 18328,
+      "length_bytes": 285,
+      "before_sha256": "d983653c8b6d8693a1ed488b5b3056619993b32f43a6aab13809898ce366fb19",
+      "original_block_has_final_lf": false,
+      "after": "- **Owner:** Kỳ Anh và GVHD. **Trạng thái: READY.**\n- **Bằng chứng chuẩn bị:** code/test/log và giải thích trong báo cáo đã sẵn sàng.\n  Hoạt động trao đổi/demo được ghi nhận trong hồ sơ nghiệm thu riêng."
+    },
+    {
+      "path": "docs/sv3_week7_dependency_checklist.md",
+      "start_byte": 22228,
+      "length_bytes": 55,
+      "before_sha256": "e87ddbdfbc33ae3329d2195cee0975f49d343d4c608fc68286421297567f70aa",
+      "original_block_has_final_lf": false,
+      "after": "**DONE soạn dự thảo; READY cho review giao diện**"
+    },
+    {
+      "path": "docs/sv3_week7_dependency_checklist.md",
+      "start_byte": 22547,
+      "length_bytes": 93,
+      "before_sha256": "35e4ace5607bb2077831ee9f688b4ba10c688934f5f1f3cd332f9f826775941a",
+      "original_block_has_final_lf": false,
+      "after": "**DONE runbook và lệnh demo đã được kiểm thử; READY cho buổi demo**"
+    },
+    {
+      "path": "docs/sv3_week7_dependency_checklist.md",
+      "start_byte": 22643,
+      "length_bytes": 85,
+      "before_sha256": "30da5005b7d0e4d4f3e06342209a755b3a06ccf5a037c619191632521a9636da",
+      "original_block_has_final_lf": false,
+      "after": "[Demo guide](sv3_week7_demo_guide.md); kết quả buổi demo được ghi trong hồ sơ riêng"
+    },
+    {
+      "path": "docs/sv3_week7_dependency_checklist.md",
+      "start_byte": 26645,
+      "length_bytes": 207,
+      "before_sha256": "2bf1518b1942ec40b62248d5ac5000a177fa41f4eaa24584989e473e94581739",
+      "original_block_has_final_lf": false,
+      "after": "- H-02/L-01: hồ sơ review ML và demo với GVHD được quản lý theo quy trình nhóm.\n  Lượt chạy chuẩn bị/kiểm thử xác minh toán/wiring. W8 grid/attack vẫn ngoài scope."
+    },
+    {
+      "path": "docs/sv3_week7_fulltest_review_20261029.md",
+      "start_byte": 263,
+      "length_bytes": 170,
+      "before_sha256": "4959891680df3f3ba79ea179e9f0bdfe89d81765247079d1183764125fb4eda0",
+      "original_block_has_final_lf": false,
+      "after": "trong phạm vi ba split này. Quyết định review ML và kết quả demo với GVHD\nđược ghi nhận trong hồ sơ nghiệm thu riêng theo quy trình nhóm."
+    },
+    {
+      "path": "docs/sv3_week7_fulltest_review_20261029.md",
+      "start_byte": 6389,
+      "length_bytes": 161,
+      "before_sha256": "ece3f0894e1dd53846cb404445d5113467c0959086fe68c5eefd9a060562db5d",
+      "original_block_has_final_lf": false,
+      "after": "| ML I1 v2 | Biểu mẫu DRAFT, sẵn sàng review giao diện | Review tensor/scale/shape/logits; Châu ghi nhận quyết định theo quy trình |"
+    },
+    {
+      "path": "docs/sv3_week7_fulltest_review_20261029.md",
+      "start_byte": 6551,
+      "length_bytes": 113,
+      "before_sha256": "2f718a2fcec4955da53d617af258b0644f601af90598819752704fa6efdbb832",
+      "original_block_has_final_lf": false,
+      "after": "| dCor/NoPeek demo | Code/tests/runbook sẵn sàng; kết quả buổi demo có hồ sơ riêng | Kỳ Anh và GVHD |"
+    },
+    {
+      "path": "docs/sv3_week7_fulltest_review_20261029.md",
+      "start_byte": 7551,
+      "length_bytes": 189,
+      "before_sha256": "59c600715fcc53809813edf85f22834ac24a8d7ae4d8f961f6068ccfbfab6643",
+      "original_block_has_final_lf": false,
+      "after": "Π/Pareto là các giai đoạn tiếp theo. Có thể chuyển sang thiết kế/chốt thí nghiệm\nNoPeek tuần 8; trước train dài, thống nhất epoch/batch/seed và chọn checkpoint theo\nvalidation. Quyết định nghiệm thu các phạm vi được lưu trong hồ sơ tương ứng."
+    },
+    {
+      "path": "docs/sv3_week7_host_update_20261028.md",
+      "start_byte": 130,
+      "length_bytes": 186,
+      "before_sha256": "73283885e534a4522b4f666b185bf0e65321b3d3623035af7cdaf8873319863d",
+      "original_block_has_final_lf": false,
+      "after": "Phần host sẵn sàng review; **accuracy DPU chờ nghiệm thu ở mốc hồ sơ này**.\nReview ML và demo GVHD có hồ sơ ghi nhận riêng. Các mục lịch sử ngày"
+    },
+    {
+      "path": "docs/sv3_week7_host_update_20261028.md",
+      "start_byte": 5068,
+      "length_bytes": 133,
+      "before_sha256": "5850edbdf61d62e18a09500f1101633dd280eb34614eeff2cee23e58644e9cd2",
+      "original_block_has_final_lf": false,
+      "after": "Quyết định review phạm vi ML được Châu ghi nhận theo change control"
+    },
+    {
+      "path": "docs/sv3_week7_host_update_20261028.md",
+      "start_byte": 5580,
+      "length_bytes": 90,
+      "before_sha256": "40a50a4f3d3591d1856ad4965b64be61dc12b24e564d15c8a04e71e2d905af0c",
+      "original_block_has_final_lf": false,
+      "after": "Nội dung giải thích/demo và kết quả buổi làm việc được ghi trong hồ sơ GVHD riêng"
+    },
+    {
+      "path": "docs/sv3_week7_ml_i1v2_confirmation_draft.md",
+      "start_byte": 0,
+      "length_bytes": 60,
+      "before_sha256": "c71f4195416b6c7ce703ef3affacb3bf1397983a4916dc8c9e4e84c81aa85e73",
+      "original_block_has_final_lf": false,
+      "after": "# Biểu mẫu review giao diện ML I1 v2"
+    },
+    {
+      "path": "docs/sv3_week7_ml_i1v2_confirmation_draft.md",
+      "start_byte": 62,
+      "length_bytes": 217,
+      "before_sha256": "66321ac7b3463beb3f1ecedf616350e0c9ef5729d8010d2a7bde7e8c42ba6b21",
+      "original_block_has_final_lf": false,
+      "after": "**Trạng thái: DRAFT.** Chuẩn bị ngày 26/10/2026 cho SV3 — Model/Privacy.\nQuyết định review được ghi nhận trong hồ sơ phê duyệt riêng theo quy trình nhóm."
+    },
+    {
+      "path": "docs/sv3_week7_ml_i1v2_confirmation_draft.md",
+      "start_byte": 369,
+      "length_bytes": 56,
+      "before_sha256": "7733237b4af9aee5ef5c2bba436d9de0f69f586c2288c56199ac7698eedc1e73",
+      "original_block_has_final_lf": false,
+      "after": "## Nội dung review giao diện ML"
+    },
+    {
+      "path": "docs/sv3_week7_ml_i1v2_confirmation_draft.md",
+      "start_byte": 3228,
+      "length_bytes": 302,
+      "before_sha256": "d8a3803ed53f495deee8e79b7359ea287c597210b684e83564f834f0f5168a17",
+      "original_block_has_final_lf": false,
+      "after": "Kết quả review và quyết định phê duyệt được ghi bằng receipt/revision theo quy\ntrình hiện hành, giữ chứng cứ và registry lịch sử. Ngày và trạng thái phê duyệt\nthuộc hồ sơ quyết định của người có thẩm quyền."
+    },
+    {
+      "path": "docs/sv3_week7_ml_i1v2_confirmation_draft.md",
+      "start_byte": 3595,
+      "length_bytes": 67,
+      "before_sha256": "3e73e1a9e9da8ac2883263c0f350a6c7fc43f19d13cecd1c4848013dba703cbf",
+      "original_block_has_final_lf": false,
+      "after": "| SV3 — ML reviewer | DRAFT; sẵn sàng review giao diện |"
+    },
+    {
+      "path": "docs/sv3_week7_ml_i1v2_confirmation_draft.md",
+      "start_byte": 3663,
+      "length_bytes": 84,
+      "before_sha256": "201b7f2e3e2f18f7ab7a4970a70a36e9827d4fd9f2c54c22cf987cded6c53949",
+      "original_block_has_final_lf": false,
+      "after": "| SV2 — parser/buffer/runtime Edge | Quyết định được ghi nhận trong hồ sơ Edge riêng |"
+    },
+    {
+      "path": "docs/sv3_week7_ml_i1v2_confirmation_draft.md",
+      "start_byte": 3859,
+      "length_bytes": 87,
+      "before_sha256": "ff23cd8ce3b4ee078893be32ce0ed617694d49748cb269753e5992dab042dd0e",
+      "original_block_has_final_lf": false,
+      "after": "| GVHD — nghiệm thu/demo/numeric nếu cần | Ghi nhận theo hồ sơ nghiệm thu tương ứng |"
+    },
+    {
+      "path": "docs/sv3_week7_reconciliation_20261026.md",
+      "start_byte": 16475,
+      "length_bytes": 96,
+      "before_sha256": "1f8d02795dadc2690533b68ba1ec93b76be9c1ebd44f578c0a37e4e3a5ca7fe6",
+      "original_block_has_final_lf": false,
+      "after": "Lượt chạy demo chuẩn bị/kiểm thử xác minh toán/wiring; demo GVHD có hồ sơ riêng"
+    },
+    {
+      "path": "docs/sv3_week7_reconciliation_20261026.md",
+      "start_byte": 19633,
+      "length_bytes": 131,
+      "before_sha256": "d35d0fb1fed4064ecf67020039d880a19d25873524b191a48d88db8fedd3c45b",
+      "original_block_has_final_lf": false,
+      "after": "E-05 `INCOMPLETE_NO_ACCEPTANCE`. H-02/L-01 có hồ sơ review/demo riêng;\nquyết định nghiệm thu được ghi theo quy trình nhóm."
+    },
+    {
+      "path": "ml/provenance/week7-host-20261028/README.md",
+      "start_byte": 2879,
+      "length_bytes": 109,
+      "before_sha256": "be5c4048f18cc22d99f8bbff05d1b31bcdd252dba30e5b015bb62e178d2a9ce6",
+      "original_block_has_final_lf": false,
+      "after": "Lượt chạy demo chuẩn bị/kiểm thử xác minh toán/wiring; review ML và demo GVHD có hồ sơ ghi nhận riêng."
+    }
+  ],
+  "documents": {
+    "docs/README.md": {
+      "base_sha256": "6963042a0240bdac17654b3c9f805647ea81389e127dd3c3c1d178b20790acdc",
+      "candidate_sha256": "a10f7a8c1ea0a1b5e2f3fe1b2d6691be3eb19e2c82f8f4eafa43415c58fe0f8b"
+    },
+    "docs/sv3_ml_week7_report.md": {
+      "base_sha256": "52919c3e69133c865c00a6f56bb05483d7a03f7ba6cf35440496d003d7f83a13",
+      "candidate_sha256": "cf3fc8d100f49d038ad0ba7dc3ec519f17ba0e66126d0a802549907f4d53d59f"
+    },
+    "docs/sv3_week7_demo_guide.md": {
+      "base_sha256": "376ae51ffe63c3732e70a23d2ef9d1c433ccf4cd47525957c8852d5dcbd9778d",
+      "candidate_sha256": "fb40b953076520e0b53cfb40f272af9969faa16a16268a4d083638bf314cb9e9"
+    },
+    "docs/sv3_week7_dependency_checklist.md": {
+      "base_sha256": "07510fa922689a6b8d74bd1211fb4051aaffa4661dd13f008ba5892c4fc10e65",
+      "candidate_sha256": "003b03a156f3c9a3a8576448b4b7a3dc66fec980d6c6b451325595cafbe4b52b"
+    },
+    "docs/sv3_week7_fulltest_review_20261029.md": {
+      "base_sha256": "702cdb4da19f8fd5dd34951ab6c1ba9817d1359c12737d515c01f9e2bbc2c9c6",
+      "candidate_sha256": "0e343109dbd77e2e989d5bc9d82f559048601db4e908402a2b2b909ae7aa832d"
+    },
+    "docs/sv3_week7_host_update_20261028.md": {
+      "base_sha256": "0f319d1e72297ef3add4044096a8c4304f5d16414e92bbf2d9cfb0603ce0acb6",
+      "candidate_sha256": "3680d1688fcc957f4aee80cc6a5e530525d768d423386c0cedf7bdc2cad62d9b"
+    },
+    "docs/sv3_week7_ml_i1v2_confirmation_draft.md": {
+      "base_sha256": "4eb767d7c6a757edc67531dda284d51cffa3473ec6e956184fe25287ad706b95",
+      "candidate_sha256": "b6a157e6b5b3f6b1779ff8991c3716af319e5e9d53657f7143e13dacb5855d09"
+    },
+    "docs/sv3_week7_reconciliation_20261026.md": {
+      "base_sha256": "4a6f9d10b007d4191d0ea6f42679b0c5ffa4f1973811a9dd8f91a737c44efcf9",
+      "candidate_sha256": "86f87b091db9b93f7cb70e383355d6fd50e4814c84cafd8640e6730669430483"
+    },
+    "ml/provenance/week7-host-20261028/README.md": {
+      "base_sha256": "3528ee91df76eeb8e457d248ca90deab6dd0cbfe1918e30c9d65db375dd11dd8",
+      "candidate_sha256": "64185c75b728a1119ba792141a214afd8ecd46289eb6f97e0c387fb785f8265b"
+    }
+  }
+}

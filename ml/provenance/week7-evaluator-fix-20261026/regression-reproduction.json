@@ -1,0 +1,44 @@
+{
+  "scope": "SYNTHETIC_TEST_ONLY; all outputs are temporary test fixtures",
+  "status": "PASS_BOTH_REGRESSIONS_REPRODUCED_AND_FIXED",
+  "legacy_commit": "0545b470ebccb577baa8e11c1fff1c502f716b17",
+  "legacy_evaluator_sha256": "2c54857b7a19ba7d44dac463064ec3dd1c844cbe46c44c2cbb70f3a060c0ce06",
+  "fixed_commit": "18e74ab198bd444e6cc0ae5eedaa9969132bd935",
+  "fixed_evaluator_sha256": "c6ad4cd690a65161e0c5be6e155f91be5f31aae1fcfcc0f9418af9311fb64dbc",
+  "test_fixture_sha256": "b08a3f48a64c7bf7c5aa9ba6c3491bb9d3e8009dbadf56fdf42eb0fe60b66cfa",
+  "reproducer_sha256": "25413596d71db8502e59ad1ffdbeb5a42acc3ecceddf76da0c66318f14b7d52a",
+  "cases": [
+    {
+      "case": "empty_splits_and_rows",
+      "legacy": {
+        "exit_code": 0,
+        "result_file_created": true,
+        "split_statuses": [],
+        "stderr_last_line": ""
+      },
+      "fixed": {
+        "exit_code": 1,
+        "result_file_created": false,
+        "split_statuses": [],
+        "stderr_last_line": "ValueError: split_points must be a nonempty list"
+      }
+    },
+    {
+      "case": "uninventoried_tampered_baseline",
+      "legacy": {
+        "exit_code": 0,
+        "result_file_created": true,
+        "split_statuses": [
+          "PASS_ACCURACY_GATE"
+        ],
+        "stderr_last_line": ""
+      },
+      "fixed": {
+        "exit_code": 1,
+        "result_file_created": false,
+        "split_statuses": [],
+        "stderr_last_line": "ValueError: Missing required reference inventory entries: reference_fp32.npy"
+      }
+    }
+  ]
+}

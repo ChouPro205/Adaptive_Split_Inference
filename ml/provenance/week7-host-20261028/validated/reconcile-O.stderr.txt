@@ -1,0 +1,25 @@
+test_accuracy_strict_boundary_counts (__main__.AccuracyTests.test_accuracy_strict_boundary_counts) ... ok
+test_all_rows_absent_keeps_split_result_but_no_acceptance (__main__.AccuracyTests.test_all_rows_absent_keeps_split_result_but_no_acceptance) ... ok
+test_cli_boundary_rejects_empty_partial_duplicate_or_wrong_split_results (__main__.AccuracyTests.test_cli_boundary_rejects_empty_partial_duplicate_or_wrong_split_results) ... ok
+test_cli_empty_splits_and_rows_fails_without_result_artifact (__main__.AccuracyTests.test_cli_empty_splits_and_rows_fails_without_result_artifact) ... ok
+test_cli_valid_single_and_multiple_splits_succeed (__main__.AccuracyTests.test_cli_valid_single_and_multiple_splits_succeed) ... ok
+test_duplicate_unknown_id_and_split_rejected (__main__.AccuracyTests.test_duplicate_unknown_id_and_split_rejected) ... ok
+test_each_required_file_tamper_missing_and_wrong_size_rejected (__main__.AccuracyTests.test_each_required_file_tamper_missing_and_wrong_size_rejected) ... ok
+test_invalid_logits_are_failures (__main__.AccuracyTests.test_invalid_logits_are_failures) ... C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\week7_dpu_accuracy.py:225: RuntimeWarning: overflow encountered in cast
+  all(type(v) in (int,float) and np.isfinite(v) and abs(v)<=np.finfo(np.float32).max for v in values))
+ok
+test_invalid_manifest_split_points_rejected_before_data_reads (__main__.AccuracyTests.test_invalid_manifest_split_points_rejected_before_data_reads) ... ok
+test_missing_and_failed_never_pass_or_shrink_denominator (__main__.AccuracyTests.test_missing_and_failed_never_pass_or_shrink_denominator) ... ok
+test_missing_each_required_inventory_entry_rejected_before_data_reads (__main__.AccuracyTests.test_missing_each_required_inventory_entry_rejected_before_data_reads) ... ok
+test_reference_path_escape_rejected (__main__.AccuracyTests.test_reference_path_escape_rejected) ... ok
+test_reference_tamper_rejected (__main__.AccuracyTests.test_reference_tamper_rejected) ... ok
+test_reordered_ids_match_full_metrics_and_errors (__main__.AccuracyTests.test_reordered_ids_match_full_metrics_and_errors) ... ok
+test_tie_policy_and_absent_classes (__main__.AccuracyTests.test_tie_policy_and_absent_classes) ... ok
+test_uninventoried_modified_baseline_cannot_pass (__main__.AccuracyTests.test_uninventoried_modified_baseline_cannot_pass) ... ok
+test_wrong_manifest_model_class_or_calibration_rejected (__main__.AccuracyTests.test_wrong_manifest_model_class_or_calibration_rejected) ... ok
+test_duplicate_and_numeric_tamper_even_with_rehashed_export (__main__.AuditTests.test_duplicate_and_numeric_tamper_even_with_rehashed_export) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 20.055s
+
+OK

@@ -1,0 +1,38 @@
+{
+  "base_commit": "9b363f023204ead01e43a8103d927dff41182c29",
+  "ordering": "repository-relative POSIX path, Python case-sensitive string order",
+  "edited_documents": {
+    "docs/sv3_ml_week7_report.md": {
+      "base_sha256": "df90541740f3a4d6f395e002571bdfd4d5a6486ca78d75a28014b192e241b13f",
+      "insertion_after_first_blank_line": "**Cập nhật 29/10/2026:** đã nhận và review đủ 25.632 output KV260; s2/s5/s8 đều\nđạt `PASS_ACCURACY_GATE`. Xem [kết quả full-test mới](sv3_week7_fulltest_review_20261029.md).\nCác mục chờ output bên dưới là snapshot lịch sử. Xác nhận ML cá nhân và demo\nGVHD chưa được ghi nhận; không coi toàn bộ tuần 7 đã nghiệm thu.\n\n",
+      "candidate_sha256": "52919c3e69133c865c00a6f56bb05483d7a03f7ba6cf35440496d003d7f83a13"
+    },
+    "docs/sv3_week7_dependency_checklist.md": {
+      "base_sha256": "37390f5538651fc4b1c8b2d031593b13d1a2e91954414dfbf1e584cee71e2899",
+      "insertion_after_first_blank_line": "**Trạng thái mới nhất 29/10/2026:** E-05 đã nhận đủ 8.544 mẫu/split s2/s5/s8,\nkhông thiếu/lỗi; evaluator trả `PASS_ACCURACY_GATE`, artifact đã được review.\nXem [hồ sơ full-test và phần còn chờ](sv3_week7_fulltest_review_20261029.md).\nCác trạng thái `BLOCKED_SV2`/chờ output ở snapshot cũ bên dưới giữ nguyên mốc.\nXác nhận ML cá nhân/demo GVHD chưa được ghi nhận; r2 do Châu/Trung tích hợp riêng.\n\n",
+      "candidate_sha256": "07510fa922689a6b8d74bd1211fb4051aaffa4661dd13f008ba5892c4fc10e65"
+    }
+  },
+  "groups": {
+    "all_preexisting_tracked_except_two_documents": {
+      "count": 2915,
+      "path_and_raw_sha256_digest": "6e9b39ded2d31d83a99008283825c433d42da45a2e5336a7fe0b188e5594ba1f"
+    },
+    "ml_source_scripts_configs_manifests": {
+      "count": 118,
+      "path_and_raw_sha256_digest": "5bc787a10f836164cb2a0da6dafa471ca6f3c2bd097931642836c649be3d98e8"
+    },
+    "historical_tracked_provenance": {
+      "count": 2210,
+      "path_and_raw_sha256_digest": "189df9b160f38eb6c0ac6eb9c4a7bd0d9716d247742bb5407d47c2654ef56441"
+    },
+    "local_baseline_reference_weights_archives": {
+      "count": 52,
+      "path_and_raw_sha256_digest": "7dbddb90cfc4846e62d1ef4aefb1586161137d60d06d5caf6fa25db0eeae76aa"
+    },
+    "bed2dfc_final_receipts_logs": {
+      "count": 32,
+      "path_and_raw_sha256_digest": "ac3e4b3e3d324bc18ccd1006816fe2d98c3d77796eef433088e0846c4a185c5f"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+test_constant_rows_zero_gradients_and_extreme_finite (__main__.DistanceCorrelationTests.test_constant_rows_zero_gradients_and_extreme_finite) ... C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\test_week7_nopeek.py:100: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:821.)
+  self.assertEqual(float(value), 0)
+ok
+test_cuda_value_and_gradient_parity (__main__.DistanceCorrelationTests.test_cuda_value_and_gradient_parity) ... ok
+test_duplicate_points_finite_backward (__main__.DistanceCorrelationTests.test_duplicate_points_finite_backward) ... ok
+test_gradcheck_first_derivatives_both_inputs (__main__.DistanceCorrelationTests.test_gradcheck_first_derivatives_both_inputs) ... ok
+test_independent_low_dimensional_noise (__main__.DistanceCorrelationTests.test_independent_low_dimensional_noise) ... ok
+test_independent_reference_and_not_squared (__main__.DistanceCorrelationTests.test_independent_reference_and_not_squared) ... ok
+test_real_optimizer_step_reduces_privacy_objective (__main__.DistanceCorrelationTests.test_real_optimizer_step_reduces_privacy_objective) ... ok
+test_self_shapes_and_noncontiguous (__main__.DistanceCorrelationTests.test_self_shapes_and_noncontiguous) ... ok
+test_small_batch_and_invalid_inputs (__main__.DistanceCorrelationTests.test_small_batch_and_invalid_inputs) ... ok
+test_symmetry_scale_translation_and_axis_semantics (__main__.DistanceCorrelationTests.test_symmetry_scale_translation_and_axis_semantics) ... ok
+test_bad_lambda (__main__.ObjectiveTests.test_bad_lambda) ... ok
+test_lambda0_exact_loss_gradient_update (__main__.ObjectiveTests.test_lambda0_exact_loss_gradient_update) ... ok
+test_positive_lambda_gradient_difference_is_privacy (__main__.ObjectiveTests.test_positive_lambda_gradient_difference_is_privacy) ... ok
+test_authenticated_trainval_and_no_test_reads (__main__.RealDataTests.test_authenticated_trainval_and_no_test_reads) ... ok
+test_changed_checkpoint_dataset_binding_rejected (__main__.RealDataTests.test_changed_checkpoint_dataset_binding_rejected) ... ok
+test_tampered_real_train_label_file_rejected_before_numpy (__main__.RealDataTests.test_tampered_real_train_label_file_rejected_before_numpy) ... ok
+test_refuses_existing_output_without_changing_it (__main__.RunnerSafetyTests.test_refuses_existing_output_without_changing_it) ... ok
+test_refuses_outputs_outside_week7_directories (__main__.RunnerSafetyTests.test_refuses_outputs_outside_week7_directories) ... ok
+test_refuses_running_the_full_lambda_grid (__main__.RunnerSafetyTests.test_refuses_running_the_full_lambda_grid) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 4.381s
+
+OK
