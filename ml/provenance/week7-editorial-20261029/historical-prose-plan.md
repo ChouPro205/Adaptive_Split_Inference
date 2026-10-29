@@ -1,6 +1,6 @@
 # Kế hoạch riêng cho prose lịch sử — chưa thực hiện
 
-Nguồn inventory chỉ đọc: `C:/Users/Admin/OneDrive/Documents/ChatGPT/Adaptive Split Inference Local/operations/pr41-codex-audit-20261028`:
+Nguồn inventory chỉ đọc: inventory audit cục bộ ngày 28/10, không đưa vào repo:
 `REVIEW.txt`, `history-wording-inventory.json`, `history-prose-bindings.json`,
 `history-latest-main-confirmation.json` và `pr41-snapshot.json`.
 Audit ngày 28/10 ghi 8 dòng prose cũ trong 5 file ngoài 11 dòng của đợt này.

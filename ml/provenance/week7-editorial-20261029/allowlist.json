@@ -4,67 +4,67 @@
     {
       "path": "docs/sv3_ml_week7_report.md",
       "line": 381,
-      "before": "giữ riêng, không gọi là PASS. Demo do Codex chạy không chứng nhận Kỳ Anh đã học",
+      "before_sha256": "676657f6d65eeab9deca8dec3ae1cee265aeb5ccfa923c7605815c685e6f41da",
       "after": "giữ riêng, không gọi là PASS. Lượt chạy demo chuẩn bị/kiểm thử không chứng nhận Kỳ Anh đã học"
     },
     {
       "path": "docs/sv3_week7_demo_guide.md",
       "line": 4,
-      "before": "Runbook đã được Codex chạy thử trên commit",
+      "before_sha256": "aca1d5deb030cad7160426e9906cc497154bc316edc458fc6135431129245cc0",
       "after": "Runbook đã được chạy thử trên commit"
     },
     {
       "path": "docs/sv3_week7_demo_guide.md",
       "line": 79,
-      "before": "nghiệm thu ghi nhận sau buổi thực tế; runbook và log do Codex chạy không thay",
+      "before_sha256": "44360dc93f45f5c1416941b4516f4763a12932b6a488bc2833dedfed1fa8d72a",
       "after": "nghiệm thu ghi nhận sau buổi thực tế; runbook và log của lượt chạy kiểm thử không thay"
     },
     {
       "path": "docs/sv3_week7_demo_guide.md",
       "line": 85,
-      "before": "chạy và output `demo.json` mới do Codex tạo; không gán lại lượt chạy cũ.",
+      "before_sha256": "bc9dce909f3fd7296e08aaf3a0c00a2d65b7857c4ae4f22d9ced8c62db99d0e1",
       "after": "chạy và output `demo.json` mới của lượt chạy kiểm thử; không gán lại lượt chạy cũ."
     },
     {
       "path": "docs/sv3_week7_dependency_checklist.md",
       "line": 286,
-      "before": "| L-01 | **DONE runbook và lệnh demo do Codex kiểm; READY cho Kỳ Anh thực hiện** | [Demo guide](sv3_week7_demo_guide.md); chưa đánh dấu học hiểu/demo GVHD DONE |",
+      "before_sha256": "4bcaef2e3ff2fca21494541d6cbf160ce8f9d2fd425cb635c837b8e7e3d10313",
       "after": "| L-01 | **DONE runbook và lệnh demo đã được kiểm thử; READY cho Kỳ Anh thực hiện** | [Demo guide](sv3_week7_demo_guide.md); chưa đánh dấu học hiểu/demo GVHD DONE |"
     },
     {
       "path": "docs/sv3_week7_dependency_checklist.md",
       "line": 340,
-      "before": "  Codex chạy demo không là bằng chứng cá nhân. W8 grid/attack vẫn ngoài scope.",
+      "before_sha256": "6d104f8605cb6b27bc6345880006a7ad246dbeb00b02b0231f190a6e74ef183a",
       "after": "  Lượt chạy demo chuẩn bị/kiểm thử không là bằng chứng cá nhân. W8 grid/attack vẫn ngoài scope."
     },
     {
       "path": "docs/sv3_week7_host_update_20261028.md",
       "line": 50,
-      "before": "| L-01 | [Runbook](sv3_week7_demo_guide.md), demo Codex forward/backward mới, không optimizer step, weights trước/sau khớp | Kỳ Anh tự giải thích/demo; GVHD ghi nhận. Chưa xác nhận đã hiểu/đã demo |",
+      "before_sha256": "5e06debfc65c78063ad919341e2823b3f03807d247a3a7d0e39d5b2b1af7c7ed",
       "after": "| L-01 | [Runbook](sv3_week7_demo_guide.md), lượt chạy demo kiểm thử forward/backward mới, không optimizer step, weights trước/sau khớp | Kỳ Anh tự giải thích/demo; GVHD ghi nhận. Chưa xác nhận đã hiểu/đã demo |"
     },
     {
       "path": "docs/sv3_week7_ml_i1v2_confirmation_draft.md",
       "line": 4,
-      "before": "SV3 — Model/Privacy. Codex không xác nhận hay ký thay Kỳ Anh, Châu, Trung hoặc GVHD.",
+      "before_sha256": "59ba2bec3280bccdf1176cf0d48470cc7d2bbb553cbe36c735b700e46fd75ed2",
       "after": "SV3 — Model/Privacy. Hồ sơ này không thay xác nhận/chữ ký của các owner: Kỳ Anh, Châu, Trung hoặc GVHD."
     },
     {
       "path": "docs/sv3_week7_reconciliation_20261026.md",
       "line": 216,
-      "before": "| `demo_week7_nopeek.py ...` / `delivery-demo` | Ca toán, CE/dCor gradients s2/s5/s8 và loss PASS; weights giữ nguyên | Lệnh do Codex chạy; chưa xác nhận Kỳ Anh học hiểu/demo GVHD |",
+      "before_sha256": "3f2440be6715e46e2abfa12eb38c49d3d807292c334576d55176872a3c3a3544",
       "after": "| `demo_week7_nopeek.py ...` / `delivery-demo` | Ca toán, CE/dCor gradients s2/s5/s8 và loss PASS; weights giữ nguyên | Lượt chạy demo chuẩn bị/kiểm thử; chưa xác nhận Kỳ Anh học hiểu/demo GVHD |"
     },
     {
       "path": "docs/sv3_week7_sv2_handoff_20261028.md",
       "line": 3,
-      "before": "Trạng thái: **READY_FOR_TRANSFER_NOT_SENT**. Codex chuẩn bị gói cục bộ; chưa",
+      "before_sha256": "123d373fc6ee201709a84b013bcc25e2a5ce890276e467a48240d7efe74e3710",
       "after": "Trạng thái: **READY_FOR_TRANSFER_NOT_SENT**. Gói đã được chuẩn bị cục bộ; chưa"
     },
     {
       "path": "ml/provenance/week7-host-20261028/README.md",
       "line": 33,
-      "before": "và verification. Demo Codex không xác nhận Kỳ Anh học hiểu/đã demo/đã ký ML.",
+      "before_sha256": "25e0e0d9dc07b6de2c041bcbf9bc899362cb0c1705abc0c93497c5c7a83de435",
       "after": "và verification. Lượt chạy demo chuẩn bị/kiểm thử không xác nhận Kỳ Anh học hiểu/đã demo/đã ký ML."
     }
   ]

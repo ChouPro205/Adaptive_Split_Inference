@@ -27,6 +27,17 @@ def sha(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
+def original_line_sha256(raw):
+    """Hash UTF-8 without BOM; remove one LF or CRLF only, preserving spaces."""
+    need(not raw.startswith(b'\xef\xbb\xbf'), 'Original line has UTF-8 BOM')
+    raw.decode('utf-8')
+    if raw.endswith(b'\r\n'):
+        raw = raw[:-2]
+    elif raw.endswith(b'\n'):
+        raw = raw[:-1]
+    return sha(raw)
+
+
 def read(path):
     return json.loads(path.read_text(encoding='utf-8'))
 
@@ -82,7 +93,11 @@ def main():
         raw = git('show', BASE + ':' + path)
         lines = raw.decode('utf-8').splitlines(keepends=True)
         for e in [e for e in allow['edits'] if e['path'] == path]:
-            need(lines[e['line'] - 1] == e['before'] + '\n', 'Original line differs: ' + path)
+            need(set(e) == {'path', 'line', 'before_sha256', 'after'}, 'Unexpected allowlist fields')
+            need(isinstance(e['before_sha256'], str) and
+                 re.fullmatch(r'[0-9a-f]{64}', e['before_sha256']), 'Invalid original line SHA-256')
+            need(original_line_sha256(lines[e['line'] - 1].encode('utf-8')) ==
+                 e['before_sha256'], 'Original line differs: ' + path)
             lines[e['line'] - 1] = e['after'] + '\n'
         current = (ROOT / path).read_bytes()
         need(current == ''.join(lines).encode('utf-8'), 'Non-allowlisted edit: ' + path)
