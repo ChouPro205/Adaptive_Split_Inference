@@ -10,9 +10,15 @@
 3. check_week9.py verify/session PASS on host-made captures and FAIL on a changed q hash, a missing VQ
    line, a wrong device plan digest, a DWT mean outside the rule, a reordered cycle, a failed cycle and
    wrong payload bytes. With --week8-build, check_week9_build.py FAILS on a week 8 radio image.
+4. week9_ppk2.analyze_dev PASSES a synthetic dev-image trace (550 cycles in plan order, HEAD widths =
+   DWT) with E_dev per split as integrated, and FAILS on a missing cycle, two swapped cycles, a D2
+   pulse, a 6 mA sample between cycles and an idle current 57 % above week 2. With --week8-b5, the
+   chunked raw loader equals energy_phases.load_raw_capture bit for bit on a 3 M-sample prefix
+   (chunk edges inside range switches), and the week 8 B5 session FAILS the week 9 checks.
 Host evidence only: not MCU evidence.
 Run: device\\host\\.venv\\Scripts\\python.exe -B device\\scripts\\test_week9_host.py --samples <W8-D3 dir>
      --plan <plan dir> --refs <refs dir> [--week8-build <week 8 build report dir>]
+     [--week8-b5 <week 8 B5 session dir>]
 """
 from __future__ import annotations
 
@@ -24,6 +30,8 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+
+import numpy as np
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -37,6 +45,7 @@ SAMPLES: Path | None = None
 PLAN: Path | None = None
 REFS: Path | None = None
 WEEK8_BUILD: Path | None = None
+WEEK8_B5: Path | None = None
 
 
 class Plan(unittest.TestCase):
@@ -195,6 +204,131 @@ class Checkers(unittest.TestCase):
         self.assertIn("cycles_equal_plan_order", self.failed_session(good[:-2] + good[-1:]))
 
 
+FS = 100_000
+SCALE = 0.05     # synthetic HEAD widths = DWT x SCALE (keeps the trace ~2 M samples)
+
+
+def synthetic_trace(rows, dwt, idle_ua=25.0, tweak=None):
+    """A dev-image trace: self-test D0..D4 200 ms, 2 s idle, the given (cycle, round, n, s) rows as
+    CTRL 200 us + HEAD (DWT x SCALE) + 6 ms gap, 5 s idle. tweak(pieces) may edit the pieces."""
+    import energy_phases as ep
+    rng = np.random.default_rng(7)
+    pieces = [[1000, 25.0, 0]] + [[20000, 300.0, 1 << ch] for ch in range(5)] + [[200000, idle_ua, 0]]
+    for _, _, n, s in rows:
+        pieces += [[20, 3200.0, 1 << 4], [round(dwt[(n, s)] * SCALE * 100), 3300.0, 1], [600, idle_ua, 0]]
+    pieces.append([500000, idle_ua, 0])
+    if tweak:
+        tweak(pieces)
+    current = np.concatenate([np.full(n, i) for n, i, _ in pieces]).astype(np.float64)
+    bits = np.concatenate([np.full(n, b, dtype=np.uint8) for n, _, b in pieces])
+    current += rng.normal(0.0, 1.0, current.size) * np.where(current > 1000, 40.0, 0.5)
+    info = {"dut_power_on_sample": 0, "counter": {"available": True, "discontinuities": 0},
+            "capture": {"dut_on_rate_deviation_pct": 0.0, "reader_error": None}}
+    return ep.Trace(current, bits, 5000.0, "synthetic", None, info)
+
+
+class Ppk2Analysis(unittest.TestCase):
+    """week9_ppk2.analyze_dev on synthetic dev-image traces (HEAD widths from the B2 TDEV shape)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import week9_ppk2
+        cls.mod = week9_ppk2
+        cls.set = w8.load_set(SAMPLES)
+        refs = w9.load_refs(REFS, cls.set)
+        cls.bytes = {s: refs[(0, s)].bytes_payload for s in range(11)}
+        head = [0.5487, 11.69, 37.10, 71.16, 126.17, 176.70, 246.24, 302.23, 373.46, 377.55, 377.40]
+        cls.dwt = {(n, s): head[s] * (1 + 0.001 * (n % 5)) for n in range(50) for s in range(11)}
+        cls.dwt_scaled = {k: v * SCALE for k, v in cls.dwt.items()}
+        cls.rows = w9.plan_rows(w9.plan_splits())
+
+    def run_analysis(self, rows=None, **kw):
+        trace = synthetic_trace(rows if rows is not None else self.rows, self.dwt, **kw)
+        return self.mod.analyze_dev(trace, self.dwt_scaled, self.bytes, idle_seconds=1.0)
+
+    def failed(self, result) -> set:
+        checks = {**result["summary"]["checks"], **result["energy_dev"]["checks"]}
+        return {k for k, ok in checks.items() if not ok}
+
+    def test_passes_and_energy_per_split(self):
+        result = self.run_analysis()
+        self.assertEqual(self.failed(result), set())
+        energy = result["energy_dev"]["splits"]
+        for row in energy:
+            s = row["split"]
+            want = 5.0 * 3300e-6 * float(np.mean([self.dwt_scaled[(n, s)] for n in range(50)])) * 1e3
+            self.assertEqual(row["n"], 50)
+            self.assertEqual(row["bytes_payload"], self.bytes[s])
+            self.assertAlmostEqual(row["E_dev_uJ"]["mean"], want, delta=max(0.1, 0.01 * want))
+            self.assertLess(row["E_dev_net_uJ"]["mean"], row["E_dev_uJ"]["mean"])
+        self.assertAlmostEqual(result["summary"]["I_idle_uA"], 25.0, delta=0.1)
+        cycles = result["cycles"]
+        self.assertEqual([(c["round"], c["sample"], c["split"]) for c in cycles], [r[1:] for r in self.rows])
+
+    def test_rejects_missing_cycle(self):
+        failed = self.failed(self.run_analysis(self.rows[:100] + self.rows[101:]))
+        self.assertTrue({"TC4_cycle_count_550", "TC4_head_width_matches_plan", "TC5_n_50_per_split"} <= failed)
+
+    def test_rejects_swapped_cycles(self):
+        rows = list(self.rows)
+        rows[0], rows[1] = rows[1], rows[0]          # s=3 and s=0 of round 0 run in the other order
+        self.assertIn("TC4_head_width_matches_plan", self.failed(self.run_analysis(rows)))
+
+    def test_rejects_d2_pulse_spike_and_idle(self):
+        def d2(pieces):
+            pieces.insert(7 + 3 * 40 + 2, [50, 25.0, 1 << 2])      # a D2 pulse after cycle 40's HEAD
+        failed = self.failed(self.run_analysis(tweak=d2))
+        self.assertIn("TC4_D1_D3_low_after_selftest", failed)
+        self.assertIn("TC4_all_cycles_valid", failed)
+
+        def spike(pieces):
+            gap = pieces[7 + 3 * 200 + 2]
+            gap[0] -= 300
+            pieces[7 + 3 * 200 + 2:7 + 3 * 200 + 3] = [[150, gap[1], 0], [100, 6000.0, 0], [gap[0] - 150 + 200, gap[1], 0]]
+        self.assertIn("TC4_no_sample_above_3mA_between_cycles", self.failed(self.run_analysis(tweak=spike)))
+        self.assertIn("TC3_idle_within_10pct_week2", self.failed(self.run_analysis(idle_ua=40.0)))
+
+
+class Ppk2RealCapture(unittest.TestCase):
+    """--week8-b5: the chunked loader equals energy_phases.load_raw_capture bit for bit on a prefix of
+    the week 8 B5 raw capture, and analyze_dev FAILS on that session (it has D1..D3 and 200 cycles)."""
+
+    @classmethod
+    def setUpClass(cls):
+        if WEEK8_B5 is None:
+            raise unittest.SkipTest("--week8-b5 not given")
+        import week9_ppk2
+        cls.mod = week9_ppk2
+
+    def test_chunked_loader_equals_energy_phases(self):
+        import energy_phases as ep
+        prefix = TMP / "b5_prefix"
+        prefix.mkdir()
+        meta = json.loads((WEEK8_B5 / "ppk2" / "capture.json").read_text(encoding="utf-8"))
+        data = (WEEK8_B5 / "ppk2" / meta["raw_file"]).read_bytes()[:4 * 3_000_001]   # + 1 word: a chunk edge
+        (prefix / meta["raw_file"]).write_bytes(data)
+        meta["raw_sha256"] = w9.sha256_hex(data)
+        (prefix / "capture.json").write_text(json.dumps(meta), encoding="utf-8")
+        whole = ep.load_raw_capture(prefix)
+        chunked = self.mod.load_raw_chunked(prefix, chunk_samples=250_000)
+        self.assertGreater(sum(whole.info["range_counts"][1:]), 10_000)   # range switches cross chunk edges
+        self.assertTrue(np.array_equal(whole.current_ua, chunked.current_ua))
+        self.assertTrue(np.array_equal(whole.bits, chunked.bits))
+        self.assertEqual(whole.info, chunked.info)
+
+    def test_week8_session_fails_week9_checks(self):
+        trace = self.mod.load_raw_chunked(WEEK8_B5 / "ppk2")
+        dwt = {(n, s): 37.1 for n in range(50) for s in range(11)}
+        result = self.mod.analyze_dev(trace, dwt, {s: 1 for s in range(11)})
+        checks = result["summary"]["checks"]
+        self.assertTrue(checks["selftest_D0_D4"])
+        for name in ("TC4_cycle_count_550", "TC4_D1_D3_low_after_selftest", "TC4_all_cycles_valid",
+                     "TC4_head_width_matches_plan", "TC4_no_sample_above_3mA_between_cycles"):
+            self.assertFalse(checks[name], name)
+        self.assertEqual(result["summary"]["cycles_found"], 200)
+        self.assertEqual(result["energy_dev"]["status"], "FAIL")
+
+
 class BuildChecker(unittest.TestCase):
     def test_week8_radio_image_fails(self):
         if WEEK8_BUILD is None:
@@ -217,8 +351,10 @@ if __name__ == "__main__":
     parser.add_argument("--plan", type=Path, required=True, help="generate_week9_plan.py directory")
     parser.add_argument("--refs", type=Path, required=True, help="generate_week9_refs.py directory")
     parser.add_argument("--week8-build", type=Path, help="a build_week8.ps1 report directory (negative test)")
+    parser.add_argument("--week8-b5", type=Path, help="a week8_ppk2.py session directory (loader + negative test)")
     args, rest = parser.parse_known_args()
     SAMPLES, PLAN, REFS = args.samples.resolve(), args.plan.resolve(), args.refs.resolve()
     WEEK8_BUILD = args.week8_build.resolve() if args.week8_build else None
+    WEEK8_B5 = args.week8_b5.resolve() if args.week8_b5 else None
     result = unittest.main(argv=[sys.argv[0], *rest], verbosity=2, exit=False).result
     sys.exit(0 if result.wasSuccessful() else 1)
