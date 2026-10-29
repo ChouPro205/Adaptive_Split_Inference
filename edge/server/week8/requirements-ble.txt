@@ -1,0 +1,3 @@
+# KV260 Python 3.9 BLE venv, kept separate from ML/compiler/runtime.
+bleak==0.22.3
+# dependencies resolved by pip; save pip freeze in each run after install.

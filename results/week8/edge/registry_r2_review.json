@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-27",
+  "delta": "contracts/sv1_sv2_week8_registry_revision_r2.json",
+  "delta_sha256": "72d6aedc0f63226cb361a8e45b290504ab2c811d947faa67b3c4ca72609b1d2f",
+  "revision": "mitdb-week5-i2-registry-v1-r2",
+  "technical_checks": {
+    "revision_matches": true,
+    "single_device_nonce_delta": true,
+    "base_registry_unchanged": true,
+    "evidence_hashes_match": true,
+    "edge_volatile_highwater_disclosed": true,
+    "production_authorization_false": true,
+    "p1_authorization_false": true
+  },
+  "evidence": [
+    {
+      "path": "results/week6/device/nonce_soft_reset_110.json",
+      "sha256": "f588165062a0983907e08d1d110f5d0884a777f003a08727077d4bedac424a42",
+      "verified": true
+    },
+    {
+      "path": "results/week6/device/nonce_power_cut_12.json",
+      "sha256": "ba7bcfdbec1473b845045fdd9df6ea0a18d53758ae0fd9e9e6d7a656884908c9",
+      "verified": true
+    },
+    {
+      "path": "results/week6/device/nonce_combined.json",
+      "sha256": "802f8aa260b48cad22cf64adcd7667ab82f25f0a901819b6b21cf8fbd0b392a8",
+      "verified": true
+    },
+    {
+      "path": "results/week6/device/nonce_hooks.json",
+      "sha256": "fb1a6655a8dad1613fa2402943315f0f9afd30276185c98c763bcc0a003308ba",
+      "verified": true
+    },
+    {
+      "path": "results/week6/device/sentinel_dfu_default_to_mtu23.json",
+      "sha256": "43d3082cbc683b1ae4b892c08ee8334c8879d3d310c07806652e4d9788e22af1",
+      "verified": true
+    },
+    {
+      "path": "results/week6/device/sentinel_dfu_mtu23_to_default.json",
+      "sha256": "911ce118f44c05397d271383a7fc740c61ebddfe5fc9deec33a4fc2884b404c6",
+      "verified": true
+    },
+    {
+      "path": "results/week8/device/kv260_g2_pairs100.json",
+      "sha256": "cd75fd64f63cb76da86771f3a16da1632f3dd4364761bb2b96b9ac2fb248fe12",
+      "verified": true
+    },
+    {
+      "path": "results/week8/device/kv260_supp2_1M_pairs5.json",
+      "sha256": "18068a40c4faa260036cb063a61eb46a18636651a1a67a1511581214550a5ab2",
+      "verified": true
+    },
+    {
+      "path": "results/week8/device/kv260_supp4_2M_pairs5.json",
+      "sha256": "288d32c85749d73d32b8747878dad99f2d04c0e51323a35e81f2951e6f1c3110",
+      "verified": true
+    }
+  ],
+  "formal_confirmation": "PENDING_USER_PR_COMMENT; base/delta are not edited by this publication",
+  "scope": "Dongle nonce counter only; provisioning remains NOT_ACCEPTED, P1 transmission/production remain false; Edge replay high-water remains volatile"
+}

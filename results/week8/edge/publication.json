@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "publication_date": "2026-10-27",
+  "branch": "dev/edge-sv2",
+  "measured_service_source_commits": {
+    "g2_source": {
+      "commit": "16d5b43392018ffae740f555f8585e278f251447",
+      "ble_service_sha256": "79a1da1bea8e4c07825efa1f0500a2b24ffce46e53e4ac4b3824323a2faf67e5"
+    },
+    "supplement_and_helpers": {
+      "commit": "4b605e90da57492a4dcb106a7f2eea5e7688754e",
+      "ble_service_sha256": "a424bc905265e109ee225bc712a063695b9af25b010483162be8c6c16c0337bc"
+    }
+  },
+  "notes": [
+    "The G2 service is preserved byte-exact in the first source commit; the supplemental service in the next.",
+    "Review/export helpers may be later than measured code.",
+    "Historical receipts and archives are unchanged; no model, binary, input NPZ or key is published.",
+    "Documentation commit is not embedded here to avoid a self-referential commit hash."
+  ]
+}

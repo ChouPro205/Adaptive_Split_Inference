@@ -86,3 +86,5 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
 
 - [SV2/Edge tuần 7: packet I1 v2 từ file đến KV260](docs/sv2_edge_week7_report.md),
   [source service](edge/server/week7/README.md) và [kết quả](results/week7/edge/README.md).
+
+- [SV2/Edge tuần 8: BLE G2 và hồ sơ bổ sung PHY](docs/sv2_edge_week8_report.md), [kết quả](results/week8/edge/README.md).
