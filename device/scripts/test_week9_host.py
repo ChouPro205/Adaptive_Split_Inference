@@ -342,6 +342,66 @@ class Ppk2RealCapture(unittest.TestCase):
         self.assertEqual(result["energy_dev"]["status"], "FAIL")
 
 
+class Kv260Pipeline(unittest.TestCase):
+    """--week8-b5: part B tooling (session-kv260 analysis + import-kv260) on the week 8 B5 session: the
+    chunked analysis gives the published phase means, the laptop edge's log in the KV260 form imports
+    and PASSES every check with a 2M Read-PHY record, and FAILS phy_2m_read_back with a 1M one."""
+
+    @classmethod
+    def setUpClass(cls):
+        if WEEK8_B5 is None:
+            raise unittest.SkipTest("--week8-b5 not given")
+        import shutil
+        import week9_ppk2
+        cls.mod = week9_ppk2
+        cls.published = json.loads((WEEK8_B5 / "analysis" / "summary.json").read_text(encoding="utf-8"))
+        cls.base = TMP / "kv260_base"
+        (cls.base / "ppk2").mkdir(parents=True)
+        for name in ("raw.bin", "capture.json"):
+            shutil.copyfile(WEEK8_B5 / "ppk2" / name, cls.base / "ppk2" / name)
+        cls.mod.analyze_energy_image(cls.mod.load_raw_chunked(cls.base / "ppk2"), cls.base, 100, False)
+        cls.log = TMP / "kv260_requests.jsonl"
+        with open(cls.log, "w", encoding="utf-8") as handle:
+            for line in (WEEK8_B5 / "edge" / "peer.jsonl").read_text(encoding="utf-8").splitlines():
+                event = json.loads(line)
+                if event.get("ev") == "request":
+                    handle.write(json.dumps({**event, "connection": 0}) + "\n")
+
+    def session(self, name: str, phy: str) -> tuple:
+        import shutil
+        out = TMP / name
+        shutil.copytree(self.base, out)
+        (out / "session.json").write_text(json.dumps({
+            "schema": "week9-ppk2-kv260/1", "samples": str(SAMPLES), "prior_reserved_through": 60643328,
+            "image": {"build_id": "week8 B5 (test)"}, "ignore_counter": False}), encoding="utf-8")
+        phy_log = TMP / f"{name}_phy.jsonl"
+        phy_log.write_text(json.dumps({"event": "read_phy", "tx_phy": phy, "rx_phy": phy}) + "\n", encoding="utf-8")
+        code = self.mod.cmd_import_kv260(argparse.Namespace(out=out, kv260_log=self.log, edge_reference=None,
+                                                            phy_log=phy_log))
+        return code, json.loads((out / "check_kv260.json").read_text(encoding="utf-8"))
+
+    def test_analysis_equals_published(self):
+        mine = json.loads((self.base / "analysis" / "summary.json").read_text(encoding="utf-8"))
+        self.assertEqual(mine["checks"], {**mine["checks"], **{k: True for k in mine["checks"]}})
+        for rho in ("P1", "P0"):
+            for key in ("E_dev_uJ", "E_prot_uJ", "E_tx_uJ", "E_wait_uJ", "E_cycle_uJ", "t_tx_ms"):
+                self.assertAlmostEqual(mine["groups"][rho]["stats"][key]["mean"],
+                                       self.published["groups"][rho]["stats"][key]["mean"], places=9)
+
+    def test_import_passes_with_2m(self):
+        code, report = self.session("kv260_2m", "2M")
+        self.assertEqual(code, 0, {k: v for k, v in report["checks"].items() if not v})
+        energy = json.loads((TMP / "kv260_2m" / "energy_kv260_s2.json").read_text(encoding="utf-8"))
+        delta = energy["paired_delta_p1_minus_p0"]
+        self.assertEqual(delta["E_prot_uJ"]["n"], 100)
+        self.assertAlmostEqual(delta["E_prot_uJ"]["mean"], energy["per_rho"]["P1"]["E_prot_uJ"]["mean"], places=6)
+
+    def test_import_fails_with_1m(self):
+        code, report = self.session("kv260_1m", "1M")
+        self.assertEqual(code, 1)
+        self.assertEqual([k for k, v in report["checks"].items() if not v], ["phy_2m_read_back"])
+
+
 class BuildChecker(unittest.TestCase):
     def test_week8_radio_image_fails(self):
         if WEEK8_BUILD is None:

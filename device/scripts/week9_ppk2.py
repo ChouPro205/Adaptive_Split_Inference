@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Week 9 PPK2 bench driver, part A: E_dev(s) for every s with the dev image (W9-D1..D4, B4).
+"""Week 9 PPK2 bench driver: part A E_dev(s) for every s with the dev image (W9-D1..D4, B4), part B
+the week 8 energy image with the KV260 at s = 2 (W9-D8, B5).
 
 The dongle is powered by the PPK2 Source Meter (5000 mV) through the VBUS breakout, never by the
 laptop USB (decision PPK2 VBUS). Capture is measure_energy.py and the week 7 helpers (week7_ppk2.py),
@@ -22,6 +23,15 @@ segmentation needs TX/WAIT markers, while a week 9 cycle is CTRL (D4) -> HEAD (D
   recheck      the session checks again on an existing directory -> check_session_recheck.json
   note         end-of-session notes (temperature, photos) (week7_ppk2.py note)
   compare      TC6: two session-dev directories (same bench, same day) -> per s mean differences
+Part B (W9-D8, TC7): the week 8 energy image at s = 2 with the KV260 as central:
+  session-kv260  capture (the KV260 service scans and connects by itself) -> the energy_phases
+               analysis steps on a chunked trace (analysis/), trace checks: self-test, 200 cycles in the
+               W8-D1 paired order, < 3 %, back to idle and off-air after the session (W8-D2)
+  import-kv260 the KV260 request log (week 8 form) + Read-PHY log -> edge/, labels vs the KV260 offline
+               run (W8-D8), one cycle per request at two anchors (week 8 B5), one connection, nonce
+               above --prior-reserved-through, PHY 2M read back; energy_kv260_s2.json: phases per rho
+               and paired P1 - P0 deltas with CI95
+  recheck-kv260  the part B checks again with the current checker (new file)
 Each session writes a NEW --out directory. Exit 0 = PASS. Run with device/host/.venv; close nRF
 Connect Power Profiler first (it holds the PPK2 port).
 """
@@ -580,6 +590,280 @@ def cmd_compare(args) -> int:
     return 0
 
 
+# ----------------------------------------------------------------------------- part B: KV260, s = 2 (W9-D8)
+
+KV260_PAIRS = 100                    # CONFIG_WEEK8_PAIRS of the week 8 energy image
+PHY_2M = {"2", "2M", "LE2M", "LE_2M", "LE 2M", "PHY_2M", "0X02"}
+PHY_KEYS = (("tx_phy", "rx_phy"), ("phy_tx", "phy_rx"), ("tx", "rx"))
+PHASE_KEYS = ("ctrl", "dev", "prot", "tx", "wait", "gap", "cycle")
+
+
+def analyze_energy_image(trace: ep.Trace, out: Path, pairs: int, ignore_counter: bool) -> dict:
+    """energy_phases.py analyze (the week 7/8 steps: self-test, 29 s idle window, cycles, net, groups)
+    on a trace loaded in chunks; writes analysis/cycles.csv + summary.json like it (no plot)."""
+    phase_map = dict(ep.DEFAULT_MAP)
+    analysis = ep.new_output_dir(out / "analysis")
+    selftest = ep.selftest_check(trace, phase_map, 200.0)
+    after = selftest["end_sample"] if selftest.get("found") else 0
+    idle = None
+    if selftest.get("found"):
+        a = after + int(0.5 * FS)
+        idle = ep.window_stats(trace, a, a + int(29.0 * FS), channels=sorted(phase_map.values()))
+        idle["all_markers_low"] = not any(idle["high_samples"].values())
+    cycles, anomalies = ep.segment_cycles(trace, phase_map, after_sample=after + 1)
+    i_idle = idle["mean_uA"] if idle else None
+    if i_idle is not None:
+        ep.add_net(cycles, i_idle, trace.v_supply_mv)
+    valid = [c for c in cycles if not c["errors"]]
+    diffs = [c["diff_pct"] for c in valid]
+    stray = {f"D{c}": int(np.count_nonzero((trace.bits >> c) & 1)) for c in range(8) if c not in phase_map.values()}
+    checks = {
+        "selftest_D0_D4": bool(selftest.get("pass")),
+        "cycle_count": len(cycles) == 2 * pairs,
+        "all_cycles_valid": len(valid) == len(cycles) and bool(cycles),
+        "diff_below_3pct_all": bool(diffs) and max(diffs) < ep.DIFF_LIMIT_PCT and len(diffs) == len(cycles),
+        "unused_channels_low": not any(stray.values()),
+        **ep.data_loss_checks(trace, ignore_counter),
+        "p1_cycles": sum(c["rho"] == "P1" for c in valid) == pairs,
+        "p0_cycles": sum(c["rho"] == "P0" for c in valid) == pairs,
+        "idle_markers_low": bool(idle and idle["all_markers_low"]),
+    }
+    gaps = [(c["end_sample"], cycles[i + 1]["start_sample"]) for i, c in enumerate(cycles[:-1])]
+    summary = {
+        "schema": "week7-energy-analysis/1", "status": "PASS" if all(checks.values()) else "FAIL",
+        "checks": checks, "producer": "week9_ppk2.py analyze_energy_image (energy_phases steps, chunked loader)",
+        "trace": {"source": trace.source, "samples": trace.n, "duration_s": trace.n * ep.DT_S,
+                  "v_supply_mV": trace.v_supply_mv, **trace.info},
+        "phase_map": {k: f"D{v}" for k, v in phase_map.items()},
+        "selftest": selftest, "idle": idle, "I_idle_uA": i_idle,
+        "cycles_found": len(cycles), "cycles_valid": len(valid), "diff_pct": ep.describe(diffs),
+        "anomalies": anomalies, "unused_channel_high_samples": stray,
+        "errors": {i: c["errors"] for i, c in enumerate(cycles) if c["errors"]},
+        "conn_interval_diagnostic": (ep.estimate_conn_interval_ms(trace, *max(gaps, key=lambda g: g[1] - g[0]))
+                                     if gaps else None),
+        "groups": ep.summarize_cycles(cycles), "tools": ep.tool_hashes(),
+    }
+    ep.write_cycles_csv(analysis / "cycles.csv", cycles)
+    (analysis / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    return summary
+
+
+def post_session_events(trace: ep.Trace, cycles: list, i_idle: float | None) -> dict:
+    """W8-D2 (TC6 of week 8) with the revised radio rule: from 2 s after the last cycle to DUT power
+    off, the mean is back at the idle current and > 3 mA events are only RTC-overflow-like bursts."""
+    if not cycles:
+        return {"found": False}
+    start = int(cycles[-1]["end_sample"]) + int(POST_OFFSET_S * FS)
+    stop = int(trace.info.get("dut_power_off_sample", trace.n))
+    if stop - start < 2 * FS:
+        return {"found": False, "duration_s": (stop - start) / FS}
+    stats = ep.window_stats(trace, start, stop, channels=range(5))
+    events = gap_events(trace, [(start, stop)])
+    out = {"found": True, "duration_s": stats["duration_s"], "mean_uA": stats["mean_uA"],
+           "max_uA": stats["max_uA"], "high_samples": stats["high_samples"], "events_above_3mA": events,
+           "radio_off": len(events) <= 1 and all(e["duration_ms"] <= EVENT_MAX_MS for e in events),
+           "I_idle_uA": i_idle}
+    if i_idle:
+        out["deviation_from_idle_pct"] = abs(stats["mean_uA"] - i_idle) / i_idle * 100.0
+    return out
+
+
+def phy_records(path: Path) -> list:
+    """Read-PHY results of the KV260 log: JSON lines with (tx_phy, rx_phy) or the like, or text lines
+    'TX PHY: LE 2M ... RX PHY: LE 2M'. Returns [(line, tx, rx)] with the PHY names upper-cased."""
+    import re
+    out = []
+    for number, line in enumerate(Path(path).read_text(encoding="utf-8", errors="replace").splitlines(), 1):
+        tx = rx = None
+        try:
+            event = json.loads(line)
+        except ValueError:
+            event = None
+        if isinstance(event, dict):
+            for a, b in PHY_KEYS:
+                if a in event and b in event:
+                    tx, rx = str(event[a]).upper(), str(event[b]).upper()
+                    break
+        else:
+            m_tx = re.search(r"TX[ _]?PHY\W+([A-Z0-9 _]+?)(?:[,;)]|\s{2}|RX|$)", line, re.I)
+            m_rx = re.search(r"RX[ _]?PHY\W+([A-Z0-9 _]+?)(?:[,;)]|\s{2}|$)", line, re.I)
+            if m_tx and m_rx:
+                tx, rx = m_tx.group(1).strip().upper(), m_rx.group(1).strip().upper()
+        if tx is not None:
+            out.append((number, tx, rx))
+    return out
+
+
+def paired_deltas(cycles: list) -> dict:
+    """W8-D1 pairs (cycles 2k, 2k + 1, one P1 and one P0, same sample): P1 - P0 per phase."""
+    out = {}
+    pairs = [(cycles[2 * k], cycles[2 * k + 1]) for k in range(len(cycles) // 2)]
+    for name in PHASE_KEYS:
+        for prefix, unit in (("E", "uJ"), ("t", "ms")):
+            key = f"{prefix}_{name}_{unit}"
+            if not cycles or key not in cycles[0]:
+                continue
+            values = []
+            for a, b in pairs:
+                p1, p0 = (a, b) if a["rho"] == "P1" else (b, a)
+                if p1["rho"] == "P1" and p0["rho"] == "P0" and p1.get(key) not in ("", None):
+                    values.append(float(p1[key]) - float(p0[key]))
+            out[key] = ep.describe(values)
+    return out
+
+
+def kv260_records(out: Path) -> tuple:
+    edge = out / "edge"
+    records = [json.loads(line) for line in (edge / "peer.jsonl").read_text(encoding="utf-8").splitlines()
+               if line.strip()]
+    return records, w7p.load_json(edge / "summary.json")
+
+
+def evaluate_kv260(out: Path, record: dict, meta: dict, kind: str) -> int:
+    """Part B checks: the trace (capture, self-test, 200 paired cycles, < 3 %, back to idle and
+    off-air after the session) and, once the KV260 log is imported, the labels, the cycle <-> request
+    match at two anchors (week 8 B5), one connection, the nonce, PHY 2M; phase table + paired deltas."""
+    import week8_ppk2 as w8p
+    summary = w7p.load_json(out / "analysis" / "summary.json")
+    cycles = w7p.cycle_rows(out / "analysis")
+    trace = load_raw_chunked(out / "ppk2")
+    post = post_session_events(trace, cycles, summary.get("I_idle_uA"))
+    a = summary["checks"]
+    plan_rho = ["P1" if (k + slot) % 2 == 0 else "P0" for k in range(KV260_PAIRS) for slot in range(2)]
+    checks = {
+        "capture_pass": meta.get("status") == "PASS",
+        "selftest_D0_D4": a.get("selftest_D0_D4", False),
+        "unused_channels_low": a.get("unused_channels_low", False),
+        "no_data_loss": a.get("no_data_loss", record.get("ignore_counter", False)) and a.get("sample_rate_ok", False),
+        "cycle_count_200": a.get("cycle_count", False),
+        "p1_100_p0_100": a.get("p1_cycles", False) and a.get("p0_cycles", False),
+        "trace_rho_order_paired": [c.get("rho") for c in cycles] == plan_rho,
+        "all_cycles_valid": a.get("all_cycles_valid", False),
+        "idle_markers_low": a.get("idle_markers_low", False),
+        "diff_below_3pct_all": a.get("diff_below_3pct_all", False),
+        "post_window_at_least_20s": post.get("found", False) and post["duration_s"] >= 20.0,
+        "post_mean_at_idle": post.get("deviation_from_idle_pct", float("inf")) <= IDLE_TOLERANCE_PCT,
+        "post_radio_off": post.get("found", False) and post["radio_off"],
+    }
+    details = {"I_idle_uA": summary.get("I_idle_uA"), "post_session": post,
+               "conn_interval_estimate_ms": (summary.get("conn_interval_diagnostic") or {}).get("median_spacing_ms"),
+               "diff_pct": summary.get("diff_pct"), "kv260_log": "PENDING: week9_ppk2.py import-kv260"}
+    energy = None
+    if (out / "edge" / "summary.json").exists():
+        records, edge = kv260_records(out)
+        match = w8p.match_cycles(cycles, records)
+        p1_seq = [r["sequence"] for r in records if r.get("rho") == "P1" and r.get("sequence") is not None]
+        connections = {r.get("connection") for r in records if "connection" in r}
+        phy = edge.get("phy_records") or []
+        checks.update({
+            "kv260_log_pass_labels_100_per_rho": edge.get("status") == "PASS",
+            "kv260_answered_all": (edge.get("counters") or {}).get("response_sent") == 2 * KV260_PAIRS,
+            "one_cycle_per_request": match["pass"],
+            "nonce_above_prior_and_increasing": bool(p1_seq) and p1_seq[0] > record["prior_reserved_through"]
+                                                and all(b > a for a, b in zip(p1_seq, p1_seq[1:])),
+            "single_connection": len(connections) == 1 if connections else edge.get("connections") == 1,
+            "phy_2m_read_back": bool(phy) and all(tx in PHY_2M and rx in PHY_2M for _, tx, rx in phy),
+        })
+        details.update(kv260_log=edge.get("source_log"), labels_equal_reference=edge.get("labels_equal_reference"),
+                       interval_match=match, first_p1_sequence=p1_seq[0] if p1_seq else None,
+                       last_p1_sequence=p1_seq[-1] if p1_seq else None, connections=sorted(map(str, connections)),
+                       phy_records=phy)
+        energy = {"schema": "week9-energy-kv260-s2/1", "decision": "W9-D8", "split": 2, "session": str(out),
+                  "image": record.get("image"), "temp_room_C": record.get("temp_room_C"),
+                  "v_supply_mV": trace.v_supply_mv, "I_idle_uA": summary.get("I_idle_uA"),
+                  "per_rho": {rho: g["stats"] for rho, g in summary.get("groups", {}).items()},
+                  "paired_delta_p1_minus_p0": paired_deltas(cycles),
+                  "definition": "gross energy at the 5 V input per marker phase (W7-D11), net = gross - V*I_idle*t "
+                                "(W7-D5); paired delta = P1 - P0 of the two cycles of each W8-D1 pair (same sample)"}
+    status = "PASS" if all(checks.values()) else "FAIL"
+    if energy is not None:
+        energy["status"] = status
+        w7p.write_new_json(out / ("energy_kv260_s2.json" if kind == "kv260" else
+                                  f"energy_kv260_s2_{kind}-{datetime.now(timezone.utc):%Y%m%dT%H%M%SZ}.json"), energy)
+        for rho, stats in energy["per_rho"].items():
+            print(f"{rho}: " + ", ".join(f"{k} {stats[k]['mean']:.1f}" for k in
+                                         ("E_dev_uJ", "E_prot_uJ", "E_tx_uJ", "E_wait_uJ", "E_cycle_uJ") if k in stats))
+    if post.get("found"):
+        print(f"post-session {post['duration_s']:.1f} s: mean {post['mean_uA']:.3f} uA vs idle "
+              f"{post.get('I_idle_uA')} uA, events {len(post['events_above_3mA'])}")
+    return finish(out, kind, checks, details)
+
+
+def cmd_session_kv260(args) -> int:
+    import week8_ppk2 as w8p
+    sample_set = w9.w8.load_set(args.samples)
+    image = w8p.image_info(args.image, args.receipt, False)      # PASS, energy, clean, 100 pairs
+    out = w7p.new_out(args.out)
+    record = {
+        "schema": "week9-ppk2-kv260/1", "kind": "session-kv260", "command": sys.argv,
+        "started_utc": datetime.now(timezone.utc).isoformat(), "temp_room_C": args.temp_c,
+        "v_supply_mV": 5000, "power": "PPK2 Source Meter -> USB breakout VBUS 5 V; dongle not on laptop USB",
+        "image": image, "samples": str(args.samples), "set_sha256": sample_set.set_sha256,
+        "prior_reserved_through": args.prior_reserved_through, "pairs": KV260_PAIRS, "seconds": args.seconds,
+        "peer": "KV260 (W9-D8): scans and connects by itself, Set PHY 2M + Read PHY per connection; its "
+                "request log is imported afterwards (import-kv260)",
+        "ignore_counter": bool(args.ignore_counter), "note": args.note,
+        "tool_sha256": {n: w7p.sha256(HERE / n) for n in TOOLS + ("week8_ppk2.py", "week8_lab.py", "week8_edge.py")
+                        if (HERE / n).exists()},
+    }
+    w7p.write_new_json(out / "session.json", record)
+    print("KV260 service must already be scanning for ASI-SV1 (it connects when the dongle advertises, "
+          "~31 s after power-on); do not touch the bench")
+    meta = w7p.run_capture(args, out, "B5-week9-kv260-session", args.seconds)
+    analyze_energy_image(load_raw_chunked(out / "ppk2"), out, KV260_PAIRS, args.ignore_counter)
+    return evaluate_kv260(out, record, meta, "session")
+
+
+def cmd_import_kv260(args) -> int:
+    import shutil
+    import week8_edge as edge_mod
+    import week8_lab as w8lab
+    out = Path(args.out)
+    record = w7p.load_json(out / "session.json")
+    if record.get("schema") != "week9-ppk2-kv260/1":
+        raise SystemExit(f"{out} is not a week 9 session-kv260 directory")
+    sample_set = w9.w8.load_set(Path(record["samples"]))
+    edge_ref = w9.w8.load_edge_reference(args.edge_reference, sample_set) if args.edge_reference else None
+    edge = out / "edge"
+    edge.mkdir(exist_ok=False)
+    raw = edge / "kv260_requests_raw.jsonl"
+    shutil.copyfile(args.kv260_log, raw)
+    lines = raw.read_text(encoding="utf-8").splitlines()
+    records, counters = w8lab.normalize_peer_log(lines, sample_set)
+    for r, line in zip(records, [json.loads(x) for x in lines if x.strip() and json.loads(x).get("ev") == "request"]):
+        if "connection" in line:
+            r["connection"] = line["connection"]
+    with open(edge / "peer.jsonl", "x", encoding="utf-8") as handle:
+        for r in records:
+            handle.write(json.dumps(r) + "\n")
+    result = edge_mod.evaluate(records, counters, sample_set, 0, KV260_PAIRS, None,
+                               edge_ref.labels if edge_ref else None)
+    phy = []
+    if args.phy_log:
+        shutil.copyfile(args.phy_log, edge / ("kv260_phy" + Path(args.phy_log).suffix))
+        phy = phy_records(args.phy_log)
+    connections = sum(1 for x in lines if x.strip() and json.loads(x).get("ev") in ("connected", "connection"))
+    w7p.write_new_json(edge / "summary.json", {
+        "schema": "week9-kv260-import/1", "source_log": str(args.kv260_log),
+        "source_log_sha256": w7p.sha256(raw), "phy_log": str(args.phy_log) if args.phy_log else None,
+        "phy_log_sha256": w7p.sha256(args.phy_log) if args.phy_log else None, "phy_records": phy,
+        "connections": connections or None, "imported_utc": datetime.now(timezone.utc).isoformat(),
+        "counters": counters, "set_sha256": sample_set.set_sha256, "field_spec": w8lab.PEER_LOG_FIELDS,
+        "label_reference": {"path": edge_ref.path, "sha256": edge_ref.sha256} if edge_ref else "W8-D4", **result})
+    print(f"KV260 log: {len(records)} requests {counters}; labels {result['labels_equal_reference']}; "
+          f"PHY records {len(phy)}")
+    return evaluate_kv260(out, record, w7p.load_json(out / "ppk2" / "capture.json"), "kv260")
+
+
+def cmd_recheck_kv260(args) -> int:
+    out = Path(args.out)
+    record = w7p.load_json(out / "session.json")
+    if record.get("schema") != "week9-ppk2-kv260/1":
+        raise SystemExit(f"{out} is not a week 9 session-kv260 directory")
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    return evaluate_kv260(out, record, w7p.load_json(out / "ppk2" / "capture.json"), f"kv260_recheck-{stamp}")
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -620,6 +904,33 @@ def main(argv=None) -> int:
     p.add_argument("--b", type=Path, required=True, help="second session-dev directory")
     p.add_argument("--output", type=Path, required=True, help="new JSON file")
     p.set_defaults(func=cmd_compare)
+
+    p = sub.add_parser("session-kv260")
+    p.add_argument("--port", required=True, help="PPK2 data port (see: probe)")
+    p.add_argument("--out", type=Path, required=True, help="new directory")
+    p.add_argument("--seconds", type=float, default=420.0,
+                   help="DUT power ON time: ~31 s boot/idle + link + 35 s + 200 cycles (~250 s) + >= 60 s after")
+    p.add_argument("--pre-power-s", type=float, default=0.5)
+    p.add_argument("--temp-c", type=float, required=True, help="room temperature at start")
+    p.add_argument("--image", type=Path, required=True, help="build_week8.ps1 folder (energy, clean)")
+    p.add_argument("--receipt", type=Path, required=True, help="DFU receipt JSON of flash_week8.ps1")
+    p.add_argument("--samples", type=Path, required=True, help="W8-D3 set directory")
+    p.add_argument("--prior-reserved-through", type=int, required=True,
+                   help="largest NONCE reserved_through seen before this boot")
+    p.add_argument("--note", default="", help="e.g. KV260 distance, service commit")
+    p.add_argument("--ignore-counter", action="store_true")
+    p.set_defaults(func=cmd_session_kv260)
+
+    p = sub.add_parser("import-kv260")
+    p.add_argument("--out", type=Path, required=True, help="the session-kv260 directory")
+    p.add_argument("--kv260-log", type=Path, required=True, help="KV260 request log (JSON lines, week 8 form)")
+    p.add_argument("--edge-reference", type=Path, help="KV260 offline predictions.jsonl of the 100 samples (W8-D8)")
+    p.add_argument("--phy-log", type=Path, help="KV260 Read PHY log of the session's connection")
+    p.set_defaults(func=cmd_import_kv260)
+
+    p = sub.add_parser("recheck-kv260")
+    p.add_argument("--out", type=Path, required=True, help="existing session-kv260 directory")
+    p.set_defaults(func=cmd_recheck_kv260)
     args = parser.parse_args(argv)
     return args.func(args)
 
