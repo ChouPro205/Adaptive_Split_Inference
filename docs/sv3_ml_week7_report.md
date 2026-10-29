@@ -1,5 +1,10 @@
 # Báo cáo tiến độ SV3 Bùi Kỳ Anh tuần 7
 
+**Cập nhật 29/10/2026:** đã nhận và review đủ 25.632 output KV260; s2/s5/s8 đều
+đạt `PASS_ACCURACY_GATE`. Xem [kết quả full-test mới](sv3_week7_fulltest_review_20261029.md).
+Các mục chờ output bên dưới là snapshot lịch sử. Xác nhận ML cá nhân và demo
+GVHD chưa được ghi nhận; không coi toàn bộ tuần 7 đã nghiệm thu.
+
 **Sửa evaluator, cập nhật hồ sơ 27/10/2026:** xem §13. Hai lỗi validation đã
 được sửa tại `18e74ab`, tests 18/18 thường và `-O`; reference cũ còn nguyên.
 

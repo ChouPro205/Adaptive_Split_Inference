@@ -1,5 +1,11 @@
 # Checklist SV3 tuần 7 và điều kiện tiếp tục
 
+**Trạng thái mới nhất 29/10/2026:** E-05 đã nhận đủ 8.544 mẫu/split s2/s5/s8,
+không thiếu/lỗi; evaluator trả `PASS_ACCURACY_GATE`, artifact đã được review.
+Xem [hồ sơ full-test và phần còn chờ](sv3_week7_fulltest_review_20261029.md).
+Các trạng thái `BLOCKED_SV2`/chờ output ở snapshot cũ bên dưới giữ nguyên mốc.
+Xác nhận ML cá nhân/demo GVHD chưa được ghi nhận; r2 do Châu/Trung tích hợp riêng.
+
 **Bổ sung sửa evaluator, hồ sơ 27/10/2026:** hai lỗi split rỗng/inventory thiếu
 đã được sửa và kiểm mới 18/18 thường +18/18 `-O` tại `18e74ab`; xem mục cuối.
 
