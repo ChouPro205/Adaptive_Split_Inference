@@ -14,3 +14,10 @@ Các số tổng hợp nằm tại `results/week5/edge` và `results/week6/edge`
 [notebook chỉ đọc](notebooks/sv2_edge_week7.ipynb),
 [hồ sơ SV2](../results/week7/edge/README.md) và
 [báo cáo](../docs/sv2_edge_week7_report.md). Không dùng notebook để chạy lại model.
+
+## SV2 tuần 8
+
+[Cấu hình đã chạy](configs/sv2_edge_week8.json),
+[notebook chỉ đọc](notebooks/sv2_edge_week8.ipynb),
+[hồ sơ](../results/week8/edge/README.md), [báo cáo](../docs/sv2_edge_week8_report.md).
+Notebook đọc export Git, không cần raw/key/board và không chạy thí nghiệm.

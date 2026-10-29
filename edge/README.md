@@ -168,3 +168,10 @@ nghiệm thu số học từ việc execution/profiling đã đủ.
 [notebook chỉ đọc](../experiments/notebooks/sv2_edge_week7.ipynb).
 50 sample/split pairs trên 5 ECG validation, numeric review pending; chưa có
 BLE Device–KV260 hoặc accuracy test độc lập.
+
+## SV2 tuần 8 — BLE Device–KV260
+
+[Service BLE](server/week8/README.md), [persistent s2 worker](runtime/persistent/README.md),
+[báo cáo](../docs/sv2_edge_week8_report.md), [export có checksum](../results/week8/edge/README.md).
+G2 được SV1 xác nhận PASS; agreement reference87/100, registryr2 còn chờ.
+Không dùng kết quả này thay accuracy test độc lập hoặc chứng nhận production.

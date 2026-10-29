@@ -64,3 +64,7 @@ Ba candidate theo mean validation CE thấp nhất là s2/lambda5, s5/lambda2, s
 giữ cả ba seed. Accuracy mean đều dưới majority-N 84,5009%; recall S rất thấp,
 F/Q bằng 0. Không xem candidate lock như duyệt triển khai hoặc bằng chứng privacy.
 Không merge hoặc bật auto-merge; owner/GVHD acceptance được ghi nhận riêng.
+
+## Đồng bộ main trước review PR43
+
+Sau commit công bố `f250c2d4deedf917a271d5b48abc572d06c90c7b`, nhánh SV3 được ghép main `020218418b592c3eed36dbb961e2ee2e38cf72d0` bằng merge bảo toàn lịch sử để xử lý xung đột Git attributes. Giữ cả quy tắc LF của Edge và raw-byte evidence ML; docs index giữ các mục của cả hai bên. Mã training/config, checkpoints và số liệu grid không đổi. Các Git blob SV2 được nhập nguyên bytes từ main, checkout theo Git attributes; đây không phải source hoặc phép đo phần cứng mới của SV3. Không merge PR vào main và không bật auto-merge. Manifest trước đồng bộ còn tại commit công bố đầu; manifest hiện hành thêm binding cho các mục đóng gói thay đổi.

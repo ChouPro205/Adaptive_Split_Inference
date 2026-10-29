@@ -10,8 +10,8 @@
       "bytes": 1651
     },
     "docs/README.md": {
-      "sha256": "38e882e3dcd9ee0188c4890df2fb973028d9357f057536124033a7a3b282d94e",
-      "bytes": 6554
+      "sha256": "9a4733448e9ba8d166b162b99d33779cd7e67f5eb9898af161ddad78f1d19588",
+      "bytes": 6701
     },
     "docs/sv3_ml_week8_report.md": {
       "sha256": "19f66e88b37bb2ddbe4f0e0db4977ca30cdc17ba7fa0d84a3f62983273567539",
@@ -474,8 +474,8 @@
       "bytes": 7101
     },
     "ml/provenance/week8-publication-20261030/README.md": {
-      "sha256": "8cb86d405cb70ffce6bfdfe7e1b92b04386e680a715c2d9d425b22f56b43c0f9",
-      "bytes": 3847
+      "sha256": "c12194c083bdb732ad8200316b30cc8651709cef025556ad1f5af0bd669db3ff",
+      "bytes": 4653
     },
     "ml/provenance/week8-publication-20261030/study-report-before-publication.md.txt": {
       "sha256": "0803deabef766af4622c8c9c4f7e8e50c1e248f0dc64c414384fa7c5cf8d7a96",
@@ -2018,8 +2018,12 @@
       "bytes": 26075
     },
     ".gitattributes": {
-      "sha256": "cb9463e16d649f376a86ccc6753f7ec367f6b3c2fc51bc22b3f5b1788bb035e4",
-      "bytes": 2579
+      "sha256": "e7cdb310256a5af09ef32745d035fdb8d208897d4ef04a223f61df5fa345178b",
+      "bytes": 2686
+    },
+    "ml/provenance/week8-publication-20261030/main-integration.json": {
+      "sha256": "ab15918ddd7c08731cef5483dacae81313b876e68f9f66795804591c7bd59274",
+      "bytes": 2311
     }
   },
   "markdown_to_check": [

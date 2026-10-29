@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-27",
+  "reviewer_role": "SV1 / Device",
+  "source": "docs/sv1_device_week8_report.md; results/week8/device checker receipts, PR39 merged into origin/main before final publication. Saved bytes verified; hardware not rerun.",
+  "g2": "PASS_REPORTED_BY_SV1",
+  "criteria": "8/9 Device criteria PASS; TC7 registry pending SV2 review",
+  "receiver_import": {
+    "trials": 3,
+    "rows": 21,
+    "logits_bit_match": 21,
+    "cache_hits": 0,
+    "zip_sha256_matches": true,
+    "checksums_reported": 88,
+    "peer_log_fields_schema_needed": false
+  },
+  "g2_device": {
+    "samples": 100,
+    "modes": [
+      "P0",
+      "P1"
+    ],
+    "cycles": 200,
+    "errors": 0,
+    "logits_bit_match_kv260_offline": 200,
+    "q_scale_matches": 200,
+    "p1_sequence_strictly_increasing": true
+  },
+  "link": {
+    "att_mtu": 247,
+    "dle_tx_octets": 251,
+    "dle_rx_octets": 251,
+    "interval_ms": [
+      45,
+      15
+    ],
+    "supervision_timeout_s": 4,
+    "phy_default": "1M",
+    "phy_after_set": "2M",
+    "evidence": "MTU/DLE/interval from Dongle same-link logs per SV1; PHY from Edge Read PHY plus Device state; supplemental whole-session btsnoop not recovered and limitation accepted by receiver"
+  },
+  "numeric_review": {
+    "reference_agreement": 87,
+    "samples": 100,
+    "per_reference_class": {
+      "N": [
+        54,
+        55
+      ],
+      "S": [
+        8,
+        11
+      ],
+      "V": [
+        25,
+        25
+      ],
+      "F": [
+        0,
+        1
+      ],
+      "Q": [
+        0,
+        8
+      ]
+    },
+    "sv1_explanation": "Tail DPU quantization; internal output fix_point 3 and systematic Q logit reduction. No transport error, tuning or sample removal.",
+    "edge_verification_limit": "Edge saved root runner receipt: XINT8 input fix_point 5, FLOAT32 final output fix_point null. Internal DPU fix_point 3 is SV1-reported, not independently established by this root receipt.",
+    "independent_8544_accuracy": "NOT_MEASURED_OPTIONAL",
+    "timing_explanation": "SV1 report section4: DWT CYCCNT stops during WFI; tx_us/wait_us measure CPU awake time, unlike PPK2 markers or Edge steady_clock."
+  },
+  "registry": {
+    "proposed_revision": "mitdb-week5-i2-registry-v1-r2",
+    "delta_path": "contracts/sv1_sv2_week8_registry_revision_r2.json",
+    "delta_available_in_fetched_branches": true,
+    "joint_confirmation": "PENDING_USER_PR_COMMENT_AFTER_SV2_TECHNICAL_REVIEW",
+    "scope_requested": "Only Dongle nonce counter persistence/reboot; provisioning remains NOT_ACCEPTED and p1_transmission_authorized remains false; Edge high-water is volatile"
+  },
+  "week9_requirement": "Set/Read PHY for each connect/reconnect; only verified 2M sessions count. Alternate P1/P0 pairs; same numeric request log interface.",
+  "highwater_persistence": "Required before outside-bench use; not a Week9 blocker per SV1",
+  "device_receipts_manifest_sha256": "e4f4cb63efc82b5ee4b8cc711140ee3210215c3d3fffb920a3f124d9b359e2a9"
+}
