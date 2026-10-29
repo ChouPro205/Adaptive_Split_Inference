@@ -13,10 +13,12 @@ segmentation needs TX/WAIT markers, while a week 9 cycle is CTRL (D4) -> HEAD (D
                TC4  self-test PASS, no lost sample, exactly 550 valid cycles (one CTRL then one HEAD),
                     every cycle's HEAD width equal to the DWT time of its planned (sample, split)
                     (dev-usb TDEV of week9_lab.py verify) so cycle i is plan row i, D1..D3 LOW from the
-                    self-test to power off, no sample above 3 mA between cycles (radio off),
+                    self-test to power off, radio off between cycles (see the revised rule below),
                     phases vs whole cycle < 3 %
                TC5  per s: E_dev gross/net, t_dev, bytes_payload; CI95/mean < 10 %; mean marker t_dev
                     vs mean DWT within 1 % (or 1 sample = 10 us)
+               TC4 radio-off rule revised 29/10 (B4): > 3 mA events between cycles each <= 0.5 ms and at most
+                    floor(T / 512 s) + 1 of them (the RTC OVERFLOW wake-up of the kernel timer)
   recheck      the session checks again on an existing directory -> check_session_recheck.json
   note         end-of-session notes (temperature, photos) (week7_ppk2.py note)
   compare      TC6: two session-dev directories (same bench, same day) -> per s mean differences
@@ -49,6 +51,11 @@ OTHER_MARKERS = (ep.DEFAULT_MAP["prot"], ep.DEFAULT_MAP["tx"], ep.DEFAULT_MAP["w
 WEEK2_IDLE_UA = w7p.WEEK2_IDLE_UA
 IDLE_TOLERANCE_PCT = 10.0            # TC3
 RADIO_SPIKE_UA = 3000.0              # TC4: radio TX/RX draws several mA; the sleeping CPU stays < 0.5 mA
+# TC4 as revised 29/10 after B4 sessions 1-2: Zephyr's nrf_rtc_timer wakes the CPU on the 24-bit RTC
+# OVERFLOW interrupt every 2^24 / 32768 Hz = 512 s (two < 0.1 ms bursts); a radio would repeat.
+RTC_OVERFLOW_S = 512.0
+EVENT_MAX_MS, EVENT_MERGE_MS = 0.5, 1.0
+HIGH_LEVEL_UA = 3600.0               # diagnostic: 1 ms HEAD blocks above it = the ~4.4 mA level (B4: REG mode)
 GAP_GUARD_MS = 2.0                   # CPU wake-up before CTRL / going to sleep after HEAD (~3 mA, us long)
 CI_LIMIT_PCT = 10.0                  # TC5
 MEAN_TOLERANCE_PCT, MEAN_FLOOR_US = 1.0, 10.0           # TC5: marker vs DWT, per s
@@ -268,6 +275,9 @@ def segment_dev_cycles(trace: ep.Trace, after: int) -> tuple:
         row["diff_pct"] = (100.0 * abs(row["E_cycle_uJ"] - accounted) / row["E_cycle_uJ"]
                            if row["E_cycle_uJ"] > 0 else float("nan"))
         row["mean_dev_uA"] = row["E_dev_uJ"] / v / (row["t_dev_ms"] / 1e3) if row["t_dev_ms"] else float("nan")
+        head = seg_i[seg_bits == (1 << DEV)]
+        blocks = head[:head.size // 100 * 100].reshape(-1, 100).mean(axis=1) if head.size >= 100 else head
+        row["dev_high_fraction"] = float(np.mean(blocks > HIGH_LEVEL_UA)) if blocks.size else float("nan")
         row["errors"] = errors
         cycles.append(row)
     return cycles
@@ -281,6 +291,23 @@ def gap_windows(cycles: list, guard: int) -> list:
         if hi > lo:
             out.append((lo, hi))
     return out
+
+
+def gap_events(trace: ep.Trace, gaps: list) -> list:
+    """Runs of samples above RADIO_SPIKE_UA inside the gap windows, merged when closer than
+    EVENT_MERGE_MS: start time (s after DUT ON), duration (first to last sample above) and peak."""
+    merge = int(EVENT_MERGE_MS * FS / 1e3)
+    events = []
+    for lo, hi in gaps:
+        above = np.flatnonzero(trace.current_ua[lo:hi] > RADIO_SPIKE_UA)
+        if above.size == 0:
+            continue
+        cuts = np.flatnonzero(np.diff(above) > merge) + 1
+        for run in np.split(above, cuts):
+            a, b = lo + int(run[0]), lo + int(run[-1]) + 1
+            events.append({"t_s": a / FS, "duration_ms": (b - a) * DT_MS,
+                           "samples_above": int(run.size), "max_uA": float(np.max(trace.current_ua[a:b]))})
+    return events
 
 
 def analyze_dev(trace: ep.Trace, dwt: dict, bytes_by_split: dict, idle_offset_s: float = 0.5,
@@ -319,6 +346,10 @@ def analyze_dev(trace: ep.Trace, dwt: dict, bytes_by_split: dict, idle_offset_s:
     gap_max = max((float(np.max(trace.current_ua[lo:hi])) for lo, hi in gaps), default=None)
     gap_spikes = sum(int(np.count_nonzero(trace.current_ua[lo:hi] > RADIO_SPIKE_UA)) for lo, hi in gaps)
     gap_with_spike = sum(1 for lo, hi in gaps if np.any(trace.current_ua[lo:hi] > RADIO_SPIKE_UA))
+    events = gap_events(trace, gaps)
+    max_events = int(trace.n * ep.DT_S // RTC_OVERFLOW_S) + 1
+    radio_off = bool(gaps) and len(events) <= max_events and all(
+        e["duration_ms"] <= EVENT_MAX_MS for e in events)
     other_high = {f"D{c}": int(np.count_nonzero((trace.bits[after:] >> c) & 1)) for c in OTHER_MARKERS}
     unused = {f"D{c}": int(np.count_nonzero((trace.bits >> c) & 1)) for c in (5, 6, 7)}
     post = None
@@ -342,7 +373,7 @@ def analyze_dev(trace: ep.Trace, dwt: dict, bytes_by_split: dict, idle_offset_s:
         "TC4_all_cycles_valid": bool(cycles) and len(valid) == len(cycles),
         "TC4_head_width_matches_plan": mapped and not order_bad,
         "TC4_D1_D3_low_after_selftest": not any(other_high.values()),
-        "TC4_no_sample_above_3mA_between_cycles": bool(gaps) and gap_spikes == 0,
+        "TC4_radio_off_between_cycles": radio_off,
         "TC4_diff_below_3pct_all": bool(diffs) and len(diffs) == len(cycles) and max(diffs) < ep.DIFF_LIMIT_PCT,
     }
     summary = {
@@ -362,7 +393,13 @@ def analyze_dev(trace: ep.Trace, dwt: dict, bytes_by_split: dict, idle_offset_s:
         "head_width_mismatch_cycles": order_bad[:50],
         "D1_D3_high_samples_after_selftest": other_high, "D5_D7_high_samples": unused,
         "gaps": {"count": len(gaps), "guard_ms": GAP_GUARD_MS, "max_uA": gap_max,
-                 "samples_above_3mA": gap_spikes, "gaps_with_samples_above_3mA": gap_with_spike},
+                 "samples_above_3mA": gap_spikes, "gaps_with_samples_above_3mA": gap_with_spike,
+                 "events_above_3mA": events, "max_events": max_events,
+                 "radio_off_rule": f"every > 3 mA event <= {EVENT_MAX_MS} ms and at most floor(T / "
+                                   f"{RTC_OVERFLOW_S:.0f} s) + 1 events (Zephyr RTC OVERFLOW wake-up, "
+                                   "nrf_rtc_timer.c; a radio repeats every 15-100 ms for ms each)"},
+        "dev_high_fraction_by_fifth": [float(np.nanmean([c["dev_high_fraction"] for c in cycles[a:a + len(cycles) // 5]]))
+                                       for a in range(0, 5 * (len(cycles) // 5), max(1, len(cycles) // 5))],
         "post_session": post,
         "diff_pct": ep.describe(diffs),
         "spacing_ms": ep.describe(np.diff([c["start_sample"] for c in cycles]) * DT_MS) if len(cycles) > 1 else None,
@@ -389,6 +426,7 @@ def energy_dev_table(cycles: list, dwt: dict, i_idle: float | None, v_supply_mv:
                "E_ctrl_uJ": ep.describe(c["E_ctrl_uJ"] for c in group),
                "E_cycle_uJ": ep.describe(c["E_cycle_uJ"] for c in group),
                "mean_dev_uA": ep.describe(c["mean_dev_uA"] for c in group),
+               "dev_high_fraction": ep.describe(c["dev_high_fraction"] for c in group),
                "dwt_t_dev_ms": dwt_mean, "t_dev_marker_minus_dwt_us": delta_ms * 1e3 if delta_ms is not None else None,
                "t_dev_marker_vs_dwt_pct": 100 * delta_ms / dwt_mean if delta_ms is not None else None,
                "t_dev_within_rule": within}
@@ -413,7 +451,7 @@ def energy_dev_table(cycles: list, dwt: dict, i_idle: float | None, v_supply_mv:
 CYCLE_COLUMNS = ["cycle", "round", "sample", "split", "bytes_payload", "start_sample", "end_sample", "t_cycle_ms",
                  "t_ctrl_ms", "t_dev_ms", "t_gap_ms", "dwt_ms", "t_dev_vs_dwt_us", "E_cycle_uJ", "E_ctrl_uJ",
                  "E_dev_uJ", "E_gap_uJ", "E_phases_uJ", "diff_pct", "mean_dev_uA", "E_cycle_net_uJ",
-                 "E_ctrl_net_uJ", "E_dev_net_uJ", "overlap_samples", "errors"]
+                 "E_ctrl_net_uJ", "E_dev_net_uJ", "dev_high_fraction", "overlap_samples", "errors"]
 
 
 def write_outputs(out: Path, result: dict) -> None:

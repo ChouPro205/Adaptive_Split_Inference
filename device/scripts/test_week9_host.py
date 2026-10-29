@@ -281,12 +281,25 @@ class Ppk2Analysis(unittest.TestCase):
         self.assertIn("TC4_D1_D3_low_after_selftest", failed)
         self.assertIn("TC4_all_cycles_valid", failed)
 
-        def spike(pieces):
-            gap = pieces[7 + 3 * 200 + 2]
-            gap[0] -= 300
-            pieces[7 + 3 * 200 + 2:7 + 3 * 200 + 3] = [[150, gap[1], 0], [100, 6000.0, 0], [gap[0] - 150 + 200, gap[1], 0]]
-        self.assertIn("TC4_no_sample_above_3mA_between_cycles", self.failed(self.run_analysis(tweak=spike)))
         self.assertIn("TC3_idle_within_10pct_week2", self.failed(self.run_analysis(idle_ua=40.0)))
+
+    def test_radio_off_rule(self):
+        """Revised TC4: one short burst (the 512 s RTC OVERFLOW wake-up) passes; a 1 ms burst, or more
+        short bursts than floor(T / 512 s) + 1 (here 1: the trace is ~17 s), fail."""
+        def burst(cycles, width):
+            def tweak(pieces):
+                for k in sorted(cycles, reverse=True):
+                    at = 7 + 3 * k + 2
+                    idle = pieces[at][1]
+                    pieces[at:at + 1] = [[250, idle, 0], [width, 6000.0, 0], [350 - width, idle, 0]]
+            return tweak
+        result = self.run_analysis(tweak=burst([200], 7))
+        self.assertEqual(self.failed(result), set())
+        events = result["summary"]["gaps"]["events_above_3mA"]
+        self.assertEqual(len(events), 1)
+        self.assertAlmostEqual(events[0]["duration_ms"], 0.07)
+        self.assertIn("TC4_radio_off_between_cycles", self.failed(self.run_analysis(tweak=burst([200], 100))))
+        self.assertIn("TC4_radio_off_between_cycles", self.failed(self.run_analysis(tweak=burst([200, 300], 7))))
 
 
 class Ppk2RealCapture(unittest.TestCase):
@@ -323,7 +336,7 @@ class Ppk2RealCapture(unittest.TestCase):
         checks = result["summary"]["checks"]
         self.assertTrue(checks["selftest_D0_D4"])
         for name in ("TC4_cycle_count_550", "TC4_D1_D3_low_after_selftest", "TC4_all_cycles_valid",
-                     "TC4_head_width_matches_plan", "TC4_no_sample_above_3mA_between_cycles"):
+                     "TC4_head_width_matches_plan", "TC4_radio_off_between_cycles"):
             self.assertFalse(checks[name], name)
         self.assertEqual(result["summary"]["cycles_found"], 200)
         self.assertEqual(result["energy_dev"]["status"], "FAIL")
