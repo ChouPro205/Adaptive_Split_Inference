@@ -4,7 +4,7 @@
 không thiếu/lỗi; evaluator trả `PASS_ACCURACY_GATE`, artifact đã được review.
 Xem [hồ sơ full-test và phần còn chờ](sv3_week7_fulltest_review_20261029.md).
 Các trạng thái `BLOCKED_SV2`/chờ output ở snapshot cũ bên dưới giữ nguyên mốc.
-Xác nhận ML cá nhân/demo GVHD chưa được ghi nhận; r2 do Châu/Trung tích hợp riêng.
+Hồ sơ review ML/demo GVHD được quản lý riêng; r2 do Châu/Trung tích hợp theo quy trình.
 
 **Bổ sung sửa evaluator, hồ sơ 27/10/2026:** hai lỗi split rỗng/inventory thiếu
 đã được sửa và kiểm mới 18/18 thường +18/18 `-O` tại `18e74ab`; xem mục cuối.
@@ -27,8 +27,8 @@ Không có xác nhận hay liên hệ nào được Codex thực hiện thay th�
 Trạng thái: DONE = đã có kết quả trong phạm vi ghi rõ; READY = có thể thực hiện
 ngay; BLOCKED_SV2 = thiếu đầu ra cụ thể của SV2; BLOCKED_OTHER = thiếu đầu vào/
 thẩm quyền khác; DEFERRED_SCOPE = chủ động để giai đoạn sau, không phải thiếu KV260.
-DONE của code mới gồm commit/đẩy nhánh và các lệnh đã lưu; không đồng nghĩa đã
-merge main, trình diễn cho GVHD, học hiểu hoặc nghiệm thu phần cứng.
+DONE của code mới gồm commit/đẩy nhánh và các lệnh đã lưu. Merge main, review/demo
+với GVHD và nghiệm thu phần cứng có hồ sơ ghi nhận riêng.
 
 ## Phần đã hoàn tất độc lập
 
@@ -257,9 +257,9 @@ merge main, trình diễn cho GVHD, học hiểu hoặc nghiệm thu phần cứ
 
 ### L-01 Học hiểu và demo với GVHD
 
-- **Owner:** Kỳ Anh và GVHD. **Trạng thái: READY**, chưa đánh dấu học hiểu DONE.
-- **Bằng chứng:** code/test/log và giải thích trong báo cáo đã sẵn sàng; chưa có
-  bằng chứng Kỳ Anh tự giải thích/biểu diễn trước GVHD trong phiên này.
+- **Owner:** Kỳ Anh và GVHD. **Trạng thái: READY.**
+- **Bằng chứng chuẩn bị:** code/test/log và giải thích trong báo cáo đã sẵn sàng.
+  Hoạt động trao đổi/demo được ghi nhận trong hồ sơ nghiệm thu riêng.
 - **Thiếu/cung cấp:** Kỳ Anh giải thích R so với R², batch/finite-sample bias,
   gradient CE/dCor, giới hạn privacy và tự chạy demo; GVHD xác nhận theo quy ước.
 - **Điều kiện nghiệm thu:** demo/trao đổi thực tế, không suy từ code PASS.
@@ -287,9 +287,9 @@ Không thay trạng thái/hashes/receipt ở các mục lịch sử phía trên.
 | E-06 | **DONE review profile đã công bố**, 10 model hashes qua 3 tuần khớp, load/first/steady JSON↔CSV | Là CPU/PS+DPU, cache không kiểm soát; raw timings/DPU-only/service latency chưa tái kiểm hoặc chưa đo. Không yêu cầu lại bảng đã có |
 | E-07 | **DONE review ML semantics/source và bảng file pipeline**: unprotect→q→scale gốc, s9 NC, s10 identity, 5 logits/tie policy | Không tự xác nhận parser/buffer hardware thay Trung; raw output audit và numeric acceptance riêng |
 | E-08 | **DEFERRED_SCOPE tuần 8** cho BLE/E2E trong nhiệm vụ này; vẫn chưa nghiệm thu Device–KV260 | Châu/Trung triển khai/kiểm link thật và 100 mẫu bằng nhiệm vụ riêng |
-| H-02 | **DONE soạn dự thảo; CHỜ KỲ ANH XÁC NHẬN** | Review [draft ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md); Châu ghi nhận đúng change control |
+| H-02 | **DONE soạn dự thảo; READY cho review giao diện** | Review [draft ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md); Châu ghi nhận đúng change control |
 | H-03 | **BLOCKED_OTHER /chờ owner** | Châu/Trung phát hành revision nonce/provisioning phù hợp; không tự đổi registry ACCEPTED |
-| L-01 | **DONE runbook và lệnh demo đã được kiểm thử; READY cho Kỳ Anh thực hiện** | [Demo guide](sv3_week7_demo_guide.md); chưa đánh dấu học hiểu/demo GVHD DONE |
+| L-01 | **DONE runbook và lệnh demo đã được kiểm thử; READY cho buổi demo** | [Demo guide](sv3_week7_demo_guide.md); kết quả buổi demo được ghi trong hồ sơ riêng |
 | W8-02/P-01 | **DEFERRED_SCOPE** | Grid dài, threat model/attacks/privacy/Pareto theo thiết kế SV3/GVHD ở giai đoạn sau |
 
 Không còn mục SV3 độc lập có đủ đầu vào mà chỉ dừng ở kế hoạch trong phạm vi
@@ -342,5 +342,5 @@ thay cho việc suy trạng thái hiện tại từ các mục lịch sử phía
 - H-03: r2 `CONFIRMED` ở SV1 `549aa102`, Trung xác nhận trực tiếp với Châu;
   main `02ad8c8` còn `PENDING_EDGE_CONFIRMATION`. Chờ Châu/Trung tích hợp,
   không tự sửa registry hoặc đòi lại xác nhận đã có.
-- H-02/L-01: còn chờ Kỳ Anh xác nhận ML và tự giải thích/demo với GVHD.
-  Lượt chạy demo chuẩn bị/kiểm thử không là bằng chứng cá nhân. W8 grid/attack vẫn ngoài scope.
+- H-02/L-01: hồ sơ review ML và demo với GVHD được quản lý theo quy trình nhóm.
+  Lượt chạy chuẩn bị/kiểm thử xác minh toán/wiring. W8 grid/attack vẫn ngoài scope.

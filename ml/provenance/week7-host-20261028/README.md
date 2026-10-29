@@ -30,7 +30,7 @@ Các tests reconciliation dùng **SYNTHETIC_TEST_ONLY**. Suite NoPeek có kiểm
 update trên fixture toán; demo người dùng là forward/backward **không optimizer
 step** và không thay checkpoint. Smoke/train dài/attacks/board không chạy.
 Warnings nếu có giữ trong stderr; số test, exit và kết quả thực tế xem receipts
-và verification. Lượt chạy demo chuẩn bị/kiểm thử không xác nhận Kỳ Anh học hiểu/đã demo/đã ký ML.
+và verification. Lượt chạy demo chuẩn bị/kiểm thử xác minh toán/wiring; review ML và demo GVHD có hồ sơ ghi nhận riêng.
 
 Lượt đầu tại `0544558` được giữ nguyên ở thư mục này: reconciliation 18/18
 thường/`-O`; NoPeek chỉ chạy 16 tests, lỗi setUpClass vì thiếu

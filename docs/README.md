@@ -42,7 +42,7 @@ và báo cáo của dự án.
   NoPeek smoke offline và cấu hình tuần 8; không thay nghiệm thu KV260
 - [Checklist phụ thuộc SV3 tuần 7](sv3_week7_dependency_checklist.md)
 - [SV3 đối soát SV2 ngày 26/10, runtime/profiling và chuẩn bị accuracy DPU](sv3_week7_reconciliation_20261026.md)
-- [Dự thảo xác nhận ML I1 v2, chờ Kỳ Anh review](sv3_week7_ml_i1v2_confirmation_draft.md)
+- [Biểu mẫu review giao diện ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md)
 - [Demo SV3 tuần 7: dCor, gradients và loss NoPeek](sv3_week7_demo_guide.md)
 - [SV3 tuần 7: cập nhật host/hệ thống và nguồn pin 28/10](sv3_week7_host_update_20261028.md)
 - [SV3 → Trung: reference frozen và output template 28/10](sv3_week7_sv2_handoff_20261028.md)

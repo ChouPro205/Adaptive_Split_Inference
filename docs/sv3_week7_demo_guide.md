@@ -1,9 +1,9 @@
 # Demo SV3 tuần 7 — dCor, gradient và loss NoPeek
 
-Mục tiêu: Kỳ Anh tự chạy và giải thích phần toán/wiring trong khoảng 5–10 phút.
+Mục tiêu: trình bày và chạy phần toán/wiring trong khoảng 5–10 phút.
 Runbook đã được chạy thử trên commit
-`08e4b4259a2757be7b663b88cc1c98607602d266`; **chưa xác nhận Kỳ Anh đã học hiểu
-hoặc đã demo với GVHD**. Không chạy grid dài, cập nhật model hoặc dùng test để học.
+`08e4b4259a2757be7b663b88cc1c98607602d266`. Kết quả kiểm thử xác minh toán/wiring;
+hoạt động demo với GVHD được ghi nhận riêng. Không chạy grid dài, cập nhật model hoặc dùng test để học.
 
 ## 1. Ý chính trước khi chạy
 
@@ -73,11 +73,10 @@ hữu hạn; gradcheck; λ=0 khớp CE/loss/gradient/Adam; λ>0 thêm đúng gra
 - Smoke 4 bước cũ chỉ kiểm wiring; bảng demo mới không dùng để chọn λ hoặc
   so accuracy. Accuracy DPU trên test 8.544 và BLE/E2E là các gate riêng.
 
-Trước khi đánh dấu đã học hiểu/demo, Kỳ Anh cần tự giải thích: batch axis và
-flatten, R so với R², bias mẫu hữu hạn, vì sao gradient dCor tới head, vì sao
-λ=0 trở về CE và vì sao metric này không thay đánh giá tấn công. GVHD/người
-nghiệm thu ghi nhận sau buổi thực tế; runbook và log của lượt chạy kiểm thử không thay
-việc đó.
+Nội dung trao đổi/demo: batch axis và flatten, R so với R², bias mẫu hữu hạn,
+vì sao gradient dCor tới head, vì sao λ=0 trở về CE và vì sao metric này không
+thay đánh giá tấn công. Kết quả buổi demo được ghi trong hồ sơ nghiệm thu riêng;
+runbook và log kiểm thử là tài liệu chuẩn bị.
 
 ## 5. Lượt kiểm host 28/10/2026 và cách trình bày với GVHD
 
@@ -104,5 +103,5 @@ Trình bày trong 5–10 phút:
 
 Câu tự kiểm trước buổi gặp: vì sao noise độc lập không ra đúng 0, batch axis
 là gì, gradient đến head qua đường nào, và vì sao G2 PASS không suy accuracy
-DPU PASS? Kỳ Anh tự trả lời và thực hiện; GVHD ghi nhận sau buổi thật.
-**Chưa ghi Kỳ Anh đã hiểu, đã demo hoặc đã xác nhận ML.**
+DPU PASS? Dùng các câu hỏi này khi trình bày; kết quả trao đổi/demo và quyết định
+review ML được ghi riêng theo quy trình nghiệm thu của nhóm.

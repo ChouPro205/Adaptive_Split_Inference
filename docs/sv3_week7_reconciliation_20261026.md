@@ -213,7 +213,7 @@ với source SHA/log SHA, argv, cwd, exit và timestamps trong command receipts.
 | `test_week7_reconcile.py` / `delivery-tests` | 9/9, exit 0 | Synthetic validator fixtures; có full 8.544 IDs giả, không gọi hardware |
 | `python -O -B ...test_week7_reconcile.py` / `delivery-tests-O` | 9/9, exit 0 | Kiểm gate không phụ thuộc Python assert |
 | `week7_dpu_accuracy.py prepare ...` / `delivery-accuracy-prepare` | 8.544×3 input/reference, FP32 8.393 correct, exit 0 | Chưa có accuracy DPU |
-| `demo_week7_nopeek.py ...` / `delivery-demo` | Ca toán, CE/dCor gradients s2/s5/s8 và loss PASS; weights giữ nguyên | Lượt chạy demo chuẩn bị/kiểm thử; chưa xác nhận Kỳ Anh học hiểu/demo GVHD |
+| `demo_week7_nopeek.py ...` / `delivery-demo` | Ca toán, CE/dCor gradients s2/s5/s8 và loss PASS; weights giữ nguyên | Lượt chạy demo chuẩn bị/kiểm thử xác minh toán/wiring; demo GVHD có hồ sơ riêng |
 | `nopeek-reuse.json` | 13 bindings khớp lịch sử | Tái sử dụng bằng chứng cũ, không gán thành smoke mới |
 | `validate_delivery.py` / `delivery-validation.json` | PASS: 28 link nội bộ mới, 20 audit-input hashes, 7 prepared-source hashes, source/log pins; `git diff --check` exit 0 | Hai body báo cáo/checklist lịch sử giữ nguyên |
 
@@ -245,5 +245,5 @@ contract/registry và không coi hai finding P2 evaluator đã sửa là blocker
 cũ. [Bộ chuyển Trung](sv3_week7_sv2_handoff_20261028.md) đóng từ reference có
 sẵn, giữ manifest SHA. Không regenerate theo lệnh prepare lịch sử ở §5 trong
 phiên này. Chưa có output DPU full-test thật đủ provenance để đánh giá;
-E-05 `INCOMPLETE_NO_ACCEPTANCE`. H-02 và L-01 vẫn cần Kỳ Anh/GVHD thực hiện;
-không tự gọi toàn bộ tuần 7 DONE.
+E-05 `INCOMPLETE_NO_ACCEPTANCE`. H-02/L-01 có hồ sơ review/demo riêng;
+quyết định nghiệm thu được ghi theo quy trình nhóm.

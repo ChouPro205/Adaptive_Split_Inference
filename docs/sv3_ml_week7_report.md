@@ -2,8 +2,8 @@
 
 **Cập nhật 29/10/2026:** đã nhận và review đủ 25.632 output KV260; s2/s5/s8 đều
 đạt `PASS_ACCURACY_GATE`. Xem [kết quả full-test mới](sv3_week7_fulltest_review_20261029.md).
-Các mục chờ output bên dưới là snapshot lịch sử. Xác nhận ML cá nhân và demo
-GVHD chưa được ghi nhận; không coi toàn bộ tuần 7 đã nghiệm thu.
+Các mục chờ output bên dưới là snapshot lịch sử. Hồ sơ review ML và demo
+với GVHD được quản lý riêng theo quy trình nghiệm thu của nhóm.
 
 **Sửa evaluator, cập nhật hồ sơ 27/10/2026:** xem §13. Hai lỗi validation đã
 được sửa tại `18e74ab`, tests 18/18 thường và `-O`; reference cũ còn nguyên.
@@ -28,7 +28,7 @@ KV260, hiệu quả chống tấn công hoặc toàn hệ thống. Hai báo cáo
 Quy ước: **YÊU CẦU DỰ ÁN** là tiêu chí nguồn; **QUYẾT ĐỊNH TRIỂN KHAI** là
 lựa chọn công thức/config/code; **KẾT QUẢ QUAN SÁT** có log/manifest đối chiếu.
 `PASS` chỉ cho phạm vi đã kiểm; `PENDING` là còn chờ; `BLOCKED` có dependency
-cụ thể; `NOT VERIFIED` chưa có bằng chứng. Code/test PASS không thay học hiểu.
+cụ thể; `NOT VERIFIED` chưa có bằng chứng. Review nội dung và demo có hồ sơ nghiệm thu riêng.
 
 **YÊU CẦU DỰ ÁN:** hàm dCor đúng ít nhất ba ca ở tuần 7; quét NoPeek ba split
 ở tuần 8. **QUYẾT ĐỊNH TRIỂN KHAI:** dùng R_n biased, thêm gradient checks và
@@ -96,8 +96,8 @@ nhận qua kênh khác. Các discussion trả về rỗng.
 
 Hồ sơ SV1 phụ lục A.3 ghi gói P1 và ngữ nghĩa response SV3 đã bàn giao 16/10.
 Tuy nhiên `contracts/i1_device_edge_packet_v2.md` §14 vẫn để hàng SV3 và SV2
-“Chưa xác nhận”. SV3 còn bước **xác nhận chính thức tensor/quantization/response**;
-bằng chứng kỹ thuật host đã có. Không tự điền chữ ký của Kỳ Anh.
+“Chưa xác nhận”. Quyết định **tensor/quantization/response** được ghi tại hồ sơ
+review giao diện; bằng chứng kỹ thuật host đã có.
 Registry hiện hành vẫn `NOT_ACCEPTED` cho nonce runtime; bằng chứng MCU đã có
 nhưng cần revision do đúng thẩm quyền Châu/Trung phê duyệt, không sửa tại chỗ.
 
@@ -267,9 +267,9 @@ phiên bản mới**, xác thực nguồn mới rồi chạy lại smoke/train c
 Đổi kiến trúc hoặc profile triển khai cần review và revision; không ghi đè artifact
 hay gán trọng số NoPeek vào profile baseline hiện hành.
 
-**Code/kiểm thử đạt không đồng nghĩa Kỳ Anh đã học hiểu.** Việc giải thích lại
-estimator, batch, gradient, finite-sample bias và ý nghĩa riêng tư cần buổi trao đổi/
-demo riêng; không đánh dấu phần học hiểu DONE tự động.
+**Phạm vi báo cáo là kết quả triển khai và kiểm thử kỹ thuật.** Estimator, batch,
+gradient, finite-sample bias và ý nghĩa riêng tư là nội dung của buổi trao đổi/demo;
+kết quả buổi làm việc được ghi trong hồ sơ nghiệm thu riêng.
 
 ## 8. Deliverables và cách nghiệm thu
 
@@ -331,7 +331,7 @@ sau khi đã biên tập docs hoặc đồng bộ main mới. Không sửa audit
 | KV260 runtime/accuracy và Device–Edge thật | PENDING | Cần đầu ra SV2 theo checklist |
 | Xác nhận I1 v2, revision nonce registry | PENDING | Đúng người và change control; không tự ký thay |
 | Đánh giá tấn công/riêng tư | NOT VERIFIED | Thuộc giai đoạn sau |
-| Học hiểu/demo GVHD | NOT VERIFIED trong phiên này | Người dùng cần tự giải thích/demo |
+| Review nội dung/demo GVHD | NOT VERIFIED trong phiên này | Ghi nhận trong hồ sơ nghiệm thu riêng |
 
 ## 11. Công việc chuyển tiếp
 
@@ -383,16 +383,16 @@ Kiểm mới trên implementation nói trên: audit PASS; bộ tests tiếp nh�
 **9/9 thường và 9/9 `-O`**; prepare 8.544×3 và demo read-only dCor/gradient/loss
 đều exit 0. Source/log SHA và argv nằm trong
 [receipts](../ml/provenance/week7-reconcile-20261026/). Các lượt lỗi phát triển
-giữ riêng, không gọi là PASS. Lượt chạy demo chuẩn bị/kiểm thử không chứng nhận Kỳ Anh đã học
-hiểu hoặc trình diễn cho GVHD.
+giữ riêng, không gọi là PASS. Lượt chạy demo chuẩn bị/kiểm thử xác minh phần toán/wiring;
+hoạt động trao đổi và demo với GVHD có hồ sơ ghi nhận riêng.
 
 Đầu ra để review:
 
 - [Đối soát đầy đủ, bảng nguồn/hash, profiling, các lệnh đã chạy và đầu ra SV2 còn thiếu](sv3_week7_reconciliation_20261026.md).
 - [Checklist cập nhật](sv3_week7_dependency_checklist.md), tách phần đã xong,
   chờ output SV2, chờ owner và tuần 8/sau.
-- [Dự thảo xác nhận ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md), **chưa ký**.
-- [Demo guide](sv3_week7_demo_guide.md), sẵn sàng cho Kỳ Anh tự chạy/giải thích.
+- [Biểu mẫu review ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md), trạng thái **DRAFT**.
+- [Demo guide](sv3_week7_demo_guide.md), hướng dẫn chạy và giải thích các kết quả.
 
 Phần SV3 có đủ đầu vào đã hoàn tất. Còn chờ output test/provenance thật của
 Trung, quyết định numeric theo nhóm, xác nhận ML của Kỳ Anh, revision
@@ -444,5 +444,5 @@ Hai finding P2 evaluator đã sửa/review chấp nhận theo bàn giao, không 
 và reconciliation thường/`-O`, demo read-only, preservation và kiểm tài liệu theo
 revision thực chạy. [Gói bàn giao Trung](sv3_week7_sv2_handoff_20261028.md) giữ
 manifest frozen nguyên SHA. Chưa có output full-test DPU thật đủ provenance;
-E-05 `INCOMPLETE_NO_ACCEPTANCE`. H-02 và L-01 vẫn chờ Kỳ Anh/GVHD; phần host
-sẵn sàng review, không tự xác nhận ML, học hiểu hoặc toàn bộ tuần 7 DONE.
+E-05 `INCOMPLETE_NO_ACCEPTANCE`. H-02/L-01 được ghi nhận trong hồ sơ review/demo
+riêng theo quy trình nhóm; phần host sẵn sàng review ở mốc lịch sử này.

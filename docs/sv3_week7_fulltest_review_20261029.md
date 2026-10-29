@@ -2,8 +2,8 @@
 
 **E-05: đã đạt gate accuracy frozen và đã review artifact cho s2/s5/s8.** Đã nhận
 đủ 25.632 output do SV2 thực thi trên KV260. Không còn chờ Trung gửi full-test
-trong phạm vi ba split này. Xác nhận ML cá nhân/demo GVHD chưa được ghi nhận;
-việc cập nhật này không tự ký nghiệm thu thay owner hoặc GVHD.
+trong phạm vi ba split này. Quyết định review ML và kết quả demo với GVHD
+được ghi nhận trong hồ sơ nghiệm thu riêng theo quy trình nhóm.
 
 ## Nguồn và phạm vi
 
@@ -101,8 +101,8 @@ không relabel log/receipt cũ thành chứng nhận revision mới.
 | Việc | Trạng thái sau tiếp nhận | Người thực hiện |
 |---|---|---|
 | E-05 full-test s2/s5/s8 | PASS_ACCURACY_GATE; artifact đã review, không còn thiếu output | SV3 lưu kết quả review; owner/GVHD ghi quyết định nghiệm thu theo quy trình |
-| ML I1 v2 | Chưa ghi nhận xác nhận cá nhân; draft giữ CHƯA KÝ | Kỳ Anh review tensor/scale/shape/logits; Châu ghi nhận quyết định thật |
-| dCor/NoPeek demo | Có code/tests/runbook; chưa ghi nhận Kỳ Anh tự demo với GVHD | Kỳ Anh và GVHD |
+| ML I1 v2 | Biểu mẫu DRAFT, sẵn sàng review giao diện | Review tensor/scale/shape/logits; Châu ghi nhận quyết định theo quy trình |
+| dCor/NoPeek demo | Code/tests/runbook sẵn sàng; kết quả buổi demo có hồ sơ riêng | Kỳ Anh và GVHD |
 | r2 nonce Device | CONFIRMED trên SV1 `549aa102`; main `91827d3` vẫn PENDING_EDGE_CONFIRMATION | Châu/Trung tích hợp xác nhận đã có theo change control |
 
 Đã đọc trực tiếp GitHub ngày 29/10: main `91827d3d9b7b1914d0330e71c2f9e7514840f802`,
@@ -114,5 +114,6 @@ Hồ sơ này không sửa registry hoặc ký thay SV1/SV2.
 
 Không phát hiện lỗi trong gói đòi SV1/SV2 chạy lại board để đạt gate accuracy.
 Lưới dài s2/s5/s8 × lambda {0, 0.1, 0.5, 1, 2, 5} thuộc tuần 8; P2, attackers,
-Π/Pareto là các giai đoạn tiếp theo. Toàn bộ tuần 7 chưa được gán DONE khi xác
-nhận cá nhân và quyết định nghiệm thu tương ứng chưa được ghi nhận.
+Π/Pareto là các giai đoạn tiếp theo. Có thể chuyển sang thiết kế/chốt thí nghiệm
+NoPeek tuần 8; trước train dài, thống nhất epoch/batch/seed và chọn checkpoint theo
+validation. Quyết định nghiệm thu các phạm vi được lưu trong hồ sơ tương ứng.

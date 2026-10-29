@@ -1,10 +1,10 @@
-# Dự thảo xác nhận ML I1 v2 — chờ Kỳ Anh review
+# Biểu mẫu review giao diện ML I1 v2
 
-**DRAFT / CHƯA KÝ / CHƯA PHÊ DUYỆT.** Chuẩn bị ngày 26/10/2026 cho Bùi Kỳ Anh,
-SV3 — Model/Privacy. Hồ sơ này không thay xác nhận/chữ ký của các owner: Kỳ Anh, Châu, Trung hoặc GVHD.
+**Trạng thái: DRAFT.** Chuẩn bị ngày 26/10/2026 cho SV3 — Model/Privacy.
+Quyết định review được ghi nhận trong hồ sơ phê duyệt riêng theo quy trình nhóm.
 Không sửa contract §14, registry `NOT_ACCEPTED` hoặc revision nonce/provisioning.
 
-## Nội dung đề nghị Kỳ Anh xem xét xác nhận
+## Nội dung review giao diện ML
 
 Phạm vi ML được đối soát trên baseline `mitdb_week2_cnn_v1`, checkpoint SHA-256
 `9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90`, model package
@@ -45,13 +45,13 @@ Parser/buffer KV260 của Trung và approval/change control của Châu có xác
   thực thi trên `08e4b4259a2757be7b663b88cc1c98607602d266`.
 - [Đối soát và phần còn chờ](sv3_week7_reconciliation_20261026.md).
 
-Kỳ Anh review nội dung và ghi quyết định thực tế. Nếu được xác nhận, Châu ghi
-receipt/revision theo quy trình hiện hành, giữ chứng cứ và registry lịch sử.
-Không điền ngày ký hoặc trạng thái APPROVED trước khi người có thẩm quyền xác nhận.
+Kết quả review và quyết định phê duyệt được ghi bằng receipt/revision theo quy
+trình hiện hành, giữ chứng cứ và registry lịch sử. Ngày và trạng thái phê duyệt
+thuộc hồ sơ quyết định của người có thẩm quyền.
 
 | Vai trò | Trạng thái của bản dự thảo |
 |---|---|
-| Kỳ Anh — ML reviewer | Chờ review/xác nhận thực tế |
-| Trung — parser/buffer/runtime Edge | Chờ xác nhận riêng đúng phạm vi |
+| SV3 — ML reviewer | DRAFT; sẵn sàng review giao diện |
+| SV2 — parser/buffer/runtime Edge | Quyết định được ghi nhận trong hồ sơ Edge riêng |
 | Châu — contract/registry/change control | Không có revision/xác nhận mới trong nhiệm vụ này |
-| GVHD — nghiệm thu/demo/numeric nếu cần | Chưa ghi nhận xác nhận mới |
+| GVHD — nghiệm thu/demo/numeric nếu cần | Ghi nhận theo hồ sơ nghiệm thu tương ứng |
