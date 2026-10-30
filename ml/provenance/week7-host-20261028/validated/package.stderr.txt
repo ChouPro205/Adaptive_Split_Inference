@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\package_week7_reference.py", line 53, in <module>
+    package(args.reference, args.output)
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\package_week7_reference.py", line 39, in package
+    'archive_path': str(archive.relative_to(ROOT)), 'archive_sha256': sha(archive),
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 730, in relative_to
+    raise ValueError("{!r} is not in the subpath of {!r}"
+ValueError: '.cache\\week7-sv2-handoff-20261028\\sv3-week7-frozen-reference.zip' is not in the subpath of 'C:\\Users\\Admin\\Adaptive_Split_Inference\\exports\\sv3-week7-reconcile-20261026' OR one path is relative and the other is absolute.

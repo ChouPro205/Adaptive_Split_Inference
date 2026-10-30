@@ -1,0 +1,25 @@
+{
+  "reviewed_head": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+  "preservation": {
+    "all_reviewed_tracked_except_allowlist": {
+      "count": 2903,
+      "path_and_raw_sha256_digest": "b415c4a5e509c328e1c01b063ac9b48f1d493a3a95a39e05342cca7061fa984a"
+    },
+    "ml_source_scripts_configs_manifests": {
+      "count": 118,
+      "path_and_raw_sha256_digest": "5bc787a10f836164cb2a0da6dafa471ca6f3c2bd097931642836c649be3d98e8"
+    },
+    "historical_tracked_provenance_except_readme": {
+      "count": 2203,
+      "path_and_raw_sha256_digest": "757c2c5d5faf1ec27d2d49bf6015bd591ba43f5117c78f0a5669406a67dcfc55"
+    },
+    "local_baseline_reference_weights_archives": {
+      "count": 52,
+      "path_and_raw_sha256_digest": "6454d6cf57ae570765288508725040aa837c513d37095614977385e9530182fd"
+    },
+    "bed2dfc_final_local_receipts_and_logs": {
+      "count": 32,
+      "path_and_raw_sha256_digest": "d956b295513b117ae1c1cfd9e58eb175cb387f48aed2cf4038c14fa3995d9dbc"
+    }
+  }
+}

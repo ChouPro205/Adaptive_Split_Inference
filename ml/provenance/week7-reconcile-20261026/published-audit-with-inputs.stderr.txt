@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\review_week7_sv2.py", line 231, in <module>
+    result = audit(p1_package=args.p1_package, p1_zip=args.p1_zip)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\review_week7_sv2.py", line 100, in audit
+    authenticate_package(p1_package, ANCHOR)
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\week6_p1.py", line 294, in authenticate_package
+    same(source_bindings(provenance['source_commit']), provenance['source_files_sha256'], 'Generating source bindings differ')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\week6_p1.py", line 114, in source_bindings
+    need(raw == current, f'Source differs from generating commit: {name}')
+  File "C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\week6_p1.py", line 43, in need
+    raise ValueError(message)
+ValueError: Source differs from generating commit: edge/quantize_tail.py

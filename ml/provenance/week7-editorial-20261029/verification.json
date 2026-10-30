@@ -1,0 +1,180 @@
+{
+  "status": "PASS_EDITORIAL_ONLY",
+  "checked_utc": "2026-10-28T20:45:22.152549+00:00",
+  "checked_head": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+  "binding": "Exact document SHA values below bind this working-tree editorial candidate; no new ML execution.",
+  "reviewed_head": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+  "allowlisted_lines": 11,
+  "edited_document_sha256": {
+    "docs/sv3_week7_host_update_20261028.md": "0f319d1e72297ef3add4044096a8c4304f5d16414e92bbf2d9cfb0603ce0acb6",
+    "docs/sv3_week7_demo_guide.md": "376ae51ffe63c3732e70a23d2ef9d1c433ccf4cd47525957c8852d5dcbd9778d",
+    "ml/provenance/week7-host-20261028/README.md": "3528ee91df76eeb8e457d248ca90deab6dd0cbfe1918e30c9d65db375dd11dd8",
+    "docs/sv3_week7_sv2_handoff_20261028.md": "67e7347f495ed4399780ad4f237b8f82bfa67522968240d06fbc6b166dcefb0e",
+    "docs/sv3_week7_ml_i1v2_confirmation_draft.md": "4eb767d7c6a757edc67531dda284d51cffa3473ec6e956184fe25287ad706b95",
+    "docs/sv3_week7_dependency_checklist.md": "37390f5538651fc4b1c8b2d031593b13d1a2e91954414dfbf1e584cee71e2899",
+    "docs/sv3_week7_reconciliation_20261026.md": "4a6f9d10b007d4191d0ea6f42679b0c5ffa4f1973811a9dd8f91a737c44efcf9",
+    "docs/sv3_ml_week7_report.md": "df90541740f3a4d6f395e002571bdfd4d5a6486ca78d75a28014b192e241b13f"
+  },
+  "verifier_sha256": "d34d5d11084ff46333b59bae8581118e7ebcf53888539549e417ada0cab2cc22",
+  "allowlist_sha256": "a57272f8fc3fe41c5a106178e80fbd601bd2414bb9e4939eceaed8fbf6820ac2",
+  "preservation": {
+    "all_reviewed_tracked_except_allowlist": {
+      "count": 2903,
+      "path_and_raw_sha256_digest": "b415c4a5e509c328e1c01b063ac9b48f1d493a3a95a39e05342cca7061fa984a"
+    },
+    "ml_source_scripts_configs_manifests": {
+      "count": 118,
+      "path_and_raw_sha256_digest": "5bc787a10f836164cb2a0da6dafa471ca6f3c2bd097931642836c649be3d98e8"
+    },
+    "historical_tracked_provenance_except_readme": {
+      "count": 2203,
+      "path_and_raw_sha256_digest": "757c2c5d5faf1ec27d2d49bf6015bd591ba43f5117c78f0a5669406a67dcfc55"
+    },
+    "local_baseline_reference_weights_archives": {
+      "count": 52,
+      "path_and_raw_sha256_digest": "6454d6cf57ae570765288508725040aa837c513d37095614977385e9530182fd"
+    },
+    "bed2dfc_final_local_receipts_and_logs": {
+      "count": 32,
+      "path_and_raw_sha256_digest": "d956b295513b117ae1c1cfd9e58eb175cb387f48aed2cf4038c14fa3995d9dbc"
+    }
+  },
+  "reused_receipts": {
+    "nopeek-normal": {
+      "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+      "receipt_sha256": "c62b3e08c3124513311123c4af3a2f25c0da193341fc758cf2fe0d4be0b0c111",
+      "source_files_bound": 43,
+      "execution": "REUSED_NOT_RERUN"
+    },
+    "nopeek-O": {
+      "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+      "receipt_sha256": "6c2e0511a9c0714c9a24837a85ae6564501ae1a41fd34c143128dd8ed71f8ff7",
+      "source_files_bound": 43,
+      "execution": "REUSED_NOT_RERUN"
+    },
+    "reconcile-normal": {
+      "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+      "receipt_sha256": "a9c5d5a5fd1a93b701d27d07b8280891d42e858392980c6e4ca52372eb3d982b",
+      "source_files_bound": 43,
+      "execution": "REUSED_NOT_RERUN"
+    },
+    "reconcile-O": {
+      "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+      "receipt_sha256": "925b744d95e77626844119b4598dc005d9a72341b86c9320f91cb5cd66c73499",
+      "source_files_bound": 43,
+      "execution": "REUSED_NOT_RERUN"
+    },
+    "demo": {
+      "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+      "receipt_sha256": "3ae1a365cee00006f4ee6881697e6ffc245f329bb2371df4da7b1b3872e2ca53",
+      "source_files_bound": 43,
+      "execution": "REUSED_NOT_RERUN"
+    },
+    "reference": {
+      "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+      "receipt_sha256": "ed76d11d8fd757a53c075a5aa7fa09785c28611382ad775bed31d42d2f57505f",
+      "source_files_bound": 43,
+      "execution": "REUSED_NOT_RERUN"
+    },
+    "verification": {
+      "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+      "receipt_sha256": "f499a2168ec5ba3af55f477a3c035d8ae1ec407db59bb19fcc87dd87539cb8c0",
+      "source_files_bound": 43,
+      "execution": "REUSED_NOT_RERUN"
+    }
+  },
+  "documentation_links_checked": 88,
+  "links": [
+    "docs/sv3_ml_week7_report.md -> sv3_week7_reconciliation_20261026.md",
+    "docs/sv3_ml_week7_report.md -> sv3_ml_week5_report.md",
+    "docs/sv3_ml_week7_report.md -> sv3_ml_week6_report.md",
+    "docs/sv3_ml_week7_report.md -> sv3_week7_dependency_checklist.md",
+    "docs/sv3_ml_week7_report.md -> ../ml/scripts/setup_week5_delivery_v2.py",
+    "docs/sv3_ml_week7_report.md -> ../ml/docs/week5_delivery_v2.md",
+    "docs/sv3_ml_week7_report.md -> sv3_week7_dependency_checklist.md",
+    "docs/sv3_ml_week7_report.md -> ../ml/provenance/week7-reconcile-20261026/",
+    "docs/sv3_ml_week7_report.md -> sv3_week7_reconciliation_20261026.md",
+    "docs/sv3_ml_week7_report.md -> sv3_week7_dependency_checklist.md",
+    "docs/sv3_ml_week7_report.md -> sv3_week7_ml_i1v2_confirmation_draft.md",
+    "docs/sv3_ml_week7_report.md -> sv3_week7_demo_guide.md",
+    "docs/sv3_ml_week7_report.md -> ../ml/provenance/week7-evaluator-fix-20261026/README.md",
+    "docs/sv3_ml_week7_report.md -> ../ml/provenance/week7-evaluator-fix-20261026/verification.json",
+    "docs/sv3_ml_week7_report.md -> sv3_week7_host_update_20261028.md",
+    "docs/sv3_ml_week7_report.md -> ../ml/provenance/week7-host-20261028/README.md",
+    "docs/sv3_ml_week7_report.md -> sv3_week7_sv2_handoff_20261028.md",
+    "docs/sv3_week7_demo_guide.md -> ../ml/provenance/week7-reconcile-20261026/delivery-demo.json",
+    "docs/sv3_week7_demo_guide.md -> ../ml/provenance/week7-host-20261028/README.md",
+    "docs/sv3_week7_dependency_checklist.md -> sv3_week7_reconciliation_20261026.md",
+    "docs/sv3_week7_dependency_checklist.md -> sv3_ml_week7_report.md",
+    "docs/sv3_week7_dependency_checklist.md -> ../ml/provenance/week7-reconcile-20261026/delivery-audit.json",
+    "docs/sv3_week7_dependency_checklist.md -> sv3_week7_reconciliation_20261026.md",
+    "docs/sv3_week7_dependency_checklist.md -> sv3_week7_ml_i1v2_confirmation_draft.md",
+    "docs/sv3_week7_dependency_checklist.md -> sv3_week7_demo_guide.md",
+    "docs/sv3_week7_dependency_checklist.md -> ../ml/provenance/week7-evaluator-fix-20261026/README.md",
+    "docs/sv3_week7_dependency_checklist.md -> ../ml/provenance/week7-evaluator-fix-20261026/verification.json",
+    "docs/sv3_week7_dependency_checklist.md -> sv3_week7_host_update_20261028.md",
+    "docs/sv3_week7_dependency_checklist.md -> ../ml/provenance/week7-host-20261028/README.md",
+    "docs/sv3_week7_dependency_checklist.md -> sv3_week7_sv2_handoff_20261028.md",
+    "docs/sv3_week7_host_update_20261028.md -> ../ml/provenance/week7-host-20261028/README.md",
+    "docs/sv3_week7_host_update_20261028.md -> ../ml/provenance/week7-host-20261028/source-drift.json",
+    "docs/sv3_week7_host_update_20261028.md -> sv3_week7_ml_i1v2_confirmation_draft.md",
+    "docs/sv3_week7_host_update_20261028.md -> sv3_week7_demo_guide.md",
+    "docs/sv3_week7_host_update_20261028.md -> sv3_week7_sv2_handoff_20261028.md",
+    "docs/sv3_week7_host_update_20261028.md -> ../ml/provenance/week7-host-20261028/README.md",
+    "docs/sv3_week7_ml_i1v2_confirmation_draft.md -> ../contracts/i1_device_edge_packet_v2.md",
+    "docs/sv3_week7_ml_i1v2_confirmation_draft.md -> ../ml/docs/week6_p1_delivery.md",
+    "docs/sv3_week7_ml_i1v2_confirmation_draft.md -> sv2_edge_week7_report.md",
+    "docs/sv3_week7_ml_i1v2_confirmation_draft.md -> ../ml/provenance/week7-reconcile-20261026/delivery-audit.json",
+    "docs/sv3_week7_ml_i1v2_confirmation_draft.md -> sv3_week7_reconciliation_20261026.md",
+    "docs/sv3_week7_reconciliation_20261026.md -> ../ml/provenance/week7-evaluator-fix-20261026/README.md",
+    "docs/sv3_week7_reconciliation_20261026.md -> ../ml/provenance/week7-reconcile-20261026/github-state.json",
+    "docs/sv3_week7_reconciliation_20261026.md -> ../ml/provenance/week7-reconcile-20261026/delivery-audit.json",
+    "docs/sv3_week7_reconciliation_20261026.md -> ../ml/provenance/week7-reconcile-20261026/development-notes.md",
+    "docs/sv3_week7_reconciliation_20261026.md -> ../ml/provenance/week7-reconcile-20261026/nopeek-reuse.json",
+    "docs/sv3_week7_reconciliation_20261026.md -> ../ml/provenance/week7-reconcile-20261026/prepared-reference-manifest.json",
+    "docs/sv3_week7_reconciliation_20261026.md -> ../ml/provenance/week7-reconcile-20261026/dpu-output.template.json",
+    "docs/sv3_week7_reconciliation_20261026.md -> ../ml/provenance/week7-reconcile-20261026/",
+    "docs/sv3_week7_reconciliation_20261026.md -> sv3_week7_ml_i1v2_confirmation_draft.md",
+    "docs/sv3_week7_reconciliation_20261026.md -> sv3_week7_demo_guide.md",
+    "docs/sv3_week7_reconciliation_20261026.md -> sv3_week7_host_update_20261028.md",
+    "docs/sv3_week7_reconciliation_20261026.md -> ../ml/provenance/week7-host-20261028/README.md",
+    "docs/sv3_week7_reconciliation_20261026.md -> sv3_week7_sv2_handoff_20261028.md",
+    "docs/sv3_week7_sv2_handoff_20261028.md -> ../ml/provenance/week7-host-20261028/handoff-receipt.json",
+    "docs/sv3_week7_sv2_handoff_20261028.md -> ../ml/provenance/week7-reconcile-20261026/dpu-output.template.json",
+    "ml/provenance/week7-editorial-20261029/README.md -> allowlist.json",
+    "ml/provenance/week7-editorial-20261029/README.md -> verify_editorial.py",
+    "ml/provenance/week7-editorial-20261029/README.md -> preservation-before.json",
+    "ml/provenance/week7-editorial-20261029/README.md -> verification.json",
+    "ml/provenance/week7-editorial-20261029/README.md -> historical-prose-plan.md",
+    "ml/provenance/week7-editorial-20261029/README.md -> ../week7-host-20261028/verify_host.py",
+    "ml/provenance/week7-host-20261028/README.md -> delivery/nopeek-normal.command.json",
+    "ml/provenance/week7-host-20261028/README.md -> delivery/nopeek-O.command.json",
+    "ml/provenance/week7-host-20261028/README.md -> delivery/reconcile-normal.command.json",
+    "ml/provenance/week7-host-20261028/README.md -> delivery/reconcile-O.command.json",
+    "ml/provenance/week7-host-20261028/README.md -> delivery/demo.command.json",
+    "ml/provenance/week7-host-20261028/README.md -> delivery/demo.json",
+    "ml/provenance/week7-host-20261028/README.md -> delivery/reference.command.json",
+    "ml/provenance/week7-host-20261028/README.md -> delivery/package.command.json",
+    "ml/provenance/week7-host-20261028/README.md -> handoff-receipt.json",
+    "ml/provenance/week7-host-20261028/README.md -> capture.command.json",
+    "ml/provenance/week7-host-20261028/README.md -> github-refs.json",
+    "ml/provenance/week7-host-20261028/README.md -> source-review.json",
+    "ml/provenance/week7-host-20261028/README.md -> environment.json",
+    "ml/provenance/week7-host-20261028/README.md -> preservation-before.json",
+    "ml/provenance/week7-host-20261028/README.md -> verification.json",
+    "ml/provenance/week7-host-20261028/README.md -> github-prs.json",
+    "ml/provenance/week7-host-20261028/README.md -> main-r2.json",
+    "ml/provenance/week7-host-20261028/README.md -> sv1-r2.json",
+    "ml/provenance/week7-host-20261028/README.md -> edge-summary.json",
+    "ml/provenance/week7-host-20261028/README.md -> edge-provenance.json",
+    "ml/provenance/week7-host-20261028/README.md -> hydration.json",
+    "ml/provenance/week7-host-20261028/README.md -> ../../../docs/sv3_week7_host_update_20261028.md",
+    "ml/provenance/week7-host-20261028/README.md -> ../../../docs/sv3_week7_sv2_handoff_20261028.md",
+    "ml/provenance/week7-host-20261028/README.md -> ../../../docs/sv3_week7_demo_guide.md",
+    "ml/provenance/week7-host-20261028/README.md -> verification.json",
+    "ml/provenance/week7-host-20261028/README.md -> source-drift.json"
+  ],
+  "historical_gate": "verify_host.py and old receipts unchanged; certify their original snapshots only. Its BASE4e027b2 prefix gate is not relabeled as PASS for this editorial revision.",
+  "DPU_acceptance": "INCOMPLETE_NO_ACCEPTANCE",
+  "personal_confirmation": "NOT_ATTESTED"
+}

@@ -1,0 +1,25 @@
+{
+  "base_commit": "1fa21ba1f2da671b837d8e28cbb4863b6c6be9b8",
+  "groups": {
+    "all_preexisting_tracked_except_allowlist": {
+      "count": 2917,
+      "path_and_raw_sha256_digest": "3910e0ff77c95ad8fa253a30c74b8a58808a5b9fce00241dc83d3cc008b349cf"
+    },
+    "ml_source_scripts_configs_manifests": {
+      "count": 118,
+      "path_and_raw_sha256_digest": "5bc787a10f836164cb2a0da6dafa471ca6f3c2bd097931642836c649be3d98e8"
+    },
+    "historical_provenance_except_public_readme": {
+      "count": 2217,
+      "path_and_raw_sha256_digest": "e0c78d51132f6439cdfa80859f9fa516cc855b1da8bf5a427104b5c38a6f5ad2"
+    },
+    "local_baseline_reference_weights_archives": {
+      "count": 52,
+      "path_and_raw_sha256_digest": "7dbddb90cfc4846e62d1ef4aefb1586161137d60d06d5caf6fa25db0eeae76aa"
+    },
+    "bed2dfc_final_receipts_logs": {
+      "count": 32,
+      "path_and_raw_sha256_digest": "ac3e4b3e3d324bc18ccd1006816fe2d98c3d77796eef433088e0846c4a185c5f"
+    }
+  }
+}

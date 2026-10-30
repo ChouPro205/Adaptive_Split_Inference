@@ -1,0 +1,146 @@
+{
+  "scope": "HOST_ANALYSIS_SAVED_RAW_NOT_FORMAL_ACCEPTANCE",
+  "splits": [
+    {
+      "split": 2,
+      "received": 8544,
+      "valid": 8544,
+      "failures": 0,
+      "correct": 8412,
+      "accuracy_all_8544_percent": 98.45505617977528,
+      "confusion_true_rows_pred_columns": [
+        [
+          8038,
+          54,
+          6,
+          4,
+          0
+        ],
+        [
+          13,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          49,
+          3,
+          374,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "strict_count_gate_met": true,
+      "status": "PASS_COUNT_GATE_PENDING_SV3_ARTIFACT_REVIEW"
+    },
+    {
+      "split": 5,
+      "received": 8544,
+      "valid": 8544,
+      "failures": 0,
+      "correct": 8388,
+      "accuracy_all_8544_percent": 98.17415730337079,
+      "confusion_true_rows_pred_columns": [
+        [
+          8036,
+          55,
+          7,
+          4,
+          0
+        ],
+        [
+          13,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          71,
+          3,
+          352,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "strict_count_gate_met": true,
+      "status": "PASS_COUNT_GATE_PENDING_SV3_ARTIFACT_REVIEW"
+    },
+    {
+      "split": 8,
+      "received": 8544,
+      "valid": 8544,
+      "failures": 0,
+      "correct": 8389,
+      "accuracy_all_8544_percent": 98.18586142322097,
+      "confusion_true_rows_pred_columns": [
+        [
+          8044,
+          47,
+          7,
+          4,
+          0
+        ],
+        [
+          13,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          78,
+          3,
+          345,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "strict_count_gate_met": true,
+      "status": "PASS_COUNT_GATE_PENDING_SV3_ARTIFACT_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "asi-project-registry-revision/1",
+  "revision": "mitdb-week5-i2-registry-v1-r2",
+  "supersedes_revision": "mitdb-week5-i2-registry-v1-r1",
+  "base_registry": {
+    "path": "contracts/sv3_week5_approved_registry_v2.json",
+    "sha256": "79392b6db73cde6d83eadb1f265f14102888ebdbf8ea1b72b6c127c5566eed24",
+    "note": "the base file is not edited; every field not listed in changes keeps its r1 value"
+  },
+  "status": "CONFIRMED",
+  "changes": [
+    {
+      "field": "runtime.nonce_persistence_reboot",
+      "from": "NOT_ACCEPTED",
+      "to": "ACCEPTED",
+      "scope": "I2/1 nonce reservation of the SV1 nRF52840 Dongle (sender_id 131073, key_id 65537): NVS record on storage_partition, block of 1024 sequences reserved before transmit, unused rest discarded at every boot",
+      "rule": "contracts/i2_nonce_provisioning_v1.md section 8: items 1-6 must pass on the dongle before this field changes, and only in a new registry revision"
+    }
+  ],
+  "unchanged_on_purpose": {
+    "runtime.provisioning": "NOT_ACCEPTED (only the bench key 65537, provisioned over USB CDC; no provisioning process for real deployments)",
+    "runtime.p1_transmission_authorized": false,
+    "runtime.i1_status": "REVIEW_CANDIDATE",
+    "scope.production_authorized": false
+  },
+  "evidence": {
+    "section8_1_build": "results/week6/device/build_check/ (image ends before 0xDC000)",
+    "section8_2_bench_key": "key_id 65537, key_check 4379e570eb84f891 (docs/sv1_device_week6_report.md)",
+    "section8_3_resets": [
+      {"path": "results/week6/device/nonce_soft_reset_110.json", "sha256": "f588165062a0983907e08d1d110f5d0884a777f003a08727077d4bedac424a42"},
+      {"path": "results/week6/device/nonce_power_cut_12.json", "sha256": "ba7bcfdbec1473b845045fdd9df6ea0a18d53758ae0fd9e9e6d7a656884908c9"},
+      {"path": "results/week6/device/nonce_combined.json", "sha256": "802f8aa260b48cad22cf64adcd7667ab82f25f0a901819b6b21cf8fbd0b392a8"}
+    ],
+    "section8_4_5_write_error_and_missing_record": [
+      {"path": "results/week6/device/nonce_hooks.json", "sha256": "fb1a6655a8dad1613fa2402943315f0f9afd30276185c98c763bcc0a003308ba"}
+    ],
+    "section8_6_dfu_sentinel": [
+      {"path": "results/week6/device/sentinel_dfu_default_to_mtu23.json", "sha256": "43d3082cbc683b1ae4b892c08ee8334c8879d3d310c07806652e4d9788e22af1"},
+      {"path": "results/week6/device/sentinel_dfu_mtu23_to_default.json", "sha256": "911ce118f44c05397d271383a7fc740c61ebddfe5fc9deec33a4fc2884b404c6"}
+    ],
+    "edge_side_week8": [
+      {"path": "results/week8/device/kv260_g2_pairs100.json", "sha256": "cd75fd64f63cb76da86771f3a16da1632f3dd4364761bb2b96b9ac2fb248fe12",
+       "note": "G2 26/10: KV260 unprotected 100 P1 requests, sequence 60647432..60647531 strictly increasing, inside the boot block"},
+      {"path": "results/week8/device/kv260_supp2_1M_pairs5.json", "sha256": "18068a40c4faa260036cb063a61eb46a18636651a1a67a1511581214550a5ab2",
+       "note": "27/10, new boot after re-plugging: sequence 60650498..60650502 above the previous block"},
+      {"path": "results/week8/device/kv260_supp4_2M_pairs5.json", "sha256": "288d32c85749d73d32b8747878dad99f2d04c0e51323a35e81f2951e6f1c3110",
+       "note": "27/10, third connection of the same boot: 60650503..60650507"}
+    ]
+  },
+  "limitations": [
+    "Edge high-water sequence is kept in memory per service lifetime (KV260 run.json sequence_scope); a service restart forgets it. The Edge therefore does not reject a replayed older sequence after a restart. Not required for this field (Device-side persistence); to be fixed by SV2 before any non-bench use.",
+    "Tested on one dongle and one bench key only; the hardware tests are week 6 (19/10/2026) on the week 6 firmware, which week 7/8 reuse unchanged (week6/nonce_store.c, nonce_nvs.c)."
+  ],
+  "confirmations": {
+    "device_SV1": {"who": "Le Hai Chau (SV1, project lead)", "revision": "mitdb-week5-i2-registry-v1-r2", "status": "CONFIRMED", "date": "2026-10-27", "where": "week 8 PR #39"},
+    "edge_SV2": {"who": "Trung (SV2)", "revision": "mitdb-week5-i2-registry-v1-r2", "status": "CONFIRMED", "date": "2026-10-27",
+                 "where": "told SV1 (Le Hai Chau) directly on 2026-10-27, recorded by SV1; no comment in PR #39"}
+  },
+  "becomes_effective": "when edge_SV2.status is CONFIRMED with the same revision id (device_revision = edge_revision)",
+  "effective_since": "2026-10-27"
+}

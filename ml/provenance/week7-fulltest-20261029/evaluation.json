@@ -1,0 +1,506 @@
+{
+  "schema": "sv3-week7-dpu-evaluation/1",
+  "input_commit": "9b363f023204ead01e43a8103d927dff41182c29",
+  "evaluator_sha256": "c6ad4cd690a65161e0c5be6e155f91be5f31aae1fcfcc0f9418af9311fb64dbc",
+  "reference_manifest_sha256": "612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c",
+  "output_sha256": "1ce95b66112938831b2c59085da30b066f139b741cea020d2a2b570afa0673b9",
+  "class_order": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "backend_provenance": {
+    "board_id": "kv260-node01",
+    "runtime_version": {
+      "uname": "Linux kv260-node01 5.15.19-xilinx-v2022.1 #1 SMP Mon Apr 11 17:52:14 UTC 2022 aarch64 aarch64 aarch64 GNU/Linux",
+      "os_release": "ID=petalinux\nNAME=\"PetaLinux\"\nVERSION=\"2022.1_release_S04190222 (honister)\"\nVERSION_ID=2022.1_release_s04190222\nPRETTY_NAME=\"PetaLinux 2022.1_release_S04190222 (honister)\"\n",
+      "vart_libraries": "\tlinux-vdso.so.1 (ADDRESS)\n\tlibvitis_ai_library-graph_runner.so.2 => /usr/lib/libvitis_ai_library-graph_runner.so.2 (ADDRESS)\n\tlibvart-runner.so.2 => /usr/lib/libvart-runner.so.2 (ADDRESS)\n\tlibxir.so.2 => /usr/lib/libxir.so.2 (ADDRESS)\n\tlibglog.so.0 => /usr/lib/libglog.so.0 (ADDRESS)\n\tlibstdc++.so.6 => /usr/lib/libstdc++.so.6 (ADDRESS)\n\tlibm.so.6 => /lib/libm.so.6 (ADDRESS)\n\tlibgcc_s.so.1 => /lib/libgcc_s.so.1 (ADDRESS)\n\tlibc.so.6 => /lib/libc.so.6 (ADDRESS)\n\tlibvitis_ai_library-runner_helper.so.2 => /usr/lib/../lib/libvitis_ai_library-runner_helper.so.2 (ADDRESS)\n\tlibvart-runner-assistant.so.2 => /usr/lib/../lib/libvart-runner-assistant.so.2 (ADDRESS)\n\t/lib/ld-linux-aarch64.so.1 (ADDRESS)\n\tlibvart-util.so.2 => /usr/lib/libvart-util.so.2 (ADDRESS)\n\tlibjson-c.so.5 => /usr/lib/libjson-c.so.5 (ADDRESS)\n\tlibunilog.so.2 => /usr/lib/libunilog.so.2 (ADDRESS)\n\tlibprotobuf.so.29 => /usr/lib/libprotobuf.so.29 (ADDRESS)\n\tlibunwind.so.8 => /usr/lib/libunwind.so.8 (ADDRESS)\n\tlibgflags.so.2.2 => /usr/lib/libgflags.so.2.2 (ADDRESS)\n\tlibvart-buffer-object.so.2 => /usr/lib/../lib/libvart-buffer-object.so.2 (ADDRESS)\n\tlibxrt_core.so.2 => /usr/lib/../lib/libxrt_core.so.2 (ADDRESS)\n\tlibboost_filesystem.so.1.77.0 => /usr/lib/libboost_filesystem.so.1.77.0 (ADDRESS)\n\tlibpthread.so.0 => /lib/libpthread.so.0 (ADDRESS)\n\tlibz.so.1 => /lib/libz.so.1 (ADDRESS)\n\tlibvart-xrt-device-handle.so.2 => /usr/lib/../lib/libvart-xrt-device-handle.so.2 (ADDRESS)\n\tlibxrt_coreutil.so.2 => /usr/lib/../lib/libxrt_coreutil.so.2 (ADDRESS)\n\tlibuuid.so.1 => /usr/lib/../lib/libuuid.so.1 (ADDRESS)\n\tlibdfx.so => /usr/lib/../lib/libdfx.so (ADDRESS)\n"
+    },
+    "source_commit": "8d962095a11a0e41696b9cdeac163ed0d240daed",
+    "runner_sha256": "d018d352eb0517f5891af8af59988d5514dc1ac63a63ad24619f9a06710ebed3",
+    "quantization_policy": "No second wire quantization/normalization; inputs already dequantized FP32 NCL. Native adapter uses tensor fix_point, DPU_ROUND half toward positive infinity, layout conversion, copy/sync and root GraphRunner CPU fallback. Each sample loads model in a fresh process; not steady-state profiling.",
+    "cpu_plugins_sha256": {
+      "libvart_op_imp_relu.so": "6c3a30cd53404a9e691bed554056243e22d06ec42c07b222a1955b243f740f50",
+      "libvart_op_imp_maxpool1d.so": "7c81f9eb3d754bc52b2e995b77c895cdd73120c68ffa6515cc0eb9084a2f5b19",
+      "libvart_op_imp_conv1d.so": "ba0eeaa3559c5d42c672536ebe3cc65f77558ead8eb43c77f99bb0e80829a2ee"
+    },
+    "calibration": {
+      "split": "val",
+      "sample_ids": [
+        "MIT-BIH:105:197:MLII",
+        "MIT-BIH:105:459:MLII",
+        "MIT-BIH:105:708:MLII",
+        "MIT-BIH:105:965:MLII",
+        "MIT-BIH:105:1222:MLII",
+        "MIT-BIH:105:1479:MLII",
+        "MIT-BIH:105:1741:MLII",
+        "MIT-BIH:105:2015:MLII",
+        "MIT-BIH:105:2287:MLII",
+        "MIT-BIH:105:2550:MLII",
+        "MIT-BIH:105:2803:MLII",
+        "MIT-BIH:105:3052:MLII",
+        "MIT-BIH:105:3303:MLII",
+        "MIT-BIH:105:3563:MLII",
+        "MIT-BIH:105:3835:MLII",
+        "MIT-BIH:105:4102:MLII",
+        "MIT-BIH:105:4371:MLII",
+        "MIT-BIH:105:4635:MLII",
+        "MIT-BIH:105:4901:MLII",
+        "MIT-BIH:105:5154:MLII"
+      ],
+      "samples_csv_sha256": "4a6356312d5f62da6b2fdf9e609843d4dea3fc5c20767e201ea21a075e6f227c",
+      "golden_sha256": {
+        "2": "5b9607815738e1a3a7ccde941e23a01a9ad927326839f38895e1f289e7d72399",
+        "5": "b713e53387e5e43ba9f8abf0cd0905b108208cf29082669dfd1be706857a706e",
+        "8": "fda1e8ebc1828134b60daf75d5f60c50f4fa42ca3a9d9db83a66f3ffe0110829"
+      },
+      "artifacts_sha256": {
+        "quantize_s2.provenance.json": "3ab56d2d560c62395340c8e0a2c95167e625b013e6ccfcde1fc6217244896355",
+        "quantize_s5.provenance.json": "6ce9f9d90519dccd87d3e8caa22c74183ff25bdf01e1f9b8be0ed44454a991c9",
+        "quantize_s8.provenance.json": "e3f2f2d411e1569139c70d75539de2236674208583f97dc4422f0e826e818c78"
+      }
+    },
+    "models": {
+      "2": {
+        "xmodel_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+        "quant_info_sha256": "76f9ef4588fddf15add34996745f664dc80f0fcae5c52b98db03de780a216ffb",
+        "compile_log_sha256": "b61c01ed5cd4fc9b5fa916f1de7692b5c4d79fa52a634f0003cfb17eb4c90c68"
+      },
+      "5": {
+        "xmodel_sha256": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2",
+        "quant_info_sha256": "4e2a49dc4e289d8d1d03c78d4a73870ea78968c234e6a6912ba1acc36d9b5aea",
+        "compile_log_sha256": "86d85845e39205c5f67c102138ebcef67d13da5dbe60ce85747ec6c98a30506b"
+      },
+      "8": {
+        "xmodel_sha256": "dcc460edff10e22874f27d60bd0c98374bd3937f87690944287eab8213e5517e",
+        "quant_info_sha256": "50cde62598250da8d6cb9f9857d1ba1e8c924be7e88e1e96fec2c809f6865294",
+        "compile_log_sha256": "b975fbbcf480a746a9ddc4113b6cd638d7d51caa6a6bf5d58864cee41d9d3be4"
+      }
+    }
+  },
+  "gate": "200*(correct_fp32-correct_dpu) < 8544; missing/failure prevents acceptance",
+  "scope": "Offline accuracy only; no BLE/E2E/privacy or signature acceptance",
+  "requested_split_points": [
+    2,
+    5,
+    8
+  ],
+  "results": [
+    {
+      "split_point_s": 2,
+      "status": "PASS_ACCURACY_GATE",
+      "expected": 8544,
+      "received": 8544,
+      "valid": 8544,
+      "missing_ids": [],
+      "failures": [],
+      "valid_output_metrics": {
+        "count": 8544,
+        "correct": 8412,
+        "accuracy_percent": 98.45505617977528,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            8038,
+            54,
+            6,
+            4,
+            0
+          ],
+          [
+            13,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            49,
+            3,
+            374,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": [
+          {
+            "class": "N",
+            "support": 8102,
+            "predicted": 8102,
+            "precision": 0.992100715872624,
+            "recall": 0.992100715872624,
+            "f1": 0.992100715872624
+          },
+          {
+            "class": "S",
+            "support": 13,
+            "predicted": 57,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "V",
+            "support": 426,
+            "predicted": 381,
+            "precision": 0.9816272965879265,
+            "recall": 0.8779342723004695,
+            "f1": 0.9268897149938042
+          },
+          {
+            "class": "F",
+            "support": 1,
+            "predicted": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "Q",
+            "support": 2,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "macro_f1": 0.38379808617328565,
+        "zero_division": 0
+      },
+      "missing_or_failed_by_true_class": {
+        "N": 0,
+        "S": 0,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "correct_fp32": 8393,
+      "correct_dpu": 8412,
+      "accuracy_all_8544_percent": 98.45505617977528,
+      "accuracy_drop_pp": -0.22237827715355804,
+      "strict_count_gate_met": true,
+      "complete_coverage": true,
+      "logit_errors_vs_full_fp32": {
+        "max_abs": 5.753110408782959,
+        "mean_abs": 0.36808644066516943,
+        "p95_abs": 1.37896749973297,
+        "rmse": 0.6011669986155599,
+        "per_class_max_abs": [
+          2.812704086303711,
+          3.415710926055908,
+          4.064708709716797,
+          3.9317026138305664,
+          5.753110408782959
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "logit_errors_vs_wire_fp32_tail": {
+        "max_abs": 5.7211222648620605,
+        "mean_abs": 0.36774725814056514,
+        "p95_abs": 1.373775196075439,
+        "rmse": 0.6008010636998554,
+        "per_class_max_abs": [
+          2.735279083251953,
+          3.3916707038879395,
+          4.058531284332275,
+          3.9317874908447266,
+          5.7211222648620605
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "class_agreement_vs_full_fp32": 8497,
+      "class_agreement_vs_wire_fp32_tail": 8495
+    },
+    {
+      "split_point_s": 5,
+      "status": "PASS_ACCURACY_GATE",
+      "expected": 8544,
+      "received": 8544,
+      "valid": 8544,
+      "missing_ids": [],
+      "failures": [],
+      "valid_output_metrics": {
+        "count": 8544,
+        "correct": 8388,
+        "accuracy_percent": 98.17415730337079,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            8036,
+            55,
+            7,
+            4,
+            0
+          ],
+          [
+            13,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            71,
+            3,
+            352,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": [
+          {
+            "class": "N",
+            "support": 8102,
+            "predicted": 8122,
+            "precision": 0.9894114750061561,
+            "recall": 0.9918538632436436,
+            "f1": 0.9906311637080868
+          },
+          {
+            "class": "S",
+            "support": 13,
+            "predicted": 58,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "V",
+            "support": 426,
+            "predicted": 360,
+            "precision": 0.9777777777777777,
+            "recall": 0.8262910798122066,
+            "f1": 0.8956743002544529
+          },
+          {
+            "class": "F",
+            "support": 1,
+            "predicted": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "Q",
+            "support": 2,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "macro_f1": 0.3772610927925079,
+        "zero_division": 0
+      },
+      "missing_or_failed_by_true_class": {
+        "N": 0,
+        "S": 0,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "correct_fp32": 8393,
+      "correct_dpu": 8388,
+      "accuracy_all_8544_percent": 98.17415730337079,
+      "accuracy_drop_pp": 0.05852059925093633,
+      "strict_count_gate_met": true,
+      "complete_coverage": true,
+      "logit_errors_vs_full_fp32": {
+        "max_abs": 5.878110408782959,
+        "mean_abs": 0.347132693613377,
+        "p95_abs": 1.3470857620239247,
+        "rmse": 0.5800428938321102,
+        "per_class_max_abs": [
+          2.369009017944336,
+          3.290710926055908,
+          3.939708709716797,
+          3.6817026138305664,
+          5.878110408782959
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "logit_errors_vs_wire_fp32_tail": {
+        "max_abs": 5.877399921417236,
+        "mean_abs": 0.34758458658980906,
+        "p95_abs": 1.3477019846439358,
+        "rmse": 0.5807350481142898,
+        "per_class_max_abs": [
+          2.393980026245117,
+          3.286975383758545,
+          3.964456081390381,
+          3.680765151977539,
+          5.877399921417236
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "class_agreement_vs_full_fp32": 8481,
+      "class_agreement_vs_wire_fp32_tail": 8483
+    },
+    {
+      "split_point_s": 8,
+      "status": "PASS_ACCURACY_GATE",
+      "expected": 8544,
+      "received": 8544,
+      "valid": 8544,
+      "missing_ids": [],
+      "failures": [],
+      "valid_output_metrics": {
+        "count": 8544,
+        "correct": 8389,
+        "accuracy_percent": 98.18586142322097,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            8044,
+            47,
+            7,
+            4,
+            0
+          ],
+          [
+            13,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            78,
+            3,
+            345,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": [
+          {
+            "class": "N",
+            "support": 8102,
+            "predicted": 8137,
+            "precision": 0.9885707263119086,
+            "recall": 0.9928412737595655,
+            "f1": 0.990701397869327
+          },
+          {
+            "class": "S",
+            "support": 13,
+            "predicted": 50,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "V",
+            "support": 426,
+            "predicted": 353,
+            "precision": 0.9773371104815864,
+            "recall": 0.8098591549295775,
+            "f1": 0.8857509627727856
+          },
+          {
+            "class": "F",
+            "support": 1,
+            "predicted": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "Q",
+            "support": 2,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "macro_f1": 0.37529047212842254,
+        "zero_division": 0
+      },
+      "missing_or_failed_by_true_class": {
+        "N": 0,
+        "S": 0,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "correct_fp32": 8393,
+      "correct_dpu": 8389,
+      "accuracy_all_8544_percent": 98.18586142322097,
+      "accuracy_drop_pp": 0.04681647940074907,
+      "strict_count_gate_met": true,
+      "complete_coverage": true,
+      "logit_errors_vs_full_fp32": {
+        "max_abs": 5.878110408782959,
+        "mean_abs": 0.25945764090688994,
+        "p95_abs": 1.032591617107389,
+        "rmse": 0.4600460653672964,
+        "per_class_max_abs": [
+          2.494009017944336,
+          3.290710926055908,
+          3.439708709716797,
+          3.5567026138305664,
+          5.878110408782959
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "logit_errors_vs_wire_fp32_tail": {
+        "max_abs": 5.868171215057373,
+        "mean_abs": 0.25937808971825466,
+        "p95_abs": 1.034366765618324,
+        "rmse": 0.460048529477509,
+        "per_class_max_abs": [
+          2.480175018310547,
+          3.285170555114746,
+          3.431255340576172,
+          3.554110527038574,
+          5.868171215057373
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "class_agreement_vs_full_fp32": 8476,
+      "class_agreement_vs_wire_fp32_tail": 8474
+    }
+  ]
+}

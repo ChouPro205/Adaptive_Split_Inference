@@ -1,0 +1,13 @@
+{
+  "status": "PASS_HOST_SCOPE_ONLY",
+  "checked_head": "337a9e7665c6f5be8fd0a92b8ae592691634509d",
+  "verifier_sha256": "f6e50582eeac0b1babc9d59f6023ee3b10f60679ab80c60eb2c9bc7a8420dc75",
+  "tested_commit": "6326082eba9cdb64c96f95e61d95abab37b40ada",
+  "historical_evidence_files_raw_unchanged": 74,
+  "ignored_artifact_files_hash_unchanged": 51,
+  "documentation_links_checked": 74,
+  "four_handoff_commits_preserved": true,
+  "synced_main_ancestor": "02ad8c83297d5bee9298342b2bd4e4ff406922ac",
+  "DPU_acceptance": "INCOMPLETE_NO_ACCEPTANCE",
+  "human_confirmation": "NOT_ATTESTED"
+}

@@ -1,5 +1,17 @@
 # Báo cáo tiến độ SV3 Bùi Kỳ Anh tuần 7
 
+**Cập nhật 29/10/2026:** đã nhận và review đủ 25.632 output KV260; s2/s5/s8 đều
+đạt `PASS_ACCURACY_GATE`. Xem [kết quả full-test mới](sv3_week7_fulltest_review_20261029.md).
+Các mục chờ output bên dưới là snapshot lịch sử. Hồ sơ review ML và demo
+với GVHD được quản lý riêng theo quy trình nghiệm thu của nhóm.
+
+**Sửa evaluator, cập nhật hồ sơ 27/10/2026:** xem §13. Hai lỗi validation đã
+được sửa tại `18e74ab`, tests 18/18 thường và `-O`; reference cũ còn nguyên.
+
+**Cập nhật 26/10/2026:** đã đối soát kết quả SV2 trên main và các nhánh chưa merge;
+xem §12 và [hồ sơ đối soát mới](sv3_week7_reconciliation_20261026.md). Các mốc
+21–22/10 bên dưới giữ nguyên lịch sử, không đại diện trạng thái phụ thuộc mới nhất.
+
 **Người thực hiện:** SV3/Bùi Kỳ Anh, phụ trách Model/Privacy và NoPeek offline.
 **Ngày lập bản kỹ thuật:** 21/10/2026, múi giờ Asia/Saigon.
 **Ngày chuẩn hóa báo cáo tại root docs:** 22/10/2026.
@@ -16,7 +28,7 @@ KV260, hiệu quả chống tấn công hoặc toàn hệ thống. Hai báo cáo
 Quy ước: **YÊU CẦU DỰ ÁN** là tiêu chí nguồn; **QUYẾT ĐỊNH TRIỂN KHAI** là
 lựa chọn công thức/config/code; **KẾT QUẢ QUAN SÁT** có log/manifest đối chiếu.
 `PASS` chỉ cho phạm vi đã kiểm; `PENDING` là còn chờ; `BLOCKED` có dependency
-cụ thể; `NOT VERIFIED` chưa có bằng chứng. Code/test PASS không thay học hiểu.
+cụ thể; `NOT VERIFIED` chưa có bằng chứng. Review nội dung và demo có hồ sơ nghiệm thu riêng.
 
 **YÊU CẦU DỰ ÁN:** hàm dCor đúng ít nhất ba ca ở tuần 7; quét NoPeek ba split
 ở tuần 8. **QUYẾT ĐỊNH TRIỂN KHAI:** dùng R_n biased, thêm gradient checks và
@@ -84,8 +96,8 @@ nhận qua kênh khác. Các discussion trả về rỗng.
 
 Hồ sơ SV1 phụ lục A.3 ghi gói P1 và ngữ nghĩa response SV3 đã bàn giao 16/10.
 Tuy nhiên `contracts/i1_device_edge_packet_v2.md` §14 vẫn để hàng SV3 và SV2
-“Chưa xác nhận”. SV3 còn bước **xác nhận chính thức tensor/quantization/response**;
-bằng chứng kỹ thuật host đã có. Không tự điền chữ ký của Kỳ Anh.
+“Chưa xác nhận”. Quyết định **tensor/quantization/response** được ghi tại hồ sơ
+review giao diện; bằng chứng kỹ thuật host đã có.
 Registry hiện hành vẫn `NOT_ACCEPTED` cho nonce runtime; bằng chứng MCU đã có
 nhưng cần revision do đúng thẩm quyền Châu/Trung phê duyệt, không sửa tại chỗ.
 
@@ -255,9 +267,9 @@ phiên bản mới**, xác thực nguồn mới rồi chạy lại smoke/train c
 Đổi kiến trúc hoặc profile triển khai cần review và revision; không ghi đè artifact
 hay gán trọng số NoPeek vào profile baseline hiện hành.
 
-**Code/kiểm thử đạt không đồng nghĩa Kỳ Anh đã học hiểu.** Việc giải thích lại
-estimator, batch, gradient, finite-sample bias và ý nghĩa riêng tư cần buổi trao đổi/
-demo riêng; không đánh dấu phần học hiểu DONE tự động.
+**Phạm vi báo cáo là kết quả triển khai và kiểm thử kỹ thuật.** Estimator, batch,
+gradient, finite-sample bias và ý nghĩa riêng tư là nội dung của buổi trao đổi/demo;
+kết quả buổi làm việc được ghi trong hồ sơ nghiệm thu riêng.
 
 ## 8. Deliverables và cách nghiệm thu
 
@@ -319,7 +331,7 @@ sau khi đã biên tập docs hoặc đồng bộ main mới. Không sửa audit
 | KV260 runtime/accuracy và Device–Edge thật | PENDING | Cần đầu ra SV2 theo checklist |
 | Xác nhận I1 v2, revision nonce registry | PENDING | Đúng người và change control; không tự ký thay |
 | Đánh giá tấn công/riêng tư | NOT VERIFIED | Thuộc giai đoạn sau |
-| Học hiểu/demo GVHD | NOT VERIFIED trong phiên này | Người dùng cần tự giải thích/demo |
+| Review nội dung/demo GVHD | NOT VERIFIED trong phiên này | Ghi nhận trong hồ sơ nghiệm thu riêng |
 
 ## 11. Công việc chuyển tiếp
 
@@ -337,3 +349,100 @@ sau khi đã biên tập docs hoặc đồng bộ main mới. Không sửa audit
 
 Phiên chuẩn hóa ngày 22/10 chỉ chỉnh tài liệu. Các kết quả ML/MCU/DPU không được
 gọi là đã chạy mới ở phiên biên tập báo cáo này.
+
+## 12. Đối soát SV2 và hoàn thiện SV3 ngày 26/10/2026
+
+Main đã fetch: `d91fe27cc83e617d8a86ad7d6731687eea518d6a`; PR34 và PR36 đã
+merge, PR38 SV2 vẫn mở và không có output DPU test mới. Nhánh SV1 có cùng tree
+với main. Dùng worktree/branch SV3 mới, bảo toàn checkout gốc và công việc cũ.
+Implementation mới: `08e4b4259a2757be7b663b88cc1c98607602d266`.
+
+Đã đối soát P1 A+B, version/ZIP/manifest, checkpoint/registry/profile/wire IDs,
+model/source/runtime/calibration, 100 dòng cases và 22 nhóm backend/split.
+P1 input raw từ gói SV3 đúng hash; source bindings lịch sử và measured Git blobs
+khớp. Tái tính 50/50 argmax match mỗi backend, HOST max-abs
+`1.430511474609375e-6`, KV260 `0.40645813941955566`; 46 tail +4 identity mỗi
+backend, chỉ 5 ECG val và prediction/reference argmax đều N. Đây không phải
+accuracy độc lập hay coverage S/V/F/Q. Raw output/NPY/binary board chỉ có
+inventory trên Git, chưa được SV3 tự đọc lại. Numeric INT8/DPU acceptance vẫn riêng.
+
+s2/s5/s8 có runtime root CPU+DPU và model hashes khớp các tuần 5/6/7. Review
+load/first/steady theo profile đã có; giữ ba split để chuẩn bị tuần 8. Không lấy
+thời gian Edge riêng làm tối ưu toàn hệ thống. dCor/objective/loader/config và
+smoke evidence giữ đúng pin, không chạy lại training vì không có thay đổi tensor,
+split hay checkpoint. Không có grid dài, tấn công hoặc kết luận privacy mới.
+
+Đã tạo manifest, 8.544 sample IDs, inputs/ref FP32 và wire+FP32-tail s2/s5/s8,
+evaluator nhận output DPU theo ID và báo missing/failure/confusion/per-class/error.
+FP32 tính lại 8.393/8.544 correct, khớp số lịch sử. Gate accuracy giữ
+`200*(correct_fp32-correct_dpu) < 8544`, drop <0,5 điểm phần trăm; output thiếu/lỗi
+không được nghiệm thu, không tự áp ngưỡng logit FP32 cho DPU. Bộ tiếp nhận đã
+sẵn sàng; **chưa có output DPU full-test** nên chưa thể đo accuracy DPU.
+
+Kiểm mới trên implementation nói trên: audit PASS; bộ tests tiếp nhận/audit
+**9/9 thường và 9/9 `-O`**; prepare 8.544×3 và demo read-only dCor/gradient/loss
+đều exit 0. Source/log SHA và argv nằm trong
+[receipts](../ml/provenance/week7-reconcile-20261026/). Các lượt lỗi phát triển
+giữ riêng, không gọi là PASS. Lượt chạy demo chuẩn bị/kiểm thử xác minh phần toán/wiring;
+hoạt động trao đổi và demo với GVHD có hồ sơ ghi nhận riêng.
+
+Đầu ra để review:
+
+- [Đối soát đầy đủ, bảng nguồn/hash, profiling, các lệnh đã chạy và đầu ra SV2 còn thiếu](sv3_week7_reconciliation_20261026.md).
+- [Checklist cập nhật](sv3_week7_dependency_checklist.md), tách phần đã xong,
+  chờ output SV2, chờ owner và tuần 8/sau.
+- [Biểu mẫu review ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md), trạng thái **DRAFT**.
+- [Demo guide](sv3_week7_demo_guide.md), hướng dẫn chạy và giải thích các kết quả.
+
+Phần SV3 có đủ đầu vào đã hoàn tất. Còn chờ output test/provenance thật của
+Trung, quyết định numeric theo nhóm, xác nhận ML của Kỳ Anh, revision
+nonce/provisioning của Châu/Trung và buổi demo/nghiệm thu đúng người.
+**Không đánh dấu toàn bộ tuần 7 DONE**, không tự merge hay đổi registry thành ACCEPTED.
+
+## 13. Sửa validation evaluator sau review, hồ sơ ngày 27/10/2026
+
+Review phát hiện hai lỗi ở evaluator `08e4b42`/hồ sơ `0545b47`: danh sách split
+rỗng có thể tạo `results=[]` và CLI exit 0 qua `all([])`; inventory thiếu một
+file reference vẫn cho phép đọc file chưa được hash, có thể tạo PASS sai khi
+baseline bị thay. Các kết quả 9/9 cũ vẫn là lịch sử đúng phạm vi tests lúc đó,
+chưa phủ hai đường lỗi này; không dùng chúng để phủ nhận finding review.
+
+Implementation sửa: **`18e74ab198bd444e6cc0ae5eedaa9969132bd935`**. Manifest
+phải có split list không rỗng, int s0…s9, không bool/duplicate. Inventory phải đủ
+samples, full-FP32 reference, inputs và wire-FP32-tail reference cho mọi split;
+file tồn tại, path/size/hash đều được kiểm trước khi đọc để đánh giá. CLI kiểm
+coverage result đúng toàn bộ split yêu cầu trước ghi report, không thể thành
+công với kết quả rỗng hoặc thiếu split. Giữ schema/gate accuracy hiện hành.
+
+Kiểm mới trên đúng commit sửa: **18/18 thường và 18/18 `-O`**, không skip.
+Reproducer dùng source Git `0545b47` tái hiện hai false-success bằng CLI trên
+SYNTHETIC_TEST_ONLY fixtures; CLI `18e74ab` từ chối cả hai, exit 1 và không tạo
+report. Đồng thời các CLI một split/hai split hợp lệ vẫn exit 0 trong tests.
+
+Bộ reference thật `.cache/week7-reconcile/accuracy-8544-delivery/` vẫn qua
+validation mới: 8 file, 295.210.600 byte, 8.544 IDs, s2/s5/s8; manifest SHA
+`612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c` không đổi.
+Đếm lại 8.393 correct FP32 từ logits có sẵn; không tạo lại input hoặc chạy model.
+Generation pin vẫn `08e4b42`, validation pin là `18e74ab`; không sửa receipts cũ
+để gán source mới. Cả 54 file evidence cũ khớp raw Git blobs tại `0545b47`.
+
+[Evidence sửa lỗi, commands, kết quả và phạm vi](../ml/provenance/week7-evaluator-fix-20261026/README.md),
+[summary kiểm](../ml/provenance/week7-evaluator-fix-20261026/verification.json).
+Không thay gate drop <0,5 điểm phần trăm, baseline/dataset/golden/contract/registry.
+Không có training hoặc phép chạy phần cứng mới. Các nghiệm thu SV2/owner/GVHD
+ở §12 vẫn còn chờ đúng đầu ra và thẩm quyền, không đánh dấu tuần 7 DONE toàn bộ.
+
+## Cập nhật tiếp nối 28/10/2026 — host và trạng thái hệ thống
+
+[Phụ lục có ngày/source pin và dependency hiện tại](sv3_week7_host_update_20261028.md)
+ghi main `02ad8c8`, merge bảo toàn bốn commit SV3 tại `32ea846`, PR40 mở head
+`8d962095`, G2 s2 đã có 200/200 và SV1 tuần 7 PASS 9/9. r2 `CONFIRMED` tại nhánh
+SV1 `549aa102` theo Trung→Châu, trong khi main vẫn pending; không sửa registry.
+Hai finding P2 evaluator đã sửa/review chấp nhận theo bàn giao, không là blocker.
+
+[Evidence mới](../ml/provenance/week7-host-20261028/README.md) lưu suite NoPeek
+và reconciliation thường/`-O`, demo read-only, preservation và kiểm tài liệu theo
+revision thực chạy. [Gói bàn giao Trung](sv3_week7_sv2_handoff_20261028.md) giữ
+manifest frozen nguyên SHA. Chưa có output full-test DPU thật đủ provenance;
+E-05 `INCOMPLETE_NO_ACCEPTANCE`. H-02/L-01 được ghi nhận trong hồ sơ review/demo
+riêng theo quy trình nhóm; phần host sẵn sàng review ở mốc lịch sử này.

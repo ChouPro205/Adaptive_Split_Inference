@@ -1,0 +1,12 @@
+{
+  "status": "PASS_REFERENCE_FILES_HASH_RECHECK",
+  "input_commit": "08e4b4259a2757be7b663b88cc1c98607602d266",
+  "reference_directory": ".cache/week7-reconcile/accuracy-8544-delivery",
+  "manifest_sha256": "612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c",
+  "files_verified": 8,
+  "total_size_bytes": 295210600,
+  "fp32_correct": 8393,
+  "fp32_accuracy_percent": 98.23267790262172,
+  "DPU_output": "NOT_AVAILABLE",
+  "template_status": "NOT_EXECUTED"
+}
