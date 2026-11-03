@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v1.py", line 154, in <module>
+    main()
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v1.py", line 150, in main
+    verify(a.config,a.raw_dir,a.output,a.artifacts)
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v1.py", line 90, in verify
+    need(n==norm['num_values'] and n//360==norm['num_train_beats'] and
+  File "WORKTREE\ml\scripts\mitdb_ds1ds2_m1_v1.py", line 31, in need
+    raise ValueError(message)
+ValueError: Train-only normalization reconstruction differs

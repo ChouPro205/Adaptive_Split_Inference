@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "candidate_id": "mitdb-ds1ds2-m1-v1",
+  "status": "CANDIDATE_NOT_LOCKED_NOT_REVIEWED",
+  "dataset_version": "1.0.0",
+  "source_url": "https://physionet.org/content/mitdb/1.0.0/",
+  "physionet_checksum_manifest_sha256": "b61158a96d5f2ca80edfb354a9a66a6324836c390a84e1966dcee2b907d6be43",
+  "ds1": ["101","106","108","109","112","114","115","116","118","119","122","124","201","203","205","207","208","209","215","220","223","230"],
+  "ds2_main": ["100","103","105","111","113","117","121","123","200","210","212","213","214","219","221","222","228","231","232","233","234"],
+  "auxiliary_only": ["202"],
+  "excluded_paced": ["102","104","107","217"],
+  "shared_patient_groups": [["201","202"]],
+  "lead": "MLII",
+  "sampling_rate_hz": 360,
+  "window": {"size": 360, "left": 180, "right": 180, "boundary_policy": "drop"},
+  "filtering": false,
+  "rr_features": false,
+  "classes": ["N","S","V","F","Q"],
+  "aami_mapping": {"N":"N","L":"N","R":"N","e":"N","j":"N","A":"S","a":"S","J":"S","S":"S","V":"V","E":"V","F":"F","/":"Q","f":"Q","Q":"Q"},
+  "validation": {
+    "status": "PROPOSED_RULE_IMPLEMENTED_FOR_CANDIDATE",
+    "records": 5,
+    "seed": 20261030,
+    "minimum_ds1_fraction": {"S": 0.1, "V": 0.1},
+    "algorithm": "Enumerate all sorted 5-record DS1 combinations; retain those with 10*val_S>=DS1_S and 10*val_V>=DS1_V; choose minimum (SHA256(ASCII(seed:comma_joined_records)), records). No model metrics and no DS2 counts enter selection.",
+    "tie_break": "lexicographic_record_tuple"
+  },
+  "normalization": {"method": "global_z_score", "fit_split": "train", "population_variance": true, "accumulator_dtype": "float64", "output_dtype": "float32"},
+  "calibration_policy": "DS1 train or validation only; 202 and all DS2 forbidden",
+  "macro_f1_policy_proposal": {"labels": [0,1,2,3,4], "zero_division": 0, "absent_class": "retain in five-class macro average; also report support and undefined recall", "status": "PENDING_GROUP_TEACHER_CONFIRMATION"},
+  "approval": {"meeting_adoption": "NOT_EVIDENCED", "sv1_or_sv2_review": "NOT_REVIEWED", "m1_lock": "NOT_LOCKED"},
+  "hash_policy": {"repository_text": "sha256_utf8_lf_normalized", "raw_and_npy": "sha256_raw_bytes", "generated_text": "UTF-8 without BOM, LF"}
+}

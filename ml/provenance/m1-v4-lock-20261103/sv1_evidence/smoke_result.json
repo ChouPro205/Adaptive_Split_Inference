@@ -1,0 +1,41 @@
+{
+ "C0-seed20261030-a": {
+  "seconds": 18.4,
+  "device": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "epochs": 3,
+  "draws": [
+   41472,
+   41472,
+   41472
+  ],
+  "reload_exact": true,
+  "checkpoint_sha256": "6f3e0f4b9b8c0a2f",
+  "selected_epoch": 2
+ },
+ "C4-seed20261030-a": {
+  "seconds": 10.2,
+  "device": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "epochs": 3,
+  "draws": [
+   41472,
+   41472,
+   41472
+  ],
+  "reload_exact": true,
+  "checkpoint_sha256": "44c6d23cdb9b3c87",
+  "selected_epoch": 3
+ },
+ "C4-seed20261030-b": {
+  "seconds": 10.1,
+  "device": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "epochs": 3,
+  "draws": [
+   41472,
+   41472,
+   41472
+  ],
+  "reload_exact": true,
+  "checkpoint_sha256": "44c6d23cdb9b3c87",
+  "selected_epoch": 3
+ }
+}

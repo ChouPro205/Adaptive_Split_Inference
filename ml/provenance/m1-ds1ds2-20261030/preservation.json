@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "existing_files_checked": 3477,
+  "changed_or_missing": [],
+  "head_unchanged": true,
+  "index_unchanged": true,
+  "branch_unchanged": true,
+  "original_checkout_status_unchanged": true,
+  "tracked_diff_worktree": "",
+  "snapshot_before_sha256": "96eab005a2cc674bdd7da086f1e3041b79038de365985e12f65e59fa7769544b",
+  "scope": "All originally tracked and nonignored untracked files in SV3 worktree; historical ignored binaries verified separately against frozen manifests."
+}

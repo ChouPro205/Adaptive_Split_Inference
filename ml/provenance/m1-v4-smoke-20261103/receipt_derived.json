@@ -1,0 +1,105 @@
+{
+ "runs": {
+  "C0-seed20261030-a": {
+   "epoch_seconds_train_plus_validation": [
+    2.866,
+    1.96,
+    1.951
+   ],
+   "train_sample_draws": [
+    41472,
+    41472,
+    41472
+   ],
+   "reload_confusion_exact": true,
+   "selected_epoch": 2,
+   "checkpoint": "checkpoint-epoch-002.pt",
+   "checkpoint_sha256_summary": "c92a127247c903a7a139ad41b838bfc46741906d561c76e55bc2d0c0be5d3178",
+   "checkpoint_sha256_recomputed": "c92a127247c903a7a139ad41b838bfc46741906d561c76e55bc2d0c0be5d3178",
+   "history_sha256": "1d57d79b4c18d9b51ec784e34115dd657b2f075f37069f159b19029de1112755",
+   "DS2_evaluated": false,
+   "attempt_identity": {
+    "config_sha256": "SMOKE",
+    "protocol_sha256": "SMOKE",
+    "seed": 20261030,
+    "device": "cuda",
+    "torch": "2.14.0+cu130",
+    "cuda": "13.0",
+    "device_name": "NVIDIA GeForce RTX 5060",
+    "DS2_arrays_opened": false
+   }
+  },
+  "C4-seed20261030-a": {
+   "epoch_seconds_train_plus_validation": [
+    1.933,
+    1.975,
+    1.895
+   ],
+   "train_sample_draws": [
+    41472,
+    41472,
+    41472
+   ],
+   "reload_confusion_exact": true,
+   "selected_epoch": 3,
+   "checkpoint": "checkpoint-epoch-003.pt",
+   "checkpoint_sha256_summary": "494f966af0b7737c51c301a78aeb5f4d59df45cf158c0d3bd2f54fd60bc1db8a",
+   "checkpoint_sha256_recomputed": "494f966af0b7737c51c301a78aeb5f4d59df45cf158c0d3bd2f54fd60bc1db8a",
+   "history_sha256": "ab4ce2e99fe9d412e78e7f2380edc6905aa7f673c436ddba0b8816bf1b98edfd",
+   "DS2_evaluated": false,
+   "attempt_identity": {
+    "config_sha256": "SMOKE",
+    "protocol_sha256": "SMOKE",
+    "seed": 20261030,
+    "device": "cuda",
+    "torch": "2.14.0+cu130",
+    "cuda": "13.0",
+    "device_name": "NVIDIA GeForce RTX 5060",
+    "DS2_arrays_opened": false
+   }
+  },
+  "C4-seed20261030-b": {
+   "epoch_seconds_train_plus_validation": [
+    1.958,
+    1.929,
+    2.012
+   ],
+   "train_sample_draws": [
+    41472,
+    41472,
+    41472
+   ],
+   "reload_confusion_exact": true,
+   "selected_epoch": 3,
+   "checkpoint": "checkpoint-epoch-003.pt",
+   "checkpoint_sha256_summary": "494f966af0b7737c51c301a78aeb5f4d59df45cf158c0d3bd2f54fd60bc1db8a",
+   "checkpoint_sha256_recomputed": "494f966af0b7737c51c301a78aeb5f4d59df45cf158c0d3bd2f54fd60bc1db8a",
+   "history_sha256": "ab4ce2e99fe9d412e78e7f2380edc6905aa7f673c436ddba0b8816bf1b98edfd",
+   "DS2_evaluated": false,
+   "attempt_identity": {
+    "config_sha256": "SMOKE",
+    "protocol_sha256": "SMOKE",
+    "seed": 20261030,
+    "device": "cuda",
+    "torch": "2.14.0+cu130",
+    "cuda": "13.0",
+    "device_name": "NVIDIA GeForce RTX 5060",
+    "DS2_arrays_opened": false
+   }
+  }
+ },
+ "gpu_memory_nvidia_smi": {
+  "method": "whole-GPU memory.used sampled every 200 ms (per-process usage is N/A under WDDM)",
+  "samples": 133,
+  "baseline_MiB_first_samples_min": 2164,
+  "peak_MiB": 2515,
+  "peak_minus_baseline_MiB": 351,
+  "note": "Includes CUDA context and allocator cache; not torch.cuda.max_memory_allocated."
+ },
+ "timing_note": "Epoch time = mtime(epoch-k.json) - mtime(previous epoch json, or attempt-identity.json for epoch 1); covers train + validation; epoch 1 of the first run includes CUDA warm-up.",
+ "criteria": {
+  "draws_41472_every_epoch": true,
+  "reload_exact_all_runs": true,
+  "C4_two_runs_full_checkpoint_sha256_identical": true
+ }
+}

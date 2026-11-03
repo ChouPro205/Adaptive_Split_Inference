@@ -1,0 +1,21 @@
+{
+  "source_head": "6a8d06ae58aedf21a481d6bbb7afc8294ab4021a",
+  "raw_byte_sha256": {
+    "docs/SV3_ML_week1_report.md": "20a94b1bdaa65d10133b09466a388d5926ff5ee7aeb2c5d15b6282f713b7bbff",
+    "docs/SV3_ML_week2_report.md": "50b5bbdb83c761e20719ba42e32230867fb2981590a51be553bc293e84963e60",
+    "docs/sv3_week7_fulltest_review_20261029.md": "0e343109dbd77e2e989d5bc9d82f559048601db4e908402a2b2b909ae7aa832d",
+    "ml/configs/week3_model_freeze.json": "d5dc09df23a4e536d3d79d2c4c1ac357af7cd133810895a444e512b155f31e54",
+    "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+    "contracts/i1_device_edge_packet_v2.md": "9cdaf85e67f17a35854bf2fdd0e9926b62c19cbe27ace579cec1e0830d551d43",
+    "contracts/sv3_week5_approved_registry_v2.json": "79392b6db73cde6d83eadb1f265f14102888ebdbf8ea1b72b6c127c5566eed24",
+    "ml/scripts/run_week8_nopeek.py": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+    "ml/scripts/analyze_week8_grid.py": "322d779d24b10a7d7474d49ede579d411dc7fb832efba1ec267b10e7ee721c65",
+    "ml/scripts/test_week8_nopeek.py": "af40fcf2f5810751b702f1d178d4786c9d10544341b61f280b096df8933f3a27",
+    "ml/scripts/test_week8_grid_analysis.py": "bcb922e244cb94e86ddab90c84a270c47374a5f783b92080db5825e52c1c0e02"
+  },
+  "khung": {
+    "origin": "historical worktree local recovered text; no original PDF attestation",
+    "path_from_workspace": "exports/sv3-week7-20261021/ml/docs/project_sources/week7/Huong1_Khung_bai_bao_va_huong_dan_viet.txt",
+    "sha256": "1bd56b45fb528faa55378f835f7100678886636a9ce4b06a54dd4ae7f042ed56"
+  }
+}

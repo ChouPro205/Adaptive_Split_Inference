@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v2.py", line 205, in <module>
+    main()
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v2.py", line 201, in main
+    verify(a.config,a.raw_dir,a.output,a.artifacts)
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v2.py", line 116, in verify
+    groups = split_records(rows)
+             ^^^^^^^^^^^^^^^^^^^
+  File "WORKTREE\ml\scripts\mitdb_ds1ds2_m1_v2.py", line 155, in split_records
+    need(row['patient_id'] == patient(r), 'Canonical patient identity mismatch: '+r)
+  File "WORKTREE\ml\scripts\mitdb_ds1ds2_m1_v2.py", line 35, in need
+    raise ValueError(message)
+ValueError: Canonical patient identity mismatch: 202

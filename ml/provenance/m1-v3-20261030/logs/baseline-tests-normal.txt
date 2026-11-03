@@ -1,0 +1,23 @@
+test_authenticate_full_grid_fixture_no_model (__main__.AnalyzerTests.test_authenticate_full_grid_fixture_no_model) ... ok
+test_metric_tamper_rebound_history_hash_rejected (__main__.AnalyzerTests.test_metric_tamper_rebound_history_hash_rejected) ... ok
+test_no_authority_no_model_no_output (__main__.PreflightTests.test_no_authority_no_model_no_output) ... ok
+test_preflight_only_train_val_no_torch_import (__main__.PreflightTests.test_preflight_only_train_val_no_torch_import) ... ok
+test_preflight_rejects_double_balancing_after_rebound (__main__.PreflightTests.test_preflight_rejects_double_balancing_after_rebound) ... ok
+test_S_is_filter_priority_not_tie_break (__main__.SelectionTests.test_S_is_filter_priority_not_tie_break) ... ok
+test_best_seed_failing_N_does_not_get_rescued (__main__.SelectionTests.test_best_seed_failing_N_does_not_get_rescued) ... ok
+test_best_seed_failing_V_does_not_get_rescued (__main__.SelectionTests.test_best_seed_failing_V_does_not_get_rescued) ... ok
+test_configuration_mean_not_best_seed_score (__main__.SelectionTests.test_configuration_mean_not_best_seed_score) ... ok
+test_configuration_tie_lower_C (__main__.SelectionTests.test_configuration_tie_lower_C) ... ok
+test_execute_all18_after_first_PASS (__main__.SelectionTests.test_execute_all18_after_first_PASS) ... ok
+test_failed_seed_null_mean (__main__.SelectionTests.test_failed_seed_null_mean) ... ok
+test_gate_uses_unrounded_ratio (__main__.SelectionTests.test_gate_uses_unrounded_ratio) ... ok
+test_half_up4_and_checkpoint_ties (__main__.SelectionTests.test_half_up4_and_checkpoint_ties) ... ok
+test_missing_seed_rejected_not_mean2 (__main__.SelectionTests.test_missing_seed_rejected_not_mean2) ... ok
+test_no_NV_stops_no_expansion (__main__.SelectionTests.test_no_NV_stops_no_expansion) ... ok
+test_no_S_uses_NV_and_discloses (__main__.SelectionTests.test_no_S_uses_NV_and_discloses) ... ok
+test_seed_tie_lower_seed (__main__.SelectionTests.test_seed_tie_lower_seed) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.324s
+
+OK

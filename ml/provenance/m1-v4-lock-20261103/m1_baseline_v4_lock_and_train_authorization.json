@@ -1,0 +1,21 @@
+{
+  "type": "M1_BASELINE_LOCK_AND_TRAIN_AUTHORIZATION",
+  "allow_training": true,
+  "scope": "M1 baseline v4: 18 slots of plan v4, configuration selection rule, code_fault rule and ds2_report section as in protocol v4",
+  "protocol_path": "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+  "protocol_sha256": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+  "plan_manifest_path": "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json",
+  "plan_manifest_sha256": "1ce2f811e62f9ef55833e7256c6678e2b348cf1e2f750412e2e0b6203c27d956",
+  "assets_manifest_path": "ml/manifests/mitdb-m1-protocol-assets-v4/assets-manifest.json",
+  "assets_manifest_sha256": "bb365d5c2cd8181a5e439416669485274e61180b523a2263c6ac7bf5505d099a",
+  "approved_by": "SV3",
+  "decision_date": "2026-11-03",
+  "review_evidence": "f0ca9ebcae8383498265653c96f4672c61acd86c072a1f903e37c0bbe2b1b1b3",
+  "review_evidence_path": "ml/provenance/m1-v4-lock-20261103/sv1_evidence/sv1_review_m1_v4_20261103.txt",
+  "review_evidence_author": "SV1",
+  "gpu_smoke_receipt": "ml/provenance/m1-v4-smoke-20261103/RECEIPT.md",
+  "not_covered": [
+    "Quantization items in deviations_from_v1_2 remain pending Trung, as recorded in protocol v4",
+    "DS2 access: only after checkpoint lock, once, per ds2_report"
+  ]
+}

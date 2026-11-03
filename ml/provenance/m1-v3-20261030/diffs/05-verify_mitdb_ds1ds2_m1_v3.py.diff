@@ -1,0 +1,89 @@
+--- ml/scripts/verify_mitdb_ds1ds2_m1_v2.py
++++ ml/scripts/verify_mitdb_ds1ds2_m1_v3.py
+@@ -11,9 +11,9 @@
+ 
+ import numpy as np
+ import wfdb
+-from m1_metrics_v2 import freeze_validation_policy
+-
+-from mitdb_ds1ds2_m1_v2 import (ROOT, DS1, DS2, PACED, CLASSES, MAPPING, SCHEMA, SOURCE_PATHS,
++from m1_metrics_v3 import freeze_validation_policy
++
++from mitdb_ds1ds2_m1_v3 import (ROOT, DS1, DS2, PACED, CLASSES, MAPPING, SCHEMA, SOURCE_PATHS,
+     check_raw, digest, need, read_json, validate_config, split_records,
+     norm_binding, validate_calibration)
+ 
+@@ -50,7 +50,7 @@
+     summary={'ds1_counts':total.tolist(),
+              'selection_inputs':'accepted DS1 labels only; no DS2 or model metric','sizes':{}}
+     rows=[]
+-    accepted_B={}
++    accepted_floor={}
+     for size in (4,5):
+         combinations=list(itertools.combinations(range(len(DS1)),size))
+         values=counts[np.asarray(combinations)].sum(axis=1)
+@@ -58,7 +58,7 @@
+         A=upper & np.all(10*values[:,:4]>=total[:4],axis=1)
+         B=upper & np.all(10*values[:,1:3]>=total[1:3],axis=1)
+         C=B & (values[:,3]>0)
+-        flags={'A':A,'B':B,'C':C}
++        flags={'A':A,'B':B,'C':C,'F20':B & (values[:,3]>=20),'F10':B & (values[:,3]>=10)}
+         current={}
+         for policy,mask in flags.items():
+             v=values[mask]
+@@ -68,12 +68,14 @@
+                 'train_support_range':{name:[int(total[k]-v[:,k].max()),int(total[k]-v[:,k].min())] if len(v) else None
+                     for k,name in enumerate(CLASSES)}}
+         summary['sizes'][str(size)]={'total_combinations':len(combinations),'policies':current}
+-        accepted_B[size]=[tuple(sorted(DS1)[j] for j in combinations[i]) for i in np.flatnonzero(B)]
++        accepted_floor[size]={floor:[tuple(sorted(DS1)[j] for j in combinations[i])
++            for i in np.flatnonzero(flags['F'+str(floor)])] for floor in (20,10)}
+         for i,indices in enumerate(combinations):
+             rows.append([str(size),','.join(sorted(DS1)[j] for j in indices),
+-                         *map(str,values[i].tolist()),*[str(int(flags[p][i])) for p in ('A','B','C')]])
+-    size=4 if accepted_B[4] else 5
+-    feasible=accepted_B[size]
++                         *map(str,values[i].tolist()),*[str(int(flags[p][i])) for p in ('A','B','C','F20','F10')]])
++    floor=20 if len(accepted_floor[4][20])>=50 else 10
++    size=4 if accepted_floor[4][floor] else 5
++    feasible=accepted_floor[size][floor]
+     need(bool(feasible),'No independent feasible split; no relaxation')
+     limit=2**256-(2**256 % len(feasible))
+     counter=0
+@@ -86,7 +88,8 @@
+     index=value%len(feasible)
+     chosen=list(feasible[index])
+     selected_counts=counts[[sorted(DS1).index(r) for r in chosen]].sum(0).tolist()
+-    selection={'draw':{'policy':'B','records':size,'draw_sha256':draw.hex(),'counter':counter,
++    selection={'draw':{'policy':'F_floor','selected_F_floor':floor,
++        'four_record_F20_count':len(accepted_floor[4][20]),'records':size,'draw_sha256':draw.hex(),'counter':counter,
+         'feasible_count':len(feasible),'selected_zero_based_index':index,'seed':c['validation']['seed'],
+         'validation_counts':selected_counts,'algorithm':'SHA256-counter-rejection-lexicographic-index-v2'},
+         'enumeration':summary}
+@@ -101,7 +104,7 @@
+          m['training_performed'] is False and m['model_predictions_performed'] is False,
+          'Unexpected lock/training/prediction claim')
+     need(m['config_sha256']==digest(config,True), 'Config binding differs')
+-    need(m['schema_version']==2 and m['candidate_id']==c['candidate_id'] and m['decision_status']==c['approval'] and
++    need(m['schema_version']==3 and m['candidate_id']==c['candidate_id'] and m['decision_status']==c['approval'] and
+          set(m['sources_sha256'])==set(SOURCE_PATHS) and
+          set(m['splits'])=={'train','val','test_main','test_aux22'}, 'Manifest schema/inventory differs')
+     for field,name in [('split_sha256','split.csv'),('normalization_sha256','normalization.json'),
+@@ -118,7 +121,7 @@
+     norm_binding(norm,groups)
+     need(norm['config_sha256']==m['config_sha256'] and norm['split_sha256']==m['split_sha256'],
+          'Normalization provenance differs')
+-    validate_calibration(groups['train']+groups['val'],groups)
++    validate_calibration(groups['train'],groups)
+     data = {r:independent_record(raw,r) for r in DS1}
+     val,selection,enumerated_rows = independent_validation(c,data)
+     need(val==groups['val'] and m['selection']==selection, 'Reproducible validation differs')
+@@ -128,7 +131,7 @@
+     content=gzip.decompress(zipped.read_bytes())
+     need(hashlib.sha256(content).hexdigest()==m['combinations_csv_sha256'],'Combination CSV binding differs')
+     parsed=list(csv.reader(io.StringIO(content.decode('utf-8'),newline='')))
+-    need(parsed[0]==['records_count','records','N','S','V','F','Q','A','B','C'] and parsed[1:]==enumerated_rows,
++    need(parsed[0]==['records_count','records','N','S','V','F','Q','A','B','C','F20','F10'] and parsed[1:]==enumerated_rows,
+          'Exhaustive combination rows differ')
+     val_y=np.concatenate([data[r][1] for r in groups['val']])
+     need(read_json(output/'metric-policy.json')==freeze_validation_policy(val_y),'Frozen validation metric policy differs')

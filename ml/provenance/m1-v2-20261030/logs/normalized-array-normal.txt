@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v2.py", line 205, in <module>
+    main()
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v2.py", line 201, in main
+    verify(a.config,a.raw_dir,a.output,a.artifacts)
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v2.py", line 180, in verify
+    need(np.array_equal(x[start:end],expected_x) and np.isfinite(x[start:end]).all(),
+  File "WORKTREE\ml\scripts\mitdb_ds1ds2_m1_v2.py", line 35, in need
+    raise ValueError(message)
+ValueError: Raw-to-normalized window mismatch: train/101

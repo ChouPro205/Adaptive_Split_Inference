@@ -1,0 +1,2 @@
+require_authorization: ACCEPTED 7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18 1ce2f811e62f9ef55833e7256c6678e2b348cf1e2f750412e2e0b6203c27d956
+negative control allow_training=false: REJECTED ValueError

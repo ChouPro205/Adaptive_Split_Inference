@@ -1,0 +1,35 @@
+--- ml/scripts/audit_mitdb_ds1ds2_m1_v2.py
++++ ml/scripts/audit_mitdb_ds1ds2_m1_v3.py
+@@ -8,7 +8,7 @@
+ import subprocess
+ import sys
+ 
+-from mitdb_ds1ds2_m1_v2 import ROOT, digest, read_json, write_json, write_csv, patient
++from mitdb_ds1ds2_m1_v3 import ROOT, digest, read_json, write_json, write_csv, patient
+ 
+ 
+ def audit(raw, output, artifacts, logs):
+@@ -35,19 +35,19 @@
+             write_json(logs/'failed-receipt.json',results)
+             raise RuntimeError('Audit failed: '+name)
+ 
+-    config=ROOT/'ml/configs/mitdb_ds1ds2_m1_v2.json'
+-    verifier='ml/scripts/verify_mitdb_ds1ds2_m1_v2.py'
++    config=ROOT/'ml/configs/mitdb_ds1ds2_m1_v3.json'
++    verifier='ml/scripts/verify_mitdb_ds1ds2_m1_v3.py'
+     def arguments(o=output,a=artifacts,r=raw):
+         return [verifier,'--config',str(config),'--raw-dir',str(r),
+                 '--output',str(o),'--artifacts',str(a)]
+ 
+     for flags,label in [(['-B'],'normal'),(['-O','-B'],'optimized')]:
+         run('verify-'+label,flags+arguments())
+-        run('unit-tests-'+label,flags+['ml/scripts/test_mitdb_ds1ds2_m1_v2.py'])
++        run('unit-tests-'+label,flags+['ml/scripts/test_mitdb_ds1ds2_m1_v3.py'])
+ 
+     repro=logs/'reproduction-metadata'
+     repro_arrays=ROOT/'ml/data/processed'/(output.name+'-reproduction-'+logs.name)
+-    run('reproduce',['-B','ml/scripts/mitdb_ds1ds2_m1_v2.py','--config',str(config),
++    run('reproduce',['-B','ml/scripts/mitdb_ds1ds2_m1_v3.py','--config',str(config),
+         '--raw-dir',str(raw),'--output',str(repro),'--artifacts',str(repro_arrays)])
+     comparisons={name:digest(output/name)==digest(repro/name)
+                  for name in ['split.csv','normalization.json','record-audit.json','processed-manifest.json',

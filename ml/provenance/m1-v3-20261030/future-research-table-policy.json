@@ -1,0 +1,19 @@
+{
+  "layout": "long table",
+  "keys": [
+    "s",
+    "rho",
+    "dataset_split",
+    "execution_path_FP32_or_DPU",
+    "metric_name",
+    "metric_value",
+    "checkpoint_sha256",
+    "protocol_version",
+    "Pi_definition_version",
+    "sample_count",
+    "offline_only"
+  ],
+  "ratios": "0..1,not percentages",
+  "missing_values": "Do not fill unmeasuredPi or fabricated values;empty template only",
+  "units": "Metric-specific units,including ms for R-peak error;Pi version required only for Pi rows"
+}

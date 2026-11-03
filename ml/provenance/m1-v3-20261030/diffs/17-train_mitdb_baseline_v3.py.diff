@@ -1,0 +1,107 @@
+--- /dev/null
++++ ml/scripts/train_mitdb_baseline_v3.py
+@@ -0,0 +1,104 @@
++"""Future baseline fit entry point. Never fit without externally supplied authority."""
++import argparse
++import os
++from pathlib import Path
++import sys
++import math
++
++from baseline_grid_v3 import ROOT,read,write,sha,need,require_authorization,preflight,load_train_validation
++from baseline_selection_v3 import choose_epoch,rounded
++from m1_metrics_v3 import validation_metrics
++
++
++def fit_slot(config,arrays,output,metric_policy,protocol_sha,config_sha):
++    # Lazy imports ensure preparation/preflight never instantiate a model or optimizer.
++    os.environ.setdefault('CUBLAS_WORKSPACE_CONFIG',':4096:8')
++    import random
++    import numpy as np
++    import torch
++    from torch import nn
++    from torch.utils.data import TensorDataset,DataLoader,WeightedRandomSampler
++    sys.path.insert(0,str(ROOT/'ml/src'))
++    from mitdb_baseline_model import MitdbBaselineCNN
++    c=config;seed=c['seed']
++    random.seed(seed);np.random.seed(seed);torch.manual_seed(seed)
++    if torch.cuda.is_available():torch.cuda.manual_seed_all(seed)
++    torch.set_num_threads(c['threads']);torch.use_deterministic_algorithms(True)
++    torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True
++    device=torch.device('cuda' if torch.cuda.is_available() and c['device']=='auto' else 'cpu')
++    data=load_train_validation(arrays)
++    datasets={s:TensorDataset(torch.from_numpy(np.array(x,copy=True)).unsqueeze(1),torch.from_numpy(y))
++              for s,(x,y) in data.items()}
++    model=MitdbBaselineCNN(c['dropout']).to(device)
++    need(sum(p.numel() for p in model.parameters())==109653,'Frozen architecture parameter count differs')
++    optimizer=torch.optim.AdamW(model.parameters(),lr=c['lr'],betas=tuple(c['betas']),eps=c['eps'],weight_decay=c['weight_decay'])
++    sch=c['scheduler']
++    scheduler=torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer,mode='max',factor=sch['factor'],patience=sch['patience'],
++        threshold=sch['threshold'],threshold_mode=sch['threshold_mode'],min_lr=sch['min_lr'],eps=sch['eps'])
++    loss=nn.CrossEntropyLoss(weight=torch.tensor(c['class_weights'],dtype=torch.float32,device=device)
++        if c['class_weights'] is not None else None)
++    val_loader=DataLoader(datasets['val'],batch_size=c['batch_size'],shuffle=False,num_workers=0)
++    def evaluate():
++        model.eval();truth=[];pred=[];ce=0.
++        with torch.no_grad():
++            for x,y in val_loader:
++                z=model(x.to(device));need(z.shape[1]==5,'Five outputs required')
++                ce+=float(nn.functional.cross_entropy(z,y.to(device),reduction='sum'))
++                truth.extend(y.tolist());pred.extend(z.argmax(1).cpu().tolist())
++        m=validation_metrics(truth,pred,metric_policy);m['unweighted_CE']=ce/len(truth)
++        return m
++    write(output/'attempt-identity.json',{'config_sha256':config_sha,'protocol_sha256':protocol_sha,
++          'seed':seed,'device':str(device),'torch':str(torch.__version__),'cuda':torch.version.cuda,
++          'device_name':torch.cuda.get_device_name(device) if device.type=='cuda' else 'CPU',
++          'DS2_arrays_opened':False})
++    history=[];best_round=None;best_raw=-1.;stale=0;chosen_file=None
++    for epoch in range(1,c['epochs']+1):
++        generator=torch.Generator().manual_seed(seed+epoch-1)
++        if c['mode']=='balanced_sampler':
++            sample_weights=torch.tensor([1/c['train_counts'][int(y)] for y in data['train'][1]],dtype=torch.double)
++            sampler=WeightedRandomSampler(sample_weights,c['samples_per_epoch'],replacement=True,generator=generator)
++            loader=DataLoader(datasets['train'],batch_size=c['batch_size'],sampler=sampler,num_workers=0,drop_last=False)
++        else:
++            loader=DataLoader(datasets['train'],batch_size=c['batch_size'],shuffle=True,generator=generator,num_workers=0,drop_last=False)
++        model.train();total_loss=0.;seen=0
++        for x,y in loader:
++            optimizer.zero_grad(set_to_none=True);logits=model(x.to(device));value=loss(logits,y.to(device))
++            need(bool(torch.isfinite(value)),'Non-finite train loss')
++            value.backward();need(all(p.grad is None or bool(torch.isfinite(p.grad).all()) for p in model.parameters()),'Non-finite gradient')
++            optimizer.step();total_loss+=float(value.detach())*len(y);seen+=len(y)
++        need(seen==c['samples_per_epoch'],'Epoch sample count differs')
++        validation=evaluate();score=validation['validation_macro_f1_K_fixed'];need(math.isfinite(score),'Non-finite validation score')
++        row={'epoch':epoch,'score':score,'validation':validation,'train_batch_mean_CE_sample_weighted':total_loss/seen,
++             'train_sample_draws':seen,'lr':optimizer.param_groups[0]['lr']}
++        history.append(row);write(output/f'epoch-{epoch:03}.json',row)
++        if best_round is None or rounded(score)>best_round:
++            best_round=rounded(score);chosen_file=f'checkpoint-epoch-{epoch:03}.pt'
++            torch.save({'state_dict':{k:v.detach().cpu().clone() for k,v in model.state_dict().items()},
++                        'epoch':epoch,'config_sha256':config_sha,'protocol_sha256':protocol_sha,
++                        'validation':validation},output/chosen_file)
++        if score>best_raw:best_raw=score;stale=0
++        else:stale+=1
++        scheduler.step(score)
++        if stale>=c['patience']:break
++    best=choose_epoch(history);need(chosen_file==f"checkpoint-epoch-{best['epoch']:03}.pt",'Checkpoint tie selection differs')
++    stored=torch.load(output/chosen_file,map_location='cpu',weights_only=True);model.load_state_dict(stored['state_dict'])
++    reloaded=evaluate();need(reloaded['confusion_matrix']==best['validation']['confusion_matrix'],'Checkpoint validation reload differs')
++    write(output/'history.json',history)
++    write(output/'summary.json',{'status':'COMPLETED_NOT_DEPLOYMENT_LOCK','config_sha256':config_sha,'protocol_sha256':protocol_sha,
++        'selected_epoch':best['epoch'],'validation':best['validation'],'history_sha256':sha(output/'history.json'),
++        'checkpoint':chosen_file,'checkpoint_sha256':sha(output/chosen_file),'reload_confusion_exact':True,
++        'DS2_evaluated':False})
++
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__)
++    for name in ['protocol','plan','arrays','output','authorization']:p.add_argument('--'+name,type=Path,required=True)
++    p.add_argument('--slot',required=True);a=p.parse_args()
++    require_authorization(a.authorization,a.protocol,a.plan)
++    preflight(a.protocol,a.plan,a.arrays);plan=read(a.plan)
++    slot=next((s for s in plan['slots'] if s['slot_id']==a.slot),None);need(slot is not None,'Unknown slot')
++    need(a.output.resolve().is_relative_to(ROOT/'ml/data') and a.output.is_dir() and not list(a.output.iterdir()),'Attempt directory must be new empty ignored output')
++    fit_slot(read(a.plan.parent/slot['config']),a.arrays,a.output,read(ROOT/plan['binding']['metric_policy']),sha(a.protocol),slot['sha256'])
++
++
++if __name__=='__main__':main()
