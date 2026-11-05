@@ -1,0 +1,6 @@
+Tree: git archive ea04abfcacfb167bbf911ec5fa987aa30b577703 | tar -x -C ml/data/release-check-20261105
+Overlay: SV3_M1_V4_GRID_RESULT_20261103.zip (5dc88a02077322d976497c7d9bf78b47db43d3d80485c063874349a8088e82a9) extracted with zipfile.extractall
+Then, from that tree root:
+sha256sum -c PACKAGE_SHA256SUMS.txt
+python -B ml/provenance/m1-v4-checkpoint-lock-20261105/verify_checkpoint_lock.py
+python -B -O ml/provenance/m1-v4-checkpoint-lock-20261105/verify_checkpoint_lock.py
