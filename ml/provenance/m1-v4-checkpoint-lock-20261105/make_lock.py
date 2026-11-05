@@ -1,0 +1,68 @@
+# Writes the M1 v4 checkpoint lock once (open 'x'). Numbers come from the analyze output, not typed by hand.
+# Hashes files only: no arrays, no model, no DS2. Run from the worktree root.
+import hashlib,json
+from pathlib import Path
+ROOT=Path.cwd();D='ml/provenance/m1-v4-checkpoint-lock-20261105'
+RUN='ml/data/runs/mitdb-baseline-v4-20261103';GA='ml/provenance/m1-v4-grid-analysis-20261103'
+EVIDENCE=f'{D}/sv1_evidence/sv1_review_m1_v4_grid_20261105.txt'
+sha=lambda p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
+ref=lambda p:{'path':p,'sha256':sha(p)}
+analysis=json.loads((ROOT/GA/'logs/analyze-normal.stdout.json').read_text(encoding='utf-8'))
+selected=analysis['selected'];config=next(c for c in analysis['configurations'] if c['configuration']==selected['configuration'])
+checkpoints=[]
+for s in sorted(config['seeds'],key=lambda s:s['seed']!=selected['seed']):
+    path=f"{RUN}/{selected['configuration']}-seed{s['seed']}/attempt-1/checkpoint-epoch-{s['selected_epoch']:03}.pt"
+    checkpoints.append({'role':'deployment' if s['seed']==selected['seed'] else 'seed_of_selected_configuration',
+        'slot_id':f"{selected['configuration']}-seed{s['seed']}",'seed':s['seed'],'selected_epoch':s['selected_epoch'],
+        'path':path,'bytes':(ROOT/path).stat().st_size,'sha256':sha(path),
+        'validation_macro_f1_K':s['score'],'gates':s['gates']})
+lock={
+ 'type':'M1_BASELINE_V4_CHECKPOINT_LOCK',
+ 'status':'LOCKED_DS2_NOT_OPENED',
+ 'scope':'Selected configuration of M1 baseline v4: the deployment checkpoint and the three seed checkpoints that protocol v4 ds2_report evaluates',
+ 'approved_by':'SV3',
+ 'decision_authority':'SV1, delegated by GVHD (GVHD gave SV1 all group decisions and supports the controller)',
+ 'decision_date':'2026-11-05',
+ 'review_evidence':sha(EVIDENCE),
+ 'review_evidence_path':EVIDENCE,
+ 'review_evidence_author':'SV1',
+ 'review_evidence_form':'SV1 chat message pasted by SV3 and saved verbatim as UTF-8 LF. SV1 attachments (recompute_grid.py, reload_val.py, rerun_c5.py, rerun_summary.py, rec118.py, *_out.txt, SHA256SUMS.txt) are not part of this lock',
+ 'bindings':{
+  'protocol':ref('ml/configs/mitdb_m1_baseline_protocol_v4.json'),
+  'plan_manifest':ref('ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json'),
+  'assets_manifest':ref('ml/manifests/mitdb-m1-protocol-assets-v4/assets-manifest.json'),
+  'protocol_lock_and_train_authorization':ref('ml/provenance/m1-v4-lock-20261103/m1_baseline_v4_lock_and_train_authorization.json'),
+  'grid_result':ref(f'{RUN}/grid-result.json'),
+  'analyze_stdout':ref(f'{GA}/logs/analyze-normal.stdout.json'),
+  'grid_analysis_receipt':ref(f'{GA}/receipt.json'),
+  'selected_checkpoints_list':ref(f'{GA}/selected-checkpoints.sha256'),
+  'rerun_2c_receipt':ref('ml/provenance/m1-v4-c5-rerun-20261105/receipt.json')},
+ 'selection':{'rule':'protocol v4 baseline.configuration_selection','analyze_status':analysis['status'],
+  'configuration':selected['configuration'],'mode':'balanced_sampler','lr':0.0003,
+  'mean_validation_macro_f1_K':config['mean_macro_f1'],'sd_sample_ddof1':config['sd_sample'],
+  'deployment_seed':selected['seed'],'package_A_gate':selected['package_A_gate']},
+ 'checkpoints':checkpoints,
+ 'rerun_2c':{'device':'NVIDIA GeForce RTX 5060','status':'RERUN_BYTE_IDENTICAL_DEPLOYMENT_SHA_REPRODUCED','files_matching':'21/21',
+  'note':'Rerun is a repeatability check only; it is not a selection input and changes no checkpoint'},
+ 'reproducibility':'Same-GPU reruns are bit-identical (SV3 rerun on RTX 5060; SV1 two runs on RTX 3050). Different GPUs give different models (SV1: C5 mean validation macro-F1 0.5129 on RTX 5060, 0.5516 on RTX 3050). The checkpoint files bound here are the only evidence of the model; numbers from another GPU never change them',
+ 'ds2':{
+  'status':'NOT_OPENED',
+  'order':'Strict reading chosen by SV1: protocol v4 ds2_report.timing allows DS2 after the checkpoint lock, but quantization.freeze_before_DS2 requires the xmodel lock before any DS2 predictions and change_control.DS2 requires model/quantization lock. DS2 therefore waits until SV2 locks the SHA-256 of xmodels s0-s9 (week 13). Until then NoPeek, P2 and quantization use train/val only',
+  'passes':'Then exactly one FP32 pass by SV3 and one DPU pass by SV2; no repeat evaluation',
+  'script':'No DS2 script exists at 365acbc (only ds2_reporting_metrics tested on fixtures). SV1 reviews the script before any DS2 access. Required: a validation dry run of the same code path reproduces the summary confusion of all three checkpoints above; test_main and test_aux22 come from one pass; the device is recorded; per-beat predictions are saved with record_id. The exact contents of the single SV3 pass (FP32 only, or FP32 plus the INT8/FP16 emulated path of v1.2 section 4.3) are fixed in that reviewed script before DS2 access',
+  'per_record_confusion':'Declared before DS2: a 5x5 confusion per record on test_main and test_aux22 is reported as a descriptive addition, not a primary or secondary metric of ds2_report and never a selection input. Reason: patient-dependent failure (record 118 on validation; RBBB records 212 and 231 are in DS2)',
+  'never_input_to':['configuration','epoch','seed','lambda','calibration','noise parameters','thresholds']},
+ 'package_A':'Delivered after this lock is committed and pushed and the GitHub Release exists, without DS2 predictions; DS2 predictions (v1.2 section 4.3) follow the xmodel SHA lock',
+ 'limitations':[
+  'Model instability: within one configuration validation macro-F1 ranges 0.41-0.57 across seeds; C5 - C1 = 0.0027 is within noise. Report all three seeds, not only the deployment seed, which was chosen as the highest and is therefore optimistic',
+  'No bit-exact reproduction across GPUs (RTX 5060 vs RTX 3050)',
+  'Seed C5-20261030 fails gate V. Per SV1, 2158 of the 2166 N beats predicted V are in record 118 (RBBB), record accuracy 0.7 %; on RTX 3050 the same seed partly collapses on the same record (990/995, accuracy 0.54). This is a patient-dependent weakness rather than pure chance; DS2 contains RBBB records 212 and 231, so per-record numbers are required',
+  'Validation has 4 patients: 169 of 172 S beats are in records 118 and 223; all 25 F beats are in records 205 and 223'],
+ 'not_covered':[
+  'GitHub Release of the 18 selected checkpoints, grid-result.json and manifest (SV1 2d): after this lock, with its own receipt',
+  'xmodel s0-s9 lock (SV2, week 13) and every DS2 prediction',
+  'NoPeek/P2: new protocol version (s in {2,4,5,8}), not covered by this lock',
+  'Quantization items pending SV2 as recorded in protocol v4',
+  'Per-record figures for record 118 and RTX 3050 results come from the SV1 review and were not re-verified by SV3']}
+with (ROOT/D/'m1_baseline_v4_checkpoint_lock.json').open('x',encoding='utf-8',newline='\n') as f:f.write(json.dumps(lock,ensure_ascii=False,indent=2)+'\n')
+print('lock',sha(f'{D}/m1_baseline_v4_checkpoint_lock.json'))
