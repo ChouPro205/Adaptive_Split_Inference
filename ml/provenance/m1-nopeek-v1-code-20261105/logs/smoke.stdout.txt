@@ -1,0 +1,17 @@
+{
+  "status": "SMOKE_PASS_RANDOM_DATA_NOT_MITDB",
+  "epochs": 2,
+  "runs": [
+    "smoke-s2-lambda0",
+    "smoke-s8-lambda0",
+    "smoke-s2-lambda5"
+  ],
+  "lambda0_identical_across_s2_s8": true,
+  "lambda5_weights_changed": true,
+  "epoch0_state_equals_package_A": true,
+  "subset_Rn_lambda5": [
+    0.9211933612823486,
+    0.9220592975616455,
+    0.9207969307899475
+  ]
+}

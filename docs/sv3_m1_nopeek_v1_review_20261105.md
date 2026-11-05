@@ -53,11 +53,12 @@ Nguồn: bản 1.2 mục 4.5–4.6; bản chốt 03/11 (câu 1, 3, 4, 8, 11); ti
 2. **Pilot:** ba ứng viên LR {1e-5; 3e-5; 1e-4} và luật ở mục 3 có được không? Chạy pilot xong thì bắt đầu grid ngay khi có receipt, hay chờ SV1 xem receipt?
 3. **Số run:** giữ 72 run (12 run λ = 0 dùng làm kiểm tính tất định), hay rút còn 63 run (mỗi seed chạy λ = 0 một lần, dùng chung cho cả 4 s)?
 4. **Số epoch:** chọn 10 cho mọi λ. Lý do: run triển khai của A có patience 10 và đạt đỉnh ở epoch 4. Có cần dài hơn không?
+5. **TF32 khi train** (bổ sung sau khi viết runner): trên RTX 5060, PyTorch mặc định bật TF32 cho tích chập cuDNN, và gói A đã được train với mặc định đó. Khi nạp checkpoint A để chạy validation, bật TF32 làm logit lệch khoảng 5e-3 so với CPU, tắt TF32 thì còn khoảng 1e-5; nhãn dự đoán không đổi. Runner hiện ghi cờ này rõ ràng trong cấu hình từng run và để bật, giống lúc train A. Bạn muốn giữ như A hay tắt TF32? Script DS2 thì luôn tắt TF32, để lượt FP32 là FP32 thật.
 
 ## 5. Bước tiếp sau review
 
 1. Nếu SV1 sửa, lập protocol v2 kèm diff. Không sửa file này.
-2. Viết runner, plan manifest (cấu hình từng run có SHA) và test; smoke trên dữ liệu ngẫu nhiên, không đọc MITDB.
+2. Viết runner, plan manifest (cấu hình từng run có SHA) và test; smoke trên dữ liệu ngẫu nhiên, không đọc MITDB. Bước này đã làm trước để SV1 review cùng lúc: `ml/scripts/nopeek_m1_v1.py`, plan ứng viên `ml/manifests/mitdb-nopeek-m1-v1/`, receipt `ml/provenance/m1-nopeek-v1-code-20261105/`. Nếu protocol đổi sang v2 thì sinh lại plan.
 3. Lập file khóa và train authorization (approved_by SV3, thẩm quyền SV1, review evidence là tin review của SV1), ràng buộc protocol, plan và SHA mã nguồn.
 4. Chạy pilot, ghi receipt, rồi chạy grid 72 run trên RTX 5060. Ước lượng (chưa đo): khoảng 3 s mỗi epoch theo thời gian chạy lại A, cộng chi phí tính dCor. Pilot khoảng 5–10 phút, grid khoảng 1 giờ.
 5. Gửi SV1 đường cong λ = 0 trước khi tính Π. Sau đó chọn λ cho từng s, lập gói B, rồi thử tấn công tuần 11.
