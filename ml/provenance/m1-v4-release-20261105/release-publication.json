@@ -1,0 +1,62 @@
+{
+  "schema": "m1-v4-release-publication/1",
+  "status": "PUBLISHED_AND_DOWNLOADED_BYTES_VERIFIED",
+  "release_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/tag/sv3-m1-v4-checkpoint-lock-20261105",
+  "release_id": 435334263,
+  "tag": "sv3-m1-v4-checkpoint-lock-20261105",
+  "tag_commit": "ea04abfcacfb167bbf911ec5fa987aa30b577703",
+  "target_commitish": "ea04abfcacfb167bbf911ec5fa987aa30b577703",
+  "title": "SV3 M1 v4: checkpoint C5 đã khóa (05/11/2026)",
+  "published_at": "2026-11-05T14:50:54Z",
+  "publisher": "kyanhhbt-code",
+  "draft": false,
+  "prerelease": false,
+  "notes": {
+    "path": "ml/provenance/m1-v4-release-20261105/release-notes.md",
+    "sha256": "67fe24733228f7f320b00984399db79354f735427eb2511fc90773b7f89ec278"
+  },
+  "checkpoint_lock": {
+    "path": "ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json",
+    "sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc"
+  },
+  "request": "SV1 review of M1 v4 grid, section 2d: put the 18 selected checkpoints, grid result and manifest on a GitHub Release",
+  "assets": [
+    {
+      "name": "SV3_M1_V4_GRID_RESULT_20261103.zip",
+      "asset_id": 713751165,
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-m1-v4-checkpoint-lock-20261105/SV3_M1_V4_GRID_RESULT_20261103.zip",
+      "size_bytes": 7922636,
+      "sha256": "5dc88a02077322d976497c7d9bf78b47db43d3d80485c063874349a8088e82a9",
+      "github_digest": "sha256:5dc88a02077322d976497c7d9bf78b47db43d3d80485c063874349a8088e82a9",
+      "download_http_status": 200,
+      "download_sha256": "5dc88a02077322d976497c7d9bf78b47db43d3d80485c063874349a8088e82a9",
+      "download_matches": true
+    },
+    {
+      "name": "SV3_M1_V4_GRID_RESULT_20261103.zip.sha256",
+      "asset_id": 713751164,
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-m1-v4-checkpoint-lock-20261105/SV3_M1_V4_GRID_RESULT_20261103.zip.sha256",
+      "size_bytes": 101,
+      "sha256": "2162ef2e9c439f73b59b6ea9e2e7348d93857ccbc9db771e674f926cc7b1b7ea",
+      "github_digest": "sha256:2162ef2e9c439f73b59b6ea9e2e7348d93857ccbc9db771e674f926cc7b1b7ea",
+      "download_http_status": 200,
+      "download_sha256": "2162ef2e9c439f73b59b6ea9e2e7348d93857ccbc9db771e674f926cc7b1b7ea",
+      "download_matches": true
+    }
+  ],
+  "download_check": "Anonymous HTTPS download of each asset URL; bytes compared with the local file and the GitHub asset digest",
+  "reconstruction_check": {
+    "commands": "ml/provenance/m1-v4-release-20261105/logs/reconstruct-commands.txt",
+    "outputs_sha256": {
+      "ml/provenance/m1-v4-release-20261105/logs/reconstruct-package-sha256sum-c.txt": "2a23f9c732cf7dede356fdfd7f52b49015262cb836fbe44db058634c6ffc1c6c",
+      "ml/provenance/m1-v4-release-20261105/logs/reconstruct-verify-normal.txt": "983018f2f2ed2f6183ae9152303e9a6380160ffc0463c5904a5b31ed191d921a",
+      "ml/provenance/m1-v4-release-20261105/logs/reconstruct-verify-optimized.txt": "983018f2f2ed2f6183ae9152303e9a6380160ffc0463c5904a5b31ed191d921a"
+    },
+    "result": "git archive ea04abf plus the ZIP: PACKAGE_SHA256SUMS 564/564 OK; verify_checkpoint_lock.py exit 0 in normal and -O mode"
+  },
+  "scope": {
+    "DS2_opened": false,
+    "arrays_in_assets": false,
+    "intermediate_checkpoints_in_assets": false
+  }
+}

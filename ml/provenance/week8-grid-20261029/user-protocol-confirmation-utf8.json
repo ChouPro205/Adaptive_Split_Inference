@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "date_local": "2026-10-29",
+  "timezone": "Asia/Saigon",
+  "authority": "Bùi Kỳ Anh — phản hồi trực tiếp của người dùng trong cuộc hội thoại hiện tại",
+  "scope": "EXPERIMENT_PROTOCOL_USER_CONFIRMED_NOT_GVHD_ATTESTATION_NOT_DEPLOYMENT_APPROVAL",
+  "supplements": "ml/provenance/week8-grid-20261029/user-protocol-confirmation.json",
+  "correction_scope": "Bản đầu bị mất ký tự tiếng Việt trong trường answers do encoding của pipeline. Bản này giữ đúng nguyên văn câu trả lời; không đổi các tham số ASCII đã khóa hoặc ghi đè receipt đầu.",
+  "question_call_id": "call_14fb1ca91af74cecb7bba52f7ba28541",
+  "answers": [
+    {
+      "question_index": 0,
+      "answer": "3 seed 20261021/22/23 — 54 run, có biến thiên giữa seed (đề xuất)"
+    },
+    {
+      "question_index": 1,
+      "answer": "Cả head và tail; bật Dropout khi train như smoke tuần7"
+    }
+  ],
+  "locked": {
+    "seeds": [20261021, 20261022, 20261023],
+    "splits": [2, 5, 8],
+    "lambda1": [0, 0.1, 0.5, 1, 2, 5],
+    "expected_runs": 54,
+    "train_scope": "head_and_tail",
+    "dropout": "train on; validation eval",
+    "device": "cuda",
+    "dtype": "float32",
+    "batch_size": 32,
+    "optimizer": "Adam",
+    "learning_rate": 0.0001,
+    "max_epochs": 30,
+    "early_stopping_patience": 5,
+    "checkpoint_selection": "minimum validation CE; tie earliest epoch",
+    "class_weighting": "none",
+    "data": "full authenticated frozen train/validation; no test arrays"
+  }
+}

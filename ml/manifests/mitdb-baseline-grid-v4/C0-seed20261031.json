@@ -1,0 +1,112 @@
+{
+  "protocol_sha256": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+  "dataset_manifest_sha256": "7de30a1ca230286545c3637430c83141f8f0913b9abc3476858df0d87423cc0f",
+  "data_config_sha256": "58ade2a0389e108403ef42528dbebf1a9758305793e1c7d851077bdbd3ff0514",
+  "metric_policy_sha256": "4ce2028bbc03021a8a27299edd2a362677c89c8c1e605df59d7c54e65ccfbf3c",
+  "sources_sha256": {
+    "ml/scripts/baseline_grid_v4.py": "2a57b9b9e9c44a5e0681360b693b391b93be4596588fec230218f0e4e3639ff2",
+    "ml/scripts/baseline_selection_v4.py": "86872dae2686bcedf87e6256054dac55eb4a42c11cbc6baa1e7429b849cc9631",
+    "ml/scripts/baseline_sampler_v4.py": "1ccc99035ebe96d455a4e92cef45782814e55f644acf649f6959191c4bcfa566",
+    "ml/scripts/train_mitdb_baseline_v4.py": "b9ff8479a5c05b58633a8a24457462108197be7242651e52aa10ddc1f96966c5",
+    "ml/scripts/m1_metrics_v4.py": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+    "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+    "ml/configs/mitdb_week2_baseline.json": "273a563af79126c6ed6762c4bd01a186de055b6dea390688eefcf7522ae2e5e3"
+  },
+  "runtime": {
+    "python": "3.11.9",
+    "platform": "Windows",
+    "packages": {
+      "numpy": "2.4.6",
+      "torch": "2.14.0+cu130",
+      "wfdb": "4.3.1"
+    },
+    "cuda_driver": "NOT_PROBED_PREFLIGHT",
+    "model_instantiated": false
+  },
+  "data_files": {
+    "train_X.npy": {
+      "sha256": "de7be152afcd01ae453ddc1e42655c21bd05bc6e46c633893095cd9a342393b9",
+      "bytes": 59719808
+    },
+    "train_y.npy": {
+      "sha256": "702ca2f0f1b6a7129b0b7ac6c7bba90f73e48b75e18a8247b24e068a2df191fe",
+      "bytes": 331904
+    },
+    "train_metadata.csv": {
+      "sha256": "da94f4bb273305c957798049e0f9a09799ae4c03f4bd467a8262fc0f9147737b",
+      "bytes": 1203456
+    },
+    "val_X.npy": {
+      "sha256": "b4a38f6a428d335328eaf859107bf1c3cf6d3936d908d17aa87f2de7430734d1",
+      "bytes": 13713248
+    },
+    "val_y.npy": {
+      "sha256": "414634166bf41859cb20ca55a07a5bebd70930cd2f6af5c4c53328fa343ad437",
+      "bytes": 76312
+    },
+    "val_metadata.csv": {
+      "sha256": "ed6218bf715617d96235347196e2bd87c6f34beb9adb2d2fe0f2a64b08626c94",
+      "bytes": 274679
+    }
+  },
+  "dataset_manifest": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/processed-manifest.json",
+  "metric_policy": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/metric-policy.json",
+  "data_config": "ml/configs/mitdb_ds1ds2_m1_v3.json",
+  "source_head": "6a8d06ae58aedf21a481d6bbb7afc8294ab4021a",
+  "slot_id": "C0-seed20261031",
+  "configuration": "C0",
+  "seed": 20261031,
+  "mode": "weighted_ce",
+  "cap": 10,
+  "lr": 0.001,
+  "class_weights": [
+    0.22107199019163623,
+    10,
+    2.9793103448275864,
+    10,
+    10
+  ],
+  "train_counts": [
+    37519,
+    772,
+    2784,
+    389,
+    8
+  ],
+  "samples_per_epoch": 41472,
+  "sampler_replacement": false,
+  "sampler_policy": null,
+  "sampler_expected_draws_per_epoch": null,
+  "sampler_per_class_sample_weight": null,
+  "batch_size": 256,
+  "epochs": 40,
+  "patience": 10,
+  "optimizer": "AdamW",
+  "betas": [
+    0.9,
+    0.999
+  ],
+  "eps": 1e-08,
+  "weight_decay": 0.0001,
+  "dropout": 0.2,
+  "scheduler": {
+    "name": "ReduceLROnPlateau",
+    "mode": "max",
+    "factor": 0.5,
+    "patience": 4,
+    "threshold": 0.0001,
+    "threshold_mode": "rel",
+    "min_lr": 0,
+    "eps": 1e-08
+  },
+  "threads": 4,
+  "device": "auto",
+  "num_workers": 0,
+  "augmentation": "none",
+  "drop_last": false,
+  "epoch_seed_rule": "seed+epoch-1 for data-generator; global model/dropout RNG seeded once per attempt",
+  "selection": "decimal string ROUND_HALF_UP4 then earliest epoch; seed lower; configuration lower",
+  "early_stop_monitor": "unrounded validation macro-F1 strict improvement, patience10; scheduler unrounded",
+  "state": "NOT_STARTED",
+  "DS2_access": false
+}

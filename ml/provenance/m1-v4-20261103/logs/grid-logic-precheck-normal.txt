@@ -1,0 +1,25 @@
+test_S_is_filter_priority_not_tie_break (test_baseline_grid_v4.SelectionTests.test_S_is_filter_priority_not_tie_break) ... ok
+test_best_seed_failing_N_does_not_get_rescued (test_baseline_grid_v4.SelectionTests.test_best_seed_failing_N_does_not_get_rescued) ... ok
+test_best_seed_failing_V_does_not_get_rescued (test_baseline_grid_v4.SelectionTests.test_best_seed_failing_V_does_not_get_rescued) ... ok
+test_configuration_mean_not_best_seed_score (test_baseline_grid_v4.SelectionTests.test_configuration_mean_not_best_seed_score) ... ok
+test_configuration_tie_lower_C (test_baseline_grid_v4.SelectionTests.test_configuration_tie_lower_C) ... ok
+test_execute_all18_after_first_PASS (test_baseline_grid_v4.SelectionTests.test_execute_all18_after_first_PASS) ... ok
+test_failed_seed_null_mean (test_baseline_grid_v4.SelectionTests.test_failed_seed_null_mean) ... ok
+test_gate_uses_unrounded_ratio (test_baseline_grid_v4.SelectionTests.test_gate_uses_unrounded_ratio) ... ok
+test_half_up4_and_checkpoint_ties (test_baseline_grid_v4.SelectionTests.test_half_up4_and_checkpoint_ties) ... ok
+test_missing_seed_rejected_not_mean2 (test_baseline_grid_v4.SelectionTests.test_missing_seed_rejected_not_mean2) ... ok
+test_no_NV_stops_no_expansion (test_baseline_grid_v4.SelectionTests.test_no_NV_stops_no_expansion) ... ok
+test_no_S_uses_NV_and_discloses (test_baseline_grid_v4.SelectionTests.test_no_S_uses_NV_and_discloses) ... ok
+test_seed_tie_lower_seed (test_baseline_grid_v4.SelectionTests.test_seed_tie_lower_seed) ... ok
+test_first_slot_retries_exhausted_no_epoch_halts (test_baseline_grid_v4.CodeFaultHaltTests.test_first_slot_retries_exhausted_no_epoch_halts) ... ok
+test_first_slot_with_validation_epoch_continues (test_baseline_grid_v4.CodeFaultHaltTests.test_first_slot_with_validation_epoch_continues) ... ok
+test_first_slot_retry_not_exhausted_continues (test_baseline_grid_v4.CodeFaultHaltTests.test_first_slot_retry_not_exhausted_continues) ... ok
+test_later_slot_pre_validation_fault_continues (test_baseline_grid_v4.CodeFaultHaltTests.test_later_slot_pre_validation_fault_continues) ... ok
+test_authenticate_full_grid_fixture_no_model (test_baseline_grid_v4.AnalyzerTests.test_authenticate_full_grid_fixture_no_model) ... ok
+test_halted_grid_status_rejected (test_baseline_grid_v4.AnalyzerTests.test_halted_grid_status_rejected) ... ok
+test_metric_tamper_rebound_history_hash_rejected (test_baseline_grid_v4.AnalyzerTests.test_metric_tamper_rebound_history_hash_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.163s
+
+OK

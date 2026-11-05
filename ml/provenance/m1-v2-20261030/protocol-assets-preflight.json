@@ -1,0 +1,38 @@
+{
+  "status": "PASS_CANDIDATE_NOT_LOCKED_NOT_TRAINED",
+  "runs": [
+    {
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/prepare_m1_protocol_assets_v2.py",
+        "verify",
+        "--protocol",
+        "ml/configs/mitdb_m1_protocol_candidate_v2.json",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v2",
+        "--output",
+        "ml/manifests/mitdb-m1-protocol-assets-v2"
+      ],
+      "exit_code": 0,
+      "log_sha256": "bc83728389d80fc8cbced9d5de81589eb7e28bc46add8d35423dcf2f90e99e45"
+    },
+    {
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/prepare_m1_protocol_assets_v2.py",
+        "verify",
+        "--protocol",
+        "ml/configs/mitdb_m1_protocol_candidate_v2.json",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v2",
+        "--output",
+        "ml/manifests/mitdb-m1-protocol-assets-v2"
+      ],
+      "exit_code": 0,
+      "log_sha256": "bc83728389d80fc8cbced9d5de81589eb7e28bc46add8d35423dcf2f90e99e45"
+    }
+  ]
+}

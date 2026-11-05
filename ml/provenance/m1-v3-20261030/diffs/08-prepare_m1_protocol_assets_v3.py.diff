@@ -1,0 +1,66 @@
+--- ml/scripts/prepare_m1_protocol_assets_v2.py
++++ ml/scripts/prepare_m1_protocol_assets_v3.py
+@@ -37,13 +37,11 @@
+ 
+ def inputs(protocol,artifacts):
+     p=read(protocol)
+-    need(p['status']=='CANDIDATE_NOT_LOCKED_NOT_REVIEWED' and
++    need(p['status']=='CANDIDATE_RULES_CONFIRMED_ARTIFACT_NOT_REVIEWED' and
+          p['authority']['locked'] is False and p['authority']['training_permitted'] is False and
+-         p['authority']['teacher_approval']=='NOT_ATTESTED' and
+          p['authority']['artifact_review']=='NOT_REVIEWED','Unreviewed protocol cannot claim lock/authority')
+     need(not any(p['execution_in_this_round'].values()),'Execution scope differs')
+-    need(p['nopeek_candidate']['lambda_utility_aggregation_rule'].startswith('PENDING_'),
+-         'Mean vs every-seed rule requires new reviewed protocol version')
++    need(p['nopeek']['utility'].startswith('EVERY_SEED'),'NoPeek requires every seed utility')
+     manifest=read(ROOT/p['data']['manifest'])
+     for label,path in [('config',p['data']['config']),('manifest',p['data']['manifest']),
+                        ('normalization',p['data']['normalization']),('metric_policy',p['data']['metric_policy'])]:
+@@ -59,7 +57,7 @@
+ 
+ def assets(protocol,artifacts):
+     p,m,metadata=inputs(protocol,artifacts)
+-    policy=p['nopeek_candidate']['fixed_dcor_validation_subset']
++    policy=p['nopeek']['fixed_dcor_validation_subset']
+     need(policy['count']==512 and policy['seed']==20261030 and policy['domain']=='dcor-validation-v2',
+          'Subset policy differs')
+     need(len(metadata)>=policy['count'],'Too few validation samples for fixed dCor subset')
+@@ -74,17 +72,17 @@
+     subset=[dict(zip(fields,[i,row['patient_id'],row['record_id'],row['r_peak_sample'],
+                             row['original_symbol'],row['lead_name'],rank])) for rank,i,row in selected]
+     train=m['splits']['train']
+-    trials=p['baseline_candidate']['finite_trial_budget']['ordered_trials']
+-    seeds=p['baseline_candidate']['seeds']
+-    need(len(trials)==3 and len(seeds)==3,'Bounded trial budget differs')
+-    weights={t['trial']:{c:min(t['cap'],train['samples']/(5*n)) if n else 0
+-                        for c,n in zip(CLASSES,train['counts'])} for t in trials}
+-    ledger=[{'trial':t['trial'],'seed':s,'cap':t['cap'],'learning_rate':t['lr'],
++    trials=p['baseline']['configuration_order']
++    seeds=p['baseline']['seeds']
++    need(len(trials)==6 and len(seeds)==3,'Six configurations and three seeds required')
++    weights={t['id']:({c:min(t['cap'],train['samples']/(5*n)) if n else 0
++                        for c,n in zip(CLASSES,train['counts'])} if t['mode']=='weighted_ce' else None) for t in trials}
++    ledger=[{'trial':t['id'],'seed':s,'cap':t['cap'],'learning_rate':t['lr'],
+              'state':'PLANNED_NOT_STARTED','data_manifest_sha256':sha(ROOT/p['data']['manifest']),
+              'protocol_sha256':sha(protocol)} for t in trials for s in seeds]
+     return {'dcor-validation-subset.csv':csv_bytes(fields,subset),
+             'class-weights-by-trial.json':json_bytes({'status':'PROPOSED_NOT_TRAINED','train_counts':train['counts'],
+-             'train_samples':train['samples'],'formula':p['baseline_candidate']['class_weights']['formula'],
++             'train_samples':train['samples'],'formula':p['baseline']['weight_formula'],
+              'weights':weights}),
+             'baseline-trial-register.csv':csv_bytes(list(ledger[0]),ledger)}
+ 
+@@ -97,11 +95,11 @@
+     p.add_argument('--output',type=Path,required=True)
+     a=p.parse_args()
+     expected=assets(a.protocol,a.artifacts)
+-    source_path='ml/scripts/prepare_m1_protocol_assets_v2.py'
++    source_path='ml/scripts/prepare_m1_protocol_assets_v3.py'
+     identity={'status':'CANDIDATE_ASSETS_NOT_LOCKED_NOT_TRAINED',
+               'protocol_sha256':sha(a.protocol),'generator_sha256':sha(ROOT/source_path),
+               'artifacts':{n:hashlib.sha256(b).hexdigest() for n,b in expected.items()},
+-              'subset_samples':512,'planned_seed_fits':9,'executed_seed_fits':0,'model_predictions':False}
++              'subset_samples':512,'planned_seed_fits':18,'executed_seed_fits':0,'model_predictions':False}
+     if a.mode=='build':
+         need(not a.output.exists(),'Output exists; create a new version')
+         a.output.mkdir(parents=True)

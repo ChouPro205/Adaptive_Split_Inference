@@ -1,0 +1,11 @@
+{
+  "data_config": "010d06dcb034bc7ad7536b8db5ebc4630a15b80c708de30231fe5f409b503cde",
+  "protocol": "df24cad205a50d14a66abef23410a84bc605ad93fafeeacf4898d294031a1868",
+  "split.csv": "ffcc059df75648e617aa82d8e6e82f4cf6eb402dcb921aafd4ae8aa0fe58f7d7",
+  "normalization.json": "998e4c49506a44251bedfc76146667ba9b14449740d64c061776a833b66a9406",
+  "metric-policy.json": "3c9e12df33990a5b76608150eb794099981f1b957ec5a5a90271973a9282e75c",
+  "processed-manifest.json": "b3a3bb927bbefa3db6d821ca90e5b08328e7b7e2d0d9826456c0db982e8166f5",
+  "validation-feasibility.json": "bcfe8a55a7bfc0c1e239d5ba22143a4716666637c0708c0ba0998fb1b2cbc8c5",
+  "validation-combinations.csv.gz": "d0cf58737c3224f29c33da74f432c5061ae9fceb6e3f71de0c537a1d406f53ed",
+  "protocol_assets_manifest": "64ead4092e0a30ef46a540e4e0776ac097b2bfa001eb3721856595600ba10be1"
+}

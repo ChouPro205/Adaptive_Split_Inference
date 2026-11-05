@@ -1,0 +1,12 @@
+test_candidate_cannot_claim_locked (__main__.ProtocolAssetTests.test_candidate_cannot_claim_locked) ... ok
+test_changed_data_binding_rejected (__main__.ProtocolAssetTests.test_changed_data_binding_rejected) ... ok
+test_current_N_gate_is_nonbinding_but_V_blocks_always_N (__main__.ProtocolAssetTests.test_current_N_gate_is_nonbinding_but_V_blocks_always_N) ... ok
+test_fixed_subset_and_reproducibility (__main__.ProtocolAssetTests.test_fixed_subset_and_reproducibility) ... ok
+test_rebound_subset_tamper_rejected (__main__.ProtocolAssetTests.test_rebound_subset_tamper_rejected) ... ok
+test_trial_register_nine_unstarted_slots (__main__.ProtocolAssetTests.test_trial_register_nine_unstarted_slots) ... ok
+test_weights_use_train_counts_and_caps (__main__.ProtocolAssetTests.test_weights_use_train_counts_and_caps) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.235s
+
+OK

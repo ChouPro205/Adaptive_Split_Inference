@@ -1,0 +1,77 @@
+--- ml/configs/mitdb_ds1ds2_m1_v2.json
++++ ml/configs/mitdb_ds1ds2_m1_v3.json
+@@ -1,6 +1,6 @@
+ {
+-  "schema_version": 2,
+-  "candidate_id": "mitdb-ds1ds2-m1-v2",
++  "schema_version": 3,
++  "candidate_id": "mitdb-ds1ds2-m1-v3",
+   "status": "CANDIDATE_NOT_LOCKED_NOT_REVIEWED",
+   "dataset_version": "1.0.0",
+   "source_url": "https://physionet.org/content/mitdb/1.0.0/",
+@@ -102,27 +102,18 @@
+     "Q": "Q"
+   },
+   "validation": {
+-    "status": "ASSUMPTION_B_PENDING_FINAL_INTERPRETATION",
++    "status": "RULE_CONFIRMED_ARTIFACT_NOT_REVIEWED",
+     "preferred_records": 4,
+     "fallback_records": 5,
+-    "policy": "B",
++    "policy": "F_floor",
+     "seed": 20261030,
+-    "enumeration_order": "itertools.combinations(sorted numeric-string DS1 records), size 4 then 5; lexicographic within size",
+-    "integer_constraints": {
+-      "A": "10*v_c>=T_c and 10*v_c<=3*T_c for c=N,S,V,F",
+-      "B": "10*v_S>=T_S; 10*v_V>=T_V; 10*v_c<=3*T_c for c=N,S,V,F",
+-      "C": "B and v_F>=1; proposed only, not candidate default"
+-    },
+-    "algorithm": "For chosen policy take all feasible four-record combinations; only if empty use feasible five-record combinations. SHA256 counter rejection sample a single lexicographic index: ASCII(m1-validation-v2|seed|counter), counter starts 0, big-endian digest integer u; reject u>=2^256-(2^256 mod n); index=u mod n. One draw sequence, no reroll for support or model results.",
+     "random_domain": "m1-validation-v2",
+-    "minimum_fraction_integer": [
+-      1,
+-      10
+-    ],
+-    "maximum_fraction_integer": [
+-      3,
+-      10
+-    ]
++    "F_preferred_floor": 20,
++    "F_fallback_floor": 10,
++    "minimum_four_record_combinations": 50,
++    "integer_constraints": "10*vS>=TS;10*vV>=TV;10*vc<=3*Tc for c=N,S,V,F;vF>=selected_floor",
++    "floor_rule": "Count feasible four-record combinations at F20; only if count<50 use F10. Choose preferred four when feasible, else five at selected floor; if empty fail without further relaxation.",
++    "algorithm": "Retain v2 SHA256-counter rejection sampling and lexicographic order, domain m1-validation-v2, seed20261030; one draw sequence on the new eligible set"
+   },
+   "normalization": {
+     "method": "global_z_score",
+@@ -131,14 +122,12 @@
+     "accumulator_dtype": "float64",
+     "output_dtype": "float32"
+   },
+-  "calibration_policy": "DS1 train or validation only; 202 and all DS2 forbidden",
++  "calibration_policy": "TRAIN_ONLY; validation, all DS2 and202 forbidden for calibration or fast finetune",
+   "approval": {
+-    "meeting_adoption": "SV1_RELAYS_USE_GUIDE_AB_NO_TEACHER_APPROVAL_ATTESTED",
+-    "sv1_original_nine_answers": "USER_RELAYED_SOURCE_READ_NOT_ARTIFACT_REVIEW",
+-    "sv1_or_sv2_artifact_review": "NOT_REVIEWED",
++    "rules": "CURRENT_USER_AND_LATEST_RELAYED_SV1_CONFIRMED",
++    "artifact_review": "NOT_REVIEWED",
+     "m1_lock": "NOT_LOCKED",
+-    "validation_B": "ASSUMPTION_PENDING_CONFIRMATION",
+-    "validation_C": "PROPOSAL_NOT_APPLIED"
++    "training_permission": false
+   },
+   "hash_policy": {
+     "repository_text": "sha256_utf8_lf_normalized",
+@@ -146,8 +135,8 @@
+     "generated_text": "UTF-8 without BOM, LF"
+   },
+   "metric_policy": {
+-    "status": "IMPLEMENTED_FROM_CURRENT_USER_INSTRUCTION_AND_RELAYED_SV1_PROPOSAL_NOT_LOCKED",
+-    "validation": "fixed K subset of N,S,V,F with true validation support>0; exclude Q; freeze before training",
++    "status": "FIXED_NSVF_CONFIRMED_RULE_ARTIFACT_NOT_REVIEWED",
++    "validation": "K fixed to N,S,V,F for every run; all four require true support; Q excluded only from average",
+     "zero_division": 0,
+     "prediction_space": [
+       "N",

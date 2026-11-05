@@ -1,0 +1,1209 @@
+{
+  "run_count": 52,
+  "files": {
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261021/history.json": {
+      "sha256": "51acfcc97de97e0d5df643b9f0c50a0795e373f5a0489bb508f864ea6b65c69c",
+      "bytes": 24497
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261021/status.json": {
+      "sha256": "ddd948c6c3abb0021b391a1277ea917651a9e131d48d8f51f4d10f8cc778b932",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261021/summary.json": {
+      "sha256": "05f65dbd545aab8dcfe6edd96e8a7c003c4fb5a9c74af66d4075c36c51ab629f",
+      "bytes": 5796
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261021/best-epoch-001.pt": {
+      "sha256": "bd567c1a1401421d7a2348318711044435c4cf69e930e86f07da6060d14c6986",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261021/best-epoch-002.pt": {
+      "sha256": "90eea3c094e72f4c84f9f77f858f05de925d3b7236d7d3d039375c8c8e858558",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261021/last.pt": {
+      "sha256": "158164363adbb21220c6732fa33629e83b4a2709959ae83676765f48228d016e",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261021/history.json": {
+      "sha256": "09820aef7ff8d0c8d1e04ac8a9bf351dc512abf6495aeaca1b305f1b76ad5cad",
+      "bytes": 38475
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261021/status.json": {
+      "sha256": "2b124a5c8fa58c578717d96d89452477935e448f31435fdfe0701c50d0d97a90",
+      "bytes": 3908
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261021/summary.json": {
+      "sha256": "d8fd82f84ac77529aec2e11ed5bd189ed588e40308d85bed1dc1a4e0ddf7b7d3",
+      "bytes": 5784
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261021/best-epoch-001.pt": {
+      "sha256": "eb8f9f0d76070e4350203d5e1605c1c5fe23a080a4d6b78e714998fac5e00676",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261021/best-epoch-002.pt": {
+      "sha256": "ab6d3917b6b484e94c7d5a888d7cdec943824245ad15a12914d9004cca55d727",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261021/best-epoch-006.pt": {
+      "sha256": "319b51e49a526158ad2fe375a262fc1b77332818a507315b0b0eee8cfb8f2359",
+      "bytes": 1358301
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261021/last.pt": {
+      "sha256": "5c6f1d3c5721127b5cce8c1a1d1d86214d9afc873de8d7d1e24a4a3ea6ea2aeb",
+      "bytes": 1362797
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261021/history.json": {
+      "sha256": "dcc3704531a111fca6919b322c858a80727b8ccbd18968649dba8dfc4d89f94e",
+      "bytes": 38378
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261021/status.json": {
+      "sha256": "ee29bbc265f1d09a88abeecf9d912d1e19cb5add2501aa6f18968e10b9c1398e",
+      "bytes": 3908
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261021/summary.json": {
+      "sha256": "a6f1e5d51b9c1de51b62db642bd7119a87b7807d0cec7e4eb39f7799d5bae531",
+      "bytes": 5786
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261021/best-epoch-001.pt": {
+      "sha256": "a16cfc3c343cf33c49c968b49f54e36fe876f338e802f084e21adacf62f57127",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261021/best-epoch-002.pt": {
+      "sha256": "c24c7979240ec1eff868a1c755962342ee6c1676ebe7c18f7ac8461417f2fc07",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261021/best-epoch-006.pt": {
+      "sha256": "22fbf944e66b23f2f242ba809b3a2d0e2bc0c70f41843fa9386b1fab60bd1388",
+      "bytes": 1358301
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261021/last.pt": {
+      "sha256": "70d8c400580652b81df6b63217e96c50a5143ea0d142a973128842295ec286d0",
+      "bytes": 1362797
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261021/history.json": {
+      "sha256": "09dc369f7ba45c51a8542190f103fff9d7f178411814c08ed22a4e1f91e721aa",
+      "bytes": 24189
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261021/status.json": {
+      "sha256": "413e846b3a3313fc943c15c7a261e89c435fe3f6c818828f8df0fe12e0a279d6",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261021/summary.json": {
+      "sha256": "3509df63cf580aab977df736fb636d78ea43a4913eff6f47ef63d933b36eb503",
+      "bytes": 5732
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261021/best-epoch-001.pt": {
+      "sha256": "3348fa2fe9419f43e66593905aca5e9d4860d4500ada9b56d64cd857961cf7b5",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261021/best-epoch-002.pt": {
+      "sha256": "8f7a3a0fb06a33f3281eaf892ff0ec3fe3839195a267b3f72fd22467aaf6460e",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261021/last.pt": {
+      "sha256": "e3d6eb2035a2abaa954850bb202e657809588b61bf75ef4f1eb68f8090a90f62",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/history.json": {
+      "sha256": "47d773e0171420e4be323940b1fc69d9996258b24459c1d4ca22fb8c8265bd92",
+      "bytes": 52000
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/status.json": {
+      "sha256": "812423ae4f8bd093438073bfc6bbf23e367de843701a7db0eee9b53ef9b1a8d3",
+      "bytes": 3905
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/summary.json": {
+      "sha256": "8eccdfb341e61e77012187c7b15e9dfbdb38fbbe48a845c2baba42f85c0504b0",
+      "bytes": 5763
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/best-epoch-001.pt": {
+      "sha256": "0e399c146fb2b2c76639a8718bd63cbd410675dad994508def5327495d560b71",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/best-epoch-002.pt": {
+      "sha256": "11869218261bc4098a56c0ae6eb441e8d35de29da3bd0a26168685736a12d331",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/best-epoch-003.pt": {
+      "sha256": "89b7e62a5b319a921865f447c40eb2f2e7345cba48195e79245ef64bc889fccf",
+      "bytes": 1354781
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/best-epoch-004.pt": {
+      "sha256": "82a08052b82ce790d1900b73aa602518b20ba21bc5b6633463546d2b97c76b7c",
+      "bytes": 1355933
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/best-epoch-007.pt": {
+      "sha256": "9e1e9fdfaf434c762a2869b4170264b7ef9a390eb519bef96e9942130c0f9cfd",
+      "bytes": 1359517
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/best-epoch-010.pt": {
+      "sha256": "6f1c61718de7b75dffb67519f05689a00a974b9c589227bceeb13f6f44cd815b",
+      "bytes": 1363037
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261021/last.pt": {
+      "sha256": "7cbc1ffadea697aaade33c37f843a0c965cf932596e1b270a0ceb6456ad85779",
+      "bytes": 1367533
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261021/history.json": {
+      "sha256": "aab12d9ca259ccb4430757768e637fee1f8e4a7f9e21d5635b952198b73287ab",
+      "bytes": 42449
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261021/status.json": {
+      "sha256": "310f63aca099783bf4dbb269fa4e67f1c6a0cdf68b629e96df2f9d54c6c7e196",
+      "bytes": 3904
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261021/summary.json": {
+      "sha256": "353745cc7b3b01f4f5721947f59554d8e9b4e2082f84e1cea5cc9c3db1344a99",
+      "bytes": 5649
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261021/best-epoch-001.pt": {
+      "sha256": "cc46592777c2c7909c15d21b6dc07715332fcbedf88f79daabee3d7205f6dd6a",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261021/best-epoch-004.pt": {
+      "sha256": "503f288009b9e4ebcc881cbbc894faef969ffbec4a95c2a0776f937b4bbeea9d",
+      "bytes": 1355933
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261021/best-epoch-008.pt": {
+      "sha256": "223087e0fdc88bfa5e3928e5c6bf390280f2b4d3b3d26c6dd78499194a2dbcb9",
+      "bytes": 1360669
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261021/last.pt": {
+      "sha256": "e6dc8ab24ab3de69dfaf5bb8da3a464c4a4185b02a952dbe2b6f17a9ff623155",
+      "bytes": 1365101
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261021/history.json": {
+      "sha256": "f5614dec2629232d0c1277b204564ad9bb8cb693466c9acd44d1efad5a27eaed",
+      "bytes": 24486
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261021/status.json": {
+      "sha256": "835db894cbea6cbcafc10aeda23bc2349806a4ba7fd2a685d3d2d52f25f82c8e",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261021/summary.json": {
+      "sha256": "9e376af699ea6df77baeeb342fb4385952b6f061cd66432cf51fb0077e71ede7",
+      "bytes": 5796
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261021/best-epoch-001.pt": {
+      "sha256": "87c7c1389ba7a01ec5c8aee2f0313ed99093db03a79096002b598738785ef1c4",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261021/best-epoch-002.pt": {
+      "sha256": "3801f192d6971a42358dea79c0b84a5a54e337126aa3125da2d0fb9d22384340",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261021/last.pt": {
+      "sha256": "79d7229928530c06428dcf4ce1f52b4431f8401911329ebb4a6bed4599ca4520",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261021/history.json": {
+      "sha256": "adf9de3eae452b7325a8be621f5a647804ba59c28a4d245e7c8c2d3f54aa4b1c",
+      "bytes": 24481
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261021/status.json": {
+      "sha256": "90eb31e78b03e0254a2afe78bedf2baefec576aedb0a0738edf6c54481b652e8",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261021/summary.json": {
+      "sha256": "7085082f6dd66390819618266d176809e4d31cf8a85698080cc781b61dfed149",
+      "bytes": 5766
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261021/best-epoch-001.pt": {
+      "sha256": "d76e46990fd44cf6bf0eb1bec801eaf00993ef57a174beb7199b2a0176b1d05a",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261021/best-epoch-002.pt": {
+      "sha256": "d19b02786d13f7272fcc7875af0c8e42ae2b41173f2b922e28fd4b6764afa3b8",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261021/last.pt": {
+      "sha256": "c13be5d4b8694d77677d9930d420126ae0ff98515a0b5e05dd968ed98e8da39a",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261021/history.json": {
+      "sha256": "e8f046b2eaeebfacf84485e0f5c10ac1e97b9b57cf2580aa4dc13cc771f97408",
+      "bytes": 24263
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261021/status.json": {
+      "sha256": "9fa27d14a665be01277cb079af96c4beb4900339d37a4fef9f27fc298fd9f926",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261021/summary.json": {
+      "sha256": "d26959e1eab6d67e48ccb141bca6017697030503ad289ccd87a81c573207286a",
+      "bytes": 5765
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261021/best-epoch-001.pt": {
+      "sha256": "fdaa3e07d320c8b471bf61d97f2b9d332a9b12da3d13add8f5227ad309c02db0",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261021/best-epoch-002.pt": {
+      "sha256": "05da55234c08fd7d06b32424870d5da433261a82e0a6ddd98d0dc27310d3220e",
+      "bytes": 1353629
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261021/last.pt": {
+      "sha256": "41b1ced9ea6fe780d8e3fb964ad0e1ea98e1dc398019ff1cb4a49fb04bd12159",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261021/history.json": {
+      "sha256": "f62bd87b0cffbe389438f092cc439973236ce42148b8e67aa11a5f48efd71bb3",
+      "bytes": 24277
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261021/status.json": {
+      "sha256": "99cb34e8bc7a0575dbc58c29ef3f3e20f0b4171cc3975607def4bbdc20196927",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261021/summary.json": {
+      "sha256": "18dba9c67265d2fb36fa0164db164135e162952fa936aac22415f3051fd23449",
+      "bytes": 5731
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261021/best-epoch-001.pt": {
+      "sha256": "8ea8137059e1989167eb3ad0fdf515e899431bfde2dbc047345746ad95f63fa9",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261021/best-epoch-002.pt": {
+      "sha256": "c2664892c430b0d02f72ac2e933e563ac99f66d47830c17e5728109b835d92b5",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261021/last.pt": {
+      "sha256": "b3d9bf5d9b24ec0df042449d805bb9236998f41d883f05ae6c21dbce245cca3e",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261021/history.json": {
+      "sha256": "4ac57803e90b404f7d286fc1b732c5b7f6bd63890907aa57b59989d09b55a314",
+      "bytes": 20739
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261021/status.json": {
+      "sha256": "1d02d3a5d5b653b9b33fe0b2ae0cea8e3854a1b4c205c8137c1701a7312c1c28",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261021/summary.json": {
+      "sha256": "54270e254811fd3f92fa09482d040c0ec108987d99c235cd592f86d35815e0ee",
+      "bytes": 5713
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261021/best-epoch-001.pt": {
+      "sha256": "5f567585527d9e61159330d73d45c9a9d466f8482e029eeaf589fd4404ae49db",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261021/last.pt": {
+      "sha256": "5498f7cf8154dfc78ed4c2307e8cc5ec997fceffcebf2a6742b8582fe4bc579d",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261021/history.json": {
+      "sha256": "a5d1d94687477495a7fb354c4fb17d42dfdf4beed204abfd2afbc73d7bc9f091",
+      "bytes": 24071
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261021/status.json": {
+      "sha256": "285097fb71b619b5b2b8c61036c674fbca9405e320ad1e2b469453231dfa9f0d",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261021/summary.json": {
+      "sha256": "60631ebd2716ce2d0c954e4d4b6b386244a6c96dc0739194332f652935a8ff6a",
+      "bytes": 5679
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261021/best-epoch-001.pt": {
+      "sha256": "0230b3944f2f38b314c067339fc20c515b9ed94fe39c80102333087990744012",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261021/best-epoch-002.pt": {
+      "sha256": "c245c427d5489b6d7e07b68bfb146f32e179ba27eab3ea1498583b78e0477bf7",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261021/last.pt": {
+      "sha256": "d6468993c1b99a9efb08e7c60e5bd0898043c36f63eaa0993d3e9cdbe6c3dad2",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261021/history.json": {
+      "sha256": "7e67628cb2ab7e26301fbec8b61429881a2f116aa6e8cfe50c696a437ee7c16c",
+      "bytes": 24494
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261021/status.json": {
+      "sha256": "41970c5e0ed9513fc4affc1da97268c547bb936f2210d3ed10401e786e1d9f06",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261021/summary.json": {
+      "sha256": "baf06323ed1a3570d946ea81dca6bc42f54f8df377c78d15692a4ce6bf3067af",
+      "bytes": 5796
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261021/best-epoch-001.pt": {
+      "sha256": "04d2b91ff998c7be96efdb909f830d3da2d2b82ce131eaffd8cde4a3c43a12d5",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261021/best-epoch-002.pt": {
+      "sha256": "f7c439a7cd45ea893ab2a62e53a44fa941f97f073ee8673d4f0d162f9549bacf",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261021/last.pt": {
+      "sha256": "8586499ca957b57642e10ae1f5e9d443a8bf8796c8317c43aad3398cdc4615e6",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261021/history.json": {
+      "sha256": "272cab87d8bf0c24249694f5d2939e2c97826b384e42b085714e7dc00e8e73a2",
+      "bytes": 27985
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261021/status.json": {
+      "sha256": "3c295bc1734acacb6813f3203ca9d24a78c9fb0ba279dc6935cc154873a2ddf9",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261021/summary.json": {
+      "sha256": "283a5066146f0103af274512b863c3bda7237469bc78eeebcf07dfd0d8cb3551",
+      "bytes": 5767
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261021/best-epoch-001.pt": {
+      "sha256": "af9478fd642fb71ca05a1b8a978647fab76efe3065cd6c4866e156e8c7eedbb7",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261021/best-epoch-002.pt": {
+      "sha256": "44cd6c83c45034a608d5b85e2cf12476df1090163d0ede54359e51e83527454b",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261021/best-epoch-003.pt": {
+      "sha256": "2bc7e7bf8707f461ff2ed6e52d30d3c85cedf2ae744ee82686b8b24f03dfa329",
+      "bytes": 1354781
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261021/last.pt": {
+      "sha256": "49a5f600d4eb7cd5d4e014e83a917e8f8534d44f4408659d5565d1fb90871b2f",
+      "bytes": 1359213
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261021/history.json": {
+      "sha256": "bee9789db03da4967ca61a1baa45b7e5b234f63527de1e1ab71c2482e12372ef",
+      "bytes": 24213
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261021/status.json": {
+      "sha256": "b7f4e1298c9c1c7c148235f24808e10b2f632093382b88c05951dbe7d2810a6e",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261021/summary.json": {
+      "sha256": "90025b2796bce895496cfe91d08a11363742ef9c68a74237fc53519d538ebc7a",
+      "bytes": 5736
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261021/best-epoch-001.pt": {
+      "sha256": "c1c360cf44638b5ecbd92778f6bb84be2495400006389a219a2141d659ea1a7f",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261021/best-epoch-002.pt": {
+      "sha256": "d8fb841762ea23f42e89df28f281716c643e67383cd65cb5ce23e7c21cc3f134",
+      "bytes": 1353629
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261021/last.pt": {
+      "sha256": "e029756d333437da3c23e371ff69915f70c7f7c301588914b3eb5c775bfa8431",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261021/history.json": {
+      "sha256": "6cf3faa54a25348014b805a6086f1bb2038d3ca10ca3cf1100428f6265b84ee6",
+      "bytes": 27710
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261021/status.json": {
+      "sha256": "4763d578de5f0dd9762c479723a168d5b51ddc301adc2408c04e6e14b95b8570",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261021/summary.json": {
+      "sha256": "1742b9b105ec2bd244f71f62470ff8fdd40efa83f98ff89097c24c4ff97de7ad",
+      "bytes": 5727
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261021/best-epoch-001.pt": {
+      "sha256": "9cc0dfacb15b29743ca7391d6abc226b6fe5bcd3fe14d23644f04343482eea8b",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261021/best-epoch-003.pt": {
+      "sha256": "fd1ca0784616ce22e566f1424b6912afea4fcb85ade505e5f841c6165532bc18",
+      "bytes": 1354781
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261021/last.pt": {
+      "sha256": "ee714ad73e75a719177ddb5747c5b019133556825a093e9f0a98d469eb8e74f0",
+      "bytes": 1359213
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261021/history.json": {
+      "sha256": "0c0b095938b2d49045c2448569862d3a8a27a6eb3f6bed3d9ffb9def36004d72",
+      "bytes": 27681
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261021/status.json": {
+      "sha256": "6e4a32430ffd95e703cc931e1ef1e7dd5efaac920b967d1cb8bd440733f01b5a",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261021/summary.json": {
+      "sha256": "9ea8df030b26d94fcb0306ead3abbe9186aa792953f85703c41ce5f82a2c1916",
+      "bytes": 5733
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261021/best-epoch-001.pt": {
+      "sha256": "630ca1f80a3f5a667a16cac1a9d1f86db66e04d8da355c7f1566bff006141ab0",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261021/best-epoch-002.pt": {
+      "sha256": "eec35b820e12dc32c3e79ecba7a35c42620cd234edcc65458d8d46a473239a23",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261021/best-epoch-003.pt": {
+      "sha256": "7161c9eabc02ed9cab786364f92b87e9dc9e5a7165c6a0532ac4386454ccc520",
+      "bytes": 1354781
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261021/last.pt": {
+      "sha256": "4d9955f0859c120b79f843be458897fd6b3efda380a9da1b25d21180cdb5a11e",
+      "bytes": 1359213
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261021/history.json": {
+      "sha256": "f236ab1f9a9afb1ba33805f422a7b99974acdc1ba13e334259c31b4e041b3f50",
+      "bytes": 27388
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261021/status.json": {
+      "sha256": "db89501b0fb3a9119de99b53a72fdede341e43910630b0fbadba09a576bef03e",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261021/summary.json": {
+      "sha256": "e54e2b1d31f4dfb2445b82b1279fe351ea4dd61fe91396dde640188ca2afb711",
+      "bytes": 5714
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261021/best-epoch-001.pt": {
+      "sha256": "b06632f7819d78e8c6aabda3e9da8553217b2d0822bf1527ae2a6a1a8d0e1f64",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261021/best-epoch-002.pt": {
+      "sha256": "fc7f9de9f97db5c5ca62a9a6811c17a194ed3b85f748ebb19c6f327258bfc029",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261021/best-epoch-003.pt": {
+      "sha256": "5e3c4a0f80fd85670cdde85a6bbf3917229dd96f0e6f0beb4463f86c2a3a3981",
+      "bytes": 1354781
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261021/last.pt": {
+      "sha256": "40e5facb6fa4961b7f88caa004bca1f16d26dede8670dd868f6c54f6836cc881",
+      "bytes": 1359213
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261022/history.json": {
+      "sha256": "74724df2853f2c9b27b85cdfc77ae460fc9300cdde413f3916e22fd259177ea4",
+      "bytes": 24367
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261022/status.json": {
+      "sha256": "401df20fec1aa736d446b63836b483a15ef8d325e940c5bc8503233781b5bc3c",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261022/summary.json": {
+      "sha256": "229c9f836563fdbe2f195c824deb41b36ae4d42925c599f0288428ac76cd9f04",
+      "bytes": 5731
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261022/best-epoch-001.pt": {
+      "sha256": "a53d80e79bdb75680d869794a5e3cf8867fe2872b32ffd86c5f8bc22c039c519",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261022/best-epoch-002.pt": {
+      "sha256": "b9fed8f769df91c64aa9993dab14857205c181986cacb6da178e2ff177cd397e",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261022/last.pt": {
+      "sha256": "cdcf1c48207fdcc3d236052eccb3c076e9b75f2a1d7251f6fee96cd3dca22bf5",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261022/history.json": {
+      "sha256": "a0a2ab67ae1c9c02f72d433be4b16b551eaddeb8ba6b7b8612f846aea6b6ed0a",
+      "bytes": 20859
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261022/status.json": {
+      "sha256": "1845f8c79d8675ae2c1a7a8faf6793e11fd4674dfcf6f7913575a49f6a7b37c6",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261022/summary.json": {
+      "sha256": "0c38139b3dff5239b58dae08019ba4a658f262be5cf7b7a29822cd5ecb0377f2",
+      "bytes": 5736
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261022/best-epoch-001.pt": {
+      "sha256": "74293d7e079fdedf0753a35233103efa97862b1a1e1bdd1ae3d7f4f59654fd42",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261022/last.pt": {
+      "sha256": "bf1dae1afa78cccdc1d29e7530c7ab80b09f77fd461da156891b84d7ce189126",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261022/history.json": {
+      "sha256": "d838c44292d3aadd02ec1f8a0b91fa5e2f0850911d34227b1c0faea4dfe88b70",
+      "bytes": 20793
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261022/status.json": {
+      "sha256": "b9c79d597e20195e8791798c362f70a273b4b8cdf093a50efd771f2dc24693ac",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261022/summary.json": {
+      "sha256": "76ef71dd0415ebe5121f9f536bb1705720133e4f84d917a27a47cbb9cf1712f3",
+      "bytes": 5734
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261022/best-epoch-001.pt": {
+      "sha256": "c27939966038e7d3e209cc88c086d5528fe9fa73daf7a99c595141f8a7741633",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261022/last.pt": {
+      "sha256": "79f95502be11743c4f7ff6f869d6ad5befc7c16e04a2d3f90890ec42d202a8b2",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261022/history.json": {
+      "sha256": "758d977ee742bd7af9bab5284ce162189cf103abfda386548fda9a575d830e25",
+      "bytes": 20759
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261022/status.json": {
+      "sha256": "0f4b3e92c8c6286a6d37a20fe6d5c4308cd3deef78cba674807abcefb3348f08",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261022/summary.json": {
+      "sha256": "1ef606a0fa283de29479477ca5e8caefb9af26b033ce16e800c02a07c49ba6c7",
+      "bytes": 5713
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261022/best-epoch-001.pt": {
+      "sha256": "ac12c08d50180a151fb91905ecd8777c3d229097f9f3f1347b4820f0a56cc27a",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261022/last.pt": {
+      "sha256": "dcade18a7c94f34443a2f0852c09b88c3a25afd6e0fccf27d4bfd46f472d5a78",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261022/history.json": {
+      "sha256": "ceb25413352970025f1c6afe275bec88a8efbe318d113f450015b7a6f8bcec6f",
+      "bytes": 20789
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261022/status.json": {
+      "sha256": "8e85785708e5d106a6b0d427cde3d18209a4065c47ef9c5d8d49535bc81bfbb7",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261022/summary.json": {
+      "sha256": "fa94f4c35bcc0fd0aa71ee5d32f764d33c8581cd6674c8f38b3469a069689307",
+      "bytes": 5728
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261022/best-epoch-001.pt": {
+      "sha256": "a7322df81bd9ee14641fb37f8afe831feec3746905b55b9966342baf491ae0c2",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261022/last.pt": {
+      "sha256": "68c775e5e5ec87471b1a8b04814ba918a1bf39862e437f57b9b7e05b3827d9ae",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261022/history.json": {
+      "sha256": "d988ad1ea7e9878c0fa665e5992b73c4d835b517232a79770e7e74d2d9e7c262",
+      "bytes": 22897
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261022/status.json": {
+      "sha256": "543de7235ae7dc2470770a1d91ca7bd5e5917b377d69dd52594578878aeda216",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261022/summary.json": {
+      "sha256": "4663c547c2cbf44ef8ac6aa0008b0f45dd499f4f9f4c9fc286fed513e2b9d2a8",
+      "bytes": 5714
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261022/best-epoch-001.pt": {
+      "sha256": "9e7de65ef05d1cd85c2af05cbcb5f010bdfb7313aae7f5565f2d2ca723160146",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261022/best-epoch-002.pt": {
+      "sha256": "2e0679770da8d9e9ef3aebf69714ca0d8811fbcc484f5fbaef56b15e28307fd0",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261022/last.pt": {
+      "sha256": "d12fba2d6da3001b9f23552227e79fab393e09dc4b7ce60df3d1a46f7258599f",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261022/history.json": {
+      "sha256": "d6be36e602fd0a61d30710f4bcacd257531409d8f0e96bb033ceaabb3cad1bf1",
+      "bytes": 24390
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261022/status.json": {
+      "sha256": "8b47b67bc54492f3ae78751455b7571bc8011b40e4603c8312734b02d7881309",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261022/summary.json": {
+      "sha256": "24383f9dec28637f59d5685c3d351e2901937373f83df89c7f2a0bf82b4c1e0a",
+      "bytes": 5731
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261022/best-epoch-001.pt": {
+      "sha256": "aacb7e5922d646ae112a5f38b60a5ef2e26faee7a118308ba2935f7d6d80d330",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261022/best-epoch-002.pt": {
+      "sha256": "7ed817fb473fda2764aacfffb769f8c5152bb36fa46ad5c7af2998cb237335d5",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261022/last.pt": {
+      "sha256": "d8e5da0d65f7aeea765b3bff3391f95261671b956394724f423fd62a1cca26d0",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261022/history.json": {
+      "sha256": "1c637542ce05b22bd657c6d2dc943b6f10d2448e7c867b7261b145119b2a8009",
+      "bytes": 24338
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261022/status.json": {
+      "sha256": "d48a6d5210816e55a023903c12a76bec13f980fc8825f3978600cde1de6a1903",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261022/summary.json": {
+      "sha256": "d0ea053455c464ac435de932af8424ce044e9a033e61c7d7eab356582ddfde11",
+      "bytes": 5738
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261022/best-epoch-001.pt": {
+      "sha256": "6ae641e869028361143288de01cd77a9d68f339db6ac7e12c96360170dbfafe1",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261022/best-epoch-002.pt": {
+      "sha256": "97a0387fa818bb9021f3696ec7cc3243327d4fd7b5c4a6853ebeb161b46527c9",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261022/last.pt": {
+      "sha256": "a9548602daeab062501935ba25d44fddcddc984003839b03e087d7a553669bbd",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261022/history.json": {
+      "sha256": "6eb29ef8092933d731390a8891137d90e3719dfa27c754196c7f8b851265a4bd",
+      "bytes": 20802
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261022/status.json": {
+      "sha256": "2d01dc764bf8368e499c3a11beb22ff1a92c9f2c76fa7c62431a98501efed5fb",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261022/summary.json": {
+      "sha256": "21d59890bad9c5c7c3b23bf93eba91cd8b968c8b9bfe8a0d16770c28b450a2ce",
+      "bytes": 5737
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261022/best-epoch-001.pt": {
+      "sha256": "fd1362d57bf525da31e03bb446c5bf707673a739a65456a6bc5e6e948e23a47c",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261022/last.pt": {
+      "sha256": "1684f47d50d305ab4ce8f2f65c474b52dc17d97c64a3a842c820646acaaf08da",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261022/history.json": {
+      "sha256": "97a286d1db69b2698f9d4abbc25c3226f334bf66af125a08b3664468bab8e32a",
+      "bytes": 24192
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261022/status.json": {
+      "sha256": "e7568119e3b28b4a439381a4e2f67deb35cf3265f24dc4c6f13c7319c9a136b2",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261022/summary.json": {
+      "sha256": "720e128c534a0b8920820db9fa486d0b33cd14cc08d5259ba34d3c7f0a631337",
+      "bytes": 5733
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261022/best-epoch-001.pt": {
+      "sha256": "01a2064e45d0a5e4e1267d614317f76144bdc79cafd35e862c8b6f823301b067",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261022/best-epoch-002.pt": {
+      "sha256": "74cae5bbe6e97e454c7728cda8e08cd169d8ca0fde655336fbea81a4fe82aeaa",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261022/last.pt": {
+      "sha256": "5ca3caefaab4a4d3ff0289189f9a2883453ee25c4ae50327cd1fe7026d34f8da",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261022/history.json": {
+      "sha256": "c80b04b4e53b56b0cf7d053b6b2036e5038f26ac569df06a0daf80c570876dd6",
+      "bytes": 20827
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261022/status.json": {
+      "sha256": "7b34228d19527e7cfebf15c2455469bf093334baaad4f322eb201daaf2fe5597",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261022/summary.json": {
+      "sha256": "111702e8dabb51755b04e5cc4a53fe29dcb977fc3b35c763fbaed4f07c38e46a",
+      "bytes": 5712
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261022/best-epoch-001.pt": {
+      "sha256": "f29c8d414c7e2ce714aa6085d3bbc75431e8a2639978d9f581c6987c49daaa8f",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261022/last.pt": {
+      "sha256": "61e884a633bc19be1d5d25106e5dddf3241d0779689ad87e3d8ad44090c2e310",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261022/history.json": {
+      "sha256": "fcb34baf2e3051535080c5cbde8c316d59f358bfc590b722724336d0933de4f6",
+      "bytes": 20543
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261022/status.json": {
+      "sha256": "8c1a142f8c7a62ba1d8e7e700dd68846067d230935b4aead3dcbfbab26912fbd",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261022/summary.json": {
+      "sha256": "239bea580cecb880eef489dff8a753bad8b6ee3e89e84cd9c0f42c591383d202",
+      "bytes": 5678
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261022/best-epoch-001.pt": {
+      "sha256": "1664c1d757f44a030416651abb9f227020a9c18f587a2e97bbe1ef1f44a0dbec",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261022/last.pt": {
+      "sha256": "2706ec8c13cd5d3de73e3161931d2776b1a3517ec7267ad1975ff8cf964019b1",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261022/history.json": {
+      "sha256": "7e941bd4b5241af1778577f068ca3496cf6f8b2f30c6cdf8033de33bca4ffbfb",
+      "bytes": 24353
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261022/status.json": {
+      "sha256": "450717cda74bd4cf2534596459ea06e86e72a70ad1639594c753b28fec5591eb",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261022/summary.json": {
+      "sha256": "cf707b351ab98f26d7ed9b72776065feb50d596977d092c1cf5dc467c104fd75",
+      "bytes": 5731
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261022/best-epoch-001.pt": {
+      "sha256": "4d050078035308997086d27be52756485c53fc7588571af4d184a524b4d0f4d7",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261022/best-epoch-002.pt": {
+      "sha256": "071e2ffdcab9f49de1a68319eb0c69ca16e3a808b1638714fb4866532c9aca7d",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261022/last.pt": {
+      "sha256": "3a157590645d8ad6e13c960aead169f070efd52c201e2c154f948b3849c0e6b6",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261022/history.json": {
+      "sha256": "85c2440bf9f5a3802cc1645a4c17f278165ff706e3d30313b32d93f0a999da11",
+      "bytes": 24389
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261022/status.json": {
+      "sha256": "f33bf271df9766aee61554a690b3574b50575123ac2a4f117968d5d96b8fc710",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261022/summary.json": {
+      "sha256": "c13ca7c63ff336b3a53f831336be423e7f693b1b7bb0be5095984a68f4eec551",
+      "bytes": 5736
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261022/best-epoch-001.pt": {
+      "sha256": "76382097203db913e4995a0da06206a20def8ca12e719c7b02a1b18e2d3a77bc",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261022/best-epoch-002.pt": {
+      "sha256": "ffb5444aa2e63b4bd381644b4d33c29b367d2268c14b55b2a7d8e5026981aceb",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261022/last.pt": {
+      "sha256": "02f02351eb98fd7c8e51a5f48a2f739abc00ea9868b7aa190cfc6eb5acfe4d4e",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261022/history.json": {
+      "sha256": "eff9ca5931cc09ec5a68e6c4f77e45f42db90f5cb4743b2ebc8fbe7ce5fa2fd8",
+      "bytes": 24212
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261022/status.json": {
+      "sha256": "48b2594edb5be72f69c618b33145678c1e39b07ac43011f98f10b7fa8482dcb9",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261022/summary.json": {
+      "sha256": "44ade99f8a76d05c2871efe6632e7e2a4b6d7b8c22dc94a7bfc339213c6eb835",
+      "bytes": 5720
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261022/best-epoch-001.pt": {
+      "sha256": "971832c70f1c289e35dcb3d09682262edc0bb320076cccdc1e520faae8abd657",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261022/best-epoch-002.pt": {
+      "sha256": "334327c0e04f5fde921ba25550433353c2925492f923e93ef047d726ee88dfb2",
+      "bytes": 1353629
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261022/last.pt": {
+      "sha256": "6b308e5b1e191ec43ae95426098a35428f88db4bd2ca128dc953edc9caf48c73",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261022/history.json": {
+      "sha256": "fab3809d88f7cb97a99735b993291d377eef7f04e8f15594cde1a7fb00f45037",
+      "bytes": 20734
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261022/status.json": {
+      "sha256": "cc09fdd0a957988dcd929cbd5fa218dff91c437ff20ec20909766802eb62523a",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261022/summary.json": {
+      "sha256": "80412f84b292b5119c4df5fd094057ec2a0a42685be212c29bf8653cebfca6dc",
+      "bytes": 5681
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261022/best-epoch-001.pt": {
+      "sha256": "4f555f076d92d7a06162dc4f71571168645fb5a3873663c49d0dd331b4aca564",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261022/last.pt": {
+      "sha256": "b1f7be26302aa1aa779c30520521120b3146fa4fd0d8a8489015537bf918142e",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261022/history.json": {
+      "sha256": "bfef5e308b90c2c5dac77b16c63c209a0dd1e6105fe94afb625c0331da425159",
+      "bytes": 20694
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261022/status.json": {
+      "sha256": "d2556b6731c660485d847ec8fdedf0051205dbeb9408fb86caf8f6ed6e6833fc",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261022/summary.json": {
+      "sha256": "18198e4c6586d6471dc477b2486cb934da6df397eb44c72b2d496f6da4449f69",
+      "bytes": 5679
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261022/best-epoch-001.pt": {
+      "sha256": "0b43caf5f74b2c2b2fdb16e79f307afcbec2098c775d1aa64f091406e60c7d18",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda2-seed20261022/last.pt": {
+      "sha256": "4a46d2814eb6382e93a3da3399dac04ff8ac70e1ef96b16f6d7bb0661077610d",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261022/history.json": {
+      "sha256": "fe3bbb3aff5700178c45dbc14416f5339e154ce30834b504cf2a19ae1ffd1dde",
+      "bytes": 34254
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261022/status.json": {
+      "sha256": "bba1f94d4be0bcb51c522cc6d521e76b9d468cce486f2b929b8e6f34a9f31504",
+      "bytes": 3904
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261022/summary.json": {
+      "sha256": "904cf58c3a76a8e604b93bcf20d744ae0ee94af8b90b0c2cada7f9495457e360",
+      "bytes": 5678
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261022/best-epoch-001.pt": {
+      "sha256": "9a95db99c0cc13aa5fe4b750c5460f7f87c7670f0a637c4b8d5a2879b60989c9",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261022/best-epoch-002.pt": {
+      "sha256": "91b571d184d78a5955a86fc8313375c3cd8f00f3f1fb0be58f265fd60b679d9f",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261022/best-epoch-005.pt": {
+      "sha256": "c68e867447d4d3e6c53a94c558672e4ddc190b1f19c732cfe462eb2d5ef1ccf7",
+      "bytes": 1357149
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda5-seed20261022/last.pt": {
+      "sha256": "106addb7551cc35aa11001935aba3fb5445e4e0a24db3882d5eed6c0b10de143",
+      "bytes": 1361581
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261023/history.json": {
+      "sha256": "2da0d39b69faf3607e8164f6919193e97af0cd54f641fbb7274a6e2ce67a4d34",
+      "bytes": 20867
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261023/status.json": {
+      "sha256": "66b4d1985c6855e9d9f26b70f1527d099404efd2acbc004db63cbe171ea8f347",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261023/summary.json": {
+      "sha256": "3f9926a71341cfe46362ae5cae7c8534059231b362f67f5815bac6705198a56e",
+      "bytes": 5714
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261023/best-epoch-001.pt": {
+      "sha256": "d698ba63e8a9e0f3a7143091ddb3aa5a1470f6560ea774f18f04b88576d269f8",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0-seed20261023/last.pt": {
+      "sha256": "f65f3f393d1cae375bfaac84ceb7a849749a3cf9197be2ff5c45d32a260e7721",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261023/history.json": {
+      "sha256": "d7937d5e2ff5693588a80d11dec691e918e8515ffb861a295792251a22a5b7e9",
+      "bytes": 20867
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261023/status.json": {
+      "sha256": "cb079c542395760e12c4142e5cf58fc024415ac10fad5102a28ad880f1de31eb",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261023/summary.json": {
+      "sha256": "b0ebc563d63a6185d0b277c020623c0cd35521b1a8eca7025b2dcada24fec30b",
+      "bytes": 5733
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261023/best-epoch-001.pt": {
+      "sha256": "125b458343a84c5369f2ae748dab800aaea63348cc22a0c153ea2f186701c333",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.1-seed20261023/last.pt": {
+      "sha256": "5d07ec25633e40c15883f81d65bbba80e23d523e84ce2473f41f81696eabcb6e",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261023/history.json": {
+      "sha256": "45faf72aea551a5b83680312a5a121089791eaafd16223a69e67243058087188",
+      "bytes": 20774
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261023/status.json": {
+      "sha256": "74b635d84ba713f4463715a3d268eccc4d1b3374024f356218219013ecb5c242",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261023/summary.json": {
+      "sha256": "b6c17be247d1dde65e1bdbea8404f77380d9befbfd3a4a8a43bfce6d3786f628",
+      "bytes": 5735
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261023/best-epoch-001.pt": {
+      "sha256": "3ae81bcefac29a815d906d8da21de99a7e6b566af8d8a4770ff21393b3d3e1d2",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda0.5-seed20261023/last.pt": {
+      "sha256": "3c412fa6bc12364f5d546c2ab90b29f528c8db6f22d9907978754f32ce75e23b",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261023/history.json": {
+      "sha256": "39760350b890077b1f4b990e9c640e69a6439ed86d15f0899300a1acdeafcbe5",
+      "bytes": 24279
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261023/status.json": {
+      "sha256": "9d788dae4c684f2ed112755cc55df39b3ef5c0f40a74932a86091b465ea9ad0b",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261023/summary.json": {
+      "sha256": "4c1b13f914e9e151be1615ae64f9186c926a97670c271c6619ca22f49497adbd",
+      "bytes": 5731
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261023/best-epoch-001.pt": {
+      "sha256": "b1d1540aa559c72fc61c4dc288015b9fd12c7b619e87d2905fc81eea5398c0aa",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261023/best-epoch-002.pt": {
+      "sha256": "be5154472038c443b6291bdaf7432ff3b27fa44a55340651358a2c3ffa795e79",
+      "bytes": 1353565
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda1-seed20261023/last.pt": {
+      "sha256": "3441a994768cc68896673f376c7d67aea600cbadb0979731b5dc1d48a69af37a",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261023/history.json": {
+      "sha256": "918c3e1c215589dd9f5ea1c5fb2a1b5a32910cf204bd84391e99d0f1a266dd27",
+      "bytes": 20789
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261023/status.json": {
+      "sha256": "ef3fd38187bf4de40ce5b5db8803ff258c89af32e4ad53713215a957e58e5011",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261023/summary.json": {
+      "sha256": "515aefda90e19e2f3e1d246d79e6050b85104cce2818cad6707eeadb5faa3186",
+      "bytes": 5730
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261023/best-epoch-001.pt": {
+      "sha256": "1a3af882787f9743cd12b1b1ae98177df59c6c8f4738a99aaf79efadebe2fb1c",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda2-seed20261023/last.pt": {
+      "sha256": "8a2590da3ed622244592707bdecb6fbf676e4cf4b2ff84d18bc9e8fd7d7ea0e2",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261023/history.json": {
+      "sha256": "12339485a9fdb2c433adc8f7e108526105830df5a4b8153c20ffeaf04f514e40",
+      "bytes": 24176
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261023/status.json": {
+      "sha256": "b1839988fccec78809faeeb9ebadd3568e0bb5baef5ddc165de8a28809d89e5d",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261023/summary.json": {
+      "sha256": "548d1b89b8510c8c44c39648aad6a484de9fa0ac08e0252ba8944719e0c237a3",
+      "bytes": 5717
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261023/best-epoch-001.pt": {
+      "sha256": "00c63db112b578808456c35dc55a374f4d9082d44c3848757b708d5a3af8534e",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261023/best-epoch-002.pt": {
+      "sha256": "73ee6d17b612dcd1fc1d09b70a9ea27749267de7149e9f6b6a21a2cddf59e420",
+      "bytes": 1353629
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s2-lambda5-seed20261023/last.pt": {
+      "sha256": "a3a3081bae5101501be4d31d5c214aa38bea7e24df9f638dfd2e38609e168853",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261023/history.json": {
+      "sha256": "b329839c5c2cd2270dec52f906a6ca3260d9a192a20f9100d1135523254b3e29",
+      "bytes": 20856
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261023/status.json": {
+      "sha256": "f3cc0e51a23384220187032745f425dc23989628922700bf48a5116ae00578fa",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261023/summary.json": {
+      "sha256": "bd946dd267f234ea296687d5df75f95e5c76f4d47c78e24675b666d70bc9c744",
+      "bytes": 5715
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261023/best-epoch-001.pt": {
+      "sha256": "9c6e625a1918ca8134ee38280abea94cbb30e8dbe13aacb347490c37e2a6f921",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0-seed20261023/last.pt": {
+      "sha256": "95f6750d92118121b816810523c1a79bfe573cbf9706f4844009e29b3099fee5",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261023/history.json": {
+      "sha256": "9350884d39dfacb7a412816493041c1acbbf4c9c4dc7fcdfaf89b2d67c00789a",
+      "bytes": 20846
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261023/status.json": {
+      "sha256": "7d1a2c1e1f18fe54478883ba74a8c0c313b2bb158fe1c959e58629d6d3889cf4",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261023/summary.json": {
+      "sha256": "eca4479bc22f47629c8d7f16c1ac42118cf76511445f1419ed923ee6620eb278",
+      "bytes": 5735
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261023/best-epoch-001.pt": {
+      "sha256": "331b891826d569666774ab506c9a78c84d744f1ab38d1c383cf6d260f73248b0",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.1-seed20261023/last.pt": {
+      "sha256": "ae83e855e105e1e62b992f821631cbb8b9c153c9dc9a7ee893e640ca4482aa47",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261023/history.json": {
+      "sha256": "77a0499e47023d6d878abf1b1fdc24b11ccfa33501ddb4c296daeedf4d515cf7",
+      "bytes": 24269
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261023/status.json": {
+      "sha256": "7017b8f84ee202da64a05300c952bdbe9064d5c8224e3ad2b50cf974e16b04e4",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261023/summary.json": {
+      "sha256": "2d2c4cb3d0069e387251b343876e7c33f294459a86006982426194ecdcbeb37c",
+      "bytes": 5721
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261023/best-epoch-001.pt": {
+      "sha256": "1a0177a554f88030db68ae0e315c73de48b51107103833cfe910a103be288d8a",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261023/best-epoch-002.pt": {
+      "sha256": "ca2aa7cf50e245c2dd547b58b15efdcd1f6d237a7a861dd80a96756f74ee9657",
+      "bytes": 1353629
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda0.5-seed20261023/last.pt": {
+      "sha256": "5d9c1dcdf1545c0f325b34ad520fe8b0b2ca77a6c0033e01c9297d11ca9211f7",
+      "bytes": 1358061
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261023/history.json": {
+      "sha256": "a0da0d9ff9ad18113bffd80de594cd8afdca2119ef21102972194e31f9f8a1ae",
+      "bytes": 20800
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261023/status.json": {
+      "sha256": "3cbba8e2c39e73074030634f2817d07c8ecca445b43ac21ecc0d97162a97f1f2",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261023/summary.json": {
+      "sha256": "8297080c41c941aeeced23aba48215b5b57b5c2ed184375f14db44c25788d612",
+      "bytes": 5713
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261023/best-epoch-001.pt": {
+      "sha256": "056660d8a69a20490177b50bf52e08b3311896d8dcb208090aa3b6f86350c243",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda1-seed20261023/last.pt": {
+      "sha256": "d37051053b340f9e0759d6d153ea4a2323b0a7031671caa487c293183cd70d76",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261023/history.json": {
+      "sha256": "0870ed43e6de9a10a50625990e2da52ca16acb84d23264e1c15d2e84cfc9e7a7",
+      "bytes": 20732
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261023/status.json": {
+      "sha256": "f54770416423f5a7cd036d19f263c9cf7ec1a60ef5d588b0e76e3bc528f49b57",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261023/summary.json": {
+      "sha256": "22a7c8556d9477cb2e664a8c79ba1d7aced2f959b320188db4ab9344bdf9df22",
+      "bytes": 5727
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261023/best-epoch-001.pt": {
+      "sha256": "44fee81f3a134a63b6433725e404d258a5d9c3d455788c1806aeabee89d80fda",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda2-seed20261023/last.pt": {
+      "sha256": "13c87ebdf96c1bb754c31bb77781df45c587b14f8a33c6eca4fdaafc57843e5b",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261023/history.json": {
+      "sha256": "c24e3cadf2ba5e313adc0e96f9d237dd1d594fbf2630af79b5ecf624d7d3ff1e",
+      "bytes": 20578
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261023/status.json": {
+      "sha256": "d0eefe41590fcd4435ab67ae9f1b0491b5d68dc6c47a452e90330e21aff59d03",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261023/summary.json": {
+      "sha256": "8f008b9d19e15f26ff7895ebd41fb789e842ed7c4f3ab808a9b747a7f52dd92d",
+      "bytes": 5677
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261023/best-epoch-001.pt": {
+      "sha256": "aca518c92ac9c9952dada717f081dcf4e3a595cf81eb3a7c4f5822eae670415b",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s5-lambda5-seed20261023/last.pt": {
+      "sha256": "856048836b2f252d98d6b91ad9159bfda3cdc00bb13e2f743cb20f5c87c645e6",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261023/history.json": {
+      "sha256": "977feb19f16eb9496cd292ec47b8b00c30e62590f46905b9713cfe1069ddf807",
+      "bytes": 20853
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261023/status.json": {
+      "sha256": "478d2e5c00762f3151d198432db58a9f813bf8084a6ebb153bb6ffa60ac9f690",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261023/summary.json": {
+      "sha256": "d5506cec03f9b06350114397ae0e670a892f633350597e18422c043cb606ffe6",
+      "bytes": 5716
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261023/best-epoch-001.pt": {
+      "sha256": "57fe5364999e0501d5b3490e4b9abe4cf53f9a2e8b7c53cbf2011dcc9698d0d0",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0-seed20261023/last.pt": {
+      "sha256": "f9e71c5593e0dc6ab8457b358227ec0559fa6667ad16243d0807706cc2da2036",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261023/history.json": {
+      "sha256": "eb510b0d2f66be01697cc8e85cdec657bf3a46b5d309727f8a53d80b4f5d53a0",
+      "bytes": 34901
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261023/status.json": {
+      "sha256": "bcded1e1513c0c0081a09220a3f836138288a70370f3100275d6c682ecd5deaf",
+      "bytes": 3908
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261023/summary.json": {
+      "sha256": "8d125e656d066c52f42f4b8cba76f062dfb360d95b8507a1c17d29475321318e",
+      "bytes": 5783
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261023/best-epoch-001.pt": {
+      "sha256": "d886c676b91f046c6875361e9615c34d4342a4ad5a3976633ddffa8509c116d9",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261023/best-epoch-005.pt": {
+      "sha256": "7ee9b9ebb21c811431a003ec443def99e60e7a23d013948b2505c0ca649aabaa",
+      "bytes": 1357149
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.1-seed20261023/last.pt": {
+      "sha256": "8d91b8d21de90722f81ee89344ef612a90c08d096d04be0247e29a20151c3c9f",
+      "bytes": 1361581
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261023/history.json": {
+      "sha256": "6db18e99bb9d7e82f07c3eea96a9b159caa6c0cbbd5fdb57f147a2e0f1c46c11",
+      "bytes": 20800
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261023/status.json": {
+      "sha256": "806e3c06efb5e25fe90ba2c7aa1846fa394d54b4d9ae8a0bc9774a91ab891a9b",
+      "bytes": 3907
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261023/summary.json": {
+      "sha256": "434785734639c81c4aa6d29b274c55a68e7d436aea360261a1c6a136488094fe",
+      "bytes": 5729
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261023/best-epoch-001.pt": {
+      "sha256": "a08b1326a789bebad187e2a21a0825d2b09ee5ba3c20f8195749a4c0bb61bc1b",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda0.5-seed20261023/last.pt": {
+      "sha256": "3b3a39e6dba368ac84a44f81ad93ccc96141b2e15e102ab16a1958c18c48cb9c",
+      "bytes": 1356845
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261023/history.json": {
+      "sha256": "244077bea560cff7927bdd8bdc484c8455bcce64013084a345ae0d7c0afc212f",
+      "bytes": 20773
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261023/status.json": {
+      "sha256": "053f58d98902c65cdc982c10fbd56ba5dd2c01c846c67a1a87c27fe0dc3c6cf6",
+      "bytes": 3903
+    },
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261023/summary.json": {
+      "sha256": "5c8ae85cf5d7f599beb0147fe330396d1fdbf2f58c01a6cbc2f96cb88c3b27ae",
+      "bytes": 5714
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261023/best-epoch-001.pt": {
+      "sha256": "df9012111f2384c584020ad30ae778b06fdf3d64277ca739e3c52bc4d455ed26",
+      "bytes": 1352413
+    },
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/s8-lambda1-seed20261023/last.pt": {
+      "sha256": "72bd35b4ebfb55199b518cb93d51a4db0f9663bbda8d9d137eef94425213769b",
+      "bytes": 1356845
+    }
+  }
+}

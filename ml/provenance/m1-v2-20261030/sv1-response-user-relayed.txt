@@ -1,0 +1,104 @@
+Chào Kỳ Anh, mình trả lời lần lượt 9 câu nhé. Chỗ nào ghi "đề xuất" là ý của mình. Bạn phụ trách ML nên cứ sửa nếu thấy chưa hợp lý. Sửa xong thì bạn ghi tất cả vào một file protocol, khóa SHA-256 cùng M1 trước khi train. Mình hoặc Trung sẽ review. Đã khóa thì không đổi nữa.
+
+1. Trạng thái phương án
+
+RR: đã chốt không thêm, chỉ chuyển sang DS1/DS2.
+Kế hoạch tuần 9–13: đúng, bạn dùng bản "Hướng dẫn từng thành viên tuần 9–13" cho cả gói A và gói B. Từ tuần 14 quay lại hướng dẫn của thầy.
+Mốc giao: gói A mục tiêu cuối tuần 10, chậm nhất cuối tuần 12. Gói B cuối tuần 12, dùng từ tuần 14.
+2. Tách validation (đề xuất)
+
+Validation gồm 4 bản ghi nguyên vẹn lấy từ DS1.
+Với mỗi lớp N/S/V/F, validation phải chứa 10–30 % số nhịp của lớp đó trong DS1. Đây là ràng buộc bắt buộc, không phải ví dụ.
+Ngưỡng dưới 10 % áp cho S và V.
+Ngưỡng trên 30 % áp cho cả bốn lớp, để train không mất phần lớn một lớp hiếm (ví dụ F của DS1 gần như chỉ nằm ở 208).
+Cách chọn: liệt kê toàn bộ C(22,4) tổ hợp, giữ các tổ hợp đạt ràng buộc, rồi chọn ngẫu nhiên với seed cố định. Ghi số tổ hợp hợp lệ vào manifest.
+Không có tổ hợp 4 bản ghi nào đạt thì mới lên 5 bản ghi, theo cùng quy tắc.
+Bạn nên chạy thử bước liệt kê trước khi khóa ngưỡng. Bước này chỉ dùng số nhịp nên không làm rò kết quả.
+Lớp Q: không bắt buộc có trong validation (DS1 chỉ có khoảng 8 nhịp Q).
+Macro-F1 trên validation, dùng để chọn checkpoint:
+Tính trên tập lớp K cố định, chốt ở M1 từ bảng đếm. K = {N, S, V, F}, bỏ lớp nào có 0 nhịp thật trong validation. Q không nằm trong K.
+Lớp trong K mà mô hình không dự đoán lần nào thì F1 = 0 (zero_division = 0).
+Dự đoán nhầm sang Q vẫn tính là sai, vì làm giảm recall của lớp thật.
+Macro-F1 trên DS2, để báo:
+Số chính: 4 lớp N/S/V/F.
+Dòng phụ: 5 lớp (zero_division = 0), kèm số nhịp Q.
+3. Gate trước khi khóa gói A (đề xuất)
+Gate tính trên validation, với checkpoint triển khai:
+
+(a) Tỉ lệ dự đoán N không vượt tỉ lệ N thật quá 10 điểm %.
+(b) Lớp V: Se ≥ 0,50 và +P ≥ 0,50.
+(c) Lớp S: Se ≥ 0,20 và +P ≥ 0,10.
+Ngưỡng S để thấp vì không có RR, S khác N chủ yếu ở thời điểm nhịp. Gate S chỉ để chứng minh mô hình có dự đoán được S, không phải mục tiêu hiệu năng.
+
+Nếu không đạt:
+
+Báo nhóm rồi chỉnh (trọng số lớp, lấy mẫu, lr). Chỉ dựa trên validation, và ghi lại mọi lần thử kèm số lần thử.
+V không đạt thì chặn gói A.
+Chỉ S không đạt sau các lần chỉnh đã ghi thì vẫn khóa gói A, báo trung thực trong bài.
+4. Chọn checkpoint NoPeek (đề xuất)
+
+λ = 0: chọn epoch theo macro-F1 validation, có tính epoch 0. Run này là đối chứng, nên phải tái tạo được baseline.
+λ > 0: số epoch cố định. Trong các epoch ≥ 1 có macro-F1 validation ≥ 0,95 × baseline, chọn epoch có dCor validation nhỏ nhất.
+Nếu không epoch nào đạt thì lấy epoch có macro-F1 cao nhất. Run đó sẽ không qua điều kiện của λ.
+Lý do: nếu chọn theo macro-F1 cao nhất, quy tắc sẽ nghiêng về các epoch sớm, lúc dCor chưa giảm, làm mất tác dụng của λ. Cho chọn epoch 0 còn tệ hơn: mọi λ quay về baseline.
+Báo epoch được chọn của từng run.
+dCor tính trên một tập con validation cố định (số mẫu và seed ghi trong protocol), giống nhau cho mọi run. Ước lượng dCor phụ thuộc số mẫu nên phải cố định thì mới so được.
+"95 % baseline" = 0,95 × macro-F1 validation của checkpoint triển khai (gói A), không phải trung bình 3 seed.
+Cả 3 seed khởi tạo từ cùng checkpoint triển khai; seed chỉ đổi thứ tự batch, dropout…
+Kiểm nhanh: epoch 0 của mọi run phải cho đúng chỉ số validation của gói A.
+5. Run sụp và cách tính thống kê (đề xuất, khóa trước khi chạy)
+
+Run sụp: một lớp chiếm ≥ 99 % dự đoán validation, hoặc Se_V validation < 0,10.
+Run sụp vẫn giữ nguyên số liệu trong mean/SD. Không bỏ run, không chạy seed thay thế.
+λ có ít nhất 1 seed sụp thì không được chọn, ghi là "không ổn định". Trên hình vẫn vẽ đủ 3 seed.
+Lỗi kỹ thuật (NaN, OOM, crash): chạy lại đúng seed đó 1 lần. Lỗi lặp lại thì tính là run thất bại, λ đó không đủ điều kiện.
+Thống kê: mean và SD mẫu (ddof = 1) qua đủ 3 seed, kèm giá trị từng seed. λ chỉ được chọn khi có đủ 3 seed hợp lệ.
+6. Tiêu chí "tổn thất ≤ 2 %" và các s cần mở rộng
+
+Cách hiểu (đề xuất): tiêu chí của thầy ghi là accuracy. Mình hiểu là accuracy validation giảm không quá 2 điểm % tuyệt đối so với gói A.
+Phạm vi áp dụng:
+Dùng để nghiệm thu bước mở rộng s và fine-tune tail, ở λ đã chọn.
+Không dùng để chọn λ trong grid; grid chọn theo quy tắc 95 % macro-F1. Ở grid chỉ báo con số này để tham khảo.
+Một cấu hình phải đạt cả hai điều kiện: giảm accuracy ≤ 2 điểm % và macro-F1 ≥ 95 % baseline. Accuracy đứng một mình không đủ, vì mô hình dồn về N vẫn giữ được accuracy.
+Nếu không đạt: fine-tune tail trước, theo cách thầy ghi trong báo cáo triển khai. Vẫn không đạt thì lùi về λ nhỏ hơn kế tiếp.
+Các s cần mở rộng:
+Là tập (s, ρ) mà controller được chọn. Thầy chốt tập này, vì controller xét cả hàng đợi edge chứ không chỉ năng lượng và payload. Tập này còn bị giới hạn bởi flash (câu 7).
+Ứng viên là s1–s9: s0 chưa có lớp nào để học, s10 chỉ gửi logits.
+Grid {2, 5, 8} vẫn chạy đủ để vẽ Hình 5 offline.
+Về thước đo: khung bài đang ghi ràng buộc là "accuracy ≥ 95 % baseline", còn mình chọn theo macro-F1. Mình sẽ đề nghị thầy thống nhất một thước đo, hoặc báo cả hai.
+7. Bố trí head baseline và head NoPeek trên dongle
+
+Theo khung bài, P2 gồm nhiễu và trọng số NoPeek, và controller chọn ρ lúc chạy. Vì vậy với các s mà controller được chọn P2, dongle phải chứa một head NoPeek riêng. Head NoPeek ở điểm cắt s chỉ cần các lớp ≤ s.
+Flash:
+Image BLE hiện còn khoảng 179 KiB trước vùng NVS.
+Head FP32 cộng dồn: s2 5,6 KB · s5 67,5 KB · s6 113,7 KB · s7 175,4 KB · s8 257,6 KB.
+s2 + s5 (khoảng 73 KB) vừa, còn dư cho mã P2 và controller.
+s8 không vừa ở FP32. Muốn chạy P2 ở s8 trên dongle thì phải lượng tử trọng số; khi đó E_dev đổi và phải đo lại.
+Đề xuất:
+P2 trên thiết bị ở s ∈ {2, 5}; s8 chỉ báo offline. Mỗi s một mô hình NoPeek riêng là được.
+Quy tắc "mỗi thiết bị thay trọng số một lần" áp cho baseline (gói A, tuần 13). Head NoPeek là bộ thêm vào, nạp một lần ở tuần 14 (image mới, VERIFY, registry), không thay gói A.
+Phía KV260 cần xmodel tail NoPeek cho các s đó, Trung compile.
+Người chốt và thời hạn: thầy và bạn chốt tập s cho P2 trước khi chạy grid, chậm nhất cuối tuần 10. Tuần 12 mình gửi số flash đo từ image thật có P2 + controller.
+8. DS2 và gate DPU
+
+Xác nhận: DS2 bỏ 202 là kết quả chính. DS2 đủ 22 bản ghi là dòng đối chiếu, cùng checkpoint, cùng một lần đánh giá. Phải ghi rõ 201/202 là cùng một bệnh nhân, nên dòng đủ 22 bản ghi có rò rỉ bệnh nhân với DS1.
+Gate giữ như E-05 tuần 7: 200*(correct_fp32 - correct_dpu) < N_test, tức accuracy DPU INT8 không thấp hơn FP32 quá 0,5 điểm %.
+N_test là số nhịp DS2 bỏ 202. Áp cho mọi s0–s9 đã compile.
+Dòng đủ 22 bản ghi tính thêm, chỉ để báo.
+Vì N chiếm khoảng 89 %, gate chỉ dựa vào accuracy có thể che mất phần suy giảm của lớp S. Mình đề xuất thêm gate |ΔSe_S| và |ΔSe_V| ≤ 2 điểm % giữa FP32 và DPU.
+Báo kèm (chỉ để mô tả): ΔMacro-F1, độ khớp nhãn, sai số logit.
+Trung chạy, bạn đối chiếu như tuần 7.
+9. Khung bài và WP-D
+
+Mình gửi kèm: Khung_bai_bao_MAIN.pdf, Huong1_Khung_bai_bao_va_huong_dan_viet.pdf, Báo cáo triển khai 3SV và Phân công nhóm (phần WP-D).
+Theo mình biết, đây vẫn là bản của thầy từ tháng 8.
+Bản nháp Section II/III hay controller của thầy mình chưa thấy; mình sẽ hỏi thầy tiến độ.
+Phụ trách WP-D: theo Báo cáo triển khai 3SV, thầy giữ toàn bộ WP-D (mô hình toán, controller Python rồi sang C, chứng minh Lyapunov, thiết kế thực nghiệm, thống kê). SV1 nhận controller.c tuần 16, nhúng lên dongle và đo overhead.
+Phần bạn bàn giao cho WP-D:
+Accuracy theo (s, ρ) cho Hình 5/Bảng IV.
+Bảng Π(s, ρ) đầy đủ, chuẩn hóa về [0, 1], không ô trống, kèm định nghĩa Π (thầy khuyến nghị 1 − accuracy tái định danh chuẩn hóa). Hạn tuần 17, giao thầy.
+Pareto privacy–accuracy–energy (Figure 6, tuần 18).
+Các trường lut.json, tên trường có đơn vị.
+Ablation tuần 19.
+Khung bài yêu cầu Π(s, ρ) ≥ Π_min là một ràng buộc trong cùng bài toán tối ưu, và controller chọn cặp (s, ρ) cùng lúc. Vì vậy bảng của bạn phải phủ mọi cặp (s, ρ) mà controller có thể chọn (nối với câu 6 và 7).
+Bạn hiểu đúng: sửa ML chỉ làm phần thực nghiệm đạt chuẩn. Để lên Q1 vẫn cần WP-D của thầy.

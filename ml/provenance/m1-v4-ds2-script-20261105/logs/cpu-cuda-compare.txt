@@ -1,0 +1,4 @@
+cpu/cuda confusions identical for all rows and seeds: True
+cuda environment: {'device': 'cuda', 'device_name': 'NVIDIA GeForce RTX 5060', 'cudnn_allow_tf32': False, 'matmul_allow_tf32': False}
+predicted labels identical: True max |logit diff| (TF32 off): 1.71661376953125e-05
+earlier run with PyTorch default cuDNN TF32 on (outputs removed): max |logit diff| 0.011762619018554688, labels identical

@@ -1,0 +1,15 @@
+{
+  "status": "EXPORTED_AUTHENTICATED_GRID_FIGURES",
+  "runs": 54,
+  "source_sha256": "39e194115d53be53c1a11be687dc23d030a8dbf98f28f3fc5fdc6ad3b073c6cf",
+  "candidate_lock_sha256": "994892cd2bd1b3e0f3c8bd436ab11bc45eafba64a49a3eae721b0fc1857fe7ba",
+  "aggregate_metrics_sha256": "c77696cbcdbca616daca9085d66ad787b6101a3e76becce3eff9bec6e8a02841",
+  "error_bars": "Sample standard deviation across 3 seeds, ddof=1; not confidence intervals",
+  "x_axis": "Actual numeric lambda values; label alignment only adjusted for readability",
+  "files": {
+    "plot-data.json": "cf10f1b3658a429d6f29e69ee83fa63acb16e921ea92ec04e1e146380efeb9db",
+    "validation-accuracy-lambda.pdf": "97240a41e75d928f845f0d223c9b7da5d4e4f20434ece4894acc2c175b4a1e3f",
+    "validation-accuracy-lambda.png": "5eb727e547c7e0df0646b9fa5da29d87c774c321e58e82777969ba324f38df89",
+    "validation-accuracy-lambda.svg": "1c6d62290c6d0a61dfebd0731986a226431a8426aa3718bdad5186feb60911d6"
+  }
+}

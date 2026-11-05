@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "protocol_id": "week8-nopeek-3seed-joint-v1",
+  "approval": {
+    "status": "APPROVED",
+    "authority": "Bui Ky Anh - explicit user response in current conversation",
+    "evidence": "ml/provenance/week8-grid-20261029/user-protocol-confirmation.json",
+    "scope": "EXPERIMENT_PROTOCOL_USER_CONFIRMED_NOT_GVHD_ATTESTATION_NOT_DEPLOYMENT_APPROVAL"
+  },
+  "objective": "CE + lambda1 * biased_sample_distance_correlation_Rn",
+  "initial_checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+  "splits": [
+    2,
+    5,
+    8
+  ],
+  "lambda1": [
+    0,
+    0.1,
+    0.5,
+    1,
+    2,
+    5
+  ],
+  "seeds": [
+    20261021,
+    20261022,
+    20261023
+  ],
+  "batch_size": 32,
+  "device": "cuda",
+  "threads": 4,
+  "mkldnn": false,
+  "train_scope": "head_and_tail",
+  "tail_mode": "eval_when_frozen",
+  "class_weighting": "none",
+  "sampler": "shuffle_train_only",
+  "augmentation": "none",
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0
+  },
+  "scheduler": "none",
+  "training_policy": {
+    "max_epochs": 30,
+    "early_stopping_patience": 5,
+    "select_by": "validation_ce",
+    "min_delta": 0,
+    "ties": "earliest_epoch",
+    "drop_last_train": true
+  },
+  "validation_policy": {
+    "order": "frozen_row_order",
+    "drop_last": false,
+    "singleton_dcor": "exclude_from_dcor_only",
+    "dcor_aggregation": "sample_weighted_batch_Rn"
+  },
+  "pilot": {
+    "splits": [
+      2,
+      5,
+      8
+    ],
+    "lambda1": [
+      0,
+      0.5
+    ],
+    "seeds": [
+      20261021
+    ],
+    "train_samples": 512,
+    "validation_samples": 256,
+    "max_epochs": 2,
+    "patience": 2
+  },
+  "test_policy": "No test arrays are read. Test evaluation requires a separate locked candidate protocol.",
+  "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+}

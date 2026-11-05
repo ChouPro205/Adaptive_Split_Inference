@@ -1,0 +1,20 @@
+--- ml/manifests/mitdb-ds1ds2-m1-v2/split.csv
++++ ml/manifests/mitdb-ds1ds2-m1-v3-r2/split.csv
+@@ -17,7 +17,7 @@
+ 116,P116,train
+ 117,P117,test_main
+ 118,P118,val
+-119,P119,train
++119,P119,val
+ 121,P121,test_main
+ 122,P122,train
+ 123,P123,test_main
+@@ -34,7 +34,7 @@
+ 212,P212,test_main
+ 213,P213,test_main
+ 214,P214,test_main
+-215,P215,val
++215,P215,train
+ 217,P217,excluded
+ 219,P219,test_main
+ 220,P220,train

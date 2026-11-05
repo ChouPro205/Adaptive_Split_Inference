@@ -1,0 +1,146 @@
+[
+  {
+    "before": "ml/configs/mitdb_m1_protocol_candidate_v2.json",
+    "after": "ml/configs/mitdb_m1_baseline_protocol_v3.json",
+    "before_raw_sha256": "df24cad205a50d14a66abef23410a84bc605ad93fafeeacf4898d294031a1868",
+    "after_raw_sha256": "8068501318c09196f07ea5e13ef71174b4e434b82e508d567beebf4bf9103a45",
+    "diff": "diffs/01-mitdb_m1_baseline_protocol_v3.json.diff",
+    "diff_sha256": "549f0ab6a0f14666e19682cbbf0207fc0cd24acdb80648f86238ae51589c20ec"
+  },
+  {
+    "before": "ml/scripts/mitdb_ds1ds2_m1_v2.py",
+    "after": "ml/scripts/mitdb_ds1ds2_m1_v3.py",
+    "before_raw_sha256": "c11a7f6725e8592ec39e477b7b861ca5800e112603d0c1367a48be5f845d2fd1",
+    "after_raw_sha256": "66b13988b0d674063ca704582fe731633f356549037d23c647409090dd8f81a9",
+    "diff": "diffs/02-mitdb_ds1ds2_m1_v3.py.diff",
+    "diff_sha256": "12c1521385ddac057c546382cf0eab9e734ce5dba708d74736f8d591eced0639"
+  },
+  {
+    "before": "ml/scripts/m1_validation_policy_v2.py",
+    "after": "ml/scripts/m1_validation_policy_v3.py",
+    "before_raw_sha256": "31288530c4af4494604c05a6ce96fac8be0d3e2f675cb440ec2ecbb508484b63",
+    "after_raw_sha256": "e44aad15927ffaec41eca8a44e2a53b743686778d060460f4bbe8c731ada4e98",
+    "diff": "diffs/03-m1_validation_policy_v3.py.diff",
+    "diff_sha256": "fd6784e7a23bc0e208979ea0a93f177654f1dd970dcd2d1f635d8b8da7c19c4e"
+  },
+  {
+    "before": "ml/scripts/m1_metrics_v2.py",
+    "after": "ml/scripts/m1_metrics_v3.py",
+    "before_raw_sha256": "e0afa79d5a285954dff9249fa023926f18cb7cd8646c8289a78dd35b3d46ce93",
+    "after_raw_sha256": "ad8bc491c86470832b6cadd3ae77b8c31ff398f6c95bc47d6039e39ec860e8ed",
+    "diff": "diffs/04-m1_metrics_v3.py.diff",
+    "diff_sha256": "7a0becd38b0eb41332217c61fc4f05b59e4de78e681779d032e282a0df6daa19"
+  },
+  {
+    "before": "ml/scripts/verify_mitdb_ds1ds2_m1_v2.py",
+    "after": "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+    "before_raw_sha256": "66011915e4ceb98a79abf19179ce28b7f09da74559affe4fd5a2c9c347be682a",
+    "after_raw_sha256": "736c174750b97e09ce74f8a5a018423b48955dffa841efa4b872cad575b981e5",
+    "diff": "diffs/05-verify_mitdb_ds1ds2_m1_v3.py.diff",
+    "diff_sha256": "8c9c6941396ad9eef43b97c84bd20926a9ce59a7aa898612b116656276a8d9a6"
+  },
+  {
+    "before": "ml/scripts/test_mitdb_ds1ds2_m1_v2.py",
+    "after": "ml/scripts/test_mitdb_ds1ds2_m1_v3.py",
+    "before_raw_sha256": "8d96a739dee3eeb64372622d5ac0ae3e7ac23050d34b4bd37a4fdfa83f0f9da8",
+    "after_raw_sha256": "09266fdafe2e91ab386e2a65c26c6007fd0e9e5703a657b922b1e563df574dad",
+    "diff": "diffs/06-test_mitdb_ds1ds2_m1_v3.py.diff",
+    "diff_sha256": "abb38cf799f3934f10fe8c12e6913d619921798f9254ed1b0069355297c0f5b8"
+  },
+  {
+    "before": "ml/scripts/audit_mitdb_ds1ds2_m1_v2.py",
+    "after": "ml/scripts/audit_mitdb_ds1ds2_m1_v3.py",
+    "before_raw_sha256": "6805b4ed269f0cd849a833e6b0a5c41ab65b803757162c01aed708ce45eadf77",
+    "after_raw_sha256": "836bc40c8d4af0c4d0ef96f4de3a508c91a64a14c2ee1939de2e924386b9f817",
+    "diff": "diffs/07-audit_mitdb_ds1ds2_m1_v3.py.diff",
+    "diff_sha256": "01fe4b4b9adf538af7b8db07444cf23943594cda802992f9255bd6c9c248539c"
+  },
+  {
+    "before": "ml/scripts/prepare_m1_protocol_assets_v2.py",
+    "after": "ml/scripts/prepare_m1_protocol_assets_v3.py",
+    "before_raw_sha256": "a2ab359c7c8a8bf88ce91fb2fce8f0037747cb236f8a08d9d2249d82ca12dc63",
+    "after_raw_sha256": "0be46b7200270c705e1d5380f549e6a2f18ba64aa4236b7bafafb4cf00390c55",
+    "diff": "diffs/08-prepare_m1_protocol_assets_v3.py.diff",
+    "diff_sha256": "788961a1a3ec9f9ce2a8b5b4d4cb8016a275c41aaaf55c1596f5598883b19151"
+  },
+  {
+    "before": "ml/scripts/test_m1_protocol_assets_v2.py",
+    "after": "ml/scripts/test_m1_protocol_assets_v3.py",
+    "before_raw_sha256": "02b925716877ffc08a5cab1fe9b7832b43b0aed67992dad5434e50e34fe61e32",
+    "after_raw_sha256": "0076a9654f81c382c2c479da324595308cb2069b071736cfc6bb73c5a07c32d7",
+    "diff": "diffs/09-test_m1_protocol_assets_v3.py.diff",
+    "diff_sha256": "5cbac678ffa3a194153b8e98899b8e4e81afa14363f10904349929e1c7dd65ad"
+  },
+  {
+    "before": "ml/configs/mitdb_ds1ds2_m1_v2.json",
+    "after": "ml/configs/mitdb_ds1ds2_m1_v3.json",
+    "before_raw_sha256": "010d06dcb034bc7ad7536b8db5ebc4630a15b80c708de30231fe5f409b503cde",
+    "after_raw_sha256": "58ade2a0389e108403ef42528dbebf1a9758305793e1c7d851077bdbd3ff0514",
+    "diff": "diffs/10-mitdb_ds1ds2_m1_v3.json.diff",
+    "diff_sha256": "e108c1b221cf4a5e9e8b86958f0cb17e74daa366e341249f31588fe170b9afcf"
+  },
+  {
+    "before": "ml/manifests/mitdb-ds1ds2-m1-v2/split.csv",
+    "after": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/split.csv",
+    "before_raw_sha256": "ffcc059df75648e617aa82d8e6e82f4cf6eb402dcb921aafd4ae8aa0fe58f7d7",
+    "after_raw_sha256": "2475631611c5804d52c59be7e9d47d0a47f769fe230fef712120791e1b16847f",
+    "diff": "diffs/11-split.csv.diff",
+    "diff_sha256": "3085f6c5ed302dcca27ddfc00bf0caa5e8e716cfe9cd2b6a4311c2b419f37c94"
+  },
+  {
+    "before": "ml/manifests/mitdb-ds1ds2-m1-v2/normalization.json",
+    "after": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/normalization.json",
+    "before_raw_sha256": "998e4c49506a44251bedfc76146667ba9b14449740d64c061776a833b66a9406",
+    "after_raw_sha256": "1ae60f3f493427286ddfbcd3e269c6dce312a93351a75ebdf69db61941d23b89",
+    "diff": "diffs/12-normalization.json.diff",
+    "diff_sha256": "d06240013c0e7d973bbde42000dc0d908ed07f464b036b71218303bcb2d13181"
+  },
+  {
+    "before": "ml/manifests/mitdb-ds1ds2-m1-v2/metric-policy.json",
+    "after": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/metric-policy.json",
+    "before_raw_sha256": "3c9e12df33990a5b76608150eb794099981f1b957ec5a5a90271973a9282e75c",
+    "after_raw_sha256": "4ce2028bbc03021a8a27299edd2a362677c89c8c1e605df59d7c54e65ccfbf3c",
+    "diff": "diffs/13-metric-policy.json.diff",
+    "diff_sha256": "d8fc1c8b4d1dc810516f25cfe0737a512d5a9b6d66e9e3b6498f5baefa517693"
+  },
+  {
+    "before": "ml/manifests/mitdb-ds1ds2-m1-v2/validation-feasibility.json",
+    "after": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/validation-feasibility.json",
+    "before_raw_sha256": "bcfe8a55a7bfc0c1e239d5ba22143a4716666637c0708c0ba0998fb1b2cbc8c5",
+    "after_raw_sha256": "c2392fddd50f4608067811b9cf275e93f54d47573de83ae5f66bde9dc76dab4d",
+    "diff": "diffs/14-validation-feasibility.json.diff",
+    "diff_sha256": "15167ab598d4fd3060bc5f00cc12a9839360ed1ab6fc0cbad057880deef4cbf8"
+  },
+  {
+    "before": null,
+    "after": "ml/scripts/baseline_grid_v3.py",
+    "before_raw_sha256": null,
+    "after_raw_sha256": "b7bc1017891c3b98de38e14ee54c50cc6dda40afc34561d14eb172d413753182",
+    "diff": "diffs/15-baseline_grid_v3.py.diff",
+    "diff_sha256": "365c7fa1a74898d2c125d4e476adf89281e3183a32deadd754c81b0e7b01cf88"
+  },
+  {
+    "before": null,
+    "after": "ml/scripts/baseline_selection_v3.py",
+    "before_raw_sha256": null,
+    "after_raw_sha256": "9fdc1f47310184cf7998fa8e27e0de20d57b47e8e08733146727c86709056865",
+    "diff": "diffs/16-baseline_selection_v3.py.diff",
+    "diff_sha256": "69149dde41dc1f43b584b7d725a3f932a1ee6625b97685eddccdb77a4db577e1"
+  },
+  {
+    "before": null,
+    "after": "ml/scripts/train_mitdb_baseline_v3.py",
+    "before_raw_sha256": null,
+    "after_raw_sha256": "d4e764fb6513b5e66a30619a92a39f215a44b3c3ebab2c5d8c515eead27bdfa4",
+    "diff": "diffs/17-train_mitdb_baseline_v3.py.diff",
+    "diff_sha256": "1f8b3cde4d5ee7aae2d190451d6ba8ef8601cf07ce77bf4acaef43257f69433b"
+  },
+  {
+    "before": null,
+    "after": "ml/scripts/test_baseline_grid_v3.py",
+    "before_raw_sha256": null,
+    "after_raw_sha256": "78fcd1070063687671b3958aac9efa2caaf7dbf2a89db5d4bcc283726c4cf80c",
+    "diff": "diffs/18-test_baseline_grid_v3.py.diff",
+    "diff_sha256": "8bd46eb91755654fe047fd65f0c1cf155ddfd6701151221a5eb2ec910c9780a6"
+  }
+]

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v3.py", line 208, in <module>
+    main()
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v3.py", line 204, in main
+    verify(a.config,a.raw_dir,a.output,a.artifacts)
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v3.py", line 107, in verify
+    need(m['schema_version']==3 and m['candidate_id']==c['candidate_id'] and m['decision_status']==c['approval'] and
+  File "WORKTREE\ml\scripts\mitdb_ds1ds2_m1_v3.py", line 35, in need
+    raise ValueError(message)
+ValueError: Manifest schema/inventory differs

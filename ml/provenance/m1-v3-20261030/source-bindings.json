@@ -1,0 +1,16 @@
+{
+  "latest_sv1": {
+    "source_name": "Văn bản đã dán.txt",
+    "raw_sha256": "6ce8cc20225d340d35133c303d2395893ab65f3601862271111c0c8a16e708fe",
+    "scope": "User supplied source; no artifact approval implied"
+  },
+  "v2_review": {
+    "source_name": "review_against_sv1_v1_2.json",
+    "raw_sha256": "7dee9ab184383e316602d4cb2f70c7e424f0e5b397889489e205023056553b49",
+    "scope": "User supplied source; no artifact approval implied"
+  },
+  "v1_2_original": {
+    "status": "NOT_FOUND_AS_SEPARATE_ACCESSIBLE_SOURCE",
+    "searched": "Provided attachment text files and specified review folders; indirect quotations/review read; current instruction and latest reply take priority; not blocking preparation"
+  }
+}

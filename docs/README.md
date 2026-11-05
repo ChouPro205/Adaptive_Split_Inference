@@ -40,6 +40,8 @@ và báo cáo của dự án.
   P1 thật, C/Python và output host; tiếp nhận MCU SV1 được ghi riêng
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 7](sv3_ml_week7_report.md): dCor,
   NoPeek smoke offline và cấu hình tuần 8; không thay nghiệm thu KV260
+- [Báo cáo SV3/ML – Week 8](sv3_ml_week8_report.md): grid NoPeek 54 run, validation metrics và candidate thử nghiệm
+- [Protocol tuần 8 đã chốt](sv3_week8_protocol_approved_joint_v1.md)
 - [Checklist phụ thuộc SV3 tuần 7](sv3_week7_dependency_checklist.md)
 - [SV3 đối soát SV2 ngày 26/10, runtime/profiling và chuẩn bị accuracy DPU](sv3_week7_reconciliation_20261026.md)
 - [Biểu mẫu review giao diện ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md)

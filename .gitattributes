@@ -44,3 +44,13 @@ results/week8/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 results/week8/device/README.md text eol=lf
 # Edge exports are derived UTF-8 text; preserve their LF checksum bytes.
 results/week8/edge/** text eol=lf
+
+# Week 8 manifests bind original experiment/receipt bytes on every checkout.
+ml/provenance/week8*/** -text whitespace=cr-at-eol
+ml/results/week8-nopeek/** -text whitespace=cr-at-eol
+# Generated vector figures keep their hashed bytes and use image/binary diffs.
+ml/results/week8-nopeek/**/*.svg -diff -text
+# M1 receipts, logs and SV1 evidence copies are hashed byte-exact, including CRLF.
+ml/provenance/m1-*/** -text whitespace=cr-at-eol
+# M1 messages are LF and listed in M1 SHA256SUMS; keep LF even with core.autocrlf=true.
+docs/sv3_m1_*.txt text eol=lf

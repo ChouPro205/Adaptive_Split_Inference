@@ -1,0 +1,139 @@
+{
+  "status": "PASS_PREPARATION_NOT_REVIEWED_NOT_AUTHORIZED",
+  "commands": [
+    {
+      "name": "baseline-tests-normal",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/test_baseline_grid_v3.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e720f6aca766e5240ef4f4f826bdff20a73239a3c60307849ec5109e9d92b297"
+    },
+    {
+      "name": "assets-tests-normal",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/test_m1_protocol_assets_v3.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f5d49889b0f503fd13dd81becb8f4c9dc3315b7cbce6b96a080d484925421b46"
+    },
+    {
+      "name": "assets-verify-normal",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/prepare_m1_protocol_assets_v3.py",
+        "verify",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v3.json",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+        "--output",
+        "ml/manifests/mitdb-m1-protocol-assets-v3"
+      ],
+      "exit_code": 0,
+      "log_sha256": "bc83728389d80fc8cbced9d5de81589eb7e28bc46add8d35423dcf2f90e99e45"
+    },
+    {
+      "name": "baseline-preflight-normal",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/baseline_grid_v3.py",
+        "preflight",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v3.json",
+        "--plan",
+        "ml/manifests/mitdb-baseline-grid-v3/plan-manifest.json",
+        "--arrays",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 0,
+      "log_sha256": "df17bcb3bbbf1fb591272faedb5a4a777a36ac2bd4779056b482c0072a63ab80"
+    },
+    {
+      "name": "baseline-tests-optimized",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/test_baseline_grid_v3.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "fdb8dc3b8ecb2297fd153de3d60b7e611717ca6b343e62da3063af35db955517"
+    },
+    {
+      "name": "assets-tests-optimized",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/test_m1_protocol_assets_v3.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "2f3abae02aa72b78b254cf56a231afc9466d27622f222a766bdd8af05201acae"
+    },
+    {
+      "name": "assets-verify-optimized",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/prepare_m1_protocol_assets_v3.py",
+        "verify",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v3.json",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+        "--output",
+        "ml/manifests/mitdb-m1-protocol-assets-v3"
+      ],
+      "exit_code": 0,
+      "log_sha256": "bc83728389d80fc8cbced9d5de81589eb7e28bc46add8d35423dcf2f90e99e45"
+    },
+    {
+      "name": "baseline-preflight-optimized",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/baseline_grid_v3.py",
+        "preflight",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v3.json",
+        "--plan",
+        "ml/manifests/mitdb-baseline-grid-v3/plan-manifest.json",
+        "--arrays",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 0,
+      "log_sha256": "df17bcb3bbbf1fb591272faedb5a4a777a36ac2bd4779056b482c0072a63ab80"
+    }
+  ],
+  "baseline_logic_tests_each_mode": 18,
+  "protocol_asset_tests_each_mode": 7,
+  "data_core_tests_each_mode": 43,
+  "syntax_compiled_without_execution": [
+    "audit_mitdb_ds1ds2_m1_v3.py",
+    "baseline_grid_v3.py",
+    "baseline_selection_v3.py",
+    "m1_metrics_v3.py",
+    "m1_validation_policy_v3.py",
+    "mitdb_ds1ds2_m1_v3.py",
+    "prepare_m1_protocol_assets_v3.py",
+    "test_baseline_grid_v3.py",
+    "test_m1_protocol_assets_v3.py",
+    "test_mitdb_ds1ds2_m1_v3.py",
+    "train_mitdb_baseline_v3.py",
+    "verify_mitdb_ds1ds2_m1_v3.py"
+  ],
+  "fit_calls": 0,
+  "optimizer_steps": 0,
+  "smoke_training": false,
+  "DS2_model_calls": 0,
+  "old_test_receipts": "Read-only preservation; no claim rerun of v1/v2 tests"
+}

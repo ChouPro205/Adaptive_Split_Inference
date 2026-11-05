@@ -1,0 +1,29 @@
+{
+  "runtime": "project_shared_venv",
+  "arguments": [
+    "-B",
+    "ml/scripts/analyze_week8_grid.py",
+    "--experiment",
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2",
+    "--artifacts",
+    "ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2",
+    "--rule",
+    "ml/provenance/week8-grid-20261029/candidate-selection-rule.json",
+    "--output",
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review"
+  ],
+  "cwd": ".",
+  "timestamp_utc": "2026-10-29T18:53:27.551290+00:00",
+  "exit_code": 0,
+  "seconds": 2.702999999979511,
+  "source_sha256": {
+    "ml/scripts/analyze_week8_grid.py": "322d779d24b10a7d7474d49ede579d411dc7fb832efba1ec267b10e7ee721c65",
+    "ml/scripts/test_week8_grid_analysis.py": "bcb922e244cb94e86ddab90c84a270c47374a5f783b92080db5825e52c1c0e02",
+    "ml/scripts/run_week8_nopeek.py": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+    "ml/scripts/summarize_week8_nopeek.py": "ff517de3b57f792980334c657ebe001adae8c822baa4048a37949a3a14a793ec"
+  },
+  "rule_sha256": "c52e44459f7559d639ce1572f5c96d52bad1063dc208ab5818baf86aae709a2b",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "test_evaluation": "NOT_RUN_NOT_AUTHORIZED_WITHOUT_SEPARATE_LOCKED_TEST_PROTOCOL"
+}

@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-29",
+  "repository": "ChouPro205/Adaptive_Split_Inference",
+  "main_comparison": {
+    "repository_full_name": "ChouPro205/Adaptive_Split_Inference",
+    "base": "020218418b592c3eed36dbb961e2ee2e38cf72d0",
+    "head": "main",
+    "status": "identical",
+    "ahead_by": 0,
+    "behind_by": 0,
+    "total_commits": 0,
+    "too_large": null,
+    "base_commit": {
+      "sha": "020218418b592c3eed36dbb961e2ee2e38cf72d0",
+      "url": "https://api.github.com/repos/ChouPro205/Adaptive_Split_Inference/commits/020218418b592c3eed36dbb961e2ee2e38cf72d0",
+      "html_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/commit/020218418b592c3eed36dbb961e2ee2e38cf72d0"
+    },
+    "merge_base_commit": {
+      "sha": "020218418b592c3eed36dbb961e2ee2e38cf72d0",
+      "url": "https://api.github.com/repos/ChouPro205/Adaptive_Split_Inference/commits/020218418b592c3eed36dbb961e2ee2e38cf72d0",
+      "html_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/commit/020218418b592c3eed36dbb961e2ee2e38cf72d0"
+    },
+    "files": []
+  },
+  "contract_scope": {
+    "path": "contracts/sv1_sv2_week8_registry_revision_r2.json",
+    "comparison_base": "91827d3",
+    "comparison_head": "020218418b592c3eed36dbb961e2ee2e38cf72d0",
+    "git_diff_name_only": "",
+    "conclusion": "PR42 merge did not integrate the SV1 r2 contract change; preserve owner workflow."
+  },
+  "actions": "READ_ONLY; supplements remote-preflight.json; no remote mutations"
+}
