@@ -1,0 +1,29 @@
+Chào Kỳ Anh, mình review xong bản M1 v4.
+
+Gói mình nhận: SV3_M1_V4_BASELINE_PREPARATION_REVIEW_20261103.zip, SHA-256 275594254be0f53652158ce8971410841f5bd7d6254edc1db8392120031e477a, khớp tệp .sha256 đi kèm.
+
+KẾT LUẬN: mình đồng ý diff v3 -> v4 và xác nhận khóa đúng hai SHA sau:
+- Protocol v4 (ml/configs/mitdb_m1_baseline_protocol_v4.json): 7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18
+- Plan v4, 18 slot (ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json): 1ce2f811e62f9ef55833e7256c6678e2b348cf1e2f750412e2e0b6203c27d956
+Đi kèm: assets v4 bb365d5c2cd8181a5e439416669485274e61180b523a2263c6ac7bf5505d099a; dữ liệu không đổi (config 58ade2a0…d3ff0514, processed manifest 7de30a1c…7423cc0f, normalization 1ae60f3f…41d23b89).
+Xác nhận này áp dụng cho baseline M1: 18 slot, quy tắc chọn cấu hình, quy tắc lỗi code và mục ds2_report. Phần lượng tử trong deviations_from_v1_2 vẫn chờ Trung, đúng như protocol đang ghi. Nếu Trung muốn đổi thì làm protocol bản mới cho riêng phần đó, không đụng baseline đã khóa.
+
+1. Mình đã kiểm
+- PACKAGE_SHA256SUMS 97/97 và SHA256SUMS 95/95 khớp; ba SHA protocol/plan/assets đúng như tin của bạn.
+- Mọi file "trước" trong diff-index trùng byte với gói v3 mình đã review (4c86b1bd…). Mình tự so v3 với v4, không dùng file diff của bạn.
+- Protocol, so từng khóa JSON: chỉ đổi balanced_sampler (thêm policy_id), code_fault, ds2_report, nhãn gate S, deviations_from_v1_2, source_bindings, protocol_id/schema_version. Các mục còn lại (data, metrics, nopeek, quantization, packages, change_control…) giữ nguyên. SHA bản 1.2 và SHA phản hồi v3 bạn gắn vào đều đúng tệp mình gửi.
+- 18 config slot so với v3 chỉ khác SHA protocol, SHA source và 3 trường sampler (C0–C3 để null). Plan giữ nguyên data_files, runtime, source_head.
+- Code: trainer chỉ thay chỗ tạo sampler bằng build_sampler; metrics/selection chỉ đổi nhãn S và thêm luật dừng; runner ghi thêm validation_epoch_written, dừng lưới theo luật slot đầu; analyze từ chối lưới bị dừng. Đúng như các mục a)–f) bạn mô tả.
+- Sampler, tính độc lập từ train_y thật (N/S/V/F/Q = 37.519/772/2.784/389/8, N_train = 41.472): kỳ vọng 10.366 lượt mỗi lớp K, Q 8 lượt; trọng số từng lớp trong config C4/C5 trùng giá trị mình tính. Mình tự dựng WeightedRandomSampler (không dùng module của bạn), trung bình 40 epoch: 10.387 / 10.362 / 10.381 / 10.334 / 7,7 lượt.
+- Dữ liệu: mình tái tạo mảng processed từ raw MITDB bằng script dữ liệu v3: 12/12 file trùng SHA trong processed manifest; split, normalization, record-audit, metric-policy, feasibility, combinations trùng byte.
+- Chạy lại đúng các lệnh của bạn, cùng runtime (Python 3.11.9, numpy 2.4.6, torch 2.14.0+cu130, wfdb 4.3.1), thường và -O: test sampler 12, grid 33, assets 17 đều OK; verify assets PASS; preflight exit 0 (fit_calls 0, optimizer_steps 0, DS2_arrays_opened false); report_m1_v4_tables --check PASS. Bảng đối chiếu số công bố và S theo bản ghi khớp số mình tính ngày 31/10.
+- Smoke trên dữ liệu ngẫu nhiên (mình chạy, không đọc file MITDB nào): gọi fit_slot của train_mitdb_baseline_v4.py với config C0-seed20261030 và C4-seed20261030 (chỉ đổi epochs thành 3), mảng ngẫu nhiên có đúng số nhịp từng lớp như train/val thật, trên GPU (RTX 3050 Laptop, CUDA). Cả hai chạy hết: mỗi epoch đúng 41.472 lượt, lưu checkpoint, reload cho confusion trùng, ghi summary.json. C4 chạy 2 lần cho checkpoint trùng bit. Script và kết quả mình gửi kèm: smoke_v4.py, smoke_result.json, check_v4_diff.py, check_v4_diff_out.txt.
+
+2. Ghi chú (không chặn khóa)
+a) Luật dừng do lỗi code chỉ áp cho slot đầu (C0). Code sampler mới chạy lần đầu ở slot thứ 13 (C4-seed20261030); nếu lỗi ở đó thì C4/C5 thành FAILED_TECHNICAL và không được chạy lại. Smoke của mình đã đi qua đúng đường code này nên mình không đề nghị sửa protocol. Nếu máy bạn dùng để train khác máy mình (GPU/driver khác), bạn chạy smoke tương tự trên máy đó trước slot đầu và ghi vào receipt; smoke không đổi SHA nào.
+b) Trước khi chạy slot đầu, bạn commit protocol, plan, assets, code v4 và file khóa vào dev/ml-sv3 rồi push. Thời điểm khóa khi đó có dấu thời gian trên GitHub trước mọi kết quả, là bằng chứng "khóa trước rồi mới chạy" khi viết bài. Preflight không kiểm source_head nên commit không làm lệch plan.
+c) Số Se/+P của 6 bài là số tác giả công bố, mình chưa đối chiếu từng số với bản gốc. Khi làm bảng cho bài, bạn ghi trang/bảng nguồn của từng số. Nếu sau này phải sửa số trích dẫn thì chỉ cần ghi đính chính, không ảnh hưởng việc chọn cấu hình.
+
+3. Bước tiếp
+- Bạn tạo file khóa ghi hai SHA trên (thêm SHA assets nếu tiện), lưu nguyên văn tin này thành tệp và ghi SHA-256 của nó làm review_evidence, rồi chạy đủ 18 slot.
+- Chạy xong, trước khi chạm DS2, bạn gửi mình grid-result.json, kết quả chọn cấu hình (seed triển khai, mean ± SD từng cấu hình, gate) và SHA các checkpoint. Mình kiểm việc chọn theo luật trong ngày, sau đó bạn khóa checkpoint và chạy DS2 một lần theo ds2_report.

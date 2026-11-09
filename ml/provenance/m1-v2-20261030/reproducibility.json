@@ -1,0 +1,21 @@
+{
+  "split.csv": true,
+  "normalization.json": true,
+  "record-audit.json": true,
+  "processed-manifest.json": true,
+  "metric-policy.json": true,
+  "validation-feasibility.json": true,
+  "validation-combinations.csv.gz": true,
+  "train_X.npy": true,
+  "train_y.npy": true,
+  "train_metadata.csv": true,
+  "val_X.npy": true,
+  "val_y.npy": true,
+  "val_metadata.csv": true,
+  "test_main_X.npy": true,
+  "test_main_y.npy": true,
+  "test_main_metadata.csv": true,
+  "test_aux22_X.npy": true,
+  "test_aux22_y.npy": true,
+  "test_aux22_metadata.csv": true
+}

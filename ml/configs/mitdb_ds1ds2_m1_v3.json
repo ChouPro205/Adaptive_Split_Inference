@@ -1,0 +1,154 @@
+{
+  "schema_version": 3,
+  "candidate_id": "mitdb-ds1ds2-m1-v3",
+  "status": "CANDIDATE_NOT_LOCKED_NOT_REVIEWED",
+  "dataset_version": "1.0.0",
+  "source_url": "https://physionet.org/content/mitdb/1.0.0/",
+  "physionet_checksum_manifest_sha256": "b61158a96d5f2ca80edfb354a9a66a6324836c390a84e1966dcee2b907d6be43",
+  "ds1": [
+    "101",
+    "106",
+    "108",
+    "109",
+    "112",
+    "114",
+    "115",
+    "116",
+    "118",
+    "119",
+    "122",
+    "124",
+    "201",
+    "203",
+    "205",
+    "207",
+    "208",
+    "209",
+    "215",
+    "220",
+    "223",
+    "230"
+  ],
+  "ds2_main": [
+    "100",
+    "103",
+    "105",
+    "111",
+    "113",
+    "117",
+    "121",
+    "123",
+    "200",
+    "210",
+    "212",
+    "213",
+    "214",
+    "219",
+    "221",
+    "222",
+    "228",
+    "231",
+    "232",
+    "233",
+    "234"
+  ],
+  "auxiliary_only": [
+    "202"
+  ],
+  "excluded_paced": [
+    "102",
+    "104",
+    "107",
+    "217"
+  ],
+  "shared_patient_groups": [
+    [
+      "201",
+      "202"
+    ]
+  ],
+  "lead": "MLII",
+  "sampling_rate_hz": 360,
+  "window": {
+    "size": 360,
+    "left": 180,
+    "right": 180,
+    "boundary_policy": "drop"
+  },
+  "filtering": false,
+  "rr_features": false,
+  "classes": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "aami_mapping": {
+    "N": "N",
+    "L": "N",
+    "R": "N",
+    "e": "N",
+    "j": "N",
+    "A": "S",
+    "a": "S",
+    "J": "S",
+    "S": "S",
+    "V": "V",
+    "E": "V",
+    "F": "F",
+    "/": "Q",
+    "f": "Q",
+    "Q": "Q"
+  },
+  "validation": {
+    "status": "RULE_CONFIRMED_ARTIFACT_NOT_REVIEWED",
+    "preferred_records": 4,
+    "fallback_records": 5,
+    "policy": "F_floor",
+    "seed": 20261030,
+    "random_domain": "m1-validation-v2",
+    "F_preferred_floor": 20,
+    "F_fallback_floor": 10,
+    "minimum_four_record_combinations": 50,
+    "integer_constraints": "10*vS>=TS;10*vV>=TV;10*vc<=3*Tc for c=N,S,V,F;vF>=selected_floor",
+    "floor_rule": "Count feasible four-record combinations at F20; only if count<50 use F10. Choose preferred four when feasible, else five at selected floor; if empty fail without further relaxation.",
+    "algorithm": "Retain v2 SHA256-counter rejection sampling and lexicographic order, domain m1-validation-v2, seed20261030; one draw sequence on the new eligible set"
+  },
+  "normalization": {
+    "method": "global_z_score",
+    "fit_split": "train",
+    "population_variance": true,
+    "accumulator_dtype": "float64",
+    "output_dtype": "float32"
+  },
+  "calibration_policy": "TRAIN_ONLY; validation, all DS2 and202 forbidden for calibration or fast finetune",
+  "approval": {
+    "rules": "CURRENT_USER_AND_LATEST_RELAYED_SV1_CONFIRMED",
+    "artifact_review": "NOT_REVIEWED",
+    "m1_lock": "NOT_LOCKED",
+    "training_permission": false
+  },
+  "hash_policy": {
+    "repository_text": "sha256_utf8_lf_normalized",
+    "raw_and_npy": "sha256_raw_bytes",
+    "generated_text": "UTF-8 without BOM, LF"
+  },
+  "metric_policy": {
+    "status": "FIXED_NSVF_CONFIRMED_RULE_ARTIFACT_NOT_REVIEWED",
+    "validation": "K fixed to N,S,V,F for every run; all four require true support; Q excluded only from average",
+    "zero_division": 0,
+    "prediction_space": [
+      "N",
+      "S",
+      "V",
+      "F",
+      "Q"
+    ],
+    "q_samples": "retain all Q samples and five-output argmax; all samples contribute one-vs-rest confusion",
+    "ds2_metrics": [
+      "macro_f1_NSVF_fixed4",
+      "macro_f1_NSVFQ_fixed5"
+    ]
+  }
+}

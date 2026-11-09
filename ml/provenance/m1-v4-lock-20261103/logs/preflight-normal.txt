@@ -1,0 +1,34 @@
+{
+  "status": "PASS_PREFLIGHT_NO_MODEL_NO_FIT_NO_DS2",
+  "slots": 18,
+  "train_counts": [
+    37519,
+    772,
+    2784,
+    389,
+    8
+  ],
+  "validation_counts": [
+    8322,
+    172,
+    1004,
+    25,
+    0
+  ],
+  "protocol_sha256": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+  "plan_sha256": "1ce2f811e62f9ef55833e7256c6678e2b348cf1e2f750412e2e0b6203c27d956",
+  "runtime": {
+    "python": "3.11.9",
+    "platform": "Windows",
+    "packages": {
+      "numpy": "2.4.6",
+      "torch": "2.14.0+cu130",
+      "wfdb": "4.3.1"
+    },
+    "cuda_driver": "NOT_PROBED_PREFLIGHT",
+    "model_instantiated": false
+  },
+  "fit_calls": 0,
+  "optimizer_steps": 0,
+  "DS2_arrays_opened": false
+}

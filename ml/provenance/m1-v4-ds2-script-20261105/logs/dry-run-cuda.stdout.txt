@@ -1,0 +1,9 @@
+{
+  "status": "VALIDATION_CONFUSION_REPRODUCED_FOR_3_C5_CHECKPOINTS",
+  "matched": [
+    "C5-seed20261101",
+    "C5-seed20261030",
+    "C5-seed20261031"
+  ],
+  "DS2_opened": false
+}

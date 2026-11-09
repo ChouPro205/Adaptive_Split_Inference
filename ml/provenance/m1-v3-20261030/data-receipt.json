@@ -1,0 +1,790 @@
+{
+  "status": "PASS_CANDIDATE_AUDIT_NOT_LOCKED_NOT_REVIEWED",
+  "audit_source_sha256": "836bc40c8d4af0c4d0ef96f4de3a508c91a64a14c2ee1939de2e924386b9f817",
+  "config_sha256": "58ade2a0389e108403ef42528dbebf1a9758305793e1c7d851077bdbd3ff0514",
+  "data_manifest_sha256": "7de30a1ca230286545c3637430c83141f8f0913b9abc3476858df0d87423cc0f",
+  "python": "3.11.9",
+  "numpy": "2.4.6",
+  "wfdb": "4.3.1",
+  "positive_and_negative_commands": [
+    {
+      "name": "verify-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "ml/manifests/mitdb-ds1ds2-m1-v3-r2",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "41e682618462b8a89a63a653ebf72306a7d181a8f5c6e6bbe57b94cf4870dc87"
+    },
+    {
+      "name": "unit-tests-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/test_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/test_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "6f04156f1c06aa86a23f2af8d99308078da5ac96e9781360d538634ded2fa5af"
+    },
+    {
+      "name": "verify-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "ml/manifests/mitdb-ds1ds2-m1-v3-r2",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "41e682618462b8a89a63a653ebf72306a7d181a8f5c6e6bbe57b94cf4870dc87"
+    },
+    {
+      "name": "unit-tests-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/test_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "8c81e3f515dfa0fbcd45430d1c0651460d1a3f30547c637f1cfb01fa00dd0df5"
+    },
+    {
+      "name": "reproduce",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/reproduction-metadata",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2-reproduction-data-audit-final"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "16c2ef95894498e1774fe292cd2df0937945a8bed28487565b31ccb4f0971084"
+    },
+    {
+      "name": "patient-forgery-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/patient-forgery",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Canonical patient identity mismatch",
+      "pass": true,
+      "log_sha256": "9978c0dda003e7afd77db0021ad4236d3f3733003e8e81935ce589b7a2504e4c"
+    },
+    {
+      "name": "patient-forgery-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/patient-forgery",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Canonical patient identity mismatch",
+      "pass": true,
+      "log_sha256": "9978c0dda003e7afd77db0021ad4236d3f3733003e8e81935ce589b7a2504e4c"
+    },
+    {
+      "name": "ds2-in-train-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/ds2-in-train",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "DS1 train/validation inventory differs",
+      "pass": true,
+      "log_sha256": "967685c24aeadeff3e77fea4dd8516acb761f5a4ffb3a988d4fa477560c94d2f"
+    },
+    {
+      "name": "ds2-in-train-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/ds2-in-train",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "DS1 train/validation inventory differs",
+      "pass": true,
+      "log_sha256": "967685c24aeadeff3e77fea4dd8516acb761f5a4ffb3a988d4fa477560c94d2f"
+    },
+    {
+      "name": "202-in-val-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/202-in-val",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "DS1 train/validation inventory differs",
+      "pass": true,
+      "log_sha256": "967685c24aeadeff3e77fea4dd8516acb761f5a4ffb3a988d4fa477560c94d2f"
+    },
+    {
+      "name": "202-in-val-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/202-in-val",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "DS1 train/validation inventory differs",
+      "pass": true,
+      "log_sha256": "967685c24aeadeff3e77fea4dd8516acb761f5a4ffb3a988d4fa477560c94d2f"
+    },
+    {
+      "name": "normalization-mean-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/normalization-mean",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Train-only normalization reconstruction differs",
+      "pass": true,
+      "log_sha256": "ad2e2dc13ebfabba9af16252bc75163f21c0e47dc84a677f1ed6edfb1eb846f5"
+    },
+    {
+      "name": "normalization-mean-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/normalization-mean",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Train-only normalization reconstruction differs",
+      "pass": true,
+      "log_sha256": "ad2e2dc13ebfabba9af16252bc75163f21c0e47dc84a677f1ed6edfb1eb846f5"
+    },
+    {
+      "name": "alternate-validation-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/alternate-validation",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Reproducible validation differs",
+      "pass": true,
+      "log_sha256": "7e63979dd1c9249f4ba8c811df7ce04f04d2f06eddbb817eba0412334af8038b"
+    },
+    {
+      "name": "alternate-validation-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/alternate-validation",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Reproducible validation differs",
+      "pass": true,
+      "log_sha256": "7e63979dd1c9249f4ba8c811df7ce04f04d2f06eddbb817eba0412334af8038b"
+    },
+    {
+      "name": "normalized-array-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/normalized-array",
+        "--artifacts",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/normalized-array-arrays"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Raw-to-normalized window mismatch",
+      "pass": true,
+      "log_sha256": "953e6b361063cb3ec78ba8c178d7f540408452487c9cd2efde6446e3f50fa1f6"
+    },
+    {
+      "name": "normalized-array-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/normalized-array",
+        "--artifacts",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/normalized-array-arrays"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Raw-to-normalized window mismatch",
+      "pass": true,
+      "log_sha256": "953e6b361063cb3ec78ba8c178d7f540408452487c9cd2efde6446e3f50fa1f6"
+    },
+    {
+      "name": "metadata-lead-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/metadata-lead",
+        "--artifacts",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/metadata-lead-arrays"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Raw label/identity/lead mismatch",
+      "pass": true,
+      "log_sha256": "09fffebdf242136ab6b4dc09b0a4d72d35f47d51863011d795a6c29802c0d0df"
+    },
+    {
+      "name": "metadata-lead-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/metadata-lead",
+        "--artifacts",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/metadata-lead-arrays"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Raw label/identity/lead mismatch",
+      "pass": true,
+      "log_sha256": "09fffebdf242136ab6b4dc09b0a4d72d35f47d51863011d795a6c29802c0d0df"
+    },
+    {
+      "name": "missing-source-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/missing-source",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Manifest schema/inventory differs",
+      "pass": true,
+      "log_sha256": "fed9b652fcb6e34d7517997f1876d5315c8a97d47dc20e7dea41983b08fec942"
+    },
+    {
+      "name": "missing-source-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/missing-source",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Manifest schema/inventory differs",
+      "pass": true,
+      "log_sha256": "fed9b652fcb6e34d7517997f1876d5315c8a97d47dc20e7dea41983b08fec942"
+    },
+    {
+      "name": "missing-record-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/missing-record",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Duplicate/missing manifest records",
+      "pass": true,
+      "log_sha256": "a10a6242278cc868868c21bb96c5c27211e1f1928a0bdedc164ce925fc7e2993"
+    },
+    {
+      "name": "missing-record-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/missing-record",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Duplicate/missing manifest records",
+      "pass": true,
+      "log_sha256": "a10a6242278cc868868c21bb96c5c27211e1f1928a0bdedc164ce925fc7e2993"
+    },
+    {
+      "name": "raw-checksum-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/bad-raw",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/raw-checksum",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Official checksum manifest differs",
+      "pass": true,
+      "log_sha256": "9a8b1d8d8bebbe5c06590299007c63241d1163e792d138637089a6acc1a3a3d1"
+    },
+    {
+      "name": "raw-checksum-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/bad-raw",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/raw-checksum",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Official checksum manifest differs",
+      "pass": true,
+      "log_sha256": "9a8b1d8d8bebbe5c06590299007c63241d1163e792d138637089a6acc1a3a3d1"
+    },
+    {
+      "name": "metric-K-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/metric-K",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Frozen validation metric policy differs",
+      "pass": true,
+      "log_sha256": "6e3af484e41daab32fa679140f58f51e24c67ccf86d9461dce0b7b728e9961ab"
+    },
+    {
+      "name": "metric-K-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/metric-K",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Frozen validation metric policy differs",
+      "pass": true,
+      "log_sha256": "6e3af484e41daab32fa679140f58f51e24c67ccf86d9461dce0b7b728e9961ab"
+    },
+    {
+      "name": "enumeration-row-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/enumeration-row",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Exhaustive combination rows differ",
+      "pass": true,
+      "log_sha256": "065aea86afad98ab24628f902841124703fe944d31e5fdeed6910613eb944c29"
+    },
+    {
+      "name": "enumeration-row-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/enumeration-row",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Exhaustive combination rows differ",
+      "pass": true,
+      "log_sha256": "065aea86afad98ab24628f902841124703fe944d31e5fdeed6910613eb944c29"
+    },
+    {
+      "name": "force-five-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/force-five",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Reproducible validation differs",
+      "pass": true,
+      "log_sha256": "7e63979dd1c9249f4ba8c811df7ce04f04d2f06eddbb817eba0412334af8038b"
+    },
+    {
+      "name": "force-five-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v3.py",
+        "--config",
+        "ml/configs/mitdb_ds1ds2_m1_v3.json",
+        "--raw-dir",
+        "../../ml/data/raw/mitdb",
+        "--output",
+        "../sv3-m1-v3-audit-20261030/data-audit-final/negative-fixtures/force-five",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Reproducible validation differs",
+      "pass": true,
+      "log_sha256": "7e63979dd1c9249f4ba8c811df7ce04f04d2f06eddbb817eba0412334af8038b"
+    }
+  ],
+  "reproducible_files": 19,
+  "real_data": true,
+  "predictions_performed": false,
+  "training_performed": false,
+  "negative_fixtures": "Copies/hardlinks in local audit only; synthetic unit fixtures are not dataset evidence."
+}

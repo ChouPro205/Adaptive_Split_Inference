@@ -1,0 +1,18 @@
+--- ml/scripts/m1_metrics_v3.py
++++ ml/scripts/m1_metrics_v4.py
+@@ -4,6 +4,8 @@
+ import numpy as np
+ 
+ CLASSES=['N','S','V','F','Q']
++# v1.2 section 4.2(c): S is a soft gate; failure is disclosed, not an authority exception.
++S_SOFT_LABEL='S_SOFT_GATE_FAIL_DISCLOSED'
+ 
+ 
+ def need(ok,message):
+@@ -78,5 +80,5 @@
+            'V':bool(support[2]>0 and predicted[2]>0 and 2*tp[2]>=support[2] and 2*tp[2]>=predicted[2]),
+            'S':bool(support[1]>0 and predicted[1]>0 and 5*tp[1]>=support[1] and 10*tp[1]>=predicted[1])}
+     gates['package_A_gate']=('PASS' if all(gates.values()) else
+-        'S_ONLY_EXCEPTION_REQUIRES_RECORDED_AUTHORITY' if gates['N'] and gates['V'] else 'BLOCKED')
++        S_SOFT_LABEL if gates['N'] and gates['V'] else 'BLOCKED')
+     return gates

@@ -1,0 +1,10 @@
+{
+  "branch": "dev/ml-sv3",
+  "head": "d851e8621ee35e3e5da6451ca9c229094d147780",
+  "initial_status_porcelain": "",
+  "reference_checkout_reused": true,
+  "preservation_before_sha256": "a9c35dfff1604b7b032400598e74a02955e7342e6f4439c902c573387084f0d5",
+  "remote_issue_search": "No matching Week8/NoPeek issue returned; not evidence of GVHD approval",
+  "grid_approval": "NOT_FOUND_IN_REVIEWED_LOCAL_SOURCES",
+  "publication": "LOCAL_ONLY_NO_PUSH_NO_PR"
+}

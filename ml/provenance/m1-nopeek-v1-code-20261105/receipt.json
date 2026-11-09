@@ -1,0 +1,162 @@
+{
+  "type": "M1_NOPEEK_V1_CODE_RECEIPT_NOT_LOCKED_NO_MITDB_FIT",
+  "date": "2026-11-05",
+  "prepared_by": "SV3",
+  "request": "Runner, plan and tests for protocol mitdb-m1-nopeek-v1, written before SV1 review so both are reviewed together",
+  "source_head": "e78bc6fd2849c308711fe1cc47ff41dcd1dc833c",
+  "branch": "dev/ml-sv3",
+  "protocol": {
+    "path": "ml/configs/mitdb_m1_nopeek_protocol_v1.json",
+    "sha256": "1e180b45258d4f9c6902aeee8ccfedd5de38f62b9bb4a2f16f9030391b72ebf4",
+    "status": "CANDIDATE_FOR_SV1_REVIEW_NOT_LOCKED"
+  },
+  "plan": {
+    "path": "ml/manifests/mitdb-nopeek-m1-v1/plan-manifest.json",
+    "sha256": "af2286270ab762a7572972ad907dd441257dea8c039544e6b7be801156d5e195",
+    "status": "CANDIDATE_NOT_LOCKED",
+    "pilot_runs": 9,
+    "grid_runs": 72,
+    "sources_sha256": {
+      "ml/scripts/nopeek_m1_v1.py": "22f5c48e6aeb57507bd32fbb05b36e9d26f995c7715217b413bea68339321b18",
+      "ml/scripts/package_m1_v4_a.py": "2c9662858cb0d504252adfc5cbb58895687f7737420384ed1e53a028cdb37cb6",
+      "ml/scripts/baseline_sampler_v4.py": "1ccc99035ebe96d455a4e92cef45782814e55f644acf649f6959191c4bcfa566",
+      "ml/scripts/m1_metrics_v4.py": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+      "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+      "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+      "ml/scripts/week4_common.py": "c5509a4f2977caf090e2d76be0bb7e52c99e55e0f8dcb41c0315bc6849187190",
+      "ml/src/distance_correlation.py": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+      "ml/src/nopeek.py": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+      "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14"
+    }
+  },
+  "scripts_sha256": {
+    "ml/scripts/nopeek_m1_v1.py": "22f5c48e6aeb57507bd32fbb05b36e9d26f995c7715217b413bea68339321b18",
+    "ml/scripts/test_nopeek_m1_v1.py": "e72c88957f0c6a5dc3190a72d168143e29715ab4f839b01005ddb667d8056d07",
+    "ml/provenance/m1-nopeek-v1-code-20261105/write_receipt.py": "0e26d053695ea3bdc18131583c99ed32118a22fd75fba7abb705d85270576745"
+  },
+  "python": "3.11.9",
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/nopeek_m1_v1.py",
+        "prepare"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/manifests/mitdb-nopeek-m1-v1/plan-manifest.json": "af2286270ab762a7572972ad907dd441257dea8c039544e6b7be801156d5e195"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/nopeek_m1_v1.py",
+        "preflight"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v1-code-20261105/logs/preflight-normal.txt": "c5157259e24920075760fddb48aa8be8f9919b1b2963c863729eba6b9a829301"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/test_nopeek_m1_v1.py"
+      ],
+      "exit_code": 0,
+      "tests": 9,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v1-code-20261105/logs/tests-normal.txt": "4bd5ad45060bd3bf7ada4b9cd6f1ce5b4bb16f3c72d8dccd5152e69b5c75ffff"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/nopeek_m1_v1.py",
+        "preflight"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v1-code-20261105/logs/preflight-optimized.txt": "c5157259e24920075760fddb48aa8be8f9919b1b2963c863729eba6b9a829301"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/test_nopeek_m1_v1.py"
+      ],
+      "exit_code": 0,
+      "tests": 9,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v1-code-20261105/logs/tests-optimized.txt": "4bd5ad45060bd3bf7ada4b9cd6f1ce5b4bb16f3c72d8dccd5152e69b5c75ffff"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/nopeek_m1_v1.py",
+        "smoke",
+        "--output",
+        "ml/data/smoke-nopeek-m1-v1-20261105",
+        "--epochs",
+        "2"
+      ],
+      "exit_code": 0,
+      "start_utc": "2026-11-05T15:31:22Z",
+      "end_utc": "2026-11-05T15:31:42Z",
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v1-code-20261105/logs/smoke.stdout.txt": "5f7c028c2a3e2e9dcc9bda428fbe5df904de3c40990fe13609f81e36bde68a99",
+        "ml/provenance/m1-nopeek-v1-code-20261105/logs/smoke.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ml/data/smoke-nopeek-m1-v1-20261105/smoke-result.json": "12588d1793dc87efc5058741308c4281c5b8ec9b37ab4c12a2e46201c5893b42"
+      }
+    }
+  ],
+  "smoke": {
+    "status": "SMOKE_PASS_RANDOM_DATA_NOT_MITDB",
+    "epochs": 2,
+    "runs": [
+      "smoke-s2-lambda0",
+      "smoke-s8-lambda0",
+      "smoke-s2-lambda5"
+    ],
+    "lambda0_identical_across_s2_s8": true,
+    "lambda5_weights_changed": true,
+    "epoch0_state_equals_package_A": true,
+    "subset_Rn_lambda5": [
+      0.9211933612823486,
+      0.9220592975616455,
+      0.9207969307899475
+    ],
+    "data": "Random arrays with the real train/val class counts written by the smoke itself; no MITDB file read",
+    "device": {
+      "device": "cuda",
+      "device_name": "NVIDIA GeForce RTX 5060",
+      "torch": "2.14.0+cu130",
+      "cuda": "13.0",
+      "cudnn_allow_tf32": true,
+      "matmul_allow_tf32": false
+    },
+    "epochs_note": "Smoke runs 2 epochs; the protocol fixes 10"
+  },
+  "tf32": "Run configs carry cudnn_allow_tf32 true and matmul_allow_tf32 false explicitly (PyTorch defaults, as package A was trained); open point 5 for SV1",
+  "scope": {
+    "MITDB_fit": false,
+    "pilot": false,
+    "grid": false,
+    "DS2_opened": false,
+    "preflight": "hashes train/val array files only; no model, no fit"
+  },
+  "not_verified": [
+    "Any run on MITDB (needs the NoPeek lock after SV1 review)",
+    "Epoch 0 = package A check on real validation (exercised only in run_stage)",
+    "Run time of the real grid"
+  ]
+}

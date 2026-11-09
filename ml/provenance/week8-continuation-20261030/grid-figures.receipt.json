@@ -1,0 +1,20 @@
+{
+  "runtime": "project_shared_venv",
+  "arguments": [
+    "-B",
+    "ml/scripts/plot_week8_grid.py",
+    "--review",
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review",
+    "--output",
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/figures"
+  ],
+  "cwd": ".",
+  "timestamp_utc": "2026-10-29T18:55:19.180496+00:00",
+  "exit_code": 0,
+  "seconds": 2.859999999869615,
+  "source_sha256": {
+    "ml/scripts/plot_week8_grid.py": "39e194115d53be53c1a11be687dc23d030a8dbf98f28f3fc5fdc6ad3b073c6cf"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

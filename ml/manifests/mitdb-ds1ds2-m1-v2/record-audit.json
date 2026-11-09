@@ -1,0 +1,1542 @@
+[
+  {
+    "record_id": "100",
+    "patient_id": "P100",
+    "signal_names": [
+      "MLII",
+      "V5"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2274,
+    "ignored_annotations": 1,
+    "mapped_counts": [
+      2239,
+      33,
+      1,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2237,
+      33,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "101",
+    "patient_id": "P101",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1874,
+    "ignored_annotations": 9,
+    "mapped_counts": [
+      1860,
+      3,
+      0,
+      0,
+      2
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1859,
+      3,
+      0,
+      0,
+      2
+    ]
+  },
+  {
+    "record_id": "102",
+    "patient_id": "P102",
+    "signal_names": [
+      "V5",
+      "V2"
+    ],
+    "lead_index": null,
+    "fs": 360,
+    "excluded_reason": "paced_record"
+  },
+  {
+    "record_id": "103",
+    "patient_id": "P103",
+    "signal_names": [
+      "MLII",
+      "V2"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2091,
+    "ignored_annotations": 7,
+    "mapped_counts": [
+      2082,
+      2,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2081,
+      2,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "104",
+    "patient_id": "P104",
+    "signal_names": [
+      "V5",
+      "V2"
+    ],
+    "lead_index": null,
+    "fs": 360,
+    "excluded_reason": "paced_record"
+  },
+  {
+    "record_id": "105",
+    "patient_id": "P105",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2691,
+    "ignored_annotations": 119,
+    "mapped_counts": [
+      2526,
+      0,
+      41,
+      0,
+      5
+    ],
+    "boundary_dropped_counts": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2526,
+      0,
+      41,
+      0,
+      5
+    ]
+  },
+  {
+    "record_id": "106",
+    "patient_id": "P106",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2098,
+    "ignored_annotations": 71,
+    "mapped_counts": [
+      1507,
+      0,
+      520,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1507,
+      0,
+      520,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "107",
+    "patient_id": "P107",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "excluded_reason": "paced_record"
+  },
+  {
+    "record_id": "108",
+    "patient_id": "P108",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1824,
+    "ignored_annotations": 61,
+    "mapped_counts": [
+      1740,
+      4,
+      17,
+      2,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1739,
+      4,
+      17,
+      2,
+      0
+    ]
+  },
+  {
+    "record_id": "109",
+    "patient_id": "P109",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2535,
+    "ignored_annotations": 3,
+    "mapped_counts": [
+      2492,
+      0,
+      38,
+      2,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2490,
+      0,
+      38,
+      2,
+      0
+    ]
+  },
+  {
+    "record_id": "111",
+    "patient_id": "P111",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2133,
+    "ignored_annotations": 9,
+    "mapped_counts": [
+      2123,
+      0,
+      1,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2123,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "112",
+    "patient_id": "P112",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2550,
+    "ignored_annotations": 11,
+    "mapped_counts": [
+      2537,
+      2,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2535,
+      2,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "113",
+    "patient_id": "P113",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1796,
+    "ignored_annotations": 1,
+    "mapped_counts": [
+      1789,
+      6,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1787,
+      6,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "114",
+    "patient_id": "P114",
+    "signal_names": [
+      "V5",
+      "MLII"
+    ],
+    "lead_index": 1,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1890,
+    "ignored_annotations": 11,
+    "mapped_counts": [
+      1820,
+      12,
+      43,
+      4,
+      0
+    ],
+    "boundary_dropped_counts": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1820,
+      12,
+      43,
+      4,
+      0
+    ]
+  },
+  {
+    "record_id": "115",
+    "patient_id": "P115",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1962,
+    "ignored_annotations": 9,
+    "mapped_counts": [
+      1953,
+      0,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1951,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "116",
+    "patient_id": "P116",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2421,
+    "ignored_annotations": 9,
+    "mapped_counts": [
+      2302,
+      1,
+      109,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2301,
+      1,
+      109,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "117",
+    "patient_id": "P117",
+    "signal_names": [
+      "MLII",
+      "V2"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1539,
+    "ignored_annotations": 4,
+    "mapped_counts": [
+      1534,
+      1,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1533,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "118",
+    "patient_id": "P118",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2301,
+    "ignored_annotations": 23,
+    "mapped_counts": [
+      2166,
+      96,
+      16,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2165,
+      96,
+      16,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "119",
+    "patient_id": "P119",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2094,
+    "ignored_annotations": 107,
+    "mapped_counts": [
+      1543,
+      0,
+      444,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1543,
+      0,
+      444,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "121",
+    "patient_id": "P121",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1876,
+    "ignored_annotations": 13,
+    "mapped_counts": [
+      1861,
+      1,
+      1,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1859,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "122",
+    "patient_id": "P122",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2479,
+    "ignored_annotations": 3,
+    "mapped_counts": [
+      2476,
+      0,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2474,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "123",
+    "patient_id": "P123",
+    "signal_names": [
+      "MLII",
+      "V5"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1519,
+    "ignored_annotations": 1,
+    "mapped_counts": [
+      1515,
+      0,
+      3,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1514,
+      0,
+      3,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "124",
+    "patient_id": "P124",
+    "signal_names": [
+      "MLII",
+      "V4"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1634,
+    "ignored_annotations": 15,
+    "mapped_counts": [
+      1536,
+      31,
+      47,
+      5,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1535,
+      31,
+      47,
+      5,
+      0
+    ]
+  },
+  {
+    "record_id": "200",
+    "patient_id": "P200",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2792,
+    "ignored_annotations": 191,
+    "mapped_counts": [
+      1743,
+      30,
+      826,
+      2,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1742,
+      30,
+      826,
+      2,
+      0
+    ]
+  },
+  {
+    "record_id": "201",
+    "patient_id": "P201_202",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2039,
+    "ignored_annotations": 76,
+    "mapped_counts": [
+      1635,
+      128,
+      198,
+      2,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1634,
+      128,
+      198,
+      2,
+      0
+    ]
+  },
+  {
+    "record_id": "202",
+    "patient_id": "P201_202",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2146,
+    "ignored_annotations": 10,
+    "mapped_counts": [
+      2061,
+      55,
+      19,
+      1,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2060,
+      55,
+      19,
+      1,
+      0
+    ]
+  },
+  {
+    "record_id": "203",
+    "patient_id": "P203",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 3108,
+    "ignored_annotations": 128,
+    "mapped_counts": [
+      2529,
+      2,
+      444,
+      1,
+      4
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2528,
+      2,
+      444,
+      1,
+      4
+    ]
+  },
+  {
+    "record_id": "205",
+    "patient_id": "P205",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2672,
+    "ignored_annotations": 16,
+    "mapped_counts": [
+      2571,
+      3,
+      71,
+      11,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2570,
+      3,
+      71,
+      11,
+      0
+    ]
+  },
+  {
+    "record_id": "207",
+    "patient_id": "P207",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2385,
+    "ignored_annotations": 525,
+    "mapped_counts": [
+      1543,
+      107,
+      210,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1542,
+      107,
+      210,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "208",
+    "patient_id": "P208",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 3040,
+    "ignored_annotations": 85,
+    "mapped_counts": [
+      1586,
+      2,
+      992,
+      373,
+      2
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "accepted_counts": [
+      1585,
+      2,
+      992,
+      372,
+      2
+    ]
+  },
+  {
+    "record_id": "209",
+    "patient_id": "P209",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 3052,
+    "ignored_annotations": 47,
+    "mapped_counts": [
+      2621,
+      383,
+      1,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2620,
+      383,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "210",
+    "patient_id": "P210",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2685,
+    "ignored_annotations": 35,
+    "mapped_counts": [
+      2423,
+      22,
+      195,
+      10,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2421,
+      22,
+      195,
+      10,
+      0
+    ]
+  },
+  {
+    "record_id": "212",
+    "patient_id": "P212",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2763,
+    "ignored_annotations": 15,
+    "mapped_counts": [
+      2748,
+      0,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2747,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "213",
+    "patient_id": "P213",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 3294,
+    "ignored_annotations": 43,
+    "mapped_counts": [
+      2641,
+      28,
+      220,
+      362,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2639,
+      28,
+      220,
+      362,
+      0
+    ]
+  },
+  {
+    "record_id": "214",
+    "patient_id": "P214",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2297,
+    "ignored_annotations": 35,
+    "mapped_counts": [
+      2003,
+      0,
+      256,
+      1,
+      2
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2001,
+      0,
+      256,
+      1,
+      2
+    ]
+  },
+  {
+    "record_id": "215",
+    "patient_id": "P215",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 3400,
+    "ignored_annotations": 37,
+    "mapped_counts": [
+      3195,
+      3,
+      164,
+      1,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      3193,
+      3,
+      164,
+      1,
+      0
+    ]
+  },
+  {
+    "record_id": "217",
+    "patient_id": "P217",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "excluded_reason": "paced_record"
+  },
+  {
+    "record_id": "219",
+    "patient_id": "P219",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2312,
+    "ignored_annotations": 158,
+    "mapped_counts": [
+      2082,
+      7,
+      64,
+      1,
+      0
+    ],
+    "boundary_dropped_counts": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2082,
+      7,
+      64,
+      1,
+      0
+    ]
+  },
+  {
+    "record_id": "220",
+    "patient_id": "P220",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2069,
+    "ignored_annotations": 21,
+    "mapped_counts": [
+      1954,
+      94,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1952,
+      94,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "221",
+    "patient_id": "P221",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2462,
+    "ignored_annotations": 35,
+    "mapped_counts": [
+      2031,
+      0,
+      396,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2031,
+      0,
+      396,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "222",
+    "patient_id": "P222",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2634,
+    "ignored_annotations": 151,
+    "mapped_counts": [
+      2274,
+      209,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2272,
+      209,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "223",
+    "patient_id": "P223",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2643,
+    "ignored_annotations": 38,
+    "mapped_counts": [
+      2045,
+      73,
+      473,
+      14,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2044,
+      73,
+      473,
+      14,
+      0
+    ]
+  },
+  {
+    "record_id": "228",
+    "patient_id": "P228",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2141,
+    "ignored_annotations": 88,
+    "mapped_counts": [
+      1688,
+      3,
+      362,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1687,
+      3,
+      362,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "230",
+    "patient_id": "P230",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2466,
+    "ignored_annotations": 210,
+    "mapped_counts": [
+      2255,
+      0,
+      1,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2254,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "231",
+    "patient_id": "P231",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2011,
+    "ignored_annotations": 440,
+    "mapped_counts": [
+      1568,
+      1,
+      2,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      1567,
+      1,
+      2,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "232",
+    "patient_id": "P232",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 1816,
+    "ignored_annotations": 36,
+    "mapped_counts": [
+      398,
+      1382,
+      0,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      398,
+      1382,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "record_id": "233",
+    "patient_id": "P233",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 3152,
+    "ignored_annotations": 73,
+    "mapped_counts": [
+      2230,
+      7,
+      831,
+      11,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2229,
+      7,
+      830,
+      11,
+      0
+    ]
+  },
+  {
+    "record_id": "234",
+    "patient_id": "P234",
+    "signal_names": [
+      "MLII",
+      "V1"
+    ],
+    "lead_index": 0,
+    "fs": 360,
+    "signal_samples": 650000,
+    "annotations": 2764,
+    "ignored_annotations": 11,
+    "mapped_counts": [
+      2700,
+      50,
+      3,
+      0,
+      0
+    ],
+    "boundary_dropped_counts": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "accepted_counts": [
+      2699,
+      50,
+      3,
+      0,
+      0
+    ]
+  }
+]

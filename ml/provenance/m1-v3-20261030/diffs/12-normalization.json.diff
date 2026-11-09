@@ -1,0 +1,55 @@
+--- ml/manifests/mitdb-ds1ds2-m1-v2/normalization.json
++++ ml/manifests/mitdb-ds1ds2-m1-v3-r2/normalization.json
+@@ -1,5 +1,5 @@
+ {
+-  "schema_version": 2,
++  "schema_version": 3,
+   "status": "CANDIDATE_NOT_LOCKED_NOT_REVIEWED",
+   "fit_split": "train",
+   "fit_records": [
+@@ -11,7 +11,6 @@
+     "114",
+     "115",
+     "116",
+-    "119",
+     "122",
+     "124",
+     "201",
+@@ -19,6 +18,7 @@
+     "207",
+     "208",
+     "209",
++    "215",
+     "220",
+     "230"
+   ],
+@@ -31,7 +31,6 @@
+     "P114",
+     "P115",
+     "P116",
+-    "P119",
+     "P122",
+     "P124",
+     "P201_202",
+@@ -39,14 +38,15 @@
+     "P207",
+     "P208",
+     "P209",
++    "P215",
+     "P220",
+     "P230"
+   ],
+-  "num_values": 14435280,
+-  "num_train_beats": 40098,
+-  "mean": -0.39284395591910926,
+-  "std": 0.5005430931188499,
+-  "config_sha256": "010d06dcb034bc7ad7536b8db5ebc4630a15b80c708de30231fe5f409b503cde",
+-  "split_sha256": "ffcc059df75648e617aa82d8e6e82f4cf6eb402dcb921aafd4ae8aa0fe58f7d7",
++  "num_values": 14929920,
++  "num_train_beats": 41472,
++  "mean": -0.35176581957572445,
++  "std": 0.47773764700776233,
++  "config_sha256": "58ade2a0389e108403ef42528dbebf1a9758305793e1c7d851077bdbd3ff0514",
++  "split_sha256": "2475631611c5804d52c59be7e9d47d0a47f769fe230fef712120791e1b16847f",
+   "definition": "population variance; overlapping accepted train windows count separately"
+ }

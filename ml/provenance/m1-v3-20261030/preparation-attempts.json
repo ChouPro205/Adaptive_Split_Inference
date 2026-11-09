@@ -1,0 +1,49 @@
+{
+  "scope": "Preparation only, no fit attempts",
+  "first_build": "Failed at missing registry_v3 dependency from initial copy; new producer corrected to frozen registry_v2 and dependency checked before output",
+  "first_core_tests": "Legacy B-selection and dynamic-K expectations updated in new v3 tests to confirmed F-floor/fixed-K rules",
+  "final_data": "v3-r2 and data-receipt.json only; initial incomplete metadata retained in local audit, never handoff data",
+  "raw_logs_retained_local": [
+    {
+      "local_file": "build.txt",
+      "raw_sha256": "d513167d5b06432b298ed3cffd7468d7b15f82adbb69b0e98063383415d8f25a",
+      "bytes": 4218
+    },
+    {
+      "local_file": "build-r2.txt",
+      "raw_sha256": "89c0aa7fe136af129b43a1b303eff19c166cf940a22123ca081b380e2489df85",
+      "bytes": 8492
+    },
+    {
+      "local_file": "data-tests-initial.txt",
+      "raw_sha256": "d0bf5a83d1d4f63235d3568e70ec32814d2e17ada29e22802aaffb4ad140c373",
+      "bytes": 19032
+    },
+    {
+      "local_file": "data-tests-corrected.txt",
+      "raw_sha256": "0f714c51d50ac82353917bd6aa3ef844526f7df7cedcc8cb998e4fd88de62653",
+      "bytes": 8682
+    },
+    {
+      "local_file": "assets-tests-initial.txt",
+      "raw_sha256": "bac42a1de0bc73bdd5c150127fdae90d2a215fc0f4518eba8aeb8ec2699eba30",
+      "bytes": 2536
+    },
+    {
+      "local_file": "baseline-tests-initial.txt",
+      "raw_sha256": "dd003f1b4a27a34d0adcffba23959d0e82f57b523454ac1893a50fdadc926bdd",
+      "bytes": 4920
+    },
+    {
+      "local_file": "data-audit-console.txt",
+      "raw_sha256": "9b053ec694f1a3b2e2f721065e96ab8f03ef685b04d3655b886f7ad802ee4ada",
+      "bytes": 2170
+    },
+    {
+      "local_file": "data-audit-final-console.txt",
+      "raw_sha256": "c480381a2d79a3938cd517ce6bac1b691691a320be4d1bf063a0337b3529104d",
+      "bytes": 1952
+    }
+  ],
+  "historical_evidence": "No old receipts/logs altered"
+}

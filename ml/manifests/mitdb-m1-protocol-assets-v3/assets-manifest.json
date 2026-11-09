@@ -1,0 +1,14 @@
+{
+  "status": "CANDIDATE_ASSETS_NOT_LOCKED_NOT_TRAINED",
+  "protocol_sha256": "8068501318c09196f07ea5e13ef71174b4e434b82e508d567beebf4bf9103a45",
+  "generator_sha256": "0be46b7200270c705e1d5380f549e6a2f18ba64aa4236b7bafafb4cf00390c55",
+  "artifacts": {
+    "dcor-validation-subset.csv": "e5f5aa2e148c3a516cd24af4b540b68d045a269ee4be7e5f4574c4984092c907",
+    "class-weights-by-trial.json": "9762080bdbf4bde2e2e043c32d4a6098554798721716164d8046aa25e242e799",
+    "baseline-trial-register.csv": "740fca725cb7f465c3eaa1a428eba49ddf5614897b0eebf993213a9bf61f31fc"
+  },
+  "subset_samples": 512,
+  "planned_seed_fits": 18,
+  "executed_seed_fits": 0,
+  "model_predictions": false
+}

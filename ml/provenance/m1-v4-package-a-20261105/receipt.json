@@ -1,0 +1,302 @@
+{
+  "type": "M1_V4_PACKAGE_A_CANDIDATE_RECEIPT_NOT_DELIVERED",
+  "date": "2026-11-05",
+  "prepared_by": "SV3",
+  "request": "SV1 review of M1 v4 grid: deliver package A after the checkpoint lock, without DS2 predictions (v1.2 sections 4.3-4.4)",
+  "source_head": "5d2f3e3b656dc32a3df357b78c7568cbaa660e53",
+  "branch": "dev/ml-sv3",
+  "scripts_sha256": {
+    "ml/scripts/package_m1_v4_a.py": "2c9662858cb0d504252adfc5cbb58895687f7737420384ed1e53a028cdb37cb6",
+    "ml/scripts/test_package_m1_v4_a.py": "51fe466c8e3dc8f9bace0a036b9e14742969597cf3a4f8f5e5867055a5748d19",
+    "ml/provenance/m1-v4-package-a-20261105/write_receipt.py": "ec2c73c055618064bf666f3697f507287ad9e4f1bdb7e73cdddbc525fbbfea37"
+  },
+  "python": "3.11.9",
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/package_m1_v4_a.py",
+        "build",
+        "--output",
+        "ml/data/package-a/m1-v4-package-a-20261105-v1",
+        "--calibration-count",
+        "1000"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-package-a-20261105/logs/build-v1.stdout.txt": "9c1e12d2f76d0bfc68cc11f16cb065af2aa284393d5a55051f71c45fe9ba8b47",
+        "ml/provenance/m1-v4-package-a-20261105/logs/build-v1.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/package_m1_v4_a.py",
+        "build",
+        "--output",
+        "ml/data/package-a/m1-v4-package-a-20261105-v1-repro",
+        "--calibration-count",
+        "1000"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-package-a-20261105/logs/build-repro.stdout.txt": "37aaddcc8ec8d20d39a19315d3feb979b7214fc52fe7cc87eab84f4e7871c843",
+        "ml/provenance/m1-v4-package-a-20261105/logs/build-repro.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/package_m1_v4_a.py",
+        "verify",
+        "--package",
+        "ml/data/package-a/m1-v4-package-a-20261105-v1"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-package-a-20261105/logs/verify-normal.txt": "3bc3e3172266043228c2c53fa6b38b95da72ac8e81aeaa577b862e94fffc7d14"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/test_package_m1_v4_a.py"
+      ],
+      "exit_code": 0,
+      "tests": 11,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-package-a-20261105/logs/tests-normal.txt": "d989cda0ef9c401f6c0720852299b0bb62bf70a986754137ac211118da763e63"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/package_m1_v4_a.py",
+        "verify",
+        "--package",
+        "ml/data/package-a/m1-v4-package-a-20261105-v1"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-package-a-20261105/logs/verify-optimized.txt": "3bc3e3172266043228c2c53fa6b38b95da72ac8e81aeaa577b862e94fffc7d14"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/test_package_m1_v4_a.py"
+      ],
+      "exit_code": 0,
+      "tests": 11,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-package-a-20261105/logs/tests-optimized.txt": "b4dcdafd024aa4507e9fe7f99b7ce1a6cf44dffcedf74a7db1c01e0b1556e34b"
+      }
+    }
+  ],
+  "package": {
+    "path": "ml/data/package-a/m1-v4-package-a-20261105-v1",
+    "status": "CANDIDATE_PENDING_SV2_CALIBRATION_CONFIRMATION_NOT_DELIVERED",
+    "manifest_sha256": "f005b3ea4e2440186bce4218c537b12f3b54fe734631c56a90c2378748aedf2f",
+    "files": 58,
+    "bytes": 119821835,
+    "key_files_sha256": {
+      "model/checkpoint.pt": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+      "firmware/head_parameters.h": "552bc7eb3960ce84e17d30ce20f9c82f40468130457828892ae5c0fbeb78833e",
+      "model/model_graph.json": "e78a408e9a5dbf8be0d537aa790a7bfb6103ee4552e48813d3ee05faa0a13c9f",
+      "model/architecture.json": "7f39a6691fb5ca6c613a314a8b487d345c5d7b58e945f2d47b23e9eca61a23d2",
+      "data/normalization.json": "1ae60f3f493427286ddfbcd3e269c6dce312a93351a75ebdf69db61941d23b89",
+      "data/processed-manifest.json": "7de30a1ca230286545c3637430c83141f8f0913b9abc3476858df0d87423cc0f",
+      "samples.csv": "64496bb3dba5578600b023628ecbe728adcb9f0d2852a073fb64519d218f7786",
+      "calibration/samples.csv": "b2194e7e0e0559442827fac5018b1ea612727240c1f0a34e2ca6cd8fca430a1f",
+      "calibration/rule.json": "fb148d5d02f6830184a9dd22ebdc392cc27419a7addbcd4e97543138028b0341"
+    }
+  },
+  "checkpoint_lock": {
+    "path": "ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json",
+    "sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc"
+  },
+  "checkpoint": {
+    "path": "model/checkpoint.pt",
+    "sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+    "slot_id": "C5-seed20261101",
+    "selected_epoch": 4,
+    "source_path": "ml/data/runs/mitdb-baseline-v4-20261103/C5-seed20261101/attempt-1/checkpoint-epoch-004.pt"
+  },
+  "architecture": {
+    "parameter_count": 109653,
+    "shapes_N1": {
+      "0": [
+        1,
+        1,
+        360
+      ],
+      "1": [
+        1,
+        16,
+        360
+      ],
+      "2": [
+        1,
+        16,
+        180
+      ],
+      "3": [
+        1,
+        32,
+        180
+      ],
+      "4": [
+        1,
+        32,
+        90
+      ],
+      "5": [
+        1,
+        48,
+        90
+      ],
+      "6": [
+        1,
+        48,
+        45
+      ],
+      "7": [
+        1,
+        64,
+        45
+      ],
+      "8": [
+        1,
+        64,
+        22
+      ],
+      "9": [
+        1,
+        32
+      ],
+      "10": [
+        1,
+        5
+      ]
+    },
+    "checks": [
+      "executed shapes == Week 3 split convention == registry v2 shape_original for s0-s10",
+      "golden z_s == head_s(x) bitwise on CPU for the 20 comparison samples",
+      "tail_s(head_s(x)) == full-model logits bitwise for every s",
+      "no BatchNorm; eval mode; strict state_dict load"
+    ]
+  },
+  "cpu_validation_reload": {
+    "device": "cpu",
+    "batch_size": 256,
+    "samples": 9523,
+    "confusion_matrix": [
+      [
+        8221,
+        85,
+        8,
+        8,
+        0
+      ],
+      [
+        101,
+        70,
+        1,
+        0,
+        0
+      ],
+      [
+        92,
+        75,
+        774,
+        63,
+        0
+      ],
+      [
+        17,
+        3,
+        1,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "matches_locked_validation": true
+  },
+  "header": {
+    "generator": "week3_common.header via week4_common.graph_parameters (same generator and format as R3 week 4)",
+    "host_c": {
+      "compiler": "gcc.EXE (Rev8, Built by MSYS2 project) 15.2.0",
+      "flags": "-std=c99 -Wall -Wextra -Werror -pedantic",
+      "fp32_elements": 109653,
+      "status": "PASS",
+      "target": "host; not nRF52840 firmware"
+    }
+  },
+  "golden": {
+    "path": "golden/",
+    "split": "train",
+    "count": 20,
+    "rule": "sort_numeric_record_id_then_numeric_r_peak_sample_then_lead_name_take_first_20",
+    "splits": "s0-s10 plus reference_logits",
+    "computation": "CPU, eval, torch.no_grad, N=1 per sample, one thread, deterministic, MKLDNN disabled"
+  },
+  "calibration": {
+    "path": "calibration/",
+    "split": "train",
+    "count": 1000,
+    "rule": "np.unique(np.linspace(0, n_train-1, min(count, n_train)).round().astype(int64)) over train_X rows",
+    "splits": "s0-s9",
+    "status": "CANDIDATE_PENDING_SV2_CONFIRMATION",
+    "train_row_indices_le_int64_sha256": "c7e2b3e983fb39760fa5e05d4b09a0597221efb18cbdb11e2fe33bd3d5fa81f0"
+  },
+  "reproduction": {
+    "second_build": "ml/data/package-a/m1-v4-package-a-20261105-v1-repro",
+    "result": "REPRODUCTION_BYTE_IDENTICAL files=59",
+    "file_lists_sha256": {
+      "ml/provenance/m1-v4-package-a-20261105/logs/repro-v1.sha256": "33ccf69619a747eae68ee6c04081da2784ed9bd921e812ec3eb8692cc818bee8",
+      "ml/provenance/m1-v4-package-a-20261105/logs/repro-repro.sha256": "33ccf69619a747eae68ee6c04081da2784ed9bd921e812ec3eb8692cc818bee8"
+    },
+    "second_build_removed_after_compare": true
+  },
+  "scope": {
+    "DS2_opened": false,
+    "arrays_opened": [
+      "train_X.npy",
+      "train_y.npy",
+      "train_metadata.csv",
+      "val_X.npy",
+      "val_y.npy",
+      "val_metadata.csv"
+    ],
+    "not_included": {
+      "DS2_predictions": "v1.2 section 4.3; after the SV2 xmodel s0-s9 SHA lock (SV1 review 2a)",
+      "DS2_arrays": "Hashes are in data/processed-manifest.json; arrays ship with the DS2 step",
+      "onnx_tails": "Not in the v1.2 section 4.4 list; SV2 tools split the tail from model/checkpoint.pt"
+    }
+  },
+  "pending": [
+    "SV2 confirms calibration count and IDs (protocol v4 quantization); package is a candidate until then",
+    "GitHub Release of the package after that confirmation",
+    "DS2 FP32 predictions after the SV2 xmodel s0-s9 SHA lock"
+  ],
+  "not_verified": [
+    "Head on nRF52840 (host C compile only)",
+    "DPU/VART execution (SV2)",
+    "Calibration adequacy for quantization"
+  ]
+}

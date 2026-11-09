@@ -1,0 +1,6 @@
+lock 6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc
+verify: ACCEPTED deployment fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c
+negative control deployment sha256 changed: REJECTED Checkpoint file differs: C5-seed20261101
+negative control deployment role removed: REJECTED Deployment role differs
+negative control review evidence hash changed: REJECTED Review evidence hash differs
+negative control ds2 status changed: REJECTED Lock identity

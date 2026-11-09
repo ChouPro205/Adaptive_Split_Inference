@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v3.py", line 208, in <module>
+    main()
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v3.py", line 204, in main
+    verify(a.config,a.raw_dir,a.output,a.artifacts)
+  File "WORKTREE\ml\scripts\verify_mitdb_ds1ds2_m1_v3.py", line 116, in verify
+    need(check_raw(raw,c)==m['raw_sha256'], 'Raw hash inventory differs')
+         ^^^^^^^^^^^^^^^^
+  File "WORKTREE\ml\scripts\mitdb_ds1ds2_m1_v3.py", line 95, in check_raw
+    need(digest(sums) == c['physionet_checksum_manifest_sha256'], 'Official checksum manifest differs')
+  File "WORKTREE\ml\scripts\mitdb_ds1ds2_m1_v3.py", line 35, in need
+    raise ValueError(message)
+ValueError: Official checksum manifest differs

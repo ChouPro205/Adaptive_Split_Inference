@@ -1,0 +1,15 @@
+test_device_tf32_and_deployment_recorded (__main__.DryRunTests.test_device_tf32_and_deployment_recorded) ... ok
+test_existing_output_refused (__main__.DryRunTests.test_existing_output_refused) ... ok
+test_no_ds2_file_opened (__main__.DryRunTests.test_no_ds2_file_opened) ... ok
+test_predictions_have_record_ids_for_every_beat_and_seed (__main__.DryRunTests.test_predictions_have_record_ids_for_every_beat_and_seed) ... ok
+test_reproduces_three_locked_confusions (__main__.DryRunTests.test_reproduces_three_locked_confusions) ... ok
+test_statistics_are_mean_and_sample_sd (__main__.DryRunTests.test_statistics_are_mean_and_sample_sd) ... ok
+test_authorization_must_bind_this_script_and_xmodel_lock (__main__.GateTests.test_authorization_must_bind_this_script_and_xmodel_lock) ... ok
+test_ds2_refused_without_authorization_before_any_load (__main__.GateTests.test_ds2_refused_without_authorization_before_any_load) ... ok
+test_excluded_record_must_split (__main__.RowTests.test_excluded_record_must_split) ... ok
+test_rows_partition_and_per_record (__main__.RowTests.test_rows_partition_and_per_record) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 9.213s
+
+OK

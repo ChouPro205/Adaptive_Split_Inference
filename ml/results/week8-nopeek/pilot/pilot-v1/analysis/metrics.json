@@ -1,0 +1,362 @@
+[
+  {
+    "run_id": "s2-lambda0-seed20261021",
+    "mode": "pilot",
+    "split": 2,
+    "lambda1": 0,
+    "seed": 20261021,
+    "best_epoch": 1,
+    "epochs_completed": 2,
+    "accuracy": 0.88671875,
+    "ce": 0.36139060993446037,
+    "dcor": 0.9882200881838799,
+    "macro_f1": 0.3339520828836607,
+    "samples": 256,
+    "dcor_samples": 256,
+    "batch_size": 32,
+    "checkpoint_sha256": "6f387cd391c96ddbec2e3c7f79cbcdc0bd8b87c80fbd12723988a64db47b070a",
+    "selected_samples_sha256": "ceda24246cd7dcf8efe9c809ff49c00870450efa68af6993235af4786dcbcfc7",
+    "recall_N": 0.954954954954955,
+    "recall_S": 0.0,
+    "recall_V": 1.0,
+    "recall_F": 0.0,
+    "recall_Q": 0.0,
+    "confusion_matrix": [
+      [
+        212,
+        0,
+        10,
+        0,
+        0
+      ],
+      [
+        18,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "run_id": "s2-lambda0.5-seed20261021",
+    "mode": "pilot",
+    "split": 2,
+    "lambda1": 0.5,
+    "seed": 20261021,
+    "best_epoch": 1,
+    "epochs_completed": 2,
+    "accuracy": 0.88671875,
+    "ce": 0.3606231219819165,
+    "dcor": 0.9864496067166328,
+    "macro_f1": 0.3339520828836607,
+    "samples": 256,
+    "dcor_samples": 256,
+    "batch_size": 32,
+    "checkpoint_sha256": "1f7fcaa21014c50f2417cb70e964ff708731db96c3fc8b5ff34bac5cc91e63c1",
+    "selected_samples_sha256": "ceda24246cd7dcf8efe9c809ff49c00870450efa68af6993235af4786dcbcfc7",
+    "recall_N": 0.954954954954955,
+    "recall_S": 0.0,
+    "recall_V": 1.0,
+    "recall_F": 0.0,
+    "recall_Q": 0.0,
+    "confusion_matrix": [
+      [
+        212,
+        0,
+        10,
+        0,
+        0
+      ],
+      [
+        18,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "run_id": "s5-lambda0-seed20261021",
+    "mode": "pilot",
+    "split": 5,
+    "lambda1": 0,
+    "seed": 20261021,
+    "best_epoch": 1,
+    "epochs_completed": 2,
+    "accuracy": 0.875,
+    "ce": 0.38946599418704864,
+    "dcor": 0.9511588588356972,
+    "macro_f1": 0.322555173111966,
+    "samples": 256,
+    "dcor_samples": 256,
+    "batch_size": 32,
+    "checkpoint_sha256": "7bedf7d0cd56b99443ec9d9c9f64b73b1278deb748047ceb1abbf29451dc733c",
+    "selected_samples_sha256": "ceda24246cd7dcf8efe9c809ff49c00870450efa68af6993235af4786dcbcfc7",
+    "recall_N": 0.9414414414414415,
+    "recall_S": 0.0,
+    "recall_V": 1.0,
+    "recall_F": 0.0,
+    "recall_Q": 0.0,
+    "confusion_matrix": [
+      [
+        209,
+        0,
+        13,
+        0,
+        0
+      ],
+      [
+        18,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "run_id": "s5-lambda0.5-seed20261021",
+    "mode": "pilot",
+    "split": 5,
+    "lambda1": 0.5,
+    "seed": 20261021,
+    "best_epoch": 2,
+    "epochs_completed": 2,
+    "accuracy": 0.88671875,
+    "ce": 0.3801051163900411,
+    "dcor": 0.9306496009230614,
+    "macro_f1": 0.3339520828836607,
+    "samples": 256,
+    "dcor_samples": 256,
+    "batch_size": 32,
+    "checkpoint_sha256": "ad469d13897e1fb0a134ff665d0f7228e84aa4877196cbb20b98c91a429d1f6b",
+    "selected_samples_sha256": "ceda24246cd7dcf8efe9c809ff49c00870450efa68af6993235af4786dcbcfc7",
+    "recall_N": 0.954954954954955,
+    "recall_S": 0.0,
+    "recall_V": 1.0,
+    "recall_F": 0.0,
+    "recall_Q": 0.0,
+    "confusion_matrix": [
+      [
+        212,
+        0,
+        10,
+        0,
+        0
+      ],
+      [
+        18,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "run_id": "s8-lambda0-seed20261021",
+    "mode": "pilot",
+    "split": 8,
+    "lambda1": 0,
+    "seed": 20261021,
+    "best_epoch": 1,
+    "epochs_completed": 2,
+    "accuracy": 0.84765625,
+    "ce": 0.4211528753803577,
+    "dcor": 0.9131342321634293,
+    "macro_f1": 0.3004524886877828,
+    "samples": 256,
+    "dcor_samples": 256,
+    "batch_size": 32,
+    "checkpoint_sha256": "18c19131f35d505d099f9a269a8fca3b52f40ba9ce7828ce42c5d0af2da6e75a",
+    "selected_samples_sha256": "ceda24246cd7dcf8efe9c809ff49c00870450efa68af6993235af4786dcbcfc7",
+    "recall_N": 0.9099099099099099,
+    "recall_S": 0.0,
+    "recall_V": 1.0,
+    "recall_F": 0.0,
+    "recall_Q": 0.0,
+    "confusion_matrix": [
+      [
+        202,
+        0,
+        20,
+        0,
+        0
+      ],
+      [
+        18,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  {
+    "run_id": "s8-lambda0.5-seed20261021",
+    "mode": "pilot",
+    "split": 8,
+    "lambda1": 0.5,
+    "seed": 20261021,
+    "best_epoch": 2,
+    "epochs_completed": 2,
+    "accuracy": 0.8671875,
+    "ce": 0.3808529246598482,
+    "dcor": 0.8919318541884422,
+    "macro_f1": 0.31566968193755474,
+    "samples": 256,
+    "dcor_samples": 256,
+    "batch_size": 32,
+    "checkpoint_sha256": "e98ea1e9e775bc848b049a95cf4f8c40ae8418bcb9987f8ab42ed5f94505ae90",
+    "selected_samples_sha256": "ceda24246cd7dcf8efe9c809ff49c00870450efa68af6993235af4786dcbcfc7",
+    "recall_N": 0.9324324324324325,
+    "recall_S": 0.0,
+    "recall_V": 1.0,
+    "recall_F": 0.0,
+    "recall_Q": 0.0,
+    "confusion_matrix": [
+      [
+        207,
+        0,
+        15,
+        0,
+        0
+      ],
+      [
+        18,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  }
+]

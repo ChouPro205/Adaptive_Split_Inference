@@ -1,0 +1,4 @@
+PASS_M1_CANDIDATE_DATA_VERIFIED_NOT_LOCKED_NOT_REVIEWED
+Raw files: 144; records/channel audit: 48; processed files: 12; no model predictions
+Independent normalization mean/std: -0.4420216482311065 0.4690632411644705
+Independent validation: 114,119,201,208,230

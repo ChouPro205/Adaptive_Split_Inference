@@ -1,0 +1,25 @@
+test_202_calibration (__main__.ContractTests.test_202_calibration) ... ok
+test_202_main (__main__.ContractTests.test_202_main) ... ok
+test_202_train (__main__.ContractTests.test_202_train) ... ok
+test_ds2_calibration (__main__.ContractTests.test_ds2_calibration) ... ok
+test_ds2_train (__main__.ContractTests.test_ds2_train) ... ok
+test_ds2_validation (__main__.ContractTests.test_ds2_validation) ... ok
+test_duplicate_record (__main__.ContractTests.test_duplicate_record) ... ok
+test_forged_shared_patient (__main__.ContractTests.test_forged_shared_patient) ... ok
+test_no_feasible_split_fails (__main__.ContractTests.test_no_feasible_split_fails) ... ok
+test_norm_extra_202 (__main__.ContractTests.test_norm_extra_202) ... ok
+test_paced_validation (__main__.ContractTests.test_paced_validation) ... ok
+test_patient_group_config_removed (__main__.ContractTests.test_patient_group_config_removed) ... ok
+test_patient_overlap_even_with_distinct_record_ids (__main__.ContractTests.test_patient_overlap_even_with_distinct_record_ids) ... ok
+test_rr_rejected (__main__.ContractTests.test_rr_rejected) ... ok
+test_seed_reproducible_and_ds2_not_used (__main__.ContractTests.test_seed_reproducible_and_ds2_not_used) ... ok
+test_val_normalization (__main__.ContractTests.test_val_normalization) ... ok
+test_valid_config (__main__.ContractTests.test_valid_config) ... ok
+test_window_rejected (__main__.ContractTests.test_window_rejected) ... ok
+test_wrong_record_config (__main__.ContractTests.test_wrong_record_config) ... ok
+test_zero_std (__main__.ContractTests.test_zero_std) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.153s
+
+OK

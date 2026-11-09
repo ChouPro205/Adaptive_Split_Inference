@@ -1,0 +1,308 @@
+[
+  {
+    "before": "ml/configs/mitdb_m1_baseline_protocol_v3.json",
+    "after": "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+    "before_raw_sha256": "8068501318c09196f07ea5e13ef71174b4e434b82e508d567beebf4bf9103a45",
+    "after_raw_sha256": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+    "identical": false,
+    "diff": "diffs/01-mitdb_m1_baseline_protocol_v4.json.diff",
+    "diff_sha256": "3b66a069bc38d143ae4e1f13cd8d4574adaccbba8cc275a91964959fe80b566c"
+  },
+  {
+    "before": "ml/scripts/baseline_grid_v3.py",
+    "after": "ml/scripts/baseline_grid_v4.py",
+    "before_raw_sha256": "b7bc1017891c3b98de38e14ee54c50cc6dda40afc34561d14eb172d413753182",
+    "after_raw_sha256": "2a57b9b9e9c44a5e0681360b693b391b93be4596588fec230218f0e4e3639ff2",
+    "identical": false,
+    "diff": "diffs/02-baseline_grid_v4.py.diff",
+    "diff_sha256": "cb48482460d127156b172ccecbbc9fc418b0d322cf91b6d66ee274cec85bb809"
+  },
+  {
+    "before": "ml/scripts/baseline_selection_v3.py",
+    "after": "ml/scripts/baseline_selection_v4.py",
+    "before_raw_sha256": "9fdc1f47310184cf7998fa8e27e0de20d57b47e8e08733146727c86709056865",
+    "after_raw_sha256": "86872dae2686bcedf87e6256054dac55eb4a42c11cbc6baa1e7429b849cc9631",
+    "identical": false,
+    "diff": "diffs/03-baseline_selection_v4.py.diff",
+    "diff_sha256": "91a070f0edac55224322e2382e2ba9a3db41eda1b64c2f503d301aff2b297a92"
+  },
+  {
+    "before": "ml/scripts/train_mitdb_baseline_v3.py",
+    "after": "ml/scripts/train_mitdb_baseline_v4.py",
+    "before_raw_sha256": "d4e764fb6513b5e66a30619a92a39f215a44b3c3ebab2c5d8c515eead27bdfa4",
+    "after_raw_sha256": "b9ff8479a5c05b58633a8a24457462108197be7242651e52aa10ddc1f96966c5",
+    "identical": false,
+    "diff": "diffs/04-train_mitdb_baseline_v4.py.diff",
+    "diff_sha256": "b9aed4bdfdcfb0fc9d8642aa00740350849f787f6701e9f98421bb023f1d4503"
+  },
+  {
+    "before": "ml/scripts/m1_metrics_v3.py",
+    "after": "ml/scripts/m1_metrics_v4.py",
+    "before_raw_sha256": "ad8bc491c86470832b6cadd3ae77b8c31ff398f6c95bc47d6039e39ec860e8ed",
+    "after_raw_sha256": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+    "identical": false,
+    "diff": "diffs/05-m1_metrics_v4.py.diff",
+    "diff_sha256": "8448fa4b326701b09f929015ae4b529fa97bce736c928fda42e42cc3146d3596"
+  },
+  {
+    "before": "ml/scripts/prepare_m1_protocol_assets_v3.py",
+    "after": "ml/scripts/prepare_m1_protocol_assets_v4.py",
+    "before_raw_sha256": "0be46b7200270c705e1d5380f549e6a2f18ba64aa4236b7bafafb4cf00390c55",
+    "after_raw_sha256": "d95c8233a2eda9fbe528291a04e501bbfdff2aa9c5c008a7a32c99c1cf4b5dbb",
+    "identical": false,
+    "diff": "diffs/06-prepare_m1_protocol_assets_v4.py.diff",
+    "diff_sha256": "c408cc80844b0af9b03d06645d8bd7a4051407b7706cecced2ffebd2ca4435ee"
+  },
+  {
+    "before": "ml/scripts/test_baseline_grid_v3.py",
+    "after": "ml/scripts/test_baseline_grid_v4.py",
+    "before_raw_sha256": "78fcd1070063687671b3958aac9efa2caaf7dbf2a89db5d4bcc283726c4cf80c",
+    "after_raw_sha256": "60112348022b6bebfb0d5eeb7827f3a89c78f10ef75e5e4aaa9f2e585390e081",
+    "identical": false,
+    "diff": "diffs/07-test_baseline_grid_v4.py.diff",
+    "diff_sha256": "3b3e487a0a985a28bbcdf61900a4f07e083ee9344d39dc6803400b448176daa9"
+  },
+  {
+    "before": "ml/scripts/test_m1_protocol_assets_v3.py",
+    "after": "ml/scripts/test_m1_protocol_assets_v4.py",
+    "before_raw_sha256": "0076a9654f81c382c2c479da324595308cb2069b071736cfc6bb73c5a07c32d7",
+    "after_raw_sha256": "4c039a883bafc121094a364c264ecef18f0f485a0ee4a4fc4b56140963bfb70f",
+    "identical": false,
+    "diff": "diffs/08-test_m1_protocol_assets_v4.py.diff",
+    "diff_sha256": "873fb05c49afe8f6549c808b923e89431e7b7a1765a00817c07bd26132ff32bb"
+  },
+  {
+    "before": null,
+    "after": "ml/scripts/baseline_sampler_v4.py",
+    "before_raw_sha256": null,
+    "after_raw_sha256": "1ccc99035ebe96d455a4e92cef45782814e55f644acf649f6959191c4bcfa566",
+    "identical": false,
+    "diff": "diffs/09-baseline_sampler_v4.py.diff",
+    "diff_sha256": "cf745df81feb25b4fd7a6942aee94f6b3544a382131198d0ef10de983a865afd"
+  },
+  {
+    "before": null,
+    "after": "ml/scripts/test_baseline_sampler_v4.py",
+    "before_raw_sha256": null,
+    "after_raw_sha256": "7a213da9bb3658e88a9c024363d59721e5cd5355bd88dbf1c2b2a7e00da9e300",
+    "identical": false,
+    "diff": "diffs/10-test_baseline_sampler_v4.py.diff",
+    "diff_sha256": "570395df4ea60d63b85a602abfffe5666ecf8709c899eb67a47c22bc7339af48"
+  },
+  {
+    "before": null,
+    "after": "ml/scripts/report_m1_v4_tables.py",
+    "before_raw_sha256": null,
+    "after_raw_sha256": "75f0e9680f079fc8ff17f20c7ea570c22833bc54238a645d3e1151c708fb5316",
+    "identical": false,
+    "diff": "diffs/11-report_m1_v4_tables.py.diff",
+    "diff_sha256": "21650f1f8d73bd5257ea65e7170491bb0882ff7b6cb73a37fbe24251e71dcdfd"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/plan-manifest.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json",
+    "before_raw_sha256": "2b599ba055e844be46f66c3b5dd8c7fb9dd81c04d6a993c6f44a102307cbb8ec",
+    "after_raw_sha256": "1ce2f811e62f9ef55833e7256c6678e2b348cf1e2f750412e2e0b6203c27d956",
+    "identical": false,
+    "diff": "diffs/12-plan-manifest.json.diff",
+    "diff_sha256": "8c54844ea9146ab2fd0fc1f45c68eed93041dc1645fd65688df3f51d3ef7e271"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C0-seed20261030.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C0-seed20261030.json",
+    "before_raw_sha256": "e816c7170485ac8ea5348ef56ba08d86ebb920f9d0f6d0865cbe7d39e2213632",
+    "after_raw_sha256": "753ba53efefce04beeba5c8aa8ff6ebcf4ec91b970191f3592a26c2f29ca9654",
+    "identical": false,
+    "diff": "diffs/13-C0-seed20261030.json.diff",
+    "diff_sha256": "9263f31276a0dfc68e1907a54bbe15ff054f791fb31def415f398775a8953020"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C0-seed20261031.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C0-seed20261031.json",
+    "before_raw_sha256": "02dc7ac377392f500b7619a07970de0c79dd1482ba50463fdb7782c398fafb69",
+    "after_raw_sha256": "462fcde70348a3ce5a32707da569abb3723b2ebbc0fedb7fea7995b0a5e5dd4f",
+    "identical": false,
+    "diff": "diffs/14-C0-seed20261031.json.diff",
+    "diff_sha256": "390a13a7e6c259d96dbb4b0725665b2836ddfa2278b42911f05449069f430d43"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C0-seed20261101.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C0-seed20261101.json",
+    "before_raw_sha256": "a0afb7304a5bdc6c0f98e9aaf57d9f8a7c30ce142989b05bbec4f57d848f90c1",
+    "after_raw_sha256": "9c950c9a101f243258d93f6780637856960291bc285cc62881736474beaaa582",
+    "identical": false,
+    "diff": "diffs/15-C0-seed20261101.json.diff",
+    "diff_sha256": "64d87bd894ea914ed2abdf79196aa87fd81fd413bdc888de38954013ee9dfc05"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C1-seed20261030.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C1-seed20261030.json",
+    "before_raw_sha256": "dffb22a49c70acbd7510c771d0036ca980bf2ae7ad6dd31ad2752eb8ecbecf91",
+    "after_raw_sha256": "f3f2fb974448249f8ab981e20f93ed82edaf117e213b5ed353a98f119b0f35c9",
+    "identical": false,
+    "diff": "diffs/16-C1-seed20261030.json.diff",
+    "diff_sha256": "076bb48cd1b36b83d30838e345c7553b712186e11e388e2d40dabbd57cbc45d5"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C1-seed20261031.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C1-seed20261031.json",
+    "before_raw_sha256": "9909e335c5b84db8bd2bac88ecd3ee2b7efcf1e3884a0a8f1c41ad1451db1285",
+    "after_raw_sha256": "41f5d7a7453716fd2667713fba543bb6ec318d0eff8860f17231172d5403f953",
+    "identical": false,
+    "diff": "diffs/17-C1-seed20261031.json.diff",
+    "diff_sha256": "49649d4e7105d6c39fff0d88a33a9cf6a24b0e2967850bf9b4d53f076e1821f1"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C1-seed20261101.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C1-seed20261101.json",
+    "before_raw_sha256": "65a18bb52b8bcdba74ce2faa2f53ba069829f1cb65ad34c065e3ba72ae531f69",
+    "after_raw_sha256": "88ca901f10263feeed1027a6fe0d77a6a68f001f60525aec2dc04bdce995835c",
+    "identical": false,
+    "diff": "diffs/18-C1-seed20261101.json.diff",
+    "diff_sha256": "d61f90ce5f984df9a96480b1fd37b462111c5abd75e42ff0f2be02517d6ec16a"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C2-seed20261030.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C2-seed20261030.json",
+    "before_raw_sha256": "e340bafbc244da1d323b94a1d8265a92ba27c89fdc14cd16eed3dd5afb3bd3a8",
+    "after_raw_sha256": "43d1b6553c6c3534b1777fa507c67dd56f59f75a40f6f85b9bfa2e8998c5c17b",
+    "identical": false,
+    "diff": "diffs/19-C2-seed20261030.json.diff",
+    "diff_sha256": "c3bdc9006f61f8303e7f74e4ef8abae2230dfdbe7693cf89396323681a386cdb"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C2-seed20261031.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C2-seed20261031.json",
+    "before_raw_sha256": "53d1acefc9c1aa497d64219bcfaf1cafe3869613a4512046a2373d66831f4243",
+    "after_raw_sha256": "48270d6a0d04b0de214762323a610281fb4f8cc3a61577f07628c7a8daf8c6b9",
+    "identical": false,
+    "diff": "diffs/20-C2-seed20261031.json.diff",
+    "diff_sha256": "29cea648abe14f925d7f8bac9f8c8fc32b57fe084ecbbdaaf07ddde150291a68"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C2-seed20261101.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C2-seed20261101.json",
+    "before_raw_sha256": "2bcd7c91ef13a693742d063b24b6c89b06430dc7935794c3544d901298dd4656",
+    "after_raw_sha256": "eb07b70aa6d34295699ab3d1a5f4b0614da39a721508106141a0e1e8ecbf8729",
+    "identical": false,
+    "diff": "diffs/21-C2-seed20261101.json.diff",
+    "diff_sha256": "2f8034ab4a7b40a4c03ab6bde34463e23cbbdefc7f6e75b15b84f484f01132da"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C3-seed20261030.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C3-seed20261030.json",
+    "before_raw_sha256": "f76584178f65491e007c2c9ab9107e5ebb8152e59d89d9b058fcb8ddb54b076c",
+    "after_raw_sha256": "e2eda580f6bdb079e50ab4155e3e87f3e784a731bb04333f7fda4ced57608849",
+    "identical": false,
+    "diff": "diffs/22-C3-seed20261030.json.diff",
+    "diff_sha256": "e3e5d7d0ab2bcb3ed13dbc2def02e8df4e8e70adc2b6208287c65b2b595674f6"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C3-seed20261031.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C3-seed20261031.json",
+    "before_raw_sha256": "1884f3fb45dce863f3f7fc58327b76d39ee7aecc1b5cb8d3fce014deba643ebd",
+    "after_raw_sha256": "cf77768d79972d0f65caa8d497effc0ed4f21e1a92e76b993c3bddcd4f6ec51c",
+    "identical": false,
+    "diff": "diffs/23-C3-seed20261031.json.diff",
+    "diff_sha256": "493161c775100c5ff98cc2e701e8af33e4fdf9edcae138328f98d424fdcd80e7"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C3-seed20261101.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C3-seed20261101.json",
+    "before_raw_sha256": "a8d82306506c2ec54b382bd972821f4fbeebf02e422e220135f885df031d0265",
+    "after_raw_sha256": "88411ccbdd8408185a979b45bdb6380ac501a6a84a5edd690730cceb2a40bae1",
+    "identical": false,
+    "diff": "diffs/24-C3-seed20261101.json.diff",
+    "diff_sha256": "1cca97fc3e90772ec27734c81a7a8bb1ce2c9ba7d9caa433ced10e8ce19fb3b2"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C4-seed20261030.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C4-seed20261030.json",
+    "before_raw_sha256": "4177a2b4ba4cccaf4d4e8672343d6f48b147086a5a05a3366b47693ae139a7e4",
+    "after_raw_sha256": "944e8178e351c4c29974d0acf573d6b1990adcbb2f7f59e002a261c701cb8f41",
+    "identical": false,
+    "diff": "diffs/25-C4-seed20261030.json.diff",
+    "diff_sha256": "3975918cad60e00516f7bfa7718c685ad695df1881d3079a351893a0996a470e"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C4-seed20261031.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C4-seed20261031.json",
+    "before_raw_sha256": "56190821bd3dd2be79e1624d47ff77dff1c30422baa948b1e26e1ba1c1cc8a4a",
+    "after_raw_sha256": "a1cbb0b91a63e9ad87d24f5de7e107f0d59ffa0e75f4ee8f837db4387b078d8b",
+    "identical": false,
+    "diff": "diffs/26-C4-seed20261031.json.diff",
+    "diff_sha256": "f3d5bceb42c93a66c0e6b420308d9b90f99f2f8039dae1f2bcf4ebb11f356879"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C4-seed20261101.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C4-seed20261101.json",
+    "before_raw_sha256": "e9baf67407bdbc83d791d4e926f03d7f137349d074f12df9a36cd820031fce90",
+    "after_raw_sha256": "e9e62378ce59608bc433008671daab07186f30f268a53d737908994e04fa3afa",
+    "identical": false,
+    "diff": "diffs/27-C4-seed20261101.json.diff",
+    "diff_sha256": "9e341e2145824571b416ec3980ce15c634c3f26f6729b7eef62d6c45adaa13d4"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C5-seed20261030.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C5-seed20261030.json",
+    "before_raw_sha256": "301b54354a72f19ab4c5818f623a87022e398a9fff1cedcb13df91749a178ad3",
+    "after_raw_sha256": "f8e7c927ea99e4048f2ad47a73de11fd8bf0f5b05e79c68c4f5fc604f98ca5cd",
+    "identical": false,
+    "diff": "diffs/28-C5-seed20261030.json.diff",
+    "diff_sha256": "6a28014c5468a84ef20a5d96045f9c483db9bf939aaf3fc3e83f8db208a56572"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C5-seed20261031.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C5-seed20261031.json",
+    "before_raw_sha256": "acfa86abeb6d323f880f2054273f4fb54d04d53bf0966973e1bb06c5ecf9ca72",
+    "after_raw_sha256": "77854815620460590bc1b7a229651ead0b666f0dd0bbd7f14633f786f5c85990",
+    "identical": false,
+    "diff": "diffs/29-C5-seed20261031.json.diff",
+    "diff_sha256": "15e5cccb48e8c92dd5add0127fa8a7ce5e89c8161791fa0b923fb9289eb208c5"
+  },
+  {
+    "before": "ml/manifests/mitdb-baseline-grid-v3/C5-seed20261101.json",
+    "after": "ml/manifests/mitdb-baseline-grid-v4/C5-seed20261101.json",
+    "before_raw_sha256": "eb025cc08752afc1e7f69e637461044d415e0061518b479375252ba34ab64c7e",
+    "after_raw_sha256": "a29e723507dba827fc60f27fe92b9b79508bc7671b13560c0c2d0418bb1a8176",
+    "identical": false,
+    "diff": "diffs/30-C5-seed20261101.json.diff",
+    "diff_sha256": "5651fd72ad0e67dcf746d3681054f5ed16399940b0b02ba98eac5715ac4b4aa3"
+  },
+  {
+    "before": "ml/manifests/mitdb-m1-protocol-assets-v3/assets-manifest.json",
+    "after": "ml/manifests/mitdb-m1-protocol-assets-v4/assets-manifest.json",
+    "before_raw_sha256": "df3e2e7f3b56114cf3ac3b8b872a35d20b0f6b6ab118481e6a692ea38076bfab",
+    "after_raw_sha256": "bb365d5c2cd8181a5e439416669485274e61180b523a2263c6ac7bf5505d099a",
+    "identical": false,
+    "diff": "diffs/31-assets-manifest.json.diff",
+    "diff_sha256": "3870894b01b585ae0e3b4b3358e51b7fd164852a4364be425969a4d2ca7735d5"
+  },
+  {
+    "before": "ml/manifests/mitdb-m1-protocol-assets-v3/class-weights-by-trial.json",
+    "after": "ml/manifests/mitdb-m1-protocol-assets-v4/class-weights-by-trial.json",
+    "before_raw_sha256": "9762080bdbf4bde2e2e043c32d4a6098554798721716164d8046aa25e242e799",
+    "after_raw_sha256": "32b17dc9e858942608bfd0f629d9d207a09d4401f1f25ef94ea2eda8f3ae663d",
+    "identical": false,
+    "diff": "diffs/32-class-weights-by-trial.json.diff",
+    "diff_sha256": "700cbc8e6f147391284e2213ce4524e4a86139303889dffc076e36c66d1bc9a2"
+  },
+  {
+    "before": "ml/manifests/mitdb-m1-protocol-assets-v3/baseline-trial-register.csv",
+    "after": "ml/manifests/mitdb-m1-protocol-assets-v4/baseline-trial-register.csv",
+    "before_raw_sha256": "740fca725cb7f465c3eaa1a428eba49ddf5614897b0eebf993213a9bf61f31fc",
+    "after_raw_sha256": "c69d6f568286f6f568aefe0d43a5b0e5e8f699aa5692f780902681a444f9d8cd",
+    "identical": false,
+    "diff": "diffs/33-baseline-trial-register.csv.diff",
+    "diff_sha256": "73f9d742d881445bc34c5754c248fe12fdd6cf03ca15916c5f637439e0dad61f"
+  },
+  {
+    "before": "ml/manifests/mitdb-m1-protocol-assets-v3/dcor-validation-subset.csv",
+    "after": "ml/manifests/mitdb-m1-protocol-assets-v4/dcor-validation-subset.csv",
+    "before_raw_sha256": "e5f5aa2e148c3a516cd24af4b540b68d045a269ee4be7e5f4574c4984092c907",
+    "after_raw_sha256": "e5f5aa2e148c3a516cd24af4b540b68d045a269ee4be7e5f4574c4984092c907",
+    "identical": true,
+    "diff": "diffs/34-dcor-validation-subset.csv.diff",
+    "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

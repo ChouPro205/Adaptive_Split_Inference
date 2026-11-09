@@ -1,0 +1,35 @@
+--- ml/scripts/train_mitdb_baseline_v3.py
++++ ml/scripts/train_mitdb_baseline_v4.py
+@@ -5,9 +5,10 @@
+ import sys
+ import math
+ 
+-from baseline_grid_v3 import ROOT,read,write,sha,need,require_authorization,preflight,load_train_validation
+-from baseline_selection_v3 import choose_epoch,rounded
+-from m1_metrics_v3 import validation_metrics
++from baseline_grid_v4 import ROOT,read,write,sha,need,require_authorization,preflight,load_train_validation
++from baseline_sampler_v4 import build_sampler
++from baseline_selection_v4 import choose_epoch,rounded
++from m1_metrics_v4 import validation_metrics
+ 
+ 
+ def fit_slot(config,arrays,output,metric_policy,protocol_sha,config_sha):
+@@ -17,7 +18,7 @@
+     import numpy as np
+     import torch
+     from torch import nn
+-    from torch.utils.data import TensorDataset,DataLoader,WeightedRandomSampler
++    from torch.utils.data import TensorDataset,DataLoader
+     sys.path.insert(0,str(ROOT/'ml/src'))
+     from mitdb_baseline_model import MitdbBaselineCNN
+     c=config;seed=c['seed']
+@@ -55,8 +56,7 @@
+     for epoch in range(1,c['epochs']+1):
+         generator=torch.Generator().manual_seed(seed+epoch-1)
+         if c['mode']=='balanced_sampler':
+-            sample_weights=torch.tensor([1/c['train_counts'][int(y)] for y in data['train'][1]],dtype=torch.double)
+-            sampler=WeightedRandomSampler(sample_weights,c['samples_per_epoch'],replacement=True,generator=generator)
++            sampler=build_sampler(data['train'][1],c['train_counts'],generator)
+             loader=DataLoader(datasets['train'],batch_size=c['batch_size'],sampler=sampler,num_workers=0,drop_last=False)
+         else:
+             loader=DataLoader(datasets['train'],batch_size=c['batch_size'],shuffle=True,generator=generator,num_workers=0,drop_last=False)

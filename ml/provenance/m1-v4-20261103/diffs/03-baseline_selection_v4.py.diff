@@ -1,0 +1,42 @@
+--- ml/scripts/baseline_selection_v3.py
++++ ml/scripts/baseline_selection_v4.py
+@@ -3,10 +3,15 @@
+ import math
+ import statistics
+ 
++from m1_metrics_v4 import S_SOFT_LABEL
++
+ SEEDS=[20261030,20261031,20261101]
+ CONFIGS=[('C0','weighted_ce',10,.001),('C1','weighted_ce',10,.0003),
+          ('C2','weighted_ce',50,.001),('C3','weighted_ce',50,.0003),
+          ('C4','balanced_sampler',None,.001),('C5','balanced_sampler',None,.0003)]
++MAX_ATTEMPTS=2
++COMPLETE_STATUS='ALL18_SLOTS_TERMINAL_NOT_MODEL_LOCK'
++HALT_STATUS='HALTED_PRE_VALIDATION_CODE_FAULT'
+ 
+ 
+ def need(ok,message):
+@@ -53,9 +58,20 @@
+     return {'status':'SELECTED_FOR_OWNER_REVIEW_NOT_MODEL_LOCK','configurations':groups,
+             'selected':{'configuration':selected['configuration'],'seed':selected['best_seed'],
+                         'mean_macro_f1':selected['mean_macro_f1'],'S_gate_pass':selected['S'],
+-                        'S_failure_disclosure_required':not selected['S']}}
++                        'S_failure_disclosure_required':not selected['S'],
++                        'package_A_gate':'PASS' if selected['S'] else S_SOFT_LABEL}}
++
++
++def pre_validation_code_fault(row):
++    # Retries exhausted and no attempt wrote epoch-001.json, so no validation result exists.
++    return (row['status']=='FAILED_TECHNICAL' and len(row['attempts'])==MAX_ATTEMPTS and
++            not any(a['validation_epoch_written'] for a in row['attempts']))
+ 
+ 
+ def execute_all_slots(slots,executor):
+-    # No performance gate can break this loop. Executor may use immutable retries.
+-    return [executor(slot) for slot in slots]
++    # No performance gate can break this loop; only a first-slot pre-validation code fault halts it.
++    results=[]
++    for index,slot in enumerate(slots):
++        row=executor(slot);results.append(row)
++        if index==0 and pre_validation_code_fault(row):return results,HALT_STATUS
++    return results,COMPLETE_STATUS

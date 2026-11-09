@@ -1,0 +1,66 @@
+{
+  "status": "COMPLETED",
+  "run_id": "s8-lambda0.1-seed20261021",
+  "identity": {
+    "experiment_identity": {
+      "git_head": "d851e8621ee35e3e5da6451ca9c229094d147780",
+      "source_sha256": {
+        "ml/scripts/run_week8_nopeek.py": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+        "ml/scripts/summarize_week8_nopeek.py": "ff517de3b57f792980334c657ebe001adae8c822baa4048a37949a3a14a793ec",
+        "ml/scripts/test_week8_nopeek.py": "af40fcf2f5810751b702f1d178d4786c9d10544341b61f280b096df8933f3a27",
+        "ml/src/distance_correlation.py": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+        "ml/src/nopeek.py": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+        "ml/src/nopeek_data.py": "2d85836ed96047af8df853febe733aaa3b48ae0c73e5d54d79d26a67c318307f",
+        "ml/src/train_mitdb_baseline.py": "65a6ae4bc1e89b624050913cb9e02c7e520e5902e49113441c7539bccd55bf18",
+        "ml/src/mitdb_week2_data.py": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907",
+        "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+        "ml/src/mitdb_common.py": "acd81b4aa9331d90cdb0abdaf16cb1935e9afbd6e34e654ac16dc5f51d236c1d",
+        "ml/src/week1_common.py": "34c3402987e1f8712c844830c6db7a9325ef7a616e9d3dbe5dbb739f2fbc2dba",
+        "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+        "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0"
+      },
+      "config_sha256": "c085b43c5de518f6788a59aa52e27ae47c89f19bf7dfc290ad997679fc550b45",
+      "mode": "grid",
+      "dataset": {
+        "week1_config_sha256": "f5d050686b9d4816052631380b81f0c4671faf1dc648f1d9c02b4c3dc3be0b54",
+        "patient_manifest_sha256": "27b07a0a4fcaac010291fd088c702e9eea1899ed73c6cef618404bafd3c116fe",
+        "normalization_sha256": "37d42ff2cbacc44f268046a62c392d2b9676c2c49936ac4188207745edd2d48c",
+        "processed_manifest_sha256": "f712c83d46d71ac6af75b7138668d8918eef87a4ddfeab8e8b5310ced2c44a3c",
+        "processed_artifacts": {
+          "train_X.npy": "80168e5014d9018483a7d4c4f7079bb31b6b81e934992ed1169c350f4cf02c6f",
+          "train_y.npy": "00280fa08d2dad50805729a5be1bc182b9b56e81b5281e231ee9896914625752",
+          "train_metadata.csv": "86c5c3a634fc5adfca09ec2f8378efb0d52f21205cfaf9470432f89ffdc0977a",
+          "val_X.npy": "60a84c4096d9d476fac53fbf0a9b5acce1df4953011e4f6ceb9d5858e550e732",
+          "val_y.npy": "4973e373127aa250c923e5386dd5557010808a565329efdc1758c50a849dcf43",
+          "val_metadata.csv": "3c41a19339ef9548afae786e9e2861e8834b48718ae5f90ca799e00f57e2fc68",
+          "test_X.npy": "062208131e2e8a39e3767fdc901c83f5aeb14becbca585a12a340c2f61faf16e",
+          "test_y.npy": "ae99ea072108103aca2abc612bbc40222f7363cda9c4fdac695d8620f29324c6",
+          "test_metadata.csv": "02a6a91c0e35710d0be13f10b2360e034918f546b3ba2c7df7a2fd484ecd1178"
+        }
+      },
+      "environment": {
+        "python": "3.11.9",
+        "platform": "Windows",
+        "torch": "2.14.0+cu130",
+        "numpy": "2.4.6",
+        "cuda_build": "13.0",
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "threads": 4,
+        "mkldnn": false,
+        "deterministic_algorithms": true,
+        "tf32": false,
+        "cublas_workspace_config": ":4096:8"
+      },
+      "selected_samples_sha256": "0286b6fce369dbb3ea560af13fa11998403735dc3423be47d0000a565c33fa71"
+    },
+    "split": 8,
+    "lambda1": 0.1,
+    "seed": 20261021,
+    "initial_state_sha256": "eba5b291fc565608898b258b8025786ab3869000e8d6a3f739455be627a9da95",
+    "initial_checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90"
+  },
+  "updated_at": "2026-10-29T16:41:31.279050+00:00",
+  "last_epoch": 8,
+  "best_epoch": 3
+}
