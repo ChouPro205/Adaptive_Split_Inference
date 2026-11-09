@@ -1,0 +1,50 @@
+--- ml/manifests/mitdb-m1-protocol-assets-v3/class-weights-by-trial.json
++++ ml/manifests/mitdb-m1-protocol-assets-v4/class-weights-by-trial.json
+@@ -40,5 +40,47 @@
+     },
+     "C4": null,
+     "C5": null
++  },
++  "balanced_samplers": {
++    "C0": null,
++    "C1": null,
++    "C2": null,
++    "C3": null,
++    "C4": {
++      "policy": "K_BALANCED_NSVF_Q_NATURAL_V4",
++      "formula": "K-balanced over K=N,S,V,F: WeightedRandomSampler replacement=true,num_samples=N_train each epoch; per-draw class probability Q=n_Q/N_train (natural frequency, expected n_Q draws per epoch), each K class (1-n_Q/N_train)/4 (expected (N_train-n_Q)/4 draws per epoch); per-sample weight=class probability/n_class; CE has NO class weights; never double balance. Replaces v3 per-sample weight 1/n_y over all5 classes, which gave the8 train Q beats about20% of draws while Q is not in K and validation has no Q (SV1 review of v3, item3a). Weighted CE of C0-C3 unchanged",
++      "expected_draws_per_epoch": {
++        "N": "10366",
++        "S": "10366",
++        "V": "10366",
++        "F": "10366",
++        "Q": "8"
++      },
++      "per_class_sample_weight": {
++        "N": 6.6620052424467075e-06,
++        "S": 0.00032377172887481607,
++        "V": 8.9781528265574e-05,
++        "F": 0.0006425495493351106,
++        "Q": 2.4112654320987653e-05
++      }
++    },
++    "C5": {
++      "policy": "K_BALANCED_NSVF_Q_NATURAL_V4",
++      "formula": "K-balanced over K=N,S,V,F: WeightedRandomSampler replacement=true,num_samples=N_train each epoch; per-draw class probability Q=n_Q/N_train (natural frequency, expected n_Q draws per epoch), each K class (1-n_Q/N_train)/4 (expected (N_train-n_Q)/4 draws per epoch); per-sample weight=class probability/n_class; CE has NO class weights; never double balance. Replaces v3 per-sample weight 1/n_y over all5 classes, which gave the8 train Q beats about20% of draws while Q is not in K and validation has no Q (SV1 review of v3, item3a). Weighted CE of C0-C3 unchanged",
++      "expected_draws_per_epoch": {
++        "N": "10366",
++        "S": "10366",
++        "V": "10366",
++        "F": "10366",
++        "Q": "8"
++      },
++      "per_class_sample_weight": {
++        "N": 6.6620052424467075e-06,
++        "S": 0.00032377172887481607,
++        "V": 8.9781528265574e-05,
++        "F": 0.0006425495493351106,
++        "Q": 2.4112654320987653e-05
++      }
++    }
+   }
+ }

@@ -1,0 +1,17 @@
+test_Q_draws_track_natural_frequency_over_epochs (__main__.DrawTests.test_Q_draws_track_natural_frequency_over_epochs) ... ok
+test_empirical_class_ratio_within_five_sd (__main__.DrawTests.test_empirical_class_ratio_within_five_sd) ... ok
+test_same_seed_identical_across_processes (__main__.DrawTests.test_same_seed_identical_across_processes) ... ok
+test_same_seed_identical_other_epoch_seed_differs (__main__.DrawTests.test_same_seed_identical_other_epoch_seed_differs) ... ok
+test_total_draws_equal_N_train (__main__.DrawTests.test_total_draws_equal_N_train) ... ok
+test_Q_absent_gets_no_draws (__main__.ExpectedDrawTests.test_Q_absent_gets_no_draws) ... ok
+test_Q_natural_frequency_not_fifth (__main__.ExpectedDrawTests.test_Q_natural_frequency_not_fifth) ... ok
+test_bound_train_counts (__main__.ExpectedDrawTests.test_bound_train_counts) ... ok
+test_exact_expected_draws_K_equal_Q_natural (__main__.ExpectedDrawTests.test_exact_expected_draws_K_equal_Q_natural) ... ok
+test_plan_fields_exact_strings (__main__.ExpectedDrawTests.test_plan_fields_exact_strings) ... ok
+test_probabilities_sum_to_one_and_K_ratio (__main__.ExpectedDrawTests.test_probabilities_sum_to_one_and_K_ratio) ... ok
+test_rejects_missing_K_class_and_count_mismatch (__main__.ExpectedDrawTests.test_rejects_missing_K_class_and_count_mismatch) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 3.905s
+
+OK

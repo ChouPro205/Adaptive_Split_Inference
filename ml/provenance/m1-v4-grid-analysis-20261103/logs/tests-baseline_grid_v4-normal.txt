@@ -1,0 +1,38 @@
+test_authenticate_full_grid_fixture_no_model (__main__.AnalyzerTests.test_authenticate_full_grid_fixture_no_model) ... ok
+test_halted_grid_status_rejected (__main__.AnalyzerTests.test_halted_grid_status_rejected) ... ok
+test_metric_tamper_rebound_history_hash_rejected (__main__.AnalyzerTests.test_metric_tamper_rebound_history_hash_rejected) ... ok
+test_first_slot_retries_exhausted_no_epoch_halts (__main__.CodeFaultHaltTests.test_first_slot_retries_exhausted_no_epoch_halts) ... ok
+test_first_slot_retry_not_exhausted_continues (__main__.CodeFaultHaltTests.test_first_slot_retry_not_exhausted_continues) ... ok
+test_first_slot_with_validation_epoch_continues (__main__.CodeFaultHaltTests.test_first_slot_with_validation_epoch_continues) ... ok
+test_later_slot_pre_validation_fault_continues (__main__.CodeFaultHaltTests.test_later_slot_pre_validation_fault_continues) ... ok
+test_runner_continues_when_epoch_written (__main__.CodeFaultHaltTests.test_runner_continues_when_epoch_written) ... ok
+test_runner_halts_after_two_attempts_without_epoch (__main__.CodeFaultHaltTests.test_runner_halts_after_two_attempts_without_epoch) ... ok
+test_no_authority_no_model_no_output (__main__.PreflightTests.test_no_authority_no_model_no_output) ... ok
+test_plan_sampler_fields (__main__.PreflightTests.test_plan_sampler_fields) ... ok
+test_preflight_only_train_val_no_torch_import (__main__.PreflightTests.test_preflight_only_train_val_no_torch_import) ... ok
+test_preflight_rejects_double_balancing_after_rebound (__main__.PreflightTests.test_preflight_rejects_double_balancing_after_rebound) ... ok
+test_preflight_rejects_sampler_on_weighted_ce (__main__.PreflightTests.test_preflight_rejects_sampler_on_weighted_ce) ... ok
+test_preflight_rejects_v3_five_class_sampler_after_rebound (__main__.PreflightTests.test_preflight_rejects_v3_five_class_sampler_after_rebound) ... ok
+test_S_is_filter_priority_not_tie_break (__main__.SelectionTests.test_S_is_filter_priority_not_tie_break) ... ok
+test_best_seed_failing_N_does_not_get_rescued (__main__.SelectionTests.test_best_seed_failing_N_does_not_get_rescued) ... ok
+test_best_seed_failing_V_does_not_get_rescued (__main__.SelectionTests.test_best_seed_failing_V_does_not_get_rescued) ... ok
+test_configuration_mean_not_best_seed_score (__main__.SelectionTests.test_configuration_mean_not_best_seed_score) ... ok
+test_configuration_tie_lower_C (__main__.SelectionTests.test_configuration_tie_lower_C) ... ok
+test_execute_all18_after_first_PASS (__main__.SelectionTests.test_execute_all18_after_first_PASS) ... ok
+test_failed_seed_null_mean (__main__.SelectionTests.test_failed_seed_null_mean) ... ok
+test_gate_uses_unrounded_ratio (__main__.SelectionTests.test_gate_uses_unrounded_ratio) ... ok
+test_half_up4_and_checkpoint_ties (__main__.SelectionTests.test_half_up4_and_checkpoint_ties) ... ok
+test_missing_seed_rejected_not_mean2 (__main__.SelectionTests.test_missing_seed_rejected_not_mean2) ... ok
+test_no_NV_stops_no_expansion (__main__.SelectionTests.test_no_NV_stops_no_expansion) ... ok
+test_no_S_uses_NV_and_discloses (__main__.SelectionTests.test_no_S_uses_NV_and_discloses) ... ok
+test_seed_tie_lower_seed (__main__.SelectionTests.test_seed_tie_lower_seed) ... ok
+test_S_only_failure_is_soft_disclosed (__main__.SoftGateLabelTests.test_S_only_failure_is_soft_disclosed) ... ok
+test_label_value (__main__.SoftGateLabelTests.test_label_value) ... ok
+test_old_authority_label_absent (__main__.SoftGateLabelTests.test_old_authority_label_absent) ... ok
+test_pass_and_blocked_unchanged (__main__.SoftGateLabelTests.test_pass_and_blocked_unchanged) ... ok
+test_selection_carries_soft_label (__main__.SoftGateLabelTests.test_selection_carries_soft_label) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.685s
+
+OK

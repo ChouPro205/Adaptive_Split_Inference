@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "protocol_id": "mitdb-m1-nopeek-v1",
+  "status": "CANDIDATE_FOR_SV1_REVIEW_NOT_LOCKED",
+  "authority": {
+    "decision_authority": "SV1, delegated by GVHD",
+    "prepared_by": "SV3",
+    "locked": false,
+    "training_permitted": false,
+    "lock_procedure": "After SV1 review, SV3 writes a lock and train authorization binding this protocol, the plan manifest and the source hashes (approved_by SV3, review evidence = the SV1 review), as for M1 v4"
+  },
+  "predecessor": {
+    "path": "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+    "sha256": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+    "section": "nopeek",
+    "relation": "This protocol replaces the nopeek section of protocol v4 for the NoPeek stage; protocol v4 is not edited"
+  },
+  "source_bindings": {
+    "v1_2_guide": {"source_name": "Huong_dan_tung_thanh_vien_tuan9-13_DS1DS2_thay_checkpoint_2026-10-30_v1.2.pdf", "raw_sha256": "2ddeb08b925a8df18e40a5bff57d14def83b607d1be457b8b25e2ad7d5c9123f", "sections": "4.5, 4.6"},
+    "sv1_decisions_20261103": {"path": "docs/inbox/sv1_chot_cau_hoi_SV3_20261103.txt", "raw_sha256": "be5d1411a61bcd0dadc614dc9255cf524d8c5854a0fa6e984f9cfd504584a343", "items": "1, 3, 4, 8 (dCor R_n), 11"},
+    "sv1_review_20261105": {"path": "ml/provenance/m1-v4-checkpoint-lock-20261105/sv1_evidence/sv1_review_m1_v4_grid_20261105.txt", "raw_sha256": "45ef6cc76bd777f93ba6c95f257a11b7d6144f1d149e51568f4e94f054e57054", "items": "4 (package B note), 6a (s4, 72 runs, middle-cut rule), 6b"},
+    "checkpoint_lock": {"path": "ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json", "sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc"}
+  },
+  "initialization": {
+    "checkpoint": "Package A deployment checkpoint C5-seed20261101 epoch 4",
+    "checkpoint_sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+    "rule": "Every pilot and grid run starts from this same checkpoint with a new optimizer; no weights carried between runs",
+    "epoch0": "Epoch 0 is the loaded checkpoint, evaluated before any update; its validation confusion must equal the locked A confusion, else the run stops as a technical fault",
+    "A_validation_confusion": [[8221, 85, 8, 8, 0], [101, 70, 1, 0, 0], [92, 75, 774, 63, 0], [17, 3, 1, 4, 0], [0, 0, 0, 0, 0]],
+    "A_validation_macro_f1_K_exact": "11488986689/20219195700",
+    "A_validation_macro_f1_K_float": 0.5682217462784634,
+    "A_validation_accuracy": "9069/9523"
+  },
+  "data": {
+    "arrays": "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+    "bound_files": "train_X.npy, train_y.npy, train_metadata.csv, val_X.npy, val_y.npy, val_metadata.csv with the SHA-256 values of plan v4 binding.data_files",
+    "normalization": {"path": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/normalization.json", "sha256": "1ae60f3f493427286ddfbcd3e269c6dce312a93351a75ebdf69db61941d23b89"},
+    "training": "DS1 train only",
+    "selection": "DS1 validation only (utility, collapse, epoch, lambda and deployment seed)",
+    "DS2": "Never opened in pilot or grid; never an input to lambda, epoch, seed, learning rate, noise or threshold",
+    "dcor_validation_subset": {"path": "ml/manifests/mitdb-m1-protocol-assets-v4/dcor-validation-subset.csv", "sha256": "e5f5aa2e148c3a516cd24af4b540b68d045a269ee4be7e5f4574c4984092c907", "count": 512, "rule": "As protocol v4 nopeek.fixed_dcor_validation_subset; same 512 ordered samples for every run and epoch, one full biased-sample R_n batch, eval mode"}
+  },
+  "objective": {
+    "loss": "CE + lambda * R_n(x, z_s)",
+    "R_n": "Biased sample distance correlation, not squared (ml/src/distance_correlation.py); x is the normalized input flattened to [B,360], z_s the head output at split s flattened to [B, C*L] or [B, C]",
+    "CE": "Unweighted cross-entropy over 5 outputs on K-balanced batches, as configuration C5 of package A",
+    "lambda0": "At lambda 0 the dCor term carries no gradient; R_n is still logged",
+    "trained_parameters": "Head and tail jointly (all 109653 parameters); dropout active in training, off in evaluation"
+  },
+  "training": {
+    "optimizer": {"name": "AdamW", "betas": [0.9, 0.999], "eps": 1e-08, "weight_decay": 0.0001},
+    "learning_rate": "Constant; value fixed by the pilot from the candidates below; no scheduler",
+    "batch_size": 256,
+    "sampler": {"policy": "K_BALANCED_NSVF_Q_NATURAL_V4 (ml/scripts/baseline_sampler_v4.py)", "samples_per_epoch": 41472, "replacement": true},
+    "epochs": 10,
+    "early_stopping": "None; every run trains exactly 10 epochs so that epoch selection sees the same horizon for every lambda",
+    "seeding": "Global model/dropout RNG seeded once per run with the run seed; data generator seed+epoch-1, as the package A trainer",
+    "determinism": "CUDA on the RTX 5060 training machine; torch.use_deterministic_algorithms(True); cuDNN deterministic, benchmark off; CUBLAS_WORKSPACE_CONFIG=:4096:8; one device for pilot and grid",
+    "checkpoints": "Save the epoch 0-10 state of every run; checkpoint files are the model evidence because other GPUs do not reproduce bit-exact",
+    "per_epoch_log": "Validation 5x5 confusion, macro-F1 K, accuracy, per-class Se/+P, R_n on the 512 subset at s; train mean CE and mean batch R_n; learning rate"
+  },
+  "pilot": {
+    "purpose": "Fix the learning rate before the grid so that fine-tuning does not damage package A (v1.2 4.5 fix 1); not part of the grid and never an input to lambda selection",
+    "learning_rate_candidates": [1e-05, 3e-05, 0.0001],
+    "runs": "For each candidate: lambda 0 once (independent of s) and lambda 5 at s2 and s8; seed 20261030; 10 epochs; 9 runs",
+    "safe_learning_rate": "Lambda 0 run: utility passes at every epoch 1-10 and no epoch is collapsed",
+    "choice": "Among safe candidates, minimize the mean over s2 and s8 of the lowest subset R_n among lambda-5 epochs 1-10 that pass utility (a run with no passing epoch counts as R_n 1); tie: smaller learning rate",
+    "no_safe_candidate": "Stop; report all pilot curves to SV1, who decides before any grid run",
+    "after_pilot": "Receipt with the chosen learning rate and all curves sent to SV1; the grid starts after the receipt"
+  },
+  "grid": {
+    "s": [2, 4, 5, 8],
+    "lambda": [0, 0.1, 0.5, 1, 2, 5],
+    "seeds": [20261030, 20261031, 20261101],
+    "runs": 72,
+    "lambda0_determinism_check": "The 12 lambda-0 runs train identically across s; for each seed their epoch 1-10 checkpoints must be bit-identical across s, else investigate as a technical fault before selection",
+    "no_adaptive_expansion": "No added lambda, seed, learning rate or epoch after results"
+  },
+  "utility": {
+    "metric": "Validation macro-F1 over N, S, V, F (fixed4), argmax over 5 outputs, zero_division 0",
+    "gate": "macro_f1_K(checkpoint) >= 19/20 * macro_f1_K(A), computed exactly with Fraction from the 5x5 confusion",
+    "threshold_exact": "218290747091/404383914000",
+    "threshold_float_info": 0.5398106589645403,
+    "accuracy": "Always reported, not gated here"
+  },
+  "collapse": "As protocol v4: at the selected checkpoint after reload, any class >= 99 % of predictions OR Se_V < 0.10; keep the numbers; a lambda with any collapsed seed is ineligible",
+  "epoch_selection": {
+    "lambda0": "Max validation macro-F1 over epochs 0-10, epoch 0 included; tie: earlier epoch",
+    "positive_lambda": "Among epochs 1-10 that pass utility, minimum subset R_n; tie: earlier epoch. If none passes: max macro-F1 among epochs 1-10, marked UTILITY_FAIL; epoch 0 never selected"
+  },
+  "lambda_selection": "Per s, among lambdas with all 3 seeds complete, utility passed and not collapsed, minimize the mean subset R_n of the 3 selected checkpoints; tie: smaller lambda. Lambda 0 is always eligible (epoch 0 is A)",
+  "deployment_seed": "Per s, the seed whose selected checkpoint has the median raw subset R_n among the 3; equal medians: smaller seed",
+  "statistics": "All seed values, mean and sample SD (ddof 1); collapsed and UTILITY_FAIL values retained; a technical fault allows one same-seed retry; a missing seed means no 2-seed mean",
+  "reporting_before_privacy": {
+    "lambda0_curve": "Before any attack or Pi evaluation on NoPeek checkpoints, send SV1 the per-epoch validation macro-F1 of lambda 0 (epochs 0-10, three seeds) with the utility threshold and the per-lambda pass counts",
+    "sv1_decision": "If lambda 0 often fails the threshold, SV1 decides before any Pi is computed; the threshold itself stays as declared"
+  },
+  "figures": "Macro-F1 and R_n versus lambda per s, with the package A line and an always-N line; IEEE style: Times 8 pt, width 3.5 or 7.16 in, vector PDF and PNG 600 dpi, no title",
+  "rho1_output": {
+    "definition": "rho1 at split s = head and tail of the selected lambda's deployment-seed checkpoint; no noise",
+    "splits": "s2 and the middle cut (s4 or s5, rule below); s8 is offline only",
+    "package_B": "Package B carries the NoPeek checkpoints with matching head/tail/full/normalization/protection identity; never mixed with package A"
+  },
+  "downstream_middle_cut_rule": {
+    "source": "SV1 review 2026-11-05 item 6a, fixed before any number",
+    "rule": "Consider rho in {rho0, rho1}. If s4 has a rho reaching Pi_min, use s4. Else if s5 has one, use s5. Else use s4 and consider rho2",
+    "inputs": "Week 11 attack trial on DS1 (A1 + B-naive); not part of this grid's selection"
+  },
+  "extension_stage": "Teacher's tail fine-tune and extension to other s (validation accuracy drop <= 2 percentage points AND macro-F1 >= 0.95 x A) is a separate stage under its own protocol version",
+  "change_control": {
+    "locked_file": "Never edit after lock; any change is a new version with reason, old/new hashes and SV1 review before dependent runs",
+    "DS2": "Report only, after model/quantization lock; never a tuning input"
+  },
+  "execution_in_this_round": {"pilot": false, "grid": false, "fit": false, "DS2": false, "code": "Runner, plan manifest and tests are written after SV1 reviews this protocol and are bound by SHA in the lock"}
+}

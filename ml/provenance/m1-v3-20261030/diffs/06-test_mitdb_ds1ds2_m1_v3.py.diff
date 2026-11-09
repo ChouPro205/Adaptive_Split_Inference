@@ -1,0 +1,140 @@
+--- ml/scripts/test_mitdb_ds1ds2_m1_v2.py
++++ ml/scripts/test_mitdb_ds1ds2_m1_v3.py
+@@ -1,14 +1,14 @@
+ """Negative contract tests only; synthetic fixtures do not establish M1 data completion."""
+ import unittest
+ 
+-import mitdb_ds1ds2_m1_v2 as p
+-import m1_validation_policy_v2 as v
+-import m1_metrics_v2 as metrics
++import mitdb_ds1ds2_m1_v3 as p
++import m1_validation_policy_v3 as v
++import m1_metrics_v3 as metrics
+ 
+ 
+ class ContractTests(unittest.TestCase):
+     def setUp(self):
+-        self.config=p.read_json(p.ROOT/'ml/configs/mitdb_ds1ds2_m1_v2.json')
++        self.config=p.read_json(p.ROOT/'ml/configs/mitdb_ds1ds2_m1_v3.json')
+         val=set(p.DS1[:5])
+         self.rows=[{'record_id':r,'patient_id':p.patient(r),'split':
+             ('val' if r in val else 'train') if r in p.DS1 else
+@@ -75,6 +75,11 @@
+         with self.assertRaisesRegex(ValueError,'Forbidden calibration'):
+             p.validate_calibration(['202'],p.split_records(self.rows))
+ 
++    def test_validation_forbidden_for_calibration_and_fast_finetune(self):
++        groups=p.split_records(self.rows)
++        with self.assertRaisesRegex(ValueError,'Forbidden calibration'):
++            p.validate_calibration([groups['val'][0]],groups)
++
+     def test_ds2_calibration(self):
+         with self.assertRaisesRegex(ValueError,'Forbidden calibration'):
+             p.validate_calibration(['100'],p.split_records(self.rows))
+@@ -99,13 +104,13 @@
+             p.norm_binding(n,groups)
+ 
+     def test_seed_reproducible_and_ds2_not_used(self):
+-        counts={r:[100,10,20,0,0] for r in p.DS1}
++        counts={r:[100,10,20,5,0] for r in p.DS1}
+         first=p.choose_validation(self.config,counts)
+         counts['202']=[0,10**9,10**9,0,0]
+         self.assertEqual(first,p.choose_validation(self.config,counts))
+ 
+     def test_no_feasible_split_fails(self):
+-        counts={r:[100,10,20,0,0] for r in p.DS1}
++        counts={r:[100,10,20,5,0] for r in p.DS1}
+         # Exercise the explicit no-candidate branch without inventing data evidence.
+         from unittest.mock import patch
+         with patch.object(p.itertools,'combinations',return_value=iter([])):
+@@ -124,6 +129,17 @@
+ 
+ 
+ class PolicyTests(unittest.TestCase):
++    def test_F_floor_switch_threshold_50(self):
++        for count,floor in [(49,10),(50,20)]:
++            rows=[{'size':4,'records':('101','106','108','109'),'counts':[1,1,1,20,0],
++                   'F20':True,'F10':True} for _ in range(count)]
++            _,draw=v.choose(rows,'F_floor',20261030)
++            self.assertEqual(draw['selected_F_floor'],floor)
++
++    def test_F_20_and_10_integer_boundaries(self):
++        for floor in [10,20]:
++            self.assertTrue(v.feasible([100,100,100,floor,0],[1000]*5,'F'+str(floor)))
++            self.assertFalse(v.feasible([100,100,100,floor-1,0],[1000]*5,'F'+str(floor)))
+     def test_integer_lower_boundary(self):
+         self.assertTrue(v.feasible([100,100,100,0,0],[1000]*5,'B'))
+         self.assertFalse(v.feasible([100,99,100,0,0],[1000]*5,'B'))
+@@ -143,9 +159,9 @@
+         self.assertFalse(v.feasible([100,100,100,1,0],[1000]*5,'A'))
+ 
+     def test_prefer_four_even_if_five_present(self):
+-        counts={r:[100,10,20,0,0] for r in p.DS1}
++        counts={r:[100,10,20,5,0] for r in p.DS1}
+         rows,summary=v.enumerate_combinations(counts,p.DS1)
+-        chosen,draw=v.choose(rows,'B',20261030)
++        chosen,draw=v.choose(rows,'F_floor',20261030)
+         self.assertEqual(len(chosen),4)
+         self.assertEqual(draw['records'],4)
+         self.assertGreater(summary['sizes']['5']['policies']['B']['feasible'],0)
+@@ -153,11 +169,11 @@
+     def test_actual_five_fallback_fixture(self):
+         counts={r:[1,0,0,0,0] for r in p.DS1}
+         for r in p.DS1[:5]:
+-            counts[r]=[1,1,1,0,0]
+-        counts[p.DS1[5]]=[95,45,45,0,0]
++            counts[r]=[1,1,1,2,0]
++        counts[p.DS1[5]]=[95,45,45,100,0]
+         rows,summary=v.enumerate_combinations(counts,p.DS1)
+         self.assertEqual(summary['sizes']['4']['policies']['B']['feasible'],0)
+-        chosen,draw=v.choose(rows,'B',20261030)
++        chosen,draw=v.choose(rows,'F_floor',20261030)
+         self.assertEqual(chosen,p.DS1[:5])
+         self.assertEqual(draw['records'],5)
+ 
+@@ -166,23 +182,26 @@
+         counts[p.DS1[0]]=[1,100,100,0,0]
+         rows,_=v.enumerate_combinations(counts,p.DS1)
+         with self.assertRaisesRegex(ValueError,'No feasible'):
+-            v.choose(rows,'B',20261030)
++            v.choose(rows,'F_floor',20261030)
+ 
+     def test_all_rows_enumerated_once(self):
+-        counts={r:[100,10,20,0,0] for r in p.DS1}
++        counts={r:[100,10,20,5,0] for r in p.DS1}
+         rows,_=v.enumerate_combinations(counts,p.DS1)
+         self.assertEqual(len(rows),7315+26334)
+         self.assertEqual(len({r['records'] for r in rows}),len(rows))
+ 
+     def test_sampling_is_order_and_platform_independent(self):
+         self.assertEqual(v.sample_index(1775,20261030),v.sample_index(1775,20261030))
+-        counts={r:[100,10,20,0,0] for r in reversed(p.DS1)}
++        counts={r:[100,10,20,5,0] for r in reversed(p.DS1)}
+         a,_=v.enumerate_combinations(counts,p.DS1)
+         b,_=v.enumerate_combinations(counts,list(reversed(p.DS1)))
+         self.assertEqual(a,b)
+ 
+ 
+ class MetricTests(unittest.TestCase):
++    def test_fixed_K_cannot_drop_absent_F(self):
++        with self.assertRaisesRegex(ValueError,'Fixed NSVF'):
++            metrics.freeze_validation_policy([0,1,2,4])
+     def test_S_predicted_Q_penalizes_S(self):
+         y=[0,1,2,3,4]
+         policy=metrics.freeze_validation_policy(y)
+@@ -206,11 +225,11 @@
+         self.assertEqual(m['validation_K'],['N','S','V','F'])
+ 
+     def test_K_true_support_not_predictions(self):
+-        y=[0,1,2,4]
++        y=[0,1,2,3,4]
+         policy=metrics.freeze_validation_policy(y)
+-        a=metrics.validation_metrics(y,[3,3,3,3],policy)
+-        b=metrics.validation_metrics(y,[4,4,4,4],policy)
+-        self.assertEqual(a['validation_K'],['N','S','V'])
++        a=metrics.validation_metrics(y,[3,3,3,3,3],policy)
++        b=metrics.validation_metrics(y,[4,4,4,4,4],policy)
++        self.assertEqual(a['validation_K'],['N','S','V','F'])
+         self.assertEqual(a['validation_K'],b['validation_K'])
+         self.assertNotIn('Q',a['validation_K'])
+ 

@@ -1,0 +1,32 @@
+--- ml/manifests/mitdb-baseline-grid-v3/C1-seed20261030.json
++++ ml/manifests/mitdb-baseline-grid-v4/C1-seed20261030.json
+@@ -1,13 +1,14 @@
+ {
+-  "protocol_sha256": "8068501318c09196f07ea5e13ef71174b4e434b82e508d567beebf4bf9103a45",
++  "protocol_sha256": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+   "dataset_manifest_sha256": "7de30a1ca230286545c3637430c83141f8f0913b9abc3476858df0d87423cc0f",
+   "data_config_sha256": "58ade2a0389e108403ef42528dbebf1a9758305793e1c7d851077bdbd3ff0514",
+   "metric_policy_sha256": "4ce2028bbc03021a8a27299edd2a362677c89c8c1e605df59d7c54e65ccfbf3c",
+   "sources_sha256": {
+-    "ml/scripts/baseline_grid_v3.py": "b7bc1017891c3b98de38e14ee54c50cc6dda40afc34561d14eb172d413753182",
+-    "ml/scripts/baseline_selection_v3.py": "9fdc1f47310184cf7998fa8e27e0de20d57b47e8e08733146727c86709056865",
+-    "ml/scripts/train_mitdb_baseline_v3.py": "d4e764fb6513b5e66a30619a92a39f215a44b3c3ebab2c5d8c515eead27bdfa4",
+-    "ml/scripts/m1_metrics_v3.py": "ad8bc491c86470832b6cadd3ae77b8c31ff398f6c95bc47d6039e39ec860e8ed",
++    "ml/scripts/baseline_grid_v4.py": "2a57b9b9e9c44a5e0681360b693b391b93be4596588fec230218f0e4e3639ff2",
++    "ml/scripts/baseline_selection_v4.py": "86872dae2686bcedf87e6256054dac55eb4a42c11cbc6baa1e7429b849cc9631",
++    "ml/scripts/baseline_sampler_v4.py": "1ccc99035ebe96d455a4e92cef45782814e55f644acf649f6959191c4bcfa566",
++    "ml/scripts/train_mitdb_baseline_v4.py": "b9ff8479a5c05b58633a8a24457462108197be7242651e52aa10ddc1f96966c5",
++    "ml/scripts/m1_metrics_v4.py": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+     "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+     "ml/configs/mitdb_week2_baseline.json": "273a563af79126c6ed6762c4bd01a186de055b6dea390688eefcf7522ae2e5e3"
+   },
+@@ -74,6 +75,9 @@
+   ],
+   "samples_per_epoch": 41472,
+   "sampler_replacement": false,
++  "sampler_policy": null,
++  "sampler_expected_draws_per_epoch": null,
++  "sampler_per_class_sample_weight": null,
+   "batch_size": 256,
+   "epochs": 40,
+   "patience": 10,

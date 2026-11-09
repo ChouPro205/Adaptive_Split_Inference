@@ -1,0 +1,17 @@
+{
+  "status": "CANDIDATE_NOT_LOCKED_NOT_REVIEWED",
+  "hashes": {
+    "ml/configs/mitdb_m1_baseline_protocol_v4.json": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+    "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json": "1ce2f811e62f9ef55833e7256c6678e2b348cf1e2f750412e2e0b6203c27d956",
+    "ml/manifests/mitdb-m1-protocol-assets-v4/assets-manifest.json": "bb365d5c2cd8181a5e439416669485274e61180b523a2263c6ac7bf5505d099a",
+    "ml/configs/mitdb_ds1ds2_m1_v3.json": "58ade2a0389e108403ef42528dbebf1a9758305793e1c7d851077bdbd3ff0514",
+    "ml/manifests/mitdb-ds1ds2-m1-v3-r2/processed-manifest.json": "7de30a1ca230286545c3637430c83141f8f0913b9abc3476858df0d87423cc0f",
+    "ml/manifests/mitdb-ds1ds2-m1-v3-r2/normalization.json": "1ae60f3f493427286ddfbcd3e269c6dce312a93351a75ebdf69db61941d23b89",
+    "ml/manifests/mitdb-ds1ds2-m1-v3-r2/metric-policy.json": "4ce2028bbc03021a8a27299edd2a362677c89c8c1e605df59d7c54e65ccfbf3c",
+    "ml/manifests/mitdb-ds1ds2-m1-v3-r2/record-audit.json": "a19307883a8544d8926d2351b209c3fb358e052bff451ef4c8cb7113864f7029"
+  },
+  "external_sources": {
+    "v1_2_pdf": "2ddeb08b925a8df18e40a5bff57d14def83b607d1be457b8b25e2ad7d5c9123f",
+    "sv1_review_v3_20261102.txt": "cd9a2c0a3fa848f3f560d286c0a76c8b4e3b6b597f345645e480c2267d0d41e6"
+  }
+}

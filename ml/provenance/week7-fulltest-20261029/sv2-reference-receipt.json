@@ -1,0 +1,7 @@
+{
+  "archive_name": "sv3-week7-frozen-reference.zip",
+  "archive_sha256": "74775bf3ea3c6fde306e601315c32b8293d3db74fc12975515b503c406fd3429",
+  "reference_manifest_sha256": "612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c",
+  "members_verified": 10,
+  "status": "RECEIVED_HASH_VERIFIED_NOT_EXECUTED"
+}

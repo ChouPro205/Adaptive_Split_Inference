@@ -1,0 +1,1165 @@
+{
+  "schema": "week9-results-manifest/1",
+  "created_utc": "2026-11-09T08:42:15.909957+00:00",
+  "kept_fail_reports": [
+    "b4_s1_check_session_FAIL_original.json",
+    "b4_s2_check_session_FAIL_original.json",
+    "b4_s3_check_session_FAIL_original.json",
+    "b4_reg1ldo_check_session_FAIL.json",
+    "b5_kv260_p2_check_session_FAIL.json",
+    "b5_kv260_p3_check_session_FAIL.json",
+    "b5_kv260_p2_check_kv260_FAIL.json",
+    "b5_kv260_p2_energy_kv260_s2_FAIL.json"
+  ],
+  "failed_dfu_receipts": [],
+  "raw_outside_git": [
+    {
+      "path": "D:\\HUST\\ASI_week9\\verify-20261029-1223\\cdc.log",
+      "sha256": "880cbeda566503cb8e5b53b2f7d10c1f781273bf0cc6830de66940432abee3dd",
+      "bytes": 165185,
+      "note": "TC2 VERIFY ALL + TDEV ALL on dev-usb"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\session-dry-20261029-1230\\cdc.log",
+      "sha256": "12d8cbadc7ebc2bb797a044e8d99ebce26377189fa303511eb55005f70c70931",
+      "bytes": 81580,
+      "note": "TC2 dry SESSION gap 0"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\session-dry-gap1000-20261029-1236\\cdc.log",
+      "sha256": "4d4b590499677141ecb2e60ca07bf5c56b494e8cf1db2dfc9a9a3c8e05978447",
+      "bytes": 5831,
+      "note": "TC2 dry SESSION gap 1000 ms"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\photos\\bench-B4-start-20261029-1259.png",
+      "sha256": "e8064b420ec0e47ce6db5644bea687bd5fd86f7d47a8ee711087e304c2386e85",
+      "bytes": 3778901,
+      "note": "B4 bench start (TC3)"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\photos\\bench-B4-after-s2-20261029-1331.png",
+      "sha256": "a2fd403984e97f1a4360286cc2234d1c1d7bf30d3cd5df14b29918086639505f",
+      "bytes": 3846416,
+      "note": "B4 bench end (TC3)"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\photos\\bench-B5-start-20261109-1419.png",
+      "sha256": "9fcd2298c8bdc5e32092161c0b9aa04717af1ba86c428df8d566cb0f62e8adef",
+      "bytes": 13581472,
+      "note": "B5 bench start, KV260 next to the PPK2"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\photos\\bench-B5-end-20261109-1520.png",
+      "sha256": "f258da25313305d1d77ed3d40a02278715f650186af83031464cda9fc6b90e65",
+      "bytes": 10986833,
+      "note": "B5 bench end"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien1\\SHA256SUMS.txt",
+      "sha256": "258652440740a26b67f1cf5348427d5e22baf40565a94a2a45c07bf1d35e8b82",
+      "bytes": 413,
+      "note": "Trung's SHA-256 list, B5 session 1"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien1\\b5_p1_requests.jsonl",
+      "sha256": "795bce2375914027da934dcc29b945371cbe8c3536127b2047cd90da6d27d197",
+      "bytes": 88328,
+      "note": "KV260 request log, B5 session 1"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien1\\b5_p1_phy.log",
+      "sha256": "46dfc0e70b35e5679e726bb7b9377d82e1d5147097de446a1eb11f4271b8d529",
+      "bytes": 894,
+      "note": "KV260 Read PHY log, B5 session 1"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien1\\b5_p1_run.json",
+      "sha256": "22085cea6745b23ae8d30a234c70e97ad672127ec815ce546a6078bd0b14250f",
+      "bytes": 1538,
+      "note": "KV260 service run record (commit, model), B5 session 1"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien1\\b5_p1_summary.json",
+      "sha256": "99a09ddace1d2f61fd7f4ff106fb91e048987ec311d2a7b2059eefd2c5eec2e1",
+      "bytes": 223,
+      "note": "KV260 service summary, B5 session 1"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien1\\b5_p1.btsnoop",
+      "sha256": "151410744c33eb799dfcfa19a62df174b977580cd713b05301a2a18c934383c2",
+      "bytes": 909083,
+      "note": "btmon capture, B5 session 1"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien2\\SHA256SUMS.txt",
+      "sha256": "c7b1e32b396077d942b07b8aa214b21572a7f6289a6ff5aacea6b9538f2f6afc",
+      "bytes": 413,
+      "note": "Trung's SHA-256 list, B5 session 2"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien2\\b5_p2_requests.jsonl",
+      "sha256": "6a3e45f560d6d706ad7c0e112de3b401585f2376574b9d047c9c0621753832f5",
+      "bytes": 88528,
+      "note": "KV260 request log, B5 session 2"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien2\\b5_p2_phy.log",
+      "sha256": "c4f7ccfdb9a1b240de2ce27100c6e00722a5e39210f1e047fc87df32d7b54522",
+      "bytes": 894,
+      "note": "KV260 Read PHY log, B5 session 2"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien2\\b5_p2_run.json",
+      "sha256": "f995e24f3f4f630b4128aa810653b9d2d7983d1ac34213dbb2374d7d9c0dc75d",
+      "bytes": 1538,
+      "note": "KV260 service run record (commit, model), B5 session 2"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien2\\b5_p2_summary.json",
+      "sha256": "99a09ddace1d2f61fd7f4ff106fb91e048987ec311d2a7b2059eefd2c5eec2e1",
+      "bytes": 223,
+      "note": "KV260 service summary, B5 session 2"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien2\\b5_p2.btsnoop",
+      "sha256": "26b188ef9abca9d60e80e99e10f44b39359694e95eccb0d5779ffd450fe56663",
+      "bytes": 873418,
+      "note": "btmon capture, B5 session 2"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien4\\SHA256SUMS.txt",
+      "sha256": "fc3318f9b5383c3622278b3d5d8d471865295d0113fa374976911ac0551b329a",
+      "bytes": 413,
+      "note": "Trung's SHA-256 list, B5 session 4"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien4\\b5_p4_requests.jsonl",
+      "sha256": "5bdb4cd8e9a4f2d1557b44f5d5720b16567fee0b0f37096d74959d853412a42b",
+      "bytes": 88528,
+      "note": "KV260 request log, B5 session 4"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien4\\b5_p4_phy.log",
+      "sha256": "953c4b88d8e95c4207fd6188c4a1b6900abf336b7c595138a7ba2ad412e4fa50",
+      "bytes": 894,
+      "note": "KV260 Read PHY log, B5 session 4"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien4\\b5_p4_run.json",
+      "sha256": "efc55f74f63b12dfab8c47dd39bde3098bd2cd261bd2263bac77160f5d55b701",
+      "bytes": 1538,
+      "note": "KV260 service run record (commit, model), B5 session 4"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien4\\b5_p4_summary.json",
+      "sha256": "99a09ddace1d2f61fd7f4ff106fb91e048987ec311d2a7b2059eefd2c5eec2e1",
+      "bytes": 223,
+      "note": "KV260 service summary, B5 session 4"
+    },
+    {
+      "path": "D:\\HUST\\Trung\\0911\\phien4\\b5_p4.btsnoop",
+      "sha256": "cd7cd0dd0de1db0d1c481a1435fabd71d3d61b995f7c9833eb77efc8b5f08402",
+      "bytes": 875255,
+      "note": "btmon capture, B5 session 4"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-s1-20261029-1302\\ppk2\\raw.bin",
+      "sha256": "26b07230e6a013dad6630ff0593b9fc94b6fdaa56ceb1b2e731ccc049d52f6e9",
+      "bytes": 300285952,
+      "note": "B4-s1-20261029-1302: PPK2 raw words"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-s1-20261029-1302.console.log",
+      "sha256": "4b66ef4f06477e0a499b7ddd7be4596fed0a7acd4a7fffd4d5797a707bdf56cd",
+      "bytes": 1991,
+      "note": "B4-s1-20261029-1302: console output of the session command"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-s2-20261029-1320\\ppk2\\raw.bin",
+      "sha256": "8f2e90991ff818e3a98aecfeff0e9f6184ce46cdcc0988ef496d5b0e78738457",
+      "bytes": 300277760,
+      "note": "B4-s2-20261029-1320: PPK2 raw words"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-s2-20261029-1320.console.log",
+      "sha256": "24563ab9531fae8a115d40a26b870f95bc7120eb48642be010c721a764c9b869",
+      "bytes": 1994,
+      "note": "B4-s2-20261029-1320: console output of the session command"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-s3-20261029-1340\\ppk2\\raw.bin",
+      "sha256": "333d43b3aa4a194d18dee1372ae7c978e721ad94dc3b2b059eb766daabb35e96",
+      "bytes": 300281856,
+      "note": "B4-s3-20261029-1340: PPK2 raw words"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-s3-20261029-1340.console.log",
+      "sha256": "1da5bf1623b610bc15da766319184642315acfd84b94c8b6006d4becdfe657d9",
+      "bytes": 1994,
+      "note": "B4-s3-20261029-1340: console output of the session command"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-reg0ldo-20261029-1405\\ppk2\\raw.bin",
+      "sha256": "d816aba4d66bf2a6064beba5e595d081e24f8d2ec4d974dd9fc4225ee3a9aa84",
+      "bytes": 300281856,
+      "note": "B4-reg0ldo-20261029-1405: PPK2 raw words"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-reg0ldo-20261029-1405.console.log",
+      "sha256": "c4da6c413a65d4fdc7c59ce0ea0350282bc52ecbcbc0ee32be4f2ede324968e2",
+      "bytes": 1992,
+      "note": "B4-reg0ldo-20261029-1405: console output of the session command"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-reg1ldo-20261029-1423\\ppk2\\raw.bin",
+      "sha256": "dc2622983a6cc7b5e584ed120332c5294e5fc5f392457280b76f5b6a5964f656",
+      "bytes": 300275712,
+      "note": "B4-reg1ldo-20261029-1423: PPK2 raw words"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B4-reg1ldo-20261029-1423.console.log",
+      "sha256": "e95863d4c7b7dae1d2759c8baa944a7e57ba8f7aebc0d675b9dc74bc400ccd16",
+      "bytes": 1996,
+      "note": "B4-reg1ldo-20261029-1423: console output of the session command"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\ppk2\\raw.bin",
+      "sha256": "759c59fc2682806068cba2970ffd53431a5b9fb2fb99fe3a4391413774f28888",
+      "bytes": 168278016,
+      "note": "B5-20261109-1419: PPK2 raw words"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1419.console.txt",
+      "sha256": "e2c393c734ad70186ae961a6a2f45d47c7f56a0accbef49f5bc0431b9d461b76",
+      "bytes": 795,
+      "note": "B5-20261109-1419: console output of the session command"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\ppk2\\raw.bin",
+      "sha256": "686838cc494be408d98ee22b84f125cb176bc64402c09cf5c774c2276b627afc",
+      "bytes": 168290304,
+      "note": "B5-20261109-1509-p4: PPK2 raw words"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4.console.txt",
+      "sha256": "8a4a2840e886262cfbafcd6ff63b999444362a39b65b31db9288431ed5f29881",
+      "bytes": 798,
+      "note": "B5-20261109-1509-p4: console output of the session command"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\ppk2\\raw.bin",
+      "sha256": "18c72600758276106bf3787b8ff20579f054249a7777dc9d63435c630d7016e0",
+      "bytes": 168279104,
+      "note": "B5-20261109-1438-p2: PPK2 raw words"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2.console.txt",
+      "sha256": "3160662bc6ab60e6cdaacc6e62ec33d5c2f1fd1dc0476cfec562a8a5cbcef3c5",
+      "bytes": 815,
+      "note": "B5-20261109-1438-p2: console output of the session command"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1457-p3\\ppk2\\raw.bin",
+      "sha256": "cc2498027f3ac4bb8437c127702df47c4078d4cd66999ecfe70a51af0d1bab02",
+      "bytes": 167519104,
+      "note": "B5-20261109-1457-p3: PPK2 raw words"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1457-p3.console.txt",
+      "sha256": "fcfebd3b395667cca88acf802a30d3d18c8f440626f0420e72ae13408a688e98",
+      "bytes": 818,
+      "note": "B5-20261109-1457-p3: console output of the session command"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\edge\\kv260_requests_raw.jsonl",
+      "sha256": "795bce2375914027da934dcc29b945371cbe8c3536127b2047cd90da6d27d197",
+      "bytes": 88328,
+      "note": "B5-20261109-1419: imported KV260 log"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\edge\\peer.jsonl",
+      "sha256": "411b2fd858de9b05e5590942a14c0821bcdae8c5fead4f1122f9de088bbea82d",
+      "bytes": 82272,
+      "note": "B5-20261109-1419: imported KV260 log"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\edge\\kv260_phy.log",
+      "sha256": "46dfc0e70b35e5679e726bb7b9377d82e1d5147097de446a1eb11f4271b8d529",
+      "bytes": 894,
+      "note": "B5-20261109-1419: imported KV260 log"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\edge\\kv260_requests_raw.jsonl",
+      "sha256": "5bdb4cd8e9a4f2d1557b44f5d5720b16567fee0b0f37096d74959d853412a42b",
+      "bytes": 88528,
+      "note": "B5-20261109-1509-p4: imported KV260 log"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\edge\\peer.jsonl",
+      "sha256": "5356d7cac96639fffdf77ffd21da6d18d58bcead1765ca921a1f316df30869f2",
+      "bytes": 82472,
+      "note": "B5-20261109-1509-p4: imported KV260 log"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\edge\\kv260_phy.log",
+      "sha256": "953c4b88d8e95c4207fd6188c4a1b6900abf336b7c595138a7ba2ad412e4fa50",
+      "bytes": 894,
+      "note": "B5-20261109-1509-p4: imported KV260 log"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\edge\\kv260_requests_raw.jsonl",
+      "sha256": "6a3e45f560d6d706ad7c0e112de3b401585f2376574b9d047c9c0621753832f5",
+      "bytes": 88528,
+      "note": "B5-20261109-1438-p2: imported KV260 log"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\edge\\peer.jsonl",
+      "sha256": "2af063d9ea3c9cc9b432673a374a57083d99dd0f46c53335e89c9a1c8a8d6a4e",
+      "bytes": 82472,
+      "note": "B5-20261109-1438-p2: imported KV260 log"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\edge\\kv260_phy.log",
+      "sha256": "c4f7ccfdb9a1b240de2ce27100c6e00722a5e39210f1e047fc87df32d7b54522",
+      "bytes": 894,
+      "note": "B5-20261109-1438-p2: imported KV260 log"
+    }
+  ],
+  "files": [
+    {
+      "path": "analysis/cycles_dev_B4-1.csv",
+      "sha256": "ccc32531b5a1086f48d9667d0cf477a57eb04c77e60fc7ad79358c373fb09791",
+      "bytes": 49341,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\cycles_dev_B4-1.csv"
+    },
+    {
+      "path": "analysis/cycles_dev_B4-2.csv",
+      "sha256": "df909389c0ebc325ab3c347b86c14c546609b47bdc333732a96b3ec8424fed4f",
+      "bytes": 49192,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\cycles_dev_B4-2.csv"
+    },
+    {
+      "path": "analysis/cycles_dev_B4-3.csv",
+      "sha256": "b2a70cb676baeb1a04ab7e858a1628db584fead6985ee2a033e28a89034ad6e4",
+      "bytes": 49165,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\cycles_dev_B4-3.csv"
+    },
+    {
+      "path": "analysis/cycles_dev_REG0-LDO.csv",
+      "sha256": "607146edf7e7410ff06299536f55efbad2e1958d4516e3b5ffe4feb2ebee77d0",
+      "bytes": 48850,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\cycles_dev_REG0-LDO.csv"
+    },
+    {
+      "path": "analysis/cycles_dev_REG1-LDO.csv",
+      "sha256": "52f70e1892b27c90db6e1de00466bb876edc3ef80396478378eca3b2614da0e9",
+      "bytes": 45375,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\cycles_dev_REG1-LDO.csv"
+    },
+    {
+      "path": "analysis/cycles_kv260_B5-1.csv",
+      "sha256": "0f7365265f879ecbd374413ba8d5e7b60f836d63ef2dd94aec1969a915fdf744",
+      "bytes": 34264,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\cycles_kv260_B5-1.csv"
+    },
+    {
+      "path": "analysis/cycles_kv260_B5-2.csv",
+      "sha256": "c3b88bd8638e0fdf82615dc9de525404a2d86815d1f7f1ed674d1a70069a8364",
+      "bytes": 34236,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\cycles_kv260_B5-2.csv"
+    },
+    {
+      "path": "analysis/cycles_kv260_B5-4.csv",
+      "sha256": "e86dad5a1884030016d8e2b6759784d72718392bf7c6f38fd228fc7932cf3780",
+      "bytes": 34243,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\cycles_kv260_B5-4.csv"
+    },
+    {
+      "path": "analysis/cycles_kv260_B5-week8-laptop.csv",
+      "sha256": "c95a49cd8344c56e93c42e84c111027940f3958577a54c6b020cf190fbd54c0c",
+      "bytes": 34675,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\cycles_kv260_B5-week8-laptop.csv"
+    },
+    {
+      "path": "analysis/fig_cycle_waveforms.csv",
+      "sha256": "59821df4cac533cf9ae18ccab3209c7faf7357f22d8b0a218eaee8fab4d2199b",
+      "bytes": 163567,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_cycle_waveforms.csv"
+    },
+    {
+      "path": "analysis/fig_e_dev_vs_split.csv",
+      "sha256": "eb2c88ef106a133c67f14f4500b4008e663cf3b5a9442758bf1d9d8351ed2e7a",
+      "bytes": 616,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_e_dev_vs_split.csv"
+    },
+    {
+      "path": "analysis/fig_idle_histogram.csv",
+      "sha256": "099b41da7d31ebfb99d9a1011a6f83ec7f144f492e4b67241c8fca6cae14cd90",
+      "bytes": 1940,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_idle_histogram.csv"
+    },
+    {
+      "path": "analysis/fig_idle_histogram_meta.json",
+      "sha256": "7aecc50009c5bc725d710a9da75a0ad562ef158d7870c09cace88251d33141d0",
+      "bytes": 140,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_idle_histogram_meta.json"
+    },
+    {
+      "path": "analysis/fig_kv260_phases.csv",
+      "sha256": "e06be43da29ba7eb90e187f672057b96405c9a3ab6169178a9e628f17890d142",
+      "bytes": 469,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_kv260_phases.csv"
+    },
+    {
+      "path": "analysis/fig_quant_share.csv",
+      "sha256": "dea3fa43fd5bd431c1ffe099244b79278430a82a6be900511eb7f8fd87d9a42f",
+      "bytes": 431,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_quant_share.csv"
+    },
+    {
+      "path": "analysis/fig_reg0_histogram.csv",
+      "sha256": "66b3072ab1a4cf86327c40af6131d1408e3a45727aa87e615653a6de70a32262",
+      "bytes": 2435,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_reg0_histogram.csv"
+    },
+    {
+      "path": "analysis/fig_reg0_scatter_s2.csv",
+      "sha256": "0b5988e309191f3b68b41f1e1770bd84cd0edbb9dbc85d15844d0ecaf1aa622c",
+      "bytes": 21332,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_reg0_scatter_s2.csv"
+    },
+    {
+      "path": "analysis/fig_session_overview.csv",
+      "sha256": "22eaa82f6456ddaa39391668e6fe490555963a16edd280b76240ac868b99fc52",
+      "bytes": 448537,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_session_overview.csv"
+    },
+    {
+      "path": "analysis/fig_session_overview_stages.csv",
+      "sha256": "484b43706b5b1b5db5a2f90974a3604eb5b43b9dd30b9e36c6d2724181892185",
+      "bytes": 95,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_session_overview_stages.csv"
+    },
+    {
+      "path": "analysis/fig_session_repeatability.csv",
+      "sha256": "26da4c1e3cebaaa48742f032d8de358ac05b6603982cc2514fb8ed4e1055d9a5",
+      "bytes": 875,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_session_repeatability.csv"
+    },
+    {
+      "path": "analysis/fig_t_dev_marker_vs_dwt.csv",
+      "sha256": "04932573e5fe97c557d295f2eab4eba0a04680f8085be455ca245fc9d2abb2a5",
+      "bytes": 1133,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\fig_t_dev_marker_vs_dwt.csv"
+    },
+    {
+      "path": "analysis/gaps_kv260_B5-1.csv",
+      "sha256": "ad3e3af0249d2c4d04357d858f6b31a531e39742328e4937b633aa6e5393fb29",
+      "bytes": 8993,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\gaps_kv260_B5-1.csv"
+    },
+    {
+      "path": "analysis/gaps_kv260_B5-2.csv",
+      "sha256": "7742b1a15b2092e5f47b2a35c0fc4a8dc7905880066c894d7980270bedb99114",
+      "bytes": 8982,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\gaps_kv260_B5-2.csv"
+    },
+    {
+      "path": "analysis/gaps_kv260_B5-4.csv",
+      "sha256": "4f33a07364269c1237e08c51ba0d37daf353484161191b073dd9a7b0a5ac411a",
+      "bytes": 9007,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\gaps_kv260_B5-4.csv"
+    },
+    {
+      "path": "analysis/gaps_kv260_B5-week8-laptop.csv",
+      "sha256": "b45b2362c41542367cd53ff2e33e6f459a413b0d3ac9a427a59d584d7368cc95",
+      "bytes": 9412,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\gaps_kv260_B5-week8-laptop.csv"
+    },
+    {
+      "path": "analysis/table_iii_e_dev.csv",
+      "sha256": "e6ef12d7f334927e3e82dc1196544fa8809cee5a0683686d0f3839820cb500ad",
+      "bytes": 2554,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\table_iii_e_dev.csv"
+    },
+    {
+      "path": "analysis/table_kv260_s2.csv",
+      "sha256": "05a8d45411023e7846d6f8a41a70523e5d98929e1fca5c67cb681b58223e3f10",
+      "bytes": 7551,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\table_kv260_s2.csv"
+    },
+    {
+      "path": "analysis/table_kv260_s2_pooled.csv",
+      "sha256": "974fba4cdb274d30f50becc7bf3fe4798d751a8eafe4d914035d2eb00b302110",
+      "bytes": 763,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\table_kv260_s2_pooled.csv"
+    },
+    {
+      "path": "analysis/week9_analysis.json",
+      "sha256": "36e56ebb8de95e5193128fefe70f948f2be715d1c83a8009acd9dd55950729d6",
+      "bytes": 182595,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\week9_analysis.json"
+    },
+    {
+      "path": "b4_compare_s1_s2.json",
+      "sha256": "b584dba7aaea1347c3b0d0af8299c16056993968d7b17f6a9e77f1caf66a7d5d",
+      "bytes": 6966,
+      "source": "D:\\HUST\\ASI_week9\\B4-compare-s1-s2-20261029.json"
+    },
+    {
+      "path": "b4_compare_s2_s3.json",
+      "sha256": "874d1880bdeec895119f14a96eebf3be0cab798f340675243772d51b0aa0d983",
+      "bytes": 6966,
+      "source": "D:\\HUST\\ASI_week9\\B4-compare-s2-s3-20261029.json"
+    },
+    {
+      "path": "b4_reg0ldo_analysis_summary.json",
+      "sha256": "d1f761581e22f7fc5958d332d06cb26aa3970406fffe07b205c50e52809c85ae",
+      "bytes": 5699,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg0ldo-20261029-1405\\analysis\\summary.json"
+    },
+    {
+      "path": "b4_reg0ldo_capture.json",
+      "sha256": "db75b01b4b7113261a64d87044d81ecdac704005bd6d01df0f9dc8818c731a8c",
+      "bytes": 4193,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg0ldo-20261029-1405\\ppk2\\capture.json"
+    },
+    {
+      "path": "b4_reg0ldo_check_session.json",
+      "sha256": "4a2f652569899be168799c42b0bde3828fbcc4743e0d16fa6035993add1393c6",
+      "bytes": 2519,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg0ldo-20261029-1405\\check_session.json"
+    },
+    {
+      "path": "b4_reg0ldo_energy_dev.json",
+      "sha256": "a76cb903da3caced19585dd0268334e8865bcbe6b694929d20f528697463b980",
+      "bytes": 34266,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg0ldo-20261029-1405\\energy_dev.json"
+    },
+    {
+      "path": "b4_reg0ldo_note-20261029T074928Z.json",
+      "sha256": "b0381a0873db5bc9a41ad209c59a4e28d5fb88e63979c4a90136bfcf3757c6c7",
+      "bytes": 561,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg0ldo-20261029-1405\\note-20261029T074928Z.json"
+    },
+    {
+      "path": "b4_reg0ldo_session.json",
+      "sha256": "031eaccc886b515dcc957a1f3e67695103450c72980599cc6c249f9ddb3b97fe",
+      "bytes": 3994,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg0ldo-20261029-1405\\session.json"
+    },
+    {
+      "path": "b4_reg1ldo_analysis_summary.json",
+      "sha256": "73545e208eaccf3eae4e59eeb52ba3b3657fe6fce4b816d1722fa6f319167eba",
+      "bytes": 5847,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg1ldo-20261029-1423\\analysis\\summary.json"
+    },
+    {
+      "path": "b4_reg1ldo_capture.json",
+      "sha256": "06b3178bfb7978aac4d1035f285c8af489c3f1e83f7e4d3e9082862e0355701d",
+      "bytes": 4194,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg1ldo-20261029-1423\\ppk2\\capture.json"
+    },
+    {
+      "path": "b4_reg1ldo_check_session_FAIL.json",
+      "sha256": "08f449ebae94ec6b975f4cded348e1c850b11bc326aad43976cad190f8392a85",
+      "bytes": 2683,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg1ldo-20261029-1423\\check_session.json"
+    },
+    {
+      "path": "b4_reg1ldo_energy_dev.json",
+      "sha256": "662b4579d4670c52b9b1c562c2e73d6935c4167d2ff44b22ac74869d6d60343c",
+      "bytes": 32970,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg1ldo-20261029-1423\\energy_dev.json"
+    },
+    {
+      "path": "b4_reg1ldo_note-20261029T074928Z.json",
+      "sha256": "b0381a0873db5bc9a41ad209c59a4e28d5fb88e63979c4a90136bfcf3757c6c7",
+      "bytes": 561,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg1ldo-20261029-1423\\note-20261029T074928Z.json"
+    },
+    {
+      "path": "b4_reg1ldo_session.json",
+      "sha256": "768d5d522525420dd4d82ccd5fe09310df82f21e278125479037df612e97de02",
+      "bytes": 3994,
+      "source": "D:\\HUST\\ASI_week9\\B4-reg1ldo-20261029-1423\\session.json"
+    },
+    {
+      "path": "b4_s1_analysis_summary.json",
+      "sha256": "275ce5694230b452922c313d5e4d78bfeb3e83057580fe8cf0c1d0d0ce9b40a9",
+      "bytes": 5312,
+      "source": "D:\\HUST\\ASI_week9\\B4-s1-20261029-1302\\analysis\\summary.json"
+    },
+    {
+      "path": "b4_s1_capture.json",
+      "sha256": "1b875bfc5c17caa9acb8a725b00f7f795744d6cc6e0a4bd72e1e3f13fb86b4a5",
+      "bytes": 4289,
+      "source": "D:\\HUST\\ASI_week9\\B4-s1-20261029-1302\\ppk2\\capture.json"
+    },
+    {
+      "path": "b4_s1_check_session_FAIL_original.json",
+      "sha256": "f7aec44f86acfb13f8a359030af607469fc68c3bc3d6c94149c0dbe91a545b63",
+      "bytes": 2305,
+      "source": "D:\\HUST\\ASI_week9\\B4-s1-20261029-1302\\check_session.json"
+    },
+    {
+      "path": "b4_s1_check_session_recheck.json",
+      "sha256": "8c673b068a315af1a1b902b56f8294536ef355a1e1d23c04f3f2f115e6bfc7a0",
+      "bytes": 2688,
+      "source": "D:\\HUST\\ASI_week9\\B4-s1-20261029-1302\\check_session_recheck.json"
+    },
+    {
+      "path": "b4_s1_energy_dev.json",
+      "sha256": "dec4b320a962d8438a8f929db9db3e98bb43e2e637bc5edabc7b040207adbd8f",
+      "bytes": 30019,
+      "source": "D:\\HUST\\ASI_week9\\B4-s1-20261029-1302\\energy_dev.json"
+    },
+    {
+      "path": "b4_s1_note-20261029T062302Z.json",
+      "sha256": "2d20479fed215438616325a3999a293366cb1663365ccbe1d8270df548f2d89d",
+      "bytes": 449,
+      "source": "D:\\HUST\\ASI_week9\\B4-s1-20261029-1302\\note-20261029T062302Z.json"
+    },
+    {
+      "path": "b4_s1_session.json",
+      "sha256": "d85c2e19bd945cb8a3437678d6acf5839e7a6b6fd36365f86c6a9b0caf30cc5f",
+      "bytes": 3973,
+      "source": "D:\\HUST\\ASI_week9\\B4-s1-20261029-1302\\session.json"
+    },
+    {
+      "path": "b4_s2_analysis_summary.json",
+      "sha256": "841fe6b9f1f417a7983e9f2b2bc490002e717d2ea512edb7053f5f98e4260b00",
+      "bytes": 5304,
+      "source": "D:\\HUST\\ASI_week9\\B4-s2-20261029-1320\\analysis\\summary.json"
+    },
+    {
+      "path": "b4_s2_capture.json",
+      "sha256": "8255dc25e9452c6f8eba5bc1c3744cba9364fb8cec5fd45ed08006aeab0d063c",
+      "bytes": 4232,
+      "source": "D:\\HUST\\ASI_week9\\B4-s2-20261029-1320\\ppk2\\capture.json"
+    },
+    {
+      "path": "b4_s2_check_session_FAIL_original.json",
+      "sha256": "28a3470257448bb21bf052a0531b3d9cc426d29d78684a90c6c842c60f3df423",
+      "bytes": 2287,
+      "source": "D:\\HUST\\ASI_week9\\B4-s2-20261029-1320\\check_session.json"
+    },
+    {
+      "path": "b4_s2_check_session_recheck.json",
+      "sha256": "123f4bd11173440cd68ce31f0b065f0999529fcd789e177847b82d5b8b423ed5",
+      "bytes": 2670,
+      "source": "D:\\HUST\\ASI_week9\\B4-s2-20261029-1320\\check_session_recheck.json"
+    },
+    {
+      "path": "b4_s2_energy_dev.json",
+      "sha256": "6239e1ba741af9bb293148b2a38d230401b05618ed7a5432db24847c1372de2e",
+      "bytes": 29970,
+      "source": "D:\\HUST\\ASI_week9\\B4-s2-20261029-1320\\energy_dev.json"
+    },
+    {
+      "path": "b4_s2_note-20261029T063249Z.json",
+      "sha256": "360a033de0b9c13b816dff370e03cbddef9ecc39aaf3dd71a9029f038a2ab3b8",
+      "bytes": 470,
+      "source": "D:\\HUST\\ASI_week9\\B4-s2-20261029-1320\\note-20261029T063249Z.json"
+    },
+    {
+      "path": "b4_s2_session.json",
+      "sha256": "81334a5097d01300cfaa4e564a7f4d3107a5a247a3a8aacaacc50d53abee5e9d",
+      "bytes": 3925,
+      "source": "D:\\HUST\\ASI_week9\\B4-s2-20261029-1320\\session.json"
+    },
+    {
+      "path": "b4_s3_analysis_summary.json",
+      "sha256": "f1818e14ae8a03bea79f400dbd9c6a81574e817b6f835c42f87ce41d248099f4",
+      "bytes": 5304,
+      "source": "D:\\HUST\\ASI_week9\\B4-s3-20261029-1340\\analysis\\summary.json"
+    },
+    {
+      "path": "b4_s3_capture.json",
+      "sha256": "11b1b20310f203210622e9b97e50bc0814f643372d9bd6cde38d568100a60610",
+      "bytes": 4232,
+      "source": "D:\\HUST\\ASI_week9\\B4-s3-20261029-1340\\ppk2\\capture.json"
+    },
+    {
+      "path": "b4_s3_check_session_FAIL_original.json",
+      "sha256": "a5ff9fd9f7f3526b61867b1a1b30db4824ee8c73cb462b9945a584f1a3e516fc",
+      "bytes": 2306,
+      "source": "D:\\HUST\\ASI_week9\\B4-s3-20261029-1340\\check_session.json"
+    },
+    {
+      "path": "b4_s3_check_session_recheck.json",
+      "sha256": "be1596037eb114cf22a7b786f87662062a1d01c5b09f31b0feefded1a46ebcac",
+      "bytes": 2689,
+      "source": "D:\\HUST\\ASI_week9\\B4-s3-20261029-1340\\check_session_recheck.json"
+    },
+    {
+      "path": "b4_s3_energy_dev.json",
+      "sha256": "6c97974f7222a8b264e7458efb67f507bb00d7f5939ee7774f1cc663f59608d4",
+      "bytes": 29982,
+      "source": "D:\\HUST\\ASI_week9\\B4-s3-20261029-1340\\energy_dev.json"
+    },
+    {
+      "path": "b4_s3_note-20261029T064634Z.json",
+      "sha256": "31f212be13443d05176bfff1ea2ffa1ab2f2878079315aa0ed0b94ab6dee7614",
+      "bytes": 282,
+      "source": "D:\\HUST\\ASI_week9\\B4-s3-20261029-1340\\note-20261029T064634Z.json"
+    },
+    {
+      "path": "b4_s3_session.json",
+      "sha256": "c0064fb4f5d2fd9fa0959dcfd3153097597491304595a01604c44d143c26e141",
+      "bytes": 3897,
+      "source": "D:\\HUST\\ASI_week9\\B4-s3-20261029-1340\\session.json"
+    },
+    {
+      "path": "b5_kv260_p1_analysis_summary.json",
+      "sha256": "bb68c2fe00ccf1864bd987722b3daf88ff71d7908217fa082b6655761208f3d1",
+      "bytes": 22485,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\analysis\\summary.json"
+    },
+    {
+      "path": "b5_kv260_p1_capture.json",
+      "sha256": "db311649dc8f4c99343bbfac8882affc0b80a59b2e538645ac0f84e3bd9fbb49",
+      "bytes": 4302,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\ppk2\\capture.json"
+    },
+    {
+      "path": "b5_kv260_p1_check_kv260.json",
+      "sha256": "a3a0a479c257bac4de38301f5e2b522c4c4f34b09b48fa7807239244235e511b",
+      "bytes": 3102,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\check_kv260.json"
+    },
+    {
+      "path": "b5_kv260_p1_check_session.json",
+      "sha256": "58f40b101d43224be7eb6620b84382c3ad2769f52bd49c689039601cef8b0dba",
+      "bytes": 1372,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\check_session.json"
+    },
+    {
+      "path": "b5_kv260_p1_edge_summary.json",
+      "sha256": "13431986421dbb6f8cf8f0fe57adc9e3d217bb79852a162d9f340569fe1f07f8",
+      "bytes": 2946,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\edge\\summary.json"
+    },
+    {
+      "path": "b5_kv260_p1_energy_kv260_s2.json",
+      "sha256": "b8d0840963bb1ea37537da202af9ab7f10a1269c2199ac280eba3b828dc9483e",
+      "bytes": 22755,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\energy_kv260_s2.json"
+    },
+    {
+      "path": "b5_kv260_p1_note-20261109T082535Z.json",
+      "sha256": "33a83edd6c87efc03834446c043b1c1ca42b25a94a88171b62c20a75f4a0f8a5",
+      "bytes": 459,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\note-20261109T082535Z.json"
+    },
+    {
+      "path": "b5_kv260_p1_session.json",
+      "sha256": "8a009d81ed0db99ba7578fee39fa7720c0db60db97f47f0bfb73e449792449b1",
+      "bytes": 3419,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1419\\session.json"
+    },
+    {
+      "path": "b5_kv260_p2_analysis_summary.json",
+      "sha256": "2f1756069809d6ea7ba1a3e0a3f4eaf93fa59e90ecebb914678a95797be738a8",
+      "bytes": 22537,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\analysis\\summary.json"
+    },
+    {
+      "path": "b5_kv260_p2_capture.json",
+      "sha256": "664d1cb287fb22f4ca509f759814e95a4a8b9db6c110d1875b5fe3101f3dae9c",
+      "bytes": 4387,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\ppk2\\capture.json"
+    },
+    {
+      "path": "b5_kv260_p2_check_kv260_FAIL.json",
+      "sha256": "3a86451efd92f0c2cd5706bbf3b51a6913665d40e7dc770bcb5161dc9655abb1",
+      "bytes": 3107,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\check_kv260.json"
+    },
+    {
+      "path": "b5_kv260_p2_check_session_FAIL.json",
+      "sha256": "5e2c01e9900352c47cc698d1c4971cac025deb9f9f0c0f624503dbb7fdeb076f",
+      "bytes": 1371,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\check_session.json"
+    },
+    {
+      "path": "b5_kv260_p2_edge_summary.json",
+      "sha256": "10e0e7b98b957e57c732250db9378f3113e1edb139442d6088b3c6dd7020f48e",
+      "bytes": 2962,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\edge\\summary.json"
+    },
+    {
+      "path": "b5_kv260_p2_energy_kv260_s2_FAIL.json",
+      "sha256": "7f2c81dca59edb9c18a859373e5db2a44b2d187f6a42091e8a358fe1b8563587",
+      "bytes": 22755,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\energy_kv260_s2.json"
+    },
+    {
+      "path": "b5_kv260_p2_note-20261109T082535Z.json",
+      "sha256": "0a4eb65cbca1b528b0310dbc1dacac16341fbea882678916677fb0ed1d2fd096",
+      "bytes": 526,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\note-20261109T082535Z.json"
+    },
+    {
+      "path": "b5_kv260_p2_session.json",
+      "sha256": "aacf796f106b4b7f88407f8fbf2e3b80123023ade5555c5b252aef015aeb2e63",
+      "bytes": 3520,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1438-p2\\session.json"
+    },
+    {
+      "path": "b5_kv260_p3_analysis_summary.json",
+      "sha256": "c5b5eb6fb2019ce260c04b16543840f023ce36ae0f2e80b8a21fd45a976622dd",
+      "bytes": 22477,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1457-p3\\analysis\\summary.json"
+    },
+    {
+      "path": "b5_kv260_p3_capture.json",
+      "sha256": "045b003adbeb55fd13709e230bd6d78bfcb2bc47065eb95cb6c5a8d5bae9a8ff",
+      "bytes": 4425,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1457-p3\\ppk2\\capture.json"
+    },
+    {
+      "path": "b5_kv260_p3_check_session_FAIL.json",
+      "sha256": "9c07c8d5d5438c352cb16e1c90ee7db76b99180fdef372bffa9a94334c1b6246",
+      "bytes": 1362,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1457-p3\\check_session.json"
+    },
+    {
+      "path": "b5_kv260_p3_note-20261109T082535Z.json",
+      "sha256": "769aa34421f5d1ee07f7705f1fa2d3cf81dd927573cd79c0eaa4b5d681d35647",
+      "bytes": 529,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1457-p3\\note-20261109T082535Z.json"
+    },
+    {
+      "path": "b5_kv260_p3_session.json",
+      "sha256": "44ccf7992bae664b6b226289b927550938ea3d6c76b56d4ee114e9be15bf3317",
+      "bytes": 3566,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1457-p3\\session.json"
+    },
+    {
+      "path": "b5_kv260_p4_analysis_summary.json",
+      "sha256": "d412ecbdda581e55edb1c15fedfd2d937efebc54b7913d6e56d3086968931a74",
+      "bytes": 22462,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\analysis\\summary.json"
+    },
+    {
+      "path": "b5_kv260_p4_capture.json",
+      "sha256": "d9ba38d4cef7d99aabb31d39f9ca79f719edbede5201718805a59cceb1904b7b",
+      "bytes": 4385,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\ppk2\\capture.json"
+    },
+    {
+      "path": "b5_kv260_p4_check_kv260.json",
+      "sha256": "603cf9a4f4c944363b56dbb83524f55740b6bd46bd25d8b138ee184608a5e660",
+      "bytes": 3108,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\check_kv260.json"
+    },
+    {
+      "path": "b5_kv260_p4_check_session.json",
+      "sha256": "12d0a9a452692de15947671983abf02ff9288637e72f79cabad480c7f6a34b1e",
+      "bytes": 1371,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\check_session.json"
+    },
+    {
+      "path": "b5_kv260_p4_edge_summary.json",
+      "sha256": "ae47f6d45a6bb161e6734ff86d7517ca5c0b1387e3b1ae735ba0824baa7d0ae6",
+      "bytes": 2962,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\edge\\summary.json"
+    },
+    {
+      "path": "b5_kv260_p4_energy_kv260_s2.json",
+      "sha256": "4008093cd3f3195f044979f794640d9fe2eb610589e72753cfbb7cadf19c4136",
+      "bytes": 22746,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\energy_kv260_s2.json"
+    },
+    {
+      "path": "b5_kv260_p4_note-20261109T082536Z.json",
+      "sha256": "fc86b1968b0cdf6e70c9dc36506f2b2b333c4ef900599e08f376dc87677fcb00",
+      "bytes": 564,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\note-20261109T082536Z.json"
+    },
+    {
+      "path": "b5_kv260_p4_session.json",
+      "sha256": "1da6a45e96b3b3531193863eff7fd40ee3b6b782eda7924c7eec2b0ba5517c87",
+      "bytes": 3548,
+      "source": "D:\\HUST\\ASI_week9\\B5-20261109-1509-p4\\session.json"
+    },
+    {
+      "path": "build_check/dev-reg0-ldo_source.json",
+      "sha256": "257a867689bff8511564464cf72a13f3df6d5f4234c91b2d997c7f859c4a32b8",
+      "bytes": 1721,
+      "source": "D:\\HUST\\ASI_week9\\build-20261029-clean-dev-reg0-ldo\\source.json"
+    },
+    {
+      "path": "build_check/dev-reg0-ldo_week9_build_check.json",
+      "sha256": "eface74055257fdee503f331635439d79997796b8482edc1e3d41f0d662228c9",
+      "bytes": 14798,
+      "source": "D:\\HUST\\ASI_week9\\build-20261029-clean-dev-reg0-ldo\\week9_build_check.json"
+    },
+    {
+      "path": "build_check/dev-reg1-ldo_source.json",
+      "sha256": "fabdf0b11c3d8ed160ef64a07b0f0d96cdb702a4b562ce8f2c766f342c13d623",
+      "bytes": 1721,
+      "source": "D:\\HUST\\ASI_week9\\build-20261029-clean-dev-reg1-ldo\\source.json"
+    },
+    {
+      "path": "build_check/dev-reg1-ldo_week9_build_check.json",
+      "sha256": "1ed1edfc6e4d10ff6ecd5ff243b5b6cefabb5095ce493e000fedc3596445e2ec",
+      "bytes": 14798,
+      "source": "D:\\HUST\\ASI_week9\\build-20261029-clean-dev-reg1-ldo\\week9_build_check.json"
+    },
+    {
+      "path": "build_check/dev-usb_source.json",
+      "sha256": "f91aa6e65bbb17c250ed9c90a00a47284fc94eadd8fb0c88276cb345f15b53c3",
+      "bytes": 1689,
+      "source": "D:\\HUST\\ASI_week9\\build-20261029-clean-dev-usb\\source.json"
+    },
+    {
+      "path": "build_check/dev-usb_week9_build_check.json",
+      "sha256": "2100dc67a5fdc4fc52aa0a8f25796958ef025d04aca9b85e5cb1e35e7aab2038",
+      "bytes": 14727,
+      "source": "D:\\HUST\\ASI_week9\\build-20261029-clean-dev-usb\\week9_build_check.json"
+    },
+    {
+      "path": "build_check/dev_source.json",
+      "sha256": "482dd1d47b18e0a05ef68701c15c4ea3fa24fd11985f88425e1991b3e6d42c3f",
+      "bytes": 1681,
+      "source": "D:\\HUST\\ASI_week9\\build-20261029-clean-dev\\source.json"
+    },
+    {
+      "path": "build_check/dev_week9_build_check.json",
+      "sha256": "090655985edb5cd27295a4f017b57f8797491e1a7b027203fbee929caee1b079",
+      "bytes": 14461,
+      "source": "D:\\HUST\\ASI_week9\\build-20261029-clean-dev\\week9_build_check.json"
+    },
+    {
+      "path": "build_resources.csv",
+      "sha256": "cc13bc2a7da7438a6f489a2f6e834f858bf3968683bf29d6aa4444bec5f9a6f5",
+      "bytes": 842,
+      "source": "derived: build_check/*_week9_build_check.json"
+    },
+    {
+      "path": "dfu/dfu-20261029-122226-week9-dev-usb.json",
+      "sha256": "0730c2c6b47624a6c81f281fa494683d08ada1cf660b72553ea623e9296814d7",
+      "bytes": 1356,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-122226-week9-dev-usb.json"
+    },
+    {
+      "path": "dfu/dfu-20261029-122226-week9-dev-usb.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-122226-week9-dev-usb.log"
+    },
+    {
+      "path": "dfu/dfu-20261029-125315-week9-dev.json",
+      "sha256": "fe106825a3a78af3a2c5112a3d5dea083ead943c66877765d82ed186fa02e704",
+      "bytes": 1328,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-125315-week9-dev.json"
+    },
+    {
+      "path": "dfu/dfu-20261029-125315-week9-dev.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-125315-week9-dev.log"
+    },
+    {
+      "path": "dfu/dfu-20261029-140304-week9-dev.json",
+      "sha256": "643bac73d3cb8d0804e24d4ffd60ca2e18770e4602b40a0893cb6827ca45aa65",
+      "bytes": 1364,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-140304-week9-dev.json"
+    },
+    {
+      "path": "dfu/dfu-20261029-140304-week9-dev.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-140304-week9-dev.log"
+    },
+    {
+      "path": "dfu/dfu-20261029-142126-week9-dev.json",
+      "sha256": "d269b5a7ecef35d911a8417348cf0a6af670f99892572a9e2ac6befc4dc999cd",
+      "bytes": 1364,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-142126-week9-dev.json"
+    },
+    {
+      "path": "dfu/dfu-20261029-142126-week9-dev.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-142126-week9-dev.log"
+    },
+    {
+      "path": "dfu/dfu-20261029-144215-energy-fast.json",
+      "sha256": "9531ad591e32473042a5d5088015c384a336a5be6156aaad90c19660ba7d2493",
+      "bytes": 1253,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-144215-energy-fast.json"
+    },
+    {
+      "path": "dfu/dfu-20261029-144215-energy-fast.log.txt",
+      "sha256": "f95efae197daa8c54e3dcef7cd2f523ef7fa3096cb7d9067da8cfa95b57185a9",
+      "bytes": 25,
+      "source": "D:\\HUST\\ASI_week9\\dfu\\dfu-20261029-144215-energy-fast.log"
+    },
+    {
+      "path": "figures/fig_cycle_waveforms.pdf",
+      "sha256": "71e6cf6642fd32b0e8eda8c4dab29b6272e6ba72f53fb74ff90ac0bbe4e4a5fb",
+      "bytes": 236194,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_cycle_waveforms.pdf"
+    },
+    {
+      "path": "figures/fig_cycle_waveforms.png",
+      "sha256": "7738bc9b91a6a99f07eb2f1833183d680c497f9bac12f977ea395c4d3cabb414",
+      "bytes": 171842,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_cycle_waveforms.png"
+    },
+    {
+      "path": "figures/fig_e_dev_vs_split.pdf",
+      "sha256": "106f885202e83140e7d291ce845e349611f4a31d667588f8ac2b80d44a7bfecf",
+      "bytes": 39620,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_e_dev_vs_split.pdf"
+    },
+    {
+      "path": "figures/fig_e_dev_vs_split.png",
+      "sha256": "328caba6ef5e9c2d6e25b100c985065e93fc8bd1aa994dc38f96ffb08faef6a3",
+      "bytes": 173726,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_e_dev_vs_split.png"
+    },
+    {
+      "path": "figures/fig_idle_histogram.pdf",
+      "sha256": "8ebf2f3092b474b2bdddfc580bf916c2673dd017b8fe9af9bb4aa45652e0f137",
+      "bytes": 31978,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_idle_histogram.pdf"
+    },
+    {
+      "path": "figures/fig_idle_histogram.png",
+      "sha256": "fd22f190c730b0af8ad850026443e5398c6eca7fb94cfb7b2a2d211d62b4526a",
+      "bytes": 82788,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_idle_histogram.png"
+    },
+    {
+      "path": "figures/fig_kv260_phases.pdf",
+      "sha256": "a4f53b2aefa1d5791b9f017b27e406e8eb5f964168eb28ff5c38acc4ccc59e6e",
+      "bytes": 31640,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_kv260_phases.pdf"
+    },
+    {
+      "path": "figures/fig_kv260_phases.png",
+      "sha256": "194d76b73e31b796be556a5dfb610ed2f0222c869e5193c10e09264381959f3c",
+      "bytes": 78124,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_kv260_phases.png"
+    },
+    {
+      "path": "figures/fig_quant_share.pdf",
+      "sha256": "c07820859800b5ffaaa2378d69f6e2ddd23f8cafb8ecf1e28e5576ca3aca392a",
+      "bytes": 38739,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_quant_share.pdf"
+    },
+    {
+      "path": "figures/fig_quant_share.png",
+      "sha256": "e9c81b7479e8e35ee3b0addd177fc7a7af81ce9c8744fd5f3653827b7a696d1a",
+      "bytes": 120524,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_quant_share.png"
+    },
+    {
+      "path": "figures/fig_reg0_two_level.pdf",
+      "sha256": "9a245e2999da1f14fd3e9d1fb2e3a5c6021df37c0eb588ab62dbb82bb17be34c",
+      "bytes": 50097,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_reg0_two_level.pdf"
+    },
+    {
+      "path": "figures/fig_reg0_two_level.png",
+      "sha256": "08981b6e10ad7f1447867cdd8fb010ab286b4e476c13f636aa97c40b61ab6190",
+      "bytes": 257562,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_reg0_two_level.png"
+    },
+    {
+      "path": "figures/fig_session_overview.pdf",
+      "sha256": "50e2dd632c698bbc47390dba583b175a39d2a2ddac8b990fc120c57383e839d3",
+      "bytes": 254803,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_session_overview.pdf"
+    },
+    {
+      "path": "figures/fig_session_overview.png",
+      "sha256": "f486476e89e5ad61a07231ca1adcbb8e271cdb2e8ad525e78c7da2034db3229c",
+      "bytes": 332959,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_session_overview.png"
+    },
+    {
+      "path": "figures/fig_session_repeatability.pdf",
+      "sha256": "05ad9bb1700c6fa1ecf23e212dbb867c45a617cc72e53b740272759708664ef8",
+      "bytes": 37271,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_session_repeatability.pdf"
+    },
+    {
+      "path": "figures/fig_session_repeatability.png",
+      "sha256": "e717096c8b09bbee4bf3c8bdfbd1b1261b1851aeeb1ac09c69f3c272df41330b",
+      "bytes": 140568,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_session_repeatability.png"
+    },
+    {
+      "path": "figures/fig_t_dev_marker_vs_dwt.pdf",
+      "sha256": "942c15704ed40f64ecab37293bf54e353ae421b1c4d18029238684b21c4c2ece",
+      "bytes": 34979,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_t_dev_marker_vs_dwt.pdf"
+    },
+    {
+      "path": "figures/fig_t_dev_marker_vs_dwt.png",
+      "sha256": "b50e06a67ae238e5e58bf41a281d91d3ae7bbef0b842bc45dd24f026940f63e9",
+      "bytes": 78234,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\fig_t_dev_marker_vs_dwt.png"
+    },
+    {
+      "path": "figures/figures.json",
+      "sha256": "75fa14b2ff8d08cbd09c027b2005541f0f4da947d30383fed87c8d8f8ed831c3",
+      "bytes": 745,
+      "source": "D:\\HUST\\ASI_week9\\analysis-20261109\\figures\\figures.json"
+    },
+    {
+      "path": "plan/manifest.json",
+      "sha256": "a030d01b49b66b0e50f0cea782896fdeebdcbf9aebfc9eac4d63e86036378fbf",
+      "bytes": 1644,
+      "source": "D:\\HUST\\ASI_week9\\plan-20261029\\manifest.json"
+    },
+    {
+      "path": "plan/plan.csv",
+      "sha256": "dc12ee727d9df7bf6548345f6c61dd6afdbde9a2a68146a89dfcb2c95dbafa8f",
+      "bytes": 6345,
+      "source": "D:\\HUST\\ASI_week9\\plan-20261029\\plan.csv"
+    },
+    {
+      "path": "plan/week9_plan.h",
+      "sha256": "5652a76a367ee357b043f900b2cff18193bb1d65c2e224c03b83e7aa5c14706e",
+      "bytes": 3820,
+      "source": "D:\\HUST\\ASI_week9\\plan-20261029\\week9_plan.h"
+    },
+    {
+      "path": "refs/manifest.json",
+      "sha256": "b155f96ba08a142200c88181cbf9af10215d77ef2e1fdf4a28e581f5f398671e",
+      "bytes": 2397,
+      "source": "D:\\HUST\\ASI_week9\\refs-20261029\\manifest.json"
+    },
+    {
+      "path": "refs/refs.csv",
+      "sha256": "cd739a6d8d1389796c376945ef633afc895d031c6308b97590dd0f5c18620a69",
+      "bytes": 97339,
+      "source": "D:\\HUST\\ASI_week9\\refs-20261029\\refs.csv"
+    },
+    {
+      "path": "tc2_session_dry_gap0.json",
+      "sha256": "e0ef4293d582a870564a7249fadf0d3dfec33538c5619ec1bbbaaf2eeb54a8c8",
+      "bytes": 3308,
+      "source": "D:\\HUST\\ASI_week9\\session-dry-20261029-1230\\check_session.json"
+    },
+    {
+      "path": "tc2_session_dry_gap1000.json",
+      "sha256": "008c9d6ffd0d08d3231975e03241c2ee5bd69979de745e7dae87c767854322b0",
+      "bytes": 3322,
+      "source": "D:\\HUST\\ASI_week9\\session-dry-gap1000-20261029-1236\\check_session.json"
+    },
+    {
+      "path": "tc2_verify.json",
+      "sha256": "ad4ce1756b22b1d0293c3b031e97fe083a8bb1e7b863fe87c5510a0616dc6f15",
+      "bytes": 10157,
+      "source": "D:\\HUST\\ASI_week9\\verify-20261029-1223\\check_verify.json"
+    }
+  ]
+}

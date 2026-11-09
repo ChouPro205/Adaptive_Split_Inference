@@ -1,0 +1,11 @@
+{
+  "status": "CANDIDATE_NOT_LOCKED_NOT_REVIEWED",
+  "hashes": {
+    "ml/configs/mitdb_m1_baseline_protocol_v3.json": "8068501318c09196f07ea5e13ef71174b4e434b82e508d567beebf4bf9103a45",
+    "ml/configs/mitdb_ds1ds2_m1_v3.json": "58ade2a0389e108403ef42528dbebf1a9758305793e1c7d851077bdbd3ff0514",
+    "ml/manifests/mitdb-baseline-grid-v3/plan-manifest.json": "2b599ba055e844be46f66c3b5dd8c7fb9dd81c04d6a993c6f44a102307cbb8ec",
+    "ml/manifests/mitdb-ds1ds2-m1-v3-r2/processed-manifest.json": "7de30a1ca230286545c3637430c83141f8f0913b9abc3476858df0d87423cc0f",
+    "ml/manifests/mitdb-ds1ds2-m1-v3-r2/normalization.json": "1ae60f3f493427286ddfbcd3e269c6dce312a93351a75ebdf69db61941d23b89",
+    "ml/manifests/mitdb-m1-protocol-assets-v3/assets-manifest.json": "df3e2e7f3b56114cf3ac3b8b872a35d20b0f6b6ab118481e6a692ea38076bfab"
+  }
+}

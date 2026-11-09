@@ -1,0 +1,16 @@
+test_accuracy_strict_boundary_counts (__main__.AccuracyTests.test_accuracy_strict_boundary_counts) ... ok
+test_duplicate_unknown_id_and_split_rejected (__main__.AccuracyTests.test_duplicate_unknown_id_and_split_rejected) ... ok
+test_invalid_logits_are_failures (__main__.AccuracyTests.test_invalid_logits_are_failures) ... C:\Users\Admin\Adaptive_Split_Inference\exports\sv3-week7-reconcile-20261026\ml\scripts\week7_dpu_accuracy.py:191: RuntimeWarning: overflow encountered in cast
+  all(type(v) in (int,float) and np.isfinite(v) and abs(v)<=np.finfo(np.float32).max for v in values))
+ok
+test_missing_and_failed_never_pass_or_shrink_denominator (__main__.AccuracyTests.test_missing_and_failed_never_pass_or_shrink_denominator) ... ok
+test_reference_tamper_rejected (__main__.AccuracyTests.test_reference_tamper_rejected) ... ok
+test_reordered_ids_match_full_metrics_and_errors (__main__.AccuracyTests.test_reordered_ids_match_full_metrics_and_errors) ... ok
+test_tie_policy_and_absent_classes (__main__.AccuracyTests.test_tie_policy_and_absent_classes) ... ok
+test_wrong_manifest_model_class_or_calibration_rejected (__main__.AccuracyTests.test_wrong_manifest_model_class_or_calibration_rejected) ... ok
+test_duplicate_and_numeric_tamper_even_with_rehashed_export (__main__.AuditTests.test_duplicate_and_numeric_tamper_even_with_rehashed_export) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.069s
+
+OK

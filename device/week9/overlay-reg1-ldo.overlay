@@ -1,0 +1,5 @@
+/* Regulator experiment (B4, 29/10): REG1 (VDD -> core) in LDO mode. soc/nordic/nrf52/soc.c sets
+ * DCDCEN only for regulator-initial-mode = DCDC (1); REG0 stays as the board sets it. */
+&reg1 {
+	regulator-initial-mode = <0>;
+};

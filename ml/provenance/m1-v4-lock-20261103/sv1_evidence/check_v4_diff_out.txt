@@ -1,0 +1,24 @@
+protocol changes v3->v4:
+  CHG /baseline/balanced_sampler
+  ADD /baseline/balanced_sampler_policy_id
+  ADD /baseline/code_fault
+  ADD /baseline/ds2_report
+  ADD /baseline/gates/S_soft_label
+  ADD /baseline/gates/gate_types
+  ADD /deviations_from_v1_2
+  CHG /protocol_id
+  CHG /schema_version
+  ADD /source_bindings/sv1_review_v3_20261102
+  ADD /source_bindings/v1_2_original/compared
+  ADD /source_bindings/v1_2_original/differences
+  ADD /source_bindings/v1_2_original/raw_sha256
+  DEL /source_bindings/v1_2_original/searched
+  ADD /source_bindings/v1_2_original/source_name
+  CHG /source_bindings/v1_2_original/status
+  ADD /source_bindings/v1_2_original/storage
+  ADD /source_bindings/v1_2_original/v3_status
+18 slot configs change only ['protocol_sha256', 'sampler_expected_draws_per_epoch', 'sampler_per_class_sample_weight', 'sampler_policy', 'sources_sha256'] : True []
+plan data_files/runtime/source_head unchanged: True
+train counts [37519, 772, 2784, 389, 8] N 41472 | expected draws K 10366.0 Q 8.0
+config per-class weights equal independent value: True
+own sampler, mean draws/epoch over 40 epochs: [10386.6, 10362.2, 10381.4, 10334.0, 7.7]

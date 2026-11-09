@@ -1,0 +1,169 @@
+--- /dev/null
++++ ml/scripts/test_baseline_grid_v3.py
+@@ -0,0 +1,166 @@
++"""Selection/authentication fixtures and read-only preflight; never call fit."""
++import copy
++import json
++from pathlib import Path
++import sys
++import tempfile
++import unittest
++from unittest.mock import patch
++
++import baseline_grid_v3 as grid
++import baseline_selection_v3 as policy
++
++ROOT=grid.ROOT
++PROTOCOL=ROOT/'ml/configs/mitdb_m1_baseline_protocol_v3.json'
++PLAN=ROOT/'ml/manifests/mitdb-baseline-grid-v3/plan-manifest.json'
++ARRAYS=ROOT/'ml/data/processed/mitdb-ds1ds2-m1-v3-r2'
++
++
++def fixture_rows():
++    return [{'configuration':c[0],'seed':s,'status':'COMPLETED','score':.6,
++             'gates':{'N':True,'V':True,'S':True}} for c in policy.CONFIGS for s in policy.SEEDS]
++
++
++class SelectionTests(unittest.TestCase):
++    def test_half_up4_and_checkpoint_ties(self):
++        h=[{'epoch':2,'score':.80004},{'epoch':1,'score':.80001}]
++        self.assertEqual(policy.choose_epoch(h)['epoch'],1)
++        h.append({'epoch':3,'score':.80005})
++        self.assertEqual(policy.choose_epoch(h)['epoch'],3)
++
++    def test_seed_tie_lower_seed(self):
++        rows=fixture_rows()[:3]
++        rows[0]['score']=.80001;rows[1]['score']=.80004;rows[2]['score']=.8
++        self.assertEqual(policy.choose_seed(rows)['seed'],min(policy.SEEDS))
++
++    def test_best_seed_failing_V_does_not_get_rescued(self):
++        rows=fixture_rows();rows[0]['score']=.99;rows[0]['gates']['V']=False
++        out=policy.summarize_grid(rows)
++        self.assertFalse(out['configurations'][0]['eligible'])
++        self.assertEqual(out['selected']['configuration'],'C1')
++
++    def test_best_seed_failing_N_does_not_get_rescued(self):
++        rows=fixture_rows();rows[0]['score']=.99;rows[0]['gates']['N']=False
++        self.assertFalse(policy.summarize_grid(rows)['configurations'][0]['eligible'])
++
++    def test_S_is_filter_priority_not_tie_break(self):
++        rows=fixture_rows()
++        for r in rows:r['score']=.95;r['gates']['S']=False
++        for r in rows[3:6]:r['score']=.7;r['gates']['S']=True
++        self.assertEqual(policy.summarize_grid(rows)['selected']['configuration'],'C1')
++
++    def test_no_S_uses_NV_and_discloses(self):
++        rows=fixture_rows()
++        for r in rows:r['gates']['S']=False
++        out=policy.summarize_grid(rows)
++        self.assertEqual(out['selected']['configuration'],'C0')
++        self.assertTrue(out['selected']['S_failure_disclosure_required'])
++
++    def test_no_NV_stops_no_expansion(self):
++        rows=fixture_rows()
++        for r in rows:r['gates']['V']=False
++        self.assertIsNone(policy.summarize_grid(rows)['selected'])
++
++    def test_configuration_mean_not_best_seed_score(self):
++        rows=fixture_rows()
++        for r,v in zip(rows[:3],[.99,.3,.3]):r['score']=v
++        self.assertEqual(policy.summarize_grid(rows)['selected']['configuration'],'C1')
++
++    def test_configuration_tie_lower_C(self):
++        rows=fixture_rows()
++        for r in rows[:3]:r['score']=.80001
++        for r in rows[3:6]:r['score']=.80004
++        self.assertEqual(policy.summarize_grid(rows)['selected']['configuration'],'C0')
++
++    def test_missing_seed_rejected_not_mean2(self):
++        with self.assertRaisesRegex(ValueError,'All18'):
++            policy.summarize_grid(fixture_rows()[:-1])
++
++    def test_failed_seed_null_mean(self):
++        rows=fixture_rows();rows[0]={'configuration':'C0','seed':policy.SEEDS[0],'status':'FAILED_TECHNICAL'}
++        out=policy.summarize_grid(rows)
++        self.assertIsNone(out['configurations'][0]['mean_macro_f1'])
++        self.assertIsNone(out['configurations'][0]['sd_sample'])
++
++    def test_execute_all18_after_first_PASS(self):
++        seen=[]
++        def fake(slot):seen.append(slot);return {'gate':'PASS'}
++        result=policy.execute_all_slots(list(range(18)),fake)
++        self.assertEqual(seen,list(range(18)));self.assertEqual(len(result),18)
++
++    def test_gate_uses_unrounded_ratio(self):
++        matrix=[[100,0,0,0,0],[0,10,0,0,0],[5001,0,5000,0,0],[0,0,0,1,0],[0,0,0,0,0]]
++        self.assertEqual(policy.rounded(5000/10001),policy.rounded(.5))
++        self.assertFalse(grid.metric_from_matrix(matrix)[1]['V'])
++
++
++class PreflightTests(unittest.TestCase):
++    def test_no_authority_no_model_no_output(self):
++        with patch.object(grid,'load_train_validation',side_effect=AssertionError('must not read')):
++            with self.assertRaisesRegex(ValueError,'External owner'):
++                grid.run_grid(PROTOCOL,PLAN,ARRAYS,ROOT/'ml/data/never-created-v3',None)
++        self.assertFalse((ROOT/'ml/data/never-created-v3').exists())
++
++    def test_preflight_only_train_val_no_torch_import(self):
++        before='torch' in sys.modules;opened=[];load=grid.np.load
++        def spy(path,*a,**kw):opened.append(Path(path).name);return load(path,*a,**kw)
++        with patch.object(grid.np,'load',side_effect=spy):result=grid.preflight(PROTOCOL,PLAN,ARRAYS)
++        self.assertEqual(set(opened),{'train_X.npy','train_y.npy','val_X.npy','val_y.npy'})
++        self.assertEqual(before,'torch' in sys.modules)
++        self.assertEqual(result['fit_calls'],0);self.assertFalse(result['DS2_arrays_opened'])
++
++    def test_preflight_rejects_double_balancing_after_rebound(self):
++        with tempfile.TemporaryDirectory() as d:
++            target=Path(d);plan=grid.read(PLAN)
++            for slot in plan['slots']:
++                c=grid.read(PLAN.parent/slot['config'])
++                if c['configuration']=='C4':c['class_weights']=[1]*5
++                grid.write(target/slot['config'],c);slot['sha256']=grid.sha(target/slot['config'])
++            grid.write(target/'plan.json',plan)
++            with self.assertRaisesRegex(ValueError,'Weight/sampler'):
++                grid.preflight(PROTOCOL,target/'plan.json',ARRAYS)
++
++
++def make_result_fixture(root):
++    protocol=root/'protocol.json';grid.write(protocol,{'fixture':'NOT_REAL_TRAINING'})
++    metric=root/'metric.json';grid.write(metric,{'validation_support':[10,10,10,10,0]})
++    plan_path=root/'plan.json';slots=[];results=root/'results';results.mkdir()
++    matrix=[[9,1,0,0,0],[1,9,0,0,0],[1,0,9,0,0],[1,0,0,9,0],[0,0,0,0,0]]
++    score=grid.metric_from_matrix(matrix)[0]
++    for name,*_ in policy.CONFIGS:
++        for seed in policy.SEEDS:
++            ident=f'{name}-seed{seed}';slot={'slot_id':ident,'configuration':name,'seed':seed,'config':ident+'.json','sha256':'a'*64,'state':'NOT_STARTED'}
++            slots.append(slot);target=results/ident/'attempt-1';target.mkdir(parents=True)
++            (target/'fixture.pt').write_bytes(b'OPAQUE_SYNTHETIC_FIXTURE_NOT_MODEL_WEIGHTS')
++            validation={'confusion_matrix':matrix}
++            history=[{'epoch':1,'score':score,'validation':validation}];grid.write(target/'history.json',history)
++            grid.write(target/'summary.json',{'config_sha256':slot['sha256'],'protocol_sha256':grid.sha(protocol),
++                'validation':validation,'selected_epoch':1,'history_sha256':grid.sha(target/'history.json'),
++                'checkpoint':'fixture.pt','checkpoint_sha256':grid.sha(target/'fixture.pt')})
++            row={**slot,'status':'COMPLETED','attempts':[{'attempt':1,'exit_code':0,'summary_exists':True,
++                'path':ident+'/attempt-1','config_sha256':slot['sha256'],'seed':seed}]}
++            grid.write(results/ident/'slot-result.json',row)
++    grid.write(plan_path,{'slots':slots,'binding':{'metric_policy':str(metric)}})
++    grid.write(results/'grid-result.json',{'slots':[grid.read(results/s['slot_id']/'slot-result.json') for s in slots],
++        'protocol_sha256':grid.sha(protocol),'plan_sha256':grid.sha(plan_path)})
++    return protocol,plan_path,results
++
++
++class AnalyzerTests(unittest.TestCase):
++    def test_authenticate_full_grid_fixture_no_model(self):
++        with tempfile.TemporaryDirectory() as d:
++            p,plan,r=make_result_fixture(Path(d))
++            self.assertEqual(grid.analyze(p,plan,r)['selected']['configuration'],'C0')
++
++    def test_metric_tamper_rebound_history_hash_rejected(self):
++        with tempfile.TemporaryDirectory() as d:
++            p,plan,r=make_result_fixture(Path(d));target=r/f'C0-seed{policy.SEEDS[0]}'/'attempt-1'
++            h=grid.read(target/'history.json');h[0]['score']=.99
++            (target/'history.json').write_text(json.dumps(h),encoding='utf-8')
++            s=grid.read(target/'summary.json');s['history_sha256']=grid.sha(target/'history.json')
++            (target/'summary.json').write_text(json.dumps(s),encoding='utf-8')
++            with self.assertRaisesRegex(ValueError,'History metric'):
++                grid.analyze(p,plan,r)
++
++
++if __name__=='__main__':unittest.main(verbosity=2)

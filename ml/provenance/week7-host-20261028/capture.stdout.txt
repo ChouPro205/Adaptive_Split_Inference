@@ -1,0 +1,1 @@
+{"status": "CAPTURED", "refs": {"dev/device-sv1": "549aa1021c250c5c8319f99c35b5b6d90c9744d1", "dev/edge-sv2": "8d962095a11a0e41696b9cdeac163ed0d240daed", "main": "02ad8c83297d5bee9298342b2bd4e4ff406922ac"}, "output_candidates": [], "edge_export_files_verified": 5}

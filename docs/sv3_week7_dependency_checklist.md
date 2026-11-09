@@ -1,5 +1,19 @@
 # Checklist SV3 tuần 7 và điều kiện tiếp tục
 
+**Trạng thái mới nhất 29/10/2026:** E-05 đã nhận đủ 8.544 mẫu/split s2/s5/s8,
+không thiếu/lỗi; evaluator trả `PASS_ACCURACY_GATE`, artifact đã được review.
+Xem [hồ sơ full-test và phần còn chờ](sv3_week7_fulltest_review_20261029.md).
+Các trạng thái `BLOCKED_SV2`/chờ output ở snapshot cũ bên dưới giữ nguyên mốc.
+Hồ sơ review ML/demo GVHD được quản lý riêng; r2 do Châu/Trung tích hợp theo quy trình.
+
+**Bổ sung sửa evaluator, hồ sơ 27/10/2026:** hai lỗi split rỗng/inventory thiếu
+đã được sửa và kiểm mới 18/18 thường +18/18 `-O` tại `18e74ab`; xem mục cuối.
+
+**Cập nhật mới nhất 26/10/2026:** xem [đối soát SV2](sv3_week7_reconciliation_20261026.md)
+và bảng trạng thái cuối tài liệu. Các mục mô tả ngày 21/10 bên dưới được giữ
+nguyên để bảo toàn lịch sử; không đọc BLOCKED_SV2 cũ thành thiếu receipt hiện tại.
+Phần offline SV3 đã làm xong; accuracy DPU và xác nhận owner vẫn chưa nghiệm thu.
+
 Bản tài liệu đặt tại `main/docs/`; code/evidence tuần 7 được bàn giao qua
 [PR #34](https://github.com/ChouPro205/Adaptive_Split_Inference/pull/34).
 Liên kết evidence được pin tới commit `1518943`; các trạng thái bên dưới giữ mốc
@@ -13,8 +27,8 @@ Không có xác nhận hay liên hệ nào được Codex thực hiện thay th�
 Trạng thái: DONE = đã có kết quả trong phạm vi ghi rõ; READY = có thể thực hiện
 ngay; BLOCKED_SV2 = thiếu đầu ra cụ thể của SV2; BLOCKED_OTHER = thiếu đầu vào/
 thẩm quyền khác; DEFERRED_SCOPE = chủ động để giai đoạn sau, không phải thiếu KV260.
-DONE của code mới gồm commit/đẩy nhánh và các lệnh đã lưu; không đồng nghĩa đã
-merge main, trình diễn cho GVHD, học hiểu hoặc nghiệm thu phần cứng.
+DONE của code mới gồm commit/đẩy nhánh và các lệnh đã lưu. Merge main, review/demo
+với GVHD và nghiệm thu phần cứng có hồ sơ ghi nhận riêng.
 
 ## Phần đã hoàn tất độc lập
 
@@ -243,11 +257,90 @@ merge main, trình diễn cho GVHD, học hiểu hoặc nghiệm thu phần cứ
 
 ### L-01 Học hiểu và demo với GVHD
 
-- **Owner:** Kỳ Anh và GVHD. **Trạng thái: READY**, chưa đánh dấu học hiểu DONE.
-- **Bằng chứng:** code/test/log và giải thích trong báo cáo đã sẵn sàng; chưa có
-  bằng chứng Kỳ Anh tự giải thích/biểu diễn trước GVHD trong phiên này.
+- **Owner:** Kỳ Anh và GVHD. **Trạng thái: READY.**
+- **Bằng chứng chuẩn bị:** code/test/log và giải thích trong báo cáo đã sẵn sàng.
+  Hoạt động trao đổi/demo được ghi nhận trong hồ sơ nghiệm thu riêng.
 - **Thiếu/cung cấp:** Kỳ Anh giải thích R so với R², batch/finite-sample bias,
   gradient CE/dCor, giới hạn privacy và tự chạy demo; GVHD xác nhận theo quy ước.
 - **Điều kiện nghiệm thu:** demo/trao đổi thực tế, không suy từ code PASS.
 - **Bước sau/tái sử dụng:** dùng ca nhỏ, log real-data và checklist này; không cần
   đợi SV2 để học hoặc demo phần độc lập tuần 7.
+
+## Cập nhật đối soát ngày 26/10/2026
+
+Main được fetch tại `d91fe27cc83e617d8a86ad7d6731687eea518d6a`; PR34/36 đã
+merge, PR38 SV2 còn mở. Branch SV1 không có tree diff riêng so với main.
+Implementation đối soát SV3 `08e4b4259a2757be7b663b88cc1c98607602d266`;
+[audit mới](../ml/provenance/week7-reconcile-20261026/delivery-audit.json),
+[chi tiết kiểm/owner/đầu ra còn thiếu](sv3_week7_reconciliation_20261026.md).
+Không thay trạng thái/hashes/receipt ở các mục lịch sử phía trên.
+
+| Mục | Trạng thái hiện tại và phần SV3 đã hoàn tất | Phần còn chờ /bước tiếp theo |
+|---|---|---|
+| W7-01/02/03 | **DONE trong scope host đã pin**; 13 source/config/evidence bindings khớp; giữ dCor/loss/smoke cũ | Không cần train/smoke lại vì checkpoint/split/tensor không đổi; không gán audit 2.441 file cũ cho main mới |
+| W8-01 | **DONE chuẩn bị, giữ s2/s5/s8**; cả ba có file runtime CPU+DPU và profile model hash khớp | Chưa chọn split tối ưu cho toàn hệ thống, chưa chọn λ |
+| E-01 | **DONE đối soát receipt P1 A+B**; version/ZIP/manifest/vector IDs khớp; 199 source blobs lịch sử và raw input SV3 kiểm được | Không yêu cầu SV2 gửi lại dữ liệu đã có; current-source verifier tuần 6 không PASS trên main mới, xem ghi chú đúng phạm vi |
+| E-02 | **DONE đối soát định danh đã công bố**, checkpoint/model/registry/profile/wire IDs/runtime/model hashes khớp | **Chờ SV2** quant_info/quantizer provenance/compile artifacts thật gắn từng xmodel để đóng lineage calibration; 20 golden val/IDs đã có |
+| E-03 | **DONE review execution** s0…s9 qua root CPU+DPU, s10 identity; s2/s5/s8 giữ được | Xmodel/binary raw chỉ có hash/inventory trên Git; không chứng nhận đã tự chạy board |
+| E-04 | **DONE kiểm bảng** 50 request/backend, 46 tail +4 identity, 50/50 argmax, HOST max `1.430511e-6`, KV260 `0.4064581394` | Chỉ 5 ECG val và prediction N. Raw output SV2 chưa tự đọc; numeric DPU acceptance vẫn riêng |
+| E-05 chuẩn bị | **DONE** manifest/8.544 IDs/input/reference s2/s5/s8 và evaluator có tests thường/`-O` 9/9; FP32 8.393 correct | **Chờ Trung/SV2:** output đủ 8.544×split/status/logits và provenance; chạy evaluator, gate drop <0,5 pp, confusion/per-class/errors. Không đợi BLE |
+| E-06 | **DONE review profile đã công bố**, 10 model hashes qua 3 tuần khớp, load/first/steady JSON↔CSV | Là CPU/PS+DPU, cache không kiểm soát; raw timings/DPU-only/service latency chưa tái kiểm hoặc chưa đo. Không yêu cầu lại bảng đã có |
+| E-07 | **DONE review ML semantics/source và bảng file pipeline**: unprotect→q→scale gốc, s9 NC, s10 identity, 5 logits/tie policy | Không tự xác nhận parser/buffer hardware thay Trung; raw output audit và numeric acceptance riêng |
+| E-08 | **DEFERRED_SCOPE tuần 8** cho BLE/E2E trong nhiệm vụ này; vẫn chưa nghiệm thu Device–KV260 | Châu/Trung triển khai/kiểm link thật và 100 mẫu bằng nhiệm vụ riêng |
+| H-02 | **DONE soạn dự thảo; READY cho review giao diện** | Review [draft ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md); Châu ghi nhận đúng change control |
+| H-03 | **BLOCKED_OTHER /chờ owner** | Châu/Trung phát hành revision nonce/provisioning phù hợp; không tự đổi registry ACCEPTED |
+| L-01 | **DONE runbook và lệnh demo đã được kiểm thử; READY cho buổi demo** | [Demo guide](sv3_week7_demo_guide.md); kết quả buổi demo được ghi trong hồ sơ riêng |
+| W8-02/P-01 | **DEFERRED_SCOPE** | Grid dài, threat model/attacks/privacy/Pareto theo thiết kế SV3/GVHD ở giai đoạn sau |
+
+Không còn mục SV3 độc lập có đủ đầu vào mà chỉ dừng ở kế hoạch trong phạm vi
+nhiệm vụ này. **Toàn bộ tuần 7 vẫn chưa DONE** do accuracy DPU và các xác nhận
+bên ngoài còn mở; không tự ký, merge hoặc sửa baseline/registry/contract.
+
+## Bổ sung sau review evaluator — hồ sơ 27/10/2026
+
+- **E-05 /validation split: DONE phần sửa.** `split_points` phải là list
+  không rỗng, int s0…s9 không bool hoặc duplicate; CLI từ chối results rỗng,
+  thiếu/trùng/sai split yêu cầu trước khi ghi report hoặc chọn exit thành công.
+- **E-05 /inventory reference: DONE phần sửa.** Buộc đủ `samples.csv`,
+  `reference_fp32.npy`, `inputs_s{s}.npy`, `reference_wire_fp32tail_s{s}.npy`
+  theo mỗi split. Kiểm file/path/size/hash trước đọc để đánh giá; thiếu mục,
+  thiếu file hoặc bytes không đúng đều bị từ chối, không sửa hash để làm PASS.
+- **E-05 /regressions và reference: DONE kiểm mới**, implementation
+  `18e74ab198bd444e6cc0ae5eedaa9969132bd935`: 18/18 thường +18/18 `-O`;
+  CLI hợp lệ 1/2 split, invalid manifests, inventory tamper/missing/path và các
+  gate cũ được phủ. Reproducer xác nhận CLI source `0545b47` từng false-success,
+  còn bản sửa exit 1 không tạo report. Mọi output test là SYNTHETIC_TEST_ONLY.
+- **Bộ reference thật giữ nguyên và hợp lệ:** kiểm mới 8 file, 295.210.600 byte,
+  manifest SHA `612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c`;
+  8.544 IDs tại s2/s5/s8, 8.393 correct FP32 từ logits đã lưu. Không tạo lại
+  inputs/chạy model. Giữ generation pin `08e4b42` và receipts cũ nguyên trạng.
+- **E-05 nghiệm thu DPU vẫn CHỜ SV2:** output thật 8.544×split, status/logits
+  và provenance/quant_info/compile artifacts. Khi nhận, chạy evaluator đã sửa,
+  giữ gate `200*(correct_fp32-correct_dpu) < 8544`; không đợi BLE.
+- **H-02/H-03/L-01 và numeric acceptance:** vẫn cần xác nhận thực tế của
+  Kỳ Anh/Châu/Trung/GVHD theo mục cũ; không tự ký hoặc đổi registry ACCEPTED.
+
+[Evidence mới và hướng dẫn tái kiểm](../ml/provenance/week7-evaluator-fix-20261026/README.md),
+[verification.json](../ml/provenance/week7-evaluator-fix-20261026/verification.json).
+Các trạng thái/tests 9/9 và receipts tại mốc `0545b47` giữ như lịch sử; không
+gán bằng chứng source cũ cho evaluator mới. Toàn bộ tuần 7 vẫn chưa DONE.
+
+## Cập nhật dependency 28/10/2026 — nguồn hiện hành
+
+Bảng hiện hành ở [phụ lục host và hệ thống](sv3_week7_host_update_20261028.md)
+thay cho việc suy trạng thái hiện tại từ các mục lịch sử phía trên.
+
+- W7 host: source/tests/demo/reference/template sẵn sàng review, có
+  [evidence mới theo revision](../ml/provenance/week7-host-20261028/README.md).
+  Hai finding P2 evaluator đã đóng theo review được bàn giao, không blocker mở.
+- E-08: đã có file pipeline KV260 trên main và G2 s2 200/200; PR40 head
+  `8d962095` vẫn mở. Không tiếp tục ghi “chưa có BLE/KV260”; G2 không thay E-05.
+- E-05: `INCOMPLETE_NO_ACCEPTANCE`, chờ Trung output thật 8.544 mẫu mỗi split
+  s2/s5/s8 và provenance/artifacts. Baseline 8.393 correct, tối thiểu 8.351 và
+  đủ coverage; giữ strict drop <0,5 pp. [Bàn giao](sv3_week7_sv2_handoff_20261028.md)
+  sẵn sàng chuyển, chưa nói Trung đã nhận.
+- H-03: r2 `CONFIRMED` ở SV1 `549aa102`, Trung xác nhận trực tiếp với Châu;
+  main `02ad8c8` còn `PENDING_EDGE_CONFIRMATION`. Chờ Châu/Trung tích hợp,
+  không tự sửa registry hoặc đòi lại xác nhận đã có.
+- H-02/L-01: hồ sơ review ML và demo với GVHD được quản lý theo quy trình nhóm.
+  Lượt chạy chuẩn bị/kiểm thử xác minh toán/wiring. W8 grid/attack vẫn ngoài scope.

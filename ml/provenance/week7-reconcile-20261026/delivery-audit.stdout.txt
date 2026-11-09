@@ -1,0 +1,27 @@
+{
+  "status": "PASS_PUBLISHED_TABLE_AUDIT",
+  "summary": {
+    "reference": {
+      "requests": 50,
+      "unique_ecg_samples": 5,
+      "native_tail_cases": 0,
+      "identity_cases": 4,
+      "class_matches": 50,
+      "max_abs_error": 1.430511474609375e-06,
+      "predicted_class_counts": {
+        "N": 50
+      }
+    },
+    "kv260": {
+      "requests": 50,
+      "unique_ecg_samples": 5,
+      "native_tail_cases": 46,
+      "identity_cases": 4,
+      "class_matches": 50,
+      "max_abs_error": 0.40645813941955566,
+      "predicted_class_counts": {
+        "N": 50
+      }
+    }
+  }
+}

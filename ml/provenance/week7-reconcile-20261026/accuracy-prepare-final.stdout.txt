@@ -1,0 +1,4 @@
+prepared s2: 8544 authenticated test inputs and reference logits
+prepared s5: 8544 authenticated test inputs and reference logits
+prepared s8: 8544 authenticated test inputs and reference logits
+PREPARED_NOT_DPU_ACCEPTANCE FP32 correct: 8393

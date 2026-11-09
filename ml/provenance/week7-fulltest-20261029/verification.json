@@ -1,0 +1,653 @@
+{
+  "scope": "INDEPENDENT_SAVED_EVIDENCE_REVIEW_NO_NEW_BOARD_EXECUTION_OR_OWNER_SIGNATURE",
+  "review_source_commit": "9b363f023204ead01e43a8103d927dff41182c29",
+  "verdict": "PASS_FROZEN_ACCURACY_GATE_ARTIFACTS_REVIEWED_OWNER_ACCEPTANCE_SEPARATE",
+  "archive_bytes": 176599416,
+  "delivered_file_sha256": {
+    "gui_sv3_fulltest.zip": "e6f86a848c9d107ea300b9cf26ed07d59e2caf866a7b057b3c3bda7af08fbcf3",
+    "gui_sv3_fulltest.zip.sha256.txt": "7c457acd0b6235179a4af4adfe5a56f949bcbe71da7979b635863cde44ec25e2",
+    "summary.json": "4d55735c1f8ffc1220a7360c67b93f53260ba2e20d3c336af6193b938b7a15b6"
+  },
+  "zip_members": 179570,
+  "uncompressed_bytes": 443343587,
+  "reference_manifest_sha256": "612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c",
+  "checks": {
+    "archive_member_sha256_and_crc": 179569,
+    "runtime_commands_complete_successful": 25632,
+    "native_runner_logits_match": 25632,
+    "raw_runner_log_matches": 25632,
+    "raw_input_matches_frozen_sample_bit_exact": 25632,
+    "aggregate_equals_saved_row": 25632,
+    "nested_checksum_bindings": 384672
+  },
+  "runner_source_files_bound_to_commit": [
+    "edge/runtime/check_cpu_libraries.py",
+    "edge/runtime/single_input/build_tail_runner.sh",
+    "edge/runtime/single_input/tail_io.hpp",
+    "edge/runtime/single_input/tail_runner.cpp"
+  ],
+  "lineage_reviewed_splits": [
+    2,
+    5,
+    8
+  ],
+  "native_tensor_metadata": {
+    "2": {
+      "input_tensor": {
+        "name": "Sequential__input_0_fix",
+        "shape": [
+          1,
+          180,
+          16
+        ],
+        "dtype": "XINT8",
+        "fix_point": 5
+      },
+      "output_tensor": {
+        "name": "Sequential__Sequential_Linear_19__476_fix_",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "FLOAT32",
+        "fix_point": null
+      }
+    },
+    "5": {
+      "input_tensor": {
+        "name": "Sequential__input_0_fix",
+        "shape": [
+          1,
+          90,
+          48
+        ],
+        "dtype": "XINT8",
+        "fix_point": 6
+      },
+      "output_tensor": {
+        "name": "Sequential__Sequential_Linear_12__277_fix_",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "FLOAT32",
+        "fix_point": null
+      }
+    },
+    "8": {
+      "input_tensor": {
+        "name": "Sequential__input_0_fix",
+        "shape": [
+          1,
+          64,
+          22
+        ],
+        "dtype": "XINT8",
+        "fix_point": 3
+      },
+      "output_tensor": {
+        "name": "Sequential__Sequential_Linear_4__47_fix_",
+        "shape": [
+          1,
+          5
+        ],
+        "dtype": "FLOAT32",
+        "fix_point": null
+      }
+    }
+  },
+  "result_summary_matches_delivered_summary": true,
+  "class_imbalance_note": "S/F/Q recall is zero in all three splits and in frozen FP32 baseline; no new threshold imposed.",
+  "delivery_notices": {
+    "outer_summary": "HOST_ANALYSIS_SAVED_RAW_NOT_FORMAL_ACCEPTANCE",
+    "full_run": {
+      "rows": 25632,
+      "failures": 0,
+      "expected": 25632,
+      "scope": "FULL_25632",
+      "status": "EXECUTED_NUMERIC_REVIEW_PENDING"
+    }
+  },
+  "unchanged": [
+    "delivered files",
+    "frozen input/reference assets",
+    "checkout status and HEAD"
+  ],
+  "limitations": [
+    "No new hardware run",
+    "No owner/GVHD signature",
+    "CPU plugin library bytes are not included; hashes match identity/preflight/output provenance.",
+    "Each sample starts a new runner process; not steady-state latency or energy evidence."
+  ],
+  "results": [
+    {
+      "split_point_s": 2,
+      "status": "PASS_ACCURACY_GATE",
+      "expected": 8544,
+      "received": 8544,
+      "valid": 8544,
+      "missing_ids": [],
+      "failures": [],
+      "valid_output_metrics": {
+        "count": 8544,
+        "correct": 8412,
+        "accuracy_percent": 98.45505617977528,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            8038,
+            54,
+            6,
+            4,
+            0
+          ],
+          [
+            13,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            49,
+            3,
+            374,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": [
+          {
+            "class": "N",
+            "support": 8102,
+            "predicted": 8102,
+            "precision": 0.992100715872624,
+            "recall": 0.992100715872624,
+            "f1": 0.992100715872624
+          },
+          {
+            "class": "S",
+            "support": 13,
+            "predicted": 57,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "V",
+            "support": 426,
+            "predicted": 381,
+            "precision": 0.9816272965879265,
+            "recall": 0.8779342723004695,
+            "f1": 0.9268897149938042
+          },
+          {
+            "class": "F",
+            "support": 1,
+            "predicted": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "Q",
+            "support": 2,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "macro_f1": 0.38379808617328565,
+        "zero_division": 0
+      },
+      "missing_or_failed_by_true_class": {
+        "N": 0,
+        "S": 0,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "correct_fp32": 8393,
+      "correct_dpu": 8412,
+      "accuracy_all_8544_percent": 98.45505617977528,
+      "accuracy_drop_pp": -0.22237827715355804,
+      "strict_count_gate_met": true,
+      "complete_coverage": true,
+      "logit_errors_vs_full_fp32": {
+        "max_abs": 5.753110408782959,
+        "mean_abs": 0.36808644066516943,
+        "p95_abs": 1.37896749973297,
+        "rmse": 0.6011669986155599,
+        "per_class_max_abs": [
+          2.812704086303711,
+          3.415710926055908,
+          4.064708709716797,
+          3.9317026138305664,
+          5.753110408782959
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "logit_errors_vs_wire_fp32_tail": {
+        "max_abs": 5.7211222648620605,
+        "mean_abs": 0.36774725814056514,
+        "p95_abs": 1.373775196075439,
+        "rmse": 0.6008010636998554,
+        "per_class_max_abs": [
+          2.735279083251953,
+          3.3916707038879395,
+          4.058531284332275,
+          3.9317874908447266,
+          5.7211222648620605
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "class_agreement_vs_full_fp32": 8497,
+      "class_agreement_vs_wire_fp32_tail": 8495
+    },
+    {
+      "split_point_s": 5,
+      "status": "PASS_ACCURACY_GATE",
+      "expected": 8544,
+      "received": 8544,
+      "valid": 8544,
+      "missing_ids": [],
+      "failures": [],
+      "valid_output_metrics": {
+        "count": 8544,
+        "correct": 8388,
+        "accuracy_percent": 98.17415730337079,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            8036,
+            55,
+            7,
+            4,
+            0
+          ],
+          [
+            13,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            71,
+            3,
+            352,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": [
+          {
+            "class": "N",
+            "support": 8102,
+            "predicted": 8122,
+            "precision": 0.9894114750061561,
+            "recall": 0.9918538632436436,
+            "f1": 0.9906311637080868
+          },
+          {
+            "class": "S",
+            "support": 13,
+            "predicted": 58,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "V",
+            "support": 426,
+            "predicted": 360,
+            "precision": 0.9777777777777777,
+            "recall": 0.8262910798122066,
+            "f1": 0.8956743002544529
+          },
+          {
+            "class": "F",
+            "support": 1,
+            "predicted": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "Q",
+            "support": 2,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "macro_f1": 0.3772610927925079,
+        "zero_division": 0
+      },
+      "missing_or_failed_by_true_class": {
+        "N": 0,
+        "S": 0,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "correct_fp32": 8393,
+      "correct_dpu": 8388,
+      "accuracy_all_8544_percent": 98.17415730337079,
+      "accuracy_drop_pp": 0.05852059925093633,
+      "strict_count_gate_met": true,
+      "complete_coverage": true,
+      "logit_errors_vs_full_fp32": {
+        "max_abs": 5.878110408782959,
+        "mean_abs": 0.347132693613377,
+        "p95_abs": 1.3470857620239247,
+        "rmse": 0.5800428938321102,
+        "per_class_max_abs": [
+          2.369009017944336,
+          3.290710926055908,
+          3.939708709716797,
+          3.6817026138305664,
+          5.878110408782959
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "logit_errors_vs_wire_fp32_tail": {
+        "max_abs": 5.877399921417236,
+        "mean_abs": 0.34758458658980906,
+        "p95_abs": 1.3477019846439358,
+        "rmse": 0.5807350481142898,
+        "per_class_max_abs": [
+          2.393980026245117,
+          3.286975383758545,
+          3.964456081390381,
+          3.680765151977539,
+          5.877399921417236
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "class_agreement_vs_full_fp32": 8481,
+      "class_agreement_vs_wire_fp32_tail": 8483
+    },
+    {
+      "split_point_s": 8,
+      "status": "PASS_ACCURACY_GATE",
+      "expected": 8544,
+      "received": 8544,
+      "valid": 8544,
+      "missing_ids": [],
+      "failures": [],
+      "valid_output_metrics": {
+        "count": 8544,
+        "correct": 8389,
+        "accuracy_percent": 98.18586142322097,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            8044,
+            47,
+            7,
+            4,
+            0
+          ],
+          [
+            13,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            78,
+            3,
+            345,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "per_class": [
+          {
+            "class": "N",
+            "support": 8102,
+            "predicted": 8137,
+            "precision": 0.9885707263119086,
+            "recall": 0.9928412737595655,
+            "f1": 0.990701397869327
+          },
+          {
+            "class": "S",
+            "support": 13,
+            "predicted": 50,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "V",
+            "support": 426,
+            "predicted": 353,
+            "precision": 0.9773371104815864,
+            "recall": 0.8098591549295775,
+            "f1": 0.8857509627727856
+          },
+          {
+            "class": "F",
+            "support": 1,
+            "predicted": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          {
+            "class": "Q",
+            "support": 2,
+            "predicted": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        ],
+        "macro_f1": 0.37529047212842254,
+        "zero_division": 0
+      },
+      "missing_or_failed_by_true_class": {
+        "N": 0,
+        "S": 0,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "correct_fp32": 8393,
+      "correct_dpu": 8389,
+      "accuracy_all_8544_percent": 98.18586142322097,
+      "accuracy_drop_pp": 0.04681647940074907,
+      "strict_count_gate_met": true,
+      "complete_coverage": true,
+      "logit_errors_vs_full_fp32": {
+        "max_abs": 5.878110408782959,
+        "mean_abs": 0.25945764090688994,
+        "p95_abs": 1.032591617107389,
+        "rmse": 0.4600460653672964,
+        "per_class_max_abs": [
+          2.494009017944336,
+          3.290710926055908,
+          3.439708709716797,
+          3.5567026138305664,
+          5.878110408782959
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "logit_errors_vs_wire_fp32_tail": {
+        "max_abs": 5.868171215057373,
+        "mean_abs": 0.25937808971825466,
+        "p95_abs": 1.034366765618324,
+        "rmse": 0.460048529477509,
+        "per_class_max_abs": [
+          2.480175018310547,
+          3.285170555114746,
+          3.431255340576172,
+          3.554110527038574,
+          5.868171215057373
+        ],
+        "gate": "DESCRIPTIVE_ONLY_NO_DPU_LOGIT_THRESHOLD"
+      },
+      "class_agreement_vs_full_fp32": 8476,
+      "class_agreement_vs_wire_fp32_tail": 8474
+    }
+  ],
+  "issues": [],
+  "preservation": {
+    "base_commit": "9b363f023204ead01e43a8103d927dff41182c29",
+    "groups": {
+      "all_preexisting_tracked_except_two_documents": {
+        "count": 2915,
+        "path_and_raw_sha256_digest": "6e9b39ded2d31d83a99008283825c433d42da45a2e5336a7fe0b188e5594ba1f"
+      },
+      "ml_source_scripts_configs_manifests": {
+        "count": 118,
+        "path_and_raw_sha256_digest": "5bc787a10f836164cb2a0da6dafa471ca6f3c2bd097931642836c649be3d98e8"
+      },
+      "historical_tracked_provenance": {
+        "count": 2210,
+        "path_and_raw_sha256_digest": "189df9b160f38eb6c0ac6eb9c4a7bd0d9716d247742bb5407d47c2654ef56441"
+      },
+      "local_baseline_reference_weights_archives": {
+        "count": 52,
+        "path_and_raw_sha256_digest": "7dbddb90cfc4846e62d1ef4aefb1586161137d60d06d5caf6fa25db0eeae76aa"
+      },
+      "bed2dfc_final_receipts_logs": {
+        "count": 32,
+        "path_and_raw_sha256_digest": "ac3e4b3e3d324bc18ccd1006816fe2d98c3d77796eef433088e0846c4a185c5f"
+      }
+    },
+    "edited_document_count": 2,
+    "documentation_links_checked": 42,
+    "links": [
+      "docs/sv3_ml_week7_report.md -> sv3_week7_fulltest_review_20261029.md",
+      "docs/sv3_ml_week7_report.md -> sv3_week7_reconciliation_20261026.md",
+      "docs/sv3_ml_week7_report.md -> sv3_ml_week5_report.md",
+      "docs/sv3_ml_week7_report.md -> sv3_ml_week6_report.md",
+      "docs/sv3_ml_week7_report.md -> sv3_week7_dependency_checklist.md",
+      "docs/sv3_ml_week7_report.md -> ../ml/scripts/setup_week5_delivery_v2.py",
+      "docs/sv3_ml_week7_report.md -> ../ml/docs/week5_delivery_v2.md",
+      "docs/sv3_ml_week7_report.md -> sv3_week7_dependency_checklist.md",
+      "docs/sv3_ml_week7_report.md -> ../ml/provenance/week7-reconcile-20261026/",
+      "docs/sv3_ml_week7_report.md -> sv3_week7_reconciliation_20261026.md",
+      "docs/sv3_ml_week7_report.md -> sv3_week7_dependency_checklist.md",
+      "docs/sv3_ml_week7_report.md -> sv3_week7_ml_i1v2_confirmation_draft.md",
+      "docs/sv3_ml_week7_report.md -> sv3_week7_demo_guide.md",
+      "docs/sv3_ml_week7_report.md -> ../ml/provenance/week7-evaluator-fix-20261026/README.md",
+      "docs/sv3_ml_week7_report.md -> ../ml/provenance/week7-evaluator-fix-20261026/verification.json",
+      "docs/sv3_ml_week7_report.md -> sv3_week7_host_update_20261028.md",
+      "docs/sv3_ml_week7_report.md -> ../ml/provenance/week7-host-20261028/README.md",
+      "docs/sv3_ml_week7_report.md -> sv3_week7_sv2_handoff_20261028.md",
+      "docs/sv3_week7_dependency_checklist.md -> sv3_week7_fulltest_review_20261029.md",
+      "docs/sv3_week7_dependency_checklist.md -> sv3_week7_reconciliation_20261026.md",
+      "docs/sv3_week7_dependency_checklist.md -> sv3_ml_week7_report.md",
+      "docs/sv3_week7_dependency_checklist.md -> ../ml/provenance/week7-reconcile-20261026/delivery-audit.json",
+      "docs/sv3_week7_dependency_checklist.md -> sv3_week7_reconciliation_20261026.md",
+      "docs/sv3_week7_dependency_checklist.md -> sv3_week7_ml_i1v2_confirmation_draft.md",
+      "docs/sv3_week7_dependency_checklist.md -> sv3_week7_demo_guide.md",
+      "docs/sv3_week7_dependency_checklist.md -> ../ml/provenance/week7-evaluator-fix-20261026/README.md",
+      "docs/sv3_week7_dependency_checklist.md -> ../ml/provenance/week7-evaluator-fix-20261026/verification.json",
+      "docs/sv3_week7_dependency_checklist.md -> sv3_week7_host_update_20261028.md",
+      "docs/sv3_week7_dependency_checklist.md -> ../ml/provenance/week7-host-20261028/README.md",
+      "docs/sv3_week7_dependency_checklist.md -> sv3_week7_sv2_handoff_20261028.md",
+      "docs/sv3_week7_fulltest_review_20261029.md -> ../ml/provenance/week7-fulltest-20261029/evaluation.json",
+      "docs/sv3_week7_fulltest_review_20261029.md -> ../ml/provenance/week7-fulltest-20261029/sv2-reference-receipt.json",
+      "docs/sv3_week7_fulltest_review_20261029.md -> ../ml/provenance/week7-fulltest-20261029/sv2-summary.json",
+      "docs/sv3_week7_fulltest_review_20261029.md -> ../ml/provenance/week7-fulltest-20261029/artifact-review.json",
+      "docs/sv3_week7_fulltest_review_20261029.md -> ../ml/provenance/week7-fulltest-20261029/README.md",
+      "ml/provenance/week7-fulltest-20261029/README.md -> ../../../docs/sv3_week7_fulltest_review_20261029.md",
+      "ml/provenance/week7-fulltest-20261029/README.md -> evaluation.json",
+      "ml/provenance/week7-fulltest-20261029/README.md -> artifact-review.json",
+      "ml/provenance/week7-fulltest-20261029/README.md -> sv2-summary.json",
+      "ml/provenance/week7-fulltest-20261029/README.md -> sv2-reference-receipt.json",
+      "ml/provenance/week7-fulltest-20261029/README.md -> preservation-before.json",
+      "ml/provenance/week7-fulltest-20261029/README.md -> verify_fulltest_receipt.py"
+    ],
+    "reused_host_receipts": {
+      "nopeek-normal": {
+        "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+        "receipt_sha256": "c62b3e08c3124513311123c4af3a2f25c0da193341fc758cf2fe0d4be0b0c111",
+        "execution": "REUSED_NOT_RERUN"
+      },
+      "nopeek-O": {
+        "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+        "receipt_sha256": "6c2e0511a9c0714c9a24837a85ae6564501ae1a41fd34c143128dd8ed71f8ff7",
+        "execution": "REUSED_NOT_RERUN"
+      },
+      "reconcile-normal": {
+        "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+        "receipt_sha256": "a9c5d5a5fd1a93b701d27d07b8280891d42e858392980c6e4ca52372eb3d982b",
+        "execution": "REUSED_NOT_RERUN"
+      },
+      "reconcile-O": {
+        "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+        "receipt_sha256": "925b744d95e77626844119b4598dc005d9a72341b86c9320f91cb5cd66c73499",
+        "execution": "REUSED_NOT_RERUN"
+      },
+      "demo": {
+        "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+        "receipt_sha256": "3ae1a365cee00006f4ee6881697e6ffc245f329bb2371df4da7b1b3872e2ca53",
+        "execution": "REUSED_NOT_RERUN"
+      },
+      "reference": {
+        "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+        "receipt_sha256": "ed76d11d8fd757a53c075a5aa7fa09785c28611382ad775bed31d42d2f57505f",
+        "execution": "REUSED_NOT_RERUN"
+      },
+      "verification": {
+        "tested_commit": "bed2dfcf86a5d5e323575def5bbbb562f7ee6b51",
+        "receipt_sha256": "f499a2168ec5ba3af55f477a3c035d8ae1ec407db59bb19fcc87dd87539cb8c0",
+        "execution": "REUSED_NOT_RERUN"
+      }
+    },
+    "historical_verifiers": "UNCHANGED; their old document gates certify their original snapshots only",
+    "personal_confirmation": "NOT_ATTESTED",
+    "owner_GVHD_acceptance": "NOT_RECORDED_BY_THIS_UPDATE"
+  },
+  "binding": "New saved-evidence check at checked_head; core host suites reused at bed2dfc.",
+  "checked_head": "9b363f023204ead01e43a8103d927dff41182c29",
+  "receipt_verifier_sha256": "bf31a42cb146921a7eba3276050dbd5edbe02cccd7c2ef4925eca64d0c7c0996"
+}

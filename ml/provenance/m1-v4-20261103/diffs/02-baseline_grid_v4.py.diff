@@ -1,0 +1,131 @@
+--- ml/scripts/baseline_grid_v3.py
++++ ml/scripts/baseline_grid_v4.py
+@@ -12,12 +12,14 @@
+ import sys
+ 
+ import numpy as np
+-from baseline_selection_v3 import CONFIGS,SEEDS,choose_epoch,execute_all_slots,need,summarize_grid
+-from m1_metrics_v3 import freeze_validation_policy
++import baseline_sampler_v4 as sampler
++from baseline_selection_v4 import (CONFIGS,SEEDS,MAX_ATTEMPTS,COMPLETE_STATUS,choose_epoch,execute_all_slots,
++                                   need,summarize_grid)
++from m1_metrics_v4 import freeze_validation_policy
+ 
+ ROOT=Path(__file__).resolve().parents[2]
+-SOURCES=['ml/scripts/baseline_grid_v3.py','ml/scripts/baseline_selection_v3.py',
+-         'ml/scripts/train_mitdb_baseline_v3.py','ml/scripts/m1_metrics_v3.py',
++SOURCES=['ml/scripts/baseline_grid_v4.py','ml/scripts/baseline_selection_v4.py',
++         'ml/scripts/baseline_sampler_v4.py','ml/scripts/train_mitdb_baseline_v4.py','ml/scripts/m1_metrics_v4.py',
+          'ml/src/mitdb_baseline_model.py','ml/configs/mitdb_week2_baseline.json']
+ 
+ 
+@@ -43,8 +45,14 @@
+ def source_bindings():return {n:sha(ROOT/n) for n in SOURCES}
+ 
+ 
++def sampler_fields(mode,counts):
++    return sampler.plan_fields(counts) if mode=='balanced_sampler' else {
++        'sampler_policy':None,'sampler_expected_draws_per_epoch':None,'sampler_per_class_sample_weight':None}
++
++
+ def prepare(protocol,output):
+     p=read(protocol);d=read(ROOT/p['data']['manifest']);counts=d['splits']['train']['counts'];total=sum(counts)
++    need(p['baseline']['balanced_sampler_policy_id']==sampler.POLICY_ID,'Protocol sampler policy differs')
+     need(not output.exists(),'Plan exists; use a new revision')
+     output.mkdir(parents=True)
+     base={'protocol_sha256':sha(protocol),'dataset_manifest_sha256':sha(ROOT/p['data']['manifest']),
+@@ -60,7 +68,8 @@
+             weights=[min(cap,total/(5*n)) if n else 0 for n in counts] if mode=='weighted_ce' else None
+             config={**base,'slot_id':ident,'configuration':name,'seed':seed,'mode':mode,'cap':cap,'lr':lr,
+                 'class_weights':weights,'train_counts':counts,'samples_per_epoch':total,
+-                'sampler_replacement':mode=='balanced_sampler','batch_size':256,'epochs':40,'patience':10,
++                'sampler_replacement':mode=='balanced_sampler',**sampler_fields(mode,counts),
++                'batch_size':256,'epochs':40,'patience':10,
+                 'optimizer':'AdamW','betas':[.9,.999],'eps':1e-8,'weight_decay':.0001,'dropout':.2,
+                 'scheduler':{'name':'ReduceLROnPlateau','mode':'max','factor':.5,'patience':4,
+                              'threshold':.0001,'threshold_mode':'rel','min_lr':0,'eps':1e-8},
+@@ -72,7 +81,8 @@
+             file=ident+'.json';write(output/file,config)
+             slots.append({'slot_id':ident,'configuration':name,'seed':seed,'config':file,'sha256':sha(output/file),'state':'NOT_STARTED'})
+     write(output/'plan-manifest.json',{'status':'PREPARED_NOT_STARTED_NOT_AUTHORIZED','binding':base,'slots':slots,
+-          'training_permission':False,'expected_slots':18,'retry_same_seed':1,'stop_on_first_gate_pass':False})
++          'training_permission':False,'expected_slots':18,'retry_same_seed':MAX_ATTEMPTS-1,'stop_on_first_gate_pass':False,
++          'halt_on_first_slot_pre_validation_code_fault':True})
+     print('PREPARED18_SLOTS_NO_FIT')
+ 
+ 
+@@ -90,8 +100,10 @@
+ 
+ def preflight(protocol,plan_path,arrays):
+     p=read(protocol);plan=read(plan_path);b=plan['binding']
+-    need(plan['expected_slots']==18 and len(plan['slots'])==18 and plan['stop_on_first_gate_pass'] is False,'Grid must contain18 slots')
++    need(plan['expected_slots']==18 and len(plan['slots'])==18 and plan['stop_on_first_gate_pass'] is False and
++         plan['retry_same_seed']==MAX_ATTEMPTS-1 and plan['halt_on_first_slot_pre_validation_code_fault'] is True,'Grid must contain18 slots')
+     need(sha(protocol)==b['protocol_sha256'],'Protocol hash differs')
++    need(p['baseline']['balanced_sampler_policy_id']==sampler.POLICY_ID,'Protocol sampler policy differs')
+     need(source_bindings()==b['sources_sha256'] and runtime()==b['runtime'],'Source/runtime binding differs')
+     freeze=read(ROOT/'ml/configs/week3_model_freeze.json')
+     need(sha(ROOT/'ml/src/mitdb_baseline_model.py')==freeze['model_source_sha256'],'Frozen CNN source differs')
+@@ -113,7 +125,8 @@
+         need((c['configuration'],c['mode'],c['cap'],c['lr'])==spec and c['seed']==slot['seed'] and c['train_counts']==counts,'Slot policy differs')
+         weights=[min(c['cap'],sum(counts)/(5*n)) if n else 0 for n in counts] if c['mode']=='weighted_ce' else None
+         need(c['class_weights']==weights and c['samples_per_epoch']==sum(counts) and
+-             c['sampler_replacement']==(c['mode']=='balanced_sampler'),'Weight/sampler policy differs or double balancing')
++             c['sampler_replacement']==(c['mode']=='balanced_sampler') and
++             all(c[k]==v for k,v in sampler_fields(c['mode'],counts).items()),'Weight/sampler policy differs or double balancing')
+         need(c['epochs']==40 and c['patience']==10 and c['batch_size']==256 and c['DS2_access'] is False,'Training duration/scope differs')
+         need(c['optimizer']=='AdamW' and c['weight_decay']==.0001 and c['dropout']==.2 and
+              c['betas']==[.9,.999] and c['eps']==1e-8 and c['scheduler']['mode']=='max', 'Week2 optimizer/architecture policy differs')
+@@ -139,24 +152,27 @@
+     output.mkdir(parents=True)
+     def executor(slot):
+         attempts=[];status='FAILED_TECHNICAL'
+-        for attempt in [1,2]:
++        for attempt in range(1,MAX_ATTEMPTS+1):
+             target=output/slot['slot_id']/f'attempt-{attempt}';target.mkdir(parents=True)
+-            argv=[sys.executable,'-B',str(ROOT/'ml/scripts/train_mitdb_baseline_v3.py'),
++            argv=[sys.executable,'-B',str(ROOT/'ml/scripts/train_mitdb_baseline_v4.py'),
+                   '--protocol',str(protocol),'--plan',str(plan_path),'--arrays',str(arrays),
+                   '--slot',slot['slot_id'],'--output',str(target),'--authorization',str(authorization)]
+             r=subprocess.run(argv,cwd=ROOT,capture_output=True,text=True,encoding='utf-8')
+             (target/'stdout.txt').write_text(r.stdout,encoding='utf-8',newline='\n')
+             (target/'stderr.txt').write_text(r.stderr,encoding='utf-8',newline='\n')
+             attempts.append({'attempt':attempt,'exit_code':r.returncode,'summary_exists':(target/'summary.json').is_file(),
++                             'validation_epoch_written':(target/'epoch-001.json').is_file(),
+                              'path':target.relative_to(output).as_posix(),
+                              'config_sha256':slot['sha256'],'seed':slot['seed']})
+             if r.returncode==0 and (target/'summary.json').is_file():status='COMPLETED';break
+         row={**slot,'status':status,'attempts':attempts}
+         write(output/slot['slot_id']/'slot-result.json',row)
+         return row
+-    results=execute_all_slots(plan['slots'],executor)
++    results,status=execute_all_slots(plan['slots'],executor)
++    # A halted grid is not a failed configuration: fix code under a new plan version and rerun all18 slots.
+     write(output/'grid-result.json',{'protocol_sha256':sha(protocol),'plan_sha256':sha(plan_path),'slots':results,
+-        'attempted_slots':18,'status':'ALL18_SLOTS_TERMINAL_NOT_MODEL_LOCK'})
++        'attempted_slots':len(results),'status':status})
++    return status
+ 
+ 
+ def metric_from_matrix(matrix):
+@@ -172,16 +188,18 @@
+ def analyze(protocol,plan_path,results):
+     plan=read(plan_path);grid=read(results/'grid-result.json')
+     need(grid['protocol_sha256']==sha(protocol) and grid['plan_sha256']==sha(plan_path),'Grid binding differs')
++    need(grid['status']==COMPLETE_STATUS and grid['attempted_slots']==18,'Grid halted or incomplete; no selection')
+     need(len(grid['slots'])==18 and {r['slot_id'] for r in grid['slots']}=={r['slot_id'] for r in plan['slots']},'Incomplete grid')
+     rows=[]
+     support=read(ROOT/plan['binding']['metric_policy'])['validation_support']
+     for expected in plan['slots']:
+         r=read(results/expected['slot_id']/'slot-result.json')
+         need(r==next(v for v in grid['slots'] if v['slot_id']==expected['slot_id']),'Slot ledger differs')
+-        need(r['sha256']==expected['sha256'] and len(r['attempts']) in (1,2),'Attempt binding differs')
++        need(r['sha256']==expected['sha256'] and 1<=len(r['attempts'])<=MAX_ATTEMPTS,'Attempt binding differs')
++        need(all(type(a.get('validation_epoch_written')) is bool for a in r['attempts']),'Attempt validation marker missing')
+         need(all(r[k]==expected[k] for k in ['slot_id','configuration','seed','config']),'Slot identity differs')
+         need([a['attempt'] for a in r['attempts']]==list(range(1,len(r['attempts'])+1)),'Retry ordinal differs')
+-        if r['status']=='FAILED_TECHNICAL':need(len(r['attempts'])==2,'Failed slot must retain both attempts')
++        if r['status']=='FAILED_TECHNICAL':need(len(r['attempts'])==MAX_ATTEMPTS,'Failed slot must retain both attempts')
+         else:need(r['attempts'][-1]['exit_code']==0 and r['attempts'][-1]['summary_exists'],'Successful attempt missing summary')
+         for attempt in r['attempts']:
+             need(attempt['seed']==expected['seed'] and attempt['config_sha256']==expected['sha256'],'Retry changed seed/config')

@@ -1,0 +1,80 @@
+"""Readable export of the authenticated Week 8 grid; no training or selection."""
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+
+from run_week8_nopeek import atomic_json
+from week3_common import need, read_json, sha
+
+
+def plot(review, output):
+    review, output = Path(review).resolve(), Path(output).resolve()
+    need(not output.exists(), "Refuse to overwrite figure export")
+    manifest = read_json(review / "summary.json")
+    need(manifest["status"] == "PASS_COMPLETE_GRID_ANALYSIS" and manifest["completed_runs"] == 54,
+         "Complete authenticated grid analysis required")
+    for name, digest in manifest["files"].items():
+        need(Path(name).name == name and sha(review / name) == digest, "Review file hash differs")
+    rows = read_json(review / "aggregate-metrics.json")
+    per_seed = read_json(review / "per-seed-metrics.json")
+    lock = read_json(review / "candidate-lock.json")
+    need(len(rows) == 18 and len(per_seed) == 54 and lock["completed_runs"] == 54,
+         "Incomplete plotting data")
+    selected = {c["split"]: c["lambda1"] for c in lock["candidates"]}
+    points = []
+    fig, axes = plt.subplots(1, 3, figsize=(14, 4.7), sharey=True)
+    for ax, split in zip(axes, (2, 5, 8)):
+        group = sorted((r for r in rows if r["split"] == split), key=lambda r: r["lambda1"])
+        need([r["lambda1"] for r in group] == [0, .1, .5, 1, 2, 5], "Six lambda points required per split")
+        for row in group:
+            seeds = sorted((r for r in per_seed if r["split"] == split and r["lambda1"] == row["lambda1"]), key=lambda r: r["seed"])
+            need([s["seed"] for s in seeds] == [20261021, 20261022, 20261023], "Three seed results required")
+            values = [s["validation"]["accuracy"] for s in seeds]
+            need(row["accuracy_mean"] == float(np.mean(values)) and
+                 row["accuracy_std_sample"] == float(np.std(values, ddof=1)), "Plot mean/std differs from seed metrics")
+            points.append({"split": split, "lambda1": row["lambda1"], "mean": row["accuracy_mean"],
+                           "sample_std_ddof1": row["accuracy_std_sample"], "validation_samples_per_seed": 15388,
+                           "seed_run_ids": [s["run_id"] for s in seeds], "seed_accuracies": values,
+                           "candidate_by_validation_ce": row["lambda1"] == selected[split]})
+        xs = [r["lambda1"] for r in group]
+        ys = [100*r["accuracy_mean"] for r in group]
+        errors = [100*r["accuracy_std_sample"] for r in group]
+        ax.errorbar(xs, ys, yerr=errors, marker="o", color="#1565a8", capsize=4, linewidth=1.8,
+                    label="Mean +/- sample SD (3 seeds)")
+        chosen = next(r for r in group if r["lambda1"] == selected[split])
+        ax.scatter([chosen["lambda1"]], [100*chosen["accuracy_mean"]], marker="*", s=150, color="#d45a12",
+                   edgecolor="white", linewidth=.7, zorder=5, label="Candidate: minimum mean CE")
+        ax.set(title=f"Split s{split}", xlabel="lambda1", xticks=xs, xlim=(-.2, 5.2), ylim=(65, 95))
+        # Numeric spacing stays exact; put 0.1 on a second row to avoid overlap.
+        ax.set_xticklabels(["0", "\n0.1", "0.5", "1", "2", "5"])
+        ax.grid(alpha=.22)
+    axes[0].set_ylabel("Validation accuracy (%)")
+    fig.suptitle("NoPeek joint training: 54/54 runs on frozen validation (15,388 samples)", fontsize=12)
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=2, frameon=False, fontsize=9)
+    fig.tight_layout(rect=(0, .09, 1, .94))
+    output.mkdir(parents=True, exist_ok=False)
+    atomic_json(output / "plot-data.json", points)
+    for suffix in ("png", "svg", "pdf"):
+        fig.savefig(output / ("validation-accuracy-lambda."+suffix), dpi=200)
+    plt.close(fig)
+    atomic_json(output / "manifest.json", {"status": "EXPORTED_AUTHENTICATED_GRID_FIGURES", "runs": 54,
+                "source_sha256": sha(Path(__file__)), "candidate_lock_sha256": sha(review / "candidate-lock.json"),
+                "aggregate_metrics_sha256": sha(review / "aggregate-metrics.json"),
+                "error_bars": "Sample standard deviation across 3 seeds, ddof=1; not confidence intervals",
+                "x_axis": "Actual numeric lambda values; label alignment only adjusted for readability",
+                "files": {p.name: sha(p) for p in output.iterdir() if p.is_file()}})
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--review", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    plot(args.review, args.output)

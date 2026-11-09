@@ -1,0 +1,58 @@
+{
+  "input_commit": "08e4b4259a2757be7b663b88cc1c98607602d266",
+  "checks": {
+    "ml/src/distance_correlation.py": {
+      "sha256": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+      "matches_implementation_6be51e3": true
+    },
+    "ml/src/nopeek.py": {
+      "sha256": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+      "matches_implementation_6be51e3": true
+    },
+    "ml/src/nopeek_data.py": {
+      "sha256": "2d85836ed96047af8df853febe733aaa3b48ae0c73e5d54d79d26a67c318307f",
+      "matches_implementation_6be51e3": true
+    },
+    "ml/scripts/run_week7_nopeek.py": {
+      "sha256": "136bb576db9cec7a5890977c57068236d15ac6b058c24840fb93646d535fe569",
+      "matches_implementation_6be51e3": true
+    },
+    "ml/scripts/test_week7_nopeek.py": {
+      "sha256": "377fa8ea2eafa48047571c1a4bd5904c0de1ff078d635ecfb32f3d3537962ff0",
+      "matches_implementation_6be51e3": true
+    },
+    "ml/configs/week7_nopeek_smoke.json": {
+      "sha256": "679c434a3453cedb489fdfb1e3c6d9bc164ea1da167a8e0556a6c033e9d6c2fe",
+      "matches_implementation_6be51e3": true
+    },
+    "ml/configs/week8_nopeek_sweep.json": {
+      "sha256": "5d803a53e840ef31cf50d7e9d21cedcaa46792b4b96778a55bdf12480df7d8a1",
+      "matches_implementation_6be51e3": true
+    },
+    "ml/results/week7-nopeek/smoke-final/batch_metrics.json": {
+      "sha256": "dfb4fd36f383ca772caa7f1a2db0e6d5a5e1ee359501c1da5a3842435abb866f",
+      "matches_delivery_1518943": true
+    },
+    "ml/results/week7-nopeek/smoke-final/selected_samples.json": {
+      "sha256": "06f6db8d9a514677d44e5a93421216c6fb0bd2378af2d42bd669413bfd39219a",
+      "matches_delivery_1518943": true
+    },
+    "ml/results/week7-nopeek/smoke-final/summary.json": {
+      "sha256": "13111d6639a80e2c577e05f253cc2b116780e8ab386844c8f04d1e51cefdbbe8",
+      "matches_delivery_1518943": true
+    },
+    "ml/results/week7-nopeek/smoke-final-repeat-O/batch_metrics.json": {
+      "sha256": "dfb4fd36f383ca772caa7f1a2db0e6d5a5e1ee359501c1da5a3842435abb866f",
+      "matches_delivery_1518943": true
+    },
+    "ml/results/week7-nopeek/smoke-final-repeat-O/selected_samples.json": {
+      "sha256": "06f6db8d9a514677d44e5a93421216c6fb0bd2378af2d42bd669413bfd39219a",
+      "matches_delivery_1518943": true
+    },
+    "ml/results/week7-nopeek/smoke-final-repeat-O/summary.json": {
+      "sha256": "1d61c3117e554fe2e4a8f949774ba3aeabccea05cc9025632560c8d059d48258",
+      "matches_delivery_1518943": true
+    }
+  },
+  "decision": "Reuse historical math/loss/smoke evidence; no checkpoint, split mapping, tensor handling or NoPeek source changed. New demo only; no smoke training/grid rerun."
+}

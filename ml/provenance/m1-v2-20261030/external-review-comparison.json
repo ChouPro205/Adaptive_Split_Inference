@@ -1,0 +1,43 @@
+{
+  "source_label": "user supplied local validation_feasibility_review.json",
+  "source_raw_sha256": "1715f2a25570c92c9ff608c6654a8b1f622f41e7fb928d0948e00b2ee4fcaa86",
+  "source_status": "READ_ONLY_REVIEW_POLICY_REVISION_REQUIRED",
+  "source_bindings_by_name": {
+    "mitdb_ds1ds2_m1_v1.json": "c82a92f7eb3dac0c2f958c15bb350c34ffbaf8ccdc1f6ac7105b16478b9838d7",
+    "record-audit.json": "a19307883a8544d8926d2351b209c3fb358e052bff451ef4c8cb7113864f7029"
+  },
+  "source_does_not_attest_M1_lock_or_new_artifact_review": true,
+  "comparisons": {
+    "4A": {
+      "feasible_match": true,
+      "zero_F_match": true,
+      "F_range_match": true
+    },
+    "4B": {
+      "feasible_match": true,
+      "zero_F_match": true,
+      "F_range_match": true
+    },
+    "4C": {
+      "feasible_match": true,
+      "zero_F_match": true,
+      "F_range_match": true
+    },
+    "5A": {
+      "feasible_match": true,
+      "zero_F_match": true,
+      "F_range_match": true
+    },
+    "5B": {
+      "feasible_match": true,
+      "zero_F_match": true,
+      "F_range_match": true
+    },
+    "5C": {
+      "feasible_match": true,
+      "zero_F_match": true,
+      "F_range_match": true
+    }
+  },
+  "all_match": true
+}

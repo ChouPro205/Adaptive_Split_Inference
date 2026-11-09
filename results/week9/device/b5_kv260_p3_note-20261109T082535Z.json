@@ -1,0 +1,13 @@
+{
+  "schema": "week7-ppk2-note/1",
+  "utc": "20261109T082535Z",
+  "temp_end_C": 25.5,
+  "photos": [
+    {
+      "path": "D:\\HUST\\ASI_week9\\photos\\bench-B5-end-20261109-1520.png",
+      "sha256": "f258da25313305d1d77ed3d40a02278715f650186af83031464cda9fc6b90e65",
+      "bytes": 10986833
+    }
+  ],
+  "text": "FAIL: laptop chay pin (61 %, Balanced) -> host max read gap 0,28 s, 13 cho mat mau (~190 k mau, 0,46 %) tu 2,4 s; selftest/idle lech day chuyen. Bo, khong dung so lieu; Trung khong gui log phien nay."
+}

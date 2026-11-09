@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "status": "LOCKED_IMPLEMENTATION_RULE_BEFORE_GRID_COMPLETION",
+  "date_local": "2026-10-29",
+  "grid_config": "ml/configs/week8_nopeek_approved_3seed_joint_v1.json",
+  "scope": "Validation-only candidate recommendation per split; no deployment approval or GVHD attestation",
+  "checkpoint_selection_within_run": "Minimum validation CE, exact tie earliest epoch, as user-confirmed protocol",
+  "lambda_selection_within_split": "Smallest arithmetic mean validation CE of the three independently selected seed checkpoints",
+  "lambda_tie_break": "Smaller lambda1",
+  "seeds": [20261021, 20261022, 20261023],
+  "requires_complete_grid": true,
+  "candidate_payload": "Chosen lambda per split with all three seed checkpoints; no seed chosen by best metric",
+  "cross_split_optimization": "OUT_OF_SCOPE; keep separate s2/s5/s8 candidates",
+  "variation": "Sample standard deviation across seeds (ddof=1); not independent patient-cohort uncertainty",
+  "test_policy": "No test data may influence this choice. Candidate lock must record config/data/source/checkpoint hashes before any final test evaluation. No return to tuning from final test.",
+  "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+}

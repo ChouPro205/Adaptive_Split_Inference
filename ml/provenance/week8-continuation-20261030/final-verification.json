@@ -1,0 +1,58 @@
+{
+  "status": "PASS_54_OF_54_GRID_AND_VALIDATION_HANDOFF",
+  "timestamp_utc": "2026-10-29T19:02:10.516236+00:00",
+  "continuation_strategy": "EXISTING_V2_PROCESS_CONTINUED_TO_COMPLETION_NO_RESUME_NO_RESTART",
+  "initial_completed_runs": 52,
+  "completed_run_files_preserved": 301,
+  "historical_original_files_preserved": 3508,
+  "git_head": "d851e8621ee35e3e5da6451ca9c229094d147780",
+  "source_identity": {
+    "git_head": "d851e8621ee35e3e5da6451ca9c229094d147780",
+    "source_sha256": {
+      "ml/scripts/run_week8_nopeek.py": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+      "ml/scripts/summarize_week8_nopeek.py": "ff517de3b57f792980334c657ebe001adae8c822baa4048a37949a3a14a793ec",
+      "ml/scripts/test_week8_nopeek.py": "af40fcf2f5810751b702f1d178d4786c9d10544341b61f280b096df8933f3a27",
+      "ml/src/distance_correlation.py": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+      "ml/src/nopeek.py": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+      "ml/src/nopeek_data.py": "2d85836ed96047af8df853febe733aaa3b48ae0c73e5d54d79d26a67c318307f",
+      "ml/src/train_mitdb_baseline.py": "65a6ae4bc1e89b624050913cb9e02c7e520e5902e49113441c7539bccd55bf18",
+      "ml/src/mitdb_week2_data.py": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907",
+      "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+      "ml/src/mitdb_common.py": "acd81b4aa9331d90cdb0abdaf16cb1935e9afbd6e34e654ac16dc5f51d236c1d",
+      "ml/src/week1_common.py": "34c3402987e1f8712c844830c6db7a9325ef7a616e9d3dbe5dbb739f2fbc2dba",
+      "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+      "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0"
+    },
+    "config_sha256": "c085b43c5de518f6788a59aa52e27ae47c89f19bf7dfc290ad997679fc550b45"
+  },
+  "grid_exit_code": 0,
+  "exporter_exit_code": 0,
+  "valid_unique_runs": 54,
+  "total_epochs": 386,
+  "epochs_per_run_min": 6,
+  "epochs_per_run_max": 15,
+  "fresh_initial_state_digests": [
+    "eba5b291fc565608898b258b8025786ab3869000e8d6a3f739455be627a9da95"
+  ],
+  "selected_and_last_checkpoints_verified": 54,
+  "selected_checkpoint_reload_exact": true,
+  "analysis_tests_normal": 11,
+  "analysis_tests_optimized": 11,
+  "analysis_test_receipts": [
+    "analysis-tests-final.receipt.json",
+    "analysis-tests-final-O.receipt.json"
+  ],
+  "new_training_tests_or_pilot_rerun_in_continuation": false,
+  "reason_existing_tests_pilot_reused": "Training source/config/HEAD/IDs and live process unchanged; verified v2 receipts remain applicable.",
+  "candidate_lock_sha256": "994892cd2bd1b3e0f3c8bd436ab11bc45eafba64a49a3eae721b0fc1857fe7ba",
+  "aggregate_metrics_sha256": "c77696cbcdbca616daca9085d66ad787b6101a3e76becce3eff9bec6e8a02841",
+  "figure_manifest_sha256": "d753edb6faea766766f6cff747fffc4f36eb0d5029f92e8e7285071db9268869",
+  "figure_visual_check": "Final PNG inspected: 3panels, 6numericlambda, sampleSD3seeds, no overlapping nearzero labels, selected candidates identified.",
+  "relative_links_checked": 51,
+  "test_evaluation": "NOT_RUN_REQUIRES_SEPARATE_LOCKED_AND_AUTHORIZED_PROTOCOL",
+  "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED",
+  "privacy": "NOT_EVALUATED_NO_DP_CLAIM",
+  "tracked_diff_empty": true,
+  "remote_mutations": false,
+  "files_deleted_or_old_outputs_recreated": false
+}

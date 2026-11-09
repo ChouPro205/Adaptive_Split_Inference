@@ -1,0 +1,7 @@
+id,mode,cap,lr
+C0,weighted_ce,10,0.001
+C1,weighted_ce,10,0.0003
+C2,weighted_ce,50,0.001
+C3,weighted_ce,50,0.0003
+C4,balanced_sampler,,0.001
+C5,balanced_sampler,,0.0003

@@ -1,0 +1,98 @@
+[
+  {
+    "pilot": "pilot-v1",
+    "run_id": "s2-lambda0-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-v1/s2-lambda0-seed20261021/best-epoch-001.pt",
+    "sha256": "6f387cd391c96ddbec2e3c7f79cbcdc0bd8b87c80fbd12723988a64db47b070a",
+    "bytes": 472006,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-v1",
+    "run_id": "s2-lambda0.5-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-v1/s2-lambda0.5-seed20261021/best-epoch-001.pt",
+    "sha256": "1f7fcaa21014c50f2417cb70e964ff708731db96c3fc8b5ff34bac5cc91e63c1",
+    "bytes": 472006,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-v1",
+    "run_id": "s5-lambda0-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-v1/s5-lambda0-seed20261021/best-epoch-001.pt",
+    "sha256": "7bedf7d0cd56b99443ec9d9c9f64b73b1278deb748047ceb1abbf29451dc733c",
+    "bytes": 600708,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-v1",
+    "run_id": "s5-lambda0.5-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-v1/s5-lambda0.5-seed20261021/best-epoch-002.pt",
+    "sha256": "ad469d13897e1fb0a134ff665d0f7228e84aa4877196cbb20b98c91a429d1f6b",
+    "bytes": 601860,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-v1",
+    "run_id": "s8-lambda0-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-v1/s8-lambda0-seed20261021/best-epoch-001.pt",
+    "sha256": "18c19131f35d505d099f9a269a8fca3b52f40ba9ce7828ce42c5d0af2da6e75a",
+    "bytes": 985922,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-v1",
+    "run_id": "s8-lambda0.5-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-v1/s8-lambda0.5-seed20261021/best-epoch-002.pt",
+    "sha256": "e98ea1e9e775bc848b049a95cf4f8c40ae8418bcb9987f8ab42ed5f94505ae90",
+    "bytes": 987074,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-cuda-v1",
+    "run_id": "s2-lambda0-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-cuda-v1/s2-lambda0-seed20261021/best-epoch-001.pt",
+    "sha256": "7f428435b145786c939ae6454ec9cebe42d74090faff27cee084e17ad4ae981e",
+    "bytes": 472653,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-cuda-v1",
+    "run_id": "s2-lambda0.5-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-cuda-v1/s2-lambda0.5-seed20261021/best-epoch-001.pt",
+    "sha256": "dfee6c01e59790a600a9862f4a9b03d4e42b7d8a7ced07aa493962f03169364e",
+    "bytes": 472653,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-cuda-v1",
+    "run_id": "s5-lambda0-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-cuda-v1/s5-lambda0-seed20261021/best-epoch-001.pt",
+    "sha256": "7371945c85e7f9c909816842ca249aad130a32bb2f4f6355ee3c42566b8c5f96",
+    "bytes": 601547,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-cuda-v1",
+    "run_id": "s5-lambda0.5-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-cuda-v1/s5-lambda0.5-seed20261021/best-epoch-002.pt",
+    "sha256": "91b41040527915e43a76956cb138131bb007f568830aadaf84c5536373280a83",
+    "bytes": 602699,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-cuda-v1",
+    "run_id": "s8-lambda0-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-cuda-v1/s8-lambda0-seed20261021/best-epoch-001.pt",
+    "sha256": "f01c75643ea217f417a99ae432e980fbf329bd96df0be9e1527ba0ef7cb2fef4",
+    "bytes": 986953,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  },
+  {
+    "pilot": "pilot-cuda-v1",
+    "run_id": "s8-lambda0.5-seed20261021",
+    "path": "ml/artifacts/week8-nopeek/pilot/pilot-cuda-v1/s8-lambda0.5-seed20261021/best-epoch-002.pt",
+    "sha256": "238abcd9f0cd0268dfaa57d8cc4f4a6d13516e1e1670f6d120fb14e73397b29a",
+    "bytes": 988169,
+    "deployment_status": "EXPERIMENT_ONLY_NOT_APPROVED"
+  }
+]

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "protocol_id": "mitdb-m1-attack-v1",
+  "status": "CANDIDATE_FOR_SV1_REVIEW_NOT_LOCKED",
+  "authority": {
+    "decision_authority": "SV1, delegated by GVHD",
+    "prepared_by": "SV3",
+    "locked": false,
+    "attack_runs_permitted": false,
+    "lock_procedure": "After SV1 review, SV3 writes a lock and run authorization binding this protocol, the attack code and the evaluated checkpoints; the week 11 trial needs that lock, the official evaluation a later locked version"
+  },
+  "source_bindings": {
+    "sv1_decisions_20261103": {"path": "docs/inbox/sv1_chot_cau_hoi_SV3_20261103.txt", "raw_sha256": "be5d1411a61bcd0dadc614dc9255cf524d8c5854a0fa6e984f9cfd504584a343", "items": "7, 8, 9, 10, 11"},
+    "sv1_review_20261105": {"path": "ml/provenance/m1-v4-checkpoint-lock-20261105/sv1_evidence/sv1_review_m1_v4_grid_20261105.txt", "raw_sha256": "45ef6cc76bd777f93ba6c95f257a11b7d6144f1d149e51568f4e94f054e57054", "items": "point 4 (N, gap, balanced accuracy), 6a, 6b"},
+    "checkpoint_lock": {"path": "ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json", "sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc"},
+    "nopeek_protocol": {"path": "ml/configs/mitdb_m1_nopeek_protocol_v1.json", "sha256": "1e180b45258d4f9c6902aeee8ccfedd5de38f62b9bb4a2f16f9030391b72ebf4"}
+  },
+  "threat_model": {
+    "adversary": "Honest-but-curious edge (KV260): follows the protocol, keeps everything it receives and tries to reconstruct the ECG or re-identify the patient",
+    "observes": "Exactly the tensor the edge receives at split s: INT8 per-channel values plus FP16 scales (registry v2 quantization), with the learned noise for rho2",
+    "knows": "Architecture, tail weights, protection algorithm and its parameters (lambda, noise distribution), and auxiliary data from the same distribution",
+    "eavesdropper": "Handled by BLE LE Secure Connections (AES-CCM in nRF52840 hardware), enabled for every method in the final experiment; Pi is not computed for the eavesdropper",
+    "out_of_scope": ["physical or side-channel access", "data poisoning", "an actively malicious edge that deviates from the protocol", "inference of sex or age (too few patients)"],
+    "P1": "Removed from the action set: before the edge Pi(s, P1) = Pi(s, P0); kept as an implemented, measured mechanism discussed in 2-3 sentences"
+  },
+  "attacks": {
+    "A1": "Basic decoder trained with MSE to map the observed tensor back to the 360-sample ECG window",
+    "A2": "GAN decoder: A1 plus a discriminator",
+    "A3": "Adaptive attacker: A2 retrained on protected tensors, knowing the full algorithm and protection parameters",
+    "B_naive": "Re-identification classifier trained on rho0 tensors at the same s",
+    "B_adaptive": "Re-identification classifier trained on the protected tensors, knowing algorithm, lambda and noise distribution",
+    "B_rec": "Re-identification classifier applied to signals reconstructed by A3",
+    "naming": "Paper text: three reconstruction attacks of increasing strength (A1-A3) and one re-identification attack (B); roadmap 8.1 -> A1, A2; 8.2 -> B; 8.3 -> A3 (+ B-adaptive)"
+  },
+  "privacy_metric": {
+    "Pi": "Pi(s, rho) = 1 - Adv, Adv = (bacc - 1/N) / (1 - 1/N), clipped to [0, 1]",
+    "bacc": "Balanced accuracy of per-beat top-1 re-identification on the test part: mean over the N patients of per-patient recall (SV1 2026-11-05 replaces plain accuracy; always-majority already gives 6.6 % on DS1 against 1/22 = 4.5 %)",
+    "strongest_attack": "Adv is the maximum over B-naive, B-adaptive and B-rec available for that (s, rho)",
+    "reconstruction_metrics": "NRMSE, Pearson correlation and R-peak position error of A1-A3 are reported in the attack table and gallery, not combined into Pi",
+    "Pi_min": 0.5,
+    "Pi_min_sweep": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+    "confidence_interval": "OPEN: plain-accuracy Wilson no longer applies to bacc; candidate = patient-stratified bootstrap over test beats, 2000 resamples, seed 20261105, percentile 95 % interval of bacc mapped to Pi",
+    "session_variant": "Majority vote over 10 consecutive beats reported in the discussion only"
+  },
+  "data": {
+    "trial_week11": {
+      "identities": "DS1, 22 records (101, 106, 108, 109, 112, 114, 115, 116, 118, 119, 122, 124, 201, 203, 205, 207, 208, 209, 215, 220, 223, 230), N = 22; no record dropped",
+      "time_split": "Per record: drop beats whose R peak lies within 30 s (10800 samples) of sample 325000; earlier beats -> attacker side, later beats -> test",
+      "attacker_validation": "Last 20 % (by time) of each record's attacker side",
+      "counts_checked_by_SV3": "50995 DS1 beats; 1681 dropped; attacker side 767-1637 and test 799-1613 beats per record; largest patient 6.59 % of beats",
+      "decoder_training_data": "Attacker side of the 22 DS1 records",
+      "caveat": "DS1 patients were in the training of the model, so trial numbers are an early warning only and never enter the paper's main numbers"
+    },
+    "official": {
+      "identities": "DS2; OPEN: N = 21 (without 202, SV1 2026-11-03 item 10) or N = 22 (SV1 2026-11-05 point 4 wording); asked to SV1",
+      "time_split": "Same rule as the trial",
+      "decoder_training_data": "DS1 train beats (auxiliary data)",
+      "rule": "DS2 is used only for privacy evaluation; never to choose lambda, noise, checkpoint or threshold; protection parameters are locked on validation before the first Pi on DS2"
+    },
+    "DS2_in_trial": false
+  },
+  "trial_week11_scope": {
+    "rho0": "Package A checkpoint (fcf3f846...) at s2, s4, s5, s8",
+    "rho1": "NoPeek candidates (selected lambda, deployment seed) at s2, s4, s5 from the NoPeek v1 grid",
+    "rho2": "Candidate at s2 if ready; at the latest early week 12",
+    "attacks": ["A1", "B-naive"],
+    "questions": ["(i) Does Pi(s, rho0) increase with s?", "(ii) Does rho1 raise Pi at s2 clearly?"],
+    "report": "Report to SV1 the same day the numbers exist"
+  },
+  "predeclared_branches_after_trial": {
+    "main": "s2 fails Pi_min at rho0 and passes at rho1 or rho2: main scenario, N2 leads",
+    "s2_passes_at_rho0": "Keep Pi_min = 0.5; use the Pi_min sweep to find the range where protection matters",
+    "no_signal": "Pi does not increase with s, or neither rho1 nor rho2 raises Pi: SV1 decides the T4 pivot in week 12",
+    "middle_cut": "Consider rho in {rho0, rho1}. If s4 has a rho reaching Pi_min, use s4; else if s5 has one, use s5; else use s4 and consider rho2 (SV1 6a)"
+  },
+  "attack_models_candidate": {
+    "status": "OPEN for SV1: architectures and budgets are candidates, fixed before the lock",
+    "B_classifier": "NCL input: two Conv1d(64, kernel 5)+ReLU+MaxPool blocks, global average pooling, Linear(N); NC input (s9, s10): MLP 128-ReLU-N. AdamW lr 1e-3, weight decay 1e-4, batch 256, at most 50 epochs, early stop on attacker-validation bacc with patience 5, CE weighted by inverse patient frequency, 3 seeds",
+    "A1_decoder": "Mirror of the head: ConvTranspose/upsampling back to [1, 360]; MSE; AdamW lr 1e-3, batch 256, at most 50 epochs, early stop on attacker-validation MSE with patience 5; 1 seed in the trial",
+    "input": "Dequantized tensor (INT8 x FP16 scale) as the edge sees it"
+  },
+  "limitations": ["Small number of identities (N = 21 or 22); PTB-XL left for later", "No sex/age inference", "Trial on DS1 patients seen in training"],
+  "change_control": {"locked_file": "Never edit after lock; changes are new versions with reason, old/new hashes and SV1 review"},
+  "execution_in_this_round": {"attacks": false, "fit": false, "DS2": false, "code": "Attack code is written after SV1 reviews this protocol"}
+}

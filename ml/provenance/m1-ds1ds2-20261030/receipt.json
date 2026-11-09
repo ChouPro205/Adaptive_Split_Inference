@@ -1,0 +1,313 @@
+{
+  "status": "PASS_CANDIDATE_AUDIT_NOT_LOCKED_NOT_REVIEWED",
+  "python": "3.11.9",
+  "numpy": "2.4.6",
+  "wfdb": "4.3.1",
+  "positive_and_negative_commands": [
+    {
+      "name": "verify-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "bfba0eebf4b7c0f8180a47dd0f5b7acc2bda71fa1567534f6c4b27bf92169da4"
+    },
+    {
+      "name": "unit-tests-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/test_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "f8e321670dd100007ab749b30b9142243718ce8c76e3b05be2d75376cab5e2de"
+    },
+    {
+      "name": "verify-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "bfba0eebf4b7c0f8180a47dd0f5b7acc2bda71fa1567534f6c4b27bf92169da4"
+    },
+    {
+      "name": "unit-tests-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "6efe5df82b82bb2343f121b113216e64a500b7652e1a38fa86622d11ddb1918c"
+    },
+    {
+      "name": "reproduce",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 0,
+      "expected_failure": null,
+      "pass": true,
+      "log_sha256": "65f00702a6bd6047dba4a4e3b8ee00b3cce9512b7c95f1a0955f306474813e65"
+    },
+    {
+      "name": "patient-forgery-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Canonical patient identity mismatch",
+      "pass": true,
+      "log_sha256": "76db3879f5d03e9a9a4d508f4ca44f77effdc993646bfe098ef7e2d52b369217"
+    },
+    {
+      "name": "patient-forgery-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Canonical patient identity mismatch",
+      "pass": true,
+      "log_sha256": "76db3879f5d03e9a9a4d508f4ca44f77effdc993646bfe098ef7e2d52b369217"
+    },
+    {
+      "name": "ds2-in-train-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "DS1 train/validation inventory differs",
+      "pass": true,
+      "log_sha256": "cf0fc490850fadc5e7c2007a7553ac7f5d922705746ec483f8832ea99f9ed2c2"
+    },
+    {
+      "name": "ds2-in-train-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "DS1 train/validation inventory differs",
+      "pass": true,
+      "log_sha256": "cf0fc490850fadc5e7c2007a7553ac7f5d922705746ec483f8832ea99f9ed2c2"
+    },
+    {
+      "name": "202-in-val-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "DS1 train/validation inventory differs",
+      "pass": true,
+      "log_sha256": "cf0fc490850fadc5e7c2007a7553ac7f5d922705746ec483f8832ea99f9ed2c2"
+    },
+    {
+      "name": "202-in-val-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "DS1 train/validation inventory differs",
+      "pass": true,
+      "log_sha256": "cf0fc490850fadc5e7c2007a7553ac7f5d922705746ec483f8832ea99f9ed2c2"
+    },
+    {
+      "name": "normalization-mean-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Train-only normalization reconstruction differs",
+      "pass": true,
+      "log_sha256": "c5c6b8f1a8d911bdd6c0d832f35bfe537b30c011b0fdee3b3d7c783ea0b4fa28"
+    },
+    {
+      "name": "normalization-mean-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Train-only normalization reconstruction differs",
+      "pass": true,
+      "log_sha256": "c5c6b8f1a8d911bdd6c0d832f35bfe537b30c011b0fdee3b3d7c783ea0b4fa28"
+    },
+    {
+      "name": "alternate-validation-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Reproducible validation differs",
+      "pass": true,
+      "log_sha256": "fa9cf981b3f34e4d16b352d1cbbc5d63479f788e34ba02ab5a6b3c0da8153eaf"
+    },
+    {
+      "name": "alternate-validation-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Reproducible validation differs",
+      "pass": true,
+      "log_sha256": "fa9cf981b3f34e4d16b352d1cbbc5d63479f788e34ba02ab5a6b3c0da8153eaf"
+    },
+    {
+      "name": "normalized-array-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Raw-to-normalized window mismatch",
+      "pass": true,
+      "log_sha256": "fde1117d632106f8eb874ac48e7671268c72cc4d24a36d8152e8f073d916a231"
+    },
+    {
+      "name": "normalized-array-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Raw-to-normalized window mismatch",
+      "pass": true,
+      "log_sha256": "fde1117d632106f8eb874ac48e7671268c72cc4d24a36d8152e8f073d916a231"
+    },
+    {
+      "name": "metadata-lead-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Raw label/identity/lead mismatch",
+      "pass": true,
+      "log_sha256": "9ac728deeb7b6707671f03456516cbddaf1bda4e7c859f4c98e9e709a68aed8e"
+    },
+    {
+      "name": "metadata-lead-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Raw label/identity/lead mismatch",
+      "pass": true,
+      "log_sha256": "9ac728deeb7b6707671f03456516cbddaf1bda4e7c859f4c98e9e709a68aed8e"
+    },
+    {
+      "name": "missing-source-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Manifest schema/inventory differs",
+      "pass": true,
+      "log_sha256": "52ae475e4480bf5950c2dcb5e02f75219564462441bd31259b104918a2426e2b"
+    },
+    {
+      "name": "missing-source-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Manifest schema/inventory differs",
+      "pass": true,
+      "log_sha256": "52ae475e4480bf5950c2dcb5e02f75219564462441bd31259b104918a2426e2b"
+    },
+    {
+      "name": "missing-record-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Duplicate/missing manifest records",
+      "pass": true,
+      "log_sha256": "5d83ebaaedd5094aca3dd9c92803213e985bf60bd0cf7295b1eb37db7a84c815"
+    },
+    {
+      "name": "missing-record-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Duplicate/missing manifest records",
+      "pass": true,
+      "log_sha256": "5d83ebaaedd5094aca3dd9c92803213e985bf60bd0cf7295b1eb37db7a84c815"
+    },
+    {
+      "name": "raw-checksum-normal",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-B",
+        "ml/scripts/verify_mitdb_ds1ds2_m1_v1.py"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Official checksum manifest differs",
+      "pass": true,
+      "log_sha256": "49793a4f21bb6df7ac391909720defcd3ce97b9e3a04669654645c60bf783844"
+    },
+    {
+      "name": "raw-checksum-optimized",
+      "runtime": "project_shared_venv",
+      "python_flags": [
+        "-O",
+        "-B"
+      ],
+      "exit_code": 1,
+      "expected_failure": "Official checksum manifest differs",
+      "pass": true,
+      "log_sha256": "49793a4f21bb6df7ac391909720defcd3ce97b9e3a04669654645c60bf783844"
+    }
+  ],
+  "reproducible_files": 16,
+  "real_data": true,
+  "predictions_performed": false,
+  "training_performed": false,
+  "negative_fixtures": "Copies/hardlinks in local audit only; synthetic unit fixtures are not dataset evidence."
+}

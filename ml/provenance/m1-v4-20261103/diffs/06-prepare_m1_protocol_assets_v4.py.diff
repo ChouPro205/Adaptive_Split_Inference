@@ -1,0 +1,49 @@
+--- ml/scripts/prepare_m1_protocol_assets_v3.py
++++ ml/scripts/prepare_m1_protocol_assets_v4.py
+@@ -5,6 +5,9 @@
+ import io
+ import json
+ from pathlib import Path
++
++import baseline_sampler_v4 as sampler
++from m1_metrics_v4 import S_SOFT_LABEL
+ 
+ ROOT=Path(__file__).resolve().parents[2]
+ CLASSES=['N','S','V','F','Q']
+@@ -42,6 +45,8 @@
+          p['authority']['artifact_review']=='NOT_REVIEWED','Unreviewed protocol cannot claim lock/authority')
+     need(not any(p['execution_in_this_round'].values()),'Execution scope differs')
+     need(p['nopeek']['utility'].startswith('EVERY_SEED'),'NoPeek requires every seed utility')
++    need(p['baseline']['balanced_sampler_policy_id']==sampler.POLICY_ID,'Protocol sampler policy differs')
++    need(p['baseline']['gates']['S_soft_label']==S_SOFT_LABEL,'Protocol S soft-gate label differs')
+     manifest=read(ROOT/p['data']['manifest'])
+     for label,path in [('config',p['data']['config']),('manifest',p['data']['manifest']),
+                        ('normalization',p['data']['normalization']),('metric_policy',p['data']['metric_policy'])]:
+@@ -77,13 +82,17 @@
+     need(len(trials)==6 and len(seeds)==3,'Six configurations and three seeds required')
+     weights={t['id']:({c:min(t['cap'],train['samples']/(5*n)) if n else 0
+                         for c,n in zip(CLASSES,train['counts'])} if t['mode']=='weighted_ce' else None) for t in trials}
++    samplers={t['id']:({'policy':sampler.POLICY_ID,'formula':p['baseline']['balanced_sampler'],
++                        'expected_draws_per_epoch':dict(zip(CLASSES,map(str,sampler.expected_draws(train['counts'])))),
++                        'per_class_sample_weight':dict(zip(CLASSES,sampler.per_class_sample_weight(train['counts'])))}
++                       if t['mode']=='balanced_sampler' else None) for t in trials}
+     ledger=[{'trial':t['id'],'seed':s,'cap':t['cap'],'learning_rate':t['lr'],
+              'state':'PLANNED_NOT_STARTED','data_manifest_sha256':sha(ROOT/p['data']['manifest']),
+              'protocol_sha256':sha(protocol)} for t in trials for s in seeds]
+     return {'dcor-validation-subset.csv':csv_bytes(fields,subset),
+             'class-weights-by-trial.json':json_bytes({'status':'PROPOSED_NOT_TRAINED','train_counts':train['counts'],
+              'train_samples':train['samples'],'formula':p['baseline']['weight_formula'],
+-             'weights':weights}),
++             'weights':weights,'balanced_samplers':samplers}),
+             'baseline-trial-register.csv':csv_bytes(list(ledger[0]),ledger)}
+ 
+ 
+@@ -95,7 +104,7 @@
+     p.add_argument('--output',type=Path,required=True)
+     a=p.parse_args()
+     expected=assets(a.protocol,a.artifacts)
+-    source_path='ml/scripts/prepare_m1_protocol_assets_v3.py'
++    source_path='ml/scripts/prepare_m1_protocol_assets_v4.py'
+     identity={'status':'CANDIDATE_ASSETS_NOT_LOCKED_NOT_TRAINED',
+               'protocol_sha256':sha(a.protocol),'generator_sha256':sha(ROOT/source_path),
+               'artifacts':{n:hashlib.sha256(b).hexdigest() for n,b in expected.items()},

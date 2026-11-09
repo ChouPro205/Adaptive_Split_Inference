@@ -1,0 +1,46 @@
+{
+  "status": "MATCH_8_ENUMERATION_COUNTS_AND_CURRENT_REFERENCE_DRAW",
+  "reference": "current user request and relayed latest rules; not artifact approval",
+  "expected": {
+    "4": {
+      "B": 1775,
+      "C": 1645,
+      "F20": 153,
+      "F10": 700
+    },
+    "5": {
+      "B": 6957,
+      "C": 6716,
+      "F20": 873,
+      "F10": 3173
+    }
+  },
+  "recomputed": {
+    "4": {
+      "B": 1775,
+      "C": 1645,
+      "F20": 153,
+      "F10": 700
+    },
+    "5": {
+      "B": 6957,
+      "C": 6716,
+      "F20": 873,
+      "F10": 3173
+    }
+  },
+  "records": [
+    "118",
+    "119",
+    "205",
+    "223"
+  ],
+  "counts": [
+    8322,
+    172,
+    1004,
+    25,
+    0
+  ],
+  "canonical_latest_text_sha256": "cf28b31341316b02cc0fffc7078312ebb691b1783e72829bea422fa08ae0f39c"
+}

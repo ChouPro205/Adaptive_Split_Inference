@@ -1,0 +1,229 @@
+{
+  "type": "M1_V4_GRID_ANALYSIS_RECEIPT_NOT_CHECKPOINT_LOCK",
+  "date": "2026-11-03",
+  "prepared_by": "SV3",
+  "source_head": "365acbc993118eaed0e5920d2c3b01beb4854504",
+  "branch": "dev/ml-sv3",
+  "origin_dev_ml_sv3": "365acbc993118eaed0e5920d2c3b01beb4854504",
+  "origin_main_commits_not_in_branch": 0,
+  "inputs_sha256": {
+    "ml/configs/mitdb_m1_baseline_protocol_v4.json": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+    "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json": "1ce2f811e62f9ef55833e7256c6678e2b348cf1e2f750412e2e0b6203c27d956",
+    "ml/provenance/m1-v4-lock-20261103/m1_baseline_v4_lock_and_train_authorization.json": "95e659493f7648a5c46d19d5d4364ab2cc594f7e462d227433df512177b02f64",
+    "ml/manifests/mitdb-ds1ds2-m1-v3-r2/metric-policy.json": "4ce2028bbc03021a8a27299edd2a362677c89c8c1e605df59d7c54e65ccfbf3c",
+    "ml/data/runs/mitdb-baseline-v4-20261103/grid-result.json": "24edf58e203b383864b97928630d9c8aa6983bfceb7613b32f5fd45a3cd7d8ce",
+    "ml/scripts/baseline_grid_v4.py": "2a57b9b9e9c44a5e0681360b693b391b93be4596588fec230218f0e4e3639ff2",
+    "ml/scripts/baseline_selection_v4.py": "86872dae2686bcedf87e6256054dac55eb4a42c11cbc6baa1e7429b849cc9631"
+  },
+  "scripts_sha256": {
+    "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck_grid_v4.py": "8a452c08e155b68d8f9bbc6373d6e67c72a7aa6a454a0ad100d934a9a4fd034d",
+    "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck_negative.py": "56ab436c4b2e88ee6245fa0270516a65033e4f521fef403af554690f6af825d5",
+    "ml\\provenance\\m1-v4-grid-analysis-20261103/render_selection_v4.py": "dec52f0b53c12948d51f946bdb3f7d20de1b9a4c0e48f1be4c84835144111d20"
+  },
+  "python": "3.11.9",
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/baseline_grid_v4.py",
+        "analyze",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+        "--plan",
+        "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json",
+        "--results",
+        "ml/data/runs/mitdb-baseline-v4-20261103"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/analyze-normal.stdout.json": "2b3346e671004db0fbcfe3ec4d1e806da092aa05215df18f847709e28a042f27",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/analyze-normal.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/baseline_grid_v4.py",
+        "analyze",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+        "--plan",
+        "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json",
+        "--results",
+        "ml/data/runs/mitdb-baseline-v4-20261103"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/analyze-optimized.stdout.json": "2b3346e671004db0fbcfe3ec4d1e806da092aa05215df18f847709e28a042f27",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/analyze-optimized.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck_grid_v4.py",
+        "--out",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck-normal.json"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck-normal.json": "8ff1c229d04cf2e227caed1c262319cbea9e68ec673d87ae19e460cbf97873a0",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/crosscheck-normal.txt": "25f90bde5661867f9c3ddc547a54eedf5b61b39a95e070ecf3d348f2589df1e1"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck_grid_v4.py",
+        "--out",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck-optimized.json"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck-optimized.json": "8ff1c229d04cf2e227caed1c262319cbea9e68ec673d87ae19e460cbf97873a0",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/crosscheck-optimized.txt": "25f90bde5661867f9c3ddc547a54eedf5b61b39a95e070ecf3d348f2589df1e1"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck_negative.py",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/crosscheck_grid_v4.py",
+        "<scratch directory outside repo>"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/crosscheck-negative.txt": "98da9925cfbfc86b8b8902cf6582f04a15e11003132b0a8ace7681d8f6ce1706"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/test_baseline_grid_v4.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/tests-baseline_grid_v4-normal.txt": "fc983f4e352ba9ec37fbeba189286379db18b36d461e32a6bbdcf2892eae45d2"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/test_baseline_grid_v4.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/tests-baseline_grid_v4-optimized.txt": "f8bf5401cc812b723e9649c752eff38f03e66c90055f3eb0fd316d1ae7845f8a"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/test_baseline_sampler_v4.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/tests-baseline_sampler_v4-normal.txt": "57b3232c00b299c6f09cd5c1d1bf9c4ea31fc906ab6b26715af874fbda9f4420"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/test_baseline_sampler_v4.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/tests-baseline_sampler_v4-optimized.txt": "1ed2abeff49dc1e08c90de5f887c84c555b8a85dc2cc02f2153a26778ed29ec3"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/test_m1_protocol_assets_v4.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/tests-m1_protocol_assets_v4-normal.txt": "7777703a753fce60e7bad5485be9207c949211b78436d85e08459eb137167c05"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/test_m1_protocol_assets_v4.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/tests-m1_protocol_assets_v4-optimized.txt": "131dc1e6c4114d5835c11b024c5875b03c72ccea6c5f14547482d7fd6abec414"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/render_selection_v4.py",
+        "--tables",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/selection-tables.md",
+        "--sums",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/selected-checkpoints.sha256"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/selection-tables.md": "be2f793cce8b4fe1fba47c561646f1e1f8735488d29c3db986227018dbb176af",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/selected-checkpoints.sha256": "680a3e9af07c2a9cfae6341578dbd4702d073818b9fd73d8002f613b64171874",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/render.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "sha256sum",
+        "-c",
+        "ml\\provenance\\m1-v4-grid-analysis-20261103/selected-checkpoints.sha256"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml\\provenance\\m1-v4-grid-analysis-20261103\\logs/checkpoint-sha256sum-c.txt": "77c4ae9e9882c51d66c2eae3de2fb232762f3c513925715d2031490c801f80b9"
+      }
+    }
+  ],
+  "tests": {
+    "baseline_grid_v4": 33,
+    "baseline_sampler_v4": 12,
+    "m1_protocol_assets_v4": 17,
+    "result": "OK in normal and -O"
+  },
+  "scope": {
+    "DS2_opened": false,
+    "model_instantiated_by_analysis": false,
+    "arrays_opened_by_analysis": false,
+    "checkpoint_lock": false,
+    "tests_open": "train/val arrays and val_metadata.csv only (preflight/assets fixtures); no DS2",
+    "run_directory_modified": false
+  },
+  "not_verified": [
+    "Rerun determinism of the real grid (only random-data smoke before lock)",
+    "Checkpoint reload by this analysis (reload_confusion_exact comes from the training script)",
+    "Independent review by SV1"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "existing_worktree_files_checked": 3600,
+  "existing_frozen_local_files_checked": 703,
+  "changed_or_missing": [],
+  "changed_or_missing_frozen": [],
+  "head_unchanged": true,
+  "branch_unchanged": true,
+  "index_unchanged": true,
+  "tracked_diff": "",
+  "root_status_unchanged": true,
+  "before_snapshot_raw_sha256": "400658f76a666afe76478acfd9898c9630afde8c062aca0472822e0a5e353ee9",
+  "scope": "Fresh hash preservation check; historical v1/v2 tests not rerun"
+}

@@ -1,0 +1,53 @@
+Đây là câu trả lời của bạn tôi:
+Chào Kỳ Anh, mình trả lời gom một lần, theo đúng thứ tự của bạn.
+
+Tóm tắt: Đồng ý mục 1 và 2, có thêm vài chi tiết bên dưới; mục 2 cần Trung xác nhận vì đó là pipeline của Trung. Mục 3 và 4 mình đã gửi thầy hôm 30/10, đang chờ, hạn chốt trước cuối tuần 10. Mục 5–8 chưa có bản chi tiết: mình gửi phần đã cố định trong tài liệu của thầy, phần còn lại bạn soạn bản ứng viên như bạn đề xuất, còn các câu chưa có lời đáp thì mình gom lại gửi thầy một lần.
+
+Bạn không cần chờ mục 3–8 để khóa M1 và train baseline, vì các mục đó chỉ ảnh hưởng phần NoPeek/P2, LUT và tấn công. Cứ khóa protocol theo bản 1.2 cộng với mục 1–2 dưới đây. Nếu thầy chốt mục 3 hoặc 4 khác đề xuất, bạn ra phiên bản protocol mới cho phần NoPeek trước khi chạy grid, lý do ghi là quyết định của thầy (mục 4.0 bản 1.2 cho phép).
+
+Thứ tự chọn cấu hình baseline: đồng ý cách của bạn. Câu "ưu tiên cấu hình đạt cả (c)" trong bản 1.2 đúng là ý này: (c) là bộ lọc ưu tiên, không phải tiêu chí phá hòa. Nếu S chỉ dùng khi hòa thì (c) gần như không bao giờ có tác dụng, vì mean macro-F1 hiếm khi bằng nhau. Ghi thêm vào protocol:
+Định nghĩa "hòa" cụ thể, ví dụ bằng nhau sau khi làm tròn 4 chữ số thập phân.
+Giữ nhánh của bản 1.2: không cấu hình nào đạt (a) và (b) thì dừng, báo nhóm và thầy, không tự mở rộng lưới.
+Seed tốt nhất trượt gate thì loại cả cấu hình, không chuyển sang seed khác; bảng vẫn báo gate của cả 3 seed.
+Thời điểm sửa lượng tử: đồng ý. Cách này tốt hơn mục T4 bản 1.2, vì ở bản 1.2 kết quả DS2 vẫn quyết định có áp biện pháp hay không. Chi tiết:
+Dữ liệu calibration và fast finetune chỉ lấy từ train. Validation chỉ dùng để chấm gate DPU (tầng 1, tầng 2) cho từng s; nếu validation vừa dùng để calibrate vừa dùng để chấm thì gate sẽ lạc quan.
+Số lần thử và quy tắc chọn giữa bản gốc với bản đã sửa ghi sẵn trong protocol (bản 1.2 đang là một lần cho mỗi s).
+Khóa xmodel s0–s9 và cấu hình lượng tử bằng SHA-256 trong manifest trước khi chạy DS2.
+Trên DS2 vẫn chạy đủ hai tầng để báo. Nếu tầng 1 trượt trên DS2 thì đó là lỗi pipeline: được sửa lỗi, ghi lại và chạy lại mọi s, nhưng không chọn lại calibration, fine-tune hay siêu tham số theo DS2. Mình sẽ nhắn Trung xác nhận và ghi thay đổi này thành ghi chú sửa mục T4 bản 1.2.
+Thước đo tiện ích (đang chờ thầy). Đề xuất mình đã gửi:
+Ràng buộc dùng macro-F1 4 lớp N/S/V/F. Accuracy luôn báo kèm nhưng không làm ràng buộc, vì mô hình dồn về N vẫn giữ được accuracy.
+Mốc là macro-F1 FP32 của gói A, một số cố định cho mọi s, đem so với số của đường DPU ở từng (s, ρ). Không lấy DPU cùng s làm mốc, vì như vậy phần hụt do lượng tử ở từng s bị che mất.
+Ngưỡng ≥ 0,95 × mốc. Cặp không đạt bị loại offline khỏi tập hành động, nên controller không phải xét accuracy lúc chạy (bài toán (3)–(6) trong khung bài không có hạng tử accuracy). Câu "accuracy ≥ 95 % baseline" ở kịch bản pin cạn sẽ sửa cho khớp.
+Tiêu chí 2 % accuracy của thầy giữ như mục 4.5 bản 1.2. Mình sẽ đề xuất thêm với thầy, theo đúng nguyên tắc bạn nêu ở mục 2: việc lọc cặp tính trên validation DS1 (đường DPU, mốc là macro-F1 validation của checkpoint gói A, cùng mốc với quy tắc chọn λ); DS2 bỏ 202 chỉ để báo. Cặp qua được validation mà trượt trên DS2 thì báo trung thực, không lọc lại. Vì vậy bảng của bạn cứ có đủ accuracy và macro-F1 (4 lớp, 5 lớp), FP32 và DPU, validation và DS2; thầy chốt xong thì chỉ cần chọn cột.
+Tập hành động (đang chờ thầy). Đề xuất mình đã gửi:
+s ∈ {0, 2, 5, 10}, ρ ∈ {P0, P1, P2}. P2 chỉ ở s2 và s5 (vừa flash: khoảng 73 KB trong khoảng 183 KB còn trống). s10 chỉ gửi logits nên không có ρ. Tổng 9 cặp: (0,P0), (0,P1), (2,P0), (2,P1), (2,P2), (5,P0), (5,P1), (5,P2), (10). P2 ở s0 (chỉ có nhiễu, chưa có lớp nào để áp NoPeek) là tùy chọn, xét sau tuần 11.
+Lý do (từ E_dev tuần 9 và E_tx s2 tuần 8 suy theo số byte): s1 thua s2; s8 và s9 tốn cả năng lượng lẫn thời gian hơn s10. Đánh đổi thật vì vậy là offload ở s2/s5 so với chạy hết tại chỗ ở s10. Việc loại s8/s9 sẽ xác nhận lại sau hồi quy E_tx tuần 11. s8 vẫn chạy offline cho Hình 5 và tấn công, đúng như bạn đang theo.
+ρ hiện được định nghĩa như sau: P0 không bảo vệ; P1 là hoán vị kênh + mặt nạ affine theo khóa, khả nghịch bit-exact, đặc tả ở contracts/i2_protection_v1.md (I2/1); P2 là head/tail NoPeek (λ đã chọn, seed triển khai) cộng nhiễu học được theo kênh. Còn mở một điểm, mình hỏi thầy luôn: P2 có chồng thêm P1 không (ảnh hưởng E_prot và kẻ nghe lén).
+Đồng ý quy tắc của bạn: một cặp chỉ vào tập chạy thật khi đã kiểm flash (mình đo trên image thật ở tuần 12), có đúng head/tail, đường thực thi chạy được và đạt ràng buộc ở mục 3. Cặp offline để ở bảng riêng, có cột đánh dấu, controller không đọc bảng đó.
+Threat model và tấn công: chưa có protocol chi tiết, bạn soạn bản ứng viên. Phần đã cố định trong tài liệu thầy (khung bài mục III-B; lộ trình bài 2.1 và bài 8; hướng dẫn chi tiết của SV3 tuần 13–17):
+Ai: edge honest-but-curious (chạy tail đúng nhưng muốn suy ra input) và kẻ nghe lén thụ động trên kênh không dây.
+Biết gì: kiến trúc, trọng số tail, dữ liệu phụ trợ cùng phân bố (worst case), truy vấn head tùy ý. Tấn công thích nghi biết đủ thuật toán bảo vệ (nguyên tắc Kerckhoffs). Không biết khóa.
+Muốn gì: dựng lại tín hiệu gốc; suy ra thuộc tính nhạy cảm (tái định danh bệnh nhân).
+Ngoài phạm vi: tấn công vật lý, side-channel, đầu độc mô hình, edge độc hại chủ động.
+Tấn công và chỉ số: decoder ConvTranspose1d (NRMSE, Pearson, sai số vị trí đỉnh R tính bằng ms, kèm gallery); decoder GAN (phải tốt hơn decoder cơ bản, nếu không là chưa hội tụ); tái định danh trên PTB-XL (accuracy top-1 so với 1/N); tấn công thích nghi là huấn luyện lại decoder GAN trên tensor đã bảo vệ. Báo cả kết quả bất lợi.
+Tấn công dùng đúng checkpoint triển khai: gói A cho P0/P1, seed triển khai của gói B cho P2 (mục 4.5 bản 1.2). Tên gọi các tấn công chưa thống nhất: khung bài có 3 tấn công (A1 decoder, A2 GAN, A3 thích nghi), hướng dẫn chi tiết có 4 (thêm tái định danh ở tuần 15), trong khi Bảng V của khung bài vẫn cần accuracy tái định danh. Protocol nên có một bảng ánh xạ tên. Phải hỏi thầy: a) Edge cần khóa P1 mới chạy được tail, nên P1 không che gì trước edge, chỉ che trước kẻ nghe lén (lộ trình mục 7.1 cũng ghi là phải nói rõ điều này). Vậy Π(s, P1) tính theo kẻ tấn công nào? Điểm này quyết định cả cột P1 của bảng Π. b) Dữ liệu của kẻ tấn công. Mình đề xuất decoder huấn luyện trên DS1 và đánh giá trên DS2 bỏ 202 (khác bệnh nhân). Tái định danh cần cùng bệnh nhân ở hai phía nên phải chia theo cách khác; bạn đề xuất cụ thể trong bản ứng viên. Hạn: bản ứng viên xong trước cuối tuần 12. Mình và Trung review rồi gửi thầy, khóa trước khi chạy A1 ở tuần 13.
+Π(s, ρ): thầy chốt, hiện chưa có công thức.
+Đã có: thầy khuyến nghị Π = 1 − accuracy tái định danh chuẩn hóa, thang [0, 1], bảng không ô trống, giao thầy ở tuần 17. Bài phải nói rõ Π là đo lường thực nghiệm dưới một họ tấn công cụ thể, không phải đảm bảo lý thuyết kiểu DP. Π_min do thầy đặt (thầy hiệu chỉnh ở tuần 11 theo kế hoạch của thầy, rồi quét Π_min trong phần phân tích độ nhạy). Đồng ý không đồng nhất dCor thấp với Π cao; dCor chỉ là chỉ số phụ.
+Để thầy có cái cụ thể mà duyệt, bản ứng viên có thể ghi một công thức, đánh dấu rõ là ứng viên. Ví dụ: Π = clip((a_ref − a) / (a_ref − a_chance), 0, 1), trong đó a là accuracy tái định danh trên tensor (s, ρ), a_ref là accuracy của cùng tấn công trên tín hiệu gốc x, a_chance = 1/N. Nhiều tấn công thì lấy min, tức tấn công mạnh nhất quyết định. Thầy chưa duyệt thì không dùng.
+
+Thống kê và ablation.
+Đã có trong khung bài (mục VI-L) và lộ trình (bài 11.4): đại lượng liên tục báo mean ± CI95 Student-t; tỉ lệ dùng khoảng Wilson; so sánh hai phương pháp dùng Mann–Whitney U kèm Cliff's δ; nhiều phương pháp dùng Friedman + Nemenyi; hiệu chỉnh Holm–Bonferroni; báo p-value chính xác.
+Áp vào phần SV3 (đề xuất, ghi vào bản ứng viên để thầy duyệt):
+
+Se, +P, accuracy, accuracy tái định danh: khoảng Wilson.
+NRMSE, Pearson, sai số đỉnh R: mean ± CI95 t trên mẫu test.
+Qua seed: mean ± SD (ddof = 1) kèm từng seed như bản 1.2; không suy CI95 từ 3 seed.
+Macro-F1 trên DS2: CI bằng bootstrap theo bản ghi, vì các nhịp trong cùng một bản ghi tương quan với nhau. Điểm này không có trong tài liệu thầy.
+So sánh có/không bảo vệ trên cùng mẫu test là so sánh cặp, nên hợp với Wilcoxon signed-rank hơn Mann–Whitney; cần thầy xác nhận. Ablation trong khung bài (Bảng VI: bỏ tín hiệu pin, hàng đợi, kênh, bảo vệ, chọn cặp; static best) là ablation của controller, thầy chạy ở tuần 19–21; SV3 chỉ cấp bảng accuracy và Π làm đầu vào. Tài liệu chưa có ablation ML bắt buộc nào. Đề xuất tùy chọn: tách thành phần của P2 (chỉ nhiễu / chỉ NoPeek / cả hai) ở s2 hoặc s5; RR offline (tùy chọn như đã chốt). Danh sách bắt buộc và ngân sách GPU để thầy chốt.
+WP-D và đầu ra bàn giao. Mình chưa nhận được bản WP-D nào mới hơn bộ tài liệu tháng 8 của thầy. Bản hiện hành:
+System model và bài toán tối ưu: khung bài mục III-C đến III-F (công thức 1–6) và Algorithm 1. Controller tham chiếu bằng Python ở lộ trình bài 9.2; LUT theo (s, ρ) gồm E_dev, E_prot, bytes, t_dev, t_prot, t_edge, Pi.
+Threat model: như mục 5.
+Schema lut.json (I3): vẫn OPEN (contracts/I3_SV3_input.md). Theo kế hoạch, thầy thiết kế lược đồ lut.json ở tuần 9; quy tắc duy nhất đã chốt là ghi đơn vị trong tên trường (E_dev_uJ, t_dev_ms, bytes_payload). Mình sẽ hỏi thầy mốc.
+Trong lúc chờ: bạn xuất bảng dạng dài, mỗi dòng là một bộ (s, ρ, tập, đường FP32/DPU, chỉ số), kèm checkpoint_sha256, phiên bản protocol, phiên bản định nghĩa Π và số mẫu; tỉ lệ để dạng 0–1, không dùng %. Khi thầy chốt schema thì chỉ cần ánh xạ cột.
+Đóng góp và đích: theo tài liệu thầy, đóng góp chính là N2, tức chọn cặp (s, ρ) cùng lúc với ràng buộc Π ≥ Π_min; sau đó là controller Lyapunov có bảo đảm, phương pháp đo năng lượng bằng phần cứng, và đánh giá dưới tấn công thích nghi. Đích vòng 1 là IEEE IoT-J hoặc TGCN; nếu ablation ở mốc G5 (tuần 19) cho thấy hiệu ứng yếu thì xoay sang hướng nặng về đo đạc (T4). Phần SV3 phục vụ trực tiếp N2: bảng accuracy và Π phải phủ mọi cặp mà controller được chọn, để kiểm được luận điểm "cắt nông nhưng bảo vệ mạnh có thể rẻ hơn cắt sâu". Mình nhờ thầy xác nhận lại hướng này.
+Tiếp theo: mình gửi thầy một tin gom các câu còn mở (mục 3, 4 đã gửi; thêm Π(s, P1) tính theo kẻ tấn công nào, P2 có chồng P1 không, công thức Π và cách gộp, danh sách thống kê/ablation ML bắt buộc, mốc lut.json, xác nhận hướng đóng góp). Thầy trả lời là mình báo bạn ngay. Bạn gửi gói M1 (protocol, enumeration, bảng đếm, split/seed, SHA-256) khi xong; mình review theo các điểm cần kiểm ở mục 4.1.

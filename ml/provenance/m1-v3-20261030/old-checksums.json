@@ -1,0 +1,26 @@
+{
+  "v1": {
+    "entries_checked": 49,
+    "mismatches": [],
+    "status": "PASS"
+  },
+  "v2": {
+    "entries_checked": 72,
+    "mismatches": [],
+    "status": "PASS"
+  },
+  "bundles": [
+    {
+      "path": "sv3-m1-audit-20261030/SV3_M1_CANDIDATE_REVIEW_20261030_v2.zip",
+      "sha256": "696ea82f8c01314b72ebbbfadba128a5dd1ad05483a499d173f8182d621d0e51",
+      "expected_sha256": "696ea82f8c01314b72ebbbfadba128a5dd1ad05483a499d173f8182d621d0e51",
+      "pass": true
+    },
+    {
+      "path": "sv3-m1-v2-audit-20261030/SV3_M1_V2_CANDIDATE_REVIEW_20261030.zip",
+      "sha256": "4b07a3d0fde1be8cd704d4517b68ad355b2bb0d3f93ad686e0d41cf9eafe45a4",
+      "expected_sha256": "4b07a3d0fde1be8cd704d4517b68ad355b2bb0d3f93ad686e0d41cf9eafe45a4",
+      "pass": true
+    }
+  ]
+}

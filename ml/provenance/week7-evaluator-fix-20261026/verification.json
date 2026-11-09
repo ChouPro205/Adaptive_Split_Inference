@@ -1,0 +1,65 @@
+{
+  "status": "PASS_EVALUATOR_FIX_VERIFICATION",
+  "implementation_commit": "18e74ab198bd444e6cc0ae5eedaa9969132bd935",
+  "review_base_commit": "0545b470ebccb577baa8e11c1fff1c502f716b17",
+  "new_source_sha256": {
+    "ml/scripts/week7_dpu_accuracy.py": "c6ad4cd690a65161e0c5be6e155f91be5f31aae1fcfcc0f9418af9311fb64dbc",
+    "ml/scripts/test_week7_reconcile.py": "b08a3f48a64c7bf7c5aa9ba6c3491bb9d3e8009dbadf56fdf42eb0fe60b66cfa"
+  },
+  "commands": {
+    "tests-normal": {
+      "commit": "18e74ab198bd444e6cc0ae5eedaa9969132bd935",
+      "exit_code": 0,
+      "receipt_sha256": "a57c98d4d43e193949f372584891a842a812fd21767e763075b09e1de60e3488",
+      "logs_sha256": {
+        "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr.txt": "f6e7fbe39f467b0662ae07a0be71b4a7cc2217ee6f272f1b8114e513c70dcfca"
+      }
+    },
+    "tests-O": {
+      "commit": "18e74ab198bd444e6cc0ae5eedaa9969132bd935",
+      "exit_code": 0,
+      "receipt_sha256": "2e94b6160793fe73009b416eff5cdaf2e85f84b39fae8e0c9927171fde6e3d81",
+      "logs_sha256": {
+        "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr.txt": "7397dc31ebb06d34933dfea0d7f7aff166a18a782ee5c8b62563da3e689f65ba"
+      }
+    },
+    "existing-reference": {
+      "commit": "18e74ab198bd444e6cc0ae5eedaa9969132bd935",
+      "exit_code": 0,
+      "receipt_sha256": "6c9cdf758e33eba8255facfa2a3f98eafe23cd9e3eb1eeff32786d0730ff8d89",
+      "logs_sha256": {
+        "stdout.txt": "4878c9c8f661146961927e0206e12576d18230264102b808f51c65fccfcb8c74",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "before-after-regressions": {
+      "commit": "18e74ab198bd444e6cc0ae5eedaa9969132bd935",
+      "exit_code": 0,
+      "receipt_sha256": "8cb94b31c0556797c840fd2073ae25d664fed55dd5ef7420fdf822674b9a67ca",
+      "logs_sha256": {
+        "stdout.txt": "bbdd87a58c654a0b5eb61ce2e2d965a2b5370e20f8c679e96a634c03ba1c95d5",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "tests_normal": {
+    "run": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "tests_optimized": {
+    "run": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "historical_evidence_files_raw_unchanged": 54,
+  "original_root_modified_files_unchanged": 5,
+  "git_diff_check_exit_code": 0,
+  "reference_manifest_sha256": "612e5c3c29bf4d68f3ae4cdc3c9cd98481528f85dda0807b4e355150e5848c1c",
+  "reference_regenerated": false,
+  "real_DPU_acceptance": "NOT_EVALUATED"
+}

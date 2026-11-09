@@ -1,0 +1,131 @@
+{
+  "type": "M1_V4_C5_RERUN_RECEIPT_NOT_SELECTION_INPUT",
+  "date": "2026-11-05",
+  "prepared_by": "SV3",
+  "request": {
+    "item": "SV1 review of M1 v4 grid, section 2c: rerun C5-seed20261101 once on RTX 5060 into a new directory; expect fcf3f846...; if different report to SV1 and do not change checkpoint",
+    "evidence_path": "docs/inbox/sv1_review_m1_v4_grid_20261105.txt",
+    "evidence_sha256": "45ef6cc76bd777f93ba6c95f257a11b7d6144f1d149e51568f4e94f054e57054",
+    "evidence_form": "Text pasted by SV3 from the SV1 chat message, saved as UTF-8 LF"
+  },
+  "source_head": "365acbc993118eaed0e5920d2c3b01beb4854504",
+  "branch": "dev/ml-sv3",
+  "origin_dev_ml_sv3": "365acbc993118eaed0e5920d2c3b01beb4854504",
+  "origin_main_commits_not_in_branch": 0,
+  "inputs_sha256": {
+    "ml/configs/mitdb_m1_baseline_protocol_v4.json": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+    "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json": "1ce2f811e62f9ef55833e7256c6678e2b348cf1e2f750412e2e0b6203c27d956",
+    "ml/manifests/mitdb-baseline-grid-v4/C5-seed20261101.json": "a29e723507dba827fc60f27fe92b9b79508bc7671b13560c0c2d0418bb1a8176",
+    "ml/provenance/m1-v4-lock-20261103/m1_baseline_v4_lock_and_train_authorization.json": "95e659493f7648a5c46d19d5d4364ab2cc594f7e462d227433df512177b02f64",
+    "ml/scripts/baseline_grid_v4.py": "2a57b9b9e9c44a5e0681360b693b391b93be4596588fec230218f0e4e3639ff2",
+    "ml/scripts/baseline_selection_v4.py": "86872dae2686bcedf87e6256054dac55eb4a42c11cbc6baa1e7429b849cc9631",
+    "ml/scripts/baseline_sampler_v4.py": "1ccc99035ebe96d455a4e92cef45782814e55f644acf649f6959191c4bcfa566",
+    "ml/scripts/train_mitdb_baseline_v4.py": "b9ff8479a5c05b58633a8a24457462108197be7242651e52aa10ddc1f96966c5",
+    "ml/scripts/m1_metrics_v4.py": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+    "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+    "ml/configs/mitdb_week2_baseline.json": "273a563af79126c6ed6762c4bd01a186de055b6dea390688eefcf7522ae2e5e3"
+  },
+  "arrays": {
+    "directory": "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+    "files_opened_sha256": {
+      "train_X.npy": "de7be152afcd01ae453ddc1e42655c21bd05bc6e46c633893095cd9a342393b9",
+      "train_y.npy": "702ca2f0f1b6a7129b0b7ac6c7bba90f73e48b75e18a8247b24e068a2df191fe",
+      "train_metadata.csv": "da94f4bb273305c957798049e0f9a09799ae4c03f4bd467a8262fc0f9147737b",
+      "val_X.npy": "b4a38f6a428d335328eaf859107bf1c3cf6d3936d908d17aa87f2de7430734d1",
+      "val_y.npy": "414634166bf41859cb20ca55a07a5bebd70930cd2f6af5c4c53328fa343ad437",
+      "val_metadata.csv": "ed6218bf715617d96235347196e2bd87c6f34beb9adb2d2fe0f2a64b08626c94"
+    }
+  },
+  "scripts_sha256": {
+    "ml/provenance/m1-v4-c5-rerun-20261105/compare_rerun.py": "032145fd304669c305aa3ebd4e51970542d51b707d81b5ac4004a5579e5ced53",
+    "ml/provenance/m1-v4-c5-rerun-20261105/write_receipt.py": "e5d5b31c3488c85a9379917a11cb144f52df2a429dd8a46ad9a9afaec1bda120"
+  },
+  "python": "3.11.9",
+  "device": {
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 5060",
+    "torch": "2.14.0+cu130",
+    "cuda": "13.0"
+  },
+  "nvidia_driver": "591.86",
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/train_mitdb_baseline_v4.py",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+        "--plan",
+        "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json",
+        "--arrays",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+        "--slot",
+        "C5-seed20261101",
+        "--output",
+        "ml/data/runs/mitdb-baseline-v4-c5-rerun-20261105/C5-seed20261101/attempt-1",
+        "--authorization",
+        "ml/provenance/m1-v4-lock-20261103/m1_baseline_v4_lock_and_train_authorization.json"
+      ],
+      "exit_code": 0,
+      "start_utc": "2026-11-05T14:24:59Z",
+      "end_utc": "2026-11-05T14:25:41Z",
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-c5-rerun-20261105/logs/rerun.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ml/provenance/m1-v4-c5-rerun-20261105/logs/rerun.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/provenance/m1-v4-c5-rerun-20261105/compare_rerun.py",
+        "--out",
+        "ml/provenance/m1-v4-c5-rerun-20261105/compare-normal.json"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-c5-rerun-20261105/compare-normal.json": "d34c85efdfa992510d35f95164faf26e0b2051d4ec5bf8570f47b05b25930ff6",
+        "ml/provenance/m1-v4-c5-rerun-20261105/logs/compare-normal.txt": "2042a55accf46e60a8ceb6f62662b82b73eb556e569a4b99811c3b7d336ffdb2"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/provenance/m1-v4-c5-rerun-20261105/compare_rerun.py",
+        "--out",
+        "ml/provenance/m1-v4-c5-rerun-20261105/compare-optimized.json"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-c5-rerun-20261105/compare-optimized.json": "d34c85efdfa992510d35f95164faf26e0b2051d4ec5bf8570f47b05b25930ff6",
+        "ml/provenance/m1-v4-c5-rerun-20261105/logs/compare-optimized.txt": "2042a55accf46e60a8ceb6f62662b82b73eb556e569a4b99811c3b7d336ffdb2"
+      }
+    }
+  ],
+  "result": {
+    "status": "RERUN_BYTE_IDENTICAL_DEPLOYMENT_SHA_REPRODUCED",
+    "files_compared": 21,
+    "files_matching": 21,
+    "selected_epoch": 4,
+    "selected_checkpoint_sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+    "expected_deployment_sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+    "history_sha256": "9c6771c515afbe255147d125cc3f414dccfcd08d4d16799cbbc1150c7af1f0d5",
+    "reload_confusion_exact_written_by_trainer": true
+  },
+  "scope": {
+    "DS2_opened": false,
+    "DS2_evaluated": false,
+    "used_for_selection": false,
+    "grid_run_directory_modified": false,
+    "checkpoint_changed": false,
+    "authorization": "existing M1 v4 lock 95e65949..., same protocol/plan/slot"
+  },
+  "not_verified": [
+    "Seeds 20261030 and 20261031 were not rerun on RTX 5060 (SV1 asked for one rerun)",
+    "Cross-GPU difference reported by SV1 (RTX 3050) was not re-examined here",
+    "No CPU reload of the rerun checkpoints"
+  ]
+}

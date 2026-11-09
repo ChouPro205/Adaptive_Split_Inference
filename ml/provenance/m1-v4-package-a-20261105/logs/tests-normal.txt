@@ -1,0 +1,16 @@
+test_lock_hash_bound (__main__.BindingTests.test_lock_hash_bound) ... ok
+test_test_split_in_binding_refused (__main__.BindingTests.test_test_split_in_binding_refused) ... ok
+test_existing_or_outside_output_refused (__main__.BuildTests.test_existing_or_outside_output_refused) ... ok
+test_golden_and_calibration_are_train_only (__main__.BuildTests.test_golden_and_calibration_are_train_only) ... ok
+test_no_ds2_array_opened (__main__.BuildTests.test_no_ds2_array_opened) ... ok
+test_other_checkpoint_rejected (__main__.BuildTests.test_other_checkpoint_rejected) ... ok
+test_tampered_golden_rejected (__main__.BuildTests.test_tampered_golden_rejected) ... ok
+test_tampered_header_rejected (__main__.BuildTests.test_tampered_header_rejected) ... ok
+test_verify_accepts_built_package (__main__.BuildTests.test_verify_accepts_built_package) ... ok
+test_calibration_rule_is_sv2_even_spacing (__main__.RuleTests.test_calibration_rule_is_sv2_even_spacing) ... ok
+test_comparison_rule_sorts_numeric_record_rpeak_lead (__main__.RuleTests.test_comparison_rule_sorts_numeric_record_rpeak_lead) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 5.536s
+
+OK

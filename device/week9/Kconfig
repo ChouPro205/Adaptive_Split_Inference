@@ -1,0 +1,32 @@
+mainmenu "Adaptive Split Inference Week 9 E_dev(s) measurement"
+
+choice WEEK9_VARIANT
+	prompt "Week 9 firmware variant (W9-D5)"
+	default WEEK9_DEV_USB
+
+config WEEK9_DEV_USB
+	bool "dev-usb: USB CDC, no radio: VERIFY ALL, TDEV, ONE, SESSION dry run (TC2)"
+
+config WEEK9_DEV
+	bool "dev: automatic PPK2 E_dev session, no radio/USB/console/log/LED/NVS (TC4)"
+
+endchoice
+
+config WEEK9_CYCLE_GAP_MS
+	int "Idle between the end of one HEAD and the next CTRL (ms, W9-D4)"
+	range 0 10000
+	default 1000
+
+config WEEK9_BOOT_IDLE_S
+	int "Idle window after the boot self-test (W7-D3, TC3 I_idle)"
+	default 30
+
+config WEEK9_SELFTEST_MS
+	int "Width of each marker pulse in the boot self-test D0..D4"
+	default 200
+
+config WEEK9_CTRL_MIN_US
+	int "Minimum CTRL pulse width so 100 kS/s sampling sees it (stub controller)"
+	default 200
+
+source "Kconfig.zephyr"

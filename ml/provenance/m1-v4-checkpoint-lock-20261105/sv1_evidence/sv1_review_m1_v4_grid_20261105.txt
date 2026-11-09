@@ -1,0 +1,75 @@
+Chào Kỳ Anh, mình review xong gói grid M1 v4 và 4 điểm trong tin 20:43 của bạn. Mình trả lời muộn hơn hẹn, xin lỗi bạn.
+
+Gói mình nhận: SV3_M1_V4_GRID_RESULT_20261103.zip, SHA-256 5dc88a02077322d976497c7d9bf78b47db43d3d80485c063874349a8088e82a9, khớp tệp .sha256 đi kèm.
+
+KẾT LUẬN
+Việc chọn đúng luật protocol v4. Mình xác nhận cấu hình C5, seed triển khai 20261101 và đúng 3 SHA checkpoint sau:
+- Seed 20261101, epoch 4, checkpoint triển khai: fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c
+- Seed 20261030, epoch 17: fc60aa7092f81fc53a95a6f7fc83704df51daf631a0f722100ca31e50129408e
+- Seed 20261031, epoch 23: 19fe7a4a9136d4f5cbdd7683705b14efd5c7950129d7a6ed9f989111cebf0f8f
+Bạn lập file khóa checkpoint theo cách như lần khóa protocol, không cần thầy ký.
+Tuy nhiên, bạn CHƯA mở DS2 (lý do ở mục 2).
+
+Về xác nhận của thầy mà bạn hỏi: thầy đã giao mình quyền quyết tất cả công việc của nhóm, thầy hỗ trợ phần controller. Vì vậy bản chốt 03/11 và các sửa đổi trong tin này có hiệu lực ngay, không cần xin thêm. Trong protocol bạn ghi thẩm quyền là SV1 theo ủy quyền của GVHD, review_evidence là tin này. Tuần 14 mình sẽ gửi thầy kết quả và các đặc tả để thầy hỗ trợ viết controller; việc của bạn không phải chờ phần đó.
+
+1. Mình đã kiểm
+- PACKAGE_SHA256SUMS 564/564, SHA256SUMS của provenance và 18/18 checkpoint đều khớp.
+- Commit khóa 365acbc lúc 11:18 ngày 03/11, trước file đầu của slot đầu (11:50 theo giờ trong ZIP). File khóa 95e65949… đúng SHA. Protocol, plan, assets và code v4 trùng bản mình đã review.
+- Mình viết script riêng, không dùng code của bạn: từ confusion của cả 411 epoch tính lại macro-F1, luật dừng sớm, chọn epoch, gate (bằng Fraction), seed và cấu hình. Kết quả trùng Bảng 1, Bảng 2 và các số 9/18, V 4, S 7, 2166/8322.
+- Chạy lại analyze: stdout trùng log của bạn sau khi đổi CRLF thành LF. Bỏ status và attempts thì slot-result bằng đúng mục plan ở 18/18 slot. Giải thích của bạn về state là đúng, v4 giữ nguyên.
+- Phần bạn ghi "chưa kiểm", mình đã làm hai việc. Mình chỉ mở train/val đúng SHA trong plan, không mở DS2. Các lượt này không tham gia việc chọn.
+  a) Nạp lại 18 checkpoint trên validation thật: GPU RTX 3050 trùng confusion 18/18. CPU trùng 12/18; 6 checkpoint còn lại lệch 1–2 nhịp trên 9.523 nhịp; 3 checkpoint C5 trùng hết trên cả CPU và GPU.
+b) Chạy lại C5 trên RTX 3050 bằng trainer đã khóa. Seed 20261101 chạy 2 lần cho checkpoint trùng bit, nên cùng GPU là tất định. Nhưng khác GPU thì kết quả khác hẳn (macro-F1, epoch chọn):
+     Seed 20261030: RTX 5060 0,4107 (17); RTX 3050 0,5486 (12)
+     Seed 20261031: RTX 5060 0,5597 (23); RTX 3050 0,4976 (5)
+     Seed 20261101: RTX 5060 0,5682 (4); RTX 3050 0,6086 (7)
+     Mean ± SD: RTX 5060 0,5129 ± 0,0886; RTX 3050 0,5516 ± 0,0556
+  Số của RTX 3050 chỉ để đo độ lặp lại, không dùng để đổi checkpoint. Luật đã khóa và kết quả C5 giữ nguyên.
+
+2. Việc cần làm trước khi mở DS2
+a) Thứ tự DS2 và xmodel. Protocol v4 có chỗ chưa khớp, lúc review v4 mình đã bỏ sót: ds2_report.timing cho chạy sau khi khóa checkpoint (xmodel chỉ cần cho dòng DPU), nhưng quantization.freeze_before_DS2 yêu cầu khóa xmodel "before any DS2 predictions", và change_control.DS2 ghi "only after model/quantization lock". Mình chốt theo cách chặt: DS2 đợi Trung khóa xmodel s0–s9 (tuần 13), rồi chạy một lượt FP32 (bạn) và một lượt DPU (Trung). Trước đó NoPeek, P2 và lượng tử đều chỉ dùng train/val nên không bị chặn. Gói A giao ngay sau khi khóa, riêng phần dự đoán DS2 (mục 4.3 bản 1.2) giao sau khi có SHA xmodel. Bạn ghi cách hiểu này vào file khóa, mình sẽ báo Trung. Nếu có việc nào của bạn bị vướng thì báo mình.
+b) Ở 365acbc chưa có script chạy DS2, mới có ds2_reporting_metrics test bằng fixture. Bạn viết xong thì gửi mình review trước khi dùng. Yêu cầu: chạy thử đúng đường code đó trên validation phải ra đúng confusion trong summary của 3 checkpoint C5; hai dòng test_main và test_aux22 ra từ cùng một lượt; ghi device; lưu dự đoán từng nhịp kèm record_id. Bạn khai trong file khóa rằng confusion theo từng bản ghi là số mô tả thêm, vì lý do ở mục 3.
+c) Chạy lại C5-seed20261101 một lần trên RTX 5060, vào thư mục mới (khoảng 30 s), kỳ vọng ra fcf3f846…. Ghi vào receipt. Nếu khác thì báo mình, không đổi checkpoint.
+d) Vì khác GPU không ra lại được mô hình, file checkpoint là bằng chứng duy nhất. Bạn đưa 18 checkpoint được chọn, grid result và manifest lên GitHub Release; commit và push file khóa cùng provenance trước khi làm gói A.
+
+3. Limitations
+Có, nên ghi. Nội dung nên rộng hơn riêng seed C5-20261030:
+- Mô hình bất ổn: cùng cấu hình, macro-F1 validation từ 0,41 đến 0,57; chênh C5 − C1 là 0,0027, nằm trong nhiễu. Bài báo cáo đủ 3 seed, không chỉ seed triển khai (seed này được chọn là cao nhất nên số lạc quan).
+- Không tái lập bit-exact giữa hai GPU.
+- Seed C5-20261030 trượt gate V: 2158/2166 nhịp N bị gán thành V nằm ở một bản ghi là 118 (RBBB), accuracy bản ghi này 0,7 %. Trên RTX 3050, cùng seed vẫn sụp một phần ở đúng bản ghi đó (990/995, accuracy 0,54). Vậy đây là điểm yếu theo bệnh nhân, không hẳn là rủi ro ngẫu nhiên. Trong DS2 cũng có bản ghi RBBB (212, 231), nên cần số theo từng bản ghi.
+- Validation chỉ có 4 bệnh nhân: 169/172 nhịp S ở 118 và 223; toàn bộ 25 nhịp F ở 205 và 223.
+
+4. Lưu ý cho gói B (chưa đổi gì)
+Mốc tiện ích là 0,95 × 0,5682 = 0,5398. Epoch 4 của run triển khai là một đỉnh, chủ yếu do F1 lớp S (0,35, các epoch sau 0,19–0,30). Mười epoch sau đó có mean 0,5402, 4/10 epoch dưới mốc, dù chưa có NoPeek. Như vậy nhiễu riêng nó đã chạm ngưỡng, có thể ép λ nhỏ và làm Π thấp. Ngưỡng đã chốt trước nên giữ nguyên. Khi chạy grid, bạn gửi mình đường macro-F1 theo epoch của λ = 0, trước khi xem Π. Nếu λ = 0 cũng hay trượt thì mình sẽ xem lại và quyết trước khi có Π.
+
+5. Bốn điểm của bạn
+Điểm 1 (câu 15). Bạn đúng, và vấn đề còn chặt hơn. Với Π_min cố định, trong mỗi s thì ρ tốt nhất luôn là ρ nhỏ nhất đạt Π_min, không phụ thuộc Z, V, r(t), q(t), vì ρ1 không tốn thêm, ρ2 chỉ thêm chi phí nhiễu và Π không đổi theo thời gian. Tập hành động thực chất còn tối đa 4 điểm (s, ρ*(s)), lúc chạy controller chỉ chọn s. Chọn tuần tự với fallback "sang s kế tiếp" sẽ trùng chọn đồng thời (trừ chênh chi phí nhiễu). Vậy tiêu chí 5 % ở câu 15 không đo được gì; đây là lỗi của mình khi chốt. Mình chốt lại câu 15 như sau:
+- N2 giữ làm đóng góp chính khi dòng depth-only (ρ ≡ ρ0, vẫn giữ Π ≥ Π_min; là hàng "w/o protection" của Khung) kém ≥ 5 % ở E7, tại Π_min = 0,5 hoặc trên một dải Π_min đáng kể. Đây đúng là luận điểm trong Khung: "bỏ lỡ những cấu hình nông hơn nhưng được bảo vệ mạnh hơn".
+- Dòng always-strongest (ρ ≡ ρ2) chỉ báo, không dùng ngưỡng 5 % trên E7, vì năng lượng gần như bằng nhau, cái mất là tiện ích. Dòng này báo E7, macro-F1 và accuracy đường DPU, Π.
+- Dòng w/o joint chỉ báo, không dùng để quyết N2. Định nghĩa ghi trước khi chạy: chọn s có J nhỏ nhất, không xét Π; rồi lấy ρ nhỏ nhất đạt Π_min tại s đó; không ρ nào đạt thì về s10. Vì s0 rẻ nhất nên dòng này phần lớn sẽ rơi về s10. Biến thể fallback sang s kế tiếp sẽ ghi trong bài là trùng chọn đồng thời.
+- Bài nêu rõ mệnh đề ρ*(s) ở trên như một kết quả cấu trúc, để trả lời trước câu hỏi của reviewer. Tên bài giữ nguyên: cặp (s, ρ) vẫn đổi lúc chạy khi ρ*(s) khác nhau giữa các s. Bài không viết rằng ρ thích nghi độc lập với s.
+Mình đưa các định nghĩa này vào script offline và khóa SHA trước khi có E_tx tuần 11. Hệ quả: câu trả lời quyết định N2 giờ là Π(s2, ρ1) và Π(s2, ρ2).
+
+Điểm 2 (câu 14). Đồng ý. Z ≡ 0 gần trùng baseline Neurosurgeon-Π (cực tiểu độ trễ trong tập thỏa Π_min), nên thắng nó không chứng minh được vai trò của pin. Mình chốt fixed budget làm tiêu chí N1 với ngưỡng 10 %; Z ≡ 0 vẫn báo. Fixed budget chỉ khác khi tiêu thụ thực lệch kế hoạch, nên bộ trace E7 phải khai trước khi chạy, không chọn lại sau khi xem kết quả.
+
+Điểm 3 (câu 13). Mình nhầm file. Có lẽ bạn đang có Huong1_Khung_bai_bao_va_huong_dan_viet.pdf (13b95d7f…), file đó không có công thức. File đúng là Khung_bai_bao_MAIN.pdf, SHA-256 6a28842b2fbf148aa39380be65445eac0f8125548e6b006fdc8698474f3b4600, mình gửi kèm. Công thức (1) và bảng Notation ở trang 4–5, (2)–(6) ở trang 5, Algorithm 1 ở trang 6. Phần bản chốt thêm so với Khung: E_budget tính lại theo epoch (câu 14); s10 bỏ các hạng tử truyền, hàng đợi, tail (câu 13); thêm năng lượng giữ kết nối (mục 6c).
+
+Điểm 4 (câu 10–11). Dùng N = 22, không bỏ bản ghi nào. Số 21 ở câu 11 là mình viết nhầm: DS1 có 201, còn 202 nằm ở DS2 nên DS1 không trùng bệnh nhân. "Bỏ 1 phút ở giữa" đúng như bạn hiểu: bỏ nhịp có đỉnh R trong ±30 s quanh mẫu 325.000, trước mốc cho kẻ tấn công, sau mốc để test; mốc theo thời gian, không theo đúng 50 % số nhịp. Mình tính từ metadata DS1: bỏ 1.681/50.995 nhịp (3,3 %), mỗi người còn 767–1.637 nhịp phía kẻ tấn công và 799–1.613 nhịp test.
+Mình sửa thêm một chỗ trong câu 8: acc trong Π đổi thành balanced accuracy (recall trung bình theo bệnh nhân). Số nhịp giữa các bệnh nhân lệch nhau: luôn đoán người đông nhất đã được 6,6 %, so với 1/22 = 4,5 %, nên 1/N chưa phải mức đoán ngẫu nhiên. Áp dụng cả thử sớm và DS2; bạn ghi vào protocol tấn công.
+
+6. Các quyết định khác hôm nay
+a) Thêm s4. Ước lượng từ số đo cho thấy s4 trội hơn s5: khoảng 2,55 mJ / 285 ms so với 3,53 mJ / 373 ms, payload 2.944 B so với 4.416 B. Vậy:
+- Grid NoPeek thành s ∈ {2, 4, 5, 8} (72 run), ghi vào protocol NoPeek phiên bản mới.
+- Thử tuần 11: A1 + B-naive ở s2, s4, s5, s8 với ρ0; ρ1 ứng viên ở s2, s4, s5; ρ2 ứng viên ở s2 nếu kịp, chậm nhất đầu tuần 12.
+- Luật chọn điểm cắt giữa, chốt trước khi có số: xét ρ ∈ {ρ0, ρ1}. Nếu s4 có ρ đạt Π_min thì dùng s4. Nếu s4 không đạt mà s5 đạt thì dùng s5. Nếu cả hai không đạt thì dùng s4 và xét ρ2.
+- Tập hành động vẫn 8 cặp; "s5" trong bản chốt 03/11 đổi thành điểm cắt giữa theo luật này (head NoPeek trên dongle, tail NoPeek của Trung). s8 vẫn chỉ chạy offline.
+b) Nhánh sau thử tuần 11, khai trước:
+- s2 trượt Π_min ở ρ0, đạt ở ρ1 hoặc ρ2: kịch bản chính, N2 đứng đầu.
+- s2 đạt sẵn ở ρ0: không đổi Π_min = 0,5; dùng kết quả quét Π_min để tìm dải mà bảo vệ thực sự có ích.
+- Π không tăng theo s, hoặc cả ρ1, ρ2 không nâng được Π: mình quyết chuyển hướng T4 trong tuần 12.
+Khi có số, bạn báo mình ngay trong ngày.
+c) Phần của mình, bạn chỉ cần biết: E thêm hạng tử giữ kết nối; kịch bản chính là mỗi nhịp một lần suy luận (khoảng 0,8 s); D = 500 ms, có quét độ nhạy. Mình mở rộng script offline thành mô phỏng đủ controller và baseline, xong trước cuối tuần 13. Mô phỏng cần Π thử của bạn trước cuối tuần 11.
+
+Script và output kiểm của mình gửi kèm: recompute_grid.py, reload_val.py, rerun_c5.py, rerun_summary.py, rec118.py và các file *_out.txt, kèm SHA256SUMS.txt.
+
+Bước tiếp của bạn: rerun 2c → lập file khóa checkpoint (lưu nguyên văn tin này làm review_evidence) → Release và push → giao gói A (trừ dự đoán DS2) → grid NoPeek theo mục 6a → gửi mình script DS2.

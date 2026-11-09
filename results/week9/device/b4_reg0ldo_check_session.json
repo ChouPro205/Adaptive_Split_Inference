@@ -1,0 +1,81 @@
+{
+  "schema": "week9-ppk2-session/1",
+  "status": "PASS",
+  "checks": {
+    "capture_pass": true,
+    "selftest_D0_D4": true,
+    "unused_channels_D5_D7_low": true,
+    "no_data_loss": true,
+    "sample_rate_ok": true,
+    "TC3_idle_window_found": true,
+    "TC3_idle_within_10pct_week2": true,
+    "TC3_idle_markers_low": true,
+    "TC4_cycle_count_550": true,
+    "TC4_all_cycles_valid": true,
+    "TC4_head_width_matches_plan": true,
+    "TC4_D1_D3_low_after_selftest": true,
+    "TC4_radio_off_between_cycles": true,
+    "TC4_diff_below_3pct_all": true,
+    "TC5_n_50_per_split": true,
+    "TC5_ci95_below_10pct_all_splits": true,
+    "TC5_t_dev_marker_vs_dwt_within_1pct": true
+  },
+  "analysis_status": "PASS",
+  "energy_dev_status": "PASS",
+  "I_idle_uA": 25.162601129866612,
+  "idle_vs_week2_pct": -1.0009004608466359,
+  "cycles_found": 550,
+  "errors": {},
+  "head_width_mismatch_cycles": [],
+  "D1_D3_high_samples_after_selftest": {
+    "D1": 0,
+    "D2": 0,
+    "D3": 0
+  },
+  "gaps": {
+    "count": 549,
+    "guard_ms": 2.0,
+    "max_uA": 2935.1141155772784,
+    "samples_above_3mA": 0,
+    "gaps_with_samples_above_3mA": 0,
+    "events_above_3mA": [],
+    "max_events": 2,
+    "radio_off_rule": "every > 3 mA event <= 0.5 ms and at most floor(T / 512 s) + 1 events (Zephyr RTC OVERFLOW wake-up, nrf_rtc_timer.c; a radio repeats every 15-100 ms for ms each)"
+  },
+  "post_session": {
+    "duration_s": 60.863400000000006,
+    "mean_uA": 24.721537412001616,
+    "sample_std_uA": 3.7544897901834395,
+    "max_uA": 36.03618636288411,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0
+    },
+    "samples_above_3mA": 0
+  },
+  "diff_pct": {
+    "n": 550,
+    "mean": 0.00825916195372442,
+    "min": 0.0,
+    "max": 1.510276280821968,
+    "std": 0.10452210506625811,
+    "ci95_half": 0.008754541196814382,
+    "ci95_low": -0.000495379243089962,
+    "ci95_high": 0.0170137031505388,
+    "ci95_rel_pct": 105.9979359390885
+  },
+  "capture": {
+    "samples": 75070464,
+    "dut_on_rate_deviation_pct": 0.000256,
+    "raw_sha256": "d816aba4d66bf2a6064beba5e595d081e24f8d2ec4d974dd9fc4225ee3a9aa84",
+    "host_max_gap_between_reads_s": 0.009410600003320724,
+    "status": "PASS"
+  },
+  "checker_sha256": {
+    "week9_ppk2.py": "509f7b95ae06d578cae81c46de11f605008bec6178e381fcda725528f878d483",
+    "energy_phases.py": "a212e178c9796b46d097de75ffc871213ea65e70eaab95e4c033cc1ee4442984"
+  }
+}
