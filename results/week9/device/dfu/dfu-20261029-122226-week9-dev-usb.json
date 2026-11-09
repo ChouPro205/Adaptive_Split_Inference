@@ -1,0 +1,28 @@
+﻿{
+    "origin":  "REAL_USB_DFU",
+    "port":  "COM6",
+    "app":  "week9",
+    "variant":  "dev-usb",
+    "kernel":  "fast",
+    "build_id":  "2e1daff93ad1-week9-dev-usb-20261029T051858Z",
+    "dirty":  false,
+    "report_dir":  "D:\\HUST\\ASI_week9\\build-20261029-clean-dev-usb",
+    "zip":  "D:\\HUST\\ASI_week9\\build-20261029-clean-dev-usb\\adaptive_split_week9_dev-usb.zip",
+    "zip_sha256":  "bd63989c9b4059448ebe5f451bf975c3f6db3abec273b6b3c27311e28f033986",
+    "bin_sha256":  "067d99cf4f55d43b0be97ae6c5d6cff76992f3e06f1c38ed1e9b076e4b61527a",
+    "elf_sha256":  "4718495127799ef95f5331191b6b916e8a04aee23329afaeb7e5fccc9acc933b",
+    "set_sha256":  "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+    "plan_sha256":  "5b1fcfe85b7057f5ea4ef52db4b6b3aa1b819a07d5af7a3c55bdb985f6eb4a9f",
+    "executable":  "D:\\ncs\\toolchains\\dcbdc366a1\\nrfutil\\bin\\nrfutil.exe",
+    "arguments":  [
+                      "nrf5sdk-tools",
+                      "dfu",
+                      "usb-serial",
+                      "--package",
+                      "D:\\HUST\\ASI_week9\\build-20261029-clean-dev-usb\\adaptive_split_week9_dev-usb.zip",
+                      "--port",
+                      "COM6"
+                  ],
+    "exit_code":  0,
+    "timestamp":  "2026-10-29T05:22:56.4958595+00:00"
+}

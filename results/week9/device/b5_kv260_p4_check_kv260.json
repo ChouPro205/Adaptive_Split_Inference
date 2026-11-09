@@ -1,0 +1,130 @@
+{
+  "schema": "week9-ppk2-kv260/1",
+  "status": "PASS",
+  "checks": {
+    "capture_pass": true,
+    "selftest_D0_D4": true,
+    "unused_channels_low": true,
+    "no_data_loss": true,
+    "cycle_count_200": true,
+    "p1_100_p0_100": true,
+    "trace_rho_order_paired": true,
+    "all_cycles_valid": true,
+    "idle_markers_low": true,
+    "diff_below_3pct_all": true,
+    "post_window_at_least_20s": true,
+    "post_mean_at_idle": true,
+    "post_radio_off": true,
+    "kv260_log_pass_labels_100_per_rho": true,
+    "kv260_answered_all": true,
+    "one_cycle_per_request": true,
+    "nonce_above_prior_and_increasing": true,
+    "single_connection": true,
+    "phy_2m_read_back": true
+  },
+  "I_idle_uA": 24.543895486747324,
+  "post_session": {
+    "found": true,
+    "duration_s": 118.11412000000001,
+    "mean_uA": 24.50397090839211,
+    "max_uA": 35.28607003050437,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0
+    },
+    "events_above_3mA": [],
+    "radio_off": true,
+    "I_idle_uA": 24.543895486747324,
+    "deviation_from_idle_pct": 0.1626660216866265
+  },
+  "conn_interval_estimate_ms": 15.010000000000002,
+  "diff_pct": {
+    "n": 200,
+    "mean": 0.10582299457937079,
+    "min": 0.09042593308314668,
+    "max": 0.13743420183869404,
+    "std": 0.008602555544989331,
+    "ci95_half": 0.0011995264474599526,
+    "ci95_low": 0.10462346813191084,
+    "ci95_high": 0.10702252102683074,
+    "ci95_rel_pct": 1.1335215490998676
+  },
+  "kv260_log": "D:\\HUST\\Trung\\0911\\phien4\\b5_p4_requests.jsonl",
+  "labels_equal_reference": {
+    "P1": 100,
+    "P0": 100
+  },
+  "interval_match": {
+    "pass": true,
+    "reference": "min(|trace TX end - edge t_rx_ms|, |trace WAIT end - edge t_tx_done_ms|), median-centred",
+    "rho_order_equal": true,
+    "max_abs_offset_ms": {
+      "tx_end_vs_rx": 13.58500000089407,
+      "wait_end_vs_reply": 11.299999999813735,
+      "best_anchor": 10.679999999701977
+    },
+    "cycles_over_limit": {
+      "tx_end_vs_rx": 0,
+      "wait_end_vs_reply": 0
+    },
+    "min_cycle_spacing_ms": 1154.9700000000012,
+    "edge_clock_resolution_s": 0.015625,
+    "limit_ms": 30.0
+  },
+  "first_p1_sequence": 60656642,
+  "last_p1_sequence": 60656741,
+  "connections": [
+    "0"
+  ],
+  "phy_check": {
+    "rule": "timed: last read before the first request 2M, no non-2M read from the first 2M read on",
+    "pass": true,
+    "reads": 6,
+    "non_2m_reads_before_first_2m": 5,
+    "first_2m_read_t_ms": 7445337,
+    "first_request_t_rx_ms": 7480425,
+    "last_request_t_ms": 7710459,
+    "reads_during_requests": 0
+  },
+  "phy_records": [
+    [
+      1,
+      "1M",
+      "1M",
+      7444707
+    ],
+    [
+      2,
+      "1M",
+      "1M",
+      7444833
+    ],
+    [
+      3,
+      "1M",
+      "1M",
+      7444959
+    ],
+    [
+      4,
+      "1M",
+      "1M",
+      7445085
+    ],
+    [
+      5,
+      "1M",
+      "1M",
+      7445211
+    ],
+    [
+      6,
+      "2M",
+      "2M",
+      7445337
+    ]
+  ]
+}

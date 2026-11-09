@@ -1,0 +1,90 @@
+{
+  "schema": "week9-ppk2-session/1",
+  "status": "FAIL",
+  "checks": {
+    "capture_pass": true,
+    "selftest_D0_D4": true,
+    "unused_channels_D5_D7_low": true,
+    "no_data_loss": true,
+    "sample_rate_ok": true,
+    "TC3_idle_window_found": true,
+    "TC3_idle_within_10pct_week2": true,
+    "TC3_idle_markers_low": true,
+    "TC4_cycle_count_550": true,
+    "TC4_all_cycles_valid": true,
+    "TC4_head_width_matches_plan": false,
+    "TC4_D1_D3_low_after_selftest": true,
+    "TC4_radio_off_between_cycles": true,
+    "TC4_diff_below_3pct_all": true,
+    "TC5_n_50_per_split": true,
+    "TC5_ci95_below_10pct_all_splits": true,
+    "TC5_t_dev_marker_vs_dwt_within_1pct": true
+  },
+  "analysis_status": "FAIL",
+  "energy_dev_status": "PASS",
+  "I_idle_uA": 24.998169056781478,
+  "idle_vs_week2_pct": -1.6478378377405811,
+  "cycles_found": 550,
+  "errors": {},
+  "head_width_mismatch_cycles": [
+    165
+  ],
+  "D1_D3_high_samples_after_selftest": {
+    "D1": 0,
+    "D2": 0,
+    "D3": 0
+  },
+  "gaps": {
+    "count": 549,
+    "guard_ms": 2.0,
+    "max_uA": 9258.850498510874,
+    "samples_above_3mA": 13,
+    "gaps_with_samples_above_3mA": 1,
+    "events_above_3mA": [
+      {
+        "t_s": 513.26067,
+        "duration_ms": 0.29,
+        "samples_above": 13,
+        "max_uA": 9258.850498510874
+      }
+    ],
+    "max_events": 2,
+    "radio_off_rule": "every > 3 mA event <= 0.5 ms and at most floor(T / 512 s) + 1 events (Zephyr RTC OVERFLOW wake-up, nrf_rtc_timer.c; a radio repeats every 15-100 ms for ms each)"
+  },
+  "post_session": {
+    "duration_s": 61.31758000000001,
+    "mean_uA": 24.78363272009833,
+    "sample_std_uA": 3.795893338103977,
+    "max_uA": 36.38918228400399,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0
+    },
+    "samples_above_3mA": 0
+  },
+  "diff_pct": {
+    "n": 550,
+    "mean": 0.005037697742146338,
+    "min": 0.0,
+    "max": 1.2964635038688896,
+    "std": 0.07505799084982753,
+    "ci95_half": 0.006286691916780548,
+    "ci95_low": -0.0012489941746342097,
+    "ci95_high": 0.011324389658926886,
+    "ci95_rel_pct": 124.7929558017125
+  },
+  "capture": {
+    "samples": 75068928,
+    "dut_on_rate_deviation_pct": 0.002304,
+    "raw_sha256": "dc2622983a6cc7b5e584ed120332c5294e5fc5f392457280b76f5b6a5964f656",
+    "host_max_gap_between_reads_s": 0.008728200002224185,
+    "status": "PASS"
+  },
+  "checker_sha256": {
+    "week9_ppk2.py": "509f7b95ae06d578cae81c46de11f605008bec6178e381fcda725528f878d483",
+    "energy_phases.py": "a212e178c9796b46d097de75ffc871213ea65e70eaab95e4c033cc1ee4442984"
+  }
+}

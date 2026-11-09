@@ -1,0 +1,13 @@
+{
+  "schema": "week7-ppk2-note/1",
+  "utc": "20261029T074928Z",
+  "temp_end_C": null,
+  "photos": [
+    {
+      "path": "D:\\HUST\\ASI_week9\\photos\\bench-B4-after-s2-20261029-1331.png",
+      "sha256": "a2fd403984e97f1a4360286cc2234d1c1d7bf30d3cd5df14b29918086639505f",
+      "bytes": 3846416
+    }
+  ],
+  "text": "Thi nghiem bo on ap 29/10 (Chau uy quyen). Nhiet do dau phien 26,5 C theo Chau bao 13:30 (khong do lai cuoi phien). Ban do giu nguyen nhu anh 13:31; dongle chuyen USB<->breakout de nap image, giu day marker; tu kiem D0-D4 PASS."
+}

@@ -1,0 +1,24 @@
+{
+  "written": [
+    "fig_e_dev_vs_split.pdf",
+    "fig_e_dev_vs_split.png",
+    "fig_t_dev_marker_vs_dwt.pdf",
+    "fig_t_dev_marker_vs_dwt.png",
+    "fig_cycle_waveforms.pdf",
+    "fig_cycle_waveforms.png",
+    "fig_session_overview.pdf",
+    "fig_session_overview.png",
+    "fig_idle_histogram.pdf",
+    "fig_idle_histogram.png",
+    "fig_session_repeatability.pdf",
+    "fig_session_repeatability.png",
+    "fig_quant_share.pdf",
+    "fig_quant_share.png",
+    "fig_reg0_two_level.pdf",
+    "fig_reg0_two_level.png",
+    "fig_kv260_phases.pdf",
+    "fig_kv260_phases.png"
+  ],
+  "tables": "D:\\HUST\\ASI_week9\\analysis-20261109",
+  "tool_sha256": "acb151e12ff26a181bfa646c0e5ab34761aee18696db9046bc8b187289a7c381"
+}

@@ -7,7 +7,7 @@
     "sha256": "79392b6db73cde6d83eadb1f265f14102888ebdbf8ea1b72b6c127c5566eed24",
     "note": "the base file is not edited; every field not listed in changes keeps its r1 value"
   },
-  "status": "PENDING_EDGE_CONFIRMATION",
+  "status": "CONFIRMED",
   "changes": [
     {
       "field": "runtime.nonce_persistence_reboot",
@@ -52,8 +52,10 @@
     "Tested on one dongle and one bench key only; the hardware tests are week 6 (19/10/2026) on the week 6 firmware, which week 7/8 reuse unchanged (week6/nonce_store.c, nonce_nvs.c)."
   ],
   "confirmations": {
-    "device_SV1": {"who": "Le Hai Chau (SV1, project lead)", "revision": "mitdb-week5-i2-registry-v1-r2", "status": "CONFIRMED", "date": "2026-10-27", "where": "week 8 PR"},
-    "edge_SV2": {"who": "Trung (SV2)", "revision": "mitdb-week5-i2-registry-v1-r2", "status": "PENDING", "where": "comment in the week 8 PR quoting this revision id"}
+    "device_SV1": {"who": "Le Hai Chau (SV1, project lead)", "revision": "mitdb-week5-i2-registry-v1-r2", "status": "CONFIRMED", "date": "2026-10-27", "where": "week 8 PR #39"},
+    "edge_SV2": {"who": "Trung (SV2)", "revision": "mitdb-week5-i2-registry-v1-r2", "status": "CONFIRMED", "date": "2026-10-27",
+                 "where": "told SV1 (Le Hai Chau) directly on 2026-10-27, recorded by SV1; no comment in PR #39"}
   },
-  "becomes_effective": "when edge_SV2.status is CONFIRMED with the same revision id (device_revision = edge_revision)"
+  "becomes_effective": "when edge_SV2.status is CONFIRMED with the same revision id (device_revision = edge_revision)",
+  "effective_since": "2026-10-27"
 }
