@@ -1,0 +1,355 @@
+{
+  "schema": "week9-check-verify/1",
+  "session": "D:\\HUST\\ASI_week9\\verify-20261029-1223",
+  "status": "PASS",
+  "device_banner": {
+    "build": "2e1daff93ad1-week9-dev-usb-20261029T051858Z",
+    "variant": "dev-usb",
+    "kernel": "FAST",
+    "rounds": "50",
+    "splits": "11",
+    "cycles": "550",
+    "samples": "50",
+    "gap_ms": "1000",
+    "boot_idle_s": "30",
+    "ctrl_min_us": "200",
+    "selftest_ms": "200",
+    "d4_pin": "P0.22",
+    "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+    "plan_sha256": "5b1fcfe85b7057f5ea4ef52db4b6b3aa1b819a07d5af7a3c55bdb985f6eb4a9f",
+    "plan_device_sha256": "5b1fcfe85b7057f5ea4ef52db4b6b3aa1b819a07d5af7a3c55bdb985f6eb4a9f",
+    "plan_ok": "1"
+  },
+  "checks": {
+    "banner_variant_dev_usb": true,
+    "banner_set_sha256": true,
+    "banner_plan_sha256": true,
+    "device_plan_digest_equal": true,
+    "vq_550_split_major_order": true,
+    "q_scale_id_shape_bytes_equal_host_reference": true,
+    "verify_end": true,
+    "tdev_11_splits_50_runs_irq_locked": true,
+    "tdev_head_within_rule_of_week7_bench_fast": true,
+    "tdev_end": true
+  },
+  "mismatches": [],
+  "t_dev_table": [
+    {
+      "split": 0,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 0.0022284375000000004,
+        "std_ms": 3.324169615889674e-05,
+        "min_ms": 0.002,
+        "max_ms": 0.0022343750000000002
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 0.5448815625000001,
+        "std_ms": 0.01208232891022794,
+        "min_ms": 0.503265625,
+        "max_ms": 0.554484375
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 0.5486509375,
+        "std_ms": 0.012088105543029462,
+        "min_ms": 0.506984375,
+        "max_ms": 0.558265625
+      },
+      "bench_fast_week7_mean_ms": 0.0018750000000000004,
+      "head_delta_pct_vs_bench": 18.849999999999998,
+      "within_rule": true
+    },
+    {
+      "split": 1,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 3.5414584375,
+        "std_ms": 4.062377352934361e-05,
+        "min_ms": 3.541203125,
+        "max_ms": 3.54146875
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 8.147763125,
+        "std_ms": 0.03255520973489948,
+        "min_ms": 8.078953125,
+        "max_ms": 8.202125
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 11.6908103125,
+        "std_ms": 0.03257298669133331,
+        "min_ms": 11.6216875,
+        "max_ms": 11.7451875
+      },
+      "bench_fast_week7_mean_ms": 3.53866703125,
+      "head_delta_pct_vs_bench": 0.07888298688033361,
+      "within_rule": true
+    },
+    {
+      "split": 2,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 32.958583437499996,
+        "std_ms": 4.062377352886214e-05,
+        "min_ms": 32.958328125,
+        "max_ms": 32.95859375
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 4.1383078125,
+        "std_ms": 0.010573623370474485,
+        "min_ms": 4.110640625,
+        "max_ms": 4.15659375
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 37.09848,
+        "std_ms": 0.010590603575246098,
+        "min_ms": 37.070828125,
+        "max_ms": 37.11678125
+      },
+      "bench_fast_week7_mean_ms": 32.95653125,
+      "head_delta_pct_vs_bench": 0.00622695235864236,
+      "within_rule": true
+    },
+    {
+      "split": 3,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 62.8931146875,
+        "std_ms": 4.062377353051864e-05,
+        "min_ms": 62.892859375,
+        "max_ms": 62.893125000000005
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 8.269089375,
+        "std_ms": 0.03506327132845977,
+        "min_ms": 8.2240625,
+        "max_ms": 8.337296875
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 71.1637928125,
+        "std_ms": 0.03505582436638023,
+        "min_ms": 71.11878125,
+        "max_ms": 71.232015625
+      },
+      "bench_fast_week7_mean_ms": 62.8910625,
+      "head_delta_pct_vs_bench": 0.0032630828903640907,
+      "within_rule": true
+    },
+    {
+      "split": 4,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 121.91964593750001,
+        "std_ms": 4.062377352886214e-05,
+        "min_ms": 121.919390625,
+        "max_ms": 121.91965625
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 4.24513125,
+        "std_ms": 0.009421928674924156,
+        "min_ms": 4.2181875,
+        "max_ms": 4.2618125000000004
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 126.16636593749999,
+        "std_ms": 0.009423852885562446,
+        "min_ms": 126.1394375,
+        "max_ms": 126.1830625
+      },
+      "bench_fast_week7_mean_ms": 121.91759375,
+      "head_delta_pct_vs_bench": 0.0016832578768089343,
+      "within_rule": true
+    },
+    {
+      "split": 5,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 170.3791459375,
+        "std_ms": 4.062377352737185e-05,
+        "min_ms": 170.378890625,
+        "max_ms": 170.37915625
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 6.3189078125,
+        "std_ms": 0.022407323184048443,
+        "min_ms": 6.279203125,
+        "max_ms": 6.364734375
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 176.6996425,
+        "std_ms": 0.02241568284065656,
+        "min_ms": 176.65995312500002,
+        "max_ms": 176.745484375
+      },
+      "bench_fast_week7_mean_ms": 170.376828125,
+      "head_delta_pct_vs_bench": 0.0013604035980147183,
+      "within_rule": true
+    },
+    {
+      "split": 6,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 242.97433343749998,
+        "std_ms": 4.062377352737185e-05,
+        "min_ms": 242.974078125,
+        "max_ms": 242.97434375
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 3.2617696875,
+        "std_ms": 0.004279387314980209,
+        "min_ms": 3.251375,
+        "max_ms": 3.2703125
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 246.23769187500002,
+        "std_ms": 0.0042764513923892016,
+        "min_ms": 246.2273125,
+        "max_ms": 246.24625
+      },
+      "bench_fast_week7_mean_ms": 242.972015625,
+      "head_delta_pct_vs_bench": 0.0009539421624359877,
+      "within_rule": true
+    },
+    {
+      "split": 7,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 297.8878646875,
+        "std_ms": 4.062377353035243e-05,
+        "min_ms": 297.887609375,
+        "max_ms": 297.887875
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 4.3419571875,
+        "std_ms": 0.009175933847725627,
+        "min_ms": 4.3283125,
+        "max_ms": 4.363640625
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 302.23141062499997,
+        "std_ms": 0.009188145346450939,
+        "min_ms": 302.21778125000003,
+        "max_ms": 302.253109375
+      },
+      "bench_fast_week7_mean_ms": 297.88554687500005,
+      "head_delta_pct_vs_bench": 0.0007780882705637341,
+      "within_rule": true
+    },
+    {
+      "split": 8,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 371.15639593750006,
+        "std_ms": 4.062377353035243e-05,
+        "min_ms": 371.15614062500003,
+        "max_ms": 371.15640625000003
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 2.3040734375,
+        "std_ms": 0.004319584873175015,
+        "min_ms": 2.296296875,
+        "max_ms": 2.315
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 373.46205812500006,
+        "std_ms": 0.004322772767255858,
+        "min_ms": 373.454296875,
+        "max_ms": 373.473
+      },
+      "bench_fast_week7_mean_ms": 371.154078125,
+      "head_delta_pct_vs_bench": 0.00062448795167814,
+      "within_rule": true
+    },
+    {
+      "split": 9,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 377.331955625,
+        "std_ms": 4.643286380727422e-05,
+        "min_ms": 377.3316875,
+        "max_ms": 377.33196875
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 0.2178390625,
+        "std_ms": 0.0005896259333093044,
+        "min_ms": 0.216390625,
+        "max_ms": 0.21917187500000002
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 377.5513834375,
+        "std_ms": 0.0005995887229038071,
+        "min_ms": 377.549953125,
+        "max_ms": 377.552734375
+      },
+      "bench_fast_week7_mean_ms": 377.329546875,
+      "head_delta_pct_vs_bench": 0.000638367713294998,
+      "within_rule": true
+    },
+    {
+      "split": 10,
+      "runs": 50,
+      "head": {
+        "n": 50,
+        "mean_ms": 377.357951875,
+        "std_ms": 5.420385627563367e-05,
+        "min_ms": 377.3576875,
+        "max_ms": 377.35796875
+      },
+      "quant": {
+        "n": 50,
+        "mean_ms": 0.0391340625,
+        "std_ms": 0.0002464085541171239,
+        "min_ms": 0.0385625,
+        "max_ms": 0.0395
+      },
+      "head_plus_quant": {
+        "n": 50,
+        "mean_ms": 377.39867468750003,
+        "std_ms": 0.00026615324875198856,
+        "min_ms": 377.398,
+        "max_ms": 377.3990625
+      },
+      "bench_fast_week7_mean_ms": 377.3555,
+      "head_delta_pct_vs_bench": 0.0006497520242900273,
+      "within_rule": true
+    }
+  ],
+  "rule": "|head mean - week 7 BENCH FAST| <= 2.0 % or <= 0.5 us",
+  "refs_dir": "D:\\HUST\\ASI_week9\\refs-20261029",
+  "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+  "plan_sha256": "5b1fcfe85b7057f5ea4ef52db4b6b3aa1b819a07d5af7a3c55bdb985f6eb4a9f",
+  "scope": "dev-usb on laptop power: q/scale bytes are MCU evidence; DWT times are CPU time",
+  "tool_sha256": {
+    "check_week9.py": "59bb7121868a9c2aeaed34123ab393d3e2b156e4bc410dad634cd1072a09b55f",
+    "week9_common.py": "2fc7f7a785992d159bb5711b761f654f301219c0dc506e2364528858b5480a5e"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "week9-ppk2-session/1",
+  "status": "FAIL",
+  "checks": {
+    "capture_pass": true,
+    "selftest_D0_D4": true,
+    "unused_channels_low": true,
+    "no_data_loss": false,
+    "cycle_count_200": true,
+    "p1_100_p0_100": true,
+    "trace_rho_order_paired": true,
+    "all_cycles_valid": true,
+    "idle_markers_low": true,
+    "diff_below_3pct_all": true,
+    "post_window_at_least_20s": true,
+    "post_mean_at_idle": true,
+    "post_radio_off": true
+  },
+  "I_idle_uA": 24.53673884439947,
+  "post_session": {
+    "found": true,
+    "duration_s": 117.70178000000001,
+    "mean_uA": 24.509662887098393,
+    "max_uA": 34.9330741093845,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0
+    },
+    "events_above_3mA": [],
+    "radio_off": true,
+    "I_idle_uA": 24.53673884439947,
+    "deviation_from_idle_pct": 0.11034863871999769
+  },
+  "conn_interval_estimate_ms": 15.010000000000002,
+  "diff_pct": {
+    "n": 200,
+    "mean": 0.10930154393590992,
+    "min": 0.09360166841649623,
+    "max": 0.14588370396455638,
+    "std": 0.008862574987895517,
+    "ci95_half": 0.0012357831385081662,
+    "ci95_low": 0.10806576079740175,
+    "ci95_high": 0.11053732707441809,
+    "ci95_rel_pct": 1.1306181907483213
+  },
+  "kv260_log": "PENDING: week9_ppk2.py import-kv260"
+}
