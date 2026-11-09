@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "published_source_commit": "54320ff38e8759cfed42479db68027561041a07e",
+  "measured_files_sha256": {
+    "edge/server/week9/analyze.py": "8705ebc347a1dd52f37b7a1fde6dc85ac4dd6c6ad9829f8d5281ad0c361a5ca1",
+    "edge/server/week9/ble_service.py": "655b27dc1f634a52e9feaff774c30d18d389054bcff21c5b845660b3476d6ef3",
+    "edge/server/week9/phy_gate.py": "fa40edce814fb4e69b5dcec5b5662ee1c5a3987edafc63685c389443d83a9961",
+    "edge/server/week9/queue_sim.py": "cc2e92b1f5eb3ff0ac10d1cee0b628a0b957d951e0a871b72b178c5f24aaf7af",
+    "edge/server/week9/receive_state.py": "0c78035c9f55f6a7e502a80d7e27ccb9bf83d2c9d3d6bc8367fe136c6b64070a",
+    "edge/server/week9/telemetry.py": "195476613b1f563941698fa7d1c1e816264392683b5d6dfb3b23f88f7f9ca443",
+    "edge/server/week9/trace_check.py": "be3538f1ece04e094660c3b1f345e8de6584bedd4b38af1d185ba5bfa33637a3",
+    "edge/server/week9/week9_shell.sh": "5bc006fef9615b5c2567c19b7c17598f6223763083c588471df42d31abbe123f",
+    "edge/server/week9/oneway.py": "57a76c21c7850ed81fce001664591d98391b394f8bf810d84066c804556084ea",
+    "edge/server/week9/native_receiver.py": "fec7703874f795e1ef6322e3c99518f0034cb698c58b4d5960a694844f4a452c"
+  },
+  "source_identity": "Published measured files are byte-exact; publication commit is later than acquisition",
+  "helper_sha256": "4c92b67cb9a48dfcb020621d441d62f1e3e80097513ab5bb87824637772bd9f3"
+}

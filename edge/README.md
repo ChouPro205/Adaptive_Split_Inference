@@ -1,5 +1,10 @@
 # SV2 / Edge — Vitis AI 2.5
 
+Tuần 9: [queue Poisson và MQTT gateway](server/week9/README.md),
+[báo cáo](../docs/sv2_edge_week9_report.md), [kết quả đã kiểm](../results/week9/edge/README.md).
+Đo trên PC SV2, không gán thành PC SV1 nhận. Service B5 lịch sử nằm riêng tại
+[week9_energy](server/week9_energy/README.md).
+
 Luồng hiện tại dùng Docker `xilinx/vitis-ai:2.5.0` và conda `vitis-ai-pytorch`
 để lượng tử hóa, compile và kiểm graph tail ECG trên PC. Runtime mục tiêu của
 KV260 là PetaLinux 2022.1 / Vitis AI 2.5. Build thành công chưa chứng minh
