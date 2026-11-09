@@ -670,11 +670,12 @@ def post_session_events(trace: ep.Trace, cycles: list, i_idle: float | None) -> 
 
 def phy_records(path: Path) -> list:
     """Read-PHY results of the KV260 log: JSON lines with (tx_phy, rx_phy) or the like, or text lines
-    'TX PHY: LE 2M ... RX PHY: LE 2M'. Returns [(line, tx, rx)] with the PHY names upper-cased."""
+    'TX PHY: LE 2M ... RX PHY: LE 2M'. Returns [(line, tx, rx, t_ms)] with the PHY names upper-cased;
+    t_ms is the JSON 't_ms' (KV260 EDGE_MONOTONIC_MS, the clock of t_rx_ms) or None."""
     import re
     out = []
     for number, line in enumerate(Path(path).read_text(encoding="utf-8", errors="replace").splitlines(), 1):
-        tx = rx = None
+        tx = rx = t_ms = None
         try:
             event = json.loads(line)
         except ValueError:
@@ -684,14 +685,39 @@ def phy_records(path: Path) -> list:
                 if a in event and b in event:
                     tx, rx = str(event[a]).upper(), str(event[b]).upper()
                     break
+            if isinstance(event.get("t_ms"), (int, float)):
+                t_ms = event["t_ms"]
         else:
             m_tx = re.search(r"TX[ _]?PHY\W+([A-Z0-9 _]+?)(?:[,;)]|\s{2}|RX|$)", line, re.I)
             m_rx = re.search(r"RX[ _]?PHY\W+([A-Z0-9 _]+?)(?:[,;)]|\s{2}|$)", line, re.I)
             if m_tx and m_rx:
                 tx, rx = m_tx.group(1).strip().upper(), m_rx.group(1).strip().upper()
         if tx is not None:
-            out.append((number, tx, rx))
+            out.append((number, tx, rx, t_ms))
     return out
+
+
+def phy_session_check(phy: list, first_rx_ms, last_ms) -> dict:
+    """W8-D11 PHY 2M during the requests. Untimed log (or no request times): every read is 2M. Timed log
+    (t_ms on the clock of t_rx_ms, 09/11 KV260 B5): the LE PHY update completes some reads after the
+    connection, so 1M reads are accepted only before the first 2M read; the last read before the first
+    request is 2M and every read from the first 2M read on is 2M."""
+    def is_2m(p):
+        return p[1] in PHY_2M and p[2] in PHY_2M
+    if not phy:
+        return {"rule": "no Read-PHY record", "pass": False}
+    timed = sorted((p for p in phy if len(p) > 3 and p[3] is not None), key=lambda p: p[3])
+    if first_rx_ms is None or len(timed) != len(phy):
+        return {"rule": "untimed: every read 2M", "pass": all(is_2m(p) for p in phy), "reads": len(phy)}
+    first_2m = next((i for i, p in enumerate(timed) if is_2m(p)), None)
+    before = [p for p in timed if p[3] <= first_rx_ms]
+    return {"rule": "timed: last read before the first request 2M, no non-2M read from the first 2M read on",
+            "pass": first_2m is not None and bool(before) and is_2m(before[-1])
+                    and all(is_2m(p) for p in timed[first_2m:]),
+            "reads": len(timed), "non_2m_reads_before_first_2m": first_2m if first_2m is not None else len(timed),
+            "first_2m_read_t_ms": timed[first_2m][3] if first_2m is not None else None,
+            "first_request_t_rx_ms": first_rx_ms, "last_request_t_ms": last_ms,
+            "reads_during_requests": sum(first_rx_ms <= p[3] <= last_ms for p in timed)}
 
 
 def paired_deltas(cycles: list) -> dict:
@@ -755,6 +781,9 @@ def evaluate_kv260(out: Path, record: dict, meta: dict, kind: str) -> int:
         p1_seq = [r["sequence"] for r in records if r.get("rho") == "P1" and r.get("sequence") is not None]
         connections = {r.get("connection") for r in records if "connection" in r}
         phy = edge.get("phy_records") or []
+        phy_check = edge.get("phy_check") or {"rule": "untimed: every read 2M",
+                                               "pass": bool(phy) and all(p[1] in PHY_2M and p[2] in PHY_2M
+                                                                         for p in phy)}
         checks.update({
             "kv260_log_pass_labels_100_per_rho": edge.get("status") == "PASS",
             "kv260_answered_all": (edge.get("counters") or {}).get("response_sent") == 2 * KV260_PAIRS,
@@ -762,12 +791,12 @@ def evaluate_kv260(out: Path, record: dict, meta: dict, kind: str) -> int:
             "nonce_above_prior_and_increasing": bool(p1_seq) and p1_seq[0] > record["prior_reserved_through"]
                                                 and all(b > a for a, b in zip(p1_seq, p1_seq[1:])),
             "single_connection": len(connections) == 1 if connections else edge.get("connections") == 1,
-            "phy_2m_read_back": bool(phy) and all(tx in PHY_2M and rx in PHY_2M for _, tx, rx in phy),
+            "phy_2m_read_back": bool(phy_check["pass"]),
         })
         details.update(kv260_log=edge.get("source_log"), labels_equal_reference=edge.get("labels_equal_reference"),
                        interval_match=match, first_p1_sequence=p1_seq[0] if p1_seq else None,
                        last_p1_sequence=p1_seq[-1] if p1_seq else None, connections=sorted(map(str, connections)),
-                       phy_records=phy)
+                       phy_check=phy_check, phy_records=phy)
         energy = {"schema": "week9-energy-kv260-s2/1", "decision": "W9-D8", "split": 2, "session": str(out),
                   "image": record.get("image"), "temp_room_C": record.get("temp_room_C"),
                   "v_supply_mV": trace.v_supply_mv, "I_idle_uA": summary.get("I_idle_uA"),
@@ -842,11 +871,18 @@ def cmd_import_kv260(args) -> int:
     if args.phy_log:
         shutil.copyfile(args.phy_log, edge / ("kv260_phy" + Path(args.phy_log).suffix))
         phy = phy_records(args.phy_log)
+    requests = [e for e in (json.loads(x) for x in lines if x.strip()) if e.get("ev") == "request"]
+    t_rx = [e["t_rx_ms"] for e in requests if isinstance(e.get("t_rx_ms"), (int, float))]
+    t_end = [e.get("t_tx_done_ms", e.get("t_rx_ms")) for e in requests
+             if isinstance(e.get("t_tx_done_ms", e.get("t_rx_ms")), (int, float))]
+    phy_check = phy_session_check(phy, min(t_rx) if len(t_rx) == len(requests) and t_rx else None,
+                                  max(t_end) if t_end else None)
     connections = sum(1 for x in lines if x.strip() and json.loads(x).get("ev") in ("connected", "connection"))
     w7p.write_new_json(edge / "summary.json", {
         "schema": "week9-kv260-import/1", "source_log": str(args.kv260_log),
         "source_log_sha256": w7p.sha256(raw), "phy_log": str(args.phy_log) if args.phy_log else None,
         "phy_log_sha256": w7p.sha256(args.phy_log) if args.phy_log else None, "phy_records": phy,
+        "phy_check": phy_check,
         "connections": connections or None, "imported_utc": datetime.now(timezone.utc).isoformat(),
         "counters": counters, "set_sha256": sample_set.set_sha256, "field_spec": w8lab.PEER_LOG_FIELDS,
         "label_reference": {"path": edge_ref.path, "sha256": edge_ref.sha256} if edge_ref else "W8-D4", **result})

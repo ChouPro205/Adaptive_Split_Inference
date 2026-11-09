@@ -367,7 +367,8 @@ class Kv260Pipeline(unittest.TestCase):
                 if event.get("ev") == "request":
                     handle.write(json.dumps({**event, "connection": 0}) + "\n")
 
-    def session(self, name: str, phy: str) -> tuple:
+    def session(self, name: str, phy) -> tuple:
+        """phy: one PHY name (one untimed read) or [(PHY, t_ms)] timed reads on the t_rx_ms clock."""
         import shutil
         out = TMP / name
         shutil.copytree(self.base, out)
@@ -375,7 +376,9 @@ class Kv260Pipeline(unittest.TestCase):
             "schema": "week9-ppk2-kv260/1", "samples": str(SAMPLES), "prior_reserved_through": 60643328,
             "image": {"build_id": "week8 B5 (test)"}, "ignore_counter": False}), encoding="utf-8")
         phy_log = TMP / f"{name}_phy.jsonl"
-        phy_log.write_text(json.dumps({"event": "read_phy", "tx_phy": phy, "rx_phy": phy}) + "\n", encoding="utf-8")
+        reads = [{"event": "read_phy", "tx_phy": phy, "rx_phy": phy}] if isinstance(phy, str) else \
+            [{"event": "read_phy", "t_ms": t, "tx_phy": p, "rx_phy": p} for p, t in phy]
+        phy_log.write_text("".join(json.dumps(r) + "\n" for r in reads), encoding="utf-8")
         code = self.mod.cmd_import_kv260(argparse.Namespace(out=out, kv260_log=self.log, edge_reference=None,
                                                             phy_log=phy_log))
         return code, json.loads((out / "check_kv260.json").read_text(encoding="utf-8"))
@@ -400,6 +403,21 @@ class Kv260Pipeline(unittest.TestCase):
         code, report = self.session("kv260_1m", "1M")
         self.assertEqual(code, 1)
         self.assertEqual([k for k, v in report["checks"].items() if not v], ["phy_2m_read_back"])
+
+    # week 8 B5 requests: t_rx_ms 4740125 ... t_tx_done_ms 4969640
+    def test_import_timed_1m_until_phy_update_passes(self):
+        reads = [("1M", 4705500 + 124 * k) for k in range(5)] + [("2M", 4706120), ("2M", 4800000)]
+        code, report = self.session("kv260_timed_update", reads)
+        self.assertEqual(code, 0, {k: v for k, v in report["checks"].items() if not v})
+        self.assertEqual(report["phy_check"]["non_2m_reads_before_first_2m"], 5)
+
+    def test_import_timed_1m_after_2m_fails(self):
+        for name, reads in (("kv260_timed_fallback", [("2M", 4706120), ("1M", 4800000)]),
+                            ("kv260_timed_1m_at_start", [("2M", 4706120), ("1M", 4740000)]),
+                            ("kv260_timed_only_after", [("2M", 4800000)])):
+            code, report = self.session(name, reads)
+            self.assertEqual(code, 1, name)
+            self.assertEqual([k for k, v in report["checks"].items() if not v], ["phy_2m_read_back"], name)
 
 
 class BuildChecker(unittest.TestCase):
