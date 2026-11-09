@@ -420,6 +420,43 @@ class Kv260Pipeline(unittest.TestCase):
             self.assertEqual([k for k, v in report["checks"].items() if not v], ["phy_2m_read_back"], name)
 
 
+class Week9Figures(unittest.TestCase):
+    """week9_figures.py helpers: core E (intercept at high fraction 0) and the btmon link parser."""
+
+    def test_core_fit_recovers_intercept(self):
+        import week9_figures as wf
+        rng = np.random.default_rng(20261109)
+        f = rng.uniform(0.05, 0.45, 100)
+        e = 511.0 + 350.0 * f + rng.normal(0.0, 1.0, 100)
+        fit = wf.core_fit(f, e)
+        self.assertAlmostEqual(fit["core"], 511.0, delta=1.0)
+        self.assertAlmostEqual(fit["slope"], 350.0, delta=5.0)
+        self.assertGreater(fit["r2"], 0.99)
+        flat = wf.core_fit([0.0] * 5, [9.0, 10.0, 11.0, 10.0, 10.0])      # one level only: core = mean
+        self.assertEqual(flat["core"], 10.0)
+        self.assertIsNone(flat["slope"])
+
+    def test_btsnoop_link_events(self):
+        import struct
+        import week9_figures as wf
+
+        def record(event: bytes, opcode: int = 3) -> bytes:
+            return struct.pack(">IIIIq", len(event), len(event), opcode, 0, 10_000_000) + event
+
+        conn = bytes([0x3E, 19, 0x01, 0x00, 0x10, 0x00, 0x00, 0x00]) + bytes(6) + struct.pack("<HHH", 36, 0, 42) + b"\x00"
+        update = bytes([0x3E, 10, 0x03, 0x00, 0x10, 0x00]) + struct.pack("<HHH", 12, 0, 400)
+        phy = bytes([0x3E, 6, 0x0C, 0x00, 0x10, 0x00, 0x02, 0x02])
+        path = TMP / "link.btsnoop"
+        path.write_bytes(b"btsnoop\0" + struct.pack(">II", 1, 2001) + record(conn) + record(update)
+                         + record(b"\x01\x02\x03", opcode=2) + record(phy))
+        link = wf.btsnoop_link(path)
+        self.assertEqual([e["event"] for e in link["events"]], ["connection_complete", "connection_update",
+                                                                  "phy_update"])
+        self.assertEqual(link["events"][0]["interval_ms"], 45.0)
+        self.assertEqual((link["final_interval_ms"], link["final_latency"], link["final_timeout_ms"]), (15.0, 0, 4000))
+        self.assertEqual((link["phy_updates"][0]["tx_phy"], link["phy_updates"][0]["rx_phy"]), ("2M", "2M"))
+
+
 class BuildChecker(unittest.TestCase):
     def test_week8_radio_image_fails(self):
         if WEEK8_BUILD is None:
