@@ -1,0 +1,503 @@
+{
+  "schema_version": 4,
+  "protocol_id": "mitdb-m1-baseline-v4",
+  "status": "CANDIDATE_RULES_CONFIRMED_ARTIFACT_NOT_REVIEWED",
+  "authority": {
+    "rules": "Current user request and latest relayed SV1 decisions",
+    "artifact_review": "NOT_REVIEWED",
+    "locked": false,
+    "training_permitted": false,
+    "scope": "Preparation only; no pilot, smoke fit, baseline fit, NoPeek grid or DS2 inference now"
+  },
+  "source_priority": [
+    "current user instruction and latest aggregate SV1 reply",
+    "relayed final1.2 where available",
+    "earlier PDFs and v2; preserved as history"
+  ],
+  "source_bindings": {
+    "latest_sv1": {
+      "source_name": "Văn bản đã dán.txt",
+      "raw_sha256": "6ce8cc20225d340d35133c303d2395893ab65f3601862271111c0c8a16e708fe",
+      "scope": "User supplied source; no artifact approval implied"
+    },
+    "v2_review": {
+      "source_name": "review_against_sv1_v1_2.json",
+      "raw_sha256": "7dee9ab184383e316602d4cb2f70c7e424f0e5b397889489e205023056553b49",
+      "scope": "User supplied source; no artifact approval implied"
+    },
+    "v1_2_original": {
+      "source_name": "Huong_dan_tung_thanh_vien_tuan9-13_DS1DS2_thay_checkpoint_2026-10-30_v1.2.pdf",
+      "raw_sha256": "2ddeb08b925a8df18e40a5bff57d14def83b607d1be457b8b25e2ad7d5c9123f",
+      "status": "FOUND_AND_COMPARED",
+      "v3_status": "NOT_FOUND_AS_SEPARATE_ACCESSIBLE_SOURCE",
+      "storage": "Local copy supplied by SV1 with the 2026-11-02 review; bound by file name and SHA-256 only, not copied into the repository",
+      "compared": "SV1 compared sections 4.0-4.5 against protocol v3 (relayed review 2026-11-02); SV3 compared sections 4.0-4.2 against this v4 candidate on 2026-11-03",
+      "differences": "Recorded in deviations_from_v1_2"
+    },
+    "sv1_review_v3_20261102": {
+      "source_name": "sv1_review_m1_v3_20261102.txt",
+      "raw_sha256": "cd9a2c0a3fa848f3f560d286c0a76c8b4e3b6b597f345645e480c2267d0d41e6",
+      "storage": "Local inbox file (docs/inbox, excluded from the repository); bound by name and SHA-256",
+      "reviewed_package_sha256": "4c86b1bdc9a2f8b534a12de794e1d3fcbd08c3f2231146488e3e16f61eac38c6",
+      "reviewed_protocol_sha256": "8068501318c09196f07ea5e13ef71174b4e434b82e508d567beebf4bf9103a45",
+      "reviewed_plan_sha256": "2b599ba055e844be46f66c3b5dd8c7fb9dd81c04d6a993c6f44a102307cbb8ec",
+      "scope": "Relayed SV1 feedback on the v3 package; not confirmation of any v4 artifact. v4 implements items 3a, 3b and 4 of that feedback and needs a new review of the v3-to-v4 diff"
+    }
+  },
+  "data": {
+    "config": "ml/configs/mitdb_ds1ds2_m1_v3.json",
+    "manifest": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/processed-manifest.json",
+    "normalization": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/normalization.json",
+    "metric_policy": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/metric-policy.json",
+    "sha256_bindings": {
+      "config": "58ade2a0389e108403ef42528dbebf1a9758305793e1c7d851077bdbd3ff0514",
+      "manifest": "7de30a1ca230286545c3637430c83141f8f0913b9abc3476858df0d87423cc0f",
+      "normalization": "1ae60f3f493427286ddfbcd3e269c6dce312a93351a75ebdf69db61941d23b89",
+      "metric_policy": "4ce2028bbc03021a8a27299edd2a362677c89c8c1e605df59d7c54e65ccfbf3c"
+    },
+    "validation": "S,V10-30% DS1; N,F<=30%; F>=20 unless fewer than50 four-record combinations then F>=10; prefer4 otherwise5; fail if no feasible set",
+    "sampling": "Same v2 domain m1-validation-v2,seed20261030,SHA256-counter-rejection and lexicographic combinations, no reroll",
+    "calibration_and_fast_finetune": "TRAIN_ONLY; validation evaluation only; all DS2 and202 forbidden",
+    "architecture": "Unchanged CNN109653 parameters,input360,outputs N/S/V/F/Q,s0-s10,noRR,I1 unchanged"
+  },
+  "baseline": {
+    "configuration_order": [
+      {
+        "id": "C0",
+        "mode": "weighted_ce",
+        "cap": 10,
+        "lr": 0.001
+      },
+      {
+        "id": "C1",
+        "mode": "weighted_ce",
+        "cap": 10,
+        "lr": 0.0003
+      },
+      {
+        "id": "C2",
+        "mode": "weighted_ce",
+        "cap": 50,
+        "lr": 0.001
+      },
+      {
+        "id": "C3",
+        "mode": "weighted_ce",
+        "cap": 50,
+        "lr": 0.0003
+      },
+      {
+        "id": "C4",
+        "mode": "balanced_sampler",
+        "cap": null,
+        "lr": 0.001
+      },
+      {
+        "id": "C5",
+        "mode": "balanced_sampler",
+        "cap": null,
+        "lr": 0.0003
+      }
+    ],
+    "seeds": [
+      20261030,
+      20261031,
+      20261101
+    ],
+    "slots": 18,
+    "full_grid_required": true,
+    "stop_at_first_gate_pass": false,
+    "weight_formula": "For each of5 outputs: min(cap,N_train/(5*n_c)) if n_c>0 else0; train counts only; no further weight normalization",
+    "weighted_ce": "CE with those train class weights; shuffle train only; N_train draws per epoch without replacement",
+    "balanced_sampler": "K-balanced over K=N,S,V,F: WeightedRandomSampler replacement=true,num_samples=N_train each epoch; per-draw class probability Q=n_Q/N_train (natural frequency, expected n_Q draws per epoch), each K class (1-n_Q/N_train)/4 (expected (N_train-n_Q)/4 draws per epoch); per-sample weight=class probability/n_class; CE has NO class weights; never double balance. Replaces v3 per-sample weight 1/n_y over all5 classes, which gave the8 train Q beats about20% of draws while Q is not in K and validation has no Q (SV1 review of v3, item3a). Weighted CE of C0-C3 unchanged",
+    "balanced_sampler_policy_id": "K_BALANCED_NSVF_Q_NATURAL_V4",
+    "optimizer": {
+      "name": "AdamW",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0001
+    },
+    "batch_size": 256,
+    "max_epochs": 40,
+    "dropout": 0.2,
+    "threads": 4,
+    "num_workers": 0,
+    "drop_last": false,
+    "augmentation": "none",
+    "seeding": "At each attempt seed Python,NumPy,torch and CUDA with slot seed; deterministic algorithms,CUBLAS4096:8,cuDNN deterministic,no benchmark. Data generator seed=slot_seed+epoch-1, including sampler; retry identical seed/config/runtime",
+    "validation": "Full fixed ordered DS1 validation,eval/no dropout,no sampler; all5 outputs; fixed K=N,S,V,F; unweighted CE descriptive only",
+    "scheduler": {
+      "name": "ReduceLROnPlateau",
+      "monitor": "unrounded validation_macro_f1_K_fixed",
+      "mode": "max",
+      "factor": 0.5,
+      "patience": 4,
+      "threshold": 0.0001,
+      "threshold_mode": "rel",
+      "min_lr": 0,
+      "eps": 1e-08
+    },
+    "early_stopping": {
+      "patience": 10,
+      "monitor": "unrounded validation_macro_f1_K_fixed",
+      "min_delta": 0,
+      "rule": "strict raw improvement resets patience; independent of rounded checkpoint ties"
+    },
+    "rounding_for_selection_only": "Decimal(str(raw_float)).quantize(0.0001,ROUND_HALF_UP); equal quantized values tie. Store and report raw values; gates,mean/SD,scheduler and early stopping use unrounded values",
+    "checkpoint": "Maximum rounded4 validation macro-F1 among epochs1..40; ties earliest epoch",
+    "deployment_seed": "For EACH configuration, choose best rounded4 checkpoint macro-F1 seed; ties smaller numeric seed; THEN apply gates; no switch to another seed to rescue failing configuration",
+    "gates": {
+      "N": "predictedN_fraction<=trueN_fraction+0.10",
+      "V": "SeV>=0.50 and precisionV>=0.50",
+      "S": "SeS>=0.20 and precisionS>=0.10",
+      "uses": "unrounded whole validation at selected deployment seed; report all3 seed gates",
+      "S_soft_label": "S_SOFT_GATE_FAIL_DISCLOSED",
+      "gate_types": "N and V blocking; S soft (v1.2 section4.2(c)): failure only requires disclosure in reports, no authority exception"
+    },
+    "configuration_selection": "Exclude configurations whose best seed fails N or V. If any remaining configuration passes S, restrict pool to N/V/S configurations. Then choose highest rounded4 mean raw macro-F1 over all3 seed checkpoints; ties smaller C index. If none passes S choose highest mean among N/V and disclose S failure. If no N/V configuration STOP/report group and teacher; no grid expansion",
+    "statistics": "Every seed,checkpoint epoch,raw metrics and gates; mean of all3 raw scores and sample SD ddof1 per configuration; failed/missing seed => mean/SD null and configuration ineligible, never mean2",
+    "retry": "Technical NaN/OOM/crash/nonzero or missing summary: same slot/seed/config once, max2 attempts; retain both immutable attempt directories,logs,history/checkpoint hashes and ledger; no seed substitution",
+    "code_fault": {
+      "rule": "If the first slot ends FAILED_TECHNICAL after exhausting the retry rule (2 attempts) and no attempt wrote epoch-001.json (no validation result exists), the runner halts the whole grid with HALTED_PRE_VALIDATION_CODE_FAULT and does not start the remaining17 slots",
+      "halt_status": "HALTED_PRE_VALIDATION_CODE_FAULT",
+      "after_halt": "Diagnose. If caused by a code bug: fix code as a new plan version (new plan SHA, diff reviewed) and rerun all18 slots from the start; not counted as a failed configuration; halted attempts retained and never used for selection",
+      "scope": "Only the first slot before any validation result; every later failure follows the retry rule and FAILED_TECHNICAL statistics",
+      "random_data_smoke": "Smoke on random synthetic data that never reads MITDB, to check file writing and checkpoint reload, is permitted; it yields no selection information and is not counted as training. Not written or run in this round"
+    },
+    "training_outputs": "Ignored ml/data only; unique grid/slot/attempt directories; per-epoch history and improvement checkpoints; selected reload validation,summary,18 terminal slot ledger; no test loader",
+    "permission": "Preparing/checking candidate does not authorize fit. Future run requires external owner M1/baseline lock and train authorization binding exact protocol and plan hashes; this round creates neither",
+    "ds2_report": {
+      "timing": "Once, only after the deployment checkpoint and the3 seed checkpoints of the selected configuration are hash-locked (and xmodels for any DPU row); no repeat evaluation; DS2 is never an input to configuration, epoch, seed, lambda or calibration choices",
+      "seeds": [
+        20261030,
+        20261031,
+        20261101
+      ],
+      "checkpoints": "Selected checkpoint of each of the3 seeds of the selected configuration; the deployment checkpoint is the best-validation seed chosen before DS2",
+      "rows": [
+        {
+          "split": "test_main",
+          "role": "primary",
+          "description": "DS2 without202 (21 records; no patient shared with201 in train)"
+        },
+        {
+          "split": "test_aux22",
+          "role": "secondary",
+          "description": "Full DS2 22 records including202, for direct comparison with published DS2 results; 201/202 same-patient overlap disclosed"
+        }
+      ],
+      "same_pass": "Both rows come from the same checkpoint in the same evaluation pass with identical code, normalization and preprocessing",
+      "primary_metric": "macro_f1_NSVF_fixed4",
+      "secondary_metrics": [
+        "macro_f1_NSVFQ_fixed5 reported with the Q beat count",
+        "accuracy"
+      ],
+      "class_metrics": {
+        "S": [
+          "Se",
+          "+P"
+        ],
+        "V": [
+          "Se",
+          "+P"
+        ]
+      },
+      "confusion": "5x5 counts; rows true N,S,V,F,Q; columns predicted N,S,V,F,Q",
+      "metric_definitions": "Se=TP/true support; +P=TP/predicted count; zero_division0; argmax over5 outputs; Q samples retained",
+      "statistics": {
+        "per_seed_values": true,
+        "mean": true,
+        "sd_ddof": 1,
+        "deployment_checkpoint_reported_separately": true,
+        "note": "Sample SD over3 seeds is descriptive, not a confidence interval"
+      },
+      "literature_comparison": {
+        "row": "test_aux22",
+        "metrics": [
+          "Se_S",
+          "+P_S",
+          "Se_V",
+          "+P_V"
+        ],
+        "source_document": "docs/sv3_m1_sources_20261030.md section2",
+        "values": "Author-reported percentages, not reproduced",
+        "columns": [
+          "id",
+          "lead",
+          "uses_RR",
+          "notes",
+          "reported Se/+P S and V",
+          "project test_aux22 Se/+P S and V"
+        ],
+        "caveat": "Project model uses no RR or interval features (single MLII360-sample window); all six papers use RR. Lead, label space, 202 handling and preprocessing differ per paper; no ranking claim",
+        "papers": [
+          {
+            "id": "P04",
+            "citation": "de Chazal, O'Dwyer, Reilly 2004, IEEE TBME 51(7):1196-1206",
+            "doi": "10.1109/TBME.2004.827359",
+            "uses_RR": true,
+            "lead": "two leads",
+            "reported_percent": {
+              "Se_S": 75.9,
+              "+P_S": 38.5,
+              "Se_V": 77.7,
+              "+P_V": 81.9
+            },
+            "notes": "Weighted LDA; DS1/DS2 22/22 including 202; 5 classes"
+          },
+          {
+            "id": "Garcia2017",
+            "citation": "Garcia et al. 2017, Scientific Reports, TVCG/PSO/SVM",
+            "doi": "10.1038/s41598-017-09837-3",
+            "uses_RR": true,
+            "lead": "two leads (TVCG)",
+            "reported_percent": {
+              "Se_S": 62.0,
+              "+P_S": 53.0,
+              "Se_V": 87.3,
+              "+P_V": 59.4
+            },
+            "notes": "Common Filter row; optimized for 3 classes N/S/V"
+          },
+          {
+            "id": "Mondejar2019",
+            "citation": "Mondejar-Guerra et al. 2019, BSPC, ensemble SVM",
+            "doi": "10.1016/j.bspc.2018.08.007",
+            "uses_RR": true,
+            "lead": "MLII",
+            "reported_percent": {
+              "Se_S": 78.1,
+              "+P_S": 49.7,
+              "Se_V": 94.7,
+              "+P_V": 93.9
+            },
+            "notes": "DS2 includes 202; Q removed; mapping puts e/j in S (differs from project)"
+          },
+          {
+            "id": "SaenzCogollo2020",
+            "citation": "Saenz-Cogollo, Agelli 2020, Algorithms 13(4):75, random forest",
+            "doi": "10.3390/a13040075",
+            "uses_RR": true,
+            "lead": "MLII",
+            "reported_percent": {
+              "Se_S": 78.55,
+              "+P_S": 68.29,
+              "Se_V": 87.36,
+              "+P_V": 94.62
+            },
+            "notes": "Resampled 150 Hz; inspected DS2 by feature count (comparison limitation)"
+          },
+          {
+            "id": "Wang2020",
+            "citation": "Wang et al. 2020, PeerJ Computer Science, CNN+MLP+focal loss",
+            "doi": "10.7717/peerj-cs.324",
+            "uses_RR": true,
+            "lead": "first lead",
+            "reported_percent": {
+              "Se_S": 81.37,
+              "+P_S": 68.34,
+              "Se_V": 93.72,
+              "+P_V": 91.12
+            },
+            "notes": "DS2 includes 202; Q removed, macro over 4 classes; handling of 114 not verified"
+          },
+          {
+            "id": "Zhang2021",
+            "citation": "Zhang et al. 2021, adversarial CNN",
+            "doi": "10.1155/2021/9946596",
+            "uses_RR": true,
+            "lead": "two leads plus two RR ratios",
+            "reported_percent": {
+              "Se_S": 78.8,
+              "+P_S": 90.8,
+              "Se_V": 92.5,
+              "+P_V": 94.3
+            },
+            "notes": "Validation is random 20% of train beats, not patient-wise"
+          }
+        ]
+      },
+      "S_record_dependence": "Report S beats per DS2 record; record232 holds 1382 of 1782 S beats on test_main, so S results depend mainly on one patient and must be stated",
+      "predeclared": "Metric list fixed before lock; no metric added, removed or substituted after seeing DS2"
+    }
+  },
+  "deviations_from_v1_2": [
+    {
+      "id": "calibration_fast_finetune_train_only",
+      "v1_2_reference": "sections4.3 and5.1 (T2, T4 tier2)",
+      "v1_2_text": "Calibration golden z_s from DS1 train/val; T4 tier2 remedy may add calibration samples or use Vitis AI fast finetune",
+      "change": "Calibration and fast finetune use DS1 train only; validation is never a calibration or finetune input",
+      "reason": "Validation measures gates and chooses the quantized version; feeding it into calibration or finetune would make that measurement non-independent",
+      "status": "Applied in protocol; SV2 pipeline confirmation pending"
+    },
+    {
+      "id": "quantization_repair_chosen_on_validation",
+      "v1_2_reference": "section5.1 (T4 tier2)",
+      "v1_2_text": "If tier2 fails on DS2, apply a predeclared remedy once, then use the final result and report honestly",
+      "change": "At most one predeclared train-only repair candidate per s is built before DS2; original vs repair is chosen on validation (tier1 PASS, then fewer tier2 warnings, then higher unrounded validation fixed4 macro-F1; exact tie keeps original); xmodels frozen before any DS2 prediction",
+      "reason": "Choosing the version after seeing DS2 would make DS2 a selection input; validation keeps DS2 report-only",
+      "status": "Candidate; awaiting SV2 confirmation (not a baseline blocker)"
+    },
+    {
+      "id": "five_record_validation_fallback",
+      "v1_2_reference": "section4.1",
+      "v1_2_text": "Validation is4 whole DS1 records; F floor20, lowered to10 if fewer than50 combinations",
+      "change": "If no4-record combination is feasible, a5-record fallback is defined; fail if none is feasible",
+      "reason": "Avoids an undefined state when no4-record set meets the constraints",
+      "status": "Not activated: F>=20 level has153 four-record combinations (>=50)"
+    }
+  ],
+  "metrics": {
+    "model_outputs": [
+      "N",
+      "S",
+      "V",
+      "F",
+      "Q"
+    ],
+    "K": [
+      "N",
+      "S",
+      "V",
+      "F"
+    ],
+    "zero_division": 0,
+    "Q_policy": "retain every Q sample and argmax5; include Q-related FP/FN in each one-vs-rest metric",
+    "validation_name": "validation_macro_f1_K_fixed",
+    "DS2_names": [
+      "macro_f1_NSVF_fixed4",
+      "macro_f1_NSVFQ_fixed5"
+    ]
+  },
+  "nopeek": {
+    "rules": "CONFIRMED_FOR_FUTURE_STAGE_NOT_EXECUTED",
+    "grid": {
+      "s": [
+        2,
+        5,
+        8
+      ],
+      "lambda": [
+        0,
+        0.1,
+        0.5,
+        1,
+        2,
+        5
+      ],
+      "seeds": [
+        20261030,
+        20261031,
+        20261101
+      ],
+      "runs": 54
+    },
+    "initialization": "all seeds/runs start from SAME deployment A checkpoint; epoch0 must reproduce A validation metrics",
+    "utility": "EVERY_SEED macro-F1>=0.95*A deployment validation macro-F1; no collapsed selected checkpoint in any seed",
+    "collapse": "At selected checkpoint after reload:any class>=99% predictions OR SeV<0.10; retain numbers in statistics,lambda ineligible if any collapsed seed",
+    "epoch_selection": "lambda0:max macro-F1 including epoch0; positive lambda fixed epoch count,select min dCor among epochs>=1 passing utility; none passes => max macro-F1 among epochs>=1,fallback utilityfail,not epoch0",
+    "lambda_selection": "Among complete3seed,all-seed utility and noncollapsed candidates minimize mean fixed-subset dCor; tie smallerlambda",
+    "deployment_seed": "Seed with median raw dCor among3 selected seed checkpoints; if multiple equal median choose smaller numeric seed",
+    "statistics": "all seed values,mean and sampleSD ddof1; collapsed retained; technical same-seed retryonce; missing seed means no2seed mean",
+    "fixed_dcor_validation_subset": {
+      "count": 512,
+      "seed": 20261030,
+      "domain": "dcor-validation-v2",
+      "selection": "SHA256 ASCII(domain|seed|patient_id|record_id|r_peak_sample|original_symbol|lead_name); sort digest then rowindex; first512 from current validation only; regenerate IDs on split change",
+      "evaluation": "same512 ordered samples,one full biased-sample Rn batch,eval mode for every run"
+    },
+    "extension_gate": "validation accuracy drop<=2 absolute percentage points AND macro-F1>=0.95*A; separate extension/tail stage, not lambda gridselection",
+    "execution_parameters": "Future candidate before grid: pilot LR/scheduler/fixed epochs require version and phase review; not a prerequisite for M1/baseline"
+  },
+  "quantization": {
+    "status": "POLICY_CONFIRMED_BY_RELAYED_SV1_SV2_PIPELINE_CONFIRMATION_PENDING_NOT_BASELINE_BLOCKER",
+    "inputs": "Calibration and fast finetune train ONLY; validation only measures gates and chooses version before DS2",
+    "finite_remediation": "At most ONE predeclared repair candidate per s; no extra attempts from DS2. SV2 must confirm exact calibration count/IDs,finetune steps and pipeline settings before quantization",
+    "validation_choice_candidate": "If original has blocking failure or tier2 warning,allow one train-only repair; select tier1 PASS over FAIL,then fewer tier2 warnings,then greater unrounded validation fixed4 macro-F1; exact tie retain original. This operational ordering is a candidate for SV2 review,not measured acceptance",
+    "freeze_before_DS2": "SHA256 all xmodels s0-s9 and complete quantization/calibration/finetune configs/selected revisions before any DS2 predictions",
+    "DS2_tier1_blocking": "200*(correct_fp32-correct_dpu)<N_test on mainDS2 and complete valid outputs/no failures for every compileds",
+    "DS2_tier2_warning": "Se AND precision for S AND V: FP32-DPU <=0.02 absolute fraction; improvements allowed; warning only,not blocking",
+    "DS2_failure": "Investigate first. Call pipeline fault only with evidence; technical repair retains prior artifacts/logs and reruns full compiled-scope evaluation. No choosing new calibration,finetune or hyperparameters from DS2",
+    "aux22": "Same locked checkpoint,evaluation pass; report separately and disclose201/202 overlap"
+  },
+  "packages": {
+    "A": "Locked baseline,header,tensor assertions,norm,data manifests,train-only calibration golden s0-s9,FP32 and INT8/FP16 reference predictions after lock,README/SHA",
+    "B": "NoPeek/P2 separate models/protection parameters and validation evidence; matching head/tail/full checkpoint/norm/protection identity,never mix A/B",
+    "registry": "Future r3 needs owner confirmations,not generated here"
+  },
+  "deferred_teacher_decisions_not_blocking_M1_baseline": [
+    {
+      "topic": "controller utility metric/constraint and FP32-A reference",
+      "status": "SV1 sent teacher30/10,deadline endweek10",
+      "blocks": "offline action filtering/controller phase",
+      "candidate": "fixed4 macro-F1>=0.95*A on DS1 validation DPU path; accuracy reported; DS2 reporting only"
+    },
+    {
+      "topic": "joint(s,rho) domain and P2 layered overP1",
+      "status": "teacher pending,endweek10; optionalP2s0 afterweek11",
+      "blocks": "NoPeek/P2 device domain/controller",
+      "candidate": "nine actions(0P0,0P1,2P0,2P1,2P2,5P0,5P1,5P2,10);s8 offline; actual image flash evidence week12; no measured pass asserted"
+    },
+    {
+      "topic": "threat model/attack protocol",
+      "status": "candidate by endweek12;review then teacher lock before A1week13",
+      "blocks": "attacks,not baseline",
+      "fixed_context": "honest-but-curious edge/passive eavesdropper;no physical/sidechannel/poisoning/active maliciousedge;adaptive attack knows algorithm but not key; clarify P1 edge key and attacker used forPi; decoder/GAN/reidentification/adaptive naming map pending"
+    },
+    {
+      "topic": "Pi formula/normalization/attacker aggregation",
+      "status": "teacher pending;table handoffweek17",
+      "blocks": "privacy/controller Pi; never invent values",
+      "candidate": "relay mentions clipped reidentification-based normalization; not adopted or used;low dCor not a privacy guarantee"
+    },
+    {
+      "topic": "statistics/ablation",
+      "status": "SV1 collecting teacher decisions;controller G5week19",
+      "blocks": "future research analysis",
+      "candidate": "Wilson for proportions;tCI for continuous;sampleSD3seed notCI;record bootstrap macroF1 and pairedWilcoxon require review;no mandatory ML ablation budget assumed"
+    },
+    {
+      "topic": "LUT I3/WP-D",
+      "status": "schemaOPEN;SV1 asking teacher milestone;teacher owns WP-D",
+      "blocks": "controller/LUT integration,not M1/baseline",
+      "handoff": "SV3 long table accuracy/Pi all admissible pairs,units in names,Paretoweek18,ablation inputsweek19;no new theorem or proof assertion"
+    }
+  ],
+  "future_research_output": {
+    "layout": "long table",
+    "keys": [
+      "s",
+      "rho",
+      "dataset_split",
+      "execution_path_FP32_or_DPU",
+      "metric_name",
+      "metric_value",
+      "checkpoint_sha256",
+      "protocol_version",
+      "Pi_definition_version",
+      "sample_count",
+      "offline_only"
+    ],
+    "ratios": "0..1,not percentages",
+    "missing_values": "Do not fill unmeasuredPi or fabricated values;empty template only",
+    "units": "Metric-specific units,including ms for R-peak error;Pi version required only for Pi rows"
+  },
+  "change_control": {
+    "locked_file": "never edit; preserve all previous receipts",
+    "baseline": "six18 grid immutable,no adaptive expansion; if none passesNV stop and report",
+    "future_phases": "teacher decision may create new NoPeek/P2 protocol version with reason/old-new hashes/review before dependent experiments; deferred items do NOT block M1/baseline",
+    "DS2": "report only after model/quantization lock; never a tuning input"
+  },
+  "execution_in_this_round": {
+    "fit": false,
+    "pilot": false,
+    "smoke_training": false,
+    "DS2_model": false,
+    "NoPeek_grid": false,
+    "firmware": false,
+    "commit_push_PR_Release": false
+  }
+}

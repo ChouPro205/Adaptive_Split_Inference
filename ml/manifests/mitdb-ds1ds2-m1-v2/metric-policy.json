@@ -1,0 +1,39 @@
+{
+  "classes": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "validation_support": [
+    9972,
+    175,
+    724,
+    26,
+    0
+  ],
+  "K_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "K_names": [
+    "N",
+    "S",
+    "V",
+    "F"
+  ],
+  "zero_division": 0,
+  "prediction_space": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "q_samples_retained": true,
+  "validation_labels_sha256": "50e653f94613e790aa676cda92332d9bdedfda219c0dafbd301f6fee0f9301ce",
+  "policy_sha256": "4831386fdac204e3de385195cfe10b0de25259957ea9b660610243ff92e6d9b1"
+}

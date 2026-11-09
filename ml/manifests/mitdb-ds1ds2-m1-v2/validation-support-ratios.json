@@ -1,0 +1,32 @@
+{
+  "N": {
+    "validation": 9972,
+    "DS1": 45841,
+    "fraction": 0.2175345214982221,
+    "train": 35869
+  },
+  "S": {
+    "validation": 175,
+    "DS1": 944,
+    "fraction": 0.1853813559322034,
+    "train": 769
+  },
+  "V": {
+    "validation": 724,
+    "DS1": 3788,
+    "fraction": 0.191129883843717,
+    "train": 3064
+  },
+  "F": {
+    "validation": 26,
+    "DS1": 414,
+    "fraction": 0.06280193236714976,
+    "train": 388
+  },
+  "Q": {
+    "validation": 0,
+    "DS1": 8,
+    "fraction": 0.0,
+    "train": 8
+  }
+}

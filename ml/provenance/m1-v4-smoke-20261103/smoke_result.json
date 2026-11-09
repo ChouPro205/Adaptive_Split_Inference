@@ -1,0 +1,41 @@
+{
+ "C0-seed20261030-a": {
+  "seconds": 9.7,
+  "device": "NVIDIA GeForce RTX 5060",
+  "epochs": 3,
+  "draws": [
+   41472,
+   41472,
+   41472
+  ],
+  "reload_exact": true,
+  "checkpoint_sha256": "c92a127247c903a7",
+  "selected_epoch": 2
+ },
+ "C4-seed20261030-a": {
+  "seconds": 6.0,
+  "device": "NVIDIA GeForce RTX 5060",
+  "epochs": 3,
+  "draws": [
+   41472,
+   41472,
+   41472
+  ],
+  "reload_exact": true,
+  "checkpoint_sha256": "494f966af0b7737c",
+  "selected_epoch": 3
+ },
+ "C4-seed20261030-b": {
+  "seconds": 6.1,
+  "device": "NVIDIA GeForce RTX 5060",
+  "epochs": 3,
+  "draws": [
+   41472,
+   41472,
+   41472
+  ],
+  "reload_exact": true,
+  "checkpoint_sha256": "494f966af0b7737c",
+  "selected_epoch": 3
+ }
+}

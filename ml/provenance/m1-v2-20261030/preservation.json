@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "existing_worktree_files_checked": 3527,
+  "existing_frozen_local_files_checked": 339,
+  "changed_or_missing": [],
+  "changed_or_missing_frozen": [],
+  "head_unchanged": true,
+  "branch_unchanged": true,
+  "index_unchanged": true,
+  "tracked_diff": "",
+  "root_status_unchanged": true,
+  "before_snapshot_raw_sha256": "4f9b7665977e6f5a97f04629566277d8e53cb349f244db50fcb3bec3db406e35"
+}

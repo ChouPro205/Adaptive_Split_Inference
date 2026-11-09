@@ -1,0 +1,221 @@
+# SV3 Model/Privacy — báo cáo tuần 8, hoàn tất grid ngày 30/10/2026
+
+**Đã hoàn tất và kiểm chứng 54/54 run của grid v2, tổng hợp metrics, xuất ba đường
+validation accuracy–lambda và khóa candidate theo validation CE.** Checkpoint vẫn
+là `EXPERIMENT_ONLY_NOT_APPROVED`; chưa đánh giá test hoặc chứng nhận privacy.
+
+## 1. Tiếp nối process cũ, không chạy lại grid
+
+Ngày30/10, process v2 PID30068 vẫn tồn tại, start time29/10 lúc22:43:37 khớp
+hai lock/receipt; CPU/log tiếp tục tăng và GPU có hoạt động. Inventory đọc thực tế
+là52 COMPLETED,1 RUNNING,1 NOT_STARTED, khác snapshot49/1/4 trong yêu cầu.
+Giữ process chạy, không xóa lock, resume hoặc restart. Query command line bằng
+CIM bị từ chối; đã đối chiếu start time, locks, tiến triển và experiment bindings.
+
+V2 kết thúc30/10 lúc01:52:38 Asia/Saigon, exit0, sau11341,016 giây
+(khoảng3giờ09phút). Exporter của supervisor cũ cũng exit0, sau3,3giây.
+Process tự kết thúc và runner tự dọn hai lock. Tổng386 epoch, mỗi run6–15 epoch,
+cả54 dừng hợp lệ theo patience5; không giảm max30 epoch hoặc bỏ tổ hợp.
+
+- [Trạng thái tiếp nhận/bindings](../ml/provenance/week8-continuation-20261030/initial-state.json), [quan sát tiến triển](../ml/provenance/week8-continuation-20261030/progress-observation.json).
+- [Receipt grid v2](../ml/provenance/week8-grid-20261029/grid-54-v2.receipt.json), [log epoch](../ml/provenance/week8-grid-20261029/grid-54-v2.stdout.txt), [receipt exporter](../ml/provenance/week8-grid-20261029/grid-analysis-v2.receipt.json).
+- [Inventory54 run](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/inventory.json), [status COMPLETED](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/status.json).
+
+V1 là attempt bị ngắt để kiểm engine, giữ nguyên evidence/stale locks; không trộn
+vào54 run v2. [Engine change receipt](../ml/provenance/week8-grid-20261029/engine-change-receipt.json)
+phân biệt source cũ và mới. Pilot không tính vào grid. Báo cáo pilot-only trước
+khi cập nhật được [archive nguyên bytes/hash](../ml/provenance/week8-continuation-20261030/report-archive.json).
+
+## 2. Protocol và source thực thi
+
+Worktree `dev/ml-sv3`, HEAD nền `d851e8621ee35e3e5da6451ca9c229094d147780`.
+Mã tuần8 chưa commit; HEAD không thay định danh source mới bằng hash.
+Runner chính thức SHA-256:
+`b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa`.
+[Started receipt](../ml/provenance/week8-grid-20261029/grid-54-v2.started.json) và
+[identity](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/identity.json)
+lưu source/config/data/environment bindings; source snapshots ở experiment.
+Bindings khớp khi tiếp nối và sau hoàn tất; source training/config không đổi.
+
+Protocol do người dùng chốt: s2/s5/s8 ×lambda{0,0.1,0.5,1,2,5}
+×seed{20261021,20261022,20261023}; train cả head và tail, Dropout bật train/tắt
+validation; CUDA FP32 deterministic, batch32, Adam lr1e-4, không weighted CE,
+resampling, augmentation hoặc scheduler. Max30 epoch, patience5; chọn validation
+CE thấp nhất, hòa giữ epoch sớm. Loss `CE + lambda1 × R_n(x,z_s)`.
+Đây là chốt protocol thí nghiệm của người dùng, không tự gán xác nhận GVHD.
+
+- [Config đã khóa](../ml/configs/week8_nopeek_approved_3seed_joint_v1.json).
+- [Protocol/lệnh grid và resume](sv3_week8_protocol_approved_joint_v1.md).
+- [Quyết định, bản bổ sung UTF-8](../ml/provenance/week8-grid-20261029/user-protocol-confirmation-utf8.json).
+
+Checkpoint khởi tạo SHA
+`9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90`.
+Cả54 run có cùng initial weights digest, optimizer/RNG mới cho từng run;
+không nối trọng số giữa các tổ hợp. Input MLII360, normalization frozen fit train;
+81094 train/15388 validation, tách theo bệnh nhân34/7. Train drop_last còn81088
+mẫu/epoch, validation đủ15388 mẫu. Validation N/S/V/F/Q=13003/1493/876/11/5.
+[Data audit](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/data-audit.json),
+[IDs](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/selected_samples.json).
+
+dCor validation là trung bình R_n có trọng số theo số mẫu của480 batch32 và
+một batch28, cùng thứ tự frozen; không phải dCor toàn dataset. Test không dùng
+cho training, calibration, lựa chọn lambda/checkpoint hoặc early stopping.
+Script test tồn tại nhưng không được chạy; cần protocol test riêng đã khóa
+và được cho phép trước khi đánh giá, không quay lại tuning từ kết quả test.
+
+## 3. Kết quả toàn grid
+
+Accuracy là mean ± sample std qua3 seed, đơn vị %. Cột còn lại là mean;
+CSV/JSON giữ cả std(ddof1), metrics mỗi seed, support/recall/confusion và hashes.
+Ba seed mô tả biến thiên training, không phải ba cohort bệnh nhân độc lập.
+Error bars không phải confidence interval.
+
+| Split | Lambda | Val accuracy (%) | CE | dCor | Macro-F1 |
+|---|---:|---:|---:|---:|---:|
+| s2 |0|73,5400 ±1,7725|0,695398|0,995749|0,261989|
+| s2 |0,1|74,4433 ±2,6287|0,685524|0,978603|0,253724|
+| s2 |0,5|74,6664 ±4,2722|0,641239|0,931291|0,255897|
+| s2 |1|72,8750 ±3,4327|0,703883|0,897018|0,241083|
+| s2 |2|73,7826 ±2,9065|0,732791|0,864499|0,246293|
+| s2 |5|83,3203 ±2,3539|0,635134|0,377058|0,213182|
+| s5 |0|73,5400 ±1,7725|0,695398|0,931864|0,261989|
+| s5 |0,1|72,5284 ±0,3029|0,719251|0,855200|0,252538|
+| s5 |0,5|73,5833 ±1,5942|0,659699|0,837545|0,253531|
+| s5 |1|79,7700 ±1,2862|0,570560|0,824294|0,274972|
+| s5 |2|83,6756 ±6,7257|0,494493|0,799315|0,310338|
+| s5 |5|86,9574 ±1,0307|0,513085|0,857556|0,318953|
+| s8 |0|73,5400 ±1,7725|0,695398|0,890193|0,261989|
+| s8 |0,1|72,5024 ±0,6902|0,731261|0,808987|0,263562|
+| s8 |0,5|76,1654 ±2,2612|0,623448|0,777910|0,257160|
+| s8 |1|77,9547 ±1,9788|0,562277|0,782402|0,265484|
+| s8 |2|82,4517 ±1,8279|0,559276|0,766290|0,282564|
+| s8 |5|82,5578 ±4,3558|0,578720|0,735178|0,278580|
+
+- [54 run CSV](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review/per-seed-metrics.csv), [JSON đầy đủ confusion/recall/history/checkpoint bindings](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review/per-seed-metrics.json).
+- [18 tổ hợp mean/std CSV](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review/aggregate-metrics.csv), [JSON](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review/aggregate-metrics.json).
+- [Dữ liệu vẽ18 điểm](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/figures-final/plot-data.json), [PNG](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/figures-final/validation-accuracy-lambda.png), [SVG](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/figures-final/validation-accuracy-lambda.svg), [PDF vector](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/figures-final/validation-accuracy-lambda.pdf).
+
+Hình cuối đã xem trực tiếp: đủ ba panel/sáu lambda/error bars, dấu candidate theo
+CE; giữ đúng khoảng cách số trục x, nhãn0,1 ở hàng thứ hai để không chồng nhãn.
+Hình/exporter ban đầu giữ nguyên; bản cuối có renderer/hash riêng.
+
+## 4. Candidate và giới hạn
+
+[Quy tắc chọn](../ml/provenance/week8-grid-20261029/candidate-selection-rule.json)
+đã khóa trước khi grid hoàn tất: từng split chọn lambda có mean validation CE
+thấp nhất qua3 seed, hòa chọn lambda nhỏ hơn. Giữ cả3 seed, không chọn seed đẹp
+nhất hoặc tối ưu xuyên split. [Candidate lock](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review/candidate-lock.json)
+giữ9 checkpoint và config/data/source/rule/run/checkpoint hashes. Đây là khóa
+candidate thực nghiệm, không phải duyệt triển khai.
+
+| Split | Lambda chọn | CE mean ±std | Accuracy mean ±std (%) | Macro-F1 mean ±std |
+|---|---:|---:|---:|---:|
+| s2 |5|0,635134 ±0,044655|83,3203 ±2,3539|0,213182 ±0,030487|
+| s5 |2|0,494493 ±0,044530|83,6756 ±6,7257|0,310338 ±0,046125|
+| s8 |2|0,559276 ±0,031579|82,4517 ±1,8279|0,282564 ±0,013682|
+
+| Candidate | Recall N mean (%) | S mean (%) | V mean (%) | F/Q mean (%) |
+|---|---:|---:|---:|---:|
+| s2/lambda5 |97,7185|0,0447|13,0518|0/0|
+| s5/lambda2 |93,5066|0,3349|81,3166|0/0|
+| s8/lambda2 |92,4556|0,0893|75,8371|0/0|
+
+s5/lambda5 có accuracy86,9574% nhưng CE0,513085 cao hơn lambda2 CE0,494493,
+nên không được chọn. Không đổi quy tắc sau khi xem kết quả.
+N chiếm khoảng84,5% validation; accuracy tổng không đủ mô tả chất lượng.
+Ở s2/lambda5, dCor giữa seed là0,017779/0,313493/0,799903; seed20261021 chỉ có
+recall V0,3425%, Macro-F10,184583 dù accuracy84,5204%. Candidate có recall S rất
+thấp và F/Q bằng0; F/Q validation chỉ11/5 mẫu. Không gọi chúng tốt cho lớp hiếm
+hoặc sẵn sàng triển khai. dCor giảm không chứng minh privacy/differential privacy;
+P2/decoder/GAN/tái định danh/adaptive attacker/Π/Pareto/controller là giai đoạn sau.
+
+## 5. Kiểm chứng, tests và bảo toàn
+
+Lượt tiếp tục30/10 thực chạy11/11 tests bộ tổng hợp thường và11/11 `-O`, CPU,
+fixtures tổng hợp, không tranh GPU với grid. Lần đầu có2 lỗi fixture mean/std
+số thực không khớp NumPy exporter; đã sửa fixture, không nới validator hoặc sửa
+số liệu thật. Log/receipt lỗi đầu giữ riêng.
+
+- [Tests cuối](../ml/provenance/week8-continuation-20261030/analysis-tests-final.receipt.json), [tests -O](../ml/provenance/week8-continuation-20261030/analysis-tests-final-O.receipt.json).
+- [Receipt kiểm54 run/candidate](../ml/provenance/week8-continuation-20261030/grid-review.receipt.json), [manifest review](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review/summary.json).
+- [Receipt hình cuối](../ml/provenance/week8-continuation-20261030/grid-figures-final.receipt.json), [manifest hình](../ml/results/week8-nopeek/grid/grid-3seed-joint-v2/figures-final/manifest.json).
+
+Đã kiểm54 tổ hợp duy nhất, source snapshots/config/data IDs, status/summary/history,
+checkpoint hash/identity, minCE/earliest tie. Metrics checkpoint khớp summary/history;
+runner nạp lại checkpoint và xác minh validation exact trong từng run. Accuracy/F1/
+recall đối chiếu từ confusion; CSV/JSON/plot data khớp checkpoint-bound metrics.
+
+Lambda0 cùng seed ở s2/s5/s8 có cùng selected weights digest, best epoch,
+CE/accuracy/classification metrics; dCor khác do activation khác. [Receipt](../ml/provenance/week8-continuation-20261030/lambda0-cross-split-check.json).
+Cả54 run cùng initial weights digest. Progress checkpoint có model/optimizer,
+epoch/early stopping/CPU-CUDA RNG; không cần resume vì process không chết.
+
+Không chạy lại runner tests/pilot trong lượt tiếp tục vì source/config/runtime
+process và bindings còn áp dụng. Evidence source v2 trước grid:
+
+| Kiểm trước grid | Kết quả | Receipt |
+|---|---|---|
+| Runner tuần8 thường/-O |24/24 mỗi chế độ|[thường](../ml/provenance/week8-grid-20261029/grouped-week8-tests.receipt.json), [-O](../ml/provenance/week8-grid-20261029/grouped-week8-tests-O.receipt.json)|
+| Engine equivalence CPU/CUDA |2 tests PASS với subtests ba split/lambda0/0.5; loss/metrics/weights/gradients/RNG khớp bit|[receipt](../ml/provenance/week8-grid-20261029/engine-equivalence-final.receipt.json)|
+| Pilot joint CUDA v2 |6/6 run ×2 epoch, reload exact|[receipt](../ml/provenance/week8-grid-20261029/grouped-joint-pilot.receipt.json)|
+| dCor/objective/loader tuần7 |19/19 thường và19/19 -O, nguồn tuần7 không đổi|[thường](../ml/provenance/week8-20261029/week7-tests.receipt.json), [-O](../ml/provenance/week8-20261029/week7-tests-O.receipt.json)|
+
+[Kiểm bàn giao cuối](../ml/provenance/week8-continuation-20261030/final-verification.json)
+ghi việc bảo toàn52 run đã hoàn tất khi tiếp nhận, baseline/frozen/evidence trước,
+bindings/54 checkpoints/liên kết. Không xóa output có sẵn, reset/clean/stash/rebase/
+force-push, commit hoặc công bố remote trong lượt tiếp tục.
+
+## 6. W8-01..W8-08 và C-01..C-04
+
+| Mục | Trạng thái trong phạm vi SV3 local |
+|---|---|
+| W8-01 |USER_CONFIRMED —54 run/joint training đã chốt; không gán duyệt GVHD|
+| W8-02 |VERIFIED —frozen train/val/IDs/hashes, fresh init giống nhau ở54 run|
+| W8-03 |VERIFIED —runner/source/status/checkpoints/history; không cần resume lượt này|
+| W8-04 |PASS —tests/pilot v2 áp dụng;11 tests tổng hợp chạy lại thường/-O|
+| W8-05 |COMPLETE —54/54 run hợp lệ,386 epoch theo early stopping đã chốt|
+| W8-06 |COMPLETE —54 run/18 tổ hợp mean/std, lớp/CE/dCor/metrics/hashes|
+| W8-07 |COMPLETE —ba đường sáu lambda, variation qua3 seed, data và PNG/SVG/PDF|
+| W8-08 |COMPLETE_LOCAL_VALIDATION_HANDOFF —candidate/report/protocol/metrics/hashes/lệnh; test/deployment riêng|
+| C-01 |ML I1 v2 còn DRAFT trong nguồn local; chưa có quyết định review mới|
+| C-02 |Runbook sẵn sàng; chưa có hồ sơ buổi demo thực tế với GVHD trong nguồn đã kiểm|
+| C-03 |Baseline25.632 output đã PASS_ACCURACY_GATE và review29/10; nghiệm thu owner/GVHD riêng|
+| C-04 |Review29/10 ghi CONFIRMED trên SV1 549aa102; lượt này không truy vấn lại tích hợp remote, không ký/đổi registry thay Châu-Trung|
+
+Nguồn phối hợp: [review full-test29/10](sv3_week7_fulltest_review_20261029.md),
+[biểu mẫu ML](sv3_week7_ml_i1v2_confirmation_draft.md), [demo guide](sv3_week7_demo_guide.md).
+Không mở lại việc chờ SV2 gửi baseline. Baseline/G2 không chứng nhận NoPeek mới;
+firmware/BLE/PPK2 thuộc SV1, KV260/compile/runtime thuộc SV2. Grid hoàn tất không
+thay owner/GVHD acceptance hoặc chứng minh privacy.
+
+## 7. File thay đổi và tái lập
+
+| File/thư mục | Thay đổi lượt tiếp tục |
+|---|---|
+| `docs/sv3_ml_week8_report.md` |Cập nhật hiện hành; bản trước archive nguyên bytes/hash|
+| `docs/sv3_week8_protocol_approved_joint_v1.md` |Bổ sung lệnh tổng hợp/hình và ranh giới test|
+| `ml/scripts/test_week8_grid_analysis.py` |Sửa kỳ vọng NumPy mean/std của fixture; giữ validator|
+| `ml/scripts/plot_week8_grid.py` |Renderer mới rõ nhãn/error bars/candidate theo CE; không đổi training/exporter|
+| `ml/provenance/week8-continuation-20261030/` |Process/preservation, tests/receipts/logs, archive và kiểm bàn giao|
+| `ml/results/week8-nopeek/grid/grid-3seed-joint-v2/` |Process cũ hoàn tất2 run cuối; exporter, review/candidate và figures|
+| `ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2/` |Checkpoint2 run cuối do process cũ tạo;52 run cũ giữ nguyên|
+
+`run_week8_nopeek.py`, config, `summarize_week8_nopeek.py`, `analyze_week8_grid.py`,
+rule/identity không sửa để ép kiểm PASS. Không chạy `evaluate_week8_locked_test.py`;
+file tồn tại không phải quyền đánh giá test. Test cần protocol riêng đã khóa/được
+cho phép, không dùng test quay lại tuning.
+
+Sau exporter, từ worktree (outputs hiện có; tái lập phải chọn root mới):
+
+```powershell
+$py = (Resolve-Path ../../ml/.venv/Scripts/python.exe).Path
+& $py -B ml/scripts/test_week8_grid_analysis.py
+& $py -O -B ml/scripts/test_week8_grid_analysis.py
+& $py -B ml/scripts/analyze_week8_grid.py --experiment ml/results/week8-nopeek/grid/grid-3seed-joint-v2 --artifacts ml/artifacts/week8-nopeek/grid/grid-3seed-joint-v2 --rule ml/provenance/week8-grid-20261029/candidate-selection-rule.json --output ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review
+& $py -B ml/scripts/plot_week8_grid.py --review ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review --output ml/results/week8-nopeek/grid/grid-3seed-joint-v2/figures-final
+```
+
+Checkpoints ngoài Git; đường dẫn/hash trong candidate/inventory.
+[Inventory hash bàn giao](../ml/provenance/week8-continuation-20261030/package-inventory.json)
+cho phép kiểm lại outputs; dataset/baseline cần nguồn frozen gốc.
+Không push, tạo PR, merge hoặc bật auto-merge trong nhiệm vụ này.

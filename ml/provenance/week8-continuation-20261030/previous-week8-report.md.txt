@@ -1,0 +1,170 @@
+# Báo cáo SV3 Model/Privacy tuần 8 — triển khai và pilot 29/10/2026
+
+**Runner, tests và pilot CPU/CUDA đã có bằng chứng; grid chính thức chưa chạy.**
+Chưa tìm thấy quyết định duyệt protocol trong nguồn đã đọc. Cấu hình hiện có
+và hai config mới đều là đề xuất; chưa chọn candidate hoặc đánh giá test.
+Không đánh dấu tuần8 hoàn thành.
+
+## Nguồn và revision
+
+Tái sử dụng worktree `dev/ml-sv3` tại HEAD nền
+`d851e8621ee35e3e5da6451ca9c229094d147780`, sạch trước triển khai.
+Thay đổi mới chưa commit; mỗi lượt chạy lưu SHA-256 từng source thực dùng,
+config canonical, source snapshots, môi trường và HEAD nền.
+Đây là lượt chạy trên **HEAD nền + source mới theo hash**, không phải tests
+chạy trên tree nguyên trạng của commit d851e86.
+
+[Source binding](../ml/provenance/week8-20261029/source-binding.json),
+[preflight](../ml/provenance/week8-20261029/preflight.json) và
+[đối chiếu GitHub chỉ đọc](../ml/provenance/week8-20261029/remote-preflight.json).
+Đã xác minh nhánh remote SV3 trùng d851e86, không có commit mới hơn trên nhánh
+tại thời điểm kiểm. PR42 đã đóng/merged trước lượt này, merge commit
+`020218418b592c3eed36dbb961e2ee2e38cf72d0`; main hiện trùng commit đó.
+Không push, tạo PR, merge, bật auto-merge hoặc đổi branch trong nhiệm vụ tuần8.
+Không suy quyết định duyệt protocol từ việc PR tuần7 đã merge.
+
+Nguồn đọc gồm checklist tuần8 ngày29/10, config sweep cũ, dCor/objective/loader,
+smoke/tests tuần7, báo cáo/checklist tuần7 và review full-test29/10.
+Config cũ `week8_nopeek_sweep.json` giữ nguyên, cùng mọi evidence lịch sử.
+
+## Trạng thái W8-01..W8-08
+
+| Mục | Trạng thái | Bằng chứng và đầu ra còn thiếu |
+|---|---|---|
+| W8-01 | PROPOSED — chờ chốt | [Protocol v1](sv3_week8_protocol_v1.md), hai config CPU/CUDA; còn seeds, scope và phê duyệt tham số trước train dài |
+| W8-02 | VERIFIED_LOCAL | [Data audit](../ml/results/week8-nopeek/pilot/pilot-v1/data-audit.json), [IDs](../ml/results/week8-nopeek/pilot/pilot-v1/selected_samples.json); nguồn train/val/checkpoint xác thực, test arrays không mở; việc khóa config chung chờ W8-01 |
+| W8-03 | IMPLEMENTED_AND_PILOTED | Runner riêng, history/validation/early stop/checkpoints/status/resume/locks; tests và hai pilot trọn vòng |
+| W8-04 | PASS_LOCAL | 24/24 tests mới thường và -O, 19/19 tuần7 thường và -O, CPU6/6 + CUDA6/6 pilot, reload metrics exact |
+| W8-05 | NOT_STARTED_PROTOCOL_PROPOSED | 0/18 theo một seed đề xuất; nếu chốt3 seed là0/54; [planned inventory](../ml/provenance/week8-20261029/planned-grid-inventory.json) |
+| W8-06 | PILOT_ONLY | CSV/JSON đủ CE/dCor/accuracy/macro-F1/confusion/recall/best epoch/hash cho pilot; thiếu toàn grid trên full validation |
+| W8-07 | PILOT_ONLY | Hai hình ba panel PNG/SVG được gắn nhãn PILOT; chỉ lambda0/0.5, chưa đủ sáu lambda của grid |
+| W8-08 | PARTIAL_HANDOFF | Protocol/code/tests/pilot/inventory/hashes/lệnh có; thiếu quyết định duyệt, grid, bảng/hình chính thức và khóa candidate |
+
+W8-02 xác minh dữ liệu, không thay W8-01 phê duyệt khoa học.
+W8-03/04 PASS chỉ thuộc triển khai và kiểm thử; không thay chứng minh privacy.
+
+## Kiểm thử và thí nghiệm thực chạy
+
+Python3.11, PyTorch2.14.0+cu130, NumPy/môi trường chính xác lưu trong identity
+của từng pilot. CPU4 threads/MKLDNN off; CUDA RTX5060 FP32 deterministic,
+TF32 off. Mỗi tổ hợp khởi tạo từ cùng checkpoint frozen SHA
+`9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90`.
+Pilot train head_only, tail frozen/eval. Loss dùng lại `nopeek_loss` tuần7.
+
+| Lượt | Kết quả | Receipt |
+|---|---|---|
+| Tests tuần7 thường | 19/19 PASS, gồm CUDA parity | [receipt](../ml/provenance/week8-20261029/week7-tests.receipt.json) |
+| Tests tuần7 -O | 19/19 PASS | [receipt](../ml/provenance/week8-20261029/week7-tests-O.receipt.json) |
+| Tests tuần8 thường | 24/24 PASS | [receipt](../ml/provenance/week8-20261029/week8-tests.receipt.json) |
+| Tests tuần8 -O | 24/24 PASS | [receipt](../ml/provenance/week8-20261029/week8-tests-O.receipt.json) |
+| Pilot CPU | 6/6 run ×2 epoch, exit0 | [receipt](../ml/provenance/week8-20261029/pilot.receipt.json), [inventory](../ml/results/week8-nopeek/pilot/pilot-v1/inventory.json) |
+| Export CPU | CSV/JSON/PNG/SVG, exit0 | [receipt](../ml/provenance/week8-20261029/pilot-analysis.receipt.json) |
+| Pilot CUDA | 6/6 run ×2 epoch, exit0 | [receipt](../ml/provenance/week8-20261029/pilot-cuda.receipt.json), [inventory](../ml/results/week8-nopeek/pilot/pilot-cuda-v1/inventory.json) |
+| Export CUDA | CSV/JSON/PNG/SVG, exit0 | [receipt](../ml/provenance/week8-20261029/pilot-cuda-analysis.receipt.json) |
+
+Tests kiểm CE-only exact loss/gradient/Adam cùng seed/mode/init, gradient dCor
+đến ba head, finite loss/gradient, frozen tail, Dropout, validation không đổi
+weights/gradients, uneven/singleton batch, strict-CE/ties, early stopping,
+checkpoint reload, gián đoạn/resume khớp bit cả khi Dropout bật, status lỗi,
+chặn ghi đè, config chưa duyệt, inventory thiếu/trùng/sai, locks, exporter tamper
+và biểu diễn honest partial results. Đây là tests có dữ liệu tổng hợp và model thật;
+pilot riêng xác minh wiring bằng frozen ECG train/val.
+
+Không gọi tests phát triển ban đầu là receipt chính thức. Các receipts trong
+bảng được chạy lại sau sửa, cùng source bindings đã khóa. Tests cũ ở bed2dfc
+giữ nguyên; bảng trên là lượt kiểm mới và có receipt riêng.
+
+## Kết quả pilot, không dùng để chọn lambda
+
+Cùng512 train và256 validation, seed20261021, hai epoch, batch32.
+Train subset N/S/V/F/Q=438/7/33/2/32; validation=222/19/15/0/0.
+F/Q không xuất hiện trong validation subset: recall0 theo quy ước zero_division
+không phải phép đo hiệu quả trên F/Q. Full validation có11F và5Q.
+
+Bảng CPU tại checkpoint chọn theo CE:
+
+| Split | Lambda | Best epoch | Val accuracy (%) | CE | dCor batch R_n | Macro-F1 |
+|---|---:|---:|---:|---:|---:|---:|
+| s2 | 0 | 1 | 88,671875 | 0,361391 | 0,988220 | 0,333952 |
+| s2 | 0,5 | 1 | 88,671875 | 0,360623 | 0,986450 | 0,333952 |
+| s5 | 0 | 1 | 87,500000 | 0,389466 | 0,951159 | 0,322555 |
+| s5 | 0,5 | 2 | 88,671875 | 0,380105 | 0,930650 | 0,333952 |
+| s8 | 0 | 1 | 84,765625 | 0,421153 | 0,913134 | 0,300452 |
+| s8 | 0,5 | 2 | 86,718750 | 0,380853 | 0,891932 | 0,315670 |
+
+CPU/CUDA chọn cùng best epochs và accuracy trong pilot này; CE/dCor có sai khác
+số học nhỏ, không tuyên bố trọng số hai device khớp bit. Mỗi device tự reload
+checkpoint cho metrics khớp chính xác với kết quả đã chọn của device đó.
+s8/lambda0.5 epoch1 accuracy89,0625% nhưng epoch2 CE thấp hơn nên chọn epoch2
+accuracy86,71875%; ví dụ cho thấy chọn theo CE không phải chọn accuracy tối đa.
+
+Pilot lambda0.5 có dCor thấp hơn lambda0 ở các checkpoint này. Hai epoch và
+subset nhỏ không đủ kết luận hội tụ, ưu thế lambda, chất lượng lớp hiếm hoặc
+kháng tấn công. Không dùng dCor giảm làm chứng minh privacy/differential privacy.
+
+- [Metrics CPU CSV](../ml/results/week8-nopeek/pilot/pilot-v1/analysis/metrics.csv), [JSON/confusion/recall](../ml/results/week8-nopeek/pilot/pilot-v1/analysis/metrics.json), [plot data](../ml/results/week8-nopeek/pilot/pilot-v1/analysis/plot-data.json).
+- [Hình CPU PNG](../ml/results/week8-nopeek/pilot/pilot-v1/analysis/validation-accuracy-lambda.png), [SVG](../ml/results/week8-nopeek/pilot/pilot-v1/analysis/validation-accuracy-lambda.svg).
+- [Metrics CUDA CSV](../ml/results/week8-nopeek/pilot/pilot-cuda-v1/analysis/metrics.csv), [JSON/confusion/recall](../ml/results/week8-nopeek/pilot/pilot-cuda-v1/analysis/metrics.json), [plot data](../ml/results/week8-nopeek/pilot/pilot-cuda-v1/analysis/plot-data.json).
+- [Hình CUDA PNG](../ml/results/week8-nopeek/pilot/pilot-cuda-v1/analysis/validation-accuracy-lambda.png), [SVG](../ml/results/week8-nopeek/pilot/pilot-cuda-v1/analysis/validation-accuracy-lambda.svg).
+
+Hình đã xem trực tiếp: đủ ba panel, nhãn pilot/subset/6of6/one seed, trục và
+markers rõ. Không phải đường privacy–accuracy hoặc đường grid sáu lambda.
+Các checkpoint được chọn và last.pt lưu cục bộ ở
+`ml/artifacts/week8-nopeek/pilot/{pilot-v1,pilot-cuda-v1}/<run>/`, không đưa weights
+vào Git. Hash selected checkpoints nằm trong inventory/summary từng run.
+
+## C-01..C-04 theo dõi riêng
+
+| Mục | Trạng thái có bằng chứng | Việc đúng owner còn lại |
+|---|---|---|
+| C-01 review ML I1 v2 | Biểu mẫu DRAFT, bằng chứng tensor/scale/shape/logits và tài liệu review đã sẵn sàng | Kỳ Anh review; Châu ghi quyết định theo quy trình |
+| C-02 demo cá nhân với GVHD | Runbook/code/tests đã sẵn sàng; chưa có hồ sơ buổi thực tế trong nguồn đã kiểm | Kỳ Anh giải thích/demo; ghi kết quả buổi làm việc đúng thực tế |
+| C-03 nghiệm thu full-test baseline |25.632 output đủ, s2/s5/s8 PASS_ACCURACY_GATE, artifact đã review29/10 | Owner/GVHD ghi quyết định nghiệm thu; không chờ Trung gửi lại output |
+| C-04 tích hợp xác nhận r2 | CONFIRMED trên SV1 549aa102 theo review29/10; main mới0202184 merge PR42 vẫn không tích hợp thay đổi contract SV1 đó | Châu/Trung tích hợp xác nhận đã có; không ký hoặc sửa firmware thay |
+
+Nguồn: [review full-test29/10](sv3_week7_fulltest_review_20261029.md),
+[biểu mẫu ML](sv3_week7_ml_i1v2_confirmation_draft.md),
+[demo guide](sv3_week7_demo_guide.md). G2/full-test dùng baseline;
+không chứng nhận các checkpoint NoPeek mới. SV3 không thay registry hoặc owner
+acceptance bằng việc tests/pilot đã PASS.
+
+## File mới và bàn giao
+
+| File/thư mục | Mục đích |
+|---|---|
+| `ml/configs/week8_nopeek_protocol_v1.json` | Đề xuất đầy đủ CPU, scope, optimizer, selection và pilot |
+| `ml/configs/week8_nopeek_protocol_v1_cuda.json` | Biến thể CUDA đã pilot, vẫn chưa phê duyệt grid |
+| `ml/scripts/run_week8_nopeek.py` | Epoch runner, validation, early stop, fresh init, provenance, checkpoints, trạng thái và resume |
+| `ml/scripts/test_week8_nopeek.py` |24 tests hành vi quan trọng |
+| `ml/scripts/summarize_week8_nopeek.py` | Xác thực nguồn/checkpoint/selection rồi xuất metrics/ba panel |
+| `docs/sv3_week8_protocol_v1.md` | Protocol đề xuất, giới hạn, quyết định và lệnh tái lập |
+| `docs/sv3_ml_week8_report.md` | Báo cáo này, statuses và phần còn thiếu |
+| `ml/provenance/week8-20261029/` | Preflight/preservation, source bindings, receipts/logs, planned inventory và kiểm bàn giao |
+| `ml/results/week8-nopeek/pilot/` | Hai pilot tách biệt: IDs/config/snapshot/history/inventory/metrics/figures |
+| `ml/artifacts/week8-nopeek/pilot/` | Checkpoints cục bộ bị ignore, experimental only |
+
+Không sửa source tuần7, frozen manifest/reference, data/test/calibration,
+thresholds, receipt lịch sử, contracts hoặc các file cũ khác.
+[Preservation trước](../ml/provenance/week8-20261029/preservation-before.json),
+[kiểm bàn giao](../ml/provenance/week8-20261029/handoff-verification.json)
+và [inventory hash toàn gói mới](../ml/provenance/week8-20261029/package-inventory.json).
+
+## Quyết định cần chốt trước grid
+
+Gói cụ thể: s2/s5/s8 × sáu lambda; batch32; Adam1e-4; tối đa30 epoch;
+patience5; min validation CE/earliest tie; fresh baseline mỗi run;
+unweighted CE/shuffle, không augmentation; head_only, tail frozen/eval;
+CUDA FP32 deterministic đã pilot; full frozen train/val, test không đọc.
+
+Đề xuất ba seed `[20261021,20261022,20261023]`, tổng54 run để báo mean/std.
+Phương án ít chi phí hơn: seed20261021,18 run, phải ghi giới hạn một seed.
+Config v1 giữ seed đơn để bảo toàn đề xuất/pilot đã chạy; khi có quyết định
+thực tế sẽ tạo config đã khóa mới và ghi đúng authority/evidence, không sửa
+config pilot. Chọn head_and_tail là lựa chọn khác cần ghi rõ trước grid;
+không suy smoke tuần7 thành quyết định khoa học đã duyệt.
+
+Hiện hoàn tất12 run pilot riêng (6CPU+6CUDA), **0 run chính thức**.
+18×K chưa có K được thống nhất; không cộng pilot vào mẫu số grid.
+Sau chốt: chạy đủ grid, tổng hợp full validation và chọn candidate bằng quy tắc
+validation đã khóa; test evaluation chỉ sau khóa candidate, không quay lại tuning.
+Checkpoint mới vẫn thử nghiệm, chưa duyệt triển khai trên Device/KV260.

@@ -1,0 +1,21 @@
+{
+  "runtime": "project_shared_venv",
+  "arguments": [
+    "-B",
+    "ml/scripts/plot_week8_grid.py",
+    "--review",
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/review",
+    "--output",
+    "ml/results/week8-nopeek/grid/grid-3seed-joint-v2/figures-final"
+  ],
+  "cwd": ".",
+  "timestamp_utc": "2026-10-29T18:56:24.537166+00:00",
+  "exit_code": 0,
+  "seconds": 3.625,
+  "source_sha256": {
+    "ml/scripts/plot_week8_grid.py": "594786fed6951c90beabe9217ba8f8832440d9575c2b6dce5187131b31650669"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "change": "Stagger near-zero tick labels; plotting data and numeric x positions unchanged."
+}

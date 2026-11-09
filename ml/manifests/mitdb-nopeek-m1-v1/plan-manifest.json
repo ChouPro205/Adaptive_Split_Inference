@@ -1,0 +1,541 @@
+{
+  "schema": "m1-nopeek-plan/1",
+  "status": "CANDIDATE_NOT_LOCKED",
+  "protocol_sha256": "1e180b45258d4f9c6902aeee8ccfedd5de38f62b9bb4a2f16f9030391b72ebf4",
+  "checkpoint_lock_sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc",
+  "arrays": "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+  "data_files": {
+    "train_X.npy": {
+      "sha256": "de7be152afcd01ae453ddc1e42655c21bd05bc6e46c633893095cd9a342393b9",
+      "bytes": 59719808
+    },
+    "train_y.npy": {
+      "sha256": "702ca2f0f1b6a7129b0b7ac6c7bba90f73e48b75e18a8247b24e068a2df191fe",
+      "bytes": 331904
+    },
+    "train_metadata.csv": {
+      "sha256": "da94f4bb273305c957798049e0f9a09799ae4c03f4bd467a8262fc0f9147737b",
+      "bytes": 1203456
+    },
+    "val_X.npy": {
+      "sha256": "b4a38f6a428d335328eaf859107bf1c3cf6d3936d908d17aa87f2de7430734d1",
+      "bytes": 13713248
+    },
+    "val_y.npy": {
+      "sha256": "414634166bf41859cb20ca55a07a5bebd70930cd2f6af5c4c53328fa343ad437",
+      "bytes": 76312
+    },
+    "val_metadata.csv": {
+      "sha256": "ed6218bf715617d96235347196e2bd87c6f34beb9adb2d2fe0f2a64b08626c94",
+      "bytes": 274679
+    }
+  },
+  "metric_policy": {
+    "path": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/metric-policy.json",
+    "sha256": "4ce2028bbc03021a8a27299edd2a362677c89c8c1e605df59d7c54e65ccfbf3c"
+  },
+  "dcor_subset": {
+    "path": "ml/manifests/mitdb-m1-protocol-assets-v4/dcor-validation-subset.csv",
+    "sha256": "e5f5aa2e148c3a516cd24af4b540b68d045a269ee4be7e5f4574c4984092c907"
+  },
+  "sources_sha256": {
+    "ml/scripts/nopeek_m1_v1.py": "22f5c48e6aeb57507bd32fbb05b36e9d26f995c7715217b413bea68339321b18",
+    "ml/scripts/package_m1_v4_a.py": "2c9662858cb0d504252adfc5cbb58895687f7737420384ed1e53a028cdb37cb6",
+    "ml/scripts/baseline_sampler_v4.py": "1ccc99035ebe96d455a4e92cef45782814e55f644acf649f6959191c4bcfa566",
+    "ml/scripts/m1_metrics_v4.py": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+    "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+    "ml/scripts/week4_common.py": "c5509a4f2977caf090e2d76be0bb7e52c99e55e0f8dcb41c0315bc6849187190",
+    "ml/src/distance_correlation.py": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+    "ml/src/nopeek.py": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+    "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14"
+  },
+  "runs": [
+    {
+      "run_id": "pilot-s2-lambda0-seed20261030-lr1e-05",
+      "stage": "pilot",
+      "config": "pilot-s2-lambda0-seed20261030-lr1e-05.json",
+      "sha256": "a82db1a1b30c37f635709332f167acfbd12488c874ef93ff8e475be9a37295d2"
+    },
+    {
+      "run_id": "pilot-s2-lambda5-seed20261030-lr1e-05",
+      "stage": "pilot",
+      "config": "pilot-s2-lambda5-seed20261030-lr1e-05.json",
+      "sha256": "c446faebf5b3925c2890762e16fb8ba2d0ede0f20e984ce8dfd73790ed8b9db6"
+    },
+    {
+      "run_id": "pilot-s8-lambda5-seed20261030-lr1e-05",
+      "stage": "pilot",
+      "config": "pilot-s8-lambda5-seed20261030-lr1e-05.json",
+      "sha256": "0c62a557a15b2f94bfa9d6a8d0b274a6117e7c1a61b4d288fa1f5391a37b84ae"
+    },
+    {
+      "run_id": "pilot-s2-lambda0-seed20261030-lr3e-05",
+      "stage": "pilot",
+      "config": "pilot-s2-lambda0-seed20261030-lr3e-05.json",
+      "sha256": "d883b6ef0438bc555f87bfdf39bec9db64512eff4502ac68b38f862acc710858"
+    },
+    {
+      "run_id": "pilot-s2-lambda5-seed20261030-lr3e-05",
+      "stage": "pilot",
+      "config": "pilot-s2-lambda5-seed20261030-lr3e-05.json",
+      "sha256": "4519d4b84ecfe6594a8cf6e602680e25ca7d7e3018866a40aab886948e7a645b"
+    },
+    {
+      "run_id": "pilot-s8-lambda5-seed20261030-lr3e-05",
+      "stage": "pilot",
+      "config": "pilot-s8-lambda5-seed20261030-lr3e-05.json",
+      "sha256": "aba21dfa963f10dc67db20f6f6820fcc8401c51a6db7c973776f8899970e997e"
+    },
+    {
+      "run_id": "pilot-s2-lambda0-seed20261030-lr0.0001",
+      "stage": "pilot",
+      "config": "pilot-s2-lambda0-seed20261030-lr0.0001.json",
+      "sha256": "ba1cf54f2b361976457e23d64652cebdc8c36c24caf9bb1ef77a728064af75ea"
+    },
+    {
+      "run_id": "pilot-s2-lambda5-seed20261030-lr0.0001",
+      "stage": "pilot",
+      "config": "pilot-s2-lambda5-seed20261030-lr0.0001.json",
+      "sha256": "81525cf16440c00206c50a9d5e8796959f866f559a7a32d318a8cf6f44c5bdab"
+    },
+    {
+      "run_id": "pilot-s8-lambda5-seed20261030-lr0.0001",
+      "stage": "pilot",
+      "config": "pilot-s8-lambda5-seed20261030-lr0.0001.json",
+      "sha256": "b2c988c610b250c70a03c6a040a31690598774bd95b35414b257934148d2d207"
+    },
+    {
+      "run_id": "grid-s2-lambda0-seed20261030",
+      "stage": "grid",
+      "config": "grid-s2-lambda0-seed20261030.json",
+      "sha256": "f8fa584902b78a50c9a8d2dcdbc96cee53fe11d3759170bcfc9e7e19a25b1209"
+    },
+    {
+      "run_id": "grid-s2-lambda0.1-seed20261030",
+      "stage": "grid",
+      "config": "grid-s2-lambda0.1-seed20261030.json",
+      "sha256": "c74336d969b37af0648949ae51d24c25d3b9395a9b955c42b065e41f823a0044"
+    },
+    {
+      "run_id": "grid-s2-lambda0.5-seed20261030",
+      "stage": "grid",
+      "config": "grid-s2-lambda0.5-seed20261030.json",
+      "sha256": "ebb2d8c2b5631a39de9578a6c936372ce524ff0e7d706a1075d29552be74d8ea"
+    },
+    {
+      "run_id": "grid-s2-lambda1-seed20261030",
+      "stage": "grid",
+      "config": "grid-s2-lambda1-seed20261030.json",
+      "sha256": "e6fec3564cbccad37523bf758e674361087a265b54d78e9d20a3255c4d67cf0c"
+    },
+    {
+      "run_id": "grid-s2-lambda2-seed20261030",
+      "stage": "grid",
+      "config": "grid-s2-lambda2-seed20261030.json",
+      "sha256": "a97074f42999eaa6a108cddd15d627db48cbd0f742a4c10810034c3ca8e1951c"
+    },
+    {
+      "run_id": "grid-s2-lambda5-seed20261030",
+      "stage": "grid",
+      "config": "grid-s2-lambda5-seed20261030.json",
+      "sha256": "9f3d547fb0e70eae26d18aeffdd3ae85fb8bc51adf0cf3b40086212d810e8568"
+    },
+    {
+      "run_id": "grid-s4-lambda0-seed20261030",
+      "stage": "grid",
+      "config": "grid-s4-lambda0-seed20261030.json",
+      "sha256": "fb65c863a5fc7ff3b45046f29a610293e6fd6d16ae6b92cafb395c2988d5f6a0"
+    },
+    {
+      "run_id": "grid-s4-lambda0.1-seed20261030",
+      "stage": "grid",
+      "config": "grid-s4-lambda0.1-seed20261030.json",
+      "sha256": "0c330fc704946441ebb915434f58bf814853aefea9fbcc41e7275d1d106527ba"
+    },
+    {
+      "run_id": "grid-s4-lambda0.5-seed20261030",
+      "stage": "grid",
+      "config": "grid-s4-lambda0.5-seed20261030.json",
+      "sha256": "c0f247a0ba71e13674125f169d12cd2e6c6a697916533849df9028425c7cfa07"
+    },
+    {
+      "run_id": "grid-s4-lambda1-seed20261030",
+      "stage": "grid",
+      "config": "grid-s4-lambda1-seed20261030.json",
+      "sha256": "13d3a529c9259f3e35b0eef56a53d17334f383d46d5e41be744b571d4f452568"
+    },
+    {
+      "run_id": "grid-s4-lambda2-seed20261030",
+      "stage": "grid",
+      "config": "grid-s4-lambda2-seed20261030.json",
+      "sha256": "40f5d3ca6209adbf31cd83bd4f06ddbbc7ca44894c7f24de0ef09c20e59e9832"
+    },
+    {
+      "run_id": "grid-s4-lambda5-seed20261030",
+      "stage": "grid",
+      "config": "grid-s4-lambda5-seed20261030.json",
+      "sha256": "305ebb203b3ba9651e900b190dda702a7f851df7e8018106af84a86f6ea8f179"
+    },
+    {
+      "run_id": "grid-s5-lambda0-seed20261030",
+      "stage": "grid",
+      "config": "grid-s5-lambda0-seed20261030.json",
+      "sha256": "1876483821ec6286776829e25cd18a74c173ba1798c0a27ec36b68149be31511"
+    },
+    {
+      "run_id": "grid-s5-lambda0.1-seed20261030",
+      "stage": "grid",
+      "config": "grid-s5-lambda0.1-seed20261030.json",
+      "sha256": "96d8026af8b0e51149939b61ca66848490ee256e29b8631e8327fbbb4856945c"
+    },
+    {
+      "run_id": "grid-s5-lambda0.5-seed20261030",
+      "stage": "grid",
+      "config": "grid-s5-lambda0.5-seed20261030.json",
+      "sha256": "aeed3d658c47d2de1d0196b4eb7746201876c5b15b97f99b63ef1411995f0a42"
+    },
+    {
+      "run_id": "grid-s5-lambda1-seed20261030",
+      "stage": "grid",
+      "config": "grid-s5-lambda1-seed20261030.json",
+      "sha256": "38815491f9f6c07423475f01456a719ab98a176d2dea85a13c0bf30223f51d96"
+    },
+    {
+      "run_id": "grid-s5-lambda2-seed20261030",
+      "stage": "grid",
+      "config": "grid-s5-lambda2-seed20261030.json",
+      "sha256": "ed94cfff0c189777d895057b966b76857410da4c54d8c82ac1ca3924a1b5c667"
+    },
+    {
+      "run_id": "grid-s5-lambda5-seed20261030",
+      "stage": "grid",
+      "config": "grid-s5-lambda5-seed20261030.json",
+      "sha256": "ef3d716dcf42774eb1ae1c690d7467d8f5e6bd5816d25cd81edef216543e5b53"
+    },
+    {
+      "run_id": "grid-s8-lambda0-seed20261030",
+      "stage": "grid",
+      "config": "grid-s8-lambda0-seed20261030.json",
+      "sha256": "2d60b0ac9b04152eb773c411636c6112e6143f8280a9eafb5d113dcf2a254137"
+    },
+    {
+      "run_id": "grid-s8-lambda0.1-seed20261030",
+      "stage": "grid",
+      "config": "grid-s8-lambda0.1-seed20261030.json",
+      "sha256": "22d6565d53b5f0f6d7007a576885692c7ee2d0e5397b957f5c52e2bdbf4d25ff"
+    },
+    {
+      "run_id": "grid-s8-lambda0.5-seed20261030",
+      "stage": "grid",
+      "config": "grid-s8-lambda0.5-seed20261030.json",
+      "sha256": "bdd349e0955e85a1fe23c4ec7033f709f873d463af8b745d690b288709e57960"
+    },
+    {
+      "run_id": "grid-s8-lambda1-seed20261030",
+      "stage": "grid",
+      "config": "grid-s8-lambda1-seed20261030.json",
+      "sha256": "5e8c4f17883dbda109166ad1f1a0de18924e9ed19ad1e05687a445d83bb15413"
+    },
+    {
+      "run_id": "grid-s8-lambda2-seed20261030",
+      "stage": "grid",
+      "config": "grid-s8-lambda2-seed20261030.json",
+      "sha256": "6edae8d3a7a58d84917ccc39d52da143d316921a812050e03aff4e82131bed82"
+    },
+    {
+      "run_id": "grid-s8-lambda5-seed20261030",
+      "stage": "grid",
+      "config": "grid-s8-lambda5-seed20261030.json",
+      "sha256": "b458705cf2b858b227fddd426fad062ce39e7d8cd0c745cee655dc507ca60119"
+    },
+    {
+      "run_id": "grid-s2-lambda0-seed20261031",
+      "stage": "grid",
+      "config": "grid-s2-lambda0-seed20261031.json",
+      "sha256": "ffe3b41662cacfaf95871933ef1bbdd5c2f8bd3cb06a59b62fce919ee8915837"
+    },
+    {
+      "run_id": "grid-s2-lambda0.1-seed20261031",
+      "stage": "grid",
+      "config": "grid-s2-lambda0.1-seed20261031.json",
+      "sha256": "2fe389b0eb3ff5a88e672b44d9fa6c5147c9bc933513101793055485d0db091c"
+    },
+    {
+      "run_id": "grid-s2-lambda0.5-seed20261031",
+      "stage": "grid",
+      "config": "grid-s2-lambda0.5-seed20261031.json",
+      "sha256": "d994f75ee37c42392d2ab455cb221357d1bc8e2eb1c3f0e52340357df14eb9eb"
+    },
+    {
+      "run_id": "grid-s2-lambda1-seed20261031",
+      "stage": "grid",
+      "config": "grid-s2-lambda1-seed20261031.json",
+      "sha256": "e1101aeec1f350e86f7229331fb9f0de53ecce2ea3be4211d77b1ba32f949bff"
+    },
+    {
+      "run_id": "grid-s2-lambda2-seed20261031",
+      "stage": "grid",
+      "config": "grid-s2-lambda2-seed20261031.json",
+      "sha256": "f306def9f5760f9aa0a27ec5c3c001fc7e327f84d0380708777cdd27bb8b3557"
+    },
+    {
+      "run_id": "grid-s2-lambda5-seed20261031",
+      "stage": "grid",
+      "config": "grid-s2-lambda5-seed20261031.json",
+      "sha256": "3409ea1eba3293c05a903fd2962588c65d8e505d20bc94004f8fb5151e8d17d5"
+    },
+    {
+      "run_id": "grid-s4-lambda0-seed20261031",
+      "stage": "grid",
+      "config": "grid-s4-lambda0-seed20261031.json",
+      "sha256": "5bcea1fd0d3a2f8d108b73b16c09fe330ea1ff65c8cd21cb49d52c261364d790"
+    },
+    {
+      "run_id": "grid-s4-lambda0.1-seed20261031",
+      "stage": "grid",
+      "config": "grid-s4-lambda0.1-seed20261031.json",
+      "sha256": "3ecc6894ff22f7cecdfcfbdebd2f42b169a11cd7c058b1b0c3f2f8098404cc9a"
+    },
+    {
+      "run_id": "grid-s4-lambda0.5-seed20261031",
+      "stage": "grid",
+      "config": "grid-s4-lambda0.5-seed20261031.json",
+      "sha256": "281b31ebfdd4a93614bf4430e159a7115d6fb23ead787769f2954eee24c65b21"
+    },
+    {
+      "run_id": "grid-s4-lambda1-seed20261031",
+      "stage": "grid",
+      "config": "grid-s4-lambda1-seed20261031.json",
+      "sha256": "4331c154d2e38350c26ba988ef5f5effd9b60cd269c2bd6a58b3ac2f5f57e492"
+    },
+    {
+      "run_id": "grid-s4-lambda2-seed20261031",
+      "stage": "grid",
+      "config": "grid-s4-lambda2-seed20261031.json",
+      "sha256": "4e2508e64118674f3e571b211f1ba444d560c63586b420bcf693fbc91dbbcdeb"
+    },
+    {
+      "run_id": "grid-s4-lambda5-seed20261031",
+      "stage": "grid",
+      "config": "grid-s4-lambda5-seed20261031.json",
+      "sha256": "eab35e79b86290fd2dd01df4a2e20eb6b6e36bbcba38f5a2da01b13cf3c9f77c"
+    },
+    {
+      "run_id": "grid-s5-lambda0-seed20261031",
+      "stage": "grid",
+      "config": "grid-s5-lambda0-seed20261031.json",
+      "sha256": "99b57e9d013713379900b47213cc245b7bb098cb5d612c01f79136ef74c21db8"
+    },
+    {
+      "run_id": "grid-s5-lambda0.1-seed20261031",
+      "stage": "grid",
+      "config": "grid-s5-lambda0.1-seed20261031.json",
+      "sha256": "081d6be34f66f5dbefd06b3c5c6334dc52f8184eeada111dbedb559be4ccb79a"
+    },
+    {
+      "run_id": "grid-s5-lambda0.5-seed20261031",
+      "stage": "grid",
+      "config": "grid-s5-lambda0.5-seed20261031.json",
+      "sha256": "e9e0557693a229625d450b2a3d4c0400cce1a31aa053f7b86f60106ea3474257"
+    },
+    {
+      "run_id": "grid-s5-lambda1-seed20261031",
+      "stage": "grid",
+      "config": "grid-s5-lambda1-seed20261031.json",
+      "sha256": "0101885fb2a85e05129ac25514e8c8ca860e4b2131c5ec2aee7ad1f64b5c194c"
+    },
+    {
+      "run_id": "grid-s5-lambda2-seed20261031",
+      "stage": "grid",
+      "config": "grid-s5-lambda2-seed20261031.json",
+      "sha256": "682afee7509073a5014feccfd61a18fff7fc1657e0e2520f2320f3db15fc073c"
+    },
+    {
+      "run_id": "grid-s5-lambda5-seed20261031",
+      "stage": "grid",
+      "config": "grid-s5-lambda5-seed20261031.json",
+      "sha256": "a6c9c0467f44a68ed4c4ba2036c23eafd7675fe1d5494e5610cc925a3e58eee1"
+    },
+    {
+      "run_id": "grid-s8-lambda0-seed20261031",
+      "stage": "grid",
+      "config": "grid-s8-lambda0-seed20261031.json",
+      "sha256": "0d6e40b348a305d45a57e2acd19e3817d689d9687fdbbd94c0a19cb6ac5c615d"
+    },
+    {
+      "run_id": "grid-s8-lambda0.1-seed20261031",
+      "stage": "grid",
+      "config": "grid-s8-lambda0.1-seed20261031.json",
+      "sha256": "04181c59a9e7c3cb8be665a9279cf09319658d05e016229075c18bc83b25a7da"
+    },
+    {
+      "run_id": "grid-s8-lambda0.5-seed20261031",
+      "stage": "grid",
+      "config": "grid-s8-lambda0.5-seed20261031.json",
+      "sha256": "2acf3452a4c253a455e14ba3aa6d87f4b1a6e52a90a24b06af03d95b9e322701"
+    },
+    {
+      "run_id": "grid-s8-lambda1-seed20261031",
+      "stage": "grid",
+      "config": "grid-s8-lambda1-seed20261031.json",
+      "sha256": "e3e2469e2134d83f7dc3e2a5404648eca9510b10bee0eea3e68d2284e810179a"
+    },
+    {
+      "run_id": "grid-s8-lambda2-seed20261031",
+      "stage": "grid",
+      "config": "grid-s8-lambda2-seed20261031.json",
+      "sha256": "d5320e99fbe0cdcf56db089f744dbb2448d733b74c7b480b846bec632e5efae0"
+    },
+    {
+      "run_id": "grid-s8-lambda5-seed20261031",
+      "stage": "grid",
+      "config": "grid-s8-lambda5-seed20261031.json",
+      "sha256": "c95a1bc9c47f33e937d1d3c803362f94f0461778261a0a147a17827663f6041e"
+    },
+    {
+      "run_id": "grid-s2-lambda0-seed20261101",
+      "stage": "grid",
+      "config": "grid-s2-lambda0-seed20261101.json",
+      "sha256": "2410bed19ff66b4c4775a980036d2f249a22485e0d4440d453bcab03b1aad63d"
+    },
+    {
+      "run_id": "grid-s2-lambda0.1-seed20261101",
+      "stage": "grid",
+      "config": "grid-s2-lambda0.1-seed20261101.json",
+      "sha256": "df2c7ab4f00113469eb03fc6120d7f66aaff1dd964edccedf70bcc8452815a0c"
+    },
+    {
+      "run_id": "grid-s2-lambda0.5-seed20261101",
+      "stage": "grid",
+      "config": "grid-s2-lambda0.5-seed20261101.json",
+      "sha256": "535cf2147c25a5d1087d86decbd4d223bfbb35a38be992a4cd8fcf3e134f273d"
+    },
+    {
+      "run_id": "grid-s2-lambda1-seed20261101",
+      "stage": "grid",
+      "config": "grid-s2-lambda1-seed20261101.json",
+      "sha256": "9cc35affe703c2f2bbdcedefe7c07d9bfea5d144b2e88fdd1e89f308e7606600"
+    },
+    {
+      "run_id": "grid-s2-lambda2-seed20261101",
+      "stage": "grid",
+      "config": "grid-s2-lambda2-seed20261101.json",
+      "sha256": "b36c24ef3aaf200891a1b3289ec05184609b489b0c273be2405d7d98f2f938a5"
+    },
+    {
+      "run_id": "grid-s2-lambda5-seed20261101",
+      "stage": "grid",
+      "config": "grid-s2-lambda5-seed20261101.json",
+      "sha256": "2f08b21544619abce40240ed7f7216570f01add3ee08d2a1d16c7b0db5050d1a"
+    },
+    {
+      "run_id": "grid-s4-lambda0-seed20261101",
+      "stage": "grid",
+      "config": "grid-s4-lambda0-seed20261101.json",
+      "sha256": "d3d3a432e3930f136587f6156abdd84537d6aa1e67469fe5090bd8b6bde7ca85"
+    },
+    {
+      "run_id": "grid-s4-lambda0.1-seed20261101",
+      "stage": "grid",
+      "config": "grid-s4-lambda0.1-seed20261101.json",
+      "sha256": "06941e7205eecf36ab1baf3642d7daf55bd77785234309fdaf5e918ad76781cd"
+    },
+    {
+      "run_id": "grid-s4-lambda0.5-seed20261101",
+      "stage": "grid",
+      "config": "grid-s4-lambda0.5-seed20261101.json",
+      "sha256": "2ebbbc4d1afeb3bd83cb9ce66f9b2dda6c682766723eb2283cffddc912202a87"
+    },
+    {
+      "run_id": "grid-s4-lambda1-seed20261101",
+      "stage": "grid",
+      "config": "grid-s4-lambda1-seed20261101.json",
+      "sha256": "49730919309dbfcf79e1006cbe3aa428b72d20e945f0d534d13154444e50b3c7"
+    },
+    {
+      "run_id": "grid-s4-lambda2-seed20261101",
+      "stage": "grid",
+      "config": "grid-s4-lambda2-seed20261101.json",
+      "sha256": "84fca2b327ccb612161dcd62a40d9e2af825b616292bf1157c0769e16431d1da"
+    },
+    {
+      "run_id": "grid-s4-lambda5-seed20261101",
+      "stage": "grid",
+      "config": "grid-s4-lambda5-seed20261101.json",
+      "sha256": "96d07ffce7fb61a942fac53da6655a241706e049c0cb8a59e43d0efea36f0045"
+    },
+    {
+      "run_id": "grid-s5-lambda0-seed20261101",
+      "stage": "grid",
+      "config": "grid-s5-lambda0-seed20261101.json",
+      "sha256": "94f3269ce95c7e71991f55f790835f267c92ced6e57a058be49fe5fe1bc4ebe4"
+    },
+    {
+      "run_id": "grid-s5-lambda0.1-seed20261101",
+      "stage": "grid",
+      "config": "grid-s5-lambda0.1-seed20261101.json",
+      "sha256": "fd0548a5c32a151037017d59bf5692a9800de211c365327811747f893bf7b92e"
+    },
+    {
+      "run_id": "grid-s5-lambda0.5-seed20261101",
+      "stage": "grid",
+      "config": "grid-s5-lambda0.5-seed20261101.json",
+      "sha256": "005217e44cab4d5cfaaec40a491901ca7e24fc37a2d5c9b1696f0ab8b335372a"
+    },
+    {
+      "run_id": "grid-s5-lambda1-seed20261101",
+      "stage": "grid",
+      "config": "grid-s5-lambda1-seed20261101.json",
+      "sha256": "6d0045560967cbfb0a3ae7f848b9e09eac0e9e78c23e161db92c62a0188a89da"
+    },
+    {
+      "run_id": "grid-s5-lambda2-seed20261101",
+      "stage": "grid",
+      "config": "grid-s5-lambda2-seed20261101.json",
+      "sha256": "fd259cd7f5aca626b2c4733ed4cc0949d10a014b92df774fda03313e331f00fb"
+    },
+    {
+      "run_id": "grid-s5-lambda5-seed20261101",
+      "stage": "grid",
+      "config": "grid-s5-lambda5-seed20261101.json",
+      "sha256": "fcc901a640e5a39d72d2ec992af740a5283ecef1128b1d9f908c9a99d2f0c8d0"
+    },
+    {
+      "run_id": "grid-s8-lambda0-seed20261101",
+      "stage": "grid",
+      "config": "grid-s8-lambda0-seed20261101.json",
+      "sha256": "695d11657e78562a2452bd11fc88a273503c7e37e0f0cdcb1a4a613f67358e62"
+    },
+    {
+      "run_id": "grid-s8-lambda0.1-seed20261101",
+      "stage": "grid",
+      "config": "grid-s8-lambda0.1-seed20261101.json",
+      "sha256": "a1c4e449520c7b0714ff7d9661c966450663e8eadeea117fc2848ff87216522e"
+    },
+    {
+      "run_id": "grid-s8-lambda0.5-seed20261101",
+      "stage": "grid",
+      "config": "grid-s8-lambda0.5-seed20261101.json",
+      "sha256": "d9f8db5b53939985c300356dd0a86495d8370c2a8735483d75e84595dec2d6a5"
+    },
+    {
+      "run_id": "grid-s8-lambda1-seed20261101",
+      "stage": "grid",
+      "config": "grid-s8-lambda1-seed20261101.json",
+      "sha256": "d5f173ff71b0f1ae1fc19ef00ceb0d831e73455981b8d31fc0529fedb23dad02"
+    },
+    {
+      "run_id": "grid-s8-lambda2-seed20261101",
+      "stage": "grid",
+      "config": "grid-s8-lambda2-seed20261101.json",
+      "sha256": "54f58f82b3a2bfcf2a8167b0e107a5e383bbd73f10ade46814358a5514609f93"
+    },
+    {
+      "run_id": "grid-s8-lambda5-seed20261101",
+      "stage": "grid",
+      "config": "grid-s8-lambda5-seed20261101.json",
+      "sha256": "4930df2e34993a417b190646734a7384e9709977941d1ab61661ca7eb63609d1"
+    }
+  ]
+}

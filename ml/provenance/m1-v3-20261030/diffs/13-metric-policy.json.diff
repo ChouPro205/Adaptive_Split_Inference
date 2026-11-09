@@ -1,0 +1,26 @@
+--- ml/manifests/mitdb-ds1ds2-m1-v2/metric-policy.json
++++ ml/manifests/mitdb-ds1ds2-m1-v3-r2/metric-policy.json
+@@ -7,10 +7,10 @@
+     "Q"
+   ],
+   "validation_support": [
+-    9972,
+-    175,
+-    724,
+-    26,
++    8322,
++    172,
++    1004,
++    25,
+     0
+   ],
+   "K_indices": [
+@@ -34,6 +34,6 @@
+     "Q"
+   ],
+   "q_samples_retained": true,
+-  "validation_labels_sha256": "50e653f94613e790aa676cda92332d9bdedfda219c0dafbd301f6fee0f9301ce",
+-  "policy_sha256": "4831386fdac204e3de385195cfe10b0de25259957ea9b660610243ff92e6d9b1"
++  "validation_labels_sha256": "50214257a0bf0cfb1711711bb33f71fbc8f0955fb15a1323457befb3eca4e817",
++  "policy_sha256": "a083928a74a685c2e9e274bf8f986cb055dbf6c7d59ceaac4a827fc4ab7145b5"
+ }

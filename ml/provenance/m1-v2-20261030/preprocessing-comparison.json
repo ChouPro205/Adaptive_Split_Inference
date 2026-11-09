@@ -1,0 +1,10 @@
+{
+  "record_audit_raw_bytes_identical": true,
+  "record_audit_sha256": "a19307883a8544d8926d2351b209c3fb358e052bff451ef4c8cb7113864f7029",
+  "DS1_counts_identical": true,
+  "DS2_main_label_counts_identical": true,
+  "DS2_aux_label_counts_identical": true,
+  "normalization_intentionally_new": true,
+  "new_split": "B preferred4; pending confirmation",
+  "old_split_retained": true
+}

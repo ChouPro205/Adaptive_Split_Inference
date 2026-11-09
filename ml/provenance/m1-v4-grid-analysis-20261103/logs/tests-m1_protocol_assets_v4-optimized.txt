@@ -1,0 +1,22 @@
+test_balanced_sampler_K_expected_draws (__main__.ProtocolAssetTests.test_balanced_sampler_K_expected_draws) ... ok
+test_candidate_cannot_claim_locked (__main__.ProtocolAssetTests.test_candidate_cannot_claim_locked) ... ok
+test_changed_data_binding_rejected (__main__.ProtocolAssetTests.test_changed_data_binding_rejected) ... ok
+test_current_N_and_V_gates_reject_always_N (__main__.ProtocolAssetTests.test_current_N_and_V_gates_reject_always_N) ... ok
+test_fixed_subset_and_reproducibility (__main__.ProtocolAssetTests.test_fixed_subset_and_reproducibility) ... ok
+test_rebound_subset_tamper_rejected (__main__.ProtocolAssetTests.test_rebound_subset_tamper_rejected) ... ok
+test_trial_register_eighteen_unstarted_slots (__main__.ProtocolAssetTests.test_trial_register_eighteen_unstarted_slots) ... ok
+test_v3_sampler_or_label_rejected (__main__.ProtocolAssetTests.test_v3_sampler_or_label_rejected) ... ok
+test_weights_use_train_counts_and_caps (__main__.ProtocolAssetTests.test_weights_use_train_counts_and_caps) ... ok
+test_code_fault_and_smoke_rules (__main__.ProtocolV4ContentTests.test_code_fault_and_smoke_rules) ... ok
+test_data_bindings_identical_to_v3 (__main__.ProtocolV4ContentTests.test_data_bindings_identical_to_v3) ... ok
+test_deviations_have_reasons (__main__.ProtocolV4ContentTests.test_deviations_have_reasons) ... ok
+test_ds2_report_predeclared (__main__.ProtocolV4ContentTests.test_ds2_report_predeclared) ... ok
+test_no_absolute_local_paths (__main__.ProtocolV4ContentTests.test_no_absolute_local_paths) ... ok
+test_source_bindings (__main__.ProtocolV4ContentTests.test_source_bindings) ... ok
+test_status_unchanged_not_reviewed_not_locked (__main__.ProtocolV4ContentTests.test_status_unchanged_not_reviewed_not_locked) ... ok
+test_unchanged_rules_equal_v3 (__main__.ProtocolV4ContentTests.test_unchanged_rules_equal_v3) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.336s
+
+OK

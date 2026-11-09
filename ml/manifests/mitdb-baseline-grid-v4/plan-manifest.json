@@ -1,0 +1,210 @@
+{
+  "status": "PREPARED_NOT_STARTED_NOT_AUTHORIZED",
+  "binding": {
+    "protocol_sha256": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+    "dataset_manifest_sha256": "7de30a1ca230286545c3637430c83141f8f0913b9abc3476858df0d87423cc0f",
+    "data_config_sha256": "58ade2a0389e108403ef42528dbebf1a9758305793e1c7d851077bdbd3ff0514",
+    "metric_policy_sha256": "4ce2028bbc03021a8a27299edd2a362677c89c8c1e605df59d7c54e65ccfbf3c",
+    "sources_sha256": {
+      "ml/scripts/baseline_grid_v4.py": "2a57b9b9e9c44a5e0681360b693b391b93be4596588fec230218f0e4e3639ff2",
+      "ml/scripts/baseline_selection_v4.py": "86872dae2686bcedf87e6256054dac55eb4a42c11cbc6baa1e7429b849cc9631",
+      "ml/scripts/baseline_sampler_v4.py": "1ccc99035ebe96d455a4e92cef45782814e55f644acf649f6959191c4bcfa566",
+      "ml/scripts/train_mitdb_baseline_v4.py": "b9ff8479a5c05b58633a8a24457462108197be7242651e52aa10ddc1f96966c5",
+      "ml/scripts/m1_metrics_v4.py": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+      "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+      "ml/configs/mitdb_week2_baseline.json": "273a563af79126c6ed6762c4bd01a186de055b6dea390688eefcf7522ae2e5e3"
+    },
+    "runtime": {
+      "python": "3.11.9",
+      "platform": "Windows",
+      "packages": {
+        "numpy": "2.4.6",
+        "torch": "2.14.0+cu130",
+        "wfdb": "4.3.1"
+      },
+      "cuda_driver": "NOT_PROBED_PREFLIGHT",
+      "model_instantiated": false
+    },
+    "data_files": {
+      "train_X.npy": {
+        "sha256": "de7be152afcd01ae453ddc1e42655c21bd05bc6e46c633893095cd9a342393b9",
+        "bytes": 59719808
+      },
+      "train_y.npy": {
+        "sha256": "702ca2f0f1b6a7129b0b7ac6c7bba90f73e48b75e18a8247b24e068a2df191fe",
+        "bytes": 331904
+      },
+      "train_metadata.csv": {
+        "sha256": "da94f4bb273305c957798049e0f9a09799ae4c03f4bd467a8262fc0f9147737b",
+        "bytes": 1203456
+      },
+      "val_X.npy": {
+        "sha256": "b4a38f6a428d335328eaf859107bf1c3cf6d3936d908d17aa87f2de7430734d1",
+        "bytes": 13713248
+      },
+      "val_y.npy": {
+        "sha256": "414634166bf41859cb20ca55a07a5bebd70930cd2f6af5c4c53328fa343ad437",
+        "bytes": 76312
+      },
+      "val_metadata.csv": {
+        "sha256": "ed6218bf715617d96235347196e2bd87c6f34beb9adb2d2fe0f2a64b08626c94",
+        "bytes": 274679
+      }
+    },
+    "dataset_manifest": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/processed-manifest.json",
+    "metric_policy": "ml/manifests/mitdb-ds1ds2-m1-v3-r2/metric-policy.json",
+    "data_config": "ml/configs/mitdb_ds1ds2_m1_v3.json",
+    "source_head": "6a8d06ae58aedf21a481d6bbb7afc8294ab4021a"
+  },
+  "slots": [
+    {
+      "slot_id": "C0-seed20261030",
+      "configuration": "C0",
+      "seed": 20261030,
+      "config": "C0-seed20261030.json",
+      "sha256": "753ba53efefce04beeba5c8aa8ff6ebcf4ec91b970191f3592a26c2f29ca9654",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C0-seed20261031",
+      "configuration": "C0",
+      "seed": 20261031,
+      "config": "C0-seed20261031.json",
+      "sha256": "462fcde70348a3ce5a32707da569abb3723b2ebbc0fedb7fea7995b0a5e5dd4f",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C0-seed20261101",
+      "configuration": "C0",
+      "seed": 20261101,
+      "config": "C0-seed20261101.json",
+      "sha256": "9c950c9a101f243258d93f6780637856960291bc285cc62881736474beaaa582",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C1-seed20261030",
+      "configuration": "C1",
+      "seed": 20261030,
+      "config": "C1-seed20261030.json",
+      "sha256": "f3f2fb974448249f8ab981e20f93ed82edaf117e213b5ed353a98f119b0f35c9",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C1-seed20261031",
+      "configuration": "C1",
+      "seed": 20261031,
+      "config": "C1-seed20261031.json",
+      "sha256": "41f5d7a7453716fd2667713fba543bb6ec318d0eff8860f17231172d5403f953",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C1-seed20261101",
+      "configuration": "C1",
+      "seed": 20261101,
+      "config": "C1-seed20261101.json",
+      "sha256": "88ca901f10263feeed1027a6fe0d77a6a68f001f60525aec2dc04bdce995835c",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C2-seed20261030",
+      "configuration": "C2",
+      "seed": 20261030,
+      "config": "C2-seed20261030.json",
+      "sha256": "43d1b6553c6c3534b1777fa507c67dd56f59f75a40f6f85b9bfa2e8998c5c17b",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C2-seed20261031",
+      "configuration": "C2",
+      "seed": 20261031,
+      "config": "C2-seed20261031.json",
+      "sha256": "48270d6a0d04b0de214762323a610281fb4f8cc3a61577f07628c7a8daf8c6b9",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C2-seed20261101",
+      "configuration": "C2",
+      "seed": 20261101,
+      "config": "C2-seed20261101.json",
+      "sha256": "eb07b70aa6d34295699ab3d1a5f4b0614da39a721508106141a0e1e8ecbf8729",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C3-seed20261030",
+      "configuration": "C3",
+      "seed": 20261030,
+      "config": "C3-seed20261030.json",
+      "sha256": "e2eda580f6bdb079e50ab4155e3e87f3e784a731bb04333f7fda4ced57608849",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C3-seed20261031",
+      "configuration": "C3",
+      "seed": 20261031,
+      "config": "C3-seed20261031.json",
+      "sha256": "cf77768d79972d0f65caa8d497effc0ed4f21e1a92e76b993c3bddcd4f6ec51c",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C3-seed20261101",
+      "configuration": "C3",
+      "seed": 20261101,
+      "config": "C3-seed20261101.json",
+      "sha256": "88411ccbdd8408185a979b45bdb6380ac501a6a84a5edd690730cceb2a40bae1",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C4-seed20261030",
+      "configuration": "C4",
+      "seed": 20261030,
+      "config": "C4-seed20261030.json",
+      "sha256": "944e8178e351c4c29974d0acf573d6b1990adcbb2f7f59e002a261c701cb8f41",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C4-seed20261031",
+      "configuration": "C4",
+      "seed": 20261031,
+      "config": "C4-seed20261031.json",
+      "sha256": "a1cbb0b91a63e9ad87d24f5de7e107f0d59ffa0e75f4ee8f837db4387b078d8b",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C4-seed20261101",
+      "configuration": "C4",
+      "seed": 20261101,
+      "config": "C4-seed20261101.json",
+      "sha256": "e9e62378ce59608bc433008671daab07186f30f268a53d737908994e04fa3afa",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C5-seed20261030",
+      "configuration": "C5",
+      "seed": 20261030,
+      "config": "C5-seed20261030.json",
+      "sha256": "f8e7c927ea99e4048f2ad47a73de11fd8bf0f5b05e79c68c4f5fc604f98ca5cd",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C5-seed20261031",
+      "configuration": "C5",
+      "seed": 20261031,
+      "config": "C5-seed20261031.json",
+      "sha256": "77854815620460590bc1b7a229651ead0b666f0dd0bbd7f14633f786f5c85990",
+      "state": "NOT_STARTED"
+    },
+    {
+      "slot_id": "C5-seed20261101",
+      "configuration": "C5",
+      "seed": 20261101,
+      "config": "C5-seed20261101.json",
+      "sha256": "a29e723507dba827fc60f27fe92b9b79508bc7671b13560c0c2d0418bb1a8176",
+      "state": "NOT_STARTED"
+    }
+  ],
+  "training_permission": false,
+  "expected_slots": 18,
+  "retry_same_seed": 1,
+  "stop_on_first_gate_pass": false,
+  "halt_on_first_slot_pre_validation_code_fault": true
+}

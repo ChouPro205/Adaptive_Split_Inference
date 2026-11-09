@@ -1,0 +1,165 @@
+{
+  "schema_version": 2,
+  "candidate_id": "mitdb-ds1ds2-m1-v2",
+  "status": "CANDIDATE_NOT_LOCKED_NOT_REVIEWED",
+  "dataset_version": "1.0.0",
+  "source_url": "https://physionet.org/content/mitdb/1.0.0/",
+  "physionet_checksum_manifest_sha256": "b61158a96d5f2ca80edfb354a9a66a6324836c390a84e1966dcee2b907d6be43",
+  "ds1": [
+    "101",
+    "106",
+    "108",
+    "109",
+    "112",
+    "114",
+    "115",
+    "116",
+    "118",
+    "119",
+    "122",
+    "124",
+    "201",
+    "203",
+    "205",
+    "207",
+    "208",
+    "209",
+    "215",
+    "220",
+    "223",
+    "230"
+  ],
+  "ds2_main": [
+    "100",
+    "103",
+    "105",
+    "111",
+    "113",
+    "117",
+    "121",
+    "123",
+    "200",
+    "210",
+    "212",
+    "213",
+    "214",
+    "219",
+    "221",
+    "222",
+    "228",
+    "231",
+    "232",
+    "233",
+    "234"
+  ],
+  "auxiliary_only": [
+    "202"
+  ],
+  "excluded_paced": [
+    "102",
+    "104",
+    "107",
+    "217"
+  ],
+  "shared_patient_groups": [
+    [
+      "201",
+      "202"
+    ]
+  ],
+  "lead": "MLII",
+  "sampling_rate_hz": 360,
+  "window": {
+    "size": 360,
+    "left": 180,
+    "right": 180,
+    "boundary_policy": "drop"
+  },
+  "filtering": false,
+  "rr_features": false,
+  "classes": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "aami_mapping": {
+    "N": "N",
+    "L": "N",
+    "R": "N",
+    "e": "N",
+    "j": "N",
+    "A": "S",
+    "a": "S",
+    "J": "S",
+    "S": "S",
+    "V": "V",
+    "E": "V",
+    "F": "F",
+    "/": "Q",
+    "f": "Q",
+    "Q": "Q"
+  },
+  "validation": {
+    "status": "ASSUMPTION_B_PENDING_FINAL_INTERPRETATION",
+    "preferred_records": 4,
+    "fallback_records": 5,
+    "policy": "B",
+    "seed": 20261030,
+    "enumeration_order": "itertools.combinations(sorted numeric-string DS1 records), size 4 then 5; lexicographic within size",
+    "integer_constraints": {
+      "A": "10*v_c>=T_c and 10*v_c<=3*T_c for c=N,S,V,F",
+      "B": "10*v_S>=T_S; 10*v_V>=T_V; 10*v_c<=3*T_c for c=N,S,V,F",
+      "C": "B and v_F>=1; proposed only, not candidate default"
+    },
+    "algorithm": "For chosen policy take all feasible four-record combinations; only if empty use feasible five-record combinations. SHA256 counter rejection sample a single lexicographic index: ASCII(m1-validation-v2|seed|counter), counter starts 0, big-endian digest integer u; reject u>=2^256-(2^256 mod n); index=u mod n. One draw sequence, no reroll for support or model results.",
+    "random_domain": "m1-validation-v2",
+    "minimum_fraction_integer": [
+      1,
+      10
+    ],
+    "maximum_fraction_integer": [
+      3,
+      10
+    ]
+  },
+  "normalization": {
+    "method": "global_z_score",
+    "fit_split": "train",
+    "population_variance": true,
+    "accumulator_dtype": "float64",
+    "output_dtype": "float32"
+  },
+  "calibration_policy": "DS1 train or validation only; 202 and all DS2 forbidden",
+  "approval": {
+    "meeting_adoption": "SV1_RELAYS_USE_GUIDE_AB_NO_TEACHER_APPROVAL_ATTESTED",
+    "sv1_original_nine_answers": "USER_RELAYED_SOURCE_READ_NOT_ARTIFACT_REVIEW",
+    "sv1_or_sv2_artifact_review": "NOT_REVIEWED",
+    "m1_lock": "NOT_LOCKED",
+    "validation_B": "ASSUMPTION_PENDING_CONFIRMATION",
+    "validation_C": "PROPOSAL_NOT_APPLIED"
+  },
+  "hash_policy": {
+    "repository_text": "sha256_utf8_lf_normalized",
+    "raw_and_npy": "sha256_raw_bytes",
+    "generated_text": "UTF-8 without BOM, LF"
+  },
+  "metric_policy": {
+    "status": "IMPLEMENTED_FROM_CURRENT_USER_INSTRUCTION_AND_RELAYED_SV1_PROPOSAL_NOT_LOCKED",
+    "validation": "fixed K subset of N,S,V,F with true validation support>0; exclude Q; freeze before training",
+    "zero_division": 0,
+    "prediction_space": [
+      "N",
+      "S",
+      "V",
+      "F",
+      "Q"
+    ],
+    "q_samples": "retain all Q samples and five-output argmax; all samples contribute one-vs-rest confusion",
+    "ds2_metrics": [
+      "macro_f1_NSVF_fixed4",
+      "macro_f1_NSVFQ_fixed5"
+    ]
+  }
+}

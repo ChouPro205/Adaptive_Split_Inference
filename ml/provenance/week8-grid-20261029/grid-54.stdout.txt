@@ -1,0 +1,6 @@
+s2-lambda0-seed20261021 epoch=1 val_ce=0.831680 accuracy=0.688718
+s2-lambda0-seed20261021 epoch=2 val_ce=0.638941 accuracy=0.752664
+s2-lambda0-seed20261021 epoch=3 val_ce=0.737704 accuracy=0.716077
+s2-lambda0-seed20261021 epoch=4 val_ce=0.823740 accuracy=0.723161
+s2-lambda0-seed20261021 epoch=5 val_ce=0.898597 accuracy=0.715298
+s2-lambda0-seed20261021 epoch=6 val_ce=0.758572 accuracy=0.720237

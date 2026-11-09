@@ -1,0 +1,289 @@
+"""Selection/authentication fixtures and read-only preflight; never call fit."""
+import copy
+import json
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+import unittest
+from unittest.mock import patch
+
+import baseline_grid_v4 as grid
+import baseline_selection_v4 as policy
+import m1_metrics_v4 as metrics
+
+ROOT=grid.ROOT
+PROTOCOL=ROOT/'ml/configs/mitdb_m1_baseline_protocol_v4.json'
+PLAN=ROOT/'ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json'
+ARRAYS=ROOT/'ml/data/processed/mitdb-ds1ds2-m1-v3-r2'
+
+
+def fixture_rows():
+    return [{'configuration':c[0],'seed':s,'status':'COMPLETED','score':.6,
+             'gates':{'N':True,'V':True,'S':True}} for c in policy.CONFIGS for s in policy.SEEDS]
+
+
+def slot_row(status,markers):
+    return {'status':status,'attempts':[{'attempt':i+1,'validation_epoch_written':m} for i,m in enumerate(markers)]}
+
+
+class SelectionTests(unittest.TestCase):
+    def test_half_up4_and_checkpoint_ties(self):
+        h=[{'epoch':2,'score':.80004},{'epoch':1,'score':.80001}]
+        self.assertEqual(policy.choose_epoch(h)['epoch'],1)
+        h.append({'epoch':3,'score':.80005})
+        self.assertEqual(policy.choose_epoch(h)['epoch'],3)
+
+    def test_seed_tie_lower_seed(self):
+        rows=fixture_rows()[:3]
+        rows[0]['score']=.80001;rows[1]['score']=.80004;rows[2]['score']=.8
+        self.assertEqual(policy.choose_seed(rows)['seed'],min(policy.SEEDS))
+
+    def test_best_seed_failing_V_does_not_get_rescued(self):
+        rows=fixture_rows();rows[0]['score']=.99;rows[0]['gates']['V']=False
+        out=policy.summarize_grid(rows)
+        self.assertFalse(out['configurations'][0]['eligible'])
+        self.assertEqual(out['selected']['configuration'],'C1')
+
+    def test_best_seed_failing_N_does_not_get_rescued(self):
+        rows=fixture_rows();rows[0]['score']=.99;rows[0]['gates']['N']=False
+        self.assertFalse(policy.summarize_grid(rows)['configurations'][0]['eligible'])
+
+    def test_S_is_filter_priority_not_tie_break(self):
+        rows=fixture_rows()
+        for r in rows:r['score']=.95;r['gates']['S']=False
+        for r in rows[3:6]:r['score']=.7;r['gates']['S']=True
+        self.assertEqual(policy.summarize_grid(rows)['selected']['configuration'],'C1')
+
+    def test_no_S_uses_NV_and_discloses(self):
+        rows=fixture_rows()
+        for r in rows:r['gates']['S']=False
+        out=policy.summarize_grid(rows)
+        self.assertEqual(out['selected']['configuration'],'C0')
+        self.assertTrue(out['selected']['S_failure_disclosure_required'])
+
+    def test_no_NV_stops_no_expansion(self):
+        rows=fixture_rows()
+        for r in rows:r['gates']['V']=False
+        self.assertIsNone(policy.summarize_grid(rows)['selected'])
+
+    def test_configuration_mean_not_best_seed_score(self):
+        rows=fixture_rows()
+        for r,v in zip(rows[:3],[.99,.3,.3]):r['score']=v
+        self.assertEqual(policy.summarize_grid(rows)['selected']['configuration'],'C1')
+
+    def test_configuration_tie_lower_C(self):
+        rows=fixture_rows()
+        for r in rows[:3]:r['score']=.80001
+        for r in rows[3:6]:r['score']=.80004
+        self.assertEqual(policy.summarize_grid(rows)['selected']['configuration'],'C0')
+
+    def test_missing_seed_rejected_not_mean2(self):
+        with self.assertRaisesRegex(ValueError,'All18'):
+            policy.summarize_grid(fixture_rows()[:-1])
+
+    def test_failed_seed_null_mean(self):
+        rows=fixture_rows();rows[0]={'configuration':'C0','seed':policy.SEEDS[0],'status':'FAILED_TECHNICAL'}
+        out=policy.summarize_grid(rows)
+        self.assertIsNone(out['configurations'][0]['mean_macro_f1'])
+        self.assertIsNone(out['configurations'][0]['sd_sample'])
+
+    def test_execute_all18_after_first_PASS(self):
+        seen=[]
+        def fake(slot):seen.append(slot);return slot_row('COMPLETED',[True])
+        result,status=policy.execute_all_slots(list(range(18)),fake)
+        self.assertEqual(seen,list(range(18)));self.assertEqual(len(result),18)
+        self.assertEqual(status,policy.COMPLETE_STATUS)
+
+    def test_gate_uses_unrounded_ratio(self):
+        matrix=[[100,0,0,0,0],[0,10,0,0,0],[5001,0,5000,0,0],[0,0,0,1,0],[0,0,0,0,0]]
+        self.assertEqual(policy.rounded(5000/10001),policy.rounded(.5))
+        self.assertFalse(grid.metric_from_matrix(matrix)[1]['V'])
+
+
+class SoftGateLabelTests(unittest.TestCase):
+    def test_label_value(self):
+        self.assertEqual(metrics.S_SOFT_LABEL,'S_SOFT_GATE_FAIL_DISCLOSED')
+        self.assertEqual(grid.read(PROTOCOL)['baseline']['gates']['S_soft_label'],metrics.S_SOFT_LABEL)
+
+    def test_S_only_failure_is_soft_disclosed(self):
+        result=metrics.baseline_gates([0]*80+[1]*5+[2]*15,[0]*85+[2]*15)
+        self.assertTrue(result['N'] and result['V']);self.assertFalse(result['S'])
+        self.assertEqual(result['package_A_gate'],'S_SOFT_GATE_FAIL_DISCLOSED')
+
+    def test_old_authority_label_absent(self):
+        for name in ['m1_metrics_v4.py','baseline_selection_v4.py','baseline_grid_v4.py']:
+            self.assertNotIn('REQUIRES_RECORDED_AUTHORITY',(ROOT/'ml/scripts'/name).read_text(encoding='utf-8'))
+
+    def test_pass_and_blocked_unchanged(self):
+        self.assertEqual(metrics.baseline_gates([0,1,2],[0,1,2])['package_A_gate'],'PASS')
+        self.assertEqual(metrics.baseline_gates([0,1,2],[0,1,0])['package_A_gate'],'BLOCKED')
+
+    def test_selection_carries_soft_label(self):
+        rows=fixture_rows()
+        for r in rows:r['gates']['S']=False
+        self.assertEqual(policy.summarize_grid(rows)['selected']['package_A_gate'],metrics.S_SOFT_LABEL)
+        self.assertEqual(policy.summarize_grid(fixture_rows())['selected']['package_A_gate'],'PASS')
+
+
+class CodeFaultHaltTests(unittest.TestCase):
+    def run_rows(self,rows):
+        seen=[]
+        def fake(slot):seen.append(slot);return rows.get(slot,slot_row('COMPLETED',[True]))
+        result,status=policy.execute_all_slots(list(range(18)),fake)
+        return seen,result,status
+
+    def test_first_slot_retries_exhausted_no_epoch_halts(self):
+        seen,result,status=self.run_rows({0:slot_row('FAILED_TECHNICAL',[False,False])})
+        self.assertEqual(seen,[0]);self.assertEqual(len(result),1)
+        self.assertEqual(status,'HALTED_PRE_VALIDATION_CODE_FAULT')
+
+    def test_first_slot_with_validation_epoch_continues(self):
+        seen,_,status=self.run_rows({0:slot_row('FAILED_TECHNICAL',[False,True])})
+        self.assertEqual(len(seen),18);self.assertEqual(status,policy.COMPLETE_STATUS)
+
+    def test_first_slot_retry_not_exhausted_continues(self):
+        seen,_,status=self.run_rows({0:slot_row('FAILED_TECHNICAL',[False])})
+        self.assertEqual(len(seen),18);self.assertEqual(status,policy.COMPLETE_STATUS)
+
+    def test_later_slot_pre_validation_fault_continues(self):
+        seen,_,status=self.run_rows({5:slot_row('FAILED_TECHNICAL',[False,False])})
+        self.assertEqual(len(seen),18);self.assertEqual(status,policy.COMPLETE_STATUS)
+
+    def runner(self,write_epoch):
+        # Fake subprocess stands in for the trainer: no model, optimizer, data loader or fit.
+        calls=[]
+        def fake_run(argv,**kw):
+            calls.append(argv);target=Path(argv[argv.index('--output')+1])
+            if write_epoch:(target/'epoch-001.json').write_text('{}',encoding='utf-8')
+            return subprocess.CompletedProcess(argv,1,'','SYNTHETIC_FAULT_NO_TRAINING')
+        (ROOT/'ml/data').mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=ROOT/'ml/data') as d:
+            out=Path(d)/'grid'
+            with patch.object(grid,'require_authorization'),patch.object(grid,'preflight'),\
+                 patch.object(grid.subprocess,'run',side_effect=fake_run):
+                status=grid.run_grid(PROTOCOL,PLAN,ARRAYS,out,Path(d)/'none.json')
+            result=grid.read(out/'grid-result.json')
+            if not write_epoch:
+                with self.assertRaisesRegex(ValueError,'halted or incomplete'):grid.analyze(PROTOCOL,PLAN,out)
+        return calls,status,result
+
+    def test_runner_halts_after_two_attempts_without_epoch(self):
+        calls,status,result=self.runner(False)
+        self.assertEqual(len(calls),policy.MAX_ATTEMPTS)
+        self.assertTrue(all('train_mitdb_baseline_v4.py' in a[2] for a in calls))
+        self.assertEqual(status,'HALTED_PRE_VALIDATION_CODE_FAULT')
+        self.assertEqual(result['attempted_slots'],1);self.assertEqual(result['status'],status)
+        self.assertEqual([a['validation_epoch_written'] for a in result['slots'][0]['attempts']],[False,False])
+
+    def test_runner_continues_when_epoch_written(self):
+        calls,status,result=self.runner(True)
+        self.assertEqual(len(calls),18*policy.MAX_ATTEMPTS)
+        self.assertEqual(status,policy.COMPLETE_STATUS);self.assertEqual(result['attempted_slots'],18)
+
+
+class PreflightTests(unittest.TestCase):
+    def test_no_authority_no_model_no_output(self):
+        with patch.object(grid,'load_train_validation',side_effect=AssertionError('must not read')):
+            with self.assertRaisesRegex(ValueError,'External owner'):
+                grid.run_grid(PROTOCOL,PLAN,ARRAYS,ROOT/'ml/data/never-created-v4',None)
+        self.assertFalse((ROOT/'ml/data/never-created-v4').exists())
+
+    def test_preflight_only_train_val_no_torch_import(self):
+        before='torch' in sys.modules;opened=[];load=grid.np.load
+        def spy(path,*a,**kw):opened.append(Path(path).name);return load(path,*a,**kw)
+        with patch.object(grid.np,'load',side_effect=spy):result=grid.preflight(PROTOCOL,PLAN,ARRAYS)
+        self.assertEqual(set(opened),{'train_X.npy','train_y.npy','val_X.npy','val_y.npy'})
+        self.assertFalse(before);self.assertFalse('torch' in sys.modules)
+        self.assertEqual(result['fit_calls'],0);self.assertFalse(result['DS2_arrays_opened'])
+
+    def rebound(self,mutate,message):
+        with tempfile.TemporaryDirectory() as d:
+            target=Path(d);plan=grid.read(PLAN)
+            for slot in plan['slots']:
+                c=grid.read(PLAN.parent/slot['config']);mutate(c)
+                grid.write(target/slot['config'],c);slot['sha256']=grid.sha(target/slot['config'])
+            grid.write(target/'plan.json',plan)
+            with self.assertRaisesRegex(ValueError,message):
+                grid.preflight(PROTOCOL,target/'plan.json',ARRAYS)
+
+    def test_preflight_rejects_double_balancing_after_rebound(self):
+        def m(c):
+            if c['configuration']=='C4':c['class_weights']=[1]*5
+        self.rebound(m,'Weight/sampler')
+
+    def test_preflight_rejects_v3_five_class_sampler_after_rebound(self):
+        def m(c):
+            if c['configuration']=='C5':
+                c['sampler_expected_draws_per_epoch']=[str(sum(c['train_counts'])/5)]*5
+                c['sampler_per_class_sample_weight']=[1/n for n in c['train_counts']]
+        self.rebound(m,'Weight/sampler')
+
+    def test_preflight_rejects_sampler_on_weighted_ce(self):
+        def m(c):
+            if c['configuration']=='C0':c['sampler_policy']='K_BALANCED_NSVF_Q_NATURAL_V4'
+        self.rebound(m,'Weight/sampler')
+
+    def test_plan_sampler_fields(self):
+        plan=grid.read(PLAN)
+        for slot in plan['slots']:
+            c=grid.read(PLAN.parent/slot['config'])
+            if c['mode']=='balanced_sampler':
+                self.assertEqual(c['sampler_expected_draws_per_epoch'],['10366']*4+['8'])
+                self.assertIsNone(c['class_weights'])
+            else:
+                self.assertIsNone(c['sampler_policy'])
+        self.assertTrue(plan['halt_on_first_slot_pre_validation_code_fault'])
+
+
+def make_result_fixture(root):
+    protocol=root/'protocol.json';grid.write(protocol,{'fixture':'NOT_REAL_TRAINING'})
+    metric=root/'metric.json';grid.write(metric,{'validation_support':[10,10,10,10,0]})
+    plan_path=root/'plan.json';slots=[];results=root/'results';results.mkdir()
+    matrix=[[9,1,0,0,0],[1,9,0,0,0],[1,0,9,0,0],[1,0,0,9,0],[0,0,0,0,0]]
+    score=grid.metric_from_matrix(matrix)[0]
+    for name,*_ in policy.CONFIGS:
+        for seed in policy.SEEDS:
+            ident=f'{name}-seed{seed}';slot={'slot_id':ident,'configuration':name,'seed':seed,'config':ident+'.json','sha256':'a'*64,'state':'NOT_STARTED'}
+            slots.append(slot);target=results/ident/'attempt-1';target.mkdir(parents=True)
+            (target/'fixture.pt').write_bytes(b'OPAQUE_SYNTHETIC_FIXTURE_NOT_MODEL_WEIGHTS')
+            validation={'confusion_matrix':matrix}
+            history=[{'epoch':1,'score':score,'validation':validation}];grid.write(target/'history.json',history)
+            grid.write(target/'summary.json',{'config_sha256':slot['sha256'],'protocol_sha256':grid.sha(protocol),
+                'validation':validation,'selected_epoch':1,'history_sha256':grid.sha(target/'history.json'),
+                'checkpoint':'fixture.pt','checkpoint_sha256':grid.sha(target/'fixture.pt')})
+            row={**slot,'status':'COMPLETED','attempts':[{'attempt':1,'exit_code':0,'summary_exists':True,
+                'validation_epoch_written':True,'path':ident+'/attempt-1','config_sha256':slot['sha256'],'seed':seed}]}
+            grid.write(results/ident/'slot-result.json',row)
+    grid.write(plan_path,{'slots':slots,'binding':{'metric_policy':str(metric)}})
+    grid.write(results/'grid-result.json',{'slots':[grid.read(results/s['slot_id']/'slot-result.json') for s in slots],
+        'protocol_sha256':grid.sha(protocol),'plan_sha256':grid.sha(plan_path),
+        'attempted_slots':18,'status':policy.COMPLETE_STATUS})
+    return protocol,plan_path,results
+
+
+class AnalyzerTests(unittest.TestCase):
+    def test_authenticate_full_grid_fixture_no_model(self):
+        with tempfile.TemporaryDirectory() as d:
+            p,plan,r=make_result_fixture(Path(d))
+            self.assertEqual(grid.analyze(p,plan,r)['selected']['configuration'],'C0')
+
+    def test_metric_tamper_rebound_history_hash_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            p,plan,r=make_result_fixture(Path(d));target=r/f'C0-seed{policy.SEEDS[0]}'/'attempt-1'
+            h=grid.read(target/'history.json');h[0]['score']=.99
+            (target/'history.json').write_text(json.dumps(h),encoding='utf-8')
+            s=grid.read(target/'summary.json');s['history_sha256']=grid.sha(target/'history.json')
+            (target/'summary.json').write_text(json.dumps(s),encoding='utf-8')
+            with self.assertRaisesRegex(ValueError,'History metric'):
+                grid.analyze(p,plan,r)
+
+    def test_halted_grid_status_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            p,plan,r=make_result_fixture(Path(d));g=grid.read(r/'grid-result.json')
+            g['status']=policy.HALT_STATUS;(r/'grid-result.json').write_text(json.dumps(g),encoding='utf-8')
+            with self.assertRaisesRegex(ValueError,'halted or incomplete'):
+                grid.analyze(p,plan,r)
+
+
+if __name__=='__main__':unittest.main(verbosity=2)

@@ -1,0 +1,9 @@
+{
+    "observed_at_utc":  "2026-10-29T18:51:35.6845023Z",
+    "pid":  30068,
+    "process_name":  "python",
+    "start_time_utc":  "2026-10-29T15:43:37.7836884Z",
+    "cpu_seconds":  10970.1875,
+    "grid_stdout_bytes":  25939,
+    "decision":  "Existing v2 process continues; no resume/restart/lock mutation"
+}

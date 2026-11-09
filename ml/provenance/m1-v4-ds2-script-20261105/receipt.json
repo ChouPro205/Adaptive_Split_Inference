@@ -1,0 +1,121 @@
+{
+  "type": "M1_V4_DS2_SCRIPT_RECEIPT_DRY_RUN_ONLY",
+  "date": "2026-11-05",
+  "prepared_by": "SV3",
+  "request": "SV1 review of M1 v4 grid, section 2b: DS2 script for SV1 review before use",
+  "source_head": "e78bc6fd2849c308711fe1cc47ff41dcd1dc833c",
+  "branch": "dev/ml-sv3",
+  "scripts_sha256": {
+    "ml/scripts/evaluate_m1_v4_ds2.py": "d393646aa84bd4e2eb326cbbb158afc2d67a885344c7448ce8cfb422a0a020e0",
+    "ml/scripts/test_evaluate_m1_v4_ds2.py": "31525059022e710f75d3d3509cad0a3f2443c01c137bfada28b3637e4567478c",
+    "ml/scripts/package_m1_v4_a.py": "2c9662858cb0d504252adfc5cbb58895687f7737420384ed1e53a028cdb37cb6",
+    "ml/scripts/m1_metrics_v4.py": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+    "ml/provenance/m1-v4-ds2-script-20261105/write_receipt.py": "29a1d3a85344f5c9a9663e0a2917a2e8a02c33038bc208a1a67e276225739c35"
+  },
+  "python": "3.11.9",
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/evaluate_m1_v4_ds2.py",
+        "dry-run",
+        "--output",
+        "ml/data/ds2-dryrun-m1-v4-20261105/cpu",
+        "--device",
+        "cpu"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-ds2-script-20261105/logs/dry-run-cpu.stdout.txt": "a4e155159c8635cbf1f1bec33d0b2afa9e4136ad8c7947607bfc95beb1a6f61c",
+        "ml/provenance/m1-v4-ds2-script-20261105/logs/dry-run-cpu.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ml/data/ds2-dryrun-m1-v4-20261105/cpu/summary.json": "cde1c4a08514f5f8625771eba74db3124f94cbbf6864df4b4922f1a27bbc9a99",
+        "ml/data/ds2-dryrun-m1-v4-20261105/cpu/predictions.csv": "4d5bbdc72f9bbb27b6a7ac080ff9e02260e0cfdd5a5d9c590dcc553539235877"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/evaluate_m1_v4_ds2.py",
+        "dry-run",
+        "--output",
+        "ml/data/ds2-dryrun-m1-v4-20261105/cuda",
+        "--device",
+        "cuda"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-ds2-script-20261105/logs/dry-run-cuda.stdout.txt": "a4e155159c8635cbf1f1bec33d0b2afa9e4136ad8c7947607bfc95beb1a6f61c",
+        "ml/provenance/m1-v4-ds2-script-20261105/logs/dry-run-cuda.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ml/data/ds2-dryrun-m1-v4-20261105/cuda/summary.json": "c4a42ecb5bea088270ea98b8fc869d1a3b6e4f96f797006256443c0918a012e5",
+        "ml/data/ds2-dryrun-m1-v4-20261105/cuda/predictions.csv": "d7c09797c6b42742b477c3287bc4f48a90958b5145da01bef8cc1b65483f2568"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/test_evaluate_m1_v4_ds2.py"
+      ],
+      "exit_code": 0,
+      "tests": 10,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-ds2-script-20261105/logs/tests-normal.txt": "937a7704490ca1377613f2a759ac9a27a4c32494292992fbe06434c95e2eb3af"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/test_evaluate_m1_v4_ds2.py"
+      ],
+      "exit_code": 0,
+      "tests": 10,
+      "outputs_sha256": {
+        "ml/provenance/m1-v4-ds2-script-20261105/logs/tests-optimized.txt": "0bbe540c758634352fcf5251f1db2d6f5002b2cb1a7baa2325d88552d034a43d"
+      }
+    }
+  ],
+  "requirements_2b": {
+    "validation_dry_run_reproduces_locked_confusion_of_3_C5": [
+      "VALIDATION_CONFUSION_REPRODUCED_FOR_3_C5_CHECKPOINTS",
+      "VALIDATION_CONFUSION_REPRODUCED_FOR_3_C5_CHECKPOINTS"
+    ],
+    "two_rows_one_pass": "Both rows come from one prediction pass per checkpoint; the first row drops one record (202 on DS2, 118 in the dry run) and the two confusions are checked to partition",
+    "device_recorded": {
+      "cpu": {
+        "device": "cpu",
+        "device_name": "CPU",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false
+      },
+      "cuda": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false
+      }
+    },
+    "per_beat_predictions_with_record_id": "predictions.csv: seed, role, row_index, record_id, patient_id, r_peak_sample, original_symbol, true/predicted class, 5 logits",
+    "per_record_confusion": "Descriptive only, as declared in the checkpoint lock"
+  },
+  "cpu_cuda": [
+    "cpu/cuda confusions identical for all rows and seeds: True",
+    "cuda environment: {'device': 'cuda', 'device_name': 'NVIDIA GeForce RTX 5060', 'cudnn_allow_tf32': False, 'matmul_allow_tf32': False}",
+    "predicted labels identical: True max |logit diff| (TF32 off): 1.71661376953125e-05",
+    "earlier run with PyTorch default cuDNN TF32 on (outputs removed): max |logit diff| 0.011762619018554688, labels identical"
+  ],
+  "tf32_finding": "With the PyTorch default (cuDNN TF32 on) the CUDA logits differed from CPU by up to 0.0118 on validation (labels identical); the script now disables TF32 so the DS2 pass is strict FP32. The earlier outputs were removed before this receipt",
+  "ds2_gate": "ds2 mode needs an external M1_V4_DS2_FP32_AUTHORIZATION binding the checkpoint lock, the SV2 xmodel lock, SV1 review evidence, the device and this script SHA; writes once to ml/data/ds2-m1-v4-fp32",
+  "scope": {
+    "DS2_opened": false,
+    "ds2_mode_run": false,
+    "authorization_file_created": false
+  },
+  "not_verified": [
+    "ds2 mode itself (never run; tests only check its refusal paths)",
+    "test_main == test_aux22 minus 202 (checked only inside ds2 mode)"
+  ]
+}

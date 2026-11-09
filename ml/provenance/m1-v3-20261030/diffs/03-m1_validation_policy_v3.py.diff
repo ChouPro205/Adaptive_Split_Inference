@@ -1,0 +1,53 @@
+--- ml/scripts/m1_validation_policy_v2.py
++++ ml/scripts/m1_validation_policy_v3.py
+@@ -6,7 +6,7 @@
+ import itertools
+ 
+ CLASSES = ['N','S','V','F','Q']
+-POLICIES = ['A','B','C']
++POLICIES = ['A','B','C','F20','F10']
+ 
+ 
+ def need(ok,message):
+@@ -18,7 +18,8 @@
+     need(policy in POLICIES,'Unknown validation interpretation')
+     upper = all(10*values[k] <= 3*total[k] for k in range(4))
+     lower = all(10*values[k] >= total[k] for k in (range(4) if policy=='A' else (1,2)))
+-    return upper and lower and (policy!='C' or values[3]>=1)
++    floor={'C':1,'F20':20,'F10':10}.get(policy,0)
++    return upper and lower and values[3]>=floor
+ 
+ 
+ def enumerate_combinations(counts,records):
+@@ -66,24 +67,27 @@
+ 
+ 
+ def choose(rows,policy,seed):
+-    need(policy in POLICIES,'Unknown validation interpretation')
++    need(policy=='F_floor','Expected confirmed F-floor policy')
++    count20=sum(r['size']==4 and r['F20'] for r in rows)
++    floor=20 if count20>=50 else 10
++    selected_policy='F'+str(floor)
+     selected_size=None
+     for size in [4,5]:
+-        accepted=[r for r in rows if r['size']==size and r[policy]]
++        accepted=[r for r in rows if r['size']==size and r[selected_policy]]
+         if accepted:
+             selected_size=size
+             break
+     need(selected_size is not None,'No feasible validation combination; no threshold relaxation')
+     index,draw=sample_index(len(accepted),seed)
+     selected=accepted[index]
+-    return list(selected['records']),{'policy':policy,'records':selected_size,**draw,
++    return list(selected['records']),{'policy':policy,'selected_F_floor':floor,'four_record_F20_count':count20,'records':selected_size,**draw,
+         'validation_counts':selected['counts'],'algorithm':'SHA256-counter-rejection-lexicographic-index-v2'}
+ 
+ 
+ def table_bytes(rows):
+     stream=io.StringIO(newline='')
+     w=csv.writer(stream,lineterminator='\n')
+-    w.writerow(['records_count','records','N','S','V','F','Q','A','B','C'])
++    w.writerow(['records_count','records','N','S','V','F','Q',*POLICIES])
+     for row in rows:
+         w.writerow([row['size'],','.join(row['records']),*row['counts'],*[int(row[p]) for p in POLICIES]])
+     return stream.getvalue().encode('utf-8')

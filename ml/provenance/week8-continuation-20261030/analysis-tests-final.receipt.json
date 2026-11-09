@@ -1,0 +1,21 @@
+{
+  "runtime": "project_shared_venv",
+  "arguments": [
+    "-B",
+    "ml/scripts/test_week8_grid_analysis.py"
+  ],
+  "cwd": ".",
+  "timestamp_utc": "2026-10-29T18:50:31.538851+00:00",
+  "exit_code": 0,
+  "seconds": 12.436999999918044,
+  "source_sha256": {
+    "ml/scripts/analyze_week8_grid.py": "322d779d24b10a7d7474d49ede579d411dc7fb832efba1ec267b10e7ee721c65",
+    "ml/scripts/test_week8_grid_analysis.py": "bcb922e244cb94e86ddab90c84a270c47374a5f783b92080db5825e52c1c0e02",
+    "ml/scripts/run_week8_nopeek.py": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+    "ml/scripts/summarize_week8_nopeek.py": "ff517de3b57f792980334c657ebe001adae8c822baa4048a37949a3a14a793ec"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "594bba2c9970c8f7484fbdb99f2e229503cf4e4b8c3fcb25a8facc98073565b5",
+  "device": "CPU_ONLY_SYNTHETIC_FIXTURES_NO_GPU",
+  "change": "Fixture plot mean/std uses exporter NumPy semantics; production validator unchanged."
+}

@@ -1,0 +1,43 @@
+{
+  "timestamp_utc": "2026-10-29T18:48:38.080535+00:00",
+  "branch": "dev/ml-sv3",
+  "git_head": "d851e8621ee35e3e5da6451ca9c229094d147780",
+  "inventory_counts": {
+    "NOT_STARTED": 1,
+    "COMPLETED": 52,
+    "RUNNING": 1
+  },
+  "running": [
+    "s8-lambda2-seed20261023"
+  ],
+  "source_config_head_selected_ids_match": true,
+  "source_identity": {
+    "git_head": "d851e8621ee35e3e5da6451ca9c229094d147780",
+    "source_sha256": {
+      "ml/scripts/run_week8_nopeek.py": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+      "ml/scripts/summarize_week8_nopeek.py": "ff517de3b57f792980334c657ebe001adae8c822baa4048a37949a3a14a793ec",
+      "ml/scripts/test_week8_nopeek.py": "af40fcf2f5810751b702f1d178d4786c9d10544341b61f280b096df8933f3a27",
+      "ml/src/distance_correlation.py": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+      "ml/src/nopeek.py": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+      "ml/src/nopeek_data.py": "2d85836ed96047af8df853febe733aaa3b48ae0c73e5d54d79d26a67c318307f",
+      "ml/src/train_mitdb_baseline.py": "65a6ae4bc1e89b624050913cb9e02c7e520e5902e49113441c7539bccd55bf18",
+      "ml/src/mitdb_week2_data.py": "363f5298e4e723cac19e15e062346f24c808820fe180c292d25372574a2ba907",
+      "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+      "ml/src/mitdb_common.py": "acd81b4aa9331d90cdb0abdaf16cb1935e9afbd6e34e654ac16dc5f51d236c1d",
+      "ml/src/week1_common.py": "34c3402987e1f8712c844830c6db7a9325ef7a616e9d3dbe5dbb739f2fbc2dba",
+      "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+      "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0"
+    },
+    "config_sha256": "c085b43c5de518f6788a59aa52e27ae47c89f19bf7dfc290ad997679fc550b45"
+  },
+  "result_lock": {
+    "pid": 30068,
+    "created_at": "2026-10-29T15:43:39.336330+00:00"
+  },
+  "artifact_lock": {
+    "pid": 30068,
+    "created_at": "2026-10-29T15:43:39.337050+00:00"
+  },
+  "grid_stdout_bytes": 25537,
+  "process_observation": "PID30068 python start2026-10-29T22:43:37+07 matches lock/start receipt; CPU10771.515625s, GPU25percent. Commandline query denied; identity established using start-time, locks and progress observation."
+}

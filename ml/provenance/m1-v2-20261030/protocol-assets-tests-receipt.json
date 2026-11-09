@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/test_m1_protocol_assets_v2.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "7cdcd1abccfd1c14bb36567896d4cf8456447a914cbbb67c27dcc23fd4cab748",
+      "tests": 7,
+      "scope": "real metadata and synthetic validation-only predictions, no model execution"
+    },
+    {
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/test_m1_protocol_assets_v2.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f79f4318c0e175079df15ca2fdb9b058a0e2c11bfdcfc901d51f78dfe8400946",
+      "tests": 7,
+      "scope": "real metadata and synthetic validation-only predictions, no model execution"
+    }
+  ],
+  "test_source_sha256": "02b925716877ffc08a5cab1fe9b7832b43b0aed67992dad5434e50e34fe61e32"
+}

@@ -1,0 +1,452 @@
+{
+  "status": "PASS_PREPARATION_NOT_REVIEWED_NOT_AUTHORIZED",
+  "scope": "M1 v4 candidate: protocol, code, tests, plan, assets, report, message. No fit, pilot, smoke, DS2 array access or DS2 inference; no lock or authorization created; no commit",
+  "interpreter": "../../ml/.venv/Scripts/python.exe (Python 3.11.9, torch 2.14.0+cu130), always -B",
+  "final_exit_codes": {
+    "sampler-tests-normal": 0,
+    "sampler-tests-optimized": 0,
+    "baseline-tests-normal": 0,
+    "baseline-tests-optimized": 0,
+    "assets-tests-normal": 0,
+    "assets-tests-optimized": 0,
+    "assets-verify-normal": 0,
+    "assets-verify-optimized": 0,
+    "baseline-preflight-normal": 0,
+    "baseline-preflight-optimized": 0,
+    "syntax-compile-normal": 0,
+    "syntax-compile-optimized": 0,
+    "report-tables-check-final-normal": 0,
+    "report-tables-check-final-optimized": 0
+  },
+  "tests_per_mode": {
+    "test_baseline_sampler_v4.py": 12,
+    "test_baseline_grid_v4.py": 33,
+    "test_m1_protocol_assets_v4.py": 17
+  },
+  "commands": [
+    {
+      "name": "sampler-tests-normal-a1",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/test_baseline_sampler_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "cad53855798d2207cb8e1beb0a4068dd18553131440fc6e1d67e13c312845be8",
+      "log": "logs/sampler-tests-normal-a1.txt",
+      "note": "Run before protocol v4 existed; sampler sources unchanged afterwards"
+    },
+    {
+      "name": "sampler-tests-optimized-a1",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/test_baseline_sampler_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "7a79ecab2fab52199a20411efeb23589705367e0d928f0104bfb0a47bfd93be7",
+      "log": "logs/sampler-tests-optimized-a1.txt",
+      "note": "Run before protocol v4 existed; sampler sources unchanged afterwards"
+    },
+    {
+      "name": "grid-logic-precheck-normal",
+      "cwd": "ml/scripts",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_baseline_grid_v4.SelectionTests",
+        "test_baseline_grid_v4.CodeFaultHaltTests.test_first_slot_retries_exhausted_no_epoch_halts",
+        "test_baseline_grid_v4.CodeFaultHaltTests.test_first_slot_with_validation_epoch_continues",
+        "test_baseline_grid_v4.CodeFaultHaltTests.test_first_slot_retry_not_exhausted_continues",
+        "test_baseline_grid_v4.CodeFaultHaltTests.test_later_slot_pre_validation_fault_continues",
+        "test_baseline_grid_v4.AnalyzerTests"
+      ],
+      "exit_code": 0,
+      "log_sha256": "1a6c08fc00bb0c716a5a70eba5fcbbfd459e990a4f5cbe32e0b2c9faa1dc174a",
+      "log": "logs/grid-logic-precheck-normal.txt",
+      "note": "Pure selection/halt/analyzer tests before plan existed; cwd ml/scripts"
+    },
+    {
+      "name": "assets-build",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/prepare_m1_protocol_assets_v4.py",
+        "build",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+        "--output",
+        "ml/manifests/mitdb-m1-protocol-assets-v4"
+      ],
+      "exit_code": 0,
+      "log_sha256": "10f13ec20e1be2462315b6fb93a455c7a93a74b0eed517201b350ca061e0e5cc",
+      "log": "logs/assets-build.txt"
+    },
+    {
+      "name": "plan-prepare",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/baseline_grid_v4.py",
+        "prepare",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+        "--output",
+        "ml/manifests/mitdb-baseline-grid-v4"
+      ],
+      "exit_code": 0,
+      "log_sha256": "3360b12cf3ffeefc2064e6ec068477d0378a64606a5fc790fc0c8bc132cd0f76",
+      "log": "logs/plan-prepare.txt"
+    },
+    {
+      "name": "sampler-tests-normal",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/test_baseline_sampler_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "8fddbc57a0a9a01532e451466a09da0a0bf840d852c42d1eb53d7f76271ae1d4",
+      "log": "logs/sampler-tests-normal.txt"
+    },
+    {
+      "name": "baseline-tests-normal",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/test_baseline_grid_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "714a0ae2c17a9dfc4b6d4fe866921551f0a0652d7f49c16e9c8e7c37befb4e6a",
+      "log": "logs/baseline-tests-normal.txt"
+    },
+    {
+      "name": "assets-tests-normal-a1",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/test_m1_protocol_assets_v4.py"
+      ],
+      "exit_code": 1,
+      "log_sha256": "273e33401470f058616d65be2fa7ac097889188faab966f4623aa3ee30641f69",
+      "log": null,
+      "note": "1 failure in the test itself (assertIn on list element); only the test was corrected; protocol/plan/assets unchanged. Log has absolute paths: kept local"
+    },
+    {
+      "name": "assets-verify-normal",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/prepare_m1_protocol_assets_v4.py",
+        "verify",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+        "--output",
+        "ml/manifests/mitdb-m1-protocol-assets-v4"
+      ],
+      "exit_code": 0,
+      "log_sha256": "ea3530ec77dc153c00011de7c765f76fc035983c760ea69f7b4cac556310942f",
+      "log": "logs/assets-verify-normal.txt"
+    },
+    {
+      "name": "baseline-preflight-normal",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/baseline_grid_v4.py",
+        "preflight",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+        "--plan",
+        "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json",
+        "--arrays",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 0,
+      "log_sha256": "b5d446f0c248aee95a7540f390a344cb4e1987e88de7ed9834bbdb2ae8b081ce",
+      "log": "logs/baseline-preflight-normal.txt"
+    },
+    {
+      "name": "sampler-tests-optimized",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/test_baseline_sampler_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "87b52295f3f57550fd0c53c23a475751bc9f79d9e8ec4b2ccec02c0f7134d08c",
+      "log": "logs/sampler-tests-optimized.txt"
+    },
+    {
+      "name": "baseline-tests-optimized",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/test_baseline_grid_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "56497b44c6c8523915a84b7588727b002d52b195de1046a5a8cc37c153830587",
+      "log": "logs/baseline-tests-optimized.txt"
+    },
+    {
+      "name": "assets-tests-optimized-a1",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/test_m1_protocol_assets_v4.py"
+      ],
+      "exit_code": 1,
+      "log_sha256": "c7a22101e5e43ef43d5c221c15aeb62ad25198c339f6c11586186d84cce9e9e4",
+      "log": null,
+      "note": "Same failure as normal mode; kept local"
+    },
+    {
+      "name": "assets-verify-optimized",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/prepare_m1_protocol_assets_v4.py",
+        "verify",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+        "--artifacts",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+        "--output",
+        "ml/manifests/mitdb-m1-protocol-assets-v4"
+      ],
+      "exit_code": 0,
+      "log_sha256": "ea3530ec77dc153c00011de7c765f76fc035983c760ea69f7b4cac556310942f",
+      "log": "logs/assets-verify-optimized.txt"
+    },
+    {
+      "name": "baseline-preflight-optimized",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/baseline_grid_v4.py",
+        "preflight",
+        "--protocol",
+        "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+        "--plan",
+        "ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json",
+        "--arrays",
+        "ml/data/processed/mitdb-ds1ds2-m1-v3-r2"
+      ],
+      "exit_code": 0,
+      "log_sha256": "b5d446f0c248aee95a7540f390a344cb4e1987e88de7ed9834bbdb2ae8b081ce",
+      "log": "logs/baseline-preflight-optimized.txt"
+    },
+    {
+      "name": "assets-tests-normal",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/test_m1_protocol_assets_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "158fdab77519da773414c29ed07b919e1aca7e81af8f996a394e695627bb6d6e",
+      "log": "logs/assets-tests-normal.txt"
+    },
+    {
+      "name": "assets-tests-optimized",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/test_m1_protocol_assets_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "1f4143dc5268de01d0481837414bfb021b6bf240d2d304e97df8b945c05d432a",
+      "log": "logs/assets-tests-optimized.txt"
+    },
+    {
+      "name": "syntax-compile-normal",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "-c",
+        "<compile each listed file, no execution>",
+        "ml/scripts/baseline_sampler_v4.py",
+        "ml/scripts/m1_metrics_v4.py",
+        "ml/scripts/baseline_selection_v4.py",
+        "ml/scripts/baseline_grid_v4.py",
+        "ml/scripts/train_mitdb_baseline_v4.py",
+        "ml/scripts/prepare_m1_protocol_assets_v4.py",
+        "ml/scripts/report_m1_v4_tables.py",
+        "ml/scripts/test_baseline_sampler_v4.py",
+        "ml/scripts/test_baseline_grid_v4.py",
+        "ml/scripts/test_m1_protocol_assets_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "9194e4c3209fadc098c1e9251244cdeda4a68adf19079a402223f68afccb3556",
+      "log": "logs/syntax-compile-normal.txt"
+    },
+    {
+      "name": "syntax-compile-optimized",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "-c",
+        "<compile each listed file, no execution>",
+        "ml/scripts/baseline_sampler_v4.py",
+        "ml/scripts/m1_metrics_v4.py",
+        "ml/scripts/baseline_selection_v4.py",
+        "ml/scripts/baseline_grid_v4.py",
+        "ml/scripts/train_mitdb_baseline_v4.py",
+        "ml/scripts/prepare_m1_protocol_assets_v4.py",
+        "ml/scripts/report_m1_v4_tables.py",
+        "ml/scripts/test_baseline_sampler_v4.py",
+        "ml/scripts/test_baseline_grid_v4.py",
+        "ml/scripts/test_m1_protocol_assets_v4.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "9194e4c3209fadc098c1e9251244cdeda4a68adf19079a402223f68afccb3556",
+      "log": "logs/syntax-compile-optimized.txt"
+    },
+    {
+      "name": "report-tables-check-normal-a1",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/report_m1_v4_tables.py",
+        "--check",
+        "docs/sv3_m1_v4_review_20261103.md"
+      ],
+      "exit_code": 1,
+      "log_sha256": "1fa1ad32d118c6b1c9adce63d8556e420649b6b40e66b033ef8743aa73c42b75",
+      "log": null,
+      "note": "Byte comparison failed on trailing blank line; comparison fixed, diffs/index/report regenerated; kept local"
+    },
+    {
+      "name": "report-tables-check-optimized-a1",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/report_m1_v4_tables.py",
+        "--check",
+        "docs/sv3_m1_v4_review_20261103.md"
+      ],
+      "exit_code": 1,
+      "log_sha256": "1fa1ad32d118c6b1c9adce63d8556e420649b6b40e66b033ef8743aa73c42b75",
+      "log": null,
+      "note": "Same as normal mode; kept local"
+    },
+    {
+      "name": "report-tables-check-normal",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/report_m1_v4_tables.py",
+        "--check",
+        "docs/sv3_m1_v4_review_20261103.md"
+      ],
+      "exit_code": 0,
+      "log_sha256": "c864abc3a93419a39d445748f4f5b2612db5830021ef3e0d863743841f0d0e4b",
+      "log": "logs/report-tables-check-normal.txt",
+      "note": "Passed on report before narrative edits outside the generated block; superseded by report-tables-check-final-*"
+    },
+    {
+      "name": "report-tables-check-optimized",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/report_m1_v4_tables.py",
+        "--check",
+        "docs/sv3_m1_v4_review_20261103.md"
+      ],
+      "exit_code": 0,
+      "log_sha256": "c864abc3a93419a39d445748f4f5b2612db5830021ef3e0d863743841f0d0e4b",
+      "log": "logs/report-tables-check-optimized.txt",
+      "note": "Passed on report before narrative edits outside the generated block; superseded by report-tables-check-final-*"
+    },
+    {
+      "name": "report-tables-check-final-normal",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-B",
+        "ml/scripts/report_m1_v4_tables.py",
+        "--check",
+        "docs/sv3_m1_v4_review_20261103.md"
+      ],
+      "exit_code": 0,
+      "log_sha256": "c864abc3a93419a39d445748f4f5b2612db5830021ef3e0d863743841f0d0e4b",
+      "log": "logs/report-tables-check-final-normal.txt"
+    },
+    {
+      "name": "report-tables-check-final-optimized",
+      "cwd": ".",
+      "argv": [
+        "../../ml/.venv/Scripts/python.exe",
+        "-O",
+        "-B",
+        "ml/scripts/report_m1_v4_tables.py",
+        "--check",
+        "docs/sv3_m1_v4_review_20261103.md"
+      ],
+      "exit_code": 0,
+      "log_sha256": "c864abc3a93419a39d445748f4f5b2612db5830021ef3e0d863743841f0d0e4b",
+      "log": "logs/report-tables-check-final-optimized.txt"
+    }
+  ],
+  "superseded_local_artifacts": {
+    "note": "First diffs/diff-index/report were generated before the report-check fix; moved to a local folder, not deleted, not in repository",
+    "diff-index.json": "09bc88b9f4b745e7122f61bc226a17ca6bec0985a0e387f40e54cfdbace93cc7",
+    "docs/sv3_m1_v4_review_20261103.md": "915cb416936d26fe5099a9d95a9d9bfdcfd39177581f3e7fedd4c5f1689b1deb"
+  },
+  "local_generators": {
+    "note": "Local helper scripts, not in repository; outputs are authoritative via SHA and diffs",
+    "protocol_v4_from_v3": "3fbf40f9f077f671abf5188eb24e9696ab2d38fb7dd49f346be41cb1c7a64101",
+    "diffs_and_index": "2aaff73834a57b0f94cbc5b19739a11957c6b5f2367ee45d03febd5b767e5a5d",
+    "provenance_files": "e99ce6857eb23ca4971cbf2e62afc87e6849f8131caee8641f632d1b2b4ee596"
+  },
+  "fit_calls": 0,
+  "optimizer_steps": 0,
+  "smoke_training": false,
+  "DS2_arrays_opened": false,
+  "DS2_model_calls": 0,
+  "git_fetch_origin": {
+    "run": "After resuming the session; before provenance files, after code/report files were written",
+    "HEAD": "6a8d06ae58aedf21a481d6bbb7afc8294ab4021a",
+    "origin_dev_ml_sv3": "6a8d06ae58aedf21a481d6bbb7afc8294ab4021a",
+    "origin_main_commits_not_in_branch": 0
+  }
+}

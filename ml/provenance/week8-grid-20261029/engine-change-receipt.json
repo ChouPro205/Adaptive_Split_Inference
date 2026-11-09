@@ -1,0 +1,9 @@
+{
+  "scope": "Grouped finite guards only; training math, optimizer, seeds, batch/order, loss and protocol unchanged",
+  "old_source_sha256": "2ea61d0dd9ae571a02b38413005cfa660e8814e71682061bba197b9b2ecbfcf0",
+  "old_source_snapshot": "ml/results/week8-nopeek/pilot/pilot-cuda-joint-v1/sources/ml/scripts/run_week8_nopeek.py",
+  "new_source_sha256": "b3f505a3d1b7e0ba0fccd2af73d9592f69f67555d1cac377b8fe3a64b99c01fa",
+  "initial_attempt": "INTERRUPTED_FOR_ENGINE_VALIDATION",
+  "official_experiment": "ml/results/week8-nopeek/grid/grid-3seed-joint-v2",
+  "approval_utf8_supplement_sha256": "c26fd56b3cc2e6e2d7cea8afc5c9821161877e00a13962e9bc8d25b87ef8b170"
+}

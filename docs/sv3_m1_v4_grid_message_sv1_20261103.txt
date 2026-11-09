@@ -1,0 +1,46 @@
+Chào Châu, grid M1 v4 đã chạy xong cả 18 slot. Mình gửi kết quả chọn cấu hình để bạn review. Mình chưa khóa checkpoint và chưa mở DS2.
+
+Gói: SV3_M1_V4_GRID_RESULT_20261103.zip, SHA-256 5dc88a02077322d976497c7d9bf78b47db43d3d80485c063874349a8088e82a9 (đối chiếu với tệp .sha256 đi kèm). Gói có 564 file, đều liệt kê trong PACKAGE_SHA256SUMS.txt:
+- docs/sv3_m1_v4_grid_result_20261103.md: báo cáo và bảng.
+- ml/provenance/m1-v4-grid-analysis-20261103/: log, receipt.json, kiểm chéo, SHA256SUMS.txt.
+- ml/data/runs/mitdb-baseline-v4-20261103/: grid-result.json; với mỗi slot có slot-result.json, summary, history, epoch-*.json, attempt-identity, stdout/stderr và checkpoint được chọn (18 file .pt). 81 checkpoint trung gian không có trong gói.
+Không có arrays. Code, protocol và plan là bản ở commit 365acbc trên dev/ml-sv3.
+
+Ràng buộc: protocol 7f9eb564…71e18, plan 1ce2f811…3c27d956, file khóa 95e65949…2f64. grid-result.json 24edf58e203b383864b97928630d9c8aa6983bfceb7613b32f5fd45a3cd7d8ce, status ALL18_SLOTS_TERMINAL_NOT_MODEL_LOCK. Cả 18 slot COMPLETED ở attempt 1, exit 0, không retry, stdout/stderr rỗng. Cả 18 chạy trên cuda RTX 5060, DS2_arrays_opened false.
+
+Kết quả (analyze: SELECTED_FOR_OWNER_REVIEW_NOT_MODEL_LOCK):
+- Cấu hình chọn: C5 (K-balanced sampler, lr 0,0003). Mean macro-F1 K 0,5129, SD ddof=1 0,0886.
+- Seed triển khai: 20261101, epoch 4, macro-F1 0,5682. Gate N/V/S đều đạt, package_A_gate PASS.
+- Checkpoint triển khai: C5-seed20261101/attempt-1/checkpoint-epoch-004.pt
+  fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c
+- Hai seed còn lại của C5:
+  20261030, epoch 17: fc60aa7092f81fc53a95a6f7fc83704df51daf631a0f722100ca31e50129408e
+  20261031, epoch 23: 19fe7a4a9136d4f5cbdd7683705b14efd5c7950129d7a6ed9f989111cebf0f8f
+- Mean (SD) của sáu cấu hình: C0 0,4774 (0,0436); C1 0,5102 (0,0597); C2 0,4587 (0,0806); C3 0,5081 (0,0725); C4 0,4940 (0,0975); C5 0,5129 (0,0886). Cả 6 cấu hình đạt N/V/S tại seed triển khai, nên pool gồm cả 6.
+Bảng 2 trong báo cáo có gate N/V/S, epoch chọn, Se/+P của S và V cho cả 18 seed. Bảng 3 có SHA đủ 64 ký tự của 18 checkpoint được chọn.
+
+Điểm cần công bố:
+1) C5 chỉ hơn C1 0,0027, nhỏ hơn nhiều so với SD giữa các seed. C5 được chọn theo quy tắc đã khóa, không phải bằng chứng C5 tốt hơn.
+2) 9/18 seed trượt ít nhất một gate (V trượt ở 4 seed, S trượt ở 7 seed, N không trượt seed nào).
+3) Seed C5-20261030 trượt gate V (+P V 0,288): mô hình gán 2166/8322 nhịp N thành V. Seed này sẽ có trong ds2_report.
+4) Validation không có nhịp Q. F1 lớp F thấp ở mọi seed.
+
+Về state NOT_STARTED cạnh status COMPLETED trong slot-result.json: state là trường của mục slot trong plan-manifest. prepare ghi nó (baseline_grid_v4.py dòng 82), và nó nằm trong SHA plan. Runner tạo dòng ledger bằng {**slot, 'status':..., 'attempts':...} (dòng 168): chép nguyên mục plan rồi thêm status. Runner không bao giờ cập nhật state. analyze chỉ đọc status. Mình đã kiểm trên cả 18 slot: slot-result bỏ status và attempts thì bằng đúng mục plan. Đây không phải lỗi chạy; mình không sửa ledger. Nếu có plan v5, mình đề xuất bỏ hoặc đổi tên trường này (plan_state).
+
+Mình đã chạy (thường và -O, exit 0):
+- analyze: stdout trùng byte giữa hai chế độ.
+- Một bước kiểm chéo độc lập không import code v4. Nó tính lại F1 từ confusion, tính gate bằng Fraction, SD bằng numpy ddof=1, chọn epoch, seed và cấu hình, rồi băm lại checkpoint. Kết quả khớp analyze. Hai phép kiểm âm (sửa seed chọn, sửa gate) đều bị từ chối.
+- sha256sum -c cho 18 checkpoint: 18/18 OK.
+- Test v4: grid 33, sampler 12, assets 17, đều OK.
+- Sau khi đóng gói: giải nén ZIP lên cây git archive 365acbc rồi chạy lại analyze và kiểm chéo. Cả hai cho output trùng byte với bản trong gói.
+Chưa kiểm: chưa chạy lại grid thật để kiểm tính tất định; bước phân tích không nạp lại checkpoint (reload_confusion_exact do trainer ghi).
+
+Lệnh kiểm lại (giải nén vào gốc một checkout 365acbc; trên Windows nên giải nén ở thư mục có đường dẫn ngắn, vì có file nằm sâu, dễ vượt 260 ký tự):
+  sha256sum -c PACKAGE_SHA256SUMS.txt
+  (cd ml/provenance/m1-v4-grid-analysis-20261103 && sha256sum -c SHA256SUMS.txt)
+  sha256sum -c ml/provenance/m1-v4-grid-analysis-20261103/selected-checkpoints.sha256
+  python -B ml/scripts/baseline_grid_v4.py analyze --protocol ml/configs/mitdb_m1_baseline_protocol_v4.json --plan ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json --results ml/data/runs/mitdb-baseline-v4-20261103
+  python -B ml/provenance/m1-v4-grid-analysis-20261103/crosscheck_grid_v4.py --out <file mới>
+Output analyze cần trùng với logs/analyze-normal.stdout.json sau khi đổi CRLF thành LF (log ghi trên Windows).
+
+Nếu bạn đồng ý kết quả chọn, bạn nhắn xác nhận đúng 3 SHA checkpoint C5 ở trên. Checkpoint triển khai chính là checkpoint của seed 20261101 (fcf3f846…54171e2c). Sau đó mình lập file khóa checkpoint giống lần khóa protocol. Chỉ sau khi khóa mới mở DS2, và chỉ một lần. Nếu bạn muốn ghi thêm Limitations về seed C5-20261030, hoặc cần GVHD ký file khóa, bạn báo mình nhé.
