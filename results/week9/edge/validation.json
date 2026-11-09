@@ -3,7 +3,9 @@
   "date": "2026-11-09",
   "source_commit": "54320ff38e8759cfed42479db68027561041a07e",
   "environment": {
-    "python": "3.11.9",
+    "python_week9_and_export": "3.11.9",
+    "python_contract_tests": "3.12.3",
+    "gcc_contract_tests": "13.3.0",
     "numpy": "2.4.6",
     "paho_mqtt": "2.1.0",
     "matplotlib": "3.10.7",
@@ -27,6 +29,12 @@
     }
   ],
   "total_passed": 67,
+  "additional_checks": [
+    "Notebook nbformat schema and every read-only code cell executed with the published exports; template keeps outputs empty",
+    "All eight exporter checksums match both working files and staged Git blobs",
+    "New document links resolve; measured Python sources parse as Python 3.9",
+    "Device manifest 139 hashes unchanged; no Device/ML/contracts diff against synced main"
+  ],
   "real_replay": "Two recorded native-Windows runs recomputed byte/JSON-equivalent; optional real cases ran, not skipped",
   "energy": "p1/p2/p4 numerical log conversion, 100 pairs and 200 logits bit-match each; Device manifest 139 files hash-verified; no new PPK2 execution",
   "limits": [
