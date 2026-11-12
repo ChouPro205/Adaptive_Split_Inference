@@ -290,7 +290,7 @@ def session_groups(cycles: list) -> dict:
            "prot_net": {s: [] for s in PROT_SPLITS}, "prot_fraction": {s: [] for s in PROT_SPLITS},
            "dev_p0": {s: [] for s in PROT_SPLITS}, "t_dev_p0": {s: [] for s in PROT_SPLITS},
            "dev_p1": {s: [] for s in PROT_SPLITS}, "delta": {s: [] for s in PROT_SPLITS}, "conv": [], "t_conv": [],
-           "conv_fraction": []}
+           "conv_fraction": [], "dev_p0_fraction": {s: [] for s in PROT_SPLITS}}
     by_pair = {}
     for c in cycles:
         s, op = (int(c["split"]) if c.get("split") not in (None, "") else None), c["op"]
@@ -309,6 +309,7 @@ def session_groups(cycles: list) -> dict:
         else:
             out["dev_p0"][s].append(f(c, "E_dev_uJ"))
             out["t_dev_p0"][s].append(f(c, "t_dev_ms"))
+            out["dev_p0_fraction"][s].append(f(c, "dev_high_fraction"))
         by_pair.setdefault((int(c["round"]), s), {})[op] = f(c, "E_dev_uJ") + f(c, "E_prot_uJ")
     for (_, s), pair in by_pair.items():
         if "P1" in pair and "P0" in pair:
@@ -316,10 +317,47 @@ def session_groups(cycles: list) -> dict:
     return out
 
 
-def table_iii_off() -> dict:
+def table_iii_off(column: str = "E_dev_uJ_mean") -> dict:
     import csv
     with TABLE_III_OFF.open(encoding="utf-8", newline="") as handle:
-        return {int(r["split"]): float(r["E_dev_uJ_mean"]) for r in csv.DictReader(handle)}
+        return {int(r["split"]): float(r[column]) for r in csv.DictReader(handle)}
+
+
+# W9-D11 (pre-declared 09/11): different-day comparison of the radio-off E_dev, raw |delta| < 10 % AND core
+# |delta| <= 2 % (s >= 2) / <= 8 % (s <= 1). W10-D1: the P0 cycles of the prot sessions try it early, report only.
+CROSS_DAY_RAW_PCT = 10.0
+CROSS_DAY_CORE_PCT = {"s>=2": 2.0, "s<=1": 8.0}
+
+
+def cross_day(groups_by_session: dict) -> dict:
+    """W9-D11 on the P0 cycles (CTRL + HEAD, radio off) vs week 9 Table III (pooled raw and core E_dev)."""
+    import week9_figures as w9f
+    off, off_core = table_iii_off(), table_iii_off("E_dev_core_uJ")
+    per_s, ok = {}, True
+    for s in PROT_SPLITS:
+        sess = [k for k in groups_by_session if groups_by_session[k]["dev_p0"][s]]
+        if not sess or s not in off:
+            continue
+        raw = wa.pooled({k: groups_by_session[k]["dev_p0"][s] for k in sess})
+        fractions = {k: groups_by_session[k].get("dev_p0_fraction", {}).get(s) or [] for k in sess}
+        cores = {k: w9f.core_fit(fractions[k], groups_by_session[k]["dev_p0"][s])["core"]
+                 for k in sess if len(fractions[k]) == len(groups_by_session[k]["dev_p0"][s])}
+        core = float(np.mean(list(cores.values()))) if cores else None
+        raw_pct = 100.0 * (raw["mean"] - off[s]) / off[s]
+        core_pct = 100.0 * (core - off_core[s]) / off_core[s] if core is not None else None
+        limit = CROSS_DAY_CORE_PCT["s>=2" if s >= 2 else "s<=1"]
+        raw_ok = abs(raw_pct) < CROSS_DAY_RAW_PCT
+        core_ok = core_pct is not None and abs(core_pct) <= limit
+        per_s[str(s)] = {"E_dev_P0_uJ": raw["mean"], "E_dev_week9_uJ": off[s], "raw_delta_pct": raw_pct,
+                         "raw_pass": raw_ok, "core_per_session_uJ": cores, "core_uJ": core,
+                         "core_week9_uJ": off_core[s], "core_delta_pct": core_pct, "core_limit_pct": limit,
+                         "core_pass": core_ok, "pass": raw_ok and core_ok,
+                         "reading": ("same" if raw_ok and core_ok else "REG0 mode share only (raw fails, core holds)"
+                                     if core_ok else "real change: find the cause (core fails)")}
+        ok = ok and raw_ok and core_ok
+    return {"rule": "W9-D11: raw |delta| < 10 % AND core |delta| <= 2 % (s >= 2) / <= 8 % (s <= 1) vs week 9 "
+                    "Table III; report only (Table III keeps the week 9 numbers)",
+            "pass": ok and len(per_s) == len(PROT_SPLITS), "per_s": per_s}
 
 
 def summary(groups_by_session: dict, tprot: dict | None = None) -> dict:
@@ -371,4 +409,5 @@ def summary(groups_by_session: dict, tprot: dict | None = None) -> dict:
                       "before s; s1: features.0 + ReLU)",
         "E_dev_P0_vs_week9_table_iii_pct": {str(s): 100.0 * (e_dev[s] - off[s]) / off[s] for s in PROT_SPLITS if s in off},
         "E_dev_vs_week9_note": "W9-D11 different-day rule, report only (Table III keeps the week 9 numbers)",
+        "w9_d11_cross_day": cross_day(groups_by_session),
     }

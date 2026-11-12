@@ -890,6 +890,11 @@ def cmd_summary_prot(args) -> int:
     rule = result["w10_d2_conv_rule"]
     print(f"E_conv,min {result['E_conv_min_uJ'].get('mean'):.2f} uJ; W10-D2 'P1 < 1 conv layer': "
           f"{'PASS' if rule['pass'] else 'FAIL'}; TC5 CI95 < 10 % every s: {result['tc5_ci95_below_10pct_every_s']}")
+    cross = result["w9_d11_cross_day"]
+    print(f"W9-D11 cross-day (report only): {'PASS' if cross['pass'] else 'FAIL'}; "
+          + ", ".join(f"s{s} raw {v['raw_delta_pct']:+.1f} % core "
+                      + (f"{v['core_delta_pct']:+.1f} %" if v['core_delta_pct'] is not None else "n/a")
+                      for s, v in cross["per_s"].items()))
     return 0
 
 
