@@ -352,7 +352,7 @@ def cmd_summary_ewait(args) -> int:
 # ----------------------------------------------------------------------------- part B: every s, radio on (W10-D4)
 
 ALLS_SCHEMA = "week10-ppk2-alls/1"
-ALLS_SECONDS = 900.0
+ALLS_SECONDS = 960.0     # 31 s boot/idle + link + 35 s + 550 cycles (709 s in dry run 4b) + >= 60 s after
 TABLE_III_OFF = HERE.parents[1] / "results" / "week9" / "device" / "analysis" / "table_iii_e_dev.csv"
 ALLS_ROW_FIELDS = ["cycle", "round", "sample", "split", "bytes_payload", "E_dev_uJ", "E_dev_net_uJ", "t_dev_ms",
                    "dev_high_fraction", "E_tx_uJ", "t_tx_ms", "E_wait_uJ", "t_wait_ms", "E_tot_uJ", "E_cycle_uJ",
@@ -685,7 +685,7 @@ def cmd_summary_alls(args) -> int:
 # ----------------------------------------------------------------------------- part C: E_prot, radio off (W10-D1)
 
 PROT_SCHEMA = "week10-ppk2-prot/1"
-PROT_SECONDS = 1260.0
+PROT_SECONDS = 1350.0    # 31 s boot/idle + 1050 x (1 s gap + cycle) ~ 1224 s + >= 60 s after
 
 
 def prot_image_info(image: Path, receipt: Path | None) -> dict:
@@ -909,7 +909,7 @@ def main(argv=None) -> int:
     p = sub.add_parser("session-ewait")
     p.add_argument("--port", required=True, help="PPK2 data port (see: probe)")
     p.add_argument("--out", type=Path, required=True, help="new directory")
-    p.add_argument("--seconds", type=float, default=480.0,
+    p.add_argument("--seconds", type=float, default=540.0,
                    help="DUT power ON: ~31 s boot/idle + link + 35 s + 200 cycles under load (~290 s) + >= 60 s after")
     p.add_argument("--pre-power-s", type=float, default=0.5)
     p.add_argument("--temp-c", type=float, required=True, help="room temperature at start")
@@ -948,7 +948,7 @@ def main(argv=None) -> int:
     p.add_argument("--port", required=True, help="PPK2 data port (see: probe)")
     p.add_argument("--out", type=Path, required=True, help="new directory")
     p.add_argument("--seconds", type=float, default=ALLS_SECONDS,
-                   help="DUT power ON: ~31 s boot/idle + link + 35 s + 550 cycles (~12 min) + >= 60 s after")
+                   help="DUT power ON: ~31 s boot/idle + link + 35 s + 550 cycles (~12 min) + >= 60 s after (default 960)")
     p.add_argument("--pre-power-s", type=float, default=0.5)
     p.add_argument("--temp-c", type=float, required=True, help="room temperature at start")
     p.add_argument("--image", type=Path, required=True, help="build_week10.ps1 folder (ble, clean)")
@@ -982,7 +982,7 @@ def main(argv=None) -> int:
     p.add_argument("--port", required=True, help="PPK2 data port (see: probe)")
     p.add_argument("--out", type=Path, required=True, help="new directory")
     p.add_argument("--seconds", type=float, default=PROT_SECONDS,
-                   help="DUT power ON: ~31 s boot/idle + 1050 cycles (~18 min) + >= 60 s after")
+                   help="DUT power ON: ~31 s boot/idle + 1050 cycles with 1 s gaps (~20.5 min) + >= 60 s after (default 1350)")
     p.add_argument("--pre-power-s", type=float, default=0.5)
     p.add_argument("--temp-c", type=float, required=True, help="room temperature at start")
     p.add_argument("--image", type=Path, required=True, help="build_week10.ps1 folder (prot, clean)")
