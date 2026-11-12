@@ -23,7 +23,7 @@ $nrfutilExe = Join-Path $ToolchainRoot 'nrfutil\bin\nrfutil.exe'
 if (-not (Test-Path -LiteralPath $nrfutilExe)) { throw 'nrfutil unavailable' }
 $stamp = [DateTimeOffset]::UtcNow.ToOffset([TimeSpan]::FromHours(7)).ToString('yyyyMMdd-HHmmss')
 New-Item -ItemType Directory -Path $ReceiptDir -Force | Out-Null
-$name = "dfu-$stamp-week9-" + $variant
+$name = "dfu-$stamp-week10-" + $variant
 $receiptPath = Join-Path $ReceiptDir ($name + '.json')
 $logPath = Join-Path $ReceiptDir ($name + '.log')
 if ((Test-Path -LiteralPath $receiptPath) -or (Test-Path -LiteralPath $logPath)) { throw 'DFU receipt exists' }
