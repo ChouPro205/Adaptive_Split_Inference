@@ -2,6 +2,11 @@
 
 Nơi lưu cấu hình thí nghiệm, metadata, dữ liệu đo đã xử lý và kết quả có thể tái lập. Không commit dữ liệu thô hoặc dataset lớn.
 
+## Mô phỏng G5 (SV1)
+
+[Protocol v1](g5_sim/protocol_v1.md), khóa ngày 12/11/2026 trước khi có Π thử và số đo tuần 10–11:
+mô hình, controller, baseline, ablation, trace, tiêu chí G5, thống kê. Code mô phỏng viết sau, theo đúng file này.
+
 ## SV2 tuần 5–6
 
 Cấu hình thực thi: [configs/sv2_edge_week6.json](configs/sv2_edge_week6.json).
