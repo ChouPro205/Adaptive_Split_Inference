@@ -1,0 +1,49 @@
+mainmenu "Adaptive Split Inference Week 10 measurements"
+
+choice WEEK10_VARIANT
+	prompt "Week 10 firmware variant (W10-D4)"
+	default WEEK10_BLE_USB
+
+config WEEK10_BLE_USB
+	bool "ble-usb: USB CDC + BLE: VERIFY, ONE, SESSION dry run against the KV260 (TC2)"
+
+config WEEK10_BLE
+	bool "ble: automatic PPK2 session at every s with the radio on, no USB/console/log/LED/NVS (TC7)"
+
+endchoice
+
+config WEEK10_CYCLE_GAP_MS
+	int "Connected idle between the end of one cycle and the next CTRL (ms, W10-D4)"
+	range 0 10000
+	default 1000
+
+config WEEK10_BOOT_IDLE_S
+	int "Idle window after the boot self-test, radio off (W7-D3, TC3 I_idle)"
+	default 30
+
+config WEEK10_CONNECTED_IDLE_S
+	int "Connected idle before the first cycle (s)"
+	default 30
+
+config WEEK10_SETTLE_S
+	int "Wait after the link is ready and the parameters are requested (s)"
+	default 5
+
+config WEEK10_SELFTEST_MS
+	int "Width of each marker pulse in the boot self-test D0..D4"
+	default 200
+
+config WEEK10_CTRL_MIN_US
+	int "Minimum CTRL pulse width so 100 kS/s sampling sees it (stub controller)"
+	default 200
+
+config WEEK10_RESPONSE_TIMEOUT_MS
+	int "WAIT gives up after this long without a valid response (no retry)"
+	default 5000
+
+config WEEK10_CONN_INTERVAL_1250US
+	int "Connection interval requested from the central, 1.25 ms units, 0 = do not ask (W7-D7: 15 ms)"
+	range 0 3200
+	default 12
+
+source "Kconfig.zephyr"
