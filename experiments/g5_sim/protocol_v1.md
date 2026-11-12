@@ -1,6 +1,6 @@
-# Protocol mô phỏng G5 — v1
+# Protocol mô phỏng G5 — v1.1
 
-Mã tài liệu: `ASI-G5-SIM-PROTOCOL v1`. Người lập: SV1 (Lê Hải Châu), ngày 12/11/2026.
+Mã tài liệu: `ASI-G5-SIM-PROTOCOL v1.1`. Người lập: SV1 (Lê Hải Châu), ngày 12/11/2026 (v1 và v1.1).
 Thẩm quyền: SV1 quyết theo ủy quyền của GVHD (quyết định nhóm 03/11 và 05/11/2026).
 
 Tài liệu này **khóa trước** toàn bộ cách đánh giá controller chọn (s, ρ) lúc chạy:
@@ -268,6 +268,10 @@ Mọi trace sinh bằng splitmix64 + Fisher–Yates của `week9_common`, seed g
 - **L-burst (chính)**: on-off. Trạng thái OFF λ = 5 job/s, ON λ = 30 job/s (vượt năng lực ≈ 22 job/s,
   hàng đầy, chờ ≈ 0,4 s), mỗi trạng thái kéo dài theo phân phối mũ, trung bình ON 20 s; tỉ lệ thời
   gian ON φ chính 0,2, quét φ ∈ {0; 0,1; 0,2; 0,3; 0,5}. Job đến theo Poisson trong từng trạng thái.
+- **L-steady** (thêm ở v1.1): tải nền Poisson hằng λ ∈ {0, 5, 10, 15, 18, 20, 22} job/s cả trace. Dùng để vẽ
+  đường lợi ích theo mức tải: theo ước lượng từ số đo, đánh đổi E–T chỉ có khi q nằm trong một dải hẹp
+  (s10 nhanh hơn s2 nhưng s2 vẫn kịp D), nên đường này cho thấy vùng nào controller có giá trị, thay vì
+  dựa vào một điểm tải.
 - **L-real** (G5-final, nếu SV2 có trace E8 nhiều client): dùng thay L-burst ở một dòng độ nhạy,
   không thay kịch bản chính.
 
@@ -299,6 +303,7 @@ Bộ thông số chính **P\***: A-ecg, C-ge (early) hoặc C-real (final), L-bu
 | E6 kênh động | A-per 0,8; C-ge/C-real; L0 | thích nghi theo kênh | Fig. 8 |
 | **E7 pin** | **P\*** | **N1, N2** | Fig. 9: SoC theo thời gian, N_ok; đường N_ok theo κ |
 | E8 tải bùng phát | A-per 0,8; C-static; L-burst | giá trị của tín hiệu hàng đợi | Fig. 10: chuỗi thời gian q, s chọn, Z; đường lợi ích theo φ |
+| E8b tải ổn định (v1.1) | A-ecg, C-static, L-steady theo λ, các thông số khác như P\* | vùng tải mà controller có giá trị | đường N_ok, T̄ của mọi phương pháp và d_X theo λ |
 | E9 ablation | P\* | tách đóng góp | Table VI |
 | E11 độ nhạy | P\*, đổi từng thông số | chứng minh không chọn thông số có lợi | Fig. 12 |
 
@@ -424,3 +429,4 @@ chạy; không thay bằng số đoán, trừ các giá trị tạm đã khai �
 | Bản | Ngày | Nội dung | Thấy Π / kết quả? |
 |---|---|---|---|
 | v1 | 12/11/2026 | Bản đầu, khóa trước khi có Π thử, E_tx(B), số đo tuần 10 | chưa thấy |
+| v1.1 | 12/11/2026 | Thêm L-steady (§9.3) và E8b (§10). Lý do: ước lượng từ số đo tuần 9 cho thấy ở pha quá tải của L-burst mọi phương pháp đều phải chọn s10, nên một điểm tải không đủ. Kịch bản chính P\*, tiêu chí N1, N2 giữ nguyên | chưa thấy |
