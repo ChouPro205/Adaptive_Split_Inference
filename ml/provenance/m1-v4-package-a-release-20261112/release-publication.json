@@ -1,0 +1,59 @@
+{
+  "schema": "m1-v4-package-a-release-publication/1",
+  "status": "PUBLISHED_AND_DOWNLOADED_BYTES_VERIFIED",
+  "release_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/tag/sv3-m1-v4-package-a-20261112",
+  "release_id": 443076096,
+  "tag": "sv3-m1-v4-package-a-20261112",
+  "target_commitish": "aa811e0f3b78c4693461e8b3454acc23ca8923e3",
+  "title": "SV3 M1 v4: gói A (M2, 12/11/2026)",
+  "published_at": "2026-11-12T14:41:39Z",
+  "publisher": "kyanhhbt-code",
+  "draft": false,
+  "prerelease": false,
+  "request": "SV1 2026-11-12: deliver package A to SV2 with SV1 in cc after SV2 confirmed the calibration; SV3 chose a GitHub Release",
+  "delivery_record": {
+    "path": "ml/provenance/m1-v4-package-a-delivery-20261112/delivery.json",
+    "sha256": "db0388596bc3ff83ffb8920da9e4c0a8af8ec5ae3a229c6d3c43fe964698f974"
+  },
+  "notes": {
+    "path": "ml/provenance/m1-v4-package-a-release-20261112/release-notes.md",
+    "sha256": "35c3569fa176da993f43634849a198c33a27e34bb8eed4bda2b7629f75673577"
+  },
+  "assets": [
+    {
+      "name": "SV3_M1_V4_PACKAGE_A_20261105.zip",
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-m1-v4-package-a-20261112/SV3_M1_V4_PACKAGE_A_20261105.zip",
+      "size_bytes": 68975743,
+      "sha256": "0b4294b54d2cb3211564725ad1c636f9d30739d3e705b0f0c2fc33b147e83e29",
+      "github_digest": "sha256:0b4294b54d2cb3211564725ad1c636f9d30739d3e705b0f0c2fc33b147e83e29",
+      "anonymous_download_http": 200,
+      "downloaded_bytes_match_local": true
+    },
+    {
+      "name": "SV3_M1_V4_PACKAGE_A_20261105.zip.sha256",
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-m1-v4-package-a-20261112/SV3_M1_V4_PACKAGE_A_20261105.zip.sha256",
+      "size_bytes": 99,
+      "sha256": "a483887e80b584666fcd876fe1376e3a813234f807ce1c0545209b08daafdbea",
+      "github_digest": "sha256:a483887e80b584666fcd876fe1376e3a813234f807ce1c0545209b08daafdbea",
+      "anonymous_download_http": 200,
+      "downloaded_bytes_match_local": true
+    }
+  ],
+  "downloaded_package_verify": {
+    "command": "python -B [-O] ml/scripts/package_m1_v4_a.py verify --package <extracted top folder>",
+    "manifest_sha256": "f005b3ea4e2440186bce4218c537b12f3b54fe734631c56a90c2378748aedf2f",
+    "files": 58,
+    "exit_code": 0,
+    "normal_and_optimized_identical": true,
+    "status_note": "The CANDIDATE_PENDING status string comes from the package manifest written on 2026-11-05; the delivery record resolves it"
+  },
+  "logs_sha256": {
+    "ml/provenance/m1-v4-package-a-release-20261112/logs/download-check.txt": "cefd5334bb8cebe95cc481c778a42185203a28c2a1c3d17b8f9c5bec3c48a95f",
+    "ml/provenance/m1-v4-package-a-release-20261112/logs/downloaded-verify-normal.txt": "3bc3e3172266043228c2c53fa6b38b95da72ac8e81aeaa577b862e94fffc7d14",
+    "ml/provenance/m1-v4-package-a-release-20261112/logs/downloaded-verify-optimized.txt": "3bc3e3172266043228c2c53fa6b38b95da72ac8e81aeaa577b862e94fffc7d14",
+    "ml/provenance/m1-v4-package-a-release-20261112/logs/release-view.json": "1eae10cb284ef16181ff3c37886118d5bd9cbcdcd4bd40f2d9cd7e4b49256cb7"
+  },
+  "scope": {
+    "DS2_opened": false
+  }
+}
