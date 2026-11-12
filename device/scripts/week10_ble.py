@@ -60,12 +60,19 @@ def frame_length_p0(channels: int, length: int) -> int:
 # ----------------------------------------------------------------------------- host references
 
 
+_SHIM_BUILDS = 0
+
+
 def build_shim(directory: Path, samples: Path, plan: Path) -> ct.CDLL:
     cc = os.environ.get("CC") or shutil.which("gcc")
     if not cc:
         raise SystemExit("gcc not found (set CC): the week 10 host references need it")
     directory.mkdir(parents=True, exist_ok=True)
-    out = directory / ("ble_shim.dll" if os.name == "nt" else "ble_shim.so")
+    # A loaded DLL cannot be overwritten on Windows: a later build in the same process (import-alls) or in a
+    # child process (import-kv260 -> check_week10.py) gets its own file name.
+    global _SHIM_BUILDS
+    _SHIM_BUILDS += 1
+    out = directory / f"ble_shim-{os.getpid()}-{_SHIM_BUILDS}{'.dll' if os.name == 'nt' else '.so'}"
     cmd = [cc, "-std=c11", "-O2", "-ffp-contract=off", "-fno-fast-math", "-shared", "-fPIC",
            "-Wall", "-Wextra", "-Werror", "-Wno-unknown-pragmas",
            "-I", str(WEEK10), "-I", str(ROOT / "device" / "week8"), "-I", str(ROOT / "device" / "week7"),
