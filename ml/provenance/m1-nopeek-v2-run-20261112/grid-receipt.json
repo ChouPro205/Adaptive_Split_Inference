@@ -1,0 +1,1579 @@
+{
+  "type": "M1_NOPEEK_V2_GRID_RECEIPT_SELECTION_NOT_LOCKED",
+  "prepared_by": "SV3",
+  "source_head": "8f81a916dcb09766346223a71eea07840fe911b2",
+  "run_start_utc": "2026-11-12T13:30:05Z",
+  "run_end_utc": "2026-11-12T14:21:24Z",
+  "bindings": {
+    "lock": {
+      "path": "ml/provenance/m1-nopeek-v2-lock-20261112/m1_nopeek_v2_lock_and_train_authorization.json",
+      "sha256": "fe38f3a9f8a2dc4596fb46cb16defd9f917336a4efe38d5806ef7205f0872ad5"
+    },
+    "protocol_sha256": "83cce64defefa979abcf8c31cc27daf9ae81604caae911acf0901cba3783cf35",
+    "plan_manifest_sha256": "e2e4e85856ed1d1861a771388d40de24c27c1ff6ffbfac2138ea275f76b650f9",
+    "output_dir": "ml/data/runs/nopeek-m1-v2-20261112",
+    "pilot_receipt_sha256": "6b507258466aa1a21fba12365b8ba1e52512b4b820256586639e4fbdd809dc5b"
+  },
+  "learning_rate": 3e-05,
+  "utility_threshold": {
+    "exact": "218290747091/404383914000",
+    "float": 0.5398106589645403
+  },
+  "checks": {
+    "runs": 72,
+    "epoch0_equals_A_all": true,
+    "reload_confusion_exact_all": true,
+    "checkpoint_hashes_match_summaries": true,
+    "tf32_off_all": true,
+    "lambda0_identical_across_s": {
+      "20261030": true,
+      "20261031": true,
+      "20261101": true
+    }
+  },
+  "outputs_sha256": {
+    "ml/provenance/m1-nopeek-v2-run-20261112/grid-selection.json": "9f7ab9bf008e066f6d921fa231a7d4b72ae8d4b75cb82d11c6f31b651ea8e48e",
+    "ml/provenance/m1-nopeek-v2-run-20261112/lambda0-report.json": "7f56b9577f9da33f7ed0e7a07913be2bb3bd71c6e917c5a433a390e8c8d493ab",
+    "ml/provenance/m1-nopeek-v2-run-20261112/grid-curves.csv": "137990b22031fceaeab7e2f5983bff29e5f41bf44305bc881b46fde9c9f49c17",
+    "ml/provenance/m1-nopeek-v2-run-20261112/pilot-grid-result.json": "2a8cf8845864c6f567bf6223bb42e45c60d02a26b63692016ec3472263f85e25",
+    "ml/provenance/m1-nopeek-v2-run-20261112/grid-stage-result.json": "ee59fc0f5eae5d78ecc0ed19aaab4022235be3c6f9e03820fd74ddde1c71945a"
+  },
+  "selection_status": "SELECTED_FOR_SV1_REVIEW_NOT_LOCKED",
+  "per_s": {
+    "s2": {
+      "lambda": 2,
+      "deployment_seed": 20261101
+    },
+    "s4": {
+      "lambda": 1,
+      "deployment_seed": 20261031
+    },
+    "s5": {
+      "lambda": 1,
+      "deployment_seed": 20261030
+    },
+    "s8": {
+      "lambda": 5,
+      "deployment_seed": 20261031
+    }
+  },
+  "runs": [
+    {
+      "run_id": "grid-s2-lambda0-seed20261030",
+      "config_sha256": "d40b696eaf226f45f766505af4941747ef8d7329cecf99bf2e33f24d8fa4e935",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "ec8def423041882b247007e5bd05d9329710d70acb4e0713b32026f71f3508d0",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "73e779b46d344754197b101cdfa57df4403a23f351b9177cd419f6ed3ea0b23e",
+        "checkpoint-epoch-001.pt": "a35917ca0b94b62fe072644370b45ca485a0cb2fafa03f4266b5f3ba5f2c38af",
+        "checkpoint-epoch-002.pt": "ce4b03dc5bdb54c536333962f4ce6d611417de398de9e4927671128d16b27557",
+        "checkpoint-epoch-003.pt": "8cdc4b14e46554275317e7e9e4f3bf3e67ba671f1587da9f7663918adccdfaaf",
+        "checkpoint-epoch-004.pt": "4fb9c9d0054bedc614be64c0820e64c51b6a0ec2ce4cbd985dcb377d858fcbe9",
+        "checkpoint-epoch-005.pt": "308993f47723a16edfe849d723e6b41ae33f97f2de653ac9e0fe51b80b44f5ce",
+        "checkpoint-epoch-006.pt": "f1128ff7291f8238019f039d6efacb14353fbb3a960db060e4a63d9986a52aa6",
+        "checkpoint-epoch-007.pt": "f148783ef923bf27de134bf2cd86f5065a5f62731fdea070447ce85e258c9cea",
+        "checkpoint-epoch-008.pt": "1c53a921986eee6c4588d16c0a83988d11d650c944dcda22b07411ff269b6fe0",
+        "checkpoint-epoch-009.pt": "dfc39e52d395cd6474e1ceb92f323b69f1a4bf41104612985924f9e77130ddeb",
+        "checkpoint-epoch-010.pt": "3d8793863927300ef0cfaafa6f09077dbecebffa9b7f533ee60999d7c1fa4ae1"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda0.1-seed20261030",
+      "config_sha256": "a91f3f4601031ab2d4d5569f7524015d6a6b98bfd529ec078111eb8eeb629779",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "eec2eacca7417019c860879b09712585cae5a91f8799af722f243a4b9a8d8c3f",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "7af6e89cf76ed13d8202fe7d0316c063ef1a66cde6bac1b37616b6c91729bfa6",
+        "checkpoint-epoch-001.pt": "53efc4f43d5694969ae00834e93225b857767141d25562dde6279929d1bacf4c",
+        "checkpoint-epoch-002.pt": "eb2a7286144f8cc9d7dcd1e96916b6cf7eeefb6ffb633db94fad07d6e17e8859",
+        "checkpoint-epoch-003.pt": "2bb25451dc1e6c8ad7623bd9916d39d73be592802de944b9f0a95d723600af72",
+        "checkpoint-epoch-004.pt": "df0960a728fd48ded3a8d617a2225fe115350276517a653726af820d365ee9cb",
+        "checkpoint-epoch-005.pt": "e8aa072fe7f0d5537b42e4af94282cff8b0aff5a1cfe38cc5d520e139f586dd3",
+        "checkpoint-epoch-006.pt": "30e906af08d9ee33aa46c00a2f6b9605c1881c0d6571656d9e5df84974b6f45e",
+        "checkpoint-epoch-007.pt": "143ad2dac4609d3babe6436ab522788fc00b18e36493276ba4df31829b7d0415",
+        "checkpoint-epoch-008.pt": "634ddaf43b74f468458a833e101de0052d83497da4b5f945808c6a7345415350",
+        "checkpoint-epoch-009.pt": "5459834cff11a272c553f8762de3570100929d61ac4ab3bbc55e02e0f5fdcf25",
+        "checkpoint-epoch-010.pt": "7c47d0daf0f60dbfdd0e577f7b0de1af6b60d4e4ad3ef4083c56192337cd45bc"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda0.5-seed20261030",
+      "config_sha256": "b4f0c40dae4f7c874312da6ab2a4e39c1ef3494d239e7020420389c8cf578f57",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "17f871a60d0e8439769190f4bafbc00accbd2b5ec21843c0e089563cb115386b",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "2661b53ee6d83fbe3ed5ffc9698d4bdf8e5c6a67445151c7c29cad9950db8ac9",
+        "checkpoint-epoch-001.pt": "cc13a30d1d76ec6e8afe333673eb8004ebd8cf82a24507499cb4848c122cee6e",
+        "checkpoint-epoch-002.pt": "2989b9d93f4437b4a1b3f716aa9f1229ed7580c0e58d87f924a510995ae2a238",
+        "checkpoint-epoch-003.pt": "57a128c2f38470e627a8115c0bb89e9afb54ab06bf6ab614f5aa486c14a1a218",
+        "checkpoint-epoch-004.pt": "d794a39a9bbaac7c8ef23a0f5f8f895441a14535944bf298782b58274d29634a",
+        "checkpoint-epoch-005.pt": "fb7c2fd0ada5bdec699d70d2dee413a2dbd2dfaf0141f6f035eb35afa19cb602",
+        "checkpoint-epoch-006.pt": "8f7eee2c28eb2b1572437f48ba879b8414cdec39fcc76d116afe76bd7789f614",
+        "checkpoint-epoch-007.pt": "6b844a26e08bcf309a79cc4d0194b93578203e936fd7c06ee66d49f8c41fa551",
+        "checkpoint-epoch-008.pt": "6313cad8f34fa5c841e8853b8544780a939b92f6b3b2990ed6ecca4e63ab24dd",
+        "checkpoint-epoch-009.pt": "03d84c2db663685287ff5d334e73a6027c1fdc75350dcb75f0b6c5222368ec60",
+        "checkpoint-epoch-010.pt": "495935800c918d495d9a4ca9e4d516c63533c2d735bfd52ce7e4a11d790f508e"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda1-seed20261030",
+      "config_sha256": "0572d753f203d33886f92e631a4b8f34ee4a68c3d1dcc2e6013a7e5db98e5098",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "4f8762d4f4189352e0cdd43e8de5a9c8b99240aa3cf4222d254daebbf04cc143",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "8389b123da3ed23479d3b3e0b804a35d9be947008c6c0b65924b14fbe3341390",
+        "checkpoint-epoch-001.pt": "30871f77a8ef70fa7dd1d4d33351b6167e4e12318d00a381fec55ef7fe5e1800",
+        "checkpoint-epoch-002.pt": "28177ea22fb9c78bae0e80ab8f184268bccf8a13de439b1fd81fa6ea952ade09",
+        "checkpoint-epoch-003.pt": "d366a52677dca7fba2369c6bcd958ba6a16b4126620aa0982ab8d87218b4fa98",
+        "checkpoint-epoch-004.pt": "bdc481c638127ee8d5e21575339576bd1135a123cfbcf4378d50ea11504329da",
+        "checkpoint-epoch-005.pt": "a0f10b6e00bc0d99a8bfaf6e055dc2b2729598b2e0e3abc2e91e3c5f746d1e9d",
+        "checkpoint-epoch-006.pt": "0f0e6bcc821a973590a48f6219bef3a0d4391d227b67056d6dffe00036e049be",
+        "checkpoint-epoch-007.pt": "40bcbc878e4401491cb7837c16e92346dfdbc924ef8721270e2b3e0692bc6c7c",
+        "checkpoint-epoch-008.pt": "5614dbc32c4badb0a3b30ff37015406739716bced8a05817ae0237a1e1980f9d",
+        "checkpoint-epoch-009.pt": "b61595b7316e6ced17745ac0e3f182d7aeb82bde41e0ba1b37103293db70aa4b",
+        "checkpoint-epoch-010.pt": "361753fb125a37a6ce7837c44598c3a77ad61e1e19d738519ea4fb5c9fefc8b0"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda2-seed20261030",
+      "config_sha256": "7c1c4c079c0135ca29c8e46bd45dbca716d48fcfae7b2de7d2d7aabf9d7c3523",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "a11f09839c0bf5eac880e68f51fc87141c12baf450634e41fc5f02fa79dc79c7",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "93b8a86303d63c0a94648fa552e53b586908b2d43697a0090c45dbc905f6c2ed",
+        "checkpoint-epoch-001.pt": "b826d0a3861b1553762c0c93ea539e39537929dc0d0ae2ae19f4ac7dacaace16",
+        "checkpoint-epoch-002.pt": "ad141b707ec8cdcc37fa61c1a73bacbd19b6d8126bc53813dd3bd282d1c8acfd",
+        "checkpoint-epoch-003.pt": "d2bd639b6008e17ad71add21f00a54fdcdaea748229e4ce80751ad23f6234578",
+        "checkpoint-epoch-004.pt": "69fe154fca2bde8d54183fd48ffdfbf1d40f2283d22fb02bcca19b5e0f4f0beb",
+        "checkpoint-epoch-005.pt": "49e69eca68a570d4361683660d9469ed4fa796a199da48596197b87903595d35",
+        "checkpoint-epoch-006.pt": "d53a3a07b1d30662faabb5d7f04a10a3ebc9dd8af5ceff71954748b78a9ba0a7",
+        "checkpoint-epoch-007.pt": "94cca079ffd2f63db2748bcae473e9a78345f6fdcd5d04515b1a36ef6ab1727f",
+        "checkpoint-epoch-008.pt": "897170edd7288484e4dde061066f9f25cdce86769123f69f4182475fa7b7f6d4",
+        "checkpoint-epoch-009.pt": "bdaa0c081579b4ba0e40b41248929e4cce6c6fcefa1c400bca3bc1f3327ebdcb",
+        "checkpoint-epoch-010.pt": "6db7284b84e0af79ee52e9c4650fe21f633ba8e274681201910bf69a33ad7f85"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda5-seed20261030",
+      "config_sha256": "abe72f96487b3d8847e1edfea165acec595a1e6e5f21186479aba90a139183bd",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "2aa8370a961b0de179f22f3a0f0313ff4f8575a55d7dc805784a0665a0334072",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "6a9b9de0ef81b19e9693770f255467535fa1486e493eb0f0c01ade94644eef75",
+        "checkpoint-epoch-001.pt": "33d74ff231aecb9a8fd8a750bd2792bdadd121346ed22ff1d1f547b1de0205fa",
+        "checkpoint-epoch-002.pt": "e6f1074835cc06f56604fc2650a1560098996dbdfbb88ca0a278c881e14164da",
+        "checkpoint-epoch-003.pt": "119b2c60e03db475c5e339bb2048d6bd0c721ab7a5cbc9976f4f88248f864a47",
+        "checkpoint-epoch-004.pt": "739c59c9fe21c8ce7e6a268e7f11cbf62b61079eef3aeb86681acf593444acc9",
+        "checkpoint-epoch-005.pt": "0c527f7c10726a0f193a013cf5ff5882041bee3c33a15fc81f22581c10fd1896",
+        "checkpoint-epoch-006.pt": "4f87bc39c12e05f05af5316b7cf8a8e61c93aa2ddb10f856964a3c777fb3b8d0",
+        "checkpoint-epoch-007.pt": "35f24e52642dc9f5fbf751fefc238790c4cec967369ccd1d3281bc9762ad3dce",
+        "checkpoint-epoch-008.pt": "8e60477f7f0364cc98f62ebc3afcf7721f1f2aafb60bf868e9e2d7b069e35b62",
+        "checkpoint-epoch-009.pt": "d0985ee62798b3fa5a337fff6a81c61b3e6b879028aa14c1f9370a114940e1aa",
+        "checkpoint-epoch-010.pt": "c79ccc0e215cbd242f8c6814c1c3c33895f468c112f6dd043107e69752430511"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda0-seed20261030",
+      "config_sha256": "e77c6eb36911bc5a6dbe942187a7e52a061358bfa408054fb249eaf3819b3eaa",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "5e429a80b62ea8a9d89873762531bdcbf679c19c0dfe7f37675baab53ec92552",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "a1cedeef045c2ceef21a3e4531d6032f9e2702e8b26a8a9e07940672b2c209ed",
+        "checkpoint-epoch-001.pt": "4e64bf979b77dc649f449eda3524646659865e844258dd8ef83e802292946bbe",
+        "checkpoint-epoch-002.pt": "f9394c3e885bbc89166f1894df41ba0729ea0c1fe428e7e8f2876083985f5779",
+        "checkpoint-epoch-003.pt": "cae46f4afa901f91a090b3333b382f67d5439d727d9a084634b94a6ea530b167",
+        "checkpoint-epoch-004.pt": "8c5e118d1f9eb23dbd93d0fb87a604a06957c653f99e21661645a2b97ebf197f",
+        "checkpoint-epoch-005.pt": "06af13dad6e00a1604e67944b7e92176c099c8e3434ab4a4b6133b12d2f01100",
+        "checkpoint-epoch-006.pt": "b36fc09c5641de48c8c5f43c1938693fb159e74489c7d1da6222213c7d889838",
+        "checkpoint-epoch-007.pt": "daa76c2bbafe87f99f6e45430187e14a6bcc85e51f81b3ed816245d6348cf044",
+        "checkpoint-epoch-008.pt": "bbe5ddb17584add1b69dc955c772dd33ff52a08aaf81cfba61d646b2493dbb8c",
+        "checkpoint-epoch-009.pt": "68ebda6d418cd1e3ab351e0746275612557b1269d9716abd63510cc07f2ab53c",
+        "checkpoint-epoch-010.pt": "b646ec0d08d12aa6a18e18b20987f04e1c1e57b5a482aabcec4e0a43b0d52b6b"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda0.1-seed20261030",
+      "config_sha256": "e58bcdc34fc4374c5eaaa40785eacdaacb09688f919ab6f6eeb45e69ab7bdbf5",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "9178cc0d46cc6d10b3ceb2b6bf62060427c8e180360642ed4a61c3a0ccc23f16",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "3f20ce6e45e12800bea840a804e55e8a1541e9e288a1878e5a0db0391d7bf1b3",
+        "checkpoint-epoch-001.pt": "4060893dc36c30775f9038b32135b6e02d5fc5047028448dc7e047d928459653",
+        "checkpoint-epoch-002.pt": "ef402ff0a6db8379c74c4e03f39d8b13741757d47c2cc0138dce39fd88d69872",
+        "checkpoint-epoch-003.pt": "9d7f51d45c595f2fdae94091ed1a5151d47091573895131144dadb0ee77bd7bd",
+        "checkpoint-epoch-004.pt": "072b527bc143e74c9fe723ac300706fc05e07230985e1abbd2b81c6c94e9890c",
+        "checkpoint-epoch-005.pt": "3c4ef3831e065112fc617277ab42492066babe2418f5378df37cf09671481130",
+        "checkpoint-epoch-006.pt": "ba9bded51a489f51684c200a1781b46856df479ed52f94b4dd3d836c18ef1f87",
+        "checkpoint-epoch-007.pt": "c79ff08e0d2a2c59fc8f854b7fb4188d79bac19ce3c93de06275e26bc02bdc87",
+        "checkpoint-epoch-008.pt": "2715d75d88578714664fbabb7ec71564c9c4799c4164c590a96e414fcf99626b",
+        "checkpoint-epoch-009.pt": "a302c3d5044d9986ad9c8daaed8d38dbae8b329a82cdf7cf850db3bf9667c411",
+        "checkpoint-epoch-010.pt": "23c4c82cb0e45f5167670a42da6745327786bd4a2c8c56b455036ced90470f94"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda0.5-seed20261030",
+      "config_sha256": "41a811b172d41252ce26faf17cf907aa395a45b435af126ff415f21b72672d3c",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "0a23c50c9f86cbad910d69f3044eccb83d485e933a3ecae2c23b0153e41efb27",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "04b7e9cda1285447e2659c7025e176b596deb88773f9577adb357afc22b6ea38",
+        "checkpoint-epoch-001.pt": "b8b419797a9a361a65da8d62c1d4a969ae54d54e383577c5c31964c987c55cf7",
+        "checkpoint-epoch-002.pt": "ec8741fd76a62f8abf40d889c367bab2925a137a2d9460f2c5e8e0484c758ce4",
+        "checkpoint-epoch-003.pt": "45bf5317e5897c9d809ba47e8eee6da6c682fc1d61bc5f07aaace11bb30a8e80",
+        "checkpoint-epoch-004.pt": "0b239bd33555a13953da92d895f47291e44f75d20a58a65634bbc90a4c9da213",
+        "checkpoint-epoch-005.pt": "d7982b3dd0badac47ab7ca885038ac243720261aaba59180239bda48e714b88c",
+        "checkpoint-epoch-006.pt": "ce76b21a4d26a1b0b64f152a8bc90cafd5570ae7151a8021c4db1df3590e0454",
+        "checkpoint-epoch-007.pt": "efc03ab34756e86a11480b9013f27c8f29e45e30ff7a63f479381c39596f7ed8",
+        "checkpoint-epoch-008.pt": "c4a286ec10590709d74098aff0f2acc3f40040bf6c202c500afae933a121280c",
+        "checkpoint-epoch-009.pt": "c526c38fe8f811b41154a7fc6f90cd34b418c7844d31a8b970580773aa3cd72b",
+        "checkpoint-epoch-010.pt": "3a30686d9e13c6c79c3e6754e9267ba5a8e6241969211818f7a6ebd48cfbf257"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda1-seed20261030",
+      "config_sha256": "85fba5bd33da1b7b59eef544b1a99e0c575d3527f56a517c486524c3b508181d",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "9ba3141906247724ede4dbef40d713c1ad64e7545305bcb104a64f2009894e05",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "5bba830eb7ad173e1e37483c0090061aeedb2c9fd63a8f7e35c867b7f45a1dcf",
+        "checkpoint-epoch-001.pt": "03aefc4f506951a38a3cdd91d0bf18f0f86a21b23432eda712d2af5c5c0166cf",
+        "checkpoint-epoch-002.pt": "eb05441c03a6e6c1d28229a77701f432c7a11e6329d451fe3ca88dcbcc020dda",
+        "checkpoint-epoch-003.pt": "d48f3df8cf4d74842ce198fc98ba2c41bcc741fcb2dafc4352fb027d956d0ea5",
+        "checkpoint-epoch-004.pt": "5bcfc732efd6040c14bc6f220608fe34298c854fe6f672c2a40db5121d5cd405",
+        "checkpoint-epoch-005.pt": "ab12bee6122defe99135744e69d1a1980c2c1594187a79209a229e52ee7ab0fa",
+        "checkpoint-epoch-006.pt": "dc8ae45636c400a1c30365c590b559039b7fe14ad0bae72f2414453f859b1b00",
+        "checkpoint-epoch-007.pt": "510801349dba136f32a6c226ab55a931d434ce8dde54505738e4a793a39f01d9",
+        "checkpoint-epoch-008.pt": "2037ac39a4c0c749830589bfab0098d90350640301e0c221a7b91ddeb999d424",
+        "checkpoint-epoch-009.pt": "9d5ad0f0dd30d09eac8d540a2427e77b7a5573b489dcfb8b7e724591cb63c6eb",
+        "checkpoint-epoch-010.pt": "1086bc74fc78d70572e14a2cad122bdd1ab852236294c4b054020662c41b0bca"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda2-seed20261030",
+      "config_sha256": "269c9950543dc63d73c382b87e7acf9b88fbe87a64cd13bcbdbda75823436e43",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "db7a844b94daf6a7bfb06cc6895be531259ab18bb22a28510b12373c15699cf0",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "4a3a26ed65db69916219cbe492a79c5dd4819252db143c733f8d7fd8c0852bfb",
+        "checkpoint-epoch-001.pt": "531e26ab7b24846ac773839c14357f0ff5468a2d44480a92072b4516b89ed5f6",
+        "checkpoint-epoch-002.pt": "ad4aaebac3c3316f34add8aa097dc1c9a59f291ff2296482719eae6277b1ba51",
+        "checkpoint-epoch-003.pt": "5ac21787d7f0da545ef05684802d3abb55e23627271a4ea954fada6682669ecc",
+        "checkpoint-epoch-004.pt": "806ec8998856733413573a799bc18b3aaf705527a44cc2e96754143f50003ca3",
+        "checkpoint-epoch-005.pt": "241388c324713aa0f0c3c4a3f0434cec84ee4b4fe02381da6719003e3b065284",
+        "checkpoint-epoch-006.pt": "5b647d3753457f515adc38c0e7d2d5b85e09f977ccac1d47abc7797dd6eab88b",
+        "checkpoint-epoch-007.pt": "b883a6de3fb7b4fc0f0f75e4ed4ad4c931b95fcb1122b7b9ebca516ab96f744a",
+        "checkpoint-epoch-008.pt": "670fc71553dff52571730bd68b2658f8c6ecefe36c7fd36cb783a1932e587897",
+        "checkpoint-epoch-009.pt": "2b11459fa0bb43b025a4ccf2ccdb766dfac28553104bff1f4dc9b4068c8524b9",
+        "checkpoint-epoch-010.pt": "b44caf84e4da151f3bc627e2e28b47438e78b55b45ba8fe953d64591dcbd321d"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda5-seed20261030",
+      "config_sha256": "202ed792d9a3ba2808e415bde9f4b66716521ec1767bdb09e025c76bf602dab9",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "3fa0761cf7e0c48bb4e97375d12ff2133f6e8d3b06987573efe8dd4a197a7bef",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "7f48d51dee7bc8a1dd22a2b1a20815a5679f0690a411a4f45d4a089077240a62",
+        "checkpoint-epoch-001.pt": "c9d405b957805c69fd24bb2316548bd3da5318f6d4fc387711f2ca86bc669b35",
+        "checkpoint-epoch-002.pt": "9a2d9934d524ae4d9791e6e4d8b77c737df0e2fb11af6c84e64f305927d7a1d8",
+        "checkpoint-epoch-003.pt": "cea51d47270fd5c4c1831469eae602db8a7048c3c0b11d430993d8ee0b24c0d2",
+        "checkpoint-epoch-004.pt": "feb39d2befdfea92b8b5dc74266456fd14ecfbe752678259f8e934eae0afb040",
+        "checkpoint-epoch-005.pt": "f1c973ce0b10b1217120827afd53714489f3cf47704f7132aff0e56208639f2b",
+        "checkpoint-epoch-006.pt": "41b8a6cf3ca8f865327b9787354eb8be68381636d53b262c8f4f12334caefc2d",
+        "checkpoint-epoch-007.pt": "7f2e80b3e682c3e6baaf57211e2e235447681d54da5881ba784f3e8f60fe7453",
+        "checkpoint-epoch-008.pt": "7b6a433b84b2a6e515abed523f271ea5b38464f842158d5fb22b2a6d7310d675",
+        "checkpoint-epoch-009.pt": "fc59fbf6180b52e9fcd0a94e9e7b90fd194a8d393f47adcdbc54c6b36392dba8",
+        "checkpoint-epoch-010.pt": "60014d9042927ccab8be938733d0bd1923ee753730bbf8d4f81c2602c65c4f29"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda0-seed20261030",
+      "config_sha256": "57f9d010a1204c99792ab5ce3ba0173db359fc567a7cc68e0464f5c49d400d49",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "420cd5c5ba39bc4c532959d22181d79a7232cea0ed84dbdce06841e1550883a3",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "2b230ac9f8dcda44da797d3b3536243727b18a55514036b58dd3e127bd18a7ae",
+        "checkpoint-epoch-001.pt": "7c99e77d749bc89d029681827489b39bc711f829cb9b8de91891b33bc7dd3d46",
+        "checkpoint-epoch-002.pt": "526dfa1a309558da33a1c13e2ff2d127b1870dc63ac023027eaa2ad874048fd6",
+        "checkpoint-epoch-003.pt": "fb42a38e6f1c228e99e55d7f4eaa6108d479fc48184b38d5f425c41ae674d277",
+        "checkpoint-epoch-004.pt": "9b20fd13b527dcfa455ed82ffdcdeda4468fa55c8c996ecbf71c2d6f94dc5416",
+        "checkpoint-epoch-005.pt": "366168efc8ce95bf76c0adb2e334882bdbba17f82654ebe056c785242b7138b7",
+        "checkpoint-epoch-006.pt": "a3609c258e72e9ba2a46d2fe2dc0cc3525cac005b9f7a40731614f8890a9db41",
+        "checkpoint-epoch-007.pt": "c9043a9643140a8506c43af5f75a668f944a0f8e5ec21046be8520d364a6354a",
+        "checkpoint-epoch-008.pt": "cc1c8e199a1411454b00c50d92bfee2b202d6a77df1e769c6048aeb900ce6e81",
+        "checkpoint-epoch-009.pt": "1d14197c213d1221ae18291a0bc7584038d17936a53b84e286c9ed2eee14eeb5",
+        "checkpoint-epoch-010.pt": "d8325152b546b5755edad2660009403f2c0305e67a0cce34ac3496298e1e5050"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda0.1-seed20261030",
+      "config_sha256": "bfc6aeda8fb035bda24ef2869236cbedbe589518f6c983e2cfd9900963beb899",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "90c95c521ec6d992f58cdf9c88b9c959b0267aef6709a553aedca74687de91cf",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "101ae2888c75c493bd11001634146c883d3b5b3327dab16a7482700b304bf38b",
+        "checkpoint-epoch-001.pt": "d850a3f502c31fea3ce61a46e1e3846340be06791cbfbfd7a8c029c15ee289e9",
+        "checkpoint-epoch-002.pt": "53150f7fdff642b513a6529d8cd3ccdca0a17c099d2e09b3006ee5236786fc3c",
+        "checkpoint-epoch-003.pt": "d3c12e47579951123f8e6b52d88fa6faba7cf7ecf30161b493cf0ea02fd28798",
+        "checkpoint-epoch-004.pt": "ef82ce0cac911749bc2e862c9dd53b51569085c1787ef26c56322f9ee476bd88",
+        "checkpoint-epoch-005.pt": "38c9ee3c56695a38efafcbbbbd7ebe99ad18e271ff1eb3967b82d2bed1bb3c0e",
+        "checkpoint-epoch-006.pt": "410cb24de44de6df80dafe46a086f4c63dc61840b3b4e681f62cd9383ce8dd89",
+        "checkpoint-epoch-007.pt": "95bbc2fb9c98807e46c1533143872bef56852d339656b457fa83bc56c4109ecf",
+        "checkpoint-epoch-008.pt": "26797b106e1558ecb9af9d6c251689d12617e558e1ccc1e0e77749ca2b7cbf20",
+        "checkpoint-epoch-009.pt": "9393b47a0051429c8e6fff02514c5d44f248b39b9983f0282669835b6b37a5a2",
+        "checkpoint-epoch-010.pt": "3851b607344ad2ffb82f3e9b983f06fbcd9acc33bc14eacb6fb5e9167ecf7dc7"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda0.5-seed20261030",
+      "config_sha256": "6931f3eb770f6828343c789305e53795ed83042583af66f7afad9d3c81ddd093",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "1dbff4c3c90577827cb45e92ab38860e1b48fa54528a59114793d33469ad5c54",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "d5fc5aeee686d028d8205bc533cd83b1ec115ad25d6d54b9279250e44690cb34",
+        "checkpoint-epoch-001.pt": "f39daa960635dd1690adfdee2166a999866046b0490b81234fc1736f2f9117a1",
+        "checkpoint-epoch-002.pt": "6e36934361a5f895f582d6281c2405670ef9441ab9f48732d7eb6d5edc04434e",
+        "checkpoint-epoch-003.pt": "29246dfc8d8db6af93217824dc0be7992c9897da468fde237ae9604eec03d9e4",
+        "checkpoint-epoch-004.pt": "df91168bd9af528f73838568276d6e054b96fc66f1f97c0a7c6dd7a970236b54",
+        "checkpoint-epoch-005.pt": "df8a7981afb048088385883103a2a808eaecc06d0c559f3650e8050427a39089",
+        "checkpoint-epoch-006.pt": "5f23621222098fea1a6859da218dd582dff222d7cb668aeb5299d6695a2eeb2d",
+        "checkpoint-epoch-007.pt": "6fe2b94c42982e7007f43f3df7059c6ea75842852e78886b867ba972a7f5f118",
+        "checkpoint-epoch-008.pt": "4de79f3c53b83ff83f3f4a2cb5ac0e9fbe04de30f8f650e5a59baacd05815b9b",
+        "checkpoint-epoch-009.pt": "7f7213e4f698cf41c3b673740819af1a5223295fe015cb3ad3d31c155e6f80cd",
+        "checkpoint-epoch-010.pt": "dc6aa4e6c85beb67b07c58f7f43d7d1bf45685bf910413c2f1a03277187a36c4"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda1-seed20261030",
+      "config_sha256": "3e0adc7a5f7da679afce0316302261a89947476acfbbff4907d3df9ad4f3e37d",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "94298f59889e2e554f298f024859a740c5109cc767d299b91d75a02e0e7a2e9b",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "e75719dbff755c27c041c6738acee0b68ccf679f53bdc855a666cc8053161f95",
+        "checkpoint-epoch-001.pt": "87fae4551b7f3b3859a8e223cf16b5460d3b598cf27391c170e2a019d470dff5",
+        "checkpoint-epoch-002.pt": "1698c9427ffd2b3497940a879530d98ef3e6a35318691c51aac7c28a55aa56dc",
+        "checkpoint-epoch-003.pt": "dfaa4a7ecafac69250e4a8f1f133f529505c7f92cf51b324ec4a7becd6952e31",
+        "checkpoint-epoch-004.pt": "f46ac34ca4b673f253de6c1ed5e3972145fca9fa7fe9af871c08ed222afb1532",
+        "checkpoint-epoch-005.pt": "fd4c4441ca99e7825939f9302ddfaf480744e24efcfe97f34699ea2fcc6ed6a3",
+        "checkpoint-epoch-006.pt": "35ae4ac00f36618c2374fbda6b5c5de4a0d80cb8315a22f77533e0410601f0c7",
+        "checkpoint-epoch-007.pt": "0ea5ad13a811b84d25de4b51e63ac367ef13dc310f9f161a4ea56063a0888c4b",
+        "checkpoint-epoch-008.pt": "92502eff5129f3b5d4dcfd9314534115371c8b850f67eaa2d39f3f5dd862fe3c",
+        "checkpoint-epoch-009.pt": "aa39252941dee81a361c3d8ca0a579dde08640dde1ab2e45daa9999ee677aa15",
+        "checkpoint-epoch-010.pt": "300518ff15d07171f3837ff226e87be1490208702fb7a0b20c4601c04266ac06"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda2-seed20261030",
+      "config_sha256": "3acd64c90b69efe7ea726c96d14f634f50b8b5a2148a883987d87ef3b8d83798",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "42f84f682eb8456fb0b2b04198b96d269d7c12d0e78c761200dd907cee5c628c",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "6fbce75741586bc39edb8762d4aa7545c2f7ca8f7a8d6327fb6a9cea8e29b958",
+        "checkpoint-epoch-001.pt": "10666b18039ca717c70e0ded46d881455e53ed2f53a58b19685c353d0b68ea21",
+        "checkpoint-epoch-002.pt": "689cf66164883b3666fcda08e41e7005eeb9c9cb3e12458a039e5768236df0ca",
+        "checkpoint-epoch-003.pt": "2b2638b0f436ee361e26c733e3251d7c0bd09dbb5831df49f4e8a54962db0373",
+        "checkpoint-epoch-004.pt": "8d91b0b111b52c5417491a56ed556cff74613e399985c9af2d78c58d73d25def",
+        "checkpoint-epoch-005.pt": "eabb365165e2ca20501e5f66cb40be72182d020ac6491aa21cd5aa1373165401",
+        "checkpoint-epoch-006.pt": "8837f8828336c0d85686cf782f12f08d57b1cbb114a6b370991c4e9b5e02e308",
+        "checkpoint-epoch-007.pt": "5fcfd0f824210f7f08aacc75b47265921e9b0fa5a1d5d2860514d30a73f950dd",
+        "checkpoint-epoch-008.pt": "28247cacd4fee172aa64192009aab75159cec6a5f2124ae31511ec2065a170be",
+        "checkpoint-epoch-009.pt": "23328fe9beacab5cf338e366f22ff4a97bb216b741c508d620627ac0eafd49a3",
+        "checkpoint-epoch-010.pt": "5397bacaa76712fd89b20a44f49044d0375d703a5471cd04f2e6fd9a3b44c34b"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda5-seed20261030",
+      "config_sha256": "c9ab88ccb7d3c2bbdde07218f49c3a8ce8b580fa794d2ec30c7b054b45ad95a8",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "bef69cdf5d5a0848e7e392db839ce2d911b23a312c034e5faba63db57610df55",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "4c3c8ca439235416b91321521d726e1901851bb0f473477368c03bfbe28c8003",
+        "checkpoint-epoch-001.pt": "18c64d68450276fa551fd7115d8d3b46a1b7759a80f22e1dee2dfbbacd36dabc",
+        "checkpoint-epoch-002.pt": "b3bfbe84045258a671f39733ddfe257f90e5914c23d10c1fb0cf1eb7fbeb1538",
+        "checkpoint-epoch-003.pt": "d8490d2ce619ebd66371520a7acf0716f56088be52ace4ac38829387a09b9ccb",
+        "checkpoint-epoch-004.pt": "9b27c694e018e11512520615f98ce5c515705770e983f65c79012e78499b9183",
+        "checkpoint-epoch-005.pt": "6a7965a27a6463513f062f5b87ab4d6345b03c41aa3ddf8a61f99bc77eb0bd45",
+        "checkpoint-epoch-006.pt": "6077482fbc8c20936713ccf9ae0b8c0415eb7a186d8c3e8ec9d4517219d1149b",
+        "checkpoint-epoch-007.pt": "b6a4ad7a3ee981c2e82431199703ba37d80452ab269280fc8eb0e559ce1ad55f",
+        "checkpoint-epoch-008.pt": "c5784a4e9c77f1693e7fecc42ea33f737d541dcd9807ff38a3b400242a712823",
+        "checkpoint-epoch-009.pt": "b65a979825bc728ad1a3f0ceb8a3b10abd51d8b174db150bd99401b2433d8519",
+        "checkpoint-epoch-010.pt": "5e8625c8054ef1d07b8e159b6b1441b3498294325302ea1297ca79f738dc3794"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda0-seed20261030",
+      "config_sha256": "ca8cff0b0bfc4025d6368606fcd120bceb24f4a4ec0c94e8edd44d12d49ac9a9",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "d86f856784afa98a57744ce7822462acde5179db7bdac453d4f96c4263a9a084",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "b630b2f8a2dbea7e461f6b1e4e938a92dbf0b01eb1ca2fed7458bb2866a214b9",
+        "checkpoint-epoch-001.pt": "701cb371ca1af9d33478a2735425c4ac96bd1fc1d6d4ff3f430a82396ba6cc6c",
+        "checkpoint-epoch-002.pt": "709f258697922312c1c589b26d0a2754d20139979efcd4e3d9513d089ccc2273",
+        "checkpoint-epoch-003.pt": "ebc681cf083c5c7ca625810aa84055cb6ee5386d7448e45c8cbbf2874e93500c",
+        "checkpoint-epoch-004.pt": "907a5483b3afd5046d93e03fbd81622bd5951995f23346d023287e052ef7477f",
+        "checkpoint-epoch-005.pt": "7e93720a77467277390957a3a1699a3dc9f317cfbf07db332dd0446fa4d1c2c2",
+        "checkpoint-epoch-006.pt": "5c92633b8c751a0e290d7a2d624d6f9d72eaf01b57ef21456e74700031be68f4",
+        "checkpoint-epoch-007.pt": "f0682164dfcf69af05c3e0f03e0d6924429a7959300cc52b5a5b248f08125441",
+        "checkpoint-epoch-008.pt": "0b84e077b34060e8698d6010d5ef6113669d40da59c227641fe51103581534bd",
+        "checkpoint-epoch-009.pt": "08e099221941c2a70726824048612271beef4edb3c365242b0385dcf1b0fc092",
+        "checkpoint-epoch-010.pt": "5b143a79017c752914f0b1ae9a61a1ffa6007c70dc2da7f8ec3a383ce06f9e00"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda0.1-seed20261030",
+      "config_sha256": "1fa94e9cf0d433d4d53b9390d5f7f37cabac24dedfdc165adfefaa63a443f41f",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "0793c543e0eb82684099580bed80efbd3d6eb4aeff49456c63c3af0e4fd9d828",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "10652e2fa35ee0f0a1e2ffc577095e54045103fbeca5a01ecc3c7b27189cf0b2",
+        "checkpoint-epoch-001.pt": "ee9e509474fb2414767831747fdfc250683a1f17831eff873a1cb4bc146d6e33",
+        "checkpoint-epoch-002.pt": "dd8759b04bd6ee4afd6d9f365e4bcfac7826eec2d0de2e6f697f0b9ba1800722",
+        "checkpoint-epoch-003.pt": "9e398f2c5c1e950f3242b4de14ac3ac9e57afbf2d661d96b397380c46466603b",
+        "checkpoint-epoch-004.pt": "0df97f88c21821781b655119cdbbba026195b57fa0a5199092b5efd6e399a36a",
+        "checkpoint-epoch-005.pt": "f3c70f4939713c767e82759b7a09214c19490573bb3ee45f9b69e63e09d7a0bd",
+        "checkpoint-epoch-006.pt": "b876cb7e0d419c22c690921f45660a4884a5c1f15fcb24f331831d47974b3082",
+        "checkpoint-epoch-007.pt": "95480c1c985210abca69004e1846f0879013dfbe0e8ccc7d1bce9c012024514c",
+        "checkpoint-epoch-008.pt": "d4327d4700c06a12eb18d86b63fc14a1d8395bb3e252c1680cc32dd4d794516a",
+        "checkpoint-epoch-009.pt": "3767dfd936ef8af7870e165fa0c5481c8f6c48a4c608645a20a5e39162c0bc29",
+        "checkpoint-epoch-010.pt": "d3d0faf16fdafe6a716a68eceac21ad4d9babbfe0b94188877b9dbc231af766b"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda0.5-seed20261030",
+      "config_sha256": "445d9cb4fad31aee091fe1e480550546d9a9aef11ceadefc3df534f3605a5d15",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "f30a6985b51d95f5a281e8371973f9538d15bbcfe27d36750e3743b74ff2c12d",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "fff06d5704d2f3b689543918c41d634123d4df79b71ff601b5957988639ad4f3",
+        "checkpoint-epoch-001.pt": "08e896cda05601d5d1b6080f3d8c2165de42aa6752c240853546227e80da4ac7",
+        "checkpoint-epoch-002.pt": "9abe7ccc7ebe2c26d944b09c3231f0844991ffc51f3876b3b7def8e7ec3201b3",
+        "checkpoint-epoch-003.pt": "79107c07e662b463e73a150d3dec8d3ae83bce0ec7aea7e0920a20bf103f3eab",
+        "checkpoint-epoch-004.pt": "da0ad445d017323fa41219b7153e938b42dba877e4805ac849c66d57b7e9a471",
+        "checkpoint-epoch-005.pt": "cfc55698cb31b3e8fa62a01448a3435699845db0a08caa48905260150ef9869a",
+        "checkpoint-epoch-006.pt": "277cf81feb8e8930b531182888f45bc394788d66c4da1880d47e03c366b021af",
+        "checkpoint-epoch-007.pt": "0735ddc76e5ef4e7659750e2544ce90566a484b1e2b03a3125ca229fb69a2122",
+        "checkpoint-epoch-008.pt": "3a52cb292ba02e671d10c8b836698a50ae087361a0adf1fc5a558096220ec593",
+        "checkpoint-epoch-009.pt": "e47ec37d30176ce57f5f873b1ecae4d1a3cd40e11a91028120489eb19749409c",
+        "checkpoint-epoch-010.pt": "4aad8338178f55e1b6904ccd40becd74d94c408fe278ca00c37f4472006b40a9"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda1-seed20261030",
+      "config_sha256": "701ae2bd6a243a50c2c0ccfbeabf5a25861cd9c304a35b48c348738dc0deedbe",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "ac97fd4f279f9eea1e14d3cb80bff812a57fb5131297433493612352131f53f2",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "9598658a3fc250e3338ffa495919f5e8f8487e9490dafcbe182214af8f0e12eb",
+        "checkpoint-epoch-001.pt": "35ea34ef259f8f2988558335c9962cd35be04206df2d8172f8f4076e1c62c3d5",
+        "checkpoint-epoch-002.pt": "5b5ccfac2decad1d25a1195f9e2fb252e66953238cf2512479248ce99b418936",
+        "checkpoint-epoch-003.pt": "1c153573f4828062753d87d2a0c8069179a1e466febad28ad05fac8d8cf6041f",
+        "checkpoint-epoch-004.pt": "7112b721c1bbe9b6b0c6ed8258637ecb6b405fadd19f957f92f4243b83646219",
+        "checkpoint-epoch-005.pt": "d922b9e0bfe364d8b01eb40b1702c0623d26a054c3e9d9348a2b51ee23ef9d74",
+        "checkpoint-epoch-006.pt": "1913a15044330fb898b7b9ea9eb78090fb70ef31d49b388da6e9f3c6fbd75d34",
+        "checkpoint-epoch-007.pt": "6ceacf14c31a9192164f4cb0570a31b1e4ed269b35f0d9eec009e272904413fc",
+        "checkpoint-epoch-008.pt": "4e6164b104c763eadba476c504b1056b40022e3e45ba1f4574c21f005090aa10",
+        "checkpoint-epoch-009.pt": "91058821d8912c2e3a26bcf78b3db2ac0adb1637d12e6524e66dc1792328a446",
+        "checkpoint-epoch-010.pt": "a2d95d6f1f2aa09d302b1dcd78825f00622d78a75f2b3b38ec4ee88cb74e55f1"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda2-seed20261030",
+      "config_sha256": "8e3c670c99716cde0a0e62be97c9b3ec873aeeaf9bc1bb7c877a31f03ce6023f",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "3ad0f281d1c039b331b4e60cbe29bf0e87b90dfb959d7eefe89fd7ad0aa1edea",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "f91328b783716ab1ea9c21585bbb55b9f0aafc261461fa250a8a5bee04e55d8e",
+        "checkpoint-epoch-001.pt": "a5e8a71d4b72343f99e7f61a42719d56a4998404b4c7f509ba111dfaecd7fd35",
+        "checkpoint-epoch-002.pt": "55208b71d019796a25868927a676e7140300759268b5b40a28864cb4e6db8c21",
+        "checkpoint-epoch-003.pt": "e75a7e384d3a20acfab4cc72d75628afeb68ee2ce5eb4b9ef5b34e42365b0b89",
+        "checkpoint-epoch-004.pt": "b9a4f0bf7ceee8ab7de4219d959af708ec3e9d8bf7d7b7a75f430a3da836c944",
+        "checkpoint-epoch-005.pt": "dac0318fc9f7b030402ce883833592075641d800dc61bd71472287d6c0c6bd7c",
+        "checkpoint-epoch-006.pt": "8262298b6109dc16b84c802468a75f1b6457a999b2e081f8cbe034ff54bc24ca",
+        "checkpoint-epoch-007.pt": "1f0ec9ea46022088dd166d43030072c5e5d7fc09bbb78491f813be4689e6ccb1",
+        "checkpoint-epoch-008.pt": "096d610275f5fb2a908f4d79b24dc942eea4c8a337a0a3277b72ddaf7f82a626",
+        "checkpoint-epoch-009.pt": "72efef70c2a2a6341548fd50e329b3cb56bac801769e629db3ed9015760e6c56",
+        "checkpoint-epoch-010.pt": "a5c9309d847b1438b92f50ab2de0ebb077798b48ff13def47e53d62157f13055"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda5-seed20261030",
+      "config_sha256": "b18609d27cf2fc933874f99ac55bf42b4a3464708b65b5dc525af82bd247f179",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "46cea97bd891de4b5e2e46001eb6ac2538948fb23f1ac3c639d43cc821311375",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "e8d0c6c8ab0fc2a3c11fe8987ac287a2d897a59eab70cea119779e18f17b6612",
+        "checkpoint-epoch-001.pt": "0f61d7d135bff6988540543eb37d83609b17ef85b1b2f8fd6758f71f4db60a07",
+        "checkpoint-epoch-002.pt": "5c5de56000d30950b6acb8b0a7cf5e2fb47dbd48bde58ba23f4cde2d1775822e",
+        "checkpoint-epoch-003.pt": "5e96d5db5a0111dce1bd8ef7258bfa0cb8b3529687d5a7df54a94cccb2b74141",
+        "checkpoint-epoch-004.pt": "5867a4a4ecf1f6696d2529bc588ab34cbeb20391db748a852de717f8979a21f2",
+        "checkpoint-epoch-005.pt": "fd3276347dc3dc7a6bdb991d03684376795081093fc3b880c8fd48515912ac60",
+        "checkpoint-epoch-006.pt": "19ed6b739c8d12c7c96253df4969f4e71a27316aa09ecf97718065d6c89a6925",
+        "checkpoint-epoch-007.pt": "9e577cab7ff553d39bcfe1e78b0456158c76253dc6a9003cafb4e3b59600a10c",
+        "checkpoint-epoch-008.pt": "5be1d7f2940dde0bc165a90bd7c1326dabbd872a38e15bb67a0ef422540a9ed0",
+        "checkpoint-epoch-009.pt": "c69ab80809f6ee4b493e7392acab6af7ab78e12175f10ecb3b3b51822d6e643d",
+        "checkpoint-epoch-010.pt": "fcf857c220ed70c630020afac624f4d8f9dbe6e40d1af8018143657faa2980e6"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda0-seed20261031",
+      "config_sha256": "c12dbb4c985c4bdd0e85e6c7b4c8712cab5726d43448f36c494b936bb9505217",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "cabe0243f39a4c4ffeb309cc9dab1d4d6eb7e088c1402adede64fcba1bf50c69",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "4286888ac8133192900254389eaad8be1d0bfa6d7c873837dc40398ae9623062",
+        "checkpoint-epoch-001.pt": "1a549587299d767992ad0c8cd4c5994a464237f57e9eb60199399e6559eb0c6b",
+        "checkpoint-epoch-002.pt": "f47e03e8f54458ebf995a2f1106ccf1157d0db3763c83fa4028276b7489535c1",
+        "checkpoint-epoch-003.pt": "9e1ffab02b63d30426405b1c257f0098a6c1d8a55e942ebcc7f1b99e80d26d08",
+        "checkpoint-epoch-004.pt": "a1a9f40527575ed3d8715feaf470cfc624853026955e19648ff4ccc98d6cb043",
+        "checkpoint-epoch-005.pt": "224e522363ac9f882393ed5f381d33cc410198d464e32d3a1a9c112c289bf107",
+        "checkpoint-epoch-006.pt": "62b706a5608cfa38561dabe07507c6721255299fd56227dfc289deaeabc8e484",
+        "checkpoint-epoch-007.pt": "7c9e43c91bd0d1e05f16fbfdf869886124ab3db9da766ddb35c40c2f91eabc15",
+        "checkpoint-epoch-008.pt": "2991ee24038158b35735452de9df244f7c923d6904f1bee5c29ac1345adeb405",
+        "checkpoint-epoch-009.pt": "cd52ce0e906e591cb665a5894b810bd2dbf3ce1bb5909cfd671d61cf389031b0",
+        "checkpoint-epoch-010.pt": "5a6466a313b471f563f674450245fe695aad30d581e18ea88a7c7a5594095ebd"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda0.1-seed20261031",
+      "config_sha256": "5f2358b56f44d22786bd67dc38608207ee54883ee7e305e5718d9a3f74c44661",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "c4d1388128ff909250c25adb4f047ef47418e270e93d2c774a3d26f3517a3340",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "43a09e131a763eb1c1f2756c11bd13696cf14a7d68d61cda70e38e73ab0ee335",
+        "checkpoint-epoch-001.pt": "844c4baef06e1b85d32ea8996a77f29d93fa858fd212117b3dd10db58febad4d",
+        "checkpoint-epoch-002.pt": "90a52c04a29ca4e3027689f39fcd4610cbace002e57aa654f61263ec720d2ead",
+        "checkpoint-epoch-003.pt": "afc6d93bb7bd0572fe76b8281a92305a102c2e8194be9e571118dfdb4a75f116",
+        "checkpoint-epoch-004.pt": "583a551c0268ff2e59a93d18f5dc293e6a344c67f6f4765581335525a96a8535",
+        "checkpoint-epoch-005.pt": "94fa955a471d40ebf4670549d8049410f5da90f202ca3f62df082f7f24788086",
+        "checkpoint-epoch-006.pt": "a2dd4e310bd2098a2ad724ceaed569a03684fe66b2ada9babe3bd14607fbc564",
+        "checkpoint-epoch-007.pt": "e06ca413924c4a7f6f894fc8352fbbb718a2e4e5c399daadfcbb213ba8ffeec6",
+        "checkpoint-epoch-008.pt": "4c064ae5a3ecbcd4509fefa6f253de00745bbb1198f346adc9195104896ea211",
+        "checkpoint-epoch-009.pt": "72c228e817fad6f71789ab8e25af138aa5f08a95b681ed38d3b2f58448641e48",
+        "checkpoint-epoch-010.pt": "02306e411655db75fc00c285c2c56d4989901560b16142e09700c52d4f436b43"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda0.5-seed20261031",
+      "config_sha256": "eb3056abfad5690e60a1d9fff77b246afb2df65f48baf447da119a19b2eb62f2",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "e03842dcbef16bbbbb8225e759421469e59d0655fe6f7ccbd74b4f4bd48c3efb",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "4e029fdc6e1a527cf3a6702252b26c6aee59239758d2220ec3054d66be04cbb1",
+        "checkpoint-epoch-001.pt": "a90e8d8d24d66cca261c0e5a4582a5031ca2cc414871a07613133edd46114ddd",
+        "checkpoint-epoch-002.pt": "cb5c4455d074ad6b53b1dbbdd73ffbd2118107d387f149e30a3367d6ffbbfdfb",
+        "checkpoint-epoch-003.pt": "e8ff6cc8ccd1e74f481d032b921dfe12af6fdf0e74919836abca59bbba9cd4df",
+        "checkpoint-epoch-004.pt": "adea40c020dd72630268e22a66639c945950d2455ed71a6de64b15b6f9f1f5ad",
+        "checkpoint-epoch-005.pt": "3f4482e20908135cf192aafdecbbfed806ebacd9f9414bf826488f21f6c7c9c4",
+        "checkpoint-epoch-006.pt": "30d06f757cdab90a8b52c272e590514069d2ce04a2f2ec2daaaad3618f59e9e5",
+        "checkpoint-epoch-007.pt": "202c093d7c3000c123a8bd8237cd25eb79d7d30244e9be5d883d72d8363739c7",
+        "checkpoint-epoch-008.pt": "cd33c4e6f3b72529618d384baff455f82a42db5a45f148ce3639dd6d9bbac239",
+        "checkpoint-epoch-009.pt": "7daf00b84ac5951f6053038815d7d80a96eff233ef94d1cc304aec870b26cdf9",
+        "checkpoint-epoch-010.pt": "620e64fc38e2e18df9c5808a56392e384c8e94cb236571e71b81d99568a271f4"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda1-seed20261031",
+      "config_sha256": "1a76f9114ea0d1f86a9c99dd6aa4632951599bf858766b99d0a24938715d4aaf",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "09b61f672ff26ae106bf63f56b951463751a50f9d10637d97b33677108a4404b",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "7bc398ec311375782de24679286f0d31d005a81fe78d7975a6ecc4b4e6330339",
+        "checkpoint-epoch-001.pt": "ec063b8433ded8a9ab823b71f41d052d1fdc9bb7971edd4d850f7dffed26bc54",
+        "checkpoint-epoch-002.pt": "f712660cf56537683ab5685797634f0f7ece04b4acfdeb0cc1bd636be91b454e",
+        "checkpoint-epoch-003.pt": "7a3304321ac49c20e7c64cdef13eeb660e0aacf21b9a5ad8ae6d94db8c48d6c7",
+        "checkpoint-epoch-004.pt": "fe777581ad0f9f7be610d0264c78228f3ce6fc5efd2d6c72ea87a0ce6f000463",
+        "checkpoint-epoch-005.pt": "634d28a56cd29fb5e60fabd1e3e260d69d862bfe7d92cff3097313bf99a4ecf1",
+        "checkpoint-epoch-006.pt": "174d37545e9c48ab7ef93a026974503f8e8a6c4209a74cb7752941094eca9b4e",
+        "checkpoint-epoch-007.pt": "6969a8ccfb4e211a96a33022af864e079c11d360d3afa3a113d4a137b05ce52a",
+        "checkpoint-epoch-008.pt": "bfa8e29206ede8a04b9ab4cf240bc1a9e9c06e325cc6e88edd7ce3150e19716f",
+        "checkpoint-epoch-009.pt": "b2930b7a42089a215ec76b8ae956def664e1f6aabdbcb7302473c23bb14f8fd5",
+        "checkpoint-epoch-010.pt": "a36845624dda631846712eb8c11b89f3f22d4ef1808d078f10aac9b0dc8bc06a"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda2-seed20261031",
+      "config_sha256": "eaa8aea1b043e48f158093694cf43d3d83070b42de25329d0bc2670097ccf563",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "57811cbb7c8572fd1fc49a0b51266b0cfe498dd51cce0d8c27dd7f1650f85461",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "c19d56cfd7e39b4d06b7c799f449894bba4d8ba9485356252bfa5b7e0fb64993",
+        "checkpoint-epoch-001.pt": "9066ca11e7dce409ad86f33becff7444da416575aeee60d58ca072f9dcf5f036",
+        "checkpoint-epoch-002.pt": "b70ff5180342d6e1ee7ceae512bf13546b766c145bd02bb1dd407f32fffbbda1",
+        "checkpoint-epoch-003.pt": "3a0efcb19bb34711bf0000182dae810f5556dd102e7d36d9381657a37ee79d23",
+        "checkpoint-epoch-004.pt": "2feedcea28aa338f1807f8e350a4c96efaa72b044b070e228e3dd834bcbec19d",
+        "checkpoint-epoch-005.pt": "9dc769aafe3f3bc915be971307ae75573bf9ba0e27ec07267abfe4b98ebe0920",
+        "checkpoint-epoch-006.pt": "0deeee8633219d2595f9fca79f35c1c73cc5188afddaf1f67f16508f5bc5e2ab",
+        "checkpoint-epoch-007.pt": "fc356ddc65ff384aa86a18e4a62a7d949b9446997c1d0ff18ebc0c879b93acc3",
+        "checkpoint-epoch-008.pt": "06c1959aae37fcb771efd96437311d1a67aa4b1fa1205e9576f858e749ad0d7d",
+        "checkpoint-epoch-009.pt": "d9b243c6f3de230a6ce2c17f0dea6c55be023ce3f5187697ff7fc119ddd7aa56",
+        "checkpoint-epoch-010.pt": "1a1b06f404d9cc9a688388b22a024f70aa087ad76e32c1c5d2f5378cc61e78e2"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda5-seed20261031",
+      "config_sha256": "384ca721c1c923e2344ff8872475691af5d5d459acf8c2f406dcd6ba3e179a5b",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "7a53dcbb4d7b11f0a176f36b77023153aca3422d0c5573baaf904b7fbc7d9038",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "b423401bf6c8525207e64c45a5034e95c056180504aeaaf9ee7da1409f8f696e",
+        "checkpoint-epoch-001.pt": "94c44bae285451136d6b02b3a8e70b5210d603224637c5ae64c545dfc3525419",
+        "checkpoint-epoch-002.pt": "059646bd50b59b5eb3b7e9cf47f2eb9974fdaefecf06fa4c8619a40eea1d4061",
+        "checkpoint-epoch-003.pt": "4a45deb75fce9e658d977365349e75726fd947f22e8b0c7a22dab9546073efb3",
+        "checkpoint-epoch-004.pt": "0f869edd8df5c8f0df5b5f7953047eaa0f4a63c6876b509c18c2b26024e2998c",
+        "checkpoint-epoch-005.pt": "af94c37d303423d3232fab437bd0d7e503504a8fa87e9e8af1315d7eaaccdab2",
+        "checkpoint-epoch-006.pt": "badc4a6824ce8168ef73432a6b8a3df9692f9e449b3d36a9d44f7f8e818eaf5e",
+        "checkpoint-epoch-007.pt": "20878a8c5c72b3acc699a4fae969a6618537704d353ee58ca3199f61cc7e148f",
+        "checkpoint-epoch-008.pt": "d7e277b177b6a8493d01c142232b7fdf8d20c2fc37015998088fab5b8fd13877",
+        "checkpoint-epoch-009.pt": "29c566ab36964277a080c3c3210e3e9a9142dcabb70d96d4d2b47a2e451b82d4",
+        "checkpoint-epoch-010.pt": "0e7d8825dafabb05158266f47f0c44a3d91735873cf660624856c16113297ae3"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda0-seed20261031",
+      "config_sha256": "a1c6071c9b966c2b3dfedadfeb199c1d6edc41f5f6783b777a18546115135804",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "4e5fe1cf7a69d3696ff91d80e0cfef4de367da5438df6ce9fb389d2845e019e9",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "b2c10924addcd13968cb3cf74ffb363a2d36b99c863d6437bf93f661abf85772",
+        "checkpoint-epoch-001.pt": "2acbea39c1989fc82292bfe600fe9f63c3aab1b92fc73b6c967727eb15149bfd",
+        "checkpoint-epoch-002.pt": "8d307cf95612a1fd4c8d4b3735823428549d8ab4b44d9387f3d57e819eb59d03",
+        "checkpoint-epoch-003.pt": "823a002a8a8cf76b2adaecb64b172aa37933a2fe384a2a7051d100d053a98026",
+        "checkpoint-epoch-004.pt": "998da20a126d7628c79b0f097c0216f8e7999312d07b5b895c76a0bf45b4c867",
+        "checkpoint-epoch-005.pt": "f20cdf54b1a4deefdbbae582c4d8ba2b5d45cbce5b99b18e3421543b7c53bcf1",
+        "checkpoint-epoch-006.pt": "002cd789d96b1ba421f160298041a213a899f99779d2807fbd75de0ffaaeb85b",
+        "checkpoint-epoch-007.pt": "af14d0c70807bb09ce7a7b28dc2f52574761a598b1a94a87bb96da8b23c8ccc7",
+        "checkpoint-epoch-008.pt": "d923150c7bcf2be60ac9b390b641f6380726bb0ff32762db07937631d6ff43d2",
+        "checkpoint-epoch-009.pt": "512c533a20146078ee310d6d24e2fb874a7ceb840deb58c79c7c42ce1ed40368",
+        "checkpoint-epoch-010.pt": "9d2417417fd476f56432888f910fd0ecf5520592d990907ec5c1806e903b592d"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda0.1-seed20261031",
+      "config_sha256": "d4d40746ba656ccc20ca67f8858d272cab68a9cb34fd883e10396d623eee0406",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "9f3b2e093af00c556654ded41531ec1fef09c50b2f5e30b7c37811c27f3df321",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "6b2f980fd3e3a41ac3a599b0c923abeb2399e1e4e800697c26f206187406fce8",
+        "checkpoint-epoch-001.pt": "e813c4344e4af86bcfac1faf4f2f681df2bc22654cca743e2773cf49cc072bac",
+        "checkpoint-epoch-002.pt": "fd5b786f9847ccc64fc7bfcfd4ff7367086b80245f96ea1e7a7d6e41ccaff5b2",
+        "checkpoint-epoch-003.pt": "439b96e2f9b95e7814121a6b878771c8520dfe98e3189077c6fc1ebbc4bd26a5",
+        "checkpoint-epoch-004.pt": "d556b0e0d1a198ef040998e8ea03f51de30f958c08ef6d3e5e0f6f4f506aaaa8",
+        "checkpoint-epoch-005.pt": "769922d0c625f1be9c9b291832f083a968b5bae864446438415c1fe388dfaa5c",
+        "checkpoint-epoch-006.pt": "5ff94e024aed4fae9f77c9fb5d5e01f9cd135eb229eb773291c9d7bc08e201b9",
+        "checkpoint-epoch-007.pt": "e4fd5aa1236da8702e246d2322616a6329c5b2240e481aea5999aba5f264cbb5",
+        "checkpoint-epoch-008.pt": "3ffbe25f934c4f48b3147437d9c95aecd67e6377baf436506e6abe432eccf25c",
+        "checkpoint-epoch-009.pt": "9bfaacd373d42872c6b22cb15f9bf66fadf44b36d156579dc5dd49006479c2ab",
+        "checkpoint-epoch-010.pt": "ce0bd2eda29f4c0f6e3b8a7a30d6e03dbc99e6706f0a69bb5d3c1db41193662a"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda0.5-seed20261031",
+      "config_sha256": "e00b060f272fa5b67ac0526a8336a8e3c845fdf6cbfa36a2e66a0ee9fdcda9a3",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "71cbf0487f6570b3cdced8e7ce0ddc45b9d38ec52773fdf96d30cbc43604930a",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "e4e3bf1cf2daf46cc8df290fb1413f5e4cc265eb582327945a4041b91e2c4689",
+        "checkpoint-epoch-001.pt": "322f0d9e8819c81cf58b74ac01bcf9a64660d8abcb2e4523ed8b78eeba0c4368",
+        "checkpoint-epoch-002.pt": "186dd65a10dce570e82f5653fd7b02e5f3860d84934612820623f2ba2bf3f250",
+        "checkpoint-epoch-003.pt": "2a89752405196df4109ddb68cb64d50c0619e43273f33567c2b30f5fdfa884f2",
+        "checkpoint-epoch-004.pt": "954b5bfb19b371eb57a17faf24b86d92b0291a9df8da1a7ce53b39235a2af148",
+        "checkpoint-epoch-005.pt": "05eb98a89a406d07a88333e17ec8b6217bcafd768a0ee006b872b757ebb4fe9e",
+        "checkpoint-epoch-006.pt": "e3b164ae0f28ca9a66d6f450b5e1dcb4e9c9f85112f8108f788bcb44dc3fd95a",
+        "checkpoint-epoch-007.pt": "70ad4e2afdae53c824033681d10911c2143e1d6a909bf51f674018ce39473b77",
+        "checkpoint-epoch-008.pt": "12fd627f17ff16aaf411b36bc5438a4e419402130f436abc9cc3c1d1a707424a",
+        "checkpoint-epoch-009.pt": "1964191381a4ce4c46f68c3f74901eeb7be1a16783097a2a967726bece02a565",
+        "checkpoint-epoch-010.pt": "aa504292601d73e55dd27f70f88c413abce032eeee1d5f76c4f3efde05ee3d41"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda1-seed20261031",
+      "config_sha256": "fcb6d1f8e83e4c0f0793458228ec168cfd7d8a019a3b0d77f0f7ac7bf345ebda",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "e6899f3e428a458129864049e92a8734824de666f9a32a851594901de2cba699",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "17ed66c9b46e807618de5e7f750d67e21a23fc7b7d60d123acdfde814a51c606",
+        "checkpoint-epoch-001.pt": "806040e33f35bb39c9c18701781d2435bb4902bdefd0db7eb4b9f813f7bf2e02",
+        "checkpoint-epoch-002.pt": "6e6f024b5067519221db772fe485fa25b82793c6515922ea8be0a39cbe41f17d",
+        "checkpoint-epoch-003.pt": "7ef1cff382397383dc198f0d67e64b950e5152e6aaca3e3361563ae952b1823f",
+        "checkpoint-epoch-004.pt": "058cca7fb67b93d8c88fa889aa4e0d1ce226194d68a23f5b2ad57238f8ae9f55",
+        "checkpoint-epoch-005.pt": "ed8284817795be2b4c789b3df7000b504b0a7746fb1904a00c318fd453adcf89",
+        "checkpoint-epoch-006.pt": "d6ff706f97107d06517dcd62791bbd996031ea0e75e5bbb74a8fa3baf3c1a59d",
+        "checkpoint-epoch-007.pt": "9f0bcc6c0684d56be727b63be7a8e9175d26d836d13c291848db1a6ea6be0648",
+        "checkpoint-epoch-008.pt": "4b0e8ce547cc977ffee276359692f9d941718f29b4d3176bcefe919d157f9b9b",
+        "checkpoint-epoch-009.pt": "ec991a730a27e9d8ff6036a713918b9da22cd44865057a94cecb80f246ea720b",
+        "checkpoint-epoch-010.pt": "677c7699c110c4e996b0ab084e927aa8538f48060a9dadea5bd40183b51f36e3"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda2-seed20261031",
+      "config_sha256": "91fb4fbcbf60d8ab437d7069e359203cce450b5894515df94ec2b0c33a4e860d",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "b1a6c9422b5b46976bcc86932a045fe0ad7037cc797e8b8faa8741bbe6a8cb54",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "02968e1256c769bb22211f9a10e51db5d9ac80d8c6678cfa877ebde6977388e7",
+        "checkpoint-epoch-001.pt": "bf398c86eca00051bf2ccf1dfbe400cd251627b4897536e588fe6f4927723b7a",
+        "checkpoint-epoch-002.pt": "783d565d4e04ecee3512a75755dc73ac267dc1e1e7fad022c7ee303d20b51d38",
+        "checkpoint-epoch-003.pt": "aa55d4f3dfdb392fae44e63dd2785493edf51cd1c0a74a2653a7e78c525bac48",
+        "checkpoint-epoch-004.pt": "ada37f89e23df1e915068707433e8dcebec1211dddeeeefdad541523ef2fece0",
+        "checkpoint-epoch-005.pt": "625c104268b02871124ee5e8c8b34de1570c737e31b8b8dbdb9016b608fb5939",
+        "checkpoint-epoch-006.pt": "31361997d097e1e14ba16c427b113879f941d66b5cde33bafa796e1e03ccc602",
+        "checkpoint-epoch-007.pt": "268c3525d5cf12f8f129982a4773ffcb3feedb0ebe1c035b06631597620c583a",
+        "checkpoint-epoch-008.pt": "6b096c45fbf55cec19ee8f1c0d78f357d24241022fb24d5117db7aee2541b30a",
+        "checkpoint-epoch-009.pt": "245e626f9a34b54373deab81fc71b1c537a64da3594bc93a12d2bce954102b92",
+        "checkpoint-epoch-010.pt": "512fcc247d1439ea37948ea106cb7d16b0543636bde5e8339357757cfbc8679e"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda5-seed20261031",
+      "config_sha256": "4d1b6f2d518d0fb2d1ca808dd00fe29de751e59788f589323592760e2a417a7f",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "2ef16950b31377a3a650b5007c61dd670399ca89b539e82ab4f7b0f2f29d2940",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "b4048ee0d582a61fbef890d7994a800570680882ea8d686e999fd4b57add7806",
+        "checkpoint-epoch-001.pt": "b25c52c65d21fba055dfedfc7b50005519358610136e8295ec3d5f1dc1fd55be",
+        "checkpoint-epoch-002.pt": "dd7305fb7e9ee812fdca0c36c613e13ccb021c7c6158f595ef5c57e830d4a699",
+        "checkpoint-epoch-003.pt": "7a6ced27ae41627e185ba3df3b3619cd25f2cc788d28e60a5db192f9e2f3b9ad",
+        "checkpoint-epoch-004.pt": "8a03a02948125bc5cc59343f40986a2d39e29838ed0655683ddc6dc1d9e7d3bf",
+        "checkpoint-epoch-005.pt": "2883396ea8d2540f4b706bbfb3aa6ac3ab86779e2cf8c6ae24394adbf5a3025b",
+        "checkpoint-epoch-006.pt": "0da062ea071a822a3eb192b712193d0bc88c2fa888162d426c4316702aee075d",
+        "checkpoint-epoch-007.pt": "70b22592809a03cf8f68705ee2ca35b40b0ccc29f9442aba2b52e754b7ffe796",
+        "checkpoint-epoch-008.pt": "2c6b464a94e6d7869ba8de230755694b320ddbdff5ac52fabd374e980c736697",
+        "checkpoint-epoch-009.pt": "b6b256b62b859ce7b1d7e55aab82b37d75a1c5f2eeaf71c78460b14b54003617",
+        "checkpoint-epoch-010.pt": "0f42d08e7534605ffb52ca33ad77a2901fa6495714cc3c600fdb7a660e5948ca"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda0-seed20261031",
+      "config_sha256": "6df345284763432ed22cba373cacb9f41a4db7651e9412d98057d095eaad6d75",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "0a051d3378e69f602517e873e2bbfa926115f24acfbdcf42db12e20b5d45d8da",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "0ae45b230d2e5b9cd6a1713430dd784dfddd4c99462f0972180bf805d75ed9ea",
+        "checkpoint-epoch-001.pt": "4a88dcb17bc2ccaf63d72645fad5c1424bd7e688b5712ae327aafb9323d92abf",
+        "checkpoint-epoch-002.pt": "f7cc8f1fe9d803ed7ee91ec1702165bb2a154d241f8145267c104743baf4c3fc",
+        "checkpoint-epoch-003.pt": "3c3b1119301e84c4552202a44a6f652bfa84cc268b7c67d6363bfd80761ee2f8",
+        "checkpoint-epoch-004.pt": "ff6639bd83dcd9d304af2511df078f7e5c5cb0121d295df43f9cdd32ea5c03f4",
+        "checkpoint-epoch-005.pt": "de7de1091ef83ed60940f99cc06520f95ac0f41106f6cf805b6630101e48e242",
+        "checkpoint-epoch-006.pt": "412b496e70e298784cfe07614df7daea15d29e050f919c9d4719790736d45679",
+        "checkpoint-epoch-007.pt": "c42037f01e36320caa7be93a1ec05cc14ed22038b566f07450b65c6aaa297278",
+        "checkpoint-epoch-008.pt": "27afe18e9ea193e54022f21b6bc4eb8b13ef060b35b8bbec84dcc1abd0c8d7d8",
+        "checkpoint-epoch-009.pt": "cee0fdcfd2a9c66e7ed7720f0b2901e8256a13ed4ca45ed9a5f23c1e5cbdf08a",
+        "checkpoint-epoch-010.pt": "97d1fba41ea4d1796de2f849925e9c32cf70b9bc8f89ecbcc425699313a5cac7"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda0.1-seed20261031",
+      "config_sha256": "cf4432b470d4ae6d94458fef135f9c34433d2d5a2c52e5357f3fe0a8de230b47",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "eab9b8c2f565470e1ed880e785e814aa273882f819117e900e7ace89deb1eca7",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "51fa9b8dc57f439d6af4032859a8321ac8a351716e19dc0ae4481f3221778015",
+        "checkpoint-epoch-001.pt": "45ab9df406cdbbeef8a7e8580effc3eff33990970881db98fcc4a3e696153afb",
+        "checkpoint-epoch-002.pt": "528aac7185ad7087b78c0ffc90144e253271f75e89afe249ab7c39bd540a87d5",
+        "checkpoint-epoch-003.pt": "4a184e6c1d8940ef6f853930dc8d7be0274c07cff36fdfa03797cf6d9e46a2be",
+        "checkpoint-epoch-004.pt": "c024aaffb2fb3f164b21c2e2172c9ed4c8f7c4bb490a38b4978df01c8edeb744",
+        "checkpoint-epoch-005.pt": "6bb5ec950403d9899b28b3ef16394326dba8cf1b20504d19a7d3e35a4b84b9ed",
+        "checkpoint-epoch-006.pt": "2b20f1241150aade68eaf8684889a426b29de095e5b1003154c7c0735a1369c1",
+        "checkpoint-epoch-007.pt": "21a568d38d035eeb6985e2be07d3afc0791c7281a809a3f7b5723f018f0d3c1a",
+        "checkpoint-epoch-008.pt": "58951a01911c46f157f7e2b0c69f9e3ed8cfdaba496cf371fe4fc25b3358fd45",
+        "checkpoint-epoch-009.pt": "2e7d6ff5c28e715981964ffc9a6a65a0a9ab805687f43f9c2886ec5fc2cbd5df",
+        "checkpoint-epoch-010.pt": "7f8dc2b5212bc806dc289ea878097311f11f113b0cf63df1c8941eb24e37aeb4"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda0.5-seed20261031",
+      "config_sha256": "0955b0f9ac4a78f6f38ac968322ef5bbc7115e9c1667255864a4d9391992416a",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "4c885e97b7240b3d9dd4397ed027681cb871ca2e7611f582bdc626688ca8060d",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "fd4b9513ac8f8c08f32627a1e5337a853b8d6a264922a206c02f633219f4c5aa",
+        "checkpoint-epoch-001.pt": "d046bdcf7c8d6b5ca7009216697d2da040ac42ae09d401d18f6882a46ba7bcae",
+        "checkpoint-epoch-002.pt": "00cc18c24bf1cd823c487bcb58745eb1801e04587d60a8cbce3322a484e86630",
+        "checkpoint-epoch-003.pt": "db89439cc5ad336fb5fa17b9b188464c752e0467b5ac1eaf02dbbf65d8349fcf",
+        "checkpoint-epoch-004.pt": "31fe7950a427fec4519a702b91b5384d2f066b0b45495c6029c0cb5b7456f589",
+        "checkpoint-epoch-005.pt": "d5c519ceeb450893cd86547b56765a5d055e3e2ff8c6e3a1dafd128b533e250d",
+        "checkpoint-epoch-006.pt": "c26355fa16c317cc91d89578a0c407d3b794667118a8b63afee5a520a84516b9",
+        "checkpoint-epoch-007.pt": "780f078aa9e57c8a67f5a5e4e2f606cc812b7decaa3ab2236d58cf6c95694aad",
+        "checkpoint-epoch-008.pt": "c4aeaa9c57b77a6d2ff2530608798e9630b293f9f99e4c2b4c1dde9abbab3cb8",
+        "checkpoint-epoch-009.pt": "ae99c19842efb971cdd5292370741bd00c39b3af7af5d6d1889ebd0f3eaaade7",
+        "checkpoint-epoch-010.pt": "3de26b86ab0ac26b56ffd51c109e399da8b22a2c4665c2dc842231dae804584c"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda1-seed20261031",
+      "config_sha256": "1ecdc0e8b563d39f08ed09f526645efe423cad42ffa0bb86a9ccf88f805de612",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "0770b43b09730dfb59c792130a083e1a9031f1d575f375030b0f8b8fd34ff128",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "749789692d2210ebb0e32bf9cd83f395b8d21015c16916c05ca54b92c717a58f",
+        "checkpoint-epoch-001.pt": "5b95fdbc61b4a67216e632d1c0976d020c4053d861c38205062cde0b4ce91d68",
+        "checkpoint-epoch-002.pt": "d6adcc0b5e6562730b094aaae8640c30c20fbbf996b20ef9ca85760514a9e988",
+        "checkpoint-epoch-003.pt": "96804347bb040645f0c3bd678c09b93289d0e68f4dc0fda681da21ec9c4c839b",
+        "checkpoint-epoch-004.pt": "2bfc6d4dee4e195a936a7698620626e5d72dbe2b70f14de385873131ef48831e",
+        "checkpoint-epoch-005.pt": "66602e61a0529034d4f405c9db428a9f6ea6e4d0f86e444e8207abb17c905224",
+        "checkpoint-epoch-006.pt": "b1657ae7b2a1165343c35ade4c16ea951abc741415c97e81f7daa530bb345069",
+        "checkpoint-epoch-007.pt": "aa4f0090a038e98d081b0486345a8b54e84daaac119cc2ce8112abf05619f238",
+        "checkpoint-epoch-008.pt": "8b4550f65aeb88f27b2ee1a64cb00c7bb8ad13096f7b6cd34aa40fa6b0c1a19b",
+        "checkpoint-epoch-009.pt": "37af91526603fd6438646e843e81b573319ec7409dcc254e3425419f5ce8da4e",
+        "checkpoint-epoch-010.pt": "8a03386eeb15e48b88ac540906e5292102f0002f95ea5b40c3f5067472111206"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda2-seed20261031",
+      "config_sha256": "cbb89e3c5e2c66ca145f2bd66801919723f9b7a2b04954ff02ad581e71bc469e",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "1c9719ec3fdb0e886771881f1b47ea8e601044299d6b8872e94e3ea3e2741b57",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "73c765ddc2377e0882dbf193672084dda3d5dc0607f6eb8b103eb980f6fb641f",
+        "checkpoint-epoch-001.pt": "22c41e788362549ba6e2546b8f9c8542a99401e9f0f471bff28526182f177439",
+        "checkpoint-epoch-002.pt": "dc14fe2bf94b23d11339def3c12e655d2431066e38f8ea1e4b18aa3d478c02df",
+        "checkpoint-epoch-003.pt": "b1b22c6c515ba44097b84ccff2a0963d7a7e35b9a1fbdbb51636382c8dbaaf08",
+        "checkpoint-epoch-004.pt": "b669dacab11af2e4382128e41562e65431aaf1b07f70adcdce3a15fb724f1169",
+        "checkpoint-epoch-005.pt": "21cabc7fb5f13509166d5eae7d4e3cbb8a0f2a2f560c2a1e4633459ea0858b12",
+        "checkpoint-epoch-006.pt": "781a152d7d8d119fa0fb8f09d8f1973210e89691c6d50f11521545b67b621c69",
+        "checkpoint-epoch-007.pt": "bc59c033fa354b78abcc5ffffca3705d2b699f823f52c4198abf9647d4b82ea1",
+        "checkpoint-epoch-008.pt": "0c2f4257eef2516cc786259581e5df201c6acb3e4b09b45dff0fe429f959528c",
+        "checkpoint-epoch-009.pt": "8b9f23d4576962d87e3b8853c2fa50ab83e53433124a117e4defc614b214f6dc",
+        "checkpoint-epoch-010.pt": "89bb171e52bf526ab764a4060458e1fd0ce66a0149c0c1933b34c0697a3683c4"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda5-seed20261031",
+      "config_sha256": "f98b8fc7c57a13d6a2f9502e35e3179ed22001325ec6ce7b0a423da78bbb9867",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "fd914af1647f98d6eea9f5895cd165d0aa2031a8e89e2436ba37ecf9b65c499b",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "b9f34da1a273f584f2ac40bba3933f819c166c6e853dc15f0d5da9d2c2f60485",
+        "checkpoint-epoch-001.pt": "b1f14c987aa322f4b1196106f8229a68a62e1ebb6464b4608a57ce83aac4289f",
+        "checkpoint-epoch-002.pt": "ef4a341ef0f8c51c236ea096983a0f05dd7a66d9b1c207bf9b5389ae6d1921ab",
+        "checkpoint-epoch-003.pt": "9adb0665612b6733b6a18069712dcdd3343b7e4583b73b0377b543061a604554",
+        "checkpoint-epoch-004.pt": "e763c1db157660817fbb4d2b62b74b0aef5c6d96ea6a0db47be6dc7de7d28875",
+        "checkpoint-epoch-005.pt": "6333dec119c96bc29bb2513c4850f867144199caf58e1846669d4f0db0bf0d11",
+        "checkpoint-epoch-006.pt": "1468f3a50846238e51c85b1b1aa86c33a609f0c9bdc2dd4fa89c36ce12e45b17",
+        "checkpoint-epoch-007.pt": "7391263a73f6f0ad3f52031393a3d23d49b05f9cab35b819ef7d3eca48ed8544",
+        "checkpoint-epoch-008.pt": "da2101de21837d5cbeb4c85d46d80235dfed4eb1e18ab1d65ab8a75659c6069e",
+        "checkpoint-epoch-009.pt": "c8759413fcdbf5975efef2de322b9e6692c40f41301d32aae616480ae0f00a26",
+        "checkpoint-epoch-010.pt": "268ec4a84ef74c5df4c95fda9657ab6944708cf1924d376d901fda99281e4fb3"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda0-seed20261031",
+      "config_sha256": "84549d1527d9ed419ba457640977a176db54b91c701f652a8704c01c0c832c75",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "a505ec82682a0f09224a1a3378e5913f7dd0292eaca8e4cfa14c97b72b8e081b",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "32f3aeaee833f1f3c951820d3a6ff5e12ac4768f1a6bd9f70759bb1f3d315ada",
+        "checkpoint-epoch-001.pt": "c8fe4b51ce363fb46733100874249f2c92b43885aaa2ba2cc3b6b2ddc07414b0",
+        "checkpoint-epoch-002.pt": "1555229cd99a32117672bdae5070cff4ac40e98f65140418ba912e61bf279beb",
+        "checkpoint-epoch-003.pt": "a3a57d3a6241a8b02667e5706cdfdece45df41dbc56e609ba0c955b3386bb50a",
+        "checkpoint-epoch-004.pt": "013da5b36e0d43a94acf789ac2a0b23fa1add367519800f2d0e3f9e80eaa2782",
+        "checkpoint-epoch-005.pt": "841ad17994d6f6636d6c52ec7cabd24b83ef1fc3536a34b3a44d1164aafebdd5",
+        "checkpoint-epoch-006.pt": "c8b66000a5ec4e12d409d13370613b91550c5f8ae024952a3ed076956873c16e",
+        "checkpoint-epoch-007.pt": "854ecdb9394be6f56dc55a971836c4da81207141a1a57a5dd60f54baafab5956",
+        "checkpoint-epoch-008.pt": "a3bb89cae04ab37548e03a7ded4b105c609277b688149669037832c7ad667ccb",
+        "checkpoint-epoch-009.pt": "c580d5b1e64a2bcb9761523983a58ffb7b65e3397e236d6cdbc2d3e16d025a83",
+        "checkpoint-epoch-010.pt": "b0ef9e42aec91ee509f2c2148c89122af6bbfe03b647151436783cf7effb10d6"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda0.1-seed20261031",
+      "config_sha256": "ab75d9c592d3674aa6a4e223e563ea1f84a20a3dab8846ecbcd3e8dfc3749f06",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "408ac10ad15b7e689fd1af88647e05cd919f1b643caf545e50a7c421a15f7350",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "89c296af94400a3ca48eb9a35c3ab565b177fc03033ddda1721e6ddf9a168bdb",
+        "checkpoint-epoch-001.pt": "82f793329a9eda1f2fd1abbeebfb91bb7236e8f4718d05d2959fe4382ce4ba10",
+        "checkpoint-epoch-002.pt": "5129570f4e65d02cf3aea4e2c256298e53b570410013d255790e0305751f30d0",
+        "checkpoint-epoch-003.pt": "f3d21f8414453d5b9b73e886e931ff0d0c5da1b1bf1a003d3607148fbc57d42f",
+        "checkpoint-epoch-004.pt": "b4f7b483dc57a2e392fba89aac515234a69e1d235a6da08d200e8b9fecae7ec8",
+        "checkpoint-epoch-005.pt": "ccc68fa438b5589c2e8be4d140c1f083490ff1ea24dc9ce5fb886c3f77597f25",
+        "checkpoint-epoch-006.pt": "ae856b552280103b7efb7f9ff74efb67b0ec0a1e65a52d5e1f3f4c766bfc94d3",
+        "checkpoint-epoch-007.pt": "634c3c618a98974d7a4d5034599a8278cf5df38635017cf2a11302428dcc8717",
+        "checkpoint-epoch-008.pt": "e138e6b9974a981f864ddd25853b9598c928602a514ab17d2fba14065ab0e176",
+        "checkpoint-epoch-009.pt": "336df1259e973cfc665869905d949edd7230f09f5806b778bfbd6d04135c8fed",
+        "checkpoint-epoch-010.pt": "b5d61f2b6e1500e255e10f6404ad4e650e66a93d187f7197e39bd95c25828412"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda0.5-seed20261031",
+      "config_sha256": "a8740e9ce980dc1b0690b8c248482cc0d275f3998f363d67a54c654a324a1750",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "67d955f2006f23c50cbf80b1d07a40e1b5f0bf485672175a0dad88b793356b90",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "409ed944c16916ce1c1f6483182a498fcd30cbf401b79367f7dc888b471b958f",
+        "checkpoint-epoch-001.pt": "6e0ce74af138630d5a3e94840facd0f89efb156e688877dd37cdaf1dc0a0012d",
+        "checkpoint-epoch-002.pt": "f4ce6933f5dcf7a8b51eef14b792bd72f98b43b06a72ef9351b6c90b523c9a88",
+        "checkpoint-epoch-003.pt": "9af917040d3134c8ea43eaa288f1e75fa839949402677d2bb87759ce1a1fcf79",
+        "checkpoint-epoch-004.pt": "16c27bfbfaf0746820e9807d96f671cb8b0c11c7366026699e8b93031f93488e",
+        "checkpoint-epoch-005.pt": "a193b3cbcaaaf7583546c0e4a9ad16fc1b4aaa789a0fdf662c21e32b52b812dd",
+        "checkpoint-epoch-006.pt": "ac1d7e9cea3e1e177ad6cedd754709bb98ece221e3812dfaee2d2f541697251b",
+        "checkpoint-epoch-007.pt": "ea48e7ca487072391c8d989f2bd7031a22460324790eb44d1bc6f2a446041a56",
+        "checkpoint-epoch-008.pt": "f854827ffdf5a4ed9aabd3842d166f15e11b8b4276fe3719504be4d32722bcb0",
+        "checkpoint-epoch-009.pt": "f8a43fd146c513e59465244936a0fd33799676fea5705f908cc58a8128fd9a45",
+        "checkpoint-epoch-010.pt": "e7aa444a63204f0d5e02ea7b455a2f92fde117651571493131c360f0f13693fa"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda1-seed20261031",
+      "config_sha256": "ac9d8c6ac39c52e3eac7118022bb66326f87604cc032a3212f68992e61c9d01d",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "28f430ccb261b56fe6b3b1edfc8ad3b3be6f1bfbc83fc0ea07db5ffad09bad08",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "ebe14c392853cc99631c254f3d4a2d12e1d23dc80fcfbf67d9d65fb1feba931d",
+        "checkpoint-epoch-001.pt": "64b308ad9cc919240ab2d18d7faf105e487912e89ff7c0b22c676c4ce31db2a2",
+        "checkpoint-epoch-002.pt": "2c783d71fbe2ed9534cd3a2f08537ab06b93ce2940986abd49b6799e49190605",
+        "checkpoint-epoch-003.pt": "09c40cc729b514a757f4d2e6c6ab16c5bda6c4b1d6c8dd605623db7eb27e9315",
+        "checkpoint-epoch-004.pt": "46d547e49b390bc5afcd4370e87e3d7869d3baad677f39c0fb430ae557ad493a",
+        "checkpoint-epoch-005.pt": "41ff0ee289b89321fa94ca43d36d0b74179c5a935821f4a5c7ffba6c70402f1d",
+        "checkpoint-epoch-006.pt": "d86fa899bae45213505f4691400691e846c3947b8ef76a619108a3b628303aa8",
+        "checkpoint-epoch-007.pt": "b8223e1918e8f2895e5069faadb95e918b7945198730e583ad6e7cae8f141d63",
+        "checkpoint-epoch-008.pt": "ccc9ea9741bddb477733434baf0fb3ca494f0d7c485bef378d22ba77d81a5a39",
+        "checkpoint-epoch-009.pt": "43e72a9e0267049749342fdd6e2167f000d8752800f4bf315e8ef56ffaa6d2b0",
+        "checkpoint-epoch-010.pt": "4c79872d61ea603ff08027ff9ae1098ca2234fe3ce4f220c6aa95253bd71634f"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda2-seed20261031",
+      "config_sha256": "81898e00ef2f658b5f2c6f95b758cf6544c59015da9b538f7f3cacfc7a4496a1",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "85dc73b17201f87a9478971f75b1259f1b5adf6341d934630e2f805c42b0f4ba",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "0d20215c2da7a55b996839e6575869d4e9b50125de8797a672780568ca47e638",
+        "checkpoint-epoch-001.pt": "c3cce215ae258197778fe02f134c50e8d50ef467fc6c627886824410f36f582e",
+        "checkpoint-epoch-002.pt": "7834d7ffdc1676e64fe2139daccde9b61a07932cc3cf142e84509bd6e53fd083",
+        "checkpoint-epoch-003.pt": "9a568ad5de4fbd744ee070339a6a14d00c272f60818a86a9ac1fe4af74ab6810",
+        "checkpoint-epoch-004.pt": "72b710c94dfb62470447372a57d97d04ca3823fb7961b4118c05b292c68a8b61",
+        "checkpoint-epoch-005.pt": "2e905d4534fe0c1746f9718618891a42e280185d7d5147cab17975aa1183342f",
+        "checkpoint-epoch-006.pt": "1f087124b8dc09362c4fdcef9fc3fef64dabeac4e55a2be863034a65763ebe83",
+        "checkpoint-epoch-007.pt": "22c7a354782e3bc825bc50bd10a86b24fa5d228140d4cd6a328fbb6a6ea8cb7d",
+        "checkpoint-epoch-008.pt": "04866a260123dce886c1ac7bfd9689eee44214e5e3b110640925ef100d698378",
+        "checkpoint-epoch-009.pt": "6548582125770822e79d06ec2034aad4347e1d32d242f3706db20ac48abcec6c",
+        "checkpoint-epoch-010.pt": "c9e3328b138bb484981c2e1cc5a78d74b100a9c7b7f497eb08df758d39f47024"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda5-seed20261031",
+      "config_sha256": "9f173d8786e9a03affd9931c941243d6716f459f2558ad8a296df5c460dad2e6",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "6a13865a4786b38ecb48960b686d00a52c11683c931e02b31262cea133d87f46",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "4f8dc255124055ec1214c31ca01c28806502131ba576d06065d5adcf7067c737",
+        "checkpoint-epoch-001.pt": "47f95cf58953dee4b6b89363cb38399e1141795ef12b8491c4a3a6992acb5e99",
+        "checkpoint-epoch-002.pt": "324f9e97929377dbeeb35b2d9976796995ef8b0db1e36761496c4c1af6659b08",
+        "checkpoint-epoch-003.pt": "6df1eb29ede803706fcd93d978c6e6902785f21889e36273aefbb79be477ddd5",
+        "checkpoint-epoch-004.pt": "edb6335f6736e68a56d34f9166f116abb8169d199d4ad5602eb339d15bcb7064",
+        "checkpoint-epoch-005.pt": "a6ebc8c30f5fe25f4baf37e0eff9d1866d419873c8c6f99b14eb362cd81b2625",
+        "checkpoint-epoch-006.pt": "4792d8851bfbb03e58c3e5bf7cf0c18dc99c8e87b61d4fc3f2a9fa7f67c593db",
+        "checkpoint-epoch-007.pt": "37fb8f8f55e9492c2da15b6df8daa272ed251df835394fdde8beb81661a74a16",
+        "checkpoint-epoch-008.pt": "8c7fab40c6a916fb8a0c5d37b02aca1436743be7f8518db5cd1e69eed26b80bb",
+        "checkpoint-epoch-009.pt": "35e28405e4850b6e239dd9d4e793206e27d9bbdcaebef9aaf67caa7bb0fff91c",
+        "checkpoint-epoch-010.pt": "3ee5605bf35b8309df0d53af743ce9315073454d17201e670d48f1f9275d4357"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda0-seed20261101",
+      "config_sha256": "d03ea7bdd2ef8795ee5c009ec895117f2a3cde95d235ddf6e145bc0e123b6525",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "f63e24b8852cc38133434c8ff36efefcec5d97de2e653632473948ad3158823f",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "798dd85552d1b44d6bcfbe0c530f326797d2225c336356485841bb8dffe3a84e",
+        "checkpoint-epoch-001.pt": "f8cea24cb055df5f2a1fa6623f9cad2504719e5afa916c3b4a763f74efa8f394",
+        "checkpoint-epoch-002.pt": "b310740c452fc767a3f07ba6f0c597286827fdf8382876f84bbf25e578cdb8cb",
+        "checkpoint-epoch-003.pt": "44be97a1063a015f4b82d3cd0954f3521368ea0691b18765faf4ec1d93271d9f",
+        "checkpoint-epoch-004.pt": "17f8ada27bb97845d204ab717e65c635e6dad54af81389a59d1ba7f63c72bcf6",
+        "checkpoint-epoch-005.pt": "1774159ffc77bcb46050595aaf941c4bfb861363793dc987539d235f426d2982",
+        "checkpoint-epoch-006.pt": "520eb61734462553ba3f1776dec0946f3768fe97facfd9a8e47cecc3f913e714",
+        "checkpoint-epoch-007.pt": "247e8a691279229523e5124b9ba7f2ac3689d040b76558e67c02de8f851bf236",
+        "checkpoint-epoch-008.pt": "b12af29750b5c96b0cb3e20b68da8a3739fa941542c98db07ad94e39ad1a1168",
+        "checkpoint-epoch-009.pt": "0bafd64b574463d1cef14bde2e36fa2209873282b8e2863d651e423c244bec3b",
+        "checkpoint-epoch-010.pt": "13f2449870205bb2fc08e7e72ae11d7a5b6ec6fe94adbd483eddbc56def48dd4"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda0.1-seed20261101",
+      "config_sha256": "89347f57382d41c4d852e95bb56086bbb1901eb5a3ced658123d6d29843e660f",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "6d19c1788832be7c696db1a2ce621bc2e00d4eca1666c54e4f60d701301802e6",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "e7a16ae8457faf96bbf9ed006e878fa16d1eb5de5e8e411a0552927fc57347ba",
+        "checkpoint-epoch-001.pt": "682c37cfa64ee103e32e1b3d2f12515f401e40dff33025579df8dacb6097f29c",
+        "checkpoint-epoch-002.pt": "10a8623b071a3b34331ebd1c4e387380055bf0369518cbf92730069c53c0f3e1",
+        "checkpoint-epoch-003.pt": "3ceca452d536f7f8045c8ccc07fd714ad1928d0b6570d7c4a14028d0d3ca0616",
+        "checkpoint-epoch-004.pt": "7e5452b84d6f190238569a68232c1f25bf737f700175bad004c87853445d6b19",
+        "checkpoint-epoch-005.pt": "1e2249162b60eac8e1d1b82ef1c27d05c2835cbabbff8f3cc69a223c23a2eb3d",
+        "checkpoint-epoch-006.pt": "d491cac3fb92664e534c41573be91faff8b4febc78ba5f5e7e5907eef246ca6d",
+        "checkpoint-epoch-007.pt": "f00d1dfb7cf039d2aef609692bf0c0f7abf2570aed2f016f79af76a42010bb40",
+        "checkpoint-epoch-008.pt": "2dd4b05d0aa837e6e5e2d87efc1bdafaf1d6bc5c056023aacd3776fdc9e42dbf",
+        "checkpoint-epoch-009.pt": "dd31dfbf6c142ea94aeb5642c3f7a0ec1f9fa4f52d29edf4c9cd9aed1100a9f4",
+        "checkpoint-epoch-010.pt": "62802b5d74de1819b04039034d9887acf95f19b2c73e6e9e37d3304e93918ddc"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda0.5-seed20261101",
+      "config_sha256": "cacd04ec355e5e8641622ab6bd83b646d3250de856f3940e862f304460145caf",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "cf6de5532f7ab4124914972c5df0b0dc3cc4b898a108777ce0d2eb1b6c9fbf19",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "901daf51ba75a622814d96d185a5dfe3742256efd4b612f8d63ec6dd6f9111d4",
+        "checkpoint-epoch-001.pt": "28fb5f9f7c0808306a2ee6ad8446d0d38a69059350bf8f37b6bdde63da6ffdd9",
+        "checkpoint-epoch-002.pt": "ee683521c228ad4564c9ea6c31932b991d1c1a57289c196f2a68bbbd151946bc",
+        "checkpoint-epoch-003.pt": "43f7bc00ba007ed3f44160d77403c83cf08341d5e29eb5a1529d41314c2f3fc2",
+        "checkpoint-epoch-004.pt": "247f8da03b11301caab54aa3b9a560d142b9c656067369b17ba2db7f2afebd65",
+        "checkpoint-epoch-005.pt": "65b6261dff37f965b1210879555a86b7465f6121a3f273822d1ac0dd11043acf",
+        "checkpoint-epoch-006.pt": "0349189fa1d5ef4d23c7e8b774322a012784529e55b72a2f0e40ad49e963ff91",
+        "checkpoint-epoch-007.pt": "a1732a94040f6ec909726ccc4cf14b28b95d0f3b73a2a8ef1cf4d51f1cb63952",
+        "checkpoint-epoch-008.pt": "e4649acd127211db5b143c347377704e2891342e7a96d450e8acb856f4f9476f",
+        "checkpoint-epoch-009.pt": "212bbc4f8c59aeba18c40575775dbaf4c3700095b159138f07c444fd56013cdc",
+        "checkpoint-epoch-010.pt": "b122ba3848c090b060a5111985a70a00aa2265618fba9ad29f4edc0b06d5d526"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda1-seed20261101",
+      "config_sha256": "bafe985e5e1b656280f5ef955e93431ff1143aa3f13163dc8fb7913f8cc3e9b7",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "3e8bb402097406f319e4c4bc0d9a97d0fb2e984893b8cd2b7c715aa8a37f8f05",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "5a30ecf06db50532cc30f72b8f6b6379f6f8837bac835ac2525651ee30762f78",
+        "checkpoint-epoch-001.pt": "f2f427eec53dc16bb41d7bb5e12e1a9d8968bc4a6d74e6acbf296b31b0a81ccc",
+        "checkpoint-epoch-002.pt": "3798611bab5d8dd43ccce032294b0ef4aec107c24dcd428270a47b3721dff920",
+        "checkpoint-epoch-003.pt": "e621986716cf0f8ff1599f2b1359d49ccc580fac5790f83900c02332b10dbcd2",
+        "checkpoint-epoch-004.pt": "9abe0e2f0839e6648571a13d82743a8da9cec98b074db2a96fe2d1de86ba28bf",
+        "checkpoint-epoch-005.pt": "d24e0e520ce95c4d72bc5e9eaf346e6827a4f70d76b30eb70df24b8bd73d0544",
+        "checkpoint-epoch-006.pt": "01b6310717bd5aeb302a329476abda83ddf4565ad7ef5a33804cb7b26e54842c",
+        "checkpoint-epoch-007.pt": "6304c586ac8fae13f1c0448f1426e5af2b6c1ce5d4f4580e91940b3feb56fbff",
+        "checkpoint-epoch-008.pt": "50273e234d816afa44ddeefed710bc82e6bef3deac55cb6e7e60016c55104134",
+        "checkpoint-epoch-009.pt": "462367eff7408670e3de24ecf5ddbdf5a7ba04605c855e1f3c7c1cc8331b2ea9",
+        "checkpoint-epoch-010.pt": "02e64672693fa75083386fc251cc130841d2af492710624f97426830b852e39d"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda2-seed20261101",
+      "config_sha256": "692bcc40977f241c0e661f08ef1a4dae4d96ae46d942036a32702f02826f5f0d",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "e2261084a44a58c64cca2a461a078f07aaa5d3b78fe74db0ed25786ba28b319a",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "651979f1486a3e416ecb1cd7928ca5e32d666db4c5ab384b425efbb102bfeeda",
+        "checkpoint-epoch-001.pt": "74ec1adeca41c4e2abe063cd417eddcc59094c90884c0691c5af9ce57200ab02",
+        "checkpoint-epoch-002.pt": "b9bb45851e26869e4f638adcf84f5dd757a0edd86ecfda66f1bfdfa0f352728b",
+        "checkpoint-epoch-003.pt": "6e04b7259f0bfa2165303c4ecbcef148024d543e7b2a802fb38d0cc9da6abe3b",
+        "checkpoint-epoch-004.pt": "0ee5de4d709c4078f65e780b67adb3250c19551fdb5320d6e8c8a0f6ae43a4ce",
+        "checkpoint-epoch-005.pt": "4bb025d125c5b30e22af9118fa94016aaeab9414e62d5e823e8c2804d2fa09c7",
+        "checkpoint-epoch-006.pt": "6e82e6d4856b41fa109fd2934d4462feb45c8b0d127172ed5fd1bc1afc2f1eff",
+        "checkpoint-epoch-007.pt": "8c4ca9005fb56da4ba2c7c3128866898925c389ee0b231f05cba4db391eb01c7",
+        "checkpoint-epoch-008.pt": "6f7ccb5a67b7f43ce393d966275dec9b28e63a6f6b30228ea34f2b615615bf22",
+        "checkpoint-epoch-009.pt": "9a2c01b0e9bbde91087b3cafcbee320e3178e5529bc583b039f47a683846fe3f",
+        "checkpoint-epoch-010.pt": "9cae835d43ef38ef00ce63126dfb80749a8fa7139aeb3792aa666d8eaf7655a9"
+      }
+    },
+    {
+      "run_id": "grid-s2-lambda5-seed20261101",
+      "config_sha256": "750ac3121e7ea72b513b33a314ddb4cb5ce4af9362aae5c2ed4b74a4a3b74832",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "1792feaaf6c52ffd060ceb0e702da98cc55e8cb12632a08dc5f692912b0286ff",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "f834b2724bcec8a7285afbcd7fff9bdaefb8a06991fb7e83e2f9e39f5877b32d",
+        "checkpoint-epoch-001.pt": "94635c6add8f63f7dbdaf38ee8c36cda8446e68b7960e2e256ca6f2fe4374e67",
+        "checkpoint-epoch-002.pt": "a584b5f0daa6b05b43332533d5ad43315fca0d2671f58df442d468c8fdda6430",
+        "checkpoint-epoch-003.pt": "008b421bb225052055f798bed69ddc6d3f68e0418fdf04ae91b02b6662004c00",
+        "checkpoint-epoch-004.pt": "cd856c2c60dc4c2b8d818815b6b081428dd46977020c1910ba98e137ecea6f3c",
+        "checkpoint-epoch-005.pt": "56bcfb2cff4ceb67b475689f262e87b9911ad7b367e76ae924d838f96bb28c2e",
+        "checkpoint-epoch-006.pt": "d3d68d0450c95056310d185a8c99ceb85eaf95eb402886e9efa637c3c937a125",
+        "checkpoint-epoch-007.pt": "68c6ac510ea7ebd2899117bb036ff3bc7ac16f4cdc6206eba830461793e89b53",
+        "checkpoint-epoch-008.pt": "d168943619c0cb640290bd25adb0d5fd35152d87b9d86db07d1b00663bb7a445",
+        "checkpoint-epoch-009.pt": "76cbb6bef7633737a3002f1e8354e6ac189105f313e59445ff74c21f0450b5d5",
+        "checkpoint-epoch-010.pt": "db83e84e87e5164d4a2969339385cbbc2745c9792f4670cb4e8897e92734661c"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda0-seed20261101",
+      "config_sha256": "6bc0db713a7797ab5f9dccff3062a22d10996f692329acb2c32d7a8730b1b267",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "3b1a2f49b3f3bc50b5030e3aa6cf2029816f3a39862aa0e172dcfef886f7ea4c",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "25cb2d756dc4ae012f2254b06a96a6c807d0c2264b7af1478de18d55ea6d1c62",
+        "checkpoint-epoch-001.pt": "7d25843c86096f98d061dfc3719be59ee783d4d009f413bdfa704ba0c49a52b0",
+        "checkpoint-epoch-002.pt": "8da9d66aaf502c6878ca12391fa487fe3d168cedaa915f94d98edbdcf0f41092",
+        "checkpoint-epoch-003.pt": "42c7fd9415a0d4cff179c8a83728def87477479a709dbbfdddb4c7c787654c95",
+        "checkpoint-epoch-004.pt": "00a64ae1d9ead26f6d764e8a6ce389f5f2589dd82b74f5de00f74bdeb486e2c5",
+        "checkpoint-epoch-005.pt": "3ff220141844a51da0727726884a51b674b7c99893b3da274192c36d098cc8d1",
+        "checkpoint-epoch-006.pt": "3d4f675373786f4c961d73d9ce9476131fc01ff0a119beb64364a3857b5ca78e",
+        "checkpoint-epoch-007.pt": "ff5c6b3c90ef0a48c0f511ec5853e2d72a1e656b042c988ed08496bf6108a423",
+        "checkpoint-epoch-008.pt": "4b1e85d2eb064152d459217ca0e9c6af1490c821ea03be38728bb62a31dc31bc",
+        "checkpoint-epoch-009.pt": "046046cbbd467dda697d954fc18de01b80c8a2d8dbeaf61907fe2e8aa41aed3f",
+        "checkpoint-epoch-010.pt": "9e6e39da9719dc649ea290ec3f35a2ec8a3d49d5591b07cfb84fe2dad722505b"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda0.1-seed20261101",
+      "config_sha256": "ef63f688510846224d2899229bd241f4af2f14c252bd29a5dc4277f8383f003f",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "ab419fd882dd012ed2c607746d4d2546337de98f84bf87bad650a97375640aa0",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "420c95a2d4cf6acd6f610af673ff38ac2eee12c27a36cc756c1f72fc187a1e51",
+        "checkpoint-epoch-001.pt": "77d0e3d3a2a2ddbe14d18c7c4707f3df2955d5162c0a6913ca76874857ad16f1",
+        "checkpoint-epoch-002.pt": "b5fe52af051952b3a0185622037bf8e63cae66dce6185f60a06809e2fb274882",
+        "checkpoint-epoch-003.pt": "50be91bfe2b44b63725f081f6b29c1b286e34d1eeb5a8856a7da6f155051d252",
+        "checkpoint-epoch-004.pt": "25cca3a7ffc97b1041d6e4c2ee8004210fadd88191200c8b7e4a8b91d342da22",
+        "checkpoint-epoch-005.pt": "acb4059089d565bcef0c620f46c3689fc2626e68c537ebe0bdd4f1907f655376",
+        "checkpoint-epoch-006.pt": "dbae99f0b9891ca94fd6daffc51d1662560ea65ff42c0f3b1e4c27a26684e373",
+        "checkpoint-epoch-007.pt": "db4880b576c8ece3add02e9c7bc5a2eb01c764295cf4a61d4e8bace0910185ab",
+        "checkpoint-epoch-008.pt": "f6d68bec740f1aea07719855dbc16e8b0a330c1e8d08bb4d702c0ed098e53b1d",
+        "checkpoint-epoch-009.pt": "3bccf230d25537819f01a983c000b732cbbdbcec44ffa9f2211fc3c8815dc62b",
+        "checkpoint-epoch-010.pt": "bb578d69983e66503f64e862b2ad30f3c6280bd5b7582c0cfd8cdb21463dde6c"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda0.5-seed20261101",
+      "config_sha256": "e4d400706e4deca9572b2cdef7183aead0e2a903c70896006efb4b030c2d4ef8",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "bfdf7c03f3b81fb772fec758e00c0ff65e247e540f47739cf580aeda6ad15b34",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "c25d49fea8b39f7a0112d7526af2230504eb799cd10129a7698d2953baacb601",
+        "checkpoint-epoch-001.pt": "eb81c5d1176d11cc8e7d834cb216d9058216998c3573f312a4630b958b073fbf",
+        "checkpoint-epoch-002.pt": "c97ddda9bf5478275d1f1fa27dfb2a03911e4c48a4ce0f4ebb8f8388410dff68",
+        "checkpoint-epoch-003.pt": "f70dfb005bc9920fd8377f0fee0bd5abccea4f80872b52580db7c7519b5dc5cc",
+        "checkpoint-epoch-004.pt": "6ff5517ac785b0eb96a6947cd8379962f19b515cfae8c1fe87a2da883798db6f",
+        "checkpoint-epoch-005.pt": "4f282d505b468119afd00588d4d66e097236208ac16b98d0da70b911f418a4e7",
+        "checkpoint-epoch-006.pt": "9a0286ab58bceb9875f8a2cf51099d69ccb2fdaed3885db1ce1a2b5c92dc0b1a",
+        "checkpoint-epoch-007.pt": "b2a1641ef773fc98388061916e742ff86e45c23d21765d887270e48e9fcbc528",
+        "checkpoint-epoch-008.pt": "0663c27b33eaa3e386c62522546511761ce3d8f8384f2df3f4e9c2b6578eae8a",
+        "checkpoint-epoch-009.pt": "539d565e29274dfd71752df1a0d1602b9a4a80ab666f45acd5a4eb0f545dbb5e",
+        "checkpoint-epoch-010.pt": "12f7d20e55f4f9fbcd6255d8421ba8272411d61087548d46b392ec4cbe602478"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda1-seed20261101",
+      "config_sha256": "311dae0660747f50ffc3f509c4ed365239bbf4f839f22927182716bcec04713e",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "9134ff53c62263a216c0a0b9ec1fce6d4850ddbfc4167d5bbd18d786ce65e4dc",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "e700a1c8d7534f5e1a0d60a909ac639f979275de69f0f424557747415e238181",
+        "checkpoint-epoch-001.pt": "df7d0e1d523c2e830c9388214268e85fc10abdc8e59c4b53754cd42c51c2214a",
+        "checkpoint-epoch-002.pt": "c0df348959c8dd4b627ef924ca385ad8e9445aab633b3380e8a54857fce77bb1",
+        "checkpoint-epoch-003.pt": "defa222057852e6cd31fc1dc465e8d3c99653bcc6dd8d7ddb594f42e001fed20",
+        "checkpoint-epoch-004.pt": "020940b895546d477577c4b793db66423381ef38c119595f7397a389b3942e59",
+        "checkpoint-epoch-005.pt": "68e57f06456495cdf66f7b90974536c966eab9f0e74a11d28530446bb9ff0833",
+        "checkpoint-epoch-006.pt": "f0e64f05096bc2c208ccbb5af316e0ea2fe4bca681aa160c6653bc5bc60101fc",
+        "checkpoint-epoch-007.pt": "631ed5677e6227c696c903abd79a804216e4d36fa3342bc7629b3889b85a70f1",
+        "checkpoint-epoch-008.pt": "9a501e73dc488244ecfcdbf22924fea172a2fbfb0f06b8f17f9f168b46d64a33",
+        "checkpoint-epoch-009.pt": "583092e90c8f3ec28e207147d00760c72e702ad5ef7819fdd31adeab7d58b34b",
+        "checkpoint-epoch-010.pt": "156187cac7d4f835639e91c66fd2a98e63a7b224676fba1e1b49d3db28806636"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda2-seed20261101",
+      "config_sha256": "2b0b2e70389e077409c747b7d6de01da667ebb9e871b588a1bffd411617a75a7",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "a4e656bc5f1f512e657d2480726426a33f06944d2e0414437f90ff12d779c9ce",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "112faeb7ce630b72888f58918c9207d81f1ea953617cf4d9c333f94723daee09",
+        "checkpoint-epoch-001.pt": "49222019738b7d058681734866109fd3456b671149326cf7bbddced0709676ff",
+        "checkpoint-epoch-002.pt": "68b26c76012206db2e0d08caf80527840cc2e6bb5ff44aca6fbabe374d9dc418",
+        "checkpoint-epoch-003.pt": "5a3f4b9082d56b0f7c23f69f43c47e3135dbab36c90a23503b8ba027a15a653c",
+        "checkpoint-epoch-004.pt": "96fb10c86a58bc3038193ae1bf6079433410f1c2afd31cf6059b00a459299297",
+        "checkpoint-epoch-005.pt": "f0328fe3aff60e63977eadaf4338f85a6136e0bcd08092a876d4ddad5af49791",
+        "checkpoint-epoch-006.pt": "eeda6f04c013a046ec61e9d73470ea6940db7e9c2492eb05ce9c58424a8407c3",
+        "checkpoint-epoch-007.pt": "d77806eb2aeb6a207df97e96cb3333ad64a9f21ed12ee30abb4f5879b2d00d18",
+        "checkpoint-epoch-008.pt": "1313ba3416bda4addf2dee5a0c2491ab4690a5073e33387b1419ddfe993d0b1f",
+        "checkpoint-epoch-009.pt": "2fbb2bf3ab2cbcb9be32f778652efd0b39c0b676c893fe3d5fd76d3967658a95",
+        "checkpoint-epoch-010.pt": "412e492279266c3c5f05551ed7b3c7473fba66aace0495dc73beddd9da870c3c"
+      }
+    },
+    {
+      "run_id": "grid-s4-lambda5-seed20261101",
+      "config_sha256": "11e1dd2ea895e83c058d7a76c73c9450d90ab596e2e3c67296b5552a9ea3ea6c",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "5fecc9781aa0f579a0de1a176ef5766c2aab971dee114aabc47f51b6beb2ecc6",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "8a18e97e056345872ac0a51d3e674e1124fb25f582439c281e0ea69427db608d",
+        "checkpoint-epoch-001.pt": "e94ea80b9a71a972bba4f6013226e5edeaea66b59e1ed974009ee544bf6bb825",
+        "checkpoint-epoch-002.pt": "bd91737ecb75a6406493d08c0e924d814903a8da6494a104a53aef858e71f206",
+        "checkpoint-epoch-003.pt": "f164b5bef143efcfc2cc8168dd4567938d4ff847936b3244a2abccad2aa448e0",
+        "checkpoint-epoch-004.pt": "aeb636ae7673f31c88023c4e09113c05d1ca74f60bd4bbb350d9ecd5c8d72ef7",
+        "checkpoint-epoch-005.pt": "eaffab18926cb1509457bf01aa64b48492ded6c04e48d4de08cf01359c8e1926",
+        "checkpoint-epoch-006.pt": "290e7a1f8748aa615eda92035d958d4bfa10c872109b13e40e484edc933da463",
+        "checkpoint-epoch-007.pt": "d4a603f3971f61816d63ac3a73f7d754c68ef5d99b9eb4bb26f36ea17b4d217e",
+        "checkpoint-epoch-008.pt": "e7e095c6fbd77e9892c964fa3d17c609d7c9da3e410a363fcefaf2063144c9a0",
+        "checkpoint-epoch-009.pt": "796b355a97f5b13b30b5453f1aa9d7cf03d681246ead500588654077329389d2",
+        "checkpoint-epoch-010.pt": "f77dca5b72409378a812c99c0491eea9a08efa8ed2a31bafde222f46277816dd"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda0-seed20261101",
+      "config_sha256": "1ea73b262c3307f640bfd0b4ab58810a263eb49214af2c209f288ecc3c73d3c6",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "7bb33d29b6b723461d2dd1bf94df5e9dc8a225c1dae61607cdb846acb9c5348f",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "9ed0cbc9258688b129990f10dd3ec583e34652808307f77908c7f298c137e3d4",
+        "checkpoint-epoch-001.pt": "1c06614f99d6f74a359e1d4d1ad7c4b79c870925d37a48e6353b0869b32baf9e",
+        "checkpoint-epoch-002.pt": "74a0b3e2eaecf0eaa064a9abc52bec8489722143afd5ac3630bad6bd47893997",
+        "checkpoint-epoch-003.pt": "c5090bf98c2ae5358ada4bfc0c72b011c9a3487d2918c9cdb62f3a46dac69791",
+        "checkpoint-epoch-004.pt": "cbefff9084be0df089db2fea749451ea3883791cf93925856407d9e075e8989f",
+        "checkpoint-epoch-005.pt": "8c4efd3111499a9412bb45fb4833af3a4480b87e9c618f2032c88269e4044c1b",
+        "checkpoint-epoch-006.pt": "8602aad81bb209778e752e83ceb05f77000c4a58c7b1a5d1fa9fbc5472fb08e0",
+        "checkpoint-epoch-007.pt": "e3fcd8a533518d0d2624071e5b5d836e2073b1b560cb98fbff198d68c9d05836",
+        "checkpoint-epoch-008.pt": "a87cd47abb9ae49719a8b55fc496c43b167e979250e9c16bcc4055000beedcb7",
+        "checkpoint-epoch-009.pt": "b0ea36adf45021a4cee598550e3ff5913b68376ab2e1cfc65ea571a2ff49c8f9",
+        "checkpoint-epoch-010.pt": "0702d18d02455a70cf731b3cb7107a9ef37706af13ac3ac9c7f2c05ce0ecf190"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda0.1-seed20261101",
+      "config_sha256": "5f56bf04196c9c783a3e80637a5555b3b8369fa32b4d9ac65197393ab0b8ed10",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "267f7b51e877a289d266063671e6ceb3065531a58a1405eda6d4c3ad56885d62",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "5ff92c7658a0759d1fd79b20b3fa65b3bacd24aa47b48071f579e55192427fbd",
+        "checkpoint-epoch-001.pt": "f53079f2fa68c15926ec816977092d820d944c69f4b3c59f48e996b3aea0c46a",
+        "checkpoint-epoch-002.pt": "b46dc0a92ca230d78b872c00588f8147ca02ac61b2b09eee79452fc9ffda6965",
+        "checkpoint-epoch-003.pt": "6e939a4f5173c0d332247a2d99985532535d1fce2ce2af9ad4b4d99e17875900",
+        "checkpoint-epoch-004.pt": "5ef6c9bf30016c0484300eed485c420212a77fe860ad63b283a0b26f5376423d",
+        "checkpoint-epoch-005.pt": "30f2e304d03029f399b9434e33930c697d2ba40cc097db069b2a8e168b63b058",
+        "checkpoint-epoch-006.pt": "18d9c8b2965815b25c1eb359f27a4a4eea5319d3282a2c378f167fec6d5bf2f7",
+        "checkpoint-epoch-007.pt": "f44dcf53f017b36d6e48ecfd634d26beb569aa099dee1cc3956142e8e4eabeb7",
+        "checkpoint-epoch-008.pt": "1cbf4d9e07bf5ac4e76115aa7e16699215ddc2e38c4e68f4818b2a56a7372c8b",
+        "checkpoint-epoch-009.pt": "e578ef3f9e5e52cf42e9e459b9270eb9ad651ea3d3602c35e025dc59cd2deb04",
+        "checkpoint-epoch-010.pt": "0385e37c2b260f2108f65785b5213307e3bcca58052156c1786d69bf4ad5154d"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda0.5-seed20261101",
+      "config_sha256": "ecfb5dc1a6c42ef94cf171e7171c1d5b95df60eb1ef86e1ab80102705b9bfde0",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "9a9f9672a91b4caca93edf4dfdddf563d0ee2fc8e286a5fd92f53d8e1b4fa128",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "b7ce7f3f6450d388e1b59049fa79ee56ed88615f24812fb4167469bd94b7e100",
+        "checkpoint-epoch-001.pt": "c84667faa144edfaece191e2fe0294cca3ec663c787cc8bff60ddbf765be1a41",
+        "checkpoint-epoch-002.pt": "b33c263c709f860d1422ef64ec441ff6eea851f166491a6b0741877cf22716ed",
+        "checkpoint-epoch-003.pt": "fb73a4fb156b4ce8c13007ba33e6f6d342a066aa42be2b77bb278902f73ab906",
+        "checkpoint-epoch-004.pt": "b432194c56cdd69655195ce4a148ebd7e523c1ebae715824a931ea4064737d20",
+        "checkpoint-epoch-005.pt": "a46be6bbe93f8f0c0a095d680028c2b303d3a8c9f3f99e86c01609c75aa7e541",
+        "checkpoint-epoch-006.pt": "2bbd188abd711b506b1f416126e4f3ce8c2277a4e19025c641b7dda94a611814",
+        "checkpoint-epoch-007.pt": "1addf79c2a31954ef005c712dccb87e015ad5636f639cb0f37e564b7ec6505e5",
+        "checkpoint-epoch-008.pt": "9fd125dfe789c9fa29f07ebc491871b352cffb80bd27c612a27ceb23d400f989",
+        "checkpoint-epoch-009.pt": "d1a9af79e2182b7d7591d6cc03f680b9134dd52c2d47f7c516fc62109c739494",
+        "checkpoint-epoch-010.pt": "77cbd19ef35072081fc90c1dc37962b213a76c56b1b76bb82c9ed5f71c12117a"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda1-seed20261101",
+      "config_sha256": "c24f2854b2e0f5169d15cfc45efceacfbac8d2900c340fa59be40972228a744c",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "5d2d6bfe1e4f05f70ca6f8d1abf067daf312aef3a34537ec4a1d138dd6d453b8",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "ed58deeb4a0e9f58f20cf3a6d692f322c704ec7e96e7ad6923eeff7e4db6b7d0",
+        "checkpoint-epoch-001.pt": "a4bbe019e47ced3dd1dbc22a66880f095ddbef9d0486c8a1dcec8081fb0c1bbb",
+        "checkpoint-epoch-002.pt": "3d99f21ad9ec74d8b5a4ae39fb503ea26f56259faacbba653a1f32b6d5a4ae1d",
+        "checkpoint-epoch-003.pt": "b3addaa23e32671da6e4308e945ed6b42fd7b773aaab7850fce9adc2477569ba",
+        "checkpoint-epoch-004.pt": "b9c5bb96bc330e5a449bd103c96a652991c0d2e6613934b2eb76d9d5afcc2199",
+        "checkpoint-epoch-005.pt": "d54cc3e677eb1ae5529eed3045fe9f9d7c9766f81a60d598b5ef609958561da3",
+        "checkpoint-epoch-006.pt": "36366603af0b730e2bf65da8b0fd9bdc26c02807598599f573f105d8f3ad1495",
+        "checkpoint-epoch-007.pt": "7be49d0a7797652c3c5820fa6b0b0bdf59715377b0f55909433b843fb032b324",
+        "checkpoint-epoch-008.pt": "587935078bd0440a7d1b71d2bfbd54908fc909e31b87dca46848e4bfdeb153f7",
+        "checkpoint-epoch-009.pt": "0a15935c731b9e62fd45a50db74276677383a0482a7eba272cb4ca522ab6f9f2",
+        "checkpoint-epoch-010.pt": "7e5b9fc9beb7515c323af7a7a156ae1a5a0a94784bd40475fad3f85ab5520622"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda2-seed20261101",
+      "config_sha256": "c944c29fc4ec07a239273ac734d62baae480f1ea6b88237ad4b03ffc5a9dd2da",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "66d8958942b056a002f85d9af15198bb806739879230dc2e8dc6556090d2a3d6",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "a3c7a9197824d6a0109187674082a810ac8970f831b1d5e799a60e78fe5ec5f4",
+        "checkpoint-epoch-001.pt": "ffc4ef9fc2324af4a189b097c8457853c58819b94c1cdd10048ab3c9a7d503e8",
+        "checkpoint-epoch-002.pt": "162dcbec5e4d85ae5cd1792960d5df9f5c40b9e6b3992033513733924095e8b0",
+        "checkpoint-epoch-003.pt": "42cbfd0a7aa996bcc8da3373e190c63ab9857b0aef4203d1e75fd594d1dc1f88",
+        "checkpoint-epoch-004.pt": "022a0a46f299adabd8f482b0a22826b86e715730f2a6dccf4af69e8609781c33",
+        "checkpoint-epoch-005.pt": "40d339c693b11d87fb44c952d01687e6733ded2d7d3869c92dc67a3f6b461662",
+        "checkpoint-epoch-006.pt": "62fcdfbe8f9673fa80452b2f7be52f9d200a73d6aa09718009f51db193bc336e",
+        "checkpoint-epoch-007.pt": "865f0084c6ed9546a7b401cd19f541e837eedbe7594d454f03e94df362de336b",
+        "checkpoint-epoch-008.pt": "51ef8f3392c92bb1dcd60e708cec222acb021589db7fadbad65a5af72420ec05",
+        "checkpoint-epoch-009.pt": "e2c564dbdd622dd42635f67fc40a31401d5a204cee5603af7aea355f6cafb563",
+        "checkpoint-epoch-010.pt": "1b4265890e8c49ce337f47983d9da321b06a00338070855d154da2b4172ed342"
+      }
+    },
+    {
+      "run_id": "grid-s5-lambda5-seed20261101",
+      "config_sha256": "20910bafde300f313933756bf054690717d1c4c6ca87161b0953d7803f1eba70",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "e6e4881c7c92d3e70aa0a6fb9d769c61c0471bc8266835329c5491d770a8d5c7",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "e1d5d964694893b9b076f6665bbf5df89d47bbcda0f43ecfcbdb291bfca9b8d4",
+        "checkpoint-epoch-001.pt": "03a6c5b7b0ad21109258bfe0aca2fd1a446cffc7465a06a757e568367cf44441",
+        "checkpoint-epoch-002.pt": "486736362b13d5cf84b1cd47f696e397ab5d9f4a80e28060d1f5793cda623e82",
+        "checkpoint-epoch-003.pt": "d83d4349269ac70b202fa56cb2e9bc75b4505bdfcbb336b750b8b57b6b14af67",
+        "checkpoint-epoch-004.pt": "9556f76c9a5ee8921b3311746912092a025a7b0f7c540966841f5eb51ec46a2f",
+        "checkpoint-epoch-005.pt": "4dd125b3a09a6593af6cba4acae0603749913c2e9c89571baa8e66543b9c0d87",
+        "checkpoint-epoch-006.pt": "060fb4759af962ff49e5de466c1e0ee29e75a66be606d85e9d0a5f997e1b8eed",
+        "checkpoint-epoch-007.pt": "b72c043f12361ba292fd43e2a2a40311d28a40ec61e81bae57505e528dc796b1",
+        "checkpoint-epoch-008.pt": "b63fc8d51ce53af601e70a4882cf75ad3b07d64ec8caf8bf7b77785dca0a6940",
+        "checkpoint-epoch-009.pt": "1cd11468b3abeea164a47b8fb076cba6f073a3323c813ad0fc0a9ffbba58d754",
+        "checkpoint-epoch-010.pt": "6469e195ff6bf6384fd0a26378ae41104a642e35e63be175f3264938e991bd04"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda0-seed20261101",
+      "config_sha256": "b95a6d4d6d80f06d4f3df772775895bf457f02747b1cf6b85b43011f9374305c",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "b50ff82eccbcc6b0d5ce0028cc5697b85b5624363d88c037011931547162c29d",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "d3992841d98be56b2e6f187cd5502ad7b3686ef6add0222813376e338b2c9b77",
+        "checkpoint-epoch-001.pt": "cdfaa9ef9af26026b4223fd8b22d148650bb5e6e905fe82858ed8f3932f214cb",
+        "checkpoint-epoch-002.pt": "e63469ecf9553d4578844e77575e5349c516e9241c8315a1d55d8fbd898f51b6",
+        "checkpoint-epoch-003.pt": "d44c7df9a2eec324131875dfa162b5528ef51226d1e1c871f22fdd2538358f28",
+        "checkpoint-epoch-004.pt": "e545786b6aeca00354c7acaa50d64ae9635c4f48b2dff36e543987f9a8ae40a3",
+        "checkpoint-epoch-005.pt": "19d4aefed0b7d158a9fcf82470d8f9fa13d54a7ebba6220ac000380eece5b5e4",
+        "checkpoint-epoch-006.pt": "f482c3a3dcbd8474c335a804fc53b357c8b6329bf15d7ecb691b430f06603cbe",
+        "checkpoint-epoch-007.pt": "97e1e9eabcf1672415c65bf9a8e91bc5bdf257d8edcb1c30a875bf34223becf8",
+        "checkpoint-epoch-008.pt": "2341af41e2ae7c9024ad434a35fe80bd87e727594724f6c1c67ce01164f6eb0c",
+        "checkpoint-epoch-009.pt": "b88dfa81213d2c5c35ec958655763b92d444b2f94a7d787f78454189399aca86",
+        "checkpoint-epoch-010.pt": "5bc82418e87e8a88fcf59ed1fa0e31491ac37984278e254b2ec15bf6da5c45b2"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda0.1-seed20261101",
+      "config_sha256": "9e10d1af2cb513809552f484c837803e6facb91c45f1e0c81dd1c9cd83d70fc8",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "7f4a9cd78c1337e7ea6485b3562df95f3e51d44bb2b7d09d075415b82fbd2c8b",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "5593eff5bd96e1ef3e2ba580a95423c03008274e974c06e818751e2ee0ec0b81",
+        "checkpoint-epoch-001.pt": "1c906c19876ceeb57470004804c09288a914d54142fb32aaad714e57f445f490",
+        "checkpoint-epoch-002.pt": "658bcd625ce26ff65c351ec1c889344b8ca821f3c5421578b44acd96e1d2dfb0",
+        "checkpoint-epoch-003.pt": "daf5dbe8f12dfe9b17b596d791a97041c160b3edecb8eb5e6b313f317e1c404f",
+        "checkpoint-epoch-004.pt": "163d4524c8710d3428ec42601898f21030548542b9ab0ffc70c0cef52a9de061",
+        "checkpoint-epoch-005.pt": "f30e796ab0f25e27b7d8d14d79fcc171ec01bc17269cff00f3fcf1563d9acea5",
+        "checkpoint-epoch-006.pt": "752222c2e86d50899d47766bb01c62fd77e4f3996ee6bb16496c3da56c12cd1a",
+        "checkpoint-epoch-007.pt": "d7051e929622e9e8737f0ab89588d6cc95d4e5a5242bd845199fac20b9408476",
+        "checkpoint-epoch-008.pt": "dda3d95ecc13575e8f6f953847943a682f6004f8970e0f0edd369023d9120cc1",
+        "checkpoint-epoch-009.pt": "fbb51acd22765f52cdab552becefb2b6808a34f40db3c27f46c87c4f125b91b2",
+        "checkpoint-epoch-010.pt": "bb6358b2ba8b56c55e50240f8ec9e3dc341cfbc247a01ff737f4d891501a755f"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda0.5-seed20261101",
+      "config_sha256": "926f2a7b37e7940abc41e082582f78f4eeec94d4497ae389d2800abf7a98a21a",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "31b113e89e04519769c0d37904401f509b68ac144924203eb96023a521f3d082",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "cf1873128543cf37c2a9e59c937162d5dc2d83df1fdaec63b8d6899027bb0a23",
+        "checkpoint-epoch-001.pt": "2e58457f6aeac043b438c8733209ecdfdca90f72152a0f7a9c1ea1fd442670d0",
+        "checkpoint-epoch-002.pt": "58c66caf8b8310bec0327146ac4e9911b7f830674aacdb1ede47903db3c2f82a",
+        "checkpoint-epoch-003.pt": "4333252fc211ee73362c5263d0f211d91cb91d9900744203cb8861b4f5066741",
+        "checkpoint-epoch-004.pt": "bf183bdb2f457ceec55c5dbb0856733279f9c9f8bb2784f50e77ff33c4aa20ba",
+        "checkpoint-epoch-005.pt": "43bc3698124277177fe6448a09c195563890cc4d8667f147c749f077d1a7f5d5",
+        "checkpoint-epoch-006.pt": "76108467c864cf8cec16873a6d5088626da41e0bf8529689645bbb547bece117",
+        "checkpoint-epoch-007.pt": "e3be0b113051577534ad8ecea859e51a1d76f435ae99e59baf377aa09e04bb77",
+        "checkpoint-epoch-008.pt": "df583981c49e5789a1237a75f5020b5dfb0f5f9201317f29141f02429171e5ae",
+        "checkpoint-epoch-009.pt": "2488264c89c191d4c236306ed9192ad445ea71a20b5948f4974c22e3c2031208",
+        "checkpoint-epoch-010.pt": "0f05a76ae63c1981b90526e72b1ec25c08914b18b1da03df0a46fed805939473"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda1-seed20261101",
+      "config_sha256": "b9414ee2e1efb24aacfa4bb43bb14ef4a73952b767ec174a7fdecd19e13fea65",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "8f8e3d5cc9decc0148e8b7a018f35e75f57951e561dee81a74865c170482e0d5",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "787bba5d399c3786d12878b014b34b09402e03565c6eb0bd9605121df6616e23",
+        "checkpoint-epoch-001.pt": "e303e9f7af8d278b41cb38f78372704d897ecdb4d862ce48033ca567f134d190",
+        "checkpoint-epoch-002.pt": "4a509aaca286c75a036b017fc9d6306e11d92cd3842e02cca06eca388214500c",
+        "checkpoint-epoch-003.pt": "856f7054af46c79e132e79397fba08060cc2bab9a148970efd2ce8fbd45163d4",
+        "checkpoint-epoch-004.pt": "ded1b643379e21eec063bd7490f411245481c75fb5e4e0ba29d871b87e6c134c",
+        "checkpoint-epoch-005.pt": "c32d7934179c6d98e4170c538296ca2a7638f144687d118b4fd51f19f234f5d6",
+        "checkpoint-epoch-006.pt": "939c706b9a2656183738685a4071a41c43c3fd2ad38ac7b02b65333849d199d2",
+        "checkpoint-epoch-007.pt": "bc3c266f494a26a37c7099efa7f7ed444aa68195dc796864c770961e3f74c5cf",
+        "checkpoint-epoch-008.pt": "aea3a617f24023976b8bff122db9102a998eceb2cc13a2ede002f455d423e9f8",
+        "checkpoint-epoch-009.pt": "9b647248819540af1bfbad4c1f5e639cd1dd9cf08129619eeafddb9e38780f0d",
+        "checkpoint-epoch-010.pt": "83a0512fe6baa0008c09901a8a316837b1e3088a4a4fa870590d01ab133c1097"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda2-seed20261101",
+      "config_sha256": "77e06bdc229663d5bf3e4669e3b30dcc9dff8d22f13cdada723ba0795360cdc8",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "611893a9a4053a1fedbc107a05bb53d6e2da74971b8c173d0322611684b210ba",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "2091c854d9b28c7f64f616ddd13c13b442752a5322e71b5a6969c46398552ec8",
+        "checkpoint-epoch-001.pt": "0ed60328216b0e3345f8d099812d6760b13a42ed2ae0e0408d7f9740255e23eb",
+        "checkpoint-epoch-002.pt": "c675f9a002db84e24c971e6802bb716ee61e218e24db36338387337caf6c794a",
+        "checkpoint-epoch-003.pt": "8ec4a6afd97da84d19e9a58f2393ac08472f4d9bd1a7549fd0874099d839fa93",
+        "checkpoint-epoch-004.pt": "9c311ce0d6affc7e003088d5762fdd84e3355e3d42b46e896f63b6771a9b9383",
+        "checkpoint-epoch-005.pt": "92415bb5f4b72e4739e973cc361c580f19d11f8a8f98363eb8c7a48b204ef068",
+        "checkpoint-epoch-006.pt": "5317fab9c2e1d452e8a2180059334c37ecbd710dd056ba02d48b9096045071eb",
+        "checkpoint-epoch-007.pt": "3e29be58d3a87b759d558ec2f1304064f792f97281f3a9b3e613891776d3f599",
+        "checkpoint-epoch-008.pt": "32f60247b432d52d7bc91dc625d64a6fc40063fd337eeb5c2486b11b2c304b2d",
+        "checkpoint-epoch-009.pt": "1beb51df539ad12cc7a7b06bd3765d94eec8db06f3d3d5a7adaa788e08723629",
+        "checkpoint-epoch-010.pt": "e61198ebf893db4831adf22fe5dc921cd4ff2e1ab90b5e161114a353d19f357e"
+      }
+    },
+    {
+      "run_id": "grid-s8-lambda5-seed20261101",
+      "config_sha256": "060a6b4113f996c265aa1ea3c2327dba5eddbbb53f084539dca9dee8b23dfd7a",
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "4fba44639340bd5f90ea77235295f64c76525582f55f6fe4f006fd0a65f0a817",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "ae9d25ed8fe1c058b56a77c9e7fba3082e0247bc4e332ff3dd9e2b96acdc352a",
+        "checkpoint-epoch-001.pt": "7b88f8a30f502c5a4fdbe87ebad1609802e6c268f0ef387993b111d0eef9dbdc",
+        "checkpoint-epoch-002.pt": "f709c352df4ea057c268c29a31f7015739d643822d2e241677aacdd122faab46",
+        "checkpoint-epoch-003.pt": "59b0153ccbbadcd378df0c6adbfcd5a079a8ff45bc41ab2d1f9dbe8928cc6193",
+        "checkpoint-epoch-004.pt": "a2910d94d994603f30ede04de4f39d6b6f70344ed2fc6f6e23fec1e9c6488254",
+        "checkpoint-epoch-005.pt": "ed157e7bbc65975f99a66738616eb1b43dccf75b957171915d4f9193dc1225db",
+        "checkpoint-epoch-006.pt": "d37297773f50056fd9b930a9a070508738f518ab398cc41a27adee61c6ddba94",
+        "checkpoint-epoch-007.pt": "a2835df50676b425ea2b6a8301a66eac6a1c98c6dbfd027322c7d10c9338f509",
+        "checkpoint-epoch-008.pt": "5441089e851f23e1568edab5222f04ed39e2c649fcaf5e4c8703e995785dafb8",
+        "checkpoint-epoch-009.pt": "376e8132b5fd7310d9e1fd8ca70f02d2aee26171e8831df03d5715567a416399",
+        "checkpoint-epoch-010.pt": "c5f0537aca4f9a9b19e04964277057e6952f0e5341540248efa01baaa385bfb9"
+      }
+    }
+  ],
+  "scope": {
+    "DS2_opened": false,
+    "Pi_or_attack": false,
+    "next": "Send SV1 the lambda 0 curve with this receipt before any Pi (protocol reporting_before_privacy)"
+  }
+}

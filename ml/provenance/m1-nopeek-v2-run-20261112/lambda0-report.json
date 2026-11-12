@@ -1,0 +1,203 @@
+{
+  "threshold_exact": "218290747091/404383914000",
+  "lambda0_by_seed": {
+    "20261030": [
+      {
+        "epoch": 0,
+        "macro_f1": 0.5682217462784636,
+        "passes": true
+      },
+      {
+        "epoch": 1,
+        "macro_f1": 0.5727977913214491,
+        "passes": true
+      },
+      {
+        "epoch": 2,
+        "macro_f1": 0.5653925481720554,
+        "passes": true
+      },
+      {
+        "epoch": 3,
+        "macro_f1": 0.5593482351186432,
+        "passes": true
+      },
+      {
+        "epoch": 4,
+        "macro_f1": 0.5627766212688062,
+        "passes": true
+      },
+      {
+        "epoch": 5,
+        "macro_f1": 0.5553864712144047,
+        "passes": true
+      },
+      {
+        "epoch": 6,
+        "macro_f1": 0.5516767140028978,
+        "passes": true
+      },
+      {
+        "epoch": 7,
+        "macro_f1": 0.5468006397219852,
+        "passes": true
+      },
+      {
+        "epoch": 8,
+        "macro_f1": 0.5555927819566286,
+        "passes": true
+      },
+      {
+        "epoch": 9,
+        "macro_f1": 0.5491585923507217,
+        "passes": true
+      },
+      {
+        "epoch": 10,
+        "macro_f1": 0.5419131324740942,
+        "passes": true
+      }
+    ],
+    "20261031": [
+      {
+        "epoch": 0,
+        "macro_f1": 0.5682217462784636,
+        "passes": true
+      },
+      {
+        "epoch": 1,
+        "macro_f1": 0.5631838715123838,
+        "passes": true
+      },
+      {
+        "epoch": 2,
+        "macro_f1": 0.5588624574572354,
+        "passes": true
+      },
+      {
+        "epoch": 3,
+        "macro_f1": 0.5607510927438574,
+        "passes": true
+      },
+      {
+        "epoch": 4,
+        "macro_f1": 0.5537276565259638,
+        "passes": true
+      },
+      {
+        "epoch": 5,
+        "macro_f1": 0.5492967365265171,
+        "passes": true
+      },
+      {
+        "epoch": 6,
+        "macro_f1": 0.543162007518977,
+        "passes": true
+      },
+      {
+        "epoch": 7,
+        "macro_f1": 0.5498562695493545,
+        "passes": true
+      },
+      {
+        "epoch": 8,
+        "macro_f1": 0.555812574455093,
+        "passes": true
+      },
+      {
+        "epoch": 9,
+        "macro_f1": 0.5514761331040418,
+        "passes": true
+      },
+      {
+        "epoch": 10,
+        "macro_f1": 0.5444291948528447,
+        "passes": true
+      }
+    ],
+    "20261101": [
+      {
+        "epoch": 0,
+        "macro_f1": 0.5682217462784636,
+        "passes": true
+      },
+      {
+        "epoch": 1,
+        "macro_f1": 0.5656990239609339,
+        "passes": true
+      },
+      {
+        "epoch": 2,
+        "macro_f1": 0.5658786492907895,
+        "passes": true
+      },
+      {
+        "epoch": 3,
+        "macro_f1": 0.5732198741970812,
+        "passes": true
+      },
+      {
+        "epoch": 4,
+        "macro_f1": 0.5820836104300438,
+        "passes": true
+      },
+      {
+        "epoch": 5,
+        "macro_f1": 0.5646481055326321,
+        "passes": true
+      },
+      {
+        "epoch": 6,
+        "macro_f1": 0.5625556567243267,
+        "passes": true
+      },
+      {
+        "epoch": 7,
+        "macro_f1": 0.5497601079628233,
+        "passes": true
+      },
+      {
+        "epoch": 8,
+        "macro_f1": 0.5487173946493169,
+        "passes": true
+      },
+      {
+        "epoch": 9,
+        "macro_f1": 0.5513748538425643,
+        "passes": true
+      },
+      {
+        "epoch": 10,
+        "macro_f1": 0.5526591407468933,
+        "passes": true
+      }
+    ]
+  },
+  "epochs_1_10_passing_summed_over_seeds": {
+    "s2-lambda0": 30,
+    "s2-lambda0.1": 30,
+    "s2-lambda0.5": 26,
+    "s2-lambda1": 16,
+    "s2-lambda2": 13,
+    "s2-lambda5": 8,
+    "s4-lambda0": 30,
+    "s4-lambda0.1": 29,
+    "s4-lambda0.5": 18,
+    "s4-lambda1": 13,
+    "s4-lambda2": 1,
+    "s4-lambda5": 0,
+    "s5-lambda0": 30,
+    "s5-lambda0.1": 30,
+    "s5-lambda0.5": 16,
+    "s5-lambda1": 6,
+    "s5-lambda2": 0,
+    "s5-lambda5": 0,
+    "s8-lambda0": 30,
+    "s8-lambda0.1": 30,
+    "s8-lambda0.5": 25,
+    "s8-lambda1": 30,
+    "s8-lambda2": 24,
+    "s8-lambda5": 12
+  },
+  "plan_manifest_sha256": "e2e4e85856ed1d1861a771388d40de24c27c1ff6ffbfac2138ea275f76b650f9"
+}

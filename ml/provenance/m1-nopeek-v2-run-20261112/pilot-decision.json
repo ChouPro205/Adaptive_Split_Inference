@@ -1,0 +1,37 @@
+{
+  "status": "PILOT_LR_CHOSEN",
+  "learning_rate": 3e-05,
+  "candidates": [
+    {
+      "learning_rate": 1e-05,
+      "safe": true,
+      "lambda0_epochs_passing": 10,
+      "lambda5_min_Rn": {
+        "s2": 0.9087690114974976,
+        "s8": 0.6020969152450562
+      },
+      "score": 0.7554329633712769
+    },
+    {
+      "learning_rate": 3e-05,
+      "safe": true,
+      "lambda0_epochs_passing": 10,
+      "lambda5_min_Rn": {
+        "s2": 0.9116917848587036,
+        "s8": 0.5723180770874023
+      },
+      "score": 0.742004930973053
+    },
+    {
+      "learning_rate": 0.0001,
+      "safe": false,
+      "lambda0_epochs_passing": 5,
+      "lambda5_min_Rn": {
+        "s2": 0.9050300121307373,
+        "s8": 0.37844064831733704
+      },
+      "score": 0.6417353302240372
+    }
+  ],
+  "plan_manifest_sha256": "e2e4e85856ed1d1861a771388d40de24c27c1ff6ffbfac2138ea275f76b650f9"
+}

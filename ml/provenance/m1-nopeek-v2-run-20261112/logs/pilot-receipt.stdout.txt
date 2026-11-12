@@ -1,0 +1,5 @@
+pilot-receipt 6b507258466aa1a21fba12365b8ba1e52512b4b820256586639e4fbdd809dc5b
+decision: PILOT_LR_CHOSEN lr=3e-05  threshold=0.539811
+  lr=1e-05 safe=True lambda0_epochs_passing=10/10 lambda5_min_Rn s2=0.9088 s8=0.6021 score=0.7554
+  lr=3e-05 safe=True lambda0_epochs_passing=10/10 lambda5_min_Rn s2=0.9117 s8=0.5723 score=0.7420
+  lr=0.0001 safe=False lambda0_epochs_passing=5/10 lambda5_min_Rn s2=0.9050 s8=0.3784 score=0.6417
