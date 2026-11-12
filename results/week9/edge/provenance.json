@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "exporter_sha256": "4c92b67cb9a48dfcb020621d441d62f1e3e80097513ab5bb87824637772bd9f3",
+  "published_source_commit": "54320ff38e8759cfed42479db68027561041a07e",
+  "repository_head_at_export": "54320ff38e8759cfed42479db68027561041a07e",
+  "publication_date": "2026-11-09",
+  "profile_sha256": "bb24550610f15e25c2f60d7c86901176fde1b65799abe895c26f3594be38435f",
+  "archive": {
+    "name": "gui_review_windows.zip",
+    "bytes": 725535,
+    "sha256": "9df14cf5ddeb57c2a5dc5a461dd0f91d2b45589f2d4257535e768dd67b46c5d9"
+  },
+  "analysis_inventory": {
+    "name": "sha256sum_results.txt",
+    "bytes": 1077,
+    "sha256": "c3fa401997fc5e2127b8dd1024fe3b2ee87c874a66412faad885cbcb7c6e2369"
+  },
+  "prepared_inventory": {
+    "name": "sha256sum_prepare.txt",
+    "bytes": 7236,
+    "sha256": "f0d268282b7d244c7f3370f58c74fb8cb8c1a06bd936062fff54924f88773708"
+  },
+  "raw_inputs": {
+    "idle": {
+      "run_id": "idle-0829fe8cf791",
+      "run_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 569,
+        "sha256": "235e7f97214e6c6f1cfd185dbec8563de1fb1e1e737cc88421ca62c5d418ab54"
+      },
+      "receiver_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 335,
+        "sha256": "a78b04a92c67eb3b131d810ca19b9da3943c220c8ee0f40f50522230fb59a81a"
+      },
+      "clock_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 78,
+        "sha256": "436eb4515aedfd16ac3a30ffdc69c7a497f00788046a08b87d2df502a1d8dcf4"
+      },
+      "sent_log": {
+        "name": "mqtt_sent.jsonl",
+        "bytes": 359280,
+        "sha256": "59aacfb7343b1c386b4318ba008d3e348b9f69717120625728e12751299b65fb"
+      },
+      "received_log": {
+        "name": "received.jsonl",
+        "bytes": 463905,
+        "sha256": "7c2ca71318507f71c6d78f443a740f87eac9bb16b15f66b2ab1e51fbb6769871"
+      },
+      "probes": {
+        "name": "clock_probes.jsonl",
+        "bytes": 403050,
+        "sha256": "e7caadc51cc1978a58fd138b5e9ae44ed0df32ddf18c4898d7d73c212c872a3d"
+      },
+      "jobs": {
+        "name": "jobs.jsonl",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "analysis_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 250,
+        "sha256": "c7d6b029ac2df74916db0a25db44ffe995cf027bdb83e6fb22948f052ce57753"
+      },
+      "parent_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 688,
+        "sha256": "5f293fb56c4a7bae0f9fd020f0fd0f15205dbbd11e182fc59e1fa2c587de7e92"
+      },
+      "worker_log": {
+        "name": "worker.log",
+        "bytes": 2402,
+        "sha256": "bdc6ee68fc4d69658e1c6e39fb1b20e8e542a022d6b549cbcd6c6bd30395aeeb"
+      }
+    },
+    "varying": {
+      "run_id": "varying-a6fbc654063b",
+      "run_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 569,
+        "sha256": "affd82f25052b93af4f5c6cea721fbe9cc6656c64968d4d1fa818a07ff66b6f3"
+      },
+      "receiver_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 335,
+        "sha256": "8df1c041dcdf4656675f3a985f4233ef04b26145c187ebc3cb30d48c24c1f1bc"
+      },
+      "clock_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 78,
+        "sha256": "436eb4515aedfd16ac3a30ffdc69c7a497f00788046a08b87d2df502a1d8dcf4"
+      },
+      "sent_log": {
+        "name": "mqtt_sent.jsonl",
+        "bytes": 619089,
+        "sha256": "d53c5c923e2c6755fd689d2a94d1c2d0a74a64923be453e90632fd1b8e8fdf4a"
+      },
+      "received_log": {
+        "name": "received.jsonl",
+        "bytes": 793402,
+        "sha256": "d70d9945f3fec652d1f9f9d0b5655e0cce1096dbeb548bc5562c763a07432afd"
+      },
+      "probes": {
+        "name": "clock_probes.jsonl",
+        "bytes": 399530,
+        "sha256": "70c38345600f82162c4488ec4a17defa1563bab4d21f494f21dbecf4def2ef25"
+      },
+      "jobs": {
+        "name": "jobs.jsonl",
+        "bytes": 535039,
+        "sha256": "51079a68d75eda6f007b858dd17949398cbb4f79b12cddce4cf5038c063536e7"
+      },
+      "analysis_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 250,
+        "sha256": "f57073315a1ea36c46136106524154519c662cfcd0b4ebba0e866f312a0ac7c2"
+      },
+      "parent_inventory": {
+        "name": "sha256sum_results.txt",
+        "bytes": 688,
+        "sha256": "e2e3b43d9784341e3d829b8b3a97ada561c6c38ce670d27e25444e3563606214"
+      },
+      "worker_log": {
+        "name": "worker.log",
+        "bytes": 2402,
+        "sha256": "50d7819c61578a6f1204532c6e18bb7535df223a248d1e72c1dec8a0f961e14f"
+      }
+    }
+  },
+  "reference_npz_sha256": "e7407378e7870afbfa94b850f809c85165a1d640673d1f01bbd32f6d1aab76d5",
+  "backend": {
+    "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+    "worker_sha256": "9f542a2c5aaaf97e94a08a7c529ddd371e0894e5e74f9c5962bc31b5e6da222b",
+    "plugins": {
+      "libvart_op_imp_relu.so": "6c3a30cd53404a9e691bed554056243e22d06ec42c07b222a1955b243f740f50",
+      "libvart_op_imp_maxpool1d.so": "7c81f9eb3d754bc52b2e995b77c895cdd73120c68ffa6515cc0eb9084a2f5b19",
+      "libvart_op_imp_conv1d.so": "ba0eeaa3559c5d42c672536ebe3cc65f77558ead8eb43c77f99bb0e80829a2ee"
+    },
+    "bundle_inventory_sha256": "41fe3388db89bdb0d1759e4bc7b6b926af1fb8d87bd8c71d880505695ce14a44"
+  },
+  "verification": "SHA inventories, W10 CRC/analysis bytes, full payload/clock/source checks; exact recomputation of saved JSON and per-message bounds",
+  "raw_storage": "Original session and W10 ZIP retained outside Git; request through project artifact handoff"
+}

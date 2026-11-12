@@ -46,6 +46,11 @@ results/week8/device/README.md text eol=lf
 results/week8/edge/** text eol=lf
 results/week9/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 results/week9/device/README.md text eol=lf
+# Derived Edge text is LF; binary figures retain their original bytes.
+results/week9/edge/*.json text eol=lf
+results/week9/edge/*.csv text eol=lf
+results/week9/edge/*.txt text eol=lf
+results/week9/edge/README.md text eol=lf
 
 # Week 8 manifests bind original experiment/receipt bytes on every checkout.
 ml/provenance/week8*/** -text whitespace=cr-at-eol

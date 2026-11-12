@@ -88,3 +88,7 @@ Raw CSV/PPK2 và build artifact được Git ignore. Summary và hình minh ch�
   [source service](edge/server/week7/README.md) và [kết quả](results/week7/edge/README.md).
 
 - [SV2/Edge tuần 8: BLE G2 và hồ sơ bổ sung PHY](docs/sv2_edge_week8_report.md), [kết quả](results/week8/edge/README.md).
+
+- [SV2/Edge tuần 9: Poisson và MQTT gateway tự đo](docs/sv2_edge_week9_report.md),
+  [kết quả](results/week9/edge/README.md). Đạt mean <20 ms trong mô hình đồng hồ;
+  giữ p95/max và giới hạn phạm vi để review.
