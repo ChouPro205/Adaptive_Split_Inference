@@ -1,0 +1,43 @@
+PROTOCOL v1 -> v2 (leaf keys)
+  CHANGED authority.lock_procedure
+  ADDED   changes_from_v1
+  CHANGED execution_in_this_round.code
+  CHANGED extension_stage
+  ADDED   initialization.A_training_note
+  ADDED   initialization.epoch0_with_tf32_off
+  ADDED   package_B_split_set.extended_split_set
+  ADDED   package_B_split_set.flash
+  ADDED   package_B_split_set.grid
+  ADDED   package_B_split_set.no_weight_quantization
+  ADDED   package_B_split_set.source
+  CHANGED pilot.after_pilot
+  ADDED   predecessor.lineage
+  CHANGED predecessor.path
+  CHANGED predecessor.relation
+  REMOVED predecessor.section
+  CHANGED predecessor.sha256
+  CHANGED protocol_id
+  ADDED   source_bindings.sv1_decisions_20261103.note
+  CHANGED source_bindings.sv1_decisions_20261103.path
+  ADDED   source_bindings.sv1_review_20261109.items
+  ADDED   source_bindings.sv1_review_20261109.path
+  ADDED   source_bindings.sv1_review_20261109.raw_sha256
+  ADDED   source_bindings.sv1_review_20261109.role
+  ADDED   source_bindings.sv1_update_20261110.items
+  ADDED   source_bindings.sv1_update_20261110.note
+  ADDED   source_bindings.sv1_update_20261110.path
+  ADDED   source_bindings.sv1_update_20261110.raw_sha256
+  CHANGED status
+  CHANGED training.determinism
+  ADDED   training.precision.cudnn_allow_tf32
+  ADDED   training.precision.matmul_allow_tf32
+  ADDED   training.precision.reason
+  ADDED   training.precision.rule
+  ADDED   training.precision.scope
+  unchanged leaves: 91 of 103 in v1
+PLAN v1 -> v2
+  run ids identical and in the same order: True (81 runs)
+  config key cudnn_allow_tf32: true -> false in 81 configs
+  config key protocol_sha256: "1e180b45258d4f9c6902aeee8ccfedd5de38f62b9bb4a2f16f9030391b72ebf4" -> "83cce64defefa979abcf8c31cc27daf9ae81604caae911acf0901cba3783cf35" in 81 configs
+  plan-manifest top-level keys that differ: ['protocol_sha256', 'runs', 'sources_sha256']
+  sources whose SHA-256 differs: ['ml/scripts/nopeek_m1_v1.py', 'ml/scripts/nopeek_m1_v2.py']

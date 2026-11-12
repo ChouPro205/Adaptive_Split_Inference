@@ -1,0 +1,29 @@
+{
+  "type": "M1_NOPEEK_V2_LOCK_AND_TRAIN_AUTHORIZATION",
+  "allow_training": true,
+  "scope": "M1 NoPeek v2: the 9 pilot and 72 grid runs of plan v2, the pilot rule, the grid started at once with the chosen learning rate (pilot.after_pilot, run-pilot-grid), epoch, lambda and deployment-seed selection, and the lambda 0 report, as in protocol v2",
+  "protocol_path": "ml/configs/mitdb_m1_nopeek_protocol_v2.json",
+  "protocol_sha256": "83cce64defefa979abcf8c31cc27daf9ae81604caae911acf0901cba3783cf35",
+  "plan_manifest_path": "ml/manifests/mitdb-nopeek-m1-v2/plan-manifest.json",
+  "plan_manifest_sha256": "e2e4e85856ed1d1861a771388d40de24c27c1ff6ffbfac2138ea275f76b650f9",
+  "runner_path": "ml/scripts/nopeek_m1_v2.py",
+  "runner_sha256": "393b22292fba8a33cc5a594d960801697ce892b8a62275f2a01ac8ee86ef69ac",
+  "code_receipt_path": "ml/provenance/m1-nopeek-v2-code-20261111/receipt.json",
+  "code_receipt_sha256": "c6f27bfba8b5a5dde7d104a397befee31fce8c10bdfa39bcec54aa0bd3e451c2",
+  "checkpoint_lock_sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc",
+  "init_checkpoint_sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+  "approved_by": "SV3",
+  "decision_authority": "SV1, delegated by GVHD",
+  "decision_date": "2026-11-12",
+  "review_evidence": "2207542f6e3d09603093c69c9e646327082fe6bda1df2fd1fa71587664e15328",
+  "review_evidence_path": "ml/provenance/m1-sv1-evidence-20261111/tra_loi_Ky_Anh_PR44_20261109.txt",
+  "review_evidence_author": "SV1",
+  "review_basis": "SV1 2026-11-09 item 4: points (1)-(4) of NoPeek v1 agreed; point (5) TF32 off for cuDNN and matmul, so protocol v2 with a diff against v1, a regenerated plan, then the lock, with authority and review evidence as for M1 v4 (that message). Item 4(2): the grid starts at once after the pilot when a safe learning rate exists",
+  "changes_beyond_point_5": "Protocol v2 changes_from_v1 items 2-6 restate SV1 decisions of 2026-11-09 and 2026-11-10 or are identifiers; no run value changes except the TF32 flag. Locked without resubmission to SV1 at SV3's decision",
+  "not_covered": [
+    "Attack protocol and any Pi evaluation: separate protocol version and lock",
+    "Tail fine-tune on the extended split set {2, s_m} and package B: separate protocol version",
+    "DS2: never opened in this stage",
+    "A technical-fault retry (one same-seed rerun) needs its own receipt naming the failed run"
+  ]
+}

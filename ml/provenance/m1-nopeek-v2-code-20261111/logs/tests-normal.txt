@@ -1,0 +1,22 @@
+test_declared_review_file_accepted (__main__.AuthorizationTests.test_declared_review_file_accepted) ... ok
+test_other_or_missing_review_evidence_rejected (__main__.AuthorizationTests.test_other_or_missing_review_evidence_rejected) ... ok
+test_grid_starts_at_once_with_chosen_learning_rate (__main__.PilotGridFlowTests.test_grid_starts_at_once_with_chosen_learning_rate) ... ok
+test_no_safe_learning_rate_stops_before_grid (__main__.PilotGridFlowTests.test_no_safe_learning_rate_stops_before_grid) ... ok
+test_pilot_grid_refused_without_authorization_before_any_load (__main__.PlanAndGateTests.test_pilot_grid_refused_without_authorization_before_any_load) ... ok
+test_prepare_counts_and_bindings (__main__.PlanAndGateTests.test_prepare_counts_and_bindings) ... ok
+test_run_refused_without_authorization_before_any_load (__main__.PlanAndGateTests.test_run_refused_without_authorization_before_any_load) ... ok
+test_fit_run_refuses_tf32_config_before_model_or_output (__main__.PrecisionTests.test_fit_run_refuses_tf32_config_before_model_or_output) ... ok
+test_protocol_and_plan_flags_are_off (__main__.PrecisionTests.test_protocol_and_plan_flags_are_off) ... ok
+test_set_precision_turns_tf32_off_and_refuses_on (__main__.PrecisionTests.test_set_precision_turns_tf32_off_and_refuses_on) ... ok
+test_collapse_rules (__main__.RuleTests.test_collapse_rules) ... ok
+test_epoch_selection (__main__.RuleTests.test_epoch_selection) ... ok
+test_exact_macro_f1_matches_float_and_gate (__main__.RuleTests.test_exact_macro_f1_matches_float_and_gate) ... ok
+test_grid_lambda_and_deployment_seed (__main__.SelectionTests.test_grid_lambda_and_deployment_seed) ... ok
+test_lambda0_states_must_match_across_s (__main__.SelectionTests.test_lambda0_states_must_match_across_s) ... ok
+test_lambda_tie_smaller_and_seed_tie_smaller (__main__.SelectionTests.test_lambda_tie_smaller_and_seed_tie_smaller) ... ok
+test_pilot_rule (__main__.SelectionTests.test_pilot_rule) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.884s
+
+OK

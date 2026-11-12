@@ -1,0 +1,9 @@
+require_authorization: ACCEPTED 83cce64defefa979abcf8c31cc27daf9ae81604caae911acf0901cba3783cf35 e2e4e85856ed1d1861a771388d40de24c27c1ff6ffbfac2138ea275f76b650f9 2207542f6e3d09603093c69c9e646327082fe6bda1df2fd1fa71587664e15328
+protocol: MATCH ml/configs/mitdb_m1_nopeek_protocol_v2.json
+plan_manifest: MATCH ml/manifests/mitdb-nopeek-m1-v2/plan-manifest.json
+runner: MATCH ml/scripts/nopeek_m1_v2.py
+code_receipt: MATCH ml/provenance/m1-nopeek-v2-code-20261111/receipt.json
+negative control allow_training=false: REJECTED ValueError
+negative control review_evidence_path=SV1 2026-11-05 review: REJECTED ValueError
+negative control protocol_sha256=v1: REJECTED ValueError
+negative control type=v1: REJECTED ValueError
