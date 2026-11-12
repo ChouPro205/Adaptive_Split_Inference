@@ -1,0 +1,68 @@
+{
+  "type": "M1_V4_PACKAGE_A_DELIVERY_RECORD",
+  "milestone": "M2 (roadmap v1.2: package A, SV3 -> SV2 and SV1)",
+  "date": "2026-11-12",
+  "prepared_by": "SV3",
+  "recipients": {"to": "SV2", "cc": "SV1"},
+  "decision": "Deliver the 2026-11-05 package A unchanged; this record resolves the pending SV2 calibration confirmation written inside it",
+  "authority": {
+    "message": "SV1 2026-11-12: SV2 confirmed the calibration (1000 DS1 train beats, np.linspace -> round -> unique as edge/quantize_tail.py, no val, test or DS2); deliver package A to SV2 with SV1 in cc",
+    "evidence_path": "ml/provenance/m1-v4-package-a-delivery-20261112/sv1_evidence/sv1_package_a_go_20261112.txt",
+    "evidence_sha256": "c10d45ad2d4089b02e3cbf3494d24b935520d2f871b694113bc91caafe107a6c",
+    "evidence_note": "Text pasted by SV3 from SV1's message; SHA-256 computed by SV3, SV1 published none"
+  },
+  "package": {
+    "local_path": "ml/data/package-a/m1-v4-package-a-20261105-v1",
+    "manifest_sha256": "f005b3ea4e2440186bce4218c537b12f3b54fe734631c56a90c2378748aedf2f",
+    "files": 59,
+    "inventory_files": 58,
+    "built": "2026-11-05 at commit 5d2f3e3b656dc32a3df357b78c7568cbaa660e53 by ml/scripts/package_m1_v4_a.py (2c9662858cb0d504252adfc5cbb58895687f7737420384ed1e53a028cdb37cb6); a second build was byte-identical",
+    "candidate_receipt": {"path": "ml/provenance/m1-v4-package-a-20261105/receipt.json", "sha256": "115e775f1de05c79dded3a7edb29ca8b90fd0b8b488f90072a5e1bee8f536b8a"},
+    "unchanged_since_build": true
+  },
+  "archive": {
+    "name": "SV3_M1_V4_PACKAGE_A_20261105.zip",
+    "local_path": "ml/data/package-a/delivery-20261112/SV3_M1_V4_PACKAGE_A_20261105.zip",
+    "sha256": "0b4294b54d2cb3211564725ad1c636f9d30739d3e705b0f0c2fc33b147e83e29",
+    "bytes": 68975743,
+    "layout": "One top folder m1-v4-package-a-20261105-v1/ holding the 59 package files; sorted entries, fixed timestamp 2026-11-05 00:00, mode 0644",
+    "reproducible": "make_archive.py built it twice with identical bytes; extracted files equal the package files",
+    "transport": "GitHub Release, tag sv3-m1-v4-package-a-20261112 on the commit that adds this record; assets SV3_M1_V4_PACKAGE_A_20261105.zip and SV3_M1_V4_PACKAGE_A_20261105.zip.sha256; publication receipt and download check in ml/provenance/m1-v4-package-a-release-20261112/ (decided by SV3 on 2026-11-12)"
+  },
+  "items_requested_by_SV2": [
+    {"item": "Normalized ECG input of exactly the 1000 calibration beats", "file": "calibration/z_s0.npy", "shape": [1000, 1, 360], "dtype": "<f4",
+     "note": "s0 has no layer, so z_s0 is the model input; check_delivery.py shows it equals the normalized DS1 train_X rows bit for bit"},
+    {"item": "Golden z_s for s0-s9 on these beats, week 3/5 format", "files": "calibration/z_s0.npy ... calibration/z_s9.npy",
+     "format": "One .npy per s, little-endian FP32, shape [1000, *registry v2 shape_original without N], same writer as the week 3 package"},
+    {"item": "Sample IDs in order", "file": "calibration/samples.csv", "sha256": "b2194e7e0e0559442827fac5018b1ea612727240c1f0a34e2ca6cd8fca430a1f",
+     "note": "Row k = sample_index k = row k of every calibration/z_s*.npy; sample_id MIT-BIH:<record>:<r_peak_sample>:<lead>"},
+    {"item": "Locked checkpoint C5 and its SHA-256", "file": "model/checkpoint.pt", "sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+     "lock": "model/checkpoint_lock.json = ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json (6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc)"},
+    {"item": "Architecture code, model configuration, normalization, split mapping",
+     "files": {"model/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14",
+               "model/slot_config.json": "a29e723507dba827fc60f27fe92b9b79508bc7671b13560c0c2d0418bb1a8176",
+               "data/normalization.json": "1ae60f3f493427286ddfbcd3e269c6dce312a93351a75ebdf69db61941d23b89",
+               "model/architecture.json": "7f39a6691fb5ca6c613a314a8b487d345c5d7b58e945f2d47b23e9eca61a23d2",
+               "model/model_graph.json": "e78a408e9a5dbf8be0d537aa790a7bfb6103ee4552e48813d3ee05faa0a13c9f"},
+     "note": "architecture.json lists, for s0-s10, the boundary, shape, layout and head operation count, checked against the week 3 split convention and registry v2"},
+    {"item": "Check set with reference logits from DS1 train/val, no DS2", "files": "golden/z_s0.npy ... golden/z_s10.npy, golden/reference_logits.npy, samples.csv",
+     "reference_logits_sha256": "a31fce846acbbe7fccb63c2448bf75da3163d609e1194fb517cbd5ef1bd5ba01",
+     "note": "20 DS1 train beats (first 20 by record, R-peak sample, lead); z_s10 equals reference_logits"},
+    {"item": "SHA-256 manifest for the whole package", "file": "manifest.json", "sha256": "f005b3ea4e2440186bce4218c537b12f3b54fe734631c56a90c2378748aedf2f"}
+  ],
+  "also_in_package": {"firmware/head_parameters.h": "552bc7eb3960ce84e17d30ce20f9c82f40468130457828892ae5c0fbeb78833e (for SV1 step D1, week 13)", "weights/": "FP32 parameters per layer, equal to the checkpoint"},
+  "notes_for_receiver": [
+    "manifest.json, README.md and calibration/rule.json still say CANDIDATE_PENDING_SV2_CONFIRMATION: they were written before SV2 confirmed; the files are SHA-bound and not edited; this record is the delivery",
+    "data/normalization.json says CANDIDATE_NOT_LOCKED_NOT_REVIEWED: its SHA-256 1ae60f3f... is bound by the locked baseline protocol v4 and the checkpoint was trained with it",
+    "edge/quantize_tail.py reads the old week 1 processed arrays by default; for this model use the package tensors (for example --calib_data calibration/z_s<s>.npy --calib-data-split train)",
+    "Not included: DS2 arrays and DS2 FP32 + INT8/FP16 predictions; they follow the SV2 xmodel s0-s9 lock in week 13"
+  ],
+  "checks_before_delivery": {
+    "command": "python -B ml/provenance/m1-v4-package-a-delivery-20261112/check_delivery.py (normal and -O)",
+    "source_head": "c5351585fc65b6866d414110d1bce9d0ad194c37",
+    "result": "PACKAGE_A_DELIVERY_CHECK_PASS_NO_DS2: builder verify passes; calibration indices re-derived with the SV2 rule (c7e2b3e9...); z_s0 = normalized train input; calibration z_s0-z_s9 and check-set z_s0-z_s10 + logits recomputed on CPU bit for bit",
+    "logs": ["logs/check-normal.txt", "logs/check-optimized.txt", "logs/archive.txt", "logs/archive-repro.txt"]
+  },
+  "expected_from_SV2": "Receipt: SHA-256 match and z_s recomputed equal to golden, before quantization and compile (SV1 2026-11-12)",
+  "not_verified": ["Head on nRF52840 (host C compile only)", "DPU/VART execution (SV2)", "Calibration adequacy for INT8 quantization (SV2)"]
+}

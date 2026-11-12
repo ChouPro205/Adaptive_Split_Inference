@@ -1,0 +1,32 @@
+{
+  "verify": {
+    "status": "PACKAGE_A_VERIFIED_CANDIDATE_PENDING_SV2_CALIBRATION_CONFIRMATION_NOT_DELIVERED",
+    "manifest_sha256": "f005b3ea4e2440186bce4218c537b12f3b54fe734631c56a90c2378748aedf2f",
+    "files": 58
+  },
+  "calibration": {
+    "n_train": 41472,
+    "count": 1000,
+    "indices_sha256": "c7e2b3e983fb39760fa5e05d4b09a0597221efb18cbdb11e2fe33bd3d5fa81f0",
+    "rule_line_in_edge_quantize_tail": true,
+    "samples_csv_order": "sample_index 0-999 = train rows of the rule, ascending"
+  },
+  "input": {
+    "file": "calibration/z_s0.npy",
+    "shape": [
+      1000,
+      1,
+      360
+    ],
+    "equals_normalized_train_X_rows": true,
+    "normalization_sha256": "1ae60f3f493427286ddfbcd3e269c6dce312a93351a75ebdf69db61941d23b89"
+  },
+  "recompute": {
+    "device": "cpu",
+    "calibration_z_s0_s9_bitwise": true,
+    "check_set_z_s0_s10_bitwise": true,
+    "reference_logits_bitwise": true,
+    "check_set": "20 DS1 train beats, rule sort_numeric_record_id_then_numeric_r_peak_sample_then_lead_name_take_first_20"
+  },
+  "status": "PACKAGE_A_DELIVERY_CHECK_PASS_NO_DS2"
+}
