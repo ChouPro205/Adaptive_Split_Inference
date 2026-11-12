@@ -1,0 +1,32 @@
+mainmenu "Adaptive Split Inference Week 10 E_prot measurement"
+
+choice WEEK10_PROT_VARIANT
+	prompt "Week 10 E_prot firmware variant (W10-D1)"
+	default WEEK10_PROT_USB
+
+config WEEK10_PROT_USB
+	bool "prot-usb: USB CDC, radio off, NVS nonce: VERIFY, TPROT, ONE, SESSION dry run (TC2)"
+
+config WEEK10_PROT
+	bool "prot: automatic PPK2 E_prot session, no radio/USB/console/log/LED (TC1, TC4)"
+
+endchoice
+
+config WEEK10_CYCLE_GAP_MS
+	int "Idle between the end of one cycle and the next CTRL (ms, W10-D1)"
+	range 0 10000
+	default 1000
+
+config WEEK10_BOOT_IDLE_S
+	int "Idle window after the boot self-test (W7-D3, TC3 I_idle)"
+	default 30
+
+config WEEK10_SELFTEST_MS
+	int "Width of each marker pulse in the boot self-test D0..D4"
+	default 200
+
+config WEEK10_CTRL_MIN_US
+	int "Minimum CTRL pulse width so 100 kS/s sampling sees it (stub controller)"
+	default 200
+
+source "Kconfig.zephyr"

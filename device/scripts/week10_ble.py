@@ -99,6 +99,7 @@ class HostRefs:
         self.plans = w10.load_plans(plan)
         self.refs9 = w9.load_refs(WEEK9_REFS, self.sample_set)
         lib = build_shim(Path(workdir), Path(samples), Path(plan))
+        self.lib = lib
         if lib.shim_set_sha256().decode() != self.sample_set.set_sha256:
             raise ValueError("shim set differs from the W8-D3 set")
         digest = ct.create_string_buffer(65)
@@ -130,6 +131,14 @@ class HostRefs:
                 raise ValueError(f"g2_label differs from week8_common.label at n={n}")
             self.s10[n] = (bits_hex(logits), label)
         self.by_hash = {(s, r.q_sha256, r.scale_sha256): n for (n, s), r in self.refs9.items()}
+
+    def head_values(self, n: int, s: int) -> np.ndarray:
+        """FP32 head output of sample n at split s (the HEAD-only s1 cycle at s = 1)."""
+        out = (ct.c_float * 6000)()
+        count = ct.c_uint()
+        if self.lib.shim_head_values(n, s, out, 6000, ct.byref(count)) != 0:
+            raise ValueError(f"shim head failed at n={n} s={s}")
+        return np.array(out[:count.value], dtype="<f4")
 
     def request(self, n: int, s: int, request_id: int) -> bytes:
         """Plain (rho0) I1 v2 request of sample n at split s, as the dongle sends it."""

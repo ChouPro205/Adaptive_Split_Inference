@@ -28,6 +28,12 @@ checked before the capture), Best performance, no other use of the laptop during
   recheck-alls   the checks again with the current tools (new file)
   summary-alls   >= 2 PASS sessions -> per-s table (week10_analysis.alls_table: pooled + session range + core),
                  W10-D5 formula against week 9 Table III, E_tx linearity alarm
+  session-prot   part C (W10-D1, TC3-TC5): the week 10 prot image (radio off, 1050 plan cycles: P1/P0 pairs at
+                 s0..s9 + HEAD-only s1) -> analysis/ (week10_prot segmentation), trace checks (one boot D1 pulse,
+                 D1 only in P1 cycles, order = plan), energy_prot.json of the session
+  recheck-prot   the checks again with the current tools (new file)
+  summary-prot   >= 2 PASS sessions (+ verify-prot DWT) -> energy_prot.json + e_prot_by_split.csv: E_prot per s
+                 (gross, net, core 50 us blocks, t_prot), paired delta, E_conv,min, W10-D2 rule, ratios
   note           end-of-session notes (temperature, photos) (week7_ppk2.py note)
 Each session writes a NEW --out directory. Exit 0 = PASS. Run with device/host/.venv; close nRF Connect
 Power Profiler first (it holds the PPK2 port).
@@ -676,6 +682,217 @@ def cmd_summary_alls(args) -> int:
     return 0
 
 
+# ----------------------------------------------------------------------------- part C: E_prot, radio off (W10-D1)
+
+PROT_SCHEMA = "week10-ppk2-prot/1"
+PROT_SECONDS = 1260.0
+
+
+def prot_image_info(image: Path, receipt: Path | None) -> dict:
+    """A build_week10.ps1 folder (static check PASS, variant prot, clean tree, the W10-D1 plan) + its
+    flash_week10.ps1 receipt."""
+    check = w7p.load_json(Path(image) / "week10_build_check.json")
+    source = w7p.load_json(Path(image) / "source.json")
+    info = {"image": str(image), "build_id": check.get("build_id"), "variant": check.get("variant"),
+            "kernel": check.get("kernel"), "check_status": check.get("status"), "dirty": source.get("dirty"),
+            "commit": source.get("commit"), "bin_sha256": check.get("bin_sha256"),
+            "set_sha256": check.get("set_sha256"), "plan_sha256": check.get("plan_sha256"), "kconfig": check.get("kconfig")}
+    if check.get("status") != "PASS" or check.get("variant") != "prot" or source.get("dirty"):
+        raise SystemExit(f"{image}: static check not PASS, not the prot variant, or dirty tree")
+    if check.get("plan_sha256") != w10.PROT_PLAN_SHA256:
+        raise SystemExit(f"{image}: plan {check.get('plan_sha256')} != W10-D1 {w10.PROT_PLAN_SHA256}")
+    if receipt is not None:
+        r = w7p.load_json(receipt)
+        info["receipt"] = {"path": str(receipt), "exit_code": r.get("exit_code"), "build_id": r.get("build_id"),
+                           "timestamp": r.get("timestamp"), "zip_sha256": r.get("zip_sha256")}
+        if r.get("exit_code") != 0 or r.get("build_id") != info["build_id"]:
+            raise SystemExit(f"{receipt}: DFU failed or receipt build differs from {image}")
+    return info
+
+
+def analyze_prot(trace: ep.Trace, out: Path, plan_rows: list, ignore_counter: bool) -> dict:
+    """Self-test, boot D1 pulses, 29 s idle window, the 1050 plan cycles (week10_prot.segment_prot_cycles), net
+    energies; writes analysis/cycles.csv + summary.json."""
+    import week10_prot as wpr
+    phase_map = dict(ep.DEFAULT_MAP)
+    analysis = ep.new_output_dir(out / "analysis")
+    selftest = ep.selftest_check(trace, phase_map, 200.0)
+    after = selftest["end_sample"] if selftest.get("found") else 0
+    before = min(int(r["start_sample"]) for r in selftest["pulses"]) if selftest.get("found") else after
+    idle = None
+    if selftest.get("found"):
+        a = after + int(0.5 * FS)
+        idle = ep.window_stats(trace, a, a + int(29.0 * FS), channels=sorted(phase_map.values()))
+        idle["all_markers_low"] = not any(idle["high_samples"].values())
+    cycles = wpr.segment_prot_cycles(trace, after + 1, plan_rows)
+    i_idle = idle["mean_uA"] if idle else None
+    if i_idle is not None:
+        wpr.add_net(cycles, i_idle, trace.v_supply_mv)
+    valid = [c for c in cycles if not c["errors"]]
+    diffs = [c["diff_pct"] for c in valid]
+    stray = {f"D{c}": int(np.count_nonzero((trace.bits >> c) & 1)) for c in range(8) if c not in phase_map.values()}
+    boot_d1 = wpr.boot_d1_pulses(trace, before) if selftest.get("found") else None
+    checks = {
+        "selftest_D0_D4": bool(selftest.get("pass")),
+        "boot_nonce_reservation_one_d1_pulse": boot_d1 == 1,
+        "cycle_count_1050": len(cycles) == len(plan_rows),
+        "all_cycles_valid": len(valid) == len(cycles) and bool(cycles),
+        "diff_below_3pct_all": bool(diffs) and max(diffs) < ep.DIFF_LIMIT_PCT and len(diffs) == len(cycles),
+        "unused_channels_low": not any(stray.values()),
+        **ep.data_loss_checks(trace, ignore_counter),
+        "idle_markers_low": bool(idle and idle["all_markers_low"]),
+    }
+    summary = {
+        "schema": "week10-prot-analysis/1", "status": "PASS" if all(checks.values()) else "FAIL", "checks": checks,
+        "producer": "week10_ppk2.py analyze_prot (week10_prot.segment_prot_cycles, chunked loader)",
+        "trace": {"source": trace.source, "samples": trace.n, "duration_s": trace.n * ep.DT_S,
+                  "v_supply_mV": trace.v_supply_mv, **trace.info},
+        "phase_map": {k: f"D{v}" for k, v in phase_map.items()}, "selftest": selftest, "boot_d1_pulses": boot_d1,
+        "idle": idle, "I_idle_uA": i_idle, "cycles_found": len(cycles), "cycles_valid": len(valid),
+        "diff_pct": ep.describe(diffs), "unused_channel_high_samples": stray,
+        "prot_block_samples": wpr.PROT_BLOCK_SAMPLES,
+        "errors": {c["cycle"]: c["errors"] for c in cycles if c["errors"]},
+    }
+    with open(analysis / "cycles.csv", "x", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, wpr.CYCLE_COLUMNS, extrasaction="ignore", lineterminator="\n")
+        writer.writeheader()
+        for c in cycles:
+            writer.writerow({**c, "errors": ";".join(c["errors"])})
+    (analysis / "summary.json").write_text(json.dumps(summary, indent=2, default=str) + "\n", encoding="utf-8")
+    return summary
+
+
+def evaluate_prot(out: Path, record: dict, meta: dict, kind: str) -> int:
+    """TC3/TC4 checks of an E_prot session and its energy_prot.json (single-session groups)."""
+    import week10_prot as wpr
+    summary = w7p.load_json(out / "analysis" / "summary.json")
+    cycles = w7p.cycle_rows(out / "analysis")
+    trace = w9p.load_raw_chunked(out / "ppk2")
+    i_idle = summary.get("I_idle_uA")
+    a = summary["checks"]
+    plan = [(r.split, OP_NAME[r.op]) for r in w10.prot_plan()]
+    d1_outside = sum(1 for c in cycles if c["op"] != "P1" and float(c["t_prot_ms"] or 0) > 0)
+    checks = {
+        "lab_on_ac_power": bool((record.get("ac_power") or {}).get("ok")),
+        "capture_pass": meta.get("status") == "PASS",
+        "idle_within_10pct_of_week2": i_idle is not None
+                                      and abs(i_idle - w9p.WEEK2_IDLE_UA) / w9p.WEEK2_IDLE_UA * 100.0 <= IDLE_TOLERANCE_PCT,
+        "selftest_D0_D4": a.get("selftest_D0_D4", False),
+        "boot_nonce_reservation_one_d1_pulse": a.get("boot_nonce_reservation_one_d1_pulse", False),
+        "unused_channels_low": a.get("unused_channels_low", False),
+        "no_data_loss": a.get("no_data_loss", record.get("ignore_counter", False)) and a.get("sample_rate_ok", False),
+        "cycle_count_1050": a.get("cycle_count_1050", False),
+        "trace_order_equals_plan": [(int(c["split"]), c["op"]) for c in cycles] == plan,
+        "all_cycles_valid": a.get("all_cycles_valid", False),
+        "d1_only_in_p1_cycles": d1_outside == 0,
+        "idle_markers_low": a.get("idle_markers_low", False),
+        "diff_below_3pct_all": a.get("diff_below_3pct_all", False),
+    }
+    post = w9p.post_session_events(trace, cycles, i_idle)
+    checks["post_window_at_least_20s"] = post.get("found", False) and post["duration_s"] >= 20.0
+    checks["post_mean_at_idle"] = post.get("deviation_from_idle_pct", float("inf")) <= IDLE_TOLERANCE_PCT
+    details = {"I_idle_uA": i_idle, "post_session": post, "diff_pct": summary.get("diff_pct"),
+               "boot_d1_pulses": summary.get("boot_d1_pulses"), "v_supply_mV": trace.v_supply_mv,
+               "nonce": "one block reserved at boot (one D1 pulse before the self-test); 500 P1 cycles < 1023 "
+                        "sequences left, so no Flash write in any cycle (D1 only inside P1 cycles); sequences "
+                        "strictly increasing above the prior block by the allocator (prot-usb dry run shows them); "
+                        "read NONCE afterwards with week10_lab.py nonce"}
+    status = "PASS" if all(checks.values()) else "FAIL"
+    if checks["all_cycles_valid"] and checks["trace_order_equals_plan"]:
+        groups = wpr.session_groups(cycles)
+        stamp = "" if kind == "session" else f"_{kind}-{datetime.now(timezone.utc):%Y%m%dT%H%M%SZ}"
+        w7p.write_new_json(out / f"energy_prot{stamp}.json", {
+            "schema": "week10-energy-prot-session/1", "decision": "W10-D1, W10-D2", "status": status,
+            "session": str(out), "image": record.get("image"), "temp_room_C": record.get("temp_room_C"),
+            "I_idle_uA": i_idle, "prot_block_samples": wpr.PROT_BLOCK_SAMPLES,
+            "groups": {k: ({str(s): v for s, v in g.items()} if isinstance(g, dict) else g) for k, g in groups.items()},
+            "note": "single-session values; the W10-D1/D2 result is summary-prot over >= 2 sessions"})
+    return w7p.finish(out, kind, checks, details)
+
+
+OP_NAME = {0: "P0", 1: "P1", 2: "CONV"}
+
+
+def cmd_session_prot(args) -> int:
+    plans = w10.load_plans(args.plan)
+    sample_set = w9p.w9.w8.load_set(args.samples)
+    image = prot_image_info(args.image, args.receipt)
+    power = ac_power()
+    if not power["ok"] and not args.ac_confirmed:
+        raise SystemExit(f"laptop not on AC (Win32_Battery {power}); plug the charger (lab rule 09/11)")
+    out = w7p.new_out(args.out)
+    record = {
+        "schema": PROT_SCHEMA, "kind": "session-prot", "command": sys.argv,
+        "started_utc": datetime.now(timezone.utc).isoformat(), "temp_room_C": args.temp_c,
+        "v_supply_mV": 5000, "power": "PPK2 Source Meter -> USB breakout VBUS 5 V; dongle not on laptop USB",
+        "ac_power": power if power["ok"] else {**power, "ok": True, "manual_confirmation": True},
+        "image": image, "samples": str(args.samples), "set_sha256": sample_set.set_sha256,
+        "plan_dir": str(plans.directory), "plan_sha256": plans.prot_sha256, "cycles": len(plans.prot),
+        "prior_reserved_through": args.prior_reserved_through, "seconds": args.seconds,
+        "ignore_counter": bool(args.ignore_counter), "note": args.note,
+        "tool_sha256": {n: w7p.sha256(HERE / n) for n in TOOLS + ("week10_prot.py", "week10_ble.py") if (HERE / n).exists()},
+    }
+    w7p.write_new_json(out / "session.json", record)
+    print("radio-off E_prot session (~21 min): no KV260 needed; do not touch the bench or the laptop")
+    meta = w7p.run_capture(args, out, "W10-D1-prot-session", args.seconds)
+    analyze_prot(w9p.load_raw_chunked(out / "ppk2"), out, list(plans.prot), args.ignore_counter)
+    return evaluate_prot(out, record, meta, "session")
+
+
+def cmd_recheck_prot(args) -> int:
+    out = Path(args.out)
+    record = w7p.load_json(out / "session.json")
+    if record.get("schema") != PROT_SCHEMA:
+        raise SystemExit(f"{out} is not a week 10 session-prot directory")
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    return evaluate_prot(out, record, w7p.load_json(out / "ppk2" / "capture.json"), f"prot_recheck-{stamp}")
+
+
+def cmd_summary_prot(args) -> int:
+    import week10_prot as wpr
+    if len(args.session) < 2:
+        raise SystemExit("W10-D1 needs >= 2 valid sessions")
+    groups, sources = {}, {}
+    for folder in map(Path, args.session):
+        check = w7p.load_json(folder / "check_session.json")
+        energy = w7p.load_json(folder / "energy_prot.json")
+        if check.get("status") != "PASS" or energy.get("status") != "PASS":
+            raise SystemExit(f"{folder}: session check is not PASS; only valid sessions enter the summary")
+        g = energy["groups"]
+        groups[folder.name] = {k: ({int(s): v for s, v in val.items()} if isinstance(val, dict) else val)
+                               for k, val in g.items()}
+        sources[folder.name] = {"check_sha256": w7p.sha256(folder / "check_session.json"),
+                                "energy_sha256": w7p.sha256(folder / "energy_prot.json")}
+    tprot = None
+    if args.tprot:
+        tprot = w7p.load_json(args.tprot).get("details")
+        if w7p.load_json(args.tprot).get("status") != "PASS":
+            raise SystemExit(f"{args.tprot}: verify-prot check is not PASS")
+    out = w7p.new_out(args.out)
+    result = wpr.summary(groups, tprot)
+    w7p.write_new_json(out / "energy_prot.json", {"schema": "week10-energy-prot/1", "decision": "W10-D1, W10-D2",
+                                                  "sources": sources, "tprot_check": str(args.tprot) if args.tprot else None,
+                                                  **result})
+    with open(out / "e_prot_by_split.csv", "x", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle, lineterminator="\n")
+        writer.writerow(["split", "n", "E_prot_uJ_mean", "E_prot_uJ_ci95_half", "ci95_rel_pct", "E_prot_session_range_pct",
+                         "E_prot_net_uJ_mean", "E_prot_core_uJ", "E_prot_core_range_pct", "t_prot_ms_mean", "t_prot_dwt_ms",
+                         "delta_P1_minus_P0_uJ_mean", "E_dev_P0_uJ_mean", "over_conv_min", "pct_of_E_dev", "conv_rule_pass"])
+        for s in range(10):
+            e = result["per_s"][str(s)]
+            r = result["ratios"][str(s)]
+            writer.writerow([s, e["E_prot_uJ"].get("n"), e["E_prot_uJ"].get("mean"), e["E_prot_uJ"].get("ci95_half"),
+                             e["ci95_rel_pct"], e["E_prot_uJ"].get("session_range_pct"), e["E_prot_net_uJ"].get("mean"),
+                             e["E_prot_core"]["mean"], e["E_prot_core"]["range_pct"], e["t_prot_ms"].get("mean"),
+                             (e.get("t_prot_dwt_ms") or {}).get("prot_mean_ms"),
+                             e["delta_P1_minus_P0_dev_plus_prot_uJ"].get("mean"), e["E_dev_P0_radio_off_uJ"].get("mean"),
+                             r["over_conv_min"], r["pct_of_E_dev"], result["w10_d2_conv_rule"]["per_s"][str(s)]["pass"]])
+    rule = result["w10_d2_conv_rule"]
+    print(f"E_conv,min {result['E_conv_min_uJ'].get('mean'):.2f} uJ; W10-D2 'P1 < 1 conv layer': "
+          f"{'PASS' if rule['pass'] else 'FAIL'}; TC5 CI95 < 10 % every s: {result['tc5_ci95_below_10pct_every_s']}")
+    return 0
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -755,6 +972,35 @@ def main(argv=None) -> int:
     p.add_argument("--session", action="append", default=[], help="PASS session-alls directory (>= 2)")
     p.add_argument("--out", type=Path, required=True, help="new directory")
     p.set_defaults(func=cmd_summary_alls)
+
+    p = sub.add_parser("session-prot")
+    p.add_argument("--port", required=True, help="PPK2 data port (see: probe)")
+    p.add_argument("--out", type=Path, required=True, help="new directory")
+    p.add_argument("--seconds", type=float, default=PROT_SECONDS,
+                   help="DUT power ON: ~31 s boot/idle + 1050 cycles (~18 min) + >= 60 s after")
+    p.add_argument("--pre-power-s", type=float, default=0.5)
+    p.add_argument("--temp-c", type=float, required=True, help="room temperature at start")
+    p.add_argument("--image", type=Path, required=True, help="build_week10.ps1 folder (prot, clean)")
+    p.add_argument("--receipt", type=Path, required=True, help="DFU receipt JSON of flash_week10.ps1")
+    p.add_argument("--samples", type=Path, required=True, help="W8-D3 set directory")
+    p.add_argument("--plan", type=Path, required=True, help="generate_week10_plan.py directory")
+    p.add_argument("--prior-reserved-through", type=int, required=True,
+                   help="largest NONCE reserved_through seen before this boot (W10-D8: 60657663 first)")
+    p.add_argument("--ac-confirmed", action="store_true",
+                   help="only if the Win32_Battery query itself fails and the charger is visibly plugged in")
+    p.add_argument("--note", default="")
+    p.add_argument("--ignore-counter", action="store_true")
+    p.set_defaults(func=cmd_session_prot)
+
+    p = sub.add_parser("recheck-prot")
+    p.add_argument("--out", type=Path, required=True, help="existing session-prot directory")
+    p.set_defaults(func=cmd_recheck_prot)
+
+    p = sub.add_parser("summary-prot")
+    p.add_argument("--session", action="append", default=[], help="PASS session-prot directory (>= 2)")
+    p.add_argument("--tprot", type=Path, help="check_verify-prot JSON of week10_lab.py verify-prot (DWT t_prot)")
+    p.add_argument("--out", type=Path, required=True, help="new directory")
+    p.set_defaults(func=cmd_summary_prot)
 
     p = sub.add_parser("note")
     p.add_argument("--out", type=Path, required=True, help="existing session directory")

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline checks of week 10 ble-usb sessions recorded by week10_lab.py (cdc.log), TC2 (radio-on part).
+"""Offline checks of week 10 ble-usb / prot-usb sessions recorded by week10_lab.py (cdc.log), TC2.
 
   verify   VERIFY ALL: one VQ line per (sample 0..49, s 0..10) whose q/scale SHA-256, C, L and payload bytes
            equal the host C path (week10_ble.HostRefs = the week 9 refs checked on the dongle on 29/10); one
@@ -14,6 +14,11 @@
            dongle logits = KV260 log per request_id, and (with the queue directory) every request went
            through the queue_sim FIFO as a foreground job. DWT phase times per s are reported (laptop power:
            debug only, never energy numbers).
+  verify-prot   prot-usb VERIFY ALL + TPROT ALL + TCONV (week10_prot.check_verify / tprot_table): q/scale of
+           s0..s9, protect() with the PUBLIC_TEST key = contracts/i2_ref, HEAD-only s1 output = host shim, DWT
+           t_prot per s and t_conv (50 runs each).
+  session-prot  prot-usb SESSION dry run of the W10-D1 plan: order, ops, no Flash write in any cycle, P1 sequences
+           strictly increasing (and above --prior-reserved-through).
 Exit 0 = PASS. Writes a JSON report to a new --output path.
 """
 from __future__ import annotations
@@ -164,12 +169,13 @@ def check_session(capture, host: wb.HostRefs, session: Path, first: int, count: 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("kind", choices=["verify", "session"])
+    parser.add_argument("kind", choices=["verify", "session", "verify-prot", "session-prot"])
     parser.add_argument("--session", type=Path, required=True, help="week10_lab.py output directory")
     parser.add_argument("--samples", type=Path, required=True, help="W8-D3 set directory")
     parser.add_argument("--plan", type=Path, required=True, help="generate_week10_plan.py directory")
     parser.add_argument("--first", type=int, default=0)
-    parser.add_argument("--count", type=int, default=w10.BLE_CYCLES)
+    parser.add_argument("--count", type=int, help="cycles (default: the whole plan of the kind)")
+    parser.add_argument("--prior-reserved-through", type=int, help="session-prot: NONCE reserved_through before")
     parser.add_argument("--output", type=Path, required=True, help="new JSON report path")
     args = parser.parse_args()
     if args.output.exists():
@@ -178,12 +184,29 @@ def main() -> int:
     capture = wc.read_capture(args.session / "cdc.log")
     if args.kind == "verify":
         checks, details = check_verify(capture, host)
+    elif args.kind == "session":
+        count = args.count if args.count is not None else w10.BLE_CYCLES
+        checks, details = check_session(capture, host, args.session, args.first, count)
     else:
-        checks, details = check_session(capture, host, args.session, args.first, args.count)
+        import week10_prot as wpr
+        banner = {}
+        for _, t in capture:
+            if t.startswith("READY WEEK10 "):
+                banner = wc.kv(t)
+        def lw(tag):  # noqa: E306
+            return lines_with(capture, tag)
+        if args.kind == "verify-prot":
+            checks, details = wpr.check_verify(lw, banner, host)
+            t_checks, t_details = wpr.tprot_table(lw)
+            checks.update(t_checks)
+            details.update(t_details)
+        else:
+            count = args.count if args.count is not None else w10.PROT_CYCLES
+            checks, details = wpr.check_session(lw, banner, host, args.first, count, args.prior_reserved_through)
     status = "PASS" if all(checks.values()) else "FAIL"
     report = {"schema": f"week10-check-{args.kind}/1", "status": status, "checks": checks, "details": details,
               "scope": "dongle on laptop USB power: correctness evidence and DWT debug times, never energy numbers",
-              "tools_sha256": {n: wc.sha256_file(HERE / n) for n in ("check_week10.py", "week10_ble.py",
+              "tools_sha256": {n: wc.sha256_file(HERE / n) for n in ("check_week10.py", "week10_ble.py", "week10_prot.py",
                                                                       "week10_common.py", "week10_lab.py")
                                if (HERE / n).exists()},
               "shim_sources_sha256": {p.relative_to(wb.ROOT).as_posix(): wc.sha256_file(p) for p in wb.SHIM_SOURCES}}

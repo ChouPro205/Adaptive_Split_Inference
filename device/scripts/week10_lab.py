@@ -7,6 +7,12 @@ check_week10.py. TC2, radio-on part (W10-D4).
   session       dry run against the KV260: wait until the KV260 has connected and subscribed (LINK ready=1),
                 CONNPARAM 12 12 (15 ms, k = 0), then SESSION <gap_ms> <first> <count> (default: the whole
                 W10-D4 plan with the energy session's 1000 ms gap, about 12 min), every cycle printed.
+  verify-prot   prot-usb: STATUS, VERIFY ALL (q/scale s0..s9, protect() with the PUBLIC_TEST key, HEAD-only s1
+                output), TPROT ALL, TCONV, STACK (TC2, prot part)
+  session-prot  prot-usb: SESSION dry run of the W10-D1 plan (default whole plan, no gap: about 1 min), every
+                cycle printed; P1 uses the nonce block reserved by the command
+  nonce         prot-usb right after boot (no block reserved at boot): the NONCE line, e.g. after the E_prot
+                sessions (TC4)
   import-kv260  the KV260 request log of that run (+ its offline predictions per s, + the queue_sim output
                 directory if the service ran with the queue) -> edge/, then check_week10.py session.
 Each run writes a NEW --out directory: cdc.log (week 6 format), session.json, check_<kind>.json.
@@ -31,7 +37,7 @@ import week10_common as w10  # noqa: E402
 import week6_common as wc  # noqa: E402
 import week6_lab as w6  # noqa: E402
 
-TOOLS = ("week10_lab.py", "week10_ble.py", "week10_common.py", "check_week10.py", "week10_analysis.py",
+TOOLS = ("week10_lab.py", "week10_ble.py", "week10_prot.py", "week10_common.py", "check_week10.py", "week10_analysis.py",
          "week9_common.py", "week8_common.py", "week8_lab.py", "week7_common.py", "week6_lab.py", "week6_common.py")
 
 
@@ -54,22 +60,24 @@ def open_cdc(port, out: Path) -> tuple:
     return cdc, wc.kv(banner)
 
 
-def require_image(banner: dict, sample_set) -> None:
-    if banner.get("variant") != "ble-usb":
-        raise SystemExit(f"dongle runs variant {banner.get('variant')!r}, this step needs 'ble-usb'")
+def require_image(banner: dict, sample_set, variant: str = "ble-usb") -> None:
+    plan = w10.PROT_PLAN_SHA256 if variant == "prot-usb" else w10.BLE_PLAN_SHA256
+    if banner.get("variant") != variant:
+        raise SystemExit(f"dongle runs variant {banner.get('variant')!r}, this step needs {variant!r}")
     if banner.get("set_sha256") != sample_set.set_sha256:
         raise SystemExit(f"image set {banner.get('set_sha256')} != W8-D3 set {sample_set.set_sha256}")
-    if banner.get("plan_sha256") != w10.BLE_PLAN_SHA256 or banner.get("plan_ok") != "1":
-        raise SystemExit(f"image plan {banner.get('plan_sha256')} (ok={banner.get('plan_ok')}) "
-                         f"!= W10-D4 plan {w10.BLE_PLAN_SHA256}")
+    if banner.get("plan_sha256") != plan or banner.get("plan_ok") != "1":
+        raise SystemExit(f"image plan {banner.get('plan_sha256')} (ok={banner.get('plan_ok')}) != week 10 plan {plan}")
 
 
 def checker(kind: str, out: Path, record: dict) -> int:
     cmd = [sys.executable, "-B", str(HERE / "check_week10.py"), kind, "--session", str(out),
            "--samples", record["samples"], "--plan", record["plan"],
            "--output", str(out / f"check_{kind}-{datetime.now(timezone.utc):%Y%m%dT%H%M%SZ}.json")]
-    if kind == "session":
+    if kind in ("session", "session-prot"):
         cmd += ["--first", str(record["first"]), "--count", str(record["count"])]
+    if record.get("prior_reserved_through") is not None:
+        cmd += ["--prior-reserved-through", str(record["prior_reserved_through"])]
     print("+", " ".join(cmd))
     return subprocess.run(cmd).returncode
 
@@ -135,6 +143,59 @@ def cmd_session(args) -> int:
           f"  week10_lab.py import-kv260 --out {out} --kv260-log <file> --edge-reference <predictions.jsonl>"
           " [--queue-dir <dir>]")
     return checker("session", out, record)
+
+
+def cmd_verify_prot(args) -> int:
+    out, cdc, banner, sample_set, record = prepare(args, "verify-prot", {})
+    try:
+        require_image(banner, sample_set, "prot-usb")
+        cdc.wait(r"^READY WEEK10 ", cdc.send("STATUS"), 10)
+        cdc.wait(r"^VERIFY END", cdc.send("VERIFY ALL"), 900)
+        cdc.wait(r"^TPROT END", cdc.send("TPROT ALL"), 900)
+        cdc.wait(r"^TCONV END", cdc.send("TCONV"), 300)
+        start = cdc.send("STACK")
+        cdc.wait(r"^STACK main ", start, 10)
+    finally:
+        cdc.close()
+    return checker("verify-prot", out, record)
+
+
+def cmd_session_prot(args) -> int:
+    if not 0 <= args.first < w10.PROT_CYCLES or not 1 <= args.count <= w10.PROT_CYCLES - args.first:
+        raise SystemExit("--first/--count outside the 1050-cycle plan")
+    out, cdc, banner, sample_set, record = prepare(args, "session-prot", {
+        "gap_ms": args.gap_ms, "first": args.first, "count": args.count,
+        "prior_reserved_through": args.prior_reserved_through})
+    try:
+        require_image(banner, sample_set, "prot-usb")
+        start = cdc.send(f"SESSION {args.gap_ms} {args.first} {args.count}")
+        _, text = cdc.wait(r"^(SESSION BEGIN|ERROR)", start, 15)
+        if text.startswith("ERROR"):
+            raise SystemExit(f"device refused: {text}")
+        cdc.wait(r"^SESSION END ", start, args.count * (args.gap_ms / 1000.0 + 0.6) + 120)
+    finally:
+        cdc.close()
+    return checker("session-prot", out, record)
+
+
+def cmd_nonce(args) -> int:
+    """NONCE line of a prot-usb image right after boot (it reserves no block at boot): reserved_through left by
+    the previous images, e.g. after the E_prot sessions (TC4: prior + one block per session boot)."""
+    out = w6.new_out(args.out)
+    session_record(out, "nonce", {"note": args.note})
+    cdc, banner = open_cdc(args.port, out)
+    try:
+        if banner.get("variant") != "prot-usb":
+            raise SystemExit(f"dongle runs variant {banner.get('variant')!r}, NONCE reads need 'prot-usb'")
+        _, text = cdc.wait(r"^NONCE status=", cdc.send("NONCE"), 10)
+    finally:
+        cdc.close()
+    info = wc.kv(text)
+    wc.write_new_json(out / "nonce.json", {"schema": "week10-nonce-read/1", "banner_build": banner.get("build"),
+                                          "nonce": info, "read_utc": datetime.now(timezone.utc).isoformat()})
+    print(f"NONCE status={info.get('status')} reserved_through={info.get('reserved_through')} "
+          f"block_reserved={info.get('block_reserved')} -> {out}")
+    return 0 if info.get("status") == "READY" and info.get("block_reserved") == "0" else 1
 
 
 def dongle_cycles(out: Path) -> dict:
@@ -208,6 +269,21 @@ def main() -> int:
     p.add_argument("--connect-timeout-s", type=float, default=180.0)
     p.add_argument("--peer-name", default="KV260")
     p.set_defaults(func=cmd_session)
+    p = sub.add_parser("verify-prot")
+    common(p)
+    p.set_defaults(func=cmd_verify_prot)
+    p = sub.add_parser("session-prot")
+    common(p)
+    p.add_argument("--gap-ms", type=int, default=0, help="gap between cycles (energy session: 1000)")
+    p.add_argument("--first", type=int, default=0, help="first cycle of the plan")
+    p.add_argument("--count", type=int, default=w10.PROT_CYCLES, help="cycles (500 P1 in the whole plan)")
+    p.add_argument("--prior-reserved-through", type=int, help="NONCE reserved_through read before this run")
+    p.set_defaults(func=cmd_session_prot)
+    p = sub.add_parser("nonce")
+    p.add_argument("--out", type=Path, required=True, help="new directory")
+    p.add_argument("--port", help="application CDC port")
+    p.add_argument("--note", default="")
+    p.set_defaults(func=cmd_nonce)
     p = sub.add_parser("import-kv260")
     p.add_argument("--out", type=Path, required=True, help="the session directory")
     p.add_argument("--kv260-log", type=Path, required=True, help="KV260 request log (JSON lines, with split)")
