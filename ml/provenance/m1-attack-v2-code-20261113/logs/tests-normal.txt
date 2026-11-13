@@ -1,0 +1,36 @@
+test_authorization_binds_protocol_plan_and_review_file (__main__.GateTests.test_authorization_binds_protocol_plan_and_review_file) ... ok
+test_trial_refused_without_authorization_before_any_load (__main__.GateTests.test_trial_refused_without_authorization_before_any_load) ... ok
+test_balanced_accuracy_and_advantage (__main__.MetricTests.test_balanced_accuracy_and_advantage) ... ok
+test_blocks_need_contiguous_patients (__main__.MetricTests.test_blocks_need_contiguous_patients) ... ok
+test_bootstrap_blocks_seeds_and_determinism (__main__.MetricTests.test_bootstrap_blocks_seeds_and_determinism) ... ok
+test_reconstruction_metrics (__main__.MetricTests.test_reconstruction_metrics) ... ok
+test_session_vote_ties_to_lowest_label (__main__.MetricTests.test_session_vote_ties_to_lowest_label) ... ok
+test_capacity_check_runs_first_and_escalates_once (__main__.ModelTests.test_capacity_check_runs_first_and_escalates_once) ... ok
+test_capacity_rule_and_early_stop (__main__.ModelTests.test_capacity_rule_and_early_stop) ... ok
+test_classifier_shapes (__main__.ModelTests.test_classifier_shapes) ... ok
+test_decoder_mirrors_the_head (__main__.ModelTests.test_decoder_mirrors_the_head) ... ok
+test_fit_is_deterministic_and_keeps_best_epoch (__main__.ModelTests.test_fit_is_deterministic_and_keeps_best_epoch) ... ok
+test_standardize_uses_train_statistics (__main__.ModelTests.test_standardize_uses_train_statistics) ... ok
+test_batched_head_equals_one_beat_at_a_time (__main__.ObservedTests.test_batched_head_equals_one_beat_at_a_time) ... ok
+test_golden_check_on_a_synthetic_package (__main__.ObservedTests.test_golden_check_on_a_synthetic_package) ... ok
+test_observed_is_the_registry_quantization_of_z_s (__main__.ObservedTests.test_observed_is_the_registry_quantization_of_z_s) ... ok
+test_rho1_loads_nopeek_weights (__main__.ObservedTests.test_rho1_loads_nopeek_weights) ... ok
+test_set_precision_turns_tf32_off (__main__.PrecisionTests.test_set_precision_turns_tf32_off) ... ok
+test_bindings_and_change_sources (__main__.ProtocolTests.test_bindings_and_change_sources) ... ok
+test_checkpoint_table_matches_selection_receipt_and_files (__main__.ProtocolTests.test_checkpoint_table_matches_selection_receipt_and_files) ... ok
+test_checkpoint_table_rejects_a_changed_rho1 (__main__.ProtocolTests.test_checkpoint_table_rejects_a_changed_rho1) ... ok
+test_settings_from_protocol (__main__.ProtocolTests.test_settings_from_protocol) ... ok
+test_settings_refuse_tf32_on (__main__.ProtocolTests.test_settings_refuse_tf32_on) ... ok
+test_boundaries_validation_labels_and_order (__main__.SplitTests.test_boundaries_validation_labels_and_order) ... ok
+test_record_without_test_or_duplicate_peak_refused (__main__.SplitTests.test_record_without_test_or_duplicate_peak_refused) ... ok
+test_validation_size_is_the_exact_ceiling (__main__.SplitTests.test_validation_size_is_the_exact_ceiling) ... ok
+test_run_trial_end_to_end_on_synthetic_arrays (__main__.TrialWiringTests.test_run_trial_end_to_end_on_synthetic_arrays)
+run_trial with the gate, preflight, arrays and golden check replaced by fixtures; real checkpoints, synthetic beats. ... s0-rho0-base: Pi=0.5981 CI95=[0.5911, 0.6081] bacc=0.5514 arch=base A1_NRMSE=0.0101
+s0-rho0-escalated: Pi=0.6667 CI95=[0.6667, 0.6667] bacc=0.5000 arch=escalated A1_NRMSE=0.0101
+s2-rho1: Pi=0.8559 CI95=[0.8438, 0.8758] bacc=0.3581 arch=escalated A1_NRMSE=1.1989
+ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 2.067s
+
+OK

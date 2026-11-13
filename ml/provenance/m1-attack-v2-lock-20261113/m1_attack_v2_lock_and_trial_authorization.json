@@ -1,0 +1,35 @@
+{
+  "type": "M1_ATTACK_V2_LOCK_AND_TRIAL_AUTHORIZATION",
+  "allow_trial": true,
+  "scope": "Week 11 trial of attack protocol v2 on DS1 (N = 22), report only: B-naive capacity check at s0 (rho0) first, then s2, s4, s5, s8 with rho0 and rho1 (deployment seed), attacks A1 and B-naive, in the order of trial_week11_scope, as run by ml/scripts/attack_m1_v2.py run-trial",
+  "protocol_path": "ml/configs/mitdb_m1_attack_protocol_v2.json",
+  "protocol_sha256": "7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0",
+  "plan_manifest_path": "ml/manifests/mitdb-attack-m1-v2/plan-manifest.json",
+  "plan_manifest_sha256": "8fc252d23c935a93d17fb0080f939fca105e22b8d37e769b2da7940fd32fb177",
+  "runner_path": "ml/scripts/attack_m1_v2.py",
+  "runner_sha256": "5064e09da9210da7a262818a1eab3647cbd0ef040929debc453f3040ea2f24b8",
+  "code_receipt_path": "ml/provenance/m1-attack-v2-code-20261113/receipt.json",
+  "code_receipt_sha256": "92fbf316e5a1317348e776dc97f6c91155bf4bcd98a32fd802adff74e6154828",
+  "checkpoint_lock_sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc",
+  "rho0_sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+  "rho1_sha256": {
+    "s2": "6e04b7259f0bfa2165303c4ecbcef148024d543e7b2a802fb38d0cc9da6abe3b",
+    "s4": "7ef1cff382397383dc198f0d67e64b950e5152e6aaca3e3361563ae952b1823f",
+    "s5": "1698c9427ffd2b3497940a879530d98ef3e6a35318691c51aac7c28a55aa56dc",
+    "s8": "a6ebc8c30f5fe25f4baf37e0eff9d1866d419873c8c6f99b14eb362cd81b2625"
+  },
+  "approved_by": "SV3",
+  "decision_authority": "SV1, delegated by GVHD",
+  "decision_date": "2026-11-13",
+  "review_evidence": "08b27b292b4c54e18c9a0b69a0cc2b4759a1ccd629d53a277f26f03403d3028b",
+  "review_evidence_path": "ml/provenance/m1-nopeek-v2-release-20261113/sv1_evidence/tra_loi_Ky_Anh_NoPeek_v2_goiA_20261113.txt",
+  "review_evidence_author": "SV1",
+  "review_basis": "SV1 2026-11-13 section 4: attack protocol v2 binds NoPeek v2 (83cce64d), grid-selection.json, the SHA-256 of the 4 rho1 checkpoints and of checkpoint A, TF32 off, points (1)-(4) of section 5 of the SV1 message of 2026-11-09, and point 3(c); if the diff against v1 holds only these points, lock without resubmission. Section 3: the section 4 checkpoints are rho1; rho0 is checkpoint A",
+  "changes_beyond_listed_points": "Protocol v2 changes_from_v1 items 11-15 fix implementation details v1 left open (exact split boundaries, escalated architecture, input standardization, seeds, A1 at s0, metric formulas, z_s computation); they change no SV1 rule. Locked without resubmission to SV1 at SV3's decision of 2026-11-13; listed in docs/sv3_m1_attack_v2_review_20261113.md for SV1",
+  "fault_rule": "If the trial stops part way, the output directory is kept as it is (nothing deleted, no rerun) and its logs go to SV1 before any rerun, which then needs its own receipt naming the failed pair (as SV1 2026-11-09 item 3(e) for DS2)",
+  "not_covered": [
+    "Official DS2 round (N = 21), the 3(c) defence-seed range and the DS2 metadata counts: package B, the xmodel lock and their own authorization",
+    "rho2, A2, A3, B-adaptive and B-rec: later protocol versions",
+    "DS2: never opened by this authorization"
+  ]
+}

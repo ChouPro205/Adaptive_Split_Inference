@@ -1,0 +1,139 @@
+s0-rho0-base: Pi=0.6176 CI95=[0.6067, 0.6316] bacc=0.4853 arch=base A1_NRMSE=0.0102
+s0-rho0-escalated: Pi=0.6898 CI95=[0.6826, 0.6976] bacc=0.4252 arch=escalated A1_NRMSE=0.0102
+s2-rho0: Pi=0.5075 CI95=[0.4948, 0.5177] bacc=0.5771 arch=escalated A1_NRMSE=0.8735
+s2-rho1: Pi=0.4949 CI95=[0.4816, 0.5050] bacc=0.5876 arch=escalated A1_NRMSE=0.8786
+s9-rho0: Pi=0.0707 CI95=[0.0460, 0.0920] bacc=0.9411 arch=escalated A1_NRMSE=2.6416
+{
+  "status": "SMOKE_PASS_RANDOM_DATA_NOT_MITDB",
+  "epochs": 3,
+  "resamples": 200,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 5060",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "cudnn_allow_tf32": false,
+  "matmul_allow_tf32": false,
+  "deterministic_algorithms": true,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "counts": {
+    "beats": 960,
+    "dropped": 23,
+    "attacker_side": 464,
+    "test": 473,
+    "attacker_side_per_record": [
+      70,
+      83
+    ],
+    "test_per_record": [
+      74,
+      85
+    ],
+    "largest_patient_share_of_all_beats": 0.1667
+  },
+  "capacity_check": {
+    "statistic": "mean over the B seeds of s0 test bacc (base architecture)",
+    "value": 0.4853206147323794,
+    "threshold": 0.8,
+    "decision": "escalated",
+    "s0_escalated_bacc_mean": 0.42518518518518517
+  },
+  "table": [
+    {
+      "pair": "s0-rho0-base",
+      "s": 0,
+      "rho": "rho0",
+      "Pi": 0.6176152623211446,
+      "ci95": [
+        0.6067474673202614,
+        0.6315724225173941
+      ],
+      "Pi_seed_range": [
+        0.4834340222575516,
+        0.6941176470588235
+      ],
+      "bacc_mean": 0.4853206147323794,
+      "passes_Pi_min": true,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.010150749941696539,
+      "A1_pearson_mean": 0.9999473359614212
+    },
+    {
+      "pair": "s0-rho0-escalated",
+      "s": 0,
+      "rho": "rho0",
+      "Pi": 0.6897777777777778,
+      "ci95": [
+        0.682645343137255,
+        0.6975505718954248
+      ],
+      "Pi_seed_range": [
+        0.6213333333333333,
+        0.7317647058823529
+      ],
+      "bacc_mean": 0.42518518518518517,
+      "passes_Pi_min": true,
+      "architecture": "escalated",
+      "A1_NRMSE_mean": 0.010150749941696539,
+      "A1_pearson_mean": 0.9999473359614212
+    },
+    {
+      "pair": "s2-rho0",
+      "s": 2,
+      "rho": "rho0",
+      "Pi": 0.507450980392157,
+      "ci95": [
+        0.49481111111111103,
+        0.5177236111111111
+      ],
+      "Pi_seed_range": [
+        0.4564705882352942,
+        0.5482352941176472
+      ],
+      "bacc_mean": 0.5771241830065358,
+      "passes_Pi_min": true,
+      "architecture": "escalated",
+      "A1_NRMSE_mean": 0.8735471150359536,
+      "A1_pearson_mean": 0.6409806948018062
+    },
+    {
+      "pair": "s2-rho1",
+      "s": 2,
+      "rho": "rho1",
+      "Pi": 0.4949019607843137,
+      "ci95": [
+        0.48161519607843134,
+        0.5049727668845316
+      ],
+      "Pi_seed_range": [
+        0.46352941176470586,
+        0.52
+      ],
+      "bacc_mean": 0.5875816993464053,
+      "passes_Pi_min": false,
+      "architecture": "escalated",
+      "A1_NRMSE_mean": 0.8785973032640456,
+      "A1_pearson_mean": 0.6366177095510319
+    },
+    {
+      "pair": "s9-rho0",
+      "s": 9,
+      "rho": "rho0",
+      "Pi": 0.07065283898939878,
+      "ci95": [
+        0.04603970701183705,
+        0.09198008707702487
+      ],
+      "Pi_seed_range": [
+        0.05985354826158984,
+        0.08129646549006175
+      ],
+      "bacc_mean": 0.941122634175501,
+      "passes_Pi_min": false,
+      "architecture": "escalated",
+      "A1_NRMSE_mean": 2.6415647034679073,
+      "A1_pearson_mean": 0.010409560591633293
+    }
+  ],
+  "s2_rho1_rerun_identical": true
+}

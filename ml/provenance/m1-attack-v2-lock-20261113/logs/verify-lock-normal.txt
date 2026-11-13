@@ -1,0 +1,11 @@
+require_authorization: ACCEPTED 7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0 8fc252d23c935a93d17fb0080f939fca105e22b8d37e769b2da7940fd32fb177 08b27b292b4c54e18c9a0b69a0cc2b4759a1ccd629d53a277f26f03403d3028b
+protocol: MATCH ml/configs/mitdb_m1_attack_protocol_v2.json
+plan_manifest: MATCH ml/manifests/mitdb-attack-m1-v2/plan-manifest.json
+runner: MATCH ml/scripts/attack_m1_v2.py
+code_receipt: MATCH ml/provenance/m1-attack-v2-code-20261113/receipt.json
+checkpoints and runner in plan: MATCH
+negative control allow_trial=false: REJECTED ValueError
+negative control review_evidence_path=SV1 2026-11-09 message: REJECTED ValueError
+negative control protocol_sha256=v1: REJECTED ValueError
+negative control type=NoPeek v2 lock: REJECTED ValueError
+negative control approved_by empty: REJECTED ValueError

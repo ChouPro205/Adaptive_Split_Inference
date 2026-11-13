@@ -1,0 +1,229 @@
+diff --git a/ml/configs/mitdb_m1_attack_protocol_v1.json b/ml/configs/mitdb_m1_attack_protocol_v2.json
+index a442294..2187385 100644
+--- a/ml/configs/mitdb_m1_attack_protocol_v1.json
++++ b/ml/configs/mitdb_m1_attack_protocol_v2.json
+@@ -1,19 +1,47 @@
+ {
+   "schema_version": 1,
+-  "protocol_id": "mitdb-m1-attack-v1",
+-  "status": "CANDIDATE_FOR_SV1_REVIEW_NOT_LOCKED",
++  "protocol_id": "mitdb-m1-attack-v2",
++  "status": "READY_FOR_SV3_LOCK_NOT_LOCKED",
+   "authority": {
+     "decision_authority": "SV1, delegated by GVHD",
+     "prepared_by": "SV3",
+     "locked": false,
+     "attack_runs_permitted": false,
+-    "lock_procedure": "After SV1 review, SV3 writes a lock and run authorization binding this protocol, the attack code and the evaluated checkpoints; the week 11 trial needs that lock, the official evaluation a later locked version"
++    "lock_procedure": "SV3 writes a lock and trial authorization binding this protocol, the attack plan manifest (which binds the attack code, the evaluated checkpoints and the DS1 arrays) and the review evidence file sv1_review_20261113 below (approved_by SV3). SV1 2026-11-13 section 4: if the diff against v1 holds only the listed points, lock without resubmission to SV1. changes_from_v1 lists every change with its source; items marked 'implementation detail' fix what v1 left unspecified and are listed for SV1 to see"
+   },
++  "predecessor": {
++    "path": "ml/configs/mitdb_m1_attack_protocol_v1.json",
++    "sha256": "869170470794aa2b1e7fca6eb217bc96b7eb0396be0720e39ca82cf79a19b5a0",
++    "status": "CANDIDATE_FOR_SV1_REVIEW_NOT_LOCKED (never locked, never run)"
++  },
++  "changes_from_v1": [
++    {"item": 1, "what": "N: trial N = 22 (DS1, 201 in, 202 absent); official N = 21 (DS2 without 202); limitations say N = 21", "source": "SV1 2026-11-09 items 1 and 5(1)"},
++    {"item": 2, "what": "CI95: bootstrap within each patient over blocks of 10 consecutive test beats, identity set fixed, 2000 resamples, seed 20261105, percentile interval of bacc mapped to Pi", "source": "SV1 2026-11-09 item 5(2)"},
++    {"item": 3, "what": "B runs 3 seeds; Adv of a B variant = mean over its 3 seeds; Pi = 1 - max over variants; seed min-max reported; never max over seeds; comparison with Pi_min uses the point estimate, the CI is reported only", "source": "SV1 2026-11-09 item 5(2)"},
++    {"item": 4, "what": "Attack models: v1 candidates adopted (2-block 64-channel CNN for NCL, MLP for s9/s10, AdamW lr 1e-3, at most 50 epochs, early stop on attacker-validation bacc, patient-weighted CE; A1 = head mirror with MSE)", "source": "SV1 2026-11-09 item 5(3)"},
++    {"item": 5, "what": "Attacker capacity check before any other split: B-naive at s0 (rho0); if bacc < 0.80, raise capacity once to the fixed escalated architecture, then run every other split whatever s0 gives, and report the numbers as they are", "source": "SV1 2026-11-09 item 5(3)"},
++    {"item": 6, "what": "Trial decoder data: attacker side of the 22 DS1 records, never DS1 train (it holds the trial test part of 18 records); official decoder data: DS1 train", "source": "SV1 2026-11-09 item 5(4)"},
++    {"item": 7, "what": "Bindings: NoPeek protocol v2, grid-selection.json, SHA-256 of the 4 rho1 checkpoints (s2, s4, s5, s8) and of checkpoint A; TF32 off for cuDNN and matmul in every attack step", "source": "SV1 2026-11-13 section 4; SV1 2026-11-09 item 4(5)"},
++    {"item": 8, "what": "Official DS2 round adds B-naive (3 attacker seeds) on the other 2 seeds of the selected lambda at s2 and s_m, to report the Pi range over defence seeds; selection unchanged; checkpoints of s2, s4 and s5 listed because s_m follows the trial", "source": "SV1 2026-11-13 point 3(c)"},
++    {"item": 9, "what": "Trial order s0 first, then s2, s4, s5, s8, rho0 and rho1 at each split; deployment seed only; Pi(s2, rho0) and Pi(s2, rho1) reported at once; receipt carries the caveat that the test part of 18 DS1 records lies in DS1 train", "source": "SV1 2026-11-13 section 4 and 3(b)"},
++    {"item": 10, "what": "sv1_decisions_20261103 bound to the byte-exact provenance copy instead of the untracked docs/inbox file", "source": "SV1 2026-11-09 item 5, last part"},
++    {"item": 11, "what": "Implementation detail: exact time-split boundaries (|r - 325000| <= 10800 dropped), attacker validation = last ceil(0.2 n) attacker-side beats of each record, identity label = rank of the numeric record id", "source": "v1 rule made exact; reproduces the v1 counts"},
++    {"item": 12, "what": "Implementation detail: escalated architecture fixed before any run (NCL: 3 blocks of 128 channels; NC: MLP 256-256); capacity statistic = mean over the 3 B seeds of s0 test bacc", "source": "SV1 2026-11-09 item 5(3) gives 3 blocks, 128 channels as the example"},
++    {"item": 13, "what": "Implementation detail: attacker input standardized per channel with mean and std of its own attacker-train part; B and A1 optimizer AdamW (lr 1e-3, weight decay 1e-4, betas 0.9/0.999, eps 1e-8), batch 256, shuffled by a seeded generator; best attacker-validation epoch kept (ties: earliest); B seeds 20261030, 20261031, 20261101; A1 seed 20261030", "source": "v1 candidate values; weight decay of A1 and the seeds were unspecified"},
++    {"item": 14, "what": "Implementation detail: A1 at s0 is the identity (the attacker already holds the quantized signal); reconstruction metrics defined per beat (NRMSE, Pearson, R-peak position error)", "source": "v1 named the metrics without formulas"},
++    {"item": 15, "what": "Implementation detail: z_s computed on CPU from the evaluated checkpoint in eval mode (s0-s8 batched, s9-s10 one beat at a time, both bit-equal to the package A golden convention), quantized and dequantized with ml/src/quantization.py of registry v2", "source": "registry v2 quantization reference; SV1 2026-11-09 item 3(a) on using the week 5 function"}
++  ],
+   "source_bindings": {
+-    "sv1_decisions_20261103": {"path": "docs/inbox/sv1_chot_cau_hoi_SV3_20261103.txt", "raw_sha256": "be5d1411a61bcd0dadc614dc9255cf524d8c5854a0fa6e984f9cfd504584a343", "items": "7, 8, 9, 10, 11"},
++    "sv1_decisions_20261103": {"path": "ml/provenance/m1-sv1-evidence-20261111/sv1_chot_cau_hoi_SV3_20261103.txt", "raw_sha256": "be5d1411a61bcd0dadc614dc9255cf524d8c5854a0fa6e984f9cfd504584a343", "items": "7, 8, 9, 10, 11"},
+     "sv1_review_20261105": {"path": "ml/provenance/m1-v4-checkpoint-lock-20261105/sv1_evidence/sv1_review_m1_v4_grid_20261105.txt", "raw_sha256": "45ef6cc76bd777f93ba6c95f257a11b7d6144f1d149e51568f4e94f054e57054", "items": "point 4 (N, gap, balanced accuracy), 6a, 6b"},
+-    "checkpoint_lock": {"path": "ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json", "sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc"},
+-    "nopeek_protocol": {"path": "ml/configs/mitdb_m1_nopeek_protocol_v1.json", "sha256": "1e180b45258d4f9c6902aeee8ccfedd5de38f62b9bb4a2f16f9030391b72ebf4"}
++    "sv1_review_20261109": {"path": "ml/provenance/m1-sv1-evidence-20261111/tra_loi_Ky_Anh_PR44_20261109.txt", "raw_sha256": "2207542f6e3d09603093c69c9e646327082fe6bda1df2fd1fa71587664e15328", "items": "1 (N), 4(5) (TF32 off), 5(1)-(4) (attack protocol v1 points)"},
++    "sv1_review_20261113": {"path": "ml/provenance/m1-nopeek-v2-release-20261113/sv1_evidence/tra_loi_Ky_Anh_NoPeek_v2_goiA_20261113.txt", "raw_sha256": "08b27b292b4c54e18c9a0b69a0cc2b4759a1ccd629d53a277f26f03403d3028b", "items": "3 (rho1 = section 4 checkpoints, 3(c)), 4 (bindings of attack protocol v2, trial order, receipt caveat)", "role": "Review evidence for the lock of this protocol"},
++    "nopeek_protocol_v2": {"path": "ml/configs/mitdb_m1_nopeek_protocol_v2.json", "sha256": "83cce64defefa979abcf8c31cc27daf9ae81604caae911acf0901cba3783cf35"},
++    "grid_selection": {"path": "ml/provenance/m1-nopeek-v2-run-20261112/grid-selection.json", "sha256": "9f7ab9bf008e066f6d921fa231a7d4b72ae8d4b75cb82d11c6f31b651ea8e48e"},
++    "checkpoint_lock_A": {"path": "ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json", "sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc"},
++    "nopeek_checkpoint_release": {"tag": "sv3-m1-nopeek-v2-checkpoints-20261113", "zip_sha256": "df34b13e4ce478353e52cf5bfb907f9f37c1b5884980b86b4f5f153645dae351", "publication": "ml/provenance/m1-nopeek-v2-release-publication-20261113/release-publication.json"},
++    "quantization": {"path": "ml/src/quantization.py", "sha256": "cb2c6260784fddf43a6fa620d0b258efae643cf98d9399f9625c21d8f14faa3f", "registry": "contracts/sv3_week5_approved_registry_v2.json", "registry_sha256": "79392b6db73cde6d83eadb1f265f14102888ebdbf8ea1b72b6c127c5566eed24"},
++    "package_A": {"path": "ml/data/package-a/m1-v4-package-a-20261105-v1", "manifest_sha256": "f005b3ea4e2440186bce4218c537b12f3b54fe734631c56a90c2378748aedf2f", "use": "golden z_s of 20 DS1 train beats: the attack runner checks its z_s computation against them for rho0"}
+   },
+   "threat_model": {
+     "adversary": "Honest-but-curious edge (KV260): follows the protocol, keeps everything it receives and tries to reconstruct the ECG or re-identify the patient",
+@@ -24,48 +52,133 @@
+     "P1": "Removed from the action set: before the edge Pi(s, P1) = Pi(s, P0); kept as an implemented, measured mechanism discussed in 2-3 sentences"
+   },
+   "attacks": {
+-    "A1": "Basic decoder trained with MSE to map the observed tensor back to the 360-sample ECG window",
++    "A1": "Basic decoder trained with MSE to map the observed tensor back to the 360-sample normalized ECG window",
+     "A2": "GAN decoder: A1 plus a discriminator",
+     "A3": "Adaptive attacker: A2 retrained on protected tensors, knowing the full algorithm and protection parameters",
+-    "B_naive": "Re-identification classifier trained on rho0 tensors at the same s",
++    "B_naive": "Re-identification classifier trained on the observed tensors of the evaluated (s, rho) at the attacker side",
+     "B_adaptive": "Re-identification classifier trained on the protected tensors, knowing algorithm, lambda and noise distribution",
+     "B_rec": "Re-identification classifier applied to signals reconstructed by A3",
+-    "naming": "Paper text: three reconstruction attacks of increasing strength (A1-A3) and one re-identification attack (B); roadmap 8.1 -> A1, A2; 8.2 -> B; 8.3 -> A3 (+ B-adaptive)"
++    "naming": "Paper text: three reconstruction attacks of increasing strength (A1-A3) and one re-identification attack (B); roadmap 8.1 -> A1, A2; 8.2 -> B; 8.3 -> A3 (+ B-adaptive)",
++    "in_this_lock": ["A1", "B_naive"]
++  },
++  "observed_tensor": {
++    "z_s": "Output of head_s of the evaluated checkpoint (model in eval mode, dropout off) on the normalized input x of each beat; s0 is x itself",
++    "computation": "CPU, torch.set_num_threads(1), deterministic algorithms, mkldnn off (week3_sv2_common.configure); s0-s8 in batches, s9-s10 one beat at a time; both reproduce the package A golden z_s bit for bit",
++    "quantization": "quantize_per_channel then dequantize_per_channel of ml/src/quantization.py (per beat and channel, symmetric INT8, FP16 scale); s9/s10 through to_ncl with L = 1",
++    "attacker_input": "The dequantized FP32 tensor [C, L] (NC at s9/s10)",
++    "golden_check": "For rho0 the runner recomputes z_s of the 20 package A golden beats from golden/z_s0.npy and requires bit equality with golden/z_s<s>.npy at every evaluated s"
+   },
+   "privacy_metric": {
+     "Pi": "Pi(s, rho) = 1 - Adv, Adv = (bacc - 1/N) / (1 - 1/N), clipped to [0, 1]",
+-    "bacc": "Balanced accuracy of per-beat top-1 re-identification on the test part: mean over the N patients of per-patient recall (SV1 2026-11-05 replaces plain accuracy; always-majority already gives 6.6 % on DS1 against 1/22 = 4.5 %)",
+-    "strongest_attack": "Adv is the maximum over B-naive, B-adaptive and B-rec available for that (s, rho)",
+-    "reconstruction_metrics": "NRMSE, Pearson correlation and R-peak position error of A1-A3 are reported in the attack table and gallery, not combined into Pi",
++    "bacc": "Balanced accuracy of per-beat top-1 re-identification on the test part: mean over the N patients of per-patient recall",
++    "seeds": "Each B variant runs 3 seeds; Adv of the variant = mean of the 3 per-seed Adv values; seed min-max of bacc, Adv and Pi reported; never the maximum over seeds",
++    "strongest_attack": "Pi(s, rho) = 1 - max over the B variants available for that (s, rho) of the variant Adv; in this lock B_naive only",
++    "comparison_with_Pi_min": "Point estimate only; the CI is reported, never used for the decision",
+     "Pi_min": 0.5,
+     "Pi_min_sweep": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+-    "confidence_interval": "OPEN: plain-accuracy Wilson no longer applies to bacc; candidate = patient-stratified bootstrap over test beats, 2000 resamples, seed 20261105, percentile 95 % interval of bacc mapped to Pi",
+-    "session_variant": "Majority vote over 10 consecutive beats reported in the discussion only"
++    "bootstrap": {
++      "resamples": 2000,
++      "seed": 20261105,
++      "generator": "numpy.random.default_rng(20261105); patients in label order, each drawing integers(0, n_blocks, size=(2000, n_blocks)) block indices at once",
++      "blocks": "Per patient, the test beats in time order cut into consecutive non-overlapping blocks of 10 (the last block may be shorter); each resample draws, for every patient, as many blocks as it has, with replacement",
++      "identity_set": "Fixed: every resample keeps all N patients",
++      "statistic": "The same block draw is applied to the predictions of the 3 B seeds; per seed bacc, Adv = mean of the per-seed Adv, Pi = 1 - Adv",
++      "interval": "Percentile 2.5 % and 97.5 % (numpy.quantile, method linear) of the resampled Pi",
++      "block_beats": 10
++    },
++    "session_variant": "Majority vote of each seed's predictions over the same blocks of 10 consecutive test beats (ties: lowest label), balanced over patients; discussion only, never Pi",
++    "reconstruction_metrics": {
++      "on": "Test-part beats, normalized input space",
++      "NRMSE": "Per beat sqrt(mean((x_hat - x)^2)) / std(x), population std of the original beat",
++      "pearson": "Per beat Pearson correlation of x_hat and x (0 when either is constant)",
++      "r_peak_error_samples": "Per beat |argmax|x_hat| - argmax|x|| over the 360 samples, also in ms at 360 Hz",
++      "summary": "Mean and median over test beats; not combined into Pi"
++    }
+   },
+   "data": {
+     "trial_week11": {
+       "identities": "DS1, 22 records (101, 106, 108, 109, 112, 114, 115, 116, 118, 119, 122, 124, 201, 203, 205, 207, 208, 209, 215, 220, 223, 230), N = 22; no record dropped",
+-      "time_split": "Per record: drop beats whose R peak lies within 30 s (10800 samples) of sample 325000; earlier beats -> attacker side, later beats -> test",
+-      "attacker_validation": "Last 20 % (by time) of each record's attacker side",
+-      "counts_checked_by_SV3": "50995 DS1 beats; 1681 dropped; attacker side 767-1637 and test 799-1613 beats per record; largest patient 6.59 % of beats",
+-      "decoder_training_data": "Attacker side of the 22 DS1 records",
+-      "caveat": "DS1 patients were in the training of the model, so trial numbers are an early warning only and never enter the paper's main numbers"
++      "source_rows": "DS1 train and val metadata and arrays of mitdb-ds1ds2-m1-v3-r2 (18 records in train, 4 in val), concatenated train then val",
++      "label": "Rank of the numeric record id in ascending order (101 -> 0, ..., 230 -> 21)",
++      "time_split": {"center_sample": 325000, "half_width_samples": 10800, "dropped": "|r_peak_sample - 325000| <= 10800", "attacker_side": "r_peak_sample < 314200", "test": "r_peak_sample > 335800"},
++      "attacker_validation": {"rule": "Per record, the last ceil(0.2 n) beats by r_peak_sample of its attacker side", "fraction": 0.2},
++      "counts": {"beats": 50995, "dropped": 1681, "attacker_side": 24839, "test": 24475, "attacker_side_per_record": [767, 1637], "test_per_record": [799, 1613], "largest_patient_share_of_all_beats": 0.0659},
++      "decoder_training_data": "Attacker-train part of the 22 DS1 records; early stop on their attacker-validation part",
++      "caveat": "The test part of the 18 DS1 train records lies in DS1 train, so the head saw those beats in training; trial Pi may be more optimistic than the official DS2 Pi; trial numbers are an early warning only and never enter the paper's main numbers"
+     },
+     "official": {
+-      "identities": "DS2; OPEN: N = 21 (without 202, SV1 2026-11-03 item 10) or N = 22 (SV1 2026-11-05 point 4 wording); asked to SV1",
++      "identities": "DS2 without 202 (same person as 201, which is in DS1 train), N = 21",
+       "time_split": "Same rule as the trial",
+       "decoder_training_data": "DS1 train beats (auxiliary data)",
+-      "rule": "DS2 is used only for privacy evaluation; never to choose lambda, noise, checkpoint or threshold; protection parameters are locked on validation before the first Pi on DS2"
++      "counts": "Recomputed from DS2 metadata only (no model) per SV1 2026-11-09 item 1 before the official run: beats dropped around sample 325000, per-patient ranges on both sides, largest patient share",
++      "rule": "DS2 is used only for privacy evaluation; never to choose lambda, noise, checkpoint or threshold; protection parameters are locked on validation before the first Pi on DS2",
++      "run": "Needs package B, the xmodel lock and its own run authorization; not covered by the trial authorization of this lock"
+     },
+     "DS2_in_trial": false
+   },
++  "checkpoints": {
++    "rho0": {"role": "Checkpoint A (package A deployment, C5-seed20261101 epoch 4)", "path": "ml/data/runs/mitdb-baseline-v4-20261103/C5-seed20261101/attempt-1/checkpoint-epoch-004.pt", "sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c"},
++    "rho1": {
++      "s2": {"run_id": "grid-s2-lambda2-seed20261101", "lambda": 2, "seed": 20261101, "epoch": 3, "sha256": "6e04b7259f0bfa2165303c4ecbcef148024d543e7b2a802fb38d0cc9da6abe3b"},
++      "s4": {"run_id": "grid-s4-lambda1-seed20261031", "lambda": 1, "seed": 20261031, "epoch": 3, "sha256": "7ef1cff382397383dc198f0d67e64b950e5152e6aaca3e3361563ae952b1823f"},
++      "s5": {"run_id": "grid-s5-lambda1-seed20261030", "lambda": 1, "seed": 20261030, "epoch": 2, "sha256": "1698c9427ffd2b3497940a879530d98ef3e6a35318691c51aac7c28a55aa56dc"},
++      "s8": {"run_id": "grid-s8-lambda5-seed20261031", "lambda": 5, "seed": 20261031, "epoch": 5, "sha256": "a6ebc8c30f5fe25f4baf37e0eff9d1866d419873c8c6f99b14eb362cd81b2625", "note": "offline only"}
++    },
++    "rho1_path": "ml/data/runs/nopeek-m1-v2-20261112/grid/<run_id>/checkpoint-epoch-<epoch:03d>.pt",
++    "official_defence_seed_range_3c": {
++      "use": "Official DS2 round only: B-naive with 3 attacker seeds at s2 and at s_m (s4 or s5 by the middle-cut rule); reported as the Pi range over defence seeds; selection unchanged",
++      "s2": [{"run_id": "grid-s2-lambda2-seed20261030", "epoch": 3, "sha256": "d2bd639b6008e17ad71add21f00a54fdcdaea748229e4ce80751ad23f6234578"},
++             {"run_id": "grid-s2-lambda2-seed20261031", "epoch": 3, "sha256": "3a0efcb19bb34711bf0000182dae810f5556dd102e7d36d9381657a37ee79d23"}],
++      "s4": [{"run_id": "grid-s4-lambda1-seed20261030", "epoch": 3, "sha256": "d48f3df8cf4d74842ce198fc98ba2c41bcc741fcb2dafc4352fb027d956d0ea5"},
++             {"run_id": "grid-s4-lambda1-seed20261101", "epoch": 4, "sha256": "020940b895546d477577c4b793db66423381ef38c119595f7397a389b3942e59"}],
++      "s5": [{"run_id": "grid-s5-lambda1-seed20261031", "epoch": 1, "sha256": "5b95fdbc61b4a67216e632d1c0976d020c4053d861c38205062cde0b4ce91d68"},
++             {"run_id": "grid-s5-lambda1-seed20261101", "epoch": 4, "sha256": "b9c5bb96bc330e5a449bd103c96a652991c0d2e6613934b2eb76d9d5afcc2199"}]
++    }
++  },
++  "attack_models": {
++    "input_standardization": "Per channel: mean and population std over N and L of the attacker-train part of the evaluated (s, rho); std floor 1e-6; applied to attacker-train, attacker-validation and test",
++    "B_classifier": {
++      "base": {"NCL": {"blocks": 2, "channels": 64, "kernel": 5, "block": "Conv1d(padding 2) + ReLU + MaxPool1d(2)", "head": "mean over L, Linear(channels, N)"},
++               "NC": {"hidden": [128], "layer": "Linear + ReLU", "output": "Linear(hidden, N)"}},
++      "escalated": {"NCL": {"blocks": 3, "channels": 128, "kernel": 5}, "NC": {"hidden": [256, 256]}},
++      "loss": "Cross-entropy weighted by inverse patient frequency of the attacker-train part: w_k = n / (N n_k)",
++      "seeds": [20261030, 20261031, 20261101]
++    },
++    "A1_decoder": {
++      "s0": "Identity: the reconstruction is the dequantized input; no training",
++      "s1_to_s8": "Mirror of head_s: for k = s down to 1, nearest upsampling (F.interpolate, mode nearest) to the length before the pool when layer k was followed by MaxPool1d(2), then Conv1d(C_k -> C_(k-1), kernel 5, padding 2), ReLU except after the last convolution; C = (1, 16, 16, 32, 32, 48, 48, 64, 64)",
++      "s9": "Linear(32, 64 x 22) + ReLU, reshape to [64, 22], then the s8 mirror",
++      "s10": "Linear(5, 32) + ReLU, then the s9 decoder",
++      "loss": "MSE against the normalized input x",
++      "seeds": [20261030]
++    },
++    "training": {
++      "optimizer": {"name": "AdamW", "lr": 0.001, "weight_decay": 0.0001, "betas": [0.9, 0.999], "eps": 1e-08},
++      "batch_size": 256,
++      "max_epochs": 50,
++      "shuffle": "torch.Generator seeded with the attack seed + epoch - 1",
++      "early_stop": {"B": "attacker-validation bacc, higher is better", "A1": "attacker-validation MSE, lower is better", "patience": 5, "keep": "best epoch, ties to the earliest"},
++      "device": "CUDA when available, else CPU; deterministic algorithms, cuDNN deterministic, benchmark off, CUBLAS_WORKSPACE_CONFIG :4096:8",
++      "precision": {"cudnn_allow_tf32": false, "matmul_allow_tf32": false}
++    }
++  },
++  "capacity_check": {
++    "when": "First step of the trial, before any other split",
++    "split": 0,
++    "rho": "rho0",
++    "statistic": "Mean over the 3 B seeds of the s0 test bacc of B_naive with the base architecture",
++    "threshold": 0.8,
++    "rule": "statistic >= 0.80: base architecture for every split; statistic < 0.80: escalated architecture once, s0 rerun with it, then every other split with it whatever the rerun gives; both s0 results reported",
++    "reason": "Decided only at s0 where nothing is protected, so the attacker is never tuned on Pi of a protected configuration (SV1 2026-11-09 item 5(3))"
++  },
+   "trial_week11_scope": {
+-    "rho0": "Package A checkpoint (fcf3f846...) at s2, s4, s5, s8",
+-    "rho1": "NoPeek candidates (selected lambda, deployment seed) at s2, s4, s5 from the NoPeek v1 grid",
+-    "rho2": "Candidate at s2 if ready; at the latest early week 12",
+-    "attacks": ["A1", "B-naive"],
+-    "questions": ["(i) Does Pi(s, rho0) increase with s?", "(ii) Does rho1 raise Pi at s2 clearly?"],
+-    "report": "Report to SV1 the same day the numbers exist"
++    "order": [["s0", "rho0"], ["s2", "rho0"], ["s2", "rho1"], ["s4", "rho0"], ["s4", "rho1"], ["s5", "rho0"], ["s5", "rho1"], ["s8", "rho0"], ["s8", "rho1"]],
++    "attacks": ["A1", "B_naive"],
++    "defence_seeds": "Deployment seed only (rho1 table above)",
++    "rho2": "Not in this lock; a later version once the P2 specification exists",
++    "questions": ["(i) Does Pi(s, rho0) increase with s?", "(ii) Does rho1 raise Pi at s2 clearly? (R1: if Pi(s2, rho1) ~ Pi(s2, rho0), protection at s2 rests on rho2)"],
++    "report": "Report Pi(s2, rho0) and Pi(s2, rho1) to SV1 as soon as they exist; every other number the day it exists",
++    "receipt_caveat": "The test part of the 18 DS1 train records lies in DS1 train (beats the head saw in training), so trial Pi may be more optimistic than the official DS2 Pi"
+   },
+   "predeclared_branches_after_trial": {
+     "main": "s2 fails Pi_min at rho0 and passes at rho1 or rho2: main scenario, N2 leads",
+@@ -73,13 +186,7 @@
+     "no_signal": "Pi does not increase with s, or neither rho1 nor rho2 raises Pi: SV1 decides the T4 pivot in week 12",
+     "middle_cut": "Consider rho in {rho0, rho1}. If s4 has a rho reaching Pi_min, use s4; else if s5 has one, use s5; else use s4 and consider rho2 (SV1 6a)"
+   },
+-  "attack_models_candidate": {
+-    "status": "OPEN for SV1: architectures and budgets are candidates, fixed before the lock",
+-    "B_classifier": "NCL input: two Conv1d(64, kernel 5)+ReLU+MaxPool blocks, global average pooling, Linear(N); NC input (s9, s10): MLP 128-ReLU-N. AdamW lr 1e-3, weight decay 1e-4, batch 256, at most 50 epochs, early stop on attacker-validation bacc with patience 5, CE weighted by inverse patient frequency, 3 seeds",
+-    "A1_decoder": "Mirror of the head: ConvTranspose/upsampling back to [1, 360]; MSE; AdamW lr 1e-3, batch 256, at most 50 epochs, early stop on attacker-validation MSE with patience 5; 1 seed in the trial",
+-    "input": "Dequantized tensor (INT8 x FP16 scale) as the edge sees it"
+-  },
+-  "limitations": ["Small number of identities (N = 21 or 22); PTB-XL left for later", "No sex/age inference", "Trial on DS1 patients seen in training"],
++  "limitations": ["Small number of identities (N = 21); PTB-XL left for later", "No sex/age inference", "Trial on DS1 patients seen in training"],
+   "change_control": {"locked_file": "Never edit after lock; changes are new versions with reason, old/new hashes and SV1 review"},
+-  "execution_in_this_round": {"attacks": false, "fit": false, "DS2": false, "code": "Attack code is written after SV1 reviews this protocol"}
++  "execution_in_this_round": {"attacks": false, "fit": false, "DS2": false, "code": "ml/scripts/attack_m1_v2.py; smoke on random arrays only until the lock"}
+ }
