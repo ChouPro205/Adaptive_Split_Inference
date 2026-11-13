@@ -1,0 +1,2 @@
+name, driver_version, memory.used [MiB], memory.total [MiB], temperature.gpu, utilization.gpu [%]
+NVIDIA GeForce RTX 5060, 591.86, 1980 MiB, 8151 MiB, 32, 2 %

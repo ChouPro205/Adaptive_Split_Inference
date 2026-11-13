@@ -1,0 +1,200 @@
+{
+  "status": "TRIAL_COMPLETED_REPORT_ONLY",
+  "protocol_sha256": "7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0",
+  "plan_manifest_sha256": "8fc252d23c935a93d17fb0080f939fca105e22b8d37e769b2da7940fd32fb177",
+  "authorization_approved_by": "SV3",
+  "N": 22,
+  "Pi_min": 0.5,
+  "capacity_check": {
+    "statistic": "mean over the B seeds of s0 test bacc (base architecture)",
+    "value": 0.8256463951191623,
+    "threshold": 0.8,
+    "decision": "base"
+  },
+  "table": [
+    {
+      "pair": "s0-rho0-base",
+      "s": 0,
+      "rho": "rho0",
+      "Pi": 0.18265615749421082,
+      "ci95": [
+        0.17429103233667134,
+        0.1907617816111732
+      ],
+      "Pi_seed_range": [
+        0.17289370834702456,
+        0.19825804387057167
+      ],
+      "bacc_mean": 0.8256463951191623,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.012838921848302615,
+      "A1_pearson_mean": 0.9999130272929839
+    },
+    {
+      "pair": "s2-rho0",
+      "s": 2,
+      "rho": "rho0",
+      "Pi": 0.09979394619081294,
+      "ci95": [
+        0.09297409436019606,
+        0.10661782871836653
+      ],
+      "Pi_seed_range": [
+        0.08641191460533149,
+        0.10853849215808697
+      ],
+      "bacc_mean": 0.9047421422724057,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.03696807543631206,
+      "A1_pearson_mean": 0.9991842976404369
+    },
+    {
+      "pair": "s2-rho1",
+      "s": 2,
+      "rho": "rho1",
+      "Pi": 0.1014753024907068,
+      "ci95": [
+        0.09483013233300439,
+        0.1082897991025004
+      ],
+      "Pi_seed_range": [
+        0.09699686524039908,
+        0.10827708886700527
+      ],
+      "bacc_mean": 0.9031372112588709,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.0366503546240484,
+      "A1_pearson_mean": 0.9992303420395771
+    },
+    {
+      "pair": "s4-rho0",
+      "s": 4,
+      "rho": "rho0",
+      "Pi": 0.08076366081265762,
+      "ci95": [
+        0.07444336164279025,
+        0.08714984605928364
+      ],
+      "Pi_seed_range": [
+        0.07682040779215893,
+        0.08820381016243994
+      ],
+      "bacc_mean": 0.9229074146788268,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.07787285517418899,
+      "A1_pearson_mean": 0.9973289784333603
+    },
+    {
+      "pair": "s4-rho1",
+      "s": 4,
+      "rho": "rho1",
+      "Pi": 0.08222777978264151,
+      "ci95": [
+        0.07605175447103421,
+        0.08865720629233542
+      ],
+      "Pi_seed_range": [
+        0.07601598844079505,
+        0.09424788878894752
+      ],
+      "bacc_mean": 0.9215098465711149,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.07237478354379805,
+      "A1_pearson_mean": 0.9976178357393157
+    },
+    {
+      "pair": "s5-rho0",
+      "s": 5,
+      "rho": "rho0",
+      "Pi": 0.07565271709341992,
+      "ci95": [
+        0.06980424923303956,
+        0.08179593617689053
+      ],
+      "Pi_seed_range": [
+        0.0691388323619192,
+        0.0843286513743784
+      ],
+      "bacc_mean": 0.9277860427744629,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.07444020579923152,
+      "A1_pearson_mean": 0.9964462888593286
+    },
+    {
+      "pair": "s5-rho1",
+      "s": 5,
+      "rho": "rho1",
+      "Pi": 0.07825712218328718,
+      "ci95": [
+        0.07221127279856306,
+        0.08434091555221607
+      ],
+      "Pi_seed_range": [
+        0.07644681088435412,
+        0.08154166746574953
+      ],
+      "bacc_mean": 0.9253000197341351,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.12999824355684333,
+      "A1_pearson_mean": 0.9962006184098239
+    },
+    {
+      "pair": "s8-rho0",
+      "s": 8,
+      "rho": "rho0",
+      "Pi": 0.06789466734497485,
+      "ci95": [
+        0.062394894203974344,
+        0.07331235300758146
+      ],
+      "Pi_seed_range": [
+        0.06555142978067119,
+        0.06934842900868754
+      ],
+      "bacc_mean": 0.9351914538979784,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.11584412898032201,
+      "A1_pearson_mean": 0.9912826184746562
+    },
+    {
+      "pair": "s8-rho1",
+      "s": 8,
+      "rho": "rho1",
+      "Pi": 0.07112810628072674,
+      "ci95": [
+        0.06518508175476716,
+        0.07711278644829668
+      ],
+      "Pi_seed_range": [
+        0.05994264936021132,
+        0.08017275991649475
+      ],
+      "bacc_mean": 0.9321049894593063,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.12402024685397953,
+      "A1_pearson_mean": 0.9903125877910015
+    }
+  ],
+  "pair_files_sha256": {
+    "s0-rho0-base.json": "46e221f394bf7772fbfb0f745a61ca946a88bf4e5b42a03803cdcecff3176bb3",
+    "s2-rho0.json": "62f6336e4740799f901e45aa510409a1c814f25cba6801ca4868753304670993",
+    "s2-rho1.json": "f7b7ef0c2147cd7a0082a33a247e4f61bb508fa39db192e0766083faed9692df",
+    "s4-rho0.json": "b3819f0ecc0f0f0f56f1c14f52b75651455632eccdcd1288712d78566a56ab3e",
+    "s4-rho1.json": "424084a254888d201807ab464853f50d439fb62a61378817af0a9c9bc95ae69d",
+    "s5-rho0.json": "14de8ec517cd6db386198ba3cb4fa220c5d90094e3ec5b06340f735cf3d1e7c1",
+    "s5-rho1.json": "027397cb4b33f2ab95191dac8f0fa1876bb6594b30340518d937405a622124e7",
+    "s8-rho0.json": "47a29d3806332ec1852d98d453d5fb44f33e168109f3f31c2dd6c22b619d435c",
+    "s8-rho1.json": "d2d99fd441e74187bbb8f31cce2d5130ba9dddb8848296708f6c19b738d45541"
+  },
+  "caveat": "The test part of the 18 DS1 train records lies in DS1 train (beats the head saw in training), so trial Pi may be more optimistic than the official DS2 Pi",
+  "DS2_opened": false
+}

@@ -1,0 +1,25 @@
+Chào Châu, mình gửi Π của lượt thử ở s2, như bạn dặn ở mục 3(b) và mục 4 tin 13/11. Lượt thử chạy trên DS1, N = 22, gồm A1 và B-naive, chỉ dùng seed triển khai.
+
+1. Khóa và chạy
+- Attack protocol v2 7a174dd9…, plan 8fc252d2…, file khóa 205ec6db… (approved_by SV3, review evidence là tin 13/11 của bạn). Commit khóa 96c2ac9 lúc 17:07:24 ngày 13/11. Run bắt đầu lúc 17:07:46, xong lúc 17:14:58; source-head 96c2ac9, exit 0, stderr trống.
+- Diff so với v1: mục 1–10 đúng các điểm bạn nêu. Mục 11–15 là chi tiết thực thi mà v1 để trống: ranh giới chia chính xác; kiến trúc khi tăng năng lực cố định là 3 khối, 128 kênh; chuẩn hóa đầu vào theo kênh; các seed; công thức chỉ số tái tạo; cách tính z_s. Các mục này không đổi luật nào của bạn, nên mình khóa luôn. Danh sách đầy đủ ở docs/sv3_m1_attack_v2_review_20261113.md.
+- Kiểm trước khi tính: z_s của ρ0 trùng bit với golden gói A ở s0, s2, s4, s5, s8; TF32 tắt; số chia DS1 đúng như v1 (bỏ 1.681/50.995 nhịp, phía kẻ tấn công 767–1.637 nhịp mỗi người, phía test 799–1.613 nhịp).
+
+2. Kiểm năng lực ở s0 (ρ0, chạy trước tiên)
+bacc trung bình 3 seed là 0,8256, đạt ngưỡng 0,80, nên giữ kiến trúc cơ bản cho mọi s, không tăng năng lực. Π(s0) = 0,183.
+
+3. Π ở s2 (B-naive 3 seed; Π = 1 − trung bình Adv của 3 seed)
+- ρ0 (checkpoint A): Π = 0,0998, CI95 [0,0930; 0,1066]; min–max theo seed 0,086–0,109; bacc 0,905.
+- ρ1 (λ 2, seed 20261101, epoch 3): Π = 0,1015, CI95 [0,0948; 0,1083]; min–max theo seed 0,097–0,108; bacc 0,903.
+Π(s2, ρ1) ≈ Π(s2, ρ0) và hai khoảng CI gần như trùng nhau; cả hai đều thấp xa dưới Π_min = 0,5. A1 tái tạo gần như nguyên tín hiệu ở cả hai: NRMSE 0,037, Pearson 0,999. Đây đúng là trường hợp bạn nêu ở 3(b): ở s2, NoPeek λ 2 không nâng được Π.
+
+4. Các s còn lại (cùng lượt, đã xong)
+- s4: ρ0 0,081, ρ1 0,082
+- s5: ρ0 0,076, ρ1 0,078
+- s8: ρ0 0,068, ρ1 0,071
+Π giảm theo s chứ không tăng (câu (i)), và ρ1 không nâng Π ở s nào. Theo các nhánh đã khai trước, "Π không tăng theo s" là một điều kiện của nhánh no_signal, mà ở nhánh này bạn quyết chuyển hướng T4 ở tuần 12. ρ2 chưa có. Một ghi nhận (giả thuyết, chưa kiểm): kẻ tấn công ở s0 vừa qua ngưỡng (0,83), còn ở các s sâu hơn bacc đạt 0,90–0,94. Có thể vì CNN 2 khối nhìn tín hiệu thô qua một vùng hẹp, trong khi z_s sâu đã gom thông tin của cả nhịp.
+
+5. Lưu ý
+Phần test của 18 bản ghi DS1 nằm trong train DS1, tức là dữ liệu head đã thấy khi train, nên Π của lượt thử có thể lạc quan hơn lượt chính thức trên DS2. Số lượt thử chỉ để cảnh báo sớm, không đưa vào số chính của bài.
+
+File (thư mục ml/provenance/m1-attack-v2-trial-20261113/ trên dev/ml-sv3): receipt.json (b2861c71…), results/ (trial-result.json và kết quả từng cặp), logs/. Dự đoán test và trọng số kẻ tấn công ở ml/data trên máy mình.
