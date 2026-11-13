@@ -1,0 +1,5 @@
+PACKAGE_SHA256SUMS.txt http=200 bytes=303740 sha256=5b58c9fe160b9dea173254561804fc3e6afc3c9b3408378b2dd494d4a5bb3dde matches_local=true github_digest_matches=true
+SV3_M1_NOPEEK_V2_CHECKPOINTS_20261112.zip http=200 bytes=365412646 sha256=df34b13e4ce478353e52cf5bfb907f9f37c1b5884980b86b4f5f153645dae351 matches_local=true github_digest_matches=true
+SV3_M1_NOPEEK_V2_CHECKPOINTS_20261112.zip.sha256 http=200 bytes=108 sha256=9eca074ce9bc98065643228074858e0ed1cb315d13d6ae19b2cbbca88ffa460c matches_local=true github_digest_matches=true
+SV3_M1_NOPEEK_V2_CHECKPOINTS_20261112.zip: OK (sha256sum line of the downloaded .sha256)
+PACKAGE_SHA256SUMS.txt asset equals the copy inside the downloaded zip: OK
