@@ -1,0 +1,7 @@
+Clean tree: git archive 74405084cd09e6e78d5e0ed4188a32ed5029e47b | tar -x -C <temporary directory>
+Added: ml/provenance/m1-nopeek-v2-release-20261113/verify_runs.py (not yet committed at that commit)
+Overlay: SV3_M1_NOPEEK_V2_CHECKPOINTS_20261112.zip (df34b13e4ce478353e52cf5bfb907f9f37c1b5884980b86b4f5f153645dae351) extracted with zipfile.extractall at the tree root
+Then, from that tree root:
+sha256sum -c PACKAGE_SHA256SUMS.txt
+python -B ml/provenance/m1-nopeek-v2-release-20261113/verify_runs.py
+python -B -O ml/provenance/m1-nopeek-v2-release-20261113/verify_runs.py

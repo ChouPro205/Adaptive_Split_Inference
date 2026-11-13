@@ -1,0 +1,1 @@
+sha256sum -c PACKAGE_SHA256SUMS.txt (run at the root of the extracted tree): exit 0, 1948 lines OK, 0 lines not OK
