@@ -1,6 +1,6 @@
 Chào Châu, mình gửi attack protocol v3 để bạn review trước khi khóa, như bạn dặn ở mục 4 tin 19/11. Mình chưa viết code và chưa chạy gì; DS2 chưa mở. v3 được viết sau khi đã thấy Π lượt thử, và protocol ghi rõ điều đó. 9 cặp v2 giữ nguyên làm bản ghi.
 
-File (nhánh dev/ml-sv3, chưa commit, mình commit khi bạn đồng ý về nội dung):
+File (nhánh dev/ml-sv3, đã push ở commit 699ee1e; protocol v3 không đổi sau commit đó):
 - ml/configs/mitdb_m1_attack_protocol_v3.json (SHA ở ml/provenance/m1-attack-v3-draft-20261119/SHA256SUMS.txt)
 - docs/sv3_m1_attack_v3_review_20261119.md: bản tóm tắt tiếng Việt
 - Tin 19/11 của bạn được chép đúng từng byte vào ml/provenance/m1-sv1-evidence-20261119/, SHA 1a9b2183…
