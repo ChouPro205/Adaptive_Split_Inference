@@ -1,0 +1,109 @@
+{
+  "schema": "week10-check-verify-prot/1",
+  "status": "PASS",
+  "checks": {
+    "banner_variant_prot_usb": true,
+    "banner_set_sha256": true,
+    "banner_plan_sha256": true,
+    "device_plan_digest_equal": true,
+    "banner_cycles_p1": true,
+    "vq_every_sample_s0_s9_in_order": true,
+    "q_scale_equal_host": true,
+    "protect_every_sample_s0_s9": true,
+    "protect_equal_i2_ref_public_key": true,
+    "conv_output_equal_host_every_sample": true,
+    "verify_end_set_sha256": true,
+    "tprot_every_s0_s9_50_runs": true,
+    "tconv_50_runs": true
+  },
+  "details": {
+    "vq": 500,
+    "vprot": 500,
+    "vconv": 50,
+    "mismatches": [],
+    "t_prot_dwt_ms": {
+      "0": {
+        "runs": 50,
+        "prot_mean_ms": 0.237990625,
+        "prot_min_ms": 0.237015625,
+        "prot_max_ms": 0.238015625
+      },
+      "1": {
+        "runs": 50,
+        "prot_mean_ms": 2.284020625,
+        "prot_min_ms": 2.283859375,
+        "prot_max_ms": 2.284140625
+      },
+      "2": {
+        "runs": 50,
+        "prot_mean_ms": 1.2940221875,
+        "prot_min_ms": 1.293921875,
+        "prot_max_ms": 1.294140625
+      },
+      "3": {
+        "runs": 50,
+        "prot_mean_ms": 2.479460625,
+        "prot_min_ms": 2.4793125000000003,
+        "prot_max_ms": 2.479578125
+      },
+      "4": {
+        "runs": 50,
+        "prot_mean_ms": 1.489460625,
+        "prot_min_ms": 1.4893125,
+        "prot_max_ms": 1.489578125
+      },
+      "5": {
+        "runs": 50,
+        "prot_mean_ms": 2.2731206250000002,
+        "prot_min_ms": 2.272953125,
+        "prot_max_ms": 2.2733125
+      },
+      "6": {
+        "runs": 50,
+        "prot_mean_ms": 1.530620625,
+        "prot_min_ms": 1.530453125,
+        "prot_max_ms": 1.5308125000000001
+      },
+      "7": {
+        "runs": 50,
+        "prot_mean_ms": 1.973221875,
+        "prot_min_ms": 1.97296875,
+        "prot_max_ms": 1.973390625
+      },
+      "8": {
+        "runs": 50,
+        "prot_mean_ms": 1.467221875,
+        "prot_min_ms": 1.46696875,
+        "prot_max_ms": 1.467390625
+      },
+      "9": {
+        "runs": 50,
+        "prot_mean_ms": 0.510460625,
+        "prot_min_ms": 0.5103125000000001,
+        "prot_max_ms": 0.510578125
+      }
+    },
+    "t_conv_dwt_ms": {
+      "runs": 50,
+      "conv_mean_ms": 3.61285,
+      "conv_min_ms": 3.6063125,
+      "conv_max_ms": 3.613
+    }
+  },
+  "scope": "dongle on laptop USB power: correctness evidence and DWT debug times, never energy numbers",
+  "tools_sha256": {
+    "check_week10.py": "d3f1468e2e29c12a25d7b5a287f979605d100014ebc6c843ff442d82bfb8e0f9",
+    "week10_ble.py": "2c568795606cb512bfc34bfcb5b56f43e9b77b01c1b3121ea6e3da2fb81a4682",
+    "week10_prot.py": "afd6ed53fa0181cf165a273c910f03bf29c9ceb601b294daa8c9295b208ad5a9",
+    "week10_common.py": "c1c3d5827b8974bf66d8b001e08cb1fbc4b97d64a8f9ba708b53a9a40d469feb",
+    "week10_lab.py": "bfab6c228ebaa2aae3461ecc7133e15dd967d68d4764cb06a3335f5ace6327ff"
+  },
+  "shim_sources_sha256": {
+    "device/week10/host_test/ble_shim.c": "5a555da8e5b41679e93dd49e3874283679a489d40d7f59a2332b200cb6068c1d",
+    "device/week10/ble_plan_bytes.h": "196b554fd7effff11d46e73584de002bc54bc519e70fd1af914eb4c1251cf090",
+    "device/week8/g2_plan.h": "14ad11a4dfc32f8b018c37a10f6ca3022346aacf3123081caa2fb63c74977395",
+    "device/week7/head_fast.c": "2784ac89a27f9c06d97d11e27cca8e87d25c1e82b01fc71530be1540b9ae8c71",
+    "device/week5/quantization.c": "08b2131b29eacb2a1822b97dca2f30fdd138f942fac16e1f202251213572f529",
+    "device/week6/sha256.c": "21382adde20e28f3d19b923c681c8848450358ada740c674474ab204ea1e5532"
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "schema": "week7-ppk2-ewait/1",
+  "status": "PASS",
+  "checks": {
+    "lab_on_ac_power": true,
+    "capture_pass": true,
+    "idle_within_10pct_of_week2": true,
+    "selftest_D0_D4": true,
+    "unused_channels_low": true,
+    "no_data_loss": true,
+    "cycle_count_200": true,
+    "p1_100_p0_100": true,
+    "trace_rho_order_paired": true,
+    "all_cycles_valid": true,
+    "idle_markers_low": true,
+    "diff_below_3pct_all": true,
+    "post_window_at_least_20s": true,
+    "post_mean_at_idle": true,
+    "post_radio_off": true,
+    "kv260_log_pass_labels_100_per_rho": true,
+    "kv260_answered_all": true,
+    "one_cycle_per_request": true,
+    "nonce_above_prior_and_increasing": true,
+    "single_connection": true,
+    "phy_2m_read_back": true,
+    "queue_scenario_is_W10_D3": true,
+    "queue_mqtt_off": true,
+    "requests_matched_to_foreground_jobs": true,
+    "every_cycle_in_a_block": true,
+    "levels_min_cycles": true,
+    "load_effective_lambda30_median_q": true,
+    "foreground_not_cancelled_no_error": true,
+    "queue_no_failure": true,
+    "causality_t_wait_ge_edge": true,
+    "queue_length_logged_at_every_request": true,
+    "rebuilt_q_consistent_with_logged": true
+  },
+  "I_idle_uA": 24.703913102393386,
+  "post_session": {
+    "found": true,
+    "duration_s": 209.80199000000002,
+    "mean_uA": 24.7201403755496,
+    "max_uA": 9213.837793877987,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0
+    },
+    "events_above_3mA": [
+      {
+        "t_s": 514.30245,
+        "duration_ms": 0.29,
+        "samples_above": 12,
+        "max_uA": 7957.525222901468
+      },
+      {
+        "t_s": 514.64362,
+        "duration_ms": 0.29,
+        "samples_above": 13,
+        "max_uA": 9213.837793877987
+      }
+    ],
+    "radio_off": false,
+    "I_idle_uA": 24.703913102393386,
+    "deviation_from_idle_pct": 0.0656870556860994,
+    "radio_rule_w10": {
+      "pass": true,
+      "week9_rule": false,
+      "rtc_overflow_only": true,
+      "events_at_rtc_marks_s_from_on": {
+        "1": [
+          513.8109,
+          514.1521
+        ]
+      },
+      "events_elsewhere_s_from_on": [],
+      "rule": "week 9 rule OR all events <= 0.5 ms within +-3.0 s of k*512 s after DUT on, <= 2 per mark (amended 19/11/2026 after A1, see docstring)"
+    }
+  },
+  "diff_pct": {
+    "n": 200,
+    "mean": 0.09619285319826712,
+    "min": 0.0611605318156465,
+    "max": 0.15405283061614847,
+    "std": 0.017350337539617667,
+    "ci95_half": 0.0024193030364390916,
+    "ci95_low": 0.09377355016182803,
+    "ci95_high": 0.0986121562347062,
+    "ci95_rel_pct": 2.5150548673845496
+  },
+  "P_conn": {
+    "gaps": 199,
+    "P_conn_gross_mW": {
+      "n": 199,
+      "mean": 1.57632179225658,
+      "min": 1.543537608016471,
+      "max": 1.6155249106900123,
+      "std": 0.013267745952507808,
+      "ci95_half": 0.0018547328699956894,
+      "ci95_low": 1.5744670593865844,
+      "ci95_high": 1.5781765251265756,
+      "ci95_rel_pct": 0.11766207122852439
+    },
+    "P_conn_net_mW": {
+      "n": 199,
+      "mean": 1.452802226744613,
+      "min": 1.420018042504504,
+      "max": 1.4920053451780455,
+      "std": 0.01326774595250782,
+      "ci95_half": 0.0018547328699956912,
+      "ci95_low": 1.4509474938746174,
+      "ci95_high": 1.4546569596146086,
+      "ci95_rel_pct": 0.1276658884362884
+    }
+  },
+  "v_supply_mV": 5000.0,
+  "kv260_log": "D:\\HUST\\ASI_week10\\from-trung-A2-20261119\\capture\\requests.jsonl",
+  "labels_equal_reference": {
+    "P1": 100,
+    "P0": 100
+  },
+  "interval_match": {
+    "pass": true,
+    "reference": "min(|trace TX end - edge t_rx_ms|, |trace WAIT end - edge t_tx_done_ms|), median-centred",
+    "rho_order_equal": true,
+    "max_abs_offset_ms": {
+      "tx_end_vs_rx": 37.91889949981123,
+      "wait_end_vs_reply": 31.915465499740094,
+      "best_anchor": 10.208850500173867
+    },
+    "cycles_over_limit": {
+      "tx_end_vs_rx": 1,
+      "wait_end_vs_reply": 2
+    },
+    "min_cycle_spacing_ms": 1154.6399999999849,
+    "edge_clock_resolution_s": 0.015625,
+    "limit_ms": 30.0
+  },
+  "request_match": {
+    "pass": true,
+    "requests_in_time_order": true,
+    "max_abs_offset_ms": 35.973921000026166,
+    "median_offset_ms": 26.185812999960035,
+    "tol_ms": 50.0
+  },
+  "phy_check": {
+    "rule": "timed: last read before the first request 2M, no non-2M read from the first 2M read on",
+    "pass": true,
+    "reads": 6,
+    "non_2m_reads_before_first_2m": 5,
+    "first_2m_read_t_ms": 3118329,
+    "first_request_t_rx_ms": 3153445.159255,
+    "last_request_t_ms": 3411473.784704,
+    "reads_during_requests": 0
+  },
+  "first_p1_sequence": 60665858,
+  "last_p1_sequence": 60665957,
+  "queue_seed": 102,
+  "queue_counts": {
+    "background_arrived": 5458,
+    "background_dropped": 1288,
+    "foreground_arrived": 200,
+    "completed": 4370,
+    "failure": null,
+    "scope": "shared FIFO; capacity counts pending jobs, active job excluded"
+  }
+}

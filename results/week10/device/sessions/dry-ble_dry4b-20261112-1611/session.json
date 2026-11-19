@@ -1,0 +1,41 @@
+{
+  "schema": "week10-lab-session/1",
+  "kind": "session",
+  "command": [
+    "device\\scripts\\week10_lab.py",
+    "session",
+    "--out",
+    "D:\\HUST\\ASI_week10\\dry4b-20261112-1611",
+    "--port",
+    "COM7",
+    "--samples",
+    "D:\\HUST\\ASI_week8\\samples-20261023-c",
+    "--plan",
+    "D:\\HUST\\ASI_week10\\plan-20261112"
+  ],
+  "started_utc": "2026-11-12T09:11:36.472098+00:00",
+  "tool_sha256": {
+    "week10_lab.py": "bfab6c228ebaa2aae3461ecc7133e15dd967d68d4764cb06a3335f5ace6327ff",
+    "week10_ble.py": "2c568795606cb512bfc34bfcb5b56f43e9b77b01c1b3121ea6e3da2fb81a4682",
+    "week10_prot.py": "8e769b8480eddb3df2075af6c00a96819f26b31ae3d5e5ace1a6a12aa0020ea7",
+    "week10_common.py": "c1c3d5827b8974bf66d8b001e08cb1fbc4b97d64a8f9ba708b53a9a40d469feb",
+    "check_week10.py": "d3f1468e2e29c12a25d7b5a287f979605d100014ebc6c843ff442d82bfb8e0f9",
+    "week10_analysis.py": "dc4c2857727d45385b10c92980c26bac9184f8fe1989319fcb25d5772ff34866",
+    "week9_common.py": "2fc7f7a785992d159bb5711b761f654f301219c0dc506e2364528858b5480a5e",
+    "week8_common.py": "60d242188875815842e157aa475ea21ab796937fd519b587f28ba607bb83af91",
+    "week8_lab.py": "28babd070a9f5dd317f88eb2f90d176c452cfc9f1f21e67d273779a50dd059f2",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b",
+    "week6_lab.py": "52f79e40bd575626eaeb8bdbc0a6ecc66cd24d5cf2abea66c08f1a302ff46c2a",
+    "week6_common.py": "a15377a7cd05f73f6b17a2ce0210193da28e499af67ba8bd17e2faa64f7b312a"
+  },
+  "scope": "dongle on laptop USB power: correctness and CPU-time evidence, never energy numbers",
+  "samples": "D:\\HUST\\ASI_week8\\samples-20261023-c",
+  "plan": "D:\\HUST\\ASI_week10\\plan-20261112",
+  "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+  "plan_sha256": "27e20954494cdecdfaf45246cd00a16a5e113ef24e617b57e925a9783c415d33",
+  "gap_ms": 1000,
+  "first": 0,
+  "count": 550,
+  "conn_interval_1250us": 12,
+  "peer": "external: KV260"
+}

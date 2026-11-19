@@ -1,0 +1,266 @@
+{
+  "schema": "week10-plan/1",
+  "status": "PASS",
+  "decisions": [
+    "W10-D1",
+    "W10-D3",
+    "W10-D4"
+  ],
+  "generator": "week10_common: splitmix64 + Fisher-Yates (week9_common), rejection sampling",
+  "load": {
+    "seed": 20261111,
+    "blocks": [
+      [
+        40,
+        0
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        15
+      ],
+      [
+        20,
+        15
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        15
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        20,
+        15
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        20,
+        15
+      ],
+      [
+        20,
+        15
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        60,
+        0
+      ]
+    ],
+    "csv_sha256": "38937e54c2b9cb21a21dc6ac36c43f273216e9eaca56d98af99e053c4f19035e",
+    "definition": "shuffle of [0]*6 + [15]*6 + [30]*6; 40 s lead-in and 60 s tail at lambda 0"
+  },
+  "prot": {
+    "seed": 20261110,
+    "rounds": 50,
+    "cycles": 1050,
+    "plan_sha256": "2094c48bae73ef92d63f5ea4c54591835178f5942fdc2be3f60ab7b5fb045ca1",
+    "plan_sha256_definition": "SHA-256 of (split, op) bytes per cycle, op 0 P0 / 1 P1 / 2 CONV",
+    "first_round": [
+      [
+        3,
+        "P1"
+      ],
+      [
+        3,
+        "P0"
+      ],
+      [
+        1,
+        "P1"
+      ],
+      [
+        1,
+        "P0"
+      ],
+      [
+        7,
+        "P1"
+      ],
+      [
+        7,
+        "P0"
+      ],
+      [
+        4,
+        "P1"
+      ],
+      [
+        4,
+        "P0"
+      ],
+      [
+        0,
+        "P1"
+      ],
+      [
+        0,
+        "P0"
+      ],
+      [
+        8,
+        "P1"
+      ],
+      [
+        8,
+        "P0"
+      ],
+      [
+        9,
+        "P1"
+      ],
+      [
+        9,
+        "P0"
+      ],
+      [
+        1,
+        "CONV"
+      ],
+      [
+        5,
+        "P1"
+      ],
+      [
+        5,
+        "P0"
+      ],
+      [
+        2,
+        "P1"
+      ],
+      [
+        2,
+        "P0"
+      ],
+      [
+        6,
+        "P1"
+      ],
+      [
+        6,
+        "P0"
+      ]
+    ]
+  },
+  "ble": {
+    "seed": 20261112,
+    "rounds": 50,
+    "cycles": 550,
+    "plan_sha256": "27e20954494cdecdfaf45246cd00a16a5e113ef24e617b57e925a9783c415d33",
+    "plan_sha256_definition": "SHA-256 of (split, rho, k, payload_bytes uint16 LE) per cycle",
+    "first_rounds": [
+      [
+        10,
+        5,
+        9,
+        2,
+        1,
+        6,
+        4,
+        0,
+        7,
+        8,
+        3
+      ],
+      [
+        2,
+        4,
+        8,
+        1,
+        9,
+        7,
+        0,
+        10,
+        6,
+        5,
+        3
+      ],
+      [
+        4,
+        7,
+        2,
+        6,
+        8,
+        9,
+        5,
+        3,
+        1,
+        0,
+        10
+      ]
+    ]
+  },
+  "checks": {
+    "load_csv_equals_sent_to_sv2": true,
+    "load_6_blocks_per_level": true,
+    "load_total_460_s": true,
+    "prot_cycles_1050": true,
+    "prot_50_p1_50_p0_per_split": true,
+    "prot_50_conv_s1": true,
+    "prot_pairs_adjacent_and_alternating": true,
+    "prot_round_k_uses_sample_k": true,
+    "ble_cycles_550": true,
+    "ble_50_per_split": true,
+    "ble_every_round_a_permutation": true,
+    "ble_rho0_k0_natural": true,
+    "ble_round_k_uses_sample_k": true,
+    "csv_read_back": true
+  },
+  "outputs_sha256": {
+    "ewait_load_blocks.csv": "38937e54c2b9cb21a21dc6ac36c43f273216e9eaca56d98af99e053c4f19035e",
+    "prot_plan.csv": "4c20fab2c9c689ba933f9a5b0ad18730484129f317e14237e6b02ab0147942da",
+    "week10_prot_plan.h": "09a06d261741b7d6726880f7f5c6382b33a4304c8142b904c69dda1917508b52",
+    "ble_plan.csv": "b7b33815c7c2bcb90b5c3dcea89611a3a140e3710289b43098ce08419aa2293b",
+    "week10_ble_plan.h": "bfe3d7165735f07da748f5a5b9b1e54afce3ffdd54d84560c46c207e807c5749"
+  },
+  "git": {
+    "head": "96d6dd222fc0f1d959db11ec40e78a2aa0afcc75",
+    "status_of_generator_sources": "?? device/scripts/generate_week10_plan.py\n?? device/scripts/week10_common.py"
+  },
+  "created_utc": "2026-11-12T05:32:44.071248+00:00"
+}

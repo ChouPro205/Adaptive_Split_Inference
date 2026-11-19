@@ -1,0 +1,113 @@
+{
+  "schema": "week10-kv260-ewait-import/1",
+  "source_log": "D:\\HUST\\ASI_week10\\from-trung-A2-20261119\\capture\\requests.jsonl",
+  "source_log_sha256": "89072e88d0db877f621289dec06aab69e6ecb18377c9cc32567ad26f48ba5a3c",
+  "phy_log": "D:\\HUST\\ASI_week10\\from-trung-A2-20261119\\capture\\phy.jsonl",
+  "phy_log_sha256": "96992b58264c7c235387f63db70589e17474990be81c6a0a7829d1c2ac1864e8",
+  "phy_records": [
+    [
+      1,
+      "1M",
+      "1M",
+      3117699
+    ],
+    [
+      2,
+      "1M",
+      "1M",
+      3117825
+    ],
+    [
+      3,
+      "1M",
+      "1M",
+      3117951
+    ],
+    [
+      4,
+      "1M",
+      "1M",
+      3118077
+    ],
+    [
+      5,
+      "1M",
+      "1M",
+      3118203
+    ],
+    [
+      6,
+      "2M",
+      "2M",
+      3118329
+    ]
+  ],
+  "phy_check": {
+    "rule": "timed: last read before the first request 2M, no non-2M read from the first 2M read on",
+    "pass": true,
+    "reads": 6,
+    "non_2m_reads_before_first_2m": 5,
+    "first_2m_read_t_ms": 3118329,
+    "first_request_t_rx_ms": 3153445.159255,
+    "last_request_t_ms": 3411473.784704,
+    "reads_during_requests": 0
+  },
+  "queue_dir": "D:\\HUST\\ASI_week10\\from-trung-A2-20261119\\capture\\queue_sim",
+  "queue_sha256": {
+    "jobs.jsonl": "6615461468d3ef705d38a87515850b723923546f47286710bd4a8b28a5cee779",
+    "queue_run.json": "e8d31fc7f7b39fa8f8723d657f233cd1eb969719d4b4d6f88e42447d6971dd55",
+    "queue_summary.json": "b9e3c1a6f1c38a9330d5ed43ad59947f55d85f71ed343fd6263366ccae2b506b",
+    "sha256sum_results.txt": "5dc1445c51b2327acb8d873774784009b1e64a0f58876feb4cc175ab1839d49b"
+  },
+  "connections": 1,
+  "imported_utc": "2026-11-19T08:31:31.610117+00:00",
+  "counters": {
+    "response_sent": 200,
+    "unknown_sample": 0,
+    "not_ok": 0
+  },
+  "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+  "field_spec": {
+    "request_id": "uint32 of the I1 v2 header (int, or hex text)",
+    "rho": "P1 | P0",
+    "sequence": "P1: nonce sequence (uint64) read from the frame",
+    "result": "OK when the 64 B response was sent, else an error code (no response)",
+    "q_sha256": "SHA-256 hex of q (C*L int8 bytes) after unprotect",
+    "scale_sha256": "SHA-256 hex of the C scales as FP16 little-endian",
+    "logits": "5 FP32 as sent: '3f800000,...' (bit patterns, hex) or a list of 5 numbers",
+    "label": "argmax of the logits (first maximum); optional",
+    "len": "request frame length in bytes after reassembly; optional",
+    "t_rx_ms": "time the complete request was received (ms, any monotonic clock); optional",
+    "t_tx_done_ms": "time the response was sent (ms, same clock); optional"
+  },
+  "label_reference": {
+    "path": "D:\\HUST\\ASI_week8\\from-trung-20261026-g2\\review\\offline_second\\predictions.jsonl",
+    "sha256": "c91af325c1dd87b04d032a72d72a7feff69ff669492d8f0bb7bf0ae2b1cf39e1"
+  },
+  "checks": {
+    "count": true,
+    "all_ok": true,
+    "rho_order": true,
+    "samples_in_plan_order": true,
+    "request_id_increasing": true,
+    "responses_sent": true,
+    "labels_equal_reference_p1": true,
+    "labels_equal_reference_p0": true
+  },
+  "status": "PASS",
+  "labels_equal_reference": {
+    "P1": 100,
+    "P0": 100
+  },
+  "first_sequence": 60665858,
+  "last_sequence": 60665957,
+  "request_lengths": [
+    3076,
+    3116
+  ],
+  "tail_us": null,
+  "inter_request_ms": {
+    "min": 1145.9081779997796,
+    "max": 1619.8430400001816
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "background_arrived": 0,
+  "background_dropped": 0,
+  "foreground_arrived": 100,
+  "completed": 100,
+  "failure": null,
+  "scope": "shared FIFO; capacity counts pending jobs, active job excluded"
+}

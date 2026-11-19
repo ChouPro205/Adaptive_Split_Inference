@@ -1,0 +1,103 @@
+{
+  "schema": "week7-ppk2-session/1",
+  "status": "PASS",
+  "checks": {
+    "lab_on_ac_power": true,
+    "capture_pass": true,
+    "idle_within_10pct_of_week2": true,
+    "selftest_D0_D4": true,
+    "unused_channels_low": true,
+    "no_data_loss": true,
+    "cycle_count_200": true,
+    "p1_100_p0_100": true,
+    "trace_rho_order_paired": true,
+    "all_cycles_valid": true,
+    "idle_markers_low": true,
+    "diff_below_3pct_all": true,
+    "post_window_at_least_20s": true,
+    "post_mean_at_idle": true,
+    "post_radio_off": true
+  },
+  "I_idle_uA": 24.703913102393386,
+  "post_session": {
+    "found": true,
+    "duration_s": 209.80199000000002,
+    "mean_uA": 24.7201403755496,
+    "max_uA": 9213.837793877987,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0
+    },
+    "events_above_3mA": [
+      {
+        "t_s": 514.30245,
+        "duration_ms": 0.29,
+        "samples_above": 12,
+        "max_uA": 7957.525222901468
+      },
+      {
+        "t_s": 514.64362,
+        "duration_ms": 0.29,
+        "samples_above": 13,
+        "max_uA": 9213.837793877987
+      }
+    ],
+    "radio_off": false,
+    "I_idle_uA": 24.703913102393386,
+    "deviation_from_idle_pct": 0.0656870556860994,
+    "radio_rule_w10": {
+      "pass": true,
+      "week9_rule": false,
+      "rtc_overflow_only": true,
+      "events_at_rtc_marks_s_from_on": {
+        "1": [
+          513.8109,
+          514.1521
+        ]
+      },
+      "events_elsewhere_s_from_on": [],
+      "rule": "week 9 rule OR all events <= 0.5 ms within +-3.0 s of k*512 s after DUT on, <= 2 per mark (amended 19/11/2026 after A1, see docstring)"
+    }
+  },
+  "diff_pct": {
+    "n": 200,
+    "mean": 0.09619285319826712,
+    "min": 0.0611605318156465,
+    "max": 0.15405283061614847,
+    "std": 0.017350337539617667,
+    "ci95_half": 0.0024193030364390916,
+    "ci95_low": 0.09377355016182803,
+    "ci95_high": 0.0986121562347062,
+    "ci95_rel_pct": 2.5150548673845496
+  },
+  "P_conn": {
+    "gaps": 199,
+    "P_conn_gross_mW": {
+      "n": 199,
+      "mean": 1.57632179225658,
+      "min": 1.543537608016471,
+      "max": 1.6155249106900123,
+      "std": 0.013267745952507808,
+      "ci95_half": 0.0018547328699956894,
+      "ci95_low": 1.5744670593865844,
+      "ci95_high": 1.5781765251265756,
+      "ci95_rel_pct": 0.11766207122852439
+    },
+    "P_conn_net_mW": {
+      "n": 199,
+      "mean": 1.452802226744613,
+      "min": 1.420018042504504,
+      "max": 1.4920053451780455,
+      "std": 0.01326774595250782,
+      "ci95_half": 0.0018547328699956912,
+      "ci95_low": 1.4509474938746174,
+      "ci95_high": 1.4546569596146086,
+      "ci95_rel_pct": 0.1276658884362884
+    }
+  },
+  "v_supply_mV": 5000.0,
+  "kv260_log": "PENDING: week10_ppk2.py import-ewait"
+}

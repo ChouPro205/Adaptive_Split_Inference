@@ -1,0 +1,75 @@
+{
+  "schema": "week10-kv260-alls-import/1",
+  "source_log": "D:\\HUST\\ASI_week10\\from-trung-B1-20261119\\capture\\requests.jsonl",
+  "source_log_sha256": "9e6bfcfa5b451237c0a5e395afe3c923c3716df0feb3ce49fa0ff2053a723a3b",
+  "phy_log": "D:\\HUST\\ASI_week10\\from-trung-B1-20261119\\capture\\phy.jsonl",
+  "phy_log_sha256": "8b3152d541647ebe65be58b93fe6ea3c235ed60867cc8fac443b705f4114ea1b",
+  "phy_records": [
+    [
+      1,
+      "1M",
+      "1M",
+      4252821
+    ],
+    [
+      2,
+      "1M",
+      "1M",
+      4252948
+    ],
+    [
+      3,
+      "1M",
+      "1M",
+      4253074
+    ],
+    [
+      4,
+      "1M",
+      "1M",
+      4253200
+    ],
+    [
+      5,
+      "1M",
+      "1M",
+      4253326
+    ],
+    [
+      6,
+      "2M",
+      "2M",
+      4253452
+    ]
+  ],
+  "phy_check": {
+    "rule": "timed: last read before the first request 2M, no non-2M read from the first 2M read on",
+    "pass": true,
+    "reads": 6,
+    "non_2m_reads_before_first_2m": 5,
+    "first_2m_read_t_ms": 4253452,
+    "first_request_t_rx_ms": 4290093.599562,
+    "last_request_t_ms": 4997844.474823,
+    "reads_during_requests": 0
+  },
+  "connections": 1,
+  "edge_reference": {
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s0.jsonl": "52bd779268419f912ce4919eb59d03d892b6bb027ec1198b8ca30101b2f7f06c",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s1.jsonl": "b7185b3464282eb57d00eb7b779194e8f86b9335f37ecb61d459ccd2413e0f64",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s2.jsonl": "91818e75a3ce6b69a175107e1acd6c8e3ac0e71c74c856de9b4e454c9768eaac",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s3.jsonl": "d35fde889f6f46814ed4435eefde2b2a5a1b4e8172a06fc3822ca6108b30c12e",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s4.jsonl": "e93e6297bb538693b877d0053ef1931358a9b36248ee2626287d6d88add74a8e",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s5.jsonl": "468e4282c040a24fec330e05ba12bd1c096b52a6564817335866087e2cb5baa0",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s6.jsonl": "7a2793024df5206faa467ce859c8e0661202979d15b1c71063872b5c98fc5c2a",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s7.jsonl": "e0d857a51b6af1cad2123325d2c36deaa537cbfc673f58ab61497972bebac120",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s8.jsonl": "85f9a2c7a08c5034e102f3752a4532b6def3ee304310dc7945c036e0e7591d28",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s9.jsonl": "e18d46017c04c8b5e3a1a0fa8ec0e60c7cb002166bbef3237dabad88bbc20d35"
+  },
+  "imported_utc": "2026-11-19T08:54:59.068986+00:00",
+  "counters": {
+    "response_sent": 500,
+    "unknown_sample": 0,
+    "not_ok": 0,
+    "no_split": 0
+  }
+}
