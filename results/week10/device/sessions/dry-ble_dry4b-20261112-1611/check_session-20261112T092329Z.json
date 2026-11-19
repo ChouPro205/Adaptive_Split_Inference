@@ -1,0 +1,293 @@
+{
+  "schema": "week10-check-session/1",
+  "status": "FAIL",
+  "checks": {
+    "banner_variant_ble_usb": true,
+    "banner_set_sha256": true,
+    "banner_plan_sha256": true,
+    "device_plan_digest_equal": true,
+    "host_plan_digest_equal": true,
+    "banner_rounds_cycles": true,
+    "session_begin_end": true,
+    "one_cycle_line_per_plan_cycle_in_order": true,
+    "every_cycle_ok_plan_s_n_bytes_len_label": true,
+    "kv260_log_imported": false
+  },
+  "details": {
+    "cycles": 550,
+    "first": 0,
+    "count": 550,
+    "kv260_log": "PENDING: week10_lab.py import-kv260",
+    "dwt_by_s_debug_only": {
+      "0": {
+        "head": {
+          "n": 50,
+          "mean_ms": 0.5746199999999999,
+          "min_ms": 0.54,
+          "max_ms": 0.582
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 1.4263,
+          "min_ms": 1.237,
+          "max_ms": 1.44
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 2.6466000000000003,
+          "min_ms": 2.631,
+          "max_ms": 3.017
+        },
+        "fragments": [
+          2
+        ]
+      },
+      "1": {
+        "head": {
+          "n": 50,
+          "mean_ms": 12.005720000000002,
+          "min_ms": 11.964,
+          "max_ms": 12.048
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 20.916520000000002,
+          "min_ms": 20.782,
+          "max_ms": 21.616
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 3.55394,
+          "min_ms": 3.539,
+          "max_ms": 3.63
+        },
+        "fragments": [
+          26
+        ]
+      },
+      "2": {
+        "head": {
+          "n": 50,
+          "mean_ms": 37.94176,
+          "min_ms": 37.633,
+          "max_ms": 38.016
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 10.90774,
+          "min_ms": 10.842,
+          "max_ms": 11.284
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 2.9562,
+          "min_ms": 2.863,
+          "max_ms": 3.034
+        },
+        "fragments": [
+          14
+        ]
+      },
+      "3": {
+        "head": {
+          "n": 50,
+          "mean_ms": 72.67832,
+          "min_ms": 72.614,
+          "max_ms": 72.804
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 21.0438,
+          "min_ms": 20.948,
+          "max_ms": 21.471
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 3.2314800000000004,
+          "min_ms": 3.201,
+          "max_ms": 3.837
+        },
+        "fragments": [
+          26
+        ]
+      },
+      "4": {
+        "head": {
+          "n": 50,
+          "mean_ms": 128.71362,
+          "min_ms": 128.399,
+          "max_ms": 128.775
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 10.99146,
+          "min_ms": 10.966,
+          "max_ms": 11.243
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 2.7011000000000003,
+          "min_ms": 2.697,
+          "max_ms": 2.706
+        },
+        "fragments": [
+          14
+        ]
+      },
+      "5": {
+        "head": {
+          "n": 50,
+          "mean_ms": 180.14202,
+          "min_ms": 180.001,
+          "max_ms": 180.195
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 16.89774,
+          "min_ms": 16.766,
+          "max_ms": 17.107
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 2.7283999999999997,
+          "min_ms": 2.696,
+          "max_ms": 2.985
+        },
+        "fragments": [
+          21
+        ]
+      },
+      "6": {
+        "head": {
+          "n": 50,
+          "mean_ms": 250.96586,
+          "min_ms": 250.86,
+          "max_ms": 251.046
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 9.16886,
+          "min_ms": 9.143,
+          "max_ms": 9.526
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 2.46186,
+          "min_ms": 2.439,
+          "max_ms": 2.811
+        },
+        "fragments": [
+          12
+        ]
+      },
+      "7": {
+        "head": {
+          "n": 50,
+          "mean_ms": 308.0236,
+          "min_ms": 307.691,
+          "max_ms": 308.118
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 11.858699999999999,
+          "min_ms": 11.806,
+          "max_ms": 12.168
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 2.46048,
+          "min_ms": 2.374,
+          "max_ms": 2.81
+        },
+        "fragments": [
+          15
+        ]
+      },
+      "8": {
+        "head": {
+          "n": 50,
+          "mean_ms": 380.56144,
+          "min_ms": 380.234,
+          "max_ms": 380.657
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 6.63224,
+          "min_ms": 6.577,
+          "max_ms": 6.983
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 2.10726,
+          "min_ms": 1.848,
+          "max_ms": 2.48
+        },
+        "fragments": [
+          9
+        ]
+      },
+      "9": {
+        "head": {
+          "n": 50,
+          "mean_ms": 384.65788,
+          "min_ms": 384.404,
+          "max_ms": 384.744
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 1.1296000000000002,
+          "min_ms": 1.123,
+          "max_ms": 1.26
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 1.4821,
+          "min_ms": 1.467,
+          "max_ms": 1.755
+        },
+        "fragments": [
+          2
+        ]
+      },
+      "10": {
+        "head": {
+          "n": 50,
+          "mean_ms": 384.53414,
+          "min_ms": 384.475,
+          "max_ms": 385.027
+        },
+        "tx": {
+          "n": 50,
+          "mean_ms": 0.0,
+          "min_ms": 0.0,
+          "max_ms": 0.0
+        },
+        "wait": {
+          "n": 50,
+          "mean_ms": 0.0,
+          "min_ms": 0.0,
+          "max_ms": 0.0
+        },
+        "fragments": [
+          0
+        ]
+      }
+    }
+  },
+  "scope": "dongle on laptop USB power: correctness evidence and DWT debug times, never energy numbers",
+  "tools_sha256": {
+    "check_week10.py": "d3f1468e2e29c12a25d7b5a287f979605d100014ebc6c843ff442d82bfb8e0f9",
+    "week10_ble.py": "2c568795606cb512bfc34bfcb5b56f43e9b77b01c1b3121ea6e3da2fb81a4682",
+    "week10_prot.py": "8e769b8480eddb3df2075af6c00a96819f26b31ae3d5e5ace1a6a12aa0020ea7",
+    "week10_common.py": "c1c3d5827b8974bf66d8b001e08cb1fbc4b97d64a8f9ba708b53a9a40d469feb",
+    "week10_lab.py": "bfab6c228ebaa2aae3461ecc7133e15dd967d68d4764cb06a3335f5ace6327ff"
+  },
+  "shim_sources_sha256": {
+    "device/week10/host_test/ble_shim.c": "5a555da8e5b41679e93dd49e3874283679a489d40d7f59a2332b200cb6068c1d",
+    "device/week10/ble_plan_bytes.h": "196b554fd7effff11d46e73584de002bc54bc519e70fd1af914eb4c1251cf090",
+    "device/week8/g2_plan.h": "14ad11a4dfc32f8b018c37a10f6ca3022346aacf3123081caa2fb63c74977395",
+    "device/week7/head_fast.c": "2784ac89a27f9c06d97d11e27cca8e87d25c1e82b01fc71530be1540b9ae8c71",
+    "device/week5/quantization.c": "08b2131b29eacb2a1822b97dca2f30fdd138f942fac16e1f202251213572f529",
+    "device/week6/sha256.c": "21382adde20e28f3d19b923c681c8848450358ada740c674474ab204ea1e5532"
+  }
+}

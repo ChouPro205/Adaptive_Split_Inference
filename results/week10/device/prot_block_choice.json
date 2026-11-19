@@ -1,0 +1,19 @@
+{
+  "schema": "week10-prot-block-choice/1",
+  "decision": "W10-D1: block size of the PROT-phase high-level fraction (core E_prot fit), chosen on week 9 B5 data before any week 10 E_prot session",
+  "data": ["D:/HUST/ASI_week9/B5-20261109-1419", "D:/HUST/ASI_week9/B5-20261109-1438-p2", "D:/HUST/ASI_week9/B5-20261109-1509-p4"],
+  "method": "per P1 cycle: D1-only samples, mean per block of b samples (10 us each), fraction of blocks above week9_ppk2.HIGH_LEVEL_UA = 3600 uA; core = intercept of E_prot = a + b * fraction (week9_figures.core_fit) per session",
+  "criterion": "smallest session range of the core E_prot over the three B5 sessions",
+  "candidates": {
+    "1":   {"core_uJ": {"B5-1": 15.20, "B5-2": 15.06, "B5-4": 14.69}, "r2_min": 0.997, "range_pct": 3.44},
+    "5":   {"core_uJ": {"B5-1": 18.64, "B5-2": 18.67, "B5-4": 18.70}, "r2_min": 0.994, "range_pct": 0.34},
+    "10":  {"core_uJ": {"B5-1": 18.63, "B5-2": 18.72, "B5-4": 18.82}, "r2_min": 0.994, "range_pct": 1.04},
+    "25":  {"core_uJ": {"B5-1": 18.74, "B5-2": 18.93, "B5-4": 19.05}, "r2_min": 0.970, "range_pct": 1.64},
+    "50":  {"core_uJ": {"B5-1": 18.81, "B5-2": 19.17, "B5-4": 19.99}, "r2_min": 0.854, "range_pct": 6.10},
+    "100": {"core_uJ": {"B5-1": 19.23, "B5-2": 19.54, "B5-4": 20.95}, "r2_min": 0.707, "range_pct": 8.63}
+  },
+  "raw_E_prot_session_range_pct": 14.34,
+  "chosen_block_samples": 5,
+  "note": "week 9 reported the per-sample (b = 1) core 14.9 uJ; that number stays in the week 9 report. b = 1 counts single-sample transients; week 10 uses b = 5 (50 us) for E_prot core in every s.",
+  "created": "2026-11-12"
+}

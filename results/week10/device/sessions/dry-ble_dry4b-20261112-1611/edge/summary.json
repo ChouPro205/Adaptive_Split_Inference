@@ -1,0 +1,218 @@
+{
+  "schema": "week10-kv260-import/1",
+  "source_log": "D:\\HUST\\ASI_week10\\from-trung-dry4b-20261112\\capture\\requests.jsonl",
+  "source_log_sha256": "ed3d75454e6563fd8dd07480bf1bd559629debbb464910180e885fb4431a3b97",
+  "edge_reference": {
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s0.jsonl": "52bd779268419f912ce4919eb59d03d892b6bb027ec1198b8ca30101b2f7f06c",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s1.jsonl": "b7185b3464282eb57d00eb7b779194e8f86b9335f37ecb61d459ccd2413e0f64",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s2.jsonl": "91818e75a3ce6b69a175107e1acd6c8e3ac0e71c74c856de9b4e454c9768eaac",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s3.jsonl": "d35fde889f6f46814ed4435eefde2b2a5a1b4e8172a06fc3822ca6108b30c12e",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s4.jsonl": "e93e6297bb538693b877d0053ef1931358a9b36248ee2626287d6d88add74a8e",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s5.jsonl": "468e4282c040a24fec330e05ba12bd1c096b52a6564817335866087e2cb5baa0",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s6.jsonl": "7a2793024df5206faa467ce859c8e0661202979d15b1c71063872b5c98fc5c2a",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s7.jsonl": "e0d857a51b6af1cad2123325d2c36deaa537cbfc673f58ab61497972bebac120",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s8.jsonl": "85f9a2c7a08c5034e102f3752a4532b6def3ee304310dc7945c036e0e7591d28",
+    "D:\\HUST\\ASI_week10\\from-trung-20261112-cache\\gui_sv1_cache\\predictions\\predictions_s9.jsonl": "e18d46017c04c8b5e3a1a0fa8ec0e60c7cb002166bbef3237dabad88bbc20d35"
+  },
+  "queue_dir": null,
+  "queue_match": null,
+  "imported_utc": "2026-11-12T09:29:18.832654+00:00",
+  "counters": {
+    "response_sent": 500,
+    "unknown_sample": 0,
+    "not_ok": 0,
+    "no_split": 0
+  },
+  "result": {
+    "checks": {
+      "one_request_per_edge_cycle": true,
+      "requests_in_plan_order": true,
+      "all_rho0": true,
+      "all_ok": true,
+      "every_request_has_split": true,
+      "every_request_known_sample": true,
+      "labels_equal_kv260_offline_every_s": true,
+      "logits_bit_equal_kv260_offline": true,
+      "dongle_logits_equal_kv260_log": true
+    },
+    "per_s": {
+      "0": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      },
+      "1": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      },
+      "2": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      },
+      "3": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      },
+      "4": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      },
+      "5": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      },
+      "6": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      },
+      "7": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      },
+      "8": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      },
+      "9": {
+        "n": 50,
+        "label_equal_offline": 50,
+        "logits_equal_offline": 50
+      }
+    },
+    "logit_mismatches": [],
+    "t_edge_ms_by_s": {
+      "0": {
+        "n": 50,
+        "mean": 57.415509799998254,
+        "min": 57.15170700009912,
+        "max": 57.73153300024569,
+        "std": 0.11306831113541756,
+        "ci95_half": 0.03213365848089842,
+        "ci95_low": 57.38337614151735,
+        "ci95_high": 57.447643458479156,
+        "ci95_rel_pct": 0.05596686085838673
+      },
+      "1": {
+        "n": 50,
+        "mean": 99.0962496399507,
+        "min": 98.48944399971515,
+        "max": 99.7245270004496,
+        "std": 0.23101751414151947,
+        "ci95_half": 0.06565445108346,
+        "ci95_low": 99.03059518886724,
+        "ci95_high": 99.16190409103416,
+        "ci95_rel_pct": 0.06625321475031017
+      },
+      "2": {
+        "n": 50,
+        "mean": 71.99637512005866,
+        "min": 71.63980299979448,
+        "max": 72.63237100001425,
+        "std": 0.18236593249772676,
+        "ci95_half": 0.051827824565400374,
+        "ci95_low": 71.94454729549325,
+        "ci95_high": 72.04820294462407,
+        "ci95_rel_pct": 0.0719867138852117
+      },
+      "3": {
+        "n": 50,
+        "mean": 90.96236989995465,
+        "min": 90.36256300006062,
+        "max": 92.1814149999991,
+        "std": 0.31588712235480976,
+        "ci95_half": 0.08977412686483163,
+        "ci95_low": 90.87259577308983,
+        "ci95_high": 91.05214402681948,
+        "ci95_rel_pct": 0.09869369824419712
+      },
+      "4": {
+        "n": 50,
+        "mean": 60.44751925999299,
+        "min": 60.22796299960464,
+        "max": 61.08825400006026,
+        "std": 0.14925618536752785,
+        "ci95_half": 0.042418138544739095,
+        "ci95_low": 60.40510112144825,
+        "ci95_high": 60.48993739853773,
+        "ci95_rel_pct": 0.07017349771178025
+      },
+      "5": {
+        "n": 50,
+        "mean": 66.54968193996697,
+        "min": 66.153110999614,
+        "max": 67.6246460005641,
+        "std": 0.2698873731995783,
+        "ci95_half": 0.07670114280132251,
+        "ci95_low": 66.47298079716565,
+        "ci95_high": 66.6263830827683,
+        "ci95_rel_pct": 0.11525395849451685
+      },
+      "6": {
+        "n": 50,
+        "mean": 40.91354504000395,
+        "min": 40.69434200040996,
+        "max": 41.462790000252426,
+        "std": 0.15581144538395456,
+        "ci95_half": 0.044281122828364446,
+        "ci95_low": 40.86926391717559,
+        "ci95_high": 40.95782616283232,
+        "ci95_rel_pct": 0.10823096063924009
+      },
+      "7": {
+        "n": 50,
+        "mean": 41.298702800013125,
+        "min": 40.98890900053084,
+        "max": 41.81981400027871,
+        "std": 0.1336293741943486,
+        "ci95_half": 0.037977047947896025,
+        "ci95_low": 41.26072575206523,
+        "ci95_high": 41.33667984796102,
+        "ci95_rel_pct": 0.09195699954983563
+      },
+      "8": {
+        "n": 50,
+        "mean": 19.668228900060058,
+        "min": 19.453141000121832,
+        "max": 20.01162699982524,
+        "std": 0.12701682410067713,
+        "ci95_half": 0.0360977820044666,
+        "ci95_low": 19.63213111805559,
+        "ci95_high": 19.704326682064526,
+        "ci95_rel_pct": 0.1835334650002796
+      },
+      "9": {
+        "n": 50,
+        "mean": 7.426680660061538,
+        "min": 7.2500089993700385,
+        "max": 7.84924599993974,
+        "std": 0.13386561969858535,
+        "ci95_half": 0.03804418817732511,
+        "ci95_low": 7.388636471884213,
+        "ci95_high": 7.4647248482388635,
+        "ci95_rel_pct": 0.5122636870858788
+      }
+    }
+  },
+  "tool_sha256": {
+    "week10_lab.py": "bfab6c228ebaa2aae3461ecc7133e15dd967d68d4764cb06a3335f5ace6327ff",
+    "week10_ble.py": "2c568795606cb512bfc34bfcb5b56f43e9b77b01c1b3121ea6e3da2fb81a4682",
+    "week10_prot.py": "8e769b8480eddb3df2075af6c00a96819f26b31ae3d5e5ace1a6a12aa0020ea7",
+    "week10_common.py": "c1c3d5827b8974bf66d8b001e08cb1fbc4b97d64a8f9ba708b53a9a40d469feb",
+    "check_week10.py": "d3f1468e2e29c12a25d7b5a287f979605d100014ebc6c843ff442d82bfb8e0f9",
+    "week10_analysis.py": "dc4c2857727d45385b10c92980c26bac9184f8fe1989319fcb25d5772ff34866",
+    "week9_common.py": "2fc7f7a785992d159bb5711b761f654f301219c0dc506e2364528858b5480a5e",
+    "week8_common.py": "60d242188875815842e157aa475ea21ab796937fd519b587f28ba607bb83af91",
+    "week8_lab.py": "28babd070a9f5dd317f88eb2f90d176c452cfc9f1f21e67d273779a50dd059f2",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b",
+    "week6_lab.py": "52f79e40bd575626eaeb8bdbc0a6ecc66cd24d5cf2abea66c08f1a302ff46c2a",
+    "week6_common.py": "a15377a7cd05f73f6b17a2ce0210193da28e499af67ba8bd17e2faa64f7b312a"
+  }
+}

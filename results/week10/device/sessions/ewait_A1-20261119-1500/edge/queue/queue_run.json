@@ -1,0 +1,118 @@
+{
+  "config": {
+    "seed": 101,
+    "mqtt_enabled": false,
+    "max_background": 8,
+    "scenario_csv": "/home/root/asi_week10/lab_addon/ewait_load_blocks.csv",
+    "scenario_sha256": "38937e54c2b9cb21a21dc6ac36c43f273216e9eaca56d98af99e053c4f19035e",
+    "queue_mode": "load"
+  },
+  "backend": {
+    "backend": "KV260_ROOT_CPU_DPU_MODEL_CACHE",
+    "models": {
+      "0": "b6ce1d02ae32db7116a3e72fccdc0453c33964372fd60ddcf19f0e5eb6e02193",
+      "1": "a6cd8ca55894569a849d59a82ad725dcdd1ba77c95442e98bfe6f732aa1f795f",
+      "2": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+      "3": "88f541f6b9ddb923ffe9229c5c35713d194102819457b84880e59a1e3fa90a43",
+      "4": "cf798b74a3c40a6c5432a80640fd4621baa4aeb1715bee0ecba1596903d03a22",
+      "5": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2",
+      "6": "4578b7c1e352e2b5be65ba31c75bfa667c5d84ac24ff804921222720688e9ebd",
+      "7": "80408887800aeec2be97e67a0cb59c2be78e235f726299d562dd571220dc4c14",
+      "8": "dcc460edff10e22874f27d60bd0c98374bd3937f87690944287eab8213e5517e",
+      "9": "c30d20d55ba759065a01e07258adde8b7acdfbd8c3587b68f35ce5ca222ca17a"
+    },
+    "plugins": {
+      "libvart_op_imp_relu.so": "6c3a30cd53404a9e691bed554056243e22d06ec42c07b222a1955b243f740f50",
+      "libvart_op_imp_maxpool1d.so": "7c81f9eb3d754bc52b2e995b77c895cdd73120c68ffa6515cc0eb9084a2f5b19",
+      "libvart_op_imp_conv1d.so": "ba0eeaa3559c5d42c672536ebe3cc65f77558ead8eb43c77f99bb0e80829a2ee"
+    },
+    "worker_sha256": "2ce046aeff04ced12606d6d8edae2e1d1651ff02d3414d9224b53f007be0a545",
+    "bundle_inventory_sha256": "41fe3388db89bdb0d1759e4bc7b6b926af1fb8d87bd8c71d880505695ce14a44"
+  },
+  "start_monotonic_ns": 2002946312909,
+  "start_unix_ns": 1795074944430640672,
+  "scenario": [
+    [
+      40.0,
+      0.0
+    ],
+    [
+      20.0,
+      30.0
+    ],
+    [
+      20.0,
+      0.0
+    ],
+    [
+      20.0,
+      15.0
+    ],
+    [
+      20.0,
+      15.0
+    ],
+    [
+      20.0,
+      0.0
+    ],
+    [
+      20.0,
+      0.0
+    ],
+    [
+      20.0,
+      15.0
+    ],
+    [
+      20.0,
+      30.0
+    ],
+    [
+      20.0,
+      15.0
+    ],
+    [
+      20.0,
+      30.0
+    ],
+    [
+      20.0,
+      30.0
+    ],
+    [
+      20.0,
+      15.0
+    ],
+    [
+      20.0,
+      15.0
+    ],
+    [
+      20.0,
+      30.0
+    ],
+    [
+      20.0,
+      0.0
+    ],
+    [
+      20.0,
+      0.0
+    ],
+    [
+      20.0,
+      30.0
+    ],
+    [
+      20.0,
+      0.0
+    ],
+    [
+      60.0,
+      0.0
+    ]
+  ],
+  "source_sha256": "606ff1d6cc23c60e03aa576fc0116e6d0b62b83664ce4594d377ed1be171143b",
+  "scope": "KV260 shared FIFO; zero mode has no background producer"
+}
