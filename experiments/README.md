@@ -44,3 +44,7 @@ trong terminal bằng browser; không chia sẻ token. Trong file browser mở
 hoặc tạo lượt đo. Template không lưu output; nếu muốn lưu kết quả hiển thị,
 dùng Save As sang thư mục làm việc cục bộ bị ignore. Việc xem notebook tùy chọn,
 không phải điều kiện của báo cáo hoặc W10.
+
+## SV2 / Edge tuần 10
+
+[Cấu hình](configs/sv2_edge_week10.json), [notebook](notebooks/sv2_edge_week10.ipynb) và [kết quả](../results/week10/edge/README.md).

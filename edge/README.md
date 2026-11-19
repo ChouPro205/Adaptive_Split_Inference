@@ -1,5 +1,7 @@
 # SV2 / Edge — Vitis AI 2.5
 
+Tuần 10: [cache nhiều split](server/week10/README.md), [báo cáo](../docs/sv2_edge_week10_report.md), [kết quả](../results/week10/edge/README.md).
+
 Tuần 9: [queue Poisson và MQTT gateway](server/week9/README.md),
 [báo cáo](../docs/sv2_edge_week9_report.md), [kết quả đã kiểm](../results/week9/edge/README.md).
 Đo trên PC SV2, không gán thành PC SV1 nhận. Service B5 lịch sử nằm riêng tại

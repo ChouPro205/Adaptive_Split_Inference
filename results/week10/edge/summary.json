@@ -1,0 +1,250 @@
+{
+  "run_id": "benchmark-4c462f6fb470",
+  "mode": "benchmark",
+  "execution_complete": true,
+  "rows": 2233,
+  "native_splits": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "first_load_by_split": {
+    "0": {
+      "load_ms": 94.701924,
+      "switch_ms": 95.306542,
+      "tail_ms": 48.705525,
+      "native_rss_KiB": 14440
+    },
+    "1": {
+      "load_ms": 63.806934,
+      "switch_ms": 64.370362,
+      "tail_ms": 53.379707,
+      "native_rss_KiB": 16220
+    },
+    "2": {
+      "load_ms": 52.86491,
+      "switch_ms": 53.441797,
+      "tail_ms": 45.763946,
+      "native_rss_KiB": 17916
+    },
+    "3": {
+      "load_ms": 45.36717,
+      "switch_ms": 45.922748,
+      "tail_ms": 44.291156,
+      "native_rss_KiB": 19428
+    },
+    "4": {
+      "load_ms": 36.484553,
+      "switch_ms": 37.02918,
+      "tail_ms": 33.356981,
+      "native_rss_KiB": 20680
+    },
+    "5": {
+      "load_ms": 30.463673,
+      "switch_ms": 31.00053,
+      "tail_ms": 29.141956,
+      "native_rss_KiB": 21668
+    },
+    "6": {
+      "load_ms": 23.391539,
+      "switch_ms": 23.915597,
+      "tail_ms": 18.226201,
+      "native_rss_KiB": 22656
+    },
+    "7": {
+      "load_ms": 18.655967,
+      "switch_ms": 19.156473,
+      "tail_ms": 13.177034,
+      "native_rss_KiB": 23184
+    },
+    "8": {
+      "load_ms": 11.833336,
+      "switch_ms": 12.354144,
+      "tail_ms": 1.817454,
+      "native_rss_KiB": 23624
+    },
+    "9": {
+      "load_ms": 9.330754,
+      "switch_ms": 9.82987,
+      "tail_ms": 0.290464,
+      "native_rss_KiB": 23624
+    }
+  },
+  "warm_switch": {
+    "count": 1801,
+    "mean_ms": 0.3546206551915602,
+    "std_ms": 0.01935029889029673,
+    "p95_ms": 0.377635,
+    "max_ms": 0.810319,
+    "at_or_above_50_count": 0
+  },
+  "warm_switch_by_pair": {
+    "0->1": {
+      "count": 100,
+      "mean_ms": 0.37049548,
+      "std_ms": 0.008982904481223648,
+      "p95_ms": 0.385565,
+      "max_ms": 0.411415,
+      "at_or_above_50_count": 0
+    },
+    "1->0": {
+      "count": 100,
+      "mean_ms": 0.34146191,
+      "std_ms": 0.009556875099031317,
+      "p95_ms": 0.364275,
+      "max_ms": 0.370585,
+      "at_or_above_50_count": 0
+    },
+    "1->2": {
+      "count": 100,
+      "mean_ms": 0.35720875,
+      "std_ms": 0.009645406028888633,
+      "p95_ms": 0.377185,
+      "max_ms": 0.389835,
+      "at_or_above_50_count": 0
+    },
+    "2->1": {
+      "count": 100,
+      "mean_ms": 0.370401,
+      "std_ms": 0.010022829561767595,
+      "p95_ms": 0.384455,
+      "max_ms": 0.419245,
+      "at_or_above_50_count": 0
+    },
+    "2->3": {
+      "count": 100,
+      "mean_ms": 0.37054499,
+      "std_ms": 0.008209420039426495,
+      "p95_ms": 0.383235,
+      "max_ms": 0.396325,
+      "at_or_above_50_count": 0
+    },
+    "3->2": {
+      "count": 100,
+      "mean_ms": 0.35669591,
+      "std_ms": 0.008996515552297303,
+      "p95_ms": 0.373035,
+      "max_ms": 0.378845,
+      "at_or_above_50_count": 0
+    },
+    "3->4": {
+      "count": 100,
+      "mean_ms": 0.3569802,
+      "std_ms": 0.007980808670197717,
+      "p95_ms": 0.370365,
+      "max_ms": 0.376305,
+      "at_or_above_50_count": 0
+    },
+    "4->3": {
+      "count": 100,
+      "mean_ms": 0.37656671,
+      "std_ms": 0.04464751593829723,
+      "p95_ms": 0.386215,
+      "max_ms": 0.810319,
+      "at_or_above_50_count": 0
+    },
+    "4->5": {
+      "count": 100,
+      "mean_ms": 0.36300202,
+      "std_ms": 0.008265707837820184,
+      "p95_ms": 0.373745,
+      "max_ms": 0.399375,
+      "at_or_above_50_count": 0
+    },
+    "5->4": {
+      "count": 100,
+      "mean_ms": 0.35606655,
+      "std_ms": 0.007075600652484162,
+      "p95_ms": 0.366755,
+      "max_ms": 0.378125,
+      "at_or_above_50_count": 0
+    },
+    "5->6": {
+      "count": 100,
+      "mean_ms": 0.35009245,
+      "std_ms": 0.007149303246937194,
+      "p95_ms": 0.361675,
+      "max_ms": 0.369775,
+      "at_or_above_50_count": 0
+    },
+    "6->5": {
+      "count": 100,
+      "mean_ms": 0.36170212,
+      "std_ms": 0.007052318079077606,
+      "p95_ms": 0.373295,
+      "max_ms": 0.376685,
+      "at_or_above_50_count": 0
+    },
+    "6->7": {
+      "count": 100,
+      "mean_ms": 0.3544558,
+      "std_ms": 0.007619330464500979,
+      "p95_ms": 0.369335,
+      "max_ms": 0.373725,
+      "at_or_above_50_count": 0
+    },
+    "7->6": {
+      "count": 100,
+      "mean_ms": 0.34913599,
+      "std_ms": 0.01642628199722701,
+      "p95_ms": 0.363254,
+      "max_ms": 0.493096,
+      "at_or_above_50_count": 0
+    },
+    "7->8": {
+      "count": 100,
+      "mean_ms": 0.34192594,
+      "std_ms": 0.008329926083826924,
+      "p95_ms": 0.352155,
+      "max_ms": 0.386245,
+      "at_or_above_50_count": 0
+    },
+    "8->7": {
+      "count": 100,
+      "mean_ms": 0.34956532,
+      "std_ms": 0.008430471605582053,
+      "p95_ms": 0.360034,
+      "max_ms": 0.399095,
+      "at_or_above_50_count": 0
+    },
+    "8->9": {
+      "count": 100,
+      "mean_ms": 0.32472879,
+      "std_ms": 0.008224068137681758,
+      "p95_ms": 0.339744,
+      "max_ms": 0.349024,
+      "at_or_above_50_count": 0
+    },
+    "9->0": {
+      "count": 1,
+      "mean_ms": 0.303774,
+      "std_ms": null,
+      "p95_ms": 0.303774,
+      "max_ms": 0.303774,
+      "at_or_above_50_count": 0
+    },
+    "9->8": {
+      "count": 100,
+      "mean_ms": 0.33265033,
+      "std_ms": 0.016176852041132943,
+      "p95_ms": 0.346245,
+      "max_ms": 0.467226,
+      "at_or_above_50_count": 0
+    }
+  },
+  "ordered_pairs_observed": 19,
+  "all_possible_native_ordered_pairs": 90,
+  "timing_observation": "ALL_OBSERVED_WARM_SWITCHES_LT_50_MS",
+  "project_acceptance": "PENDING_REVIEW_OF_SCOPE_AND_CRITERION",
+  "parity_mismatches": 0,
+  "source_inventory_sha256": "d8fd2f064df631f9c8748176e08756b3b98fe987ca08d6f2cfe3ad5ada20febc",
+  "scope": "OFFLINE_I1_KV260_ROOT_CPU_DPU; not BLE or independent test accuracy",
+  "switch_scope": "Python before SELECT transaction to native selected acknowledgement; includes IPC"
+}
