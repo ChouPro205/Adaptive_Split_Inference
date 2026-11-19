@@ -1,0 +1,325 @@
+[
+  {
+    "capture_id": "4a",
+    "archive_sha256": "ff1629c6742cc46ba5652357cc9f3115fe8fbef06888d4215985cfda33be1744",
+    "archive_size_bytes": 708320,
+    "inventory_sha256": "53a3d10cf1a751b023ca5c58ef3ed70a326ea909ff5f11cd9558e13903335b25",
+    "lab_source_sha256": {
+      "ble_week10.py": "2e97d2c02dd44bb513304886db0453c351b507fe57f5d1d17d4413323985654b",
+      "lab.py": "488fd1d4346c453af06f362503f720fc781e7301dc86f50ab6bfc051e3bbf5a1",
+      "shared_queue.py": "606ff1d6cc23c60e03aa576fc0116e6d0b62b83664ce4594d377ed1be171143b",
+      "lab_config.py": "9bcc3f825f899310590b2adf4df5d2d5db74b5678b9f90d38821b611338a96d9"
+    },
+    "request_count": 100,
+    "expected_count": 100,
+    "ok_count": 100,
+    "offline_bit_exact_count": 100,
+    "plan_match_count": 100,
+    "requests_by_split": {
+      "5": 10,
+      "9": 10,
+      "2": 10,
+      "1": 10,
+      "6": 10,
+      "4": 10,
+      "0": 10,
+      "7": 10,
+      "8": 10,
+      "3": 10
+    },
+    "requests_by_protection": {
+      "P0": 100
+    },
+    "queue_mode": "zero",
+    "queue": {
+      "seed": 101,
+      "scenario_sha256": "4c66168837c46162d000adc3eaf8b6baa199d499ef868bd4666b55fd275b21e7",
+      "mqtt_enabled": false,
+      "foreground_joined_count": 100,
+      "enqueue_minus_rx_min_ms": 2.620662999805063,
+      "enqueue_minus_rx_max_ms": 38.0325779998675,
+      "summary": {
+        "background_arrived": 0,
+        "background_dropped": 0,
+        "foreground_arrived": 100,
+        "completed": 100,
+        "failure": null,
+        "scope": "shared FIFO; capacity counts pending jobs, active job excluded"
+      }
+    },
+    "phy_2m_before_first_rx": true,
+    "trace_check_exit": 0,
+    "warm_switch": {
+      "count": 100,
+      "mean_ms": 0.37173282,
+      "std_ms": 0.019637245632416957,
+      "p95_ms": 0.395277,
+      "max_ms": 0.492723,
+      "at_or_above_50_count": 0
+    },
+    "warm_directed_pairs": 63,
+    "service_status": "INCOMPLETE",
+    "service_error": "TimeoutError: ",
+    "device_disconnect_observed": false,
+    "edge_review_status": "INCOMPLETE"
+  },
+  {
+    "capture_id": "4b",
+    "archive_sha256": "2df74b731cf0c1b3abe88715a629d1f141629cd854f17995790c6d2320004ef8",
+    "archive_size_bytes": 2981617,
+    "inventory_sha256": "efc55a8206cf38796abaaa26aab9074bdbafe9fe2487871fbea66b3690563180",
+    "lab_source_sha256": {
+      "ble_week10.py": "2e97d2c02dd44bb513304886db0453c351b507fe57f5d1d17d4413323985654b",
+      "lab.py": "488fd1d4346c453af06f362503f720fc781e7301dc86f50ab6bfc051e3bbf5a1",
+      "shared_queue.py": "606ff1d6cc23c60e03aa576fc0116e6d0b62b83664ce4594d377ed1be171143b",
+      "lab_config.py": "9bcc3f825f899310590b2adf4df5d2d5db74b5678b9f90d38821b611338a96d9"
+    },
+    "request_count": 500,
+    "expected_count": 500,
+    "ok_count": 500,
+    "offline_bit_exact_count": 500,
+    "plan_match_count": 500,
+    "requests_by_split": {
+      "5": 50,
+      "9": 50,
+      "2": 50,
+      "1": 50,
+      "6": 50,
+      "4": 50,
+      "0": 50,
+      "7": 50,
+      "8": 50,
+      "3": 50
+    },
+    "requests_by_protection": {
+      "P0": 500
+    },
+    "queue_mode": "off",
+    "queue": null,
+    "phy_2m_before_first_rx": true,
+    "trace_check_exit": 0,
+    "warm_switch": {
+      "count": 497,
+      "mean_ms": 0.37338659154929577,
+      "std_ms": 0.03414899227017861,
+      "p95_ms": 0.392782,
+      "max_ms": 1.063418,
+      "at_or_above_50_count": 0
+    },
+    "warm_directed_pairs": 90,
+    "service_status": "INCOMPLETE",
+    "service_error": "TimeoutError: ",
+    "device_disconnect_observed": false,
+    "edge_review_status": "INCOMPLETE"
+  },
+  {
+    "capture_id": "A1_lan_2",
+    "archive_sha256": "6538fdeced9708f7a0ff1411ffcd1548f8dc7602ff7a3c404dd20a55fb8e66c5",
+    "archive_size_bytes": 3030408,
+    "inventory_sha256": "3292e14181c45f666e89d4150d21486a278c02367cbc44ede0b7ea4e2ae46270",
+    "lab_source_sha256": {
+      "ble_week10.py": "2e97d2c02dd44bb513304886db0453c351b507fe57f5d1d17d4413323985654b",
+      "lab.py": "488fd1d4346c453af06f362503f720fc781e7301dc86f50ab6bfc051e3bbf5a1",
+      "shared_queue.py": "606ff1d6cc23c60e03aa576fc0116e6d0b62b83664ce4594d377ed1be171143b",
+      "lab_config.py": "9bcc3f825f899310590b2adf4df5d2d5db74b5678b9f90d38821b611338a96d9"
+    },
+    "request_count": 200,
+    "expected_count": 200,
+    "ok_count": 200,
+    "offline_bit_exact_count": 200,
+    "plan_match_count": null,
+    "requests_by_split": {
+      "2": 200
+    },
+    "requests_by_protection": {
+      "P1": 100,
+      "P0": 100
+    },
+    "queue_mode": "load",
+    "queue": {
+      "seed": 101,
+      "scenario_sha256": "38937e54c2b9cb21a21dc6ac36c43f273216e9eaca56d98af99e053c4f19035e",
+      "mqtt_enabled": false,
+      "foreground_joined_count": 200,
+      "enqueue_minus_rx_min_ms": 19.277823999989778,
+      "enqueue_minus_rx_max_ms": 35.17370699997991,
+      "summary": {
+        "background_arrived": 5400,
+        "background_dropped": 1233,
+        "foreground_arrived": 200,
+        "completed": 4367,
+        "failure": null,
+        "scope": "shared FIFO; capacity counts pending jobs, active job excluded"
+      }
+    },
+    "phy_2m_before_first_rx": true,
+    "trace_check_exit": 0,
+    "warm_switch": {
+      "count": 1,
+      "mean_ms": 0.431017,
+      "std_ms": null,
+      "p95_ms": 0.431017,
+      "max_ms": 0.431017,
+      "at_or_above_50_count": 0
+    },
+    "warm_directed_pairs": 1,
+    "service_status": "CAPTURED_REVIEW_REQUIRED",
+    "service_error": null,
+    "device_disconnect_observed": true,
+    "edge_review_status": "EDGE_CHECKED_DEVICE_REVIEW_PENDING"
+  },
+  {
+    "capture_id": "A2",
+    "archive_sha256": "079a8d132d34ca721691a066c06e8f2eb494bfd4fe8e039ac2fa10dcc75b4630",
+    "archive_size_bytes": 1667381,
+    "inventory_sha256": "d9678ae64fae51ce4982f038d9fc7ca3f6fa112f9f8452247ddff95de8ae8fbf",
+    "lab_source_sha256": {
+      "ble_week10.py": "2e97d2c02dd44bb513304886db0453c351b507fe57f5d1d17d4413323985654b",
+      "lab.py": "488fd1d4346c453af06f362503f720fc781e7301dc86f50ab6bfc051e3bbf5a1",
+      "shared_queue.py": "606ff1d6cc23c60e03aa576fc0116e6d0b62b83664ce4594d377ed1be171143b",
+      "lab_config.py": "9bcc3f825f899310590b2adf4df5d2d5db74b5678b9f90d38821b611338a96d9"
+    },
+    "request_count": 200,
+    "expected_count": 200,
+    "ok_count": 200,
+    "offline_bit_exact_count": 200,
+    "plan_match_count": null,
+    "requests_by_split": {
+      "2": 200
+    },
+    "requests_by_protection": {
+      "P1": 100,
+      "P0": 100
+    },
+    "queue_mode": "load",
+    "queue": {
+      "seed": 102,
+      "scenario_sha256": "38937e54c2b9cb21a21dc6ac36c43f273216e9eaca56d98af99e053c4f19035e",
+      "mqtt_enabled": false,
+      "foreground_joined_count": 200,
+      "enqueue_minus_rx_min_ms": 19.23995399987325,
+      "enqueue_minus_rx_max_ms": 35.973921000026166,
+      "summary": {
+        "background_arrived": 5458,
+        "background_dropped": 1288,
+        "foreground_arrived": 200,
+        "completed": 4370,
+        "failure": null,
+        "scope": "shared FIFO; capacity counts pending jobs, active job excluded"
+      }
+    },
+    "phy_2m_before_first_rx": true,
+    "trace_check_exit": 0,
+    "warm_switch": {
+      "count": 1,
+      "mean_ms": 0.432695,
+      "std_ms": null,
+      "p95_ms": 0.432695,
+      "max_ms": 0.432695,
+      "at_or_above_50_count": 0
+    },
+    "warm_directed_pairs": 1,
+    "service_status": "CAPTURED_REVIEW_REQUIRED",
+    "service_error": null,
+    "device_disconnect_observed": true,
+    "edge_review_status": "EDGE_CHECKED_DEVICE_REVIEW_PENDING"
+  },
+  {
+    "capture_id": "B1",
+    "archive_sha256": "4de4a1d852c4a12b4baeeeadb7e2efbfdf918bb6d06f351d1d3c04f24870b694",
+    "archive_size_bytes": 3479261,
+    "inventory_sha256": "0fe9ae5fc099642e2a5d3d34bb6f42e27b1a6fd648f4f896290bb237536e47d1",
+    "lab_source_sha256": {
+      "ble_week10.py": "2e97d2c02dd44bb513304886db0453c351b507fe57f5d1d17d4413323985654b",
+      "lab.py": "488fd1d4346c453af06f362503f720fc781e7301dc86f50ab6bfc051e3bbf5a1",
+      "shared_queue.py": "606ff1d6cc23c60e03aa576fc0116e6d0b62b83664ce4594d377ed1be171143b",
+      "lab_config.py": "9bcc3f825f899310590b2adf4df5d2d5db74b5678b9f90d38821b611338a96d9"
+    },
+    "request_count": 500,
+    "expected_count": 500,
+    "ok_count": 500,
+    "offline_bit_exact_count": 500,
+    "plan_match_count": 500,
+    "requests_by_split": {
+      "5": 50,
+      "9": 50,
+      "2": 50,
+      "1": 50,
+      "6": 50,
+      "4": 50,
+      "0": 50,
+      "7": 50,
+      "8": 50,
+      "3": 50
+    },
+    "requests_by_protection": {
+      "P0": 500
+    },
+    "queue_mode": "off",
+    "queue": null,
+    "phy_2m_before_first_rx": true,
+    "trace_check_exit": 0,
+    "warm_switch": {
+      "count": 497,
+      "mean_ms": 0.37788913682092556,
+      "std_ms": 0.015045296004542644,
+      "p95_ms": 0.396515,
+      "max_ms": 0.49702,
+      "at_or_above_50_count": 0
+    },
+    "warm_directed_pairs": 90,
+    "service_status": "CAPTURED_REVIEW_REQUIRED",
+    "service_error": null,
+    "device_disconnect_observed": true,
+    "edge_review_status": "EDGE_CHECKED_DEVICE_REVIEW_PENDING"
+  },
+  {
+    "capture_id": "B2",
+    "archive_sha256": "7863f01ed7c4b0693ba50e5f537ff7730e785574b523522e37ab60052eb64347",
+    "archive_size_bytes": 3144346,
+    "inventory_sha256": "c25e6c4f68b147964f27e1ac862111033f4f02ff4dd0fe6cfa68bc229f3819d0",
+    "lab_source_sha256": {
+      "ble_week10.py": "2e97d2c02dd44bb513304886db0453c351b507fe57f5d1d17d4413323985654b",
+      "lab.py": "488fd1d4346c453af06f362503f720fc781e7301dc86f50ab6bfc051e3bbf5a1",
+      "shared_queue.py": "606ff1d6cc23c60e03aa576fc0116e6d0b62b83664ce4594d377ed1be171143b",
+      "lab_config.py": "9bcc3f825f899310590b2adf4df5d2d5db74b5678b9f90d38821b611338a96d9"
+    },
+    "request_count": 500,
+    "expected_count": 500,
+    "ok_count": 500,
+    "offline_bit_exact_count": 500,
+    "plan_match_count": 500,
+    "requests_by_split": {
+      "5": 50,
+      "9": 50,
+      "2": 50,
+      "1": 50,
+      "6": 50,
+      "4": 50,
+      "0": 50,
+      "7": 50,
+      "8": 50,
+      "3": 50
+    },
+    "requests_by_protection": {
+      "P0": 500
+    },
+    "queue_mode": "off",
+    "queue": null,
+    "phy_2m_before_first_rx": true,
+    "trace_check_exit": 0,
+    "warm_switch": {
+      "count": 497,
+      "mean_ms": 0.3757127323943662,
+      "std_ms": 0.0122432983445494,
+      "p95_ms": 0.394166,
+      "max_ms": 0.465102,
+      "at_or_above_50_count": 0
+    },
+    "warm_directed_pairs": 90,
+    "service_status": "CAPTURED_REVIEW_REQUIRED",
+    "service_error": null,
+    "device_disconnect_observed": true,
+    "edge_review_status": "EDGE_CHECKED_DEVICE_REVIEW_PENDING"
+  }
+]

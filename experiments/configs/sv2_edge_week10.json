@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "runtime": "KV260 PetaLinux 2022.1 / Vitis AI 2.5",
+  "native_splits": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "warmup_per_split": 20,
+  "offline_cycles": 100,
+  "warm_switch_limit_ms": 50,
+  "offline_scope": "SELECT acknowledgement including IPC",
+  "lab": [
+    {
+      "capture_id": "4a",
+      "expected_request_count": 100,
+      "queue_mode": "zero",
+      "seed": 101,
+      "scenario_sha256": "4c66168837c46162d000adc3eaf8b6baa199d499ef868bd4666b55fd275b21e7"
+    },
+    {
+      "capture_id": "4b",
+      "expected_request_count": 500,
+      "queue_mode": "off",
+      "seed": null,
+      "scenario_sha256": null
+    },
+    {
+      "capture_id": "A1_lan_2",
+      "expected_request_count": 200,
+      "queue_mode": "load",
+      "seed": 101,
+      "scenario_sha256": "38937e54c2b9cb21a21dc6ac36c43f273216e9eaca56d98af99e053c4f19035e"
+    },
+    {
+      "capture_id": "A2",
+      "expected_request_count": 200,
+      "queue_mode": "load",
+      "seed": 102,
+      "scenario_sha256": "38937e54c2b9cb21a21dc6ac36c43f273216e9eaca56d98af99e053c4f19035e"
+    },
+    {
+      "capture_id": "B1",
+      "expected_request_count": 500,
+      "queue_mode": "off",
+      "seed": null,
+      "scenario_sha256": null
+    },
+    {
+      "capture_id": "B2",
+      "expected_request_count": 500,
+      "queue_mode": "off",
+      "seed": null,
+      "scenario_sha256": null
+    }
+  ],
+  "evidence": "results/week10/edge"
+}
