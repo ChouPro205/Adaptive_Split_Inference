@@ -104,11 +104,50 @@ def gap_power(trace: ep.Trace, cycles: list, i_idle: float | None) -> dict:
             "P_conn_net_mW": ep.describe(g["P_net_mW"] for g in gaps if g["P_net_mW"] is not None)}
 
 
+RTC_OVERFLOW_S = 2 ** 24 / 32768.0           # 512 s: 24-bit RTC at 32.768 kHz (Zephyr RTC1, SDC/MPSL RTC0)
+RTC_MARK_TOL_S = 3.0                         # boot delay after DUT power-on (~1.6-1.8 s seen) + margin
+RTC_EVENTS_PER_MARK = 2                      # one per RTC instance
+
+
+def post_session_radio_rule(post: dict, trace: ep.Trace) -> dict:
+    """Post-session radio rule, amended 19/11/2026 AFTER session A1 (W10-D3) had been captured.
+
+    Week 9 rule (w9p.post_session_events): at most one > 3 mA event, each <= EVENT_MAX_MS. A1 had two
+    0.29 ms bursts 0.34 s apart at 513.8 / 514.2 s after DUT power-on, 187 s after the last cycle: the
+    24-bit RTC overflow every 512 s. Evidence that it is not the radio: the radio-off image `prot`
+    (no Bluetooth) shows the same 0.29 ms burst at 513.6 s and 1025.6 s (P1-20261113-1154); the energy
+    image runs LFXO (no RC calibration) and sleeps K_FOREVER after the session; two bursts = two RTC
+    instances. Earlier post windows (B5 week 9, P1/P2) never contained a 512 s mark.
+    Amended rule: the week 9 rule, OR every event <= EVENT_MAX_MS, within RTC_MARK_TOL_S of k * 512 s
+    (k >= 1) after DUT power-on, at most RTC_EVENTS_PER_MARK per mark. Advertising or a live connection
+    gives repeated events everywhere and still fails."""
+    week9 = bool(post.get("found")) and bool(post.get("radio_off"))
+    if not post.get("found"):
+        return {"pass": False, "week9_rule": False, "rule": "no post-session window"}
+    on_s = trace.info.get("dut_power_on_sample", 0) / FS
+    per_mark, outside = {}, []
+    for e in post.get("events_above_3mA", []):
+        t = float(e["t_s"]) - on_s
+        k = int(round(t / RTC_OVERFLOW_S))
+        if k >= 1 and abs(t - k * RTC_OVERFLOW_S) <= RTC_MARK_TOL_S and e["duration_ms"] <= w9p.EVENT_MAX_MS:
+            per_mark.setdefault(k, []).append(round(t, 4))
+        else:
+            outside.append(round(t, 4))
+    rtc_only = not outside and all(len(v) <= RTC_EVENTS_PER_MARK for v in per_mark.values())
+    return {"pass": week9 or rtc_only, "week9_rule": week9, "rtc_overflow_only": rtc_only,
+            "events_at_rtc_marks_s_from_on": {str(k): v for k, v in per_mark.items()},
+            "events_elsewhere_s_from_on": outside,
+            "rule": f"week 9 rule OR all events <= {w9p.EVENT_MAX_MS} ms within +-{RTC_MARK_TOL_S} s of "
+                    f"k*{RTC_OVERFLOW_S:.0f} s after DUT on, <= {RTC_EVENTS_PER_MARK} per mark "
+                    "(amended 19/11/2026 after A1, see docstring)"}
+
+
 def trace_checks(out: Path, record: dict, meta: dict) -> tuple:
     summary = w7p.load_json(out / "analysis" / "summary.json")
     cycles = w7p.cycle_rows(out / "analysis")
     trace = w9p.load_raw_chunked(out / "ppk2")
     post = w9p.post_session_events(trace, cycles, summary.get("I_idle_uA"))
+    post["radio_rule_w10"] = post_session_radio_rule(post, trace)
     a = summary["checks"]
     i_idle = summary.get("I_idle_uA")
     plan_rho = ["P1" if (k + slot) % 2 == 0 else "P0" for k in range(PAIRS) for slot in range(2)]
@@ -128,7 +167,7 @@ def trace_checks(out: Path, record: dict, meta: dict) -> tuple:
         "diff_below_3pct_all": a.get("diff_below_3pct_all", False),
         "post_window_at_least_20s": post.get("found", False) and post["duration_s"] >= 20.0,
         "post_mean_at_idle": post.get("deviation_from_idle_pct", float("inf")) <= IDLE_TOLERANCE_PCT,
-        "post_radio_off": post.get("found", False) and post["radio_off"],
+        "post_radio_off": post["radio_rule_w10"]["pass"],
     }
     details = {"I_idle_uA": i_idle, "post_session": post, "diff_pct": summary.get("diff_pct"),
                "P_conn": gap_power(trace, cycles, i_idle), "v_supply_mV": trace.v_supply_mv}
@@ -489,6 +528,7 @@ def alls_trace_checks(out: Path, record: dict, meta: dict) -> tuple:
         c["device_only"] = c["device_only"] == "True"
     trace = w9p.load_raw_chunked(out / "ppk2")
     post = w9p.post_session_events(trace, cycles, summary.get("I_idle_uA"))
+    post["radio_rule_w10"] = post_session_radio_rule(post, trace)
     a = summary["checks"]
     i_idle = summary.get("I_idle_uA")
     plan = [(r.split, r.sample) for r in w10.ble_plan()]
@@ -507,7 +547,7 @@ def alls_trace_checks(out: Path, record: dict, meta: dict) -> tuple:
         "diff_below_3pct_all": a.get("diff_below_3pct_all", False),
         "post_window_at_least_20s": post.get("found", False) and post["duration_s"] >= 20.0,
         "post_mean_at_idle": post.get("deviation_from_idle_pct", float("inf")) <= IDLE_TOLERANCE_PCT,
-        "post_radio_off": post.get("found", False) and post["radio_off"],
+        "post_radio_off": post["radio_rule_w10"]["pass"],
     }
     details = {"I_idle_uA": i_idle, "post_session": post, "diff_pct": summary.get("diff_pct"),
                "P_conn": gap_power(trace, cycles, i_idle), "v_supply_mV": trace.v_supply_mv}

@@ -303,6 +303,42 @@ class OtherRules(unittest.TestCase):
         self.assertTrue(wa.etx_linearity(b, e)["alarm_nonlinear"])
 
 
+class PostRadioRule(unittest.TestCase):
+    """Amended post-session radio rule (19/11/2026): RTC overflow bursts at k*512 s are not the radio."""
+
+    @staticmethod
+    def check(events, found=True, week9=False):
+        import energy_phases as ep
+        import week10_ppk2 as w10p
+        on = 49152
+        trace = ep.Trace(current_ua=np.zeros(1), bits=np.zeros(1, np.uint8), v_supply_mv=5000.0, source="test",
+                         info={"dut_power_on_sample": on})
+        post = {"found": found, "radio_off": week9,
+                "events_above_3mA": [{"t_s": on / 1e5 + t, "duration_ms": d} for t, d in events]}
+        return w10p.post_session_radio_rule(post, trace)
+
+    def test_a1_two_rtc_bursts_pass(self):
+        r = self.check([(513.8113, 0.29), (514.1519, 0.29)])   # session A1-20261119-1500
+        self.assertTrue(r["pass"])
+        self.assertFalse(r["week9_rule"])
+        self.assertEqual(r["events_at_rtc_marks_s_from_on"], {"1": [513.8113, 514.1519]})
+
+    def test_week9_rule_still_passes(self):
+        self.assertTrue(self.check([], week9=True)["pass"])
+
+    def test_event_away_from_mark_fails(self):
+        self.assertFalse(self.check([(513.8, 0.29), (400.0, 0.29)])["pass"])
+
+    def test_long_event_at_mark_fails(self):
+        self.assertFalse(self.check([(513.8, 2.0), (514.1, 0.29)])["pass"])
+
+    def test_three_events_at_one_mark_fail(self):
+        self.assertFalse(self.check([(513.0, 0.29), (513.5, 0.29), (514.0, 0.29)])["pass"])
+
+    def test_no_window_fails(self):
+        self.assertFalse(self.check([], found=False, week9=True)["pass"])
+
+
 if __name__ == "__main__":
     result = unittest.main(exit=False, verbosity=2).result
     shutil.rmtree(TMP, ignore_errors=True)
