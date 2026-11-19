@@ -1,0 +1,37 @@
+Chào Châu, mình gửi attack protocol v3 để bạn review trước khi khóa, như bạn dặn ở mục 4 tin 19/11. Mình chưa viết code và chưa chạy gì; DS2 chưa mở. v3 được viết sau khi đã thấy Π lượt thử, và protocol ghi rõ điều đó. 9 cặp v2 giữ nguyên làm bản ghi.
+
+File (nhánh dev/ml-sv3, chưa commit, mình commit khi bạn đồng ý về nội dung):
+- ml/configs/mitdb_m1_attack_protocol_v3.json (SHA ở ml/provenance/m1-attack-v3-draft-20261119/SHA256SUMS.txt)
+- docs/sv3_m1_attack_v3_review_20261119.md: bản tóm tắt tiếng Việt
+- Tin 19/11 của bạn được chép đúng từng byte vào ml/provenance/m1-sv1-evidence-20261119/, SHA 1a9b2183…
+
+1. Phần (a): s9 và logits
+- B-naive và A1 ở s9 và s10, chỉ ρ0, chỉ DS1, cùng luật lượt thử, kiến trúc cơ bản (giữ kết quả kiểm năng lực ở s0, không kiểm lại).
+- "Logits" là đầu ra FP32 của toàn bộ checkpoint A, lượng tử như mọi s khác, tức đúng tensor 15 B. Logits INT8 của KV260 không bị tấn công; bỏ một biến thể chỉ làm Π cao hơn, nên Π vẫn là cận trên. Mình ghi điểm này vào Limitations.
+- Cách đọc khai trước, đúng như bạn viết: Π_logits < 0,5 thì ghi là đặc tính của bài toán, không hạ Π_min; Π_v3(s9) ≥ 0,5 thì mới bàn lại bottleneck. Số ở s10 gọi là Π_logits, không dùng để lọc s10, vì Π(s10) = 1 theo cấu tạo.
+
+2. Phần (b): B-composite
+- Một điểm mình nghĩ cần nói rõ: ở s0 edge nhận deq(q(x)) chứ không phải x, còn kẻ tấn công s8 được train trên z_s8 tính từ x. Vì vậy "Π(s0) ≤ 0,068" là giả thuyết để (b) đo, chưa phải sự thật. Protocol cố định phép tính: từ u_s chạy các op cố định đến s′, lượng tử bằng hàm registry, chuẩn hóa bằng thống kê train của s′, rồi áp kẻ tấn công s′.
+- Nguồn s ∈ {0, 2, 4, 5, 8, 9}, đích s′ ∈ {2, 4, 5, 8, 9, 10}, s′ > s: 21 phép đánh giá, chỉ suy luận. Kẻ tấn công lấy từ file đã lưu của lượt thử (kiểm SHA theo receipt b2861c71; hôm nay mình kiểm cả 29 file, 0 lệch) và từ phần (a).
+- Cổng tái lập: trước khi có số composite, kẻ tấn công nạp lại phải cho dự đoán trên tensor thật trùng từng phần tử với dự đoán đã lưu. Lệch thì dừng và báo bạn.
+- Chỉ ρ0. s1, s3, s6, s7 không đo, nên không nêu Π.
+
+3. Phần (c): đặc tả ρ2
+- Checkpoint A giữ nguyên. Nhiễu Gauss N(0, (α·σ_c)²) cộng lên z_s2 trước khi lượng tử; σ_c là std theo kênh trên DS1 train, ghi SHA trước khi chạy. α ∈ {0,1; 0,25; 0,5; 1; 2}.
+- Đối chứng: cùng α nhân với std của x, cộng lên x rồi gửi ở s0.
+- Tiện ích: macro-F1 fixed4 trên DS1 validation, cùng ngưỡng 19/20 × A đã chặn ρ1. Riêng tư: B-naive 3 seed, train và test trên tensor có nhiễu.
+- Cách đọc: có α đạt Π ≥ 0,5 mà qua ngưỡng tiện ích thì báo bạn ngay. s2 + ρ2 bị đánh dấu "bị s0 có nhiễu lấn át" khi đối chứng có Π và macro-F1 không thấp hơn. Còn lại thì báo hai đường cong riêng tư – tiện ích.
+
+4. Limitations: mình ghi theo mục 7 của bạn, sửa một chữ
+Câu "Π trong cùng phiên là cận trên của khả năng liên kết" mình ghi lại theo Adv: Adv trong phiên là cận trên của Adv khác phiên, tức Π trong phiên là cận dưới của Π khác phiên. Như vậy hai cận ngược chiều nhau. Theo sức mạnh kẻ tấn công thì Π đo được là cận trên; theo phiên thì là cận dưới của mối đe dọa thật. Nên kết quả âm phát biểu cho bài toán tái định danh tập đóng trong cùng phiên. Nếu bạn đồng ý thì nháp threat model cũng viết như vậy.
+
+5. Câu cần bạn chốt
+(1) "Cùng mức nhiễu" là cùng α so với std của chính từng kênh, được không?
+(2) ρ2 giữ checkpoint A cố định (rẻ, vừa 1 tuần), hay fine-tune tail có nhiễu cho từng α?
+(3) Khi lượt DS2 được phép chạy, B-composite và s9/s10 có vào lượt đó không? Bản nháp mặc định là có.
+(4) Năm mức α như trên được không?
+
+6. Một ghi nhận cho buổi họp tuần 12, chưa phải đề xuất
+Bacc theo phiên (bỏ phiếu 10 nhịp, đã có trong lượt thử, chỉ để thảo luận) ở s0 là 0,89–0,91, kể cả với kẻ tấn công yếu nhất. Nghĩa là edge chỉ cần vài chục nhịp thô để nhận ra người. Một ràng buộc kiểu "tỉ lệ nhịp xử lý tại chỗ" vì vậy có thể không giảm được tái định danh, dù vẫn có ý nghĩa với việc lộ nội dung ECG. Mình nghĩ nên xét điểm này khi chốt ràng buộc riêng tư dài hạn.
+
+Sau khi bạn review, mình viết code, test và smoke trên dữ liệu giả, rồi khóa và chạy (a), (b) đầu tuần 12.
