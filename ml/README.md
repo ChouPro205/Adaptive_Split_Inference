@@ -166,7 +166,7 @@ baseline and two-person v1 approval verifier remain historical references.
 Current Week 5 verification and S6 decisions (2026-10-09):
 [technical results and reproduction](docs/week5_technical_20261009.md),
 [decision note v1](../contracts/sv3_week5_decisions_v1.md), and
-[checklist 1.1](../docs/sv3_week5_scope_checklist_2026-10-09_v1.1.md).
+[checklist 1.1](../docs/sv3_archive/sv3_week5_scope_checklist_2026-10-09_v1.1.md).
 Final acceptance status comes from `verify_week5_delivery_v3.py`; runtime key
 provisioning, nonce persistence/reboot and I1 transport are not accepted. Historical packages remain unchanged.
 
