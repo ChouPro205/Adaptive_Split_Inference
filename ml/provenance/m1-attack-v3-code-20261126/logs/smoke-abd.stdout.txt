@@ -1,0 +1,86 @@
+part a s9: Pi=0.4746 CI95=[0.4657, 0.4853] bacc=0.5847
+part a s10: Pi=0.6975 CI95=[0.6873, 0.7080] bacc=0.3897
+part a s0c: Pi=0.7246 CI95=[0.7207, 0.7279] bacc=0.3660
+part b: reproduction gate passed for targets [2, 9, 10]
+part b s0-to-s2: Adv=0.0822
+part b s0-to-s9: Adv=0.5242
+part b s0-to-s10: Adv=0.3021
+part b s0c-to-s2: Adv=0.1564
+part b s0c-to-s9: Adv=0.5055
+part b s0c-to-s10: Adv=0.1650
+part b s2-to-s9: Adv=0.5261
+part b s2-to-s10: Adv=0.3025
+part b s9-to-s10: Adv=0.3022
+part d s0c: Pi_k10=0.39970760233918123
+part d s2: Pi_k10=0.40476190476190477
+part d s10: Pi_k10=0.605137844611529
+part d s0c: Pi_k10=None
+{
+  "status": "SMOKE_PASS_RANDOM_DATA_NOT_MITDB",
+  "epochs": 2,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 5060",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "cudnn_allow_tf32": false,
+  "matmul_allow_tf32": false,
+  "deterministic_algorithms": true,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "s0c_golden": {
+    "beats": 20,
+    "arrays_bitwise_equal": true,
+    "bitwise_equal": true,
+    "rice_body_bytes": {
+      "mean": 35.6,
+      "max": 37
+    }
+  },
+  "s0c_reference_synthetic": {
+    "beats": 3200,
+    "bitwise_equal": true,
+    "rice_body_bytes": {
+      "mean": 37.1234375,
+      "max": 42
+    }
+  },
+  "counts": {
+    "beats": 3200,
+    "dropped": 97,
+    "attacker_side": 1526,
+    "test": 1577,
+    "attacker_side_per_record": [
+      174,
+      205
+    ],
+    "test_per_record": [
+      184,
+      210
+    ],
+    "largest_patient_share_of_all_beats": 0.125
+  },
+  "part_a": {
+    "Pi_naive": {
+      "s9": 0.4746494040808278,
+      "s10": 0.6975163350413727,
+      "s0c": 0.724596956904485
+    },
+    "reading_declared_before_run": {
+      "Pi_logits": "Pi_logits_at_least_Pi_min"
+    },
+    "note": "Pi_v3(s9) and Pi_v3(s0c) come from part b (max with B_composite); Pi_logits = Pi of B_naive at s10"
+  },
+  "part_b_Pi_v3": {
+    "s0": 0.47581506871088874,
+    "s0c": 0.4944740490393985,
+    "s2": 0.4739262108744545,
+    "s9": 0.4746494040808278
+  },
+  "part_d_Pi_k10": {
+    "s0c": 0.39970760233918123,
+    "s2": 0.40476190476190477,
+    "s10": 0.605137844611529
+  },
+  "composite_rerun_identical": true,
+  "k_beat_rerun_identical": true
+}

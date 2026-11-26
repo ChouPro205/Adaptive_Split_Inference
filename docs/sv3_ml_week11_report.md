@@ -72,13 +72,22 @@ Script và kết quả: `ml/provenance/s0c-v1/sv3_check_20261126/`.
 - tấn công ghép, s9/s10 và S0c vào lượt DS2 riêng tư (tuần 14); cấu hình nhánh R chỉ vào tập hành động khi DS2 cũng đạt;
 - quyết R, K và mô hình phụ ngày 13/12.
 
+**r5, khóa và code (26/11):**
+- SV1 đồng ý nội dung r4 và yêu cầu sửa ba chỗ thành r5:
+  - cổng macro-F1 trên DS2 tính tương đối, bằng 19/20 × macro-F1_DS2(A, FP32);
+  - "cùng kẻ tấn công" nghĩa là cùng công thức, train lại trên DS2;
+  - seed nhiễu cho DS2 dùng part_index 4–7.
+- r5 (SHA `9235b795…`, commit `2284ea8`) được SV1 xác nhận và đã khóa (file khóa `b3a89cbb…`, commit `3f6a6de`). File khóa chỉ khóa định nghĩa, chưa cho chạy.
+- Code phần a–d, test và smoke trên dữ liệu giả đã xong. Chưa chạy trên MITDB; cần file cho phép chạy.
+- Chi tiết ở [r5: khóa và code](sv3_archive/sv3_m1_attack_v3_r5_code_20261126.md).
+
 **Sửa phần dọn docs theo review:** khôi phục nguyên byte 13 tin nhắn vào [`sv3_archive/messages/`](sv3_archive/messages/); ghi trong [`sv3_archive/README.md`](sv3_archive/README.md) cách chạy lại các script kiểm cũ ở commit `d5c9158`.
 
 ## 5. Mốc tiếp theo (lịch dịch)
 
 | Ngày | Việc |
 |---|---|
-| 29/11 | Khóa r4; code, test, smoke trên dữ liệu giả cho phần a–d |
+| 29/11 | Khóa r5; code, test, smoke trên dữ liệu giả cho phần a–d (xong 26/11; chờ file cho phép chạy) |
 | 06/12 | Kết quả phần a, b, d trên DS1; bảng chi phí từng lớp bản 1 (tiêu chí chọn mô hình push trước khi khảo sát) |
 | 07/12 | Gửi SV1 script lượt DS2 chất lượng để chạy thử trên validation |
 | 09/12 | Bảng chi phí từng lớp bản 2 (số Coded, P_conn từ lab) |
@@ -95,6 +104,6 @@ Song song: threat model bản mới theo ngân sách Y; đoạn DCentNet bản m
 | 19/11 | [Attack v3 r1](sv3_archive/sv3_m1_attack_v3_review_20261119.md) |
 | 20/11 | [Attack v3 r2](sv3_archive/sv3_m1_attack_v3_r2_review_20261120.md); [threat model nháp](sv3_archive/sv3_threat_model_draft_20261120.md); [DCentNet](sv3_archive/sv3_related_dcentnet_diff_20261120.md) |
 | 21/11 | [Attack v3 r3](sv3_archive/sv3_m1_attack_v3_r3_review_20261121.md) |
-| 26/11 | [Attack v3 r4](sv3_archive/sv3_m1_attack_v3_r4_review_20261126.md) |
+| 26/11 | [Attack v3 r4](sv3_archive/sv3_m1_attack_v3_r4_review_20261126.md); [r5](sv3_archive/sv3_m1_attack_v3_r5_review_20261126.md); [r5: khóa và code](sv3_archive/sv3_m1_attack_v3_r5_code_20261126.md) |
 
-Hồ sơ: `ml/provenance/m1-sv1-evidence-20261119/`, `m1-sv1-evidence-20261120/`, `m1-attack-v3-draft-20261119/`, `m1-attack-v3-r2-draft-20261120/`, `m1-attack-v3-r3-draft-20261121/`, `m1-sv1-evidence-20261125/`, `s0c-v1/`, `m1-attack-v3-r4-draft-20261126/`. Các tin nhắn gửi SV1 trong tuần nằm ở [`sv3_archive/messages/`](sv3_archive/messages/) (bảng ở [`sv3_archive/README.md`](sv3_archive/README.md), mục 3).
+Hồ sơ: `ml/provenance/m1-sv1-evidence-20261119/`, `m1-sv1-evidence-20261120/`, `m1-attack-v3-draft-20261119/`, `m1-attack-v3-r2-draft-20261120/`, `m1-attack-v3-r3-draft-20261121/`, `m1-sv1-evidence-20261125/`, `s0c-v1/`, `m1-attack-v3-r4-draft-20261126/`, `m1-sv1-evidence-20261126/`, `m1-attack-v3-r5-draft-20261126/`, `m1-attack-v3-r5-lock-20261126/`, `m1-attack-v3-code-20261126/`. Các tin nhắn gửi SV1 trong tuần nằm ở [`sv3_archive/messages/`](sv3_archive/messages/) (bảng ở [`sv3_archive/README.md`](sv3_archive/README.md), mục 3).
