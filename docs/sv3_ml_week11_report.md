@@ -1,6 +1,8 @@
-# SV3 Model/Privacy — báo cáo tuần 11 (16/11–22/11/2026)
+# SV3 Model/Privacy — báo cáo tuần 11 (16/11–29/11/2026)
 
-Người lập: SV3. Nhánh `dev/ml-sv3`. Viết ngày 21/11/2026; tuần chưa kết thúc. Tài liệu ngày lẻ nằm ở [`sv3_archive/`](sv3_archive/README.md).
+Người lập: SV3. Nhánh `dev/ml-sv3`. Viết ngày 21/11/2026, bổ sung ngày 26/11/2026; tuần chưa kết thúc. Tài liệu ngày lẻ nằm ở [`sv3_archive/`](sv3_archive/README.md).
+
+**Lịch dịch một tuần.** Theo tin SV1 ngày 25/11, việc tuần 11 bắt đầu muộn khoảng một tuần, nên từ nay tuần 11 = 23–29/11/2026. Báo cáo này gộp phần chuẩn bị 16–22/11 (mục 1–3) với tuần 11 theo lịch mới (mục 4).
 
 **Tóm tắt.** Tuần này không chạy tấn công nào, không fit, không mở DS2. Việc chính là soạn để SV1 review:
 - attack protocol v3, qua ba bản sửa theo phản hồi SV1 và Hướng xử lý ASI bản 2, bản 3;
@@ -52,18 +54,47 @@ SV3 góp ý bản 2 cho SV1. Các ý được bản 3 tiếp nhận:
   - có bảng khác biệt, đoạn tiếng Anh cho Section II và dòng Table I.
 - **Table I:** bản nháp 11 bài; 6 bài đã đọc toàn văn. Bản nháp giữ cục bộ, chưa đưa vào repo, chờ tìm toàn văn các bài còn lại.
 
-## 4. Kế hoạch tuần 12 (theo Hướng xử lý bản 3)
+## 4. Review r3 của SV1 và bản sửa 4 (23–29/11)
 
-1. Sau khi SV1 review và có file khóa: viết code, test và smoke trên dữ liệu giả; chạy phần a, b, d; thử nhánh R trên DS1 trong giới hạn 1,5 tuần công.
-2. Lập bảng kích thước và chi phí từng lớp cho 6–10 mô hình ECG đã công bố, với tiêu chí ghi trước khi khảo sát, để quyết có mở mô hình phụ vào cuối tuần 13.
-3. Sửa threat model theo ngân sách Y.
+**Ngày 25/11 SV1 gửi** review r3, tin bổ sung, hướng dẫn tuần 11–24 và định nghĩa S0c v1. Thầy đã duyệt hướng bản 3 và giao SV1 quyết các mục chi tiết. Bản đúng byte của hai tin và gói S0c v1 được lưu ở `ml/provenance/m1-sv1-evidence-20261125/` và `ml/provenance/s0c-v1/`; hướng dẫn tuần 11–24 giữ cục bộ, chỉ ghi SHA-256 trong protocol.
 
-## 5. Tài liệu chi tiết
+**Kiểm gói S0c v1 (26/11):**
+- cả 9 file đúng SHA-256 trong `SHA256SUMS.txt`;
+- x của 20 nhịp golden trùng từng bit với `golden/z_s0.npy` của gói A;
+- mã tham chiếu tái tạo đủ 20/20 nhịp golden: 46 giá trị, q, scale FP16, byte Rice, giải mã ngược, 360 mẫu khôi phục.
+
+Script và kết quả: `ml/provenance/s0c-v1/sv3_check_20261126/`.
+
+**Attack protocol v3 r4 (26/11, chưa khóa):** sửa r3 theo review, gửi diff r3 → r4 để SV1 xác nhận rồi khóa. Thay đổi chính:
+- thêm cách gộp thứ ba "trung bình k tensor"; Π_k10 lấy trường hợp xấu nhất trên {đa số, mềm, trung bình} × {liên tiếp, rải rác} × mọi kẻ tấn công, kể cả kẻ tấn công sạch ρ0;
+- kẻ tấn công thích nghi train trên nhiễu sinh mới mỗi epoch;
+- gắn S0c v1 bằng SHA-256, chỉ chạy đối chứng C0c;
+- tấn công ghép, s9/s10 và S0c vào lượt DS2 riêng tư (tuần 14); cấu hình nhánh R chỉ vào tập hành động khi DS2 cũng đạt;
+- quyết R, K và mô hình phụ ngày 13/12.
+
+**Sửa phần dọn docs theo review:** khôi phục nguyên byte 13 tin nhắn vào [`sv3_archive/messages/`](sv3_archive/messages/); ghi trong [`sv3_archive/README.md`](sv3_archive/README.md) cách chạy lại các script kiểm cũ ở commit `d5c9158`.
+
+## 5. Mốc tiếp theo (lịch dịch)
+
+| Ngày | Việc |
+|---|---|
+| 29/11 | Khóa r4; code, test, smoke trên dữ liệu giả cho phần a–d |
+| 06/12 | Kết quả phần a, b, d trên DS1; bảng chi phí từng lớp bản 1 (tiêu chí chọn mô hình push trước khi khảo sát) |
+| 07/12 | Gửi SV1 script lượt DS2 chất lượng để chạy thử trên validation |
+| 09/12 | Bảng chi phí từng lớp bản 2 (số Coded, P_conn từ lab) |
+| 10/12 | Lượt DS2 chất lượng |
+| 11/12 | Kết quả nhánh R (phần c) |
+| 13/12 | SV1 quyết R, K, mô hình phụ; khóa protocol G5 v2 |
+
+Song song: threat model bản mới theo ngân sách Y; đoạn DCentNet bản mới; related work và Table I.
+
+## 6. Tài liệu chi tiết
 
 | Ngày | Tài liệu |
 |---|---|
 | 19/11 | [Attack v3 r1](sv3_archive/sv3_m1_attack_v3_review_20261119.md) |
 | 20/11 | [Attack v3 r2](sv3_archive/sv3_m1_attack_v3_r2_review_20261120.md); [threat model nháp](sv3_archive/sv3_threat_model_draft_20261120.md); [DCentNet](sv3_archive/sv3_related_dcentnet_diff_20261120.md) |
 | 21/11 | [Attack v3 r3](sv3_archive/sv3_m1_attack_v3_r3_review_20261121.md) |
+| 26/11 | [Attack v3 r4](sv3_archive/sv3_m1_attack_v3_r4_review_20261126.md) |
 
-Hồ sơ: `ml/provenance/m1-sv1-evidence-20261119/`, `m1-sv1-evidence-20261120/`, `m1-attack-v3-draft-20261119/`, `m1-attack-v3-r2-draft-20261120/`, `m1-attack-v3-r3-draft-20261121/`. Các tin nhắn gửi SV1 trong tuần được gỡ khỏi cây thư mục và vẫn còn trong lịch sử Git (xem [`sv3_archive/README.md`](sv3_archive/README.md), mục 3).
+Hồ sơ: `ml/provenance/m1-sv1-evidence-20261119/`, `m1-sv1-evidence-20261120/`, `m1-attack-v3-draft-20261119/`, `m1-attack-v3-r2-draft-20261120/`, `m1-attack-v3-r3-draft-20261121/`, `m1-sv1-evidence-20261125/`, `s0c-v1/`, `m1-attack-v3-r4-draft-20261126/`. Các tin nhắn gửi SV1 trong tuần nằm ở [`sv3_archive/messages/`](sv3_archive/messages/) (bảng ở [`sv3_archive/README.md`](sv3_archive/README.md), mục 3).

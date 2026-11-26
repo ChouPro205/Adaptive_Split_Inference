@@ -1,0 +1,17 @@
+Kỳ Anh ơi, bổ sung hai việc sau tin review r3.
+
+1. Thứ tự ưu tiên giữa các tài liệu
+File tra_loi_Ky_Anh_gop_y_huong_xu_ly_v2_20261119.txt mình gửi chỉ để bạn gắn SHA bản gốc (câu 6), không phải chỉ đạo mới. Khi các tài liệu khác nhau, theo thứ tự: tin review r3 ngày 25/11 > Hướng xử lý bản 3 (20/11) > file góp ý bản 2. Năm chỗ trong file góp ý bản 2 đã được thay:
+- Ngân sách Y: là tỉ lệ nhịp xử lý hoàn toàn tại chỗ ≥ p, không dùng (1/T)·Σ(1 − Π(a_t)) ≤ ε. Π, Π_k và mức dựng lại chỉ báo kèm.
+- Luật đạt nhánh R: thêm Π_k10 ≥ 0,5 (có cách gộp trung bình), đối chứng là C0c, và phải đạt lại trên lượt DS2 riêng tư.
+- Trần nhánh R: 1,5 tuần công tính từ lúc khóa, không phải 1 tuần.
+- Cổng P3: hai phép đo rẻ ở mục 2 bản 3 (năng lượng bộ mã S0c trên dongle; thời gian giải mã + tail của S0c và S1 trên KV260), không chỉ thế số Coded vào bảng ngưỡng.
+- Lịch: dịch một tuần; DS2 mở lượt chất lượng ngày 10/12 (trước G2), lượt riêng tư tuần 14; không còn "DS2 đóng hết tuần 13".
+Các phần còn lại của file bản 2 vẫn đúng: mẫu số tiêu chí K, bản đồ hòa vốn (C5 làm điểm đối chứng, RAM 256 KB, dải INT8 có cả s10, phép chiếu có dải), danh sách bài cho Table I.
+
+2. Định nghĩa S0c v1 (câu 2 của r3), gửi sớm hơn hẹn 28/11
+File s0c_v1.zip. Đọc README_S0c_v1.txt trước. Tóm tắt:
+- s0c_v1_ref.py là mã tham chiếu chuẩn (chỉ numpy), SHA-256 323ffabaa255f80de9730279e7d0abee7571125bb61d1c36e871dc113bcaf0a0. Đây đúng là định nghĩa của phép thử nén 20/11: trên 9.523 nhịp DS1 validation, 46 giá trị, q, byte Rice và 360 mẫu khôi phục trùng từng bit với đường PyTorch của phép thử; macro-F1 C5 0,568057 y hệt.
+- Golden: 20 nhịp golden của gói A (s0c_v1_golden20.npz/.json, SHA trong SHA256SUMS.txt). Bạn kiểm giúp x trong file npz bằng golden/z_s0.npy[:, 0, :] của gói A; máy mình không có bản giải nén của gói A. Lệch thì dừng và báo mình.
+- Tensor kẻ tấn công thấy ở S0c: 46 giá trị sau giải lượng tử; x_c là 360 mẫu khôi phục. C0c: cộng nhiễu vào 46 giá trị sau bước gom (reduce46), rồi lượng tử và mã Rice như thường.
+- Gắn SHA của s0c_v1_ref.py và hai file golden vào s0c_definition của r4, rồi khóa. Không cần chờ thêm gì từ mình cho các mục S0c.

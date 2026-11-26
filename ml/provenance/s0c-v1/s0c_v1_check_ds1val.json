@@ -1,0 +1,17 @@
+{
+ "beats": 9523,
+ "v46_bitwise_equal": 9523,
+ "q_equal": 9523,
+ "body_equal": 9523,
+ "roundtrip_ok": 9523,
+ "recon_bitwise_equal": 9523,
+ "v46_max_abs_diff": 0.0,
+ "recon_max_abs_diff": 0.0,
+ "body_B_mean": 36.437152157933426,
+ "body_B_p95": 41.0,
+ "body_B_max": 44,
+ "macro_f1_reference": 0.5680568065348744,
+ "macro_f1_probe_path": 0.5680568065348744,
+ "label_agreement_reference_vs_probe": 9523,
+ "checkpoint_sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c"
+}

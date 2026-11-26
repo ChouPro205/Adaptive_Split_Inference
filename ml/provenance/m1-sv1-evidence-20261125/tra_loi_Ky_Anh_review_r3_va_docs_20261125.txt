@@ -1,0 +1,66 @@
+Chào Kỳ Anh, mình gửi review attack protocol v3 bản sửa 3 (d5c9158, SHA 0436b41b…), nhận xét phần dọn docs (dfa88f8), bản nháp threat model và DCentNet. Kèm theo là file hướng dẫn tuần 11–24 cho Trung và bạn. Thầy đã duyệt hướng bản 3 và giao mình quyết các mục chi tiết, nên các điểm dưới đây là chốt, bạn ghi vào bản khóa.
+
+0. Lịch: dịch một tuần
+Việc tuần 11 bắt đầu muộn một tuần so với lịch trong bản 3, nên từ nay tuần 11 = 23–29/11, tuần 12 = 30/11–06/12, tuần 13 = 07–13/12, G5 = 18–24/01. Quyết R, K và mô hình phụ vào 13/12 (không phải 06/12). Việc của bạn ở mục 5 của file hướng dẫn; các mốc của bạn:
+- 29/11: code, test, smoke xong; khóa ngay khi có định nghĩa S0c (mục 1, câu 2).
+- 06/12: kết quả phần a, b, d trên DS1 và bản 1 của bảng chi phí từng lớp.
+- 07/12: gửi mình script lượt DS2 chất lượng để mình chạy thử trên validation (mục 1, câu 5).
+- 11/12: kết quả nhánh R (phần c).
+
+1. Trả lời 6 câu
+
+(1) k = 10, Π_k10 lấy trường hợp xấu nhất trên {đa số, mềm} × {liên tiếp, rải rác}: đồng ý, thêm một cách gộp thứ ba.
+- Cách gộp "trung bình": với mỗi khối hoặc mỗi lần rút k nhịp của một bệnh nhân, lấy trung bình k tensor quan sát (sau giải lượng tử) rồi đưa tensor trung bình vào kẻ tấn công. Nhịp đã căn theo đỉnh R nên trung bình làm được ngay. Nhiễu độc lập mỗi nhịp nên phương sai nhiễu giảm k lần. Đây đúng là cách gộp bạn ghi ở limitations là "chưa thử"; nó rẻ, không cần train, và người phản biện sẽ hỏi trước tiên. Thiếu nó thì nhánh R có thể "đạt" sai.
+- Kẻ tấn công cho tensor trung bình: mọi biến thể của cấu hình đó (B-naive, B-adaptive, và đường ghép: tính u_s′ từ tensor trung bình rồi áp kẻ tấn công ở s′), cộng kẻ tấn công sạch ρ0 của cùng điểm nguồn (s2 ρ0 của lượt thử v2 cho R2; S0c ρ0 của phần a cho C0c), vì tensor trung bình gần với phân phối sạch.
+- Π_k10 = 1 − max trên {đa số, mềm, trung bình} × {liên tiếp, rải rác} × các biến thể. Phần d (ρ0) báo thêm đường cách gộp trung bình, chỉ để thảo luận.
+- Limitation về cách gộp chưa thử sửa lại cho khớp.
+
+(2) Định nghĩa S0c: mình gửi trước 28/11, gồm script Python tham chiếu, SHA-256 và đầu ra cho 20 nhịp golden của gói A (byte Rice, 46 giá trị, 360 mẫu sau nội suy). Để bạn viết code ngay, đây là định nghĩa đã dùng trong phép thử nén 20/11 (script đó sẽ được tách thành bản tham chiếu, không đổi số):
+- Đầu vào: nhịp đã chuẩn hóa x (FP32, mean/std của normalization.json DS1 train trong ml/manifests/mitdb-ds1ds2-m1-v3-r2), không phải đơn vị ADC.
+- Gom 360 → 46: adaptive_avg_pool1d của PyTorch (biên bin theo đúng quy ước của PyTorch).
+- Số nguyên: quantize_per_channel của registry v2 trên tensor [1, 46] (INT8 + scale), giống cách gửi s0.
+- Rice: mỗi nhịp gồm giá trị đầu có dấu, một byte k, rồi hiệu liên tiếp ánh xạ zigzag mã Rice với k ∈ {0, …, 7} cho ít bit nhất.
+- Phía edge: giải Rice, giải lượng tử, nội suy tuyến tính về 360 mẫu (F.interpolate mode linear, align_corners=False), rồi chạy cả checkpoint A.
+Đừng khóa với S0c = NOT_RUN: S0c là S0 chuẩn, Π(S0c) là số riêng tư của S0 trong mọi bảng. Chờ file của mình rồi gắn SHA, khóa luôn.
+
+(3) Đối chứng: chỉ chạy C0c (nhiễu cộng lên 46 giá trị đã gom, sau đó mới lượng tử và mã Rice), như bản nháp. Lý do của bạn đúng: cộng trước bước gom thì một phần nhiễu bị trung bình mất, đối chứng sẽ yếu hơn mức nó đạt được. Không chạy C0 đủ 360 mẫu. Giữ báo số byte Rice mỗi nhịp theo α.
+
+(4) Năm lần rút nhiễu có sẵn: chưa đủ. Kẻ tấn công biết phân phối nhiễu và sinh nhiễu gần như không tốn gì, nên kẻ tấn công thích nghi phải được train trên nhiễu sinh mới: mỗi epoch (hoặc mỗi batch) một lần rút mới, từ generator có seed theo (cấu hình, α, epoch, batch), khai trong protocol. Với 5 lần rút xoay vòng, mỗi nhịp chỉ xuất hiện với 5 mẫu nhiễu, kẻ tấn công dễ học thuộc, Π bị đánh giá cao, nghiêng về "đạt". Áp dụng cho B-adaptive, A1 thích nghi và B-composite-adaptive (đường ghép phải tính lại qua các op đông lạnh mỗi epoch, trên GPU vẫn rẻ). Nếu chạy thử thấy vượt trần 1,5 tuần công, dùng tối thiểu 20 lần rút có sẵn và ghi lý do trước khi chạy. Tập validation và test của kẻ tấn công vẫn dùng lần rút 0 như bản nháp.
+
+(5) Lượt DS2: có, B-composite, s9/s10 và S0c đều vào lượt DS2 chính thức. DS2 chia hai lượt, mỗi cấu hình đã khóa chỉ đánh giá trên DS2 một lần:
+- Lượt chất lượng, 10/12: script của bạn cho C5 (FP32 và INT8/FP16 cho s0–s9 một lượt, gắn xmodel bằng hash, chạy CPU, xuất dự đoán theo định dạng ml/results/week5/predictions.csv); Trung chạy đường DPU cùng lượt. Lý do tách: buổi G2 tuần 13 cần dự đoán DS2 để chọn 100 mẫu, nên phần chất lượng phải mở trước G2. Script gửi mình trước 07/12 để chạy thử trên validation.
+- Lượt riêng tư, tuần 14: phần a, b, d của r3 trên bệnh nhân DS2 (N = 21), cộng cấu hình R nếu đạt; authorization riêng như bạn ghi.
+Thêm một luật cho nhánh R: đạt trên DS1 chỉ là chọn cấu hình. Cấu hình chỉ vào tập hành động khi lượt riêng tư DS2 cũng cho Π ≥ 0,5, Π_k10 ≥ 0,5 và macro-F1 ≥ 0,5398 (điểm ước lượng, như luật r3); bài báo báo kèm CI95. DS2 không đạt thì rút cấu hình ra và báo trung thực.
+
+(6) File gốc tin 20/11: bản chép bạn đang gắn trùng từng byte với file gốc. File gốc là tra_loi_Ky_Anh_gop_y_huong_xu_ly_v2_20261119.txt mình gửi qua Messenger lúc 22:15 ngày 19/11, SHA-256 5a98b20ebf482932c0b1bdcdb01b7f6bb070b9c0aed910ead9b5546ab87832dc, đúng bằng raw_sha256 trong r3. Mình gửi lại file đó kèm tin này; bạn đổi ghi chú "transcription" thành bản đúng byte của file gốc.
+
+2. Các điểm khác trong r3
+- Bảng quyết định và decision_time: đổi "end of week 13 (2026-12-06)" thành 13/12 theo lịch mới; thêm bước xác nhận DS2 ở câu (5).
+- Phần c, tấn công ghép dưới nhiễu: đã có trong B-composite-adaptive, giữ nguyên.
+- source_bindings đang trỏ tới hai file tin đã gỡ khỏi cây ở dfa88f8 (sv3_review_after_trial_message_sv1_20261114.txt và sv3_huong_xu_ly_v2_review_message_sv1_20261119.txt). Bản khóa phải trỏ tới đường dẫn còn tồn tại (xem mục 3a).
+- Bản khóa nên là r4 (r3 sửa theo các điểm trên), kèm diff r3 → r4, như cách bạn đã làm.
+
+3. Phần dọn docs (dfa88f8): ổn về cách làm, cần sửa ba chỗ trước khi mở PR
+Mình đã kiểm: 32 file đổi chỗ đều giữ nguyên 100 % nội dung (git nhận là rename 100 %); README trong sv3_archive có bảng đường dẫn cũ → mới kèm SHA; SHA của v3b.docx bạn gắn trong r3 (fca4e0b3…) khớp file mình gửi. Ba chỗ cần sửa:
+a. Đừng xóa 13 file tin nhắn. Nhiều file trong số đó đã được gắn SHA: SHA256SUMS của các thư mục m1-v3-20261030, m1-v4-20261103, m1-attack-v3-draft, m1-attack-v3-r2-draft, m1-attack-v3-r3-draft; preservation.json của m1-v4-20261103 (protocol v4 đã khóa) gắn sv3_m1_v4_message_sv1_20261103.txt; r3 gắn hai file ở mục 2. Theo quy ước của nhóm, file đã gắn hash không xóa. Khôi phục nguyên byte vào docs/sv3_archive/messages/ (git show d5c9158:<đường dẫn cũ> > …), thêm vào bảng của README, để mọi SHA trong hồ sơ kiểm được trên cây hiện tại mà không cần lục lịch sử Git.
+b. Các script kiểm trong ml/provenance (verify_host.py, validate_delivery.py, verify_fulltest_receipt.py, package_review_v2.py, review_validation.py) vẫn dùng đường dẫn cũ, chạy lại trên cây mới sẽ báo thiếu file. Ghi một dòng trong README của sv3_archive: muốn chạy lại thì chạy ở commit d5c9158 (ví dụ git worktree), kèm lệnh.
+c. edge/README.md của Trung có link tới docs/sv3_sv2_week3_linux_fp32_handoff.md, sẽ gãy khi PR vào main. Báo Trung sửa trong PR của Trung, hoặc bạn sửa trong PR của bạn nếu Trung đồng ý và review. Ngoài ra nhánh dev/ml-sv3 chưa có các commit mới nhất của main (tuần 10, eca2a9b); merge main vào trước khi mở PR.
+
+4. Bản nháp threat model (20/11)
+Phần lớn giữ được. Sửa theo bản 3 khi bạn viết bản mới:
+- Leakage budget: thay công thức (1/T)·Σ(1 − Π(a_t)) ≤ ε bằng tỉ lệ nhịp xử lý hoàn toàn tại chỗ ≥ p, tức (1/T)·Σ 1[a_t gửi dữ liệu đi] ≤ 1 − p. Bỏ câu hỏi trọng số theo Π hay theo tái tạo và công thức p ≈ 1 − ε/(1 − Π̄): bản 3 đã trả lời, Π và mức dựng lại chỉ báo kèm, không là trọng số. Giữ lý do tối thiểu hóa dữ liệu y tế và ý "không che danh tính", dẫn đường cong theo k ở phần d.
+- System and assets: S0 chuẩn là S0c (gom 46 mẫu + Rice, thân TB khoảng 36 B), không phải nhịp thô 362 B.
+- Composite bound: câu "sending the raw beat cannot be more private than sending any intermediate activation" đúng cho S0 thô (sai khác chỉ do lượng tử). Với S0c, bước gom làm mất thông tin, nên cận chỉ đúng tới sai số của bước gom; viết "is measured by the composite attack" thay vì khẳng định.
+- Protection mechanisms: đối chứng là C0c; luật đạt gồm Π theo nhịp, Π_k10 (cả cách gộp trung bình) và xác nhận trên DS2.
+
+5. DCentNet (20/11)
+Tốt, giữ đoạn tiếng Anh. Hai chỗ sửa:
+- Ô "Mô hình năng lượng" ghi "E_dev khi radio bật lệch ≤ 2 % ở s ≥ 2" chưa đúng ý báo cáo tuần 10. Đúng là: công thức E_dev,on ≈ E_dev,off + 0,7 mW × t_dev khớp phần lõi trong 1,03 % ở mọi s ≥ 2; số thô lệch khác ngày tới khoảng 15 % do bộ ổn áp REG0.
+- Dòng "Nén ở điểm chia: Không" và câu cuối đoạn tiếng Anh: nay S0 chuẩn có nén cố định ở đầu vào (gom 46 mẫu + Rice), và bộ nén cố định ở S1 đã được thử; các điểm cắt không có encoder học được, P3 còn chờ cổng K. Viết lại cho khớp, vẫn giữ ý không bác bỏ DCentNet.
+- Đọc bài IEEE Sensors J 2024 của cùng nhóm trước khi chốt dòng Table I.
+
+Sau khi bạn sửa theo các điểm trên thành r4, gửi mình diff r3 → r4; mình xác nhận trong ngày để bạn khóa và chạy. Định nghĩa S0c mình gửi trước 28/11.
+
+File gửi kèm:
+- Huong_dan_Trung_KyAnh_tuan11-24_20261125.pdf (hướng dẫn tuần 11–24; phần của bạn ở mục 5, mốc giao nhận ở mục 2.2)
+- tra_loi_Ky_Anh_gop_y_huong_xu_ly_v2_20261119.txt (file gốc tin 20/11, câu 6)
