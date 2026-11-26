@@ -83,6 +83,17 @@ Script và kết quả: `ml/provenance/s0c-v1/sv3_check_20261126/`.
 
 **Sửa phần dọn docs theo review:** khôi phục nguyên byte 13 tin nhắn vào [`sv3_archive/messages/`](sv3_archive/messages/); ghi trong [`sv3_archive/README.md`](sv3_archive/README.md) cách chạy lại các script kiểm cũ ở commit `d5c9158`.
 
+**Threat model bản 2 và DCentNet bản 2 (27/11, nháp chờ SV1 review):**
+- [Threat model bản 2](sv3_archive/sv3_threat_model_draft_v2_20261127.md), sửa theo review 25/11 mục 4:
+  - ngân sách rò rỉ là tỉ lệ nhịp gửi đi ≤ 1 − p, không còn trọng số theo Π;
+  - S0 chuẩn là S0c;
+  - với S0c, cận ghép được đo chứ không khẳng định;
+  - đối chứng C0c, luật đạt có Π_k10 với ba cách gộp và bước xác nhận trên DS2.
+- [DCentNet bản 2](sv3_archive/sv3_related_dcentnet_diff_v2_20261127.md), sửa theo review 25/11 mục 5:
+  - sửa ô mô hình năng lượng (1,03 %; lệch giữa các ngày do REG0);
+  - sửa dòng nén cho đúng với S0c và S1.
+- Chưa đọc được toàn văn bài IEEE Sensors J 2024, nên chưa chốt dòng Table I.
+
 ## 5. Mốc tiếp theo (lịch dịch)
 
 | Ngày | Việc |
@@ -95,7 +106,7 @@ Script và kết quả: `ml/provenance/s0c-v1/sv3_check_20261126/`.
 | 11/12 | Kết quả nhánh R (phần c) |
 | 13/12 | SV1 quyết R, K, mô hình phụ; khóa protocol G5 v2 |
 
-Song song: threat model bản mới theo ngân sách Y; đoạn DCentNet bản mới; related work và Table I.
+Song song: related work và Table I (cần toàn văn IEEE Sensors J 2024); threat model và DCentNet bản 2 chờ SV1 review.
 
 ## 6. Tài liệu chi tiết
 
@@ -105,5 +116,6 @@ Song song: threat model bản mới theo ngân sách Y; đoạn DCentNet bản m
 | 20/11 | [Attack v3 r2](sv3_archive/sv3_m1_attack_v3_r2_review_20261120.md); [threat model nháp](sv3_archive/sv3_threat_model_draft_20261120.md); [DCentNet](sv3_archive/sv3_related_dcentnet_diff_20261120.md) |
 | 21/11 | [Attack v3 r3](sv3_archive/sv3_m1_attack_v3_r3_review_20261121.md) |
 | 26/11 | [Attack v3 r4](sv3_archive/sv3_m1_attack_v3_r4_review_20261126.md); [r5](sv3_archive/sv3_m1_attack_v3_r5_review_20261126.md); [r5: khóa và code](sv3_archive/sv3_m1_attack_v3_r5_code_20261126.md) |
+| 27/11 | [Threat model bản 2](sv3_archive/sv3_threat_model_draft_v2_20261127.md); [DCentNet bản 2](sv3_archive/sv3_related_dcentnet_diff_v2_20261127.md) |
 
 Hồ sơ: `ml/provenance/m1-sv1-evidence-20261119/`, `m1-sv1-evidence-20261120/`, `m1-attack-v3-draft-20261119/`, `m1-attack-v3-r2-draft-20261120/`, `m1-attack-v3-r3-draft-20261121/`, `m1-sv1-evidence-20261125/`, `s0c-v1/`, `m1-attack-v3-r4-draft-20261126/`, `m1-sv1-evidence-20261126/`, `m1-attack-v3-r5-draft-20261126/`, `m1-attack-v3-r5-lock-20261126/`, `m1-attack-v3-code-20261126/`. Các tin nhắn gửi SV1 trong tuần nằm ở [`sv3_archive/messages/`](sv3_archive/messages/) (bảng ở [`sv3_archive/README.md`](sv3_archive/README.md), mục 3).
