@@ -1,0 +1,2 @@
+verify-lock-normal 0
+verify-lock-optimized 0

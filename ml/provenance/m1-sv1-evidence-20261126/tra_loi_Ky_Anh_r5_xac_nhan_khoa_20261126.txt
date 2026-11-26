@@ -1,0 +1,21 @@
+Chào Kỳ Anh, mình đã soát r5 (2284ea8). Mình xác nhận r5, bạn khóa r5 rồi làm code, test, smoke để kịp 29/11.
+
+1. Mình đã kiểm những gì
+- SHA-256 của protocol r5 là 9235b795ec53b9d4c79e90cad4f1114c260e05b8070c67a62fc23be656ca82fb, khớp tin của bạn và SHA256SUMS. Bốn file còn lại trong SHA256SUMS (2 diff, file tóm tắt, tin của mình eafcebf6…) cũng khớp.
+- So theo khóa JSON giữa r4 và r5: chỉ đổi revision, supersedes_draft.*, DS2_confirmation, và thêm changes_from_revision_4, noise_generator.DS2, official_DS2_privacy_round.DS2_macro_F1_rule. Không khóa nào khác đổi.
+- (a) Cổng macro-F1 trên DS2 là 19/20 × macro-F1_DS2(A, FP32). Mẫu số lấy từ lượt chất lượng 10/12, tính bằng Fraction, fixed4, báo kèm số tuyệt đối và CI95. Π ≥ 0,5 và Π_k10 ≥ 0,5 giữ nguyên. Đúng.
+- (b) "Cùng kẻ tấn công" = cùng công thức, train lại trên phần attacker-train của 21 bệnh nhân DS2. Đúng.
+- (c) Seed DS2 dùng part_index 4–7, đúng sơ đồ mình đề xuất. Luồng DS1 giữ nguyên, không trùng luồng DS1. Có thêm câu "mọi cổng macro-F1 trên DS2 tính tương đối, cho mọi hành động và mọi đường". Đúng.
+- Lời đáp 4 câu của mình được ghi trong changes_from_revision_4, còn questions_for_SV1 để nguyên. Cách này được.
+- r1–r4 và v2 không đổi byte nào. Từ cc8ff19 tới 2284ea8 chỉ có 7 file: 6 file của r5 và 1 dòng link trong edge/README.md.
+
+2. Một điểm mình hiểu như sau, bạn ghi vào run manifest, không cần r6
+Phương án dự phòng (rút sẵn R ≥ 20 bản nhiễu) chỉ viết cho DS1. Nếu DS1 phải dùng phương án này thì lượt DS2 dùng cùng R, các bản rút sinh bằng part_index 7 thay cho 0. Nếu DS1 sinh nhiễu mới mỗi epoch thì DS2 cũng vậy. Tức là DS2 làm đúng như DS1, chỉ khác part_index.
+
+3. Tiếp theo
+- Khóa r5 theo đúng thủ tục như các lần trước. Sau khi xác nhận thì không sửa file r5 nữa.
+- Code, test, smoke kịp 29/11. DS2 vẫn đóng cho tới lượt chất lượng 10/12.
+- Script lượt DS2 chất lượng (có S0c, xuất macro-F1 DS2 của A FP32) gửi mình trước 07/12 để mình chạy thử trên validation như đã hẹn.
+- Dòng sửa link edge/README.md: để Trung review như bạn ghi.
+
+Châu
