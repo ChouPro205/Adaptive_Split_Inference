@@ -1,0 +1,36 @@
+Chào Kỳ Anh, mình đã soát r4 (1fd830f, đầu nhánh cc8ff19). Kết quả: đồng ý nội dung, nhưng cần sửa 3 dòng nhỏ thành r5 rồi mới khóa. Lý do: r4 đã commit với SHA 7b2b1271…, nên không sửa thẳng vào file đó.
+
+1. Mình đã kiểm những gì
+- SHA của protocol r4 khớp SHA256SUMS: 7b2b1271c292ca9003dfb5e6e2980d032f3af371dee289e41967bb48d5675200.
+- So từng mục giữa r3 và r4: các thay đổi đúng bằng danh sách changes_from_revision_3. Không có chỗ nào khác bị đổi: Π_min, công thức Π, kẻ tấn công, cách chia dữ liệu, quyết định capacity, lưới α, 4 mức mục tiêu, cổng 19/20.
+- Đủ các điểm của review 25/11: cách gộp trung bình cộng kẻ tấn công sạch ρ0; nhiễu sinh mới mỗi epoch; S0c v1 đã gắn SHA và bỏ NOT_RUN; chỉ chạy C0c; DS2 chia hai lượt; cấu hình R phải đạt lại trên DS2; lịch 06/12, 11/12, 13/12; trần tính từ lúc khóa; ghi chú tin 20/11 là bản đúng byte.
+- 13 tin nhắn ở docs/sv3_archive/messages/ trùng blob với d5c9158, đủ 13/13. Mục 4 README có lệnh chạy lại script kiểm bằng worktree.
+- Kết quả kiểm S0c của bạn: 9 file đúng SHA. x của 20 nhịp golden trùng bit với golden/z_s0.npy[:, 0, :] của gói A (manifest f005b3ea…). Mã tham chiếu tái tạo đủ 20/20 mục. Cảm ơn bạn đã làm bước này giúp mình.
+
+2. Ba chỗ sửa thành r5
+(a) Cổng macro-F1 ở lượt DS2: phải tính tương đối theo A trên DS2. Đây là lỗi trong tin review của mình hôm 25/11, không phải của bạn.
+Số 0,5398 bằng 0,95 × F1 của A trên DS1 validation, mà tập đó chỉ có 4 bệnh nhân. Trên DS2 (inter-patient), chính A cũng có thể dưới 0,5398. Khi đó không cấu hình nào đạt, kể cả A không nhiễu. Ngược lại, nếu A trên DS2 cao hơn nhiều thì cổng lại quá lỏng.
+Sửa DS2_confirmation thành: macro-F1_DS2(cấu hình, α) ≥ 19/20 × macro-F1_DS2(A, FP32). Mẫu số lấy từ lượt chất lượng 10/12, nên đã cố định trước lượt riêng tư. Tính bằng Fraction, cùng metric fixed4. Báo kèm số tuyệt đối và CI95. Π ≥ 0,5 và Π_k10 ≥ 0,5 giữ nguyên.
+
+(b) Chữ "same attackers" trong DS2_confirmation: viết rõ là cùng các biến thể, kiến trúc, thiết lập train, seed, cách gộp và α đã chọn trên DS1, nhưng train lại trên phần attacker-train của 21 bệnh nhân DS2. Kẻ tấn công của DS1 không nhận diện được bệnh nhân DS2, nên đọc theo nghĩa "dùng lại model" là sai.
+
+(c) Seed nhiễu cho DS2: khai ngay trong r5, để mọi tham số của lượt DS2 có trước khi mở DS2. Đề xuất giữ nguyên dạng SeedSequence hiện có và thêm part_index:
+- part_index 4: utility trên DS2, draw 0, 1, 2
+- part_index 5: attacker-validation DS2, draw 0
+- part_index 6: test DS2, draw 0
+- part_index 7: nhiễu train sinh mới mỗi epoch trên DS2, thay cho 0
+Dữ liệu utility DS2 là toàn bộ nhịp DS2 theo luật của lượt chất lượng.
+Dùng đúng sơ đồ này, để mọi luồng nhiễu của DS1 giữ nguyên và không luồng DS2 nào trùng luồng DS1.
+Thêm một câu vào r5: mọi cổng macro-F1 trên DS2 đều tính tương đối theo A trên DS2, tức 19/20 × macro-F1_DS2(A, FP32). Luật này áp cho mọi hành động và mọi đường chạy (FP32, INT8/FP16, DPU, S0c), để protocol tấn công và LUT dùng chung một luật.
+
+Gửi mình diff r4 → r5. Diff chỉ gồm ba chỗ này (thêm changes_from_revision_4 và supersedes_draft) thì mình xác nhận trong ngày, bạn khóa r5 luôn, không cần chờ vòng review mới.
+
+3. Trả lời 4 câu
+(1) S0c ở lượt DS2 chất lượng 10/12: đồng ý thêm. Bạn chạy FP32 trên CPU. Đường DPU của Trung dùng xmodel s0 (cả mô hình) với đầu vào x_c, nên không cần compile thêm. Trước khi mở DS2, script phải tái tạo S0c v1 trùng bit trên 20 nhịp golden và trên 9.523 nhịp DS1 validation (so với s0c_v1_check_ds1val.json: macro-F1 0,568057). Bước này nằm trong lần mình chạy thử trên validation, nên gửi script trước 07/12 như đã hẹn. Xuất cả macro-F1 DS2 của A FP32 vì mục 2(a) dùng nó làm mẫu số.
+(2) Kẻ tấn công sạch ρ0 ở s′ trên đường ghép: giữ. Lấy max trên nhiều kẻ tấn công hơn chỉ làm Π thấp đi, tức nghiêng về an toàn, và chỉ tốn suy luận. Vẫn báo giá trị của từng kẻ tấn công.
+(3) Nhiễu sinh mới mỗi epoch, cả tập, theo thứ tự hàng cố định: được. Ghi vào run manifest số epoch thực chạy của từng biến thể (= số lần rút nhiễu mỗi nhịp thấy), để người đọc biết kẻ tấn công thấy bao nhiêu mẫu nhiễu.
+(4) Đường ghép lúc train chạy GPU, lúc đánh giá chạy CPU: được, vì validation và test đều qua CPU nên đánh giá nhất quán. Ở epoch 1, ghi thêm max |GPU − CPU| của u_s′ trên một batch và tỉ lệ giá trị lượng tử ở s′ bị lệch. Chỉ để báo, không phải cổng.
+
+Sau khi khóa r5, bạn làm code, test, smoke để kịp 29/11 như kế hoạch.
+
+Châu
