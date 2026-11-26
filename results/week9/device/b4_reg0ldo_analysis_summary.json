@@ -1,0 +1,207 @@
+{
+  "schema": "week9-dev-analysis/1",
+  "status": "PASS",
+  "checks": {
+    "selftest_D0_D4": true,
+    "unused_channels_D5_D7_low": true,
+    "no_data_loss": true,
+    "sample_rate_ok": true,
+    "TC3_idle_window_found": true,
+    "TC3_idle_within_10pct_week2": true,
+    "TC3_idle_markers_low": true,
+    "TC4_cycle_count_550": true,
+    "TC4_all_cycles_valid": true,
+    "TC4_head_width_matches_plan": true,
+    "TC4_D1_D3_low_after_selftest": true,
+    "TC4_radio_off_between_cycles": true,
+    "TC4_diff_below_3pct_all": true
+  },
+  "trace": {
+    "source": "raw:D:\\HUST\\ASI_week9\\B4-reg0ldo-20261029-1405\\ppk2[49664:75049472]",
+    "samples": 74999808,
+    "duration_s": 749.9980800000001,
+    "v_supply_mV": 5000.0,
+    "format": "measure_energy-raw",
+    "raw_sha256": "d816aba4d66bf2a6064beba5e595d081e24f8d2ec4d974dd9fc4225ee3a9aa84",
+    "trailing_bytes": 0,
+    "counter": {
+      "available": true,
+      "discontinuities": 0,
+      "lost_samples_min": 0,
+      "first_discontinuity_sample": null,
+      "step_histogram_top": {
+        "1": 75070463
+      }
+    },
+    "spike_filter": true,
+    "range_counts": [
+      64288674,
+      107601,
+      10545578,
+      128591,
+      20
+    ],
+    "capture": {
+      "started_utc": "2026-10-29T07:06:02.965604+00:00",
+      "seconds_requested": 750.0,
+      "dut_power_on_byte": 198656,
+      "temp_room_C": 26.5,
+      "label": "B4-week9-dev-session",
+      "status": "PASS",
+      "dut_on_rate_deviation_pct": 0.000256,
+      "reader_error": null
+    },
+    "dut_power_on_sample": 49664,
+    "dut_power_off_sample": 75049472
+  },
+  "phase_map": {
+    "ctrl": "D4",
+    "dev": "D0"
+  },
+  "method": "cycle = CTRL rising edge to HEAD falling edge; per-sample phase assignment, rectangle sum E = V*sum(i)*dt (W7-D11); gross = primary, net = gross - V*I_idle*t (W7-D5)",
+  "selftest": {
+    "found": true,
+    "pass": true,
+    "pulses": [
+      {
+        "phase": "dev",
+        "channel": "D0",
+        "start_sample": 170571,
+        "end_sample": 190581,
+        "width_ms": 200.10000000000002,
+        "gap_from_previous_ms": null,
+        "ok": true
+      },
+      {
+        "phase": "prot",
+        "channel": "D1",
+        "start_sample": 190581,
+        "end_sample": 210591,
+        "width_ms": 200.10000000000002,
+        "gap_from_previous_ms": 0.0,
+        "ok": true
+      },
+      {
+        "phase": "tx",
+        "channel": "D2",
+        "start_sample": 210591,
+        "end_sample": 230600,
+        "width_ms": 200.09000000000003,
+        "gap_from_previous_ms": 0.0,
+        "ok": true
+      },
+      {
+        "phase": "wait",
+        "channel": "D3",
+        "start_sample": 230600,
+        "end_sample": 250610,
+        "width_ms": 200.10000000000002,
+        "gap_from_previous_ms": 0.0,
+        "ok": true
+      },
+      {
+        "phase": "ctrl",
+        "channel": "D4",
+        "start_sample": 250610,
+        "end_sample": 270619,
+        "width_ms": 200.09000000000003,
+        "gap_from_previous_ms": 0.0,
+        "ok": true
+      }
+    ],
+    "overlap_samples": 0,
+    "end_sample": 270619,
+    "ctrl_pulses_before_selftest": 0
+  },
+  "idle": {
+    "start_sample": 320619,
+    "stop_sample": 3220619,
+    "sample_count": 2900000,
+    "duration_s": 29.000000000000004,
+    "mean_uA": 25.162601129866612,
+    "sample_std_uA": 3.7313064568758616,
+    "min_uA": 20.15136991248975,
+    "max_uA": 35.90381289246415,
+    "charge_rect_mC": 0.7297154327661318,
+    "v_supply_mV": 5000.0,
+    "energy_rect_uJ": 3648.577163830659,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0
+    },
+    "all_markers_low": true
+  },
+  "I_idle_uA": 25.162601129866612,
+  "idle_vs_week2_pct": -1.0009004608466359,
+  "cycles_found": 550,
+  "cycles_valid": 550,
+  "errors": {},
+  "head_width_rule": "|t_dev marker - DWT(n, s)| <= max(30.0 us, 0.5 %)",
+  "head_width_mismatch_cycles": [],
+  "D1_D3_high_samples_after_selftest": {
+    "D1": 0,
+    "D2": 0,
+    "D3": 0
+  },
+  "D5_D7_high_samples": {
+    "D5": 0,
+    "D6": 0,
+    "D7": 0
+  },
+  "gaps": {
+    "count": 549,
+    "guard_ms": 2.0,
+    "max_uA": 2935.1141155772784,
+    "samples_above_3mA": 0,
+    "gaps_with_samples_above_3mA": 0,
+    "events_above_3mA": [],
+    "max_events": 2,
+    "radio_off_rule": "every > 3 mA event <= 0.5 ms and at most floor(T / 512 s) + 1 events (Zephyr RTC OVERFLOW wake-up, nrf_rtc_timer.c; a radio repeats every 15-100 ms for ms each)"
+  },
+  "dev_high_fraction_by_fifth": [
+    0.28682595106542846,
+    0.2243829183205279,
+    0.19047724106800787,
+    0.19522638456945265,
+    0.18326945265080977
+  ],
+  "post_session": {
+    "duration_s": 60.863400000000006,
+    "mean_uA": 24.721537412001616,
+    "sample_std_uA": 3.7544897901834395,
+    "max_uA": 36.03618636288411,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0
+    },
+    "samples_above_3mA": 0
+  },
+  "diff_pct": {
+    "n": 550,
+    "mean": 0.00825916195372442,
+    "min": 0.0,
+    "max": 1.510276280821968,
+    "std": 0.10452210506625811,
+    "ci95_half": 0.008754541196814382,
+    "ci95_low": -0.000495379243089962,
+    "ci95_high": 0.0170137031505388,
+    "ci95_rel_pct": 105.9979359390885
+  },
+  "spacing_ms": {
+    "n": 549,
+    "mean": 1191.3498360655738,
+    "min": 1000.74,
+    "max": 1379.06,
+    "std": 144.7316141033412,
+    "ci95_half": 12.133485402326006,
+    "ci95_low": 1179.2163506632478,
+    "ci95_high": 1203.4833214678997,
+    "ci95_rel_pct": 1.0184653604684895
+  }
+}

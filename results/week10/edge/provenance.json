@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "capture_receipt_sha256": "190c514cc67083a87299be0689724b0c8d8c7dbf3dba79a685e06c56bf8f480b",
+  "benchmark_created_utc": "2026-11-11T09:21:46.405440+00:00",
+  "benchmark_host": {
+    "uname": [
+      "Linux",
+      "kv260-node01",
+      "5.15.19-xilinx-v2022.1",
+      "#1 SMP Mon Apr 11 17:52:14 UTC 2022",
+      "aarch64",
+      "aarch64"
+    ],
+    "python": "3.9.9 (main, Nov 15 2021, 18:05:17) \n[GCC 11.2.0]"
+  },
+  "backend": {
+    "backend": "KV260_ROOT_CPU_DPU_MODEL_CACHE",
+    "models": {
+      "0": "b6ce1d02ae32db7116a3e72fccdc0453c33964372fd60ddcf19f0e5eb6e02193",
+      "1": "a6cd8ca55894569a849d59a82ad725dcdd1ba77c95442e98bfe6f732aa1f795f",
+      "2": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+      "3": "88f541f6b9ddb923ffe9229c5c35713d194102819457b84880e59a1e3fa90a43",
+      "4": "cf798b74a3c40a6c5432a80640fd4621baa4aeb1715bee0ecba1596903d03a22",
+      "5": "e000dafb9edd58fb00d675e77008e59892c00c53bae9d50735edb8228d7a39a2",
+      "6": "4578b7c1e352e2b5be65ba31c75bfa667c5d84ac24ff804921222720688e9ebd",
+      "7": "80408887800aeec2be97e67a0cb59c2be78e235f726299d562dd571220dc4c14",
+      "8": "dcc460edff10e22874f27d60bd0c98374bd3937f87690944287eab8213e5517e",
+      "9": "c30d20d55ba759065a01e07258adde8b7acdfbd8c3587b68f35ce5ca222ca17a"
+    },
+    "plugins": {
+      "libvart_op_imp_relu.so": "6c3a30cd53404a9e691bed554056243e22d06ec42c07b222a1955b243f740f50",
+      "libvart_op_imp_maxpool1d.so": "7c81f9eb3d754bc52b2e995b77c895cdd73120c68ffa6515cc0eb9084a2f5b19",
+      "libvart_op_imp_conv1d.so": "ba0eeaa3559c5d42c672536ebe3cc65f77558ead8eb43c77f99bb0e80829a2ee"
+    },
+    "worker_sha256": "2ce046aeff04ced12606d6d8edae2e1d1651ff02d3414d9224b53f007be0a545",
+    "bundle_inventory_sha256": "41fe3388db89bdb0d1759e4bc7b6b926af1fb8d87bd8c71d880505695ce14a44"
+  },
+  "offline_checks": {
+    "smoke_nho": {
+      "run_id": "smoke_nho-02ba64a19737",
+      "row_count": 5,
+      "parity_mismatches": 0,
+      "max_contexts": 3
+    },
+    "smoke_day_du": {
+      "run_id": "smoke_day_du-0004c935b787",
+      "row_count": 13,
+      "parity_mismatches": 0,
+      "max_contexts": 10
+    },
+    "parity": {
+      "run_id": "parity-395f822e7c04",
+      "row_count": 50,
+      "parity_mismatches": 0,
+      "max_contexts": 10
+    }
+  },
+  "acquired_source_files": {
+    "evidence.py": "483a4e097492f76c0b50e5cf2cc55f8c31939363bc121192c372740ceaeb6184",
+    "service.py": "4ae5c1a39fefa8b742a9e3fe11b184150e51f47fb7ad92ce06c54884f7a2162b",
+    "analyze.py": "8ca75af304d5fa52c2bbe6cef2db225737c6e6887ad1772140bde9029ea0ccb7",
+    "prepare.py": "429cd6749cc3bc5e9ee9a2fc68772c45d22159a9046b8ffddfb567ba6da3a043",
+    "bench.py": "75aca662a464659efe545e99d6258fc443f416ca3aa7b676ae88ab604d6ae7ea",
+    "backend.py": "2d1ec98d82eec9f4c172f7c6ccc5a429ab6094d36dc4d3fef7138009d151822c"
+  },
+  "measurement_scope": "KV260 offline benchmark and Edge-side BLE captures"
+}

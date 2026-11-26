@@ -1,0 +1,63 @@
+{
+  "schema": "week9-refs/1",
+  "status": "PASS",
+  "decision": "W9-D6",
+  "samples_dir": "D:\\HUST\\ASI_week8\\samples-20261023-c",
+  "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+  "samples": "W8-D3 set_index 0..49",
+  "splits": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "path": "dev_shim.c + week7/head_fast.c + week5/quantization.c, gcc -O2 -ffp-contract=off -fno-fast-math",
+  "bytes_payload_by_split": {
+    "0": 362,
+    "1": 5792,
+    "2": 2912,
+    "3": 5824,
+    "4": 2944,
+    "5": 4416,
+    "6": 2256,
+    "7": 3008,
+    "8": 1536,
+    "9": 96,
+    "10": 15
+  },
+  "checks": {
+    "shim_ids_equal_set": true,
+    "shim_set_sha256": true,
+    "rows_550": true,
+    "shape_bytes_equal_tensor_sizes": true,
+    "s2_equal_w8d3_samples_csv": true,
+    "csv_reads_back": true
+  },
+  "outputs_sha256": {
+    "refs.csv": "cd739a6d8d1389796c376945ef633afc895d031c6308b97590dd0f5c18620a69"
+  },
+  "sources_sha256": {
+    "device/week9/host_test/dev_shim.c": "a2e2615912870b0922001b35f3c8a038f3b558b21b9a8f1367505e363e9ec475",
+    "device/week7/head_fast.c": "2784ac89a27f9c06d97d11e27cca8e87d25c1e82b01fc71530be1540b9ae8c71",
+    "device/week7/head_fast.h": "3044429934f48a5c908de1c5069f235c30b1e18aa342342d8d1706904aac2561",
+    "device/src/week4_head.c": "92e501bf8ab424e66d0e096d0f1e1950a890d7ce5c29f830fe1f40ca3d4885f5",
+    "device/src/week4_head.h": "0cf3cf70e3ee382c257df233d227e0a81b8fdb72c8d467fe77b9f52471fd0a0d",
+    "device/week5/quantization.c": "08b2131b29eacb2a1822b97dca2f30fdd138f942fac16e1f202251213572f529",
+    "device/week5/quantization.h": "9fb7982b84ee3b6a5e4c7e60cf89b294a099d6fb29ee85dd9adc50b4ad4fa564",
+    "results/week5/device/tensor_sizes.csv": "9004115faaf2d9f6e7579adb65495d55d350c2dad3e8824e2222ae0d55c03549",
+    "ml/results/week4-r3/firmware/head_parameters.h": "3f811758ca6fc6a8fdefa74ff50ccb48031c006e9a12b617604dad033657487b",
+    "device/generated/week4_graph.h": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c"
+  },
+  "git": {
+    "head": "d4f73afdfa834b81fbf48f483bd5ddce71d1dcd0",
+    "status_of_generator_sources": "?? device/scripts/generate_week9_refs.py\n?? device/scripts/week9_common.py\n?? device/week9/host_test/dev_shim.c"
+  },
+  "created_utc": "2026-10-29T04:59:10.353709+00:00"
+}

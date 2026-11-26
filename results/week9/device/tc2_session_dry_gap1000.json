@@ -1,0 +1,119 @@
+{
+  "schema": "week9-check-session/1",
+  "session": "D:\\HUST\\ASI_week9\\session-dry-gap1000-20261029-1236",
+  "status": "PASS",
+  "device_banner": {
+    "build": "2e1daff93ad1-week9-dev-usb-20261029T051858Z",
+    "variant": "dev-usb",
+    "kernel": "FAST",
+    "rounds": "50",
+    "splits": "11",
+    "cycles": "550",
+    "samples": "50",
+    "gap_ms": "1000",
+    "boot_idle_s": "30",
+    "ctrl_min_us": "200",
+    "selftest_ms": "200",
+    "d4_pin": "P0.22",
+    "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+    "plan_sha256": "5b1fcfe85b7057f5ea4ef52db4b6b3aa1b819a07d5af7a3c55bdb985f6eb4a9f",
+    "plan_device_sha256": "5b1fcfe85b7057f5ea4ef52db4b6b3aa1b819a07d5af7a3c55bdb985f6eb4a9f",
+    "plan_ok": "1"
+  },
+  "checks": {
+    "session_begin_plan_sha256": true,
+    "cycles_equal_plan_order": true,
+    "all_cycles_ok": true,
+    "bytes_equal_tensor_sizes": true,
+    "ids_equal_set": true,
+    "session_end_no_failure": true
+  },
+  "first": 0,
+  "count": 33,
+  "gap_ms": "1000",
+  "head_by_split_ms": {
+    "0": {
+      "n": 3,
+      "mean_ms": 0.5423958333333334,
+      "std_ms": 0.01042425634962554,
+      "min_ms": 0.531140625,
+      "max_ms": 0.55171875
+    },
+    "1": {
+      "n": 3,
+      "mean_ms": 11.651802083333335,
+      "std_ms": 0.04189763361425007,
+      "min_ms": 11.623171875,
+      "max_ms": 11.699890625
+    },
+    "2": {
+      "n": 3,
+      "mean_ms": 37.2640625,
+      "std_ms": 0.002963935240415814,
+      "min_ms": 37.262296875000004,
+      "max_ms": 37.267484375
+    },
+    "3": {
+      "n": 3,
+      "mean_ms": 71.781953125,
+      "std_ms": 0.3900654057359484,
+      "min_ms": 71.54421875,
+      "max_ms": 72.232125
+    },
+    "4": {
+      "n": 3,
+      "mean_ms": 126.73503645833334,
+      "std_ms": 0.00851610281534358,
+      "min_ms": 126.72803125,
+      "max_ms": 126.744515625
+    },
+    "5": {
+      "n": 3,
+      "mean_ms": 177.42683333333332,
+      "std_ms": 0.0157752257478532,
+      "min_ms": 177.41659375,
+      "max_ms": 177.445
+    },
+    "6": {
+      "n": 3,
+      "mean_ms": 247.26214062500003,
+      "std_ms": 0.0188712679981932,
+      "min_ms": 247.243046875,
+      "max_ms": 247.28078125000002
+    },
+    "7": {
+      "n": 3,
+      "mean_ms": 303.4482447916667,
+      "std_ms": 0.010427265441321054,
+      "min_ms": 303.441640625,
+      "max_ms": 303.46026562500003
+    },
+    "8": {
+      "n": 3,
+      "mean_ms": 374.87641666666667,
+      "std_ms": 0.022703239704901082,
+      "min_ms": 374.85562500000003,
+      "max_ms": 374.900640625
+    },
+    "9": {
+      "n": 3,
+      "mean_ms": 378.96853645833335,
+      "std_ms": 0.023681672546156475,
+      "min_ms": 378.943765625,
+      "max_ms": 378.99095312500003
+    },
+    "10": {
+      "n": 3,
+      "mean_ms": 378.81632291666665,
+      "std_ms": 0.023706710822491962,
+      "min_ms": 378.7915625,
+      "max_ms": 378.8388125
+    }
+  },
+  "ctrl_us": 200.328125,
+  "scope": "dev-usb on laptop power: order/bytes evidence; DWT times are CPU time, not energy",
+  "tool_sha256": {
+    "check_week9.py": "59bb7121868a9c2aeaed34123ab393d3e2b156e4bc410dad634cd1072a09b55f",
+    "week9_common.py": "2fc7f7a785992d159bb5711b761f654f301219c0dc506e2364528858b5480a5e"
+  }
+}

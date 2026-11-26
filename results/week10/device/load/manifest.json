@@ -1,0 +1,28 @@
+{
+  "purpose": "SV1 week 10 E_wait sessions (W10-D3): background Poisson load on KV260, BLE request queued as foreground",
+  "seed": 20261111,
+  "generator": "splitmix64 + Fisher-Yates with rejection sampling (week9_common), shuffle of 6 x [0, 15, 30]",
+  "start": "queue_sim starts when the BLE link to ASI-SV1 is ready; the 40 s lead-in covers connected idle 30 s + settle 5 s",
+  "block_order_lambda": [
+    30,
+    0,
+    15,
+    15,
+    0,
+    0,
+    15,
+    30,
+    15,
+    30,
+    30,
+    15,
+    15,
+    30,
+    0,
+    0,
+    30,
+    0
+  ],
+  "total_s": 460,
+  "csv_sha256": "38937e54c2b9cb21a21dc6ac36c43f273216e9eaca56d98af99e053c4f19035e"
+}

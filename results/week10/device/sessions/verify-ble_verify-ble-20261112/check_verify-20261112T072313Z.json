@@ -1,0 +1,45 @@
+{
+  "schema": "week10-check-verify/1",
+  "status": "PASS",
+  "checks": {
+    "banner_variant_ble_usb": true,
+    "banner_set_sha256": true,
+    "banner_plan_sha256": true,
+    "device_plan_digest_equal": true,
+    "host_plan_digest_equal": true,
+    "banner_rounds_cycles": true,
+    "vq_every_sample_every_s_in_order": true,
+    "q_scale_id_shape_equal_host": true,
+    "requests_every_sample_s0_s9": true,
+    "requests_equal_python_reference": true,
+    "s10_logits_label_equal_host": true,
+    "verify_end_set_sha256": true
+  },
+  "details": {
+    "vq": 550,
+    "vreq": 500,
+    "vlab": 50,
+    "mismatches": [],
+    "s10_label_counts": {
+      "0": 38,
+      "1": 4,
+      "2": 7,
+      "4": 1
+    }
+  },
+  "scope": "dongle on laptop USB power: correctness evidence and DWT debug times, never energy numbers",
+  "tools_sha256": {
+    "check_week10.py": "2f12824272d76f0d3d303a8e635744072760860ed98374d07bf717efe89f2441",
+    "week10_ble.py": "27a6371e2ef6113f29a121b71b4ef34f870daf0ada52b7f56f971e78d72207f3",
+    "week10_common.py": "c1c3d5827b8974bf66d8b001e08cb1fbc4b97d64a8f9ba708b53a9a40d469feb",
+    "week10_lab.py": "86913af851f4127f432610d69ed91aad98dd27e56cb98e7a219ef841c04b8eee"
+  },
+  "shim_sources_sha256": {
+    "device/week10/host_test/ble_shim.c": "5a555da8e5b41679e93dd49e3874283679a489d40d7f59a2332b200cb6068c1d",
+    "device/week10/ble_plan_bytes.h": "196b554fd7effff11d46e73584de002bc54bc519e70fd1af914eb4c1251cf090",
+    "device/week8/g2_plan.h": "14ad11a4dfc32f8b018c37a10f6ca3022346aacf3123081caa2fb63c74977395",
+    "device/week7/head_fast.c": "2784ac89a27f9c06d97d11e27cca8e87d25c1e82b01fc71530be1540b9ae8c71",
+    "device/week5/quantization.c": "08b2131b29eacb2a1822b97dca2f30fdd138f942fac16e1f202251213572f529",
+    "device/week6/sha256.c": "21382adde20e28f3d19b923c681c8848450358ada740c674474ab204ea1e5532"
+  }
+}

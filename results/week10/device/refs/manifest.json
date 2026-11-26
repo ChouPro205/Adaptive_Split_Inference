@@ -1,0 +1,294 @@
+{
+  "schema": "week10-refs/1",
+  "status": "PASS",
+  "decision": "W10-D4 (KV260 offline references for the every-s session)",
+  "samples_dir": "D:\\HUST\\ASI_week8\\samples-20261023-c",
+  "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+  "samples": "W8-D3 set_index 0..49 (same as W9-D3), set order in every file",
+  "splits": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "label_ref_definition": "argmax of the host logits of this file (dongle C head + week 5 quantizer -> C dequantization -> frozen PyTorch tail); the binding label in the session is the KV260 offline prediction",
+  "pipeline": "device/week9/host_test/dev_shim.c + device/week7/head_fast.c + device/week5/quantization.c (gcc -O2 -ffp-contract=off -fno-fast-math) -> week5 C dequantization -> wrappers(model, s)[1], CPU FP32",
+  "model": {
+    "package": "ml/artifacts/week3/mitdb-week3-sv2-fp32-20261001-v1",
+    "checkpoint_sha256": "9b8be076356e8d42d1d8cb1a8b42fa33a3997f16a5b797e2541ee79392141f90",
+    "kv260_xmodel_model_sha256_expected": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9 (old xmodel set, week 9 SV2)"
+  },
+  "checks": {
+    "shim_ids_equal_set": true,
+    "shim_set_sha256": true,
+    "x_equal_w8d3_npz_rows_0_49": true,
+    "rows_500": true,
+    "shape_bytes_equal_tensor_sizes": true,
+    "q_scale_equal_week9_refs": true,
+    "s2_q_equal_w8d3": true,
+    "s2_scale_equal_w8d3": true,
+    "s2_logits_bit_equal_w8d3": true,
+    "s2_label_equal_w8d3": true,
+    "logits_finite": true,
+    "npz_keys_equal_week8": true
+  },
+  "per_split": {
+    "0": {
+      "q_shape": [
+        50,
+        1,
+        360
+      ],
+      "bytes_payload": 362,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 50,
+      "torch_path_scale_equal": 50
+    },
+    "1": {
+      "q_shape": [
+        50,
+        16,
+        360
+      ],
+      "bytes_payload": 5792,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 50,
+      "torch_path_scale_equal": 50
+    },
+    "2": {
+      "q_shape": [
+        50,
+        16,
+        180
+      ],
+      "bytes_payload": 2912,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 49,
+      "torch_path_scale_equal": 50
+    },
+    "3": {
+      "q_shape": [
+        50,
+        32,
+        180
+      ],
+      "bytes_payload": 5824,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 47,
+      "torch_path_scale_equal": 47
+    },
+    "4": {
+      "q_shape": [
+        50,
+        32,
+        90
+      ],
+      "bytes_payload": 2944,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 50,
+      "torch_path_scale_equal": 49
+    },
+    "5": {
+      "q_shape": [
+        50,
+        48,
+        90
+      ],
+      "bytes_payload": 4416,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 49,
+      "torch_path_scale_equal": 49
+    },
+    "6": {
+      "q_shape": [
+        50,
+        48,
+        45
+      ],
+      "bytes_payload": 2256,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 50,
+      "torch_path_scale_equal": 50
+    },
+    "7": {
+      "q_shape": [
+        50,
+        64,
+        45
+      ],
+      "bytes_payload": 3008,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 50,
+      "torch_path_scale_equal": 49
+    },
+    "8": {
+      "q_shape": [
+        50,
+        64,
+        22
+      ],
+      "bytes_payload": 1536,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 50,
+      "torch_path_scale_equal": 50
+    },
+    "9": {
+      "q_shape": [
+        50,
+        32,
+        1
+      ],
+      "bytes_payload": 96,
+      "label_counts_NSVFQ": [
+        38,
+        4,
+        7,
+        0,
+        1
+      ],
+      "label_host_eq_pred_csv_int8_fp16": 50,
+      "label_host_eq_pred_csv_fp32": 50,
+      "label_host_eq_true_label": 31,
+      "torch_path_q_equal": 50,
+      "torch_path_scale_equal": 48
+    }
+  },
+  "outputs_sha256": {
+    "reference_s0.npz": "576a9a14c16ecf8f23e09018394bb1c12093fdb1b3842bb127af53cc2dd1e882",
+    "reference_s1.npz": "01a6f29a36d388e4a0b152dee90e21416af6873dd2f2eed819a784290da10b19",
+    "reference_s2.npz": "2bd70418940e78899010ad7e1b9ba757aaf3c10c95cc4062449cb52b603dc0af",
+    "reference_s3.npz": "b993507158fbd0b0b698ca5c701463663e80ab64f07ffcb94e9219c41c1a2b4e",
+    "reference_s4.npz": "d2d098d27cab47037e4280875dea2e0e8d93896f5497fed027ccbfd9cf290b55",
+    "reference_s5.npz": "a8939b58cc81d39b486ed1ecdd5c2d5406241926b60cadc2f455f34a12d27cce",
+    "reference_s6.npz": "848ffd75002f5d279ba2255e27dc22661b34a32801e0f67603fc748d922d6a04",
+    "reference_s7.npz": "79664ee9ce5b4d29834ab6351b44f4297b2e2723f706e1b3d7c87f4175531da4",
+    "reference_s8.npz": "6c1c87e7d988e55d9d3676f985cc8f6955e6d5447e219dc72dbc6b4b55eb299d",
+    "reference_s9.npz": "39a8ed049658ad4638c23c898b954a5bd4122e566ef62de18d71d1d41c07da99",
+    "sample_order.csv": "cc5491bbc6c85f43a147ae370cb5f9c83db7af62bf8d189359f240756f394b26",
+    "refs.csv": "a804dd533bc5d0263355492637961b7eddd5b6210e9426902e41cb191d1e3c1d"
+  },
+  "sources_sha256": {
+    "device/scripts/generate_week10_refs.py": "42a87db177ba3e89f5bd6cf597ba6b813656e8c1a4fe5c49ac0953162f684a70",
+    "device/scripts/generate_week9_refs.py": "c973417c00eb03f35a2c527074b1f08d745b6fab27c8c3727f32a1010f8895ab",
+    "device/scripts/week9_common.py": "2fc7f7a785992d159bb5711b761f654f301219c0dc506e2364528858b5480a5e",
+    "ml/results/week5/predictions.csv": "0776e503b9e404c957cfcfb239356f52b17f34655cb2c5d15fdfe96cb3ae6e56",
+    "device/week9/host_test/dev_shim.c": "a2e2615912870b0922001b35f3c8a038f3b558b21b9a8f1367505e363e9ec475",
+    "device/week7/head_fast.c": "2784ac89a27f9c06d97d11e27cca8e87d25c1e82b01fc71530be1540b9ae8c71",
+    "device/week7/head_fast.h": "3044429934f48a5c908de1c5069f235c30b1e18aa342342d8d1706904aac2561",
+    "device/src/week4_head.c": "92e501bf8ab424e66d0e096d0f1e1950a890d7ce5c29f830fe1f40ca3d4885f5",
+    "device/src/week4_head.h": "0cf3cf70e3ee382c257df233d227e0a81b8fdb72c8d467fe77b9f52471fd0a0d",
+    "device/week5/quantization.c": "08b2131b29eacb2a1822b97dca2f30fdd138f942fac16e1f202251213572f529",
+    "device/week5/quantization.h": "9fb7982b84ee3b6a5e4c7e60cf89b294a099d6fb29ee85dd9adc50b4ad4fa564",
+    "results/week5/device/tensor_sizes.csv": "9004115faaf2d9f6e7579adb65495d55d350c2dad3e8824e2222ae0d55c03549",
+    "ml/results/week4-r3/firmware/head_parameters.h": "3f811758ca6fc6a8fdefa74ff50ccb48031c006e9a12b617604dad033657487b",
+    "device/generated/week4_graph.h": "b91b5cd664cae32f03e49b91669bb337fbea950c575d2b0a0da8959818d37b6c"
+  },
+  "inputs_sha256": {
+    "w8d3/reference_s2.npz": "e7407378e7870afbfa94b850f809c85165a1d640673d1f01bbd32f6d1aab76d5",
+    "week9/refs.csv": "cd739a6d8d1389796c376945ef633afc895d031c6308b97590dd0f5c18620a69"
+  },
+  "r3_binding": "head_parameters.h + week4_graph.h anchors (same as build_week7..9); week5_common.authenticate() not used: it reads results/week4/week4_mcu_validation.json, moved by the results/ reorganisation (PR #37)",
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "onnx": "1.23.1",
+    "onnxruntime": "1.30.0",
+    "protobuf": "7.36.2",
+    "ml_dtypes": "0.6.0",
+    "flatbuffers": "25.12.19"
+  },
+  "git": {
+    "head": "345108a144fcff84bd227abcb6344ed5b5f9bce5",
+    "status_of_generator_sources": "?? device/scripts/generate_week10_refs.py"
+  },
+  "command": "python.exe device/scripts/generate_week10_refs.py --samples D:\\HUST\\ASI_week8\\samples-20261023-c --week9-refs D:\\HUST\\ASI_week9\\refs-20261029 --output D:\\HUST\\ASI_week10\\refs-20261112",
+  "created_utc": "2026-11-12T03:52:39+00:00"
+}

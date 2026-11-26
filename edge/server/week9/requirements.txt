@@ -1,0 +1,5 @@
+# MQTT receiver/publisher and queue analysis; use a dedicated host environment.
+numpy>=1.21,<3
+paho-mqtt==2.1.0
+# Optional publication figures (not needed by the board runtime).
+# matplotlib==3.10.7

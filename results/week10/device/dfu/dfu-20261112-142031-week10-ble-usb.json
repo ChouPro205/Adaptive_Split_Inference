@@ -1,0 +1,28 @@
+﻿{
+    "origin":  "REAL_USB_DFU",
+    "port":  "COM6",
+    "app":  "week10",
+    "variant":  "ble-usb",
+    "kernel":  "fast",
+    "build_id":  "77674993ef18-week10-ble-usb-20261112T071226Z",
+    "dirty":  false,
+    "report_dir":  "D:\\HUST\\ASI_week10\\build-20261112-clean-ble-usb",
+    "zip":  "D:\\HUST\\ASI_week10\\build-20261112-clean-ble-usb\\adaptive_split_week10_ble-usb.zip",
+    "zip_sha256":  "e433c8ddcfb7fae72ec87d96d40b35fda4790fcb8496300c41dbd432a3a7ba67",
+    "bin_sha256":  "ae2bbf31983588543971c0514e77992f35e8e85587a3de63320bb9ea84a7a64f",
+    "elf_sha256":  "8103886e8bb5c9225960b6c1662e40c114da11fb440dc08d21637c02a71173e9",
+    "set_sha256":  "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+    "plan_sha256":  "27e20954494cdecdfaf45246cd00a16a5e113ef24e617b57e925a9783c415d33",
+    "executable":  "D:\\ncs\\toolchains\\dcbdc366a1\\nrfutil\\bin\\nrfutil.exe",
+    "arguments":  [
+                      "nrf5sdk-tools",
+                      "dfu",
+                      "usb-serial",
+                      "--package",
+                      "D:\\HUST\\ASI_week10\\build-20261112-clean-ble-usb\\adaptive_split_week10_ble-usb.zip",
+                      "--port",
+                      "COM6"
+                  ],
+    "exit_code":  0,
+    "timestamp":  "2026-11-12T07:21:05.2578043+00:00"
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "split_s": 2,
+  "wire_split_id": 258,
+  "model_profile_id": 1296651265,
+  "reference_npz_sha256": "e7407378e7870afbfa94b850f809c85165a1d640673d1f01bbd32f6d1aab76d5",
+  "runtime_stack": "KV260 PetaLinux 2022.1 / Vitis AI 2.5 / root GraphRunner CPU+DPU",
+  "receiver": {
+    "id": "GW_TRUNG",
+    "role": "gateway",
+    "platform": "Windows native",
+    "network_label": "PC_WIFI_KV260_LAN"
+  },
+  "mqtt": {
+    "topic": "adaptive_split/edge/KV260_NODE_01/status",
+    "period_ms": 100,
+    "qos": 0,
+    "retained": false,
+    "tcp_nodelay": true,
+    "broker_host_port": 1891,
+    "broker_board_port": 1892,
+    "clock_board_port": 1896,
+    "clock_host_port": 1906
+  },
+  "queue": {
+    "seed": 20261027,
+    "max_pending_background_jobs": 8,
+    "max_pending_foreground_jobs": 1,
+    "active_job_excluded_from_capacity": true,
+    "warmup_samples": 20
+  },
+  "acceptance": {
+    "metric": "mean application one-way latency",
+    "limit_ms": 20,
+    "mean_upper_bound_must_be_below_limit": true,
+    "scope": "SV2 self-operated gateway; not SV1 reception",
+    "group_acceptance": "REVIEW_REQUIRED",
+    "percentile_method": "nearest rank"
+  },
+  "evidence": "results/week9/edge",
+  "scenario_directory": "experiments/configs/sv2_edge_week9"
+}

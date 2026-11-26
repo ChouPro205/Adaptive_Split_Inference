@@ -1,0 +1,10 @@
+{
+  "scope": "HOST publication checks, plus verification of stored KV260 capture",
+  "core_week10_host_tests_passed": 15,
+  "i1_v2_contract_tests_passed": 23,
+  "lab_tool_host_tests_passed": 6,
+  "addon_host_tests_passed": 9,
+  "capture_receipt_files_verified": 730,
+  "ble_archives_verified": 6,
+  "device_ppk2_acceptance": "REVIEW_PENDING"
+}

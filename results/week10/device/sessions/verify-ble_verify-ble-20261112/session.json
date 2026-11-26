@@ -1,0 +1,33 @@
+{
+  "schema": "week10-lab-session/1",
+  "kind": "verify",
+  "command": [
+    "device\\scripts\\week10_lab.py",
+    "verify",
+    "--out",
+    "D:\\HUST\\ASI_week10\\verify-ble-20261112",
+    "--samples",
+    "D:\\HUST\\ASI_week8\\samples-20261023-c",
+    "--plan",
+    "D:\\HUST\\ASI_week10\\plan-20261112"
+  ],
+  "started_utc": "2026-11-12T07:21:15.975720+00:00",
+  "tool_sha256": {
+    "week10_lab.py": "86913af851f4127f432610d69ed91aad98dd27e56cb98e7a219ef841c04b8eee",
+    "week10_ble.py": "27a6371e2ef6113f29a121b71b4ef34f870daf0ada52b7f56f971e78d72207f3",
+    "week10_common.py": "c1c3d5827b8974bf66d8b001e08cb1fbc4b97d64a8f9ba708b53a9a40d469feb",
+    "check_week10.py": "2f12824272d76f0d3d303a8e635744072760860ed98374d07bf717efe89f2441",
+    "week10_analysis.py": "dc4c2857727d45385b10c92980c26bac9184f8fe1989319fcb25d5772ff34866",
+    "week9_common.py": "2fc7f7a785992d159bb5711b761f654f301219c0dc506e2364528858b5480a5e",
+    "week8_common.py": "60d242188875815842e157aa475ea21ab796937fd519b587f28ba607bb83af91",
+    "week8_lab.py": "28babd070a9f5dd317f88eb2f90d176c452cfc9f1f21e67d273779a50dd059f2",
+    "week7_common.py": "6bfcd29830ac089c74eaa53f09f9ebdc9e2ec58764a76154a9594786b8033c5b",
+    "week6_lab.py": "52f79e40bd575626eaeb8bdbc0a6ecc66cd24d5cf2abea66c08f1a302ff46c2a",
+    "week6_common.py": "a15377a7cd05f73f6b17a2ce0210193da28e499af67ba8bd17e2faa64f7b312a"
+  },
+  "scope": "dongle on laptop USB power: correctness and CPU-time evidence, never energy numbers",
+  "samples": "D:\\HUST\\ASI_week8\\samples-20261023-c",
+  "plan": "D:\\HUST\\ASI_week10\\plan-20261112",
+  "set_sha256": "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+  "plan_sha256": "27e20954494cdecdfaf45246cd00a16a5e113ef24e617b57e925a9783c415d33"
+}

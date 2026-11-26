@@ -1,0 +1,13 @@
+{
+  "schema": "week7-ppk2-note/1",
+  "utc": "20261109T082536Z",
+  "temp_end_C": 25.5,
+  "photos": [
+    {
+      "path": "D:\\HUST\\ASI_week9\\photos\\bench-B5-end-20261109-1520.png",
+      "sha256": "f258da25313305d1d77ed3d40a02278715f650186af83031464cda9fc6b90e65",
+      "bytes": 10986833
+    }
+  ],
+  "text": "PASS 19/19, lap lai sach cua phien 1 (laptop cam sac + Best performance, host max read gap 0,0096 s). Log KV260: D:\\HUST\\Trung\\0911\\phien4 (SHA khop). E_dev/E_prot cao hon phien 1 +9..15 % (REG0 hai muc, R4), E_tx/E_wait <= 1,3 %."
+}

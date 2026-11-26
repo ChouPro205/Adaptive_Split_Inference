@@ -1,0 +1,18 @@
+{
+  "written": [
+    "fig_ewait_vs_twait.pdf",
+    "fig_ewait_vs_twait.png",
+    "fig_twait_vs_q.pdf",
+    "fig_twait_vs_q.png",
+    "fig_cycle_by_split_radio_on.pdf",
+    "fig_cycle_by_split_radio_on.png",
+    "fig_etx_vs_payload.pdf",
+    "fig_etx_vs_payload.png",
+    "fig_dev_on_vs_off.pdf",
+    "fig_dev_on_vs_off.png",
+    "fig_e_prot_vs_conv.pdf",
+    "fig_e_prot_vs_conv.png"
+  ],
+  "tables": "D:\\HUST\\ASI_week10\\analysis-20261119",
+  "tool_sha256": "c1df209437cb54396d078dddb2aba0095b591eef0665af2af14c6304b998a1d2"
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "week7-ppk2-session/1",
+  "status": "PASS",
+  "checks": {
+    "lab_on_ac_power": true,
+    "capture_pass": true,
+    "idle_within_10pct_of_week2": true,
+    "selftest_D0_D4": true,
+    "unused_channels_low": true,
+    "no_data_loss": true,
+    "cycle_count_550": true,
+    "trace_order_equals_plan": true,
+    "all_cycles_valid": true,
+    "idle_markers_low": true,
+    "diff_below_3pct_all": true,
+    "post_window_at_least_20s": true,
+    "post_mean_at_idle": true,
+    "post_radio_off": true
+  },
+  "I_idle_uA": 25.549344495688768,
+  "post_session": {
+    "found": true,
+    "duration_s": 177.24131000000003,
+    "mean_uA": 24.763366716498258,
+    "max_uA": 35.992061872744124,
+    "high_samples": {
+      "D0": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0
+    },
+    "events_above_3mA": [],
+    "radio_off": true,
+    "I_idle_uA": 25.549344495688768,
+    "deviation_from_idle_pct": 3.076312894536833,
+    "radio_rule_w10": {
+      "pass": true,
+      "week9_rule": true,
+      "rtc_overflow_only": true,
+      "events_at_rtc_marks_s_from_on": {},
+      "events_elsewhere_s_from_on": [],
+      "rule": "week 9 rule OR all events <= 0.5 ms within +-3.0 s of k*512 s after DUT on, <= 2 per mark (amended 19/11/2026 after A1, see docstring)"
+    }
+  },
+  "diff_pct": {
+    "n": 550,
+    "mean": 0.07948949557227504,
+    "min": 0.0,
+    "max": 0.7705816770974404,
+    "std": 0.1172137004453613,
+    "ci95_half": 0.009817561258735485,
+    "ci95_low": 0.06967193431353956,
+    "ci95_high": 0.08930705683101052,
+    "ci95_rel_pct": 12.350765579848176
+  },
+  "P_conn": {
+    "gaps": 549,
+    "P_conn_gross_mW": {
+      "n": 549,
+      "mean": 1.5743082538982085,
+      "min": 1.5393261187814133,
+      "max": 1.6136443009041443,
+      "std": 0.0124800894145823,
+      "ci95_half": 0.0010462605814886845,
+      "ci95_low": 1.5732619933167198,
+      "ci95_high": 1.5753545144796972,
+      "ci95_rel_pct": 0.0664584320699581
+    },
+    "P_conn_net_mW": {
+      "n": 549,
+      "mean": 1.4465615314197648,
+      "min": 1.4115793963029695,
+      "max": 1.4858975784257005,
+      "std": 0.012480089414582302,
+      "ci95_half": 0.0010462605814886847,
+      "ci95_low": 1.4455152708382761,
+      "ci95_high": 1.4476077920012536,
+      "ci95_rel_pct": 0.07232741634307152
+    }
+  },
+  "v_supply_mV": 5000.0,
+  "kv260_log": "PENDING: week10_ppk2.py import-alls"
+}

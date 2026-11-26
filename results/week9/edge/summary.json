@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "publication_date": "2026-11-09",
+  "scope": "SV2 self-operated KV260 -> broker -> Windows GW_TRUNG gateway",
+  "status": "MEAN_LATENCY_LT20_WITHIN_FEASIBLE_CLOCK_MODEL",
+  "criterion": {
+    "metric": "mean application one-way latency",
+    "limit_ms": 20,
+    "mean_upper_bound_must_be_below_limit": true,
+    "scope": "SV2 self-operated gateway; not SV1 reception",
+    "group_acceptance": "REVIEW_REQUIRED",
+    "percentile_method": "nearest rank"
+  },
+  "percentile_method": "nearest rank",
+  "runs": {
+    "idle": {
+      "run_id": "idle-0829fe8cf791",
+      "status": "ONEWAY_ESTIMATES_REVIEW_REQUIRED",
+      "matching": {
+        "sent": 901,
+        "received": 901,
+        "complete": true,
+        "publish_errors": 0
+      },
+      "one_way_ms": {
+        "n": 901,
+        "mean": 12.642571678552871,
+        "std": 44.37691221392236,
+        "p50": 4.3436778958573905,
+        "p95": 26.659050861603273,
+        "p99": 279.67107473470287,
+        "max": 586.6810178644278,
+        "min": 2.2135159623583798
+      },
+      "lower_ms": {
+        "n": 901,
+        "mean": 11.946930439788954,
+        "std": 44.37708294884219,
+        "p50": 3.6516875896528167,
+        "p95": 25.99047013784823,
+        "p99": 278.96231741499116,
+        "max": 585.9683774821716,
+        "min": 1.483333367411286
+      },
+      "upper_ms": {
+        "n": 901,
+        "mean": 13.338212917316788,
+        "std": 44.37674887511494,
+        "p50": 5.0441453191884555,
+        "p95": 27.327631585358315,
+        "p99": 280.3798320544146,
+        "max": 587.3936582466838,
+        "min": 2.9436985573054733
+      },
+      "interval_width_ms": {
+        "n": 901,
+        "mean": 1.3912824775278347,
+        "std": 0.03623504083207727,
+        "p50": 1.390950908425331,
+        "p95": 1.4492543703707716,
+        "p99": 1.4585432206908893,
+        "max": 1.4608745323240546,
+        "min": 1.329188832892886
+      },
+      "threshold_20ms": {
+        "below": 841,
+        "at_or_above": 57,
+        "uncertain": 3
+      },
+      "publish_interval_ms": {
+        "n": 900,
+        "mean": 100.00015205222222,
+        "std": 0.012505819664461439,
+        "p50": 99.999205,
+        "p95": 100.015839,
+        "p99": 100.02631,
+        "max": 100.150805,
+        "min": 99.925479
+      },
+      "receive_interval_ms": {
+        "n": 900,
+        "mean": 100.00003722222222,
+        "std": 35.96276480321176,
+        "p50": 100.0245,
+        "p95": 112.0558,
+        "p99": 172.6081,
+        "max": 682.1481,
+        "min": 0.0629
+      },
+      "ack_rtt_diagnostic_ms": {
+        "n": 901,
+        "mean": 18.253044667036626,
+        "std": 46.10053523798321,
+        "p50": 8.070833,
+        "p95": 46.033348,
+        "p99": 289.286304,
+        "max": 605.617166,
+        "min": 4.101211
+      },
+      "queue": {
+        "background_arrived": 0,
+        "background_dropped": 0,
+        "foreground_arrived": 0,
+        "completed": 0,
+        "failure": null,
+        "scope": "shared FIFO; capacity counts pending jobs, active job excluded"
+      },
+      "service_ms": {
+        "n": 0,
+        "mean": null,
+        "std": null,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "max": null,
+        "min": null
+      },
+      "background_queue_wait_ms": {
+        "n": 0,
+        "mean": null,
+        "std": null,
+        "p50": null,
+        "p95": null,
+        "p99": null,
+        "max": null,
+        "min": null
+      },
+      "measurement_limitations": [
+        "Intervals conditional on affine monotonic-clock relation and reported clock resolutions; not an externally synchronized instrument.",
+        "Calibration traffic is additional to the MQTT session and is recorded.",
+        "Original publisher timestamp precedes payload construction/publish; this includes that small application overhead.",
+        "Incomplete receive/publish errors must be reported even when delay statistics look good."
+      ],
+      "calibration": {
+        "probes": 1263,
+        "errors": 0,
+        "max_probe_gap_ms": 648.8198,
+        "receive_clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "resolution_ns": 100.0,
+          "monotonic": true,
+          "adjustable": false
+        },
+        "drift_ppm_interval": [
+          -22.037824986158963,
+          -9.161887528893555
+        ],
+        "model": "feasible affine relation, no equal forward/reverse path assumption"
+      },
+      "receiver": {
+        "id": "GW_TRUNG",
+        "role": "gateway",
+        "network_label": "PC_WIFI_KV260_LAN",
+        "platform": "Windows"
+      },
+      "scenario": [
+        [
+          90.0,
+          0.0
+        ]
+      ],
+      "seed": 20261027,
+      "warmup": {
+        "count": 20,
+        "elapsed_ms": 925.39925,
+        "scope": "excluded from queue timing and MQTT publication"
+      },
+      "receive_gaps_over_500ms": 2,
+      "mean_upper_bound_lt_20ms": true,
+      "all_upper_bounds_lt_20ms": false,
+      "sample_std_ddof": 1
+    },
+    "varying": {
+      "run_id": "varying-a6fbc654063b",
+      "status": "ONEWAY_ESTIMATES_REVIEW_REQUIRED",
+      "matching": {
+        "sent": 1501,
+        "received": 1501,
+        "complete": true,
+        "publish_errors": 0
+      },
+      "one_way_ms": {
+        "n": 1501,
+        "mean": 10.601485743795399,
+        "std": 31.178757499442433,
+        "p50": 4.7016965506991575,
+        "p95": 27.385800951195776,
+        "p99": 137.33657839734403,
+        "max": 457.39962432700986,
+        "min": 2.33487473675985
+      },
+      "lower_ms": {
+        "n": 1501,
+        "mean": 9.793609317721469,
+        "std": 31.178371106551165,
+        "p50": 3.8899294494568513,
+        "p95": 26.5758845021863,
+        "p99": 136.52213671070842,
+        "max": 456.5852948528815,
+        "min": 1.5277159616642706
+      },
+      "upper_ms": {
+        "n": 1501,
+        "mean": 11.409362169869329,
+        "std": 31.179144161702084,
+        "p50": 5.514042037174321,
+        "p95": 28.199983121398446,
+        "p99": 138.15102008397963,
+        "max": 458.2139538011383,
+        "min": 3.1420335118554297
+      },
+      "interval_width_ms": {
+        "n": 1501,
+        "mean": 1.61575285214786,
+        "std": 0.005847384003583169,
+        "p50": 1.6152305993636054,
+        "p95": 1.6276054506385855,
+        "p99": 1.6304106290413931,
+        "max": 1.6311122629792796,
+        "min": 1.6067793642854742
+      },
+      "threshold_20ms": {
+        "below": 1397,
+        "at_or_above": 97,
+        "uncertain": 7
+      },
+      "publish_interval_ms": {
+        "n": 1500,
+        "mean": 100.00008286933334,
+        "std": 0.06607819702473945,
+        "p50": 100.000145,
+        "p95": 100.03633,
+        "p99": 100.130135,
+        "max": 100.786057,
+        "min": 99.192139
+      },
+      "receive_interval_ms": {
+        "n": 1500,
+        "mean": 100.00019113333333,
+        "std": 29.06102109873812,
+        "p50": 100.0213,
+        "p95": 113.2267,
+        "p99": 191.7245,
+        "max": 553.3914,
+        "min": 0.3173
+      },
+      "ack_rtt_diagnostic_ms": {
+        "n": 1501,
+        "mean": 15.880874614923384,
+        "std": 32.65105158539379,
+        "p50": 8.622249,
+        "p95": 41.148773,
+        "p99": 141.925727,
+        "max": 462.528019,
+        "min": 4.302548
+      },
+      "queue": {
+        "background_arrived": 1504,
+        "background_dropped": 247,
+        "foreground_arrived": 0,
+        "completed": 1257,
+        "failure": null,
+        "scope": "shared FIFO; capacity counts pending jobs, active job excluded"
+      },
+      "service_ms": {
+        "n": 1257,
+        "mean": 46.26442421718377,
+        "std": 0.30664044769231086,
+        "p50": 46.173547,
+        "p95": 46.912904,
+        "p99": 47.508232,
+        "max": 49.526834,
+        "min": 45.95805
+      },
+      "background_queue_wait_ms": {
+        "n": 1257,
+        "mean": 187.2882560922832,
+        "std": 146.25560892389348,
+        "p50": 234.156984,
+        "p95": 367.781426,
+        "p99": 372.889098,
+        "max": 375.732397,
+        "min": 0.338231
+      },
+      "measurement_limitations": [
+        "Intervals conditional on affine monotonic-clock relation and reported clock resolutions; not an externally synchronized instrument.",
+        "Calibration traffic is additional to the MQTT session and is recorded.",
+        "Original publisher timestamp precedes payload construction/publish; this includes that small application overhead.",
+        "Incomplete receive/publish errors must be reported even when delay statistics look good."
+      ],
+      "calibration": {
+        "probes": 1252,
+        "errors": 0,
+        "max_probe_gap_ms": 617.8219,
+        "receive_clock": {
+          "implementation": "QueryPerformanceCounter()",
+          "resolution_ns": 100.0,
+          "monotonic": true,
+          "adjustable": false
+        },
+        "drift_ppm_interval": [
+          -21.978435899655437,
+          -9.764869850416366
+        ],
+        "model": "feasible affine relation, no equal forward/reverse path assumption"
+      },
+      "receiver": {
+        "id": "GW_TRUNG",
+        "role": "gateway",
+        "network_label": "PC_WIFI_KV260_LAN",
+        "platform": "Windows"
+      },
+      "scenario": [
+        [
+          30.0,
+          0.0
+        ],
+        [
+          30.0,
+          5.0
+        ],
+        [
+          30.0,
+          15.0
+        ],
+        [
+          30.0,
+          30.0
+        ],
+        [
+          30.0,
+          0.0
+        ]
+      ],
+      "seed": 20261027,
+      "warmup": {
+        "count": 20,
+        "elapsed_ms": 926.058933,
+        "scope": "excluded from queue timing and MQTT publication"
+      },
+      "receive_gaps_over_500ms": 2,
+      "mean_upper_bound_lt_20ms": true,
+      "all_upper_bounds_lt_20ms": false,
+      "sample_std_ddof": 1
+    }
+  },
+  "group_acceptance": "REVIEW_REQUIRED; no automatic claim of SV1 receipt or every-message <20ms"
+}

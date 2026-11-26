@@ -1,0 +1,177 @@
+{
+  "device_manifest_sha256": "4ed1433985141fa00c5d525ad10d747edf45bffc2af853e2521f446e87477530",
+  "device_manifest_files_verified": 139,
+  "runs": {
+    "p1": {
+      "edge": {
+        "status": "CAPTURE_COMPLETE_REVIEW_REQUIRED",
+        "requests": 200,
+        "connections": 1,
+        "ok": 200,
+        "device_disconnect_observed": true,
+        "overflow": 0,
+        "error": null,
+        "acceptance": "PENDING_SV1_PPK2_AND_CHECKER"
+      },
+      "exact_100_pairs": true,
+      "offline_logits_bit_matches": 200,
+      "request_log_sha256": "795bce2375914027da934dcc29b945371cbe8c3536127b2047cd90da6d27d197",
+      "source_commit": "948297f9f47dee28152690a9bfec6293b3a63019",
+      "service_sha256": "356e38052c2f1971e7cf60ba57432092c5bae43372312916d5710dd6cd66d48e",
+      "phy_sha256": "de4c1edeef068003eef1d60006dbc9dfb7a7db1015d7e741b4cfbb24bb9a4d57",
+      "backend": {
+        "backend": "KV260_ROOT_CPU_DPU",
+        "split": 2,
+        "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+        "bundle_inventory_sha256": "41fe3388db89bdb0d1759e4bc7b6b926af1fb8d87bd8c71d880505695ce14a44",
+        "worker_sha256": "9f542a2c5aaaf97e94a08a7c529ddd371e0894e5e74f9c5962bc31b5e6da222b",
+        "plugins": {
+          "libvart_op_imp_relu.so": "6c3a30cd53404a9e691bed554056243e22d06ec42c07b222a1955b243f740f50",
+          "libvart_op_imp_maxpool1d.so": "7c81f9eb3d754bc52b2e995b77c895cdd73120c68ffa6515cc0eb9084a2f5b19",
+          "libvart_op_imp_conv1d.so": "ba0eeaa3559c5d42c672536ebe3cc65f77558ead8eb43c77f99bb0e80829a2ee"
+        }
+      },
+      "phy_gate_before_first_request": true,
+      "sv1_import_hash_matches": true,
+      "device_status": "PASS",
+      "device_checks": {
+        "capture_pass": true,
+        "selftest_D0_D4": true,
+        "unused_channels_low": true,
+        "no_data_loss": true,
+        "cycle_count_200": true,
+        "p1_100_p0_100": true,
+        "trace_rho_order_paired": true,
+        "all_cycles_valid": true,
+        "idle_markers_low": true,
+        "diff_below_3pct_all": true,
+        "post_window_at_least_20s": true,
+        "post_mean_at_idle": true,
+        "post_radio_off": true,
+        "kv260_log_pass_labels_100_per_rho": true,
+        "kv260_answered_all": true,
+        "one_cycle_per_request": true,
+        "nonce_above_prior_and_increasing": true,
+        "single_connection": true,
+        "phy_2m_read_back": true
+      },
+      "device_receipt": "results/week9/device/b5_kv260_p1_check_kv260.json",
+      "device_receipt_sha256": "a3a0a479c257bac4de38301f5e2b522c4c4f34b09b48fa7807239244235e511b",
+      "limitation": "Published Device checker receipt, not a new independent PPK2 execution"
+    },
+    "p2": {
+      "edge": {
+        "status": "CAPTURE_COMPLETE_REVIEW_REQUIRED",
+        "requests": 200,
+        "connections": 1,
+        "ok": 200,
+        "device_disconnect_observed": true,
+        "overflow": 0,
+        "error": null,
+        "acceptance": "PENDING_SV1_PPK2_AND_CHECKER"
+      },
+      "exact_100_pairs": true,
+      "offline_logits_bit_matches": 200,
+      "request_log_sha256": "6a3e45f560d6d706ad7c0e112de3b401585f2376574b9d047c9c0621753832f5",
+      "source_commit": "948297f9f47dee28152690a9bfec6293b3a63019",
+      "service_sha256": "356e38052c2f1971e7cf60ba57432092c5bae43372312916d5710dd6cd66d48e",
+      "phy_sha256": "de4c1edeef068003eef1d60006dbc9dfb7a7db1015d7e741b4cfbb24bb9a4d57",
+      "backend": {
+        "backend": "KV260_ROOT_CPU_DPU",
+        "split": 2,
+        "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+        "bundle_inventory_sha256": "41fe3388db89bdb0d1759e4bc7b6b926af1fb8d87bd8c71d880505695ce14a44",
+        "worker_sha256": "9f542a2c5aaaf97e94a08a7c529ddd371e0894e5e74f9c5962bc31b5e6da222b",
+        "plugins": {
+          "libvart_op_imp_relu.so": "6c3a30cd53404a9e691bed554056243e22d06ec42c07b222a1955b243f740f50",
+          "libvart_op_imp_maxpool1d.so": "7c81f9eb3d754bc52b2e995b77c895cdd73120c68ffa6515cc0eb9084a2f5b19",
+          "libvart_op_imp_conv1d.so": "ba0eeaa3559c5d42c672536ebe3cc65f77558ead8eb43c77f99bb0e80829a2ee"
+        }
+      },
+      "phy_gate_before_first_request": true,
+      "sv1_import_hash_matches": true,
+      "device_status": "FAIL",
+      "device_checks": {
+        "capture_pass": true,
+        "selftest_D0_D4": true,
+        "unused_channels_low": true,
+        "no_data_loss": false,
+        "cycle_count_200": true,
+        "p1_100_p0_100": true,
+        "trace_rho_order_paired": true,
+        "all_cycles_valid": true,
+        "idle_markers_low": true,
+        "diff_below_3pct_all": true,
+        "post_window_at_least_20s": true,
+        "post_mean_at_idle": true,
+        "post_radio_off": true,
+        "kv260_log_pass_labels_100_per_rho": true,
+        "kv260_answered_all": true,
+        "one_cycle_per_request": true,
+        "nonce_above_prior_and_increasing": true,
+        "single_connection": true,
+        "phy_2m_read_back": true
+      },
+      "device_receipt": "results/week9/device/b5_kv260_p2_check_kv260_FAIL.json",
+      "device_receipt_sha256": "3a86451efd92f0c2cd5706bbf3b51a6913665d40e7dc770bcb5161dc9655abb1",
+      "limitation": "Published Device checker receipt, not a new independent PPK2 execution"
+    },
+    "p4": {
+      "edge": {
+        "status": "CAPTURE_COMPLETE_REVIEW_REQUIRED",
+        "requests": 200,
+        "connections": 1,
+        "ok": 200,
+        "device_disconnect_observed": true,
+        "overflow": 0,
+        "error": null,
+        "acceptance": "PENDING_SV1_PPK2_AND_CHECKER"
+      },
+      "exact_100_pairs": true,
+      "offline_logits_bit_matches": 200,
+      "request_log_sha256": "5bdb4cd8e9a4f2d1557b44f5d5720b16567fee0b0f37096d74959d853412a42b",
+      "source_commit": "948297f9f47dee28152690a9bfec6293b3a63019",
+      "service_sha256": "356e38052c2f1971e7cf60ba57432092c5bae43372312916d5710dd6cd66d48e",
+      "phy_sha256": "de4c1edeef068003eef1d60006dbc9dfb7a7db1015d7e741b4cfbb24bb9a4d57",
+      "backend": {
+        "backend": "KV260_ROOT_CPU_DPU",
+        "split": 2,
+        "model_sha256": "68c5f86b5ca60479176aa7a5da0e9fef5b79ac436b43468e8ba0ae5353deeaa9",
+        "bundle_inventory_sha256": "41fe3388db89bdb0d1759e4bc7b6b926af1fb8d87bd8c71d880505695ce14a44",
+        "worker_sha256": "9f542a2c5aaaf97e94a08a7c529ddd371e0894e5e74f9c5962bc31b5e6da222b",
+        "plugins": {
+          "libvart_op_imp_relu.so": "6c3a30cd53404a9e691bed554056243e22d06ec42c07b222a1955b243f740f50",
+          "libvart_op_imp_maxpool1d.so": "7c81f9eb3d754bc52b2e995b77c895cdd73120c68ffa6515cc0eb9084a2f5b19",
+          "libvart_op_imp_conv1d.so": "ba0eeaa3559c5d42c672536ebe3cc65f77558ead8eb43c77f99bb0e80829a2ee"
+        }
+      },
+      "phy_gate_before_first_request": true,
+      "sv1_import_hash_matches": true,
+      "device_status": "PASS",
+      "device_checks": {
+        "capture_pass": true,
+        "selftest_D0_D4": true,
+        "unused_channels_low": true,
+        "no_data_loss": true,
+        "cycle_count_200": true,
+        "p1_100_p0_100": true,
+        "trace_rho_order_paired": true,
+        "all_cycles_valid": true,
+        "idle_markers_low": true,
+        "diff_below_3pct_all": true,
+        "post_window_at_least_20s": true,
+        "post_mean_at_idle": true,
+        "post_radio_off": true,
+        "kv260_log_pass_labels_100_per_rho": true,
+        "kv260_answered_all": true,
+        "one_cycle_per_request": true,
+        "nonce_above_prior_and_increasing": true,
+        "single_connection": true,
+        "phy_2m_read_back": true
+      },
+      "device_receipt": "results/week9/device/b5_kv260_p4_check_kv260.json",
+      "device_receipt_sha256": "603cf9a4f4c944363b56dbb83524f55740b6bd46bd25d8b138ee184608a5e660",
+      "limitation": "Published Device checker receipt, not a new independent PPK2 execution"
+    }
+  }
+}

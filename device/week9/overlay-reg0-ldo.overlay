@@ -1,0 +1,5 @@
+/* Regulator experiment (B4, 29/10): REG0 (VBUS 5 V -> VDD) in LDO mode, its reset default.
+ * soc/nordic/nrf52/soc.c sets DCDCEN0 only while reg0 is okay; REG1 stays as the board sets it. */
+&reg0 {
+	status = "disabled";
+};

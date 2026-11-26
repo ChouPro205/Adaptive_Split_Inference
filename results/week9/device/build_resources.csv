@@ -1,0 +1,5 @@
+variant,build_id,commit,regulator,regulator_modes,bin_bytes,image_end,headroom_before_0xDC000_bytes,ram_static_bytes,bin_sha256
+dev,2e1daff93ad1-week9-dev-20261029T051939Z,2e1daff93ad1,board,,609716,0x95db4,287308,66109,4961b3faea9dcb0388ef83faa567de283613919093692d6491e8f66f229cf492
+dev-usb,2e1daff93ad1-week9-dev-usb-20261029T051858Z,2e1daff93ad1,board,,648208,0x9f410,248816,75917,067d99cf4f55d43b0be97ae6c5d6cff76992f3e06f1c38ed1e9b076e4b61527a
+dev-reg0-ldo,a4126242ae1d-week9-dev-reg0-ldo-20261029T065805Z,a4126242ae1d,reg0-ldo,reg0=LDO reg1=DCDC,609692,0x95d9c,287332,66109,d0af3226b3dd168f440037aec63174a517bd6eae2cf13b2da1108644b385255a
+dev-reg1-ldo,a4126242ae1d-week9-dev-reg1-ldo-20261029T065942Z,a4126242ae1d,reg1-ldo,reg0=DCDC reg1=LDO,609724,0x95dbc,287300,66109,163e98ad6611e2029c1293823a510f0d4c65261bb8865500932e155fa91dd096
