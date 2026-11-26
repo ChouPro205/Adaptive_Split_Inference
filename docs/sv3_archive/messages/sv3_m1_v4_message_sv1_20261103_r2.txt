@@ -1,0 +1,40 @@
+Chào Châu, mình đã sửa theo review v3 của bạn (02/11) và làm bản ứng viên M1 v4. Toàn bộ là file mới, không sửa file v1/v2/v3 nào. Dữ liệu không đổi: protocol v4 bind đúng config, manifest, normalization và metric policy của v3-r2.
+
+Gói review: SV3_M1_V4_BASELINE_PREPARATION_REVIEW_20261103.zip, SHA-256 275594254be0f53652158ce8971410841f5bd7d6254edc1db8392120031e477a (bạn đối chiếu giúp với tệp .sha256 đi kèm). Trong gói có 95 file liệt kê trong ml/provenance/m1-v4-20261103/SHA256SUMS.txt, chính file đó, protocol v3 để đối chiếu và PACKAGE_SHA256SUMS.txt cho mọi file còn lại (97 dòng). Không có arrays trong ml/data. Bản tin trong gói (docs/sv3_m1_v4_message_sv1_20261103.txt) là bản trước; tin này chỉ khác ở dòng gói và đoạn cuối.
+
+SHA-256 cần review:
+- Protocol v4: ml/configs/mitdb_m1_baseline_protocol_v4.json
+  7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18
+- Plan v4 (18 slot): ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json
+  1ce2f811e62f9ef55833e7256c6678e2b348cf1e2f750412e2e0b6203c27d956
+- Assets v4: ml/manifests/mitdb-m1-protocol-assets-v4/assets-manifest.json
+  bb365d5c2cd8181a5e439416669485274e61180b523a2263c6ac7bf5505d099a
+So với bản bạn đã review: protocol v3 8068501318c0…f9103a45, plan v3 2b599ba055e8…07cbb8ec, assets v3 df3e2e7f3b56…8076bfab.
+Data (không đổi): config 58ade2a0…d3ff0514, processed manifest 7de30a1c…7423cc0f, normalization 1ae60f3f…41d23b89.
+
+Thay đổi v3 -> v4:
+a) (mục 3a của bạn) Sampler C4/C5 cân bằng trên K = {N, S, V, F}. Tổng lượt rút mỗi epoch vẫn là N_train = 41.472. Q giữ tần suất tự nhiên (kỳ vọng 8 lượt/epoch). Phần còn lại chia đều cho 4 lớp K (kỳ vọng 10.366 lượt mỗi lớp). CE không trọng số. Weighted CE của C0–C3 không đổi. Slot config C4/C5 ghi sẵn policy, kỳ vọng lượt rút và trọng số từng lớp; preflight kiểm lại các trường này.
+b) (mục 3b) Thêm baseline.ds2_report đúng các ý bạn liệt kê: DS2 một lần sau khi khóa, cả 3 seed; Se/+P của S, V; macro-F1 4 lớp (chính), 5 lớp (phụ, kèm số nhịp Q); accuracy; confusion 5×5; mean ± SD (ddof = 1) kèm số của checkpoint triển khai; hai dòng test_main và test_aux22 từ cùng checkpoint, cùng một lần đánh giá; bảng đối chiếu Se/+P của S, V với 6 bài (P04, Garcia 2017, Mondéjar 2019, Saenz-Cogollo 2020, Wang 2020, Zhang 2021), dùng dòng DS2 đủ, có cột uses_RR (cả 6 bài đều dùng RR, mô hình mình không dùng).
+c) (mục 2) source_bindings.v1_2_original: tên file bản 1.2 và SHA 2ddeb08b925a8df18e40a5bff57d14def83b607d1be457b8b25e2ad7d5c9123f, trạng thái FOUND_AND_COMPARED. Mình đã đối chiếu lại mục 4.0–4.2 với v4. Có thêm binding cho phản hồi v3 của bạn, ghi rõ đó là phản hồi về v3, không phải xác nhận cho v4.
+d) (mục 4) Quy tắc lỗi code: nếu slot đầu kết thúc FAILED_TECHNICAL sau khi hết lượt retry và không attempt nào có epoch-001.json, runner dừng cả lưới (HALTED_PRE_VALIDATION_CODE_FAULT), không chạy 17 slot còn lại. Sửa code thành plan phiên bản mới, chạy lại cả 18 slot; lần dừng không tính là cấu hình thất bại. Đã có trong runner v4 và có test bằng executor giả. Smoke trên dữ liệu ngẫu nhiên được ghi là được phép và không tính là train; lượt này chưa viết và chưa chạy smoke.
+e) (mục 4) Nhãn khi chỉ S trượt đổi thành S_SOFT_GATE_FAIL_DISCLOSED (m1_metrics_v4.py; selection v4 cũng trả nhãn này). Code v3 giữ nguyên.
+f) (mục 4) Thêm deviations_from_v1_2, mỗi dòng có lý do: calibration và fast finetune chỉ dùng train; chọn bản sửa lượng tử bằng validation thay cách của T4 (chờ Trung xác nhận); nhánh dự phòng 5 bản ghi (không kích hoạt vì F ≥ 20 có 153 tổ hợp).
+Mọi quy tắc khác giữ như v3 (có test so từng khóa). Trạng thái: NOT_REVIEWED, locked = false, training_permitted = false.
+
+Báo cáo docs/sv3_m1_v4_review_20261103.md có phần đối chiếu số công bố và S theo bản ghi như bạn gợi ý. Các bảng sinh bằng code từ record-audit.json và manifest. Số khớp với số của bạn: DS1 50.995 + 26 nhịp bỏ ở biên (25 N, 1 F) = 51.021; DS2 đủ 49.687 + 25 (24 N, 1 V ở 233) = 49.712; bản ghi 232 có 1.382/1.782 nhịp S của DS2 chính (77,6 %), 222 có 209 (11,7 %).
+
+Mình đã chạy (thường và -O, exit 0): test sampler 12, test baseline/grid 33, test protocol/assets 17, verify assets, preflight v4 (fit_calls 0, optimizer_steps 0, DS2_arrays_opened false). Chưa fit, chưa smoke, chưa đụng DS2. Lần chạy đầu test assets và lần đầu check bảng báo cáo có lỗi do chính test/check; chi tiết và SHA log ở ml/provenance/m1-v4-20261103/receipt.json.
+
+Diff v3 -> v4 từng file: ml/provenance/m1-v4-20261103/diffs/ (danh mục trong diff-index.json). File quan trọng nhất là diffs/01 (protocol), 02 (grid), 03 (selection), 04 (trainer), 05 (metrics), 09 (sampler mới).
+
+Lệnh kiểm lại (giải nén gói vào gốc worktree dev/ml-sv3 hoặc một bản sao; venv dự án; thêm -O để chạy chế độ tối ưu):
+  sha256sum -c PACKAGE_SHA256SUMS.txt
+  sha256sum -c ml/provenance/m1-v4-20261103/SHA256SUMS.txt
+  python -B ml/scripts/test_baseline_sampler_v4.py
+  python -B ml/scripts/test_baseline_grid_v4.py
+  python -B ml/scripts/test_m1_protocol_assets_v4.py
+  python -B ml/scripts/prepare_m1_protocol_assets_v4.py verify --protocol ml/configs/mitdb_m1_baseline_protocol_v4.json --artifacts ml/data/processed/mitdb-ds1ds2-m1-v3-r2 --output ml/manifests/mitdb-m1-protocol-assets-v4
+  python -B ml/scripts/baseline_grid_v4.py preflight --protocol ml/configs/mitdb_m1_baseline_protocol_v4.json --plan ml/manifests/mitdb-baseline-grid-v4/plan-manifest.json --arrays ml/data/processed/mitdb-ds1ds2-m1-v3-r2
+  python -B ml/scripts/report_m1_v4_tables.py --check docs/sv3_m1_v4_review_20261103.md
+
+Nếu bạn đồng ý diff này, bạn nhắn xác nhận đúng hai SHA protocol 7f9eb564…71e18 và plan 1ce2f811…3c27d956; mình sẽ tự tạo file khóa ghi lại xác nhận của bạn rồi chạy 18 slot.

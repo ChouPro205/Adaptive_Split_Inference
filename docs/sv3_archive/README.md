@@ -1,6 +1,6 @@
 # Lưu trữ tài liệu SV3 (`docs/sv3_archive/`)
 
-Ngày 21/11/2026, thư mục `docs/` được dọn để chỉ còn báo cáo tuần của SV3 theo tên `sv3_ml_weekN_report.md`. Các tài liệu ngày lẻ (review, protocol, hồ sơ đối chiếu) được chuyển nguyên byte vào thư mục này. Các file tin nhắn `.txt` được gỡ khỏi cây thư mục; bản gốc vẫn còn trong lịch sử Git.
+Ngày 21/11/2026, thư mục `docs/` được dọn để chỉ còn báo cáo tuần của SV3 theo tên `sv3_ml_weekN_report.md`. Các tài liệu ngày lẻ (review, protocol, hồ sơ đối chiếu) được chuyển nguyên byte vào thư mục này. Các file tin nhắn `.txt` bị gỡ khỏi cây ngày 21/11, rồi được khôi phục nguyên byte vào [`messages/`](messages/) ngày 26/11 theo review của SV1 (25/11, mục 3a): nhiều file trong số đó đã được gắn SHA trong hồ sơ, nên phải kiểm được trên cây hiện tại.
 
 **Nội dung không đổi.** Mọi file chuyển ở đây có SHA-256 đúng như trước khi chuyển (cột SHA-256 dưới đây, tính trên bytes tại commit `d5c9158`). Các hồ sơ đã ràng buộc file theo đường dẫn cũ (receipt, file khóa, `SHA256SUMS.txt`, protocol, file verification trong `ml/provenance/`) không được sửa. Khi một hồ sơ trỏ tới đường dẫn cũ, tra bảng dưới để tìm đường dẫn mới; SHA-256 trong hồ sơ vẫn kiểm được trên file mới.
 
@@ -9,7 +9,7 @@ Ngày 21/11/2026, thư mục `docs/` được dọn để chỉ còn báo cáo t
 - Liên kết tương đối bên trong các file đã chuyển (ví dụ `../ml/...`) giờ lệch một cấp thư mục. Không sửa để giữ nguyên SHA. Mở đường dẫn đích từ gốc repo, bỏ bớt một `../`.
 - Báo cáo tuần 5, 7, 8 có liên kết tới tài liệu đã chuyển; các báo cáo này cũng không sửa vì đã có SHA trong hồ sơ. Liên kết đúng nằm ở mục "Tài liệu chi tiết" của từng báo cáo tuần và trong bảng dưới.
 
-Xem lại một file đã gỡ: `git show d5c9158:<đường dẫn cũ>`.
+Mọi file của SV3 từng nằm ở `docs/` trước ngày 21/11 nay đều có trên cây hiện tại, ở đường dẫn mới ghi trong các bảng dưới.
 
 ## 1. Đổi tên báo cáo tuần
 
@@ -53,22 +53,38 @@ Xem lại một file đã gỡ: `git show d5c9158:<đường dẫn cũ>`.
 | `docs/sv3_week8_protocol_approved_joint_v1.md` | [`sv3_week8_protocol_approved_joint_v1.md`](sv3_week8_protocol_approved_joint_v1.md) | `050c793d351dd7580f6f43659e6cf5c500e7bcbb0ab63e0287ac6388db2d8a1b` |
 | `docs/sv3_week8_protocol_v1.md` | [`sv3_week8_protocol_v1.md`](sv3_week8_protocol_v1.md) | `5fedfeda416a2f56ab8b707888308dc5d2415d4054c95129bb8560fb4b1d05fa` |
 
-## 3. Tin nhắn gỡ khỏi cây thư mục
+## 3. Tin nhắn (khôi phục vào `messages/` ngày 26/11)
 
-Các tin nhắn này đã gửi cho thành viên nhóm. Bản gốc xem bằng `git show d5c9158:<đường dẫn cũ>`.
+Các tin nhắn SV3 đã gửi cho thành viên nhóm. Ngày 21/11 chúng bị gỡ khỏi cây (commit `dfa88f8`); ngày 26/11 được khôi phục từ commit `d5c9158` bằng `git show d5c9158:<đường dẫn cũ>`, SHA-256 không đổi. Tin nhắn mới từ ngày 26/11 không đưa vào repo, trừ khi một hồ sơ cần gắn SHA của nó.
 
-| Đường dẫn cũ | SHA-256 |
-|---|---|
-| `docs/sv3_huong_xu_ly_v2_review_message_sv1_20261119.txt` | `66e2cf64b74517fd4f667d52534a027afa7330e08ac115730c6076ce920b3987` |
-| `docs/sv3_m1_attack_v2_trial_message_sv1_20261113.txt` | `12c8c294b5dc5afd56dc748e8df5cbd56ba3ff3ed59567b72706c88a4e2107bc` |
-| `docs/sv3_m1_attack_v3_message_sv1_20261119.txt` | `b3b3745d4684a5016d7b3dd11cd82e746e23a1f07affcf37a432747a9421d73b` |
-| `docs/sv3_m1_attack_v3_r2_message_sv1_20261120.txt` | `c787c59d5f36ad2a36eff9b6d0e28eddac05d745d70a8585d6de2d03051b830c` |
-| `docs/sv3_m1_attack_v3_r3_message_sv1_20261121.txt` | `59e036116718e6d00e0d06074d29601aeb973403ee9156082b204d9077345fdf` |
-| `docs/sv3_m1_nopeek_v2_grid_message_sv1_20261112.txt` | `19dff03bc9839c77cfa51dd3ea39634e163c3e2ef3f5e61a94b0f4284a8efd68` |
-| `docs/sv3_m1_nopeek_v2_pilot_message_sv1_20261112.txt` | `a1e23a87d326be372b2ebd7696f7827a92bd9c05955f9ee1c73c08ede725ccc7` |
-| `docs/sv3_m1_v3_message_sv1_sv2_20261030.txt` | `556057f5eeda515a3da4e0d8d11f07c8d3fa5e824d2a194c1a808d150460b2db` |
-| `docs/sv3_m1_v4_grid_message_sv1_20261103.txt` | `2c8a82314ead2aef60a7ee24e801f3b5bb5497989433e4046f45ce651131c3f7` |
-| `docs/sv3_m1_v4_message_sv1_20261103.txt` | `0f92d0b05349fc0012d5e5978c4822590a0efbd7e54c7837f1e0de60db9b9381` |
-| `docs/sv3_m1_v4_message_sv1_20261103_r2.txt` | `c23e5924327ce1550cb966ea4e234bd0d385993c0674dbc4e82dcc6c5db01d45` |
-| `docs/sv3_m1_v4_package_a_message_sv2_20261112.txt` | `e4d88fd8ecd7c48e57b256d2c22d9e24fd5b69014dd15e0de5fa565ced96c30e` |
-| `docs/sv3_review_after_trial_message_sv1_20261114.txt` | `9061adbbaf7aa8f0cab5bf6cef9b0fbad90662c6a9c97671b5e8c63c8ebe991f` |
+| Đường dẫn cũ | File trong thư mục này | SHA-256 |
+|---|---|---|
+| `docs/sv3_huong_xu_ly_v2_review_message_sv1_20261119.txt` | [`messages/sv3_huong_xu_ly_v2_review_message_sv1_20261119.txt`](messages/sv3_huong_xu_ly_v2_review_message_sv1_20261119.txt) | `66e2cf64b74517fd4f667d52534a027afa7330e08ac115730c6076ce920b3987` |
+| `docs/sv3_m1_attack_v2_trial_message_sv1_20261113.txt` | [`messages/sv3_m1_attack_v2_trial_message_sv1_20261113.txt`](messages/sv3_m1_attack_v2_trial_message_sv1_20261113.txt) | `12c8c294b5dc5afd56dc748e8df5cbd56ba3ff3ed59567b72706c88a4e2107bc` |
+| `docs/sv3_m1_attack_v3_message_sv1_20261119.txt` | [`messages/sv3_m1_attack_v3_message_sv1_20261119.txt`](messages/sv3_m1_attack_v3_message_sv1_20261119.txt) | `b3b3745d4684a5016d7b3dd11cd82e746e23a1f07affcf37a432747a9421d73b` |
+| `docs/sv3_m1_attack_v3_r2_message_sv1_20261120.txt` | [`messages/sv3_m1_attack_v3_r2_message_sv1_20261120.txt`](messages/sv3_m1_attack_v3_r2_message_sv1_20261120.txt) | `c787c59d5f36ad2a36eff9b6d0e28eddac05d745d70a8585d6de2d03051b830c` |
+| `docs/sv3_m1_attack_v3_r3_message_sv1_20261121.txt` | [`messages/sv3_m1_attack_v3_r3_message_sv1_20261121.txt`](messages/sv3_m1_attack_v3_r3_message_sv1_20261121.txt) | `59e036116718e6d00e0d06074d29601aeb973403ee9156082b204d9077345fdf` |
+| `docs/sv3_m1_nopeek_v2_grid_message_sv1_20261112.txt` | [`messages/sv3_m1_nopeek_v2_grid_message_sv1_20261112.txt`](messages/sv3_m1_nopeek_v2_grid_message_sv1_20261112.txt) | `19dff03bc9839c77cfa51dd3ea39634e163c3e2ef3f5e61a94b0f4284a8efd68` |
+| `docs/sv3_m1_nopeek_v2_pilot_message_sv1_20261112.txt` | [`messages/sv3_m1_nopeek_v2_pilot_message_sv1_20261112.txt`](messages/sv3_m1_nopeek_v2_pilot_message_sv1_20261112.txt) | `a1e23a87d326be372b2ebd7696f7827a92bd9c05955f9ee1c73c08ede725ccc7` |
+| `docs/sv3_m1_v3_message_sv1_sv2_20261030.txt` | [`messages/sv3_m1_v3_message_sv1_sv2_20261030.txt`](messages/sv3_m1_v3_message_sv1_sv2_20261030.txt) | `556057f5eeda515a3da4e0d8d11f07c8d3fa5e824d2a194c1a808d150460b2db` |
+| `docs/sv3_m1_v4_grid_message_sv1_20261103.txt` | [`messages/sv3_m1_v4_grid_message_sv1_20261103.txt`](messages/sv3_m1_v4_grid_message_sv1_20261103.txt) | `2c8a82314ead2aef60a7ee24e801f3b5bb5497989433e4046f45ce651131c3f7` |
+| `docs/sv3_m1_v4_message_sv1_20261103.txt` | [`messages/sv3_m1_v4_message_sv1_20261103.txt`](messages/sv3_m1_v4_message_sv1_20261103.txt) | `0f92d0b05349fc0012d5e5978c4822590a0efbd7e54c7837f1e0de60db9b9381` |
+| `docs/sv3_m1_v4_message_sv1_20261103_r2.txt` | [`messages/sv3_m1_v4_message_sv1_20261103_r2.txt`](messages/sv3_m1_v4_message_sv1_20261103_r2.txt) | `c23e5924327ce1550cb966ea4e234bd0d385993c0674dbc4e82dcc6c5db01d45` |
+| `docs/sv3_m1_v4_package_a_message_sv2_20261112.txt` | [`messages/sv3_m1_v4_package_a_message_sv2_20261112.txt`](messages/sv3_m1_v4_package_a_message_sv2_20261112.txt) | `e4d88fd8ecd7c48e57b256d2c22d9e24fd5b69014dd15e0de5fa565ced96c30e` |
+| `docs/sv3_review_after_trial_message_sv1_20261114.txt` | [`messages/sv3_review_after_trial_message_sv1_20261114.txt`](messages/sv3_review_after_trial_message_sv1_20261114.txt) | `9061adbbaf7aa8f0cab5bf6cef9b0fbad90662c6a9c97671b5e8c63c8ebe991f` |
+
+## 4. Chạy lại các script kiểm trong `ml/provenance/`
+
+Một số script kiểm cũ đọc tài liệu theo đường dẫn trước ngày 21/11, ví dụ `ml/provenance/week7-host-20261028/verify_host.py`, `ml/provenance/week7-reconcile-20261026/validate_delivery.py`, `ml/provenance/week7-fulltest-20261029/verify_fulltest_receipt.py`, `ml/provenance/week3-sv2-linux/review-v2/package_review_v2.py` và `review_validation.py`. Trên cây hiện tại chúng sẽ báo thiếu file. Muốn chạy lại, chạy ở commit `d5c9158` trong một worktree tạm (từ gốc repo):
+
+```bash
+git worktree add --detach ../sv3-check-d5c9158 d5c9158
+```
+
+Chạy script cần kiểm trong thư mục `../sv3-check-d5c9158` theo hướng dẫn của chính hồ sơ đó, rồi gỡ worktree tạm:
+
+```bash
+git worktree remove ../sv3-check-d5c9158
+```
+
+Các file dữ liệu ngoài Git (`ml/data/...`) mà script cần thì trỏ tới bản trên máy như hướng dẫn gốc của từng hồ sơ.

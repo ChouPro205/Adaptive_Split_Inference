@@ -1,0 +1,9 @@
+Mình gửi gói SV3_M1_V3_BASELINE_PREPARATION_REVIEW_20261030.zip để hai bạn review artifact mới. Protocol: ml/configs/mitdb_m1_baseline_protocol_v3.json, SHA-256 8068501318c09196f07ea5e13ef71174b4e434b82e508d567beebf4bf9103a45. Plan 18 slot: ml/manifests/mitdb-baseline-grid-v3/plan-manifest.json, SHA-256 2b599ba055e844be46f66c3b5dd8c7fb9dd81c04d6a993c6f44a102307cbb8ec. SHA ZIP gửi kèm ở tệp .sha256 cạnh gói.
+
+Enumeration tính lại khớp số đối chiếu: bốn record có 153 tổ hợp F≥20, nên giữ sàn 20. Giữ seed/domain/thuật toán v2, index 111/153 cho validation 118,119,205,223; counts [8322,172,1004,25,0]. Train-only normalization/calibration, K cố định NSVF, vẫn giữ 5 output và mọi Q. Đã tái tạo 512 ID dCor theo split mới.
+
+Baseline có đủ C0–C5 × 3 seed, chưa slot nào chạy; đã chuẩn bị trainer/runner/analyzer, quy tắc S filter trước mean, không cứu cấu hình bằng seed khác và không dừng grid sớm. Verifier, 43+18+7 tests đạt cả thường/-O; rebuild 19 file giống bytes; hash bảo toàn v1/v2 kèm receipt. Báo cáo A–G, diff, log và hashes nằm trong gói. Đây mới là kiểm chứng chuẩn bị, chưa xác nhận chất lượng/DPU/privacy.
+
+Nhờ hai bạn review đúng source/protocol/data/plan SHA mới; xác nhận quy tắc trước đó không được xem là review artifact này. Trung giúp xác nhận pipeline calibration/fast finetune chỉ train, lựa chọn bản lượng tử hữu hạn bằng validation và khóa xmodel/config trước DS2; phần đó không chặn baseline. Các câu controller/P2/Π/threat model/LUT đang chờ thầy vẫn theo danh sách đã gom.
+
+Gói còn là ứng viên, chưa khóa và chưa có quyền train. Chưa fit kể cả smoke/pilot, chưa model DS2/NoPeek/firmware hoặc publish. Sau review cần quyết định của owner gắn đúng SHA trước khi chạy baseline.
