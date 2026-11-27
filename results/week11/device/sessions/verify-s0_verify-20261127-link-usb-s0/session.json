@@ -1,0 +1,34 @@
+{
+  "schema": "week11-lab-session/1",
+  "kind": "verify",
+  "command": [
+    "device\\scripts\\week11_lab.py",
+    "verify",
+    "--out",
+    "D:\\HUST\\ASI_week11\\verify-20261127-link-usb-s0",
+    "--samples",
+    "D:\\HUST\\ASI_week8\\samples-20261023-c",
+    "--plan",
+    "D:\\HUST\\ASI_week11\\plan-20261127",
+    "--session",
+    "0"
+  ],
+  "started_utc": "2026-11-27T08:01:41.189115+00:00",
+  "tool_sha256": {
+    "week11_lab.py": "a6b5d866679fd807a176ef12553025051b684dc12a9eea7eeb87cb731d7557b3",
+    "week11_link.py": "f61b22b1951876ee44bb910b36f9320ade8de65feca0d8cb5449cc41c7b943bb",
+    "week11_common.py": "ba571dbabf34b891d30a11271ad47ec7b64a0b511d43c0e2619c86794d8c9dc3",
+    "check_week11.py": "ba3d1baaecbce4f4d6643bfbbca9117ac3ed420f452e1fd702270e04585e1549",
+    "generate_week11_plan.py": "f37b92e1b8a1e9f6efb94dbfc424f5eff34b8ad8900aa8c6785a1de99d571a66",
+    "test_week11_s0c_host.py": "fafffe2488000f813e9d0020e711914e7be9cfff94bd0439280662c2a1c9b187",
+    "week10_common.py": "c1c3d5827b8974bf66d8b001e08cb1fbc4b97d64a8f9ba708b53a9a40d469feb",
+    "week9_common.py": "2fc7f7a785992d159bb5711b761f654f301219c0dc506e2364528858b5480a5e",
+    "week6_lab.py": "52f79e40bd575626eaeb8bdbc0a6ecc66cd24d5cf2abea66c08f1a302ff46c2a",
+    "week6_common.py": "a15377a7cd05f73f6b17a2ce0210193da28e499af67ba8bd17e2faa64f7b312a"
+  },
+  "scope": "dongle on laptop USB power: correctness and CPU-time evidence, never energy numbers",
+  "samples": "D:\\HUST\\ASI_week8\\samples-20261023-c",
+  "plan": "D:\\HUST\\ASI_week11\\plan-20261127",
+  "session": 0,
+  "plan_sha256": "4054816b8bb75268eaf7387eef862e3627947023c8166ad6093b4c12252f79c6"
+}

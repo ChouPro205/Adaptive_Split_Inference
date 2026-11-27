@@ -12,6 +12,8 @@ Nơi quản lý hợp đồng giao diện I1-I4, packet format, schema, versioni
 | [I2/1](i2_protection_v1.md) | Biến đổi đảo ngược activation INT8 (không phải mã hóa); không đổi. |
 | [Approved registry](sv3_week5_approved_registry_v2.json) và [allocation](sv3_week5_allocation_v2.md) | Model profile, split ID 256..266, key/sender, trần buffer. |
 | [Revision registry r2 (tuần 8)](sv1_sv2_week8_registry_revision_r2.json) | Delta trên registry v2 (không sửa file gốc): `runtime.nonce_persistence_reboot = ACCEPTED` cho bộ đếm nonce dongle; SV1 và SV2 cùng xác nhận mã `mitdb-week5-i2-registry-v1-r2`, có hiệu lực từ 27/10/2026. |
+| [S0c v1](s0c_v1_ref/s0c_v1_ref.py) | S0 nén chuẩn (gom 360 → 46 + INT8 + Rice), SV1 lập 25/11/2026. Mã numpy là chuẩn (SHA `323ffaba…`), 20 nhịp golden của gói A. Bộ mã C trên dongle (`device/week11/s0c.c`) khớp từng byte (`device/scripts/test_week11_s0c_host.py`). Kiểu payload trong I1: đề xuất split_id 272, chốt ở addendum I1 v2 r1 (tuần 13). |
+| [S1F v1](s1f_v1_ref/s1f_v1_ref.py) | Bộ nén S1 cố định 46 B (gom 23 bin + chiếu 16 → 2 kênh bằng hằng số từ conv1 của checkpoint A + INT8), SV1 lập 27/11/2026, cho cổng K (H6). Mã numpy (SHA `292d0914…`) và [hằng số](s1f_v1_ref/s1f_v1_constants.json) (SHA `36b2a6da…`) là chuẩn; 20 nhịp golden trùng S0c v1. Device phải trùng từng byte; edge: đầu vào tail lệch ≤ 1e-6 và trùng nhãn. Đề xuất split_id 273 (46 B) / 274 (20 B, chẩn đoán). Không thuộc tập hành động trừ khi cổng K đạt. |
 
 Reference/test host của I1 v2, BLE binding và mô hình nonce:
 [`i1v2_ref/`](i1v2_ref/test_i1v2.py) (`python -B contracts/i1v2_ref/test_i1v2.py`).

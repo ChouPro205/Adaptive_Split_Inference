@@ -1,0 +1,27 @@
+{
+  "schema": "week11-check-verify/1",
+  "status": "PASS",
+  "session": 0,
+  "plan_sha256": "4054816b8bb75268eaf7387eef862e3627947023c8166ad6093b4c12252f79c6",
+  "checks": {
+    "banner_variant_link_usb": true,
+    "banner_session": true,
+    "banner_set_sha256": true,
+    "banner_plan_sha256": true,
+    "device_plan_digest_equal": true,
+    "banner_s0c_v1": true,
+    "banner_states_entries": true,
+    "vs0c_one_line_per_sample": true,
+    "vs0c_equal_python_reference": true,
+    "verify_end_plan_ok": true
+  },
+  "details": {
+    "mismatched_samples": [],
+    "s0c_body_bytes": {
+      "mean": 36.16,
+      "min": 27,
+      "max": 41
+    }
+  },
+  "scope": "link-usb on laptop USB power: correctness evidence, never energy numbers"
+}
