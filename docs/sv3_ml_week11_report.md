@@ -1,17 +1,17 @@
 # SV3 Model/Privacy — báo cáo tuần 11 (16/11–29/11/2026)
 
-Người lập: SV3. Nhánh `dev/ml-sv3`. Viết ngày 21/11/2026, bổ sung ngày 26/11/2026; tuần chưa kết thúc. Tài liệu ngày lẻ nằm ở [`sv3_archive/`](sv3_archive/README.md).
+Người lập: SV3. Nhánh `dev/ml-sv3`. Viết ngày 21/11/2026, bổ sung ngày 26/11 và 27/11/2026; tuần chưa kết thúc. Tài liệu ngày lẻ nằm ở [`sv3_archive/`](sv3_archive/README.md).
 
 **Lịch dịch một tuần.** Theo tin SV1 ngày 25/11, việc tuần 11 bắt đầu muộn khoảng một tuần, nên từ nay tuần 11 = 23–29/11/2026. Báo cáo này gộp phần chuẩn bị 16–22/11 (mục 1–3) với tuần 11 theo lịch mới (mục 4).
 
-**Tóm tắt.** Tuần này không chạy tấn công nào, không fit, không mở DS2. Việc chính là soạn để SV1 review:
-- attack protocol v3, qua ba bản sửa theo phản hồi SV1 và Hướng xử lý ASI bản 2, bản 3;
-- bản nháp threat model (Section III);
-- phần related work về DCentNet.
+**Tóm tắt.**
+- Attack protocol v3 qua năm bản sửa; r5 được SV1 xác nhận và khóa ngày 26/11. Code, test và smoke trên dữ liệu giả xong cùng ngày.
+- Ngày 27/11, sau khi SV1 cho phép, chạy phần a, b, d và c trên DS1, mỗi lượt có receipt. Đây là số phát triển, chỉ để cảnh báo sớm. Kết quả: mọi điểm gửi có Π dưới 0,5; không cấu hình nhiễu nào của nhánh R hay C0c đạt. DS2 chưa mở.
+- Threat model và đoạn related work về DCentNet qua ba bản nháp. Bản 3 sửa theo tin 27/11 của SV1, chờ SV1 đọc lại.
 
-Cả ba đều chưa khóa.
+Mục 1–3 là phần chuẩn bị 16–22/11; mục 4 và 5 là tuần 11 theo lịch mới.
 
-## 1. Attack protocol v3: ba bản sửa, chưa khóa
+## 1. Attack protocol v3: ba bản sửa đầu (16–22/11)
 
 | Bản | Ngày | SHA-256 | Commit | Lý do |
 |---|---|---|---|---|
@@ -83,7 +83,7 @@ Script và kết quả: `ml/provenance/s0c-v1/sv3_check_20261126/`.
 
 **Sửa phần dọn docs theo review:** khôi phục nguyên byte 13 tin nhắn vào [`sv3_archive/messages/`](sv3_archive/messages/); ghi trong [`sv3_archive/README.md`](sv3_archive/README.md) cách chạy lại các script kiểm cũ ở commit `d5c9158`.
 
-**Threat model bản 2 và DCentNet bản 2 (27/11, nháp chờ SV1 review):**
+**Threat model bản 2 và DCentNet bản 2 (27/11, sáng):**
 - [Threat model bản 2](sv3_archive/sv3_threat_model_draft_v2_20261127.md), sửa theo review 25/11 mục 4:
   - ngân sách rò rỉ là tỉ lệ nhịp gửi đi ≤ 1 − p, không còn trọng số theo Π;
   - S0 chuẩn là S0c;
@@ -92,23 +92,46 @@ Script và kết quả: `ml/provenance/s0c-v1/sv3_check_20261126/`.
 - [DCentNet bản 2](sv3_archive/sv3_related_dcentnet_diff_v2_20261127.md), sửa theo review 25/11 mục 5:
   - sửa ô mô hình năng lượng (1,03 %; lệch giữa các ngày do REG0);
   - sửa dòng nén cho đúng với S0c và S1.
-- Chưa đọc được toàn văn bài IEEE Sensors J 2024, nên chưa chốt dòng Table I.
+- Lúc đó chưa đọc được toàn văn bài IEEE Sensors J 2024, nên chưa chốt dòng Table I.
 
-## 5. Mốc tiếp theo (lịch dịch)
+## 5. Ngày 27/11: cho phép chạy, kết quả DS1, bản 3 của hai tài liệu
+
+**Tin SV1 ngày 27/11** (lưu đúng byte ở `ml/provenance/m1-sv1-evidence-20261127/`, SHA `696f3309…`):
+- xác nhận khóa r5 và code: SV1 tự tính lại SHA, chạy lại `verify_lock.py` (6/6 trường hợp sai cố ý bị từ chối);
+- đồng ý nhiễu sinh mới mỗi epoch, không dùng phương án dự phòng;
+- cho SV3 tự lập file cho phép chạy phần a, b, d, c chỉ trên DS1;
+- góp ý threat model bản 2 và DCentNet bản 2.
+
+**File cho phép chạy** (`ml/provenance/m1-attack-v3-run-auth-20261127/`, SHA `6481e9a2…`, commit `e55e82b`):
+- gắn SHA của protocol r5, file khóa, plan, receipt code, ba file code, khóa checkpoint và ρ0; `allow_DS2 = false`; nhiễu "fresh";
+- `verify_run_authorization.py` gọi chính cổng của runner cho từng phần; thoát mã 0 ở chế độ thường và `-O`; 5 trường hợp sai cố ý × 4 phần đều bị từ chối;
+- cổng v3 không ghim được file bằng chứng qua protocol như v2 (tin SV1 có sau r5). Script kiểm ghim đường dẫn và SHA của tin 27/11; điểm này ghi trong trường `gate_note` và báo SV1.
+
+**Kết quả trên DS1** (chi tiết ở [kết quả DS1](sv3_archive/sv3_m1_attack_v3_ds1_results_20261127.md)):
+- Phần a, b, d: commit `e55e82b`, 22 phút, mã thoát 0, receipt `e3996a01…` (commit `7dba869`). Π_v3 của S0c 0,075; s0–s8 khoảng 0,068 (tấn công ghép sang s8); s9 0,102; logits s10 0,287. Gộp 10 nhịp thì Π_k10 ≤ 0,063 ở mọi hàng.
+- Phần c: commit `7dba869`, khoảng 1 giờ 55 phút, mã thoát 0, receipt `2e571b70…` (commit `30ed99f`). Cả 8 điểm (R2 và C0c ở 4 mục tiêu macro-F1) qua cổng macro-F1 nhưng Π chỉ 0,067–0,078, Π_k10 ≤ 0,006. Không điểm nào đạt; cách đọc khai trước là "neither".
+- Số epoch thực chạy của biến thể thích nghi: 16–50; 15 trên 164 lần train dừng trước epoch 20, đều là B-composite-adaptive → s8. Ghi cho mục hạn chế.
+- Các số này là số phát triển trên bệnh nhân DS1, không phải kết quả của bài và không chọn tham số nào ngoài α.
+
+**Threat model bản 3 và DCentNet bản 3 (27/11, chiều, chờ SV1 đọc lại):**
+- [Threat model bản 3](sv3_archive/sv3_threat_model_draft_v3_20261127.md): câu mở đầu "Leakage budget" viết dạng điều kiện, có chế độ che danh tính nếu nhánh R đạt; nhịp gửi có nhiễu vẫn tính là gửi; "Cost" còn một câu trỏ Section V, câu "virtual queue" chuyển Section IV; số byte S0c ghi đúng nguồn (36,4 B trên DS1 validation).
+- [DCentNet bản 3](sv3_archive/sv3_related_dcentnet_diff_v3_20261127.md): đã đọc toàn văn bài IEEE Sensors J 2024 và bài NEWCAS 2023 của cùng nhóm, thêm dòng Table I và hai câu trong đoạn tiếng Anh; câu về bộ nén S1 thành chỗ trống `[K]` tới ngày 13/12; bảng tiếng Việt trích khảo sát S1 ở `results/week11/device/analysis/compression-20261120/` trên main.
+
+## 6. Mốc tiếp theo (lịch dịch)
 
 | Ngày | Việc |
 |---|---|
-| 29/11 | Khóa r5; code, test, smoke trên dữ liệu giả cho phần a–d (xong 26/11; chờ file cho phép chạy) |
-| 06/12 | Kết quả phần a, b, d trên DS1; bảng chi phí từng lớp bản 1 (tiêu chí chọn mô hình push trước khi khảo sát) |
+| 29/11 | Khóa r5; code, test, smoke trên dữ liệu giả cho phần a–d (xong 26/11) |
+| 06/12 | Kết quả phần a, b, d trên DS1 (xong 27/11); bảng chi phí từng lớp bản 1 (tiêu chí chọn mô hình push trước khi khảo sát) |
 | 07/12 | Gửi SV1 script lượt DS2 chất lượng để chạy thử trên validation |
 | 09/12 | Bảng chi phí từng lớp bản 2 (số Coded, P_conn từ lab) |
 | 10/12 | Lượt DS2 chất lượng |
-| 11/12 | Kết quả nhánh R (phần c) |
+| 11/12 | Kết quả nhánh R (phần c trên DS1 xong 27/11); bảng quyết định và số ngày công cho H9 |
 | 13/12 | SV1 quyết R, K, mô hình phụ; khóa protocol G5 v2 |
 
-Song song: related work và Table I (cần toàn văn IEEE Sensors J 2024); threat model và DCentNet bản 2 chờ SV1 review.
+Song song: related work và Table I (còn OPEN, ISCC, ENACHI và các bài mới đọc tóm tắt); threat model và DCentNet bản 3 chờ SV1 đọc lại.
 
-## 6. Tài liệu chi tiết
+## 7. Tài liệu chi tiết
 
 | Ngày | Tài liệu |
 |---|---|
@@ -116,6 +139,6 @@ Song song: related work và Table I (cần toàn văn IEEE Sensors J 2024); thre
 | 20/11 | [Attack v3 r2](sv3_archive/sv3_m1_attack_v3_r2_review_20261120.md); [threat model nháp](sv3_archive/sv3_threat_model_draft_20261120.md); [DCentNet](sv3_archive/sv3_related_dcentnet_diff_20261120.md) |
 | 21/11 | [Attack v3 r3](sv3_archive/sv3_m1_attack_v3_r3_review_20261121.md) |
 | 26/11 | [Attack v3 r4](sv3_archive/sv3_m1_attack_v3_r4_review_20261126.md); [r5](sv3_archive/sv3_m1_attack_v3_r5_review_20261126.md); [r5: khóa và code](sv3_archive/sv3_m1_attack_v3_r5_code_20261126.md) |
-| 27/11 | [Threat model bản 2](sv3_archive/sv3_threat_model_draft_v2_20261127.md); [DCentNet bản 2](sv3_archive/sv3_related_dcentnet_diff_v2_20261127.md) |
+| 27/11 | [Threat model bản 2](sv3_archive/sv3_threat_model_draft_v2_20261127.md), [bản 3](sv3_archive/sv3_threat_model_draft_v3_20261127.md); [DCentNet bản 2](sv3_archive/sv3_related_dcentnet_diff_v2_20261127.md), [bản 3](sv3_archive/sv3_related_dcentnet_diff_v3_20261127.md); [kết quả DS1](sv3_archive/sv3_m1_attack_v3_ds1_results_20261127.md) |
 
-Hồ sơ: `ml/provenance/m1-sv1-evidence-20261119/`, `m1-sv1-evidence-20261120/`, `m1-attack-v3-draft-20261119/`, `m1-attack-v3-r2-draft-20261120/`, `m1-attack-v3-r3-draft-20261121/`, `m1-sv1-evidence-20261125/`, `s0c-v1/`, `m1-attack-v3-r4-draft-20261126/`, `m1-sv1-evidence-20261126/`, `m1-attack-v3-r5-draft-20261126/`, `m1-attack-v3-r5-lock-20261126/`, `m1-attack-v3-code-20261126/`. Các tin nhắn gửi SV1 trong tuần nằm ở [`sv3_archive/messages/`](sv3_archive/messages/) (bảng ở [`sv3_archive/README.md`](sv3_archive/README.md), mục 3).
+Hồ sơ: `ml/provenance/m1-sv1-evidence-20261119/`, `m1-sv1-evidence-20261120/`, `m1-attack-v3-draft-20261119/`, `m1-attack-v3-r2-draft-20261120/`, `m1-attack-v3-r3-draft-20261121/`, `m1-sv1-evidence-20261125/`, `s0c-v1/`, `m1-attack-v3-r4-draft-20261126/`, `m1-sv1-evidence-20261126/`, `m1-attack-v3-r5-draft-20261126/`, `m1-attack-v3-r5-lock-20261126/`, `m1-attack-v3-code-20261126/`, `m1-sv1-evidence-20261127/`, `m1-attack-v3-run-auth-20261127/`, `m1-attack-v3-abd-run-20261127/`, `m1-attack-v3-c-run-20261127/`. Các tin nhắn gửi SV1 trong tuần nằm ở [`sv3_archive/messages/`](sv3_archive/messages/) (bảng ở [`sv3_archive/README.md`](sv3_archive/README.md), mục 3).
