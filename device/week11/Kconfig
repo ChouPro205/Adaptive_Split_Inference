@@ -1,0 +1,56 @@
+mainmenu "Adaptive Split Inference Week 11 link-state measurements"
+
+choice WEEK11_VARIANT
+	prompt "Week 11 firmware variant (W11-D3)"
+	default WEEK11_LINK_USB
+
+config WEEK11_LINK_USB
+	bool "link-usb: USB CDC + BLE: VERIFY, STATE/ECHO/IDLE/S0C/RECONNECT, SESSION dry run against the KV260"
+
+config WEEK11_LINK
+	bool "link: automatic PPK2 link-state session, no USB/console/log/LED/NVS (week 12 lab)"
+
+endchoice
+
+config WEEK11_BOOT_IDLE_S
+	int "Idle window after the boot self-test, radio off (W7-D3)"
+	default 30
+
+config WEEK11_CONNECTED_IDLE_S
+	int "Connected idle before the first plan entry (s), as week 10"
+	default 30
+
+config WEEK11_SETTLE_S
+	int "Wait after the link is ready, so the peripheral parameter update timer has expired (s)"
+	default 5
+
+config WEEK11_SELFTEST_MS
+	int "Width of each marker pulse in the boot self-test D0..D4"
+	default 200
+
+config WEEK11_CTRL_MIN_US
+	int "Minimum CTRL pulse width so 100 kS/s sampling sees it"
+	default 200
+
+config WEEK11_STATE_TIMEOUT_MS
+	int "STATE / reconnect: time allowed for the central to grant every parameter"
+	default 8000
+
+config WEEK11_STATE_SETTLE_MS
+	int "Connected idle after a STATE before the next entry"
+	default 2000
+
+config WEEK11_ECHO_TIMEOUT_MS
+	int "ECHO WAIT gives up after this long without the expected answer (no retry)"
+	default 5000
+
+config WEEK11_RECONNECT_TIMEOUT_MS
+	int "RECONNECT: disconnect -> ready -> base state must finish within this time"
+	default 30000
+
+config WEEK11_OP_GAP_MS
+	int "Connected idle after every ECHO / S0C / RECONNECT entry"
+	range 0 10000
+	default 250
+
+source "Kconfig.zephyr"
