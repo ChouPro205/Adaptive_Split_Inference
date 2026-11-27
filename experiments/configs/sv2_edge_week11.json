@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "board": "KV260",
+    "os": "PetaLinux 2022.1",
+    "kernel": "5.15.19-xilinx-v2022.1",
+    "vitis_ai": "2.5",
+    "python": "3.9.9",
+    "dpu_arch": "DPUCZDX8G_ISA1_B4096",
+    "dpu_frequency_mhz": 300
+  },
+  "stress": {
+    "seed": 11,
+    "native_splits": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "initial_loads": 10,
+    "warmup_requests_per_split": 20,
+    "switches": 10000,
+    "rss_source": "psutil",
+    "sample_every_switches": 100,
+    "input_mode": "offline I1 v2, P0 with fresh request IDs"
+  },
+  "burst": {
+    "seed": 11,
+    "split_s": 2,
+    "warmup_requests": 20,
+    "burst_count": 3,
+    "jobs_per_burst": 16,
+    "intra_burst_spacing_ms": 1,
+    "burst_period_ms": 3000,
+    "max_pending_background_jobs": 32,
+    "acceptance_min_q": 12,
+    "week10_reference_ms_per_job": 51.7,
+    "q_definition": "Pending jobs after enqueue, including the new job, excluding the active job"
+  },
+  "echo_host": {
+    "mtu_bytes": [23, 247],
+    "mode": ["full", "ack"],
+    "sv1_sizes_bytes": [64, 104, 112, 128, 130, 233, 256, 436, 512, 1024, 2048, 4096],
+    "supplemental_sizes_bytes": [362]
+  },
+  "package_a": {
+    "scope": "HOST CPU dry run",
+    "split_s": 0,
+    "calibration_split": "train",
+    "calibration_samples": 1
+  },
+  "evidence": "results/week11/edge"
+}

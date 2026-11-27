@@ -53,3 +53,7 @@ không phải điều kiện của báo cáo hoặc W10.
 ## SV2 / Edge tuần 10
 
 [Cấu hình](configs/sv2_edge_week10.json), [notebook](notebooks/sv2_edge_week10.ipynb) và [kết quả](../results/week10/edge/README.md).
+
+## SV2 / Edge tuần 11
+
+[Cấu hình](configs/sv2_edge_week11.json), [notebook chỉ đọc](notebooks/sv2_edge_week11.ipynb) và [kết quả đã kiểm SHA](../results/week11/edge/README.md).

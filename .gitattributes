@@ -61,3 +61,8 @@ ml/results/week8-nopeek/**/*.svg -diff -text
 ml/provenance/m1-*/** -text whitespace=cr-at-eol
 # M1 messages are LF and listed in M1 SHA256SUMS; keep LF even with core.autocrlf=true.
 docs/sv3_m1_*.txt text eol=lf
+
+# Derived Week 11 Edge tables and their checksum inventory use LF.
+results/week11/edge/*.txt text eol=lf
+# Preserve the captured FIFO source bytes, including its final blank line.
+edge/server/week11/shared_queue.py -text whitespace=-blank-at-eof
