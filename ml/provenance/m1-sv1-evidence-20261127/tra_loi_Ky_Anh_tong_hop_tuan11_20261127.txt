@@ -1,0 +1,35 @@
+Chào Kỳ Anh, mình đã xem toàn bộ phần bạn gửi ngày 27/11 (nhánh dev/ml-sv3, đầu nhánh 6a776eb). Trả lời theo đúng thứ tự mục của bạn.
+
+1. Khóa r5: xác nhận
+- Mình tự tính lại SHA-256, đều khớp: r5 9235b795…, file khóa b3a89cbb…, plan 96e24da7…, receipt code 33fbe4aa…, bằng chứng của mình 54db34d1… (trùng byte với file mình gửi).
+- verify_lock.py chạy lại trên máy mình: thoát với mã 0, 6/6 trường hợp sai cố ý đều bị từ chối. Diff r4 → r5 chỉ gồm các khóa mình đã xác nhận. Mọi dòng trong SHA256SUMS của receipt code đều khớp.
+- Mình chưa chạy lại được 61 test vì máy mình không có checkpoint A trong ml/data. Phần test mình dựa vào receipt và log của bạn.
+
+2. Code a–d và phương án nhiễu: đồng ý
+- Đồng ý dùng nhiễu sinh mới mỗi epoch, không dùng phương án dự phòng. Ghi vào run manifest trước lần fit đầu; DS2 làm đúng như vậy với part_index 7, như trong file khóa.
+- Các mô hình của cùng một điểm dùng chung một lần rút nhiễu mỗi epoch: được, vì test đã kiểm lockstep cho kết quả như v2.fit. Validation và test dùng luồng part_index riêng.
+- Số epoch thực chạy của từng biến thể thích nghi (patience 5) phải nằm trong bảng kết quả, không chỉ trong manifest. Kẻ tấn công nào dừng trước epoch 20 thì đã thấy ít lần rút nhiễu hơn mức tối thiểu 20 của phương án dự phòng. Mình chỉ cần thấy số đó để viết vào mục hạn chế; đây không phải cổng.
+
+3. File cho phép chạy
+Bạn tự lập file M1_ATTACK_V3_RUN_AUTHORIZATION giống cách làm ở v2 (205ec6db): approved_by SV3, decision_authority "SV1, delegated by GVHD", bằng chứng là tin này. Nội dung:
+- allow_parts = ["a", "b", "d", "c"], chỉ trên DS1, allow_DS2 = false. Mình cho phép luôn cả phần c để bạn không phải chờ thêm một lượt: c chạy sau a (cần thư mục của a) và hạn vẫn là 11/12.
+- Gắn SHA của: protocol r5 9235b795…, file khóa b3a89cbb…, plan 96e24da7…, receipt code 33fbe4aa…, runner attack_m1_v3.py edb73a06…, noise_m1_v3.py 243aacb9…, test_attack_m1_v3.py 213205713f…, khóa checkpoint 6848b08d…, ρ0 fcf3f846….
+- noise_plan = "fresh" (nhiễu mỗi epoch), theo mục 2 của tin này.
+- fault_rule giống v2: chạy dừng giữa chừng thì giữ nguyên thư mục, không xóa, không chạy lại, gửi log cho mình trước.
+- not_covered: DS2 (cả lượt chất lượng lẫn lượt riêng tư đều cần file cho phép riêng), mọi thay đổi code sau receipt 33fbe4aa….
+- Kết quả DS1 chỉ là số phát triển và cảnh báo sớm, không dùng để chọn tham số nào ngoài α. α chỉ chọn trên phần utility, đúng như protocol.
+Chạy lại cổng của runner với 5 trường hợp sai cố ý như v2 rồi push file cùng log trước khi chạy.
+
+4. Threat model bản 2
+Đã sửa đủ mục 4 của review 25/11. Trả lời hai câu của bạn và thêm một điểm:
+(a) "Cost": giữ ở Section III đúng một câu trỏ sang phần đánh giá, kiểu "Its energy and N_ok price as a function of p is evaluated in Section V". Câu "enforces this constraint through a virtual queue" chuyển sang Section IV (controller). Section III chỉ định nghĩa ràng buộc và lý do của nó.
+(b) 36 B: được, nhưng ghi đúng nguồn: "36.4 B on average on DS1 validation (9,523 beats; p95 41 B, max 44 B), body including the first value and the k byte, plus the 2 B FP16 scale". Số chính thức lấy từ lượt DS2 chất lượng thì để [DS2]. Mô tả định dạng S0c của bạn khớp s0c_v1_ref.py.
+(c) Câu đầu đoạn "Leakage budget", "Offloading actions cannot hide identity", hiện đang khẳng định trước khi có kết quả, trong khi nhánh R và C0c vẫn có thể đạt. Mình đã chốt (27/11): giữ Y là tỉ lệ tại chỗ ≥ p; nếu R đạt thì thêm chế độ che danh tính, được khai trước trong protocol G5 v2 (khóa 13/12). Viết lại thành: "Unless a noise-protected configuration qualifies (below), no offloading action hides identity [DS1], [DS2]. If one qualifies, the system also offers an identity-protected mode in which every offloaded beat uses a qualifying action; its price is reported in Section V." Trong ràng buộc tỉ lệ tại chỗ ≥ p, nhịp gửi đi có nhiễu vẫn tính là gửi, vì Y giới hạn nội dung ECG chứ không giới hạn danh tính.
+
+5. DCentNet bản 2
+Ô mô hình năng lượng và phần nén đã đúng ý. Hai câu của bạn:
+(a) Bài IEEE Sensors J 2024: mình sẽ lấy toàn văn rồi gửi bạn. Trong lúc chờ, thêm vào danh sách đọc bài cùng nhóm mà mình tìm thấy bản mở: Li et al., "Decentralised Biomedical Signal Classification using Early Exits", NEWCAS 2023, doi 10.1109/NEWCAS57931.2023.10198098, PDF tại https://par.nsf.gov/servlets/purl/10537792. Bài này có early exit và encoder–decoder ở điểm exit, giảm 60 % dữ liệu gửi, nên nhiều khả năng là tiền thân của DCentNet. Cần một dòng Table I và kiểm lại câu khác biệt.
+(b) Phép thử S1: kết quả đang ở thư mục riêng của mình, chưa có trong repo. Số liệu nằm ở trang 2–3 của bản 3 (v3b) và codec_probe.py trong s0c_v1.zip. Đây là khảo sát trên DS1 validation, chưa khóa, nên không trích làm kết quả của bài. Trong đoạn tiếng Anh, thay "a fixed compressor at the first split was also evaluated" bằng chỗ trống [K], điền sau khi quyết K ngày 13/12: hoặc là kết quả cổng K đo ở lab tuần 12, hoặc là P3. Bảng tiếng Việt nội bộ thì trích bản 3. Mình sẽ đưa kết quả khảo sát vào results/week11 trong PR tuần 11; khi merge xong mình báo đường dẫn.
+
+6. Kế hoạch tiếp theo của bạn
+Đồng ý: kết quả a, b, d trên DS1 ngày 06/12, c ngày 11/12, file tiêu chí chọn mô hình push trước khi khảo sát, script lượt DS2 chất lượng gửi mình trước 07/12 để mình chạy thử trên val trước 09/12.

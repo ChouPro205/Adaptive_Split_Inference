@@ -1,0 +1,39 @@
+authorization 6481e9a2f10eeaddc0f4fbab3b630100eb6c3ba6779b89b0266003b04e222054
+require_authorization part a: ACCEPTED
+require_authorization part b: ACCEPTED
+require_authorization part d: ACCEPTED
+require_authorization part c: ACCEPTED
+protocol: MATCH ml/configs/mitdb_m1_attack_protocol_v3_r5.json
+protocol_lock: MATCH ml/provenance/m1-attack-v3-r5-lock-20261126/m1_attack_v3_r5_protocol_lock.json
+plan_manifest: MATCH ml/manifests/mitdb-attack-m1-v3/plan-manifest.json
+code_receipt: MATCH ml/provenance/m1-attack-v3-code-20261126/receipt.json
+runner: MATCH ml/scripts/attack_m1_v3.py
+noise_script: MATCH ml/scripts/noise_m1_v3.py
+tests: MATCH ml/scripts/test_attack_m1_v3.py
+checkpoint_lock: MATCH ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json
+rho0: MATCH ml/data/runs/mitdb-baseline-v4-20261103/C5-seed20261101/attempt-1/checkpoint-epoch-004.pt
+checkpoint, rho0, runner and part c script in plan: MATCH
+noise_plan fresh, as in the code receipt proposal: MATCH
+review evidence is SV1 2026-11-27 (pinned here, not by the gate): MATCH
+gate limitation: evidence swapped for SV1 2026-11-26 with its own SHA is ACCEPTED by the gate; rejected only by the pinned check above
+negative control allow_DS2=true part a: REJECTED ValueError
+negative control allow_DS2=true part b: REJECTED ValueError
+negative control allow_DS2=true part d: REJECTED ValueError
+negative control allow_DS2=true part c: REJECTED ValueError
+negative control review_evidence=SHA of SV1 2026-11-26 with the 2026-11-27 path part a: REJECTED ValueError
+negative control review_evidence=SHA of SV1 2026-11-26 with the 2026-11-27 path part b: REJECTED ValueError
+negative control review_evidence=SHA of SV1 2026-11-26 with the 2026-11-27 path part d: REJECTED ValueError
+negative control review_evidence=SHA of SV1 2026-11-26 with the 2026-11-27 path part c: REJECTED ValueError
+negative control protocol_sha256=r4 part a: REJECTED ValueError
+negative control protocol_sha256=r4 part b: REJECTED ValueError
+negative control protocol_sha256=r4 part d: REJECTED ValueError
+negative control protocol_sha256=r4 part c: REJECTED ValueError
+negative control type=attack v2 lock part a: REJECTED ValueError
+negative control type=attack v2 lock part b: REJECTED ValueError
+negative control type=attack v2 lock part d: REJECTED ValueError
+negative control type=attack v2 lock part c: REJECTED ValueError
+negative control approved_by empty part a: REJECTED ValueError
+negative control approved_by empty part b: REJECTED ValueError
+negative control approved_by empty part d: REJECTED ValueError
+negative control approved_by empty part c: REJECTED ValueError
+PASS_GATE_CHECK_NO_ARRAY_NO_MODEL_NO_FIT_NO_DS2

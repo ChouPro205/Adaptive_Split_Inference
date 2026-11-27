@@ -1,0 +1,52 @@
+{
+  "type": "M1_ATTACK_V3_RUN_AUTHORIZATION",
+  "allow_parts": ["a", "b", "d", "c"],
+  "allow_DS2": false,
+  "dataset": "DS1 only (N = 22, v2 time split of trial_week11)",
+  "scope": "Parts a, b and d of attack protocol v3 r5 on DS1 by ml/scripts/attack_m1_v3.py run --parts abd, into one new directory under ml/data/runs; then part c on DS1 by ml/scripts/noise_m1_v3.py run with --part-a-dir set to that directory (c needs the part a files). Report only",
+  "order": "a, b, d first (one run); c after a has completed",
+  "protocol_path": "ml/configs/mitdb_m1_attack_protocol_v3_r5.json",
+  "protocol_sha256": "9235b795ec53b9d4c79e90cad4f1114c260e05b8070c67a62fc23be656ca82fb",
+  "protocol_lock_path": "ml/provenance/m1-attack-v3-r5-lock-20261126/m1_attack_v3_r5_protocol_lock.json",
+  "protocol_lock_sha256": "b3a89cbb07c23ca05671c3d8e95435a2de86d810775e80ec0d077c94d0eafff3",
+  "plan_manifest_path": "ml/manifests/mitdb-attack-m1-v3/plan-manifest.json",
+  "plan_manifest_sha256": "96e24da7d24dfc5b2885fd093be33337e6866afa256b2bedcc6cb3725048d7c0",
+  "code_receipt_path": "ml/provenance/m1-attack-v3-code-20261126/receipt.json",
+  "code_receipt_sha256": "33fbe4aabd1362b975e09e6138924a009d737d1899351394075bf61b143cdff6",
+  "code_commit": "affec75",
+  "runner_path": "ml/scripts/attack_m1_v3.py",
+  "runner_sha256": "edb73a0669e040aff75f4dce574d311f88c6f5d0e45e6ba8b7b6f253dd153186",
+  "noise_script_path": "ml/scripts/noise_m1_v3.py",
+  "noise_script_sha256": "243aacb9ff748371154cbbf03a113c276322c9598e8e34f069d1bbe4a1e1aeb6",
+  "tests_path": "ml/scripts/test_attack_m1_v3.py",
+  "tests_sha256": "213205713fc70f28bfae1592bc593b25cbf58aa2f775837e7af2ff0aa9bce6fa",
+  "checkpoint_lock_path": "ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json",
+  "checkpoint_lock_sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc",
+  "rho0_path": "ml/data/runs/mitdb-baseline-v4-20261103/C5-seed20261101/attempt-1/checkpoint-epoch-004.pt",
+  "rho0_sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+  "noise_plan": "fresh",
+  "noise_plan_rule": "Fresh noise every epoch, no fallback: part c runs without --fallback-R. The run manifest records the plan before the first fit, and the DS2 privacy round follows the same plan with part_index 7 (lock run_manifest_requirements). Models of one point share one noise draw per epoch (lockstep); validation and test use their own part_index streams",
+  "results_requirements": [
+    "The epochs actually run by every adaptive variant (patience 5) go into the part c results table, not only into the run manifest (SV1 2026-11-27 section 2, for the limitations section; not a gate)",
+    "DS1 numbers are development numbers and an early warning only. They select no parameter other than alpha, and alpha is selected on the utility part only, as the protocol says"
+  ],
+  "approved_by": "SV3",
+  "decision_authority": "SV1, delegated by GVHD",
+  "decision_date": "2026-11-27",
+  "review_evidence_path": "ml/provenance/m1-sv1-evidence-20261127/tra_loi_Ky_Anh_tong_hop_tuan11_20261127.txt",
+  "review_evidence": "696f3309170ab5649da91806b688cf515bfafe053c342975c93e8b9e0c8a3d55",
+  "review_evidence_author": "SV1",
+  "review_basis": "SV1 2026-11-27 section 1: the SHA of r5, the lock, the plan, the code receipt and SV1's evidence match; verify_lock.py exits 0 with 6/6 negative cases rejected. Section 2: fresh noise every epoch, no fallback; lockstep draws accepted. Section 3: SV3 writes this file as for v2 (205ec6db), parts a, b, d and c on DS1 only, allow_DS2 false, with the SHA listed there, noise_plan fresh, fault_rule as v2, not_covered DS2 and any code change after receipt 33fbe4aa; the runner gate is rerun with 5 negative cases and this file is pushed with its log before the run",
+  "gate_note": "The v3 runner gate checks that review_evidence_path exists and has the SHA stated here; unlike the v2 gate it cannot pin the file through the protocol, since this SV1 message postdates r5. verify_run_authorization.py pins the path and SHA of the 2026-11-27 message instead and shows that the gate alone would accept another SV1 file with its own SHA. The runner is not changed (code after receipt 33fbe4aa is not covered)",
+  "deadlines": {
+    "parts_a_b_d_DS1": "2026-12-06",
+    "part_c_DS1": "2026-12-11"
+  },
+  "effort_cap_start": "2026-11-26 (protocol lock b3a89cbb)",
+  "fault_rule": "If a run stops part way, its output directory is kept as it is (nothing deleted, no rerun) and its logs go to SV1 before any rerun, which then needs its own receipt naming the failed part",
+  "not_covered": [
+    "DS2: both the quality round and the privacy round need their own authorization",
+    "Any code change after code receipt 33fbe4aa (commit affec75)",
+    "The fallback noise plan (--fallback-R)"
+  ]
+}
