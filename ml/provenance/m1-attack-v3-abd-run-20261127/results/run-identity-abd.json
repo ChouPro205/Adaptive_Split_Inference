@@ -1,0 +1,45 @@
+{
+  "authorization_sha256": "6481e9a2f10eeaddc0f4fbab3b630100eb6c3ba6779b89b0266003b04e222054",
+  "plan_manifest_sha256": "96e24da7d24dfc5b2885fd093be33337e6866afa256b2bedcc6cb3725048d7c0",
+  "protocol_sha256": "9235b795ec53b9d4c79e90cad4f1114c260e05b8070c67a62fc23be656ca82fb",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 5060",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "cudnn_allow_tf32": false,
+  "matmul_allow_tf32": false,
+  "deterministic_algorithms": true,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "parts": [
+    "a",
+    "b",
+    "d"
+  ],
+  "DS2_opened": false,
+  "golden_check_s9_s10": {
+    "beats": 20,
+    "splits": [
+      9,
+      10
+    ],
+    "bitwise_equal": true
+  },
+  "s0c_golden_check": {
+    "beats": 20,
+    "arrays_bitwise_equal": true,
+    "bitwise_equal": true,
+    "rice_body_bytes": {
+      "mean": 35.6,
+      "max": 37
+    }
+  },
+  "s0c_reference_check_trial_beats": {
+    "beats": 50995,
+    "bitwise_equal": true,
+    "rice_body_bytes": {
+      "mean": 36.68157662515933,
+      "max": 48
+    }
+  }
+}

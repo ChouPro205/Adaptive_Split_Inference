@@ -1,0 +1,71 @@
+part a s9: Pi=0.1022 CI95=[0.0947, 0.1103] bacc=0.9024
+part a s10: Pi=0.2875 CI95=[0.2787, 0.2975] bacc=0.7256
+part a s0c: Pi=0.0754 CI95=[0.0695, 0.0811] bacc=0.9280
+part b: reproduction gate passed for targets [2, 4, 5, 8, 9, 10]
+part b s0-to-s2: Adv=0.9003
+part b s0-to-s4: Adv=0.9191
+part b s0-to-s5: Adv=0.9242
+part b s0-to-s8: Adv=0.9320
+part b s0-to-s9: Adv=0.8976
+part b s0-to-s10: Adv=0.7126
+part b s0c-to-s2: Adv=0.4125
+part b s0c-to-s4: Adv=0.4996
+part b s0c-to-s5: Adv=0.5095
+part b s0c-to-s8: Adv=0.7821
+part b s0c-to-s9: Adv=0.8703
+part b s0c-to-s10: Adv=0.6730
+part b s2-to-s4: Adv=0.9193
+part b s2-to-s5: Adv=0.9243
+part b s2-to-s8: Adv=0.9321
+part b s2-to-s9: Adv=0.8978
+part b s2-to-s10: Adv=0.7124
+part b s4-to-s5: Adv=0.9242
+part b s4-to-s8: Adv=0.9321
+part b s4-to-s9: Adv=0.8979
+part b s4-to-s10: Adv=0.7125
+part b s5-to-s8: Adv=0.9322
+part b s5-to-s9: Adv=0.8977
+part b s5-to-s10: Adv=0.7125
+part b s8-to-s9: Adv=0.8975
+part b s8-to-s10: Adv=0.7126
+part b s9-to-s10: Adv=0.7126
+part d s0c: Pi_k10=0.011190476190476084
+part d s0: Pi_k10=0.005952380952381042
+part d s2: Pi_k10=0.0033333333333332993
+part d s4: Pi_k10=0.0048412698412697575
+part d s5: Pi_k10=0.005079365079365128
+part d s8: Pi_k10=0.00436507936507935
+part d s9: Pi_k10=0.006269841269841314
+part d s10: Pi_k10=0.0631746031746031
+{
+  "a": {
+    "Pi_naive": {
+      "s9": 0.10221817175070402,
+      "s10": 0.2874598024612963,
+      "s0c": 0.07540194478617968
+    },
+    "reading_declared_before_run": {
+      "Pi_logits": "Pi_logits_below_Pi_min"
+    },
+    "note": "Pi_v3(s9) and Pi_v3(s0c) come from part b (max with B_composite); Pi_logits = Pi of B_naive at s10"
+  },
+  "b": {
+    "s0": 0.06798971942672505,
+    "s0c": 0.07540194478617968,
+    "s2": 0.06792808062446254,
+    "s4": 0.06786023708039224,
+    "s5": 0.06783026285672789,
+    "s8": 0.06789466734497485,
+    "s9": 0.10221817175070402
+  },
+  "d": {
+    "s0c": 0.011190476190476084,
+    "s0": 0.005952380952381042,
+    "s2": 0.0033333333333332993,
+    "s4": 0.0048412698412697575,
+    "s5": 0.005079365079365128,
+    "s8": 0.00436507936507935,
+    "s9": 0.006269841269841314,
+    "s10": 0.0631746031746031
+  }
+}
