@@ -1,0 +1,17 @@
+{
+  "workload_pass": true,
+  "scope": "KV260_ROOT_CPU_DPU_BACKGROUND_FIFO",
+  "seed": 11,
+  "arrived": 48,
+  "completed": 48,
+  "dropped": 0,
+  "failed": 0,
+  "parity_errors": 0,
+  "q_max": 15,
+  "q_definition": "Pending jobs after enqueue including the new job; excludes active job",
+  "worker_returncode": 0,
+  "queue_wait_slope_ms_per_job": 49.41598492413747,
+  "week10_reference_ms_per_job": 51.7,
+  "delta_from_reference_ms_per_job": -2.284015075862534,
+  "source_inventory_sha256": "03df98f72858505803ab9bb1e7c1a4c82c01b7a21e62c2d5ebb3f74a3dfdabc3"
+}

@@ -1,0 +1,31 @@
+{
+  "status": "HOST_ECHO_OK",
+  "scope": "HOST_I1_BLE_BINDING",
+  "sv1_vectors": 24,
+  "supplemental_vectors": 2,
+  "binding_checks": 52,
+  "mtu": [
+    23,
+    247
+  ],
+  "sizes_bytes": [
+    64,
+    104,
+    112,
+    128,
+    130,
+    233,
+    256,
+    362,
+    436,
+    512,
+    1024,
+    2048,
+    4096
+  ],
+  "sv1_vectors_sha256": "6aaaed46c5caf217330837bbc27ae75b4f61dfe4d13e6d9cf874fcafde73c950",
+  "binding_source_sha256": {
+    "contracts/i1v2_ref/i1v2_reference.py": "fc46db5cd647d03a05b693140cde4f6ae7a83e01ffb84738fabc854aafea8e63",
+    "contracts/i1v2_ref/i1_ble_binding.py": "931737f8f2996b58e0a122464c391d009665fc551a0900db3cc0929db1c5b1f0"
+  }
+}
