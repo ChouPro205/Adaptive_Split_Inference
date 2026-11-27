@@ -1,0 +1,6 @@
+?? ml/provenance/m1-attack-v3-c-run-20261127/
+?? ml/provenance/week8-20261029/preflight-ignored-paths.txt
+?? ml/provenance/week8-20261029/preservation-before.json
+?? ml/provenance/week8-20261029/week7-tests-O.stderr.txt
+?? ml/provenance/week8-20261029/week7-tests.stderr.txt
+?? ml/provenance/week8-continuation-20261030/analysis-tests.stderr.txt

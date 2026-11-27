@@ -1,0 +1,81 @@
+{
+  "protocol_sha256": "9235b795ec53b9d4c79e90cad4f1114c260e05b8070c67a62fc23be656ca82fb",
+  "authorization_sha256": "6481e9a2f10eeaddc0f4fbab3b630100eb6c3ba6779b89b0266003b04e222054",
+  "sigma_sha256": "2a443e5eb08ea64496e54dc98df04e17e2f0e5aa07ea03a6448481e48a0848d8",
+  "utility_sha256": "dafabfc7a1ea8980f630e74e37ffb7ee38b73ed6a2c4cee47e3127468bf5528f",
+  "points": [
+    {
+      "config": "R2",
+      "target": "99/100",
+      "alpha_t": 0.07052,
+      "pair_key": 8
+    },
+    {
+      "config": "R2",
+      "target": "49/50",
+      "alpha_t": 0.218991,
+      "pair_key": 9
+    },
+    {
+      "config": "R2",
+      "target": "97/100",
+      "alpha_t": 0.32597,
+      "pair_key": 10
+    },
+    {
+      "config": "R2",
+      "target": "19/20",
+      "alpha_t": 0.411438,
+      "pair_key": 11
+    },
+    {
+      "config": "C0c",
+      "target": "99/100",
+      "alpha_t": 0.035259,
+      "pair_key": 12
+    },
+    {
+      "config": "C0c",
+      "target": "49/50",
+      "alpha_t": 0.062769,
+      "pair_key": 13
+    },
+    {
+      "config": "C0c",
+      "target": "97/100",
+      "alpha_t": 0.07753,
+      "pair_key": 14
+    },
+    {
+      "config": "C0c",
+      "target": "19/20",
+      "alpha_t": 0.091206,
+      "pair_key": 15
+    }
+  ],
+  "noise_plan": {
+    "kind": "fresh"
+  },
+  "part_a_files_sha256": {
+    "s0c-rho0-arrays.npz": "3f6e84f12d3d925bcf80ad4b35e4ac7d7cd9b5e4e4120f90dbe24f3855ac6e64",
+    "s0c-rho0-attackers.pt": "7f7b89f73df54479b1f78333176b7442bc90c8ff89644a8d3664abcdf1ece3d7",
+    "s0c-rho0.json": "9f0ae1ba0f87a64a1ef3852913836f298233ccc5a7e08ca7e4df3d363528d143",
+    "s10-rho0-arrays.npz": "ee778f3f86af82695a6ef3b2425068c883452d1a6f1eb98c5f1b6cc2df103fa3",
+    "s10-rho0-attackers.pt": "de0ba679a6f8ec3bc95ef7fc17ff6a6a899245ca063b9d14ea8109c0f9ce855a",
+    "s10-rho0.json": "c94de04f150db3ceead8ed86b4388e8f1e476660055040327d89b7b12225de03",
+    "s9-rho0-arrays.npz": "92bb5cab267aabaf9d7c76e5914f0ff425dbf15268d346d6f5423ec6c6f9a9af",
+    "s9-rho0-attackers.pt": "4a8426dba8c32f90d7f94555b98db7771952d4573eaad0bf38614a2cd87edd96",
+    "s9-rho0.json": "4bfc1c1e639242908bb7557548e8257d57a5adedf5494b6688e7d01c72fdb307"
+  },
+  "DS2_rule_from_lock": "DS2 follows the DS1 noise plan, with part_index 7 in place of 0 (lock run_manifest_requirements)",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 5060",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "cudnn_allow_tf32": false,
+  "matmul_allow_tf32": false,
+  "deterministic_algorithms": true,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "written": "before the first privacy fit"
+}
