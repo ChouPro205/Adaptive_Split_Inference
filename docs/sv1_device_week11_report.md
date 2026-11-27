@@ -1,9 +1,20 @@
 # Báo cáo SV1 tuần 11 — chuẩn bị lab trạng thái kênh BLE tuần 12, định nghĩa S0c, mô hình E_tx
 
-> **BẢN NHÁP 27/11/2026, chưa nghiệm thu.** Đã có: §1 (plan lab tuần 12, W11-D6), §2 (luật phân tích
-> W11-D7…D14), §3 (TC5, mô hình E_tx từ raw tuần 10), phụ lục B (cách chạy). Chưa có: VERIFY trên dongle,
-> TC2/TC3, kết quả lab.
-> Các số trong §1.4 là ước lượng, không phải số đo.
+> **Nghiệm thu 27/11/2026: 7/7 TC đạt.**
+> - Firmware `link`/`link-usb` build từ cây sạch (commit `2398cda`). VERIFY PASS trên dongle ở cả hai phiên.
+> - Plan và luật phân tích của lab tuần 12 đã commit và push trước phiên đo.
+> - Các số trong §1.4 là ước lượng, không phải số đo.
+> - Kết quả nằm ở `results/week11/device`; manifest tính SHA-256 trên bản LF trong Git.
+
+| TC | Nội dung | Kết quả | Bằng chứng |
+|---|---|---|---|
+| TC1 | Review protocol tấn công v3 r3 → r4 → r5 | **ĐẠT**: r5 khóa ngày 26/11 (`3f6a6de`); diff r4 → r5 chỉ gồm 3 sửa đã xin | §6 |
+| TC2 | Bảng hội nghị / tạp chí + hạng Q | **ĐẠT** (hồ sơ ngoài repo, Châu gửi nhóm) | §7 |
+| TC3 | Biên bản quyết định | **ĐẠT** (hồ sơ ngoài repo, Châu gửi nhóm); các mục kỹ thuật ở §7 | §7 |
+| TC4 | Firmware + công cụ lab tuần 12, khóa trước lab | **ĐẠT**: 4 image build sạch, kiểm tĩnh PASS; VERIFY PASS 10/10 ở cả 2 phiên; bộ mã S0c bằng C khớp tham chiếu 100/100 | §4 |
+| TC5 | Mô hình E_tx (tiêu chí thầy tuần 11) | **ĐẠT**: R² 0,996 (marker) và 0,995 (burst), đều ≥ 0,98; đã giải thích α và phần dư của s0 | §3 |
+| TC6 | Hồ sơ: báo cáo, results, test host, PR | **ĐẠT**: test host 37/37 PASS, manifest theo bản LF, PR tuần 11 | phụ lục A |
+| TC7 | Định nghĩa S0c + S1 cố định | **ĐẠT**: `contracts/s0c_v1_ref`, `contracts/s1f_v1_ref`, golden 20 nhịp, đề xuất payload I1 | §5 |
 
 Tuần 11 không có phiên PPK2 (W11-D1). Lab trạng thái kênh làm ở tuần 12 với image `link` của
 `device/week11/`. Mọi luật phân tích trong báo cáo này được commit và push trước phiên đo đầu tiên. Nếu sửa
@@ -297,13 +308,120 @@ Lặp lại giữa hai phiên: E_burst của s0 là 138,6 và 129,1 µJ, của s
 - Luật W11-D10 tuần 11 cũng fit E_tx theo D2, nên gặp cùng vấn đề. Đã sửa ngày 27/11, trước khi commit luật
   (§2, W11-D10).
 
-## 4. Việc còn mở (ghi lại khi nghiệm thu)
+## 4. TC4 — firmware và công cụ của lab tuần 12
 
-- TC4: build chính thức từ cây sạch, VERIFY trên dongle (USB), commit + push plan/luật trước lab.
-- Coded của KV260: chờ phần 1 của Trung (H3). Nếu không có Coded thì hai khối Coded tự bị loại; phương án
-  central Coded khác do Châu quyết.
-- Dạng log echo / link-event với Trung (H4).
-- TC2, TC3, TC6.
+- Commit `2398cda`, cây sạch.
+- Plan chính thức ở `D:\HUST\ASI_week11\plan-20261127` (bản sao: `results/week11/device/plan`). Chạy lại bộ sinh cho
+  kết quả trùng byte; SHA plan như §1.3. `echo_vectors.json` là `6aaaed46…`, đúng bản đã gửi Trung ngày 26/11.
+- Bốn image qua kiểm tĩnh `check_week11_build.py` (`results/week11/device/build_resources.csv`):
+
+| Image | build_id | bin (B) | Hết ảnh | RAM tĩnh (B) |
+|---|---|---:|---|---:|
+| link-usb s0 | `2398cda9cba3-week11-link-usb-s0-20261127T075959Z` | 326 384 | 0x50af0 | 62 691 |
+| link-usb s1 | `2398cda9cba3-week11-link-usb-s1-20261127T080153Z` | 326 384 | 0x50af0 | 62 691 |
+| link s0 | `2398cda9cba3-week11-link-s0-20261127T080254Z` | 292 156 | 0x4853c | 54 296 |
+| link s1 | `2398cda9cba3-week11-link-s1-20261127T080340Z` | 292 156 | 0x4853c | 54 296 |
+
+- Ảnh kết thúc trước phân vùng NVS, nên kho NONCE của tuần 6–10 được giữ nguyên. Image `link` không dùng NONCE.
+- VERIFY trên dongle (cắm USB laptop, `week11_lab.py verify`): mỗi phiên PASS 10/10. Các phép kiểm:
+  - banner đúng biến thể, đúng phiên, đúng SHA bộ mẫu W8-D3 và SHA plan;
+  - digest plan tính trên thiết bị bằng digest của plan;
+  - S0c v1 của 100 đầu vào W8-D3 bằng tham chiếu Python, trùng từng byte.
+- Lần chuyển dongle ngày 27/11:
+  - Dongle rời breakout PPK2, cắm sang USB laptop.
+  - Nạp `link-usb s0` lúc 15:01 và `link-usb s1` lúc 15:06; cả hai lần nạp đều thành công (`results/week11/device/dfu`).
+  - Dongle đang chạy `link-usb s1` để chạy thử cùng KV260 (H4). Trước phiên PPK2: nạp `link s0`, trả dongle về breakout.
+- Lần build đầu (`build-20261127-clean-link-usb-s0`) dừng giữa chừng. Nguyên nhân: script bọc PowerShell coi
+  dòng stderr của west là lỗi. Image này chưa từng được nạp, đã được thay bằng các bản `build-20261127b-*`, và
+  được ghi ở mục `lab_notes` trong `manifest.json`.
+
+## 5. TC7 — S0c v1 và bộ nén S1 cố định (S1F v1)
+
+**S0c v1** (`contracts/s0c_v1_ref`, SHA `323ffaba…`, lập ngày 25/11): gom 360 → 46 mẫu, lượng tử INT8, mã Rice.
+- Trên 9.523 nhịp DS1 val: trùng từng bit với đường PyTorch của phép thử 20/11; macro-F1 0,568057.
+- Thân Rice trung bình 36,44 B, p95 41 B, tối đa 44 B.
+- Bộ mã C trên dongle (`device/week11/s0c.c`):
+  - khớp golden, 100 đầu vào W8-D3 và 2000 đầu vào ngẫu nhiên (`test_week11_s0c_host.py`);
+  - khớp khi chạy trên MCU (VERIFY, §4).
+- Kỳ Anh đã kiểm x của golden bằng `z_s0` của gói A (20/20). Trung đã kiểm 20/20 phía edge.
+
+**S1F v1** (`contracts/s1f_v1_ref`, mã `292d0914…`, hằng số `36b2a6da…`, lập ngày 27/11).
+- Cách làm: s1 [16, 360] → gom 23 bin → chiếu 16 → 2 kênh bằng B và c (lấy từ conv1 của checkpoint A, không fit)
+  → INT8 theo kênh → 46 B.
+- Trên 9.523 nhịp DS1 val:
+  - q trùng đường PyTorch ở 9.522/9.523 nhịp. Latent của torch lệch tối đa 1,9e-6 vì BLAS cộng theo thứ tự khác.
+  - Nhãn trùng 9.523/9.523. Macro-F1 0,561924, bằng phép thử 20/11 và trên mốc 0,5398.
+  - S1F20 (chẩn đoán) trùng bit ở mọi bước; macro-F1 0,351670.
+- Luật khớp:
+  - phía device: trùng từng byte;
+  - phía edge, tính từ payload golden: latent sau giải lượng tử phải đúng, đầu vào tail lệch tối đa 1e-6, nhãn
+    trùng. PyTorch giải từ cùng payload lệch tối đa 4,8e-7.
+  - `test_week11_s1f_host.py`: 7/7.
+- 20 nhịp golden đều là nhịp N (bản ghi 101). Vì vậy phép kiểm nhãn dùng tập con DS1 val, làm sau khi có xmodel gói A.
+
+**Đề xuất payload trong I1 v2** (chốt ở addendum I1 v2 r1 cùng Trung, tuần 13):
+- split_id 272 cho S0c: dims [1,1,46], `reserved_tensor` 0x01 (Rice), payload là thân Rice, tổng 76 B + thân.
+- split_id 273 cho S1F46: dims [1,2,23], 130 B.
+- split_id 274 cho S1F20: dims [1,2,10], 104 B.
+- `flags` = 0 cho cả ba. Các cỡ khung khớp cỡ ECHO của W11-D2 (104/112/130 B).
+
+Kết quả phép thử nén 20/11 (để trích dẫn) nằm ở `results/week11/device/analysis/compression-20261120/`:
+`codec_results.json`, `wire_results.json`, script `codec_probe.py` (SHA `2a538a34…`) và `check_wire.py`.
+
+## 6. TC1 — review protocol tấn công v3 (Kỳ Anh)
+
+- Diễn tiến: r3 (`d5c9158`, 21/11) → review ngày 25/11 → r4 (`1fd830f`, 26/11) → xin 3 sửa → r5 (`2284ea8`) → xác
+  nhận khóa ngày 26/11 → file khóa (`3f6a6de`, `b3a89cbb…`).
+- SV1 tự tính lại mọi SHA và chạy lại `verify_lock.py`: mã thoát 0, 6/6 trường hợp sai cố ý đều bị từ chối.
+- Các điểm review đã được đưa vào protocol:
+  - Π_k10 có thêm cách gộp trung bình k tensor và kẻ tấn công sạch ρ0;
+  - kẻ tấn công thích nghi train trên nhiễu sinh mới mỗi epoch;
+  - chỉ dùng C0c;
+  - DS2 mở hai lượt: chất lượng (10/12) và riêng tư (tuần 14);
+  - mọi cổng macro-F1 trên DS2 là tương đối: 19/20 × F1_DS2(A);
+  - seed nhiễu DS2 dùng part_index 4–7.
+- 27/11: code phần a–d (`affec75`, plan `96e24da7…`, receipt `33fbe4aa…`). SV1 cho phép chạy a, b, d, c trên DS1,
+  không mở DS2.
+
+## 7. TC2, TC3 — nơi nộp và biên bản quyết định
+
+Hai hồ sơ dạng Word nằm ngoài repo, Châu gửi nhóm. Dưới đây là các quyết định ảnh hưởng tới phần thiết bị và tới
+protocol G5 v2 (khóa ngày 13/12):
+
+- Y = tỉ lệ nhịp xử lý hoàn toàn tại chỗ ≥ p. p chính 0,25; quét {0; 0,1; 0,25; 0,5; 0,75}, trong đó p = 0 chỉ báo.
+- Nhịp gửi đi có nhiễu vẫn tính là gửi. Nếu nhánh R đạt thì thêm một chế độ che danh tính, khai trước.
+- D = 500 ms. Holter: D_r = 10 s, quét {5; 30} s.
+- Tập hành động radio: các trạng thái W11-D3 mà central cấp được ở lab tuần 12, cộng tắt radio (ngắt rồi kết nối
+  lại) và gom nhịp (Holter). Mức −8 dBm chỉ báo.
+- Tập payload edge-only dùng chung: S0 thô, S0 Rice, và S0c nếu qua cổng DS2. static-best tìm vét cạn trên trace dev.
+- R14: mô phỏng G5 dùng mô hình đo của t_wait, không giới hạn q. Thí nghiệm đầu–cuối đặt
+  `max_pending_background_jobs` = 32.
+- Mô hình E_tx(B) trong bài dùng E_tx,full theo connection event (TC5), không dùng 0,24 µJ/B cho payload một event.
+
+## 8. Việc còn mở (từ tuần 12)
+
+- H4 (tuần 12): buổi chạy thử chung với Trung, dùng image `link-usb`. Kiểm central cấp đúng tham số ở từng khối
+  (Coded, L2/L4/L9), echo ack/full, kết nối lại và log JSONL. Sau buổi này mới đặt `--seconds` cho phiên PPK2.
+- H5 (tuần 12): hai phiên PPK2 với image `link` s0 và s1 (dongle về breakout, laptop cắm sạc).
+- Trung: H6 (giải mã S0c/S1F + tail trên KV260, hạn 06/12), H7 (xmodel gói A, hạn 06/12), log JSONL theo dạng đã gửi.
+- Kỳ Anh: phần a, b, d trên DS1 (06/12), phần c (11/12); script lượt DS2 chất lượng gửi SV1 trước 07/12.
+- SV1: protocol G5 v2 (13/12); addendum I1 v2 r1 cho S0c/S1F (tuần 13).
+
+## Phụ lục A. Tiêu chí, quyết định, cách nghiệm thu
+
+- Tiêu chí TC1–TC7: như bảng ở đầu báo cáo (kế hoạch tuần 11 lập 19/11, sửa 25/11).
+- Quyết định W11-D1…D14:
+  - W11-D1: tuần 11 không có phiên PPK2.
+  - W11-D2: payload sweep qua luồng ECHO.
+  - W11-D3: các trạng thái kênh, đổi từng tham số một quanh trạng thái gốc.
+  - W11-D4: báo số thô gộp, số lõi và khoảng giữa các phiên.
+  - W11-D5 (dongle HCI): bỏ, vì Trung xác nhận ngày 26/11 là KV260 có LE Coded.
+  - W11-D6: plan 2 phiên.
+  - W11-D7…D14: luật phân tích ở §2. W11-D10 sửa ngày 27/11 sau TC5, trước khi có dữ liệu tuần 12.
+- Test host (PowerShell, gcc trên PATH): `test_week11_host.py` 5/5, `test_week11_s0c_host.py` 6/6,
+  `test_week11_s1f_host.py` 7/7, `test_week11_etx_host.py` 6/6, `test_week11_analysis_host.py` 13/13.
+- `results/week11/device/manifest.json` ghi SHA-256 của mọi file theo bản LF trong Git. Các file raw để ngoài Git
+  (gói DFU, cdc.log) được liệt kê kèm SHA.
 
 ## Phụ lục B. Cách chạy
 
@@ -315,6 +433,7 @@ PowerShell tại gốc repo. Thêm gcc vào PATH bằng `$env:Path = 'C:\msys64\
    - `device\scripts\test_week11_s0c_host.py`
    - `device\scripts\test_week11_analysis_host.py`
    - `device\scripts\test_week11_etx_host.py`
+   - `device\scripts\test_week11_s1f_host.py`
    - TC5: `device\scripts\week11_etx_tc5.py --out <thư mục mới>` (mặc định đọc `D:\HUST\ASI_week10\B1-20261119-1537`
      và `B2-20261119-1557`, ~5 phút).
 2. Plan: `device\scripts\generate_week11_plan.py --output <thư mục mới>`. Ước lượng thời lượng:
@@ -330,3 +449,6 @@ PowerShell tại gốc repo. Thêm gcc vào PATH bằng `$env:Path = 'C:\msys64\
    <receipt> --plan <plan> --session k [--seconds <chạy thử + 120>]`.
 7. Sau phiên: `week11_ppk2.py import --out <phiên> --kv260-log <echo.jsonl> --link-events <links.jsonl>
    [--btsnoop <file>]`. Tổng hợp: `week11_ppk2.py summary --session <phiên 0> --session <phiên 1> --out <mới>`.
+8. Hồ sơ: `device\scripts\publish_week11_results.py --lab D:\HUST\ASI_week11 --verify 0=<verify s0> --verify 1=<verify s1>
+   --extra <thư mục>=analysis/compression-20261120 --out results\week11\device`.
+9. S1F v1: `build_s1f_v1.py` trong gói `s1f_v1.zip` (xem README trong gói); kiểm lại: `test_week11_s1f_host.py`.

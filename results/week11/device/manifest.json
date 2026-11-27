@@ -1,0 +1,297 @@
+{
+  "schema": "week11-results-manifest/1",
+  "created_utc": "2026-11-27T08:08:34.656738+00:00",
+  "plan": {
+    "folder": "D:\\HUST\\ASI_week11\\plan-20261127",
+    "sessions": {
+      "s0": {
+        "seed": 20261126,
+        "entries": 1362,
+        "plan_sha256": "4054816b8bb75268eaf7387eef862e3627947023c8166ad6093b4c12252f79c6",
+        "block_order": [
+          "base",
+          "L4",
+          "coded-k30-len27",
+          "L9",
+          "k50",
+          "1M-k30",
+          "len27",
+          "k30",
+          "tx-8",
+          "L2",
+          "1M",
+          "coded-k30",
+          "k7.5",
+          "k100",
+          "base"
+        ],
+        "ops": {
+          "STATE": 15,
+          "IDLE": 29,
+          "ECHO": 1260,
+          "S0C": 50,
+          "RECONNECT": 8
+        }
+      },
+      "s1": {
+        "seed": 20261127,
+        "entries": 1362,
+        "plan_sha256": "862808fbf8e3a0bbc92075144bcc0aadb0136b1f62d99f0727fb5ef640f4d6b3",
+        "block_order": [
+          "base",
+          "1M-k30",
+          "tx-8",
+          "coded-k30",
+          "k100",
+          "k30",
+          "L9",
+          "len27",
+          "k50",
+          "L4",
+          "coded-k30-len27",
+          "k7.5",
+          "L2",
+          "1M",
+          "base"
+        ],
+        "ops": {
+          "STATE": 15,
+          "IDLE": 29,
+          "ECHO": 1260,
+          "S0C": 50,
+          "RECONNECT": 8
+        }
+      }
+    }
+  },
+  "check_reports": [
+    {
+      "session": "verify-20261127-link-usb-s0",
+      "kind": "verify",
+      "file": "sessions/verify-s0_verify-20261127-link-usb-s0/check_verify-20261127T080142Z.json",
+      "status": "PASS"
+    },
+    {
+      "session": "verify-20261127-link-usb-s1",
+      "kind": "verify",
+      "file": "sessions/verify-s1_verify-20261127-link-usb-s1/check_verify-20261127T080709Z.json",
+      "status": "PASS"
+    }
+  ],
+  "failed_dfu_receipts": [],
+  "raw_outside_git": [
+    {
+      "path": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-usb-s0\\adaptive_split_week11_link-usb_s0.zip",
+      "sha256": "b9484123039724a1dd441479a85e24d1a8b67ffa37987fbee8c60a7e738c42e7",
+      "bytes": 326913,
+      "note": "DFU package link-usb-s0"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-usb-s1\\adaptive_split_week11_link-usb_s1.zip",
+      "sha256": "5ef82d86aa13a06b4c18dd45a4d960e3f3897ffa5c27ac37d19633e834d3ce4f",
+      "bytes": 326913,
+      "note": "DFU package link-usb-s1"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-s0\\adaptive_split_week11_link_s0.zip",
+      "sha256": "82d4df36d3cdd415fa9bd1006e0c6a61ee46b7a11f040ed9974451c1b455c2d4",
+      "bytes": 292685,
+      "note": "DFU package link-s0"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-s1\\adaptive_split_week11_link_s1.zip",
+      "sha256": "d5e9b4332c68416f521ce260cb69ac8774b9ca2bf8c62a8859da09c48eca88bc",
+      "bytes": 292685,
+      "note": "DFU package link-s1"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week11\\verify-20261127-link-usb-s0\\cdc.log",
+      "sha256": "ac05c1e5cb34a47c0a90f3e2e554d5b43bdfdba1dc7dc7d064e2e4c9c76976b2",
+      "bytes": 14472,
+      "note": "verify session 0: USB CDC log"
+    },
+    {
+      "path": "D:\\HUST\\ASI_week11\\verify-20261127-link-usb-s1\\cdc.log",
+      "sha256": "f41ff93d4a0b28f5c6e9052a6807e085bfb360c02367e654485d8b5daddb205e",
+      "bytes": 14472,
+      "note": "verify session 1: USB CDC log"
+    }
+  ],
+  "lab_notes": [
+    {
+      "path": "D:/HUST/ASI_week11/build-20261127-clean-link-usb-s0",
+      "note": "aborted: the wrapper PowerShell treated west stderr as an error; build incomplete, never flashed, superseded by build-20261127b-*"
+    }
+  ],
+  "eol_note": "files[].sha256/bytes are of the LF bytes stored in Git (text suffixes hashed with CRLF -> LF)",
+  "files": [
+    {
+      "path": "analysis/compression-20261120/check_wire.py",
+      "sha256": "348669b8d19892d200cd4b18f366e0e1511544dc1affc2d5095da9d277b205f4",
+      "bytes": 3356,
+      "source": "C:\\Users\\admin\\AppData\\Local\\Temp\\claude\\cf9bb4e406f6e58b\\0eda438d-07c4-42ba-bcf6-bb07e2276609\\scratchpad\\compression-stage\\check_wire.py"
+    },
+    {
+      "path": "analysis/compression-20261120/codec_probe.py",
+      "sha256": "2a538a34992f9a61a441191af7dee2d7c86c75cae79f0e0050cae94a19df58b3",
+      "bytes": 7920,
+      "source": "C:\\Users\\admin\\AppData\\Local\\Temp\\claude\\cf9bb4e406f6e58b\\0eda438d-07c4-42ba-bcf6-bb07e2276609\\scratchpad\\compression-stage\\codec_probe.py"
+    },
+    {
+      "path": "analysis/compression-20261120/codec_results.json",
+      "sha256": "65185afe4be3b0db73eee5b16510dba478fccbd9cfbc2e80bb48390729c0ea7b",
+      "bytes": 21105,
+      "source": "C:\\Users\\admin\\AppData\\Local\\Temp\\claude\\cf9bb4e406f6e58b\\0eda438d-07c4-42ba-bcf6-bb07e2276609\\scratchpad\\compression-stage\\codec_results.json"
+    },
+    {
+      "path": "analysis/compression-20261120/wire_results.json",
+      "sha256": "c6a5101f8747fb8b132bfd52564e25e783f7850bd945eb600ecbf4dfc00daa4c",
+      "bytes": 970,
+      "source": "C:\\Users\\admin\\AppData\\Local\\Temp\\claude\\cf9bb4e406f6e58b\\0eda438d-07c4-42ba-bcf6-bb07e2276609\\scratchpad\\compression-stage\\wire_results.json"
+    },
+    {
+      "path": "build_check/link-s0_source.json",
+      "sha256": "109701241407e801c375d387dacc4cf5676c7cc48ab9b86000a7cf3b05ab9fd5",
+      "bytes": 1633,
+      "source": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-s0\\source.json"
+    },
+    {
+      "path": "build_check/link-s0_week11_build_check.json",
+      "sha256": "a31fb63a45e6a2503a44f6f3c12b1ddefe23337770bef3b3d3e51ac195fac8de",
+      "bytes": 26147,
+      "source": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-s0\\week11_build_check.json"
+    },
+    {
+      "path": "build_check/link-s1_source.json",
+      "sha256": "fe01e79680c16f05a4256997214d4af05455d514c91a08b87f43a202da031513",
+      "bytes": 1633,
+      "source": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-s1\\source.json"
+    },
+    {
+      "path": "build_check/link-s1_week11_build_check.json",
+      "sha256": "de8d94718e7a839e27193b54db3f5678637908eae98c6a79e333da88238fc275",
+      "bytes": 26147,
+      "source": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-s1\\week11_build_check.json"
+    },
+    {
+      "path": "build_check/link-usb-s0_source.json",
+      "sha256": "e5283bf4aff44d985cdb8c13493ef68ef2e3b420cc4986c4887ffce51dba1fbd",
+      "bytes": 1641,
+      "source": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-usb-s0\\source.json"
+    },
+    {
+      "path": "build_check/link-usb-s0_week11_build_check.json",
+      "sha256": "55540c3265671e6c4f478594f80494a0e0f2f8ac16160e0d56aef640de24525a",
+      "bytes": 26530,
+      "source": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-usb-s0\\week11_build_check.json"
+    },
+    {
+      "path": "build_check/link-usb-s1_source.json",
+      "sha256": "244068a75f5a41e74706d8f5e1a8895be03b7e8f8f89186c0f37f851878e6f5a",
+      "bytes": 1641,
+      "source": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-usb-s1\\source.json"
+    },
+    {
+      "path": "build_check/link-usb-s1_week11_build_check.json",
+      "sha256": "6a33401f1bc86d9483d43786eb7aa40eeba102e8780988248775dfbbccd241f9",
+      "bytes": 26530,
+      "source": "D:\\HUST\\ASI_week11\\build-20261127b-clean-link-usb-s1\\week11_build_check.json"
+    },
+    {
+      "path": "build_resources.csv",
+      "sha256": "c32b931f0f3671eb5279aade063971e63c0dab65da191745a6d140a11f28d69a",
+      "bytes": 1286,
+      "source": "derived: build_check/*_week11_build_check.json"
+    },
+    {
+      "path": "dfu/dfu-20261127-150110-week11-link-usb-s0.json",
+      "sha256": "d48c40eef0e03ad210d90c4e644c4bf83f722882e08e7738d6246f1c61dba95d",
+      "bytes": 1359,
+      "source": "D:\\HUST\\ASI_week11\\dfu\\dfu-20261127-150110-week11-link-usb-s0.json"
+    },
+    {
+      "path": "dfu/dfu-20261127-150110-week11-link-usb-s0.log.txt",
+      "sha256": "3993ec98fefbe94c6d0dd31e3060c1c5fe9d7ec15cb3e2de292ea7e6ac02fea8",
+      "bytes": 23,
+      "source": "D:\\HUST\\ASI_week11\\dfu\\dfu-20261127-150110-week11-link-usb-s0.log"
+    },
+    {
+      "path": "dfu/dfu-20261127-150637-week11-link-usb-s1.json",
+      "sha256": "51431cd1e04c20087708ad2a5a21bdcf06f0987ae8a5e58520ae5cc2cee91d66",
+      "bytes": 1359,
+      "source": "D:\\HUST\\ASI_week11\\dfu\\dfu-20261127-150637-week11-link-usb-s1.json"
+    },
+    {
+      "path": "dfu/dfu-20261127-150637-week11-link-usb-s1.log.txt",
+      "sha256": "3993ec98fefbe94c6d0dd31e3060c1c5fe9d7ec15cb3e2de292ea7e6ac02fea8",
+      "bytes": 23,
+      "source": "D:\\HUST\\ASI_week11\\dfu\\dfu-20261127-150637-week11-link-usb-s1.log"
+    },
+    {
+      "path": "plan/echo_vectors.json",
+      "sha256": "94452159fa48ca64f51f2f635f12b87f31e1ed1d179375322bb27a947984a14a",
+      "bytes": 61907,
+      "source": "D:\\HUST\\ASI_week11\\plan-20261127\\echo_vectors.json"
+    },
+    {
+      "path": "plan/link_plan_s0.csv",
+      "sha256": "2f6aa8f4cd211ed6967ee3a72ecf7d45d2630a61c37fc05319abc715aa60145f",
+      "bytes": 34036,
+      "source": "D:\\HUST\\ASI_week11\\plan-20261127\\link_plan_s0.csv"
+    },
+    {
+      "path": "plan/link_plan_s1.csv",
+      "sha256": "c442a9faa71d8506afd1684cf60b90f2672dab2756e274d013ed56a68541dda7",
+      "bytes": 34108,
+      "source": "D:\\HUST\\ASI_week11\\plan-20261127\\link_plan_s1.csv"
+    },
+    {
+      "path": "plan/week11_link_plan_s0.h",
+      "sha256": "a33a853a053b2ded20b730d86a62feb8369273efb5d87229359b76a78a91dcb5",
+      "bytes": 24451,
+      "source": "D:\\HUST\\ASI_week11\\plan-20261127\\week11_link_plan_s0.h"
+    },
+    {
+      "path": "plan/week11_link_plan_s1.h",
+      "sha256": "6e87a59554a84a1574d23fc0be6eb9f0ce97dd8bd787a1aa70ca10cc98691552",
+      "bytes": 24451,
+      "source": "D:\\HUST\\ASI_week11\\plan-20261127\\week11_link_plan_s1.h"
+    },
+    {
+      "path": "sessions/verify-s0_verify-20261127-link-usb-s0/check_verify-20261127T080142Z.json",
+      "sha256": "71a5994789ac7272ee1cdbc8b2ef07835adf656c1cf9157b7d13eb4b498afe2c",
+      "bytes": 739,
+      "source": "D:\\HUST\\ASI_week11\\verify-20261127-link-usb-s0\\check_verify-20261127T080142Z.json"
+    },
+    {
+      "path": "sessions/verify-s0_verify-20261127-link-usb-s0/session.json",
+      "sha256": "300f86b604cd56948fe4eec32f743049248774006f532a651fbb7155b7a3a821",
+      "bytes": 1649,
+      "source": "D:\\HUST\\ASI_week11\\verify-20261127-link-usb-s0\\session.json"
+    },
+    {
+      "path": "sessions/verify-s1_verify-20261127-link-usb-s1/check_verify-20261127T080709Z.json",
+      "sha256": "7940a8fdcd55828863ab12939f117734c86f37dbb5fb72acd2d113da3e7c648a",
+      "bytes": 739,
+      "source": "D:\\HUST\\ASI_week11\\verify-20261127-link-usb-s1\\check_verify-20261127T080709Z.json"
+    },
+    {
+      "path": "sessions/verify-s1_verify-20261127-link-usb-s1/session.json",
+      "sha256": "83eccc4573db88bbfce0a7b9823ee8a6974c83d5554465d7b3232c6aaabbe223",
+      "bytes": 1649,
+      "source": "D:\\HUST\\ASI_week11\\verify-20261127-link-usb-s1\\session.json"
+    },
+    {
+      "path": "tc5_etx-20261127/cycles_etx.csv",
+      "sha256": "1beb243af8b6780a089529e01af9ed96b5bb8d8348ad27631035453e54e71203",
+      "bytes": 268744,
+      "source": "already in --out"
+    },
+    {
+      "path": "tc5_etx-20261127/summary.json",
+      "sha256": "4953e5694d416ae6215164d6fe15029b9dff9037aaaf116c89e6f671044ddbec",
+      "bytes": 15373,
+      "source": "already in --out"
+    }
+  ]
+}

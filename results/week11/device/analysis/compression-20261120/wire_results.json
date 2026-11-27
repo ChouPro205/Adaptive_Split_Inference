@@ -1,0 +1,39 @@
+{
+  "samples": 9523,
+  "att_mtu": 247,
+  "binding_header_B": 8,
+  "methods": {
+    "s0_rice": {
+      "fragments_mean": 1.3986138821799854,
+      "fragments_max": 2,
+      "frame_B_min": 200,
+      "frame_B_max": 316,
+      "app_transferred_B_mean": 244.60170114459729,
+      "rice_byte_roundtrips": 48
+    },
+    "s0_rice_180": {
+      "fragments_mean": 1.0,
+      "fragments_max": 1,
+      "frame_B_min": 157,
+      "frame_B_max": 216,
+      "app_transferred_B_mean": 181.39252336448598,
+      "rice_byte_roundtrips": 48
+    },
+    "s0_rice_46": {
+      "fragments_mean": 1.0,
+      "fragments_max": 1,
+      "frame_B_min": 106,
+      "frame_B_max": 120,
+      "app_transferred_B_mean": 120.43715215793343,
+      "rice_byte_roundtrips": 48
+    },
+    "s0_rice_20": {
+      "fragments_mean": 1.0,
+      "fragments_max": 1,
+      "frame_B_min": 92,
+      "frame_B_max": 99,
+      "app_transferred_B_mean": 103.67363225874199,
+      "rice_byte_roundtrips": 48
+    }
+  }
+}

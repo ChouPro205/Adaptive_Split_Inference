@@ -1,0 +1,27 @@
+﻿{
+    "app":  "week11",
+    "build_id":  "2398cda9cba3-week11-link-s1-20261127T080340Z",
+    "commit":  "2398cda9cba3e696cc43439879ce30dadecea7cc",
+    "dirty":  false,
+    "status_porcelain":  [
+
+                         ],
+    "variant":  "link",
+    "session":  1,
+    "samples_dir":  "D:\\HUST\\ASI_week8\\samples-20261023-c",
+    "set_sha256":  "7cfecbb213eb7226b30ac0872239806f8435c093451951be7c77d12f3cc31639",
+    "sample_anchors":  {
+                           "week8_inputs.h":  "4091e4613e0680aebd7c656c408311534a5645bf4ab30ef3faf0d7e896d41317",
+                           "samples.csv":  "d77e8c662d03818f94c345c2c2f6d385c431768da20899b88ac54227857b5e20",
+                           "reference_s2.npz":  "e7407378e7870afbfa94b850f809c85165a1d640673d1f01bbd32f6d1aab76d5"
+                       },
+    "plan_dir":  "D:\\HUST\\ASI_week11\\plan-20261127",
+    "plan_sha256":  "862808fbf8e3a0bbc92075144bcc0aadb0136b1f62d99f0727fb5ef640f4d6b3",
+    "plan_outputs_sha256":  {
+                                "link_plan_s0.csv":  "2f6aa8f4cd211ed6967ee3a72ecf7d45d2630a61c37fc05319abc715aa60145f",
+                                "week11_link_plan_s0.h":  "a33a853a053b2ded20b730d86a62feb8369273efb5d87229359b76a78a91dcb5",
+                                "link_plan_s1.csv":  "c442a9faa71d8506afd1684cf60b90f2672dab2756e274d013ed56a68541dda7",
+                                "week11_link_plan_s1.h":  "6e87a59554a84a1574d23fc0be6eb9f0ce97dd8bd787a1aa70ca10cc98691552",
+                                "echo_vectors.json":  "6aaaed46c5caf217330837bbc27ae75b4f61dfe4d13e6d9cf874fcafde73c950"
+                            }
+}
