@@ -106,6 +106,7 @@ Các báo cáo tiến độ tuần 5–7 nằm ở `docs/` phía trên. Hồ sơ
 
 - [Tuần 8: BLE Device–KV260 G2, offline repeat và bổ sung PHY](sv2_edge_week8_report.md); [hồ sơ SV2](../results/week8/edge/README.md).
 
+- [Tuần 11: stress cache, queue tải bùng, echo và T1](sv2_edge_week11_report.md), [kết quả](../results/week11/edge/README.md).
 - [Tuần 10: cache model và chuyển split KV260](sv2_edge_week10_report.md), [kết quả](../results/week10/edge/README.md).
 - [Tuần 9: Poisson và MQTT một chiều, gateway PC SV2](sv2_edge_week9_report.md);
   [hồ sơ SV2](../results/week9/edge/README.md). Mean <20 ms trong mô hình;

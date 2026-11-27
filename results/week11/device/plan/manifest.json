@@ -1,0 +1,273 @@
+{
+  "schema": "week11-plan/1",
+  "status": "PASS",
+  "decisions": [
+    "W11-D2",
+    "W11-D3"
+  ],
+  "generator": "week11_common: splitmix64 + Fisher-Yates (week9_common), rejection sampling, one stream per session",
+  "states": [
+    {
+      "index": 0,
+      "name": "base",
+      "phy": 2,
+      "interval_1250us": 12,
+      "latency": 0,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 1,
+      "name": "k7.5",
+      "phy": 2,
+      "interval_1250us": 6,
+      "latency": 0,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 2,
+      "name": "k30",
+      "phy": 2,
+      "interval_1250us": 24,
+      "latency": 0,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 3,
+      "name": "k50",
+      "phy": 2,
+      "interval_1250us": 40,
+      "latency": 0,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 4,
+      "name": "k100",
+      "phy": 2,
+      "interval_1250us": 80,
+      "latency": 0,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 5,
+      "name": "L2",
+      "phy": 2,
+      "interval_1250us": 12,
+      "latency": 2,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 6,
+      "name": "L4",
+      "phy": 2,
+      "interval_1250us": 12,
+      "latency": 4,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 7,
+      "name": "L9",
+      "phy": 2,
+      "interval_1250us": 12,
+      "latency": 9,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 8,
+      "name": "1M",
+      "phy": 1,
+      "interval_1250us": 12,
+      "latency": 0,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 9,
+      "name": "len27",
+      "phy": 2,
+      "interval_1250us": 12,
+      "latency": 0,
+      "tx_octets": 27,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 10,
+      "name": "tx-8",
+      "phy": 2,
+      "interval_1250us": 12,
+      "latency": 0,
+      "tx_octets": 251,
+      "tx_power_dbm": -8,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 11,
+      "name": "coded-k30",
+      "phy": 3,
+      "interval_1250us": 24,
+      "latency": 0,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 12,
+      "name": "coded-k30-len27",
+      "phy": 3,
+      "interval_1250us": 24,
+      "latency": 0,
+      "tx_octets": 27,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    },
+    {
+      "index": 13,
+      "name": "1M-k30",
+      "phy": 1,
+      "interval_1250us": 24,
+      "latency": 0,
+      "tx_octets": 251,
+      "tx_power_dbm": 0,
+      "timeout_10ms": 400
+    }
+  ],
+  "echo_sizes": [
+    64,
+    104,
+    112,
+    128,
+    130,
+    233,
+    256,
+    436,
+    512,
+    1024,
+    2048,
+    4096
+  ],
+  "echo_repeats": 6,
+  "echo_full_repeats_base": 3,
+  "idle_ms": 15000,
+  "s0c": {
+    "samples": 25,
+    "repeats": [
+      1,
+      100
+    ]
+  },
+  "reconnects": 8,
+  "plan_sha256_definition": "SHA-256 of the state table (10 B per state: index, phy, interval, latency, timeout uint16 LE, tx_octets, tx_power_dbm int8) + (op, state, a, b uint16 LE) per entry",
+  "sessions": {
+    "s0": {
+      "seed": 20261126,
+      "entries": 1362,
+      "plan_sha256": "4054816b8bb75268eaf7387eef862e3627947023c8166ad6093b4c12252f79c6",
+      "block_order": [
+        "base",
+        "L4",
+        "coded-k30-len27",
+        "L9",
+        "k50",
+        "1M-k30",
+        "len27",
+        "k30",
+        "tx-8",
+        "L2",
+        "1M",
+        "coded-k30",
+        "k7.5",
+        "k100",
+        "base"
+      ],
+      "ops": {
+        "STATE": 15,
+        "IDLE": 29,
+        "ECHO": 1260,
+        "S0C": 50,
+        "RECONNECT": 8
+      }
+    },
+    "s1": {
+      "seed": 20261127,
+      "entries": 1362,
+      "plan_sha256": "862808fbf8e3a0bbc92075144bcc0aadb0136b1f62d99f0727fb5ef640f4d6b3",
+      "block_order": [
+        "base",
+        "1M-k30",
+        "tx-8",
+        "coded-k30",
+        "k100",
+        "k30",
+        "L9",
+        "len27",
+        "k50",
+        "L4",
+        "coded-k30-len27",
+        "k7.5",
+        "L2",
+        "1M",
+        "base"
+      ],
+      "ops": {
+        "STATE": 15,
+        "IDLE": 29,
+        "ECHO": 1260,
+        "S0C": 50,
+        "RECONNECT": 8
+      }
+    }
+  },
+  "checks": {
+    "s0_one_block_per_state": true,
+    "s0_base_block_first": true,
+    "s0_every_block_state_idle_first_idle_last": true,
+    "s0_echo_counts": true,
+    "s0_s0c_only_base": true,
+    "s0_reconnects_last_block_base": true,
+    "s0_entries_fit_uint16": true,
+    "s0_echo_sizes_in_binding_limits": true,
+    "s0_index_is_position": true,
+    "s0_csv_read_back": true,
+    "s1_one_block_per_state": true,
+    "s1_base_block_first": true,
+    "s1_every_block_state_idle_first_idle_last": true,
+    "s1_echo_counts": true,
+    "s1_s0c_only_base": true,
+    "s1_reconnects_last_block_base": true,
+    "s1_entries_fit_uint16": true,
+    "s1_echo_sizes_in_binding_limits": true,
+    "s1_index_is_position": true,
+    "s1_csv_read_back": true,
+    "sessions_differ_in_block_order": true,
+    "vectors_answers_check": true
+  },
+  "outputs_sha256": {
+    "link_plan_s0.csv": "2f6aa8f4cd211ed6967ee3a72ecf7d45d2630a61c37fc05319abc715aa60145f",
+    "week11_link_plan_s0.h": "a33a853a053b2ded20b730d86a62feb8369273efb5d87229359b76a78a91dcb5",
+    "link_plan_s1.csv": "c442a9faa71d8506afd1684cf60b90f2672dab2756e274d013ed56a68541dda7",
+    "week11_link_plan_s1.h": "6e87a59554a84a1574d23fc0be6eb9f0ce97dd8bd787a1aa70ca10cc98691552",
+    "echo_vectors.json": "6aaaed46c5caf217330837bbc27ae75b4f61dfe4d13e6d9cf874fcafde73c950"
+  },
+  "git": {
+    "head": "2398cda9cba3e696cc43439879ce30dadecea7cc",
+    "status_of_generator_sources": ""
+  },
+  "created_utc": "2026-11-27T07:55:42.709407+00:00"
+}

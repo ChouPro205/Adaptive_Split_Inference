@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "exporter_sha256": "3e01c2ec3dbf2452c0e1040105f3e66af0f34a34b794bd4a885929ea9fbbe645",
+  "stress_run_id": "raw-cbb3f2b23b4a",
+  "stress_run_started_utc": "2026-11-27T05:45:18.920934+00:00",
+  "stress_checkout_head_at_run": "77bcfa225a59b02354f2a7631c2ef304e50a92a1",
+  "measured_sources_sha256": {
+    "stress.py": "0159b50a34338d7639acb90ec7d3fcec4a07b189e5e8128676ef6a03c6e30369",
+    "echo_host.py": "7e1a62e4f207a3af972897d2eca716615b17796c6686f4f61d4465766a67b299",
+    "burst.py": "5c8c0dde9093ca177449e54a0df0e693bc126d39cdb42521c95abe1409937d24",
+    "burst_board.sh": "e2b19593284d8f52d64d9b07bf9c8c0cb17592eab5ac825a7d8effd17105053d",
+    "shared_queue.py": "606ff1d6cc23c60e03aa576fc0116e6d0b62b83664ce4594d377ed1be171143b"
+  },
+  "stress_raw_inventory_sha256": "650f213ecae5ae061115eab4f24ee9d4c38204a29cfeac727fd43cc17720bf69",
+  "stress_analysis_inventory_sha256": "5cc94e2e554ddd983e7ebd2a82b1493a96c0cfc9f9be88b1ea4d4b417ee6b614",
+  "stress_shell_inventory_sha256": "a66cffda5c982fcb54a9ac74f60ccb426e0e14e0db2f27f94793dc8606e220a0",
+  "burst_started": "2026-11-26T22:13:18-08:00",
+  "burst_trace_sha256": "c5334d60f854a7ad62eec3013ab8028571f9eafa3d7dbb5d486141486ae9d92c",
+  "burst_raw_inventory_sha256": "03df98f72858505803ab9bb1e7c1a4c82c01b7a21e62c2d5ebb3f74a3dfdabc3",
+  "burst_analysis_inventory_sha256": "3a26019ae3c0fd1e345ada9dba3e9a6e4d5351da0c81071c35d702897ab75d07",
+  "burst_shell_inventory_sha256": "400a4f733e59ee97ab84b0cf16eeee8683cb44e9877efea307e7e04dc102d2d1",
+  "echo_inventory_sha256": "7e78528af14861f373eac314c1fb7e95849bd7e67589c3a3f7d045319ef79ae8",
+  "t1_receipt_sha256": "375f6e32d98367ee98ba7f3a2a5453c9109ad1f8d39384db7c18914f8b57f547",
+  "t1_log_sha256": "66337833872def2b9d54edc7faf84cf028336a616fa4139b551bc9fd9ef9f639",
+  "parity_inventory_sha256": "58ef908759b2153d4b20d5d867399e449fcf6222ba1f7d21eebe9410260c1219",
+  "packet_manifest_sha256": "d0914acbece63c9e5ab73801cb1ad1b6a8a20f67cc0aa73a0841d0ef1fd01c36"
+}
