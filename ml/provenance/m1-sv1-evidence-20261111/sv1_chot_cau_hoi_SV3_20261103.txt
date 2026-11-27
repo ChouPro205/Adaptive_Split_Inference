@@ -1,0 +1,211 @@
+Chào Kỳ Anh, thầy giao cho mình chốt các câu trong file "Câu hỏi gửi thầy — SV3, tuần 9" (03/11). Dưới đây là quyết định, áp dụng từ hôm nay. Câu nào có việc cho Trung, cho mình hoặc thầy thì mình ghi rõ.
+
+Ba nguyên tắc mình dùng để chọn: (1) giữ kiến trúc đã khóa và lịch tuần 9–13; (2) mỗi lựa chọn phải trả lời được câu hỏi của reviewer IoT-J/TGCN; (3) quy tắc nào quyết định kết quả thì khóa trước khi chạy. Không câu nào đổi baseline M1 v4 đã khóa. Phần NoPeek/nhiễu/tấn công ghi vào protocol riêng (phiên bản mới) trước khi chạy.
+
+TÓM TẮT 5 ĐIỂM CHÍNH
+1. ρ là cường độ bảo vệ trước edge, 3 mức: ρ0 không bảo vệ, ρ1 NoPeek, ρ2 NoPeek + nhiễu. P1 (I2/1) ra khỏi tập hành động; mã hóa lớp liên kết BLE bật cho mọi phương pháp.
+2. Tập hành động: s ∈ {0, 2, 5, 10}; ρ1, ρ2 chỉ ở s2, s5. Tổng 8 cặp.
+3. Thước đo tiện ích: macro-F1 4 lớp ≥ 0,95 × gói A, trên validation, theo đường DPU; accuracy báo kèm.
+4. Π tính theo tái định danh trên 21 bệnh nhân DS2 (chia theo thời gian), lấy tấn công mạnh nhất. Π_min chính = 0,5, khóa từ bây giờ.
+5. Kiểm sớm hai giả thiết sống còn của N2: thử tấn công ở tuần 11 (trên DS1), so chọn đồng thời với chọn tuần tự offline trước cuối tuần 13.
+
+=== NHÓM 1 — chốt ngay (trước đây hẹn cuối tuần 10) ===
+
+1. Tập hành động
+Chốt: s ∈ {0, 2, 5, 10}.
+- s0: chỉ ρ0. Đây chính là edge-only (gửi tín hiệu thô).
+- s2, s5: ρ0, ρ1, ρ2.
+- s10: chạy hết trên dongle, chỉ gửi logits; không có ρ. Vẫn đo tấn công B trên logits để Π(s10) là số đo thật, không gán bằng 1.
+Head NoPeek trên dongle ở s2 + s5 khoảng 73 KB, vừa 183 KB còn trống. s8 chỉ chạy offline (hình accuracy/Π theo s, tấn công): không lượng tử trọng số, không đo lại E_dev.
+Lý do (số đo tuần 9, phiên 1): E_dev s0 9 µJ / 362 B; s2 535 µJ / 2.912 B; s5 2.403 µJ / 4.416 B; s8 5.048 µJ / 1.536 B; s10 5.145 µJ / 15 B. s1 thua s2 vì payload gấp đôi. s8, s9 có E_dev ngang s10 mà vẫn phải truyền, nên bị s10 lấn át. Cặp đánh đổi chính của N2 là "cắt nông (s2) + bảo vệ" so với "cắt sâu (s5) hoặc chạy hết (s10)". Mình sẽ kiểm lại việc loại s8/s9 sau hồi quy E_tx tuần 11; nếu khác mình báo.
+
+2. Có chồng P2 lên P1 không
+Chốt: không. P1 không còn là một mức bảo vệ (xem câu 7). Trong thí nghiệm cuối, mọi mức ρ và mọi baseline chạy trên liên kết BLE có mã hóa. E_prot của ρ2 = chi phí sinh nhiễu + cộng nhiễu trên dongle.
+
+3. Thước đo tiện ích
+Chốt như đề xuất:
+- Chỉ số: macro-F1 4 lớp N/S/V/F.
+- Mốc: macro-F1 validation (FP32) của checkpoint triển khai gói A.
+- Một cặp (s, ρ) được vào tập hành động khi macro-F1 validation theo đường DPU ≥ 0,95 × mốc. Lọc offline trước khi chạy controller, kể cả ρ0: ρ0 ở một s nào đó mà trượt vì DPU thì loại và báo đúng như vậy.
+- Accuracy luôn báo kèm. Số trên DS2 chỉ để báo.
+- Sửa "accuracy ≥ 95 % baseline" trong khung bài và E7 thành macro-F1 như trên.
+- Bỏ mục tiêu tuyệt đối "accuracy ≥ 98 %". Với cách chia inter-patient, đối chiếu bằng bảng 6 bài trong ds2_report.
+- Tiêu chí 2 % của thầy giữ như bản 1.2 mục 4.5 (nghiệm thu khi mở rộng s và fine-tune tail).
+
+4. ρ là loại hay cường độ
+Chốt: cường độ bảo vệ trước edge, 3 mức trên cùng một s:
+- ρ0: head + tail gói A, không bảo vệ.
+- ρ1: head + tail NoPeek, một λ cho mỗi s theo quy tắc bản 1.2 mục 4.5, không nhiễu. Lúc chạy không tốn thêm năng lượng (cùng phép toán, chỉ khác trọng số).
+- ρ2: ρ1 + nhiễu học được theo kênh (kiểu Shredder, sinh bằng bảng tra), học khi mạng đã đóng băng.
+Cách này không thêm checkpoint, flash chỉ thêm tham số nhiễu theo kênh. Edge chọn tail theo ρ: ρ0 dùng tail gói A, ρ1/ρ2 dùng tail gói B. Trung thêm 2 xmodel tail NoPeek cho s2 và s5.
+Tùy chọn ρ3 = cùng phân phối nhiễu nhân thang ×2: chỉ thêm nếu trên validation vẫn đạt câu 3. Quyết trước khi chạy tấn công, chậm nhất cuối tuần 12, ghi vào protocol gói B.
+Lý do: tên bài là "strength". Cần ít nhất 2 mức khác 0 ở mỗi s mới gọi được là thích nghi cường độ, và đây là cách rẻ nhất.
+
+5. P3
+Chốt: bỏ P3 (kiến trúc đã khóa, đúng phương án dự phòng ở mốc G4). Ghi vào Limitations/future work: bottleneck học được kiểu BottleNet++ trực giao với cách làm này, có thể ghép sau.
+
+6. lut.json (I3)
+Chốt: dùng bảng dạng dài của bạn làm nguồn chuẩn tạm thời. Tỉ lệ để dạng 0–1, tên cột có đơn vị. Thêm các cột n, ci95_low, ci95_high, unit và attack (với các dòng Π). lut.json (bảng gọn cho controller) sẽ sinh tự động từ bảng dài bằng script. Mình soạn contract I3 v1 (lược đồ lut.json + đơn vị) trước cuối tuần 12; ba người xác nhận ở tuần 13, cùng lúc với registry r3.
+
+=== NHÓM 2 — chốt trước tuần 13 ===
+
+7. Vai trò của P1 và Π(s, P1)
+Chốt:
+- Π tính theo kẻ tấn công là edge honest-but-curious, kẻ mạnh nhất có thật trong hệ thống. Kẻ này thấy đúng tensor mà edge nhận (INT8 + scale, có nhiễu nếu ρ2), biết kiến trúc, trọng số tail, thuật toán và tham số bảo vệ, và có dữ liệu phụ trợ cùng phân bố.
+- Kẻ nghe lén được xử lý bằng mã hóa lớp liên kết BLE (LE Secure Connections, AES-CCM; nRF52840 làm AES bằng phần cứng), bật cho mọi phương pháp trong thí nghiệm cuối. Π không tính cho kẻ nghe lén.
+- P1 (I2/1) ra khỏi tập hành động. Trước edge thì Π(s, P1) = Π(s, P0) mà P1 lại tốn năng lượng, nên controller sẽ không bao giờ chọn nó.
+- Phần P1 đã làm vẫn giữ và hoàn thành theo tiêu chí của thầy (E_prot tuần 10; unprotect bit-exact tuần 12). Trong bài có 2–3 câu: P1 đã hiện thực, chi phí đo được là bao nhiêu, và vì sao không dùng (không che được gì trước edge; trước kẻ nghe lén thì thua AES-CCM phần cứng). Như vậy câu hỏi của reviewer đã được trả lời trước.
+- Có đo mốc mã hóa BLE: mình đo E_tx với mã hóa bật/tắt ở 3 cỡ payload vào tuần 14–15, cùng đợt đo chi phí ρ2. Việc này cần SMP trên dongle và pairing BlueZ phía KV260 (Trung). Không chặn Table II tuần 12: Table II ghi số không mã hóa, cộng phần chênh đo được.
+
+8. Định nghĩa Π
+Chốt (khóa trong protocol tấn công trước khi chạy A1 chính thức ở tuần 13):
+- Π(s, ρ) = 1 − Adv, với Adv = (acc − 1/N) / (1 − 1/N), cắt về [0, 1].
+  - acc = accuracy top-1 tái định danh theo từng nhịp trên phần test.
+  - N = số danh tính (câu 10).
+- Lấy tấn công mạnh nhất: Adv lấy giá trị lớn nhất trong 3 biến thể tái định danh:
+  - B-naive: huấn luyện trên tensor ρ0 cùng s;
+  - B-adaptive: huấn luyện trên tensor đã bảo vệ, biết thuật toán, λ và phân phối nhiễu;
+  - B-rec: classifier chạy trên tín hiệu do A3 dựng lại.
+- NRMSE, Pearson và sai số đỉnh R của A1–A3 báo trong bảng tấn công và gallery, không đưa vào Π. Các chỉ số này khác thang với tái định danh, gộp lại sẽ tùy tiện.
+- Báo kèm CI95 (Wilson cho acc rồi đổi sang Π). Biến thể theo phiên (bỏ phiếu trên 10 nhịp) báo ở phần thảo luận.
+- Π_min chính = 0,5, nghĩa là kẻ tấn công còn tối đa nửa lợi thế so với đoán ngẫu nhiên. Giá trị này khóa từ bây giờ, trước khi có số. Quét Π_min ∈ {0; 0,1; …; 0,9} cho phân tích độ nhạy. Nếu không cặp nào ngoài s10 đạt 0,5 thì vẫn báo đúng như vậy.
+
+9. Danh sách tấn công và tên gọi
+Chốt 4 tấn công:
+- A1: decoder cơ bản (MSE).
+- A2: decoder GAN (thêm discriminator).
+- A3: kẻ tấn công thích nghi = A2 huấn luyện lại trên tensor đã bảo vệ, biết đủ thuật toán và tham số bảo vệ.
+- B: tái định danh (B-naive, B-adaptive, B-rec như câu 8).
+Trong bài viết: "ba tấn công dựng lại có độ mạnh tăng dần (A1–A3) và một tấn công tái định danh (B)". Table IV/V của khung sửa theo tên này.
+Bảng ánh xạ:
+- Lộ trình 8.1 → A1, A2; 8.2 → B; 8.3 → A3 (+ B-adaptive).
+- Hướng dẫn chi tiết A1, A2, B, C → A1, A2, B, A3.
+Không làm suy luận giới/tuổi: chỉ có 21 người ở DS2, quá ít. Ghi vào Limitations.
+
+10. Dữ liệu cho tái định danh
+Chốt: MIT-BIH, không dùng PTB-XL.
+- Danh tính = bệnh nhân DS2 bỏ 202 (N = 21). Không ai trong số này có trong train của mô hình, đúng kịch bản người dùng mới.
+- Chia theo thời gian trong từng bản ghi: 50 % nhịp đầu cho kẻ tấn công (20 % cuối của nửa này làm validation cho nó), bỏ 1 phút ở giữa, 50 % nhịp sau để test.
+- Dữ liệu phụ trợ cho A1–A3: nhịp train DS1. Đánh giá dựng lại trên phần test DS2 như trên.
+- Ở đây DS2 chỉ dùng để đánh giá riêng tư, không bao giờ dùng để chọn λ, nhiễu, checkpoint hay ngưỡng. Tham số bảo vệ khóa trên validation trước lần đánh giá Π đầu tiên trên DS2. ds2_report của baseline không bị ảnh hưởng.
+- Ghi vào Limitations: số danh tính nhỏ (N = 21), PTB-XL để làm sau.
+
+11. Thử tấn công sớm
+Chốt: đồng ý, làm ở tuần 11, ngay sau grid NoPeek.
+- Chạy A1 + B-naive ở s2, s5, s8 với ρ0 (dùng gói A nếu đã có, chưa có thì mô hình cũ), và ρ1 ứng viên ở s2.
+- Chạy trên 21 bệnh nhân DS1, chia theo thời gian như câu 10. Không dùng DS2, để DS2 còn sạch cho đánh giá chính thức. Ghi rõ: bệnh nhân DS1 đã có trong train nên số này chỉ để cảnh báo sớm.
+- Hai câu cần trả lời: (i) Π(s, ρ0) có tăng theo s không; (ii) ρ1 có làm Π ở s2 tăng rõ không. Nếu một trong hai câu là "không", báo mình ngay: khi đó N2 mất cơ sở (rủi ro R1).
+- Kết quả thử không đưa vào bài làm số chính. Nếu sau đó đổi thiết kế P2 thì tạo phiên bản protocol mới, ghi lý do.
+
+12. Đặc trưng RR
+Chốt: không thêm (đã chốt ngày 30/10, giữ nguyên). Nếu lớp S vẫn yếu thì báo trung thực và nêu trong bài. Ablation RR offline cho phần thảo luận là tùy chọn, không đổi I1.
+
+=== NHÓM 3 — WP-D, controller, viết bài ===
+
+13. Nguồn của mô hình toán
+Chốt: lấy mô hình trong Khung bài báo làm bản gốc. Công thức (1)–(6) và Algorithm 1 còn nguyên trong file Khung, cộng thêm code tham chiếu ở Lộ trình 9.2; ký hiệu theo bảng Notation của Khung. Với s10 (chạy hết trên dongle), T và E bỏ các hạng tử truyền tensor, hàng đợi và tail. Mình sẽ xin thầy main.tex, refs.bib và bản Lộ trình có công thức, nhưng không chờ.
+
+14. Bộ điều khiển
+Chốt:
+- Phương pháp đề xuất là drift-plus-penalty (Algorithm 1). Mỗi lần suy luận, controller chọn (s, ρ) trong tập khả thi {T ≤ D, Π ≥ Π_min, đạt câu 3} sao cho V·T + Z·E nhỏ nhất; cập nhật Z(t+1) = max{Z + E − E_budget(t), 0}.
+- SoC vào bài toán qua ngân sách năng lượng: E_budget = năng lượng pin còn lại / số lần suy luận còn phải phục vụ tới hết thời gian sống mục tiêu. Ngân sách tính lại theo b(t) sau mỗi epoch K lần suy luận và giữ hằng số trong một epoch, để giữ đúng dạng định lý của Neely. Pin cạn nhanh hơn kế hoạch thì ngân sách giảm, Z tăng, controller tự chuyển sang cấu hình tiết kiệm.
+- Tổng có trọng số w(b) (Lộ trình 1.2) dùng làm baseline "battery-weighted greedy", đồng thời là phương án dự phòng cho bản hội nghị nếu chứng minh chưa xong.
+- Ablation "w/o battery" = bỏ hàng đợi năng lượng (Z ≡ 0), vẫn giữ T ≤ D và Π ≥ Π_min. Thêm dòng "fixed budget" (ngân sách cố định từ đầu, không tính lại theo b(t)) để tách riêng đóng góp của SoC.
+- WP-D (chứng minh, controller.c) vẫn là việc của thầy. Mình ghi cấu trúc này để cả nhóm làm cùng một bài toán.
+
+15. Đóng góp chính và G5
+Chốt:
+- N2 vẫn là đóng góp chính. G5 kiểm cả hai dòng ablation:
+  - "w/o battery": giữ tiêu chí của thầy (hiệu năng giảm > 10 %);
+  - "w/o joint selection": chọn tuần tự, tức chọn s theo năng lượng/độ trễ trước, rồi chọn ρ nhỏ nhất đạt Π_min.
+- N2 chỉ giữ làm đóng góp chính khi "w/o joint" kém hơn ≥ 5 % ở chỉ số E7 (số lần suy luận mỗi lần sạc, cùng tỉ lệ trễ hạn và tiện ích), tại Π_min chính hoặc trên một dải Π_min đáng kể. Nếu không đạt thì viết lại phần đóng góp và cân nhắc chuyển sang T4.
+- Đồng ý kiểm offline sớm. Mình làm (script ngắn), dùng bảng năng lượng thật (E_dev tuần 9, E_prot/E_wait tuần 10, E_tx tuần 11) và Π thử của bạn ở câu 11; xong trước cuối tuần 13 và báo nhóm cùng thầy ngay.
+
+16. Kênh truyền BLE
+Chốt:
+- Dongle dùng anten mạch in, không có cổng RF, nên không lắp được bộ suy hao nếu không sửa phần cứng. tc/netem không áp dụng được vì BLE không có IP.
+- Chất lượng kênh = thông lượng hữu ích uplink r(t) của liên kết BLE, đo ở dongle (thời gian truyền gói gần nhất) rồi làm mượt bằng EMA.
+- Tạo kênh lặp lại được bằng tham số: PHY (2M/1M), công suất phát, connection interval; hình học bàn đo giữ cố định. Ở mỗi trạng thái kênh k đo E_tx(B) = α_k + β_k·B, tức là có, α và β phụ thuộc chất lượng kênh.
+- Tuần 11: hồi quy 7 mức ở 2M như kế hoạch (trạng thái chính), thêm 3 cỡ payload ở 1M và 3 cỡ ở một mức công suất phát thấp.
+- Kênh động (E6): ghi trace thật (mang dongle di chuyển, log r(t) và RSSI), rồi phát lại trace trong mô phỏng cho mọi phương pháp với α_k, β_k đo được. Đây đúng là hướng "ghi trace thật rồi phát lại" của Lộ trình 3.4. Mình làm; Trung log RSSI/thông lượng phía KV260 khi ghi trace (tuần 14+).
+
+17. Trạng thái hàng đợi đến MCU
+Chốt:
+- Edge gửi q(t) và t_service kèm gói kết quả trả về qua BLE (vài byte), nên radio không phải thức thêm lần nào. Nếu dongle không suy luận quá 500 ms thì edge gửi notify trạng thái định kỳ; nếu không có notify, dongle dùng giá trị cũ, đánh dấu stale.
+- MQTT giữ cho phía edge/laptop (đo độ trễ theo tiêu chí tuần 9 của Trung).
+- Năng lượng nhận trạng thái đo bằng marker PPK2 và cộng vào E, báo overhead (mục tiêu < 1 %), đúng yêu cầu Lộ trình 6.4.
+- Cần thêm trường q trong gói trả về, tức một bản I1 mới (mình + Trung), làm cùng đợt tích hợp controller (tuần 14+).
+
+18. Thí nghiệm E7
+Chốt: mô phỏng SoC bằng cách tích lũy năng lượng đo được (Lộ trình 11.3 cho phép cách này).
+- Mô hình pin: Li-ion một cell cấp VDDH qua REG0. Đây đúng là đường nguồn của bàn đo (USB cấp VDDH), nên dùng năng lượng gross đo ở 5 V.
+- Ghi hạn chế: hiệu suất REG0 ở 3,7 V khác ở 5 V; chưa có đường cong xả và lão hóa pin.
+- Dung lượng pin chọn một giá trị điển hình của thiết bị đeo và ghi rõ. Kết quả E7 báo tương đối (% so với baseline) nên ít phụ thuộc vào dung lượng.
+- Không đổi điện áp nguồn bàn đo, để giữ nguyên số liệu Table II.
+
+19. Baseline
+Chốt:
+- Bỏ Edgent và BottleNet++ khỏi danh sách baseline chạy thật, vì cả hai cần đổi kiến trúc. Nêu trong Related Work + Table I và giải thích vì sao không so trực tiếp.
+- Baseline giữ lại:
+  - Device-only (s10);
+  - Edge-only (s0);
+  - Static-best: một cặp (s, ρ) cố định tốt nhất trên toàn trace, thỏa ràng buộc;
+  - Neurosurgeon;
+  - Energy-greedy: cực tiểu E từng lần, có T ≤ D và Π ≥ Π_min, không có ngân sách;
+  - Battery-weighted greedy (câu 14);
+  - Oracle: biết trước toàn trace, giải offline.
+- Neurosurgeon dùng mục tiêu độ trễ (chế độ mặc định của bài gốc), không biết Π và pin. Báo hai dòng: bản gốc (kèm tỉ lệ vi phạm Π_min) và "Neurosurgeon-Π" (giới hạn trong tập thỏa Π_min) để so công bằng.
+- Không dựng hồi quy theo loại lớp: cho Neurosurgeon dùng thẳng t_dev(s), t_edge(s) đo được. Như vậy có lợi cho baseline, và ghi rõ điều này trong bài.
+- Mọi phương pháp chạy cùng trace kênh, tải edge và pin.
+
+20. Lịch viết bài
+Chốt: bắt đầu ngay. Mỗi người viết phần mình làm, chung một bản LaTeX theo Khung.
+- Bạn (SV3): có. Bạn viết threat model và privacy model Π (Section III), mục bảo vệ ρ1/ρ2 (Section IV-A), phần accuracy–privacy và tấn công (hình accuracy/Π theo (s, ρ), bảng tấn công, gallery), và related work về tấn công/phòng thủ. Threat model + định nghĩa Π cần bản nháp trước cuối tuần 11, trước khi khóa protocol tấn công.
+- Mình (SV1): mô hình độ trễ và năng lượng (Section III), testbed, phía thiết bị và phương pháp đo có marker + phân tích sai số (Section V, đóng góp N3), Table II, Figure 3. Bản nháp sau khi có Table II (tuần 13). Mình gom bản thảo chung.
+- Trung (SV2): phần edge (DPU, nạp xmodel động, hàng đợi) ở Section V và kịch bản tải edge (E8).
+- Thầy (WP-D): controller và định lý (Section IV), Section II + Table I, đánh giá E5–E9.
+- Mốc: Section III và V có bản nháp đủ trước cuối tuần 14. Bản hội nghị 6 trang xong ở tuần 21 (sớm hơn tuần 23, vì tuần 23–24 sát Tết 6/2/2027).
+
+21. CIFAR-10
+Chốt: cắt (theo Phân công 8.1). Ghi vào Limitations: một tập dữ liệu, một mô hình, một MCU, một edge. Bù lại bằng việc đánh giá controller trên nhiều trace kênh, tải và pin.
+
+=== NHÓM 4 — các điểm bạn báo ===
+
+- Tổng quan tài liệu: cảm ơn bạn, điểm này quan trọng. Mình đã tra nhanh:
+  - arXiv 2502.16091 là "Privacy-Aware Joint DNN Model Deployment and Partitioning Optimization for Collaborative Edge Inference Services": dùng Lyapunov để chuyển ràng buộc riêng tư dài hạn thành bài toán theo từng slot.
+  - P3SL (Fan et al., arXiv 2507.17228) chọn đồng thời điểm chia và mức nhiễu, nhưng cho split learning.
+  Hai bài này thu hẹp N2: trong bài không được viết "chưa ai chọn đồng thời điểm cắt và mức bảo vệ".
+  Việc của bạn: đọc đủ 2 bài này cùng Jiang et al. 2023 và Yang & Wei 2023 trước cuối tuần 11; viết một đoạn nêu khác biệt và thêm các dòng vào Table I. Bốn khác biệt cần chứng minh:
+  (i) ta làm suy luận, chọn theo từng lần suy luận lúc chạy, ngay trên MCU;
+  (ii) ρ là cường độ bảo vệ có chi phí năng lượng đo bằng phần cứng;
+  (iii) controller dùng ba tín hiệu pin, kênh và hàng đợi;
+  (iv) Π hiệu chỉnh bằng tấn công thích nghi và là ràng buộc cho từng lần suy luận, không phải trung bình dài hạn.
+- Trích dẫn: đồng ý cả ba chỗ sửa ("GAN You See Me?" là NeurIPS 2023; OPEN của Li, Wu, Wu, Wang; PTB-XL có 18.869 bệnh nhân). Bạn ghi vào file nguồn tham khảo.
+- dCor: chốt dùng R_n (∈ [0, 1], căn của dCor² chuẩn hóa) như code dự án đang làm, ghi công thức trong bài. Giá trị λ hiểu theo thang này.
+- Số minh họa trong Lộ trình: đồng ý, không trích số nào trong đó làm kết quả.
+- Đánh số hình/bảng: đồng ý gọi theo nội dung cho tới khi có bản thảo.
+- Hệ thống thật cho Section V: đồng ý. Bổ sung: head chạy kernel C FP32 tối ưu (không dùng CMSIS-NN); tensor lượng tử INT8 + scale FP16 trước khi gửi; BLE PHY 2M; nguồn VBUS 5 V qua REG0.
+
+=== VIỆC PHÁT SINH THEO NGƯỜI ===
+
+- Bạn (Kỳ Anh):
+  - gói B gồm ρ1 (head/tail NoPeek ở s2, s5) và ρ2 (tham số nhiễu);
+  - quyết ρ3 trước cuối tuần 12;
+  - khóa protocol tấn công (câu 8–10) trước khi chạy A1 chính thức ở tuần 13;
+  - thử tấn công ở tuần 11 (câu 11);
+  - đọc 4 bài và có bản nháp threat model trước cuối tuần 11.
+  Grid NoPeek {2, 5, 8} giữ như bản 1.2.
+- Trung:
+  - 2 xmodel tail NoPeek cho s2, s5 và chọn tail theo ρ (từ tuần 14, như bản 1.2);
+  - pairing BlueZ để bật mã hóa lớp liên kết (tuần 14–15);
+  - đưa q(t) vào gói trả về (bản I1 mới, tuần 14+);
+  - log RSSI/thông lượng khi ghi trace.
+- Mình (Châu):
+  - contract I3 v1 (cuối tuần 12);
+  - E_tx thêm 1M và mức công suất phát thấp (tuần 11);
+  - đo mã hóa BLE bật/tắt (tuần 14–15);
+  - so chọn đồng thời với chọn tuần tự offline (trước cuối tuần 13);
+  - xin thầy main.tex/refs.bib.
+- Thầy (WP-D): controller theo câu 14 và định lý.
+
+Hai câu trước đây chờ thầy (tập hành động, thước đo) nay đã chốt ở câu 1 và 3. Bạn dùng luôn để chốt grid NoPeek và P2.

@@ -1,0 +1,11 @@
+{
+  "Pi_naive": {
+    "s9": 0.10221817175070402,
+    "s10": 0.2874598024612963,
+    "s0c": 0.07540194478617968
+  },
+  "reading_declared_before_run": {
+    "Pi_logits": "Pi_logits_below_Pi_min"
+  },
+  "note": "Pi_v3(s9) and Pi_v3(s0c) come from part b (max with B_composite); Pi_logits = Pi of B_naive at s10"
+}

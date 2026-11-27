@@ -1,0 +1,69 @@
+{
+ "type": "SV3_RECEIPT_CHECK_S0C_V1",
+ "date": "2026-11-26",
+ "prepared_by": "SV3",
+ "files_sha256": {
+  "s0c_v1_ref.py": {
+   "listed": "323ffabaa255f80de9730279e7d0abee7571125bb61d1c36e871dc113bcaf0a0",
+   "computed": "323ffabaa255f80de9730279e7d0abee7571125bb61d1c36e871dc113bcaf0a0",
+   "match": true
+  },
+  "s0c_v1_golden20.npz": {
+   "listed": "2923fe85c5d6fa111e97dbf47f10b81bc487a6b9cca7d8fa8becbfb109089d87",
+   "computed": "2923fe85c5d6fa111e97dbf47f10b81bc487a6b9cca7d8fa8becbfb109089d87",
+   "match": true
+  },
+  "s0c_v1_golden20.json": {
+   "listed": "23eb93f4e7d69dbd15b04167401d3e046c4ddd212409efadb8377a80c2c672f9",
+   "computed": "23eb93f4e7d69dbd15b04167401d3e046c4ddd212409efadb8377a80c2c672f9",
+   "match": true
+  },
+  "s0c_v1_check_ds1val.json": {
+   "listed": "a8d8121f0b5ef0fde8e5902b8df8d0f37f37e12fe809f06665e179ec316445dc",
+   "computed": "a8d8121f0b5ef0fde8e5902b8df8d0f37f37e12fe809f06665e179ec316445dc",
+   "match": true
+  },
+  "build_s0c_v1.py": {
+   "listed": "050e2034ed5021a048fad728c85bbc30cc60ef580e9078568192083a0da4e749",
+   "computed": "050e2034ed5021a048fad728c85bbc30cc60ef580e9078568192083a0da4e749",
+   "match": true
+  },
+  "codec_probe.py": {
+   "listed": "2a538a34992f9a61a441191af7dee2d7c86c75cae79f0e0050cae94a19df58b3",
+   "computed": "2a538a34992f9a61a441191af7dee2d7c86c75cae79f0e0050cae94a19df58b3",
+   "match": true
+  },
+  "check_wire.py": {
+   "listed": "348669b8d19892d200cd4b18f366e0e1511544dc1affc2d5095da9d277b205f4",
+   "computed": "348669b8d19892d200cd4b18f366e0e1511544dc1affc2d5095da9d277b205f4",
+   "match": true
+  },
+  "README_S0c_v1.txt": {
+   "listed": "af31e242891c9304ab8f45c45e88cf2f740ea6b5c1e48d351b06f376f49d81be",
+   "computed": "af31e242891c9304ab8f45c45e88cf2f740ea6b5c1e48d351b06f376f49d81be",
+   "match": true
+  }
+ },
+ "package_A": {
+  "manifest_sha256": "f005b3ea4e2440186bce4218c537b12f3b54fe734631c56a90c2378748aedf2f",
+  "golden_z_s0_sha256": "4427f5bb7bddbd41dce34951acc1ce7133c985109841ffc5de7d584c107cc429",
+  "z_s0_listed_in_manifest": true
+ },
+ "golden_x_equals_package_A_z_s0": {
+  "beats": 20,
+  "bit_equal": true
+ },
+ "reference_reproduces_golden": {
+  "beats": 20,
+  "equal_counts": {
+   "reduced_v46": 20,
+   "q": 20,
+   "scale_fp16": 20,
+   "rice_body_hex": 20,
+   "dequantized_v46": 20,
+   "reconstructed_x360": 20,
+   "rice_roundtrip": 20
+  }
+ },
+ "scope": "Files of the S0c v1 package only; no MITDB array read, no model run"
+}

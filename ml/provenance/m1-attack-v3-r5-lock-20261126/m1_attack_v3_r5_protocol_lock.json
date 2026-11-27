@@ -1,0 +1,46 @@
+{
+  "type": "M1_ATTACK_V3_R5_PROTOCOL_LOCK",
+  "protocol_locked": true,
+  "allow_attack_runs": false,
+  "allow_DS2": false,
+  "scope": "Locks attack protocol v3 revision 5 as the definition of parts a, b, c, d and the official DS2 privacy round. Not a run authorization: no attack, fit or MITDB array load is allowed by this file. Runs need a separate authorization that binds the runner, the part c script, their tests and the random-data smoke, as for attack v2 (lock 205ec6db)",
+  "protocol_path": "ml/configs/mitdb_m1_attack_protocol_v3_r5.json",
+  "protocol_sha256": "9235b795ec53b9d4c79e90cad4f1114c260e05b8070c67a62fc23be656ca82fb",
+  "protocol_commit": "2284ea8",
+  "draft_sums_path": "ml/provenance/m1-attack-v3-r5-draft-20261126/SHA256SUMS.txt",
+  "draft_sums_sha256": "e7a4d9105dddb93a91e861cc4a751e1fbb25537bf7467ed7c0caca221298eab9",
+  "previous_versions_unchanged": {
+    "ml/configs/mitdb_m1_attack_protocol_v1.json": "869170470794aa2b1e7fca6eb217bc96b7eb0396be0720e39ca82cf79a19b5a0",
+    "ml/configs/mitdb_m1_attack_protocol_v2.json": "7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0",
+    "ml/configs/mitdb_m1_attack_protocol_v3.json": "67342cbd8aa06ab66a3109d9b4bcc9bceb7df659434deb2e10d26ffc48a0d2dd",
+    "ml/configs/mitdb_m1_attack_protocol_v3_r2.json": "8fae0a4e5ef9e0618e775264ebbd092f2efef32e0c5e878c0815a4a976be859f",
+    "ml/configs/mitdb_m1_attack_protocol_v3_r3.json": "0436b41b4211ab653d04f82a25f80d5331115b2ef566b357939116008b786e82",
+    "ml/configs/mitdb_m1_attack_protocol_v3_r4.json": "7b2b1271c292ca9003dfb5e6e2980d032f3af371dee289e41967bb48d5675200"
+  },
+  "approved_by": "SV3",
+  "decision_authority": "SV1, delegated by GVHD",
+  "decision_date": "2026-11-26",
+  "review_evidence_path": "ml/provenance/m1-sv1-evidence-20261126/tra_loi_Ky_Anh_r5_xac_nhan_khoa_20261126.txt",
+  "review_evidence": "54db34d1fa1f69fafa52a92ad471ddbed334afef148ecdd3b06c5c59b63161c2",
+  "review_evidence_author": "SV1",
+  "review_basis": "SV1 2026-11-26 (second message) section 1: the SHA of r5 and of the four other SHA256SUMS entries match; the key-level diff r4 -> r5 holds only revision, supersedes_draft.*, DS2_confirmation, changes_from_revision_4, noise_generator.DS2 and official_DS2_privacy_round.DS2_macro_F1_rule; r1-r4 and v2 unchanged. Section 3: lock r5 by the usual procedure and do not edit the r5 file after the confirmation. Condition set in SV1's first message of 2026-11-26 (eafcebf6...) section 2: confirmation the same day if the diff holds only the three changes",
+  "file_status_note": "The status and authority fields inside the r5 file still read CANDIDATE_FOR_SV1_CONFIRMATION_NOT_LOCKED and locked false, as written before the confirmation. The file is not edited (SV1 section 3); this lock record is what makes r5 locked",
+  "run_manifest_requirements": [
+    "SV1 2026-11-26 (second message) section 2: the fallback of R >= 20 pre-drawn noise realizations is written for DS1 only. If DS1 uses it, the DS2 round uses the same R with realizations drawn with part_index 7 in place of 0; if DS1 draws fresh noise every epoch, DS2 does too. DS2 follows DS1 and differs only in part_index. The run manifest records which plan DS1 used, and R if any",
+    "SV1 2026-11-26 (first message) section 3: the epochs actually run by every variant (number of noise draws each beat sees); at epoch 1, the max |GPU - CPU| of u_s' on one batch and the fraction of quantized values at s' that differ (reported only, not a gate)"
+  ],
+  "effort_cap_start": "2026-11-26, the date of this lock (SV1 2026-11-25 supplement item 1)",
+  "next_deadlines": {
+    "code_tests_random_data_smoke": "2026-11-29",
+    "parts_a_b_d_DS1": "2026-12-06",
+    "DS2_quality_script_with_S0c_to_SV1": "before 2026-12-07",
+    "DS2_quality_round": "2026-12-10",
+    "route_R_DS1": "2026-12-11",
+    "decision": "2026-12-13"
+  },
+  "not_covered": [
+    "Any attack, fit or array load on MITDB: needs the run authorization",
+    "DS2: closed until the quality round of 2026-12-10 and the official privacy round",
+    "The edge/README.md link change of commit 2284ea8: reviewed by SV2"
+  ]
+}

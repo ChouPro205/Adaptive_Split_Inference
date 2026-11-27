@@ -1,0 +1,33 @@
+grid-receipt 67c938817f8f6eea0ab493d34e66bf6d04df3baec05bef043a4b6cb766dc7d84
+threshold=0.539811  lr=3e-05  lambda0 identical across s: {20261030: True, 20261031: True, 20261101: True}
+  lambda0 seed 20261030: 0.5682 0.5728 0.5654 0.5593 0.5628 0.5554 0.5517 0.5468 0.5556 0.5492 0.5419
+  lambda0 seed 20261031: 0.5682 0.5632 0.5589 0.5608 0.5537 0.5493 0.5432 0.5499 0.5558 0.5515 0.5444
+  lambda0 seed 20261101: 0.5682 0.5657 0.5659 0.5732 0.5821 0.5646 0.5626 0.5498 0.5487 0.5514 0.5527
+  s2: lambda=2 deployment_seed=20261101
+    lambda=0    eligible=True  mean_Rn=0.9649 sd=0.0004 mean_F1=0.5744 flags=['LAMBDA0', 'LAMBDA0', 'LAMBDA0'] epochs=[1, 0, 4] collapsed=[False, False, False]
+    lambda=0.1  eligible=True  mean_Rn=0.9425 sd=0.0001 mean_F1=0.5455 flags=['OK', 'OK', 'OK'] epochs=[10, 10, 10] collapsed=[False, False, False]
+    lambda=0.5  eligible=True  mean_Rn=0.9119 sd=0.0009 mean_F1=0.5452 flags=['OK', 'OK', 'OK'] epochs=[7, 8, 8] collapsed=[False, False, False]
+    lambda=1    eligible=True  mean_Rn=0.9118 sd=0.0005 mean_F1=0.5483 flags=['OK', 'OK', 'OK'] epochs=[4, 5, 5] collapsed=[False, False, False]
+    lambda=2    eligible=True  mean_Rn=0.9091 sd=0.0011 mean_F1=0.5538 flags=['OK', 'OK', 'OK'] epochs=[3, 3, 3] collapsed=[False, False, False]
+    lambda=5    eligible=True  mean_Rn=0.9097 sd=0.0022 mean_F1=0.5466 flags=['OK', 'OK', 'OK'] epochs=[2, 3, 3] collapsed=[False, False, False]
+  s4: lambda=1 deployment_seed=20261031
+    lambda=0    eligible=True  mean_Rn=0.9553 sd=0.0004 mean_F1=0.5744 flags=['LAMBDA0', 'LAMBDA0', 'LAMBDA0'] epochs=[1, 0, 4] collapsed=[False, False, False]
+    lambda=0.1  eligible=True  mean_Rn=0.9477 sd=0.0005 mean_F1=0.5466 flags=['OK', 'OK', 'OK'] epochs=[10, 9, 10] collapsed=[False, False, False]
+    lambda=0.5  eligible=True  mean_Rn=0.8670 sd=0.0545 mean_F1=0.5444 flags=['OK', 'OK', 'OK'] epochs=[10, 4, 6] collapsed=[False, False, False]
+    lambda=1    eligible=True  mean_Rn=0.8538 sd=0.0236 mean_F1=0.5501 flags=['OK', 'OK', 'OK'] epochs=[3, 3, 4] collapsed=[False, False, False]
+    lambda=2    eligible=False mean_Rn=0.8852 sd=0.0351 mean_F1=0.5397 flags=['UTILITY_FAIL', 'UTILITY_FAIL', 'OK'] epochs=[1, 1, 4] collapsed=[False, False, False]
+    lambda=5    eligible=False mean_Rn=0.8650 sd=0.0004 mean_F1=0.5047 flags=['UTILITY_FAIL', 'UTILITY_FAIL', 'UTILITY_FAIL'] epochs=[1, 1, 1] collapsed=[False, False, False]
+  s5: lambda=1 deployment_seed=20261030
+    lambda=0    eligible=True  mean_Rn=0.9629 sd=0.0005 mean_F1=0.5744 flags=['LAMBDA0', 'LAMBDA0', 'LAMBDA0'] epochs=[1, 0, 4] collapsed=[False, False, False]
+    lambda=0.1  eligible=True  mean_Rn=0.9592 sd=0.0006 mean_F1=0.5628 flags=['OK', 'OK', 'OK'] epochs=[4, 9, 4] collapsed=[False, False, False]
+    lambda=0.5  eligible=True  mean_Rn=0.9266 sd=0.0090 mean_F1=0.5419 flags=['OK', 'OK', 'OK'] epochs=[6, 4, 7] collapsed=[False, False, False]
+    lambda=1    eligible=True  mean_Rn=0.9166 sd=0.0297 mean_F1=0.5478 flags=['OK', 'OK', 'OK'] epochs=[2, 1, 4] collapsed=[False, False, False]
+    lambda=2    eligible=False mean_Rn=0.9207 sd=0.0004 mean_F1=0.5300 flags=['UTILITY_FAIL', 'UTILITY_FAIL', 'UTILITY_FAIL'] epochs=[1, 1, 1] collapsed=[False, False, False]
+    lambda=5    eligible=False mean_Rn=0.8752 sd=0.0016 mean_F1=0.4927 flags=['UTILITY_FAIL', 'UTILITY_FAIL', 'UTILITY_FAIL'] epochs=[1, 1, 1] collapsed=[False, False, False]
+  s8: lambda=5 deployment_seed=20261031
+    lambda=0    eligible=True  mean_Rn=0.8024 sd=0.0022 mean_F1=0.5744 flags=['LAMBDA0', 'LAMBDA0', 'LAMBDA0'] epochs=[1, 0, 4] collapsed=[False, False, False]
+    lambda=0.1  eligible=True  mean_Rn=0.7922 sd=0.0014 mean_F1=0.5669 flags=['OK', 'OK', 'OK'] epochs=[3, 3, 4] collapsed=[False, False, False]
+    lambda=0.5  eligible=True  mean_Rn=0.7399 sd=0.0048 mean_F1=0.5470 flags=['OK', 'OK', 'OK'] epochs=[10, 9, 7] collapsed=[False, False, False]
+    lambda=1    eligible=True  mean_Rn=0.6784 sd=0.0010 mean_F1=0.5689 flags=['OK', 'OK', 'OK'] epochs=[10, 10, 10] collapsed=[False, False, False]
+    lambda=2    eligible=True  mean_Rn=0.5824 sd=0.0014 mean_F1=0.5826 flags=['OK', 'OK', 'OK'] epochs=[10, 10, 10] collapsed=[False, False, False]
+    lambda=5    eligible=True  mean_Rn=0.5692 sd=0.0030 mean_F1=0.5689 flags=['OK', 'OK', 'OK'] epochs=[5, 5, 5] collapsed=[False, False, False]

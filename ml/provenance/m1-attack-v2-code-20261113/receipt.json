@@ -1,0 +1,181 @@
+{
+  "type": "M1_ATTACK_V2_CODE_RECEIPT_NOT_LOCKED",
+  "prepared_by": "SV3",
+  "request": "SV1 2026-11-13 section 4: attack protocol v2 with the listed bindings and points, attack code (A1, B-naive, Pi), then the lock and the week 11 trial",
+  "base_commit": "f37164199d150e5348af7152b8797291f98bafdd",
+  "files_committed": false,
+  "protocol": {
+    "path": "ml/configs/mitdb_m1_attack_protocol_v2.json",
+    "sha256": "7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0",
+    "status": "READY_FOR_SV3_LOCK_NOT_LOCKED",
+    "predecessor": {
+      "path": "ml/configs/mitdb_m1_attack_protocol_v1.json",
+      "sha256": "869170470794aa2b1e7fca6eb217bc96b7eb0396be0720e39ca82cf79a19b5a0",
+      "status": "CANDIDATE_FOR_SV1_REVIEW_NOT_LOCKED (never locked, never run)"
+    },
+    "changes_from_v1": 15,
+    "diff": {
+      "path": "ml/provenance/m1-attack-v2-code-20261113/diffs/protocol-v1-v2.diff",
+      "sha256": "35bd941e7925259a876d442b7c1bc5f109c71901770f0efb0d01bf5c569252db"
+    }
+  },
+  "plan": {
+    "path": "ml/manifests/mitdb-attack-m1-v2/plan-manifest.json",
+    "sha256": "8fc252d23c935a93d17fb0080f939fca105e22b8d37e769b2da7940fd32fb177",
+    "status": "CANDIDATE_NOT_LOCKED",
+    "checkpoints": {
+      "rho0": {
+        "path": "ml/data/runs/mitdb-baseline-v4-20261103/C5-seed20261101/attempt-1/checkpoint-epoch-004.pt",
+        "sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c"
+      },
+      "rho1": {
+        "s2": {
+          "run_id": "grid-s2-lambda2-seed20261101",
+          "lambda": 2,
+          "seed": 20261101,
+          "epoch": 3,
+          "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s2-lambda2-seed20261101/checkpoint-epoch-003.pt",
+          "sha256": "6e04b7259f0bfa2165303c4ecbcef148024d543e7b2a802fb38d0cc9da6abe3b",
+          "run_config_sha256": "692bcc40977f241c0e661f08ef1a4dae4d96ae46d942036a32702f02826f5f0d"
+        },
+        "s4": {
+          "run_id": "grid-s4-lambda1-seed20261031",
+          "lambda": 1,
+          "seed": 20261031,
+          "epoch": 3,
+          "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s4-lambda1-seed20261031/checkpoint-epoch-003.pt",
+          "sha256": "7ef1cff382397383dc198f0d67e64b950e5152e6aaca3e3361563ae952b1823f",
+          "run_config_sha256": "fcb6d1f8e83e4c0f0793458228ec168cfd7d8a019a3b0d77f0f7ac7bf345ebda"
+        },
+        "s5": {
+          "run_id": "grid-s5-lambda1-seed20261030",
+          "lambda": 1,
+          "seed": 20261030,
+          "epoch": 2,
+          "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s5-lambda1-seed20261030/checkpoint-epoch-002.pt",
+          "sha256": "1698c9427ffd2b3497940a879530d98ef3e6a35318691c51aac7c28a55aa56dc",
+          "run_config_sha256": "3e0adc7a5f7da679afce0316302261a89947476acfbbff4907d3df9ad4f3e37d"
+        },
+        "s8": {
+          "run_id": "grid-s8-lambda5-seed20261031",
+          "lambda": 5,
+          "seed": 20261031,
+          "epoch": 5,
+          "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s8-lambda5-seed20261031/checkpoint-epoch-005.pt",
+          "sha256": "a6ebc8c30f5fe25f4baf37e0eff9d1866d419873c8c6f99b14eb362cd81b2625",
+          "run_config_sha256": "9f173d8786e9a03affd9931c941243d6716f459f2558ad8a296df5c460dad2e6"
+        }
+      }
+    },
+    "data_files": [
+      "train_X.npy",
+      "train_metadata.csv",
+      "train_y.npy",
+      "val_X.npy",
+      "val_metadata.csv",
+      "val_y.npy"
+    ],
+    "DS2_access": false
+  },
+  "sources_sha256": {
+    "ml/scripts/attack_m1_v2.py": "5064e09da9210da7a262818a1eab3647cbd0ef040929debc453f3040ea2f24b8",
+    "ml/scripts/package_m1_v4_a.py": "2c9662858cb0d504252adfc5cbb58895687f7737420384ed1e53a028cdb37cb6",
+    "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+    "ml/scripts/week4_common.py": "c5509a4f2977caf090e2d76be0bb7e52c99e55e0f8dcb41c0315bc6849187190",
+    "ml/src/quantization.py": "cb2c6260784fddf43a6fa620d0b258efae643cf98d9399f9625c21d8f14faa3f",
+    "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14"
+  },
+  "test": {
+    "path": "ml/scripts/test_attack_m1_v2.py",
+    "sha256": "6ae0a3903f89d13f97748f9144cb6e4786be8a0eaf9f338cec39fe2b5687819c",
+    "normal": {
+      "command": "python -B ml/scripts/test_attack_m1_v2.py",
+      "exit_code": 0,
+      "tests": 27,
+      "log_sha256": "c3630930557ffc447e4b8a0c7950d2f8ff5d712932002317e641f39b32f48083"
+    },
+    "optimized": {
+      "command": "python -B -O ml/scripts/test_attack_m1_v2.py",
+      "exit_code": 0,
+      "tests": 27,
+      "log_sha256": "8f1ff673c425a4fc160b533ce8f97978349e38c7318156a91674ed8aa51e8b4c"
+    }
+  },
+  "preflight": {
+    "command": "python -B [-O] ml/scripts/attack_m1_v2.py preflight",
+    "exit_code": 0,
+    "normal_and_optimized_identical": true,
+    "status": "PASS_PREFLIGHT_METADATA_ONLY_NO_ARRAY_NO_MODEL_NO_FIT_NO_DS2",
+    "counts": {
+      "beats": 50995,
+      "dropped": 1681,
+      "attacker_side": 24839,
+      "test": 24475,
+      "attacker_side_per_record": [
+        767,
+        1637
+      ],
+      "test_per_record": [
+        799,
+        1613
+      ],
+      "largest_patient_share_of_all_beats": 0.0659
+    },
+    "reads": "DS1 train/val metadata CSV only"
+  },
+  "smoke": {
+    "command": "python -B ml/scripts/attack_m1_v2.py smoke --output ml/data/smoke-attack-m1-v2-20261113",
+    "exit_code": 0,
+    "start_utc": "2026-11-13T09:09:04Z",
+    "end_utc": "2026-11-13T09:09:10Z",
+    "status": "SMOKE_PASS_RANDOM_DATA_NOT_MITDB",
+    "device_name": "NVIDIA GeForce RTX 5060",
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "capacity_check": {
+      "statistic": "mean over the B seeds of s0 test bacc (base architecture)",
+      "value": 0.4853206147323794,
+      "threshold": 0.8,
+      "decision": "escalated",
+      "s0_escalated_bacc_mean": 0.42518518518518517
+    },
+    "pairs": [
+      "s0-rho0-base",
+      "s0-rho0-escalated",
+      "s2-rho0",
+      "s2-rho1",
+      "s9-rho0"
+    ],
+    "s2_rho1_rerun_identical": true,
+    "note": "Synthetic metadata and beats with the real rho0/rho1 checkpoints, 3 epochs, 200 resamples; the numbers say nothing about MITDB"
+  },
+  "logs_sha256": {
+    "ml/provenance/m1-attack-v2-code-20261113/logs/exit-codes.txt": "6890f525dffb20163baf2746934eed2abf58e23e538407dad00d3986354f8705",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/preflight-normal.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/preflight-normal.txt": "b5ff0deb1aaea2ff65cba0f339162706c97c5379587a04e41914451d16ea11de",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/preflight-optimized.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/preflight-optimized.txt": "b5ff0deb1aaea2ff65cba0f339162706c97c5379587a04e41914451d16ea11de",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/prepare.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/prepare.stdout.txt": "54bafac688e5215248f025016420b7eecf89d302bab2f9ec7c9a26952df042ed",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/smoke-end-utc.txt": "412ddb74c5251134659a9754f2d61793edb3699d793c3408805735996ead7a21",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/smoke-exit-code.txt": "6a8acd478abb98959d40c3c646d2b93bb09f03b6064b588f7d4153476a36c6fe",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/smoke-start-utc.txt": "82f5e259dd2e54c28332676df9eb669dc76efca4fe1d6ed9b81661b636703ace",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/smoke.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/smoke.stdout.txt": "b25c05a5d7636a0363ece42ad1db243c47213380328e4e7bce71634f38104c59",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/tests-normal.txt": "c3630930557ffc447e4b8a0c7950d2f8ff5d712932002317e641f39b32f48083",
+    "ml/provenance/m1-attack-v2-code-20261113/logs/tests-optimized.txt": "8f1ff673c425a4fc160b533ce8f97978349e38c7318156a91674ed8aa51e8b4c"
+  },
+  "review_note": {
+    "path": "docs/sv3_m1_attack_v2_review_20261113.md",
+    "sha256": "ce083282acc80f3c90e85234c7ff660b6aea6e97d71b9e9f9ce99e727ab74c6f"
+  },
+  "scope": {
+    "MITDB_arrays_read": false,
+    "attack_on_MITDB": false,
+    "DS2_opened": false,
+    "locked": false,
+    "next": "SV3 lock and trial authorization binding protocol v2, this plan and the SV1 2026-11-13 review evidence; then run-trial"
+  },
+  "status": "CODE_AND_PROTOCOL_READY_FOR_LOCK_NOT_LOCKED"
+}

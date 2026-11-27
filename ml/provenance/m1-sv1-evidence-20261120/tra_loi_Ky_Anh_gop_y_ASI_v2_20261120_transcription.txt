@@ -1,0 +1,76 @@
+Chào Kỳ Anh, mình đã đọc góp ý của bạn về "Hướng xử lý ASI chốt 19/11, bản 2". Mình kiểm lại từng số với phụ lục bản 2, table_iii_e_dev.csv tuần 9 và báo cáo tuần 10 (main, eca2a9b), và số học của bạn đúng hết. Cụ thể:
+- s1 tốn thêm 185 µJ, trong đó 69,7 % thời gian là lượng tử.
+- Tail s1 chậm hơn tail s0 42 ms (99,5 so với 57,4 ms), nên E_wait tăng 71 µJ. E_wait lời nhiều nhất ở s8, 63 µJ.
+- Ngưỡng 17,3 µJ/B cho s10; mốc 4,3 s và 5,0 s cho việc tắt radio.
+- Bảng ngưỡng β ở mục 1; 1,43 so với 2,71 mJ ở 5(b); tăng 10 % N_ok ứng với cắt 9 % năng lượng.
+Mình nhận gần hết đề xuất. Có ba chỗ mình sửa hoặc bổ sung (mục 2), và câu trả lời cho 6 câu của bạn ở mục 3.
+
+1. Những gì mình nhận
+- Độ mới (mục 2, 3, 5a của bạn): mình tra lại, các bài bạn nêu đều có thật và đúng như bạn tóm tắt.
+  + Kindt và cộng sự (INFOCOM 2015) đổi interval kết nối BLE lúc chạy, tiết kiệm tới 42 % năng lượng ở master. Vậy "hành động radio BLE" không còn là điểm mới đứng riêng.
+  + Wu và cộng sự (IoT-J 2024) chuyển sang xử lý tại chỗ khi lượng riêng tư tích lũy vượt ngưỡng, gần đúng cơ chế hàng đợi Y của mình.
+  + PEACE (TWC 2020) dùng khung Lyapunov cho offload có bảo vệ riêng tư.
+  Vì vậy đóng góp 2 sẽ viết là các hạng tử riêng của BLE đo được (P_conn theo k và L, E_wait theo hàng đợi, chi phí kết nối lại) và kiểm bằng phần cứng. Dạng điều kiện thì dẫn Kumar & Lu 2010, không gọi là luật mới. Hàng đợi Y cũng không nhận là mới.
+- Câu "gồm cả điểm giao giữa gửi thô và tính tại chỗ khi kênh đắt dần" ở mục 3.2 sai với chính số của nhóm. Mình bỏ câu này khỏi protocol G5 v2 và tài liệu họp.
+- Lý do ở mục 3.1 ("không có ràng buộc này thì controller không còn gì để chọn") đúng là lý do ngược. Trong bài, Y được đặt ra vì nhu cầu tối thiểu hóa dữ liệu y tế rời khỏi thiết bị. Câu kia chỉ giữ trong tài liệu nội bộ, để giải thích vì sao kết quả ở p = 0 vẫn phải báo.
+- Mục 4 đúng về mặt toán: khi pin chỉ xả, chính sách tối ưu không phụ thuộc mức pin. Mình lấy thu năng lượng + tải bùng làm kịch bản chính cho N1.
+  + Bổ sung một ý: ở tải bùng, N_ok còn tăng nhờ tránh trễ hạn (static-best vẫn gửi s0 khi hàng đợi dài thì mất nhịp), không chỉ nhờ cắt năng lượng. Nên con số "phải cắt 20–40 %" là cận bi quan cho kịch bản đó.
+  + Muốn có tải bùng trên phần cứng thì Trung phải nâng giới hạn job nền của queue_sim. Hiện giới hạn là 8 job, mà s0 vẫn kịp hạn tới khoảng 8 job. Việc này mình báo Trung.
+- Mục 1(d): mình tính lại được khoảng 17,5–17,8 ms cho một lần trao đổi gói 251 B ở S8, kể cả gói ACK, đúng là không vừa interval 15 ms. Khối Coded ở lab tuần 12 sẽ dùng interval ≥ 30 ms và đo cả gói 27 B lẫn 251 B.
+- Mục 5(c): firmware của mình dùng SoftDevice Controller của NCS 3.4.0. Header sdc_hci_vs.h có đúng lệnh sdc_hci_cmd_vs_peripheral_latency_mode_set với ba chế độ enable, disable, wait for ack. Mình sẽ thử trong firmware tuần 11: xin L > 0 một lần (lần này BlueZ vẫn phải chấp nhận), rồi tắt latency trong pha WAIT. Kết quả đo ở lab tuần 12.
+- Mục 5(d): mình chuyển cho Trung thử kết nối ở 1M rồi đổi PHY sang Coded.
+- Mục 7: mình đồng ý ba điều kiện bạn nêu để mở cửa Q1. Ước lượng cho TGCN mình để lại sau G5, vì kế hoạch chỉ nộp TGCN khi G5 đạt rõ.
+
+2. Ba chỗ mình sửa hoặc bổ sung
+(a) Nếu so với đúng phương án gửi thô tốt nhất, trục thời gian tắt radio cũng khó có điểm giao.
+  Mốc 4,3 s của bạn là so s10 tắt radio với s0 giữ kết nối. Nhưng kịch bản nào cho phép tắt radio thì s0 cũng tắt được:
+  + Holter với D_r = 10 s: gom khoảng 12,5 nhịp × 139 B ≈ 1,74 kB, E_tx ≈ 0,42 mJ. Cộng kết nối lại 1 mJ (giả định của bạn) thì khoảng 0,11 mJ mỗi nhịp, so với 6,54 mJ mỗi nhịp của s10. Kết nối lại có tốn 10 mJ thì vẫn chỉ khoảng 0,83 mJ mỗi nhịp.
+  + Lấy mẫu thưa: ngắt rồi kết nối lại mỗi lần tốn khoảng 1 + 0,30 mJ, vẫn rẻ hơn s10. Trường hợp ngược lại chỉ xảy ra khi kết nối lại tốn quá khoảng 6,2 mJ, hoặc lâu tới mức s0 trễ hạn D.
+  Vì vậy trục tắt radio phải có cả "gom nhịp thô" và "ngắt rồi kết nối lại"; thiếu hai phương án này là so với baseline yếu. Chi phí và thời gian kết nối lại sẽ đo ở lab tuần 12.
+  Với head FP32 hiện tại, nhiều khả năng không có điểm giao trên bất kỳ trục BLE nào; điểm giao thật chỉ thấy trên trục κ (mô hình khác, INT8). Điều này làm bản đồ hòa vốn của bạn có giá trị hơn bạn viết.
+(b) INT8 không chỉ là câu reviewer sẽ hỏi.
+  Bạn đúng là INT8 không cứu được s1–s8. Nhưng nếu INT8 nhanh hơn FP32 khoảng 2–4 lần (mình ước lượng, chưa đo) thì s10 còn khoảng 1,3–3,3 mJ. Trong khi đó s0 ở Coded, L = 0, với giả định P_conn gấp 2,2 lần của bạn, tốn khoảng 3,0–3,2 mJ mỗi nhịp kể cả giữ kết nối.
+  Tức là ở trạng thái radio đắt, device-only bản INT8 có thể ngang hoặc thắng gửi thô, và kết luận "tính tại chỗ không bao giờ lợi" phụ thuộc vào việc head chạy FP32. Bản đồ hòa vốn vì vậy cần dải INT8 cho cả s10, không chỉ cho các điểm cắt giữa; bài sẽ nêu điểm này ở mục hạn chế. Có đo một điểm s10 INT8 thật hay không, mình quyết sau khi có bản đồ.
+(c) arXiv 2507.16594 (Jenhani và cộng sự) không đo năng lượng.
+  Theo tóm tắt, bài đo độ trễ split learning trên ESP32-S3, so sánh UDP, TCP, ESP-NOW và BLE, với MobileNetV2 và ResNet50. Vẫn đưa vào Table I, nhưng là bài về độ trễ, không phải bài đã đo năng lượng split trên MCU qua BLE.
+
+3. Trả lời 6 câu
+Các điểm thuộc danh sách chốt ở họp tuần 12, mình ghi chính thức vào biên bản và protocol G5 v2.
+(1) Mẫu số của tiêu chí K: năng lượng mỗi nhịp, kể cả phần giữ kết nối giữa hai nhịp (Δ = 0,8 s).
+  - Mỗi phương án lấy cấu hình radio tĩnh tốt nhất của nó trong Coded (k, L, độ dài gói), giống cách định nghĩa static-best.
+  - Số theo chu kỳ báo kèm.
+  - Mình không lấy P_conn ở L = 0 làm mẫu số, vì như vậy là đặt đối thủ ở cấu hình kém.
+(2) Mình không chọn trước khi có số. Tuần 12 bạn làm bản đồ hòa vốn thay cho P3.
+  - P3 phải qua một cổng. Trung xác nhận được Coded trên KV260 (hoặc qua dongle HCI), và lab tuần 12 đo được β, P_conn ở Coded. Mình thế các số đó vào bảng ngưỡng của bạn ở trường hợp tốt nhất: payload 20 B, tính thêm khoảng 65 µJ, tail không chậm hơn s0.
+  - Không qua cổng thì đóng K mà không train.
+  - Qua cổng thì bạn làm P3 trong tuần 13 với các điều kiện ở 1(b) của bạn, và vẫn quyết vào cuối tuần 13 như cũ. Baseline nén có mất (giảm mẫu ×2 rồi Rice) cũng phải chạy trên MITDB, nên cần protocol và file khóa như mọi lần fit.
+  Về bản đồ hòa vốn:
+  - Danh sách mô hình như bạn đề xuất là được.
+  - Thêm mô hình C5 của nhóm làm điểm đối chứng: so dự đoán theo bản đồ với 11 điểm đã đo.
+  - Ghi rõ mô hình nào không vừa 256 KB RAM của nRF52840.
+  - Trình bày là phép chiếu có dải, không phải số đo. Dải INT8 có cả s10 như 2(b).
+  - Số đầu vào lấy ở results/week10/device/analysis trên main: E_tx, E_wait, P_conn, E_conv,min, 1,21 nJ mỗi phép khi radio bật. Số Coded và P_conn(k, L), mình gửi ngay sau lab tuần 12.
+(3) Được. Ràng buộc viết thành (1/T)·Σ(1 − Π(a_t)) ≤ ε, Π lấy từ bảng đo, asset là nội dung từng nhịp.
+  - Ghi rõ ràng buộc này không che danh tính. Danh tính chỉ được che khi cả phiên xử lý tại chỗ, hoặc theo chính sách cấp phiên.
+  - Phần đo bacc nhận diện theo số nhịp thô k mà edge thấy mỗi phiên, mình sẽ nhờ bạn trong tin review attack v3.
+  - Bạn viết đoạn này vào nháp threat model. Nếu không kịp hạn 22/11 thì gửi bổ sung trước buổi họp đầu tuần 12.
+(4) Được, với điều kiện ở 2(a): trục tắt radio phải có cả gom nhịp thô và ngắt rồi kết nối lại.
+  - Các mức β vẫn đo, nhưng dùng để kiểm sai số dự đoán của mô hình năng lượng (dự đoán so với đo), không gọi là kiểm điểm giao.
+  - Luật viết theo κ, có dải INT8.
+(5) Có. Kịch bản chính cho N1 là thu năng lượng + tải bùng; các kịch bản khác vẫn khai trước và vẫn báo.
+  - Việc Z ≡ 0 chỉ còn là chỉ báo đã nêu ở bảng 2.2 của bản 2 gửi thầy. Mình ghi thêm một dòng lý do vào biên bản họp tuần 12.
+  - Dạng Lyapunov cho pin có dung lượng giới hạn kiểu LODCO, mình đưa vào phần xin thầy hướng dẫn.
+(6) Có. Bạn ghi vào đặc tả ρ2 các luật sau:
+  - Nếu đối chứng s0 + nhiễu đạt Π ≥ 0,5 theo tấn công ghép và macro-F1 ≥ 0,5398, thì s0 + nhiễu vào tập hành động thay cho s2 + ρ2.
+  - Hai bên so ở cùng macro-F1.
+  - Π phải đứng được trước kẻ tấn công thích nghi, biết cả cơ chế lẫn tham số nhiễu.
+  Đặc tả gửi mình review trước khi chạy, như đã hẹn.
+
+4. Việc của bạn
+- Trước 22/11 (giữ nguyên): attack protocol v3 + đặc tả ρ2 có thêm các luật ở (6), gửi mình review trước khi khóa.
+- Nháp threat model, có đoạn ngân sách rò rỉ ở (3).
+- Table I thêm: Kumar & Lu 2010, Kindt 2015, LODCO, PEACE, Wu 2024 và 2507.16594 (ghi là bài về độ trễ). Với các bài bạn mới đọc tóm tắt, đọc toàn văn trước khi viết câu so sánh.
+- Tuần 12: chạy (a), (b) của v3 ngay sau khi khóa; ρ2 tối đa 1 tuần; bản đồ hòa vốn (2–3 ngày, không dùng MITDB). P3 chờ cổng ở (2).
+- Tuần 13: kết quả ρ2, và P3 nếu qua cổng; đoạn khác biệt trong related work. DS2 vẫn đóng như kế hoạch.
+
+Cảm ơn bạn. Góp ý lần này chỉ đúng những chỗ bài dễ bị bắt nhất (độ mới, ý nghĩa của Y, tiêu chí K), lại có đủ số để mình kiểm.

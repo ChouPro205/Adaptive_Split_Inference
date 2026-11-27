@@ -1,0 +1,147 @@
+diff --git a/ml/scripts/test_nopeek_m1_v1.py b/ml/scripts/test_nopeek_m1_v2.py
+index 2206d31..b0ef0f0 100644
+--- a/ml/scripts/test_nopeek_m1_v1.py
++++ b/ml/scripts/test_nopeek_m1_v2.py
+@@ -1,4 +1,4 @@
+-"""NoPeek v1 rules on fixtures, plan and gates; never fits on MITDB (the smoke has its own receipt)."""
++"""NoPeek v2 rules on fixtures, plan, TF32 and authorization gates; never fits on MITDB (the smoke has its own receipt)."""
+ import json
+ import tempfile
+ import unittest
+@@ -8,7 +8,7 @@ from unittest.mock import patch
+ 
+ import numpy as np
+ 
+-import nopeek_m1_v1 as nop
++import nopeek_m1_v2 as nop
+ from m1_metrics_v4 import all_metrics
+ 
+ ROOT = nop.ROOT
+@@ -131,7 +131,7 @@ class PlanAndGateTests(unittest.TestCase):
+             self.assertEqual(sum(r['stage'] == 'grid' for r in plan['runs']), 72)
+             self.assertEqual(plan['protocol_sha256'], nop.sha(ROOT/nop.PROTOCOL))
+             config = json.loads((ROOT/rel/plan['runs'][0]['config']).read_text(encoding='utf-8'))
+-            self.assertEqual((config['cudnn_allow_tf32'], config['matmul_allow_tf32'], config['epochs']), (True, False, 10))
++            self.assertEqual((config['cudnn_allow_tf32'], config['matmul_allow_tf32'], config['epochs']), (False, False, 10))
+             self.assertEqual(nop.preflight(ROOT/rel/'plan-manifest.json')['runs'], 81)
+             with self.assertRaises(ValueError):
+                 nop.prepare(rel)
+@@ -154,6 +154,118 @@ class PlanAndGateTests(unittest.TestCase):
+                     nop.run_stage('pilot', ROOT/rel/'plan/plan-manifest.json', rel/'out', bad)
+         self.assertEqual(opened, [])
+ 
++    def test_pilot_grid_refused_without_authorization_before_any_load(self):
++        opened = []
++        real = np.load
++        def spy(path, *a, **k):
++            opened.append(str(path))
++            return real(path, *a, **k)
++        with tempfile.TemporaryDirectory(dir=ROOT/'ml/data') as d:
++            rel = Path(d).relative_to(ROOT)
++            nop.prepare(rel/'plan')
++            with patch.object(nop.np, 'load', spy):
++                with self.assertRaises(ValueError):
++                    nop.run_pilot_grid(ROOT/rel/'plan/plan-manifest.json', rel/'out', None)
++            self.assertFalse((ROOT/rel/'out').exists())
++        self.assertEqual(opened, [])
++
++
++class PrecisionTests(unittest.TestCase):
++    """Protocol v2 training.precision: TF32 off for cuDNN and matmul (SV1 2026-11-09 item 4(5))."""
++
++    def test_protocol_and_plan_flags_are_off(self):
++        protocol = json.loads((ROOT/nop.PROTOCOL).read_text(encoding='utf-8'))
++        self.assertEqual(nop.precision_flags(protocol), {'cudnn_allow_tf32': False, 'matmul_allow_tf32': False})
++        bad = json.loads(json.dumps(protocol))
++        bad['training']['precision']['cudnn_allow_tf32'] = True
++        with self.assertRaises(ValueError):
++            nop.precision_flags(bad)
++
++    def test_set_precision_turns_tf32_off_and_refuses_on(self):
++        import torch
++        torch.backends.cudnn.allow_tf32 = True  # PyTorch default for cuDNN; set_precision must turn it off.
++        state = nop.set_precision({'cudnn_allow_tf32': False, 'matmul_allow_tf32': False})
++        self.assertEqual((state['cudnn_allow_tf32'], state['matmul_allow_tf32']), (False, False))
++        self.assertEqual((torch.backends.cudnn.allow_tf32, torch.backends.cuda.matmul.allow_tf32), (False, False))
++        for flags in ({'cudnn_allow_tf32': True, 'matmul_allow_tf32': False}, {'cudnn_allow_tf32': False, 'matmul_allow_tf32': True},
++                      {'cudnn_allow_tf32': 0, 'matmul_allow_tf32': False}, {}):
++            with self.assertRaises(ValueError):
++                nop.set_precision(flags)
++
++    def test_fit_run_refuses_tf32_config_before_model_or_output(self):
++        with tempfile.TemporaryDirectory(dir=ROOT/'ml/data') as d:
++            out = Path(d)/'run'
++            config = {'seed': 1, 'cudnn_allow_tf32': True, 'matmul_allow_tf32': False}
++            with patch.object(nop.pkg, 'load_model', side_effect=AssertionError('model built')):
++                with self.assertRaises(ValueError):
++                    nop.fit_run(config, 'X', None, None, None, out, 1e-5)
++            self.assertFalse(out.exists())
++
++
++class AuthorizationTests(unittest.TestCase):
++    """The lock must name the SV1 review file the protocol binds, and that file must have the declared SHA-256."""
++
++    def setUp(self):
++        self.tmp = tempfile.TemporaryDirectory(dir=ROOT/'ml/data')
++        self.rel = Path(self.tmp.name).relative_to(ROOT)
++        nop.prepare(self.rel/'plan')
++        self.plan = ROOT/self.rel/'plan/plan-manifest.json'
++        declared = json.loads((ROOT/nop.PROTOCOL).read_text(encoding='utf-8'))['source_bindings'][nop.REVIEW_EVIDENCE_KEY]
++        self.good = {'type': nop.AUTH_TYPE, 'allow_training': True, 'protocol_sha256': nop.sha(ROOT/nop.PROTOCOL),
++                     'plan_manifest_sha256': nop.sha(self.plan), 'approved_by': 'unit-test fixture',
++                     'review_evidence': declared['raw_sha256'], 'review_evidence_path': declared['path']}
++
++    def tearDown(self):
++        self.tmp.cleanup()
++
++    def check(self, auth):
++        path = ROOT/self.rel/'auth.json'
++        path.write_text(json.dumps(auth), encoding='utf-8')
++        return nop.require_authorization(path, self.plan)
++
++    def test_declared_review_file_accepted(self):
++        self.assertEqual(self.check(self.good)['review_evidence'], '2207542f6e3d09603093c69c9e646327082fe6bda1df2fd1fa71587664e15328')
++
++    def test_other_or_missing_review_evidence_rejected(self):
++        v1_review = 'ml/provenance/m1-v4-checkpoint-lock-20261105/sv1_evidence/sv1_review_m1_v4_grid_20261105.txt'
++        for change in ({'review_evidence_path': v1_review, 'review_evidence': nop.sha(ROOT/v1_review)},
++                       {'review_evidence': '0'*64}, {'review_evidence_path': None}, {'review_evidence_path': 'missing.txt'},
++                       {'type': 'M1_NOPEEK_V1_LOCK_AND_TRAIN_AUTHORIZATION'}, {'plan_manifest_sha256': '0'*64}):
++            with self.subTest(change=change), self.assertRaises(ValueError):
++                self.check({**self.good, **change})
++
++
++class PilotGridFlowTests(unittest.TestCase):
++    """Protocol v2 pilot.after_pilot: grid at once with the chosen learning rate; no grid without a safe one."""
++
++    def flow(self, decision):
++        calls = []
++        def fake_stage(stage, plan_path, output, authorization, pilot_decision=None):
++            Path(output).mkdir(parents=True)
++            calls.append((stage, None if pilot_decision is None else json.loads(Path(pilot_decision).read_text(encoding='utf-8'))))
++            return [f'{stage}-run']
++        with tempfile.TemporaryDirectory(dir=ROOT/'ml/data') as d:
++            rel = Path(d).relative_to(ROOT)
++            plan = ROOT/rel/'plan.json'
++            plan.write_text(json.dumps({'runs': []}), encoding='utf-8')
++            with patch.object(nop, 'require_authorization', return_value={}), patch.object(nop, 'run_stage', side_effect=fake_stage), \
++                    patch.object(nop, 'choose_pilot', return_value=dict(decision)):
++                result = nop.run_pilot_grid(plan, rel/'out', 'auth.json')
++            written = json.loads((ROOT/rel/'out/pilot-decision.json').read_text(encoding='utf-8'))
++            self.assertEqual(written['plan_manifest_sha256'], nop.sha(plan))
++        return calls, result
++
++    def test_grid_starts_at_once_with_chosen_learning_rate(self):
++        calls, result = self.flow({'status': 'PILOT_LR_CHOSEN', 'learning_rate': 3e-5, 'candidates': []})
++        self.assertEqual([c[0] for c in calls], ['pilot', 'grid'])
++        self.assertEqual((calls[1][1]['status'], calls[1][1]['learning_rate']), ('PILOT_LR_CHOSEN', 3e-5))
++        self.assertEqual((result['learning_rate'], result['grid_runs']), (3e-5, ['grid-run']))
++
++    def test_no_safe_learning_rate_stops_before_grid(self):
++        calls, result = self.flow({'status': 'NO_SAFE_LEARNING_RATE_REPORT_TO_SV1', 'candidates': []})
++        self.assertEqual([c[0] for c in calls], ['pilot'])
++        self.assertEqual(result['grid'], 'NOT_STARTED_NO_SAFE_LEARNING_RATE')
++
+ 
+ if __name__ == '__main__':
+     unittest.main(verbosity=2)

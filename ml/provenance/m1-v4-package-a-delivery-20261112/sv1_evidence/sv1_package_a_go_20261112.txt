@@ -1,0 +1,14 @@
+Chào Kỳ Anh, Trung đã xác nhận calibration cho gói A: 1.000 nhịp từ train DS1, chọn bằng np.linspace → làm tròn → bỏ trùng như edge/quantize_tail.py, không dùng val, test hay DS2. Bạn giao gói A được rồi (mốc M2 là cuối tuần này, 15/11).
+
+Trung cần nhận đủ:
+
+Input ECG đã chuẩn hóa theo normalization mới, đúng 1.000 nhịp đó.
+Golden z_s cho s0–s9 trên tập này, cùng định dạng gói tuần 3/5.
+Danh sách sample ID theo đúng thứ tự.
+Checkpoint C5 đã khóa và SHA-256 của nó.
+Code kiến trúc và cấu hình mô hình, normalization, mapping điểm chia.
+Một bộ kiểm có logits tham chiếu. Bộ này lấy từ train/val DS1, không dùng DS2, vì DS2 chỉ mở sau khi khóa xmodel ở tuần 13.
+Manifest SHA-256 cho toàn bộ gói.
+Bạn gửi cho Trung và cc mình. Trung sẽ gửi lại receipt (SHA khớp, z_s tính lại khớp golden) trước khi lượng tử và compile.
+
+PR #47 sửa lịch sử mình đã merge bằng merge commit. Cảm ơn bạn.

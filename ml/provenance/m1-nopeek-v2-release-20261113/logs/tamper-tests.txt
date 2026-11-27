@@ -1,0 +1,7 @@
+1 one bit flipped in ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s4-lambda1-seed20261031/checkpoint-epoch-003.pt -> exit=1 CHECK FAILED: grid-s4-lambda1-seed20261031: checkpoint-epoch-003.pt hash differs
+2 extra file ml/data/runs/nopeek-m1-v2-20261112/grid/extra.txt -> exit=1 CHECK FAILED: Inventory differs: missing [], extra ['grid/extra.txt']
+3 missing file ml/data/runs/nopeek-m1-v2-20261112/pilot/pilot-s2-lambda0-seed20261030-lr3e-05/epoch-005.json -> exit=1 CHECK FAILED: Inventory differs: missing ['pilot/pilot-s2-lambda0-seed20261030-lr3e-05/epoch-005.json'], extra []
+4 first hex digit of PACKAGE_SHA256SUMS.txt changed -> exit=1 CHECK FAILED: PACKAGE_SHA256SUMS.txt differs from the files
+5 one line appended to tracked ml/provenance/m1-nopeek-v2-run-20261112/grid-receipt.json -> exit=1 CHECK FAILED: Tracked file differs or is missing: ml/provenance/m1-nopeek-v2-run-20261112/grid-receipt.json
+6 matmul_allow_tf32 set true in ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s8-lambda5-seed20261031/attempt-identity.json -> exit=1 CHECK FAILED: grid-s8-lambda5-seed20261031: TF32 not off
+after restoring all files -> exit=0

@@ -1,0 +1,35 @@
+{
+  "protocol_sha256": "83cce64defefa979abcf8c31cc27daf9ae81604caae911acf0901cba3783cf35",
+  "init_checkpoint": "ml/data/runs/mitdb-baseline-v4-20261103/C5-seed20261101/attempt-1/checkpoint-epoch-004.pt",
+  "init_checkpoint_sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+  "batch_size": 256,
+  "epochs": 10,
+  "optimizer": {
+    "name": "AdamW",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.0001
+  },
+  "samples_per_epoch": 41472,
+  "train_counts": [
+    37519,
+    772,
+    2784,
+    389,
+    8
+  ],
+  "dropout": 0.2,
+  "cudnn_allow_tf32": false,
+  "matmul_allow_tf32": false,
+  "DS2_access": false,
+  "stage": "grid",
+  "s": 5,
+  "lambda": 0.5,
+  "seed": 20261031,
+  "lr": null,
+  "run_id": "grid-s5-lambda0.5-seed20261031",
+  "lr_source": "pilot_decision"
+}

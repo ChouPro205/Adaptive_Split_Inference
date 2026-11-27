@@ -1,0 +1,38 @@
+Chào Kỳ Anh, mình đã nhận receipt pilot, receipt grid (mình đọc trên dev/ml-sv3, commit 7440508) và bản ghi giao gói A. Mình đã tự kiểm lại và trả lời theo thứ tự dưới đây.
+
+1. Khóa NoPeek v2
+Mình đồng ý với việc bạn khóa mà không gửi lại. Mục 2–6 của diff chỉ chép lại các quyết định của mình ngày 09/11, 10/11 và phần định danh; ngoài cờ TF32, không giá trị run nào thay đổi. Mình ghi nhận đã khóa trước khi chạy: commit khóa 8f81a91 lúc 19:50 ngày 12/11, run bắt đầu lúc 20:30, source-head của run là 8f81a91, exit 0.
+
+2. Pilot và grid: mình tự tính lại, số khớp
+Mình viết một script riêng, đọc pilot-curves.csv và grid-curves.csv rồi áp đúng luật của protocol v2: LR an toàn, điểm pilot, chọn epoch, chọn λ, seed trung vị. Mọi số đều khớp với số bạn báo:
+- Pilot: điểm 0,7554 / 0,7420; LR 1e-4 không an toàn (đạt 5/10 epoch). Luật chọn điểm nhỏ hơn nên chọn 3e-5 là đúng.
+- λ = 0 giống nhau giữa s2, s4, s5 và s8 ở cả 3 seed.
+- Số epoch đạt ngưỡng của từng (s, λ) và các λ không đủ điều kiện (s4 λ2, λ5; s5 λ2, λ5) khớp. Bốn lựa chọn cũng khớp: s2 λ2, seed 20261101, epoch 3, R_n 0,9095; s4 λ1, seed 20261031, epoch 3, R_n 0,8661; s5 λ1, seed 20261030, epoch 2, R_n 0,9241; s8 λ5, seed 20261031, epoch 5, R_n 0,5690.
+
+3. Đường λ = 0: mình không có ý kiến khác, bạn dùng các checkpoint ở mục 4 làm ρ1
+λ = 0 đạt ngưỡng ở cả 30/30 epoch, nên không rơi vào trường hợp "λ 0 thường trượt" của protocol. Bạn dùng checkpoint ở mục 4 tin grid làm ρ1 (s2, s4, s5; s8 chỉ chạy offline). ρ0 là checkpoint A fcf3f846….
+Ba điểm dưới đây mình ghi lại để viết bài. Luật giữ nguyên và grid không chạy thêm gì:
+(a) Riêng việc fine-tune đã làm giảm tiện ích. Ở λ = 0, macro-F1 giảm từ 0,568 xuống 0,542–0,553 ở epoch 10, recall S giảm từ 0,41 xuống 0,31–0,36. Vì vậy các ρ1 được chọn nằm sát ngưỡng: ở s4, macro-F1 0,5419, chỉ hơn ngưỡng 0,002; accuracy 0,9347, thấp hơn A 1,76 điểm %. Khi đánh giá ρ1 trên DS2, bạn báo thêm checkpoint λ = 0 cùng seed, cùng epoch, để tách phần giảm do fine-tune khỏi phần giảm do NoPeek. Checkpoint đó đã có sẵn, chỉ cần thêm vào danh sách đánh giá của script DS2 bản sửa.
+(b) Ở s2, R_n gần như dừng ở khoảng 0,91 từ λ 0,5 tới λ 5 (λ 0 là 0,965). Ở s4, R_n xuống 0,85–0,87; s5 xuống 0,92; s8 xuống 0,57. Nghĩa là ở điểm cắt nông, ngưỡng tiện ích chặn NoPeek trước khi R_n giảm được nhiều. R_n chưa phải Π nên chưa kết luận được gì. Nhưng đây đúng là câu hỏi R1 của bài: nếu Π(s2, ρ1) ≈ Π(s2, ρ0) thì ở s2, bảo vệ phải dựa vào ρ2 (nhiễu). Lượt thử của bạn trả lời câu này, nên có Π(s2, ρ0) và Π(s2, ρ1) là báo mình ngay.
+(c) Ở s4 và s5, R_n lệch nhiều giữa 3 seed: s4 λ1 từ 0,827 đến 0,869; s4 λ0,5 từ 0,806 đến 0,912; s5 λ1 từ 0,884 đến 0,942. Ở s2 và s8 gần như không lệch. Lượt thử giữ như đã chốt: chỉ dùng seed triển khai. Lượt chính thức trên DS2 thêm B-naive (vẫn 3 seed kẻ tấn công) cho 2 seed còn lại của λ đã chọn, ở s2 và s_m. Kết quả này chỉ để báo khoảng Π theo seed phòng thủ, lựa chọn giữ nguyên. Lý do: reviewer sẽ hỏi Π có phụ thuộc vào lần train NoPeek hay không. Bạn ghi điểm này vào attack protocol v2.
+
+4. Việc cần xong trước khi tính Π
+- Đưa toàn bộ checkpoint NoPeek (386 MB, 81 run × epoch 0–10) lên Release, kèm SHA256SUMS, như đã làm với checkpoint C5. Lý do giống lần trước: GPU khác không cho kết quả trùng bit, nên checkpoint là bằng chứng duy nhất. Việc này làm trước khi chạy tấn công.
+- Attack protocol v2 cần ràng buộc: NoPeek v2 (83cce64d…), grid-selection.json, SHA của 4 checkpoint ρ1 (s2, s4, s5, s8) và checkpoint A. TF32 tắt. Giữ đủ điểm (1)–(4) mục 5 tin 09/11: N = 22 cho lượt thử và 21 cho lượt chính thức; bootstrap theo khối 10 nhịp; B chạy 3 seed; kiểm năng lực B-naive ở s0 với ngưỡng ≥ 0,80; dữ liệu decoder của lượt thử. Thêm điểm 3(c) ở trên. Nếu diff so với v1 chỉ gồm các điểm này thì bạn khóa luôn, không cần gửi lại mình.
+- Lượt thử chạy s0 trước, rồi s2, s4, s5, s8; ở mỗi s chạy cả ρ0 và ρ1. Trong receipt, ghi thêm một dòng: phần test của 18 bản ghi DS1 nằm trong train DS1, tức là dữ liệu head đã thấy khi train, nên Π của lượt thử có thể lạc quan hơn lượt chính thức trên DS2. Có số ngày nào thì báo mình ngày đó; hạn là 22/11.
+
+5. Gói A
+Mình đã tải từ Release và tự kiểm:
+- Zip 0b4294b5… khớp file .sha256, giải nén ra đủ 59 file.
+- manifest.json f005b3ea…; cả 58/58 SHA liệt kê trong manifest đều khớp.
+- Mình tính lại dãy chỉ số np.unique(np.linspace(0, 41471, 1000).round()): ra 1.000 hàng, SHA c7e2b3e9… khớp với rule.json.
+- samples.csv chỉ có 18 bản ghi train DS1, không có bản ghi val hay DS2. Shape của z_s0…z_s9 đúng registry v2.
+Mình chưa tính lại z_s từ checkpoint vì máy mình không có torch; phần này Trung kiểm trong receipt gửi bạn. Gói giao đúng mốc M2 (cuối tuần 10). Ở bước D1 tuần 13, mình dùng firmware/head_parameters.h của gói này.
+
+6. Việc còn lại của bạn
+Ngoài điểm 3(a) và 3(c), mình không giao việc mới.
+- Tuần 11 (hạn 22/11): đưa checkpoint lên Release, khóa attack protocol v2, chạy lượt thử A1 + B-naive. Cùng hạn: đoạn khác biệt với 2502.16091 và P3SL, và bản nháp threat model.
+- Không gấp: script DS2 bản sửa theo mục 3 tin 09/11, thêm phần đánh giá λ = 0 cùng seed, cùng epoch theo 3(a).
+- Khi tiện: mở PR dev/ml-sv3 → main (NoPeek v2, receipt pilot và grid, bản ghi giao gói A). Mình sẽ merge bằng "Create a merge commit".
+
+Cuối tuần cả nhóm họp nhanh 15 phút như đã hẹn. Cảm ơn bạn, phần NoPeek và gói A bạn làm rất gọn và đúng hạn.

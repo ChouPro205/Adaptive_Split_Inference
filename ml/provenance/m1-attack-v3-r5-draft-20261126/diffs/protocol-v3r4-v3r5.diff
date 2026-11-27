@@ -1,0 +1,73 @@
+diff --git a/ml/configs/mitdb_m1_attack_protocol_v3_r4.json b/ml/configs/mitdb_m1_attack_protocol_v3_r5.json
+index 7665fcf..68ee69e 100644
+--- a/ml/configs/mitdb_m1_attack_protocol_v3_r4.json
++++ b/ml/configs/mitdb_m1_attack_protocol_v3_r5.json
+@@ -1,7 +1,7 @@
+ {
+   "schema_version": 1,
+   "protocol_id": "mitdb-m1-attack-v3",
+-  "revision": 4,
++  "revision": 5,
+   "status": "CANDIDATE_FOR_SV1_CONFIRMATION_NOT_LOCKED",
+   "authority": {
+     "decision_authority": "SV1, delegated by GVHD (GVHD approved the ASI direction version 3 and gave SV1 the detailed decisions, SV1 2026-11-25)",
+@@ -11,11 +11,11 @@
+     "lock_procedure": "SV1 2026-11-25 sections 1-2: revision 4 applies SV1's review of revision 3; SV3 sends the r3 -> r4 diff and SV1 confirms the same day. After that confirmation the user provides the lock and run authorization file; this file is never edited after confirmation"
+   },
+   "supersedes_draft": {
+-    "path": "ml/configs/mitdb_m1_attack_protocol_v3_r3.json",
+-    "sha256": "0436b41b4211ab653d04f82a25f80d5331115b2ef566b357939116008b786e82",
+-    "commit": "d5c9158",
+-    "status": "Revision 3 of v3, reviewed by SV1 on 2026-11-25 and not locked; kept unedited. Revisions 1 (67342cbd8aa06ab66a3109d9b4bcc9bceb7df659434deb2e10d26ffc48a0d2dd, 699ee1e) and 2 (8fae0a4e5ef9e0618e775264ebbd092f2efef32e0c5e878c0815a4a976be859f, 8e59123) are also kept unedited",
+-    "why": "SV1's review of 2026-11-25: a third k-beat aggregator (mean of k observed tensors), adaptive attackers trained on freshly drawn noise, the S0c v1 definition bound by SHA-256 (no NOT_RUN fallback), only the C0c control, B_composite, s9/s10 and S0c in the official DS2 privacy round, DS2 confirmation before an R configuration enters the action set, the shifted calendar (decision on 2026-12-13) and source bindings that point to existing paths"
++    "path": "ml/configs/mitdb_m1_attack_protocol_v3_r4.json",
++    "sha256": "7b2b1271c292ca9003dfb5e6e2980d032f3af371dee289e41967bb48d5675200",
++    "commit": "1fd830f",
++    "status": "Revision 4 of v3, reviewed by SV1 on 2026-11-26 (content agreed) and not locked; kept unedited. Revisions 1-3 are also kept unedited",
++    "why": "SV1's reply of 2026-11-26 section 2: three changes before the lock (DS2 macro-F1 gate relative to A on DS2; 'same attackers' on DS2 means the same recipe retrained on the DS2 attacker-train part; noise seeds of the DS2 round declared before DS2 is opened). Nothing else changes"
+   },
+   "written_after_trial": {
+     "statement": "Revisions 1-3 were written on 2026-11-19, 2026-11-20 and 2026-11-21 and this revision on 2026-11-26, after SV3 and SV1 had seen every number of the v2 week 11 trial, SV1's replies of 2026-11-19 and 2026-11-25, the ASI direction version 3 and the S0c compression test of 2026-11-20 (macro-F1 per compressed payload on DS1 validation). No result of any part of v3 exists",
+@@ -50,6 +50,13 @@
+     "Calendar shifted by one week: decision on 2026-12-13, DS1 results of parts a, b, d on 2026-12-06, route R on 2026-12-11, effort cap counted from the lock (SV1 2026-11-25 section 0; supplement item 1)",
+     "questions_for_SV1: revision 3 questions 1-6 answered by SV1 2026-11-25 and removed; four new questions on details of this revision"
+   ],
++  "changes_from_revision_4": [
++    "DS2_confirmation: the macro-F1 condition is relative to A on DS2, macro-F1_DS2(configuration, alpha) >= 19/20 x macro-F1_DS2(A, FP32), exact Fraction, fixed4 metric, denominator from the DS2 quality round of 2026-12-10; absolute values and CI95 reported. Pi >= 0.5 and Pi_k10 >= 0.5 unchanged (SV1 2026-11-26 item 2(a), correcting SV1's review of 2026-11-25)",
++    "DS2_confirmation: 'the same attackers' means the same variants, architectures, training settings, seeds, aggregators and DS1-chosen alpha, retrained on the attacker-train part of the 21 DS2 patients (SV1 2026-11-26 item 2(b))",
++    "noise_generator.DS2: part_index 4-7 declared for the DS2 round before DS2 is opened; every DS1 noise stream is unchanged and no DS2 stream equals a DS1 stream (SV1 2026-11-26 item 2(c))",
++    "official_DS2_privacy_round.DS2_macro_F1_rule: every macro-F1 gate on DS2 is 19/20 x macro-F1_DS2(A, FP32), for every action and every path (FP32, INT8/FP16, DPU, S0c) (SV1 2026-11-26 item 2(c), last paragraph)",
++    "SV1's answers to the four questions of revision 4 (2026-11-26 section 3): S0c added to the DS2 quality round; clean rho0 attackers at s' kept; fresh noise per epoch over the whole attacker-train set kept, with the number of epochs run per variant written to the run manifest; GPU composites in training and CPU composites in evaluation kept, with max |GPU - CPU| of u_s' on one batch and the share of changed quantized values at s' logged at epoch 1 (report only). The questions_for_SV1 list below is left as written in revision 4; these answers apply. Source: ml/provenance/m1-sv1-evidence-20261126/tra_loi_Ky_Anh_r4_20261126.txt, SHA-256 eafcebf68feb42a44d1981d4d1b7094f412b82610880013601e2ccf01fc84489"
++  ],
+   "source_bindings": {
+     "v2_bindings": "Every source_bindings entry of v2 applies unchanged (decisions 03/11, reviews 05/11, 09/11, 13/11, NoPeek protocol v2, grid selection, checkpoint lock A, NoPeek checkpoint Release, quantization, package A)",
+     "sv1_review_r3_20261125": {"path": "ml/provenance/m1-sv1-evidence-20261125/tra_loi_Ky_Anh_review_r3_va_docs_20261125.txt", "raw_sha256": "14a1f67118aff6ac3fc62643bfdf1817a3709d1855fbc0f7bf23d65bb71c4ed8", "items": "0 (calendar), 1(1)-1(6), 2, 3, 4, 5", "note": "Byte-exact copy of the file SV1 sent on 2026-11-25; SHA-256 computed by SV3 on receipt"},
+@@ -165,7 +172,8 @@
+     "noise_generator": {
+       "fixed_draws": "numpy.random.default_rng(numpy.random.SeedSequence([20261120, config_index, alpha_key, part_index, draw])) with config_index 0 = R2, 2 = C0c (1 is not used); alpha_key = round(alpha * 1e6); part_index 1 attacker-validation, 2 test, 3 DS1 validation; draws 0, 1, 2 for utility; draw 0 for attacker-validation and test",
+       "fresh_training_noise": "Attacker-train noise is drawn fresh for every epoch: numpy.random.default_rng(numpy.random.SeedSequence([20261120, config_index, alpha_key, 0, epoch])) generates one noise array for the whole attacker-train set in its fixed row order, so the noise of a beat does not depend on the batch order; epochs count from 1. Used by B_adaptive, A1_adaptive and B_composite_adaptive (SV1 2026-11-25 item 1(4))",
+-      "fallback": "Only if a timing of the full fresh-noise plan on random arrays (no MITDB) shows that part c would exceed the route R cap: at least 20 pre-drawn realizations (epoch e uses realization (e - 1) mod R, R >= 20), with R and the timing written to the run manifest before the first fit and reported to SV1"
++      "fallback": "Only if a timing of the full fresh-noise plan on random arrays (no MITDB) shows that part c would exceed the route R cap: at least 20 pre-drawn realizations (epoch e uses realization (e - 1) mod R, R >= 20), with R and the timing written to the run manifest before the first fit and reported to SV1",
++      "DS2": "Official DS2 privacy round, same SeedSequence form [20261120, config_index, alpha_key, part_index, ...]: part_index 4 utility on DS2 (draws 0, 1, 2; data = every DS2 beat under the rules of the quality round), 5 attacker-validation on DS2 (draw 0), 6 test on DS2 (draw 0), 7 fresh attacker-train noise on DS2 per epoch (in place of 0). Every DS1 stream is unchanged and no DS2 stream equals a DS1 stream (SV1 2026-11-26 item 2(c))"
+     },
+     "utility": {
+       "data": "DS1 validation (as NoPeek v2 utility; the 4 validation records of the DS1/DS2 split); DS2 never used",
+@@ -206,7 +214,7 @@
+       "control_selected": "If C0c is selected at some alpha: S0c + noise is preferred to s2 + rho2, whatever R2 gives; both privacy-utility curves are reported; report to SV1 at once",
+       "only_R2_selected": "If no C0c alpha is selected and R2 is selected at some alpha: s2 + rho2 is the candidate; SV1 then measures its energy and latency and compares it with the S0c/S10 alternation policy at the same requirement (ASI direction v3 section 2); report to SV1 at once",
+       "neither": "Otherwise: negative result for the mechanism and the range tried, with the per-beat Pi, Pi_k10 and the matched-F1 curves of both configurations; the leakage indicator stays in the system evaluation",
+-      "DS2_confirmation": "A selected configuration enters the action set only if the official DS2 privacy round (week 14, N = 21) also gives Pi >= 0.5, Pi_k10 >= 0.5 and macro-F1 >= 0.5398 as point estimates, with the same attackers, aggregators and alpha chosen on DS1; CI95 reported in the paper. If DS2 fails, the configuration is withdrawn and the result reported as it is (SV1 2026-11-25 item 1(5))",
++      "DS2_confirmation": "A selected configuration enters the action set only if the official DS2 privacy round (week 14, N = 21) also gives, as point estimates, Pi >= 0.5, Pi_k10 >= 0.5 and macro-F1_DS2(configuration, alpha) >= 19/20 x macro-F1_DS2(A, FP32), with the denominator taken from the DS2 quality round of 2026-12-10 (fixed before the privacy round), computed as an exact Fraction with the fixed4 metric; absolute macro-F1 values and CI95 are reported in the paper. On DS2 the attackers are the same recipe, not the same trained models: the same variants, architectures, training settings, seeds, aggregators and the alpha chosen on DS1, retrained on the attacker-train part of the 21 DS2 patients. If DS2 fails, the configuration is withdrawn and the result reported as it is (SV1 2026-11-25 item 1(5); SV1 2026-11-26 items 2(a) and 2(b))",
+       "comparison": "At every reachable target t: Pi, Pi_k10 and the reconstruction metrics of R2 and C0c at alpha_t, with CI95 and per-attacker values, side by side at equal macro-F1",
+       "decision_time": "SV1 decides routes R and K and the auxiliary model on 2026-12-13 with these rules (SV1 2026-11-25 section 0 and section 2)"
+     },
+@@ -221,7 +229,8 @@
+   "official_DS2_privacy_round": {
+     "when": "Week 14 (2026-12-14 to 2026-12-20), after the quality round of 2026-12-10, under its own authorization file provided by the user",
+     "scope": "Parts a, b and d of this revision on the DS2 patients (N = 21, record 202 excluded, v2 official-round data rules), including B_composite, s9/s10 and S0c, plus any configuration selected by part c on DS1 with its alpha and attackers. Each locked configuration is evaluated on DS2 once",
+-    "not_in_scope": "No choice of any parameter (alpha, k, threshold, configuration, seed) is made on DS2"
++    "not_in_scope": "No choice of any parameter (alpha, k, threshold, configuration, seed) is made on DS2",
++    "DS2_macro_F1_rule": "Every macro-F1 gate on DS2 is relative to A on DS2: 19/20 x macro-F1_DS2(A, FP32) from the quality round of 2026-12-10, exact Fraction, fixed4. The rule applies to every action and every path (FP32, INT8/FP16, DPU, S0c), so this protocol and the LUT use one rule (SV1 2026-11-26 item 2(c))"
+   },
+   "constraints": [
+     "The 9 pairs of the v2 trial are never rerun or edited; their files are read only and checked against receipt b2861c71",

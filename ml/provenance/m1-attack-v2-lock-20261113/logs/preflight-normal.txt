@@ -1,0 +1,19 @@
+{
+  "status": "PASS_PREFLIGHT_METADATA_ONLY_NO_ARRAY_NO_MODEL_NO_FIT_NO_DS2",
+  "counts": {
+    "beats": 50995,
+    "dropped": 1681,
+    "attacker_side": 24839,
+    "test": 24475,
+    "attacker_side_per_record": [
+      767,
+      1637
+    ],
+    "test_per_record": [
+      799,
+      1613
+    ],
+    "largest_patient_share_of_all_beats": 0.0659
+  },
+  "checkpoints": 5
+}

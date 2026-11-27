@@ -1,0 +1,26 @@
+Chào Kỳ Anh, mình gửi vài cập nhật cho tuần này và trả lời các phần liên quan tới bạn. Không có việc mới; bạn cứ làm theo thứ tự trong tin 09/11.
+
+1. Lịch
+Tuần này là tuần 10 của dự án (tuần 1 = 07–13/09, tuần 10 = 09–15/11). Trong tin 09/11 mình ghi "tuần này (tuần 11)" là nhầm. Hạn thử tấn công giữ như bản chốt: chậm nhất cuối tuần 11 (22/11). Có số sớm hơn thì càng tốt, có ngày nào báo ngày đó. Sau đó: nếu Π không tăng theo s, hoặc cả ρ1 lẫn ρ2 không nâng được Π, mình quyết chuyển hướng T4 trong tuần 12 (tin 05/11 mục 6b); mô phỏng G5 xong trước cuối tuần 13.
+
+2. Gói A
+Hôm nay mình hỏi Trung câu calibration (1.000 nhịp train DS1, linspace theo edge/quantize_tail.py; Trung muốn nhận x đã chuẩn hóa hay golden z_s). Trung xác nhận xong mình báo ngay, bạn giao gói A (trừ dự đoán DS2) cho cả mình và Trung. Nếu Trung muốn khác (số mẫu, dạng file) mình chuyển nguyên văn cho bạn.
+
+3. Tập s chạy P2 trên dongle (việc tuần 10 "chốt tập s chạy P2 trên dongle" trong bản 1.2)
+Chốt: {s2, s_m}, s_m theo luật 05/11 (s4 mặc định; s5 chỉ khi s4 không đạt mà s5 đạt). Flash đủ cho mọi trường hợp: head NoPeek FP32 s2 = 5,6 KB, s4 = 36,5 KB, s5 = 67,5 KB, tức tối đa 73,1 KB; cộng SMP khoảng 15 KB vẫn dưới 183 KB còn trống. Không lượng tử trọng số, không đo lại E_dev; s8 chỉ chạy offline. Bạn ghi vào protocol NoPeek/gói B như một ràng buộc đã chốt: tập s mở rộng (fine-tune tail, gói B) = {2, s_m}; grid {2, 4, 5, 8} giữ nguyên để vẽ hình.
+
+4. E_prot
+Tuần này mình tự đo P1 ở mọi s 0–9, bạn không cần nạp gì. ρ1 không tốn thêm năng lượng vì cùng phép toán (mình đo kiểm khi có head NoPeek, tuần 14); ρ2 đo ở tuần 14–15 sau gói B. Như vậy mục "đo chi phí P1/P2 với SV1" ở tuần 12 của bạn: phần P1 coi như xong khi có báo cáo tuần 10 của mình, phần P2 dời sang tuần 14–15 như bản chốt 03/11. Tuần 12 bạn tập trung cho gói B.
+
+5. Đặc tả P2 (tuần 11, không gấp)
+Khi viết đặc tả P2, bạn ghi giúp mình mấy điểm để mình chuẩn bị firmware đo ρ2: nhiễu cộng trên FP32 trước lượng tử hay trên INT8 sau lượng tử; σ theo kênh hay theo phần tử; bảng tra bao nhiêu phần tử, PRNG và seed; tham số cần nạp lên dongle (số byte).
+
+6. Mô phỏng
+Mình khóa protocol mô phỏng G5 (định nghĩa, baseline, ablation, tiêu chí N1/N2, trace) và push lên GitHub trong 11–12/11, trước khi có Π thử. Bạn không cần chờ việc này. Nếu số Π đến trước thì mình ghi rõ trong protocol phần nào viết sau khi đã thấy Π.
+
+7. Những thứ mình đang chờ từ tin 09/11
+- Receipt pilot + grid, kèm đường macro-F1 theo epoch của λ = 0. Mình xem trong ngày, trước khi có Π (tin 05/11 mục 4).
+- PR 0 file đưa 365acbc và ea04abf vào lịch sử main. Mình merge bằng "Create a merge commit".
+- Script DS2 bản sửa (không gấp, DS2 vẫn chờ xmodel tuần 13).
+
+Cuối tuần mình đề xuất cả nhóm họp nhanh 15 phút (gói A, grid NoPeek, Π thử, kết quả lab). Cảm ơn bạn.

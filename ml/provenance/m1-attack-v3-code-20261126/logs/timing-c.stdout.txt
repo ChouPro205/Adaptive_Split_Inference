@@ -1,0 +1,36 @@
+{
+  "parts": {
+    "attacker_train": 19088,
+    "attacker_validation": 4785,
+    "test": 23788
+  },
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 5060",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "cudnn_allow_tf32": false,
+  "matmul_allow_tf32": false,
+  "deterministic_algorithms": true,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "epochs_timed": 2,
+  "R2": {
+    "utility_seconds_per_alpha": 10.59230351448059,
+    "epoch1_inputs_seconds": 3.9515695571899414,
+    "lockstep_seconds_per_epoch": 4.7313151359558105,
+    "variants_x_seeds": 18
+  },
+  "C0c": {
+    "utility_seconds_per_alpha": 11.218245267868042,
+    "epoch1_inputs_seconds": 2.558149814605713,
+    "lockstep_seconds_per_epoch": 4.197171926498413,
+    "variants_x_seeds": 21
+  },
+  "extrapolation": {
+    "utility_alphas_upper_bound": 78,
+    "points": 8,
+    "max_epochs": 50,
+    "hours_upper_bound_training_and_utility": 0.73,
+    "not_included": "B_naive (fixed tensors), test predictions, k-beat tables, reconstruction metrics"
+  }
+}

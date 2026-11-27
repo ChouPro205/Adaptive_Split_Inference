@@ -1,0 +1,18 @@
+lock: ACCEPTED 9235b795ec53b9d4c79e90cad4f1114c260e05b8070c67a62fc23be656ca82fb 54db34d1fa1f69fafa52a92ad471ddbed334afef148ecdd3b06c5c59b63161c2
+draft SHA256SUMS entries: MATCH; previous versions v1, v2, v3, r2, r3, r4: MATCH
+changed r4 -> r5: changes_from_revision_4
+changed r4 -> r5: official_DS2_privacy_round.DS2_macro_F1_rule
+changed r4 -> r5: part_c_rho2_and_s0c_noise_control.action_set_rules_declared_before_run.DS2_confirmation
+changed r4 -> r5: part_c_rho2_and_s0c_noise_control.noise_generator.DS2
+changed r4 -> r5: revision
+changed r4 -> r5: supersedes_draft.commit
+changed r4 -> r5: supersedes_draft.path
+changed r4 -> r5: supersedes_draft.sha256
+changed r4 -> r5: supersedes_draft.status
+changed r4 -> r5: supersedes_draft.why
+negative control allow_attack_runs=true: REJECTED ValueError: this lock must not grant runs or DS2
+negative control allow_DS2=true: REJECTED ValueError: this lock must not grant runs or DS2
+negative control protocol_sha256=r4: REJECTED ValueError: protocol hash
+negative control review_evidence=SV1 r4 message: REJECTED ValueError: review evidence hash
+negative control approved_by empty: REJECTED ValueError: approval fields
+negative control protocol with a changed key outside the diff: REJECTED ValueError: keys outside the confirmed diff: ['limitations']

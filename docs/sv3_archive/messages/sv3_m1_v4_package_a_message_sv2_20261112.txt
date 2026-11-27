@@ -1,0 +1,27 @@
+Chào Trung (cc Châu), mình giao gói A cho mốc M2.
+
+1. File
+- SV3_M1_V4_PACKAGE_A_20261105.zip (68.975.743 byte), SHA-256 0b4294b54d2cb3211564725ad1c636f9d30739d3e705b0f0c2fc33b147e83e29, kèm file .sha256. Tải ở Release https://github.com/ChouPro205/Adaptive_Split_Inference/releases/tag/sv3-m1-v4-package-a-20261112
+- Giải nén ra thư mục m1-v4-package-a-20261105-v1/ (59 file). manifest.json có SHA-256 f005b3ea4e2440186bce4218c537b12f3b54fe734631c56a90c2378748aedf2f và liệt kê SHA của từng file còn lại.
+- Đây đúng là gói dựng ngày 05/11, không sửa byte nào. Trong manifest.json, README.md và calibration/rule.json vẫn ghi "chờ SV2 xác nhận" vì các file đó viết trước khi bạn xác nhận. Bản ghi giao là ml/provenance/m1-v4-package-a-delivery-20261112/delivery.json trên nhánh dev/ml-sv3.
+
+2. Bảy mục bạn cần
+- Input đã chuẩn hóa của 1.000 nhịp: calibration/z_s0.npy, [1000, 1, 360], FP32. Ở s0 chưa có lớp nào, nên z_s0 chính là input; mình đã kiểm nó trùng từng bit với train_X đã chuẩn hóa ở đúng các hàng đó.
+- Golden z_s s0–s9 của 1.000 nhịp: calibration/z_s0.npy … calibration/z_s9.npy, mỗi s một file .npy FP32, shape [1000, ...] theo registry v2, cùng định dạng gói tuần 3.
+- Sample ID theo thứ tự: calibration/samples.csv. Dòng k ứng với hàng k của mọi file z_s. Các chỉ số là hàng train chọn bằng np.linspace → làm tròn → bỏ trùng trên 41.472 nhịp train DS1; SHA của dãy chỉ số (int64 little-endian) là c7e2b3e9…
+- Checkpoint C5 đã khóa: model/checkpoint.pt, SHA-256 fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c, kèm bản sao file khóa model/checkpoint_lock.json (6848b08d…).
+- Kiến trúc, cấu hình, normalization, mapping điểm chia: model/mitdb_baseline_model.py, model/slot_config.json, data/normalization.json (1ae60f3f…), model/architecture.json (điểm cắt, shape, layout của s0–s10, đã đối chiếu registry v2), model/model_graph.json.
+- Bộ kiểm có logits tham chiếu: golden/z_s0.npy … golden/z_s10.npy và golden/reference_logits.npy của 20 nhịp train DS1, danh sách ở samples.csv. Không có val, test hay DS2.
+- Manifest SHA-256 cho toàn gói: manifest.json.
+
+3. Mình đã kiểm trước khi giao (CPU, cả chế độ thường và -O)
+- Lệnh verify của gói qua: checkpoint trùng file khóa, trọng số trùng checkpoint, header, shape, inventory.
+- Tính lại z_s0–z_s9 của 1.000 nhịp và z_s0–z_s10 cùng logits của 20 nhịp từ checkpoint: trùng từng bit với file trong gói.
+- File zip dựng hai lần ra cùng byte; giải nén ra đúng từng file của gói.
+
+4. Lưu ý
+- edge/quantize_tail.py mặc định đọc dữ liệu tuần 1. Với mô hình này bạn dùng --checkpoint model/checkpoint.pt và --calib_data calibration/z_s<s>.npy --calib-data-split train (hoặc tự tính z_s từ calibration/z_s0.npy).
+- data/normalization.json vẫn ghi CANDIDATE_NOT_LOCKED_NOT_REVIEWED, nhưng SHA của nó đã được ràng buộc trong protocol baseline v4 đã khóa, và checkpoint được train với đúng file này.
+- Gói không có DS2 (arrays và dự đoán FP32 + INT8/FP16). Phần đó làm sau khi bạn khóa xmodel s0–s9 ở tuần 13.
+
+Bạn gửi lại mình receipt (SHA khớp, z_s tính lại khớp golden) trước khi lượng tử và compile nhé. Cảm ơn bạn.

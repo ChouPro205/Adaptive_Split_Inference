@@ -1,0 +1,173 @@
+{
+  "tracked_sha256_match": true,
+  "package_sums_file_checked": true,
+  "run_dir": "ml/data/runs/nopeek-m1-v2-20261112",
+  "runs": {
+    "pilot": 9,
+    "grid": 72
+  },
+  "files": 1948,
+  "checkpoints": 891,
+  "bytes": 400210929,
+  "package_sums_sha256": "5b58c9fe160b9dea173254561804fc3e6afc3c9b3408378b2dd494d4a5bb3dde",
+  "checks": [
+    "inventory exact",
+    "run configs = plan manifest",
+    "checkpoint and history hashes = pilot/grid receipts = summaries",
+    "TF32 off and DS2 not opened in every run",
+    "top-level files = tracked copies",
+    "stage results = plan"
+  ],
+  "roles": [
+    {
+      "s": "s2",
+      "role": "other seed of the selected lambda (point 3c candidate: s2 and s_m in {s4, s5})",
+      "lambda": 2,
+      "seed": 20261030,
+      "epoch": 3,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s2-lambda2-seed20261030/checkpoint-epoch-003.pt",
+      "sha256": "d2bd639b6008e17ad71add21f00a54fdcdaea748229e4ce80751ad23f6234578"
+    },
+    {
+      "s": "s2",
+      "role": "other seed of the selected lambda (point 3c candidate: s2 and s_m in {s4, s5})",
+      "lambda": 2,
+      "seed": 20261031,
+      "epoch": 3,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s2-lambda2-seed20261031/checkpoint-epoch-003.pt",
+      "sha256": "3a0efcb19bb34711bf0000182dae810f5556dd102e7d36d9381657a37ee79d23"
+    },
+    {
+      "s": "s2",
+      "role": "rho1 (deployment seed)",
+      "lambda": 2,
+      "seed": 20261101,
+      "epoch": 3,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s2-lambda2-seed20261101/checkpoint-epoch-003.pt",
+      "sha256": "6e04b7259f0bfa2165303c4ecbcef148024d543e7b2a802fb38d0cc9da6abe3b"
+    },
+    {
+      "s": "s2",
+      "role": "lambda 0 control, same seed and epoch (point 3a)",
+      "lambda": 0,
+      "seed": 20261101,
+      "epoch": 3,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s2-lambda0-seed20261101/checkpoint-epoch-003.pt",
+      "sha256": "44be97a1063a015f4b82d3cd0954f3521368ea0691b18765faf4ec1d93271d9f"
+    },
+    {
+      "s": "s4",
+      "role": "other seed of the selected lambda (point 3c candidate: s2 and s_m in {s4, s5})",
+      "lambda": 1,
+      "seed": 20261030,
+      "epoch": 3,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s4-lambda1-seed20261030/checkpoint-epoch-003.pt",
+      "sha256": "d48f3df8cf4d74842ce198fc98ba2c41bcc741fcb2dafc4352fb027d956d0ea5"
+    },
+    {
+      "s": "s4",
+      "role": "rho1 (deployment seed)",
+      "lambda": 1,
+      "seed": 20261031,
+      "epoch": 3,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s4-lambda1-seed20261031/checkpoint-epoch-003.pt",
+      "sha256": "7ef1cff382397383dc198f0d67e64b950e5152e6aaca3e3361563ae952b1823f"
+    },
+    {
+      "s": "s4",
+      "role": "lambda 0 control, same seed and epoch (point 3a)",
+      "lambda": 0,
+      "seed": 20261031,
+      "epoch": 3,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s4-lambda0-seed20261031/checkpoint-epoch-003.pt",
+      "sha256": "823a002a8a8cf76b2adaecb64b172aa37933a2fe384a2a7051d100d053a98026"
+    },
+    {
+      "s": "s4",
+      "role": "other seed of the selected lambda (point 3c candidate: s2 and s_m in {s4, s5})",
+      "lambda": 1,
+      "seed": 20261101,
+      "epoch": 4,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s4-lambda1-seed20261101/checkpoint-epoch-004.pt",
+      "sha256": "020940b895546d477577c4b793db66423381ef38c119595f7397a389b3942e59"
+    },
+    {
+      "s": "s5",
+      "role": "rho1 (deployment seed)",
+      "lambda": 1,
+      "seed": 20261030,
+      "epoch": 2,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s5-lambda1-seed20261030/checkpoint-epoch-002.pt",
+      "sha256": "1698c9427ffd2b3497940a879530d98ef3e6a35318691c51aac7c28a55aa56dc"
+    },
+    {
+      "s": "s5",
+      "role": "lambda 0 control, same seed and epoch (point 3a)",
+      "lambda": 0,
+      "seed": 20261030,
+      "epoch": 2,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s5-lambda0-seed20261030/checkpoint-epoch-002.pt",
+      "sha256": "526dfa1a309558da33a1c13e2ff2d127b1870dc63ac023027eaa2ad874048fd6"
+    },
+    {
+      "s": "s5",
+      "role": "other seed of the selected lambda (point 3c candidate: s2 and s_m in {s4, s5})",
+      "lambda": 1,
+      "seed": 20261031,
+      "epoch": 1,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s5-lambda1-seed20261031/checkpoint-epoch-001.pt",
+      "sha256": "5b95fdbc61b4a67216e632d1c0976d020c4053d861c38205062cde0b4ce91d68"
+    },
+    {
+      "s": "s5",
+      "role": "other seed of the selected lambda (point 3c candidate: s2 and s_m in {s4, s5})",
+      "lambda": 1,
+      "seed": 20261101,
+      "epoch": 4,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s5-lambda1-seed20261101/checkpoint-epoch-004.pt",
+      "sha256": "b9c5bb96bc330e5a449bd103c96a652991c0d2e6613934b2eb76d9d5afcc2199"
+    },
+    {
+      "s": "s8",
+      "role": "other seed of the selected lambda (s8 offline only)",
+      "lambda": 5,
+      "seed": 20261030,
+      "epoch": 5,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s8-lambda5-seed20261030/checkpoint-epoch-005.pt",
+      "sha256": "fd3276347dc3dc7a6bdb991d03684376795081093fc3b880c8fd48515912ac60"
+    },
+    {
+      "s": "s8",
+      "role": "rho1 (deployment seed)",
+      "lambda": 5,
+      "seed": 20261031,
+      "epoch": 5,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s8-lambda5-seed20261031/checkpoint-epoch-005.pt",
+      "sha256": "a6ebc8c30f5fe25f4baf37e0eff9d1866d419873c8c6f99b14eb362cd81b2625"
+    },
+    {
+      "s": "s8",
+      "role": "lambda 0 control, same seed and epoch (point 3a)",
+      "lambda": 0,
+      "seed": 20261031,
+      "epoch": 5,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s8-lambda0-seed20261031/checkpoint-epoch-005.pt",
+      "sha256": "841ad17994d6f6636d6c52ec7cabd24b83ef1fc3536a34b3a44d1164aafebdd5"
+    },
+    {
+      "s": "s8",
+      "role": "other seed of the selected lambda (s8 offline only)",
+      "lambda": 5,
+      "seed": 20261101,
+      "epoch": 5,
+      "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s8-lambda5-seed20261101/checkpoint-epoch-005.pt",
+      "sha256": "ed157e7bbc65975f99a66738616eb1b43dccf75b957171915d4f9193dc1225db"
+    }
+  ],
+  "scope": {
+    "arrays_read": false,
+    "DS2_opened": false,
+    "model_quality_evidence": false
+  },
+  "status": "NOPEEK_V2_RUNS_HASH_CHECK_PASS"
+}

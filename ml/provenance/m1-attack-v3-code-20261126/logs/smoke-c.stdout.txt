@@ -1,0 +1,121 @@
+part a s9: Pi=0.4746 CI95=[0.4657, 0.4853] bacc=0.5847
+part a s10: Pi=0.6975 CI95=[0.6873, 0.7080] bacc=0.3897
+part a s0c: Pi=0.7246 CI95=[0.7207, 0.7279] bacc=0.3660
+part c R2-alpha500000: Pi=0.4920 (B_composite_adaptive s9) Pi_k10=0.4023809523809524
+part c C0c-alpha500000: Pi=0.6315 (B_composite_adaptive s9) Pi_k10=0.4430799220272905
+part c C0c-alpha500000: Pi=0.6315 (B_composite_adaptive s9) Pi_k10=0.4430799220272905
+part c R2-alpha500000: Pi=0.4920 (B_composite_adaptive s9) Pi_k10=0.39761904761904754
+{
+  "status": "SMOKE_PASS_RANDOM_DATA_NOT_MITDB",
+  "epochs": 2,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 5060",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "cudnn_allow_tf32": false,
+  "matmul_allow_tf32": false,
+  "deterministic_algorithms": true,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "utility_alpha_t": {
+    "R2": {
+      "99/100": null,
+      "49/50": null,
+      "97/100": null,
+      "19/20": null
+    },
+    "C0c": {
+      "99/100": null,
+      "49/50": null,
+      "97/100": null,
+      "19/20": null
+    }
+  },
+  "points": {
+    "R2": {
+      "Pi": 0.4920089610198609,
+      "Pi_k10": 0.4023809523809524,
+      "winner": "B_composite_adaptive s9",
+      "gpu_cpu_epoch1": [
+        {
+          "target": 9,
+          "rows": 256,
+          "max_abs_diff": 0.0,
+          "fraction_quantized_values_differ": 0.0
+        },
+        {
+          "target": 10,
+          "rows": 256,
+          "max_abs_diff": 0.0,
+          "fraction_quantized_values_differ": 0.0
+        }
+      ],
+      "epochs_run": {
+        "B_adaptive seed20261030": 2,
+        "B_composite_adaptive s9 seed20261030": 2,
+        "B_composite_adaptive s10 seed20261030": 2,
+        "B_adaptive seed20261031": 2,
+        "B_composite_adaptive s9 seed20261031": 2,
+        "B_composite_adaptive s10 seed20261031": 2,
+        "B_adaptive seed20261101": 2,
+        "B_composite_adaptive s9 seed20261101": 2,
+        "B_composite_adaptive s10 seed20261101": 2,
+        "A1_adaptive": 2,
+        "B_naive seed20261030": 2,
+        "B_naive seed20261031": 2,
+        "B_naive seed20261101": 2
+      }
+    },
+    "C0c": {
+      "Pi": 0.6315162045234584,
+      "Pi_k10": 0.4430799220272905,
+      "winner": "B_composite_adaptive s9",
+      "gpu_cpu_epoch1": [
+        {
+          "target": 2,
+          "rows": 256,
+          "max_abs_diff": 0.0,
+          "fraction_quantized_values_differ": 0.0
+        },
+        {
+          "target": 9,
+          "rows": 256,
+          "max_abs_diff": 0.00775146484375,
+          "fraction_quantized_values_differ": 0.0003662109375
+        },
+        {
+          "target": 10,
+          "rows": 256,
+          "max_abs_diff": 0.003875732421875,
+          "fraction_quantized_values_differ": 0.00078125
+        }
+      ],
+      "epochs_run": {
+        "B_adaptive seed20261030": 2,
+        "B_composite_adaptive s2 seed20261030": 2,
+        "B_composite_adaptive s9 seed20261030": 2,
+        "B_composite_adaptive s10 seed20261030": 2,
+        "B_adaptive seed20261031": 2,
+        "B_composite_adaptive s2 seed20261031": 2,
+        "B_composite_adaptive s9 seed20261031": 2,
+        "B_composite_adaptive s10 seed20261031": 2,
+        "B_adaptive seed20261101": 2,
+        "B_composite_adaptive s2 seed20261101": 2,
+        "B_composite_adaptive s9 seed20261101": 2,
+        "B_composite_adaptive s10 seed20261101": 2,
+        "A1_adaptive": 2,
+        "B_naive seed20261030": 2,
+        "B_naive seed20261031": 2,
+        "B_naive seed20261101": 2
+      }
+    }
+  },
+  "C0c_point_rerun_identical": true,
+  "fallback_plan_runs": {
+    "Pi": 0.4920089610198609,
+    "noise_plan": {
+      "kind": "fallback",
+      "R": 20
+    }
+  }
+}

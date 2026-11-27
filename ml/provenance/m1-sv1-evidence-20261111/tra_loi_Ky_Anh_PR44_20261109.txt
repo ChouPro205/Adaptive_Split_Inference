@@ -1,0 +1,76 @@
+Chào Kỳ Anh, cảm ơn bạn. Mình đã xem PR #44 và ba tài liệu ứng viên. Mình trả lời theo thứ tự các câu hỏi của bạn.
+
+0. Bước 2c, file khóa, Release và PR #44
+Mình ghi nhận: chạy lại 2c trùng byte 21/21 file, checkpoint fcf3f846…; file khóa 6848b08d…; Release đúng gói 5dc88a02…. Hai bước 2c, 2d coi như xong.
+Mình đã merge PR #44 nhưng chọn nhầm squash. Main có commit f4db84c; nội dung trùng hoàn toàn với 59ca50c (cùng tree 424794db…), nhưng 365acbc và ea04abf không nằm trong lịch sử của main. Bằng chứng không mất: tag Release giữ ea04abf, 365acbc là commit cha của nó, và nhánh dev/ml-sv3 vẫn giữ đủ 10 commit. Mình sửa theo cách không viết lại main:
+- Bạn đừng rebase, reset hay xóa dev/ml-sv3.
+- Trên dev/ml-sv3, bạn chạy git merge origin/main (merge thường, không squash). Nội dung hai bên trùng nhau nên sẽ không có xung đột và không file nào thay đổi. Bạn push lên, rồi mở một PR nhỏ vào main (0 file thay đổi), ghi lý do: đưa 365acbc và ea04abf vào lịch sử của main. Nếu GitHub không cho mở PR thì báo mình.
+- Mình merge PR đó bằng "Create a merge commit", và tắt squash/rebase trong cài đặt repo để không nhầm nữa. Từ nay, khi đồng bộ nhánh với main, bạn tiếp tục dùng merge.
+Các phần ứng viên (NoPeek v1, tấn công v1, script DS2, gói A) đã vào main với trạng thái ứng viên. Sửa đổi bên dưới làm thành phiên bản mới, không sửa file cũ.
+
+1. N cho Π trên DS2: N = 21, bỏ 202
+Chỗ này do mình viết không rõ ở tin 05/11. "N = 22" ở điểm 4 tin đó chỉ áp dụng cho lượt thử tuần 11 trên DS1 (22 bản ghi DS1, có 201, không có 202). Lượt chính thức trên DS2 giữ đúng câu 10: 21 bệnh nhân, bỏ 202.
+Lý do: 202 là cùng một người với 201, mà 201 nằm trong train DS1. Như vậy 202 không phải "người dùng mới", và dữ liệu phụ trợ của A1–A3 (train DS1) đã chứa chính người đó. Không tính thêm dòng Π cho 22 bản ghi.
+Trong protocol bạn ghi rõ hai số: lượt thử N = 22 (DS1), lượt chính thức N = 21 (DS2). Sửa Limitations thành "N = 21". Lúc khóa, bạn tính lại các số sau từ metadata DS2 (không cần mô hình), giống như đã làm cho DS1: số nhịp bị bỏ quanh mẫu 325.000, khoảng số nhịp mỗi người ở hai phía, tỉ lệ của người đông nhất.
+
+2. Lượt DS2 của bạn: gồm cả FP32 và đường INT8/FP16, trong cùng một lượt
+Theo bản 1.2 mục 4.3: cần dự đoán FP32 và dự đoán theo đường INT8/FP16 (lượng tử như thiết bị) trên toàn DS2, có cả 202, cho s0–s9, cùng định dạng ml/results/week5/predictions.csv (split_point_s, sample_id, patient_id, record_id, true_label, prediction_fp32, prediction_int8_fp16).
+Mình cần cột INT8/FP16 cho bước D2 tuần 13: bỏ những mẫu G2 mà FP32 và INT8/FP16 cho nhãn khác nhau. Phép lượng tử INT8/FP16 là quy tắc cố định của thiết bị, không phụ thuộc xmodel, nên không cần tách thành lượt riêng.
+Thứ tự vẫn như đã chốt: chạy sau khi Trung khóa xmodel. Bạn chạy một lượt (FP32 + INT8/FP16), Trung chạy một lượt DPU.
+
+3. Script DS2 (evaluate_m1_v4_ds2.py)
+Script đi đúng hướng ở các điểm sau:
+- dry-run dùng cùng đường code và ra đúng confusion của 3 checkpoint;
+- hai dòng test_main và test_aux22 ra từ một lượt, có kiểm phân hoạch;
+- có kiểm test_main = test_aux22 bỏ 202;
+- TF32 tắt;
+- chế độ ds2 đòi authorization trước khi chạm vào dữ liệu;
+- output ghi vào một đường dẫn cố định.
+Mình chưa duyệt để chạy. Bạn làm thêm một phiên bản có các điểm sau:
+a) Đường INT8/FP16 cho s0–s9 như mục 2, dùng checkpoint triển khai (phần FP32 vẫn chạy cả 3 checkpoint). Dùng đúng hàm lượng tử của gói tuần 5, hàm đã khớp bit với thiết bị. Nếu dùng hàm mới thì chứng minh nó trùng hàm cũ trên 20 nhịp golden của gói A. Output thêm file theo định dạng tuần 5 ở trên, kèm số nhịp có FP32 ≠ INT8/FP16 theo từng s.
+b) dry-run trên validation cũng chạy đường INT8/FP16 và báo số nhịp lệch theo từng s.
+c) Authorization ràng buộc file khóa xmodel bằng đường dẫn và SHA của một file có trong repo, và script tự kiểm SHA đó. Hiện script mới chỉ kiểm chuỗi hex có đúng định dạng.
+d) Lượt chính thức chạy trên CPU (ghi sẵn device: cpu trong authorization). dry-run của bạn cho thấy CPU trùng GPU khi tắt TF32, và ai cũng chạy lại được trên CPU.
+e) Nếu lượt ds2 lỗi giữa chừng thì giữ nguyên thư mục, không xóa, không chạy lại, gửi mình log. Ghi câu này vào docstring hoặc protocol.
+Khi có bản sửa, mình tự chạy dry-run trên máy mình (CPU và RTX 3050) rồi mới ký authorization. Việc này không làm chậm bạn, vì DS2 vẫn phải chờ xmodel ở tuần 13.
+
+4. Protocol NoPeek v1: 5 điểm
+(1) Chính sách fine-tune: đồng ý. Giống A: sampler K-cân bằng, CE không trọng số, AdamW, batch 256, dropout bật; LR hằng; 10 epoch cố định, không dừng sớm.
+(2) Pilot: đồng ý 3 LR {1e-5; 3e-5; 1e-4} và luật ở mục 3. Bạn không cần chờ mình. Pilot xong, nếu luật chọn được một LR an toàn thì chạy grid ngay và gửi mình receipt pilot cùng lúc. Chỉ dừng khi không LR nào an toàn (luật 3). Mình cần kết quả thử tấn công ngay trong tuần này (tuần 11), nên không thêm bước chờ.
+(3) Giữ 72 run. Thêm 9 run tốn rất ít mà có thêm kiểm tính tất định.
+(4) 10 epoch là đủ, không cần dài hơn.
+(5) TF32: tắt cả cuDNN lẫn matmul. Áp dụng cho mọi run (pilot, grid) và mọi lượt đánh giá từ nay: validation, R_n, tấn công, DS2.
+  Lý do: ngưỡng tiện ích được so chính xác bằng Fraction, còn epoch và λ được chọn theo R_n. Nếu TF32 làm logit trên GPU lệch tới cỡ 1e-2 thì các lựa chọn sát ngưỡng sẽ phụ thuộc độ chính xác của phần cứng chứ không phải của mô hình. Các lượt khác (DS2, golden, thiết bị) đều là FP32 thật, nên phần chọn cũng phải làm trên FP32 thật.
+  Kiểm epoch 0 vẫn giữ được: dry-run DS2 của bạn đã cho thấy khi tắt TF32, validation vẫn ra đúng confusion đã khóa của A. Với mô hình 110 nghìn tham số, thời gian chạy tăng không đáng kể.
+  Bạn ghi thêm một dòng: A được train với cuDNN TF32 bật (mặc định của PyTorch); điều này không làm thay đổi A.
+Điểm 5 làm đổi cấu hình run, nên bạn lập protocol NoPeek v2 kèm diff so với v1, sinh lại plan rồi khóa. Thẩm quyền và review_evidence như lần trước (lấy tin này). Nếu diff chỉ có điểm 5 thì không cần gửi lại mình trước khi khóa.
+
+5. Protocol tấn công v1: 4 điểm
+(1) N: như mục 1.
+(2) CI95: bootstrap trong từng bệnh nhân, nhưng lấy mẫu theo khối 10 nhịp liên tiếp chứ không lấy từng nhịp. Giữ nguyên tập danh tính; 2000 lần, seed 20261105, lấy khoảng phân vị 95 % rồi đổi sang Π.
+  Lý do: phần test của mỗi người là một đoạn liền nên các nhịp kề nhau tương quan; bootstrap từng nhịp sẽ cho CI hẹp hơn thực tế. Khối 10 nhịp cũng khớp với biến thể theo phiên (bỏ phiếu trên 10 nhịp).
+  Thêm hai quy tắc, khai trước khi chạy:
+  - B chạy 3 seed. Adv của mỗi biến thể B là trung bình của 3 seed; Π = 1 − max theo biến thể. Báo kèm min–max theo seed. Không lấy max theo seed, vì như vậy là chọn trên tập test.
+  - Khi so với Π_min thì dùng ước lượng điểm; CI chỉ để báo.
+(3) Mô hình tấn công: đồng ý bản ứng viên. Cụ thể: CNN 2 khối 64 kênh cho đầu vào NCL, MLP cho s9/s10; AdamW lr 1e-3; tối đa 50 epoch, dừng sớm theo bacc trên phần validation của kẻ tấn công; CE có trọng số theo người. A1 là mirror của head, loss MSE.
+  Thêm một bước kiểm năng lực kẻ tấn công, khai trước: trong lượt thử, chạy B-naive ở s0 (ρ0, tín hiệu thô sau lượng tử) trước tiên. Nếu bacc ở s0 < 0,80 thì kẻ tấn công quá yếu. Khi đó tăng năng lực một lần (ví dụ 3 khối, 128 kênh) rồi mới chạy các s khác. Chỉ tăng một lần: sau đó chạy tiếp các s dù s0 đã đạt 0,80 hay chưa, và báo đúng số. Quyết định này chỉ dựa trên s0, nơi không có bảo vệ, nên kẻ tấn công không bị chỉnh theo Π của các cấu hình có bảo vệ.
+  Lý do: reviewer sẽ hỏi Π cao có phải chỉ vì kẻ tấn công yếu không, nhất là khi phòng thủ kiểu NoPeek từng bị phá. bacc cao ở s0 là bằng chứng rẻ nhất, và Π(s0) cũng là điểm đầu của đường Π theo s.
+  Lượt chính thức: mỗi tấn công A1–A3 chạy 1 seed cũng được, ghi rõ; B chạy 3 seed như trên.
+(4) Dữ liệu huấn luyện decoder trong lượt thử: đồng ý dùng phía kẻ tấn công của 22 bản ghi DS1. Không dùng train DS1 ở lượt thử, vì train DS1 chứa nửa sau của 18 bản ghi, tức chính phần test của lượt thử. Lượt chính thức dùng train DS1 như câu 10.
+Thêm hai việc:
+- Protocol đang ràng buộc docs/inbox/sv1_chot_cau_hoi_SV3_20261103.txt (be5d1411…), nhưng file này không có trong nhánh. Khi khóa, bạn chép một bản vào thư mục provenance (như sv1_evidence của ngày 05/11) để người khác kiểm được SHA.
+- Bản nháp Section III: mình đồng ý nội dung, chỉ sửa Limitations thành N = 21. Mình sẽ đọc kỹ lại khi gom bản LaTeX.
+Sửa xong (1)–(4) thì bạn khóa protocol tấn công (v2 kèm diff), thẩm quyền như trên, viết code tấn công rồi chạy lượt thử ngay. Có số ngày nào thì báo mình ngày đó; mình cần số trước cuối tuần 11 để chạy mô phỏng.
+
+6. Gói A
+Mình sẽ hỏi Trung về calibration (1.000 nhịp train, quy tắc linspace theo edge/quantize_tail.py) trong tuần này, lúc làm cùng ở lab. Trung xác nhận xong thì bạn giao gói A cho mình để làm D1 (head_parameters.h) ở tuần 13.
+
+Thứ tự việc của bạn:
+0. Merge main vào dev/ml-sv3 và mở PR nhỏ như mục 0 (vài phút).
+1. Lập và khóa protocol NoPeek v2 (tắt TF32).
+2. Chạy pilot, rồi grid ngay, không chờ mình.
+3. Gửi mình đường macro-F1 của λ = 0 cùng receipt.
+4. Khóa protocol tấn công bản đã sửa.
+5. Chạy lượt thử: s0 trước, rồi s2, s4, s5, s8.
+6. Báo số.
+Song song, khi có thời gian: làm script DS2 bản sửa theo mục 3.

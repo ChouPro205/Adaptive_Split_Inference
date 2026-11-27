@@ -1,0 +1,85 @@
+{
+  "schema": "m1-nopeek-v2-checkpoint-release-publication/1",
+  "status": "PUBLISHED_AND_DOWNLOADED_BYTES_VERIFIED",
+  "release_url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/tag/sv3-m1-nopeek-v2-checkpoints-20261113",
+  "release_id": 443969868,
+  "tag": "sv3-m1-nopeek-v2-checkpoints-20261113",
+  "tag_commit": "000289686875fc9623a786620be7b34f6b626789",
+  "target_commitish_reported_by_github": "main",
+  "title": "SV3 M1 NoPeek v2: checkpoint pilot và grid (12/11/2026)",
+  "published_at": "2026-11-13T08:12:20Z",
+  "publisher": "kyanhhbt-code",
+  "draft": false,
+  "prerelease": false,
+  "request": "SV1 2026-11-13, section 4: put all NoPeek v2 checkpoints (81 runs x epochs 0-10) with SHA256SUMS on a Release before the attack runs, as for checkpoint C5",
+  "request_evidence": {
+    "path": "ml/provenance/m1-nopeek-v2-release-20261113/sv1_evidence/tra_loi_Ky_Anh_NoPeek_v2_goiA_20261113.txt",
+    "sha256": "08b27b292b4c54e18c9a0b69a0cc2b4759a1ccd629d53a277f26f03403d3028b"
+  },
+  "prepare_record": {
+    "path": "ml/provenance/m1-nopeek-v2-release-20261113",
+    "SHA256SUMS_sha256": "7bfc4b045a72aa5963ec9de2ece2c7693bbdbb55c2f828c96c0f0c4637012c2e"
+  },
+  "notes": {
+    "path": "ml/provenance/m1-nopeek-v2-release-20261113/release-notes.md",
+    "sha256": "1c3704c9ab6728855e8c94555ee894ca50e530b86e05da1db523e873a0c0cb44"
+  },
+  "assets": [
+    {
+      "name": "PACKAGE_SHA256SUMS.txt",
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-m1-nopeek-v2-checkpoints-20261113/PACKAGE_SHA256SUMS.txt",
+      "size_bytes": 303740,
+      "sha256": "5b58c9fe160b9dea173254561804fc3e6afc3c9b3408378b2dd494d4a5bb3dde",
+      "github_digest": "sha256:5b58c9fe160b9dea173254561804fc3e6afc3c9b3408378b2dd494d4a5bb3dde",
+      "anonymous_download_http": 200,
+      "downloaded_bytes_match_local": true
+    },
+    {
+      "name": "SV3_M1_NOPEEK_V2_CHECKPOINTS_20261112.zip",
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-m1-nopeek-v2-checkpoints-20261113/SV3_M1_NOPEEK_V2_CHECKPOINTS_20261112.zip",
+      "size_bytes": 365412646,
+      "sha256": "df34b13e4ce478353e52cf5bfb907f9f37c1b5884980b86b4f5f153645dae351",
+      "github_digest": "sha256:df34b13e4ce478353e52cf5bfb907f9f37c1b5884980b86b4f5f153645dae351",
+      "anonymous_download_http": 200,
+      "downloaded_bytes_match_local": true
+    },
+    {
+      "name": "SV3_M1_NOPEEK_V2_CHECKPOINTS_20261112.zip.sha256",
+      "url": "https://github.com/ChouPro205/Adaptive_Split_Inference/releases/download/sv3-m1-nopeek-v2-checkpoints-20261113/SV3_M1_NOPEEK_V2_CHECKPOINTS_20261112.zip.sha256",
+      "size_bytes": 108,
+      "sha256": "9eca074ce9bc98065643228074858e0ed1cb315d13d6ae19b2cbbca88ffa460c",
+      "github_digest": "sha256:9eca074ce9bc98065643228074858e0ed1cb315d13d6ae19b2cbbca88ffa460c",
+      "anonymous_download_http": 200,
+      "downloaded_bytes_match_local": true
+    }
+  ],
+  "downloaded_package_checks": {
+    "tree": "git archive of the tag commit with the downloaded zip extracted at its root",
+    "sha256sum_c_PACKAGE_SHA256SUMS": "1948/1948 OK",
+    "verify_command": "python -B [-O] ml/provenance/m1-nopeek-v2-release-20261113/verify_runs.py",
+    "exit_code": 0,
+    "files": 1948,
+    "checkpoints": 891,
+    "bytes": 400210929,
+    "normal_and_optimized_identical": true,
+    "equals_pre_release_extracted_verify": true
+  },
+  "logs_sha256": {
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/download-check.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/download-check.txt": "b66801b2b7f517de00f030aa1a77cdc1b60ae525950c197b8fe49ec5021da75f",
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/downloaded-sha256sum-c.txt": "673cc35bb4ec0790826ddfba97be94e29270574e3ea94a10ef5bb3001ac68ec1",
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/downloaded-tree.txt": "8d5b36b271e28465af7adfd4fca05f14009f27d722cc6e58577ea59950ee2bf3",
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/downloaded-verify-normal.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/downloaded-verify-normal.txt": "5ca70000c4575f806d353406c7520d01599fbebad030821ac9b3fad668bee78e",
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/downloaded-verify-optimized.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/downloaded-verify-optimized.txt": "5ca70000c4575f806d353406c7520d01599fbebad030821ac9b3fad668bee78e",
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/release-view.json": "1bbc9ef7fe01d0d805703e90112cf7d0a6645cf2dbfe5581821b8a3acf78c0bd",
+    "ml/provenance/m1-nopeek-v2-release-publication-20261113/logs/tag-ls-remote.txt": "349b245b33d3d19e1fa73020c5fd8594a2edf5895dda8aec452656f655f79d9a"
+  },
+  "scope": {
+    "arrays_read": false,
+    "DS2_opened": false,
+    "attack_run": false,
+    "model_quality_evidence": false
+  }
+}

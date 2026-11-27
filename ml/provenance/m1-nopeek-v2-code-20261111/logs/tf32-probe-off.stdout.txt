@@ -1,0 +1,2 @@
+mode=off torch=2.14.0+cu130 device=NVIDIA GeForce RTX 5060 cudnn.allow_tf32=False cuda.matmul.allow_tf32=False cudnn.conv.fp32_precision=none cuda.matmul.fp32_precision=ieee
+  max|logit cpu-cuda| = 5.245e-06; max relative CE-gradient difference = 1.037e-06; argmax identical = True

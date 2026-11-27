@@ -30,8 +30,8 @@ và báo cáo của dự án.
   PASS ngày 26/10/2026, chốt bàn đo tuần 9 (PHY 2M); [kết quả](../results/week8/device/README.md)
 
 ### Khối ML (SV3 - ML / Bùi Kỳ Anh)
-- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 1](SV3_ML_week1_report.md)
-- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 2](SV3_ML_week2_report.md)
+- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 1](sv3_ml_week1_report.md)
+- [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 2](sv3_ml_week2_report.md)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 3](sv3_ml_week3_report.md)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 4](sv3_ml_week4_report.md)
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 5](sv3_ml_week5_report.md): INT8/FP16,
@@ -41,16 +41,20 @@ và báo cáo của dự án.
 - [Báo cáo SV3/ML (Bùi Kỳ Anh) – Week 7](sv3_ml_week7_report.md): dCor,
   NoPeek smoke offline và cấu hình tuần 8; không thay nghiệm thu KV260
 - [Báo cáo SV3/ML – Week 8](sv3_ml_week8_report.md): grid NoPeek 54 run, validation metrics và candidate thử nghiệm
-- [Protocol tuần 8 đã chốt](sv3_week8_protocol_approved_joint_v1.md)
-- [Checklist phụ thuộc SV3 tuần 7](sv3_week7_dependency_checklist.md)
-- [SV3 đối soát SV2 ngày 26/10, runtime/profiling và chuẩn bị accuracy DPU](sv3_week7_reconciliation_20261026.md)
-- [Biểu mẫu review giao diện ML I1 v2](sv3_week7_ml_i1v2_confirmation_draft.md)
-- [Demo SV3 tuần 7: dCor, gradients và loss NoPeek](sv3_week7_demo_guide.md)
-- [SV3 tuần 7: cập nhật host/hệ thống và nguồn pin 28/10](sv3_week7_host_update_20261028.md)
-- [SV3 → Trung: reference frozen và output template 28/10](sv3_week7_sv2_handoff_20261028.md)
-- [SV3: sửa verifier FP32 tuần 3 trên Ubuntu/WSL](sv3_ml_week3_linux_fp32_fix_report.md)
-- [SV3 Linux FP32 review v2: bảo toàn provenance và recipe](sv3_ml_week3_linux_fp32_review_v2_report.md)
-- [SV3 → SV2: bàn giao Week 3 FP32 Linux](sv3_sv2_week3_linux_fp32_handoff.md)
+- [Báo cáo SV3/ML – Week 9](sv3_ml_week9_report.md): DS1/DS2 theo bệnh nhân, baseline v4, checkpoint C5, gói A ứng viên
+- [Báo cáo SV3/ML – Week 10](sv3_ml_week10_report.md): NoPeek v2, giao gói A (M2), attack v2 và lượt thử Π trên DS1
+- [Báo cáo SV3/ML – Week 11](sv3_ml_week11_report.md): attack protocol v3 r1–r3, nháp threat model, DCentNet
+- [Lưu trữ tài liệu SV3](sv3_archive/README.md): review, protocol và hồ sơ ngày lẻ (tuần 3–11), kèm bảng đường dẫn cũ → mới và SHA-256
+  - [Protocol tuần 8 đã chốt](sv3_archive/sv3_week8_protocol_approved_joint_v1.md)
+  - [Checklist phụ thuộc SV3 tuần 7](sv3_archive/sv3_week7_dependency_checklist.md)
+  - [SV3 đối soát SV2 ngày 26/10, runtime/profiling và chuẩn bị accuracy DPU](sv3_archive/sv3_week7_reconciliation_20261026.md)
+  - [Biểu mẫu review giao diện ML I1 v2](sv3_archive/sv3_week7_ml_i1v2_confirmation_draft.md)
+  - [Demo SV3 tuần 7: dCor, gradients và loss NoPeek](sv3_archive/sv3_week7_demo_guide.md)
+  - [SV3 tuần 7: cập nhật host/hệ thống và nguồn pin 28/10](sv3_archive/sv3_week7_host_update_20261028.md)
+  - [SV3 → Trung: reference frozen và output template 28/10](sv3_archive/sv3_week7_sv2_handoff_20261028.md)
+  - [SV3: sửa verifier FP32 tuần 3 trên Ubuntu/WSL](sv3_archive/sv3_ml_week3_linux_fp32_fix_report.md)
+  - [SV3 Linux FP32 review v2: bảo toàn provenance và recipe](sv3_archive/sv3_ml_week3_linux_fp32_review_v2_report.md)
+  - [SV3 → SV2: bàn giao Week 3 FP32 Linux](sv3_archive/sv3_sv2_week3_linux_fp32_handoff.md)
 - [Mục lục và tài liệu bổ trợ SV3](../ml/docs/reports/README.md)
 
 ### Khối Máy chủ biên (SV2 - Edge / KV260) — báo cáo lịch sử

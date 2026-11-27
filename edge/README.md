@@ -154,7 +154,7 @@ Test này không chạy GraphRunner/DPU và không chứng nhận kết quả th
 ## Tài liệu liên quan
 
 - [Hợp đồng FP32 SV3–SV2](../contracts/sv3_sv2_week3_fp32.md).
-- [Bàn giao FP32 Linux](../docs/sv3_sv2_week3_linux_fp32_handoff.md).
+- [Bàn giao FP32 Linux](../docs/sv3_archive/sv3_sv2_week3_linux_fp32_handoff.md).
 - [Mục lục báo cáo](../docs/README.md): các báo cáo SV2 cũ chỉ là hồ sơ lịch sử.
 
 ## Báo cáo và hồ sơ SV2 hiện hành

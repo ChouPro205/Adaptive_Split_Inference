@@ -1,0 +1,71 @@
+test_composite_chain_from_unquantized_head (test_attack_m1_v3.CompositeTests.test_composite_chain_from_unquantized_head) ... ok
+test_composite_from_input_equals_observed (test_attack_m1_v3.CompositeTests.test_composite_from_input_equals_observed) ... ok
+test_standardization_matches_v2 (test_attack_m1_v3.CompositeTests.test_standardization_matches_v2) ... ok
+test_start_of (test_attack_m1_v3.CompositeTests.test_start_of) ... ok
+test_target_must_be_deeper (test_attack_m1_v3.CompositeTests.test_target_must_be_deeper) ... ok
+test_accepts_bound_authorization (test_attack_m1_v3.GateTests.test_accepts_bound_authorization) ... ok
+test_missing_authorization (test_attack_m1_v3.GateTests.test_missing_authorization) ... ok
+test_negative_controls (test_attack_m1_v3.GateTests.test_negative_controls) ... ok
+test_average_views_float64 (test_attack_m1_v3.KBeatTests.test_average_views_float64) ... ok
+test_consecutive_drops_short_last_block (test_attack_m1_v3.KBeatTests.test_consecutive_drops_short_last_block) ... ok
+test_k_beat_table (test_attack_m1_v3.KBeatTests.test_k_beat_table) ... ok
+test_scattered_is_keyed_and_without_replacement (test_attack_m1_v3.KBeatTests.test_scattered_is_keyed_and_without_replacement) ... ok
+test_statistic_and_ci (test_attack_m1_v3.KBeatTests.test_statistic_and_ci) ... ok
+test_too_few_beats_refused (test_attack_m1_v3.KBeatTests.test_too_few_beats_refused) ... ok
+test_votes (test_attack_m1_v3.KBeatTests.test_votes) ... ok
+test_lockstep_equals_v2_fit (test_attack_m1_v3.LockstepTests.test_lockstep_equals_v2_fit)
+Fixed inputs: the lockstep member reproduces v2.fit (same best epoch, history and state) for two seeds. ... ok
+test_alpha_key (test_attack_m1_v3.NoiseTests.test_alpha_key) ... ok
+test_ds2_streams_refused_here (test_attack_m1_v3.NoiseTests.test_ds2_streams_refused_here) ... ok
+test_macro_f1_of_A (test_attack_m1_v3.NoiseTests.test_macro_f1_of_A) ... ok
+test_search_all_pass (test_attack_m1_v3.NoiseTests.test_search_all_pass) ... ok
+test_search_downward_and_unreachable (test_attack_m1_v3.NoiseTests.test_search_downward_and_unreachable) ... ok
+test_search_monotone_bisection (test_attack_m1_v3.NoiseTests.test_search_monotone_bisection) ... ok
+test_search_non_monotone_first_crossing (test_attack_m1_v3.NoiseTests.test_search_non_monotone_first_crossing) ... ok
+test_streams (test_attack_m1_v3.NoiseTests.test_streams) ... ok
+test_torch_quantization_equals_registry (test_attack_m1_v3.NoiseTests.test_torch_quantization_equals_registry) ... ok
+test_part_b_pairs_are_27 (test_attack_m1_v3.ProtocolTests.test_part_b_pairs_are_27) ... ok
+test_part_c_constants_follow_protocol (test_attack_m1_v3.ProtocolTests.test_part_c_constants_follow_protocol) ... ok
+test_protocol_and_lock (test_attack_m1_v3.ProtocolTests.test_protocol_and_lock) ... ok
+test_settings (test_attack_m1_v3.ProtocolTests.test_settings) ... ok
+test_bins_and_interpolation_table (test_attack_m1_v3.S0cTests.test_bins_and_interpolation_table) ... ok
+test_difference_is_refused (test_attack_m1_v3.S0cTests.test_difference_is_refused) ... ok
+test_golden (test_attack_m1_v3.S0cTests.test_golden) ... ok
+test_vectorized_equals_reference_on_random_beats (test_attack_m1_v3.S0cTests.test_vectorized_equals_reference_on_random_beats) ... ok
+test_zero_beat (test_attack_m1_v3.S0cTests.test_zero_beat) ... ok
+test_authorization_binds_protocol_plan_and_review_file (test_attack_m1_v2.GateTests.test_authorization_binds_protocol_plan_and_review_file) ... ok
+test_trial_refused_without_authorization_before_any_load (test_attack_m1_v2.GateTests.test_trial_refused_without_authorization_before_any_load) ... ok
+test_balanced_accuracy_and_advantage (test_attack_m1_v2.MetricTests.test_balanced_accuracy_and_advantage) ... ok
+test_blocks_need_contiguous_patients (test_attack_m1_v2.MetricTests.test_blocks_need_contiguous_patients) ... ok
+test_bootstrap_blocks_seeds_and_determinism (test_attack_m1_v2.MetricTests.test_bootstrap_blocks_seeds_and_determinism) ... ok
+test_reconstruction_metrics (test_attack_m1_v2.MetricTests.test_reconstruction_metrics) ... ok
+test_session_vote_ties_to_lowest_label (test_attack_m1_v2.MetricTests.test_session_vote_ties_to_lowest_label) ... ok
+test_capacity_check_runs_first_and_escalates_once (test_attack_m1_v2.ModelTests.test_capacity_check_runs_first_and_escalates_once) ... ok
+test_capacity_rule_and_early_stop (test_attack_m1_v2.ModelTests.test_capacity_rule_and_early_stop) ... ok
+test_classifier_shapes (test_attack_m1_v2.ModelTests.test_classifier_shapes) ... ok
+test_decoder_mirrors_the_head (test_attack_m1_v2.ModelTests.test_decoder_mirrors_the_head) ... ok
+test_fit_is_deterministic_and_keeps_best_epoch (test_attack_m1_v2.ModelTests.test_fit_is_deterministic_and_keeps_best_epoch) ... ok
+test_standardize_uses_train_statistics (test_attack_m1_v2.ModelTests.test_standardize_uses_train_statistics) ... ok
+test_batched_head_equals_one_beat_at_a_time (test_attack_m1_v2.ObservedTests.test_batched_head_equals_one_beat_at_a_time) ... ok
+test_golden_check_on_a_synthetic_package (test_attack_m1_v2.ObservedTests.test_golden_check_on_a_synthetic_package) ... ok
+test_observed_is_the_registry_quantization_of_z_s (test_attack_m1_v2.ObservedTests.test_observed_is_the_registry_quantization_of_z_s) ... ok
+test_rho1_loads_nopeek_weights (test_attack_m1_v2.ObservedTests.test_rho1_loads_nopeek_weights) ... ok
+test_set_precision_turns_tf32_off (test_attack_m1_v2.PrecisionTests.test_set_precision_turns_tf32_off) ... ok
+test_bindings_and_change_sources (test_attack_m1_v2.ProtocolTests.test_bindings_and_change_sources) ... ok
+test_checkpoint_table_matches_selection_receipt_and_files (test_attack_m1_v2.ProtocolTests.test_checkpoint_table_matches_selection_receipt_and_files) ... ok
+test_checkpoint_table_rejects_a_changed_rho1 (test_attack_m1_v2.ProtocolTests.test_checkpoint_table_rejects_a_changed_rho1) ... ok
+test_settings_from_protocol (test_attack_m1_v2.ProtocolTests.test_settings_from_protocol) ... ok
+test_settings_refuse_tf32_on (test_attack_m1_v2.ProtocolTests.test_settings_refuse_tf32_on) ... ok
+test_boundaries_validation_labels_and_order (test_attack_m1_v2.SplitTests.test_boundaries_validation_labels_and_order) ... ok
+test_record_without_test_or_duplicate_peak_refused (test_attack_m1_v2.SplitTests.test_record_without_test_or_duplicate_peak_refused) ... ok
+test_validation_size_is_the_exact_ceiling (test_attack_m1_v2.SplitTests.test_validation_size_is_the_exact_ceiling) ... ok
+test_run_trial_end_to_end_on_synthetic_arrays (test_attack_m1_v2.TrialWiringTests.test_run_trial_end_to_end_on_synthetic_arrays)
+run_trial with the gate, preflight, arrays and golden check replaced by fixtures; real checkpoints, synthetic beats. ... s0-rho0-base: Pi=0.5981 CI95=[0.5911, 0.6081] bacc=0.5514 arch=base A1_NRMSE=0.0101
+s0-rho0-escalated: Pi=0.6667 CI95=[0.6667, 0.6667] bacc=0.5000 arch=escalated A1_NRMSE=0.0101
+s2-rho1: Pi=0.8559 CI95=[0.8438, 0.8758] bacc=0.3581 arch=escalated A1_NRMSE=1.1989
+ok
+
+----------------------------------------------------------------------
+Ran 61 tests in 2.602s
+
+OK

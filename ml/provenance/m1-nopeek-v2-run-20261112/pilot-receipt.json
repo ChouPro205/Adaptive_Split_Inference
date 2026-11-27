@@ -1,0 +1,389 @@
+{
+  "type": "M1_NOPEEK_V2_PILOT_RECEIPT",
+  "prepared_by": "SV3",
+  "source_head": "8f81a916dcb09766346223a71eea07840fe911b2",
+  "run_start_utc": "2026-11-12T13:30:05Z",
+  "bindings": {
+    "lock": {
+      "path": "ml/provenance/m1-nopeek-v2-lock-20261112/m1_nopeek_v2_lock_and_train_authorization.json",
+      "sha256": "fe38f3a9f8a2dc4596fb46cb16defd9f917336a4efe38d5806ef7205f0872ad5"
+    },
+    "protocol_sha256": "83cce64defefa979abcf8c31cc27daf9ae81604caae911acf0901cba3783cf35",
+    "plan_manifest_sha256": "e2e4e85856ed1d1861a771388d40de24c27c1ff6ffbfac2138ea275f76b650f9",
+    "output_dir": "ml/data/runs/nopeek-m1-v2-20261112"
+  },
+  "utility_threshold": {
+    "exact": "218290747091/404383914000",
+    "float": 0.5398106589645403,
+    "A_macro_f1_K": 0.5682217462784634
+  },
+  "pilot_decision": {
+    "status": "PILOT_LR_CHOSEN",
+    "learning_rate": 3e-05,
+    "candidates": [
+      {
+        "learning_rate": 1e-05,
+        "safe": true,
+        "lambda0_epochs_passing": 10,
+        "lambda5_min_Rn": {
+          "s2": 0.9087690114974976,
+          "s8": 0.6020969152450562
+        },
+        "score": 0.7554329633712769
+      },
+      {
+        "learning_rate": 3e-05,
+        "safe": true,
+        "lambda0_epochs_passing": 10,
+        "lambda5_min_Rn": {
+          "s2": 0.9116917848587036,
+          "s8": 0.5723180770874023
+        },
+        "score": 0.742004930973053
+      },
+      {
+        "learning_rate": 0.0001,
+        "safe": false,
+        "lambda0_epochs_passing": 5,
+        "lambda5_min_Rn": {
+          "s2": 0.9050300121307373,
+          "s8": 0.37844064831733704
+        },
+        "score": 0.6417353302240372
+      }
+    ],
+    "plan_manifest_sha256": "e2e4e85856ed1d1861a771388d40de24c27c1ff6ffbfac2138ea275f76b650f9",
+    "path_in_output": "ml/data/runs/nopeek-m1-v2-20261112/pilot-decision.json",
+    "copy": "ml/provenance/m1-nopeek-v2-run-20261112/pilot-decision.json",
+    "sha256": "6d3130b1fc123d7011430fd90dd019a5e7a3b4f479b81bac8621adb71215012e",
+    "recomputed_with_runner_rule_equal": true
+  },
+  "curves": {
+    "path": "ml/provenance/m1-nopeek-v2-run-20261112/pilot-curves.csv",
+    "sha256": "3669ce039c7d49b7bd1b80f823c5d8a8791a1b57a0fa4e7edfc74fb627725141",
+    "rows": 99
+  },
+  "runs": [
+    {
+      "run_id": "pilot-s2-lambda0-seed20261030-lr1e-05",
+      "config_sha256": "c566ed7f3de3fe16470bb3fbbafe631572dc629424025edeb3c7c8737b610bc3",
+      "lr": 1e-05,
+      "s": 2,
+      "lambda": 0,
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "c5615157b062ce40a1e667b823df6260c74bde80e4d3092ed657dac8c5be83dd",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "a49439ced55bde95a03fc7e9a0e54f02ead22675d109b2b362ff59f28abdc9b4",
+        "checkpoint-epoch-001.pt": "4435d6bf90545f84510bd28dba9def0a2ded296b6ecb145fbde7846072ccb51b",
+        "checkpoint-epoch-002.pt": "59d2518a19da4b4fd844ad764ee4572946787681256c67b13708e8e00e9a1088",
+        "checkpoint-epoch-003.pt": "5546c99a6b4403c831540036001ed89613b6d51f8556c2e511cfdd90a61cb0c0",
+        "checkpoint-epoch-004.pt": "200e73a9134273085684234f32c3bcc70fc023113b0fa53340df3d08e6b1e440",
+        "checkpoint-epoch-005.pt": "8a236a1c40b59320b6df4d9e93a22c905df3c26681f4b8058ee4dd4bfb107c64",
+        "checkpoint-epoch-006.pt": "dbf42a120034a89f15a7f565d4ec9562ee71664ed042bdd00d7bc5de5b5e2625",
+        "checkpoint-epoch-007.pt": "0c064fb3ab6ab89644d11a222357f70fa6ac5fc5d828738ed71c39d602113e54",
+        "checkpoint-epoch-008.pt": "1fba19240784ffa1370d1104de25976f085c0755bd3dc33df051d0766a6a181f",
+        "checkpoint-epoch-009.pt": "eec7d82f862e92837ba77009f07fdbd041e72382e6db79ffa2df98cf6fdd18ce",
+        "checkpoint-epoch-010.pt": "e128cdf2bf9e3548443f1ad20b810474cab0781cfb73cec3349c84674cfd4eb5"
+      },
+      "environment": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "torch": "2.14.0+cu130",
+        "cuda": "13.0",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_conv_fp32_precision": "none",
+        "matmul_fp32_precision": "ieee",
+        "DS2_arrays_opened": false
+      }
+    },
+    {
+      "run_id": "pilot-s2-lambda5-seed20261030-lr1e-05",
+      "config_sha256": "e5f0cd4f2067a24fcdd359d7ea90d72826cf1e3de12dbb525bd2d4df30a83bb7",
+      "lr": 1e-05,
+      "s": 2,
+      "lambda": 5,
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "cfdf9d4d850db25d76072b297896f4e420c789900d35f0d7744546dfa5c8f5e5",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "ae3e8aafd16aed34e83c27941593d347f9129c1808cdf39951ad0beaeb576e2c",
+        "checkpoint-epoch-001.pt": "15fc8be72ce86d4acb699c641aa6ed06c9fb989be8f6194b83a96e2486919ab9",
+        "checkpoint-epoch-002.pt": "6ff1e07dfe3c81e37179f93883a74b8a425fdaacf8cbe6e12e56e6f660bf35a4",
+        "checkpoint-epoch-003.pt": "eaf8d924895402b55639ae89f7cc04a3517ae27423ea996cc83dbb0f46d2b33e",
+        "checkpoint-epoch-004.pt": "5924b8628369af22fca4745fd7a0b1ffc7adfb6ce843b65c794193ced252e6af",
+        "checkpoint-epoch-005.pt": "b3214fbf9db379580b450eea3824c04756ffbedc28eefa4922dd7e5f6ce1526f",
+        "checkpoint-epoch-006.pt": "35a2aeb7bc8aad8b908bbf7114efb8f6e3a0f6755ca82600847f8ed19ed52f64",
+        "checkpoint-epoch-007.pt": "207621e67f54b8d85543e90e866731f2bb8bda4c2cd4b23489847d2a19aeb092",
+        "checkpoint-epoch-008.pt": "8788936a148a5c2bc08157a59d5586208626cdf0e6311ece1662fa10369003ac",
+        "checkpoint-epoch-009.pt": "83623e11d9adaabb7922a52f5cb844a5f8ff19e981472d40c577b8ee19d8b010",
+        "checkpoint-epoch-010.pt": "60cc729e1f86da57183ebf5b1519e1031c22a8495e22076560ac28478c2bfc1c"
+      },
+      "environment": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "torch": "2.14.0+cu130",
+        "cuda": "13.0",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_conv_fp32_precision": "none",
+        "matmul_fp32_precision": "ieee",
+        "DS2_arrays_opened": false
+      }
+    },
+    {
+      "run_id": "pilot-s8-lambda5-seed20261030-lr1e-05",
+      "config_sha256": "c98f82fec624258751e5572548602170c91969df375a25c0a680797321c5b223",
+      "lr": 1e-05,
+      "s": 8,
+      "lambda": 5,
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "9dcead96e4c1554175d6227324b2f58386c6fc3ed7ed435c0e5cb348cc6fcd5b",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "96fae639e80b0c159859dc7fd6438bcc5702f395386cf03d2f99a4bd2c49ab4c",
+        "checkpoint-epoch-001.pt": "521555b1be37c3de177f5bf9613bb1a3676424262f624213039e40c75aa6eafa",
+        "checkpoint-epoch-002.pt": "443111db957c914b75e5a2a9bdf8369018068e61261d22a250d07eaacd87369b",
+        "checkpoint-epoch-003.pt": "2085f14f1a752d3bcd8177565e873ef68802e7f345a5a0514510c971b762529f",
+        "checkpoint-epoch-004.pt": "b4f3fa0caf5da5db63cd6d6c62d09289158626b245d294eef3349b4e6e0f409f",
+        "checkpoint-epoch-005.pt": "5588bfa3d801788c04350c0bb562dc4458f93dcc7c2fca5164bab37769fde00e",
+        "checkpoint-epoch-006.pt": "0924dc18c5d79c312f6b76658cab6785b8d19e64691a9408daaa93158b493cc6",
+        "checkpoint-epoch-007.pt": "774ea32349146e487832ffb5e306526615b12a01b960b3b231f70063efee0b6f",
+        "checkpoint-epoch-008.pt": "6dba732660e0d439f7582f30a67299b3e8cca5ac15594f3a79616c3d481fd772",
+        "checkpoint-epoch-009.pt": "f947acf9e4e3cce5fb07ecfee17f94346147d0785eda855c40db67a40a7479d6",
+        "checkpoint-epoch-010.pt": "9cf7dbcd96349cce7b2d40eb51f3533148a1cc5b0bb97f57d3d7278481337ba6"
+      },
+      "environment": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "torch": "2.14.0+cu130",
+        "cuda": "13.0",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_conv_fp32_precision": "none",
+        "matmul_fp32_precision": "ieee",
+        "DS2_arrays_opened": false
+      }
+    },
+    {
+      "run_id": "pilot-s2-lambda0-seed20261030-lr3e-05",
+      "config_sha256": "e34a50a65ee9c7f707b87869650fcc3f484af8fa5d0bc3911d3e3176ea50bca1",
+      "lr": 3e-05,
+      "s": 2,
+      "lambda": 0,
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "ec8def423041882b247007e5bd05d9329710d70acb4e0713b32026f71f3508d0",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "5112cf933e35cc6a138762c3836e21e0ed98a4135c865b9378cd74f86b10e9d5",
+        "checkpoint-epoch-001.pt": "66565f1380309dbb0d6c7f013afbdb131afd3b28e5424ef2e44664a024d6a4bf",
+        "checkpoint-epoch-002.pt": "23595c40cfa00d236e5d235ce67c7243347394357c2587739e8c754a9f9c2153",
+        "checkpoint-epoch-003.pt": "c99269d33f0b758ffd17ce5af6584e8d78989ea43cd0311d25f4e84868df49f0",
+        "checkpoint-epoch-004.pt": "3e53dd9e49f46e280390c286a20fb68d18c94419d710f631af1f8afbdb3573bf",
+        "checkpoint-epoch-005.pt": "c14f52d2a5a39b7bbc11135919472ea84a5ef8aecb2fbe8934e090abcc38cad4",
+        "checkpoint-epoch-006.pt": "294048534ef9313e0e24bf3069dfa5d17bc31f55ca93c2c5904428477ca37e10",
+        "checkpoint-epoch-007.pt": "8b99335783ced9b016392ef51fbc23ddad216346d1ac63f2f99d33cb001944ad",
+        "checkpoint-epoch-008.pt": "79730d92f88ad4a39779ff24479574ecc47e1a6e418b3a3ce7c60c33450d28ed",
+        "checkpoint-epoch-009.pt": "d91d01f8c86f0ab557f40f565e9ae2db9fd05db323e1f892ff8a579c01b5063d",
+        "checkpoint-epoch-010.pt": "8546340103f69e8511f6a6f1292f5acd0c3d2afff733d457decb0010294a305b"
+      },
+      "environment": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "torch": "2.14.0+cu130",
+        "cuda": "13.0",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_conv_fp32_precision": "none",
+        "matmul_fp32_precision": "ieee",
+        "DS2_arrays_opened": false
+      }
+    },
+    {
+      "run_id": "pilot-s2-lambda5-seed20261030-lr3e-05",
+      "config_sha256": "251e1a3efa8208907b622d4372f1e9e1ff1220f79d4c36eb25ddfb1611e6b586",
+      "lr": 3e-05,
+      "s": 2,
+      "lambda": 5,
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "2aa8370a961b0de179f22f3a0f0313ff4f8575a55d7dc805784a0665a0334072",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "880e862943ae17005c0a7912ab416fa61b20a60b1c2577190506ffe3f6780e27",
+        "checkpoint-epoch-001.pt": "0e09f18f36f5e7e6bb235399df0d8d5b8bf1cad66eaac43cd77b5450ea6058e2",
+        "checkpoint-epoch-002.pt": "97fec6b3b621575fe00a31dd825b7cbe0d5e03157ffce7f5f38a54678e4555f8",
+        "checkpoint-epoch-003.pt": "534fc62d375c483e22723699121b3d17224cdd199f9e4e4113897ea1016e5032",
+        "checkpoint-epoch-004.pt": "02557c6fd53e0b3ae07c6f47c46a555c0cf3261650f3038dc60a3deaf27b5e02",
+        "checkpoint-epoch-005.pt": "9137c0ab9db96f52336843f69542273e95b54d4c772c53768c4125c649038a27",
+        "checkpoint-epoch-006.pt": "8fbff668151ca0d7ed4c0413d279a6f9306d7f4ff2e8d13ffb2593b2e8588502",
+        "checkpoint-epoch-007.pt": "2b7646a5bce7ec5cf8aa2ffbd5d8b1556790e1f939184639b30b5e3bcfbfa50c",
+        "checkpoint-epoch-008.pt": "7ad45488c8f4b3ca08b5faa178f5753873ef97a14ca0da9702eacc3ba3b8afd4",
+        "checkpoint-epoch-009.pt": "4e187483f11af552cf4266ac2914817a39fbd6506e59b459dd81e636b41caf61",
+        "checkpoint-epoch-010.pt": "448fe0be26cf450caf71b31d23f6b3f51ecbc5c1d090478009c5e99bee209cdb"
+      },
+      "environment": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "torch": "2.14.0+cu130",
+        "cuda": "13.0",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_conv_fp32_precision": "none",
+        "matmul_fp32_precision": "ieee",
+        "DS2_arrays_opened": false
+      }
+    },
+    {
+      "run_id": "pilot-s8-lambda5-seed20261030-lr3e-05",
+      "config_sha256": "13ec393382fd75139b68d30005099e3ca9d697245dcf1fde940169c03ad30591",
+      "lr": 3e-05,
+      "s": 8,
+      "lambda": 5,
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "46cea97bd891de4b5e2e46001eb6ac2538948fb23f1ac3c639d43cc821311375",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "6fde3725969d780fa6de385e0cbbd9e364780db54c44d2a19c939b51da84caf2",
+        "checkpoint-epoch-001.pt": "a5b237c85dbd7f1d0ce0371e98474bb2ecdc717d0f7c23cf3fe04a04ce4be95d",
+        "checkpoint-epoch-002.pt": "185486fd1e8f05b507950b081a1c3657ac0116d224e7d6ae57647c96c30a7587",
+        "checkpoint-epoch-003.pt": "bfdff2f910395807dfbb70832871de17e5a0a606b4a6e18df5489eb23a67951f",
+        "checkpoint-epoch-004.pt": "d362b9e4339e2ee651be3cecd660e03442ccf0eac1eec19bc2ccb5496152a611",
+        "checkpoint-epoch-005.pt": "f89fd927d3976e92295ece3e28d6ef0a5389e2f04dd24562d829b7282f62d58a",
+        "checkpoint-epoch-006.pt": "4593170cb297d8bec81abd0ac1f2ceb7f938d558fac117f6c7bf77b87542a926",
+        "checkpoint-epoch-007.pt": "75f010b90836fc93e6a137f4b6d22c8b9bb94936279cee26a8a176915dd43e38",
+        "checkpoint-epoch-008.pt": "7710043f72f374c9b28d202df60dfb0bdc02538bdf1b0bd3b08249d35adc35d9",
+        "checkpoint-epoch-009.pt": "3026b9c0fa9aa3e37859240efa37b6ccbfaec31a80288d17dd6bc94e3d3fe884",
+        "checkpoint-epoch-010.pt": "8bb90e53472710d8c4e3d32c0e7983ff6b977bc7ce9d50845d9c68d1b7f3beac"
+      },
+      "environment": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "torch": "2.14.0+cu130",
+        "cuda": "13.0",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_conv_fp32_precision": "none",
+        "matmul_fp32_precision": "ieee",
+        "DS2_arrays_opened": false
+      }
+    },
+    {
+      "run_id": "pilot-s2-lambda0-seed20261030-lr0.0001",
+      "config_sha256": "fca24367765b01cd4fb82cfa3aa9910fb0cb028d73135cf2e04649caf551e475",
+      "lr": 0.0001,
+      "s": 2,
+      "lambda": 0,
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "94d045e6cc22f9815194caa6fbd15c30e6c20102ecf217360af3c5129628ced5",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "a67cb82c4c5720e25154ebed25c2dec8c6c5b7a7ed061c54c644d9e519c829af",
+        "checkpoint-epoch-001.pt": "160dc51d06ca3f0cd51ec5c3e1e993e91f0bc983f092e36be5262610cca86260",
+        "checkpoint-epoch-002.pt": "497aad439da9288aace411da0403e61ba2b98ab46ada60e3349b7d3df6384019",
+        "checkpoint-epoch-003.pt": "1e82e6057877f4a367bb7792d51ee37427800fcf35812244e176ecf7d52d2cf0",
+        "checkpoint-epoch-004.pt": "5259cedc77864702aef132bfae5ac970e09e17ed61b75f32c6fb4e5a9a8caa1e",
+        "checkpoint-epoch-005.pt": "59a8bba92002ef5b0bf8f02c49f64d8d25c051c8b9fda7dc84124e8b0fe796cb",
+        "checkpoint-epoch-006.pt": "fe41c5c9885eba77bd5dd9518c45bdb5cc0a59698f414d20c2832f638cf073e5",
+        "checkpoint-epoch-007.pt": "007b43ffe12cb69a14cdaaf6097de64f275de49071ea36981966d7768ec1d18c",
+        "checkpoint-epoch-008.pt": "5a960d43c7fbdd367410823ca4fa46dfa08ebd1fb825698477dc4835ab3c013c",
+        "checkpoint-epoch-009.pt": "8c66e967735250e7a9dc17fff93bee6e846a513645cf43c2a2a513e9533337b8",
+        "checkpoint-epoch-010.pt": "3d6f30407b843f062028b194eb37bf2f4f90728951acd647c2a5a939848759ca"
+      },
+      "environment": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "torch": "2.14.0+cu130",
+        "cuda": "13.0",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_conv_fp32_precision": "none",
+        "matmul_fp32_precision": "ieee",
+        "DS2_arrays_opened": false
+      }
+    },
+    {
+      "run_id": "pilot-s2-lambda5-seed20261030-lr0.0001",
+      "config_sha256": "329725469b7902fdef45db02e6dccb8ff297341714d1641eff12b5725e5acca6",
+      "lr": 0.0001,
+      "s": 2,
+      "lambda": 5,
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "c3ade1fd84d6bc9c9ed5e9fbe0e2db1dcd02a6398d3713840ea1c0373dc7091d",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "04544010ef53fde9a063be4864b8ac996bffc575695f8a444816951df2688449",
+        "checkpoint-epoch-001.pt": "520126101cf7b012fa292dca8b649f0718a13fd78bff4cb827615c663f7e6eb0",
+        "checkpoint-epoch-002.pt": "daa820f98fa3c7ca6bdd8f235cbdee89f05a1aad6168196ca946a85843856008",
+        "checkpoint-epoch-003.pt": "22cc653a78e7c35e6399d7817d10a607f1f2cc8f5b349b1af8c2e102b547dc24",
+        "checkpoint-epoch-004.pt": "3c5873b1a6e8e28970d7c110ec7ac0b3ad3204d2f03dae661abb56acfcfd70c9",
+        "checkpoint-epoch-005.pt": "e73fed827cd9c5b749c6e380372a949bf29583d24f2620cc414feae1c92f2531",
+        "checkpoint-epoch-006.pt": "a444d074130a6c80c3e586af75ade15b3dc6948b4c4ab35ced1015a50b192282",
+        "checkpoint-epoch-007.pt": "a833024d2f626be88d1e9efc1b237b5452e46386949003f35f5f0a7cddbe6c77",
+        "checkpoint-epoch-008.pt": "830ac56771d59dfb14a58be3cf967a7ca3be78c7545dec0cddf6d056eb8a3db0",
+        "checkpoint-epoch-009.pt": "ec96bb6a9044acd772cfe67dd486ddeb0768b38d13da88849b9f13adfc92bedd",
+        "checkpoint-epoch-010.pt": "50d4eca371f91c7d3324db288116a855824d7715c4c9296d23616a1489990b0a"
+      },
+      "environment": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "torch": "2.14.0+cu130",
+        "cuda": "13.0",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_conv_fp32_precision": "none",
+        "matmul_fp32_precision": "ieee",
+        "DS2_arrays_opened": false
+      }
+    },
+    {
+      "run_id": "pilot-s8-lambda5-seed20261030-lr0.0001",
+      "config_sha256": "a3cd2d457b5d0c859c244eee0f54a042776d979145faa5ea48cc2ebf3e767f86",
+      "lr": 0.0001,
+      "s": 8,
+      "lambda": 5,
+      "epoch0_confusion_equals_A": true,
+      "reload_confusion_exact": true,
+      "epochs": 10,
+      "history_sha256": "fb25033723809f46e4c0eaa1aeb672d2654bad40fed59bb86833359a0817ec3c",
+      "checkpoints_sha256": {
+        "checkpoint-epoch-000.pt": "f42bf752190ec42b517e9a84a8eee0b5890a3320a14c6cb4f6d2aef994a0c191",
+        "checkpoint-epoch-001.pt": "a7b4db588186c5f79b4458c11cc1b0e7e34881e310ca38d5abe14f6da9c433b4",
+        "checkpoint-epoch-002.pt": "075a8b15f4d662732c371009a7ccd1c3e95f136c698f048ac11cce2f18b250e5",
+        "checkpoint-epoch-003.pt": "1a660ae6a0e9ded196181eb6ab86ba2d74a33014af047b12ca4b47801d348f87",
+        "checkpoint-epoch-004.pt": "278e6b412be41f2c9a5cc151a039e965eb0316f1f6caff65f55b3f4dc0845803",
+        "checkpoint-epoch-005.pt": "244bb7fc80382c6d054c6ca372bee3e247f5a4859631c7446a2d37e68ad10ed0",
+        "checkpoint-epoch-006.pt": "327d8208d022dd6f61d184189d36352e5a2ab7336ddac065cea173d6fbfc3be0",
+        "checkpoint-epoch-007.pt": "3a327ede8aca63c3935a3fde34e0cce00eeecece70c5c5c111aec81a0106b9b5",
+        "checkpoint-epoch-008.pt": "78e1e5b8b739cc959bb893dbf504794332dfbf9b6fbf901df72e6b840716b7c2",
+        "checkpoint-epoch-009.pt": "d3a5e107e17d49818c32a7fbf3691887fa3d1d1e9fb0b6fb03369ec6a85e27b5",
+        "checkpoint-epoch-010.pt": "252e04271e5c69c0c71e91ba1eb1a3af168df2a759f5f5b7dad08e4287f3d9b0"
+      },
+      "environment": {
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce RTX 5060",
+        "torch": "2.14.0+cu130",
+        "cuda": "13.0",
+        "cudnn_allow_tf32": false,
+        "matmul_allow_tf32": false,
+        "cudnn_conv_fp32_precision": "none",
+        "matmul_fp32_precision": "ieee",
+        "DS2_arrays_opened": false
+      }
+    }
+  ],
+  "grid": "Started at once by run-pilot-grid with the chosen learning rate (protocol pilot.after_pilot)",
+  "scope": {
+    "DS2_opened": false,
+    "Pi_or_attack": false,
+    "lambda_selection_input": false
+  }
+}

@@ -1,0 +1,20 @@
+Chào Châu, mình gửi receipt pilot NoPeek v2. Theo mục 4(2) tin 09/11, grid 72 run đã chạy ngay sau pilot (bắt đầu khoảng 20:35 ngày 12/11), dự kiến xong sau khoảng 40 phút. Mình chưa tính Π nào.
+
+1. Khóa
+- Protocol v2 83cce64d…, plan e2e4e858…, file khóa fe38f3a9… (approved_by SV3, review evidence là tin 09/11 của bạn), commit 8f81a91 trên dev/ml-sv3.
+- Chỉ điểm 5 (tắt TF32 cuDNN và matmul) làm đổi cấu hình run: mỗi file cấu hình chỉ khác cudnn_allow_tf32 và SHA protocol. Diff còn có các mục ghi lại lời bạn ngày 09/11 và 10/11 (dòng về A train với cuDNN TF32 bật, chạy grid ngay sau pilot, tập s mở rộng {2, s_m}) và phần định danh. Mình khóa luôn, không gửi lại. Bảng diff ở docs/sv3_m1_nopeek_v2_review_20261111.md.
+
+2. Kiểm
+- Epoch 0 của cả 9 run pilot ra đúng confusion validation đã khóa của A khi tắt TF32. Checkpoint của mọi epoch nạp lại cho đúng confusion đã ghi.
+- Ngưỡng tiện ích: macro-F1 ≥ 19/20 × A = 0,539811.
+
+3. Kết quả luật pilot (seed 20261030, 10 epoch)
+- LR 1e-5: an toàn (λ = 0 đạt ngưỡng 10/10 epoch, không sụp). R_n nhỏ nhất của λ = 5 trong các epoch đạt ngưỡng: s2 0,9088; s8 0,6021. Điểm 0,7554.
+- LR 3e-5: an toàn (10/10). s2 0,9117; s8 0,5723. Điểm 0,7420. Được chọn.
+- LR 1e-4: không an toàn (λ = 0 chỉ đạt ngưỡng 5/10 epoch).
+
+4. Ghi nhận
+- Ở LR 3e-5, macro-F1 của λ = 0 giảm dần từ 0,573 (epoch 1) xuống 0,542 (epoch 10), sát ngưỡng 0,5398.
+- Ở s2, λ = 5 chỉ hạ R_n từ 0,965 xuống khoảng 0,91. Ở s8, R_n xuống khoảng 0,57.
+
+File (thư mục ml/provenance/m1-nopeek-v2-run-20261112/): pilot-receipt.json, pilot-curves.csv (đường macro-F1, R_n, recall S/V theo epoch của cả 9 run), pilot-decision.json. Grid xong mình gửi tiếp đường macro-F1 của λ = 0 (3 seed) cùng receipt grid, trước khi tính Π.

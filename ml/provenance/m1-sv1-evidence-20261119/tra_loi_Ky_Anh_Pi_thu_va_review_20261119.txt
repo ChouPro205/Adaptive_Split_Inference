@@ -1,0 +1,73 @@
+Chào Kỳ Anh, mình đã nhận hai tin của bạn: Π lượt thử 13/11 và bản rà dự án. Mình đã tự kiểm lại trên dev/ml-sv3 (d219d36) và trả lời theo thứ tự dưới đây.
+
+1. Lượt thử: mình kiểm lại, mọi số khớp
+- SHA256SUMS của thư mục m1-attack-v2-trial-20261113 khớp 21/21 file. Protocol v2 7a174dd9…, plan 8fc252d2… và file khóa 205ec6db… khớp với số bạn báo.
+- Khóa trước rồi mới chạy: theo log hoạt động của GitHub, lần push 96c2ac9 lúc 10:07:19Z, còn run bắt đầu lúc 10:07:46Z. Source-head là 96c2ac9, cây sạch, exit 0, stderr rỗng.
+- Mình tính lại Π từ bacc test của từng seed theo đúng công thức của protocol: Adv = (bacc − 1/22)/(1 − 1/22), Π = 1 − trung bình Adv của 3 seed. Kết quả trùng với receipt đến chữ số thứ 4 ở cả 9 cặp. CI bootstrap thì mình chưa tính lại, vì dự đoán test nằm trên máy bạn.
+- Mục 11–15 bạn khóa mà không gửi lại mình. Mình chấp nhận. Các mục này được cố định và push trước khi chạy, mục 12 còn chặn trước việc chọn kiến trúc sau khi thấy kết quả s0. Lần sau, nếu có mục ngoài danh sách mình nêu, bạn cứ khóa như lần này nhưng gửi danh sách cho mình trong ngày.
+- Bảng tuần 9 bạn dẫn ở mục 1 tin rà soát khớp với table_iii_e_dev.csv: s0 362 B, 9,8 µJ; s1–s8 1.536–5.824 B, 169–5.131 µJ. Như vậy mọi s giữa đều thua s0 về cả byte lẫn E_dev, và lý do duy nhất để giữ chúng là Π. Mình đồng ý với bạn.
+
+2. Mục 2 tin rà soát (Π(s0) là cận trên): bạn đúng, và lập luận này còn mạnh hơn bạn viết
+- Ở s0, edge chạy cả mô hình, nên có một tấn công cụ thể: tự tính z_s8 từ tín hiệu thô rồi áp kẻ tấn công s8 đã train. Tấn công này cho đúng bacc của s8 trên cùng tập test. Vì vậy Π(s0) ≤ 0,068, và con số 0,183 không được dùng ở đâu.
+- Lập luận này áp dụng cho mọi cặp s < s' trên cùng checkpoint ρ0, không riêng s0. Edge nhận z_s và có tail nên tính được z_s', chỉ lệch ở sai số lượng tử tại s. Vì vậy với ρ0, Π thật không thể giảm theo s. Thứ tự đo được 0,100 → 0,081 → 0,076 → 0,068 hoàn toàn do kẻ tấn công ở điểm cắt nông chưa đủ mạnh. Nếu lấy cận trên theo tấn công ghép, Π ở s0–s8 gần như phẳng, khoảng ≤ 0,07. Với ρ1, mỗi s là một mô hình riêng nên chỉ áp được bên trong mô hình đó.
+- Hệ quả quan trọng nhất: mọi Π hiện có đều là cận trên, nên tấn công mạnh hơn chỉ làm Π thấp đi. Kết luận "không s nào đạt Π_min ở ρ0, ρ1" vì vậy không nhạy với sức mạnh kẻ tấn công.
+- Còn một điều nữa: A1 ở s2 tái tạo gần như nguyên tín hiệu (Pearson 0,999), tức là z_s2 gần như chứa trọn x. Nên thước đo tái tạo cũng không cứu được Π. Dù vậy mình không đổi thước đo hay Π_min sau khi đã thấy số; đổi như vậy đúng là kiểu reviewer gọi là chọn thước đo theo kết quả.
+
+3. Câu (3): mình không đi tiếp N2 theo cặp (s, ρ), nhưng bài vẫn giữ phần thích nghi; không chờ ρ2 để quyết
+Nhánh no_signal (tin 05/11 mục 6b, protocol G5 mục 13) được khai trước với điều kiện "Π không tăng theo s, hoặc cả ρ1, ρ2 không nâng được Π". Vế đầu đã xảy ra, và theo mục 2 ở trên, vế này không phụ thuộc vào sức mạnh của kẻ tấn công. Vế ρ1 cũng đã xảy ra ở mọi s. Mình quyết mà không chờ ρ2, vì những lý do sau:
+- ρ2 phải nâng Π ở s2 từ khoảng ≤ 0,10 lên 0,5. Trong khi đó, ngưỡng tiện ích đã chặn ρ1 ở s2 khi R_n còn 0,91, và Abuadbba 2020 cho thấy với 1D-CNN ECG, nhiễu/DP làm mất accuracy trước khi giảm được rò rỉ.
+- Ở Π_min = 0,5, tập khả thi theo (s, ρ) chỉ còn s10. "N2 đạt theo dải" (Π_min 0,3–0,8) cũng không cứu được, đúng như bạn tính.
+- Lượt chính thức trên DS2 khó đổi kết luận. Từ ≤ 0,10 lên 0,5 là khoảng cách quá lớn để do lệch phân bố gây ra.
+Nhưng mình không chuyển sang một bài thuần đo đạc. Cái mất là lý do chọn điểm cắt giữa và chọn ρ, chứ không phải lý do để thích nghi. Hướng mình đang xét:
+- Controller vẫn thích nghi lúc chạy theo pin, kênh và hàng đợi edge (drift-plus-penalty như cũ), nhưng chọn giữa gửi thô (s0: rẻ, nhưng edge thấy dữ liệu) và tính hết tại chỗ (s10: riêng tư theo cấu tạo, đắt hơn nhiều).
+- Thêm một ràng buộc hoặc mục tiêu riêng tư dài hạn, kiểu "tỉ lệ nhịp xử lý tại chỗ", và các nút liên kết BLE (interval, PHY).
+- Riêng tư trở thành một kết quả có bằng chứng: chia mô hình không che được bệnh nhân (số của bạn, có cận trên), nên riêng tư trước edge phải trả bằng năng lượng, và bài đo đúng cái giá đó.
+Mình đang chạy một mô phỏng nhanh bằng số đo tuần 9–10 để xem controller theo hướng này có hơn rõ các baseline tĩnh và greedy không. Rủi ro mình biết: chính sách tối ưu có thể chỉ là một ngưỡng đơn giản. Phạm vi bài, tên bài và việc của từng người, mình chốt ở buổi họp đầu tuần 12, kèm kết quả mô phỏng đó. Hướng bạn phác ở mục 5 (LUT theo pha cho 11 điểm cắt, sai số mô hình, vùng áp dụng, kết quả âm có kiểm chứng) vẫn là phần lõi của bài trong hướng mới.
+ρ2 thành một thí nghiệm ngắn có giới hạn, không còn là điều kiện của bài:
+- Cộng nhiễu theo kênh ở s2 và cùng mức nhiễu lên tín hiệu thô ở s0 (đối chứng (c)), quét ít nhất 4 mức, báo Π và macro-F1 ở mỗi mức. Chỉ DS1.
+- Tổng cộng tối đa 1 tuần, làm trong tuần 12 sau khi mình review đặc tả. Bạn viết đặc tả ρ2 vào v3 (mục 4).
+- Kết quả nào cũng dùng được: nếu ρ2 bất ngờ đạt Π ≥ 0,5 mà giữ được F1 thì mình xem lại thiết kế cũ; nếu không thì đó là đường cong riêng tư – tiện ích cho phần kết quả âm.
+Còn đường bottleneck: mình không theo. Nó đảo quyết định khóa kiến trúc và bỏ P3, tốn 3–4 tuần của cả ba người, lại đưa bài sát DCentNet, vốn đã nén feature ở điểm thoát. Mình chỉ xem lại nếu phép kiểm (a) cho Π(s9) ≥ 0,5.
+
+4. Câu (1): đồng ý soạn attack protocol v3, gửi mình review trước khi khóa
+Lần này phải gửi trước khi khóa, vì v3 đổi định nghĩa "tấn công mạnh nhất", không chỉ là chi tiết thực thi. Phạm vi:
+(a) B-naive ở s9 và trên logits, cùng luật lượt thử, ρ0, chỉ DS1. Edge luôn tự tính logits ở mọi s < 10, và logits là hàm của z_s, nên Π(logits) là cận trên của Π ở mọi s < 10 khi ρ còn giữ được logits. Bạn khai trước cách đọc:
+  - Π(logits) < 0,5 nghĩa là với thước đo này, không cấu hình offload nào giữ được tiện ích mà đạt Π_min. Ta ghi đó là đặc tính của bài toán, không hạ Π_min.
+  - Π(s9) ≥ 0,5 thì mới bàn lại bottleneck.
+(b) Thêm biến thể B-composite cho ρ0: từ tensor nhận được ở s, tính z_s' (s' > s, qua tail và lượng tử của registry), rồi áp kẻ tấn công đã train ở s'. Π của ρ0 lấy theo biến thể mạnh nhất, đúng luật "max theo biến thể" đã có, nên Π(s0) tự động ≤ min theo s. Biến thể này không cần train thêm.
+(c) Đặc tả ρ2 theo mục 3 (nhiễu theo kênh ở s2, các mức quét, cách tính macro-F1), kèm đối chứng: cùng mức nhiễu cộng lên tín hiệu thô rồi gửi ở s0, so cả Π lẫn macro-F1. Phần này chạy sau khi mình review, trong tuần 12.
+Ràng buộc: không chạy lại hay sửa 9 cặp của lượt thử; số v2 giữ nguyên làm bản ghi. Không mở DS2. Ghi rõ v3 được viết sau khi đã thấy Π lượt thử. Hạn gửi v3 là 22/11; mình review trong ngày nhận, để có số trước buổi họp tuần 12.
+
+5. Câu (2): s10 không phải chịu ràng buộc Π
+Ở s10 hệ của mình không gửi gì lên edge, nhãn dùng ngay trên thiết bị. Vì vậy Π(s10) = 1 theo cấu tạo. Cột 15 B ở s10 trong table_iii chỉ là kích thước danh nghĩa của tensor logits đã lượng tử (5 giá trị INT8 + 5 scale FP16); image s10 không truyền nó đi. Vì thế số B-naive trên logits ở (a) không dùng để lọc s10, mà là cận trên cho các s < 10 như mục 4. Mình sẽ sửa câu "Π(s10) dùng số đo trên logits nếu có" ở mục 2 protocol G5 cho khớp, và ghi rõ là sửa sau khi đã thấy Π thử.
+
+6. Câu (4): đồng ý thêm MobiTrust, DCentNet và Abuadbba vào Table I và file nguồn
+Mình tự tra được như sau:
+- MobiTrust ("Risk-Bounded Adaptive Split Inference Under Mobility, Privacy Leakage, and Latent-Space Attacks", Computers 15(10):718): có tồn tại. Mỗi lần suy luận chọn điểm cắt, cách bảo vệ và edge, dưới ngân sách rủi ro và deadline của từng lần, có fallback chạy tại thiết bị. Mình chỉ đọc được phần tóm tắt, vì MDPI chặn tải trang đầy đủ; các chi tiết còn lại mình dựa vào bản bạn đọc.
+- DCentNet (arXiv 2502.17446v1, 31/01/2025): bản đầy đủ ghi Arduino Nano 33 BLE Sense (chip trên board là nRF52840), BLE, PPK2, MIT-BIH MLII. Họ chỉ báo dòng trung bình theo chế độ, có encoder nén feature map ở điểm thoát, chọn vị trí điểm thoát bằng giải thuật di truyền và báo cấu hình 1 và 2 điểm thoát. Trang arXiv có ghi một DOI Elsevier (10.1016/j.bspc.2024.107468); bạn kiểm xem đó có phải bản đã đăng không, rồi trích bản đã đăng nếu có.
+- Abuadbba và cộng sự (AsiaCCS 2020, arXiv 2003.12365): có tồn tại, kết luận đúng như bạn tóm tắt.
+Với hướng mới, DCentNet thành bài gần nhất về phần đo, vì cùng chip, cùng PPK2, cùng MIT-BIH. Việc cuối tuần 11 của bạn vì vậy đổi như sau:
+- Ưu tiên: đọc kỹ toàn văn DCentNet, viết đoạn khác biệt (đo theo pha có marker, quét đủ 11 điểm cắt, edge DPU thật, mô hình năng lượng kiểm bằng số đo).
+- Phần 2502.16091, P3SL và MobiTrust: chỉ cần vài dòng trong Table I. Mình đồng ý với đánh giá của bạn ở mục 3: khác biệt (iv) không còn đứng được so với MobiTrust.
+- Nháp threat model: vẫn hạn cuối tuần 11.
+
+7. Câu (5): có, bạn viết lại đoạn kịch bản tấn công trước lượt DS2, nhưng thước đo giữ nguyên
+Đoạn này cần nói rõ ba điều:
+- Bài toán là tái định danh tập đóng N người, với train và test lấy từ hai nửa của cùng một bản ghi. Vì vậy danh tính lẫn với đặc điểm của phiên đo (điện cực, tư thế), và Adv cao hơn so với tái định danh khác phiên. MIT-BIH mỗi người chỉ có một phiên nên không tách được hai yếu tố này; ghi vào Limitations.
+- Edge vốn đã biết thiết bị nào gửi. Vì vậy mối đe dọa thực là liên kết nhịp với danh tính ở một bộ dữ liệu hay phiên khác, và Π trong cùng phiên là cận trên của khả năng liên kết đó.
+- Π thấp ở mọi s một phần là do bài toán này dễ. Viết thẳng ra như vậy; trong hướng mới, đây là phần hạn chế của kết quả âm về riêng tư.
+
+8. Câu (6): chưa có
+E_tx ở 362 B, E_wait và t_edge ở s0 sẽ có trực tiếp từ phiên B tuần 10 (mọi s 0–10, radio bật, với KV260). Phiên này dời vì máy Trung hỏng, và sẽ làm ngay khi Trung sẵn sàng; hồi quy E_tx(B) theo payload là tuần 11. Có số là mình báo bạn trong ngày.
+Ước lượng ngày 05/11 (dựa trên số đo, P_conn cũ) cho s0 khoảng 0,27 mJ / 95 ms, s2 khoảng 1,34 mJ / 196 ms. Chênh E_dev giữa s0 và s1 (~160 µJ) đã lớn hơn nhiều so với phần chờ thêm ở edge. Nên s0 trội hơn mọi s giữa gần như chắc chắn; phiên B sẽ khép lại lập luận này.
+Về ý (ii) ở mục 3 tin rà soát của bạn: E_prot của P1 ở s0–s9 đã đo ngày 13/11, đạt "< 1 lớp conv", lớn nhất ở s3 bằng 0,57 × lớp conv rẻ nhất. Số này chưa lên main, sẽ vào PR tuần 10. P1 đã ở ngoài tập hành động, còn chi phí của ρ2 thì chưa đo.
+
+9. Câu chữ trong Khung
+Mình đồng ý với bạn: câu "giữ tỉ lệ thành công của tấn công GAN dưới [SO] %" và mọi chỗ nói kết quả controller phải sửa. Mình sửa khi viết lại khung theo hướng chốt ở họp tuần 12.
+
+Tóm tắt việc của bạn:
+- Trước 22/11: attack protocol v3 gồm (a), (b) và đặc tả ρ2 kèm đối chứng (c), gửi mình review trước khi khóa.
+- Cuối tuần 11: đoạn khác biệt với DCentNet, Table I (thêm MobiTrust, DCentNet, Abuadbba), nháp threat model có đoạn ở mục 7.
+- Tuần 12: chạy (a), (b) ngay sau khi khóa; ρ2 tối đa 1 tuần. Chưa mở DS2. Phạm vi bài chốt ở họp đầu tuần 12.
+
+Cảm ơn bạn. Bản rà soát này là đúng việc mình cần: phát hiện sớm, có số, và tự sửa cả ý của chính mình.

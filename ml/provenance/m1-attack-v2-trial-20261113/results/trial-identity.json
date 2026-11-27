@@ -1,0 +1,41 @@
+{
+  "authorization_sha256": "205ec6db98a75e2730cc2877021b4f48881550c96673acc8ba744bc2c421f8ba",
+  "plan_manifest_sha256": "8fc252d23c935a93d17fb0080f939fca105e22b8d37e769b2da7940fd32fb177",
+  "protocol_sha256": "7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 5060",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "cudnn_allow_tf32": false,
+  "matmul_allow_tf32": false,
+  "deterministic_algorithms": true,
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "golden_check": {
+    "beats": 20,
+    "splits": [
+      0,
+      2,
+      4,
+      5,
+      8
+    ],
+    "bitwise_equal": true
+  },
+  "counts": {
+    "beats": 50995,
+    "dropped": 1681,
+    "attacker_side": 24839,
+    "test": 24475,
+    "attacker_side_per_record": [
+      767,
+      1637
+    ],
+    "test_per_record": [
+      799,
+      1613
+    ],
+    "largest_patient_share_of_all_beats": 0.0659
+  },
+  "DS2_opened": false
+}

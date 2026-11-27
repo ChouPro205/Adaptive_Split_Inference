@@ -1,0 +1,301 @@
+{
+  "type": "M1_ATTACK_V2_TRIAL_RECEIPT_REPORT_ONLY",
+  "prepared_by": "SV3",
+  "lock": {
+    "path": "ml/provenance/m1-attack-v2-lock-20261113/m1_attack_v2_lock_and_trial_authorization.json",
+    "sha256": "205ec6db98a75e2730cc2877021b4f48881550c96673acc8ba744bc2c421f8ba",
+    "commit": "96c2ac9148b12544aaf712346db92cf4072b1e2c"
+  },
+  "run": {
+    "command": "python -B ml/scripts/attack_m1_v2.py run-trial --authorization ml/provenance/m1-attack-v2-lock-20261113/m1_attack_v2_lock_and_trial_authorization.json --output ml/data/runs/attack-m1-v2-trial-20261113",
+    "source_head": "96c2ac9148b12544aaf712346db92cf4072b1e2c",
+    "tracked_files_clean": true,
+    "start_utc": "2026-11-13T10:07:46Z",
+    "end_utc": "2026-11-13T10:14:58Z",
+    "exit_code": 0,
+    "stderr_bytes": 0,
+    "device_name": "NVIDIA GeForce RTX 5060",
+    "torch": "2.14.0+cu130",
+    "cuda": "13.0",
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "deterministic_algorithms": true
+  },
+  "bindings": {
+    "protocol_sha256": "7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0",
+    "plan_manifest_sha256": "8fc252d23c935a93d17fb0080f939fca105e22b8d37e769b2da7940fd32fb177"
+  },
+  "golden_check": {
+    "beats": 20,
+    "splits": [
+      0,
+      2,
+      4,
+      5,
+      8
+    ],
+    "bitwise_equal": true
+  },
+  "counts": {
+    "beats": 50995,
+    "dropped": 1681,
+    "attacker_side": 24839,
+    "test": 24475,
+    "attacker_side_per_record": [
+      767,
+      1637
+    ],
+    "test_per_record": [
+      799,
+      1613
+    ],
+    "largest_patient_share_of_all_beats": 0.0659
+  },
+  "N": 22,
+  "Pi_min": 0.5,
+  "capacity_check": {
+    "statistic": "mean over the B seeds of s0 test bacc (base architecture)",
+    "value": 0.8256463951191623,
+    "threshold": 0.8,
+    "decision": "base"
+  },
+  "table": [
+    {
+      "pair": "s0-rho0-base",
+      "s": 0,
+      "rho": "rho0",
+      "Pi": 0.18265615749421082,
+      "ci95": [
+        0.17429103233667134,
+        0.1907617816111732
+      ],
+      "Pi_seed_range": [
+        0.17289370834702456,
+        0.19825804387057167
+      ],
+      "bacc_mean": 0.8256463951191623,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.012838921848302615,
+      "A1_pearson_mean": 0.9999130272929839
+    },
+    {
+      "pair": "s2-rho0",
+      "s": 2,
+      "rho": "rho0",
+      "Pi": 0.09979394619081294,
+      "ci95": [
+        0.09297409436019606,
+        0.10661782871836653
+      ],
+      "Pi_seed_range": [
+        0.08641191460533149,
+        0.10853849215808697
+      ],
+      "bacc_mean": 0.9047421422724057,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.03696807543631206,
+      "A1_pearson_mean": 0.9991842976404369
+    },
+    {
+      "pair": "s2-rho1",
+      "s": 2,
+      "rho": "rho1",
+      "Pi": 0.1014753024907068,
+      "ci95": [
+        0.09483013233300439,
+        0.1082897991025004
+      ],
+      "Pi_seed_range": [
+        0.09699686524039908,
+        0.10827708886700527
+      ],
+      "bacc_mean": 0.9031372112588709,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.0366503546240484,
+      "A1_pearson_mean": 0.9992303420395771
+    },
+    {
+      "pair": "s4-rho0",
+      "s": 4,
+      "rho": "rho0",
+      "Pi": 0.08076366081265762,
+      "ci95": [
+        0.07444336164279025,
+        0.08714984605928364
+      ],
+      "Pi_seed_range": [
+        0.07682040779215893,
+        0.08820381016243994
+      ],
+      "bacc_mean": 0.9229074146788268,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.07787285517418899,
+      "A1_pearson_mean": 0.9973289784333603
+    },
+    {
+      "pair": "s4-rho1",
+      "s": 4,
+      "rho": "rho1",
+      "Pi": 0.08222777978264151,
+      "ci95": [
+        0.07605175447103421,
+        0.08865720629233542
+      ],
+      "Pi_seed_range": [
+        0.07601598844079505,
+        0.09424788878894752
+      ],
+      "bacc_mean": 0.9215098465711149,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.07237478354379805,
+      "A1_pearson_mean": 0.9976178357393157
+    },
+    {
+      "pair": "s5-rho0",
+      "s": 5,
+      "rho": "rho0",
+      "Pi": 0.07565271709341992,
+      "ci95": [
+        0.06980424923303956,
+        0.08179593617689053
+      ],
+      "Pi_seed_range": [
+        0.0691388323619192,
+        0.0843286513743784
+      ],
+      "bacc_mean": 0.9277860427744629,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.07444020579923152,
+      "A1_pearson_mean": 0.9964462888593286
+    },
+    {
+      "pair": "s5-rho1",
+      "s": 5,
+      "rho": "rho1",
+      "Pi": 0.07825712218328718,
+      "ci95": [
+        0.07221127279856306,
+        0.08434091555221607
+      ],
+      "Pi_seed_range": [
+        0.07644681088435412,
+        0.08154166746574953
+      ],
+      "bacc_mean": 0.9253000197341351,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.12999824355684333,
+      "A1_pearson_mean": 0.9962006184098239
+    },
+    {
+      "pair": "s8-rho0",
+      "s": 8,
+      "rho": "rho0",
+      "Pi": 0.06789466734497485,
+      "ci95": [
+        0.062394894203974344,
+        0.07331235300758146
+      ],
+      "Pi_seed_range": [
+        0.06555142978067119,
+        0.06934842900868754
+      ],
+      "bacc_mean": 0.9351914538979784,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.11584412898032201,
+      "A1_pearson_mean": 0.9912826184746562
+    },
+    {
+      "pair": "s8-rho1",
+      "s": 8,
+      "rho": "rho1",
+      "Pi": 0.07112810628072674,
+      "ci95": [
+        0.06518508175476716,
+        0.07711278644829668
+      ],
+      "Pi_seed_range": [
+        0.05994264936021132,
+        0.08017275991649475
+      ],
+      "bacc_mean": 0.9321049894593063,
+      "passes_Pi_min": false,
+      "architecture": "base",
+      "A1_NRMSE_mean": 0.12402024685397953,
+      "A1_pearson_mean": 0.9903125877910015
+    }
+  ],
+  "caveat": "The test part of the 18 DS1 train records lies in DS1 train (beats the head saw in training), so trial Pi may be more optimistic than the official DS2 Pi",
+  "outputs_sha256": {
+    "ml/data/runs/attack-m1-v2-trial-20261113/s0-rho0-base-arrays.npz": "b71689e2ea9473267bffa261c27da182dbcb99da04757fe48a304212961ad203",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s0-rho0-base-attackers.pt": "410808fab6cd1145afb8e4f9a8b8076caaa564752d9c189f6818b0ecd5183b7b",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s0-rho0-base.json": "46e221f394bf7772fbfb0f745a61ca946a88bf4e5b42a03803cdcecff3176bb3",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s2-rho0-arrays.npz": "bc213b69d8ce300ff700e2ba180fab11731fe2d62fda0d06514c787a8138cdfb",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s2-rho0-attackers.pt": "6f70a5746501477603f13ae0398aa85bec3503c087627e3b227ae2de2fbb072c",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s2-rho0.json": "62f6336e4740799f901e45aa510409a1c814f25cba6801ca4868753304670993",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s2-rho1-arrays.npz": "8e2813f224c00d790d62602dea8c414d33ebe01caca488adebc25220a92d2682",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s2-rho1-attackers.pt": "08007e2cdd68a94668dda02d08ef00f8a3e2b13b1cf66e80c6691ac11c4ff415",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s2-rho1.json": "f7b7ef0c2147cd7a0082a33a247e4f61bb508fa39db192e0766083faed9692df",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s4-rho0-arrays.npz": "9916611f8ff17bf71d622541b5adddd30ba721edb3e2987dd97dad9719ea9fea",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s4-rho0-attackers.pt": "55ffc95bd33378925f85d965aba73e5bed74b699326426ff2bc202d313432e00",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s4-rho0.json": "b3819f0ecc0f0f0f56f1c14f52b75651455632eccdcd1288712d78566a56ab3e",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s4-rho1-arrays.npz": "7fdd7e6103325a3391b5dc24874fe3d76663c74876c408a80b12dbd8debbe35c",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s4-rho1-attackers.pt": "9fc77c093cdb5fd7e756842818d7a2231c0793082ad6c0d443434f22f3a4ba7e",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s4-rho1.json": "424084a254888d201807ab464853f50d439fb62a61378817af0a9c9bc95ae69d",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s5-rho0-arrays.npz": "b48da21cf3e28e1e4efbffb2d6817f735bf6958761b774ccedd76725b70e8401",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s5-rho0-attackers.pt": "90ce26c111f0ba2a8530a754d2e78b2f88c1c6b30b96b173f36453b80166f856",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s5-rho0.json": "14de8ec517cd6db386198ba3cb4fa220c5d90094e3ec5b06340f735cf3d1e7c1",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s5-rho1-arrays.npz": "36a745a73e63c1c3ca2916329508b961b91c773242154392792e53efc9c4041f",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s5-rho1-attackers.pt": "bf2206e7f4cb0d178c268d959bd807ad7014a001ca4181f6b9ccf0c2b4a931d1",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s5-rho1.json": "027397cb4b33f2ab95191dac8f0fa1876bb6594b30340518d937405a622124e7",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s8-rho0-arrays.npz": "f0b64e020655e526f6c18d7439ace147b395574b9b1b24ef0d63682c824ef474",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s8-rho0-attackers.pt": "538a293ca6da4e7b03ef9cb5f924c62db468fd82308c0fd47c5769307008af40",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s8-rho0.json": "47a29d3806332ec1852d98d453d5fb44f33e168109f3f31c2dd6c22b619d435c",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s8-rho1-arrays.npz": "ff1f899e579e975005d33d276edfb64347b0d07658a3112099851560ea6d5f38",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s8-rho1-attackers.pt": "0e111db7641fea977dd100e0e05972d70d3c749a029d6425a8891f79b57d68cf",
+    "ml/data/runs/attack-m1-v2-trial-20261113/s8-rho1.json": "d2d99fd441e74187bbb8f31cce2d5130ba9dddb8848296708f6c19b738d45541",
+    "ml/data/runs/attack-m1-v2-trial-20261113/trial-identity.json": "344b61211558c08d9db25b824de36b67ad0a3fd3ca3e72f074f01fe976e39b04",
+    "ml/data/runs/attack-m1-v2-trial-20261113/trial-result.json": "f81a488ab0a2cc8baf89ab526adecdfc6f19f5fcabfdbf1d0d9a6fbc7e70fadf"
+  },
+  "tracked_copies": {
+    "ml/provenance/m1-attack-v2-trial-20261113/results/s0-rho0-base.json": "46e221f394bf7772fbfb0f745a61ca946a88bf4e5b42a03803cdcecff3176bb3",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/s2-rho0.json": "62f6336e4740799f901e45aa510409a1c814f25cba6801ca4868753304670993",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/s2-rho1.json": "f7b7ef0c2147cd7a0082a33a247e4f61bb508fa39db192e0766083faed9692df",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/s4-rho0.json": "b3819f0ecc0f0f0f56f1c14f52b75651455632eccdcd1288712d78566a56ab3e",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/s4-rho1.json": "424084a254888d201807ab464853f50d439fb62a61378817af0a9c9bc95ae69d",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/s5-rho0.json": "14de8ec517cd6db386198ba3cb4fa220c5d90094e3ec5b06340f735cf3d1e7c1",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/s5-rho1.json": "027397cb4b33f2ab95191dac8f0fa1876bb6594b30340518d937405a622124e7",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/s8-rho0.json": "47a29d3806332ec1852d98d453d5fb44f33e168109f3f31c2dd6c22b619d435c",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/s8-rho1.json": "d2d99fd441e74187bbb8f31cce2d5130ba9dddb8848296708f6c19b738d45541",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/trial-identity.json": "344b61211558c08d9db25b824de36b67ad0a3fd3ca3e72f074f01fe976e39b04",
+    "ml/provenance/m1-attack-v2-trial-20261113/results/trial-result.json": "f81a488ab0a2cc8baf89ab526adecdfc6f19f5fcabfdbf1d0d9a6fbc7e70fadf"
+  },
+  "logs_sha256": {
+    "ml/provenance/m1-attack-v2-trial-20261113/logs/gpu-before.csv": "bd0f5175e6deb933c2e22ffcd4f83817382a94eba85364046fb92f6530f86e3e",
+    "ml/provenance/m1-attack-v2-trial-20261113/logs/run-end-utc.txt": "23723bbde64ef4874440fa2cdfbd82f8d2b310be1518d51b4fbc8bd91b998ad3",
+    "ml/provenance/m1-attack-v2-trial-20261113/logs/run-exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "ml/provenance/m1-attack-v2-trial-20261113/logs/run-start-utc.txt": "f9dc5538520ba3d54906486b635201726482812f9cc13cb149309410237c3790",
+    "ml/provenance/m1-attack-v2-trial-20261113/logs/run.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ml/provenance/m1-attack-v2-trial-20261113/logs/run.stdout.txt": "e0a15bdeca9a85cb152a0d640867b76e820d1e6e0c4ca15301b71da7a4e34c13",
+    "ml/provenance/m1-attack-v2-trial-20261113/logs/source-head.txt": "5b7b396a07c0f30c05029f4515c922558589b4871274804d0044b1a50700f291",
+    "ml/provenance/m1-attack-v2-trial-20261113/logs/source-status.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scope": {
+    "data": "DS1 train/val (N = 22) only",
+    "DS2_opened": false,
+    "attacks": [
+      "A1",
+      "B_naive"
+    ],
+    "defence_seeds": "deployment seed only",
+    "use": "Early warning only; never the paper main numbers (protocol data.trial_week11.caveat)"
+  },
+  "status": "TRIAL_RECEIPT_REPORT_ONLY"
+}

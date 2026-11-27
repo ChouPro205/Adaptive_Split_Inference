@@ -1,0 +1,126 @@
+{
+  "schema": "m1-attack-plan/1",
+  "status": "CANDIDATE_NOT_LOCKED",
+  "protocol_sha256": "7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0",
+  "checkpoint_lock_sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc",
+  "arrays": "ml/data/processed/mitdb-ds1ds2-m1-v3-r2",
+  "data_files": {
+    "train_X.npy": {
+      "sha256": "de7be152afcd01ae453ddc1e42655c21bd05bc6e46c633893095cd9a342393b9",
+      "bytes": 59719808
+    },
+    "train_y.npy": {
+      "sha256": "702ca2f0f1b6a7129b0b7ac6c7bba90f73e48b75e18a8247b24e068a2df191fe",
+      "bytes": 331904
+    },
+    "train_metadata.csv": {
+      "sha256": "da94f4bb273305c957798049e0f9a09799ae4c03f4bd467a8262fc0f9147737b",
+      "bytes": 1203456
+    },
+    "val_X.npy": {
+      "sha256": "b4a38f6a428d335328eaf859107bf1c3cf6d3936d908d17aa87f2de7430734d1",
+      "bytes": 13713248
+    },
+    "val_y.npy": {
+      "sha256": "414634166bf41859cb20ca55a07a5bebd70930cd2f6af5c4c53328fa343ad437",
+      "bytes": 76312
+    },
+    "val_metadata.csv": {
+      "sha256": "ed6218bf715617d96235347196e2bd87c6f34beb9adb2d2fe0f2a64b08626c94",
+      "bytes": 274679
+    }
+  },
+  "package_A_manifest_sha256": "f005b3ea4e2440186bce4218c537b12f3b54fe734631c56a90c2378748aedf2f",
+  "sources_sha256": {
+    "ml/scripts/attack_m1_v2.py": "5064e09da9210da7a262818a1eab3647cbd0ef040929debc453f3040ea2f24b8",
+    "ml/scripts/package_m1_v4_a.py": "2c9662858cb0d504252adfc5cbb58895687f7737420384ed1e53a028cdb37cb6",
+    "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+    "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+    "ml/scripts/week4_common.py": "c5509a4f2977caf090e2d76be0bb7e52c99e55e0f8dcb41c0315bc6849187190",
+    "ml/src/quantization.py": "cb2c6260784fddf43a6fa620d0b258efae643cf98d9399f9625c21d8f14faa3f",
+    "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14"
+  },
+  "checkpoints": {
+    "rho0": {
+      "path": "ml/data/runs/mitdb-baseline-v4-20261103/C5-seed20261101/attempt-1/checkpoint-epoch-004.pt",
+      "sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c"
+    },
+    "rho1": {
+      "s2": {
+        "run_id": "grid-s2-lambda2-seed20261101",
+        "lambda": 2,
+        "seed": 20261101,
+        "epoch": 3,
+        "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s2-lambda2-seed20261101/checkpoint-epoch-003.pt",
+        "sha256": "6e04b7259f0bfa2165303c4ecbcef148024d543e7b2a802fb38d0cc9da6abe3b",
+        "run_config_sha256": "692bcc40977f241c0e661f08ef1a4dae4d96ae46d942036a32702f02826f5f0d"
+      },
+      "s4": {
+        "run_id": "grid-s4-lambda1-seed20261031",
+        "lambda": 1,
+        "seed": 20261031,
+        "epoch": 3,
+        "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s4-lambda1-seed20261031/checkpoint-epoch-003.pt",
+        "sha256": "7ef1cff382397383dc198f0d67e64b950e5152e6aaca3e3361563ae952b1823f",
+        "run_config_sha256": "fcb6d1f8e83e4c0f0793458228ec168cfd7d8a019a3b0d77f0f7ac7bf345ebda"
+      },
+      "s5": {
+        "run_id": "grid-s5-lambda1-seed20261030",
+        "lambda": 1,
+        "seed": 20261030,
+        "epoch": 2,
+        "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s5-lambda1-seed20261030/checkpoint-epoch-002.pt",
+        "sha256": "1698c9427ffd2b3497940a879530d98ef3e6a35318691c51aac7c28a55aa56dc",
+        "run_config_sha256": "3e0adc7a5f7da679afce0316302261a89947476acfbbff4907d3df9ad4f3e37d"
+      },
+      "s8": {
+        "run_id": "grid-s8-lambda5-seed20261031",
+        "lambda": 5,
+        "seed": 20261031,
+        "epoch": 5,
+        "path": "ml/data/runs/nopeek-m1-v2-20261112/grid/grid-s8-lambda5-seed20261031/checkpoint-epoch-005.pt",
+        "sha256": "a6ebc8c30f5fe25f4baf37e0eff9d1866d419873c8c6f99b14eb362cd81b2625",
+        "run_config_sha256": "9f173d8786e9a03affd9931c941243d6716f459f2558ad8a296df5c460dad2e6"
+      }
+    }
+  },
+  "trial_order": [
+    [
+      "s0",
+      "rho0"
+    ],
+    [
+      "s2",
+      "rho0"
+    ],
+    [
+      "s2",
+      "rho1"
+    ],
+    [
+      "s4",
+      "rho0"
+    ],
+    [
+      "s4",
+      "rho1"
+    ],
+    [
+      "s5",
+      "rho0"
+    ],
+    [
+      "s5",
+      "rho1"
+    ],
+    [
+      "s8",
+      "rho0"
+    ],
+    [
+      "s8",
+      "rho1"
+    ]
+  ],
+  "DS2_access": false
+}

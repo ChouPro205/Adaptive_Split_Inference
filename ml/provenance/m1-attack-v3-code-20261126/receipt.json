@@ -1,0 +1,189 @@
+{
+  "type": "M1_ATTACK_V3_CODE_RECEIPT_NOT_AUTHORIZED",
+  "prepared_by": "SV3",
+  "request": "SV1 2026-11-26 (confirmation of r5) section 3: lock r5, then code, tests and random-data smoke by 2026-11-29",
+  "base_commit": "3f6a6de42ea5beafd82f18d303dbcdafe6243586",
+  "protocol": {
+    "path": "ml/configs/mitdb_m1_attack_protocol_v3_r5.json",
+    "sha256": "9235b795ec53b9d4c79e90cad4f1114c260e05b8070c67a62fc23be656ca82fb",
+    "lock": {
+      "path": "ml/provenance/m1-attack-v3-r5-lock-20261126/m1_attack_v3_r5_protocol_lock.json",
+      "sha256": "b3a89cbb07c23ca05671c3d8e95435a2de86d810775e80ec0d077c94d0eafff3"
+    }
+  },
+  "plan": {
+    "path": "ml/manifests/mitdb-attack-m1-v3/plan-manifest.json",
+    "sha256": "96e24da7d24dfc5b2885fd093be33337e6866afa256b2bedcc6cb3725048d7c0",
+    "status": "CANDIDATE_NOT_AUTHORIZED",
+    "sources_sha256": {
+      "ml/scripts/attack_m1_v3.py": "edb73a0669e040aff75f4dce574d311f88c6f5d0e45e6ba8b7b6f253dd153186",
+      "ml/scripts/noise_m1_v3.py": "243aacb9ff748371154cbbf03a113c276322c9598e8e34f069d1bbe4a1e1aeb6",
+      "ml/scripts/nopeek_m1_v2.py": "393b22292fba8a33cc5a594d960801697ce892b8a62275f2a01ac8ee86ef69ac",
+      "ml/scripts/baseline_sampler_v4.py": "1ccc99035ebe96d455a4e92cef45782814e55f644acf649f6959191c4bcfa566",
+      "ml/scripts/m1_metrics_v4.py": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+      "ml/scripts/attack_m1_v2.py": "5064e09da9210da7a262818a1eab3647cbd0ef040929debc453f3040ea2f24b8",
+      "ml/scripts/package_m1_v4_a.py": "2c9662858cb0d504252adfc5cbb58895687f7737420384ed1e53a028cdb37cb6",
+      "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+      "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+      "ml/scripts/week4_common.py": "c5509a4f2977caf090e2d76be0bb7e52c99e55e0f8dcb41c0315bc6849187190",
+      "ml/src/quantization.py": "cb2c6260784fddf43a6fa620d0b258efae643cf98d9399f9625c21d8f14faa3f",
+      "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14"
+    },
+    "v2_trial_outputs_checked": 15,
+    "part_d_pair_keys": {
+      "s0c": 0,
+      "s0": 1,
+      "s2": 2,
+      "s4": 3,
+      "s5": 4,
+      "s8": 5,
+      "s9": 6,
+      "s10": 7
+    },
+    "part_c_pair_key_offset": 8
+  },
+  "exit_codes": {
+    "prepare": "0",
+    "preflight-normal": "0",
+    "tests-normal": "0",
+    "preflight-optimized": "0",
+    "tests-optimized": "0",
+    "smoke-abd": "0",
+    "smoke-c": "0",
+    "timing-c": "0"
+  },
+  "tests": {
+    "normal": [
+      "Ran 61 tests in 2.602s",
+      "",
+      "OK"
+    ],
+    "optimized": [
+      "Ran 61 tests in 4.943s",
+      "",
+      "OK"
+    ]
+  },
+  "smoke_parts_a_b_d": {
+    "status": "SMOKE_PASS_RANDOM_DATA_NOT_MITDB",
+    "device": "cuda",
+    "epochs": 2,
+    "s0c_golden": {
+      "beats": 20,
+      "arrays_bitwise_equal": true,
+      "bitwise_equal": true,
+      "rice_body_bytes": {
+        "mean": 35.6,
+        "max": 37
+      }
+    },
+    "s0c_reference_synthetic": {
+      "beats": 3200,
+      "bitwise_equal": true,
+      "rice_body_bytes": {
+        "mean": 37.1234375,
+        "max": 42
+      }
+    },
+    "composite_rerun_identical": true,
+    "k_beat_rerun_identical": true
+  },
+  "smoke_part_c": {
+    "status": "SMOKE_PASS_RANDOM_DATA_NOT_MITDB",
+    "device": "cuda",
+    "epochs": 2,
+    "C0c_point_rerun_identical": true,
+    "fallback_plan_runs": {
+      "Pi": 0.4920089610198609,
+      "noise_plan": {
+        "kind": "fallback",
+        "R": 20
+      }
+    },
+    "gpu_cpu_epoch1": {
+      "R2": [
+        {
+          "target": 9,
+          "rows": 256,
+          "max_abs_diff": 0.0,
+          "fraction_quantized_values_differ": 0.0
+        },
+        {
+          "target": 10,
+          "rows": 256,
+          "max_abs_diff": 0.0,
+          "fraction_quantized_values_differ": 0.0
+        }
+      ],
+      "C0c": [
+        {
+          "target": 2,
+          "rows": 256,
+          "max_abs_diff": 0.0,
+          "fraction_quantized_values_differ": 0.0
+        },
+        {
+          "target": 9,
+          "rows": 256,
+          "max_abs_diff": 0.00775146484375,
+          "fraction_quantized_values_differ": 0.0003662109375
+        },
+        {
+          "target": 10,
+          "rows": 256,
+          "max_abs_diff": 0.003875732421875,
+          "fraction_quantized_values_differ": 0.00078125
+        }
+      ]
+    }
+  },
+  "timing_part_c_random_arrays": {
+    "parts": {
+      "attacker_train": 19088,
+      "attacker_validation": 4785,
+      "test": 23788
+    },
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 5060",
+    "torch": "2.14.0+cu130",
+    "cuda": "13.0",
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "deterministic_algorithms": true,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "epochs_timed": 2,
+    "R2": {
+      "utility_seconds_per_alpha": 10.59230351448059,
+      "epoch1_inputs_seconds": 3.9515695571899414,
+      "lockstep_seconds_per_epoch": 4.7313151359558105,
+      "variants_x_seeds": 18
+    },
+    "C0c": {
+      "utility_seconds_per_alpha": 11.218245267868042,
+      "epoch1_inputs_seconds": 2.558149814605713,
+      "lockstep_seconds_per_epoch": 4.197171926498413,
+      "variants_x_seeds": 21
+    },
+    "extrapolation": {
+      "utility_alphas_upper_bound": 78,
+      "points": 8,
+      "max_epochs": 50,
+      "hours_upper_bound_training_and_utility": 0.73,
+      "not_included": "B_naive (fixed tensors), test predictions, k-beat tables, reconstruction metrics"
+    }
+  },
+  "noise_plan_proposal": "fresh noise every epoch (no fallback): on random arrays of the real sizes the extrapolated upper bound of utility search plus training at 50 epochs is the value in timing_part_c_random_arrays.extrapolation; the fallback of noise_generator.fallback is not needed. Recorded in the run manifest before the first fit; DS2 follows the same plan",
+  "run_manifest_requirements_implemented": {
+    "epochs_run_per_variant": "noise_m1_v3.run_point writes epochs_run of every variant and seed; part-c-result.json collects them",
+    "gpu_cpu_epoch1": "noise_m1_v3.gpu_cpu_check at epoch 1 for every composite target (max |GPU - CPU| of u_s', fraction of values that differ); report only",
+    "DS2_follows_DS1_noise_plan": "run-manifest.json records the plan; DS2 streams (part_index 4-7) are declared and refused in this code"
+  },
+  "numbers_meaning": "Smoke and timing numbers come from synthetic beats; they say nothing about MITDB and choose no parameter",
+  "not_covered": [
+    "Any MITDB run: needs the run authorization (type M1_ATTACK_V3_RUN_AUTHORIZATION) binding this plan",
+    "DS2 quality-round script (S0c, A FP32 macro-F1 on DS2): to SV1 before 2026-12-07",
+    "k-beat tables and test predictions are not in the timing extrapolation"
+  ],
+  "files_committed": false
+}

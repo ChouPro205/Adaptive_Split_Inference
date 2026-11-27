@@ -1,0 +1,101 @@
+diff --git a/ml/configs/mitdb_m1_nopeek_protocol_v1.json b/ml/configs/mitdb_m1_nopeek_protocol_v2.json
+index a168b4f..a071de0 100644
+--- a/ml/configs/mitdb_m1_nopeek_protocol_v1.json
++++ b/ml/configs/mitdb_m1_nopeek_protocol_v2.json
+@@ -1,24 +1,34 @@
+ {
+   "schema_version": 1,
+-  "protocol_id": "mitdb-m1-nopeek-v1",
+-  "status": "CANDIDATE_FOR_SV1_REVIEW_NOT_LOCKED",
++  "protocol_id": "mitdb-m1-nopeek-v2",
++  "status": "READY_FOR_SV3_LOCK_NOT_LOCKED",
+   "authority": {
+     "decision_authority": "SV1, delegated by GVHD",
+     "prepared_by": "SV3",
+     "locked": false,
+     "training_permitted": false,
+-    "lock_procedure": "After SV1 review, SV3 writes a lock and train authorization binding this protocol, the plan manifest and the source hashes (approved_by SV3, review evidence = the SV1 review), as for M1 v4"
++    "lock_procedure": "SV3 writes a lock and train authorization binding this protocol, the plan manifest (which binds the source hashes) and the review evidence file sv1_review_20261109 below (approved_by SV3, review evidence = SV1 reply of 2026-11-09), as for M1 v4. SV1 2026-11-09 item 4: if the diff against v1 is only point 5, no resubmission to SV1 before the lock; changes_from_v1 lists every change with its source"
+   },
+   "predecessor": {
+-    "path": "ml/configs/mitdb_m1_baseline_protocol_v4.json",
+-    "sha256": "7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18",
+-    "section": "nopeek",
+-    "relation": "This protocol replaces the nopeek section of protocol v4 for the NoPeek stage; protocol v4 is not edited"
++    "path": "ml/configs/mitdb_m1_nopeek_protocol_v1.json",
++    "sha256": "1e180b45258d4f9c6902aeee8ccfedd5de38f62b9bb4a2f16f9030391b72ebf4",
++    "relation": "Replaces v1 for the NoPeek stage. v1 was reviewed by SV1 on 2026-11-09, never locked and never run; it is not edited",
++    "lineage": "v1 replaced the nopeek section of ml/configs/mitdb_m1_baseline_protocol_v4.json (7f9eb564176f1a14e521c91e464f4fb79eb77b792e6be69fd884374b8b471e18), which is not edited either"
+   },
++  "changes_from_v1": [
++    "training.precision: TF32 off for cuDNN convolutions and matmul in every run and evaluation (SV1 2026-11-09 item 4(5)); run configs carry cudnn_allow_tf32 false and matmul_allow_tf32 false",
++    "initialization.A_training_note and epoch0_with_tf32_off: the one line SV1 asked for in item 4(5), and why the epoch 0 check is kept",
++    "pilot.after_pilot: the grid starts at once when the pilot rule chooses a safe learning rate; the pilot receipt goes to SV1 at the same time (SV1 2026-11-09 item 4(2))",
++    "package_B_split_set and extension_stage: the extended split set {2, s_m} for tail fine-tune and package B, grid unchanged (SV1 2026-11-10 item 3)",
++    "source_bindings: SV1 2026-11-09 reply and 2026-11-10 update added; the 2026-11-03 decisions now bound through a tracked byte-exact copy (SV1 2026-11-09 item 5)",
++    "Identifiers: protocol_id, status, predecessor, execution_in_this_round; runner ml/scripts/nopeek_m1_v2.py and plan ml/manifests/mitdb-nopeek-m1-v2"
++  ],
+   "source_bindings": {
+     "v1_2_guide": {"source_name": "Huong_dan_tung_thanh_vien_tuan9-13_DS1DS2_thay_checkpoint_2026-10-30_v1.2.pdf", "raw_sha256": "2ddeb08b925a8df18e40a5bff57d14def83b607d1be457b8b25e2ad7d5c9123f", "sections": "4.5, 4.6"},
+-    "sv1_decisions_20261103": {"path": "docs/inbox/sv1_chot_cau_hoi_SV3_20261103.txt", "raw_sha256": "be5d1411a61bcd0dadc614dc9255cf524d8c5854a0fa6e984f9cfd504584a343", "items": "1, 3, 4, 8 (dCor R_n), 11"},
++    "sv1_decisions_20261103": {"path": "ml/provenance/m1-sv1-evidence-20261111/sv1_chot_cau_hoi_SV3_20261103.txt", "raw_sha256": "be5d1411a61bcd0dadc614dc9255cf524d8c5854a0fa6e984f9cfd504584a343", "items": "1, 3, 4, 8 (dCor R_n), 11", "note": "Byte-exact copy of the untracked docs/inbox/sv1_chot_cau_hoi_SV3_20261103.txt, made at SV1's request of 2026-11-09"},
+     "sv1_review_20261105": {"path": "ml/provenance/m1-v4-checkpoint-lock-20261105/sv1_evidence/sv1_review_m1_v4_grid_20261105.txt", "raw_sha256": "45ef6cc76bd777f93ba6c95f257a11b7d6144f1d149e51568f4e94f054e57054", "items": "4 (package B note), 6a (s4, 72 runs, middle-cut rule), 6b"},
++    "sv1_review_20261109": {"path": "ml/provenance/m1-sv1-evidence-20261111/tra_loi_Ky_Anh_PR44_20261109.txt", "raw_sha256": "2207542f6e3d09603093c69c9e646327082fe6bda1df2fd1fa71587664e15328", "items": "4 (points 1-5 on NoPeek v1), order of work 1-3", "role": "Review evidence for the lock of this protocol; SHA-256 published by SV1"},
++    "sv1_update_20261110": {"path": "ml/provenance/m1-sv1-evidence-20261111/tin_Ky_Anh_tuan10_20261110.txt", "raw_sha256": "7fabd2d6b1623cb526130e536adc0a95df96b609729c3c3c3e3d6dc22734f69c", "items": "3 (split set for P2 on the dongle), 7", "note": "SHA-256 computed by SV3 on receipt; SV1 did not publish one"},
+     "checkpoint_lock": {"path": "ml/provenance/m1-v4-checkpoint-lock-20261105/m1_baseline_v4_checkpoint_lock.json", "sha256": "6848b08dc1f4f55d7d66a4e36b719d55c92eabf37b0c6edbbfdd6b921047d0bc"}
+   },
+   "initialization": {
+@@ -26,6 +36,8 @@
+     "checkpoint_sha256": "fcf3f8469f0671871aa1a9bafe0aea5053d10ccd2b7f8b60f015738454171e2c",
+     "rule": "Every pilot and grid run starts from this same checkpoint with a new optimizer; no weights carried between runs",
+     "epoch0": "Epoch 0 is the loaded checkpoint, evaluated before any update; its validation confusion must equal the locked A confusion, else the run stops as a technical fault",
++    "A_training_note": "Package A was trained with cuDNN TF32 on (the PyTorch default); this does not change A: its checkpoint, lock and validation confusion stay as locked",
++    "epoch0_with_tf32_off": "The epoch 0 check is kept with TF32 off: the DS2 script dry run with TF32 off reproduced the locked validation confusion of the three C5 checkpoints (ml/provenance/m1-v4-ds2-script-20261105)",
+     "A_validation_confusion": [[8221, 85, 8, 8, 0], [101, 70, 1, 0, 0], [92, 75, 774, 63, 0], [17, 3, 1, 4, 0], [0, 0, 0, 0, 0]],
+     "A_validation_macro_f1_K_exact": "11488986689/20219195700",
+     "A_validation_macro_f1_K_float": 0.5682217462784634,
+@@ -55,7 +67,14 @@
+     "epochs": 10,
+     "early_stopping": "None; every run trains exactly 10 epochs so that epoch selection sees the same horizon for every lambda",
+     "seeding": "Global model/dropout RNG seeded once per run with the run seed; data generator seed+epoch-1, as the package A trainer",
+-    "determinism": "CUDA on the RTX 5060 training machine; torch.use_deterministic_algorithms(True); cuDNN deterministic, benchmark off; CUBLAS_WORKSPACE_CONFIG=:4096:8; one device for pilot and grid",
++    "determinism": "CUDA on the RTX 5060 training machine; torch.use_deterministic_algorithms(True); cuDNN deterministic, benchmark off; CUBLAS_WORKSPACE_CONFIG=:4096:8; TF32 off as training.precision; one device for pilot and grid",
++    "precision": {
++      "cudnn_allow_tf32": false,
++      "matmul_allow_tf32": false,
++      "rule": "TF32 off for cuDNN convolutions and for matmul, set with torch.backends.cudnn.allow_tf32 and torch.backends.cuda.matmul.allow_tf32 (the switches ml/scripts/evaluate_m1_v4_ds2.py uses) before the model is built; a run whose config or runtime flags differ stops before training; every run records the flags it ran with",
++      "scope": "Every pilot and grid run and every evaluation from now on: validation, R_n, attack, DS2 (SV1 2026-11-09 item 4(5))",
++      "reason": "The utility gate is compared exactly with Fraction and epoch and lambda are chosen on R_n; TF32 can move GPU logits by about 1e-2, so choices near the threshold would depend on hardware precision rather than on the model. DS2, golden and device paths are true FP32, so selection is also done in true FP32 (SV1 2026-11-09)"
++    },
+     "checkpoints": "Save the epoch 0-10 state of every run; checkpoint files are the model evidence because other GPUs do not reproduce bit-exact",
+     "per_epoch_log": "Validation 5x5 confusion, macro-F1 K, accuracy, per-class Se/+P, R_n on the 512 subset at s; train mean CE and mean batch R_n; learning rate"
+   },
+@@ -66,7 +85,7 @@
+     "safe_learning_rate": "Lambda 0 run: utility passes at every epoch 1-10 and no epoch is collapsed",
+     "choice": "Among safe candidates, minimize the mean over s2 and s8 of the lowest subset R_n among lambda-5 epochs 1-10 that pass utility (a run with no passing epoch counts as R_n 1); tie: smaller learning rate",
+     "no_safe_candidate": "Stop; report all pilot curves to SV1, who decides before any grid run",
+-    "after_pilot": "Receipt with the chosen learning rate and all curves sent to SV1; the grid starts after the receipt"
++    "after_pilot": "If the rule chooses a safe learning rate, the grid starts at once with it, without waiting for SV1; the pilot receipt (chosen learning rate and all curves) is sent to SV1 at the same time (SV1 2026-11-09 item 4(2)). Only no_safe_candidate stops before the grid"
+   },
+   "grid": {
+     "s": [2, 4, 5, 8],
+@@ -106,10 +125,17 @@
+     "rule": "Consider rho in {rho0, rho1}. If s4 has a rho reaching Pi_min, use s4. Else if s5 has one, use s5. Else use s4 and consider rho2",
+     "inputs": "Week 11 attack trial on DS1 (A1 + B-naive); not part of this grid's selection"
+   },
+-  "extension_stage": "Teacher's tail fine-tune and extension to other s (validation accuracy drop <= 2 percentage points AND macro-F1 >= 0.95 x A) is a separate stage under its own protocol version",
++  "package_B_split_set": {
++    "source": "SV1 2026-11-10 item 3, fixed as a constraint (v1.2 week 10: fix the split set for P2 on the dongle)",
++    "extended_split_set": "Tail fine-tune and package B: {2, s_m}, s_m by downstream_middle_cut_rule (s4 by default; s5 only when s4 does not pass and s5 does)",
++    "grid": "The grid stays {2, 4, 5, 8} so that the figures keep every split",
++    "flash": "NoPeek FP32 head s2 = 5.6 KB, s4 = 36.5 KB, s5 = 67.5 KB, so at most 73.1 KB; with about 15 KB for SMP still under the 183 KB free",
++    "no_weight_quantization": "No weight quantization and no new E_dev measurement; s8 runs offline only"
++  },
++  "extension_stage": "Teacher's tail fine-tune on the extended split set {2, s_m} of package_B_split_set (validation accuracy drop <= 2 percentage points AND macro-F1 >= 0.95 x A) is a separate stage under its own protocol version",
+   "change_control": {
+     "locked_file": "Never edit after lock; any change is a new version with reason, old/new hashes and SV1 review before dependent runs",
+     "DS2": "Report only, after model/quantization lock; never a tuning input"
+   },
+-  "execution_in_this_round": {"pilot": false, "grid": false, "fit": false, "DS2": false, "code": "Runner, plan manifest and tests are written after SV1 reviews this protocol and are bound by SHA in the lock"}
++  "execution_in_this_round": {"pilot": false, "grid": false, "fit": false, "DS2": false, "code": "Runner ml/scripts/nopeek_m1_v2.py, plan ml/manifests/mitdb-nopeek-m1-v2 and tests are written with this protocol and bound by SHA in the lock"}
+ }

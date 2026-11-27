@@ -1,0 +1,297 @@
+{
+  "type": "M1_NOPEEK_V2_CODE_RECEIPT_NOT_LOCKED_NO_MITDB_FIT",
+  "date": "2026-11-11",
+  "prepared_by": "SV3",
+  "request": "Protocol NoPeek v2 (TF32 off, SV1 2026-11-09 item 4(5)) with its diff against v1, runner, regenerated plan and tests",
+  "source_head": "450664bdbe2b49d1377ce7bced4e586b92af585b",
+  "branch": "dev/ml-sv3",
+  "protocol": {
+    "path": "ml/configs/mitdb_m1_nopeek_protocol_v2.json",
+    "sha256": "83cce64defefa979abcf8c31cc27daf9ae81604caae911acf0901cba3783cf35",
+    "status": "READY_FOR_SV3_LOCK_NOT_LOCKED",
+    "predecessor": {
+      "path": "ml/configs/mitdb_m1_nopeek_protocol_v1.json",
+      "sha256": "1e180b45258d4f9c6902aeee8ccfedd5de38f62b9bb4a2f16f9030391b72ebf4"
+    },
+    "changes_from_v1": [
+      "training.precision: TF32 off for cuDNN convolutions and matmul in every run and evaluation (SV1 2026-11-09 item 4(5)); run configs carry cudnn_allow_tf32 false and matmul_allow_tf32 false",
+      "initialization.A_training_note and epoch0_with_tf32_off: the one line SV1 asked for in item 4(5), and why the epoch 0 check is kept",
+      "pilot.after_pilot: the grid starts at once when the pilot rule chooses a safe learning rate; the pilot receipt goes to SV1 at the same time (SV1 2026-11-09 item 4(2))",
+      "package_B_split_set and extension_stage: the extended split set {2, s_m} for tail fine-tune and package B, grid unchanged (SV1 2026-11-10 item 3)",
+      "source_bindings: SV1 2026-11-09 reply and 2026-11-10 update added; the 2026-11-03 decisions now bound through a tracked byte-exact copy (SV1 2026-11-09 item 5)",
+      "Identifiers: protocol_id, status, predecessor, execution_in_this_round; runner ml/scripts/nopeek_m1_v2.py and plan ml/manifests/mitdb-nopeek-m1-v2"
+    ]
+  },
+  "plan": {
+    "path": "ml/manifests/mitdb-nopeek-m1-v2/plan-manifest.json",
+    "sha256": "e2e4e85856ed1d1861a771388d40de24c27c1ff6ffbfac2138ea275f76b650f9",
+    "status": "CANDIDATE_NOT_LOCKED",
+    "pilot_runs": 9,
+    "grid_runs": 72,
+    "sources_sha256": {
+      "ml/scripts/nopeek_m1_v2.py": "393b22292fba8a33cc5a594d960801697ce892b8a62275f2a01ac8ee86ef69ac",
+      "ml/scripts/package_m1_v4_a.py": "2c9662858cb0d504252adfc5cbb58895687f7737420384ed1e53a028cdb37cb6",
+      "ml/scripts/baseline_sampler_v4.py": "1ccc99035ebe96d455a4e92cef45782814e55f644acf649f6959191c4bcfa566",
+      "ml/scripts/m1_metrics_v4.py": "bbd4747f3f88a7f7b31b5ae2eb754bf437d4163f3ab45898e0f7ec91f716d860",
+      "ml/scripts/week3_common.py": "0c8edc254ea816cd4dd4ec29afe487942d038c68aab4197a76969947c1b64086",
+      "ml/scripts/week3_sv2_common.py": "3cec182cb615cd9bb912d091b39220c7db6bc1b6c09b553520092611b1da25e0",
+      "ml/scripts/week4_common.py": "c5509a4f2977caf090e2d76be0bb7e52c99e55e0f8dcb41c0315bc6849187190",
+      "ml/src/distance_correlation.py": "166de65dc08b7d178a7001c6088c3c4896791370a9464236fa4adeb692b6f5ed",
+      "ml/src/nopeek.py": "106a7421689e5ce0af80168ab22006216b849753caecca3ad79b77f86b0a3f62",
+      "ml/src/mitdb_baseline_model.py": "520b615aa342b0a328b70de8ccffa141dbe13ad9b973bc4d2caf449a9d0afa14"
+    },
+    "run_configs": "Same run ids and order as plan v1; each config differs only in cudnn_allow_tf32 (true -> false) and protocol_sha256"
+  },
+  "sv1_evidence": {
+    "files_sha256": {
+      "ml/provenance/m1-sv1-evidence-20261111/tra_loi_Ky_Anh_PR44_20261109.txt": "2207542f6e3d09603093c69c9e646327082fe6bda1df2fd1fa71587664e15328",
+      "ml/provenance/m1-sv1-evidence-20261111/tin_Ky_Anh_tuan10_20261110.txt": "7fabd2d6b1623cb526130e536adc0a95df96b609729c3c3c3e3d6dc22734f69c",
+      "ml/provenance/m1-sv1-evidence-20261111/sv1_chot_cau_hoi_SV3_20261103.txt": "be5d1411a61bcd0dadc614dc9255cf524d8c5854a0fa6e984f9cfd504584a343"
+    },
+    "published_by_SV1": {
+      "tra_loi_Ky_Anh_PR44_20261109.txt": "2207542f6e3d09603093c69c9e646327082fe6bda1df2fd1fa71587664e15328",
+      "sv1_chot_cau_hoi_SV3_20261103.txt": "be5d1411a61bcd0dadc614dc9255cf524d8c5854a0fa6e984f9cfd504584a343"
+    },
+    "note": "Byte-exact copies; tin_Ky_Anh_tuan10_20261110.txt SHA computed by SV3 on receipt, SV1 published none"
+  },
+  "scripts_sha256": {
+    "ml/scripts/nopeek_m1_v2.py": "393b22292fba8a33cc5a594d960801697ce892b8a62275f2a01ac8ee86ef69ac",
+    "ml/scripts/test_nopeek_m1_v2.py": "22b5207e260653831c4deae0c34fa51380c94c03e9c5f42229a1215222ddf4a2",
+    "ml/provenance/m1-nopeek-v2-code-20261111/write_receipt.py": "a8616ccfd7a9c14007d896964ad9a95a8878ca0cdf19e42c763708818cf6b2c9",
+    "ml/provenance/m1-nopeek-v2-code-20261111/tf32_probe.py": "0fbbb3a860fe436f637ee31bb495597e893f01f6fbba430c04265be3135fd205",
+    "ml/provenance/m1-nopeek-v2-code-20261111/compare_v1_v2.py": "ea97abf5b69a3c019139cc8677df8d15034be89a5716694844042b7acf81e89e"
+  },
+  "review_document": {
+    "docs/sv3_m1_nopeek_v2_review_20261111.md": "3995d291f153e2767fdf2290d7e67c045be2a509263d2e749a948c7397b63fc2"
+  },
+  "python": "3.11.9",
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/nopeek_m1_v2.py",
+        "prepare"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/manifests/mitdb-nopeek-m1-v2/plan-manifest.json": "e2e4e85856ed1d1861a771388d40de24c27c1ff6ffbfac2138ea275f76b650f9",
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/prepare.stdout.txt": "82649265d25454f613e55a20e2afc10ff0af33025c112e5a772aa88732ab7eb5",
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/prepare.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/nopeek_m1_v2.py",
+        "preflight"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/preflight-normal.txt": "c5157259e24920075760fddb48aa8be8f9919b1b2963c863729eba6b9a829301",
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/preflight-normal.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/nopeek_m1_v2.py",
+        "preflight"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/preflight-optimized.txt": "c5157259e24920075760fddb48aa8be8f9919b1b2963c863729eba6b9a829301",
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/preflight-optimized.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/nopeek_m1_v2.py",
+        "smoke",
+        "--output",
+        "ml/data/smoke-nopeek-m1-v2-20261111",
+        "--epochs",
+        "2"
+      ],
+      "exit_code": 0,
+      "start_utc": "2026-11-11T16:39:48Z",
+      "end_utc": "2026-11-11T16:40:08Z",
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/smoke.stdout.txt": "8e1d36ed827ed8be98c928b2e81c31cee908e601123eaedf036b774567afe192",
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/smoke.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ml/data/smoke-nopeek-m1-v2-20261111/smoke-result.json": "7f5f46315975c74994a082f79c89605f1627759a1809617def1166e6b0f77f2b"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/provenance/m1-nopeek-v2-code-20261111/tf32_probe.py",
+        "default"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/tf32-probe-default.stdout.txt": "363e2711bf52d501d5706df0622e50301617f18c67533a6e784bcb1b2213bc28",
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/tf32-probe-default.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/provenance/m1-nopeek-v2-code-20261111/tf32_probe.py",
+        "off"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/tf32-probe-off.stdout.txt": "64703ecfa5a9423cf607faafab85a57f93ca06356089cd4149570f398c135c48",
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/tf32-probe-off.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/scripts/test_nopeek_m1_v2.py"
+      ],
+      "exit_code": 0,
+      "tests": 17,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/tests-normal.txt": "3d3d0669c213276c2d59e569588b65849b56c5caa606513ea53822166fc5a107"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-O",
+        "ml/scripts/test_nopeek_m1_v2.py"
+      ],
+      "exit_code": 0,
+      "tests": 17,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/logs/tests-optimized.txt": "ec5c7c1dc9fa4231979952cd78184ba87eaea85273ecfd9707e4a884f1059109"
+      }
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "ml/provenance/m1-nopeek-v2-code-20261111/compare_v1_v2.py"
+      ],
+      "exit_code": 0,
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/diffs/compare-v1-v2.txt": "712fdabf6a49dd7a7567f7988b45ae59739546e0be302cfb1a5dd29a3d199e9a"
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--no-index",
+        "--no-color",
+        "--no-ext-diff",
+        "ml/configs/mitdb_m1_nopeek_protocol_v1.json",
+        "ml/configs/mitdb_m1_nopeek_protocol_v2.json"
+      ],
+      "exit_code": 1,
+      "exit_code_meaning": "files differ",
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/diffs/protocol-v1-v2.diff": "7c30a71e5192801452a004e6f0ccb405f285b9e7e34fd1374180d4496d01433b"
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--no-index",
+        "--no-color",
+        "--no-ext-diff",
+        "ml/scripts/nopeek_m1_v1.py",
+        "ml/scripts/nopeek_m1_v2.py"
+      ],
+      "exit_code": 1,
+      "exit_code_meaning": "files differ",
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/diffs/runner-v1-v2.diff": "62bc4f7f6d6dbf08abfe0cc9e2aa24b028a816575e0b369e59dcf69cfe952541"
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--no-index",
+        "--no-color",
+        "--no-ext-diff",
+        "ml/scripts/test_nopeek_m1_v1.py",
+        "ml/scripts/test_nopeek_m1_v2.py"
+      ],
+      "exit_code": 1,
+      "exit_code_meaning": "files differ",
+      "outputs_sha256": {
+        "ml/provenance/m1-nopeek-v2-code-20261111/diffs/tests-v1-v2.diff": "141260df5402a5dac38a059babb55458096920fddcc35bcac99ce7c6f299bd0f"
+      }
+    }
+  ],
+  "smoke": {
+    "status": "SMOKE_PASS_RANDOM_DATA_NOT_MITDB",
+    "epochs": 2,
+    "runs": [
+      "smoke-s2-lambda0",
+      "smoke-s8-lambda0",
+      "smoke-s2-lambda5"
+    ],
+    "lambda0_identical_across_s2_s8": true,
+    "lambda5_weights_changed": true,
+    "epoch0_state_equals_package_A": true,
+    "subset_Rn_lambda5": [
+      0.9211933612823486,
+      0.9220601916313171,
+      0.9207984805107117
+    ],
+    "data": "Random arrays with the real train/val class counts written by the smoke itself; no MITDB file read",
+    "device": {
+      "device": "cuda",
+      "device_name": "NVIDIA GeForce RTX 5060",
+      "torch": "2.14.0+cu130",
+      "cuda": "13.0",
+      "cudnn_allow_tf32": false,
+      "matmul_allow_tf32": false,
+      "cudnn_conv_fp32_precision": "none",
+      "matmul_fp32_precision": "ieee"
+    },
+    "epochs_note": "Smoke runs 2 epochs; the protocol fixes 10"
+  },
+  "tf32_probe": {
+    "data": "Seeded random input through the package A deployment checkpoint; no MITDB file, no training",
+    "default": "mode=default torch=2.14.0+cu130 device=NVIDIA GeForce RTX 5060 cudnn.allow_tf32=True cuda.matmul.allow_tf32=False cudnn.conv.fp32_precision=tf32 cuda.matmul.fp32_precision=none\n  max|logit cpu-cuda| = 4.022e-03; max relative CE-gradient difference = 1.001e-04; argmax identical = True",
+    "off": "mode=off torch=2.14.0+cu130 device=NVIDIA GeForce RTX 5060 cudnn.allow_tf32=False cuda.matmul.allow_tf32=False cudnn.conv.fp32_precision=none cuda.matmul.fp32_precision=ieee\n  max|logit cpu-cuda| = 5.245e-06; max relative CE-gradient difference = 1.037e-06; argmax identical = True"
+  },
+  "scope": {
+    "MITDB_fit": false,
+    "pilot": false,
+    "grid": false,
+    "DS2_opened": false,
+    "lock_written": false,
+    "preflight": "hashes train/val array files only; no model, no fit"
+  },
+  "lock_fields_checked_by_runner": [
+    "type M1_NOPEEK_V2_LOCK_AND_TRAIN_AUTHORIZATION",
+    "allow_training true",
+    "protocol_sha256",
+    "plan_manifest_sha256",
+    "approved_by",
+    "review_evidence = SHA-256 of review_evidence_path",
+    "review_evidence_path = protocol source_bindings.sv1_review_20261109.path"
+  ],
+  "not_verified": [
+    "Any run on MITDB (needs the NoPeek v2 lock, written by SV3)",
+    "Epoch 0 = package A check on real validation through the runner (first step of the first pilot run)",
+    "Run time of the real pilot and grid"
+  ]
+}

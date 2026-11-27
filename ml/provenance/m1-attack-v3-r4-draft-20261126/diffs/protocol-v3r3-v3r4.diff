@@ -1,0 +1,334 @@
+diff --git a/ml/configs/mitdb_m1_attack_protocol_v3_r3.json b/ml/configs/mitdb_m1_attack_protocol_v3_r4.json
+index ec6a8a6..7665fcf 100644
+--- a/ml/configs/mitdb_m1_attack_protocol_v3_r3.json
++++ b/ml/configs/mitdb_m1_attack_protocol_v3_r4.json
+@@ -1,82 +1,96 @@
+ {
+   "schema_version": 1,
+   "protocol_id": "mitdb-m1-attack-v3",
+-  "revision": 3,
+-  "status": "CANDIDATE_FOR_SV1_REVIEW_NOT_LOCKED",
++  "revision": 4,
++  "status": "CANDIDATE_FOR_SV1_CONFIRMATION_NOT_LOCKED",
+   "authority": {
+-    "decision_authority": "SV1, delegated by GVHD",
++    "decision_authority": "SV1, delegated by GVHD (GVHD approved the ASI direction version 3 and gave SV1 the detailed decisions, SV1 2026-11-25)",
+     "prepared_by": "SV3",
+     "locked": false,
+     "attack_runs_permitted": false,
+-    "lock_procedure": "SV1 2026-11-19 section 4 and 2026-11-20 item 3(6): v3 changes what 'strongest attack' means and specifies rho2, so it is sent to SV1 for review BEFORE any lock and before any rho2 run. After SV1's review, the reviewed version is locked by a lock and run authorization file that the user provides; this file is never edited after review"
++    "lock_procedure": "SV1 2026-11-25 sections 1-2: revision 4 applies SV1's review of revision 3; SV3 sends the r3 -> r4 diff and SV1 confirms the same day. After that confirmation the user provides the lock and run authorization file; this file is never edited after confirmation"
+   },
+   "supersedes_draft": {
+-    "path": "ml/configs/mitdb_m1_attack_protocol_v3_r2.json",
+-    "sha256": "8fae0a4e5ef9e0618e775264ebbd092f2efef32e0c5e878c0815a4a976be859f",
+-    "commit": "8e59123",
+-    "status": "Revision 2 of v3, never reviewed or locked; kept unedited as the record of the draft. Revision 1 (ml/configs/mitdb_m1_attack_protocol_v3.json, 67342cbd8aa06ab66a3109d9b4bcc9bceb7df659434deb2e10d26ffc48a0d2dd, commit 699ee1e) is also kept unedited",
+-    "why": "The ASI direction version 3 of 2026-11-20 (section 2, route R) adds to route R the condition Pi >= 0.5 when the receiver votes over k beats of one session (k fixed before the run, k = 10 proposed) for both noisy configurations at every noise level found, asks for the ECG reconstruction at the same noise levels, and makes 'S0 reduced to 46 samples + Rice' the standard S0 of every sending baseline. It also answers revision 2's questions 1 and 2 and sets the leakage budget Y to a fraction of beats processed locally"
++    "path": "ml/configs/mitdb_m1_attack_protocol_v3_r3.json",
++    "sha256": "0436b41b4211ab653d04f82a25f80d5331115b2ef566b357939116008b786e82",
++    "commit": "d5c9158",
++    "status": "Revision 3 of v3, reviewed by SV1 on 2026-11-25 and not locked; kept unedited. Revisions 1 (67342cbd8aa06ab66a3109d9b4bcc9bceb7df659434deb2e10d26ffc48a0d2dd, 699ee1e) and 2 (8fae0a4e5ef9e0618e775264ebbd092f2efef32e0c5e878c0815a4a976be859f, 8e59123) are also kept unedited",
++    "why": "SV1's review of 2026-11-25: a third k-beat aggregator (mean of k observed tensors), adaptive attackers trained on freshly drawn noise, the S0c v1 definition bound by SHA-256 (no NOT_RUN fallback), only the C0c control, B_composite, s9/s10 and S0c in the official DS2 privacy round, DS2 confirmation before an R configuration enters the action set, the shifted calendar (decision on 2026-12-13) and source bindings that point to existing paths"
+   },
+   "written_after_trial": {
+-    "statement": "Revision 1 was written on 2026-11-19, revision 2 on 2026-11-20 and this revision on 2026-11-21, after SV3 and SV1 had seen every number of the v2 week 11 trial (all 9 pairs: Pi, CI95, seed ranges, bacc, session bacc and A1 metrics), SV1's replies of 2026-11-19 and 2026-11-20, the ASI direction version 3 and the S0 compression test of 2026-11-20 (macro-F1 per compressed payload on DS1 validation). No result of any part of v3 exists",
+-    "trial_record": "The v2 trial (lock 205ec6db, receipt b2861c71, commit d219d36) stays the record: its 9 pairs are never rerun or edited, and its numbers are never overwritten. v3 reads the saved v2 attackers and predictions only (parts b and d)",
+-    "what_the_trial_motivated": "Parts a and b come from SV3's review of 2026-11-14 items 2 and 4 and SV1's reply of 2026-11-19 sections 2 and 4; part c from SV1 2026-11-19 section 3, 2026-11-20 item 3(6) and the ASI direction version 3 section 2; part d from SV1 2026-11-20 item 3(3); the S0c pairs from the ASI direction version 3 (changes table, row 'Doi chung gui S0'). Pi_min, the Pi formula, the attack models, the data split and the capacity decision are not changed after the trial"
++    "statement": "Revisions 1-3 were written on 2026-11-19, 2026-11-20 and 2026-11-21 and this revision on 2026-11-26, after SV3 and SV1 had seen every number of the v2 week 11 trial, SV1's replies of 2026-11-19 and 2026-11-25, the ASI direction version 3 and the S0c compression test of 2026-11-20 (macro-F1 per compressed payload on DS1 validation). No result of any part of v3 exists",
++    "trial_record": "The v2 trial (lock 205ec6db, receipt b2861c71, commit d219d36) stays the record: its 9 pairs are never rerun or edited, and its numbers are never overwritten. v3 reads the saved v2 attackers and predictions only (parts b and d) and recomputes v2 observed tensors only where the mean aggregator needs them",
++    "what_the_trial_motivated": "Parts a and b come from SV3's review of 2026-11-14 items 2 and 4 and SV1's reply of 2026-11-19 sections 2 and 4; part c from SV1 2026-11-19 section 3, the reply of 2026-11-19 22:15 item 3(6), the ASI direction version 3 section 2 and SV1 2026-11-25 items 1(1), 1(3)-1(5); part d from the reply of 2026-11-19 22:15 item 3(3); the S0c pairs from the ASI direction version 3 and SV1 2026-11-25 item 1(2). Pi_min, the Pi formula, the attack models, the data split and the capacity decision are not changed after the trial"
+   },
+   "predecessor": {
+     "path": "ml/configs/mitdb_m1_attack_protocol_v2.json",
+     "sha256": "7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0",
+     "status": "LOCKED (lock 205ec6db98a75e2730cc2877021b4f48881550c96673acc8ba744bc2c421f8ba), trial run 2026-11-13; not edited",
+-    "inheritance": "Every v2 section not changed below applies unchanged: threat_model (with the additions in limitations), attacks A1/B_naive/B_adaptive definitions, observed_tensor, privacy_metric (Pi, bacc, seeds, bootstrap, session_variant, reconstruction_metrics), data.trial_week11 (identities, labels, time split, attacker validation, counts), checkpoints, attack_models, training, capacity_check result"
++    "inheritance": "Every v2 section not changed below applies unchanged: threat_model (with the additions in limitations), attacks A1/B_naive/B_adaptive definitions, observed_tensor, privacy_metric (Pi, bacc, seeds, bootstrap, session_variant, reconstruction_metrics), data.trial_week11 and the official-round data rules (N = 21, record 202 excluded), checkpoints, attack_models, training, capacity_check result"
+   },
+   "changes_from_v2": [
+-    {"item": 1, "what": "Part a: B_naive and A1 at s9 and at s10 (the logits tensor), rho0 only, DS1 trial data and rules, base architecture (capacity decision of the v2 trial carried over, no new capacity check). Pi at s10 is reported as Pi_logits, never as Pi(s10) of the action set", "source": "SV1 2026-11-19 sections 4(a) and 5; SV3 2026-11-14 item 4(a)"},
++    {"item": 1, "what": "Part a: B_naive and A1 at s9, at s10 (the logits tensor) and at S0c, rho0 only, DS1 trial data and rules, base architecture (capacity decision of the v2 trial carried over, no new capacity check). Pi at s10 is reported as Pi_logits, never as Pi(s10) of the action set", "source": "SV1 2026-11-19 sections 4(a) and 5; SV3 2026-11-14 item 4(a); SV1 2026-11-25 item 1(2)"},
+     {"item": 2, "what": "Part b: new B variant B_composite for rho0: from the tensor observed at s, the edge computes the observed tensor of a deeper split s' (frozen ops, registry v2 quantization) and applies the trained B_naive attacker of (s', rho0). No training. Pi_v3(s, rho0) = 1 - max over variants (B_naive at s and B_composite s -> s' for every available s' > s), the v2 rule 'max over variants' with one more variant", "source": "SV1 2026-11-19 sections 2 and 4(b); SV3 2026-11-14 items 2 and 4(b)"},
+-    {"item": 3, "what": "Part c: rho2 (per-channel Gaussian noise on z_s2, checkpoint A frozen) and the control 'S0 + noise'. Both are compared at equal validation macro-F1 (four matched targets); each configuration passes only if the per-beat Pi and the k-beat Pi (k = 10) both reach Pi_min; the action-set rules are declared before the run. DS1 only; within the route R effort cap", "source": "SV1 2026-11-19 sections 3 and 4(c); SV1 2026-11-20 item 3(6); ASI direction v3 section 2 (route R)"},
+-    {"item": 4, "what": "Part d: re-identification versus the number k of beats the edge sees per patient, from saved predictions only. Discussion metric under rho0; under part c the same computation at k = 10 is a pass condition", "source": "SV1 2026-11-20 item 3(3); ASI direction v3 section 2"},
++    {"item": 3, "what": "Part c: rho2 (per-channel Gaussian noise on z_s2, checkpoint A frozen) and the control C0c (noise on the 46 reduced values of S0c). Both are compared at equal validation macro-F1 (four matched targets); a configuration is selected on DS1 only if the per-beat Pi and the 10-beat Pi both reach Pi_min, and enters the action set only if the official DS2 privacy round confirms it", "source": "SV1 2026-11-19 section 3; reply of 2026-11-19 22:15 item 3(6); ASI direction v3 section 2; SV1 2026-11-25 items 1(3) and 1(5)"},
++    {"item": 4, "what": "Part d: re-identification versus the number k of beats the edge sees per patient, from saved predictions, recomputed observed tensors and saved attackers only (no training). Discussion metric under rho0; under part c the same computation at k = 10 is a pass condition", "source": "Reply of 2026-11-19 22:15 item 3(3); ASI direction v3 section 2; SV1 2026-11-25 item 1(1)"},
+     {"item": 5, "what": "Pi(s10) of the action set is 1 by construction (nothing is sent to the edge at s10); the s10 measurement of part a is an upper bound for every s < 10 under rho0, not a filter on s10", "source": "SV1 2026-11-19 section 5"},
+-    {"item": 6, "what": "Limitations add the same-session closed-set setting, the direction of each bound (attacker strength vs session confound), the leakage budget Y as a local fraction that does not hide identity, and the vote aggregators that were not tested", "source": "SV1 2026-11-19 section 7; SV1 2026-11-20 item 3(3); ASI direction v3 sections 3 and changes table"},
+-    {"item": 7, "what": "Implementation detail: B_composite computation, the reproduction gate on the loaded v2 attackers, the noise generator, the matched-utility search, the pre-drawn noise realizations of the adaptive attackers and the k-beat vote rules, fixed here before any run", "source": "Needed to make items 2-4 and 8 exact; listed for SV1 to see"},
+-    {"item": 8, "what": "S0c, the standard compressed S0 (46 samples + Rice): B_naive and A1 at S0c under rho0 (part a), S0c as a source of B_composite (part b) and as a part d row; the S0 control of part c is applied to S0c. Conditional on the S0c definition being bound by SHA-256 before the lock; otherwise the S0c pairs are not run and part c uses the full-length control", "source": "ASI direction v3, changes table row 'Doi chung gui S0' and section 1"}
++    {"item": 6, "what": "Limitations add the same-session closed-set setting, the direction of each bound (attacker strength vs session confound), the leakage budget Y as a local fraction that does not hide identity, and the multi-beat aggregators that remain untested", "source": "SV1 2026-11-19 section 7; ASI direction v3 sections 3 and changes table; SV1 2026-11-25 item 1(1)"},
++    {"item": 7, "what": "Implementation detail: B_composite computation, the reproduction gate on the loaded v2 attackers, the noise generator with fresh noise per epoch, the matched-utility search and the k-beat aggregators, fixed here before any run", "source": "Needed to make items 2-4, 8 and 9 exact; listed for SV1 to see"},
++    {"item": 8, "what": "S0c v1, the standard compressed S0 (46 samples + Rice), bound by SHA-256: B_naive and A1 at S0c under rho0 (part a), S0c as a source of B_composite (part b), a part d row and the C0c control of part c", "source": "ASI direction v3, changes table row 'Doi chung gui S0'; SV1 2026-11-25 items 1(2) and 1(3); SV1 supplement of 2026-11-25 item 2"},
++    {"item": 9, "what": "Third k-beat aggregator 'mean': the average of the k dequantized observed tensors of one block or draw goes to the attacker (and, for composite paths, through the frozen ops first)", "source": "SV1 2026-11-25 item 1(1)"},
++    {"item": 10, "what": "Official DS2 privacy round (week 14): parts a, b and d on the DS2 patients (N = 21) and any R configuration selected on DS1; each locked configuration is evaluated on DS2 once", "source": "SV1 2026-11-25 item 1(5)"}
+   ],
+-  "changes_from_revision_2": [
+-    "Part c pass rule: Pi per beat >= 0.5 AND Pi_k10 >= 0.5 (k = 10, fixed here) AND macro-F1 >= the gate, for both configurations at every alpha_t (ASI direction v3 section 2). Pi_k10 is 1 - max over variants, vote rules (hard and soft) and sampling modes (consecutive and scattered)",
+-    "Part c saves per-beat log-probabilities of every attacker so that the soft vote needs no training",
+-    "Part c reconstruction: A1 trained adaptively on noisy tensors at the source split for both configurations at every alpha_t, plus the training-free floor (identity or the edge's own interpolation); reported, not a pass condition",
+-    "Part c control moved to S0c (noise on the 46 reduced samples, then the S0c encoding) when the S0c definition is bound; the Rice payload size per beat at each alpha_t is reported. Fallback: the revision 2 control on the full 360-sample beat",
+-    "New S0c pairs in parts a, b and d (rho0)",
+-    "Decision table aligned with the ASI direction v3 section 2: an R2 pass puts s2 + rho2 in the candidate set (energy and latency then measured against S0/S10 alternation at the same requirement)",
+-    "Effort: route R within 1.5 person-weeks (ASI direction v3 section 2); DS1 run in week 12, Pi-F1 curves and controls delivered in week 13 (ASI direction v3 section 4)",
+-    "Limitations: leakage budget Y is the fraction of beats processed locally (ASI direction v3 section 3); the Pi-weight question of revision 2 is answered and removed",
+-    "questions_for_SV1: revision 2 questions 1 (frozen checkpoint) and 2 (four targets) answered by ASI direction v3 section 2 and removed; questions 3-5 kept; new questions on k, the vote rules, the S0c definition and the control placement"
++  "changes_from_revision_3": [
++    "k_beat_vote: third aggregator 'mean' (average of k dequantized observed tensors), with the clean rho0 attacker of the same source added to the variants it is tested against; Pi_k = 1 - max over {hard, soft, mean} x {consecutive, scattered} x variants (SV1 2026-11-25 item 1(1))",
++    "Part d reports the mean-aggregator curves as well (discussion only)",
++    "Adaptive attackers (B_adaptive, A1_adaptive, B_composite_adaptive) are trained on noise drawn fresh for every epoch from a generator keyed by (configuration, alpha, epoch); the composite path is recomputed through the frozen ops every epoch. Fallback of at least 20 pre-drawn realizations only if a random-data timing shows the fresh-noise plan exceeding the route R cap, declared before the first fit (SV1 2026-11-25 item 1(4))",
++    "S0c v1 bound by SHA-256 (reference code and golden set in ml/provenance/s0c-v1/); the NOT_RUN fallback and the full-length control C0 are removed; only C0c runs (SV1 2026-11-25 items 1(2) and 1(3))",
++    "DS2: B_composite, s9/s10 and S0c enter the official DS2 privacy round; an R configuration selected on DS1 enters the action set only if the DS2 privacy round also gives Pi >= 0.5, Pi_k10 >= 0.5 and macro-F1 >= 0.5398 (point estimates), with CI95 reported (SV1 2026-11-25 item 1(5))",
++    "The bound copy of the reply of 2026-11-19 22:15 is the byte-exact copy of SV1's original file, not a transcription (SV1 2026-11-25 item 1(6)); the two SV3 message bindings point to their path under docs/sv3_archive/messages/ (SV1 2026-11-25 items 2 and 3a)",
++    "Calendar shifted by one week: decision on 2026-12-13, DS1 results of parts a, b, d on 2026-12-06, route R on 2026-12-11, effort cap counted from the lock (SV1 2026-11-25 section 0; supplement item 1)",
++    "questions_for_SV1: revision 3 questions 1-6 answered by SV1 2026-11-25 and removed; four new questions on details of this revision"
+   ],
+   "source_bindings": {
+     "v2_bindings": "Every source_bindings entry of v2 applies unchanged (decisions 03/11, reviews 05/11, 09/11, 13/11, NoPeek protocol v2, grid selection, checkpoint lock A, NoPeek checkpoint Release, quantization, package A)",
+-    "sv1_review_20261119": {"path": "ml/provenance/m1-sv1-evidence-20261119/tra_loi_Ky_Anh_Pi_thu_va_review_20261119.txt", "raw_sha256": "1a9b2183ebf8e37a087064657a9a7af5036d185cee4a2ec0936fd149fec854cf", "items": "1, 2, 3, 4, 5, 7", "note": "Byte-exact copy of the file SV1 sent on 2026-11-19; SHA-256 computed by SV3 on receipt"},
+-    "sv1_reply_20261120": {"path": "ml/provenance/m1-sv1-evidence-20261120/tra_loi_Ky_Anh_gop_y_ASI_v2_20261120_transcription.txt", "raw_sha256": "5a98b20ebf482932c0b1bdcdb01b7f6bb070b9c0aed910ead9b5546ab87832dc", "items": "3(3) (leakage budget, k raw beats), 3(6) (rho2 rules), 4 (tasks)", "note": "Text of SV1's reply as SV3 pasted it into the work session on 2026-11-20; NOT a byte-exact copy of a file from SV1. To be replaced by SV1's original file, with its SHA-256, before the lock"},
+-    "asi_direction_v3": {"source_name": "Huong_xu_ly_ASI_chot_20261120_v3b.docx (local, not in the repo)", "raw_sha256": "fca4e0b3c747d788be8fdc36816284d435a233cc72c9079e7e7d67f89c3ff114", "sections": "changes table (rows 'Ngan sach du lieu Y', 'Doi chung gui S0', 'Duong R'), 1 (S0 compression test), 2 (route R: frozen checkpoint A, four macro-F1 targets, k-beat vote, reconstruction at the same noise levels, decision table, effort cap), 3 (Y, reported privacy metrics), 4 (week plan)", "note": "Supersedes the ASI direction version 2 where they differ"},
+-    "asi_direction_v2": {"source_name": "Huong_xu_ly_ASI_chot_20261119_v2.pdf (local, not in the repo)", "raw_sha256": "11a5ad3bed84b47057737e2b3d7728d14ba6f7cb8768a99df7350f38ce18dc13", "sections": "3.1 (privacy constraint), 3.3 (route R criterion), 4 (week plan)", "note": "Kept for the parts that version 3 leaves unchanged"},
+-    "sv3_review_20261114": {"path": "docs/sv3_review_after_trial_message_sv1_20261114.txt", "raw_sha256": "9061adbbaf7aa8f0cab5bf6cef9b0fbad90662c6a9c97671b5e8c63c8ebe991f", "items": "2, 4(a)-(c), 6(1)-(2)"},
+-    "sv3_review_asi_v2_20261119": {"path": "docs/sv3_huong_xu_ly_v2_review_message_sv1_20261119.txt", "raw_sha256": "66e2cf64b74517fd4f667d52534a027afa7330e08ac115730c6076ce920b3987", "items": "3 (leakage budget), 5(b) (rho2 rules), 8(6)"},
++    "sv1_review_r3_20261125": {"path": "ml/provenance/m1-sv1-evidence-20261125/tra_loi_Ky_Anh_review_r3_va_docs_20261125.txt", "raw_sha256": "14a1f67118aff6ac3fc62643bfdf1817a3709d1855fbc0f7bf23d65bb71c4ed8", "items": "0 (calendar), 1(1)-1(6), 2, 3, 4, 5", "note": "Byte-exact copy of the file SV1 sent on 2026-11-25; SHA-256 computed by SV3 on receipt"},
++    "sv1_supplement_20261125": {"path": "ml/provenance/m1-sv1-evidence-20261125/tin_bo_sung_Ky_Anh_uu_tien_va_S0c_20261125.txt", "raw_sha256": "f169a93a9c31968539245e113f697b133d64f1999db00d2069b43ba39f54b60e", "items": "1 (order of precedence: review 2026-11-25 > ASI direction v3 > reply of 2026-11-19 22:15), 2 (S0c v1)", "note": "Byte-exact copy"},
++    "sv1_review_20261119": {"path": "ml/provenance/m1-sv1-evidence-20261119/tra_loi_Ky_Anh_Pi_thu_va_review_20261119.txt", "raw_sha256": "1a9b2183ebf8e37a087064657a9a7af5036d185cee4a2ec0936fd149fec854cf", "items": "1, 2, 3, 4, 5, 7", "note": "Byte-exact copy of the file SV1 sent on 2026-11-19"},
++    "sv1_reply_20261119_2215": {"path": "ml/provenance/m1-sv1-evidence-20261120/tra_loi_Ky_Anh_gop_y_ASI_v2_20261120_transcription.txt", "copy_under_original_name": "ml/provenance/m1-sv1-evidence-20261125/tra_loi_Ky_Anh_gop_y_huong_xu_ly_v2_20261119.txt", "raw_sha256": "5a98b20ebf482932c0b1bdcdb01b7f6bb070b9c0aed910ead9b5546ab87832dc", "items": "3(3) (leakage budget, k raw beats), 3(6) (rho2 rules), 4 (tasks)", "note": "Byte-exact copy of SV1's original file tra_loi_Ky_Anh_gop_y_huong_xu_ly_v2_20261119.txt, sent on 2026-11-19 at 22:15; SV1 confirmed the SHA-256 on 2026-11-25 (item 1(6)) and resent the file. The older path keeps its historical name. Where it differs from later documents, the review of 2026-11-25 and the ASI direction v3 take precedence (supplement item 1)"},
++    "guidance_weeks_11_24": {"source_name": "Huong_dan_Trung_KyAnh_tuan11-24_20261125.pdf (local, not in the repo)", "raw_sha256": "d7ecc45b0c9372392cbf587cc2135bb9384ce938aeef4d4045962b558dfbeb8a", "sections": "2 (calendar and hand-overs H8, H9, H12), 3.1 (principles), 5 (SV3 tasks)"},
++    "asi_direction_v3": {"source_name": "Huong_xu_ly_ASI_chot_20261120_v3b.docx (local, not in the repo)", "raw_sha256": "fca4e0b3c747d788be8fdc36816284d435a233cc72c9079e7e7d67f89c3ff114", "sections": "changes table, 1, 2, 3, 4", "note": "Approved by GVHD (SV1 2026-11-25); SV1 confirmed the SHA-256 (review item 3)"},
++    "asi_direction_v2": {"source_name": "Huong_xu_ly_ASI_chot_20261119_v2.pdf (local, not in the repo)", "raw_sha256": "11a5ad3bed84b47057737e2b3d7728d14ba6f7cb8768a99df7350f38ce18dc13", "sections": "3.1, 3.3, 4", "note": "Kept for the parts that version 3 leaves unchanged"},
++    "sv3_review_20261114": {"path": "docs/sv3_archive/messages/sv3_review_after_trial_message_sv1_20261114.txt", "former_path": "docs/sv3_review_after_trial_message_sv1_20261114.txt", "raw_sha256": "9061adbbaf7aa8f0cab5bf6cef9b0fbad90662c6a9c97671b5e8c63c8ebe991f", "items": "2, 4(a)-(c), 6(1)-(2)"},
++    "sv3_review_asi_v2_20261119": {"path": "docs/sv3_archive/messages/sv3_huong_xu_ly_v2_review_message_sv1_20261119.txt", "former_path": "docs/sv3_huong_xu_ly_v2_review_message_sv1_20261119.txt", "raw_sha256": "66e2cf64b74517fd4f667d52534a027afa7330e08ac115730c6076ce920b3987", "items": "3 (leakage budget), 5(b) (rho2 rules), 8(6)"},
+     "attack_protocol_v2": {"path": "ml/configs/mitdb_m1_attack_protocol_v2.json", "sha256": "7a174dd9a8ea43003090c32db63db1ed3eae25e9abba8de07d9ec4f6bba019b0"},
+     "attack_v2_lock": {"path": "ml/provenance/m1-attack-v2-lock-20261113/m1_attack_v2_lock_and_trial_authorization.json", "sha256": "205ec6db98a75e2730cc2877021b4f48881550c96673acc8ba744bc2c421f8ba"},
+-    "attack_v2_trial_receipt": {"path": "ml/provenance/m1-attack-v2-trial-20261113/receipt.json", "sha256": "b2861c71cbf4a39007a202ca37156d9c047b4cf217f36a197defda2082d900ed", "use": "Binds by SHA-256 the saved v2 attackers (<pair>-attackers.pt) and test predictions (<pair>-arrays.npz) under ml/data/runs/attack-m1-v2-trial-20261113/ that parts b and d read; every file is checked against outputs_sha256 before it is loaded. These arrays hold argmax predictions only (no probabilities), so the soft vote is not available for the v2 pairs"},
++    "attack_v2_trial_receipt": {"path": "ml/provenance/m1-attack-v2-trial-20261113/receipt.json", "sha256": "b2861c71cbf4a39007a202ca37156d9c047b4cf217f36a197defda2082d900ed", "use": "Binds by SHA-256 the saved v2 attackers (<pair>-attackers.pt) and test predictions (<pair>-arrays.npz) under ml/data/runs/attack-m1-v2-trial-20261113/ that parts b and d read; every file is checked against outputs_sha256 before it is loaded. These arrays hold argmax predictions only (no probabilities), so the soft vote is not available for the v2 pairs; the mean aggregator recomputes their observed tensors and uses the saved attackers"},
+     "nopeek_protocol_v2_utility": {"path": "ml/configs/mitdb_m1_nopeek_protocol_v2.json", "sha256": "83cce64defefa979abcf8c31cc27daf9ae81604caae911acf0901cba3783cf35", "use": "Part c reuses its utility metric (validation macro-F1 fixed4), A's validation confusion and the gate (19/20 of A, exact Fraction)"},
+-    "s0c_definition": {"status": "NOT YET BOUND", "needed": "The exact S0c encoding used by the 2026-11-20 compression test and by the planned contract I1 payload type (ASI direction v3): input representation (normalized or ADC units), the reduction of 360 samples to 46 (method and positions), the integer representation of the 46 values, the Rice parameters and header, and the edge-side decoding and interpolation back to 360 samples, as a file or script from SV1/SV2 with its SHA-256", "rule": "Bound before the lock or not at all: without it, every S0c item of this version is marked NOT_RUN and part c uses the full-length control C0. The compression-test macro-F1 (0.5681 on DS1 validation) is not re-measured or used by any attack decision"}
++    "s0c_definition": {
++      "status": "BOUND",
++      "version": "S0C-V1 (SV1, 2026-11-25)",
++      "reference": {"path": "ml/provenance/s0c-v1/s0c_v1_ref.py", "sha256": "323ffabaa255f80de9730279e7d0abee7571125bb61d1c36e871dc113bcaf0a0", "role": "Normative numpy reference: encode() on the device side, decode() on the edge side"},
++      "golden_npz": {"path": "ml/provenance/s0c-v1/s0c_v1_golden20.npz", "sha256": "2923fe85c5d6fa111e97dbf47f10b81bc487a6b9cca7d8fa8becbfb109089d87"},
++      "golden_json": {"path": "ml/provenance/s0c-v1/s0c_v1_golden20.json", "sha256": "23eb93f4e7d69dbd15b04167401d3e046c4ddd212409efadb8377a80c2c672f9"},
++      "package_sums": {"path": "ml/provenance/s0c-v1/SHA256SUMS.txt", "sha256": "8b73d1eee6428d2b97bb96995d38c3a8b46c9d7e5db356433970b04a0e1bf317", "received_archive": "s0c_v1.zip, SHA-256 e6531383a36ddcde73367a746e6f63981c9189ee13fa2789c197fcef044fe969 (local, not in the repo)"},
++      "sv3_receipt_check": {"path": "ml/provenance/s0c-v1/sv3_check_20261126/check_result.json", "result": "2026-11-26: the 9 package files match SHA256SUMS.txt; x of the 20 golden beats equals golden/z_s0.npy[:, 0, :] of package A (manifest f005b3ea...) bit for bit; the reference reproduces every golden array and Rice body, 20/20"},
++      "scope_note": "DS1 validation check by SV1 (s0c_v1_check_ds1val.json): macro-F1 of C5 on the reconstructed beats 0.568057 over 9,523 beats; not re-measured and not used by any attack decision"
++    }
+   },
+   "s0c_observed_tensor": {
+-    "definition": "What the edge holds after Rice decoding: the 46 reduced values of each beat, exactly as the bound s0c_definition produces them (Rice is lossless, so the payload and the decoded values carry the same information). Attacker input: the 46 values as an NCL tensor [1, 46] in FP32, after the dequantization the definition specifies",
+-    "edge_interpolation": "x_c = the edge's interpolation of the 46 values back to 360 samples, exactly as the bound definition; x_c is the input of the frozen model at the edge and the start of every composite from S0c",
+-    "golden_check": "For the 20 package A golden beats, SV3's implementation of the encoding and of the interpolation must reproduce the reference outputs that come with the bound definition bit for bit (or within the tolerance the definition states); any difference stops the S0c items before a number exists"
++    "definition": "What the edge holds after Rice decoding: the 46 dequantized values v = decode(body, scale)[0] of s0c_v1_ref.py (Rice is lossless, so the payload and v carry the same information). Attacker input: v as an NCL tensor [1, 46] in FP32",
++    "edge_interpolation": "x_c = decode(body, scale)[1], the 360 reconstructed samples; x_c is the input of the frozen model at the edge and the start of every composite from S0c",
++    "implementation": "SV3's runner may use a vectorized implementation for speed, but before any S0c number it must reproduce the reference outputs bit for bit (reduced values, q, FP16 scale, dequantized values, reconstructed samples, Rice body bytes) on the 20 golden beats and on every DS1 beat of the trial data (clean, rho0); any difference stops the S0c items before a number exists and is reported to SV1",
++    "golden_check": "Done on 2026-11-26 for the reference itself (source_bindings.s0c_definition.sv3_receipt_check); repeated by the runner for its own implementation"
+   },
+   "part_a_s9_logits_and_s0c": {
+     "pairs": [["s9", "rho0"], ["s10", "rho0"], ["s0c", "rho0"]],
+     "observed_tensor": "s9 and s10 as v2 observed_tensor: z_s of checkpoint A computed one beat at a time, to_ncl with L = 1, registry v2 quantize_per_channel then dequantize_per_channel; the attacker input is the dequantized FP32 [C] vector (C = 32 at s9, 5 at s10). s0c: s0c_observed_tensor",
+     "logits_definition": "The s10 tensor is the FP32 PyTorch output of the full checkpoint A on the normalized beat (classifier.4, 5 values N, S, V, F, Q), quantized like every other split: the nominal 15 B tensor (5 INT8 + 5 FP16) of table_iii. It stands for every logits vector the edge can compute from z_s with the FP32 reference tail it knows (threat_model.knows: tail weights)",
+     "kv260_logits": "Not attacked: the KV260 INT8 logits (multiples of 0.125) are another function of z_s; omitting a variant can only leave Pi higher, so every Pi here stays an upper bound. Listed in limitations",
+-    "golden_check": "rho0 z_s9 and z_s10 of the 20 package A golden beats must equal golden/z_s9.npy and golden/z_s10.npy bit for bit (v2 golden_check extended to s9, s10); s0c: s0c_observed_tensor.golden_check",
++    "golden_check": "rho0 z_s9 and z_s10 of the 20 package A golden beats must equal golden/z_s9.npy and golden/z_s10.npy bit for bit (v2 golden_check extended to s9, s10); s0c: s0c_observed_tensor.implementation",
+     "attacks": {
+       "B_naive": "s9, s10: v2 attack_models.B_classifier.base.NC (MLP 128); s0c: v2 base.NCL (2 blocks, 64 channels, kernel 5) on [1, 46]. 3 seeds 20261030, 20261031, 20261101. Per-beat log-probabilities on the test part are saved with the argmax predictions",
+-      "A1": "s9, s10: v2 attack_models.A1_decoder, seed 20261030. s0c: the training-free floor x_c (edge interpolation) and a trained refiner Conv1d(1, 16, 5) + ReLU, Conv1d(16, 16, 5) + ReLU, Conv1d(16, 1, 5) (padding 2) applied to x_c, MSE against the normalized x, seed 20261030, v2 A1 training settings; both reported, the headline is the one with the lower mean NRMSE on the attacker-validation part. Reported, not part of Pi"
++      "A1": "s9, s10: v2 attack_models.A1_decoder, seed 20261030. s0c: the training-free floor x_c and a trained refiner Conv1d(1, 16, 5) + ReLU, Conv1d(16, 16, 5) + ReLU, Conv1d(16, 1, 5) (padding 2) applied to x_c, MSE against the normalized x, seed 20261030, v2 A1 training settings; both reported, the headline is the one with the lower mean NRMSE on the attacker-validation part. Reported, not part of Pi"
+     },
+     "architecture": "Base: the v2 trial capacity check (s0 mean bacc 0.8256 >= 0.80) decided 'base' for every split; it is not repeated and not revised. s0c uses the same base NCL family",
+     "reported": "Per pair as v2 (Pi, CI95, seed range, per-seed results, session bacc, A1 metrics); Pi(s9) and Pi(s0c) are then also combined with B_composite in part b",
+@@ -86,17 +100,17 @@
+       "Pi_logits_at_least_Pi_min": "Pi_logits >= 0.5: no such statement; Pi(s < 10) stays what its own measurements give",
+       "Pi_s9_at_least_Pi_min": "Pi_v3(s9, rho0) >= 0.5: report to SV1, who reopens the bottleneck question (SV1 2026-11-19 section 3, last part)",
+       "Pi_s9_below_Pi_min": "Pi_v3(s9, rho0) < 0.5: the bottleneck route stays closed",
+-      "Pi_s0c": "Pi_v3(s0c, rho0) is the privacy entry of the standard S0 in every table; the trial Pi(s0) of the full beat stays a trial number and is not substituted for it",
++      "Pi_s0c": "Pi_v3(s0c, rho0) is the privacy entry of the standard S0 in every table (SV1 2026-11-25 item 1(2)); the trial Pi(s0) of the full beat stays a trial number and is not substituted for it",
+       "action_set": "Pi(s10) of the action set is 1 by construction (SV1 2026-11-19 section 5); Pi_logits never filters s10"
+     }
+   },
+   "part_b_B_composite": {
+     "applies_to": "rho0 (checkpoint A) only: every split shares one model, so the edge that receives z_s holds every op after s. Under rho1 each split is a different checkpoint whose deeper-split attackers do not exist; B_composite is not defined for rho1 in this version and Pi(s, rho1) stays B_naive",
+-    "argument": "The edge that receives the observed tensor u_s at s can compute u_s' for any s' > s and run the attacker trained at s'. So the true Pi(s, rho0) cannot exceed Pi(s', rho0) except through the quantization (or, for S0c, the reduction) error at s; the measured order 0.100 -> 0.068 reflects attacker weakness at shallow splits. This is the hypothesis part b measures; the trial value Pi(s0) = 0.183 is not used anywhere",
++    "argument": "The edge that receives the observed tensor u_s at s can compute u_s' for any s' > s and run the attacker trained at s'. So the true Pi(s, rho0) cannot exceed Pi(s', rho0) except through the quantization error at s, and for S0c the information removed by the reduction to 46 values; the measured order 0.100 -> 0.068 reflects attacker weakness at shallow splits. This is the hypothesis part b measures; the trial value Pi(s0) = 0.183 is not used anywhere",
+     "sources_and_targets": {
+       "source_splits": ["s0", "s0c", "s2", "s4", "s5", "s8", "s9"],
+       "target_splits": [2, 4, 5, 8, 9, 10],
+-      "pairs": "Every (s, s') with s in source_splits, s' in target_splits, s' deeper than s (s0 and s0c are shallower than every target): 27 composite evaluations (6 + 6 + 5 + 4 + 3 + 2 + 1); the 6 from s0c only if s0c_definition is bound",
++      "pairs": "Every (s, s') with s in source_splits, s' in target_splits, s' deeper than s (s0 and s0c are shallower than every target): 27 composite evaluations (6 + 6 + 5 + 4 + 3 + 2 + 1)",
+       "attackers": "s' in {2, 4, 5, 8}: the v2 trial attackers <s'>-rho0-attackers.pt (s0 is never a target); s' in {9, 10}: the part a attackers"
+     },
+     "computation": {
+@@ -123,90 +137,104 @@
+     "k_decision": 10,
+     "modes": {
+       "consecutive": "Per patient, the test beats in time order cut into non-overlapping blocks of k consecutive beats; a last block shorter than k is dropped",
+-      "scattered": "Per patient, 200 draws of k test beats without replacement, numpy.random.default_rng(numpy.random.SeedSequence([20261120, 4, pair_key, k])) with pair_key the index of the evaluated (configuration, split, alpha_t) in the run manifest written before the first draw, as when a policy offloads only part of the beats"
++      "scattered": "Per patient, 200 draws of k test beats without replacement, numpy.random.default_rng(numpy.random.SeedSequence([20261120, 4, pair_key, k])) with pair_key the index of the evaluated (configuration, split, alpha_t) in the run manifest written before the first draw, as when a policy offloads only part of the beats. The same blocks and draws are used by every aggregator"
+     },
+-    "vote_rules": {
++    "aggregators": {
+       "hard": "Majority of the per-beat argmax predictions in a block or draw (ties: lowest label)",
+-      "soft": "Argmax of the sum of the per-beat log-probabilities in a block or draw. Needs saved log-probabilities: available for every new attacker of v3, not for the v2 trial pairs (receipt b2861c71 stores argmax only)"
++      "soft": "Argmax of the sum of the per-beat log-probabilities in a block or draw. Needs saved log-probabilities: available for every new attacker of v3, not for the v2 trial pairs (receipt b2861c71 stores argmax only)",
++      "mean": "The k dequantized observed tensors of the block or draw (beats are R-peak aligned windows) are averaged element-wise (float64 accumulation, cast to float32) without re-quantization at the source. Source-level attackers receive the averaged tensor directly after their own standardization; composite paths compute u_s' from the averaged source tensor through the frozen ops (part b computation, re-quantized at s') and apply the attacker at s'. One prediction per block or draw and per seed. With independent per-beat noise the noise variance of the average is 1/k of a single beat (SV1 2026-11-25 item 1(1))"
++    },
++    "mean_attackers": {
++      "rho0": "Under rho0 (part d) the variants are those of Pi_v3: B_naive at the source and every B_composite s -> s', using the saved v2 or part a attackers (gate-checked) and observed tensors recomputed by v2 observed_tensor (or s0c_observed_tensor)",
++      "noisy_configurations": "Under part c: every variant of the configuration (B_naive, B_adaptive, every B_composite_adaptive s'), plus the clean rho0 attacker of the same source (the v2 trial s2-rho0 attackers for R2; the part a s0c-rho0 attackers for C0c), plus, for composite paths, the clean rho0 attackers at s' (v2 trial or part a). The averaged tensor is close to the clean distribution, so the clean attackers are included (SV1 2026-11-25 item 1(1); the clean attackers at s' are SV3's addition, cost only inference)"
+     },
+     "statistic": "Per seed: bacc_k = mean over the N patients of the fraction of the patient's blocks or draws assigned to the right identity; Adv_k = clip((bacc_k - 1/N) / (1 - 1/N), 0, 1); mean over the 3 seeds; seed range reported",
+-    "Pi_k": "Pi_k = 1 - max over the variants available for the evaluated configuration, the vote rules available and the two modes, of the mean-seed Adv_k; every (variant, rule, mode) value is reported",
+-    "CI95": "Consecutive mode: within-patient bootstrap over the k-beat blocks, 2000 resamples, identity set fixed, on the winning (variant, rule); scattered mode: the 2.5 and 97.5 percentiles over the 200 draws are reported instead of a bootstrap",
++    "Pi_k": "Pi_k = 1 - max over the attackers available for the evaluated configuration, the aggregators {hard, soft, mean} where available and the two modes, of the mean-seed Adv_k; every (attacker, aggregator, mode) value is reported",
++    "CI95": "Consecutive mode: within-patient bootstrap over the k-beat blocks, 2000 resamples, identity set fixed, on the winning (attacker, aggregator); scattered mode: the 2.5 and 97.5 percentiles over the 200 draws are reported instead of a bootstrap",
+     "difference_from_session_bacc": "The consecutive k = 10 value can differ from the v2 session bacc, which kept the shorter last block"
+   },
+-  "part_c_rho2_and_s0_noise_control": {
+-    "status": "Specification for SV1's review; runs only after the lock of the reviewed version; DS1 in week 12, Pi-F1 curves and the control delivered in week 13, within the 1.5 person-weeks of route R (ASI direction v3 sections 2 and 4)",
++  "part_c_rho2_and_s0c_noise_control": {
++    "status": "Specification confirmed in principle by SV1 on 2026-11-25; runs only after the lock of this revision; DS1, results delivered on 2026-12-11 (H9), within 1.5 person-weeks counted from the lock (SV1 2026-11-25 section 0; guidance weeks 11-24, section 3.1 item 9)",
+     "configurations": {
+       "R2[alpha]": "s2 + rho2: on the device, z_s2 of checkpoint A plus Gaussian noise e[c, l] ~ N(0, (alpha * sigma_c)^2), independent per beat, channel and position, then registry v2 quantization; the edge dequantizes and runs the frozen tail",
+-      "C0c[alpha]": "Standard control when s0c_definition is bound: the 46 reduced values v of each beat plus Gaussian noise N(0, (alpha * sigma_v)^2) per value, independent per beat, then the rest of the S0c encoding (integer representation and Rice); the edge decodes, interpolates to 360 samples and runs the whole frozen model",
+-      "C0[alpha]": "Fallback control, used only when s0c_definition is not bound before the lock: the normalized beat x plus Gaussian noise N(0, (alpha * sigma_x)^2) per sample, then registry v2 quantization, sent at s0 (revision 2 definition)",
+-      "sigma": "sigma_c = population std over N and L of channel c of the clean z_s2 of checkpoint A on DS1 train; sigma_v = population std over N and the 46 positions of the clean reduced values on DS1 train; sigma_x = population std of the normalized x over DS1 train. Computed once and written to a file with its SHA-256 before any noisy evaluation. alpha only parametrizes each configuration; the configurations are compared at equal macro-F1, never at equal alpha (SV1 2026-11-20 item 3(6))",
+-      "noise_placement_reason": "Noise on the 46 reduced values rather than on x before the reduction: a reduction that averages or drops samples also removes part of the noise, so noise added before it would buy less privacy per unit of macro-F1 and would make the control look weaker than it can be. Questions_for_SV1 item 3"
++      "C0c[alpha]": "The control: the 46 reduced values v = reduce46(x) (S0c v1 step 2) plus Gaussian noise N(0, (alpha * sigma_v)^2) per value, independent per beat, then S0c v1 steps 3-4 (quantize, rice_encode); the edge decodes, interpolates to 360 samples and runs the whole frozen model (SV1 2026-11-25 item 1(3); supplement item 2)",
++      "sigma": "sigma_c = population std over N and L of channel c of the clean z_s2 of checkpoint A on DS1 train; sigma_v = population std over N and the 46 positions of the clean reduced values on DS1 train. Computed once and written to a file with its SHA-256 before any noisy evaluation. alpha only parametrizes each configuration; the configurations are compared at equal macro-F1, never at equal alpha",
++      "not_run": "No full-length control on the 360-sample beat (SV1 2026-11-25 item 1(3))"
+     },
+     "model": "Checkpoint A frozen: no retraining of head or tail (ASI direction v3 section 2)",
+-    "noise_generator": "numpy.random.default_rng(numpy.random.SeedSequence([20261120, config_index, alpha_key, part_index, draw])) with config_index 0 = R2, 1 = C0 (fallback), 2 = C0c; alpha_key = round(alpha * 1e6); part_index 0 attacker-train, 1 attacker-validation, 2 test, 3 DS1 validation; draws 0, 1, 2 for utility; draw 0 for attacker-validation and test; draws 0-4 for the attacker-train realizations of the adaptive attackers and of A1",
++    "noise_generator": {
++      "fixed_draws": "numpy.random.default_rng(numpy.random.SeedSequence([20261120, config_index, alpha_key, part_index, draw])) with config_index 0 = R2, 2 = C0c (1 is not used); alpha_key = round(alpha * 1e6); part_index 1 attacker-validation, 2 test, 3 DS1 validation; draws 0, 1, 2 for utility; draw 0 for attacker-validation and test",
++      "fresh_training_noise": "Attacker-train noise is drawn fresh for every epoch: numpy.random.default_rng(numpy.random.SeedSequence([20261120, config_index, alpha_key, 0, epoch])) generates one noise array for the whole attacker-train set in its fixed row order, so the noise of a beat does not depend on the batch order; epochs count from 1. Used by B_adaptive, A1_adaptive and B_composite_adaptive (SV1 2026-11-25 item 1(4))",
++      "fallback": "Only if a timing of the full fresh-noise plan on random arrays (no MITDB) shows that part c would exceed the route R cap: at least 20 pre-drawn realizations (epoch e uses realization (e - 1) mod R, R >= 20), with R and the timing written to the run manifest before the first fit and reported to SV1"
++    },
+     "utility": {
+       "data": "DS1 validation (as NoPeek v2 utility; the 4 validation records of the DS1/DS2 split); DS2 never used",
+       "metric": "Macro-F1 over N, S, V, F (fixed4), argmax over 5 outputs, zero_division 0, from the confusion summed over the 3 noise draws, exact with Fraction; per-draw macro-F1 and accuracy also reported",
+       "F1_A": "A's validation macro-F1 = 11488986689/20219195700 (NoPeek v2 initialization)",
+       "gate": "Passes when macro-F1 >= 19/20 x F1_A = 218290747091/404383914000 (0.5398), the threshold of route R and of rho1",
+-      "payload_size": "C0c only: Rice payload bytes per beat (mean, median, maximum) on DS1 validation at every alpha evaluated, with the bound encoder; header bytes as the definition states. Noise raises the entropy of the reduced values, so the payload grows with alpha; this is reported for the cost comparison in G5 and decides nothing here"
++      "payload_size": "C0c only: Rice body bytes per beat, len(rice_encode(q)), mean, median and maximum on DS1 validation at every alpha evaluated (the FP16 scale adds 2 B; the I1 envelope is fixed in contract I1). Reported for the cost comparison in G5; decides nothing here"
+     },
+     "matched_utility_search": {
+       "coarse_grid_alpha": [0.05, 0.1, 0.25, 0.5, 1.0, 2.0, 4.0],
+-      "targets": "t in {0.99, 0.98, 0.97, 0.95} x F1_A; the last target is the gate (ASI direction v3 section 2: 99, 98, 97 and 95 % of the original macro-F1)",
++      "targets": "t in {0.99, 0.98, 0.97, 0.95} x F1_A; the last target is the gate (ASI direction v3 section 2)",
+       "rule": "For each configuration and target t, utility only on the coarse grid; then bisection in log(alpha) between the largest grid alpha with macro-F1 >= t and the next grid alpha, 8 steps; alpha_t = the largest alpha found with macro-F1 >= t. If even 0.05 fails t, alpha_t is searched downward to 0.05/2^8; if no alpha reaches t, the target is reported unreachable. If macro-F1 is not monotone on the grid, the first crossing from small alpha is used and the non-monotone points are reported",
+       "selection_data": "DS1 validation only; selecting alpha on DS1 validation is allowed (DS2 stays closed and unused)",
+       "privacy_points": "Pi and Pi_k10 are evaluated at alpha_t of each reachable target for each configuration: at most 8 privacy points (4 targets x 2 configurations), at least 4 levels per configuration"
+     },
+     "privacy": {
+       "data": "v2 trial data and time split (DS1, N = 22)",
+-      "attacker_knowledge": "The attacker knows the mechanism, the checkpoint and alpha and sigma (SV1 2026-11-20 item 3(6); roadmap 8.3), and holds labelled clean attacker-side beats of the N patients as in v2",
++      "attacker_knowledge": "The attacker knows the mechanism, the checkpoint and alpha and sigma, can draw fresh noise from the known distribution at no cost (SV1 2026-11-25 item 1(4)), and holds labelled clean attacker-side beats of the N patients as in v2",
+       "variants": {
+-        "B_naive": "Base architecture at the source (s2 for R2: NCL on [16, 180]; s0c for C0c: NCL on [1, 46]; s0 for C0: NCL on [1, 360]), trained on one noisy realization (draw 0) of the attacker-train tensors",
+-        "B_adaptive": "Same architecture, trained on the attacker-train beats with the noise regenerated from the known distribution: epoch e uses realization (e - 1) mod 5 of 5 pre-drawn realizations (draws 0-4)",
+-        "B_composite_adaptive": "For each s' in {2, 4, 5, 8, 9, 10} deeper than the source: the edge computes u_s' from the noisy observed tensor (part b computation, frozen checkpoint A; for C0c from the interpolated x_c); a base-architecture attacker at s' is trained on the same pipeline applied to the 5 attacker-train realizations (epoch e uses realization (e - 1) mod 5) and tested on the composite of the noisy test tensors. Standardization statistics from realization 0 of its own attacker-train part"
++        "B_naive": "Base architecture at the source (s2 for R2: NCL on [16, 180]; s0c for C0c: NCL on [1, 46]), trained on one noisy realization (draw 0 of part_index 0, i.e. epoch 0 of the fresh-noise generator) of the attacker-train tensors",
++        "B_adaptive": "Same architecture, trained with fresh noise every epoch (noise_generator.fresh_training_noise)",
++        "B_composite_adaptive": "For each s' in {2, 4, 5, 8, 9, 10} deeper than the source: the edge computes u_s' from the noisy observed tensor (part b computation, frozen checkpoint A; for C0c from the interpolated x_c); a base-architecture attacker at s' is trained on the same pipeline applied to freshly noised attacker-train tensors, recomputed every epoch. Training-time composites run on the GPU (CUDA, deterministic, TF32 off) for speed; attacker-validation and test composites use the CPU computation of part b; the difference is floating-point rounding only. Standardization statistics from the epoch-1 realization of its own attacker-train part"
+       },
+       "seeds_and_training": "Every variant: 3 seeds 20261030, 20261031, 20261101, v2 training settings (AdamW, early stop on attacker-validation bacc with the fixed draw-0 validation tensors, patience 5, max 50 epochs, TF32 off). Per-beat test log-probabilities are saved with the argmax predictions",
+       "Pi": "Pi(config, alpha) = 1 - max over the variants of the mean-seed Adv (v2 privacy_metric); CI95 by the v2 bootstrap on the winning variant; every variant reported",
+-      "Pi_k10": "k_beat_vote.Pi_k at k = 10 over the same variants, both vote rules and both modes, from the saved test predictions and log-probabilities; no further training. The other k values are reported as curves",
+-      "variant_count": "Per privacy point: 2 + 5 = 7 variants for R2, 2 + 6 = 8 for C0c (or C0), each with 3 seeds"
++      "Pi_k10": "k_beat_vote.Pi_k at k = 10 over the attackers listed in k_beat_vote.mean_attackers.noisy_configurations, the three aggregators and both modes; from saved test predictions, log-probabilities and the fixed draw-0 test tensors; no further training. The other k values are reported as curves",
++      "variant_count": "Per privacy point: 2 + 5 = 7 trained variants for R2, 2 + 6 = 8 for C0c, each with 3 seeds"
+     },
+     "reconstruction": {
+       "why": "The leakage budget Y protects ECG content, so the reconstruction at each noise level is reported with Pi (ASI direction v3 section 2)",
+-      "floor": "Training-free: R2 none (no identity map from z_s2); C0c: the edge interpolation x_c of the noisy reduced values; C0: the dequantized noisy x (v2 A1 s0 identity)",
+-      "A1_adaptive": "Trained at the source on the 5 attacker-train realizations (epoch e uses realization (e - 1) mod 5), MSE against the clean normalized x, seed 20261030, v2 A1 training settings. R2: v2 A1_decoder s2 mirror; C0c: the part a s0c refiner on x_c; C0: the same refiner on the noisy x",
++      "floor": "Training-free: R2 none (no identity map from z_s2); C0c: the edge interpolation x_c of the noisy reduced values",
++      "A1_adaptive": "Trained at the source with fresh noise every epoch, MSE against the clean normalized x, seed 20261030, v2 A1 training settings. R2: v2 A1_decoder s2 mirror; C0c: the part a s0c refiner on x_c",
+       "metrics": "v2 reconstruction_metrics (NRMSE, Pearson, R-peak error) on the draw-0 noisy test tensors, for the floor and for A1_adaptive; the headline is the better of the two by attacker-validation NRMSE",
+       "role": "Reported, never a pass condition"
+     },
+     "action_set_rules_declared_before_run": {
+-      "pass": "A configuration passes at alpha when Pi(config, alpha) >= 0.5 and Pi_k10(config, alpha) >= 0.5 (point estimates, strongest variant, vote rule and mode) and macro-F1 >= the gate",
+-      "control_passes": "If C0c (or C0) passes at some alpha: S0 + noise is preferred to s2 + rho2 (revision 2 rule, ASI direction v3 section 2), whatever R2 gives; both privacy-utility curves are reported; report to SV1 at once",
+-      "only_R2_passes": "If no control alpha passes and R2 passes at some alpha: s2 + rho2 enters the candidate set; SV1 then measures its energy and latency and compares it with the S0/S10 alternation policy at the same requirement (ASI direction v3 section 2); report to SV1 at once",
++      "pass_on_DS1": "A configuration is selected on DS1 at alpha when Pi(config, alpha) >= 0.5 and Pi_k10(config, alpha) >= 0.5 (point estimates, strongest attacker, aggregator and mode) and macro-F1 >= the gate",
++      "control_selected": "If C0c is selected at some alpha: S0c + noise is preferred to s2 + rho2, whatever R2 gives; both privacy-utility curves are reported; report to SV1 at once",
++      "only_R2_selected": "If no C0c alpha is selected and R2 is selected at some alpha: s2 + rho2 is the candidate; SV1 then measures its energy and latency and compares it with the S0c/S10 alternation policy at the same requirement (ASI direction v3 section 2); report to SV1 at once",
+       "neither": "Otherwise: negative result for the mechanism and the range tried, with the per-beat Pi, Pi_k10 and the matched-F1 curves of both configurations; the leakage indicator stays in the system evaluation",
+-      "comparison": "At every reachable target t: Pi, Pi_k10 and the reconstruction metrics of R2 and of the control at alpha_t, with CI95 and per-variant values, side by side at equal macro-F1",
+-      "decision_time": "SV1 decides routes R and K at the end of week 13 (2026-12-06) with these rules (ASI direction v3, decision milestones)"
++      "DS2_confirmation": "A selected configuration enters the action set only if the official DS2 privacy round (week 14, N = 21) also gives Pi >= 0.5, Pi_k10 >= 0.5 and macro-F1 >= 0.5398 as point estimates, with the same attackers, aggregators and alpha chosen on DS1; CI95 reported in the paper. If DS2 fails, the configuration is withdrawn and the result reported as it is (SV1 2026-11-25 item 1(5))",
++      "comparison": "At every reachable target t: Pi, Pi_k10 and the reconstruction metrics of R2 and C0c at alpha_t, with CI95 and per-attacker values, side by side at equal macro-F1",
++      "decision_time": "SV1 decides routes R and K and the auxiliary model on 2026-12-13 with these rules (SV1 2026-11-25 section 0 and section 2)"
+     },
+-    "not_measured": "E_prot of the noise generation on the nRF52840 (SV1 2026-11-19 section 8); the energy comparison of an admitted configuration belongs to G5 v2"
++    "not_measured": "E_prot of the noise generation on the nRF52840 (SV1 2026-11-19 section 8); the energy comparison of a selected configuration belongs to G5 v2"
+   },
+   "part_d_k_beats_rho0": {
+-    "question": "How many beats of one patient must the edge see before it re-identifies the patient (SV1 2026-11-20 item 3(3))? Supports the threat-model statement that the leakage budget Y does not hide identity",
+-    "inputs": "Saved per-beat test predictions only, no training: the v2 trial predictions (read, never edited) and the part a and part b predictions. For each measured s under rho0 (and s0c) the variant that wins Pi_v3(s, rho0); s0c is the primary row when measured, s0 otherwise",
+-    "computation": "k_beat_vote over all k_values, both modes; hard vote for every row, soft vote where log-probabilities exist (part a and part b attackers)",
++    "question": "How many beats of one patient must the edge see before it re-identifies the patient? Supports the threat-model statement that the leakage budget Y does not hide identity",
++    "inputs": "Saved per-beat test predictions and log-probabilities, recomputed observed tensors and saved attackers only, no training: the v2 trial predictions and attackers (read, never edited) and the part a and part b outputs. For each measured s under rho0 (and s0c) the attackers of Pi_v3(s, rho0); s0c is the primary row",
++    "computation": "k_beat_vote over all k_values, both modes, aggregators hard (every row), soft (where log-probabilities exist) and mean (every row)",
+     "status": "Discussion only under rho0, never Pi and never a decision rule"
+   },
++  "official_DS2_privacy_round": {
++    "when": "Week 14 (2026-12-14 to 2026-12-20), after the quality round of 2026-12-10, under its own authorization file provided by the user",
++    "scope": "Parts a, b and d of this revision on the DS2 patients (N = 21, record 202 excluded, v2 official-round data rules), including B_composite, s9/s10 and S0c, plus any configuration selected by part c on DS1 with its alpha and attackers. Each locked configuration is evaluated on DS2 once",
++    "not_in_scope": "No choice of any parameter (alpha, k, threshold, configuration, seed) is made on DS2"
++  },
+   "constraints": [
+     "The 9 pairs of the v2 trial are never rerun or edited; their files are read only and checked against receipt b2861c71",
+-    "DS2 is not opened by any part of this version; the official DS2 round needs its own authorization (questions_for_SV1 item 5)",
++    "DS2 is not opened by any DS1 part of this version; the official DS2 privacy round needs its own authorization",
+     "Pi_min = 0.5, the Pi formula, the attack models, the data split and the capacity decision are those of v2",
+     "Trial numbers stay an early warning and never enter the paper's main numbers",
+-    "No S0c item runs unless s0c_definition is bound by SHA-256 before the lock"
++    "No S0c number exists before the runner reproduces S0c v1 bit for bit (s0c_observed_tensor.implementation)"
+   ],
+   "run_order_after_lock": [
+-    "Part a: golden checks s9, s10 (and s0c); B_naive and A1 at s9, s10, then s0c; report Pi_v3(s9), Pi_logits and Pi(s0c) the day they exist",
+-    "Part b: v2 receipt check, reproduction gate, then the composite evaluations (21, or 27 with s0c); report the Pi_v3 table",
+-    "Part d: from the saved predictions of the v2 trial and parts a and b; report with the Pi_v3 table",
+-    "Part c: sigma file first, then the matched-utility search and payload sizes (DS1 validation), then the privacy points (Pi, Pi_k10, reconstruction); within the route R effort cap"
++    "Part a: golden checks s9, s10 and the S0c reproduction check; B_naive and A1 at s9, s10, then s0c; report Pi_v3(s9), Pi_logits and Pi(s0c) the day they exist",
++    "Part b: v2 receipt check, reproduction gate, then the 27 composite evaluations; report the Pi_v3 table",
++    "Part d: from the saved predictions, recomputed observed tensors and saved attackers of the v2 trial and parts a and b; report with the Pi_v3 table. Parts a, b, d delivered on 2026-12-06 (H8)",
++    "Part c: sigma file first, then the matched-utility search and payload sizes (DS1 validation), then the privacy points (Pi, Pi_k10, reconstruction); delivered on 2026-12-11 (H9), within the route R cap counted from the lock"
+   ],
+   "limitations": [
+     "v2 limitations apply (N = 21 official, no sex/age inference, trial on DS1 patients seen in training)",
+@@ -214,19 +242,17 @@
+     "Direction of the bounds: with respect to attacker strength every measured Pi is an upper bound of the in-session Pi; with respect to the session confound the in-session Adv is an upper bound of the cross-session Adv (the in-session Pi a lower bound of the cross-session Pi). The negative result is therefore stated for the in-session closed-set task",
+     "The edge already knows which device sends; the threat is linking beats to an identity in another dataset or session, of which the in-session Adv is an upper bound",
+     "Leakage budget Y (ASI direction v3 sections 3 and changes table): Y is the fraction of beats processed fully on the device (>= p); it limits how much ECG content leaves the device and does not hide identity, since a few beats of one session re-identify the patient (part d). Pi per beat, Pi_k and the reconstruction metrics are reported separately and are not weights of Y",
+-    "Aggregation across beats: Pi_k uses hard and soft votes over per-beat attacker outputs. An edge could also average aligned noisy tensors of several beats before classifying, which removes independent noise faster; this aggregator is not tested, so Pi_k stays an upper bound with respect to stronger aggregation",
++    "Aggregation across beats: Pi_k uses majority, soft and mean aggregation over fixed attackers. Learned multi-beat attackers (trained on sets of beats) and alignment refinements beyond the R-peak window are not tested, so Pi_k stays an upper bound with respect to stronger aggregation",
+     "KV260 INT8 logits are not attacked; B_composite and part a cover rho0 only",
+-    "rho2 and the S0 control are evaluated with checkpoint A frozen (no noise-aware fine-tune); Pi for them is an upper bound with respect to stronger adaptive attackers (for example denoising networks or more noise realizations)",
+-    "S0c results hold for the bound S0c encoding only; another reduction or interpolation needs a new measurement"
++    "rho2 and C0c are evaluated with checkpoint A frozen (no noise-aware fine-tune); Pi for them is an upper bound with respect to stronger adaptive attackers (for example denoising networks); a stronger reconstruction attack (A2 with a discriminator) is run only if a configuration is selected (guidance weeks 11-24, section 5.2)",
++    "S0c results hold for S0C-V1 only; another reduction or interpolation needs a new measurement"
+   ],
+   "questions_for_SV1": [
+-    "1. k = 10 as the decision value, with Pi_k10 taken as the worst over hard and soft votes and over consecutive and scattered sampling: acceptable? The soft vote is stronger than the majority vote and needs no training, only saved log-probabilities",
+-    "2. Please send the S0c definition used in the 2026-11-20 compression test (input units, how 360 samples become 46, integer representation, Rice parameters and header, edge interpolation), as a script or file with its SHA-256, plus reference outputs for the 20 golden beats. Without it, the S0c items do not run and part c uses the full-length control",
+-    "3. S0 control: noise on the 46 reduced values (C0c, this draft), or on the full beat before the reduction? Should the full-length control C0 of revision 2 also run? Default: C0c only, to stay within the effort cap",
+-    "4. Adaptive attacker and adaptive A1 with 5 pre-drawn noise realizations of the attacker-train data (cycled over epochs): enough, or more?",
+-    "5. Should B_composite, the s9/s10 pairs and S0c also enter the official DS2 round when it is authorized? Default in this draft: yes, under that round's own authorization",
+-    "6. Please send the original file of the 2026-11-20 reply: the bound copy is a transcription of the pasted text"
++    "1. Quality DS2 round of 2026-12-10: please add S0c (FP32 on CPU in SV3's script; the DPU path with Trung). S0c is a minimum LUT action and each configuration sees DS2 once, so without it there is no DS2 macro-F1 for the standard S0",
++    "2. Mean aggregator: besides the attackers you listed, this revision also applies the clean rho0 attackers at the deeper split s' on composite paths (inference only). Keep?",
++    "3. Fresh noise is drawn once per epoch for the whole attacker-train set in its fixed row order (keyed by configuration, alpha and epoch), not per batch, so it does not depend on the shuffle. Acceptable?",
++    "4. Training-time composites on the GPU, validation and test composites on the CPU as in part b (difference: floating-point rounding only). Acceptable?"
+   ],
+   "change_control": {"locked_file": "Never edit after lock; changes are new versions with reason, old/new hashes and SV1 review"},
+-  "execution_in_this_round": {"attacks": false, "fit": false, "DS2": false, "code": "Not written yet: after SV1's review, a runner extending ml/scripts/attack_m1_v2.py (parts a, b, d and the k-beat vote) and a rho2 script (part c), tested and smoked on random arrays only until the lock"}
++  "execution_in_this_round": {"attacks": false, "fit": false, "DS2": false, "code": "Not written yet: after SV1's confirmation, a runner extending ml/scripts/attack_m1_v2.py (parts a, b, d and the k-beat aggregators) and a part c script, tested and smoked on random arrays only until the lock (deadline 2026-11-29)"}
+ }
